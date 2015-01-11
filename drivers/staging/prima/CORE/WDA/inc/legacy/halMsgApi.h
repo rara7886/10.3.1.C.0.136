@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -27,10 +50,13 @@
 #include "halTypes.h"
 #include "sirApi.h"
 #include "sirParams.h"
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halPhy.h"
 #include "halPhyApi.h"
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
 #define HAL_NUM_BSSID 2
 /* operMode in ADD BSS message */
@@ -43,6 +69,12 @@
 #define STA_ENTRY_BSSID             2
 #define STA_ENTRY_BCAST             3 //Special station id for transmitting broadcast frames.
 #define STA_ENTRY_PEER              STA_ENTRY_OTHER
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_TDLS
+#define STA_ENTRY_TDLS_PEER         4
+#endif /* FEATURE_WLAN_TDLS */
+>>>>>>> d97af3b... add prima wlan driver
 
 #define STA_ENTRY_TRANSMITTER       STA_ENTRY_SELF
 #define STA_ENTRY_RECEIVER          STA_ENTRY_OTHER
@@ -111,6 +143,7 @@ typedef struct
 } tTCParams;
 
 
+<<<<<<< HEAD
 typedef enum eRxpMode {
     eRXP_IDLE_MODE        = 0x0,
     eRXP_SCAN_MODE        = 0x1,
@@ -136,6 +169,8 @@ typedef enum eRxpMode {
 } tRxpMode;
 
 
+=======
+>>>>>>> d97af3b... add prima wlan driver
 typedef struct
 {
     // First two fields bssid and assocId are used to find staid for sta.
@@ -297,16 +332,29 @@ typedef struct
     tANI_U8     sessionId; //PE session id for PE<->HAL interface 
     // HAL just sends back what it receives.
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     /*if this is a P2P Capable Sta*/
     tANI_U8     p2pCapableSta;
 #endif
+=======
+    /*if this is a P2P Capable Sta*/
+    tANI_U8     p2pCapableSta;
+>>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WLAN_FEATURE_11AC
     tANI_U8    vhtCapable;
     tANI_U8    vhtTxChannelWidthSet;
+<<<<<<< HEAD
 #endif
 
+=======
+    tANI_U8    vhtTxBFCapable;
+#endif
+
+    tANI_U8    htLdpcCapable;
+    tANI_U8    vhtLdpcCapable;
+>>>>>>> d97af3b... add prima wlan driver
 } tAddStaParams, *tpAddStaParams;
 
 
@@ -358,11 +406,15 @@ typedef struct
     tAniEdType      encType;        // Encryption/Decryption type
     tAniWepType     wepType;        // valid only for WEP
     tANI_U8         defWEPIdx;      // Default WEP key, valid only for static WEP, must between 0 and 3
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tSirKeys        key[SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS];            // valid only for non-static WEP encyrptions
 #else
     tSirKeys        key;
 #endif
+=======
+    tSirKeys        key[SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS];            // valid only for non-static WEP encyrptions
+>>>>>>> d97af3b... add prima wlan driver
     tANI_U8         singleTidRc;    // 1=Single TID based Replay Count, 0=Per TID based RC
     /*
      * Following parameter is for returning status
@@ -561,9 +613,13 @@ typedef struct {
 
     tANI_U8 notifyBss;
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tANI_U8 useNoA;
 #endif
+=======
+    tANI_U8 useNoA;
+>>>>>>> d97af3b... add prima wlan driver
 
     // If this flag is set HAL notifies PE when SMAC returns status.
     tANI_U8 notifyHost;
@@ -591,14 +647,20 @@ typedef struct {
 
 } tInitScanParams, * tpInitScanParams;
 
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
+=======
+>>>>>>> d97af3b... add prima wlan driver
 typedef enum  eDelStaReasonCode{
    HAL_DEL_STA_REASON_CODE_KEEP_ALIVE = 0x1,
    HAL_DEL_STA_REASON_CODE_TIM_BASED  = 0x2,
    HAL_DEL_STA_REASON_CODE_RA_BASED   = 0x3,
    HAL_DEL_STA_REASON_CODE_UNKNOWN_A2 = 0x4
 }tDelStaReasonCode;
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
 //
 // Msg header is used from tSirMsgQ
@@ -609,10 +671,15 @@ typedef struct {
     tANI_U16    staId;
     tSirMacAddr bssId; // TO SUPPORT BT-AMP    
                        // HAL copies bssid from the sta table.
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE                       
     tSirMacAddr addr2;        //  
     tANI_U16    reasonCode;   // To unify the keepalive / unknown A2 / tim-based disa                                                                                                 
 #endif    
+=======
+    tSirMacAddr addr2;        //  
+    tANI_U16    reasonCode;   // To unify the keepalive / unknown A2 / tim-based disa                                                                                                 
+>>>>>>> d97af3b... add prima wlan driver
 } tDeleteStaContext, * tpDeleteStaContext;
 
 
@@ -705,6 +772,7 @@ typedef struct {
 
 } tFinishScanParams, * tpFinishScanParams;
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #ifdef FEATURE_OEM_DATA_SUPPORT 
 
@@ -713,6 +781,15 @@ typedef struct {
 #endif
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 968
+=======
+#ifdef FEATURE_OEM_DATA_SUPPORT 
+
+#ifndef OEM_DATA_REQ_SIZE
+#define OEM_DATA_REQ_SIZE 134
+#endif
+#ifndef OEM_DATA_RSP_SIZE
+#define OEM_DATA_RSP_SIZE 1968
+>>>>>>> d97af3b... add prima wlan driver
 #endif
 
 typedef struct
@@ -727,7 +804,10 @@ typedef struct
     tANI_U8             oemDataRsp[OEM_DATA_RSP_SIZE];
 } tStartOemDataRsp, *tpStartOemDataRsp;
 #endif
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
 typedef struct sBeaconGenStaInfo {
     tANI_U16    assocId;
@@ -758,6 +838,7 @@ typedef struct {
     tSirMacAddr bssId;
     tANI_U8 *beacon;     // Beacon data.
     tANI_U32 beaconLength; //length of the template.
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tANI_U32 timIeOffset; //TIM IE offset from the beginning of the template.
 #ifdef WLAN_FEATURE_P2P    
@@ -767,13 +848,22 @@ typedef struct {
 } tSendbeaconParams, * tpSendbeaconParams;
 
 #ifdef WLAN_SOFTAP_FEATURE
+=======
+    tANI_U32 timIeOffset; //TIM IE offset from the beginning of the template.
+    tANI_U16 p2pIeOffset; //P2P IE offset from the begining of the template
+} tSendbeaconParams, * tpSendbeaconParams;
+
+>>>>>>> d97af3b... add prima wlan driver
 typedef struct sSendProbeRespParams {
     tSirMacAddr bssId;
     tANI_U8      *pProbeRespTemplate; 
     tANI_U32     probeRespTemplateLen;
     tANI_U32     ucProxyProbeReqValidIEBmap[8];
 } tSendProbeRespParams, * tpSendProbeRespParams;
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
 /*
  * This is used by PE to create a set of WEP keys for a given BSS.
@@ -896,7 +986,17 @@ typedef struct
     tANI_U16 paramChangeBitmap;
 }tUpdateBeaconParams, *tpUpdateBeaconParams;
 
+<<<<<<< HEAD
 
+=======
+#ifdef WLAN_FEATURE_11AC
+typedef struct 
+{
+   tANI_U16   opMode;
+   tANI_U16  staId;
+}tUpdateVHTOpMode, *tpUpdateVHTOpMode;
+#endif
+>>>>>>> d97af3b... add prima wlan driver
 
 //HAL MSG: SIR_HAL_UPDATE_CF_IND
 typedef struct
@@ -1184,6 +1284,19 @@ typedef struct sUapsdParams
 
 //
 // Mesg header is used from tSirMsgQ
+<<<<<<< HEAD
+=======
+// Mesg Type = SIR_HAL_EXIT_UAPSD_REQ
+//
+typedef struct sExitUapsdParams
+{
+    eHalStatus  status;
+    tANI_U8     bssIdx;
+}tExitUapsdParams, *tpExitUapsdParams;
+
+//
+// Mesg header is used from tSirMsgQ
+>>>>>>> d97af3b... add prima wlan driver
 // Mesg Type = SIR_LIM_DEL_BA_IND
 //
 typedef struct sBADeleteParams
@@ -1220,6 +1333,18 @@ typedef struct sBaActivityInd
 } tBaActivityInd, * tpBaActivityInd;
 
 
+<<<<<<< HEAD
+=======
+// Mesg Type = SIR_LIM_IBSS_PEER_INACTIVITY_IND
+typedef struct sIbssPeerInactivityInd
+{
+   tANI_U8     bssIdx;
+   tANI_U8     staIdx;
+   tSirMacAddr staAddr;
+}tIbssPeerInactivityInd, *tpIbssPeerInactivityInd;
+
+
+>>>>>>> d97af3b... add prima wlan driver
 typedef struct tHalIndCB
 {
 
@@ -1277,7 +1402,17 @@ typedef struct sEnterBmpsParams
     tANI_U8 respReqd;
 }tEnterBmpsParams, *tpEnterBmpsParams;
 
+<<<<<<< HEAD
 
+=======
+//BMPS response
+typedef struct sEnterBmpsRspParams
+{
+    /* success or failure */
+    tANI_U32   status;
+    tANI_U8    bssIdx;
+}tEnterBmpsRspParams, *tpEnterBmpsRspParams;
+>>>>>>> d97af3b... add prima wlan driver
 //
 // Mesg header is used from tSirMsgQ
 // Mesg Type = SIR_HAL_SET_MAX_TX_POWER_REQ
@@ -1297,10 +1432,22 @@ typedef struct sMaxTxPowerParams
 typedef struct sAddStaSelfParams
 {
    tSirMacAddr selfMacAddr;
+<<<<<<< HEAD
 
    tANI_U32 status;
 }tAddStaSelfParams, *tpAddStaSelfParams;
 
+=======
+   tVOS_CON_MODE currDeviceMode;
+   tANI_U32 status;
+}tAddStaSelfParams, *tpAddStaSelfParams;
+
+typedef struct sAbortScanParams
+{
+   tANI_U8 SessionId;
+}tAbortScanParams, *tpAbortScanParams;
+
+>>>>>>> d97af3b... add prima wlan driver
 typedef struct sDelStaSelfParams
 {
    tSirMacAddr selfMacAddr;
@@ -1308,7 +1455,10 @@ typedef struct sDelStaSelfParams
    tANI_U32 status;
 }tDelStaSelfParams, *tpDelStaSelfParams;
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
+=======
+>>>>>>> d97af3b... add prima wlan driver
 typedef struct sP2pPsParams
 {
    tANI_U8   opp_ps;
@@ -1319,9 +1469,23 @@ typedef struct sP2pPsParams
    tANI_U32  single_noa_duration;
    tANI_U8   psSelection;
 }tP2pPsParams, *tpP2pPsParams;
+<<<<<<< HEAD
 #endif
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+
+typedef struct sTdlsLinkEstablishParams
+{
+   tANI_U16  staIdx;
+   tANI_U8   isResponder;
+   tANI_U8   uapsdQueues;
+   tANI_U8   maxSp;
+   tANI_U8   isBufsta;
+   tANI_U32  status;
+}tTdlsLinkEstablishParams, *tpTdlsLinkEstablishParams;
+
+>>>>>>> d97af3b... add prima wlan driver
 static inline void halGetTxTSFtimer(tpAniSirGlobal pMac, 
                                                 tSirMacTimeStamp *pTime)
 {
@@ -1336,6 +1500,11 @@ typedef __ani_attr_pre_packed struct sBeaconFilterMsg
     tANI_U16    capabilityMask;
     tANI_U16    beaconInterval;
     tANI_U16    ieNum;
+<<<<<<< HEAD
+=======
+    tANI_U8     bssIdx;
+    tANI_U8     reserved;
+>>>>>>> d97af3b... add prima wlan driver
 } __ani_attr_packed tBeaconFilterMsg, *tpBeaconFilterMsg;
 
 typedef __ani_attr_pre_packed struct sEidByteInfo
@@ -1362,6 +1531,9 @@ typedef __ani_attr_pre_packed struct sRemBeaconFilterMsg
     tANI_U8  ucRemIeId[1];
 }  __ani_attr_packed tRemBeaconFilterMsg, *tpRemBeaconFilterMsg;
 
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 #endif /* _HALMSGAPI_H_ */
 

@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+>>>>>>> d97af3b... add prima wlan driver
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -21,7 +25,11 @@
 
 #ifndef __WDA_DEBUG_H__
 #define __WDA_DEBUG_H__
+<<<<<<< HEAD
 #if (!defined ANI_OS_TYPE_OSX && !defined (ANI_OS_TYPE_ANDROID))
+=======
+#if  !defined (ANI_OS_TYPE_ANDROID)
+>>>>>>> d97af3b... add prima wlan driver
 #include <stdio.h>
 #endif
 #include <stdarg.h>

@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -126,6 +149,15 @@
 #define BTC_DHCP_ON_A2DP_DEF               (1)  // ON
 #define BTC_DHCP_ON_SCO_DEF                (0)  // OFF
 
+<<<<<<< HEAD
+=======
+/*
+ * Number of victim tables and mws coex configurations
+ */
+#define MWS_COEX_MAX_VICTIM_TABLE             10
+#define MWS_COEX_MAX_CONFIG                   6
+
+>>>>>>> d97af3b... add prima wlan driver
 /** Enumeration of all the different kinds of BT events
 */
 typedef enum eSmeBtEventType
@@ -271,6 +303,17 @@ typedef struct sSmeBtcConfig
    v_U32_t      btcMaxScoBlockPerc;
    v_U32_t      btcDhcpProtOnA2dp;
    v_U32_t      btcDhcpProtOnSco;
+<<<<<<< HEAD
+=======
+
+   v_U32_t      mwsCoexVictimWANFreq[MWS_COEX_MAX_VICTIM_TABLE];
+   v_U32_t      mwsCoexVictimWLANFreq[MWS_COEX_MAX_VICTIM_TABLE];
+   v_U32_t      mwsCoexVictimConfig[MWS_COEX_MAX_VICTIM_TABLE];
+   v_U32_t      mwsCoexVictimConfig2[MWS_COEX_MAX_VICTIM_TABLE];
+   v_U32_t      mwsCoexModemBackoff;
+   v_U32_t      mwsCoexConfig[MWS_COEX_MAX_CONFIG];
+   v_U32_t      SARPowerBackoff;
+>>>>>>> d97af3b... add prima wlan driver
 } tSmeBtcConfig, *tpSmeBtcConfig;
 
 
@@ -348,6 +391,10 @@ typedef struct sSmeBtcInfo
    v_BOOL_t      fA2DPTrafStop;/*flag to check A2DP_STOP event has come before MODE_CHANGED*/
    v_U16_t       btcScoHandles[BT_MAX_SCO_SUPPORT];  /* Handles for SCO, if any*/
    v_BOOL_t      fA2DPUp;        /*remember whether A2DP is in session*/
+<<<<<<< HEAD
+=======
+   v_BOOL_t      btcScanCompromise;
+>>>>>>> d97af3b... add prima wlan driver
 } tSmeBtcInfo, *tpSmeBtcInfo;
 
 

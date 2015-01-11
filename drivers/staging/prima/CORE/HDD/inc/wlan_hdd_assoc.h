@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -20,17 +43,39 @@
  */
 
 #if !defined( HDD_CONNECTION_H__ ) 
+<<<<<<< HEAD
 #define HDD_CONNECTION_H__ 
 #include <wlan_hdd_mib.h>
 #define HDD_MAX_NUM_IBSS_STA ( 4 )
+=======
+#define HDD_CONNECTION_H__
+#include <wlan_hdd_mib.h>
+#define HDD_MAX_NUM_IBSS_STA ( 32 )
+#ifdef FEATURE_WLAN_TDLS
+#define HDD_MAX_NUM_TDLS_STA ( 8 )
+#define TDLS_STA_INDEX_VALID(staId) \
+                          (((staId) >= 4) && ((staId) < 0xFF))
+#endif
+>>>>>>> d97af3b... add prima wlan driver
 #define TKIP_COUNTER_MEASURE_STARTED 1
 #define TKIP_COUNTER_MEASURE_STOPED  0 
 /* Timeout (in ms) for Link to Up before Registering Station */
 #define ASSOC_LINKUP_TIMEOUT 60
+<<<<<<< HEAD
+=======
+#define IBSS_BROADCAST_STAID 0
+>>>>>>> d97af3b... add prima wlan driver
 typedef enum 
 {
    /** Not associated in Infra or participating in an IBSS / Ad-hoc network.*/
    eConnectionState_NotConnected,
+<<<<<<< HEAD
+=======
+
+   /** While connection in progress */
+   eConnectionState_Connecting,
+
+>>>>>>> d97af3b... add prima wlan driver
    /** Associated in an Infrastructure network.*/
    eConnectionState_Associated,
 
@@ -43,7 +88,11 @@ typedef enum
 
    /** Disconnecting in an Infrastructure network.*/
    eConnectionState_Disconnecting
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> d97af3b... add prima wlan driver
 }eConnectionState;
 /**This structure stores the connection information */
 typedef struct connection_info_s
@@ -83,6 +132,12 @@ typedef struct connection_info_s
    
     /** Remembers authenticated state */
    v_U8_t uIsAuthenticated;
+<<<<<<< HEAD
+=======
+
+   /** Dot11Mode */
+   tANI_U32 dot11Mode;
+>>>>>>> d97af3b... add prima wlan driver
    
 }connection_info_t;
 /*Forward declaration of Adapter*/
@@ -90,9 +145,13 @@ typedef struct hdd_adapter_s hdd_adapter_t;
 typedef struct hdd_context_s hdd_context_t;
 typedef struct hdd_station_ctx hdd_station_ctx_t;
 typedef struct hdd_ap_ctx_s  hdd_ap_ctx_t;
+<<<<<<< HEAD
 #ifdef CONFIG_CFG80211   
 typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
 #endif
+=======
+typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
+>>>>>>> d97af3b... add prima wlan driver
 
 
 extern v_BOOL_t hdd_connIsConnected( hdd_station_ctx_t *pHddStaCtx );
@@ -101,10 +160,20 @@ extern eHalStatus hdd_smeRoamCallback( void *pContext, tCsrRoamInfo *pRoamInfo, 
 
 extern v_VOID_t hdd_connSaveConnectInfo( hdd_adapter_t *pAdapter, tCsrRoamInfo *pRoamInfo, eCsrRoamBssType eBssType );
 
+<<<<<<< HEAD
 inline v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx, 
+=======
+v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx,
+>>>>>>> d97af3b... add prima wlan driver
         eMib_dot11DesiredBssType *pConnectedBssType );
 
 int hdd_SetGENIEToCsr( hdd_adapter_t *pAdapter, eCsrAuthType *RSNAuthType );
 
 int hdd_set_csr_auth_type( hdd_adapter_t *pAdapter, eCsrAuthType RSNAuthType );
+<<<<<<< HEAD
+=======
+VOS_STATUS hdd_roamRegisterTDLSSTA( hdd_adapter_t *pAdapter,
+                                    tANI_U8 *peerMac, tANI_U16 staId, tANI_U8 ucastSig);
+void hdd_PerformRoamSetKeyComplete(hdd_adapter_t *pAdapter);
+>>>>>>> d97af3b... add prima wlan driver
 #endif

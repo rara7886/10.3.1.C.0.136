@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -36,6 +59,7 @@
 #include "sirCommon.h"
 #include "aniGlobal.h"
 
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -48,6 +72,12 @@
 #include "halDataStruct.h"
 #include "halCommonApi.h"
 #endif
+=======
+#include "wniCfgSta.h"
+#include "sysDef.h"
+#include "cfgApi.h"
+
+>>>>>>> d97af3b... add prima wlan driver
 
 #include "schApi.h"
 #include "utilsApi.h"
@@ -94,6 +124,7 @@ limSendSmeRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
     tSirSmeRsp  *pSirSmeRsp;
 
     PELOG1(limLog(pMac, LOG1,
+<<<<<<< HEAD
            FL("Sending message %s with reasonCode %s\n"),
            limMsgStr(msgType), limResultCodeStr(resultCode));)
 
@@ -102,10 +133,22 @@ limSendSmeRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
         /// Buffer not available. Log error
         limLog(pMac, LOGP,
                FL("call to palAllocateMemory failed for eWNI_SME_*_RSP\n"));
+=======
+           FL("Sending message %s with reasonCode %s"),
+           limMsgStr(msgType), limResultCodeStr(resultCode));)
+
+    pSirSmeRsp = vos_mem_malloc(sizeof(tSirSmeRsp));
+    if ( NULL == pSirSmeRsp )
+    {
+        /// Buffer not available. Log error
+        limLog(pMac, LOGP,
+               FL("call to AllocateMemory failed for eWNI_SME_*_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
   
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
     sirStoreU16N((tANI_U8*)&pSirSmeRsp->messageType, msgType);
     sirStoreU16N((tANI_U8*)&pSirSmeRsp->length, sizeof(tSirSmeRsp));
@@ -113,6 +156,10 @@ limSendSmeRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
     pSirSmeRsp->messageType = msgType;
     pSirSmeRsp->length      = sizeof(tSirSmeRsp);
 #endif
+=======
+    pSirSmeRsp->messageType = msgType;
+    pSirSmeRsp->length      = sizeof(tSirSmeRsp);
+>>>>>>> d97af3b... add prima wlan driver
     pSirSmeRsp->statusCode  = resultCode;
 
     /* Update SME session Id and Transaction Id */
@@ -123,7 +170,11 @@ limSendSmeRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
     mmhMsg.type = msgType;
     mmhMsg.bodyptr = pSirSmeRsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+=======
+    MTRACE(macTraceMsgTx(pMac, smesessionId, mmhMsg.type));
+>>>>>>> d97af3b... add prima wlan driver
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
    {
@@ -249,7 +300,11 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
 #endif //FEATURE_WLAN_DIAG_SUPPORT
 
     PELOG1(limLog(pMac, LOG1,
+<<<<<<< HEAD
            FL("Sending message %s with reasonCode %s\n"),
+=======
+           FL("Sending message %s with reasonCode %s"),
+>>>>>>> d97af3b... add prima wlan driver
            limMsgStr(msgType), limResultCodeStr(resultCode));)
 
     if(psessionEntry == NULL)
@@ -257,6 +312,7 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
 
         rspLen = sizeof(tSirSmeJoinRsp);   
 
+<<<<<<< HEAD
         if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeJoinRsp, rspLen))
         {
             /// Buffer not available. Log error
@@ -265,6 +321,17 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
         }
          
         palZeroMemory(pMac, (tANI_U8*)pSirSmeJoinRsp, rspLen);
+=======
+        pSirSmeJoinRsp = vos_mem_malloc(rspLen);
+        if ( NULL == pSirSmeJoinRsp )
+        {
+            /// Buffer not available. Log error
+            limLog(pMac, LOGP, FL("call to AllocateMemory failed for JOIN/REASSOC_RSP"));
+            return;
+        }
+         
+        vos_mem_set((tANI_U8*)pSirSmeJoinRsp, rspLen, 0);
+>>>>>>> d97af3b... add prima wlan driver
          
          
         pSirSmeJoinRsp->beaconLength = 0;
@@ -283,16 +350,27 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
             psessionEntry->tspecLen + 
 #endif            
             sizeof(tSirSmeJoinRsp) - sizeof(tANI_U8) ;
+<<<<<<< HEAD
     
         if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeJoinRsp, rspLen))
         {
             /// Buffer not available. Log error
             limLog(pMac, LOGP,
                FL("call to palAllocateMemory failed for JOIN/REASSOC_RSP\n"));
+=======
+
+        pSirSmeJoinRsp = vos_mem_malloc(rspLen);
+        if ( NULL == pSirSmeJoinRsp )
+        {
+            /// Buffer not available. Log error
+            limLog(pMac, LOGP,
+               FL("call to AllocateMemory failed for JOIN/REASSOC_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
 
             return;
         }
 
+<<<<<<< HEAD
         palZeroMemory(pMac, (tANI_U8*)pSirSmeJoinRsp, rspLen);
 
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
@@ -301,11 +379,16 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
 #endif    
         
 #if (WNI_POLARIS_FW_PRODUCT == WLAN_STA)
+=======
+        vos_mem_set((tANI_U8*)pSirSmeJoinRsp, rspLen, 0);
+
+>>>>>>> d97af3b... add prima wlan driver
         if (resultCode == eSIR_SME_SUCCESS)
         {
             pStaDs = dphGetHashEntry(pMac, DPH_STA_HASH_INDEX_PEER, &psessionEntry->dph.dphHashTable);
             if (pStaDs == NULL)
             {
+<<<<<<< HEAD
                 PELOGE(limLog(pMac, LOGE, FL("could not Get Self Entry for the station\n"));)
             }
             else
@@ -328,6 +411,18 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
                                pMac->lim.gLimAlternateRadio.channelId;
         }
 #endif
+=======
+                PELOGE(limLog(pMac, LOGE, FL("could not Get Self Entry for the station"));)
+            }
+            else
+            {
+                //Pass the peer's staId
+                pSirSmeJoinRsp->staId = pStaDs->staIndex;
+                pSirSmeJoinRsp->ucastSig   = pStaDs->ucUcastSig;
+                pSirSmeJoinRsp->bcastSig   = pStaDs->ucBcastSig;
+            }
+        }
+>>>>>>> d97af3b... add prima wlan driver
 
         pSirSmeJoinRsp->beaconLength = 0;
         pSirSmeJoinRsp->assocReqLength = 0;
@@ -345,56 +440,129 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
             if(psessionEntry->beacon != NULL)
             {
                 pSirSmeJoinRsp->beaconLength = psessionEntry->bcnLen;
+<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, pSirSmeJoinRsp->frames, psessionEntry->beacon, pSirSmeJoinRsp->beaconLength);
                 palFreeMemory(pMac->hHdd, psessionEntry->beacon);
                 psessionEntry->beacon = NULL;
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
                 PELOG1(limLog(pMac, LOG1, FL("Beacon=%d\n"), psessionEntry->bcnLen);)
+=======
+                vos_mem_copy( pSirSmeJoinRsp->frames, psessionEntry->beacon,
+                              pSirSmeJoinRsp->beaconLength);
+                vos_mem_free( psessionEntry->beacon);
+                psessionEntry->beacon = NULL;
+#ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
+                PELOG1(limLog(pMac, LOG1, FL("Beacon=%d"), psessionEntry->bcnLen);)
+>>>>>>> d97af3b... add prima wlan driver
 #endif
             }
         
             if(psessionEntry->assocReq != NULL)
             {
                 pSirSmeJoinRsp->assocReqLength = psessionEntry->assocReqLen;
+<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, pSirSmeJoinRsp->frames + psessionEntry->bcnLen, psessionEntry->assocReq, pSirSmeJoinRsp->assocReqLength);
                 palFreeMemory(pMac->hHdd, psessionEntry->assocReq);
                 psessionEntry->assocReq = NULL;
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
                 PELOG1(limLog(pMac, LOG1, FL("AssocReq=%d\n"), psessionEntry->assocReqLen);)
+=======
+                vos_mem_copy( pSirSmeJoinRsp->frames + psessionEntry->bcnLen,
+                              psessionEntry->assocReq, pSirSmeJoinRsp->assocReqLength);
+                vos_mem_free( psessionEntry->assocReq);
+                psessionEntry->assocReq = NULL;
+#ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
+                PELOG1(limLog(pMac, LOG1, FL("AssocReq=%d"), psessionEntry->assocReqLen);)
+>>>>>>> d97af3b... add prima wlan driver
 #endif
             }
             if(psessionEntry->assocRsp != NULL)
             {
                 pSirSmeJoinRsp->assocRspLength = psessionEntry->assocRspLen;
+<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, pSirSmeJoinRsp->frames + psessionEntry->bcnLen + psessionEntry->assocReqLen, psessionEntry->assocRsp, pSirSmeJoinRsp->assocRspLength);
                 palFreeMemory(pMac->hHdd, psessionEntry->assocRsp);
+=======
+                vos_mem_copy( pSirSmeJoinRsp->frames + psessionEntry->bcnLen +
+                                               psessionEntry->assocReqLen,
+                              psessionEntry->assocRsp,
+                              pSirSmeJoinRsp->assocRspLength);
+                vos_mem_free( psessionEntry->assocRsp);
+>>>>>>> d97af3b... add prima wlan driver
                 psessionEntry->assocRsp = NULL;
             }           
 #ifdef WLAN_FEATURE_VOWIFI_11R
             if(psessionEntry->ricData != NULL)
             {
                 pSirSmeJoinRsp->parsedRicRspLen = psessionEntry->RICDataLen;
+<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, pSirSmeJoinRsp->frames + psessionEntry->bcnLen + psessionEntry->assocReqLen + psessionEntry->assocRspLen, psessionEntry->ricData, pSirSmeJoinRsp->parsedRicRspLen);
                 palFreeMemory(pMac->hHdd, psessionEntry->ricData);
                 psessionEntry->ricData = NULL;
                 PELOG1(limLog(pMac, LOG1, FL("RicLength=%d\n"), pSirSmeJoinRsp->parsedRicRspLen);)
+=======
+                vos_mem_copy( pSirSmeJoinRsp->frames + psessionEntry->bcnLen +
+                                 psessionEntry->assocReqLen + psessionEntry->assocRspLen,
+                              psessionEntry->ricData, pSirSmeJoinRsp->parsedRicRspLen);
+                vos_mem_free(psessionEntry->ricData);
+                psessionEntry->ricData = NULL;
+                PELOG1(limLog(pMac, LOG1, FL("RicLength=%d"), pSirSmeJoinRsp->parsedRicRspLen);)
+>>>>>>> d97af3b... add prima wlan driver
             }
 #endif
 #ifdef FEATURE_WLAN_CCX            
             if(psessionEntry->tspecIes != NULL)
             {
                 pSirSmeJoinRsp->tspecIeLen = psessionEntry->tspecLen;
+<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, pSirSmeJoinRsp->frames + psessionEntry->bcnLen + psessionEntry->assocReqLen + psessionEntry->assocRspLen + psessionEntry->RICDataLen, psessionEntry->tspecIes, pSirSmeJoinRsp->tspecIeLen);
                 palFreeMemory(pMac->hHdd, psessionEntry->tspecIes);
                 psessionEntry->tspecIes = NULL;
                 PELOG1(limLog(pMac, LOG1, FL("CCX-TspecLen=%d\n"), psessionEntry->tspecLen);)
+=======
+                vos_mem_copy( pSirSmeJoinRsp->frames + psessionEntry->bcnLen +
+                                psessionEntry->assocReqLen + psessionEntry->assocRspLen +
+                                  psessionEntry->RICDataLen,
+                              psessionEntry->tspecIes, pSirSmeJoinRsp->tspecIeLen);
+                vos_mem_free(psessionEntry->tspecIes);
+                psessionEntry->tspecIes = NULL;
+                PELOG1(limLog(pMac, LOG1, FL("CCX-TspecLen=%d"), psessionEntry->tspecLen);)
+>>>>>>> d97af3b... add prima wlan driver
             }
 #endif            
             pSirSmeJoinRsp->aid = psessionEntry->limAID;
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
+<<<<<<< HEAD
             PELOG1(limLog(pMac, LOG1, FL("AssocRsp=%d\n"), psessionEntry->assocRspLen);)
 #endif
         }
+=======
+            PELOG1(limLog(pMac, LOG1, FL("AssocRsp=%d"), psessionEntry->assocRspLen);)
+#endif
+        }
+        else
+        {
+
+            if(psessionEntry->beacon != NULL)
+            {
+                vos_mem_free(psessionEntry->beacon);
+                psessionEntry->beacon = NULL;
+            }
+
+            if(psessionEntry->assocReq != NULL)
+            {
+                vos_mem_free( psessionEntry->assocReq);
+                psessionEntry->assocReq = NULL;
+            }
+
+            if(psessionEntry->assocRsp != NULL)
+            {
+                vos_mem_free( psessionEntry->assocRsp);
+                psessionEntry->assocRsp = NULL;
+            }
+
+        }
+>>>>>>> d97af3b... add prima wlan driver
     }
 
 
@@ -419,7 +587,13 @@ limSendSmeJoinReassocRsp(tpAniSirGlobal pMac, tANI_U16 msgType,
                /*Get 11ac cbState from 11n cbState*/
                  htSecondaryChannelOffset = limGet11ACPhyCBState(pMac, 
                                     psessionEntry->currentOperChannel,
+<<<<<<< HEAD
                                     psessionEntry->htSecondaryChannelOffset);
+=======
+                                    psessionEntry->htSecondaryChannelOffset,
+                                    psessionEntry->apCenterChan,
+                                    psessionEntry);
+>>>>>>> d97af3b... add prima wlan driver
                 peSetResumeChannel( pMac, psessionEntry->currentOperChannel, htSecondaryChannelOffset);
             }
             else 
@@ -480,13 +654,18 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
     tANI_U16            ieLen;
     tANI_U16            ieOffset, curLen;
 
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Sending message %s with reasonCode %s\n"),
+=======
+    PELOG1(limLog(pMac, LOG1, FL("Sending message %s with reasonCode %s"),
+>>>>>>> d97af3b... add prima wlan driver
            limMsgStr(msgType), limResultCodeStr(resultCode));)
 
     size = sizeof(tSirSmeStartBssRsp);
 
     if(psessionEntry == NULL)
     {
+<<<<<<< HEAD
        
          if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeRsp, size))
          {
@@ -495,6 +674,16 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
             return;
          }
          palZeroMemory(pMac, (tANI_U8*)pSirSmeRsp, size);
+=======
+         pSirSmeRsp = vos_mem_malloc(size);
+         if ( NULL == pSirSmeRsp )
+         {
+            /// Buffer not available. Log error
+            limLog(pMac, LOGP,FL("call to AllocateMemory failed for eWNI_SME_START_BSS_RSP"));
+            return;
+         }
+         vos_mem_set((tANI_U8*)pSirSmeRsp, size, 0);
+>>>>>>> d97af3b... add prima wlan driver
                       
     }
     else
@@ -505,6 +694,7 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
         //calculate the memory size to allocate
         size += ieLen;
 
+<<<<<<< HEAD
         if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeRsp, size))
         {
             /// Buffer not available. Log error
@@ -514,6 +704,18 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
             return;
         }
         palZeroMemory(pMac, (tANI_U8*)pSirSmeRsp, size);
+=======
+        pSirSmeRsp = vos_mem_malloc(size);
+        if ( NULL == pSirSmeRsp )
+        {
+            /// Buffer not available. Log error
+            limLog(pMac, LOGP,
+            FL("call to AllocateMemory failed for eWNI_SME_START_BSS_RSP"));
+
+            return;
+        }
+        vos_mem_set((tANI_U8*)pSirSmeRsp, size, 0);
+>>>>>>> d97af3b... add prima wlan driver
         size = sizeof(tSirSmeStartBssRsp);
         if (resultCode == eSIR_SME_SUCCESS)
         {
@@ -526,13 +728,21 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
 
                 if (cfgGetCapabilityInfo( pMac, &pSirSmeRsp->bssDescription.capabilityInfo,psessionEntry)
                 != eSIR_SUCCESS)
+<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("could not retrieve Capabilities value\n"));
+=======
+                limLog(pMac, LOGP, FL("could not retrieve Capabilities value"));
+>>>>>>> d97af3b... add prima wlan driver
 
                 limGetPhyMode(pMac, (tANI_U32 *)&pSirSmeRsp->bssDescription.nwType, psessionEntry);
 
 #if 0
             if (wlan_cfgGetInt(pMac, WNI_CFG_CURRENT_CHANNEL, &len) != eSIR_SUCCESS)
+<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("could not retrieve CURRENT_CHANNEL from CFG\n"));
+=======
+                limLog(pMac, LOGP, FL("could not retrieve CURRENT_CHANNEL from CFG"));
+>>>>>>> d97af3b... add prima wlan driver
            
 #endif// TO SUPPORT BT-AMP 
             
@@ -541,11 +751,19 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
                 pSirSmeRsp->bssDescription.aniIndicator = 1;
 
                 curLen = pMac->sch.schObject.gSchBeaconOffsetBegin - ieOffset;
+<<<<<<< HEAD
                 palCopyMemory( pMac->hHdd, (tANI_U8 *) &pSirSmeRsp->bssDescription.ieFields,
                            pMac->sch.schObject.gSchBeaconFrameBegin + ieOffset,
                           (tANI_U32)curLen);
 
                 palCopyMemory( pMac->hHdd, ((tANI_U8 *) &pSirSmeRsp->bssDescription.ieFields) + curLen,
+=======
+                vos_mem_copy( (tANI_U8 *) &pSirSmeRsp->bssDescription.ieFields,
+                           pMac->sch.schObject.gSchBeaconFrameBegin + ieOffset,
+                          (tANI_U32)curLen);
+
+                vos_mem_copy( ((tANI_U8 *) &pSirSmeRsp->bssDescription.ieFields) + curLen,
+>>>>>>> d97af3b... add prima wlan driver
                            pMac->sch.schObject.gSchBeaconFrameEnd,
                           (tANI_U32)pMac->sch.schObject.gSchBeaconOffsetEnd);
 
@@ -560,11 +778,14 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
 
             
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
         sirStoreU16N((tANI_U8*)&pSirSmeRsp->messageType, msgType);
         sirStoreU16N((tANI_U8*)&pSirSmeRsp->length, size);
        
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
         
     }
 
@@ -575,17 +796,34 @@ limSendSmeStartBssRsp(tpAniSirGlobal pMac,
     pSirSmeRsp->sessionId       = smesessionId;
     pSirSmeRsp->transactionId   = smetransactionId;
     pSirSmeRsp->statusCode      = resultCode;
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(psessionEntry != NULL )
     pSirSmeRsp->staId           = psessionEntry->staId; //else it will be always zero smeRsp StaID = 0 
       
 #endif
+=======
+    if(psessionEntry != NULL )
+    pSirSmeRsp->staId           = psessionEntry->staId; //else it will be always zero smeRsp StaID = 0 
+      
+>>>>>>> d97af3b... add prima wlan driver
 
     mmhMsg.type = msgType;
     mmhMsg.bodyptr = pSirSmeRsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
 
+=======
+    if(psessionEntry == NULL)
+    {
+        MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+    }
+    else
+    {
+        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+    }
+>>>>>>> d97af3b... add prima wlan driver
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
     limDiagEventReport(pMac, WLAN_PE_DIAG_START_BSS_RSP_EVENT, psessionEntry, (tANI_U16)resultCode, 0);
 #endif //FEATURE_WLAN_DIAG_SUPPORT
@@ -640,7 +878,11 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
     tSirBssDescription    *pDesc;
 
     PELOG1(limLog(pMac, LOG1,
+<<<<<<< HEAD
        FL("Sending message SME_SCAN_RSP with length=%d reasonCode %s\n"),
+=======
+       FL("Sending message SME_SCAN_RSP with length=%d reasonCode %s"),
+>>>>>>> d97af3b... add prima wlan driver
        length, limResultCodeStr(resultCode));)
 
     if (resultCode != eSIR_SME_SUCCESS)
@@ -654,11 +896,20 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
     bssCount = 0;
     msgLen = 0;
     allocLength = LIM_MAX_NUM_OF_SCAN_RESULTS_REPORTED * LIM_SIZE_OF_EACH_BSS;
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeScanRsp, allocLength))
     {
         // Log error
         limLog(pMac, LOGP,
                    FL("call to palAllocateMemory failed for eWNI_SME_SCAN_RSP\n"));
+=======
+    pSirSmeScanRsp = vos_mem_malloc(allocLength);
+    if ( NULL == pSirSmeScanRsp )
+    {
+        // Log error
+        limLog(pMac, LOGP,
+                   FL("call to AllocateMemory failed for eWNI_SME_SCAN_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -688,6 +939,7 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
             {
                 pSirSmeScanRsp->statusCode  =
                     eSIR_SME_MORE_SCAN_RESULTS_FOLLOW;
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
                 sirStoreU16N((tANI_U8*)&pSirSmeScanRsp->messageType,
                              eWNI_SME_SCAN_RSP);
@@ -696,15 +948,28 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
                 pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
                 pSirSmeScanRsp->length      = curMsgLen;
 #endif
+=======
+                pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
+                pSirSmeScanRsp->length      = curMsgLen;
+>>>>>>> d97af3b... add prima wlan driver
                 mmhMsg.bodyptr = pSirSmeScanRsp;
                 mmhMsg.bodyval = 0;
                 MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
                 limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+<<<<<<< HEAD
                 if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeScanRsp, allocLength))
                 {
                     // Log error
                     limLog(pMac, LOGP,
                                  FL("call to palAllocateMemory failed for eWNI_SME_SCAN_RSP\n"));
+=======
+                pSirSmeScanRsp = vos_mem_malloc(allocLength);
+                if ( NULL == pSirSmeScanRsp )
+                {
+                    // Log error
+                    limLog(pMac, LOGP,
+                                 FL("call to AllocateMemory failed for eWNI_SME_SCAN_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
                     return;
                 }
                 msgLen = sizeof(tSirSmeScanRsp) -
@@ -716,6 +981,7 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
             }
             curMsgLen = msgLen;
 
+<<<<<<< HEAD
             PELOG2(limLog(pMac, LOG2, FL("ScanRsp : msgLen %d, bssDescr Len=%d\n"),
                           msgLen, ptemp->bssDescription.length);)
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
@@ -728,6 +994,15 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
             palCopyMemory( pMac->hHdd, (tANI_U8 *) &pDesc->bssId,
                               (tANI_U8 *) &ptemp->bssDescription.bssId,
                               ptemp->bssDescription.length);
+=======
+            PELOG2(limLog(pMac, LOG2, FL("ScanRsp : msgLen %d, bssDescr Len=%d"),
+                          msgLen, ptemp->bssDescription.length);)
+            pDesc->length
+                    = ptemp->bssDescription.length;
+            vos_mem_copy( (tANI_U8 *) &pDesc->bssId,
+                          (tANI_U8 *) &ptemp->bssDescription.bssId,
+                           ptemp->bssDescription.length);
+>>>>>>> d97af3b... add prima wlan driver
 
             PELOG2(limLog(pMac, LOG2, FL("BssId "));
             limPrintMacAddr(pMac, ptemp->bssDescription.bssId, LOG2);)
@@ -744,7 +1019,11 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
        limPostSmeScanRspMessage(pMac, length, resultCode, smesessionId, smetranscationId);
        if (NULL != pSirSmeScanRsp)
        {
+<<<<<<< HEAD
            palFreeMemory( pMac->hHdd, pSirSmeScanRsp);
+=======
+           vos_mem_free( pSirSmeScanRsp);
+>>>>>>> d97af3b... add prima wlan driver
            pSirSmeScanRsp = NULL;
        }
     }
@@ -752,6 +1031,7 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
     {
         // send last message
         pSirSmeScanRsp->statusCode  = eSIR_SME_SUCCESS;
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
         sirStoreU16N((tANI_U8*)&pSirSmeScanRsp->messageType,
                              eWNI_SME_SCAN_RSP);
@@ -760,6 +1040,178 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
         pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
         pSirSmeScanRsp->length = curMsgLen;
 #endif
+=======
+        pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
+        pSirSmeScanRsp->length = curMsgLen;
+>>>>>>> d97af3b... add prima wlan driver
+
+        /* Update SME session Id and SME transcation Id */
+        pSirSmeScanRsp->sessionId   = smesessionId;
+        pSirSmeScanRsp->transcationId = smetranscationId;
+
+        mmhMsg.type = eWNI_SME_SCAN_RSP;
+        mmhMsg.bodyptr = pSirSmeScanRsp;
+        mmhMsg.bodyval = 0;
+        MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+        limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+<<<<<<< HEAD
+        PELOG2(limLog(pMac, LOG2, FL("statusCode : eSIR_SME_SUCCESS\n"));)
+=======
+        PELOG2(limLog(pMac, LOG2, FL("statusCode : eSIR_SME_SUCCESS"));)
+>>>>>>> d97af3b... add prima wlan driver
+    }
+
+    return;
+
+} /*** end limSendSmeScanRsp() ***/
+
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
+/**
+ * limSendSmeLfrScanRsp()
+ *
+ *FUNCTION:
+ * This function is called by limProcessSmeReqMessages() to send
+ * eWNI_SME_SCAN_RSP message to applications above MAC Software
+ * only for sending up the roam candidates.
+ *
+ *PARAMS:
+ *
+ *LOGIC:
+ *
+ *ASSUMPTIONS:
+ * NA
+ *
+ *NOTE:
+ * NA
+ *
+ * @param pMac         Pointer to Global MAC structure
+ * @param length       Indicates length of message
+ * @param resultCode   Indicates the result of previously issued
+ *                     eWNI_SME_SCAN_REQ message
+ *
+ * @return None
+ */
+
+void
+limSendSmeLfrScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
+                     tSirResultCodes resultCode,tANI_U8  smesessionId,tANI_U16 smetranscationId)
+{
+    tSirMsgQ              mmhMsg;
+    tpSirSmeScanRsp       pSirSmeScanRsp=NULL;
+    tLimScanResultNode    *ptemp = NULL;
+    tANI_U16              msgLen, allocLength, curMsgLen = 0;
+    tANI_U16              i, bssCount;
+    tANI_U8               *pbBuf;
+    tSirBssDescription    *pDesc;
+
+    PELOG1(limLog(pMac, LOG1,
+       FL("Sending message SME_SCAN_RSP with length=%d reasonCode %s\n"),
+       length, limResultCodeStr(resultCode));)
+
+    if (resultCode != eSIR_SME_SUCCESS)
+    {
+        limPostSmeScanRspMessage(pMac, length, resultCode,smesessionId,smetranscationId);
+        return;
+    }
+
+    mmhMsg.type = eWNI_SME_SCAN_RSP;
+    i = 0;
+    bssCount = 0;
+    msgLen = 0;
+    allocLength = LIM_MAX_NUM_OF_SCAN_RESULTS_REPORTED * LIM_SIZE_OF_EACH_BSS;
+    pSirSmeScanRsp = vos_mem_malloc(allocLength);
+    if ( NULL == pSirSmeScanRsp )
+    {
+        // Log error
+        limLog(pMac, LOGP,
+                   FL("call to AllocateMemory failed for eWNI_SME_SCAN_RSP\n"));
+
+        return;
+    }
+    for (i = 0; i < LIM_MAX_NUM_OF_SCAN_RESULTS; i++)
+    {
+        //when ptemp is not NULL it is a left over
+        ptemp = pMac->lim.gLimCachedLfrScanHashTable[i];
+        while(ptemp)
+        {
+            pbBuf = ((tANI_U8 *)pSirSmeScanRsp) + msgLen;
+            if(0 == bssCount)
+            {
+                msgLen = sizeof(tSirSmeScanRsp) -
+                           sizeof(tSirBssDescription) +
+                           ptemp->bssDescription.length +
+                           sizeof(ptemp->bssDescription.length);
+                pDesc = pSirSmeScanRsp->bssDescription;
+            }
+            else
+            {
+                msgLen += ptemp->bssDescription.length +
+                          sizeof(ptemp->bssDescription.length);
+                pDesc = (tSirBssDescription *)pbBuf;
+            }
+            if ( (allocLength < msgLen) ||
+                 (LIM_MAX_NUM_OF_SCAN_RESULTS_REPORTED <= bssCount++) )
+            {
+                pSirSmeScanRsp->statusCode  =
+                    eSIR_SME_MORE_SCAN_RESULTS_FOLLOW;
+                pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
+                pSirSmeScanRsp->length      = curMsgLen;
+                mmhMsg.bodyptr = pSirSmeScanRsp;
+                mmhMsg.bodyval = 0;
+                MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+                limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+                pSirSmeScanRsp = vos_mem_malloc(allocLength);
+                if ( NULL == pSirSmeScanRsp )
+                {
+                    // Log error
+                    limLog(pMac, LOGP,
+                                 FL("call to AllocateMemory failed for eWNI_SME_SCAN_RSP\n"));
+                    return;
+                }
+                msgLen = sizeof(tSirSmeScanRsp) -
+                           sizeof(tSirBssDescription) +
+                           ptemp->bssDescription.length +
+                           sizeof(ptemp->bssDescription.length);
+                pDesc = pSirSmeScanRsp->bssDescription;
+                bssCount = 1;
+            }
+            curMsgLen = msgLen;
+
+            PELOG2(limLog(pMac, LOG2, FL("ScanRsp : msgLen %d, bssDescr Len=%d\n"),
+                          msgLen, ptemp->bssDescription.length);)
+            pDesc->length
+                    = ptemp->bssDescription.length;
+            vos_mem_copy( (tANI_U8 *) &pDesc->bssId,
+                          (tANI_U8 *) &ptemp->bssDescription.bssId,
+                           ptemp->bssDescription.length);
+
+            PELOG2(limLog(pMac, LOG2, FL("BssId "));
+            limPrintMacAddr(pMac, ptemp->bssDescription.bssId, LOG2);)
+
+            pSirSmeScanRsp->sessionId   = smesessionId;
+            pSirSmeScanRsp->transcationId = smetranscationId;
+
+            ptemp = ptemp->next;
+        } //while(ptemp)
+    } //for (i = 0; i < LIM_MAX_NUM_OF_SCAN_RESULTS; i++)
+
+    if (0 == bssCount)
+    {
+       limPostSmeScanRspMessage(pMac, length, resultCode, smesessionId, smetranscationId);
+       if (NULL != pSirSmeScanRsp)
+       {
+           vos_mem_free( pSirSmeScanRsp);
+           pSirSmeScanRsp = NULL;
+       }
+    }
+    else
+    {
+        // send last message
+        pSirSmeScanRsp->statusCode  = eSIR_SME_SUCCESS;
+        pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
+        pSirSmeScanRsp->length = curMsgLen;
 
         /* Update SME session Id and SME transcation Id */
         pSirSmeScanRsp->sessionId   = smesessionId;
@@ -775,8 +1227,9 @@ limSendSmeScanRsp(tpAniSirGlobal pMac, tANI_U16 length,
 
     return;
 
-} /*** end limSendSmeScanRsp() ***/
-
+} /*** end limSendSmeLfrScanRsp() ***/
+#endif //WLAN_FEATURE_ROAM_SCAN_OFFLOAD
+>>>>>>> d97af3b... add prima wlan driver
 
 /**
  * limPostSmeScanRspMessage()
@@ -804,6 +1257,7 @@ limPostSmeScanRspMessage(tpAniSirGlobal    pMac,
     tSirMsgQ          mmhMsg;
 
     PELOG1(limLog(pMac, LOG1,
+<<<<<<< HEAD
        FL("limPostSmeScanRspMessage: send SME_SCAN_RSP (len %d, reasonCode %s). \n"),
        length, limResultCodeStr(resultCode));)
 
@@ -821,6 +1275,21 @@ limPostSmeScanRspMessage(tpAniSirGlobal    pMac,
     pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
     pSirSmeScanRsp->length      = length;
 #endif
+=======
+       FL("limPostSmeScanRspMessage: send SME_SCAN_RSP (len %d, reasonCode %s). "),
+       length, limResultCodeStr(resultCode));)
+
+    pSirSmeScanRsp = vos_mem_malloc(length);
+    if ( NULL == pSirSmeScanRsp )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_SCAN_RSP"));
+        return;
+    }
+    vos_mem_set((void*)pSirSmeScanRsp, length, 0);
+
+    pSirSmeScanRsp->messageType = eWNI_SME_SCAN_RSP;
+    pSirSmeScanRsp->length      = length;
+>>>>>>> d97af3b... add prima wlan driver
 
     if(sizeof(tSirSmeScanRsp) <= length)
     {
@@ -889,9 +1358,16 @@ void limSendSmeOemDataRsp(tpAniSirGlobal pMac, tANI_U32* pMsgBuf, tSirResultCode
     msgLength = sizeof(tSirOemDataRsp);
 
     //now allocate memory for the char buffer
+<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, (void**)&pSirSmeOemDataRsp, msgLength))
     {
         limLog(pMac, LOGP, FL("call to palAllocateMemory failed for pSirSmeOemDataRsp\n"));
+=======
+    pSirSmeOemDataRsp = vos_mem_malloc(msgLength);
+    if (NULL == pSirSmeOemDataRsp)
+    {
+        limLog(pMac, LOGP, FL("call to AllocateMemory failed for pSirSmeOemDataRsp"));
+>>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
@@ -903,10 +1379,17 @@ void limSendSmeOemDataRsp(tpAniSirGlobal pMac, tANI_U32* pMsgBuf, tSirResultCode
     pSirSmeOemDataRsp->messageType = eWNI_SME_OEM_DATA_RSP;
 #endif
 
+<<<<<<< HEAD
     palCopyMemory(pMac->hHdd, pSirSmeOemDataRsp->oemDataRsp, pMlmOemDataRsp->oemDataRsp, OEM_DATA_RSP_SIZE);
 
     //Now free the memory from MLM Rsp Message
     palFreeMemory(pMac->hHdd, pMlmOemDataRsp);
+=======
+    vos_mem_copy(pSirSmeOemDataRsp->oemDataRsp, pMlmOemDataRsp->oemDataRsp, OEM_DATA_RSP_SIZE);
+
+    //Now free the memory from MLM Rsp Message
+    vos_mem_free(pMlmOemDataRsp);
+>>>>>>> d97af3b... add prima wlan driver
 
     mmhMsg.type = eWNI_SME_OEM_DATA_RSP;
     mmhMsg.bodyptr = pSirSmeOemDataRsp;
@@ -956,26 +1439,42 @@ limSendSmeAuthRsp(tpAniSirGlobal pMac,
     tSirMsgQ       mmhMsg;
     tSirSmeAuthRsp *pSirSmeAuthRsp;
 
+<<<<<<< HEAD
 
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeAuthRsp, sizeof(tSirSmeAuthRsp)))
     {
         // Log error
         limLog(pMac, LOGP,
                FL("call to palAllocateMemory failed for eWNI_SME_AUTH_RSP\n"));
+=======
+    pSirSmeAuthRsp = vos_mem_malloc(sizeof(tSirSmeAuthRsp));
+    if (NULL == pSirSmeAuthRsp)
+    {
+        // Log error
+        limLog(pMac, LOGP,
+               FL("call to AllocateMemory failed for eWNI_SME_AUTH_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
     sirStoreU16N((tANI_U8*)&pSirSmeAuthRsp->messageType, eWNI_SME_AUTH_RSP);
     sirStoreU16N((tANI_U8*)&pSirSmeAuthRsp->length, sizeof(tSirSmeAuthRsp));
  
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
    
 
     if(psessionEntry != NULL)
     {
+<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (tANI_U8 *) pSirSmeAuthRsp->peerMacAddr,
+=======
+        vos_mem_copy( (tANI_U8 *) pSirSmeAuthRsp->peerMacAddr,
+>>>>>>> d97af3b... add prima wlan driver
                   (tANI_U8 *) peerMacAddr, sizeof(tSirMacAddr));
         pSirSmeAuthRsp->authType    = authType;
           
@@ -999,7 +1498,11 @@ limSendSmeAuthRsp(tpAniSirGlobal pMac,
 } /*** end limSendSmeAuthRsp() ***/
 
 
+<<<<<<< HEAD
 void limSendSmeDisassocDeauthNtfPostResume( tpAniSirGlobal pMac,
+=======
+void limSendSmeDisassocDeauthNtf( tpAniSirGlobal pMac,
+>>>>>>> d97af3b... add prima wlan driver
                                 eHalStatus status, tANI_U32 *pCtx )
 {
     tSirMsgQ                mmhMsg;
@@ -1068,15 +1571,25 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
              * host triggered disassociation
              */
 
+<<<<<<< HEAD
             if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeDisassocRsp, sizeof(tSirSmeDisassocRsp)))
             {
                 // Log error
                 limLog(pMac, LOGP,
                    FL("call to palAllocateMemory failed for eWNI_SME_DISASSOC_RSP\n"));
+=======
+            pSirSmeDisassocRsp = vos_mem_malloc(sizeof(tSirSmeDisassocRsp));
+            if ( NULL == pSirSmeDisassocRsp )
+            {
+                // Log error
+                limLog(pMac, LOGP,
+                   FL("call to AllocateMemory failed for eWNI_SME_DISASSOC_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
 
                 return;
             }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
             sirStoreU16N((tANI_U8*)&pSirSmeDisassocRsp->messageType,
                          eWNI_SME_DISASSOC_RSP);
@@ -1086,6 +1599,10 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
             pSirSmeDisassocRsp->messageType = eWNI_SME_DISASSOC_RSP;
             pSirSmeDisassocRsp->length      = sizeof(tSirSmeDisassocRsp);
 #endif
+=======
+            pSirSmeDisassocRsp->messageType = eWNI_SME_DISASSOC_RSP;
+            pSirSmeDisassocRsp->length      = sizeof(tSirSmeDisassocRsp);
+>>>>>>> d97af3b... add prima wlan driver
             //sessionId
             pBuf = (tANI_U8 *) &pSirSmeDisassocRsp->sessionId;
             *pBuf = smesessionId;
@@ -1100,6 +1617,7 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
             pBuf += sizeof(tSirResultCodes);
 
             //peerMacAddr
+<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, pBuf, peerMacAddr, sizeof(tSirMacAddr));
             pBuf += sizeof(tSirMacAddr);
 
@@ -1117,6 +1635,18 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
 
           
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
+=======
+            vos_mem_copy( pBuf, peerMacAddr, sizeof(tSirMacAddr));
+            pBuf += sizeof(tSirMacAddr);
+
+            // Clear Station Stats
+            //for sta, it is always 1, IBSS is handled at halInitSta
+
+
+          
+#ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
+
+>>>>>>> d97af3b... add prima wlan driver
             limDiagEventReport(pMac, WLAN_PE_DIAG_DISASSOC_RSP_EVENT,
                                       psessionEntry, (tANI_U16)reasonCode, 0);
 #endif
@@ -1129,21 +1659,33 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
              * frame reception from peer entity or due to
              * loss of link with peer entity.
              */
+<<<<<<< HEAD
             if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeDisassocInd, sizeof(tSirSmeDisassocInd)))
             {
                 // Log error
                 limLog(pMac, LOGP,
                    FL("call to palAllocateMemory failed for eWNI_SME_DISASSOC_IND\n"));
+=======
+            pSirSmeDisassocInd = vos_mem_malloc(sizeof(tSirSmeDisassocInd));
+            if ( NULL == pSirSmeDisassocInd )
+            {
+                // Log error
+                limLog(pMac, LOGP,
+                   FL("call to AllocateMemory failed for eWNI_SME_DISASSOC_IND"));
+>>>>>>> d97af3b... add prima wlan driver
 
                 return;
             }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
             sirStoreU16N((tANI_U8*)&pSirSmeDisassocInd->messageType,
                          eWNI_SME_DISASSOC_IND);
             sirStoreU16N((tANI_U8*)&pSirSmeDisassocInd->length,
                          sizeof(tSirSmeDisassocInd));
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
             pSirSmeDisassocInd->messageType = eWNI_SME_DISASSOC_IND;
             pSirSmeDisassocInd->length      = sizeof(tSirSmeDisassocInd);
             
@@ -1151,12 +1693,16 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
             pSirSmeDisassocInd->sessionId = smesessionId;
             pSirSmeDisassocInd->transactionId = smetransactionId;
             pSirSmeDisassocInd->reasonCode = reasonCode;
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
             pBuf = (tANI_U8 *) &pSirSmeDisassocInd->statusCode;
 
             limCopyU32(pBuf, reasonCode);
             pBuf += sizeof(tSirResultCodes);
 
+<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, pBuf, psessionEntry->bssId, sizeof(tSirMacAddr));
             pBuf += sizeof(tSirMacAddr);
 
@@ -1169,6 +1715,12 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
             limStatSerDes(pMac, &pMac->hal.halMac.macStats.pPerStaStats[aid].staStat, pBuf);
 
 #endif//#if (WNI_POLARIS_FW_PRODUCT == AP)
+=======
+            vos_mem_copy( pBuf, psessionEntry->bssId, sizeof(tSirMacAddr));
+            pBuf += sizeof(tSirMacAddr);
+
+            vos_mem_copy( pBuf, peerMacAddr, sizeof(tSirMacAddr));
+>>>>>>> d97af3b... add prima wlan driver
 
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
@@ -1176,11 +1728,14 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
                                               psessionEntry, (tANI_U16)reasonCode, 0);
 #endif
             pMsg = (tANI_U32*) pSirSmeDisassocInd;
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
             PELOG1(limLog(pMac, LOG1,
                FL("*** Sending DisAssocInd staId=%d, reasonCode=%d ***\n"),
                aid, reasonCode);)
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
             break;
     }
@@ -1192,6 +1747,7 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
         peDeleteSession(pMac,psessionEntry);
     }
         
+<<<<<<< HEAD
     if( IS_MCC_SUPPORTED && limIsLinkSuspended( pMac ) )
     {
         //Resume on the first active session channel.
@@ -1208,6 +1764,10 @@ limSendSmeDisassocNtf(tpAniSirGlobal pMac,
         limSendSmeDisassocDeauthNtfPostResume( pMac, eHAL_STATUS_SUCCESS,
                                               (tANI_U32*) pMsg );
     }
+=======
+    limSendSmeDisassocDeauthNtf( pMac, eHAL_STATUS_SUCCESS,
+                                              (tANI_U32*) pMsg );
+>>>>>>> d97af3b... add prima wlan driver
 } /*** end limSendSmeDisassocNtf() ***/
 
 
@@ -1229,6 +1789,7 @@ limSendSmeDisassocInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession pses
     tSirMsgQ  mmhMsg;
     tSirSmeDisassocInd *pSirSmeDisassocInd;
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeDisassocInd, sizeof(tSirSmeDisassocInd)))
     {
         limLog(pMac, LOGP, FL("palAllocateMemory failed for eWNI_SME_DISASSOC_IND\n"));
@@ -1263,10 +1824,23 @@ limSendSmeDisassocInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession pses
     limStatSerDes(pMac, &pMac->hal.halMac.macStats.pPerStaStats[pStaDs->assocId].staStat, pBuf);
 #endif
 #endif
+=======
+    pSirSmeDisassocInd = vos_mem_malloc(sizeof(tSirSmeDisassocInd));
+    if ( NULL == pSirSmeDisassocInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_DISASSOC_IND"));
+        return;
+    }
+
+    pSirSmeDisassocInd->messageType = eWNI_SME_DISASSOC_IND;
+    pSirSmeDisassocInd->length = sizeof(tSirSmeDisassocInd);
+
+>>>>>>> d97af3b... add prima wlan driver
     pSirSmeDisassocInd->sessionId     =  psessionEntry->smeSessionId;
     pSirSmeDisassocInd->transactionId =  psessionEntry->transactionId;
     pSirSmeDisassocInd->statusCode    =  pStaDs->mlmStaContext.disassocReason;
     pSirSmeDisassocInd->reasonCode    =  pStaDs->mlmStaContext.disassocReason;
+<<<<<<< HEAD
     
     palCopyMemory( pMac->hHdd, pSirSmeDisassocInd->bssId , psessionEntry->bssId , sizeof(tSirMacAddr));
  
@@ -1280,6 +1854,15 @@ limSendSmeDisassocInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession pses
     pSirSmeDisassocInd->staId = pStaDs->staIndex;
 #endif  
  
+=======
+
+    vos_mem_copy( pSirSmeDisassocInd->bssId, psessionEntry->bssId, sizeof(tSirMacAddr));
+
+    vos_mem_copy( pSirSmeDisassocInd->peerMacAddr, pStaDs->staAddr, sizeof(tSirMacAddr));
+
+    pSirSmeDisassocInd->staId = pStaDs->staIndex;
+
+>>>>>>> d97af3b... add prima wlan driver
     mmhMsg.type = eWNI_SME_DISASSOC_IND;
     mmhMsg.bodyptr = pSirSmeDisassocInd;
     mmhMsg.bodyval = 0;
@@ -1309,6 +1892,7 @@ limSendSmeDisassocInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession pses
 void
 limSendSmeDeauthInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession psessionEntry)                   
 {
+<<<<<<< HEAD
 #ifndef WLAN_SOFTAP_FEATURE
     tANI_U8  *pBuf;
 #endif
@@ -1330,6 +1914,21 @@ limSendSmeDeauthInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession psess
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE
+=======
+    tSirMsgQ  mmhMsg;
+    tSirSmeDeauthInd  *pSirSmeDeauthInd;
+
+    pSirSmeDeauthInd = vos_mem_malloc(sizeof(tSirSmeDeauthInd));
+    if ( NULL == pSirSmeDeauthInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_DEAUTH_IND "));
+        return;
+    }
+
+    pSirSmeDeauthInd->messageType = eWNI_SME_DEAUTH_IND;
+    pSirSmeDeauthInd->length = sizeof(tSirSmeDeauthInd);
+
+>>>>>>> d97af3b... add prima wlan driver
     pSirSmeDeauthInd->sessionId = psessionEntry->smeSessionId;
     pSirSmeDeauthInd->transactionId = psessionEntry->transactionId;
     if(eSIR_INFRA_AP_MODE == psessionEntry->bssType)
@@ -1342,6 +1941,7 @@ limSendSmeDeauthInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession psess
         pSirSmeDeauthInd->statusCode = (tSirResultCodes)pStaDs->mlmStaContext.disassocReason;
     }
     //BSSID
+<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pSirSmeDeauthInd->bssId, psessionEntry->bssId, sizeof(tSirMacAddr));
     //peerMacAddr
     palCopyMemory( pMac->hHdd, pSirSmeDeauthInd->peerMacAddr, pStaDs->staAddr, sizeof(tSirMacAddr));
@@ -1376,6 +1976,15 @@ limSendSmeDeauthInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession psess
 #ifdef WLAN_SOFTAP_FEATURE
     pSirSmeDeauthInd->staId = pStaDs->staIndex;
 #endif
+=======
+    vos_mem_copy( pSirSmeDeauthInd->bssId, psessionEntry->bssId, sizeof(tSirMacAddr));
+    //peerMacAddr
+    vos_mem_copy( pSirSmeDeauthInd->peerMacAddr, pStaDs->staAddr, sizeof(tSirMacAddr));
+    pSirSmeDeauthInd->reasonCode = pStaDs->mlmStaContext.disassocReason;
+
+
+    pSirSmeDeauthInd->staId = pStaDs->staIndex;
+>>>>>>> d97af3b... add prima wlan driver
 
     mmhMsg.type = eWNI_SME_DEAUTH_IND;
     mmhMsg.bodyptr = pSirSmeDeauthInd;
@@ -1390,6 +1999,167 @@ limSendSmeDeauthInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession psess
     return;
 } /*** end limSendSmeDeauthInd() ***/
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_TDLS
+/**
+ * limSendSmeTDLSDelStaInd()
+ *
+ *FUNCTION:
+ * This function is called to send the TDLS STA context deletion to SME.
+ *
+ *LOGIC:
+ *
+ *ASSUMPTIONS:
+ *
+ *NOTE:
+ * NA
+ *
+ * @param  pMac   - Pointer to global MAC structure
+ * @param  pStaDs - Pointer to internal STA Datastructure
+ * @param  psessionEntry - Pointer to the session entry
+ * @param  reasonCode - Reason for TDLS sta deletion
+ * @return None
+ */
+void
+limSendSmeTDLSDelStaInd(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession psessionEntry, tANI_U16 reasonCode)
+{
+    tSirMsgQ  mmhMsg;
+    tSirTdlsDelStaInd  *pSirTdlsDelStaInd;
+
+    pSirTdlsDelStaInd = vos_mem_malloc(sizeof(tSirTdlsDelStaInd));
+    if ( NULL == pSirTdlsDelStaInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_TDLS_DEL_STA_IND "));
+        return;
+    }
+
+    //messageType
+    pSirTdlsDelStaInd->messageType = eWNI_SME_TDLS_DEL_STA_IND;
+    pSirTdlsDelStaInd->length = sizeof(tSirTdlsDelStaInd);
+
+    //sessionId
+    pSirTdlsDelStaInd->sessionId = psessionEntry->smeSessionId;
+
+    //peerMacAddr
+    vos_mem_copy( pSirTdlsDelStaInd->peerMac, pStaDs->staAddr, sizeof(tSirMacAddr));
+
+    //staId
+    limCopyU16((tANI_U8*)(&pSirTdlsDelStaInd->staId), (tANI_U16)pStaDs->staIndex);
+
+    //reasonCode
+    limCopyU16((tANI_U8*)(&pSirTdlsDelStaInd->reasonCode), reasonCode);
+
+    mmhMsg.type = eWNI_SME_TDLS_DEL_STA_IND;
+    mmhMsg.bodyptr = pSirTdlsDelStaInd;
+    mmhMsg.bodyval = 0;
+
+
+    limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+    return;
+}/*** end limSendSmeTDLSDelStaInd() ***/
+
+/**
+ * limSendSmeTDLSDeleteAllPeerInd()
+ *
+ *FUNCTION:
+ * This function is called to send the eWNI_SME_TDLS_DEL_ALL_PEER_IND
+ * message to SME.
+ *
+ *LOGIC:
+ *
+ *ASSUMPTIONS:
+ *
+ *NOTE:
+ * NA
+ *
+ * @param  pMac   - Pointer to global MAC structure
+ * @param  psessionEntry - Pointer to the session entry
+ * @return None
+ */
+void
+limSendSmeTDLSDeleteAllPeerInd(tpAniSirGlobal pMac, tpPESession psessionEntry)
+{
+    tSirMsgQ  mmhMsg;
+    tSirTdlsDelAllPeerInd  *pSirTdlsDelAllPeerInd;
+
+    pSirTdlsDelAllPeerInd = vos_mem_malloc(sizeof(tSirTdlsDelAllPeerInd));
+    if ( NULL == pSirTdlsDelAllPeerInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_TDLS_DEL_ALL_PEER_IND"));
+        return;
+    }
+
+    //messageType
+    pSirTdlsDelAllPeerInd->messageType = eWNI_SME_TDLS_DEL_ALL_PEER_IND;
+    pSirTdlsDelAllPeerInd->length = sizeof(tSirTdlsDelAllPeerInd);
+
+    //sessionId
+    pSirTdlsDelAllPeerInd->sessionId = psessionEntry->smeSessionId;
+
+    mmhMsg.type = eWNI_SME_TDLS_DEL_ALL_PEER_IND;
+    mmhMsg.bodyptr = pSirTdlsDelAllPeerInd;
+    mmhMsg.bodyval = 0;
+
+
+    limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+    return;
+}/*** end limSendSmeTDLSDeleteAllPeerInd() ***/
+
+/**
+ * limSendSmeMgmtTXCompletion()
+ *
+ *FUNCTION:
+ * This function is called to send the eWNI_SME_MGMT_FRM_TX_COMPLETION_IND
+ * message to SME.
+ *
+ *LOGIC:
+ *
+ *ASSUMPTIONS:
+ *
+ *NOTE:
+ * NA
+ *
+ * @param  pMac   - Pointer to global MAC structure
+ * @param  psessionEntry - Pointer to the session entry
+ * @param  txCompleteStatus - TX Complete Status of Mgmt Frames
+ * @return None
+ */
+void
+limSendSmeMgmtTXCompletion(tpAniSirGlobal pMac,
+                           tpPESession psessionEntry,
+                           tANI_U32 txCompleteStatus)
+{
+    tSirMsgQ  mmhMsg;
+    tSirMgmtTxCompletionInd  *pSirMgmtTxCompletionInd;
+
+    pSirMgmtTxCompletionInd = vos_mem_malloc(sizeof(tSirMgmtTxCompletionInd));
+    if ( NULL == pSirMgmtTxCompletionInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_MGMT_FRM_TX_COMPLETION_IND"));
+        return;
+    }
+
+    //messageType
+    pSirMgmtTxCompletionInd->messageType = eWNI_SME_MGMT_FRM_TX_COMPLETION_IND;
+    pSirMgmtTxCompletionInd->length = sizeof(tSirMgmtTxCompletionInd);
+
+    //sessionId
+    pSirMgmtTxCompletionInd->sessionId = psessionEntry->smeSessionId;
+
+    pSirMgmtTxCompletionInd->txCompleteStatus = txCompleteStatus;
+
+    mmhMsg.type = eWNI_SME_MGMT_FRM_TX_COMPLETION_IND;
+    mmhMsg.bodyptr = pSirMgmtTxCompletionInd;
+    mmhMsg.bodyval = 0;
+
+
+    limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+    return;
+}/*** end limSendSmeTDLSDeleteAllPeerInd() ***/
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
 
 /**
  * limSendSmeDeauthNtf()
@@ -1440,15 +2210,25 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
              * Deauthentication response to host triggered
              * deauthentication.
              */
+<<<<<<< HEAD
             if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeDeauthRsp, sizeof(tSirSmeDeauthRsp)))
             {
                 // Log error
                 limLog(pMac, LOGP,
                    FL("call to palAllocateMemory failed for eWNI_SME_DEAUTH_RSP\n"));
+=======
+            pSirSmeDeauthRsp = vos_mem_malloc(sizeof(tSirSmeDeauthRsp));
+            if ( NULL == pSirSmeDeauthRsp )
+            {
+                // Log error
+                limLog(pMac, LOGP,
+                   FL("call to AllocateMemory failed for eWNI_SME_DEAUTH_RSP"));
+>>>>>>> d97af3b... add prima wlan driver
 
                 return;
             }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
             sirStoreU16N((tANI_U8*) &(pSirSmeDeauthRsp->messageType),
                          eWNI_SME_DEAUTH_RSP);
@@ -1458,17 +2238,26 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
             pSirSmeDeauthRsp->messageType = eWNI_SME_DEAUTH_RSP;
             pSirSmeDeauthRsp->length      = sizeof(tSirSmeDeauthRsp);
 #endif
+=======
+            pSirSmeDeauthRsp->messageType = eWNI_SME_DEAUTH_RSP;
+            pSirSmeDeauthRsp->length      = sizeof(tSirSmeDeauthRsp);
+>>>>>>> d97af3b... add prima wlan driver
             pSirSmeDeauthRsp->statusCode = reasonCode;
             pSirSmeDeauthRsp->sessionId = smesessionId;
             pSirSmeDeauthRsp->transactionId = smetransactionId;  
 
             pBuf  = (tANI_U8 *) pSirSmeDeauthRsp->peerMacAddr;
+<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, pBuf, peerMacAddr, sizeof(tSirMacAddr));
 
 #if (WNI_POLARIS_FW_PRODUCT == AP)
             pBuf += sizeof(tSirMacAddr);
             limCopyU16(pBuf, aid);
 #endif
+=======
+            vos_mem_copy( pBuf, peerMacAddr, sizeof(tSirMacAddr));
+
+>>>>>>> d97af3b... add prima wlan driver
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
             limDiagEventReport(pMac, WLAN_PE_DIAG_DEAUTH_RSP_EVENT,
                                       psessionEntry, 0, (tANI_U16)reasonCode);
@@ -1483,15 +2272,25 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
              * frame reception from peer entity or due to
              * loss of link with peer entity.
              */
+<<<<<<< HEAD
             if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeDeauthInd, sizeof(tSirSmeDeauthInd)))
             {
                 // Log error
                 limLog(pMac, LOGP,
                    FL("call to palAllocateMemory failed for eWNI_SME_DEAUTH_Ind\n"));
+=======
+            pSirSmeDeauthInd = vos_mem_malloc(sizeof(tSirSmeDeauthInd));
+            if ( NULL == pSirSmeDeauthInd )
+            {
+                // Log error
+                limLog(pMac, LOGP,
+                   FL("call to AllocateMemory failed for eWNI_SME_DEAUTH_Ind"));
+>>>>>>> d97af3b... add prima wlan driver
 
                 return;
             }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
             sirStoreU16N((tANI_U8*)&pSirSmeDeauthInd->messageType,
                          eWNI_SME_DEAUTH_IND);
@@ -1502,6 +2301,11 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
             pSirSmeDeauthInd->length      = sizeof(tSirSmeDeauthInd);
             pSirSmeDeauthInd->reasonCode = eSIR_MAC_UNSPEC_FAILURE_REASON;
 #endif
+=======
+            pSirSmeDeauthInd->messageType = eWNI_SME_DEAUTH_IND;
+            pSirSmeDeauthInd->length      = sizeof(tSirSmeDeauthInd);
+            pSirSmeDeauthInd->reasonCode = eSIR_MAC_UNSPEC_FAILURE_REASON;
+>>>>>>> d97af3b... add prima wlan driver
 
             // sessionId
             pBuf = (tANI_U8*) &pSirSmeDeauthInd->sessionId;
@@ -1516,6 +2320,7 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
             pBuf += sizeof(tSirResultCodes);
 
             //bssId
+<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, pBuf, psessionEntry->bssId, sizeof(tSirMacAddr));
             pBuf += sizeof(tSirMacAddr);
 
@@ -1526,6 +2331,14 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
             pBuf += sizeof(tSirMacAddr);
             limCopyU16(pBuf, aid);
 #endif
+=======
+            vos_mem_copy( pBuf, psessionEntry->bssId, sizeof(tSirMacAddr));
+            pBuf += sizeof(tSirMacAddr);
+
+            //peerMacAddr
+            vos_mem_copy( pSirSmeDeauthInd->peerMacAddr, peerMacAddr, sizeof(tSirMacAddr));
+
+>>>>>>> d97af3b... add prima wlan driver
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
             limDiagEventReport(pMac, WLAN_PE_DIAG_DEAUTH_IND_EVENT,
                                         psessionEntry, 0, (tANI_U16)reasonCode);
@@ -1541,6 +2354,7 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
         peDeleteSession(pMac,psessionEntry);
     }   
 
+<<<<<<< HEAD
     if( IS_MCC_SUPPORTED && limIsLinkSuspended( pMac ) )
     {
         //Resume on the first active session channel.
@@ -1557,6 +2371,11 @@ limSendSmeDeauthNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCode
         limSendSmeDisassocDeauthNtfPostResume( pMac, eHAL_STATUS_SUCCESS,
                                               (tANI_U32*) pMsg );
     }
+=======
+    limSendSmeDisassocDeauthNtf( pMac, eHAL_STATUS_SUCCESS,
+                                              (tANI_U32*) pMsg );
+
+>>>>>>> d97af3b... add prima wlan driver
 } /*** end limSendSmeDeauthNtf() ***/
 
 
@@ -1590,6 +2409,7 @@ limSendSmeWmStatusChangeNtf(tpAniSirGlobal pMac, tSirSmeStatusChangeCode statusC
 {
     tSirMsgQ                  mmhMsg;
     tSirSmeWmStatusChangeNtf  *pSirSmeWmStatusChangeNtf;
+<<<<<<< HEAD
     eHalStatus                status;
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED) && (WNI_POLARIS_FW_PRODUCT == AP)
     tANI_U32                  bufLen;
@@ -1612,6 +2432,16 @@ limSendSmeWmStatusChangeNtf(tpAniSirGlobal pMac, tSirSmeStatusChangeCode statusC
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED) && (WNI_POLARIS_FW_PRODUCT == AP)
     pBuf = (tANI_U8 *)pSirSmeWmStatusChangeNtf;
 #endif
+=======
+    pSirSmeWmStatusChangeNtf = vos_mem_malloc(sizeof(tSirSmeWmStatusChangeNtf));
+    if ( NULL == pSirSmeWmStatusChangeNtf )
+    {
+        limLog(pMac, LOGE,
+          FL("call to AllocateMemory failed for eWNI_SME_WM_STATUS_CHANGE_NTF"));
+          return;
+    }
+
+>>>>>>> d97af3b... add prima wlan driver
 
     mmhMsg.type = eWNI_SME_WM_STATUS_CHANGE_NTF;
     mmhMsg.bodyval = 0;
@@ -1621,6 +2451,7 @@ limSendSmeWmStatusChangeNtf(tpAniSirGlobal pMac, tSirSmeStatusChangeCode statusC
     {
         case eSIR_SME_RADAR_DETECTED:
 
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED) && (WNI_POLARIS_FW_PRODUCT == AP)
             bufLen = sizeof(tSirSmeWmStatusChangeNtf);
             if ((limSmeWmStatusChangeHeaderSerDes(pMac,
@@ -1668,6 +2499,11 @@ limSendSmeWmStatusChangeNtf(tpAniSirGlobal pMac, tSirSmeStatusChangeCode statusC
                 return;
             }
 #endif
+=======
+            break;
+
+        case eSIR_SME_CB_LEGACY_BSS_FOUND_BY_AP:
+>>>>>>> d97af3b... add prima wlan driver
             break;
 
         case eSIR_SME_BACKGROUND_SCAN_FAIL:
@@ -1678,6 +2514,7 @@ limSendSmeWmStatusChangeNtf(tpAniSirGlobal pMac, tSirSmeStatusChangeCode statusC
             break;
 
         default:
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
         sirStoreU16N((tANI_U8*)&pSirSmeWmStatusChangeNtf->messageType,
                     eWNI_SME_WM_STATUS_CHANGE_NTF );
@@ -1687,26 +2524,45 @@ limSendSmeWmStatusChangeNtf(tpAniSirGlobal pMac, tSirSmeStatusChangeCode statusC
         sirStoreU32N((tANI_U8*)&pSirSmeWmStatusChangeNtf->statusChangeCode,
                     statusChangeCode);
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
         pSirSmeWmStatusChangeNtf->messageType = eWNI_SME_WM_STATUS_CHANGE_NTF;
         pSirSmeWmStatusChangeNtf->statusChangeCode = statusChangeCode;
         pSirSmeWmStatusChangeNtf->length = sizeof(tSirSmeWmStatusChangeNtf);
         pSirSmeWmStatusChangeNtf->sessionId = sessionId;
+<<<<<<< HEAD
 #endif
         if(sizeof(pSirSmeWmStatusChangeNtf->statusChangeInfo) >= infoLen)
         {
             palCopyMemory( pMac->hHdd, (tANI_U8 *)&pSirSmeWmStatusChangeNtf->statusChangeInfo, (tANI_U8 *)pStatusChangeInfo, infoLen);
         }
         limLog(pMac, LOGE, FL("***---*** StatusChg: code 0x%x, length %d ***---***\n"),
+=======
+        if(sizeof(pSirSmeWmStatusChangeNtf->statusChangeInfo) >= infoLen)
+        {
+            vos_mem_copy( (tANI_U8 *)&pSirSmeWmStatusChangeNtf->statusChangeInfo,
+                          (tANI_U8 *)pStatusChangeInfo, infoLen);
+        }
+        limLog(pMac, LOGE, FL("***---*** StatusChg: code 0x%x, length %d ***---***"),
+>>>>>>> d97af3b... add prima wlan driver
                statusChangeCode, infoLen);
         break;
     }
 
 
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
     if (eSIR_SUCCESS != limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT))
     {
         palFreeMemory(pMac->hHdd, (void *) pSirSmeWmStatusChangeNtf);
         limLog( pMac, LOGP, FL("limSysProcessMmhMsgApi failed\n"));
+=======
+    MTRACE(macTraceMsgTx(pMac, sessionId, mmhMsg.type));
+    if (eSIR_SUCCESS != limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT))
+    {
+        vos_mem_free(pSirSmeWmStatusChangeNtf);
+        limLog( pMac, LOGP, FL("limSysProcessMmhMsgApi failed"));
+>>>>>>> d97af3b... add prima wlan driver
     }
 
 } /*** end limSendSmeWmStatusChangeNtf() ***/
@@ -1749,15 +2605,25 @@ limSendSmeSetContextRsp(tpAniSirGlobal pMac,
     tSirMsgQ             mmhMsg;
     tSirSmeSetContextRsp *pSirSmeSetContextRsp;
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeSetContextRsp, sizeof(tSirSmeSetContextRsp)))
     {
         // Log error
         limLog(pMac, LOGP,
                FL("call to palAllocateMemory failed for SmeSetContextRsp\n"));
+=======
+    pSirSmeSetContextRsp = vos_mem_malloc(sizeof(tSirSmeSetContextRsp));
+    if ( NULL == pSirSmeSetContextRsp )
+    {
+        // Log error
+        limLog(pMac, LOGP,
+               FL("call to AllocateMemory failed for SmeSetContextRsp"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
     sirStoreU16N((tANI_U8*)&pSirSmeSetContextRsp->messageType,
                  eWNI_SME_SETCONTEXT_RSP);
@@ -1767,10 +2633,15 @@ limSendSmeSetContextRsp(tpAniSirGlobal pMac,
     pSirSmeSetContextRsp->messageType = eWNI_SME_SETCONTEXT_RSP;
     pSirSmeSetContextRsp->length      = sizeof(tSirSmeSetContextRsp);
 #endif
+=======
+    pSirSmeSetContextRsp->messageType = eWNI_SME_SETCONTEXT_RSP;
+    pSirSmeSetContextRsp->length      = sizeof(tSirSmeSetContextRsp);
+>>>>>>> d97af3b... add prima wlan driver
     pSirSmeSetContextRsp->statusCode  = resultCode;
 
     pBuf = pSirSmeSetContextRsp->peerMacAddr;
 
+<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pBuf, (tANI_U8 *) peerMacAddr, sizeof(tSirMacAddr));
     pBuf += sizeof(tSirMacAddr);
 
@@ -1778,6 +2649,11 @@ limSendSmeSetContextRsp(tpAniSirGlobal pMac,
     limCopyU16(pBuf, aid);
     pBuf += sizeof(tANI_U16);
 #endif
+=======
+    vos_mem_copy( pBuf, (tANI_U8 *) peerMacAddr, sizeof(tSirMacAddr));
+    pBuf += sizeof(tSirMacAddr);
+
+>>>>>>> d97af3b... add prima wlan driver
 
     /* Update SME session and transaction Id*/
     pSirSmeSetContextRsp->sessionId = smesessionId;
@@ -1786,7 +2662,18 @@ limSendSmeSetContextRsp(tpAniSirGlobal pMac,
     mmhMsg.type = eWNI_SME_SETCONTEXT_RSP;
     mmhMsg.bodyptr = pSirSmeSetContextRsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+=======
+    if(NULL == psessionEntry)
+    {
+        MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+    }
+    else
+    {
+        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+    }
+>>>>>>> d97af3b... add prima wlan driver
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
     limDiagEventReport(pMac, WLAN_PE_DIAG_SETCONTEXT_RSP_EVENT, psessionEntry, (tANI_U16)resultCode, 0);
@@ -1832,15 +2719,25 @@ limSendSmeRemoveKeyRsp(tpAniSirGlobal pMac,
     tSirMsgQ                mmhMsg;
     tSirSmeRemoveKeyRsp     *pSirSmeRemoveKeyRsp;
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeRemoveKeyRsp, sizeof(tSirSmeRemoveKeyRsp)))
     {
         // Log error
         limLog(pMac, LOGP,
                FL("call to palAllocateMemory failed for SmeRemoveKeyRsp\n"));
+=======
+    pSirSmeRemoveKeyRsp = vos_mem_malloc(sizeof(tSirSmeRemoveKeyRsp));
+    if ( NULL == pSirSmeRemoveKeyRsp )
+    {
+        // Log error
+        limLog(pMac, LOGP,
+               FL("call to AllocateMemory failed for SmeRemoveKeyRsp"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined(ANI_LITTLE_BYTE_ENDIAN)
     sirStoreU16N((tANI_U8*)&pSirSmeRemoveKeyRsp->messageType,
                  eWNI_SME_REMOVEKEY_RSP);
@@ -1848,12 +2745,18 @@ limSendSmeRemoveKeyRsp(tpAniSirGlobal pMac,
                  sizeof(tSirSmeRemoveKeyRsp));
   
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
     
 
     if(psessionEntry != NULL)
     {
         pBuf = pSirSmeRemoveKeyRsp->peerMacAddr;
+<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pBuf, (tANI_U8 *) peerMacAddr, sizeof(tSirMacAddr));
+=======
+        vos_mem_copy( pBuf, (tANI_U8 *) peerMacAddr, sizeof(tSirMacAddr));
+>>>>>>> d97af3b... add prima wlan driver
         pBuf += sizeof(tSirMacAddr);
         limCopyU32(pBuf, resultCode);
     }
@@ -1869,7 +2772,18 @@ limSendSmeRemoveKeyRsp(tpAniSirGlobal pMac,
     mmhMsg.type = eWNI_SME_REMOVEKEY_RSP;
     mmhMsg.bodyptr = pSirSmeRemoveKeyRsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+=======
+    if(NULL == psessionEntry)
+    {
+        MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+    }
+    else
+    {
+        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+    }
+>>>>>>> d97af3b... add prima wlan driver
     limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
 } /*** end limSendSmeSetContextRsp() ***/
 
@@ -1902,10 +2816,18 @@ limSendSmePromiscuousModeRsp(tpAniSirGlobal pMac)
     tSirMsgQ   mmhMsg;
     tSirMbMsg  *pMbMsg;
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pMbMsg, sizeof(tSirMbMsg)))
     {
         // Log error
         limLog(pMac, LOGP, FL("call to palAllocateMemory failed\n"));
+=======
+    pMbMsg = vos_mem_malloc(sizeof(tSirMbMsg));
+    if ( NULL == pMbMsg )
+    {
+        // Log error
+        limLog(pMac, LOGP, FL("call to AllocateMemory failed"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -1966,7 +2888,11 @@ limSendSmeNeighborBssInd(tpAniSirGlobal pMac,
 
     if (wlan_cfgGetInt(pMac, WNI_CFG_NEW_BSS_FOUND_IND, &val) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not get NEIGHBOR_BSS_IND from CFG\n"));
+=======
+        limLog(pMac, LOGP, FL("could not get NEIGHBOR_BSS_IND from CFG"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -1982,15 +2908,25 @@ limSendSmeNeighborBssInd(tpAniSirGlobal pMac,
      * and length of header itself
      */
     val = pBssDescr->bssDescription.length + sizeof(tANI_U16) + sizeof(tANI_U32) + sizeof(tANI_U8);
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pNewBssInd, val))
     {
         // Log error
         limLog(pMac, LOGP,
            FL("call to palAllocateMemory failed for eWNI_SME_NEIGHBOR_BSS_IND\n"));
+=======
+    pNewBssInd = vos_mem_malloc(val);
+    if ( NULL == pNewBssInd )
+    {
+        // Log error
+        limLog(pMac, LOGP,
+           FL("call to AllocateMemory failed for eWNI_SME_NEIGHBOR_BSS_IND"));
+>>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
 
+<<<<<<< HEAD
 #if defined (ANI_PRODUCT_TYPE_AP) && defined (ANI_LITTLE_BYTE_ENDIAN)
     sirStoreU16N((tANI_U8*) &pNewBssInd->messageType,
                  eWNI_SME_NEIGHBOR_BSS_IND);
@@ -2006,6 +2942,15 @@ limSendSmeNeighborBssInd(tpAniSirGlobal pMac,
                   (tANI_U8 *) &pBssDescr->bssDescription,
                   pBssDescr->bssDescription.length + sizeof(tANI_U16));
 #endif
+=======
+    pNewBssInd->messageType = eWNI_SME_NEIGHBOR_BSS_IND;
+    pNewBssInd->length      = (tANI_U16) val;
+    pNewBssInd->sessionId = 0;
+
+    vos_mem_copy( (tANI_U8 *) pNewBssInd->bssDescription,
+                  (tANI_U8 *) &pBssDescr->bssDescription,
+                  pBssDescr->bssDescription.length + sizeof(tANI_U16));
+>>>>>>> d97af3b... add prima wlan driver
 
     msgQ.type = eWNI_SME_NEIGHBOR_BSS_IND;
     msgQ.bodyptr = pNewBssInd;
@@ -2034,6 +2979,7 @@ limSendSmeAddtsRsp(tpAniSirGlobal pMac, tANI_U8 rspReqd, tANI_U32 status, tpPESe
     if (! rspReqd)
         return;
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&rsp, sizeof(tSirAddtsRsp)))
     {
         limLog(pMac, LOGP, FL("palAllocateMemory failed for ADDTS_RSP"));
@@ -2047,6 +2993,21 @@ limSendSmeAddtsRsp(tpAniSirGlobal pMac, tANI_U8 rspReqd, tANI_U32 status, tpPESe
     //palCopyMemory( pMac->hHdd, (tANI_U8 *) &rsp->rsp.tspec, (tANI_U8 *) &addts->tspec, sizeof(addts->tspec));  
     rsp->rsp.tspec = tspec;
    
+=======
+    rsp = vos_mem_malloc(sizeof(tSirAddtsRsp));
+    if ( NULL == rsp )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for ADDTS_RSP"));
+        return;
+    }
+
+    vos_mem_set( (tANI_U8 *) rsp, sizeof(*rsp), 0);
+    rsp->messageType = eWNI_SME_ADDTS_RSP;
+    rsp->rc = status;
+    rsp->rsp.status = (enum eSirMacStatusCodes) status;
+    //vos_mem_copy( (tANI_U8 *) &rsp->rsp.tspec, (tANI_U8 *) &addts->tspec, sizeof(addts->tspec));
+    rsp->rsp.tspec = tspec;
+>>>>>>> d97af3b... add prima wlan driver
     /* Update SME session Id and transcation Id */
     rsp->sessionId = smesessionId;
     rsp->transactionId = smetransactionId;
@@ -2054,7 +3015,18 @@ limSendSmeAddtsRsp(tpAniSirGlobal pMac, tANI_U8 rspReqd, tANI_U32 status, tpPESe
     mmhMsg.type = eWNI_SME_ADDTS_RSP;
     mmhMsg.bodyptr = rsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+=======
+    if(NULL == psessionEntry)
+    {
+        MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+    }
+    else
+    {
+        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+    }
+>>>>>>> d97af3b... add prima wlan driver
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
     limDiagEventReport(pMac, WLAN_PE_DIAG_ADDTS_RSP_EVENT, psessionEntry, 0, 0);
 #endif //FEATURE_WLAN_DIAG_SUPPORT
@@ -2069,11 +3041,16 @@ limSendSmeAddtsInd(tpAniSirGlobal pMac, tpSirAddtsReqInfo addts)
     tpSirAddtsRsp rsp;
     tSirMsgQ      mmhMsg;
 
+<<<<<<< HEAD
     limLog(pMac, LOGW, "SendSmeAddtsInd (token %d, tsid %d, up %d)\n",
+=======
+    limLog(pMac, LOGW, "SendSmeAddtsInd (token %d, tsid %d, up %d)",
+>>>>>>> d97af3b... add prima wlan driver
            addts->dialogToken,
            addts->tspec.tsinfo.traffic.tsid,
            addts->tspec.tsinfo.traffic.userPrio);
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&rsp, sizeof(tSirAddtsRsp)))
     {
         // Log error
@@ -2085,6 +3062,20 @@ limSendSmeAddtsInd(tpAniSirGlobal pMac, tpSirAddtsReqInfo addts)
     rsp->messageType     = eWNI_SME_ADDTS_IND;
 
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &rsp->rsp, (tANI_U8 *) addts, sizeof(*addts));
+=======
+    rsp = vos_mem_malloc(sizeof(tSirAddtsRsp));
+    if ( NULL == rsp )
+    {
+        // Log error
+        limLog(pMac, LOGP, FL("AllocateMemory failed for ADDTS_IND"));
+        return;
+    }
+    vos_mem_set( (tANI_U8 *) rsp, sizeof(*rsp), 0);
+
+    rsp->messageType     = eWNI_SME_ADDTS_IND;
+
+    vos_mem_copy( (tANI_U8 *) &rsp->rsp, (tANI_U8 *) addts, sizeof(*addts));
+>>>>>>> d97af3b... add prima wlan driver
 
     mmhMsg.type = eWNI_SME_ADDTS_IND;
     mmhMsg.bodyptr = rsp;
@@ -2099,7 +3090,11 @@ limSendSmeDeltsRsp(tpAniSirGlobal pMac, tpSirDeltsReq delts, tANI_U32 status,tpP
     tpSirDeltsRsp rsp;
     tSirMsgQ      mmhMsg;
 
+<<<<<<< HEAD
     limLog(pMac, LOGW, "SendSmeDeltsRsp (aid %d, tsid %d, up %d) status %d\n",
+=======
+    limLog(pMac, LOGW, "SendSmeDeltsRsp (aid %d, tsid %d, up %d) status %d",
+>>>>>>> d97af3b... add prima wlan driver
            delts->aid,
            delts->req.tsinfo.traffic.tsid,
            delts->req.tsinfo.traffic.userPrio,
@@ -2107,6 +3102,7 @@ limSendSmeDeltsRsp(tpAniSirGlobal pMac, tpSirDeltsReq delts, tANI_U32 status,tpP
     if (! delts->rspReqd)
         return;
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&rsp, sizeof(tSirDeltsRsp)))
     {
         // Log error
@@ -2114,13 +3110,28 @@ limSendSmeDeltsRsp(tpAniSirGlobal pMac, tpSirDeltsReq delts, tANI_U32 status,tpP
         return;
     }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) rsp, sizeof(*rsp));
+=======
+    rsp = vos_mem_malloc(sizeof(tSirDeltsRsp));
+    if ( NULL == rsp )
+    {
+        // Log error
+        limLog(pMac, LOGP, FL("AllocateMemory failed for DELTS_RSP"));
+        return;
+    }
+    vos_mem_set( (tANI_U8 *) rsp, sizeof(*rsp), 0);
+>>>>>>> d97af3b... add prima wlan driver
   
     if(psessionEntry != NULL)
     {
         
         rsp->aid             = delts->aid;
+<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (tANI_U8 *) &rsp->macAddr[0], (tANI_U8 *) &delts->macAddr[0], 6);
         palCopyMemory( pMac->hHdd, (tANI_U8 *) &rsp->rsp, (tANI_U8 *) &delts->req, sizeof(tSirDeltsReqInfo));
+=======
+        vos_mem_copy( (tANI_U8 *) &rsp->macAddr[0], (tANI_U8 *) &delts->macAddr[0], 6);
+        vos_mem_copy( (tANI_U8 *) &rsp->rsp, (tANI_U8 *) &delts->req, sizeof(tSirDeltsReqInfo));
+>>>>>>> d97af3b... add prima wlan driver
     } 
 
     
@@ -2134,7 +3145,18 @@ limSendSmeDeltsRsp(tpAniSirGlobal pMac, tpSirDeltsReq delts, tANI_U32 status,tpP
     mmhMsg.type = eWNI_SME_DELTS_RSP;
     mmhMsg.bodyptr = rsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+=======
+    if(NULL == psessionEntry)
+    {
+        MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+    }
+    else
+    {
+        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, mmhMsg.type));
+    }
+>>>>>>> d97af3b... add prima wlan driver
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
     limDiagEventReport(pMac, WLAN_PE_DIAG_DELTS_RSP_EVENT, psessionEntry, (tANI_U16)status, 0);
 #endif //FEATURE_WLAN_DIAG_SUPPORT
@@ -2148,11 +3170,16 @@ limSendSmeDeltsInd(tpAniSirGlobal pMac, tpSirDeltsReqInfo delts, tANI_U16 aid,tp
     tpSirDeltsRsp rsp;
     tSirMsgQ      mmhMsg;
 
+<<<<<<< HEAD
     limLog(pMac, LOGW, "SendSmeDeltsInd (aid %d, tsid %d, up %d)\n",
+=======
+    limLog(pMac, LOGW, "SendSmeDeltsInd (aid %d, tsid %d, up %d)",
+>>>>>>> d97af3b... add prima wlan driver
            aid,
            delts->tsinfo.traffic.tsid,
            delts->tsinfo.traffic.userPrio);
 
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&rsp, sizeof(tSirDeltsRsp)))
     {
         // Log error
@@ -2160,11 +3187,25 @@ limSendSmeDeltsInd(tpAniSirGlobal pMac, tpSirDeltsReqInfo delts, tANI_U16 aid,tp
         return;
     }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) rsp, sizeof(*rsp));
+=======
+    rsp = vos_mem_malloc(sizeof(tSirDeltsRsp));
+    if ( NULL == rsp )
+    {
+        // Log error
+        limLog(pMac, LOGP, FL("AllocateMemory failed for DELTS_IND"));
+        return;
+    }
+    vos_mem_set( (tANI_U8 *) rsp, sizeof(*rsp), 0);
+>>>>>>> d97af3b... add prima wlan driver
 
     rsp->messageType     = eWNI_SME_DELTS_IND;
     rsp->rc              = eSIR_SUCCESS;
     rsp->aid             = aid;
+<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &rsp->rsp, (tANI_U8 *) delts, sizeof(*delts));
+=======
+    vos_mem_copy( (tANI_U8 *) &rsp->rsp, (tANI_U8 *) delts, sizeof(*delts));
+>>>>>>> d97af3b... add prima wlan driver
 
     /* Update SME  session Id and SME transaction Id */
 
@@ -2303,6 +3344,70 @@ limSendSmePEStatisticsRsp(tpAniSirGlobal pMac, tANI_U16 msgType, void* stats)
 
 } /*** end limSendSmePEStatisticsRsp() ***/
 
+<<<<<<< HEAD
+=======
+#if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
+/**
+ * limSendSmePEGetRoamRssiRsp()
+ *
+ *FUNCTION:
+ * This function is called to send roam rssi response to HDD.
+ * This function posts the result back to HDD. This is a response to
+ * HDD's request to get roam rssi.
+ *
+ *PARAMS:
+ *
+ *LOGIC:
+ *
+ *ASSUMPTIONS:
+ * NA
+ *
+ *NOTE:
+ * NA
+ *
+ * @param pMac         Pointer to Global MAC structure
+ * @param p80211Stats  Statistics sent in response
+ * @param resultCode   TODO:
+ *
+ *
+ * @return none
+ */
+
+void
+limSendSmePEGetRoamRssiRsp(tpAniSirGlobal pMac, tANI_U16 msgType, void* stats)
+{
+    tSirMsgQ              mmhMsg;
+    tANI_U8 sessionId;
+    tAniGetRoamRssiRsp *pPeStats = (tAniGetRoamRssiRsp *) stats;
+    tpPESession pPeSessionEntry = NULL;
+
+    //Get the Session Id based on Sta Id
+    pPeSessionEntry = peFindSessionByStaId(pMac, pPeStats->staId, &sessionId);
+
+    //Fill the Session Id
+    if(NULL != pPeSessionEntry)
+    {
+      //Fill the Session Id
+      pPeStats->sessionId = pPeSessionEntry->smeSessionId;
+    }
+
+    pPeStats->msgType = eWNI_SME_GET_ROAM_RSSI_RSP;
+
+    //msgType should be WDA_GET_STATISTICS_RSP
+    mmhMsg.type = eWNI_SME_GET_ROAM_RSSI_RSP;
+
+    mmhMsg.bodyptr = stats;
+    mmhMsg.bodyval = 0;
+    MTRACE(macTraceMsgTx(pMac, sessionId, mmhMsg.type));
+    limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+
+    return;
+
+} /*** end limSendSmePEGetRoamRssiRsp() ***/
+
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
 
 void
 limSendSmeIBSSPeerInd(
@@ -2319,16 +3424,27 @@ limSendSmeIBSSPeerInd(
     tSirMsgQ                  mmhMsg;
     tSmeIbssPeerInd *pNewPeerInd;
     
+<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS !=
         palAllocateMemory(pMac->hHdd,(void * *) &pNewPeerInd,(sizeof(tSmeIbssPeerInd) + beaconLen)))
+=======
+    pNewPeerInd = vos_mem_malloc(sizeof(tSmeIbssPeerInd) + beaconLen);
+    if ( NULL == pNewPeerInd )
+>>>>>>> d97af3b... add prima wlan driver
     {
         PELOGE(limLog(pMac, LOGE, FL("Failed to allocate memory"));)
         return;
     }
     
+<<<<<<< HEAD
     palZeroMemory(pMac->hHdd, (void *) pNewPeerInd, (sizeof(tSmeIbssPeerInd) + beaconLen));
 
     palCopyMemory( pMac->hHdd, (tANI_U8 *) pNewPeerInd->peerAddr,
+=======
+    vos_mem_set((void *) pNewPeerInd, (sizeof(tSmeIbssPeerInd) + beaconLen), 0);
+
+    vos_mem_copy( (tANI_U8 *) pNewPeerInd->peerAddr,
+>>>>>>> d97af3b... add prima wlan driver
                    peerMacAddr, sizeof(tSirMacAddr));
     pNewPeerInd->staId= staIndex;
     pNewPeerInd->ucastSig = ucastIdx;
@@ -2339,13 +3455,22 @@ limSendSmeIBSSPeerInd(
 
     if ( beacon != NULL )
     {
+<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, (void*) ((tANI_U8*)pNewPeerInd+sizeof(tSmeIbssPeerInd)), (void*)beacon, beaconLen);
+=======
+        vos_mem_copy((void*) ((tANI_U8*)pNewPeerInd+sizeof(tSmeIbssPeerInd)),
+                     (void*)beacon, beaconLen);
+>>>>>>> d97af3b... add prima wlan driver
     }
 
     mmhMsg.type    = msgType;
 //    mmhMsg.bodyval = (tANI_U32) pNewPeerInd;
     mmhMsg.bodyptr = pNewPeerInd;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+=======
+    MTRACE(macTraceMsgTx(pMac, sessionId, mmhMsg.type));
+>>>>>>> d97af3b... add prima wlan driver
     limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
     
 }
@@ -2369,6 +3494,7 @@ void limSendExitBmpsInd(tpAniSirGlobal pMac, tExitBmpsReason reasonCode)
     tpSirSmeExitBmpsInd  pExitBmpsInd;
  
     msgLen = sizeof(tSirSmeExitBmpsInd);
+<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pExitBmpsInd, msgLen ))
     {
         limLog(pMac, LOGP, FL("palAllocateMemory failed for PMC_EXIT_BMPS_IND \n"));
@@ -2383,6 +3509,18 @@ void limSendExitBmpsInd(tpAniSirGlobal pMac, tExitBmpsReason reasonCode)
     pExitBmpsInd->mesgType = eWNI_PMC_EXIT_BMPS_IND;
     pExitBmpsInd->mesgLen = msgLen;
 #endif
+=======
+    pExitBmpsInd = vos_mem_malloc(msgLen);
+    if ( NULL == pExitBmpsInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for PMC_EXIT_BMPS_IND "));
+        return;
+    }
+    vos_mem_set(pExitBmpsInd, msgLen, 0);
+
+    pExitBmpsInd->mesgType = eWNI_PMC_EXIT_BMPS_IND;
+    pExitBmpsInd->mesgLen = msgLen;
+>>>>>>> d97af3b... add prima wlan driver
     pExitBmpsInd->exitBmpsReason = reasonCode;
     pExitBmpsInd->statusCode = eSIR_SME_SUCCESS;
 
@@ -2390,7 +3528,11 @@ void limSendExitBmpsInd(tpAniSirGlobal pMac, tExitBmpsReason reasonCode)
     mmhMsg.bodyptr = pExitBmpsInd;
     mmhMsg.bodyval = 0;
   
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Sending eWNI_PMC_EXIT_BMPS_IND to SME. \n"));)        
+=======
+    PELOG1(limLog(pMac, LOG1, FL("Sending eWNI_PMC_EXIT_BMPS_IND to SME. "));)
+>>>>>>> d97af3b... add prima wlan driver
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT 
     limDiagEventReport(pMac, WLAN_PE_DIAG_EXIT_BMPS_IND_EVENT, peGetValidPowerSaveSession(pMac), 0, (tANI_U16)reasonCode);
@@ -2420,7 +3562,11 @@ void limHandleDeleteBssRsp(tpAniSirGlobal pMac,tpSirMsgQ MsgQ)
     tpDeleteBssParams pDelBss = (tpDeleteBssParams)(MsgQ->bodyptr);
     if((psessionEntry = peFindSessionBySessionId(pMac,pDelBss->sessionId))==NULL)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
+=======
+        limLog(pMac, LOGP,FL("Session Does not exist for given sessionID"));
+>>>>>>> d97af3b... add prima wlan driver
         return;
     }
     if (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE)
@@ -2457,7 +3603,11 @@ limSendSmeAggrQosRsp(tpAniSirGlobal pMac, tpSirAggrQosRsp aggrQosRsp,
     mmhMsg.type = eWNI_SME_FT_AGGR_QOS_RSP;
     mmhMsg.bodyptr = aggrQosRsp;
     mmhMsg.bodyval = 0;
+<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+=======
+    MTRACE(macTraceMsgTx(pMac, smesessionId, mmhMsg.type));
+>>>>>>> d97af3b... add prima wlan driver
     limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
 
     return;
@@ -2518,25 +3668,87 @@ void limSendSmeMaxAssocExceededNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr,
     tSirMsgQ         mmhMsg;
     tSmeMaxAssocInd *pSmeMaxAssocInd;
 
+<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS !=
             palAllocateMemory(pMac->hHdd,(void **)&pSmeMaxAssocInd, sizeof(tSmeMaxAssocInd)))
+=======
+    pSmeMaxAssocInd = vos_mem_malloc(sizeof(tSmeMaxAssocInd));
+    if ( NULL == pSmeMaxAssocInd )
+>>>>>>> d97af3b... add prima wlan driver
     {
         PELOGE(limLog(pMac, LOGE, FL("Failed to allocate memory"));)
         return;
     }    
+<<<<<<< HEAD
     palZeroMemory(pMac->hHdd, (void *) pSmeMaxAssocInd, sizeof(tSmeMaxAssocInd));
     palCopyMemory( pMac->hHdd, (tANI_U8 *)pSmeMaxAssocInd->peerMac,
             (tANI_U8 *)peerMacAddr, sizeof(tSirMacAddr));
+=======
+    vos_mem_set((void *) pSmeMaxAssocInd, sizeof(tSmeMaxAssocInd),0);
+    vos_mem_copy( (tANI_U8 *)pSmeMaxAssocInd->peerMac,
+                  (tANI_U8 *)peerMacAddr, sizeof(tSirMacAddr));
+>>>>>>> d97af3b... add prima wlan driver
     pSmeMaxAssocInd->mesgType  = eWNI_SME_MAX_ASSOC_EXCEEDED;
     pSmeMaxAssocInd->mesgLen    = sizeof(tSmeMaxAssocInd); 
     pSmeMaxAssocInd->sessionId = smesessionId;
     mmhMsg.type = pSmeMaxAssocInd->mesgType;
     mmhMsg.bodyptr = pSmeMaxAssocInd;
     PELOG1(limLog(pMac, LOG1, FL("msgType %s peerMacAddr %02x-%02x-%02x-%02x-%02x-%02x"
+<<<<<<< HEAD
                 "sme session id %d\n"),"eWNI_SME_MAX_ASSOC_EXCEEDED", peerMacAddr[0], peerMacAddr[1],
                 peerMacAddr[2], peerMacAddr[3], peerMacAddr[4], peerMacAddr[5], smesessionId);)
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
+=======
+                "sme session id %d"),"eWNI_SME_MAX_ASSOC_EXCEEDED", peerMacAddr[0], peerMacAddr[1],
+                peerMacAddr[2], peerMacAddr[3], peerMacAddr[4], peerMacAddr[5], smesessionId);)
+    MTRACE(macTraceMsgTx(pMac, smesessionId, mmhMsg.type));
+>>>>>>> d97af3b... add prima wlan driver
     limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
 
     return;
 }
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
+/** -----------------------------------------------------------------
+  \brief limSendSmeCandidateFoundInd() - sends
+         eWNI_SME_CANDIDATE_FOUND_IND
+
+  After receiving candidate found indication frame from FW, this
+  function sends a eWNI_SME_CANDIDATE_FOUND_IND to SME to notify
+  roam candidate(s) are available.
+
+  \param pMac - global mac structure
+  \param psessionEntry - session info
+  \return none
+  \sa
+  ----------------------------------------------------------------- */
+void
+limSendSmeCandidateFoundInd(tpAniSirGlobal pMac, tANI_U8  sessionId)
+{
+    tSirMsgQ  mmhMsg;
+    tSirSmeCandidateFoundInd *pSirSmeCandidateFoundInd;
+
+    pSirSmeCandidateFoundInd = vos_mem_malloc(sizeof(tSirSmeCandidateFoundInd));
+    if ( NULL == pSirSmeCandidateFoundInd )
+    {
+        limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_CANDIDATE_FOUND_IND\n"));
+        return;
+    }
+
+    pSirSmeCandidateFoundInd->messageType = eWNI_SME_CANDIDATE_FOUND_IND;
+    pSirSmeCandidateFoundInd->length = sizeof(tSirSmeDisassocInd);
+
+    pSirSmeCandidateFoundInd->sessionId     =  sessionId;
+
+
+    limLog( pMac, LOGE, FL("posting candidate ind to SME"));
+    mmhMsg.type = eWNI_SME_CANDIDATE_FOUND_IND;
+    mmhMsg.bodyptr = pSirSmeCandidateFoundInd;
+    mmhMsg.bodyval = 0;
+
+    limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
+
+} /*** end limSendSmeCandidateFoundInd() ***/
+#endif //WLAN_FEATURE_ROAM_SCAN_OFFLOAD
+>>>>>>> d97af3b... add prima wlan driver

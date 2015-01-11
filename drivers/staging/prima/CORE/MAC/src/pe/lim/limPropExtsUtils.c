@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -34,18 +57,25 @@
  *
  */
 #include "aniGlobal.h"
+<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
 #include "wniCfgAp.h"
 #else
 #include "wniCfgSta.h"
 #endif
+=======
+#include "wniCfgSta.h"
+>>>>>>> d97af3b... add prima wlan driver
 #include "sirCommon.h"
 #include "sirDebug.h"
 #include "utilsApi.h"
 #include "cfgApi.h"
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halCommonApi.h"
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 #include "limApi.h"
 #include "limTypes.h"
 #include "limUtils.h"
@@ -55,6 +85,7 @@
 #include "limTrace.h"
 #include "limSession.h"
 #define LIM_GET_NOISE_MAX_TRY 5
+<<<<<<< HEAD
 #if (defined(ANI_PRODUCT_TYPE_AP) || defined(ANI_PRODUCT_TYPE_AP_SDK))
 /**
  * limGetCurrentLearnChannel()
@@ -83,6 +114,8 @@ limGetCurrentLearnChannel(tpAniSirGlobal pMac)
     return (*(pChanNum + pMac->lim.gLimMeasParams.nextLearnChannelId));
 } /*** end limGetCurrentLearnChannel() ***/
 #endif //#if (defined(ANI_PRODUCT_TYPE_AP) || defined(ANI_PRODUCT_TYPE_AP_SDK))
+=======
+>>>>>>> d97af3b... add prima wlan driver
 /**
  * limExtractApCapability()
  *
@@ -106,13 +139,19 @@ limGetCurrentLearnChannel(tpAniSirGlobal pMac)
 void
 limExtractApCapability(tpAniSirGlobal pMac, tANI_U8 *pIE, tANI_U16 ieLen,
                        tANI_U8 *qosCap, tANI_U16 *propCap, tANI_U8 *uapsd, 
+<<<<<<< HEAD
                        tPowerdBm *localConstraint
+=======
+                       tPowerdBm *localConstraint,
+                       tpPESession psessionEntry
+>>>>>>> d97af3b... add prima wlan driver
                        )
 {
     tSirProbeRespBeacon *pBeaconStruct;
 #if !defined WLAN_FEATURE_VOWIFI
     tANI_U32            localPowerConstraints = 0;
 #endif
+<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
                                                 (void **)&pBeaconStruct, sizeof(tSirProbeRespBeacon)))
     {
@@ -121,10 +160,23 @@ limExtractApCapability(tpAniSirGlobal pMac, tANI_U8 *pIE, tANI_U16 ieLen,
     }
 
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pBeaconStruct, sizeof(tSirProbeRespBeacon));
+=======
+    
+    pBeaconStruct = vos_mem_malloc(sizeof(tSirProbeRespBeacon));
+
+    if ( NULL == pBeaconStruct )
+    {
+        limLog(pMac, LOGE, FL("Unable to allocate memory in limExtractApCapability") );
+        return;
+    }
+
+    vos_mem_set( (tANI_U8 *) pBeaconStruct, sizeof(tSirProbeRespBeacon), 0);
+>>>>>>> d97af3b... add prima wlan driver
     *qosCap = 0;
     *propCap = 0;
     *uapsd = 0;
     PELOG3(limLog( pMac, LOG3,
+<<<<<<< HEAD
         FL("In limExtractApCapability: The IE's being received are:\n"));
     sirDumpBuf( pMac, SIR_LIM_MODULE_ID, LOG3, pIE, ieLen );)
     if (sirParseBeaconIE(pMac, pBeaconStruct, pIE, (tANI_U32)ieLen) == eSIR_SUCCESS)
@@ -133,6 +185,12 @@ limExtractApCapability(tpAniSirGlobal pMac, tANI_U8 *pIE, tANI_U16 ieLen,
         if (pBeaconStruct->propIEinfo.hcfEnabled)
             LIM_BSS_CAPS_SET(HCF, *qosCap);
 #endif
+=======
+        FL("In limExtractApCapability: The IE's being received are:"));
+    sirDumpBuf( pMac, SIR_LIM_MODULE_ID, LOG3, pIE, ieLen );)
+    if (sirParseBeaconIE(pMac, pBeaconStruct, pIE, (tANI_U32)ieLen) == eSIR_SUCCESS)
+    {
+>>>>>>> d97af3b... add prima wlan driver
         if (pBeaconStruct->wmeInfoPresent || pBeaconStruct->wmeEdcaPresent)
             LIM_BSS_CAPS_SET(WME, *qosCap);
         if (LIM_BSS_CAPS_GET(WME, *qosCap) && pBeaconStruct->wsmCapablePresent)
@@ -147,6 +205,7 @@ limExtractApCapability(tpAniSirGlobal pMac, tANI_U8 *pIE, tANI_U16 ieLen,
 
 #ifdef WLAN_FEATURE_11AC
         VOS_TRACE(VOS_MODULE_ID_PE, VOS_TRACE_LEVEL_INFO_MED,
+<<<<<<< HEAD
             "***beacon.VHTCaps.present*****=%d\n",pBeaconStruct->VHTCaps.present);
 
         if ( pBeaconStruct->VHTCaps.present && pBeaconStruct->VHTOperation.present)
@@ -158,6 +217,21 @@ limExtractApCapability(tpAniSirGlobal pMac, tANI_U8 *pIE, tANI_U16 ieLen,
         else
         {
             pMac->lim.vhtCapabilityPresentInBeacon = 0;
+=======
+            "***beacon.VHTCaps.present*****=%d",pBeaconStruct->VHTCaps.present);
+        VOS_TRACE(VOS_MODULE_ID_PE, VOS_TRACE_LEVEL_INFO_MED,
+           "***beacon.SU Beamformer Capable*****=%d",pBeaconStruct->VHTCaps.suBeamFormerCap);
+
+        if ( pBeaconStruct->VHTCaps.present && pBeaconStruct->VHTOperation.present)
+        {
+            psessionEntry->vhtCapabilityPresentInBeacon = 1;
+            psessionEntry->apCenterChan = pBeaconStruct->VHTOperation.chanCenterFreqSeg1;
+            psessionEntry->apChanWidth = pBeaconStruct->VHTOperation.chanWidth;
+        }
+        else
+        {
+            psessionEntry->vhtCapabilityPresentInBeacon = 0;
+>>>>>>> d97af3b... add prima wlan driver
         }
 #endif
         // Extract the UAPSD flag from WMM Parameter element
@@ -192,6 +266,7 @@ limExtractApCapability(tpAniSirGlobal pMac, tANI_U8 *pIE, tANI_U16 ieLen,
 #if !defined WLAN_FEATURE_VOWIFI
         if (cfgSetInt(pMac, WNI_CFG_LOCAL_POWER_CONSTRAINT, localPowerConstraints) != eSIR_SUCCESS)
         {
+<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Could not update local power constraint to cfg.\n"));
         }
 #endif
@@ -1113,6 +1188,16 @@ limRestorePreLearnState(tpAniSirGlobal pMac)
            pMac->sys.gSirRadioId);)
 } /****** end limRestorePreLearnState() ******/
 #endif //#if (defined(ANI_PRODUCT_TYPE_AP) || (ANI_PRODUCT_TYPE_AP_SDK))
+=======
+            limLog(pMac, LOGP, FL("Could not update local power constraint to cfg."));
+        }
+#endif
+    }
+    vos_mem_free(pBeaconStruct);
+    return;
+} /****** end limExtractApCapability() ******/
+
+>>>>>>> d97af3b... add prima wlan driver
 /**
  * limGetHTCBState
  *

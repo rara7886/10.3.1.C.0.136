@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -87,6 +110,7 @@ cfgProcessMbMsg(tpAniSirGlobal pMac, tSirMbMsg *pMsg)
     tANI_U32   *pParam;
 
     // Use type[7:0] as index to function table
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
     index = CFG_GET_FUNC_INDX(sirReadU16N((tANI_U8*)pMsg));
 #else
@@ -100,13 +124,27 @@ cfgProcessMbMsg(tpAniSirGlobal pMac, tSirMbMsg *pMsg)
 #else
     len    = pMsg->msgLen - WNI_CFG_MB_HDR_LEN;
 #endif
+=======
+    index = CFG_GET_FUNC_INDX(pMsg->type);
+
+    if (index >= (sizeof(gCfgFunc) / sizeof(gCfgFunc[0])))
+    {
+        palFreeMemory( pMac->hHdd, (void*)pMsg);
+        return;
+    }
+    len    = pMsg->msgLen - WNI_CFG_MB_HDR_LEN;
+>>>>>>> d97af3b... add prima wlan driver
     pParam = ((tANI_U32*)pMsg) + 1;
 
     // Call processing function
     gCfgFunc[index](pMac, len, pParam);
 
     // Free up buffer
+<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, (void*)pMsg);
+=======
+    vos_mem_free(pMsg);
+>>>>>>> d97af3b... add prima wlan driver
 
 } /*** end cfgProcessMbMsg() ***/
 
@@ -132,9 +170,12 @@ static void
 ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
 {
     tANI_S32    i;
+<<<<<<< HEAD
   #if defined(ANI_PRODUCT_TYPE_AP)
     tANI_U32 ap;
   #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
     tANI_U32    expLen, retVal, bufStart, bufEnd;
     tANI_U32    *pSrc, *pDst, *pDstEnd;
@@ -145,6 +186,7 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     tSirMsgQ    mmhMsg;
 
     // First Dword must contain the AP or STA magic dword
+<<<<<<< HEAD
     PELOGW(cfgLog(pMac, LOGW, FL("CFG size %d bytes MAGIC dword is 0x%x\n"),
            length, sirReadU32N((tANI_U8*)pParam) );)
 
@@ -170,12 +212,24 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         if (*pParam == CFG_STA_MAGIC_DWORD) {}
 
 #endif/* ANI_PRODUCT_TYPE_AP*/
+=======
+    PELOGW(cfgLog(pMac, LOGW, FL("CFG size %d bytes MAGIC dword is 0x%x"),
+           length, sirReadU32N((tANI_U8*)pParam) );)
+
+    // if the string is not correct, return failure
+        if (*pParam == CFG_STA_MAGIC_DWORD) {}
+
+>>>>>>> d97af3b... add prima wlan driver
 
 
 
     else
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid magic dword 0x%x\n"),sirReadU32N((tANI_U8*)pParam) );)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("Invalid magic dword 0x%x"),sirReadU32N((tANI_U8*)pParam) );)
+>>>>>>> d97af3b... add prima wlan driver
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
     }
@@ -184,6 +238,7 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     length -= 4;
 
     // Verify message length
+<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
     if (ap)
     {
@@ -192,12 +247,15 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     }
     else
 #endif /* (WNI_POLARIS_FW_PRODUCT == AP) */
+=======
+>>>>>>> d97af3b... add prima wlan driver
     {
         pMac->cfg.gCfgMaxIBufSize = CFG_STA_IBUF_MAX_SIZE;
         pMac->cfg.gCfgMaxSBufSize = CFG_STA_SBUF_MAX_SIZE;
     }
 
     // Parse the Cfg header
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
     tCfgBinHdr hdr;
 
@@ -211,6 +269,11 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     pParam += (sizeof(tCfgBinHdr) >> 2);
 #endif
     PELOGW(cfgLog(pMac, LOGW, FL("CFG hdr totParams %d intParams %d strBufSize %d/%d\n"),
+=======
+    pHdr = (tpCfgBinHdr) pParam;
+    pParam += (sizeof(tCfgBinHdr) >> 2);
+    PELOGW(cfgLog(pMac, LOGW, FL("CFG hdr totParams %d intParams %d strBufSize %d/%d"),
+>>>>>>> d97af3b... add prima wlan driver
            pHdr->controlSize, pHdr->iBufSize, pHdr->sBufSize, pMac->cfg.gCfgMaxSBufSize);)
 
     expLen = ((CFG_PARAM_MAX_NUM + 3 * pMac->cfg.gCfgMaxIBufSize) << 2) +
@@ -218,7 +281,11 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
 
     if (length != expLen)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("<CFG> DNLD_RSP invalid length %d (exp %d)\n"),
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("<CFG> DNLD_RSP invalid length %d (exp %d)"),
+>>>>>>> d97af3b... add prima wlan driver
                length, expLen);)
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
@@ -227,14 +294,22 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
 
     if (pHdr->controlSize != CFG_PARAM_MAX_NUM)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Total parameter count mismatch\n"));)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Total parameter count mismatch"));)
+>>>>>>> d97af3b... add prima wlan driver
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
     }
 
     if (pHdr->iBufSize != pMac->cfg.gCfgMaxIBufSize)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Integer parameter count mismatch\n"));)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Integer parameter count mismatch"));)
+>>>>>>> d97af3b... add prima wlan driver
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
     }
@@ -245,24 +320,32 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     pSrc = pParam;
     while (pDst < pDstEnd)
     {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
         *pDst++ = sirReadU32N((tANI_U8*)pSrc);
         pSrc++;
 #else
         *pDst++ = *pSrc++;
 #endif
+=======
+        *pDst++ = *pSrc++;
+>>>>>>> d97af3b... add prima wlan driver
     }
     // Copy default values
     pDst = pMac->cfg.gCfgIBuf;
     pDstEnd = pDst + pMac->cfg.gCfgMaxIBufSize;
     while (pDst < pDstEnd)
     {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
         *pDst++ = sirReadU32N((tANI_U8*)pSrc);
         pSrc++;
 #else
         *pDst++ = *pSrc++;
 #endif
+=======
+        *pDst++ = *pSrc++;
+>>>>>>> d97af3b... add prima wlan driver
     }
 
     // Copy min values
@@ -270,12 +353,16 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     pDstEnd = pDst + pMac->cfg.gCfgMaxIBufSize;
     while (pDst < pDstEnd)
     {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
         *pDst++ = sirReadU32N((tANI_U8*)pSrc);
         pSrc++;
 #else
         *pDst++ = *pSrc++;
 #endif
+=======
+        *pDst++ = *pSrc++;
+>>>>>>> d97af3b... add prima wlan driver
     }
 
     // Copy max values
@@ -283,12 +370,16 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     pDstEnd = pDst + pMac->cfg.gCfgMaxIBufSize;
     while (pDst < pDstEnd)
     {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
         *pDst++ = sirReadU32N((tANI_U8*)pSrc);
         pSrc++;
 #else
         *pDst++ = *pSrc++;
 #endif
+=======
+        *pDst++ = *pSrc++;
+>>>>>>> d97af3b... add prima wlan driver
     }
 
     for (i=0; i<pMac->cfg.gCfgMaxIBufSize; i++)
@@ -296,7 +387,11 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
             pMac->cfg.gCfgIBuf[i] > pMac->cfg.gCfgIBufMax[i])
         {
             PELOGE(cfgLog(pMac, LOGE, FL("cfg id %d Invalid def value %d "
+<<<<<<< HEAD
                             "min %d max %d\n"),
+=======
+                            "min %d max %d"),
+>>>>>>> d97af3b... add prima wlan driver
                    i, pMac->cfg.gCfgIBuf[i], pMac->cfg.gCfgIBufMin[i],
                    pMac->cfg.gCfgIBufMax[i]);)
         }
@@ -314,7 +409,11 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         bufStart = pMac->cfg.gCfgEntry[i].control & CFG_BUF_INDX_MASK;
         pMac->cfg.gCfgSBuf[bufStart] = (tANI_U8)(bufEnd - bufStart - 2);
 
+<<<<<<< HEAD
        PELOG1(cfgLog(pMac, LOG1, FL("id %d max %d bufStart %d bufEnd %d\n"),
+=======
+       PELOG1(cfgLog(pMac, LOG1, FL("id %d max %d bufStart %d bufEnd %d"),
+>>>>>>> d97af3b... add prima wlan driver
                i, pMac->cfg.gCfgSBuf[bufStart], bufStart, bufEnd);)
 
         bufEnd = bufStart;
@@ -328,6 +427,7 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
 
         if (strSize < 4)
         {
+<<<<<<< HEAD
             PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d bytes\n"), strSize);)
             retVal = WNI_CFG_INVALID_LEN;
             goto end;
@@ -339,40 +439,67 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         paramId = *pSrc >> 16;
         paramLen = *pSrc & 0xff;
 #endif
+=======
+            PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d bytes"), strSize);)
+            retVal = WNI_CFG_INVALID_LEN;
+            goto end;
+        }
+        paramId = *pSrc >> 16;
+        paramLen = *pSrc & 0xff;
+>>>>>>> d97af3b... add prima wlan driver
         pSrc++;
         strSize -= 4;
 
         paramLenCeil4 = ((paramLen + 3) >> 2);
         if (strSize < paramLenCeil4 << 2)
         {
+<<<<<<< HEAD
             PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d bytes\n"), strSize);)
             PELOGE(cfgLog(pMac, LOGE, FL("param id %d len %d bytes\n"), paramId, paramLen);)
+=======
+            PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d bytes"), strSize);)
+            PELOGE(cfgLog(pMac, LOGE, FL("param id %d len %d bytes"), paramId, paramLen);)
+>>>>>>> d97af3b... add prima wlan driver
             retVal = WNI_CFG_INVALID_LEN;
             goto end;
         }
         for (j=0; j < paramLenCeil4; j++)
         {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
             pStr[4*j]   = (tANI_U8) ((sirReadU32N((tANI_U8*)pSrc) >> 24) & 0xff);
             pStr[4*j+1] = (tANI_U8) ((sirReadU32N((tANI_U8*)pSrc) >> 16) & 0xff);
             pStr[4*j+2] = (tANI_U8) ((sirReadU32N((tANI_U8*)pSrc) >> 8) & 0xff);
             pStr[4*j+3] = (tANI_U8) (sirReadU32N((tANI_U8*)pSrc) & 0xff);
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
             pStr[4*j] = (tANI_U8) (*pSrc >> 24) & 0xff;
             pStr[4*j+1] = (tANI_U8) (*pSrc >> 16) & 0xff;
             pStr[4*j+2] = (tANI_U8) (*pSrc >> 8) & 0xff;
             pStr[4*j+3] = (tANI_U8) (*pSrc) & 0xff;
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
             pSrc++;
             strSize -= 4;
         }
 
+<<<<<<< HEAD
         PELOG1(cfgLog(pMac, LOG1, FL("set str id %d len %d\n"), paramId, paramLen);)
 
         if (cfgSetStr(pMac, (tANI_U16) paramId, pStr, paramLen) != eSIR_SUCCESS)
         {
             PELOGE(cfgLog(pMac, LOGE, FL("Error setting str default param %d len %d\n"), paramId, paramLen);)
+=======
+        PELOG1(cfgLog(pMac, LOG1, FL("set str id %d len %d"), paramId, paramLen);)
+
+        if (cfgSetStr(pMac, (tANI_U16) paramId, pStr, paramLen) != eSIR_SUCCESS)
+        {
+            PELOGE(cfgLog(pMac, LOGE, FL("Error setting str default param %d len %d"), paramId, paramLen);)
+>>>>>>> d97af3b... add prima wlan driver
             retVal = WNI_CFG_INVALID_LEN;
             goto end;
         }
@@ -381,6 +508,7 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     // Set the default log level based on config
     wlan_cfgGetInt(pMac, WNI_CFG_LOG_LEVEL, &logLevel);
     for (i = 0; i < LOG_ENTRY_NUM; i++)
+<<<<<<< HEAD
 #ifdef LX5280
         pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = LOGE;
 #else
@@ -390,11 +518,18 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = logLevel;
 #endif //#if defined(ANI_OS_TYPE_WINCE)
 #endif
+=======
+        pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = logLevel;
+>>>>>>> d97af3b... add prima wlan driver
 
     // Set status to READY
     pMac->cfg.gCfgStatus = CFG_SUCCESS;
     retVal = WNI_CFG_SUCCESS;
+<<<<<<< HEAD
     PELOG1(cfgLog(pMac, LOG1, "<CFG> Completed successfully\n");)
+=======
+    PELOG1(cfgLog(pMac, LOG1, "<CFG> Completed successfully");)
+>>>>>>> d97af3b... add prima wlan driver
 
     end:
 
@@ -402,11 +537,15 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         pMac->cfg.gCfgStatus = CFG_FAILURE;
 
     // Send response message to host
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
     sirStoreU32N((tANI_U8 *) &(pMac->cfg.gParamList[WNI_CFG_DNLD_CNF_RES]),  retVal);
 #else
     pMac->cfg.gParamList[WNI_CFG_DNLD_CNF_RES] = retVal;
 #endif
+=======
+    pMac->cfg.gParamList[WNI_CFG_DNLD_CNF_RES] = retVal;
+>>>>>>> d97af3b... add prima wlan driver
     cfgSendHostMsg(pMac, WNI_CFG_DNLD_CNF, WNI_CFG_DNLD_CNF_LEN,
                    WNI_CFG_DNLD_CNF_NUM, pMac->cfg.gParamList, 0, 0);
 
@@ -418,7 +557,11 @@ ProcDnldRsp(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, mmhMsg.type));
     if (wdaPostCtrlMsg(pMac, &mmhMsg) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("WDAPostMsgApi failed!\n"));)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("WDAPostMsgApi failed!"));)
+>>>>>>> d97af3b... add prima wlan driver
     }
 
 } /*** end procDnldRsp() ***/
@@ -451,13 +594,20 @@ ProcGetReq(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
     tANI_U32    value, valueLen, result;
     tANI_U32    *pValue;
 
+<<<<<<< HEAD
     PELOG1(cfgLog(pMac, LOG1, FL("Rcvd cfg get request %d bytes\n"), length);)
     for (i=0; i<length/4; i++)
         PELOG2(cfgLog(pMac, LOG2, FL("[%2d] 0x%08x\n"), i, pParam[i]);)
+=======
+    PELOG1(cfgLog(pMac, LOG1, FL("Rcvd cfg get request %d bytes"), length);)
+    for (i=0; i<length/4; i++)
+        PELOG2(cfgLog(pMac, LOG2, FL("[%2d] 0x%08x"), i, pParam[i]);)
+>>>>>>> d97af3b... add prima wlan driver
 
     if (!pMac->cfg.gCfgStatus)
     {
         cfgId = (tANI_U16)sirReadU32N((tANI_U8*)pParam);
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("CFG not ready, param %d\n"), cfgId);)
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
         sirStoreU32N((tANI_U8 *) &(pMac->cfg.gParamList[WNI_CFG_GET_RSP_RES]),
@@ -471,6 +621,12 @@ ProcGetReq(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         pMac->cfg.gParamList[WNI_CFG_GET_RSP_PID]  = cfgId;
         pMac->cfg.gParamList[WNI_CFG_GET_RSP_PLEN] = 0;
 #endif
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("CFG not ready, param %d"), cfgId);)
+        pMac->cfg.gParamList[WNI_CFG_GET_RSP_RES]  = WNI_CFG_NOT_READY;
+        pMac->cfg.gParamList[WNI_CFG_GET_RSP_PID]  = cfgId;
+        pMac->cfg.gParamList[WNI_CFG_GET_RSP_PLEN] = 0;
+>>>>>>> d97af3b... add prima wlan driver
         cfgSendHostMsg(pMac, WNI_CFG_GET_RSP, WNI_CFG_GET_RSP_PARTIAL_LEN,
                        WNI_CFG_GET_RSP_NUM, pMac->cfg.gParamList, 0, 0);
     }
@@ -479,6 +635,7 @@ ProcGetReq(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
         // Process all parameter ID's on the list
         while (length >= sizeof(tANI_U32))
         {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
             cfgId = (tANI_U16)sirReadU32N((tANI_U8*) pParam); pParam++;
 #else
@@ -488,6 +645,13 @@ ProcGetReq(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
             valueLen = 0;
 
             PELOG1(cfgLog(pMac, LOG1, FL("Cfg get param %d\n"), cfgId);)
+=======
+            cfgId = (tANI_U16)*pParam++;
+            pValue   = 0;
+            valueLen = 0;
+
+            PELOG1(cfgLog(pMac, LOG1, FL("Cfg get param %d"), cfgId);)
+>>>>>>> d97af3b... add prima wlan driver
 
             // Check for valid parameter ID, etc...
             if (CheckParam(pMac, cfgId, CFG_CTL_RE, WNI_CFG_WO_PARAM, &result))
@@ -512,11 +676,16 @@ ProcGetReq(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
             }
             else
             {
+<<<<<<< HEAD
                 PELOGE(cfgLog(pMac, LOGE, FL("Check param failed, param %d\n"), cfgId);)
+=======
+                PELOGE(cfgLog(pMac, LOGE, FL("Check param failed, param %d"), cfgId);)
+>>>>>>> d97af3b... add prima wlan driver
                 result = WNI_CFG_INVALID_LEN;
             }
 
             // Send response message to host
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
             sirStoreU32N((tANI_U8 *) &(pMac->cfg.gParamList[WNI_CFG_GET_RSP_RES]),
                          result);
@@ -529,6 +698,11 @@ ProcGetReq(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam)
             pMac->cfg.gParamList[WNI_CFG_GET_RSP_PID]  = cfgId;
             pMac->cfg.gParamList[WNI_CFG_GET_RSP_PLEN] = valueLen;
 #endif
+=======
+            pMac->cfg.gParamList[WNI_CFG_GET_RSP_RES]  = result;
+            pMac->cfg.gParamList[WNI_CFG_GET_RSP_PID]  = cfgId;
+            pMac->cfg.gParamList[WNI_CFG_GET_RSP_PLEN] = valueLen;
+>>>>>>> d97af3b... add prima wlan driver
 
             // We need to round up buffer length to word-increment
             valueLen = (((valueLen + 3) >> 2) << 2);
@@ -574,13 +748,20 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
     tANI_U16    cfgId, valueLen, valueLenRoundedUp4;
     tANI_U32    value, result;
 
+<<<<<<< HEAD
     PELOG1(cfgLog(pMac, LOGW, FL("Rcvd cfg set request %d bytes\n"), length);)
     //for (i=0; i<length/4; i++)
       //  PELOG2(cfgLog(pMac, LOG2, FL("[%2d] 0x%08x\n"), i, pParam[i]);)
+=======
+    PELOG1(cfgLog(pMac, LOGW, FL("Rcvd cfg set request %d bytes"), length);)
+    //for (i=0; i<length/4; i++)
+      //  PELOG2(cfgLog(pMac, LOG2, FL("[%2d] 0x%08x"), i, pParam[i]);)
+>>>>>>> d97af3b... add prima wlan driver
 
     if (!pMac->cfg.gCfgStatus)
     {
         cfgId = (tANI_U16)sirReadU32N((tANI_U8*)pParam);
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("CFG not ready, param %d"), cfgId);)
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
         sirStoreU32N((tANI_U8 *) &(pMac->cfg.gParamList[WNI_CFG_SET_CNF_RES]),
@@ -591,6 +772,11 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
         pMac->cfg.gParamList[WNI_CFG_SET_CNF_RES] = WNI_CFG_NOT_READY;
         pMac->cfg.gParamList[WNI_CFG_SET_CNF_PID] = cfgId;
 #endif
+=======
+        PELOG1(cfgLog(pMac, LOG1, FL("CFG not ready, param %d"), cfgId);)
+        pMac->cfg.gParamList[WNI_CFG_SET_CNF_RES] = WNI_CFG_NOT_READY;
+        pMac->cfg.gParamList[WNI_CFG_SET_CNF_PID] = cfgId;
+>>>>>>> d97af3b... add prima wlan driver
         if( fRsp )
         {
            cfgSendHostMsg(pMac, WNI_CFG_SET_CNF, WNI_CFG_SET_CNF_LEN,
@@ -602,6 +788,7 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
         // Process all TLVs in buffer
         while (length >= (sizeof(tANI_U32) * 2))
         {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
             // Get TYPE (cfgID) and LENGTH (length)
             cfgId = (tANI_U16)sirReadU32N((tANI_U8*)pParam);pParam++;
@@ -610,6 +797,10 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
             cfgId    = (tANI_U16) *pParam++;
             valueLen = (tANI_U16) *pParam++;
 #endif
+=======
+            cfgId    = (tANI_U16) *pParam++;
+            valueLen = (tANI_U16) *pParam++;
+>>>>>>> d97af3b... add prima wlan driver
             length -= (sizeof(tANI_U32) * 2);
             // value length rounded up to a 4 byte multiple
             valueLenRoundedUp4 = (((valueLen + 3) >> 2) << 2);
@@ -624,18 +815,27 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
                     // Set VALUE
                     if (valueLen != sizeof(tANI_U32))
                     {
+<<<<<<< HEAD
                         PELOGE(cfgLog(pMac, LOGE, FL("Invalid value length %d in set param %d (tot %d)\n"),
+=======
+                        PELOGE(cfgLog(pMac, LOGE, FL("Invalid value length %d in set param %d (tot %d)"),
+>>>>>>> d97af3b... add prima wlan driver
                                valueLen, cfgId, length);)
                         result = WNI_CFG_INVALID_LEN;
                     }
                     else
                     {
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
                         value = sirReadU32N((tANI_U8*) pParam);
 #else
                         value = *pParam;
 #endif
                         PELOG1(cfgLog(pMac, LOGW, FL("Cfg set int %d len %d(%d) val %d\n"),
+=======
+                        value = *pParam;
+                        PELOG1(cfgLog(pMac, LOGW, FL("Cfg set int %d len %d(%d) val %d"),
+>>>>>>> d97af3b... add prima wlan driver
                                cfgId, valueLen, valueLenRoundedUp4, value);)
                         result = (cfgSetInt(pMac, cfgId, value) == eSIR_SUCCESS ?
                                   WNI_CFG_SUCCESS : WNI_CFG_OTHER_ERROR);
@@ -658,14 +858,22 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
                 {
                     if (valueLenRoundedUp4 > length)
                     {
+<<<<<<< HEAD
                         PELOGE(cfgLog(pMac, LOGE, FL("Invalid string length %d in set param %d (tot %d)\n"),
+=======
+                        PELOGE(cfgLog(pMac, LOGE, FL("Invalid string length %d in set param %d (tot %d)"),
+>>>>>>> d97af3b... add prima wlan driver
                                valueLen, cfgId, length);)
                         result = WNI_CFG_INVALID_LEN;
                     }
                     else
                     {
                         GetStrValue((tANI_U8*)pParam, pMac->cfg.gSBuffer, valueLen);
+<<<<<<< HEAD
                         PELOG1(cfgLog(pMac, LOGW, FL("Cfg set str %d len %d(%d) bytes\n"),
+=======
+                        PELOG1(cfgLog(pMac, LOGW, FL("Cfg set str %d len %d(%d) bytes"),
+>>>>>>> d97af3b... add prima wlan driver
                                cfgId, valueLen, valueLenRoundedUp4);)
                         result = (cfgSetStr(pMac, cfgId, pMac->cfg.gSBuffer, valueLen) == eSIR_SUCCESS ?
                                   WNI_CFG_SUCCESS : WNI_CFG_OTHER_ERROR);
@@ -686,11 +894,16 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
             }
             else
             {
+<<<<<<< HEAD
                 PELOGE(cfgLog(pMac, LOGE, FL("Check param failed, param %d\n"), cfgId);)
+=======
+                PELOGE(cfgLog(pMac, LOGE, FL("Check param failed, param %d"), cfgId);)
+>>>>>>> d97af3b... add prima wlan driver
                 result = WNI_CFG_INVALID_LEN;
             }
 
             // Send confirm message to host
+<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX)
             sirStoreU32N((tANI_U8 *) &(pMac->cfg.gParamList[WNI_CFG_SET_CNF_RES]),
                          result);
@@ -700,6 +913,10 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
             pMac->cfg.gParamList[WNI_CFG_SET_CNF_RES] = result;
             pMac->cfg.gParamList[WNI_CFG_SET_CNF_PID] = cfgId;
 #endif
+=======
+            pMac->cfg.gParamList[WNI_CFG_SET_CNF_RES] = result;
+            pMac->cfg.gParamList[WNI_CFG_SET_CNF_PID] = cfgId;
+>>>>>>> d97af3b... add prima wlan driver
             if( fRsp )
             {
                 cfgSendHostMsg(pMac, WNI_CFG_SET_CNF, WNI_CFG_SET_CNF_LEN,
@@ -707,7 +924,11 @@ ProcSetReqInternal(tpAniSirGlobal pMac, tANI_U16 length, tANI_U32 *pParam, tANI_
             }
             else
             {
+<<<<<<< HEAD
                 PELOGW(cfgLog( pMac, LOG2, "  CFGID %d no rsp\n", cfgId);)
+=======
+                PELOGW(cfgLog( pMac, LOG2, "  CFGID %d no rsp", cfgId);)
+>>>>>>> d97af3b... add prima wlan driver
             }
 
             if (valueLenRoundedUp4 > length)
@@ -768,7 +989,11 @@ CheckParam(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 flag, tANI_U32 failedRe
     // Check if parameter ID is out of bound
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid param id %d\n"), cfgId);)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("Invalid param id %d"), cfgId);)
+>>>>>>> d97af3b... add prima wlan driver
         *pResult = WNI_CFG_INVALID_PID;
     }
     else
@@ -776,7 +1001,11 @@ CheckParam(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 flag, tANI_U32 failedRe
         // Check if parameter is valid
         if ((pMac->cfg.gCfgEntry[cfgId].control & CFG_CTL_VALID) == 0)
         {
+<<<<<<< HEAD
             PELOGE(cfgLog(pMac, LOGE, FL("Param id %d not valid\n"), cfgId);)
+=======
+            PELOGE(cfgLog(pMac, LOGE, FL("Param id %d not valid"), cfgId);)
+>>>>>>> d97af3b... add prima wlan driver
             *pResult = WNI_CFG_INVALID_PID;
         }
         else
@@ -784,7 +1013,11 @@ CheckParam(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 flag, tANI_U32 failedRe
             // Check control field against flag
             if ((pMac->cfg.gCfgEntry[cfgId].control & flag) == 0)
             {
+<<<<<<< HEAD
                 PELOGE(cfgLog(pMac, LOGE, FL("Param id %d wrong permissions %x\n"),
+=======
+                PELOGE(cfgLog(pMac, LOGE, FL("Param id %d wrong permissions %x"),
+>>>>>>> d97af3b... add prima wlan driver
                        cfgId, pMac->cfg.gCfgEntry[cfgId].control);)
                 *pResult = failedResult;
             }
@@ -861,13 +1094,21 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
     tANI_U32    logLevel;
 
     // First Dword must contain the AP or STA magic dword
+<<<<<<< HEAD
     PELOGW(cfgLog(pMac, LOGW, FL("CFG size %d bytes MAGIC dword is 0x%x\n"),
+=======
+    PELOGW(cfgLog(pMac, LOGW, FL("CFG size %d bytes MAGIC dword is 0x%x"),
+>>>>>>> d97af3b... add prima wlan driver
            length, sirReadU32N((tANI_U8*)pConfig) );)
 
     // if the string is not correct, return failure
     if (CFG_STA_MAGIC_DWORD != *pConfig)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid magic dword 0x%x\n"),
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("Invalid magic dword 0x%x"),
+>>>>>>> d97af3b... add prima wlan driver
                                              sirReadU32N((tANI_U8*)pConfig) );)
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
@@ -884,7 +1125,11 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
     pHdr = (tpCfgBinHdr) pConfig;
     pConfig += (sizeof(tCfgBinHdr) >> 2);
 
+<<<<<<< HEAD
     PELOGW(cfgLog(pMac, LOGW, FL("CFG hdr totParams %d intParams %d strBufSize %d/%d\n"),
+=======
+    PELOGW(cfgLog(pMac, LOGW, FL("CFG hdr totParams %d intParams %d strBufSize %d/%d"),
+>>>>>>> d97af3b... add prima wlan driver
                            pHdr->controlSize,pHdr->iBufSize,
                          pHdr->sBufSize, pMac->cfg.gCfgMaxSBufSize);)
 
@@ -893,7 +1138,11 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
 
     if (length != expLen)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("<CFG> DNLD_RSP invalid length %d (exp %d)\n"),
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("<CFG> DNLD_RSP invalid length %d (exp %d)"),
+>>>>>>> d97af3b... add prima wlan driver
                length, expLen);)
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
@@ -902,14 +1151,22 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
 
     if (CFG_PARAM_MAX_NUM != pHdr->controlSize )
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Total parameter count mismatch\n"));)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Total parameter count mismatch"));)
+>>>>>>> d97af3b... add prima wlan driver
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
     }
 
     if (pHdr->iBufSize != pMac->cfg.gCfgMaxIBufSize)
     {
+<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Integer parameter count mismatch\n"));)
+=======
+        PELOGE(cfgLog(pMac, LOGE, FL("<CFG> Integer parameter count mismatch"));)
+>>>>>>> d97af3b... add prima wlan driver
         retVal = WNI_CFG_INVALID_LEN;
         goto end;
     }
@@ -953,7 +1210,11 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
             pMac->cfg.gCfgIBuf[i] > pMac->cfg.gCfgIBufMax[i])
         {
             PELOGE(cfgLog(pMac, LOGE, FL("cfg id %d Invalid def value %d "
+<<<<<<< HEAD
                              "min %d max %d\n"),
+=======
+                             "min %d max %d"),
+>>>>>>> d97af3b... add prima wlan driver
                              i, pMac->cfg.gCfgIBuf[i], pMac->cfg.gCfgIBufMin[i],
                              pMac->cfg.gCfgIBufMax[i]);)
         }
@@ -972,7 +1233,11 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
         bufStart = pMac->cfg.gCfgEntry[i].control & CFG_BUF_INDX_MASK;
         pMac->cfg.gCfgSBuf[bufStart] = (tANI_U8)(bufEnd - bufStart - 2);
 
+<<<<<<< HEAD
         PELOG1(cfgLog(pMac, LOG1, FL("id %d max %d bufStart %d bufEnd %d\n"),
+=======
+        PELOG1(cfgLog(pMac, LOG1, FL("id %d max %d bufStart %d bufEnd %d"),
+>>>>>>> d97af3b... add prima wlan driver
                i, pMac->cfg.gCfgSBuf[bufStart], bufStart, bufEnd);)
 
         bufEnd = bufStart;
@@ -986,7 +1251,11 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
 
         if (strSize < 4)
         {
+<<<<<<< HEAD
             PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d bytes\n"),
+=======
+            PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d bytes"),
+>>>>>>> d97af3b... add prima wlan driver
                                                                       strSize);)
             retVal = WNI_CFG_INVALID_LEN;
             goto end;
@@ -1001,8 +1270,13 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
         if (strSize < paramLenCeil4 << 2)
         {
             PELOGE(cfgLog(pMac, LOGE, FL("Error parsing str defaults, rem %d"
+<<<<<<< HEAD
                                                             "bytes\n"), strSize);)
             PELOGE(cfgLog(pMac, LOGE, FL("param id %d len %d bytes\n"),
+=======
+                                                            "bytes"), strSize);)
+            PELOGE(cfgLog(pMac, LOGE, FL("param id %d len %d bytes"),
+>>>>>>> d97af3b... add prima wlan driver
                                                             paramId, paramLen);)
             retVal = WNI_CFG_INVALID_LEN;
             goto end;
@@ -1019,12 +1293,20 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
             strSize -= 4;
         }
 
+<<<<<<< HEAD
         PELOG1(cfgLog(pMac, LOG1, FL("set str id %d len %d\n"), paramId, paramLen);)
+=======
+        PELOG1(cfgLog(pMac, LOG1, FL("set str id %d len %d"), paramId, paramLen);)
+>>>>>>> d97af3b... add prima wlan driver
 
         if (cfgSetStrNotify(pMac, (tANI_U16)paramId, pStr, paramLen, FALSE) != eSIR_SUCCESS)
         {
             PELOGE(cfgLog(pMac, LOGE, FL("Error setting str default param %d "
+<<<<<<< HEAD
                                                 "len %d\n"), paramId, paramLen);)
+=======
+                                                "len %d"), paramId, paramLen);)
+>>>>>>> d97af3b... add prima wlan driver
             retVal = WNI_CFG_INVALID_LEN;
             goto end;
         }
@@ -1038,7 +1320,11 @@ processCfgDownloadReq(tpAniSirGlobal pMac, tANI_U16 length,
     // Set status to READY
     pMac->cfg.gCfgStatus = CFG_SUCCESS;
     retVal = WNI_CFG_SUCCESS;
+<<<<<<< HEAD
     PELOG1(cfgLog(pMac, LOG1, "<CFG> Completed successfully\n");)
+=======
+    PELOG1(cfgLog(pMac, LOG1, "<CFG> Completed successfully");)
+>>>>>>> d97af3b... add prima wlan driver
 
 end:
 

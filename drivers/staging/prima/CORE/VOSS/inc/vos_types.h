@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,10 +20,32 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+=======
+  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+  *
+  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+  *
+  *
+  * Permission to use, copy, modify, and/or distribute this software for
+  * any purpose with or without fee is hereby granted, provided that the
+  * above copyright notice and this permission notice appear in all
+  * copies.
+  *
+  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+  * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+  * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+  * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+  * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+  * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  * PERFORMANCE OF THIS SOFTWARE.
+*/
+>>>>>>> d97af3b... add prima wlan driver
 #if !defined( __VOS_TYPES_H )
 #define __VOS_TYPES_H
 
 /**=========================================================================
+<<<<<<< HEAD
   
   \file  vos_Types.h
   
@@ -34,6 +57,17 @@
    
    Qualcomm Confidential and Proprietary.
   
+=======
+  \file  vos_Types.h
+
+  \brief virtual Operating System Servies (vOS)
+
+   Basic type definitions
+
+   Copyright 2008 (c) Qualcomm Technologies, Inc.
+   All Rights Reserved.
+   Qualcomm Technologies Confidential and Proprietary.
+>>>>>>> d97af3b... add prima wlan driver
   ========================================================================*/
 
 /* $Header$ */
@@ -54,7 +88,11 @@
 #define VOS_MIN( _x, _y ) ( ( (_x) < (_y) ) ? (_x) : (_y)  )  
 
 // macro to get the ceiling of an integer division operation...
+<<<<<<< HEAD
 #define VOS_CEIL_DIV( _a, _b ) ( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ) 
+=======
+#define VOS_CEIL_DIV( _a, _b ) (( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ))
+>>>>>>> d97af3b... add prima wlan driver
 
 // macro to return the floor of an integer division operation
 #define VOS_FLOOR_DIV( _a, _b ) ( ( (_a) - ( (_a) % (_b) ) ) / (_b) )
@@ -63,8 +101,13 @@
    ( ( ( (_x) << 8 ) & 0xFF00 ) | ( ( (_x) >> 8 ) & 0x00FF ) )
 
 #define VOS_SWAP_U32(_x) \
+<<<<<<< HEAD
    ( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
    ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) )
+=======
+  (( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
+   ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) ))
+>>>>>>> d97af3b... add prima wlan driver
 
 // Endian operations for Big Endian and Small Endian modes
 #ifdef ANI_LITTLE_BYTE_ENDIAN
@@ -93,16 +136,25 @@
 
 #endif
 
+<<<<<<< HEAD
 /*-------------------------------------------------------------------------- 
   Type declarations
   ------------------------------------------------------------------------*/
    
+=======
+
+/*--------------------------------------------------------------------------
+  Type declarations
+  ------------------------------------------------------------------------*/
+
+>>>>>>> d97af3b... add prima wlan driver
 /// Module IDs.  These are generic IDs that identify the various modules
 /// in the software system.
 typedef enum
 {
    VOS_MODULE_ID_BAP        = 0,
    VOS_MODULE_ID_TL         = 1,
+<<<<<<< HEAD
 
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
    VOS_MODULE_ID_BAL        = 2,
@@ -132,6 +184,19 @@ typedef enum
 #endif   
 
 
+=======
+   VOS_MODULE_ID_WDI        = 2,
+   // 3 & 4 are unused for historical purposes
+   VOS_MODULE_ID_HDD        = 5,
+   VOS_MODULE_ID_SME        = 6,
+   VOS_MODULE_ID_PE         = 7,
+   VOS_MODULE_ID_WDA        = 8,
+   VOS_MODULE_ID_SYS        = 9,
+   VOS_MODULE_ID_VOSS       = 10,
+   VOS_MODULE_ID_SAP        = 11,
+   VOS_MODULE_ID_HDD_SOFTAP = 12,
+   VOS_MODULE_ID_PMC        = 13,
+>>>>>>> d97af3b... add prima wlan driver
 
    // not a real module ID.  This is used to identify the maxiumum
    // number of VOS_MODULE_IDs and should always be at the END of
@@ -151,11 +216,18 @@ typedef enum
     VOS_P2P_CLIENT_MODE,
     VOS_P2P_GO_MODE,
     VOS_MONITOR_MODE,
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
     VOS_FTM_MODE = 5,
 #endif
     VOS_MAX_NO_OF_MODE
 
+=======
+    VOS_FTM_MODE = 5,
+    VOS_IBSS_MODE,
+    VOS_P2P_DEVICE,
+    VOS_MAX_NO_OF_MODE
+>>>>>>> d97af3b... add prima wlan driver
 } tVOS_CON_MODE;
 
 //This is a bit pattern to be set for each mode

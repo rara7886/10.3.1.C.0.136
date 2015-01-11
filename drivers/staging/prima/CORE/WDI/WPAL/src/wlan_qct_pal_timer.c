@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +63,11 @@
 #include "wlan_qct_os_status.h"
 #include "vos_threads.h"
 
+<<<<<<< HEAD
+=======
+#include <linux/delay.h>
+
+>>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
  \brief wpalTimerCback - VOS timer callback function
 
@@ -56,7 +84,11 @@ static void wpalTimerCback( void * userData )
    else
    {
       WPAL_TRACE( eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_WARN, " %s pTimer(%d) callback after deleted \n",
+<<<<<<< HEAD
          __FUNCTION__, (wpt_uint32)pTimer );
+=======
+         __func__, (wpt_uint32)pTimer );
+>>>>>>> d97af3b... add prima wlan driver
    }
 }/*wpalTimerCback*/
 
@@ -75,7 +107,11 @@ wpt_status wpalTimerInit(wpt_timer * pTimer, wpal_timer_callback callback, void 
    if( pTimer == NULL || callback == NULL )
    {
       WPAL_TRACE( eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, " %s Wrong param pTimer(%d) callback(%d)\n",
+<<<<<<< HEAD
          __FUNCTION__, (wpt_uint32)pTimer, (wpt_uint32)callback );
+=======
+         __func__, (wpt_uint32)pTimer, (wpt_uint32)callback );
+>>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -106,7 +142,11 @@ wpt_status wpalTimerDelete(wpt_timer *pTimer)
    if( pTimer == NULL )
    {
       WPAL_TRACE( eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, " %s Wrong param pTimer(%d)\n",
+<<<<<<< HEAD
          __FUNCTION__, (wpt_uint32)pTimer );
+=======
+         __func__, (wpt_uint32)pTimer );
+>>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -137,7 +177,11 @@ wpt_status wpalTimerStart(wpt_timer * pTimer, wpt_uint32 timeout)
    if( pTimer == NULL )
    {
       WPAL_TRACE( eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, " %s Wrong param pTimer(%d)\n",
+<<<<<<< HEAD
          __FUNCTION__, (wpt_uint32)pTimer );
+=======
+         __func__, (wpt_uint32)pTimer );
+>>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
    return ( WPAL_VOS_TO_WPAL_STATUS( vos_timer_start( &pTimer->timer.timerObj,
@@ -160,13 +204,51 @@ wpt_status wpalTimerStop(wpt_timer * pTimer)
    if( pTimer == NULL )
    {
       WPAL_TRACE( eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, " %s Wrong param pTimer(%d)\n",
+<<<<<<< HEAD
          __FUNCTION__, (wpt_uint32)pTimer );
+=======
+         __func__, (wpt_uint32)pTimer );
+>>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
    return (WPAL_VOS_TO_WPAL_STATUS( vos_timer_stop( &pTimer->timer.timerObj )));
 }/*wpalTimerStop*/
 
 /*---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+    \brief wpalTimerGetCurStatus - Get the current status of timer
+
+    \param pTimer - a pointer to caller allocated wpt_timer object
+
+    \return
+        VOS_TIMER_STATE
+---------------------------------------------------------------------------*/
+WPAL_TIMER_STATE wpalTimerGetCurStatus(wpt_timer * pTimer)
+{
+   /* Sanity Checks */
+   if( pTimer == NULL )
+   {
+      WPAL_TRACE( eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, " %s Wrong param pTimer(%d)\n",
+         __func__, (wpt_uint32)pTimer );
+      return eWLAN_PAL_STATUS_E_INVAL;
+   }
+   return vos_timer_getCurrentState( &pTimer->timer.timerObj );
+}/*wpalTimerGetCurStatus*/
+
+/*---------------------------------------------------------------------------
+    \brief wpalGetSystemTime - Get the system time in milliseconds
+
+    \return
+        current time in milliseconds
+---------------------------------------------------------------------------*/
+wpt_uint32 wpalGetSystemTime(void)
+{
+   return vos_timer_get_system_time();
+}/*wpalGetSystemTime*/
+
+/*---------------------------------------------------------------------------
+>>>>>>> d97af3b... add prima wlan driver
     wpalSleep - sleep for a specified interval
     Param:
         timeout - amount of time to sleep. In unit of milli-seconds.
@@ -178,3 +260,19 @@ wpt_status wpalSleep(wpt_uint32 timeout)
    vos_sleep( timeout );
    return eWLAN_PAL_STATUS_SUCCESS;
 }
+<<<<<<< HEAD
+=======
+
+/*---------------------------------------------------------------------------
+    wpalBusyWait - Thread busy wait with specified usec
+    Param:
+        usecDelay - amount of time to wait. In unit of micro-seconds.
+    Return:
+        NONE
+---------------------------------------------------------------------------*/
+void wpalBusyWait(wpt_uint32 usecDelay)
+{
+   vos_busy_wait(usecDelay);
+   return;
+}
+>>>>>>> d97af3b... add prima wlan driver

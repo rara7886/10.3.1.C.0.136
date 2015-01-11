@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,11 +63,19 @@
 
 // This controls how the "dot11f" code copies memory
 #define DOT11F_MEMCPY(ctx, dst, src, len) \
+<<<<<<< HEAD
     palCopyMemory( ( ctx )->hHdd, ( tANI_U8* )( dst ), ( tANI_U8* )( src ), ( len ) )
 
 // This controls how the "dot11f" code compares memory
 #define DOT11F_MEMCMP(ctx, lhs, rhs, len) \
     ( ! palEqualMemory( ( ctx )->hHdd, ( tANI_U8* )( lhs ), ( tANI_U8* )( rhs ), ( len ) ) )
+=======
+    vos_mem_copy( ( tANI_U8* )( dst ), ( tANI_U8* )( src ), ( len ) )
+
+// This controls how the "dot11f" code compares memory
+#define DOT11F_MEMCMP(ctx, lhs, rhs, len) \
+    ( ! vos_mem_compare( ( tANI_U8* )( lhs ), ( tANI_U8* )( rhs ), ( len ) ) )
+>>>>>>> d97af3b... add prima wlan driver
 
 #   if defined ( DBG ) && ( DBG != 0 )
 

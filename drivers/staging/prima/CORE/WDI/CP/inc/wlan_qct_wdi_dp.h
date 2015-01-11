@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -104,9 +127,13 @@ when        who    what, where, why
 #define WDI_WAPI_STA_MASK            0x8  //bit 3. If set, this frame is for WAPI station
 #endif
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
 #define WDI_TRIGGER_ENABLED_AC_MASK         0x10 //bit 4 for data frames belonging to trigger enabled AC
 #endif
+=======
+#define WDI_TRIGGER_ENABLED_AC_MASK         0x10 //bit 4 for data frames belonging to trigger enabled AC
+>>>>>>> d97af3b... add prima wlan driver
 #define WDI_USE_NO_ACK_REQUESTED_MASK       0x20
 
 #define WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME 0x40 // Bit 6 will be used to control BD rate for Management frames
@@ -232,7 +259,11 @@ when        who    what, where, why
 
 #define WDI_RX_BD_GET_SUBTYPE( _pvBDHeader )        ((((WDI_RxBdType*)_pvBDHeader)->frameTypeSubtype) & WDI_FRAME_SUBTYPE_MASK)
 
+<<<<<<< HEAD
 #define WDI_RX_BD_GET_TYPE( _pvBDHeader )      ((((WDI_RxBdType*)_pvBDHeader)->frameTypeSubtype) & WDI_FRAME_TYPE_MASK) >> WDI_FRAME_TYPE_OFFSET;
+=======
+#define WDI_RX_BD_GET_TYPE( _pvBDHeader )     (((((WDI_RxBdType*)_pvBDHeader)->frameTypeSubtype) & WDI_FRAME_TYPE_MASK) >> WDI_FRAME_TYPE_OFFSET)
+>>>>>>> d97af3b... add prima wlan driver
 
 #define WDI_RX_BD_GET_RTSF( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->rtsf)
 
@@ -258,6 +289,11 @@ when        who    what, where, why
 
 #define WDI_RX_BD_GET_TID( _pvBDHeader )        (((WDI_RxBdType*)_pvBDHeader)->tid)
 
+<<<<<<< HEAD
+=======
+#define WDI_RX_BD_GET_RFBAND( _pvBDHeader )        (((WDI_RxBdType*)_pvBDHeader)->rfBand)
+
+>>>>>>> d97af3b... add prima wlan driver
 #define WDI_RX_BD_GET_ASF( _pvBDHeader )        (((WDI_RxBdType*)_pvBDHeader)->asf)
 
 #define WDI_RX_BD_GET_AEF( _pvBDHeader )        (((WDI_RxBdType*)_pvBDHeader)->aef)
@@ -281,6 +317,14 @@ when        who    what, where, why
 #define WDI_RX_FC_BD_GET_FC( _pvBDHeader )     (((WDI_FcRxBdType*)_pvBDHeader)->fc)
 #define WDI_RX_FC_BD_GET_STA_VALID_MASK( _pvBDHeader )     (((WDI_FcRxBdType*)_pvBDHeader)->fcSTAValidMask)
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
+//LFR scan related
+#define WDI_RX_BD_GET_OFFLOADSCANLEARN( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->offloadScanLearn)
+#define WDI_RX_BD_GET_ROAMCANDIDATEIND( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->roamCandidateInd)
+#endif
+>>>>>>> d97af3b... add prima wlan driver
 
 /*------------ RSSI and SNR Information extraction -------------*/
 #define WDI_RX_BD_GET_RSSI0( _pvBDHeader )  \
@@ -328,6 +372,13 @@ when        who    what, where, why
 
 #define WDI_RX_BD_GET_PMICMD_24TO25(_pvBDHeader)        (((WDI_RxBdType*)_pvBDHeader)->pmiCmd24to25)
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_11W
+#define WDI_RX_BD_GET_RMF( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->rmf)
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
 #define WDI_RX_BD_ASF_SET               1 /*The value of the field when set and pkt is AMSDU*/
 
 #define WDI_RX_BD_FSF_SET               1
@@ -376,6 +427,11 @@ WDI_RxBD_GetFrameTypeSubType
      ucDisableFrmXtl: set to 1 if this frame is not to be translated by HW
      pTxBd:          pointer to the TX BD
      ucTxFlag:       can have appropriate bit setting as required
+<<<<<<< HEAD
+=======
+     ucProtMgmtFrame: for management frames, whether the frame is
+                      protected (protect bit is set in FC)
+>>>>>>> d97af3b... add prima wlan driver
      uTimestamp:     pkt timestamp
   
   
@@ -393,6 +449,10 @@ WDI_FillTxBd
     wpt_uint8              ucDisableFrmXtl, 
     void*                  pTxBd, 
     wpt_uint8              ucTxFlag, 
+<<<<<<< HEAD
+=======
+    wpt_uint8              ucProtMgmtFrame,
+>>>>>>> d97af3b... add prima wlan driver
     wpt_uint32             uTimeStamp,
     wpt_uint8*             staIndex
 );

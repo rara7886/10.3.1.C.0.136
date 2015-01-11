@@ -1,4 +1,27 @@
 /*
+<<<<<<< HEAD
+=======
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+/*
+>>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -48,13 +71,17 @@
 #include <halTypes.h>
 #include <limApi.h>
 #include <sme_Api.h>
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 #include <wlan_qct_ssc.h>
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 #include <wlan_qct_sys.h>
 #include <wlan_qct_tl.h>
 #include "vos_sched.h"
 #include <wlan_hdd_power.h>
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "wlan_qct_wda.h"
 #include "wlan_qct_pal_msg.h"
@@ -65,6 +92,12 @@
 #include <libra_sdioif.h>
 #include <wlan_sal_misc.h>
 #endif
+=======
+#include "wlan_qct_wda.h"
+#include "wlan_qct_pal_msg.h"
+#include <linux/spinlock.h>
+#include <linux/kthread.h>
+>>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * ------------------------------------------------------------------------*/
@@ -76,11 +109,16 @@
  * Data definitions
  * ------------------------------------------------------------------------*/
 static pVosSchedContext gpVosSchedContext;
+<<<<<<< HEAD
 static pVosWatchdogContext gpVosWatchdogContext=NULL;
+=======
+static pVosWatchdogContext gpVosWatchdogContext;
+>>>>>>> d97af3b... add prima wlan driver
 
 /*---------------------------------------------------------------------------
  * Forward declaration
  * ------------------------------------------------------------------------*/
+<<<<<<< HEAD
 static int VosMCThread(void * Arg);
 static int VosWDThread(void * Arg);
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
@@ -93,6 +131,13 @@ static int VosRXThread(void* Arg);
 void vos_sched_flush_rx_mqs(pVosSchedContext SchedContext);
 #endif
 #endif
+=======
+static int VosMCThread(void *Arg);
+static int VosWDThread(void *Arg);
+static int VosTXThread(void *Arg);
+static int VosRXThread(void *Arg);
+void vos_sched_flush_rx_mqs(pVosSchedContext SchedContext);
+>>>>>>> d97af3b... add prima wlan driver
 extern v_VOID_t vos_core_return_msg(v_PVOID_t pVContext, pVosMsgWrapper pMsgWrapper);
 /*---------------------------------------------------------------------------
  * External Function implementation
@@ -157,6 +202,7 @@ vos_sched_open
   // Initialize the helper events and event queues
   init_completion(&pSchedContext->McStartEvent);
   init_completion(&pSchedContext->TxStartEvent);
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
   init_completion(&pSchedContext->RxStartEvent);
 #endif
@@ -170,6 +216,15 @@ vos_sched_open
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
   init_completion(&pSchedContext->ResumeRxEvent);
 #endif
+=======
+  init_completion(&pSchedContext->RxStartEvent);
+  init_completion(&pSchedContext->McShutdown);
+  init_completion(&pSchedContext->TxShutdown);
+  init_completion(&pSchedContext->RxShutdown);
+  init_completion(&pSchedContext->ResumeMcEvent);
+  init_completion(&pSchedContext->ResumeTxEvent);
+  init_completion(&pSchedContext->ResumeRxEvent);
+>>>>>>> d97af3b... add prima wlan driver
 
   spin_lock_init(&pSchedContext->McThreadLock);
   spin_lock_init(&pSchedContext->TxThreadLock);
@@ -179,12 +234,19 @@ vos_sched_open
   pSchedContext->mcEventFlag = 0;
   init_waitqueue_head(&pSchedContext->txWaitQueue);
   pSchedContext->txEventFlag= 0;
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
   init_waitqueue_head(&pSchedContext->rxWaitQueue);
   pSchedContext->rxEventFlag= 0;
 #endif
   /*
   ** This initialization is critical as the threads will latter access the
+=======
+  init_waitqueue_head(&pSchedContext->rxWaitQueue);
+  pSchedContext->rxEventFlag= 0;
+  /*
+  ** This initialization is critical as the threads will later access the
+>>>>>>> d97af3b... add prima wlan driver
   ** global contexts normally,
   **
   ** I shall put some memory barrier here after the next piece of code but
@@ -205,7 +267,10 @@ vos_sched_open
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: VOSS Main Controller thread Created",__func__);
 
+<<<<<<< HEAD
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
   pSchedContext->TxThread = kthread_create(VosTXThread, pSchedContext,
                                            "VosTXThread");
   if (IS_ERR(pSchedContext->TxThread)) 
@@ -218,7 +283,10 @@ vos_sched_open
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
              ("VOSS TX thread Created\n"));
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
   pSchedContext->RxThread = kthread_create(VosRXThread, pSchedContext,
                                            "VosRXThread");
   if (IS_ERR(pSchedContext->RxThread)) 
@@ -232,8 +300,11 @@ vos_sched_open
   wake_up_process(pSchedContext->RxThread);
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
              ("VOSS RX thread Created\n"));
+<<<<<<< HEAD
 #endif
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
   /*
   ** Now make sure all threads have started before we exit.
@@ -242,6 +313,7 @@ vos_sched_open
   wait_for_completion_interruptible(&pSchedContext->McStartEvent);
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
                "%s: VOSS MC Thread has started",__func__);
+<<<<<<< HEAD
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
   wait_for_completion_interruptible(&pSchedContext->TxStartEvent);
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -251,18 +323,32 @@ vos_sched_open
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
                "%s: VOSS Rx Thread has started",__func__);
 #endif
+=======
+  wait_for_completion_interruptible(&pSchedContext->TxStartEvent);
+  VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
+               "%s: VOSS Tx Thread has started",__func__);
+  wait_for_completion_interruptible(&pSchedContext->RxStartEvent);
+  VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
+               "%s: VOSS Rx Thread has started",__func__);
+>>>>>>> d97af3b... add prima wlan driver
 
   /*
   ** We're good now: Let's get the ball rolling!!!
   */
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: VOSS Scheduler successfully Opened",__func__);
+<<<<<<< HEAD
  #endif
   return VOS_STATUS_SUCCESS;
 
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+  return VOS_STATUS_SUCCESS;
+
+
+>>>>>>> d97af3b... add prima wlan driver
 RX_THREAD_START_FAILURE:
     //Try and force the Tx thread controller to exit
     set_bit(MC_SHUTDOWN_EVENT_MASK, &pSchedContext->txEventFlag);
@@ -270,7 +356,10 @@ RX_THREAD_START_FAILURE:
     wake_up_interruptible(&pSchedContext->txWaitQueue);
      //Wait for TX to exit
     wait_for_completion_interruptible(&pSchedContext->TxShutdown);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
 TX_THREAD_START_FAILURE:
     //Try and force the Main thread controller to exit
@@ -280,7 +369,10 @@ TX_THREAD_START_FAILURE:
     //Wait for MC to exit
     wait_for_completion_interruptible(&pSchedContext->McShutdown);
 
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 MC_THREAD_START_FAILURE:
   //De-initialize all the message queues
   vos_sched_deinit_mqs(pSchedContext);
@@ -371,12 +463,23 @@ VosMCThread
   if (Arg == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
         "%s: Bad Args passed", __FUNCTION__);
+=======
+        "%s: Bad Args passed", __func__);
+>>>>>>> d97af3b... add prima wlan driver
      return 0;
   }
   set_user_nice(current, -2);
 
+<<<<<<< HEAD
   daemonize("MC_Thread");
+=======
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
+  daemonize("MC_Thread");
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
   /*
   ** Ack back to the context from which the main controller thread has been
   ** created.
@@ -409,7 +512,11 @@ VosMCThread
     if(retWaitStatus == -ERESTARTSYS)
     {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: wait_event_interruptible returned -ERESTARTSYS", __FUNCTION__);
+=======
+         "%s: wait_event_interruptible returned -ERESTARTSYS", __func__);
+>>>>>>> d97af3b... add prima wlan driver
       break;
     }
     clear_bit(MC_POST_EVENT_MASK, &pSchedContext->mcEventFlag);
@@ -432,7 +539,10 @@ VosMCThread
         }
         break;
       }
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
       /*
       ** Check the WDI queue
       ** Service it till the entire queue is empty
@@ -451,7 +561,11 @@ VosMCThread
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+               "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -461,7 +575,11 @@ VosMCThread
         if(pWdiMsg == NULL || pWdiMsg->callback == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: WDI Msg or Callback is NULL", __FUNCTION__);
+=======
+               "%s: WDI Msg or Callback is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -476,7 +594,10 @@ VosMCThread
         continue;
       }
 
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
       // Check the SYS queue first
       if (!vos_is_mq_empty(&pSchedContext->sysMcMq))
       {
@@ -487,7 +608,11 @@ VosMCThread
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+              "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -502,7 +627,10 @@ VosMCThread
         vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
         continue;
       }
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
       // Check the WDA queue
       if (!vos_is_mq_empty(&pSchedContext->wdaMcMq))
       {
@@ -513,7 +641,11 @@ VosMCThread
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+              "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -527,6 +659,7 @@ VosMCThread
         vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
         continue;
       }
+<<<<<<< HEAD
 #else
 
       // Check the HAL queue
@@ -567,6 +700,8 @@ VosMCThread
       }
 #endif
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
       // Check the PE queue
       if (!vos_is_mq_empty(&pSchedContext->peMcMq))
       {
@@ -577,7 +712,11 @@ VosMCThread
         if (NULL == pMsgWrapper)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+              "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -612,7 +751,11 @@ VosMCThread
         if (NULL == pMsgWrapper)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+               "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -647,7 +790,11 @@ VosMCThread
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+              "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -677,20 +824,30 @@ VosMCThread
         /* Wait foe Resume Indication */
         wait_for_completion_interruptible(&pSchedContext->ResumeMcEvent);
       }
+<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
+=======
+>>>>>>> d97af3b... add prima wlan driver
       break; //All queues are empty now
     } // while message loop processing
   } // while TRUE
   // If we get here the MC thread must exit
   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
       "%s: MC Thread exiting!!!!", __FUNCTION__);
+=======
+      "%s: MC Thread exiting!!!!", __func__);
+>>>>>>> d97af3b... add prima wlan driver
   complete_and_exit(&pSchedContext->McShutdown, 0);
 } /* VosMCThread() */
 int isWDresetInProgress(void)
 {
    VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                 "%s: Reset is in Progress...",__func__);
+<<<<<<< HEAD
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
    if(gpVosWatchdogContext!=NULL)
    {
       return gpVosWatchdogContext->resetInProgress;
@@ -699,9 +856,12 @@ int isWDresetInProgress(void)
    {
       return 0;
    }
+<<<<<<< HEAD
 #else
    return 0;
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 }
 /*---------------------------------------------------------------------------
   \brief VosWdThread() - The VOSS Watchdog thread
@@ -725,10 +885,21 @@ VosWDThread
   if (Arg == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
         "%s: Bad Args passed", __FUNCTION__);
      return 0;
   }
   daemonize("WD_Thread");
+=======
+        "%s: Bad Args passed", __func__);
+     return 0;
+  }
+
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
+  daemonize("WD_Thread");
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
   /*
   ** Ack back to the context from which the Watchdog thread has been
   ** created.
@@ -745,7 +916,11 @@ VosWDThread
     if(retWaitStatus == -ERESTARTSYS)
     {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: wait_event_interruptible returned -ERESTARTSYS", __FUNCTION__);
+=======
+         "%s: wait_event_interruptible returned -ERESTARTSYS", __func__);
+>>>>>>> d97af3b... add prima wlan driver
       break;
     }
     clear_bit(WD_POST_EVENT_MASK, &pWdContext->wdEventFlag);
@@ -819,12 +994,20 @@ VosWDThread
 
   // If we get here the Watchdog thread must exit
   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
       "%s: Watchdog Thread exiting !!!!", __FUNCTION__);
+=======
+      "%s: Watchdog Thread exiting !!!!", __func__);
+>>>>>>> d97af3b... add prima wlan driver
   complete_and_exit(&pWdContext->WdShutdown, 0);
 
 err_reset:
     VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
       "%s: Watchdog Thread Failed to Reset, Exiting!!!!", __FUNCTION__);
+=======
+      "%s: Watchdog Thread Failed to Reset, Exiting!!!!", __func__);
+>>>>>>> d97af3b... add prima wlan driver
     return 0;
 
 } /* VosMCThread() */
@@ -837,7 +1020,10 @@ err_reset:
   \return Thread exit code
   \sa VosTxThread()
   -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
 static int VosTXThread ( void * Arg )
 {
   pVosSchedContext pSchedContext = (pVosSchedContext)Arg;
@@ -849,14 +1035,32 @@ static int VosTXThread ( void * Arg )
   v_CONTEXT_t pVosContext        = NULL;
 
   set_user_nice(current, -1);
+<<<<<<< HEAD
+=======
+  
+#ifdef WLAN_FEATURE_11AC_HIGH_TP
+  set_wake_up_idle(true);
+#endif
+>>>>>>> d97af3b... add prima wlan driver
 
   if (Arg == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s Bad Args passed", __FUNCTION__);
      return 0;
   }
   daemonize("TX_Thread");
+=======
+         "%s Bad Args passed", __func__);
+     return 0;
+  }
+
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
+  daemonize("TX_Thread");
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
   /*
   ** Ack back to the context from which the main controller thread has been
   ** created.
@@ -891,7 +1095,11 @@ static int VosTXThread ( void * Arg )
     if(retWaitStatus == -ERESTARTSYS)
     {
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
            "%s: wait_event_interruptible returned -ERESTARTSYS", __FUNCTION__);
+=======
+           "%s: wait_event_interruptible returned -ERESTARTSYS", __func__);
+>>>>>>> d97af3b... add prima wlan driver
         break;
     }
     clear_bit(TX_POST_EVENT_MASK, &pSchedContext->txEventFlag);
@@ -923,7 +1131,11 @@ static int VosTXThread ( void * Arg )
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+               "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -948,7 +1160,11 @@ static int VosTXThread ( void * Arg )
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+               "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -963,7 +1179,10 @@ static int VosTXThread ( void * Arg )
         vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
         continue;
       }
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
       // Check the WDI queue
       if (!vos_is_mq_empty(&pSchedContext->wdiTxMq))
       {
@@ -976,7 +1195,11 @@ static int VosTXThread ( void * Arg )
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+               "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -986,7 +1209,11 @@ static int VosTXThread ( void * Arg )
         if(pWdiMsg == NULL || pWdiMsg->callback == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: WDI Msg or Callback is NULL", __FUNCTION__);
+=======
+               "%s: WDI Msg or Callback is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -998,6 +1225,7 @@ static int VosTXThread ( void * Arg )
 
         continue;
       }
+<<<<<<< HEAD
 #else
       // Check the SSC queue
       if (!vos_is_mq_empty(&pSchedContext->sscTxMq))
@@ -1026,6 +1254,8 @@ static int VosTXThread ( void * Arg )
       }
 
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
       /* Check for any Suspend Indication */
       if(test_bit(TX_SUSPEND_EVENT_MASK, &pSchedContext->txEventFlag))
       {
@@ -1047,11 +1277,18 @@ static int VosTXThread ( void * Arg )
   } // while TRUE
   // If we get here the TX thread must exit
   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
       "%s: TX Thread exiting!!!!", __FUNCTION__);
   complete_and_exit(&pSchedContext->TxShutdown, 0);
 } /* VosTxThread() */
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+      "%s: TX Thread exiting!!!!", __func__);
+  complete_and_exit(&pSchedContext->TxShutdown, 0);
+} /* VosTxThread() */
+
+>>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
   \brief VosRXThread() - The VOSS Main Rx thread
   The \a VosRxThread() is the VOSS Rx controller thread:
@@ -1072,14 +1309,32 @@ static int VosRXThread ( void * Arg )
   VOS_STATUS       vStatus       = VOS_STATUS_SUCCESS;
 
   set_user_nice(current, -1);
+<<<<<<< HEAD
+=======
+  
+#ifdef WLAN_FEATURE_11AC_HIGH_TP
+  set_wake_up_idle(true);
+#endif
+>>>>>>> d97af3b... add prima wlan driver
 
   if (Arg == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s Bad Args passed", __FUNCTION__);
      return 0;
   }
   daemonize("RX_Thread");
+=======
+         "%s Bad Args passed", __func__);
+     return 0;
+  }
+
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
+  daemonize("RX_Thread");
+#endif
+
+>>>>>>> d97af3b... add prima wlan driver
   /*
   ** Ack back to the context from which the main controller thread has been
   ** created.
@@ -1113,7 +1368,11 @@ static int VosRXThread ( void * Arg )
     if(retWaitStatus == -ERESTARTSYS)
     {
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
            "%s: wait_event_interruptible returned -ERESTARTSYS", __FUNCTION__);
+=======
+           "%s: wait_event_interruptible returned -ERESTARTSYS", __func__);
+>>>>>>> d97af3b... add prima wlan driver
         break;
     }
     clear_bit(RX_POST_EVENT_MASK, &pSchedContext->rxEventFlag);
@@ -1147,7 +1406,11 @@ static int VosRXThread ( void * Arg )
         if (pMsgWrapper == NULL)
         {
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                "%s: pMsgWrapper is NULL", __FUNCTION__);
+=======
+               "%s: pMsgWrapper is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
            VOS_ASSERT(0);
            break;
         }
@@ -1174,7 +1437,11 @@ static int VosRXThread ( void * Arg )
         if ((NULL == pMsgWrapper) || (NULL == pMsgWrapper->pVosMsg))
         {
           VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                     "%s: wdiRxMq message is NULL", __FUNCTION__);
+=======
+                    "%s: wdiRxMq message is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
           VOS_ASSERT(0);
           // we won't return this wrapper since it is corrupt
         }
@@ -1184,7 +1451,11 @@ static int VosRXThread ( void * Arg )
           if ((NULL == pWdiMsg) || (NULL == pWdiMsg->callback))
           {
             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                       "%s: WDI Msg or callback is NULL", __FUNCTION__);
+=======
+                      "%s: WDI Msg or callback is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
             VOS_ASSERT(0);
           }
           else
@@ -1208,7 +1479,11 @@ static int VosRXThread ( void * Arg )
         /* Rx Thread Suspended */
         complete(&pHddCtx->rx_sus_event_var);
 
+<<<<<<< HEAD
         init_completion(&pSchedContext->ResumeRxEvent);
+=======
+        INIT_COMPLETION(pSchedContext->ResumeRxEvent);
+>>>>>>> d97af3b... add prima wlan driver
         spin_unlock(&pSchedContext->RxThreadLock);
 
         /* Wait for Resume Indication */
@@ -1220,12 +1495,19 @@ static int VosRXThread ( void * Arg )
   } // while TRUE
   // If we get here the RX thread must exit
   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
       "%s: RX Thread exiting!!!!", __FUNCTION__);
   complete_and_exit(&pSchedContext->RxShutdown, 0);
 } /* VosRxThread() */
 #endif
 
 #endif
+=======
+      "%s: RX Thread exiting!!!!", __func__);
+  complete_and_exit(&pSchedContext->RxShutdown, 0);
+} /* VosRxThread() */
+
+>>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
   \brief vos_sched_close() - Close the vOSS Scheduler
   The \a vos_sched_closes() function closes the vOSS Scheduler
@@ -1245,11 +1527,19 @@ static int VosRXThread ( void * Arg )
 VOS_STATUS vos_sched_close ( v_PVOID_t pVosContext )
 {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
+<<<<<<< HEAD
         "%s: invoked", __FUNCTION__);
     if (gpVosSchedContext == NULL)
     {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
            "%s: gpVosSchedContext == NULL\n",__FUNCTION__);
+=======
+        "%s: invoked", __func__);
+    if (gpVosSchedContext == NULL)
+    {
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+           "%s: gpVosSchedContext == NULL\n",__func__);
+>>>>>>> d97af3b... add prima wlan driver
        return VOS_STATUS_E_FAILURE;
     }
 
@@ -1261,7 +1551,10 @@ VOS_STATUS vos_sched_close ( v_PVOID_t pVosContext )
     wait_for_completion_interruptible(&gpVosSchedContext->McShutdown);
     gpVosSchedContext->McThread = 0;
 
+<<<<<<< HEAD
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
     // shut down TX Thread
     set_bit(TX_SHUTDOWN_EVENT_MASK, &gpVosSchedContext->txEventFlag);
     set_bit(TX_POST_EVENT_MASK, &gpVosSchedContext->txEventFlag);
@@ -1270,7 +1563,10 @@ VOS_STATUS vos_sched_close ( v_PVOID_t pVosContext )
     wait_for_completion_interruptible(&gpVosSchedContext->TxShutdown);
     gpVosSchedContext->TxThread = 0;
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
     // shut down RX Thread
     set_bit(RX_SHUTDOWN_EVENT_MASK, &gpVosSchedContext->rxEventFlag);
     set_bit(RX_POST_EVENT_MASK, &gpVosSchedContext->rxEventFlag);
@@ -1278,6 +1574,7 @@ VOS_STATUS vos_sched_close ( v_PVOID_t pVosContext )
     //Wait for RX to exit
     wait_for_completion_interruptible(&gpVosSchedContext->RxShutdown);
     gpVosSchedContext->RxThread = 0;
+<<<<<<< HEAD
 #endif // FEATURE_WLAN_INTEGRATED_SOC
 #endif // !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
 
@@ -1289,6 +1586,13 @@ VOS_STATUS vos_sched_close ( v_PVOID_t pVosContext )
     vos_sched_flush_rx_mqs(gpVosSchedContext);
 #endif // FEATURE_WLAN_INTEGRATED_SOC
 #endif // !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+
+    //Clean up message queues of TX and MC thread
+    vos_sched_flush_mc_mqs(gpVosSchedContext);
+    vos_sched_flush_tx_mqs(gpVosSchedContext);
+    vos_sched_flush_rx_mqs(gpVosSchedContext);
+>>>>>>> d97af3b... add prima wlan driver
 
     //Deinit all the queues
     vos_sched_deinit_mqs(gpVosSchedContext);
@@ -1299,11 +1603,19 @@ VOS_STATUS vos_sched_close ( v_PVOID_t pVosContext )
 VOS_STATUS vos_watchdog_close ( v_PVOID_t pVosContext )
 {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
+<<<<<<< HEAD
         "%s: vos_watchdog closing now", __FUNCTION__);
     if (gpVosWatchdogContext == NULL)
     {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
            "%s: gpVosWatchdogContext is NULL\n",__FUNCTION__);
+=======
+        "%s: vos_watchdog closing now", __func__);
+    if (gpVosWatchdogContext == NULL)
+    {
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+           "%s: gpVosWatchdogContext is NULL\n",__func__);
+>>>>>>> d97af3b... add prima wlan driver
        return VOS_STATUS_E_FAILURE;
     }
     set_bit(WD_SHUTDOWN_EVENT_MASK, &gpVosWatchdogContext->wdEventFlag);
@@ -1316,6 +1628,7 @@ VOS_STATUS vos_watchdog_close ( v_PVOID_t pVosContext )
 
 VOS_STATUS vos_watchdog_chip_reset ( vos_chip_reset_reason_type  reason )
 {
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     v_CONTEXT_t pVosContext = NULL;
     hdd_context_t *pHddCtx = NULL;
@@ -1430,6 +1743,8 @@ VOS_STATUS vos_watchdog_chip_reset ( vos_chip_reset_reason_type  reason )
     set_bit(WD_POST_EVENT_MASK, &gpVosWatchdogContext->wdEventFlag);
     wake_up_interruptible(&gpVosWatchdogContext->wdWaitQueue);
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
     return VOS_STATUS_SUCCESS;
 } /* vos_watchdog_chip_reset() */
 
@@ -1449,7 +1764,10 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
 {
   VOS_STATUS vStatus = VOS_STATUS_SUCCESS;
   // Now intialize all the message queues
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the WDA MC Message queue",__func__);
   vStatus = vos_mq_init(&pSchedContext->wdaMcMq);
@@ -1460,6 +1778,7 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     VOS_ASSERT(0);
     return vStatus;
   }
+<<<<<<< HEAD
 #else
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the HAL MC Message queue",__func__);
@@ -1473,6 +1792,8 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
   }
 #endif
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the PE MC Message queue",__func__);
   vStatus = vos_mq_init(&pSchedContext->peMcMq);
@@ -1503,7 +1824,10 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     VOS_ASSERT(0);
     return vStatus;
   }
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the SYS MC Message queue",__func__);
   vStatus = vos_mq_init(&pSchedContext->sysMcMq);
@@ -1514,7 +1838,10 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     VOS_ASSERT(0);
     return vStatus;
   }
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the WDI MC Message queue",__func__);
 
@@ -1526,9 +1853,13 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     VOS_ASSERT(0);
     return vStatus;
   }
+<<<<<<< HEAD
 #endif
 
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the TL Tx Message queue",__func__);
   vStatus = vos_mq_init(&pSchedContext->tlTxMq);
@@ -1539,6 +1870,7 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     VOS_ASSERT(0);
     return vStatus;
   }
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the SSC Tx Message queue",__func__);
@@ -1551,6 +1883,8 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     return vStatus;
   }
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the WDI Tx Message queue",__func__);
   vStatus = vos_mq_init(&pSchedContext->wdiTxMq);
@@ -1574,7 +1908,10 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     return vStatus;
   }
 
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: Initializing the SYS Tx Message queue",__func__);
   vStatus = vos_mq_init(&pSchedContext->sysTxMq);
@@ -1594,7 +1931,10 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
     VOS_ASSERT(0);
     return vStatus;
   }
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
   return VOS_STATUS_SUCCESS;
 } /* vos_sched_init_mqs() */
 
@@ -1609,18 +1949,24 @@ VOS_STATUS vos_sched_init_mqs ( pVosSchedContext pSchedContext )
 void vos_sched_deinit_mqs ( pVosSchedContext pSchedContext )
 {
   // Now de-intialize all message queues
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   // MC HAL
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the HAL MC Message queue",__func__);
   vos_mq_deinit(&pSchedContext->halMcMq);
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
  // MC WDA
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the WDA MC Message queue",__func__);
   vos_mq_deinit(&pSchedContext->wdaMcMq);
+<<<<<<< HEAD
 #endif
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
   //MC PE
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the PE MC Message queue",__func__);
@@ -1633,23 +1979,34 @@ void vos_sched_deinit_mqs ( pVosSchedContext pSchedContext )
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the TL MC Message queue",__func__);
   vos_mq_deinit(&pSchedContext->tlMcMq);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
   //MC SYS
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the SYS MC Message queue",__func__);
   vos_mq_deinit(&pSchedContext->sysMcMq);
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
   // MC WDI
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the WDI MC Message queue",__func__);
   vos_mq_deinit(&pSchedContext->wdiMcMq);
+<<<<<<< HEAD
 #endif
 
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+
+>>>>>>> d97af3b... add prima wlan driver
   //Tx TL
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s De-Initializing the TL Tx Message queue",__func__);
   vos_mq_deinit(&pSchedContext->tlTxMq);
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   //Tx SSC
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -1657,6 +2014,8 @@ void vos_sched_deinit_mqs ( pVosSchedContext pSchedContext )
   vos_mq_deinit(&pSchedContext->sscTxMq);
 
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
   //Tx WDI
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: DeInitializing the WDI Tx Message queue",__func__);
@@ -1667,7 +2026,10 @@ void vos_sched_deinit_mqs ( pVosSchedContext pSchedContext )
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: DeInitializing the WDI Rx Message queue",__func__);
   vos_mq_deinit(&pSchedContext->wdiRxMq);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
   //Tx SYS
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -1679,7 +2041,10 @@ void vos_sched_deinit_mqs ( pVosSchedContext pSchedContext )
             "%s: DeInitializing the SYS Rx Message queue",__func__);
   vos_mq_deinit(&pSchedContext->sysRxMq);
 
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 } /* vos_sched_deinit_mqs() */
 
 /*-------------------------------------------------------------------------
@@ -1702,7 +2067,11 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
   if (NULL == pSchedContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: pSchedContext is NULL", __FUNCTION__);
+=======
+         "%s: pSchedContext is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
@@ -1710,7 +2079,11 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
   if (NULL == vosCtx)
   {
      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: vosCtx is NULL", __FUNCTION__);
+=======
+                "%s: vosCtx is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
@@ -1724,6 +2097,7 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
     sysMcFreeMsg(pSchedContext->pVContext, pMsgWrapper->pVosMsg);
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   /* Flush the HAL Mq */
   while( NULL != (pMsgWrapper = vos_mq_get(&pSchedContext->halMcMq) ))
@@ -1736,6 +2110,8 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
   /* Flush the WDA Mq */
   while( NULL != (pMsgWrapper = vos_mq_get(&pSchedContext->wdaMcMq) ))
   {
@@ -1743,7 +2119,11 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
     {
         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                    "%s: Freeing MC WDA MSG message type %d",
+<<<<<<< HEAD
                    __FUNCTION__, pMsgWrapper->pVosMsg->type );
+=======
+                   __func__, pMsgWrapper->pVosMsg->type );
+>>>>>>> d97af3b... add prima wlan driver
         if (pMsgWrapper->pVosMsg->bodyptr) {
             vos_mem_free((v_VOID_t*)pMsgWrapper->pVosMsg->bodyptr);
         }
@@ -1762,7 +2142,11 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
     {
         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                    "%s: Freeing MC WDI MSG message type %d",
+<<<<<<< HEAD
                    __FUNCTION__, pMsgWrapper->pVosMsg->type );
+=======
+                   __func__, pMsgWrapper->pVosMsg->type );
+>>>>>>> d97af3b... add prima wlan driver
         if (pMsgWrapper->pVosMsg->bodyptr) {
             vos_mem_free((v_VOID_t*)pMsgWrapper->pVosMsg->bodyptr);
         }
@@ -1774,8 +2158,11 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
 
+<<<<<<< HEAD
 #endif
 #if !defined(ANI_MANF_DIAG) || defined(FEATURE_WLAN_INTEGRATED_SOC)
+=======
+>>>>>>> d97af3b... add prima wlan driver
   /* Flush the PE Mq */
   while( NULL != (pMsgWrapper = vos_mq_get(&pSchedContext->peMcMq) ))
   {
@@ -1806,7 +2193,10 @@ void vos_sched_flush_mc_mqs ( pVosSchedContext pSchedContext )
     WLANTL_McFreeMsg(pSchedContext->pVContext, pMsgWrapper->pVosMsg);
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 } /* vos_sched_flush_mc_mqs() */
 
 /*-------------------------------------------------------------------------
@@ -1827,7 +2217,11 @@ void vos_sched_flush_tx_mqs ( pVosSchedContext pSchedContext )
   if (NULL == pSchedContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: pSchedContext is NULL", __FUNCTION__);
+=======
+         "%s: pSchedContext is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
@@ -1851,6 +2245,7 @@ void vos_sched_flush_tx_mqs ( pVosSchedContext pSchedContext )
     WLANTL_TxFreeMsg(pSchedContext->pVContext, pMsgWrapper->pVosMsg);
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   /* Flush the SSC Mq */
   while( NULL != (pMsgWrapper = vos_mq_get(&pSchedContext->sscTxMq) ))
@@ -1863,6 +2258,8 @@ void vos_sched_flush_tx_mqs ( pVosSchedContext pSchedContext )
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
 #else
+=======
+>>>>>>> d97af3b... add prima wlan driver
   /* Flush the WDI Mq */
   while( NULL != (pMsgWrapper = vos_mq_get(&pSchedContext->wdiTxMq) ))
   {
@@ -1873,9 +2270,13 @@ void vos_sched_flush_tx_mqs ( pVosSchedContext pSchedContext )
     sysTxFreeMsg(pSchedContext->pVContext, pMsgWrapper->pVosMsg);
     vos_core_return_msg(pSchedContext->pVContext, pMsgWrapper);
   }
+<<<<<<< HEAD
  #endif
 } /* vos_sched_flush_tx_mqs() */
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+} /* vos_sched_flush_tx_mqs() */
+>>>>>>> d97af3b... add prima wlan driver
 /*-------------------------------------------------------------------------
  This helper function flushes all the RX message queues
  ------------------------------------------------------------------------*/
@@ -1894,7 +2295,11 @@ void vos_sched_flush_rx_mqs ( pVosSchedContext pSchedContext )
   if (NULL == pSchedContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: pSchedContext is NULL", __FUNCTION__);
+=======
+         "%s: pSchedContext is NULL", __func__);
+>>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
@@ -1917,7 +2322,10 @@ void vos_sched_flush_rx_mqs ( pVosSchedContext pSchedContext )
   }
 
 }/* vos_sched_flush_rx_mqs() */
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 
 /*-------------------------------------------------------------------------
  This helper function helps determine if thread id is of TX thread
@@ -1929,12 +2337,19 @@ int vos_sched_is_tx_thread(int threadID)
    if (gpVosSchedContext == NULL)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
           "%s: gpVosSchedContext == NULL",__FUNCTION__);
+=======
+          "%s: gpVosSchedContext == NULL",__func__);
+>>>>>>> d97af3b... add prima wlan driver
       return 0;
    }
    return ((gpVosSchedContext->TxThread) && (threadID == gpVosSchedContext->TxThread->pid));
 }
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+=======
+>>>>>>> d97af3b... add prima wlan driver
 /*-------------------------------------------------------------------------
  This helper function helps determine if thread id is of RX thread
  ------------------------------------------------------------------------*/
@@ -1945,12 +2360,19 @@ int vos_sched_is_rx_thread(int threadID)
    if (gpVosSchedContext == NULL)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
           "%s: gpVosSchedContext == NULL",__FUNCTION__);
+=======
+          "%s: gpVosSchedContext == NULL",__func__);
+>>>>>>> d97af3b... add prima wlan driver
       return 0;
    }
    return ((gpVosSchedContext->RxThread) && (threadID == gpVosSchedContext->RxThread->pid));
 }
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
 /*-------------------------------------------------------------------------
  Helper function to get the scheduler context
  ------------------------------------------------------------------------*/
@@ -1960,7 +2382,11 @@ pVosSchedContext get_vos_sched_ctxt(void)
    if (gpVosSchedContext == NULL)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: gpVosSchedContext == NULL",__FUNCTION__);
+=======
+         "%s: gpVosSchedContext == NULL",__func__);
+>>>>>>> d97af3b... add prima wlan driver
    }
    return (gpVosSchedContext);
 }
@@ -1973,7 +2399,11 @@ pVosWatchdogContext get_vos_watchdog_ctxt(void)
    if (gpVosWatchdogContext == NULL)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: gpVosWatchdogContext == NULL",__FUNCTION__);
+=======
+         "%s: gpVosWatchdogContext == NULL",__func__);
+>>>>>>> d97af3b... add prima wlan driver
    }
    return (gpVosWatchdogContext);
 }
@@ -1997,11 +2427,19 @@ VOS_STATUS vos_watchdog_wlan_shutdown(void)
     hdd_context_t *pHddCtx = NULL;
 
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
         "%s: WLAN driver is shutting down ", __FUNCTION__);
     if (NULL == gpVosWatchdogContext)
     {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
            "%s: Watchdog not enabled. LOGP ignored.", __FUNCTION__);
+=======
+        "%s: WLAN driver is shutting down ", __func__);
+    if (NULL == gpVosWatchdogContext)
+    {
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+           "%s: Watchdog not enabled. LOGP ignored.", __func__);
+>>>>>>> d97af3b... add prima wlan driver
        return VOS_STATUS_E_FAILURE;
     }
 
@@ -2010,7 +2448,11 @@ VOS_STATUS vos_watchdog_wlan_shutdown(void)
     if (NULL == pHddCtx)
     {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
            "%s: Invalid HDD Context", __FUNCTION__);
+=======
+           "%s: Invalid HDD Context", __func__);
+>>>>>>> d97af3b... add prima wlan driver
        return VOS_STATUS_E_FAILURE;
     }
 
@@ -2022,7 +2464,11 @@ VOS_STATUS vos_watchdog_wlan_shutdown(void)
     {
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
             "%s: Shutdown already in Progress. Ignoring signaling Watchdog",
+<<<<<<< HEAD
                                                            __FUNCTION__);
+=======
+                                                           __func__);
+>>>>>>> d97af3b... add prima wlan driver
         /* Release the lock here */
         spin_unlock(&gpVosWatchdogContext->wdLock);
         return VOS_STATUS_E_FAILURE;
@@ -2033,7 +2479,11 @@ VOS_STATUS vos_watchdog_wlan_shutdown(void)
     {
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
             "%s: shutdown/re-init already in Progress. Ignoring signaling Watchdog",
+<<<<<<< HEAD
                                                            __FUNCTION__);
+=======
+                                                           __func__);
+>>>>>>> d97af3b... add prima wlan driver
         /* Release the lock here */
         spin_unlock(&gpVosWatchdogContext->wdLock);
         return VOS_STATUS_E_FAILURE;
@@ -2050,7 +2500,14 @@ VOS_STATUS vos_watchdog_wlan_shutdown(void)
     {
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Load/unload in Progress. Ignoring signaling Watchdog",
+<<<<<<< HEAD
                 __FUNCTION__);
+=======
+                __func__);
+        /* wcnss has crashed, and SSR has alredy been started by Kernel driver.
+         * So disable SSR from WLAN driver */
+        hdd_set_ssr_required( HDD_SSR_DISABLED );
+>>>>>>> d97af3b... add prima wlan driver
         return VOS_STATUS_E_FAILURE;
     }
     /* Update Riva Reset Statistics */
