@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,6 +60,9 @@
  */
 /* Standard include files */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 
 /* Application Specific include files */
@@ -70,8 +76,11 @@
 //#ifdef ANI_OS_TYPE_LINUX
 #include "halCommonApi.h"   // halCleanup
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #include "cfgApi.h"         // cfgCleanup
 #include "limApi.h"         // limCleanup
 #include "sirTypes.h"
@@ -95,9 +104,13 @@ extern tSirRetStatus halProcessStartEvent(tpAniSirGlobal pMac);
 tSirRetStatus macReset(tpAniSirGlobal pMac, tANI_U32 rc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 657b0e9... prima update
 tSirRetStatus macPreStart(tHalHandle hHal)
 {
    tSirRetStatus status = eSIR_SUCCESS;
@@ -108,12 +121,17 @@ tSirRetStatus macPreStart(tHalHandle hHal)
    for(i=0; i<MAX_DUMP_TABLE_ENTRY; i++)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       if(palAllocateMemory(pMac->hHdd, ((void *)&pMac->dumpTableEntry[i]), sizeof(tDumpModuleEntry))
           != eHAL_STATUS_SUCCESS)
 =======
       pMac->dumpTableEntry[i] = vos_mem_malloc(sizeof(tDumpModuleEntry));
       if ( NULL == pMac->dumpTableEntry[i] )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      if(palAllocateMemory(pMac->hHdd, ((void *)&pMac->dumpTableEntry[i]), sizeof(tDumpModuleEntry))
+          != eHAL_STATUS_SUCCESS)
+>>>>>>> 657b0e9... prima update
       {
          memAllocFailed = eANI_BOOLEAN_TRUE;
          break;
@@ -121,10 +139,14 @@ tSirRetStatus macPreStart(tHalHandle hHal)
       else
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          palZeroMemory(pMac->hHdd, pMac->dumpTableEntry[i], sizeof(tSirMbMsg));
 =======
          vos_mem_set(pMac->dumpTableEntry[i], sizeof(tSirMbMsg), 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         palZeroMemory(pMac->hHdd, pMac->dumpTableEntry[i], sizeof(tSirMbMsg));
+>>>>>>> 657b0e9... prima update
       }
    }
    if( memAllocFailed )
@@ -133,10 +155,14 @@ tSirRetStatus macPreStart(tHalHandle hHal)
       {
          i--;
 <<<<<<< HEAD
+<<<<<<< HEAD
          palFreeMemory(pMac, pMac->dumpTableEntry[i]);
 =======
          vos_mem_free(pMac->dumpTableEntry[i]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         palFreeMemory(pMac, pMac->dumpTableEntry[i]);
+>>>>>>> 657b0e9... prima update
       }
       sysLog(pMac, LOGE, FL("pMac->dumpTableEntry is NULL\n"));
       status = eSIR_FAILURE;
@@ -175,11 +201,15 @@ tSirRetStatus macStart(tHalHandle hHal, void* pHalMacStartParams)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (!HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd, ((void *)&pMac->pResetMsg), sizeof(tSirMbMsg))))
 =======
       pMac->pResetMsg = vos_mem_malloc(sizeof(tSirMbMsg));
       if ( NULL == pMac->pResetMsg )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      if (!HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd, ((void *)&pMac->pResetMsg), sizeof(tSirMbMsg))))
+>>>>>>> 657b0e9... prima update
       {
          sysLog(pMac, LOGE, FL("pMac->pResetMsg is NULL\n"));
          status = eSIR_FAILURE;
@@ -188,10 +218,14 @@ tSirRetStatus macStart(tHalHandle hHal, void* pHalMacStartParams)
       else
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          palZeroMemory(pMac->hHdd, pMac->pResetMsg, sizeof(tSirMbMsg));
 =======
          vos_mem_set(pMac->pResetMsg, sizeof(tSirMbMsg), 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         palZeroMemory(pMac->hHdd, pMac->pResetMsg, sizeof(tSirMbMsg));
+>>>>>>> 657b0e9... prima update
       }
 
       if (pMac->gDriverType != eDRIVER_TYPE_MFG)
@@ -206,6 +240,9 @@ tSirRetStatus macStart(tHalHandle hHal, void* pHalMacStartParams)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else /* FEATURE_WLAN_INTEGRATED_SOC */
 tSirRetStatus macStart(tHalHandle hHal, void* pHalMacStartParams)
 {
@@ -292,8 +329,11 @@ tSirRetStatus macStart(tHalHandle hHal, void* pHalMacStartParams)
     return status;
 }
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /** -------------------------------------------------------------
 \fn macStop
@@ -309,11 +349,17 @@ tSirRetStatus macStop(tHalHandle hHal, tHalStopType stopType)
     tANI_U8 i;
     tpAniSirGlobal pMac = (tpAniSirGlobal) hHal;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     halStop(hHal, stopType);
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+    halStop(hHal, stopType);
+#endif
+>>>>>>> 657b0e9... prima update
     peStop(pMac);
     cfgCleanup( pMac );
     // need to free memory if not called in reset context.
@@ -321,20 +367,28 @@ tSirRetStatus macStop(tHalHandle hHal, tHalStopType stopType)
     if(false == pMac->sys.abort)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pMac->pResetMsg);
 =======
         vos_mem_free(pMac->pResetMsg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory(pMac->hHdd, pMac->pResetMsg);
+>>>>>>> 657b0e9... prima update
         pMac->pResetMsg = NULL;
     }
     /* Free the DumpTableEntry */
     for(i=0; i<MAX_DUMP_TABLE_ENTRY; i++)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory(pMac, pMac->dumpTableEntry[i]);
 =======
         vos_mem_free(pMac->dumpTableEntry[i]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory(pMac, pMac->dumpTableEntry[i]);
+>>>>>>> 657b0e9... prima update
     }
 
     return eSIR_SUCCESS;
@@ -359,16 +413,21 @@ tSirRetStatus macOpen(tHalHandle *pHalHandle, tHddHandle hHdd, tMacOpenParameter
 
     /*
 <<<<<<< HEAD
+<<<<<<< HEAD
      * Make sure this adapter is not already opened. (Compare pAdaptor pointer in already
 =======
      * Make sure this adapter is not already opened. (Compare pAdapter pointer in already
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     * Make sure this adapter is not already opened. (Compare pAdaptor pointer in already
+>>>>>>> 657b0e9... prima update
      * allocated pMac structures.)
      * If it is opened just return pointer to previously allocated pMac pointer.
      * Or should this result in error?
      */
 
     /* Allocate pMac */
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (palAllocateMemory(hHdd, ((void **)&pMac), sizeof(tAniSirGlobal)) != eHAL_STATUS_SUCCESS)
         return eSIR_FAILURE;
@@ -383,11 +442,21 @@ tSirRetStatus macOpen(tHalHandle *pHalHandle, tHddHandle hHdd, tMacOpenParameter
     /* Initialize the pMac structure */
     vos_mem_set(pMac, sizeof(tAniSirGlobal), 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (palAllocateMemory(hHdd, ((void **)&pMac), sizeof(tAniSirGlobal)) != eHAL_STATUS_SUCCESS)
+        return eSIR_FAILURE;
+
+    /* Initialize the pMac structure */
+    palZeroMemory(hHdd, pMac, sizeof(tAniSirGlobal));
+>>>>>>> 657b0e9... prima update
 
     /** Store the Driver type in pMac Global.*/
     //pMac->gDriverType = pMacOpenParms->driverType;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef GEN6_ONWARDS
 #ifdef RTL8652
     {
@@ -408,8 +477,11 @@ tSirRetStatus macOpen(tHalHandle *pHalHandle, tHddHandle hHdd, tMacOpenParameter
     palZeroMemory(hHdd, pMac->hal.pHalDxe, sizeof(tAniHalDxe));
 #endif //GEN6_ONWARDS
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     /*
      * Set various global fields of pMac here
      * (Could be platform dependant as some variables in pMac are platform
@@ -424,16 +496,23 @@ tSirRetStatus macOpen(tHalHandle *pHalHandle, tHddHandle hHdd, tMacOpenParameter
         if( eSIR_SUCCESS != logInit(pMac))
            return eSIR_FAILURE;
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            
+>>>>>>> 657b0e9... prima update
         /* Call routine to initialize CFG data structures */
         if( eSIR_SUCCESS != cfgInit(pMac) )
             return eSIR_FAILURE;
 
         sysInitGlobals(pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
         // This decides whether HW needs to translate the 802.3 frames
@@ -450,6 +529,7 @@ tSirRetStatus macOpen(tHalHandle *pHalHandle, tHddHandle hHdd, tMacOpenParameter
 #if defined( VOSS_ENABLED )
         tx_voss_wrapper_init(pMac, hHdd);
 #endif
+<<<<<<< HEAD
     }
 
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
@@ -460,6 +540,14 @@ tSirRetStatus macOpen(tHalHandle *pHalHandle, tHddHandle hHdd, tMacOpenParameter
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    }
+
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+    if (eHAL_STATUS_SUCCESS != halOpen(pMac, pHalHandle, hHdd, pMacOpenParms))
+        return eSIR_FAILURE;
+#endif
+>>>>>>> 657b0e9... prima update
 
     return peOpen(pMac, pMacOpenParms);
 }
@@ -478,6 +566,9 @@ tSirRetStatus macClose(tHalHandle hHal)
     tpAniSirGlobal pMac = (tpAniSirGlobal) hHal;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef GEN6_ONWARDS
     if(pMac->hal.pHalDxe){
 #ifdef RTL8652
@@ -490,6 +581,7 @@ tSirRetStatus macClose(tHalHandle hHal)
     }
 #endif //GEN6_ONWARDS
 
+<<<<<<< HEAD
     peClose(pMac);
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     halClose(hHal);
@@ -497,6 +589,12 @@ tSirRetStatus macClose(tHalHandle hHal)
 =======
     peClose(pMac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    peClose(pMac);
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+    halClose(hHal);
+#endif
+>>>>>>> 657b0e9... prima update
 
     /* Call routine to free-up all CFG data structures */
     cfgDeInit(pMac);
@@ -505,10 +603,14 @@ tSirRetStatus macClose(tHalHandle hHal)
 
     // Finally, de-allocate the global MAC datastructure:
 <<<<<<< HEAD
+<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, pMac );
 =======
     vos_mem_free( pMac );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palFreeMemory( pMac->hHdd, pMac );
+>>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -525,15 +627,23 @@ tSirRetStatus macReset(tpAniSirGlobal pMac, tANI_U32 rc)
 {
     tSirRetStatus status = eSIR_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     if(eHAL_STATUS_SUCCESS != halReset((tHalHandle)pMac, rc))
           status = eSIR_FAILURE;
 #else
+<<<<<<< HEAD
     sysLog(pMac, LOGE, FL("*************No-op. Need to call WDA reset function \n"));
 #endif
 =======
     sysLog(pMac, LOGE, FL("*************No-op. Need to call WDA reset function \n"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    sysLog(pMac, LOGE, FL("*************No-op. Need to call WDA reset function \n"));
+#endif
+>>>>>>> 657b0e9... prima update
     return status;
 }
 

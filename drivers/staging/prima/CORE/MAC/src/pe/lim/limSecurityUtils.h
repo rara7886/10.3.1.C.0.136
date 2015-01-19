@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -58,6 +61,7 @@
 #include "sirMacProtDef.h" //for tSirMacAuthFrameBody
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define LIM_ENCR_AUTH_BODY_LEN  sizeof(tSirMacAuthFrameBody) + \
                                 SIR_MAC_WEP_IV_LENGTH + \
                                 SIR_MAC_WEP_ICV_LENGTH
@@ -70,12 +74,22 @@ tANI_U8        limIsAuthAlgoSupported(tpAniSirGlobal, tAniAuthType);
 #endif
 =======
 #define LIM_ENCR_AUTH_BODY_LEN  (sizeof(tSirMacAuthFrameBody) + \
+=======
+#define LIM_ENCR_AUTH_BODY_LEN  sizeof(tSirMacAuthFrameBody) + \
+>>>>>>> 657b0e9... prima update
                                 SIR_MAC_WEP_IV_LENGTH + \
-                                SIR_MAC_WEP_ICV_LENGTH)
+                                SIR_MAC_WEP_ICV_LENGTH
 struct tLimPreAuthNode;
 
+#ifdef WLAN_SOFTAP_FEATURE
 tANI_U8        limIsAuthAlgoSupported(tpAniSirGlobal, tAniAuthType, tpPESession);
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#else
+tANI_U8        limIsAuthAlgoSupported(tpAniSirGlobal, tAniAuthType);
+#endif
+>>>>>>> 657b0e9... prima update
 
 // MAC based authentication related functions
 void               limInitPreAuthList(tpAniSirGlobal);

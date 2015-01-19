@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -68,6 +71,9 @@
 #include "aniGlobal.h" //for tpAniSirGlobal
 #include "wlan_qct_wda.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "halMsgApi.h" //for HAL_STA_INVALID_IDX.
 #endif
@@ -75,9 +81,12 @@
 #include "halPhyApi.h"
 #include "halInternal.h"
 #endif
+<<<<<<< HEAD
 =======
 #include "halMsgApi.h" //for HAL_STA_INVALID_IDX.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #include "limUtils.h"
 #include "palApi.h"
 #include "csrInsideApi.h"
@@ -103,10 +112,14 @@
 #define CSR_DEF_IBSS_START_CHANNEL_24       1
 #define CSR_IBSS_JOIN_TIMEOUT_PERIOD        ( 1 *  PAL_TIMER_TO_SEC_UNIT )  // 1 second
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CSR_WAIT_FOR_KEY_TIMEOUT_PERIOD         ( 50 * PAL_TIMER_TO_SEC_UNIT )  // 50 seconds, for WPA, WPA2, CCKM
 =======
 #define CSR_WAIT_FOR_KEY_TIMEOUT_PERIOD         ( 5 * PAL_TIMER_TO_SEC_UNIT )  // 5 seconds, for WPA, WPA2, CCKM
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define CSR_WAIT_FOR_KEY_TIMEOUT_PERIOD         ( 50 * PAL_TIMER_TO_SEC_UNIT )  // 50 seconds, for WPA, WPA2, CCKM
+>>>>>>> 657b0e9... prima update
 #define CSR_WAIT_FOR_WPS_KEY_TIMEOUT_PERIOD         ( 120 * PAL_TIMER_TO_SEC_UNIT )  // 120 seconds, for WPS
 /*---------------------------------------------------------------------------
   OBIWAN recommends [8 10]% : pick 9% 
@@ -131,6 +144,7 @@
 #define MAX_CB_VALUE_IN_INI (2)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*-------------------------------------------------------------------------- 
   Static Type declarations
   ------------------------------------------------------------------------*/
@@ -148,6 +162,14 @@ static tANI_BOOLEAN bRoamScanOffloadStarted = VOS_FALSE;
 static tCsrRoamSession csrRoamRoamSession[CSR_ROAM_SESSION_MAX];
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*-------------------------------------------------------------------------- 
+  Static Type declarations
+  ------------------------------------------------------------------------*/
+static tChannelListWithPower csrRoamPowerTableFromEeprom[WNI_CFG_VALID_CHANNEL_LIST_LEN];
+static tChannelListWithPower csrRoamPowerTableFromEeprom40MHz[WNI_CFG_VALID_CHANNEL_LIST_LEN];
+static tCsrRoamSession       csrRoamRoamSession[CSR_ROAM_SESSION_MAX];
+>>>>>>> 657b0e9... prima update
 /*-------------------------------------------------------------------------- 
   Type declarations
   ------------------------------------------------------------------------*/
@@ -171,11 +193,14 @@ int diagAuthTypeFromCSRType(eCsrAuthType authType)
         break;
     case eCSR_AUTH_TYPE_RSN_PSK:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
     case eCSR_AUTH_TYPE_RSN_PSK_SHA256:
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         n = AUTH_WPA2_PSK;
         break;
 #ifdef FEATURE_WLAN_WAPI
@@ -276,6 +301,7 @@ eHalStatus csrSendMBStatsReqMsg( tpAniSirGlobal pMac, tANI_U32 statsMask, tANI_U
 */
 static void csrRoamRemoveStatListEntry(tpAniSirGlobal pMac, tListElem *pEntry);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile,tANI_U8 operationChn, eCsrBand *pBand );
 #else
@@ -284,6 +310,13 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, eCsrPh
 =======
 static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile,tANI_U8 operationChn, eCsrBand *pBand );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile,tANI_U8 operationChn, eCsrBand *pBand );
+#else
+static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, eCsrPhyMode phyModeIn, tANI_U8 operationChn, eCsrBand *pBand );
+#endif
+>>>>>>> 657b0e9... prima update
 static eHalStatus csrRoamGetQosInfoFromBss(tpAniSirGlobal pMac, tSirBssDescription *pBssDesc);
 tCsrStatsClientReqInfo * csrRoamInsertEntryIntoList( tpAniSirGlobal pMac,
                                                      tDblLinkList *pStaList,
@@ -322,6 +355,7 @@ static void csrRoamInitGlobals(tpAniSirGlobal pMac)
     if(pMac)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         pMac->roam.powerTableFromEeprom      = csrRoamPowerTableFromEeprom;
         pMac->roam.powerTableFromEeprom40MHz = csrRoamPowerTableFromEeprom40MHz;
         pMac->roam.roamSession               = csrRoamRoamSession;
@@ -329,6 +363,11 @@ static void csrRoamInitGlobals(tpAniSirGlobal pMac)
         vos_mem_zero(&csrRoamRoamSession, sizeof(csrRoamRoamSession));
         pMac->roam.roamSession = csrRoamRoamSession;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pMac->roam.powerTableFromEeprom      = csrRoamPowerTableFromEeprom;
+        pMac->roam.powerTableFromEeprom40MHz = csrRoamPowerTableFromEeprom40MHz;
+        pMac->roam.roamSession               = csrRoamRoamSession;
+>>>>>>> 657b0e9... prima update
     }
     return;
 }
@@ -338,12 +377,18 @@ static void csrRoamDeInitGlobals(tpAniSirGlobal pMac)
     if(pMac)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         pMac->roam.powerTableFromEeprom      = NULL;
         pMac->roam.powerTableFromEeprom40MHz = NULL;
         pMac->roam.roamSession               = NULL;
 =======
         pMac->roam.roamSession = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pMac->roam.powerTableFromEeprom      = NULL;
+        pMac->roam.powerTableFromEeprom40MHz = NULL;
+        pMac->roam.roamSession               = NULL;
+>>>>>>> 657b0e9... prima update
     }
     return;
 }
@@ -384,15 +429,20 @@ eHalStatus csrOpen(tpAniSirGlobal pMac)
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL("  fail to get NV_FIELD_IMAGE\n") );
 =======
             smsLog( pMac, LOGE, FL("  fail to get NV_FIELD_IMAGE") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL("  fail to get NV_FIELD_IMAGE\n") );
+>>>>>>> 657b0e9... prima update
             //hardcoded for now
             pMac->scan.countryCodeDefault[0] = 'U';
             pMac->scan.countryCodeDefault[1] = 'S';
             pMac->scan.countryCodeDefault[2] = 'I';
             //status = eHAL_STATUS_SUCCESS;
+<<<<<<< HEAD
 <<<<<<< HEAD
         }        
         smsLog( pMac, LOGE, FL(" country Code from nvRam %s\n"), pMac->scan.countryCodeDefault );
@@ -400,6 +450,10 @@ eHalStatus csrOpen(tpAniSirGlobal pMac)
         }
         smsLog( pMac, LOG1, FL(" country Code from nvRam %.2s"), pMac->scan.countryCodeDefault );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        }        
+        smsLog( pMac, LOGE, FL(" country Code from nvRam %s\n"), pMac->scan.countryCodeDefault );
+>>>>>>> 657b0e9... prima update
         csrGetRegulatoryDomainForCountry(pMac, pMac->scan.countryCodeDefault, &regId);
         WDA_SetRegDomain(pMac, regId);
         pMac->scan.domainIdDefault = regId;
@@ -413,9 +467,13 @@ eHalStatus csrOpen(tpAniSirGlobal pMac)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 eHalStatus csrSetRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode)
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -424,6 +482,7 @@ eHalStatus csrSetRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode)
     v_U8_t        cntryCodeLength;
     if(NULL == apCntryCode)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
        smsLog( pMac, LOGW, FL(" Invalid country Code Pointer\n") );
        return eHAL_STATUS_FAILURE;
@@ -439,37 +498,39 @@ eHalStatus csrSetRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode)
         smsLog( pMac, LOGE, FL("  fail to get regId for country Code %s\n"), apCntryCode );
 =======
        smsLog( pMac, LOGW, FL(" Invalid country Code Pointer") );
+=======
+       smsLog( pMac, LOGW, FL(" Invalid country Code Pointer\n") );
+>>>>>>> 657b0e9... prima update
        return eHAL_STATUS_FAILURE;
     }
-    smsLog( pMac, LOGW, FL(" country Code %.2s"), apCntryCode );
+    smsLog( pMac, LOGW, FL(" country Code %s\n"), apCntryCode );
     /* To get correct Regulatory domain from NV table 
      * 2 character Country code should be used
      * 3rd charater is optional for indoor/outdoor setting */
-    cntryCodeLength = WNI_CFG_COUNTRY_CODE_LEN;
-/*
     cntryCodeLength = strlen(apCntryCode);
-
-    if (cntryCodeLength > WNI_CFG_COUNTRY_CODE_LEN)
-    {
-       smsLog( pMac, LOGW, FL(" Invalid Country Code Length") );
-       return eHAL_STATUS_FAILURE;
-    }
-*/
     status = csrGetRegulatoryDomainForCountry(pMac, apCntryCode, &regId);
     if (status != eHAL_STATUS_SUCCESS)
     {
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("  fail to get regId for country Code %.2s"), apCntryCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("  fail to get regId for country Code %s\n"), apCntryCode );
+>>>>>>> 657b0e9... prima update
         return status;
     }
     status = WDA_SetRegDomain(hHal, regId);
     if (status != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("  fail to get regId for country Code %s\n"), apCntryCode );
 =======
         smsLog( pMac, LOGE, FL("  fail to get regId for country Code %.2s"), apCntryCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("  fail to get regId for country Code %s\n"), apCntryCode );
+>>>>>>> 657b0e9... prima update
         return status;
     }
     pMac->scan.domainIdDefault = regId;
@@ -514,6 +575,7 @@ eHalStatus csrSetChannels(tHalHandle hHal,  tCsrConfigParam *pParam  )
     return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 eHalStatus csrClose(tpAniSirGlobal pMac)
 {
@@ -526,6 +588,14 @@ eHalStatus csrClose(tpAniSirGlobal pMac)
     eHalStatus status = eHAL_STATUS_SUCCESS;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+eHalStatus csrClose(tpAniSirGlobal pMac)
+{
+    eHalStatus status = eHAL_STATUS_SUCCESS;
+    
+    csrStop(pMac);
+>>>>>>> 657b0e9... prima update
     csrRoamClose(pMac);
     csrScanClose(pMac);
     csrLLClose(&pMac->roam.statsClientReqList);
@@ -535,6 +605,7 @@ eHalStatus csrClose(tpAniSirGlobal pMac)
     csrRoamDeInitGlobals(pMac);
     return (status);
 } 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -577,6 +648,8 @@ eHalStatus csrUpdateChannelList(tCsrScanStruct *pScan)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 eHalStatus csrStart(tpAniSirGlobal pMac)
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -607,6 +680,7 @@ eHalStatus csrStart(tpAniSirGlobal pMac)
         if(!HAL_STATUS_SUCCESS(status)) 
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
            smsLog(pMac, LOGW, " csrStart: Couldn't Init HO control blk \n");
            break;
         }
@@ -623,6 +697,11 @@ eHalStatus csrStart(tpAniSirGlobal pMac)
         }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           smsLog(pMac, LOGW, " csrStart: Couldn't Init HO control blk \n");
+           break;
+        }
+>>>>>>> 657b0e9... prima update
     }while(0);
 #if defined(ANI_LOGDUMP)
     csrDumpInit(pMac);
@@ -654,6 +733,7 @@ eHalStatus csrStop(tpAniSirGlobal pMac)
     //Reset the domain back to the deault
     pMac->scan.domainIdCurrent = pMac->scan.domainIdDefault;
 <<<<<<< HEAD
+<<<<<<< HEAD
     csrResetCountryInformation(pMac, eANI_BOOLEAN_TRUE);
 
     for( i = 0; i < CSR_ROAM_SESSION_MAX; i++ )
@@ -666,6 +746,13 @@ eHalStatus csrStop(tpAniSirGlobal pMac)
     {
        csrRoamStateChange( pMac, eCSR_ROAMING_STATE_STOP, i );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    csrResetCountryInformation(pMac, eANI_BOOLEAN_TRUE);
+
+    for( i = 0; i < CSR_ROAM_SESSION_MAX; i++ )
+    {
+       csrRoamStateChange( pMac, eCSR_ROAMING_STATE_STOP ,i );
+>>>>>>> 657b0e9... prima update
        pMac->roam.curSubState[i] = eCSR_ROAM_SUBSTATE_NONE;
     }
 
@@ -682,6 +769,7 @@ eHalStatus csrReady(tpAniSirGlobal pMac)
     /* HDD issues the init scan */
     csrScanStartResultAgingTimer(pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     /* If the gScanAgingTime is set to '0' then scan results aging timeout 
          based  on timer feature is not enabled*/  
@@ -690,16 +778,22 @@ eHalStatus csrReady(tpAniSirGlobal pMac)
        csrScanStartResultCfgAgingTimer(pMac);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     //Store the AC weights in TL for later use
     WLANTL_GetACWeights(pMac->roam.gVosContext, pMac->roam.ucACWeights);
     status = csrInitChannelList( pMac );
     if ( ! HAL_STATUS_SUCCESS( status ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog( pMac, LOGE, "csrInitChannelList failed during csrReady with status=%d\n",
 =======
        smsLog( pMac, LOGE, "csrInitChannelList failed during csrReady with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog( pMac, LOGE, "csrInitChannelList failed during csrReady with status=%d\n",
+>>>>>>> 657b0e9... prima update
                status );
     }
     return (status);
@@ -746,6 +840,7 @@ eHalStatus csrRoamOpen(tpAniSirGlobal pMac)
         pMac->roam.WaitForKeyTimerInfo.pMac = pMac;
         pMac->roam.WaitForKeyTimerInfo.sessionId = CSR_SESSION_ID_INVALID;
 <<<<<<< HEAD
+<<<<<<< HEAD
         status = palTimerAlloc(pMac->hHdd, &pMac->roam.hTimerWaitForKey, csrRoamWaitForKeyTimeOutHandler, 
                                 &pMac->roam.WaitForKeyTimerInfo);
       if(!HAL_STATUS_SUCCESS(status))
@@ -760,18 +855,24 @@ eHalStatus csrRoamOpen(tpAniSirGlobal pMac)
 =======
         status = vos_timer_init(&pMac->roam.hTimerWaitForKey, VOS_TIMER_TYPE_SW,
                                 csrRoamWaitForKeyTimeOutHandler,
+=======
+        status = palTimerAlloc(pMac->hHdd, &pMac->roam.hTimerWaitForKey, csrRoamWaitForKeyTimeOutHandler, 
+>>>>>>> 657b0e9... prima update
                                 &pMac->roam.WaitForKeyTimerInfo);
-      if (!HAL_STATUS_SUCCESS(status))
+      if(!HAL_STATUS_SUCCESS(status))
       {
-        smsLog(pMac, LOGE, FL("cannot allocate memory for WaitForKey time out timer"));
+        smsLog(pMac, LOGE, FL("cannot allocate memory for WaitForKey time out timer\n"));
         break;
       }
-      status = vos_timer_init(&pMac->roam.tlStatsReqInfo.hTlStatsTimer,
-                              VOS_TIMER_TYPE_SW, csrRoamTlStatsTimerHandler, pMac);
-      if (!HAL_STATUS_SUCCESS(status))
+      status = palTimerAlloc(pMac->hHdd, &pMac->roam.tlStatsReqInfo.hTlStatsTimer, csrRoamTlStatsTimerHandler, pMac);
+      if(!HAL_STATUS_SUCCESS(status))
       {
+<<<<<<< HEAD
          smsLog(pMac, LOGE, FL("cannot allocate memory for summary Statistics timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, FL("cannot allocate memory for summary Statistics timer\n"));
+>>>>>>> 657b0e9... prima update
          return eHAL_STATUS_FAILURE;
       }
     }while (0);
@@ -786,16 +887,22 @@ eHalStatus csrRoamClose(tpAniSirGlobal pMac)
         csrRoamCloseSession(pMac, sessionId, TRUE, NULL, NULL);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     palTimerStop(pMac->hHdd, pMac->roam.hTimerWaitForKey);
     palTimerFree(pMac->hHdd, pMac->roam.hTimerWaitForKey);
     palTimerStop(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer);
     palTimerFree(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer);
+<<<<<<< HEAD
 =======
     vos_timer_stop(&pMac->roam.hTimerWaitForKey);
     vos_timer_destroy(&pMac->roam.hTimerWaitForKey);
     vos_timer_stop(&pMac->roam.tlStatsReqInfo.hTlStatsTimer);
     vos_timer_destroy(&pMac->roam.tlStatsReqInfo.hTlStatsTimer);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     return (eHAL_STATUS_SUCCESS);
 }
 
@@ -815,10 +922,14 @@ eHalStatus csrRoamGetConnectState(tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrC
 {
     eHalStatus status = eHAL_STATUS_INVALID_PARAMETER;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if( pState )
 =======
     if ( CSR_IS_SESSION_VALID(pMac, sessionId) && (NULL != pState) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if( pState )
+>>>>>>> 657b0e9... prima update
     {
         status = eHAL_STATUS_SUCCESS;
         *pState = pMac->roam.roamSession[sessionId].connectState;
@@ -902,6 +1013,7 @@ eHalStatus csrRoamGetConnectProfile(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
 {
     eHalStatus status = eHAL_STATUS_FAILURE;
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     if(csrIsConnStateConnected(pMac, sessionId))
 =======
@@ -909,6 +1021,10 @@ eHalStatus csrRoamGetConnectProfile(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
     if((csrIsConnStateConnected(pMac, sessionId)) ||
        (csrIsConnStateIbss(pMac, sessionId)))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    if(csrIsConnStateConnected(pMac, sessionId))
+>>>>>>> 657b0e9... prima update
     {
         if(pProfile)
         {
@@ -918,9 +1034,12 @@ eHalStatus csrRoamGetConnectProfile(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
     return (status);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 eHalStatus csrRoamFreeConnectProfile(tpAniSirGlobal pMac, tCsrRoamConnectedProfile *pProfile)
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -930,12 +1049,15 @@ eHalStatus csrRoamFreeConnectProfile(tpAniSirGlobal pMac, tCsrRoamConnectedProfi
         palFreeMemory(pMac->hHdd, pProfile->pBssDesc);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     if(pProfile->pAddIEAssoc)
     {
         palFreeMemory(pMac->hHdd, pProfile->pAddIEAssoc);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, pProfile, sizeof(tCsrRoamConnectedProfile));
     pProfile->AuthType = eCSR_AUTH_TYPE_UNKNOWN;
     return (status);
@@ -1018,6 +1140,7 @@ void csrAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEAN fStop
         {
         case eSmeCommandScan:
 <<<<<<< HEAD
+<<<<<<< HEAD
             // We need to inform the requester before droping the scan command
             smsLog( pMac, LOGW, "%s: Drop scan reason %d callback 0x%X\n", 
                 __FUNCTION__, pCommand->u.scanCmd.reason, (unsigned int)pCommand->u.scanCmd.callback);
@@ -1032,6 +1155,14 @@ void csrAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEAN fStop
             {
                 smsLog( pMac, LOGW, "%s callback scan requester", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            // We need to inform the requester before droping the scan command
+            smsLog( pMac, LOGW, "%s: Drop scan reason %d callback 0x%X\n", 
+                __FUNCTION__, pCommand->u.scanCmd.reason, (unsigned int)pCommand->u.scanCmd.callback);
+            if (NULL != pCommand->u.scanCmd.callback)
+            {
+                smsLog( pMac, LOGW, "%s callback scan requester\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
                 csrScanCallCallback(pMac, pCommand, eCSR_SCAN_ABORT);
             }
             csrReleaseCommandScan( pMac, pCommand );
@@ -1054,10 +1185,14 @@ void csrAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEAN fStop
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, " CSR abort standard command %d\n", pCommand->command );
 =======
             smsLog( pMac, LOGW, " CSR abort standard command %d", pCommand->command );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, " CSR abort standard command %d\n", pCommand->command );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommand( pMac, pCommand );
             break;
         }
@@ -1067,10 +1202,14 @@ void csrAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEAN fStop
 void csrRoamSubstateChange( tpAniSirGlobal pMac, eCsrRoamSubState NewSubstate, tANI_U32 sessionId)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG1, "   CSR RoamSubstate: [ %d <== %d ]\n", NewSubstate, pMac->roam.curSubState[sessionId]);
 =======
     smsLog( pMac, LOG1, "   CSR RoamSubstate: [ %d <== %d ]", NewSubstate, pMac->roam.curSubState[sessionId]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG1, "   CSR RoamSubstate: [ %d <== %d ]\n", NewSubstate, pMac->roam.curSubState[sessionId]);
+>>>>>>> 657b0e9... prima update
 
     if(pMac->roam.curSubState[sessionId] == NewSubstate)
     {
@@ -1084,11 +1223,15 @@ eCsrRoamState csrRoamStateChange( tpAniSirGlobal pMac, eCsrRoamState NewRoamStat
     eCsrRoamState PreviousState;
           
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG1, "CSR RoamState: [ %d <== %d ]\n", NewRoamState, pMac->roam.curState[sessionId]);
 =======
     smsLog( pMac, LOG1, "CSR RoamState[%hu]: [ %d <== %d ]", sessionId,
             NewRoamState, pMac->roam.curState[sessionId]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG1, "CSR RoamState: [ %d <== %d ]\n", NewRoamState, pMac->roam.curState[sessionId]);
+>>>>>>> 657b0e9... prima update
 
     PreviousState = pMac->roam.curState[sessionId];
     
@@ -1160,6 +1303,7 @@ static void initConfigParam(tpAniSirGlobal pMac)
     pMac->roam.configParam.nPassiveMaxChnTime = CSR_PASSIVE_MAX_CHANNEL_TIME;
     pMac->roam.configParam.nPassiveMinChnTime = CSR_PASSIVE_MIN_CHANNEL_TIME;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     pMac->roam.configParam.nActiveMaxChnTimeBtc = CSR_ACTIVE_MAX_CHANNEL_TIME_BTC;
     pMac->roam.configParam.nActiveMinChnTimeBtc = CSR_ACTIVE_MIN_CHANNEL_TIME_BTC;
@@ -1174,6 +1318,8 @@ static void initConfigParam(tpAniSirGlobal pMac)
     pMac->roam.configParam.nNumP2PChanCombinedConc = CSR_NUM_P2P_CHAN_COMBINED_CONC;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     pMac->roam.configParam.IsIdleScanEnabled = TRUE; //enable the idle scan by default
     pMac->roam.configParam.nTxPowerCap = CSR_MAX_TX_POWER;
     pMac->roam.configParam.statsReqPeriodicity = CSR_MIN_GLOBAL_STAT_QUERY_PERIOD;
@@ -1194,9 +1340,12 @@ static void initConfigParam(tpAniSirGlobal pMac)
     pMac->roam.configParam.neighborRoamConfig.neighborScanChanList.channelList[2] = 11;
     pMac->roam.configParam.neighborRoamConfig.nNeighborResultsRefreshPeriod = 20000; //20 seconds
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     pMac->roam.configParam.neighborRoamConfig.nEmptyScanRefreshPeriod = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 #ifdef WLAN_FEATURE_11AC
      pMac->roam.configParam.nVhtChannelWidth = WNI_CFG_VHT_CHANNEL_WIDTH_80MHZ + 1;
@@ -1206,10 +1355,13 @@ static void initConfigParam(tpAniSirGlobal pMac)
     pMac->roam.configParam.fScanTwice = eANI_BOOLEAN_FALSE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     //Remove this code once SLM_Sessionization is supported 
     //BMPS_WORKAROUND_NOT_NEEDED
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     pMac->roam.configParam.doBMPSWorkaround = 0;
 
 }
@@ -1218,6 +1370,7 @@ eCsrBand csrGetCurrentBand(tHalHandle hHal)
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     return pMac->roam.configParam.bandCapability;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -1353,6 +1506,8 @@ eHalStatus csrUpdateBgScanConfigIniChannelList(tpAniSirGlobal pMac,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand)
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -1360,6 +1515,7 @@ eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand)
     if (CSR_IS_PHY_MODE_A_ONLY(pMac) &&
             (eBand == eCSR_BAND_24))
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         /* DOT11 mode configured to 11a only and received 
            request to change the band to 2.4 GHz */
@@ -1371,6 +1527,12 @@ eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand)
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
             "failed to set band cfg80211 = %u, band = %u",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        /* DOT11 mode configured to 11a only and received 
+           request to change the band to 2.4 GHz */
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
+            "failed to set band cfg80211 = %u, band = %u\n",  
+>>>>>>> 657b0e9... prima update
             pMac->roam.configParam.uCfgDot11Mode, eBand);
         return eHAL_STATUS_INVALID_PARAMETER;
     }
@@ -1378,6 +1540,7 @@ eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand)
                 CSR_IS_PHY_MODE_G_ONLY(pMac)) &&
             (eBand == eCSR_BAND_5G))
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         /* DOT11 mode configured to 11b/11g only and received 
            request to change the band to 5 GHz */
@@ -1393,31 +1556,40 @@ eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand)
     csrScanGetSupportedChannels( pMac );
 =======
         /* DOT11 mode configured to 11b/11g only and received
+=======
+        /* DOT11 mode configured to 11b/11g only and received 
+>>>>>>> 657b0e9... prima update
            request to change the band to 5 GHz */
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
-            "failed to set band dot11mode = %u, band = %u",
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
+            "failed to set band dot11mode = %u, band = %u\n",  
             pMac->roam.configParam.uCfgDot11Mode, eBand);
         return eHAL_STATUS_INVALID_PARAMETER;
     }
-    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
-            "Band changed to %u (0 - ALL, 1 - 2.4 GHZ, 2 - 5GHZ)", eBand);
-    pMac->roam.configParam.eBand = eBand;
-    pMac->roam.configParam.bandCapability = eBand;
+    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
+            "Band changed to %u (0 - ALL, 1 - 2.4 GHZ, 2 - 5GHZ)\n", eBand);
+    pMac->roam.configParam.eBand = eBand; 
+    pMac->roam.configParam.bandCapability = eBand; 
     csrScanGetSupportedChannels( pMac );
+<<<<<<< HEAD
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
     csrUpdateBgScanConfigIniChannelList( pMac, eBand );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     status = csrInitGetChannels( pMac );
     if (eHAL_STATUS_SUCCESS == status)
         csrInitChannelList( hHal );
     return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /* The funcns csrConvertCBIniValueToPhyCBState and csrConvertPhyCBStateToIniValue have been
  * introduced to convert the ini value to the ENUM used in csr and MAC for CB state
  * Ideally we should have kept the ini value and enum value same and representing the same
@@ -1554,19 +1726,27 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         if (pParam->channelBondingMode24GHz > MAX_CB_VALUE_IN_INI)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, "Invalid CB value from ini in 2.4GHz band %d, CB DISABLED\n", pParam->channelBondingMode24GHz); 
 =======
             smsLog( pMac, LOGW, "Invalid CB value from ini in 2.4GHz band %d, CB DISABLED", pParam->channelBondingMode24GHz);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, "Invalid CB value from ini in 2.4GHz band %d, CB DISABLED\n", pParam->channelBondingMode24GHz); 
+>>>>>>> 657b0e9... prima update
         }
         pMac->roam.configParam.channelBondingMode24GHz = csrConvertCBIniValueToPhyCBState(pParam->channelBondingMode24GHz);
         if (pParam->channelBondingMode5GHz > MAX_CB_VALUE_IN_INI)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, "Invalid CB value from ini in 5GHz band %d, CB DISABLED\n", pParam->channelBondingMode5GHz); 
 =======
             smsLog( pMac, LOGW, "Invalid CB value from ini in 5GHz band %d, CB DISABLED", pParam->channelBondingMode5GHz);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, "Invalid CB value from ini in 5GHz band %d, CB DISABLED\n", pParam->channelBondingMode5GHz); 
+>>>>>>> 657b0e9... prima update
         }
         pMac->roam.configParam.channelBondingMode5GHz = csrConvertCBIniValueToPhyCBState(pParam->channelBondingMode5GHz);
         pMac->roam.configParam.RTSThreshold = pParam->RTSThreshold;
@@ -1581,6 +1761,7 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         pMac->roam.configParam.bandCapability = pParam->bandCapability;
         pMac->roam.configParam.cbChoice = pParam->cbChoice;
         pMac->roam.configParam.bgScanInterval = pParam->bgScanInterval;
+<<<<<<< HEAD
 <<<<<<< HEAD
         //if HDD passed down non zero values then only update,
         //otherwise keep using the defaults
@@ -1604,65 +1785,33 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         if(pParam->impsSleepTime)
 =======
         pMac->roam.configParam.disableAggWithBtc = pParam->disableAggWithBtc;
+=======
+>>>>>>> 657b0e9... prima update
         //if HDD passed down non zero values then only update,
         //otherwise keep using the defaults
-        if (pParam->nActiveMaxChnTime)
+        if(pParam->nActiveMaxChnTime)
         {
             pMac->roam.configParam.nActiveMaxChnTime = pParam->nActiveMaxChnTime;
         }
-        if (pParam->nActiveMinChnTime)
+        if(pParam->nActiveMinChnTime)
         {
             pMac->roam.configParam.nActiveMinChnTime = pParam->nActiveMinChnTime;
         }
-        if (pParam->nPassiveMaxChnTime)
+        if(pParam->nPassiveMaxChnTime)
         {
             pMac->roam.configParam.nPassiveMaxChnTime = pParam->nPassiveMaxChnTime;
         }
-        if (pParam->nPassiveMinChnTime)
+        if(pParam->nPassiveMinChnTime)
         {
             pMac->roam.configParam.nPassiveMinChnTime = pParam->nPassiveMinChnTime;
         }
-        if (pParam->nActiveMaxChnTimeBtc)
-        {
-            pMac->roam.configParam.nActiveMaxChnTimeBtc = pParam->nActiveMaxChnTimeBtc;
-        }
-        if (pParam->nActiveMinChnTimeBtc)
-        {
-            pMac->roam.configParam.nActiveMinChnTimeBtc = pParam->nActiveMinChnTimeBtc;
-        }
-#ifdef WLAN_AP_STA_CONCURRENCY
-        if (pParam->nActiveMaxChnTimeConc)
-        {
-            pMac->roam.configParam.nActiveMaxChnTimeConc = pParam->nActiveMaxChnTimeConc;
-        }
-        if (pParam->nActiveMinChnTimeConc)
-        {
-            pMac->roam.configParam.nActiveMinChnTimeConc = pParam->nActiveMinChnTimeConc;
-        }
-        if (pParam->nPassiveMaxChnTimeConc)
-        {
-            pMac->roam.configParam.nPassiveMaxChnTimeConc = pParam->nPassiveMaxChnTimeConc;
-        }
-        if (pParam->nPassiveMinChnTimeConc)
-        {
-            pMac->roam.configParam.nPassiveMinChnTimeConc = pParam->nPassiveMinChnTimeConc;
-        }
-        if (pParam->nRestTimeConc)
-        {
-            pMac->roam.configParam.nRestTimeConc = pParam->nRestTimeConc;
-        }
-        if (pParam->nNumStaChanCombinedConc)
-        {
-            pMac->roam.configParam.nNumStaChanCombinedConc = pParam->nNumStaChanCombinedConc;
-        }
-        if (pParam->nNumP2PChanCombinedConc)
-        {
-            pMac->roam.configParam.nNumP2PChanCombinedConc = pParam->nNumP2PChanCombinedConc;
-        }
-#endif
         //if upper layer wants to disable idle scan altogether set it to 0
+<<<<<<< HEAD
         if (pParam->impsSleepTime)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(pParam->impsSleepTime)
+>>>>>>> 657b0e9... prima update
         {
             //Change the unit from second to microsecond
             tANI_U32 impsSleepTime = pParam->impsSleepTime * PAL_TIMER_TO_SEC_UNIT;
@@ -1681,6 +1830,7 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         }
         pMac->roam.configParam.eBand = pParam->eBand;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         pMac->roam.configParam.uCfgDot11Mode = csrGetCfgDot11ModeFromCsrPhyMode(NULL, pMac->roam.configParam.phyMode, 
                                                     pMac->roam.configParam.ProprietaryRatesEnabled);
@@ -1692,12 +1842,23 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         //otherwise keep using the defaults
         if(pParam->nScanResultAgeCount)
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         pMac->roam.configParam.uCfgDot11Mode = csrGetCfgDot11ModeFromCsrPhyMode(NULL, pMac->roam.configParam.phyMode, 
                                                     pMac->roam.configParam.ProprietaryRatesEnabled);
+#else
+        pMac->roam.configParam.uCfgDot11Mode = csrGetCfgDot11ModeFromCsrPhyMode(pMac->roam.configParam.phyMode, 
+                                                    pMac->roam.configParam.ProprietaryRatesEnabled);
+#endif
         //if HDD passed down non zero values for age params, then only update,
         //otherwise keep using the defaults
+<<<<<<< HEAD
         if (pParam->nScanResultAgeCount)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(pParam->nScanResultAgeCount)
+>>>>>>> 657b0e9... prima update
         {
             pMac->roam.configParam.agingCount = pParam->nScanResultAgeCount;
         }
@@ -1749,6 +1910,7 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_VOWIFI_11R 
         palCopyMemory( pMac->hHdd, &pMac->roam.configParam.csr11rConfig, &pParam->csr11rConfig, sizeof(tCsr11rConfigParams) );
         smsLog( pMac, LOG1, "IsFTResourceReqSupp = %d\n", pMac->roam.configParam.csr11rConfig.IsFTResourceReqSupported); 
@@ -1757,10 +1919,16 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         palCopyMemory( pMac->hHdd, &pMac->roam.configParam.csr11rConfig, &pParam->csr11rConfig, sizeof(tCsr11rConfigParams) );
         smsLog( pMac, LOG1, "IsFTResourceReqSupp = %d", pMac->roam.configParam.csr11rConfig.IsFTResourceReqSupported);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_VOWIFI_11R 
+        palCopyMemory( pMac->hHdd, &pMac->roam.configParam.csr11rConfig, &pParam->csr11rConfig, sizeof(tCsr11rConfigParams) );
+        smsLog( pMac, LOG1, "IsFTResourceReqSupp = %d\n", pMac->roam.configParam.csr11rConfig.IsFTResourceReqSupported); 
+>>>>>>> 657b0e9... prima update
 #endif
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
         pMac->roam.configParam.isFastTransitionEnabled = pParam->isFastTransitionEnabled;
         pMac->roam.configParam.RoamRssiDiff = pParam->RoamRssiDiff;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 #ifdef FEATURE_WLAN_LFR 
@@ -1780,18 +1948,27 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
         pMac->roam.configParam.isRoamOffloadScanEnabled = pParam->isRoamOffloadScanEnabled;
         pMac->roam.configParam.bFastRoamInConIniFeatureEnabled = pParam->bFastRoamInConIniFeatureEnabled;
+=======
+>>>>>>> 657b0e9... prima update
 #endif
-#ifdef FEATURE_WLAN_LFR
+#ifdef FEATURE_WLAN_LFR 
         pMac->roam.configParam.isFastRoamIniFeatureEnabled = pParam->isFastRoamIniFeatureEnabled;
 #endif
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_CCX
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_CCX 
+>>>>>>> 657b0e9... prima update
         pMac->roam.configParam.isCcxIniFeatureEnabled = pParam->isCcxIniFeatureEnabled;
 #endif
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
         palCopyMemory( pMac->hHdd, &pMac->roam.configParam.neighborRoamConfig, &pParam->neighborRoamConfig, sizeof(tCsrNeighborRoamConfigParams) );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
         smsLog( pMac, LOG1, "nNeighborScanTimerPerioid = %d\n", pMac->roam.configParam.neighborRoamConfig.nNeighborScanTimerPeriod);
         smsLog( pMac, LOG1, "nNeighborReassocRssiThreshold = %d\n", pMac->roam.configParam.neighborRoamConfig.nNeighborReassocRssiThreshold);  
         smsLog( pMac, LOG1, "nNeighborLookupRssiThreshold = %d\n", pMac->roam.configParam.neighborRoamConfig.nNeighborLookupRssiThreshold);  
@@ -1799,6 +1976,7 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         smsLog( pMac, LOG1, "nNeighborScanMaxChanTime = %d\n", pMac->roam.configParam.neighborRoamConfig.nNeighborScanMaxChanTime);
         smsLog( pMac, LOG1, "nMaxNeighborRetries = %d\n", pMac->roam.configParam.neighborRoamConfig.nMaxNeighborRetries); 
         smsLog( pMac, LOG1, "nNeighborResultsRefreshPeriod = %d\n", pMac->roam.configParam.neighborRoamConfig.nNeighborResultsRefreshPeriod); 
+<<<<<<< HEAD
         {
            int i;
            smsLog( pMac, LOG1, FL("Num of Channels in CFG Channel List: %d\n"), pMac->roam.configParam.neighborRoamConfig.neighborScanChanList.numChannels); 
@@ -1815,15 +1993,24 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
            int i;
            smsLog( pMac, LOG1, FL("Num of Channels in CFG Channel List: %d"), pMac->roam.configParam.neighborRoamConfig.neighborScanChanList.numChannels);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        {
+           int i;
+           smsLog( pMac, LOG1, FL("Num of Channels in CFG Channel List: %d\n"), pMac->roam.configParam.neighborRoamConfig.neighborScanChanList.numChannels); 
+>>>>>>> 657b0e9... prima update
            for( i=0; i< pMac->roam.configParam.neighborRoamConfig.neighborScanChanList.numChannels; i++)
            {
               smsLog( pMac, LOG1, "%d ", pMac->roam.configParam.neighborRoamConfig.neighborScanChanList.channelList[i] );
            }
 <<<<<<< HEAD
+<<<<<<< HEAD
            smsLog( pMac, LOG1, "\n");
 =======
            smsLog( pMac, LOG1, "");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           smsLog( pMac, LOG1, "\n");
+>>>>>>> 657b0e9... prima update
         }
 #endif
         pMac->roam.configParam.addTSWhenACMIsOff = pParam->addTSWhenACMIsOff;
@@ -1831,9 +2018,12 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
         pMac->scan.fEnableBypass11d = pParam->fEnableBypass11d;
         pMac->scan.fEnableDFSChnlScan = pParam->fEnableDFSChnlScan;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         pMac->scan.scanResultCfgAgingTime = pParam->scanCfgAgingTime;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         pMac->roam.configParam.fScanTwice = pParam->fScanTwice;
         pMac->scan.fFirstScanOnly2GChnl = pParam->fFirstScanOnly2GChnl;
         /* This parameter is not available in cfg and not passed from upper layers. Instead it is initialized here
@@ -1843,14 +2033,18 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
          * single session
          */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         //Remove this code once SLM_Sessionization is supported 
         //BMPS_WORKAROUND_NOT_NEEDED
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         pMac->roam.configParam.doBMPSWorkaround = 0;
 
 #ifdef WLAN_FEATURE_11AC
         pMac->roam.configParam.nVhtChannelWidth = pParam->nVhtChannelWidth;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
         pMac->scan.fIgnore_chan165 = pParam->fIgnore_chan165;
@@ -1863,6 +2057,10 @@ eHalStatus csrChangeDefaultConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pPa
 
         pMac->roam.configParam.isAmsduSupportInAMPDU = pParam->isAmsduSupportInAMPDU;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+        pMac->scan.fIgnore_chan165 = pParam->fIgnore_chan165;
+>>>>>>> 657b0e9... prima update
     }
     
     return status;
@@ -1898,6 +2096,7 @@ eHalStatus csrGetConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pParam)
         pParam->nPassiveMaxChnTime = pMac->roam.configParam.nPassiveMaxChnTime;
         pParam->nPassiveMinChnTime = pMac->roam.configParam.nPassiveMinChnTime;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         pParam->nActiveMaxChnTimeBtc = pMac->roam.configParam.nActiveMaxChnTimeBtc;
         pParam->nActiveMinChnTimeBtc = pMac->roam.configParam.nActiveMinChnTimeBtc;
@@ -1912,6 +2111,8 @@ eHalStatus csrGetConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pParam)
         pParam->nNumP2PChanCombinedConc = pMac->roam.configParam.nNumP2PChanCombinedConc;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         //Change the unit from microsecond to second
         pParam->impsSleepTime = pMac->roam.configParam.impsSleepTime / PAL_TIMER_TO_SEC_UNIT;
         pParam->eBand = pMac->roam.configParam.eBand;
@@ -1937,6 +2138,7 @@ eHalStatus csrGetConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pParam)
         pParam->fEnableBypass11d = pMac->scan.fEnableBypass11d;
         pParam->fEnableDFSChnlScan = pMac->scan.fEnableDFSChnlScan;
 <<<<<<< HEAD
+<<<<<<< HEAD
         pParam->fIgnore_chan165= pMac->scan.fIgnore_chan165;
         pParam->fScanTwice = pMac->roam.configParam.fScanTwice;
         pParam->fFirstScanOnly2GChnl = pMac->scan.fFirstScanOnly2GChnl;
@@ -1947,12 +2149,18 @@ eHalStatus csrGetConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pParam)
         pParam->fAllowMCCGODiffBI = pMac->roam.configParam.fAllowMCCGODiffBI;
         pParam->scanCfgAgingTime = pMac->scan.scanResultCfgAgingTime;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pParam->fIgnore_chan165= pMac->scan.fIgnore_chan165;
+        pParam->fScanTwice = pMac->roam.configParam.fScanTwice;
+        pParam->fFirstScanOnly2GChnl = pMac->scan.fFirstScanOnly2GChnl;
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
         palCopyMemory( pMac->hHdd, &pParam->neighborRoamConfig, &pMac->roam.configParam.neighborRoamConfig, sizeof(tCsrNeighborRoamConfigParams) );
 #endif
 #ifdef WLAN_FEATURE_11AC
         pParam->nVhtChannelWidth = pMac->roam.configParam.nVhtChannelWidth;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -2001,6 +2209,10 @@ eHalStatus csrGetConfigParam(tpAniSirGlobal pMac, tCsrConfigParam *pParam)
         pParam->isAmsduSupportInAMPDU = pMac->roam.configParam.isAmsduSupportInAMPDU;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+>>>>>>> 657b0e9... prima update
         csrSetChannels(pMac, pParam);
 
         status = eHAL_STATUS_SUCCESS;
@@ -2110,10 +2322,14 @@ eHalStatus csrSetPhyMode(tHalHandle hHal, tANI_U32 phyMode, eCsrBand eBand, tANI
             {
                 //We will never be here
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGE, FL(" cannot recognize the phy mode 0x%08X\n"), phyMode );
 =======
                 smsLog( pMac, LOGE, FL(" cannot recognize the phy mode 0x%08X"), phyMode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGE, FL(" cannot recognize the phy mode 0x%08X\n"), phyMode );
+>>>>>>> 657b0e9... prima update
                 newPhyMode = eCSR_DOT11_MODE_AUTO;
             }
         }
@@ -2208,9 +2424,13 @@ void csrPruneChannelListForMode( tpAniSirGlobal pMac, tCsrChannel *pChannelList 
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 #define INFRA_AP_DEFAULT_CHANNEL 6
 eHalStatus csrIsValidChannel(tpAniSirGlobal pMac, tANI_U8 chnNum)
 {
@@ -2226,16 +2446,22 @@ eHalStatus csrIsValidChannel(tpAniSirGlobal pMac, tANI_U8 chnNum)
     return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 eHalStatus csrInitGetChannels(tpAniSirGlobal pMac)
 =======
 
 eHalStatus csrGet5GChannels(tpAniSirGlobal pMac)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+eHalStatus csrInitGetChannels(tpAniSirGlobal pMac)
+>>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
     tANI_U8 num20MHzChannelsFound = 0;
     VOS_STATUS vosStatus;
+<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U8 Index = 0;
     tANI_U8 num40MHzChannelsFound = 0;
@@ -2251,17 +2477,25 @@ eHalStatus csrGet5GChannels(tpAniSirGlobal pMac)
         smsLog( pMac, LOGE, FL("failed to get channels \n"));
 =======
     tANI_U8 num40MHzChannelsFound = 0;
+=======
+>>>>>>> 657b0e9... prima update
     tANI_U8 Index = 0;
-    tANI_U8 channelList = 0;
-
-    // Updating the defaultpower Table for changed Domain Id
-    vosStatus = vos_nv_getChannelListWithPower( pMac->scan.defaultPowerTable, &num20MHzChannelsFound,
-                                                pMac->scan.defaultPowerTable40MHz, &num40MHzChannelsFound);
-
+    tANI_U8 num40MHzChannelsFound = 0;
+    
+    
+    //TODO: this interface changed to include the 40MHz channel list
+    // this needs to be tied into the adapter structure somehow and referenced appropriately for CB operation
+    // Read the scan channel list (including the power limit) from EEPROM
+    vosStatus = vos_nv_getChannelListWithPower( pMac->scan.defaultPowerTable, &num20MHzChannelsFound, 
+                        pMac->scan.defaultPowerTable40MHz, &num40MHzChannelsFound);
     if ( (VOS_STATUS_SUCCESS != vosStatus) || (num20MHzChannelsFound == 0) )
     {
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("failed to get channels"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("failed to get channels \n"));
+>>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_FAILURE;
     }
     else
@@ -2270,6 +2504,7 @@ eHalStatus csrGet5GChannels(tpAniSirGlobal pMac)
         {
             num20MHzChannelsFound = WNI_CFG_VALID_CHANNEL_LIST_LEN;
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         pMac->scan.numChannelsDefault = num20MHzChannelsFound;
         // Move the channel list to the global data
@@ -2328,130 +2563,20 @@ static eHalStatus CsrInit11dInfo(tpAniSirGlobal pMac, tCsr11dinfo *ps11dinfo)
 
         // Move the only 5GHZ channel list to the global data,
         // As 2.4GHZ list coming from the AP for the changed domain
-        // structure -- this will be used as the scan list
-        for(channelList = 0; channelList < WNI_CFG_VALID_CHANNEL_LIST_LEN; channelList++)
-        {
-            // If Channel is 5GHz just break the for loop
-            if(!(pMac->scan.base20MHzChannels.channelList[ channelList ] > 0 && pMac->scan.base20MHzChannels.channelList[ channelList ] <= 14))
-                break;
-        }
-        // Update the 5G channels from nv.bin
-        for ( Index = 0; Index < num20MHzChannelsFound; Index++)
-        {
-            if(pMac->scan.defaultPowerTable[Index].chanId >= 36 && pMac->scan.defaultPowerTable[Index].chanId <= 165)
-            {
-                if (channelList < WNI_CFG_VALID_CHANNEL_LIST_LEN)
-                {
-                    pMac->scan.base20MHzChannels.channelList[ channelList ] = pMac->scan.defaultPowerTable[Index].chanId;
-                    channelList++;
-                }
-            }
-        }
-
-        pMac->scan.numChannelsDefault = (num20MHzChannelsFound > channelList) ? num20MHzChannelsFound : channelList;
-        pMac->scan.base20MHzChannels.numChannels = (num20MHzChannelsFound > channelList) ? num20MHzChannelsFound : channelList;
-        // Filling the remaining index as Zero Just for causion
-        for(Index = pMac->scan.base20MHzChannels.numChannels; Index < WNI_CFG_VALID_CHANNEL_LIST_LEN; Index++)
-            pMac->scan.base20MHzChannels.channelList[ Index ] = 0;
-    }
-    return status;
-}
-
-eHalStatus csrGet24GChannels(tpAniSirGlobal pMac)
-{
-    eHalStatus status = eHAL_STATUS_SUCCESS;
-    tANI_U8 num20MHzChannelsFound = 0;
-    VOS_STATUS vosStatus;
-    tANI_U8 Index = 0;
-    tANI_U8 numChan = 0;
-    tANI_U8 num40MHzChannelsFound = 0;
-    tANI_U8 channelList5GBackup[WNI_CFG_VALID_CHANNEL_LIST_LEN] = {0}, nuum5GchannelListBackup;
-    tANI_U8 channelList = 0;
-
-    // Read the scan channel list (including the power limit) from EEPROM
-    vosStatus = vos_nv_getChannelListWithPower( pMac->scan.defaultPowerTable, &num20MHzChannelsFound,
-                                                pMac->scan.defaultPowerTable40MHz, &num40MHzChannelsFound);
-
-    if ( (VOS_STATUS_SUCCESS != vosStatus) || (num20MHzChannelsFound == 0) )
-    {
-        smsLog( pMac, LOGE, FL("failed to get channels \n"));
-        status = eHAL_STATUS_FAILURE;
-    }
-    else
-    {
-        if ( num20MHzChannelsFound > WNI_CFG_VALID_CHANNEL_LIST_LEN )
-        {
-            num20MHzChannelsFound = WNI_CFG_VALID_CHANNEL_LIST_LEN;
-        }
-
-        // Move the 2.4GHZ channel list only to the global data,
-        // As 5GHz list been provided by AP as part of 11d IE
-        // structure -- this will be used as the scan list
-        for(channelList = 0, nuum5GchannelListBackup = 0; channelList < WNI_CFG_VALID_CHANNEL_LIST_LEN; channelList++)
-        {
-            if(pMac->scan.base20MHzChannels.channelList[ channelList ] >= 36 && pMac->scan.base20MHzChannels.channelList[ channelList ] <= 165)
-            {
-                // First taking the 5GHz channel list backup
-                channelList5GBackup[nuum5GchannelListBackup] = pMac->scan.base20MHzChannels.channelList[ channelList ];
-                nuum5GchannelListBackup++;
-            }
-        }
-        // Updating the 2.4GHz list
-        for ( Index = 0, numChan = 0; Index < num20MHzChannelsFound; Index++)
-        {
-            if(pMac->scan.defaultPowerTable[Index].chanId > 0 && pMac->scan.defaultPowerTable[Index].chanId <= 14)
-            {
-                pMac->scan.base20MHzChannels.channelList[ numChan ] = pMac->scan.defaultPowerTable[Index].chanId;
-                numChan++;
-            }
-        }
-        // Restoring the Backed up 5 GHZ channels
-        for(channelList = 0;channelList < nuum5GchannelListBackup; channelList++ )
-        {
-            if (numChan < WNI_CFG_VALID_CHANNEL_LIST_LEN)
-            {
-                pMac->scan.base20MHzChannels.channelList[ numChan ] = channelList5GBackup[channelList];
-                numChan++;
-            }
-        }
-
-        pMac->scan.numChannelsDefault = (num20MHzChannelsFound > numChan) ? num20MHzChannelsFound : numChan;
-        pMac->scan.base20MHzChannels.numChannels = (num20MHzChannelsFound > numChan) ? num20MHzChannelsFound : numChan;
-    }
-    return (status);
-}
-
-eHalStatus csrInitGetChannels(tpAniSirGlobal pMac)
-{
-    eHalStatus status = eHAL_STATUS_SUCCESS;
-    tANI_U8 num20MHzChannelsFound = 0;
-    VOS_STATUS vosStatus;
-    tANI_U8 Index = 0;
-    tANI_U8 num40MHzChannelsFound = 0;
-    
-    
-    //TODO: this interface changed to include the 40MHz channel list
-    // this needs to be tied into the adapter structure somehow and referenced appropriately for CB operation
-    // Read the scan channel list (including the power limit) from EEPROM
-    vosStatus = vos_nv_getChannelListWithPower( pMac->scan.defaultPowerTable, &num20MHzChannelsFound, 
-                        pMac->scan.defaultPowerTable40MHz, &num40MHzChannelsFound);
-    if ( (VOS_STATUS_SUCCESS != vosStatus) || (num20MHzChannelsFound == 0) )
-    {
-        smsLog( pMac, LOGE, FL("failed to get channels "));
-        status = eHAL_STATUS_FAILURE;
-    }
-    else
-    {
-        if ( num20MHzChannelsFound > WNI_CFG_VALID_CHANNEL_LIST_LEN )
-        {
-            num20MHzChannelsFound = WNI_CFG_VALID_CHANNEL_LIST_LEN;
-        }
+=======
         pMac->scan.numChannelsDefault = num20MHzChannelsFound;
         // Move the channel list to the global data
+>>>>>>> 657b0e9... prima update
         // structure -- this will be used as the scan list
         for ( Index = 0; Index < num20MHzChannelsFound; Index++)
         {
+#ifdef FEATURE_WLAN_INTEGRATED_SOC /* Need to fix this while dealing with NV item */
             pMac->scan.base20MHzChannels.channelList[ Index ] = pMac->scan.defaultPowerTable[ Index ].chanId;
+#else
+           pMac->scan.base20MHzChannels.channelList[ Index ] = Index + 1;
+           pMac->scan.defaultPowerTable[Index].chanId = Index + 1;
+           pMac->scan.defaultPowerTable[Index].pwr = 25;
+#endif
         }
         pMac->scan.base20MHzChannels.numChannels = num20MHzChannelsFound;
         if(num40MHzChannelsFound > WNI_CFG_VALID_CHANNEL_LIST_LEN)
@@ -2473,10 +2598,8 @@ eHalStatus csrInitChannelList( tHalHandle hHal )
     eHalStatus status = eHAL_STATUS_SUCCESS;
     csrPruneChannelListForMode(pMac, &pMac->scan.baseChannels);
     csrPruneChannelListForMode(pMac, &pMac->scan.base20MHzChannels);
-    csrSaveChannelPowerForBand(pMac, eANI_BOOLEAN_FALSE);
-    csrSaveChannelPowerForBand(pMac, eANI_BOOLEAN_TRUE);
     // Apply the base channel list, power info, and set the Country code...
-    csrApplyChannelPowerCountryInfo( pMac, &pMac->scan.base20MHzChannels, pMac->scan.countryCodeCurrent, eANI_BOOLEAN_TRUE );
+    csrApplyChannelPowerCountryInfo( pMac, &pMac->scan.base20MHzChannels, pMac->scan.countryCodeCurrent );
  
     return (status);
 }
@@ -2562,10 +2685,14 @@ static eHalStatus CsrInit11dInfo(tpAniSirGlobal pMac, tCsr11dinfo *ps11dinfo)
     {
         // Apply the base channel list, power info, and set the Country code...
 <<<<<<< HEAD
+<<<<<<< HEAD
         csrApplyChannelPowerCountryInfo( pMac, &pMac->scan.base20MHzChannels, pMac->scan.countryCodeCurrent );
 =======
         csrApplyChannelPowerCountryInfo( pMac, &pMac->scan.base20MHzChannels, pMac->scan.countryCodeCurrent, eANI_BOOLEAN_TRUE );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        csrApplyChannelPowerCountryInfo( pMac, &pMac->scan.base20MHzChannels, pMac->scan.countryCodeCurrent );
+>>>>>>> 657b0e9... prima update
     }
 
   }
@@ -2636,6 +2763,7 @@ void csrRoamRemoveDuplicateCommand(tpAniSirGlobal pMac, tANI_U32 sessionId, tSme
             (pCommand && ( pCommand->sessionId == pDupCommand->sessionId ) &&
                 ((pCommand->command == pDupCommand->command) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 /* This peermac check is requried for Softap/GO scenarios
                  * For STA scenario below OR check will suffice as pCommand will 
@@ -2643,6 +2771,8 @@ void csrRoamRemoveDuplicateCommand(tpAniSirGlobal pMac, tANI_U32 sessionId, tSme
                  */
                 (vos_mem_compare(pDupCommand->u.roamCmd.peerMac, pCommand->u.roamCmd.peerMac, sizeof(v_MACADDR_t))) &&
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                  (pCommand->u.roamCmd.roamReason == pDupCommand->u.roamCmd.roamReason ||
                     eCsrForcedDisassoc == pCommand->u.roamCmd.roamReason ||
                     eCsrHddIssued == pCommand->u.roamCmd.roamReason))) 
@@ -2656,10 +2786,14 @@ void csrRoamRemoveDuplicateCommand(tpAniSirGlobal pMac, tANI_U32 sessionId, tSme
            )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("   roamReason = %d\n"), pDupCommand->u.roamCmd.roamReason);
 =======
             smsLog(pMac, LOGW, FL("   roamReason = %d"), pDupCommand->u.roamCmd.roamReason);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("   roamReason = %d\n"), pDupCommand->u.roamCmd.roamReason);
+>>>>>>> 657b0e9... prima update
             // Remove the 'stale' roam command from the pending list...
             if(csrLLRemoveEntry( &pMac->sme.smeCmdPendingList, pEntry, LL_ACCESS_NOLOCK ))
             {
@@ -2695,20 +2829,28 @@ eHalStatus csrRoamCallCallback(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog(pMac, LOGE, "Session ID:%d is not valid\n", sessionId);
 =======
        smsLog(pMac, LOGE, "Session ID:%d is not valid", sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGE, "Session ID:%d is not valid\n", sessionId);
+>>>>>>> 657b0e9... prima update
        VOS_ASSERT(0);
        return eHAL_STATUS_FAILURE;
     }
     if(eCSR_ROAM_ASSOCIATION_COMPLETION == u1 && pRoamInfo)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, " Assoc complete result = %d statusCode = %d reasonCode = %d\n", u2, pRoamInfo->statusCode, pRoamInfo->reasonCode);
 =======
         smsLog(pMac, LOGW, " Assoc complete result = %d statusCode = %d reasonCode = %d", u2, pRoamInfo->statusCode, pRoamInfo->reasonCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, " Assoc complete result = %d statusCode = %d reasonCode = %d\n", u2, pRoamInfo->statusCode, pRoamInfo->reasonCode);
+>>>>>>> 657b0e9... prima update
     }
     if ((u1 == eCSR_ROAM_FT_REASSOC_FAILED) && (pSession->bRefAssocStartCnt)) {
         /*
@@ -2728,10 +2870,14 @@ eHalStatus csrRoamCallCallback(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
         (eANI_BOOLEAN_FALSE == pSession->sessionActive) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG1, "Session ID is not valid\n");
 =======
         smsLog(pMac, LOG1, "Session ID is not valid");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG1, "Session ID is not valid\n");
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -2743,16 +2889,22 @@ eHalStatus csrRoamCallCallback(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
         /* avoid holding the global lock when making the roaming callback , original change came 
         from a raised CR (CR304874).  Since this callback is in HDD a potential deadlock 
         is possible on other OS ports where the callback may need to take locks to protect 
         HDD state 
+<<<<<<< HEAD
 =======
         /* avoid holding the global lock when making the roaming callback, original change came
         from a raised CR (CR304874).  Since this callback is in HDD a potential deadlock
         is possible on other OS ports where the callback may need to take locks to protect
         HDD state
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          UPDATE : revert this change but keep the comments here. Need to revisit as there are callbacks
          that may actually depend on the lock being held */
         // TODO: revisit: sme_ReleaseGlobalLock( &pMac->sme );
@@ -2834,10 +2986,14 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
     if ( csrIsConnStateConnectedInfra( pMac, sessionId ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" restore AC weights (%d-%d-%d-%d)\n"), pMac->roam.ucACWeights[0], pMac->roam.ucACWeights[1],
 =======
         smsLog(pMac, LOG1, FL(" restore AC weights (%d-%d-%d-%d)"), pMac->roam.ucACWeights[0], pMac->roam.ucACWeights[1],
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL(" restore AC weights (%d-%d-%d-%d)\n"), pMac->roam.ucACWeights[0], pMac->roam.ucACWeights[1],
+>>>>>>> 657b0e9... prima update
             pMac->roam.ucACWeights[2], pMac->roam.ucACWeights[3]);
         WLANTL_SetACWeights(pMac->roam.gVosContext, pMac->roam.ucACWeights);
     }
@@ -2850,11 +3006,15 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
     {
         reasonCode = eSIR_MAC_DISASSOC_DUE_TO_FTHANDOFF_REASON;
 <<<<<<< HEAD
+<<<<<<< HEAD
     } else 
 =======
     } 
     else 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    } else 
+>>>>>>> 657b0e9... prima update
     {
         reasonCode = eSIR_MAC_UNSPEC_FAILURE_REASON;
     }    
@@ -2865,11 +3025,15 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
         tpCsrNeighborRoamControlInfo pNeighborRoamInfo = &pMac->roam.neighborRoamInfo;
         palCopyMemory(pMac->hHdd, &bssId, pNeighborRoamInfo->csrNeighborRoamProfile.BSSIDs.bssid, sizeof(tSirMacAddr));
 <<<<<<< HEAD
+<<<<<<< HEAD
     } else 
 =======
     } 
     else 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    } else 
+>>>>>>> 657b0e9... prima update
 #endif
     if(pSession->pConnectBssDesc)
     {
@@ -2877,6 +3041,7 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
     }
     
     
+<<<<<<< HEAD
 <<<<<<< HEAD
     smsLog( pMac, LOGE, "CSR Attempting to Disassociate Bssid= %02x-%02x-%02x-%02x-%02x-%02x subState = %d\n", 
                   bssId[ 0 ], bssId[ 1 ], bssId[ 2 ],
@@ -2887,6 +3052,11 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
             bssId[ 4 ], bssId[ 5 ], NewSubstate, reasonCode);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOGE, "CSR Attempting to Disassociate Bssid= %02x-%02x-%02x-%02x-%02x-%02x subState = %d\n", 
+                  bssId[ 0 ], bssId[ 1 ], bssId[ 2 ],
+                  bssId[ 3 ], bssId[ 4 ], bssId[ 5 ], NewSubstate );    
+>>>>>>> 657b0e9... prima update
     csrRoamSubstateChange( pMac, NewSubstate, sessionId);
 
     status = csrSendMBDisassocReqMsg( pMac, sessionId, bssId, reasonCode );    
@@ -2899,6 +3069,7 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
         if(eCSR_ROAM_SUBSTATE_DISASSOC_HANDOFF != NewSubstate)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             //Tush-QoS: notify QoS module that disassoc happening
             sme_QosCsrEventInd(pMac, (v_U8_t)sessionId, SME_QOS_CSR_DISCONNECT_REQ, NULL);
         }
@@ -2909,18 +3080,20 @@ eHalStatus csrRoamIssueDisassociate( tpAniSirGlobal pMac, tANI_U32 sessionId,
 #ifdef WLAN_SOFTAP_FEATURE
 =======
             //notify QoS module that disassoc happening
+=======
+            //Tush-QoS: notify QoS module that disassoc happening
+>>>>>>> 657b0e9... prima update
             sme_QosCsrEventInd(pMac, (v_U8_t)sessionId, SME_QOS_CSR_DISCONNECT_REQ, NULL);
         }
 #endif
-    }
-    else
-    {
-        smsLog(pMac, LOGW, FL("csrSendMBDisassocReqMsg failed with status %d"), status);
-    }
-
+     }
     return (status);
 }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
     \fn csrRoamIssueDisassociateStaCmd
@@ -2956,10 +3129,14 @@ eHalStatus csrRoamIssueDisassociateStaCmd( tpAniSirGlobal pMac,
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandRoam( pMac, pCommand );
         }
     }while(0);
@@ -3002,10 +3179,14 @@ eHalStatus csrRoamIssueDeauthStaCmd( tpAniSirGlobal pMac,
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandRoam( pMac, pCommand );
         }
     }while(0);
@@ -3022,10 +3203,14 @@ csrRoamIssueTkipCounterMeasures( tpAniSirGlobal pMac, tANI_U32 sessionId,
     if (!pSession)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, "csrRoamIssueTkipCounterMeasures:CSR Session not found\n");
 =======
         smsLog( pMac, LOGE, "csrRoamIssueTkipCounterMeasures:CSR Session not found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, "csrRoamIssueTkipCounterMeasures:CSR Session not found\n");
+>>>>>>> 657b0e9... prima update
         return (status);
     }
     if (pSession->pConnectBssDesc)
@@ -3035,6 +3220,7 @@ csrRoamIssueTkipCounterMeasures( tpAniSirGlobal pMac, tANI_U32 sessionId,
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, "csrRoamIssueTkipCounterMeasures:Connected BSS Description in CSR Session not found\n");
         return (status);
     }
@@ -3043,12 +3229,19 @@ csrRoamIssueTkipCounterMeasures( tpAniSirGlobal pMac, tANI_U32 sessionId,
                   bssId[ 3 ], bssId[ 4 ], bssId[ 5 ] , bEnable);
 =======
         smsLog( pMac, LOGE, "csrRoamIssueTkipCounterMeasures:Connected BSS Description in CSR Session not found");
+=======
+        smsLog( pMac, LOGE, "csrRoamIssueTkipCounterMeasures:Connected BSS Description in CSR Session not found\n");
+>>>>>>> 657b0e9... prima update
         return (status);
     }
-    smsLog( pMac, LOG2, "CSR issuing tkip counter measures for Bssid = %02x-%02x-%02x-%02x-%02x-%02x, Enable = %d",
+    smsLog( pMac, LOG2, "CSR issuing tkip counter measures for Bssid = %02x-%02x-%02x-%02x-%02x-%02x, Enable = %d\n", 
                   bssId[ 0 ], bssId[ 1 ], bssId[ 2 ],
+<<<<<<< HEAD
                   bssId[ 3 ], bssId[ 4 ], bssId[ 5 ], bEnable);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  bssId[ 3 ], bssId[ 4 ], bssId[ 5 ] , bEnable);
+>>>>>>> 657b0e9... prima update
     status = csrSendMBTkipCounterMeasuresReqMsg( pMac, sessionId, bEnable, bssId );
     return (status);
 }
@@ -3063,10 +3256,14 @@ csrRoamGetAssociatedStas( tpAniSirGlobal pMac, tANI_U32 sessionId,
     if (!pSession)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, "csrRoamGetAssociatedStas:CSR Session not found\n");
 =======
         smsLog( pMac, LOGE, "csrRoamGetAssociatedStas:CSR Session not found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, "csrRoamGetAssociatedStas:CSR Session not found\n");
+>>>>>>> 657b0e9... prima update
         return (status);
     }
     if(pSession->pConnectBssDesc)
@@ -3075,6 +3272,7 @@ csrRoamGetAssociatedStas( tpAniSirGlobal pMac, tANI_U32 sessionId,
     }
     else
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog( pMac, LOGE, "csrRoamGetAssociatedStas:Connected BSS Description in CSR Session not found\n");
         return (status);
@@ -3086,6 +3284,12 @@ csrRoamGetAssociatedStas( tpAniSirGlobal pMac, tANI_U32 sessionId,
     }
     smsLog( pMac, LOG2, "CSR getting associated stations for Bssid = %02x-%02x-%02x-%02x-%02x-%02x",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, "csrRoamGetAssociatedStas:Connected BSS Description in CSR Session not found\n");
+        return (status);
+    }
+    smsLog( pMac, LOG2, "CSR getting associated stations for Bssid = %02x-%02x-%02x-%02x-%02x-%02x\n",
+>>>>>>> 657b0e9... prima update
                   bssId[ 0 ], bssId[ 1 ], bssId[ 2 ],
                   bssId[ 3 ], bssId[ 4 ], bssId[ 5 ] );
     status = csrSendMBGetAssociatedStasReqMsg( pMac, sessionId, modId, bssId, pUsrContext, pfnSapEventCallback, pAssocStasBuf );
@@ -3102,10 +3306,14 @@ csrRoamGetWpsSessionOverlap( tpAniSirGlobal pMac, tANI_U32 sessionId,
     if (!pSession)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, "csrRoamGetWpsSessionOverlap:CSR Session not found\n");
 =======
         smsLog( pMac, LOGE, "csrRoamGetWpsSessionOverlap:CSR Session not found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, "csrRoamGetWpsSessionOverlap:CSR Session not found\n");
+>>>>>>> 657b0e9... prima update
         return (status);
     }
     if(pSession->pConnectBssDesc)
@@ -3114,6 +3322,7 @@ csrRoamGetWpsSessionOverlap( tpAniSirGlobal pMac, tANI_U32 sessionId,
     }
     else
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog( pMac, LOGE, "csrRoamGetWpsSessionOverlap:Connected BSS Description in CSR Session not found\n");
         return (status);
@@ -3125,6 +3334,12 @@ csrRoamGetWpsSessionOverlap( tpAniSirGlobal pMac, tANI_U32 sessionId,
     }
     smsLog( pMac, LOG2, "CSR getting WPS Session Overlap for Bssid = %02x-%02x-%02x-%02x-%02x-%02x",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, "csrRoamGetWpsSessionOverlap:Connected BSS Description in CSR Session not found\n");
+        return (status);
+    }
+    smsLog( pMac, LOG2, "CSR getting WPS Session Overlap for Bssid = %02x-%02x-%02x-%02x-%02x-%02x\n",
+>>>>>>> 657b0e9... prima update
                   bssId[ 0 ], bssId[ 1 ], bssId[ 2 ],
                   bssId[ 3 ], bssId[ 4 ], bssId[ 5 ] );
      
@@ -3133,9 +3348,13 @@ csrRoamGetWpsSessionOverlap( tpAniSirGlobal pMac, tANI_U32 sessionId,
     return (status);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 eHalStatus csrRoamIssueDeauth( tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrRoamSubState NewSubstate )
 {   
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -3153,14 +3372,19 @@ eHalStatus csrRoamIssueDeauth( tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrRoam
         palCopyMemory(pMac->hHdd, &bssId, pSession->pConnectBssDesc->bssId, sizeof(tCsrBssid));
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG2, "CSR Attempting to Deauth Bssid= %02x-%02x-%02x-%02x-%02x-%02x\n", 
 =======
     smsLog( pMac, LOG2, "CSR Attempting to Deauth Bssid= %02x-%02x-%02x-%02x-%02x-%02x",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG2, "CSR Attempting to Deauth Bssid= %02x-%02x-%02x-%02x-%02x-%02x\n", 
+>>>>>>> 657b0e9... prima update
                   bssId[ 0 ], bssId[ 1 ], bssId[ 2 ],
                   bssId[ 3 ], bssId[ 4 ], bssId[ 5 ] );    
     csrRoamSubstateChange( pMac, NewSubstate, sessionId);
     
+<<<<<<< HEAD
 <<<<<<< HEAD
     status = csrSendMBDeauthReqMsg( pMac, sessionId, bssId, eSIR_MAC_DISASSOC_LEAVING_BSS_REASON );    
     
@@ -3172,6 +3396,10 @@ eHalStatus csrRoamIssueDeauth( tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrRoam
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    status = csrSendMBDeauthReqMsg( pMac, sessionId, bssId, eSIR_MAC_DISASSOC_LEAVING_BSS_REASON );    
+    
+>>>>>>> 657b0e9... prima update
     return (status);
 }
 
@@ -3224,6 +3452,7 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
     eHalStatus status = eHAL_STATUS_SUCCESS;
     eCsrCfgDot11Mode cfgDot11Mode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(VOSS_ENABLED)
     VOS_ASSERT( pIes != NULL );
 #endif
@@ -3232,6 +3461,11 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
     if (pIes == NULL)
         return eHAL_STATUS_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(VOSS_ENABLED)
+    VOS_ASSERT( pIes != NULL );
+#endif
+>>>>>>> 657b0e9... prima update
 
     do
     {
@@ -3249,6 +3483,7 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
         if(csrIsNULLSSID(pBssConfig->SSID.ssId, pBssConfig->SSID.length))
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, "  BSS desc SSID is a wildcard\n");
             //Return failed if profile doesn't have an SSID either.
             if(pProfile->SSIDs.numOfSSIDs == 0)
@@ -3261,6 +3496,13 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
             {
                 smsLog(pMac, LOGW, "  Both BSS desc and profile doesn't have SSID");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, "  BSS desc SSID is a wildcard\n");
+            //Return failed if profile doesn't have an SSID either.
+            if(pProfile->SSIDs.numOfSSIDs == 0)
+            {
+                smsLog(pMac, LOGW, "  Both BSS desc and profile doesn't have SSID\n");
+>>>>>>> 657b0e9... prima update
                 status = eHAL_STATUS_FAILURE;
                 break;
             }
@@ -3281,10 +3523,14 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
         else 
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, "   Can not find match phy mode\n");
 =======
             smsLog(pMac, LOGW, "   Can not find match phy mode");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, "   Can not find match phy mode\n");
+>>>>>>> 657b0e9... prima update
             //force it
             if(eCSR_BAND_24 == pBssConfig->eBand)
             {
@@ -3304,6 +3550,7 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
             pBssConfig->qosType = eCSR_MEDIUM_ACCESS_DCF;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
        
 =======
 
@@ -3319,6 +3566,9 @@ eHalStatus csrRoamPrepareBssConfig(tpAniSirGlobal pMac, tCsrRoamProfile *pProfil
         }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       
+>>>>>>> 657b0e9... prima update
         //auth type
         switch( pProfile->negotiatedAuthType ) 
         {
@@ -3421,6 +3671,7 @@ static eHalStatus csrRoamPrepareBssConfigFromProfile(tpAniSirGlobal pMac, tCsrRo
        operationChannel = pProfile->ChannelInfo.ChannelList[0];
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     pBssConfig->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, pProfile, operationChannel, 
                                         &pBssConfig->eBand);
@@ -3432,23 +3683,40 @@ static eHalStatus csrRoamPrepareBssConfigFromProfile(tpAniSirGlobal pMac, tCsrRo
     pBssConfig->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, pProfile, operationChannel, 
                                         &pBssConfig->eBand);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    pBssConfig->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, pProfile, operationChannel, 
+                                        &pBssConfig->eBand);
+#else
+    pBssConfig->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, (eCsrPhyMode)pProfile->phyMode, operationChannel, 
+                                        &pBssConfig->eBand);
+#endif
+>>>>>>> 657b0e9... prima update
     //QOS
     //Is this correct to always set to this //***
     if ( pBssConfig->BssCap.ess == 1 ) 
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         /*For Softap case enable WMM*/
         if(CSR_IS_INFRA_AP(pProfile) && (eCsrRoamWmmNoQos != pMac->roam.configParam.WMMSupportMode )){
              qAPisEnabled = TRUE;
         }
         else
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         if (csrRoamGetQosInfoFromBss(pMac, pBssDesc) == eHAL_STATUS_SUCCESS) {
              qAPisEnabled = TRUE;
         } else {
@@ -3469,10 +3737,14 @@ static eHalStatus csrRoamPrepareBssConfigFromProfile(tpAniSirGlobal pMac, tCsrRo
     
     //auth type
 <<<<<<< HEAD
+<<<<<<< HEAD
     switch( pProfile->AuthType.authType[0] ) //Take the prefered Auth type.
 =======
     switch( pProfile->AuthType.authType[0] ) //Take the preferred Auth type.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    switch( pProfile->AuthType.authType[0] ) //Take the prefered Auth type.
+>>>>>>> 657b0e9... prima update
     {
         default:
         case eCSR_AUTH_TYPE_WPA:
@@ -3526,10 +3798,14 @@ static eHalStatus csrRoamGetQosInfoFromBss(tpAniSirGlobal pMac, tSirBssDescripti
          //err msg
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "csrRoamGetQosInfoFromBss() failed\n");
 =======
                    "csrRoamGetQosInfoFromBss() failed");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "csrRoamGetQosInfoFromBss() failed\n");
+>>>>>>> 657b0e9... prima update
          break;
       }
       //check if the AP is QAP & it supports APSD
@@ -3581,9 +3857,12 @@ void csrSetCfgPrivacy( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile, tANI_BOOL
             
         case eCSR_ENCRYPT_TYPE_WEP40_STATICKEY:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         case eCSR_ENCRYPT_TYPE_WEP40:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             
             // Privacy is ON.  NO RSN for Wep40 static key.
             PrivacyEnabled = 1;           
@@ -3638,9 +3917,12 @@ void csrSetCfgPrivacy( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile, tANI_BOOL
         
         case eCSR_ENCRYPT_TYPE_WEP104_STATICKEY:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         case eCSR_ENCRYPT_TYPE_WEP104:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             
             // Privacy is ON.  NO RSN for Wep40 static key.
             PrivacyEnabled = 1;           
@@ -3696,10 +3978,15 @@ void csrSetCfgPrivacy( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile, tANI_BOOL
             break;
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         case eCSR_ENCRYPT_TYPE_WEP40:
         case eCSR_ENCRYPT_TYPE_WEP104:
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        case eCSR_ENCRYPT_TYPE_WEP40:
+        case eCSR_ENCRYPT_TYPE_WEP104:
+>>>>>>> 657b0e9... prima update
         case eCSR_ENCRYPT_TYPE_TKIP:
         case eCSR_ENCRYPT_TYPE_AES:
 #ifdef FEATURE_WLAN_WAPI
@@ -3797,12 +4084,18 @@ static eHalStatus csrGetRateSet( tpAniSirGlobal pMac,  tCsrRoamProfile *pProfile
     palZeroMemory(pMac->hHdd, pOpRateSet, sizeof(tSirMacRateSet));
     palZeroMemory(pMac->hHdd, pExRateSet, sizeof(tSirMacRateSet));
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(VOSS_ENABLED)
     VOS_ASSERT( pIes != NULL );
 #endif
 =======
     VOS_ASSERT( pIes != NULL );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(VOSS_ENABLED)
+    VOS_ASSERT( pIes != NULL );
+#endif
+>>>>>>> 657b0e9... prima update
     
     if( NULL != pIes )
     {
@@ -3825,10 +4118,14 @@ static eHalStatus csrGetRateSet( tpAniSirGlobal pMac,  tCsrRoamProfile *pProfile
                 {
                     *pDstRate++ = pIes->SuppRates.rates[ i ];
 <<<<<<< HEAD
+<<<<<<< HEAD
                     pOpRateSet->numRates++;;
 =======
                     pOpRateSet->numRates++;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pOpRateSet->numRates++;;
+>>>>>>> 657b0e9... prima update
                 }
             }
         }
@@ -3857,10 +4154,14 @@ static eHalStatus csrGetRateSet( tpAniSirGlobal pMac,  tCsrRoamProfile *pProfile
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("failed to parse BssDesc\n"));
 =======
         smsLog(pMac, LOGE, FL("failed to parse BssDesc"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("failed to parse BssDesc\n"));
+>>>>>>> 657b0e9... prima update
     }
     if (pOpRateSet->numRates > 0 || pExRateSet->numRates > 0) status = eHAL_STATUS_SUCCESS;
     return status;
@@ -3882,12 +4183,18 @@ static void csrSetCfgRateSet( tpAniSirGlobal pMac, eCsrPhyMode phyMode, tCsrRoam
     tANI_U8 MCSRateIdxSet[ SIZE_OF_SUPPORTED_MCS_SET ];
     tANI_U32 MCSRateLength = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(VOSS_ENABLED)
     VOS_ASSERT( pIes != NULL );
 #endif
 =======
     VOS_ASSERT( pIes != NULL );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(VOSS_ENABLED)
+    VOS_ASSERT( pIes != NULL );
+#endif
+>>>>>>> 657b0e9... prima update
     if( NULL != pIes )
     {
         csrIsPhyModeMatch( pMac, phyMode, pBssDesc, pProfile, &cfgDot11Mode, pIes );
@@ -3990,10 +4297,14 @@ static void csrSetCfgRateSet( tpAniSirGlobal pMac, eCsrPhyMode phyMode, tCsrRoam
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("failed to parse BssDesc\n"));
 =======
         smsLog(pMac, LOGE, FL("failed to parse BssDesc"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("failed to parse BssDesc\n"));
+>>>>>>> 657b0e9... prima update
     }
 }
 
@@ -4037,6 +4348,7 @@ static void csrSetCfgRateSetFromProfile( tpAniSirGlobal pMac,
        operationChannel = pProfile->ChannelInfo.ChannelList[0];
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     cfgDot11Mode = csrRoamGetPhyModeBandForBss( pMac, pProfile, operationChannel, &eBand );
 #else
@@ -4045,6 +4357,13 @@ static void csrSetCfgRateSetFromProfile( tpAniSirGlobal pMac,
 =======
     cfgDot11Mode = csrRoamGetPhyModeBandForBss( pMac, pProfile, operationChannel, &eBand );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    cfgDot11Mode = csrRoamGetPhyModeBandForBss( pMac, pProfile, operationChannel, &eBand );
+#else
+    cfgDot11Mode = csrRoamGetPhyModeBandForBss( pMac, (eCsrPhyMode)pProfile->phyMode, operationChannel, &eBand );
+#endif
+>>>>>>> 657b0e9... prima update
     // For 11a networks, the 11a rates go into the Operational Rate set.  For 11b and 11g 
     // networks, the 11b rates appear in the Operational Rate set.  In either case,
     // we can blindly put the rates we support into our Operational Rate set 
@@ -4153,10 +4472,14 @@ void csrRoamCcmCfgSetCallback(tHalHandle hHal, tANI_S32 result)
     if(NULL == pEntry)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, "   CFG_CNF with active list empty\n");
 =======
         smsLog(pMac, LOGW, "   CFG_CNF with active list empty");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, "   CFG_CNF with active list empty\n");
+>>>>>>> 657b0e9... prima update
         return;
     }
     pCommand = GET_BASE_ADDR(pEntry, tSmeCmd, Link);
@@ -4199,10 +4522,14 @@ ePhyChanBondState csrGetHTCBStateFromVHTCBState(ePhyChanBondState aniCBMode)
             return PHY_DOUBLE_CHANNEL_LOW_PRIMARY;
         case PHY_QUADRUPLE_CHANNEL_20MHZ_CENTERED_40MHZ_CENTERED:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    default :
 =======
         default :
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	    default :
+>>>>>>> 657b0e9... prima update
             return PHY_SINGLE_CHANNEL_CENTERED;
     }
 }
@@ -4212,16 +4539,21 @@ ePhyChanBondState csrGetHTCBStateFromVHTCBState(ePhyChanBondState aniCBMode)
 eHalStatus csrRoamSetBssConfigCfg(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfile *pProfile,
                           tSirBssDescription *pBssDesc, tBssConfigParam *pBssConfig,
 <<<<<<< HEAD
+<<<<<<< HEAD
                           tDot11fBeaconIEs *pIes)
 =======
                           tDot11fBeaconIEs *pIes, tANI_BOOLEAN resetCountry)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                          tDot11fBeaconIEs *pIes)
+>>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
     tANI_U32   cfgCb = WNI_CFG_CHANNEL_BONDING_MODE_DISABLE;
     tANI_U8    channel = 0;
     //Make sure we have the domain info for the BSS we try to connect to.
     //Do we need to worry about sequence for OSs that are not Windows??
+<<<<<<< HEAD
 <<<<<<< HEAD
     if(pBssDesc)
     {
@@ -4235,27 +4567,22 @@ eHalStatus csrRoamSetBssConfigCfg(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrR
         
 =======
     if (pBssDesc)
+=======
+    if(pBssDesc)
+>>>>>>> 657b0e9... prima update
     {
-        if (csrLearnCountryInformation(pMac, pBssDesc, pIes, eANI_BOOLEAN_TRUE))
+        if(csrLearnCountryInformation(pMac, pBssDesc, pIes, eANI_BOOLEAN_TRUE))
         {
             //Make sure the 11d info from this BSSDesc can be applied
             pMac->scan.fAmbiguous11dInfoFound = eANI_BOOLEAN_FALSE;
-            if (VOS_TRUE == resetCountry)
-            {
-                csrApplyCountryInformation(pMac, FALSE);
-            }
-            else
-            {
-                csrApplyCountryInformation(pMac, TRUE);
-            }
-        }
-        if ((csrIs11dSupported (pMac)) && pIes)
-        {
-            if (!pIes->Country.present)
-                csrResetCountryInformation(pMac, eANI_BOOLEAN_FALSE, eANI_BOOLEAN_FALSE );
+            csrApplyCountryInformation( pMac, TRUE );
         }
     }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        
+>>>>>>> 657b0e9... prima update
     //Qos
     csrSetQosToCfg( pMac, sessionId, pBssConfig->qosType );
     //SSID
@@ -4274,17 +4601,25 @@ eHalStatus csrRoamSetBssConfigCfg(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrR
     //short slot time
     ccmCfgSetInt(pMac, WNI_CFG_11G_SHORT_SLOT_TIME_ENABLED, pBssConfig->uShortSlotTime, NULL, eANI_BOOLEAN_FALSE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     //11d
     ccmCfgSetInt(pMac, WNI_CFG_11D_ENABLED,
                         ((pBssConfig->f11hSupport) ? pBssConfig->f11hSupport : pProfile->ieee80211d),
                         NULL, eANI_BOOLEAN_FALSE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
     /*//11h
     ccmCfgSetInt(pMac, WNI_CFG_11H_ENABLED, pMac->roam.configParam.Is11hSupportEnabled, NULL, eANI_BOOLEAN_FALSE);
     */
@@ -4292,10 +4627,14 @@ eHalStatus csrRoamSetBssConfigCfg(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrR
     //CB
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(CSR_IS_INFRA_AP(pProfile) || CSR_IS_WDS_AP(pProfile))
 =======
     if(CSR_IS_INFRA_AP(pProfile) || CSR_IS_WDS_AP(pProfile) || CSR_IS_IBSS(pProfile))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if(CSR_IS_INFRA_AP(pProfile) || CSR_IS_WDS_AP(pProfile))
+>>>>>>> 657b0e9... prima update
     {
         channel = pProfile->operationChannel;
     }
@@ -4319,6 +4658,7 @@ eHalStatus csrRoamSetBssConfigCfg(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrR
     }
 #ifdef WLAN_FEATURE_11AC
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(cfgCb > 2 )
     {
 	if(!WDA_getFwWlanFeatCaps(DOT11AC)) {
@@ -4333,15 +4673,22 @@ eHalStatus csrRoamSetBssConfigCfg(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrR
     // in function csrConvertCBIniValueToPhyCBState()
     // So, max value for cbMode in 40MHz mode is 3 (MAC\src\include\sirParams.h)
     if(cfgCb > PHY_DOUBLE_CHANNEL_HIGH_PRIMARY)
+=======
+    if(cfgCb > 2 )
+>>>>>>> 657b0e9... prima update
     {
-        if(!WDA_getFwWlanFeatCaps(DOT11AC)) {
+	if(!WDA_getFwWlanFeatCaps(DOT11AC)) {
             cfgCb = csrGetHTCBStateFromVHTCBState(cfgCb);
-        }
-        else 
-        {
+	}
+	else 
+	{
             ccmCfgSetInt(pMac, WNI_CFG_VHT_CHANNEL_WIDTH,  pMac->roam.configParam.nVhtChannelWidth, NULL, eANI_BOOLEAN_FALSE);
+<<<<<<< HEAD
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	}
+>>>>>>> 657b0e9... prima update
     }
     else
 #endif
@@ -4390,12 +4737,18 @@ eHalStatus csrRoamStopNetwork( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
             //For IBSS, we need to prepare some more information
             if( csrIsBssTypeIBSS(pProfile->BSSType) || CSR_IS_WDS( pProfile )
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
               || CSR_IS_INFRA_AP(pProfile)
 #endif
 =======
               || CSR_IS_INFRA_AP(pProfile)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+              || CSR_IS_INFRA_AP(pProfile)
+#endif
+>>>>>>> 657b0e9... prima update
             )
             {
                 csrRoamPrepareBssParams(pMac, sessionId, pProfile, pBssDesc, pBssConfig, pIes);
@@ -4416,6 +4769,7 @@ eHalStatus csrRoamStopNetwork( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
                     //Not worry about WDS connection for now
                     if ( pBssDesc && ( ( csrIsIbssBssDesc( pBssDesc ) ) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
                           !csrIsSsidEqual( pMac, pSession->pConnectBssDesc, pBssDesc, pIes ) ) )   
                     {
                         // then we need to disassociate from the Infrastructure network...
@@ -4435,30 +4789,35 @@ eHalStatus csrRoamStopNetwork( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
                 else 
 =======
                           !csrIsSsidEqual( pMac, pSession->pConnectBssDesc, pBssDesc, pIes ) ) )
+=======
+                          !csrIsSsidEqual( pMac, pSession->pConnectBssDesc, pBssDesc, pIes ) ) )   
+>>>>>>> 657b0e9... prima update
                     {
                         // then we need to disassociate from the Infrastructure network...
-                        status = csrRoamIssueDisassociate( pMac, sessionId,
-                                      eCSR_ROAM_SUBSTATE_DISCONNECT_CONTINUE_ROAMING, FALSE );
+                        status = csrRoamIssueDisassociate( pMac, sessionId, eCSR_ROAM_SUBSTATE_DISCONNECT_CONTINUE_ROAMING, FALSE );  
                     }
-                    else
-                    {
+                    else 
+                    {  
                         // In an Infrastucture and going to an Infrastructure network with the same SSID.  This
                         // calls for a Reassociation sequence.  So issue the CFG sets for this new AP.
-                        if ( pBssDesc )
+                        if ( pBssDesc ) 
                         {
-                            // Set parameters for this Bss.
-                            status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile,
-                                                                 pBssDesc, pBssConfig,
-                                                             pIes, eANI_BOOLEAN_FALSE);
+                            // Set parameters for this Bss.    
+                            status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, pBssDesc, pBssConfig, pIes);
                         }
-                    }
+                    }      
                 }
+<<<<<<< HEAD
                 else
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                else 
+>>>>>>> 657b0e9... prima update
                 {
                     // Neiher in IBSS nor in Infra.  We can go ahead and set the CFG for tne new network...
                     // Nothing to stop.
                     if ( pBssDesc || CSR_IS_WDS_AP( pProfile )
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                      || CSR_IS_INFRA_AP(pProfile)
@@ -4480,15 +4839,29 @@ eHalStatus csrRoamStopNetwork( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
                                                               pIes, is11rRoamingFlag);
                     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+                     || CSR_IS_INFRA_AP(pProfile)
+#endif
+                    ) 
+                    {      
+                        // Set parameters for this Bss.    
+                        status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, pBssDesc, pBssConfig, pIes);
+                    }  
+>>>>>>> 657b0e9... prima update
                 }
             }
         }//Success getting BSS config info
         palFreeMemory(pMac->hHdd, pBssConfig);
     }//Allocate memory
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
     return (status);
 }
 
@@ -4540,10 +4913,14 @@ eCsrJoinState csrRoamJoin( tpAniSirGlobal pMac, tANI_U32 sessionId,
             if(csrIsSameProfile(pMac, &pSession->connectedProfile, pProfile))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL("  detect same profile authType = %d encryType = %d\n"), pProfile->AuthType, pProfile->EncryptionType);
 =======
                 smsLog(pMac, LOGW, FL("  detect same profile authType = %d encryType = %d"), pProfile->AuthType, pProfile->EncryptionType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, FL("  detect same profile authType = %d encryType = %d\n"), pProfile->AuthType, pProfile->EncryptionType);
+>>>>>>> 657b0e9... prima update
                 if(csrRoamIsSameProfileKeys(pMac, &pSession->connectedProfile, pProfile))
                 {
                     eRoamState = eCsrReassocToSelfNoCapChange;
@@ -4560,12 +4937,16 @@ eCsrJoinState csrRoamJoin( tpAniSirGlobal pMac, tANI_U32 sessionId,
                         pSession->bssParams.cbMode = bssConfig.cbMode;
                         //Reapply the config including Keys so reassoc is happening.
 <<<<<<< HEAD
+<<<<<<< HEAD
                         status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, pBssDesc, &bssConfig, pIesLocal);
 =======
                         status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile,
                                                         pBssDesc, &bssConfig,
                                                         pIesLocal, eANI_BOOLEAN_FALSE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, pBssDesc, &bssConfig, pIesLocal);
+>>>>>>> 657b0e9... prima update
                         if(!HAL_STATUS_SUCCESS(status))
                         {
                             eRoamState = eCsrStopRoaming;
@@ -4579,6 +4960,7 @@ eCsrJoinState csrRoamJoin( tpAniSirGlobal pMac, tANI_U32 sessionId,
             }
             else
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 if(!HAL_STATUS_SUCCESS(csrRoamIssueDisassociate( pMac, sessionId, 
                                                         eCSR_ROAM_SUBSTATE_DISASSOC_REQ, FALSE )))
@@ -4594,18 +4976,25 @@ eCsrJoinState csrRoamJoin( tpAniSirGlobal pMac, tANI_U32 sessionId,
             // we had a lot of join timeouts when testing at Samsung.  removing this step helped associations 
 =======
                 if(!HAL_STATUS_SUCCESS(csrRoamIssueDisassociate( pMac, sessionId,
+=======
+                if(!HAL_STATUS_SUCCESS(csrRoamIssueDisassociate( pMac, sessionId, 
+>>>>>>> 657b0e9... prima update
                                                         eCSR_ROAM_SUBSTATE_DISASSOC_REQ, FALSE )))
                 {
-                    smsLog(pMac, LOGW, FL("  fail to issue disassociate"));
+                    smsLog(pMac, LOGW, FL("  fail to issue disassociate\n"));
                     eRoamState = eCsrStopRoaming;
-                }
+                }                       
             }
-        }
-        else
+        }            
+        else 
         {
             // note:  we used to pre-auth here with open authentication networks but that was not working so well.
+<<<<<<< HEAD
             // we had a lot of join timeouts when testing at Samsung.  removing this step helped associations
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            // we had a lot of join timeouts when testing at Samsung.  removing this step helped associations 
+>>>>>>> 657b0e9... prima update
             // work much better.
             //
             //
@@ -4617,10 +5006,14 @@ eCsrJoinState csrRoamJoin( tpAniSirGlobal pMac, tANI_U32 sessionId,
         }
         }//Infra
 <<<<<<< HEAD
+<<<<<<< HEAD
     else 
 =======
     else
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    else 
+>>>>>>> 657b0e9... prima update
     {
             if(!HAL_STATUS_SUCCESS(csrRoamStopNetwork(pMac, sessionId, pProfile, pBssDesc, pIesLocal)))
         {
@@ -4651,10 +5044,14 @@ static void csrRoamAssignDefaultParam( tpAniSirGlobal pMac, tSmeCmd *pCommand )
     //Need to get all negotiated types in place first
     //auth type
 <<<<<<< HEAD
+<<<<<<< HEAD
     switch( pCommand->u.roamCmd.roamProfile.AuthType.authType[0] ) //Take the prefered Auth type.
 =======
     switch( pCommand->u.roamCmd.roamProfile.AuthType.authType[0] ) //Take the preferred Auth type.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    switch( pCommand->u.roamCmd.roamProfile.AuthType.authType[0] ) //Take the prefered Auth type.
+>>>>>>> 657b0e9... prima update
     {
         default:
         case eCSR_AUTH_TYPE_WPA:
@@ -4680,6 +5077,7 @@ static void csrRoamAssignDefaultParam( tpAniSirGlobal pMac, tSmeCmd *pCommand )
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 static void csrSetAbortRoamingCommand(tpAniSirGlobal pMac, tSmeCmd *pCommand)
@@ -4703,6 +5101,8 @@ static void csrSetAbortRoamingCommand(tpAniSirGlobal pMac, tSmeCmd *pCommand)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEAN fUseSameBss )
 {
     eHalStatus status;
@@ -4731,10 +5131,13 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
         //***if( !balIsCardPresent(pAdapter) ) break;
         
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         palZeroMemory(pMac->hHdd, &roamInfo, sizeof(roamInfo));
         memcpy (&roamInfo.bssid, &pSession->joinFailStatusCode.bssId, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         if(NULL != pBSSList)
         {
             // When handling AP's capability change, continue to associate to
@@ -4760,10 +5163,14 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
                     {
                         //We need to indicate to HDD that we are done with this one.
 <<<<<<< HEAD
+<<<<<<< HEAD
                         palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
 =======
                         //palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
+>>>>>>> 657b0e9... prima update
                         roamInfo.pBssDesc = pCommand->u.roamCmd.pLastRoamBss;     //this shall not be NULL
                         roamInfo.statusCode = pSession->joinFailStatusCode.statusCode;
                         roamInfo.reasonCode = pSession->joinFailStatusCode.reasonCode;
@@ -4782,10 +5189,14 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
                             csrGetConcurrentOperationChannel(pMac);
                         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, "%s: "
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 " csr Concurrent Channel = %d", __FUNCTION__, concurrentChannel);
 =======
                                 " csr Concurrent Channel = %d", __func__, concurrentChannel);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                " csr Concurrent Channel = %d", __FUNCTION__, concurrentChannel);
+>>>>>>> 657b0e9... prima update
                         if ((concurrentChannel) && 
                                 (concurrentChannel == 
                                  pScanResult->Result.BssDescriptor.channelId))
@@ -4837,10 +5248,14 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
             if(pRoamInfo)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                 pSession->bRefAssocStartCnt--;
                 //Complete the last association attemp because a new one is about to be tried
                 csrRoamCallCallback(pMac, sessionId, pRoamInfo, pCommand->u.roamCmd.roamId, 
                                         eCSR_ROAM_ASSOCIATION_COMPLETION, 
+<<<<<<< HEAD
                                         eCSR_ROAM_RESULT_NOT_ASSOCIATED);
 =======
                 if(pSession->bRefAssocStartCnt)
@@ -4862,6 +5277,9 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
                 csrSetAbortRoamingCommand(pMac, pCommand);
                 break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                        eCSR_ROAM_RESULT_NOT_ASSOCIATED);
+>>>>>>> 657b0e9... prima update
             }
             palZeroMemory(pMac->hHdd, &roamInfo, sizeof(roamInfo));
             if(pScanResult)
@@ -4870,10 +5288,14 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
                 if( !pIesLocal && (!HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs(pMac, &pScanResult->Result.BssDescriptor, &pIesLocal))) )
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL(" cannot parse IEs\n"));
 =======
                     smsLog(pMac, LOGE, FL(" cannot parse IEs"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGE, FL(" cannot parse IEs\n"));
+>>>>>>> 657b0e9... prima update
                     fDone = eANI_BOOLEAN_TRUE;
                     eRoamState = eCsrStopRoaming;
                     break;
@@ -4938,12 +5360,18 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
             }
             else if ( (CSR_IS_WDS_AP(pProfile))
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
              || (CSR_IS_INFRA_AP(pProfile))
 #endif
 =======
              || (CSR_IS_INFRA_AP(pProfile))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+             || (CSR_IS_INFRA_AP(pProfile))
+#endif
+>>>>>>> 657b0e9... prima update
             )
             {
                 // Attempt to start this WDS...
@@ -4964,10 +5392,14 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
             {
                 //Nothing we can do
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL("cannot continue without BSS list\n"));
 =======
                 smsLog(pMac, LOGW, FL("cannot continue without BSS list"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, FL("cannot continue without BSS list\n"));
+>>>>>>> 657b0e9... prima update
                 eRoamState = eCsrStopRoaming;
                 break;
             }
@@ -5008,9 +5440,12 @@ static eCsrJoinState csrRoamJoinNextBss( tpAniSirGlobal pMac, tSmeCmd *pCommand,
             pSession->bRefAssocStartCnt--;
             //Complete the last association attemp because a new one is about to be tried
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             pRoamInfo = &roamInfo;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             csrRoamCallCallback(pMac, sessionId, pRoamInfo, pCommand->u.roamCmd.roamId, 
                                         eCSR_ROAM_ASSOCIATION_COMPLETION, 
                                         eCSR_ROAM_RESULT_NOT_ASSOCIATED);
@@ -5043,10 +5478,14 @@ static eHalStatus csrRoam( tpAniSirGlobal pMac, tSmeCmd *pCommand )
                 if(!HAL_STATUS_SUCCESS(status))
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, FL("  failed to issue disassociate, status = %d\n"), status);
 =======
                     smsLog(pMac, LOGW, FL("  failed to issue disassociate, status = %d"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, FL("  failed to issue disassociate, status = %d\n"), status);
+>>>>>>> 657b0e9... prima update
                     //roam command is completed by caller in the failed case
                     fComplete = eANI_BOOLEAN_TRUE;
                 }
@@ -5057,36 +5496,52 @@ static eHalStatus csrRoam( tpAniSirGlobal pMac, tSmeCmd *pCommand )
                 if(!HAL_STATUS_SUCCESS(status))
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, FL("  failed to issue stop bss, status = %d\n"), status);
 =======
                     smsLog(pMac, LOGW, FL("  failed to issue stop bss, status = %d"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, FL("  failed to issue stop bss, status = %d\n"), status);
+>>>>>>> 657b0e9... prima update
                     //roam command is completed by caller in the failed case
                     fComplete = eANI_BOOLEAN_TRUE;
                 }
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             else if (csrIsConnStateConnectedInfraAp(pMac, sessionId))
             {
                 status = csrRoamIssueStopBss( pMac, sessionId, eCSR_ROAM_SUBSTATE_STOP_BSS_REQ );
                 if(!HAL_STATUS_SUCCESS(status))
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, FL("  failed to issue stop bss, status = %d\n"), status);
 =======
                     smsLog(pMac, LOGW, FL("  failed to issue stop bss, status = %d"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, FL("  failed to issue stop bss, status = %d\n"), status);
+>>>>>>> 657b0e9... prima update
                     //roam command is completed by caller in the failed case
                     fComplete = eANI_BOOLEAN_TRUE;
                 }
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             else
             {        
                 fComplete = eANI_BOOLEAN_TRUE;
@@ -5136,10 +5591,14 @@ eHalStatus csrProcessFTReassocRoamCommand ( tpAniSirGlobal pMac, tSmeCmd *pComma
     {
         //the roaming is cancelled. Simply complete the command
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG1, FL("  Roam command cancelled\n"));
 =======
         smsLog(pMac, LOG1, FL("  Roam command cancelled"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG1, FL("  Roam command cancelled\n"));
+>>>>>>> 657b0e9... prima update
         csrRoamComplete(pMac, eCsrNothingToJoin, NULL); 
         return eHAL_STATUS_FAILURE;
     }
@@ -5152,10 +5611,14 @@ eHalStatus csrProcessFTReassocRoamCommand ( tpAniSirGlobal pMac, tSmeCmd *pComma
     {
         //the roaming is cancelled. Simply complete the command
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG1, FL("  Roam command cancelled\n"));
 =======
         smsLog(pMac, LOG1, FL("  Roam command cancelled"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG1, FL("  Roam command cancelled\n"));
+>>>>>>> 657b0e9... prima update
         csrRoamComplete(pMac, eCsrNothingToJoin, NULL); 
         return eHAL_STATUS_FAILURE;
     }
@@ -5181,12 +5644,17 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
     {
     case eCsrForcedDisassoc:
 <<<<<<< HEAD
+<<<<<<< HEAD
         csrFreeRoamProfile(pMac, sessionId);
         status = csrRoamProcessDisassocDeauth( pMac, pCommand, TRUE, FALSE );
 =======
         status = csrRoamProcessDisassocDeauth( pMac, pCommand, TRUE, FALSE );
         csrFreeRoamProfile(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        csrFreeRoamProfile(pMac, sessionId);
+        status = csrRoamProcessDisassocDeauth( pMac, pCommand, TRUE, FALSE );
+>>>>>>> 657b0e9... prima update
         break;
      case eCsrSmeIssuedDisassocForHandoff:
         //Not to free pMac->roam.pCurRoamProfile (via csrFreeRoamProfile) because it is needed after disconnect
@@ -5199,6 +5667,7 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
         break;
     case eCsrForcedDisassocMICFailure:
 <<<<<<< HEAD
+<<<<<<< HEAD
         csrFreeRoamProfile(pMac, sessionId);
         status = csrRoamProcessDisassocDeauth( pMac, pCommand, TRUE, TRUE );
         break;
@@ -5207,12 +5676,18 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
         status = csrRoamProcessDisassocDeauth( pMac, pCommand, FALSE, FALSE );
 =======
         status = csrRoamProcessDisassocDeauth( pMac, pCommand, TRUE, TRUE );
+=======
+>>>>>>> 657b0e9... prima update
         csrFreeRoamProfile(pMac, sessionId);
+        status = csrRoamProcessDisassocDeauth( pMac, pCommand, TRUE, TRUE );
         break;
     case eCsrForcedDeauth:
-        status = csrRoamProcessDisassocDeauth( pMac, pCommand, FALSE, FALSE );
         csrFreeRoamProfile(pMac, sessionId);
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        status = csrRoamProcessDisassocDeauth( pMac, pCommand, FALSE, FALSE );
+>>>>>>> 657b0e9... prima update
         break;
     case eCsrHddIssuedReassocToSameAP:
     case eCsrSmeIssuedReassocToSameAP:
@@ -5225,10 +5700,14 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
             if(!HAL_STATUS_SUCCESS(status) )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("  fail to parse IEs\n"));
 =======
                 smsLog(pMac, LOGE, FL("  fail to parse IEs"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("  fail to parse IEs\n"));
+>>>>>>> 657b0e9... prima update
             }
             else
             {
@@ -5241,6 +5720,7 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
                 csrRoamCallCallback( pMac, sessionId, &roamInfo, pCommand->u.roamCmd.roamId, 
                                      eCSR_ROAM_ASSOCIATION_START, eCSR_ROAM_RESULT_NONE );
    
+<<<<<<< HEAD
 <<<<<<< HEAD
                 smsLog(pMac, LOG1, FL("  calling csrRoamIssueReassociate\n"));
                 csrRoamIssueReassociate( pMac, sessionId, pSession->pConnectBssDesc, pIes,
@@ -5256,6 +5736,11 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
                 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOG1, FL("  calling csrRoamIssueReassociate\n"));
+                csrRoamIssueReassociate( pMac, sessionId, pSession->pConnectBssDesc, pIes,
+                                         &pCommand->u.roamCmd.roamProfile );
+>>>>>>> 657b0e9... prima update
                 palFreeMemory(pMac->hHdd, pIes);
                 pIes = NULL;
             }
@@ -5264,19 +5749,27 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
     }
     case eCsrCapsChange:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("received eCsrCapsChange \n"));
 =======
         smsLog(pMac, LOGE, FL("received eCsrCapsChange "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("received eCsrCapsChange \n"));
+>>>>>>> 657b0e9... prima update
         csrRoamStateChange( pMac, eCSR_ROAMING_STATE_JOINING, sessionId );
         status = csrRoamIssueDisassociate( pMac, sessionId, eCSR_ROAM_SUBSTATE_DISCONNECT_CONTINUE_ROAMING, FALSE); 
         break;
     case eCsrSmeIssuedFTReassoc:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("received FT Reassoc Req \n"));
 =======
         smsLog(pMac, LOGE, FL("received FT Reassoc Req "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("received FT Reassoc Req \n"));
+>>>>>>> 657b0e9... prima update
         status = csrProcessFTReassocRoamCommand(pMac, pCommand);
         break;
 
@@ -5299,6 +5792,7 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
                      pCommand->u.roamCmd.reason);
        break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if 1
        /*Varun*/
     case eCsrPerformPreauth:
@@ -5309,12 +5803,21 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
 #endif
 =======
 
+=======
+#if 1
+       /*Varun*/
+>>>>>>> 657b0e9... prima update
     case eCsrPerformPreauth:
-        smsLog(pMac, LOG1, FL("Attempting FT PreAuth Req"));
+        smsLog(pMac, LOGE, FL("Attempting FT PreAuth Req \n"));
         status = csrRoamIssueFTPreauthReq(pMac, sessionId, 
                 pCommand->u.roamCmd.pLastRoamBss);
+<<<<<<< HEAD
         break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       break;
+#endif
+>>>>>>> 657b0e9... prima update
 
     default:
         csrRoamStateChange( pMac, eCSR_ROAMING_STATE_JOINING, sessionId );
@@ -5336,12 +5839,15 @@ eHalStatus csrRoamProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
         // Attempt to roam with the new scan results (if we need to..)
         status = csrRoam( pMac, pCommand );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         if(!HAL_STATUS_SUCCESS(status))
         {
             smsLog(pMac, LOGW, FL("csrRoam() failed with status = 0x%08X"), status);
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         break;
     }
     return (status);
@@ -5383,10 +5889,14 @@ void csrRoamComplete( tpAniSirGlobal pMac, eCsrRoamCompleteResult Result, void *
     tSmeCmd *pCommand;
     tANI_BOOLEAN fReleaseCommand = eANI_BOOLEAN_TRUE;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG2, "roamQ: Roam Completion ...\n" );
 =======
     smsLog( pMac, LOG2, "Roam Completion ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG2, "roamQ: Roam Completion ...\n" );
+>>>>>>> 657b0e9... prima update
     pEntry = csrLLPeekHead( &pMac->sme.smeCmdActiveList, LL_ACCESS_LOCK );
     if ( pEntry )
     {
@@ -5407,16 +5917,22 @@ void csrRoamComplete( tpAniSirGlobal pMac, eCsrRoamCompleteResult Result, void *
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGE, " **********csrRoamComplete fail to release command reason %d\n",
                         pCommand->u.roamCmd.roamReason );
 =======
                     smsLog( pMac, LOGE, " **********csrRoamComplete fail to release command reason %d",
                            pCommand->u.roamCmd.roamReason );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGE, " **********csrRoamComplete fail to release command reason %d\n",
+                        pCommand->u.roamCmd.roamReason );
+>>>>>>> 657b0e9... prima update
                 }
             }
             else
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 smsLog( pMac, LOGE, " **********csrRoamComplete fail to release command reason %d\n",
                     pCommand->u.roamCmd.roamReason );
@@ -5424,24 +5940,36 @@ void csrRoamComplete( tpAniSirGlobal pMac, eCsrRoamCompleteResult Result, void *
                 smsLog( pMac, LOGE, " **********csrRoamComplete fail to release command reason %d",
                        pCommand->u.roamCmd.roamReason );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGE, " **********csrRoamComplete fail to release command reason %d\n",
+                    pCommand->u.roamCmd.roamReason );
+>>>>>>> 657b0e9... prima update
             }
         }
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, "CSR: Roam Completion called but ROAM command is not ACTIVE ...\n" );
 =======
             smsLog( pMac, LOGW, "CSR: Roam Completion called but ROAM command is not ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, "CSR: Roam Completion called but ROAM command is not ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
         }
     }
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "CSR: Roam Completion called but NO commands are ACTIVE ...\n" );
 =======
         smsLog( pMac, LOGW, "CSR: Roam Completion called but NO commands are ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "CSR: Roam Completion called but NO commands are ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
     }
     if( fReleaseCommand )
     {
@@ -5504,21 +6032,28 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
        (eCSR_AUTH_TYPE_WAPI_WAI_CERTIFICATE == authType)
 #endif /* FEATURE_WLAN_WAPI */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
       ||
        (eCSR_AUTH_TYPE_RSN_PSK_SHA256 == authType)
 #endif /* FEATURE_WLAN_WAPI */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         )
     {
         if( !pIesLocal && (!HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs(pMac, pSirBssDesc, &pIesLocal))) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL(" cannot parse IEs\n"));
 =======
             smsLog(pMac, LOGE, FL(" cannot parse IEs"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL(" cannot parse IEs\n"));
+>>>>>>> 657b0e9... prima update
         }
         if( pIesLocal )
         {
@@ -5530,11 +6065,14 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                 (eCSR_AUTH_TYPE_FT_RSN_PSK == authType) ||
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_11W
                 (eCSR_AUTH_TYPE_RSN_PSK_SHA256 == authType) ||
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                 (eCSR_AUTH_TYPE_RSN_PSK == authType))
             {
                 if(pIesLocal->RSN.present)
@@ -5553,13 +6091,17 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                     if(HAL_STATUS_SUCCESS((status = palAllocateMemory(pMac->hHdd, (void **)&pSession->pWpaRsnRspIE, nIeLen + 2))))
                     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                         palZeroMemory(pMac->hHdd, pSession->pWpaRsnRspIE, nIeLen + 2);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                         pSession->pWpaRsnRspIE[0] = DOT11F_EID_RSN;
                         pSession->pWpaRsnRspIE[1] = (tANI_U8)nIeLen;
                         //copy upto akm_suites
                         pIeBuf = pSession->pWpaRsnRspIE + 2;
+<<<<<<< HEAD
 <<<<<<< HEAD
                         palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->RSN.version, 8);
                         pIeBuf += 8;
@@ -5571,6 +6113,10 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                         palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->RSN.pwise_cipher_suite_count, sizeof(pIesLocal->RSN.pwise_cipher_suite_count));
                         pIeBuf += sizeof(pIesLocal->RSN.pwise_cipher_suite_count );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->RSN.version, 8);
+                        pIeBuf += 8;
+>>>>>>> 657b0e9... prima update
                         if( pIesLocal->RSN.pwise_cipher_suite_count )
                         {
                             //copy pwise_cipher_suites
@@ -5653,10 +6199,14 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                       pIeBuf = pSession->pWapiRspIE + 2;
                       //copy upto akm_suite_count
 <<<<<<< HEAD
+<<<<<<< HEAD
                       palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->WAPI.version, 4);
 =======
                       palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->WAPI.version, 2);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->WAPI.version, 4);
+>>>>>>> 657b0e9... prima update
                       pIeBuf += 4;
                       if( pIesLocal->WAPI.akm_suite_count )
                       {
@@ -5675,6 +6225,7 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                          pIeBuf += pIesLocal->WAPI.unicast_cipher_suite_count * 4;
                       }
 <<<<<<< HEAD
+<<<<<<< HEAD
                       //gp_cipher_suite + preauth + reserved + bkid_count
                       palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->WAPI.multicast_cipher_suite, 8);
 =======
@@ -5685,6 +6236,10 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                       //bkid_count
                       palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->WAPI.bkid_count, 2);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      //gp_cipher_suite + preauth + reserved + bkid_count
+                      palCopyMemory(pMac->hHdd, pIeBuf, &pIesLocal->WAPI.multicast_cipher_suite, 8);
+>>>>>>> 657b0e9... prima update
                       pIeBuf += 8;
                       if( pIesLocal->WAPI.bkid_count )
                       {
@@ -5693,10 +6248,14 @@ static eHalStatus csrRoamSaveSecurityRspIE(tpAniSirGlobal pMac, tANI_U32 session
                          pIeBuf += pIesLocal->WAPI.bkid_count * 4;
                       }
 <<<<<<< HEAD
+<<<<<<< HEAD
                       pSession->nWapiRspIeLength = nIeLen + 2; 
 =======
                       pSession->nWapiRspIeLength = nIeLen + 2;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      pSession->nWapiRspIeLength = nIeLen + 2; 
+>>>>>>> 657b0e9... prima update
                    }
                 }
           }
@@ -5764,10 +6323,14 @@ static void csrCheckAndUpdateACWeight( tpAniSirGlobal pMac, tDot11fBeaconIEs *pI
         if(fWeightChange)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL(" change AC weights (%d-%d-%d-%d)\n"), bACWeights[0], bACWeights[1],
 =======
             smsLog(pMac, LOGE, FL(" change AC weights (%d-%d-%d-%d)"), bACWeights[0], bACWeights[1],
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL(" change AC weights (%d-%d-%d-%d)\n"), bACWeights[0], bACWeights[1],
+>>>>>>> 657b0e9... prima update
                 bACWeights[2], bACWeights[3]);
             WLANTL_SetACWeights(pMac->roam.gVosContext, bACWeights);
         }
@@ -5798,6 +6361,7 @@ tANI_BOOLEAN csrRoamIsCCXAssoc(tpAniSirGlobal pMac)
 #ifdef FEATURE_WLAN_LFR
 //Returns whether "Legacy Fast Roaming" is currently enabled...or not
 <<<<<<< HEAD
+<<<<<<< HEAD
 tANI_BOOLEAN csrRoamIsFastRoamEnabled(tpAniSirGlobal pMac)
 {
     return (pMac->roam.configParam.isFastRoamIniFeatureEnabled &&
@@ -5805,43 +6369,19 @@ tANI_BOOLEAN csrRoamIsFastRoamEnabled(tpAniSirGlobal pMac)
 }
 =======
 tANI_BOOLEAN csrRoamIsFastRoamEnabled(tpAniSirGlobal pMac, tANI_U32 sessionId)
+=======
+tANI_BOOLEAN csrRoamIsFastRoamEnabled(tpAniSirGlobal pMac)
+>>>>>>> 657b0e9... prima update
 {
-    tCsrRoamSession *pSession = NULL;
-
-    if (CSR_IS_SESSION_VALID( pMac, sessionId ) )
-    {
-        pSession = CSR_GET_SESSION( pMac, sessionId );
-        if (NULL != pSession->pCurRoamProfile)
-        {
-            if (pSession->pCurRoamProfile->csrPersona != VOS_STA_MODE)
-            {
-                return eANI_BOOLEAN_FALSE;
-            }
-        }
-    }
-
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-    if (eANI_BOOLEAN_TRUE == CSR_IS_FASTROAM_IN_CONCURRENCY_INI_FEATURE_ENABLED(pMac))
-    {
-        return (pMac->roam.configParam.isFastRoamIniFeatureEnabled);
-    }
-    else
-#endif
-    {
-        return (pMac->roam.configParam.isFastRoamIniFeatureEnabled &&
+    return (pMac->roam.configParam.isFastRoamIniFeatureEnabled &&
             (!csrIsConcurrentSessionRunning(pMac)));
-    }
-}
-
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-//Returns whether "FW based BG scan" is currently enabled...or not
-tANI_BOOLEAN csrRoamIsRoamOffloadScanEnabled(tpAniSirGlobal pMac)
-{
-    return (pMac->roam.configParam.isRoamOffloadScanEnabled);
 }
 #endif
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
 #endif
+=======
+>>>>>>> 657b0e9... prima update
 
 //Return true means the command can be release, else not
 static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pCommand,
@@ -5864,12 +6404,18 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
     eHalStatus status;
     tANI_U32 key_timeout_interval = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tSirSmeStartBssRsp  *pSmeStartBssRsp = NULL;
 #endif
 =======
     tSirSmeStartBssRsp  *pSmeStartBssRsp = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tSirSmeStartBssRsp  *pSmeStartBssRsp = NULL;
+#endif
+>>>>>>> 657b0e9... prima update
 
     if(!pSession)
     {
@@ -5878,10 +6424,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG1, FL("Processing ROAM results...\n"));
 =======
     smsLog( pMac, LOG1, FL("Processing ROAM results..."));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG1, FL("Processing ROAM results...\n"));
+>>>>>>> 657b0e9... prima update
     switch( Result )
     {
         case eCsrJoinSuccess:
@@ -5901,10 +6451,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             // Success Join Response from LIM.  Tell NDIS we are connected and save the
             // Connected state...
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("receives association indication\n"));
 =======
             smsLog(pMac, LOGW, FL("receives association indication"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("receives association indication\n"));
+>>>>>>> 657b0e9... prima update
             palZeroMemory(pMac->hHdd, &roamInfo, sizeof(roamInfo));
             //always free the memory here
             if(pSession->pWpaRsnRspIE)
@@ -5999,10 +6553,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                                                 FALSE, TRUE, eSIR_TX_RX, 0, 0, NULL, 0 ) ) ) // NO keys... these key parameters don't matter.
                     {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         smsLog( pMac, LOGE, FL("  Set context for unicast fail\n") );
 =======
                         smsLog( pMac, LOGE, FL("  Set context for unicast fail") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        smsLog( pMac, LOGE, FL("  Set context for unicast fail\n") );
+>>>>>>> 657b0e9... prima update
                         csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, sessionId );
                     }
                     // Issue the set Context request to LIM to establish the Broadcast STA context
@@ -6033,10 +6591,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                     {
                         //Reset our state so nothting is blocked.
 <<<<<<< HEAD
+<<<<<<< HEAD
                         smsLog( pMac, LOGE, FL("   Failed to start pre-auth timer\n") );
 =======
                         smsLog( pMac, LOGE, FL("   Failed to start pre-auth timer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        smsLog( pMac, LOGE, FL("   Failed to start pre-auth timer\n") );
+>>>>>>> 657b0e9... prima update
                         csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, sessionId);
                     }
                 }
@@ -6080,12 +6642,17 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                             else
                             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 smsLog(pMac, LOGE, "%s: Copying of memory failed for %d bytes !!!\n", 
                                         __FUNCTION__, len);
 =======
                                 smsLog(pMac, LOGE, "%s: Copying of memory failed for %d bytes !!!",
                                         __func__, len);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                smsLog(pMac, LOGE, "%s: Copying of memory failed for %d bytes !!!\n", 
+                                        __FUNCTION__, len);
+>>>>>>> 657b0e9... prima update
                                 palFreeMemory( pMac->hHdd, pSession->connectedInfo.pbFrames );
                                 pSession->connectedInfo.pbFrames = NULL;
                             }
@@ -6124,13 +6691,18 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
 #endif /* WLAN_MDM_CODE_REDUCTION_OPT*/
                 pSession->connectedProfile.acm_mask = acm_mask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+>>>>>>> 657b0e9... prima update
                 //start UAPSD if uapsd_mask is not 0 because HDD will configure for trigger frame
                 //It may be better to let QoS do this????
                 if( pSession->connectedProfile.modifyProfileFields.uapsd_mask )
                 {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     smsLog(pMac, LOGE, " uapsd_mask (0x%X) set, request UAPSD now\n",
                         pSession->connectedProfile.modifyProfileFields.uapsd_mask);
@@ -6144,10 +6716,18 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                 }
                 pSession->connectedProfile.dot11Mode = pSession->bssParams.uCfgDot11Mode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGE, " uapsd_mask (0x%X) set, request UAPSD now\n",
+                        pSession->connectedProfile.modifyProfileFields.uapsd_mask);
+                    pmcStartUapsd( pMac, NULL, NULL );
+                }
+#endif
+>>>>>>> 657b0e9... prima update
                 roamInfo.u.pConnectedProfile = &pSession->connectedProfile;
                 if( pSession->bRefAssocStartCnt > 0 )
                 {
                     pSession->bRefAssocStartCnt--;
+<<<<<<< HEAD
 <<<<<<< HEAD
                     if(!IS_SLM_SESSIONIZATION_SUPPORTED_BY_FW && ( csrIsConcurrentSessionRunning( pMac )))
 =======
@@ -6155,6 +6735,9 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                     //BMPS_WORKAROUND_NOT_NEEDED
                     if(!IS_FEATURE_SUPPORTED_BY_FW(SLM_SESSIONIZATION) && ( csrIsConcurrentSessionRunning( pMac )))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    if(!IS_SLM_SESSIONIZATION_SUPPORTED_BY_FW && ( csrIsConcurrentSessionRunning( pMac )))
+>>>>>>> 657b0e9... prima update
                     {
                        pMac->roam.configParam.doBMPSWorkaround = 1;
                     }
@@ -6181,10 +6764,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, "  Roam command doesn't have a BSS desc\n");
 =======
                 smsLog(pMac, LOGW, "  Roam command doesn't have a BSS desc");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, "  Roam command doesn't have a BSS desc\n");
+>>>>>>> 657b0e9... prima update
             }
             csrScanCancelIdleScan(pMac);
             //Not to signal link up because keys are yet to be set.
@@ -6214,6 +6801,7 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             // start the Ibss without any Bss description.  Lim was kind enough to return
             // the Bss Description that we start beaconing for the newly started Ibss.
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOG2, FL("receives start BSS ok indication\n"));
             status = eHAL_STATUS_FAILURE;
 #ifdef WLAN_SOFTAP_FEATURE
@@ -6221,26 +6809,42 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
 #endif             
 =======
             smsLog(pMac, LOG2, FL("receives start BSS ok indication"));
+=======
+            smsLog(pMac, LOG2, FL("receives start BSS ok indication\n"));
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_FAILURE;
+#ifdef WLAN_SOFTAP_FEATURE
             pSmeStartBssRsp = (tSirSmeStartBssRsp *)Context;
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif             
+>>>>>>> 657b0e9... prima update
             palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
             if( CSR_IS_IBSS( pProfile ) )
             {
                 pSession->connectState = eCSR_ASSOC_STATE_TYPE_IBSS_DISCONNECTED;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             else if (CSR_IS_INFRA_AP(pProfile))
             {
                 pSession->connectState = eCSR_ASSOC_STATE_TYPE_INFRA_DISCONNECTED;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             else
             {
                 pSession->connectState = eCSR_ASSOC_STATE_TYPE_WDS_DISCONNECTED;
@@ -6248,6 +6852,7 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             if( !CSR_IS_WDS_STA( pProfile ) )
             {
                 csrRoamStateChange( pMac, eCSR_ROAMING_STATE_JOINED, sessionId );
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                 pSirBssDesc = &pSmeStartBssRsp->bssDescription;
@@ -6258,11 +6863,21 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                 {
                     smsLog(pMac, LOG2, FL("cannot parse IBSS IEs\n"));
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 pSirBssDesc = &pSmeStartBssRsp->bssDescription;
+#else
+                pSirBssDesc = (tSirBssDescription *)Context;
+#endif
                 if( !HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs( pMac, pSirBssDesc, &pIes )) )
                 {
+<<<<<<< HEAD
                     smsLog(pMac, LOG2, FL("cannot parse IBSS IEs"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOG2, FL("cannot parse IBSS IEs\n"));
+>>>>>>> 657b0e9... prima update
                     roamInfo.pBssDesc = pSirBssDesc;
                     //We need to associate_complete it first, becasue Associate_start already indicated.
                     csrRoamCallCallback( pMac, sessionId, &roamInfo, pCommand->u.roamCmd.roamId, 
@@ -6270,16 +6885,25 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                     break;
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                 if (!CSR_IS_INFRA_AP(pProfile))
 #endif
                 {
                     pScanResult = csrScanAppendBssDescription( pMac, pSirBssDesc, pIes );
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 if (!CSR_IS_INFRA_AP(pProfile))
+#endif
                 {
+<<<<<<< HEAD
                     pScanResult = csrScanAppendBssDescription( pMac, pSirBssDesc, pIes, FALSE );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pScanResult = csrScanAppendBssDescription( pMac, pSirBssDesc, pIes );
+>>>>>>> 657b0e9... prima update
                 }
                 csrRoamSaveConnectedBssDesc(pMac, sessionId, pSirBssDesc);
                 csrRoamFreeConnectProfile(pMac, &pSession->connectedProfile);
@@ -6325,6 +6949,7 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                 //Only set context for non-WDS_STA. We don't even need it for WDS_AP. But since the encryption
                 //is WPA2-PSK so it won't matter.
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                 if( CSR_IS_ENC_TYPE_STATIC( pProfile->negotiatedUCEncryptionType ) && !CSR_IS_INFRA_AP( pSession->pCurRoamProfile ))
                 {
@@ -6336,6 +6961,15 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                 if( CSR_IS_ENC_TYPE_STATIC( pProfile->negotiatedUCEncryptionType ) && !CSR_IS_INFRA_AP( pSession->pCurRoamProfile ))
                 {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+                if( CSR_IS_ENC_TYPE_STATIC( pProfile->negotiatedUCEncryptionType ) && !CSR_IS_INFRA_AP( pSession->pCurRoamProfile ))
+                {
+#else 
+                if( CSR_IS_ENC_TYPE_STATIC( pProfile->negotiatedUCEncryptionType ))
+                {
+#endif
+>>>>>>> 657b0e9... prima update
                     // Issue the set Context request to LIM to establish the Broadcast STA context for the Ibss.
                     csrRoamIssueSetContextReq( pMac, sessionId, 
                                         pProfile->negotiatedMCEncryptionType, 
@@ -6356,19 +6990,27 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                         // Set the roaming substate to 'join attempt'...
                         csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_JOIN_REQ, sessionId);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         status = csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes );
 =======
                         status = csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes, eWNI_SME_JOIN_REQ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        status = csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes );
+>>>>>>> 657b0e9... prima update
                     }
                 }
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGE, " StartBSS for WDS station with no BssDesc\n" );
 =======
                     smsLog( pMac, LOGE, " StartBSS for WDS station with no BssDesc" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGE, " StartBSS for WDS station with no BssDesc\n" );
+>>>>>>> 657b0e9... prima update
                     VOS_ASSERT( 0 );
                 }
             }
@@ -6385,18 +7027,26 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                     roamResult = eCSR_ROAM_RESULT_WDS_STARTED;
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 if( CSR_IS_INFRA_AP( pProfile ) )
                 {
                     roamStatus = eCSR_ROAM_INFRA_IND;
                     roamResult = eCSR_ROAM_RESULT_INFRA_STARTED;
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif  
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif  
+>>>>>>> 657b0e9... prima update
                  
                 //Only tell upper layer is we start the BSS because Vista doesn't like multiple connection
                 //indications. If we don't start the BSS ourself, handler of eSIR_SME_JOINED_NEW_BSS will 
@@ -6410,6 +7060,7 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                     roamInfo.pBssDesc = pSirBssDesc;
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                 roamInfo.staId = (tANI_U8)pSmeStartBssRsp->staId;
 #endif
@@ -6421,6 +7072,12 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                  //BMPS_WORKAROUND_NOT_NEEDED
                 if(!IS_FEATURE_SUPPORTED_BY_FW(SLM_SESSIONIZATION) &&
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+                roamInfo.staId = (tANI_U8)pSmeStartBssRsp->staId;
+#endif
+                if(!IS_SLM_SESSIONIZATION_SUPPORTED_BY_FW &&
+>>>>>>> 657b0e9... prima update
                    ( csrIsConcurrentSessionRunning( pMac )))
                 {
                    pMac->roam.configParam.doBMPSWorkaround = 1;
@@ -6470,18 +7127,26 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                 roamResult = eCSR_ROAM_RESULT_WDS_STARTED;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             if( CSR_IS_INFRA_AP( pProfile ) )
             {
                 roamStatus = eCSR_ROAM_INFRA_IND;
                 roamResult = eCSR_ROAM_RESULT_INFRA_START_FAILED;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             if(Context)
             {
                 pSirBssDesc = (tSirBssDescription *)Context;
@@ -6501,10 +7166,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             //No message to PE
             // return the roaming state to Joined.
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("receives silently roaming indication\n"));
 =======
             smsLog(pMac, LOGW, FL("receives silently roaming indication"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("receives silently roaming indication\n"));
+>>>>>>> 657b0e9... prima update
             csrRoamStateChange( pMac, eCSR_ROAMING_STATE_JOINED, sessionId );
             csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, sessionId );
             palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
@@ -6522,10 +7191,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             //We are here because we try to connect to the same AP
             //No message to PE
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("receives silently stop roaming indication\n"));
 =======
             smsLog(pMac, LOGW, FL("receives silently stop roaming indication"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("receives silently stop roaming indication\n"));
+>>>>>>> 657b0e9... prima update
             palZeroMemory(pMac->hHdd, &roamInfo, sizeof(roamInfo));
             
             //to aviod resetting the substate to NONE
@@ -6545,12 +7218,18 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
             roamInfo.staId = pSession->connectedInfo.staId;
             roamInfo.u.pConnectedProfile = &pSession->connectedProfile;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(VOSS_ENABLED)
             VOS_ASSERT( roamInfo.staId != 0 );
 #endif
 =======
             VOS_ASSERT( roamInfo.staId != 0 );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(VOSS_ENABLED)
+            VOS_ASSERT( roamInfo.staId != 0 );
+#endif
+>>>>>>> 657b0e9... prima update
             pSession->bRefAssocStartCnt--;
             csrRoamCallCallback(pMac, sessionId, &roamInfo, pCommand->u.roamCmd.roamId, 
                                         eCSR_ROAM_ASSOCIATION_COMPLETION, eCSR_ROAM_RESULT_ASSOCIATED);
@@ -6562,10 +7241,14 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
 #endif
         case eCsrJoinWdsFailure:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("failed to join WDS\n"));
 =======
             smsLog(pMac, LOGW, FL("failed to join WDS"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("failed to join WDS\n"));
+>>>>>>> 657b0e9... prima update
             csrFreeConnectBssDesc(pMac, sessionId);
             csrRoamFreeConnectProfile(pMac, &pSession->connectedProfile);
             csrRoamFreeConnectedInfo( pMac, &pSession->connectedInfo );
@@ -6584,12 +7267,17 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
         default:
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("receives no association indication\n"));
             smsLog(pMac, LOG1, FL("Assoc ref count %d\n"), 
 =======
             smsLog(pMac, LOGW, FL("receives no association indication"));
             smsLog(pMac, LOG1, FL("Assoc ref count %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("receives no association indication\n"));
+            smsLog(pMac, LOG1, FL("Assoc ref count %d\n"), 
+>>>>>>> 657b0e9... prima update
                    pSession->bRefAssocStartCnt);
             if( CSR_IS_INFRASTRUCTURE( &pSession->connectedProfile ) || 
                 CSR_IS_ROAM_SUBSTATE_STOP_BSS_REQ( pMac, sessionId ) )
@@ -6610,19 +7298,25 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                 case eCsrSmeIssuedAssocToSimilarAP:
                 case eCsrHddIssued:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 case eCsrSmeIssuedDisassocForHandoff:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                     csrRoamStateChange( pMac, eCSR_ROAMING_STATE_IDLE, sessionId );
                     palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
                     roamInfo.pBssDesc = pCommand->u.roamCmd.pLastRoamBss;
                     roamInfo.statusCode = pSession->joinFailStatusCode.statusCode;
                     roamInfo.reasonCode = pSession->joinFailStatusCode.reasonCode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                     palCopyMemory(pMac->hHdd, &roamInfo.bssid, &pSession->joinFailStatusCode.bssId, sizeof(tCsrBssid));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                     /* Defeaturize this later if needed */
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
                     /* If Join fails while Handoff is in progress, indicate disassociated event to supplicant to reconnect */
@@ -6649,6 +7343,7 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                             }
                         }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOG1, FL("  roam(reason %d) failed\n"), pCommand->u.roamCmd.roamReason);
 =======
                         else
@@ -6665,6 +7360,9 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                         }
                     smsLog(pMac, LOG1, FL("  roam(reason %d) failed"), pCommand->u.roamCmd.roamReason);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOG1, FL("  roam(reason %d) failed\n"), pCommand->u.roamCmd.roamReason);
+>>>>>>> 657b0e9... prima update
 #ifndef WLAN_MDM_CODE_REDUCTION_OPT
                     sme_QosCsrEventInd(pMac, (tANI_U8)sessionId, SME_QOS_CSR_DISCONNECT_IND, NULL);
 #endif
@@ -6728,9 +7426,13 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                     csrScanStartIdleScan(pMac);
                     break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 case eCsrStopBss:
                     csrRoamCallCallback(pMac, sessionId, NULL, 
                                         pCommand->u.roamCmd.roamId, 
@@ -6760,9 +7462,13 @@ static tANI_BOOLEAN csrRoamProcessResults( tpAniSirGlobal pMac, tSmeCmd *pComman
                    }
                    break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
                 case eCsrLostLink1:
                     // if lost link roam1 failed, then issue lost link Scan2 ...
                     csrScanRequestLostLink2(pMac, sessionId);
@@ -6894,6 +7600,7 @@ eHalStatus csrRoamCopyProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pDstProfile,
         pDstProfile->negotiatedMCEncryptionType = pSrcProfile->negotiatedMCEncryptionType;
         pDstProfile->negotiatedAuthType = pSrcProfile->negotiatedAuthType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
         pDstProfile->MFPEnabled = pSrcProfile->MFPEnabled;
@@ -6901,6 +7608,8 @@ eHalStatus csrRoamCopyProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pDstProfile,
         pDstProfile->MFPCapable = pSrcProfile->MFPCapable;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         pDstProfile->BSSType = pSrcProfile->BSSType;
         pDstProfile->phyMode = pSrcProfile->phyMode;
         pDstProfile->csrPersona = pSrcProfile->csrPersona;
@@ -6920,9 +7629,13 @@ eHalStatus csrRoamCopyProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pDstProfile,
         pDstProfile->uapsd_mask = pSrcProfile->uapsd_mask;
         pDstProfile->beaconInterval = pSrcProfile->beaconInterval;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         pDstProfile->privacy           = pSrcProfile->privacy;
         pDstProfile->fwdWPSPBCProbeReq = pSrcProfile->fwdWPSPBCProbeReq;
         pDstProfile->csr80211AuthType  = pSrcProfile->csr80211AuthType;
@@ -6935,9 +7648,13 @@ eHalStatus csrRoamCopyProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pDstProfile,
         pDstProfile->wps_state         = pSrcProfile->wps_state;
         pDstProfile->ieee80211d        = pSrcProfile->ieee80211d;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         palCopyMemory(pMac->hHdd, &pDstProfile->Keys, &pSrcProfile->Keys, sizeof(pDstProfile->Keys));
 #ifdef WLAN_FEATURE_VOWIFI_11R
         if (pSrcProfile->MDID.mdiePresent)
@@ -6986,6 +7703,7 @@ eHalStatus csrRoamCopyConnectedProfile(tpAniSirGlobal pMac, tANI_U32 sessionId, 
             palCopyMemory(pMac->hHdd, &pDstProfile->SSIDs.SSIDList[0].SSID, &pSrcProfile->SSID, sizeof(tSirMacSSid));
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         status = palAllocateMemory(pMac->hHdd, (void **)&pDstProfile->ChannelInfo.ChannelList, 1);
         if(!HAL_STATUS_SUCCESS(status))
         {
@@ -7006,6 +7724,8 @@ eHalStatus csrRoamCopyConnectedProfile(tpAniSirGlobal pMac, tANI_U32 sessionId, 
             palCopyMemory(pMac->hHdd, pDstProfile->pAddIEAssoc, pSrcProfile->pAddIEAssoc,
                 pSrcProfile->nAddIEAssocLength);
         }
+=======
+>>>>>>> 657b0e9... prima update
         status = palAllocateMemory(pMac->hHdd, (void **)&pDstProfile->ChannelInfo.ChannelList, 1);
         if(!HAL_STATUS_SUCCESS(status))
         {
@@ -7057,10 +7777,14 @@ eHalStatus csrRoamIssueConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
     if(NULL == pCommand)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
         smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_RESOURCES;
     }
     else
@@ -7069,10 +7793,14 @@ eHalStatus csrRoamIssueConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
         {
             csrScanCancelIdleScan(pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
             csrScanAbortMacScanNotForConnect(pMac);
 =======
             csrScanAbortMacScanNotForConnect(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            csrScanAbortMacScanNotForConnect(pMac);
+>>>>>>> 657b0e9... prima update
         }
         pCommand->u.roamCmd.fReleaseProfile = eANI_BOOLEAN_FALSE;
         if(NULL == pProfile)
@@ -7110,10 +7838,14 @@ eHalStatus csrRoamIssueConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandRoam( pMac, pCommand );
         }
     }
@@ -7131,20 +7863,28 @@ eHalStatus csrRoamIssueReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
     if(NULL == pCommand)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
         smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_RESOURCES;
     }
     else
     {
         csrScanCancelIdleScan(pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
         csrScanAbortMacScanNotForConnect(pMac);
 =======
         csrScanAbortMacScanNotForConnect(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        csrScanAbortMacScanNotForConnect(pMac);
+>>>>>>> 657b0e9... prima update
         if(pProfile)
         {
            //This is likely trying to reassoc to different profile
@@ -7176,10 +7916,14 @@ eHalStatus csrRoamIssueReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
         if( !HAL_STATUS_SUCCESS( status ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrRoamCompletion(pMac, sessionId, NULL, pCommand, eCSR_ROAM_RESULT_FAILURE, eANI_BOOLEAN_FALSE);
             csrReleaseCommandRoam( pMac, pCommand );
     }
@@ -7190,10 +7934,14 @@ eHalStatus csrRoamIssueReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoam
 eHalStatus csrRoamEnqueuePreauth(tpAniSirGlobal pMac, tANI_U32 sessionId, tpSirBssDescription pBssDescription,
                                 eCsrRoamReason reason, tANI_BOOLEAN fImmediate)
 <<<<<<< HEAD
+<<<<<<< HEAD
 //                               , eCsrRoamReason reason, tANI_U32 roamId, tANI_BOOLEAN fImediate)
 =======
 //                              , eCsrRoamReason reason, tANI_U32 roamId, tANI_BOOLEAN fImediate)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+//                               , eCsrRoamReason reason, tANI_U32 roamId, tANI_BOOLEAN fImediate)
+>>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
     tSmeCmd *pCommand;
@@ -7202,10 +7950,14 @@ eHalStatus csrRoamEnqueuePreauth(tpAniSirGlobal pMac, tANI_U32 sessionId, tpSirB
     if(NULL == pCommand)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
         smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_RESOURCES;
     }
     else
@@ -7223,10 +7975,14 @@ eHalStatus csrRoamEnqueuePreauth(tpAniSirGlobal pMac, tANI_U32 sessionId, tpSirB
             if( !HAL_STATUS_SUCCESS( status ) )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGE, FL(" fail to enqueue preauth command, status = %d\n"), status );
 =======
                 smsLog( pMac, LOGE, FL(" fail to enqueue preauth command, status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGE, FL(" fail to enqueue preauth command, status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
                 csrReleaseCommandPreauth( pMac, pCommand );
             }
         }
@@ -7251,29 +8007,41 @@ eHalStatus csrRoamDequeuePreauth(tpAniSirGlobal pMac)
                 (eCsrPerformPreauth == pCommand->u.roamCmd.roamReason))
         {             
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL("DQ-Command = %d, Reason = %d \n"), 
 =======
             smsLog( pMac, LOG1, FL("DQ-Command = %d, Reason = %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL("DQ-Command = %d, Reason = %d \n"), 
+>>>>>>> 657b0e9... prima update
                     pCommand->command, pCommand->u.roamCmd.roamReason);
             if (csrLLRemoveEntry( &pMac->sme.smeCmdActiveList, pEntry, LL_ACCESS_LOCK )) {
                 csrReleaseCommandPreauth( pMac, pCommand );
             }
         } else  {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL("Command = %d, Reason = %d \n"), 
 =======
             smsLog( pMac, LOGE, FL("Command = %d, Reason = %d "),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL("Command = %d, Reason = %d \n"), 
+>>>>>>> 657b0e9... prima update
                     pCommand->command, pCommand->u.roamCmd.roamReason);
         }
     }
     else {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("pEntry NULL for eWNI_SME_FT_PRE_AUTH_RSP\n"));
 =======
         smsLog( pMac, LOGE, FL("pEntry NULL for eWNI_SME_FT_PRE_AUTH_RSP"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("pEntry NULL for eWNI_SME_FT_PRE_AUTH_RSP\n"));
+>>>>>>> 657b0e9... prima update
     }
     smeProcessPendingQueue( pMac );
     return eHAL_STATUS_SUCCESS;
@@ -7298,10 +8066,14 @@ eHalStatus csrRoamConnectWithBSSList(tpAniSirGlobal pMac, tANI_U32 sessionId, tC
         if(!HAL_STATUS_SUCCESS(status))
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("failed to start a join process\n"));
 =======
             smsLog(pMac, LOGE, FL("failed to start a join process"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("failed to start a join process\n"));
+>>>>>>> 657b0e9... prima update
             csrScanResultPurge(pMac, hBSSList);
         }
     }
@@ -7323,19 +8095,26 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
         return eHAL_STATUS_FAILURE;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG1, FL("called  BSSType = %d authtype = %d  encryType = %d\n"),
 =======
     smsLog(pMac, LOG1, FL("called  BSSType = %d authtype = %d  encryType = %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG1, FL("called  BSSType = %d authtype = %d  encryType = %d\n"),
+>>>>>>> 657b0e9... prima update
                 pProfile->BSSType, pProfile->AuthType.authType[0], pProfile->EncryptionType.encryptionType[0]);
     if( CSR_IS_WDS( pProfile ) && 
         !HAL_STATUS_SUCCESS( status = csrIsBTAMPAllowed( pMac, pProfile->operationChannel ) ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         smsLog(pMac, LOGE, FL("Request for BT AMP connection failed, channel requested is different than infra = %d"),
                pProfile->operationChannel);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         return status;
     }
     csrRoamCancelRoaming(pMac, sessionId);
@@ -7343,19 +8122,28 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
     csrScanCancelIdleScan(pMac);
     //Only abort the scan if it is not used for other roam/connect purpose
 <<<<<<< HEAD
+<<<<<<< HEAD
     csrScanAbortMacScan(pMac);
 #ifdef WLAN_SOFTAP_FEATURE
 =======
     csrScanAbortMacScan(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    csrScanAbortMacScan(pMac);
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     if (!vos_concurrent_sessions_running() && (VOS_STA_SAP_MODE == pProfile->csrPersona))//In case of AP mode we do not want idle mode scan
     {
         csrScanDisable(pMac);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
     csrRoamRemoveDuplicateCommand(pMac, sessionId, NULL, eCsrHddIssued);
     //Check whether ssid changes
     if(csrIsConnStateConnected(pMac, sessionId))
@@ -7371,10 +8159,14 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
     if(CSR_INVALID_SCANRESULT_HANDLE != hBssListIn)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("is called with BSSList\n"));
 =======
         smsLog(pMac, LOG1, FL("is called with BSSList"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("is called with BSSList\n"));
+>>>>>>> 657b0e9... prima update
         status = csrRoamConnectWithBSSList(pMac, sessionId, pProfile, hBssListIn, pRoamId);
         if(pRoamId)
         {
@@ -7424,6 +8216,7 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
                 {
                     if( (pProfile && CSR_IS_WDS_AP( pProfile ) )
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                      || (pProfile && CSR_IS_INFRA_AP ( pProfile ))
 #endif
@@ -7431,15 +8224,24 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
                     {
                         //This can be start right away
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                      || (pProfile && CSR_IS_INFRA_AP ( pProfile ))
+#endif
                     )
                     {
+<<<<<<< HEAD
                         //This can be started right away
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        //This can be start right away
+>>>>>>> 657b0e9... prima update
                         status = csrRoamIssueConnect(pMac, sessionId, pProfile, NULL, eCsrHddIssued, 
                                                     roamId, eANI_BOOLEAN_FALSE, eANI_BOOLEAN_FALSE);
                         if(!HAL_STATUS_SUCCESS(status))
                         {
+<<<<<<< HEAD
 <<<<<<< HEAD
                             fCallCallback = eANI_BOOLEAN_TRUE;
                         }
@@ -7449,17 +8251,19 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
                     smsLog(pMac, LOG1, "************ csrScanGetResult Status ********* %d\n", status);
 =======
                             smsLog(pMac, LOGE, FL("   CSR failed to issue start BSS command with status = 0x%08X"), status);
+=======
+>>>>>>> 657b0e9... prima update
                             fCallCallback = eANI_BOOLEAN_TRUE;
-                        }
-                        else
-                        {
-                            smsLog(pMac, LOG1, FL("Connect request to proceed for AMP/SoftAP mode"));
                         }
                         break;
                     }
                     status = csrScanGetResult(pMac, pScanFilter, &hBSSList);
+<<<<<<< HEAD
                     smsLog(pMac, LOG1, "************ csrScanGetResult Status ********* %d", status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOG1, "************ csrScanGetResult Status ********* %d\n", status);
+>>>>>>> 657b0e9... prima update
                     if(HAL_STATUS_SUCCESS(status))
                     {
                         status = csrRoamIssueConnect(pMac, sessionId, pProfile, hBSSList, eCsrHddIssued, 
@@ -7467,9 +8271,12 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
                         if(!HAL_STATUS_SUCCESS(status))
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                             smsLog(pMac, LOGE, FL("   CSR failed to issue connect command with status = 0x%08X"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                             csrScanResultPurge(pMac, hBSSList);
                             fCallCallback = eANI_BOOLEAN_TRUE;
                         }
@@ -7484,16 +8291,21 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
                             if(!HAL_STATUS_SUCCESS(status))
                             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 smsLog(pMac, LOGE, "   CSR failed to issue startIBSS command with status = 0x%08X\n", status);
 =======
                                 smsLog(pMac, LOGE, "   CSR failed to issue startIBSS command with status = 0x%08X", status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                smsLog(pMac, LOGE, "   CSR failed to issue startIBSS command with status = 0x%08X\n", status);
+>>>>>>> 657b0e9... prima update
                                 fCallCallback = eANI_BOOLEAN_TRUE;
                             }
                         }
                         else
                         {
                             //scan for this SSID
+<<<<<<< HEAD
 <<<<<<< HEAD
                             status = csrScanForSSID(pMac, sessionId, pProfile, roamId);
                             if(!HAL_STATUS_SUCCESS(status))
@@ -7502,16 +8314,21 @@ eHalStatus csrRoamConnect(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
                             }
 =======
                             status = csrScanForSSID(pMac, sessionId, pProfile, roamId, TRUE);
+=======
+                            status = csrScanForSSID(pMac, sessionId, pProfile, roamId);
+>>>>>>> 657b0e9... prima update
                             if(!HAL_STATUS_SUCCESS(status))
                             {
-                                smsLog(pMac, LOGE, FL("   CSR failed to issue SSID scan command with status = 0x%08X"), status);
                                 fCallCallback = eANI_BOOLEAN_TRUE;
                             }
+<<<<<<< HEAD
                             else
                             {
                                 smsLog(pMac, LOG1, FL("SSID scan requested for Infra connect req"));
                             }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                         }
                     }
                     else
@@ -7551,6 +8368,7 @@ eHalStatus csrRoamReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
       return eHAL_STATUS_FAILURE;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG1, FL("called  BSSType = %d authtype = %d  encryType = %d\n"), pProfile->BSSType, pProfile->AuthType.authType[0], pProfile->EncryptionType.encryptionType[0]);
    csrRoamCancelRoaming(pMac, sessionId);
    csrScanRemoveFreshScanCommand(pMac, sessionId);
@@ -7563,6 +8381,13 @@ eHalStatus csrRoamReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
    csrScanCancelIdleScan(pMac);
    csrScanAbortMacScanNotForConnect(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG1, FL("called  BSSType = %d authtype = %d  encryType = %d\n"), pProfile->BSSType, pProfile->AuthType.authType[0], pProfile->EncryptionType.encryptionType[0]);
+   csrRoamCancelRoaming(pMac, sessionId);
+   csrScanRemoveFreshScanCommand(pMac, sessionId);
+   csrScanCancelIdleScan(pMac);
+   csrScanAbortMacScanNotForConnect(pMac);
+>>>>>>> 657b0e9... prima update
    csrRoamRemoveDuplicateCommand(pMac, sessionId, NULL, eCsrHddIssuedReassocToSameAP);
    if(csrIsConnStateConnected(pMac, sessionId))
    {
@@ -7576,10 +8401,14 @@ eHalStatus csrRoamReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
          else
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOG1, FL("Not connected to the same SSID asked in the profile\n"));
 =======
             smsLog(pMac, LOG1, FL("Not connected to the same SSID asked in the profile"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG1, FL("Not connected to the same SSID asked in the profile\n"));
+>>>>>>> 657b0e9... prima update
          }
       }
       else if(!palEqualMemory(pMac->hHdd, &modProfileFields, 
@@ -7592,19 +8421,27 @@ eHalStatus csrRoamReassoc(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfi
       {
          smsLog(pMac, LOG1, FL("Either the profile is NULL or none of the fields "
 <<<<<<< HEAD
+<<<<<<< HEAD
                                "in tCsrRoamModifyProfileFields got modified\n"));
 =======
                                "in tCsrRoamModifyProfileFields got modified"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               "in tCsrRoamModifyProfileFields got modified\n"));
+>>>>>>> 657b0e9... prima update
       }
    }
    else
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOG1, FL("Not connected! No need to reassoc\n"));
 =======
       smsLog(pMac, LOG1, FL("Not connected! No need to reassoc"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOG1, FL("Not connected! No need to reassoc\n"));
+>>>>>>> 657b0e9... prima update
    }
    if(!fCallCallback)
    {
@@ -7645,10 +8482,14 @@ eHalStatus csrRoamJoinLastProfile(tpAniSirGlobal pMac, tANI_U32 sessionId)
         {
             csrScanCancelIdleScan(pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
             csrScanAbortMacScanNotForConnect(pMac);
 =======
             csrScanAbortMacScanNotForConnect(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            csrScanAbortMacScanNotForConnect(pMac);
+>>>>>>> 657b0e9... prima update
             //We have to make a copy of pCurRoamProfile because it will be free inside csrRoamIssueConnect
             status = palAllocateMemory(pMac->hHdd, (void **)&pProfile, sizeof(tCsrRoamProfile));
             if(!HAL_STATUS_SUCCESS(status))
@@ -7687,10 +8528,14 @@ eHalStatus csrRoamJoinLastProfile(tpAniSirGlobal pMac, tANI_U32 sessionId)
                 //Do a scan on this profile
                 //scan for this SSID only in case the AP suppresses SSID
 <<<<<<< HEAD
+<<<<<<< HEAD
                 status = csrScanForSSID(pMac, sessionId, pProfile, roamId);
 =======
                 status = csrScanForSSID(pMac, sessionId, pProfile, roamId, TRUE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                status = csrScanForSSID(pMac, sessionId, pProfile, roamId);
+>>>>>>> 657b0e9... prima update
                 if(!HAL_STATUS_SUCCESS(status))
                 {
                     break;
@@ -7700,10 +8545,14 @@ eHalStatus csrRoamJoinLastProfile(tpAniSirGlobal pMac, tANI_U32 sessionId)
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("cannot find a roaming profile\n"));
 =======
             smsLog(pMac, LOGW, FL("cannot find a roaming profile"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("cannot find a roaming profile\n"));
+>>>>>>> 657b0e9... prima update
             break;
         }
     }while(0);
@@ -7737,10 +8586,14 @@ eHalStatus csrRoamConnectToLastProfile(tpAniSirGlobal pMac, tANI_U32 sessionId)
 {
     eHalStatus status = eHAL_STATUS_FAILURE;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, FL("is called\n"));
 =======
     smsLog(pMac, LOGW, FL("is called"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, FL("is called\n"));
+>>>>>>> 657b0e9... prima update
     csrRoamCancelRoaming(pMac, sessionId);
     csrRoamRemoveDuplicateCommand(pMac, sessionId, NULL, eCsrHddIssued);
     if(csrIsConnStateDisconnected(pMac, sessionId))
@@ -7769,10 +8622,14 @@ eHalStatus csrRoamProcessDisassocDeauth( tpAniSirGlobal pMac, tSmeCmd *pCommand,
     else if ( csrIsConnStateInfra( pMac, sessionId ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" restore AC weights (%d-%d-%d-%d)\n"), pMac->roam.ucACWeights[0], pMac->roam.ucACWeights[1],
 =======
         smsLog(pMac, LOG1, FL(" restore AC weights (%d-%d-%d-%d)"), pMac->roam.ucACWeights[0], pMac->roam.ucACWeights[1],
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL(" restore AC weights (%d-%d-%d-%d)\n"), pMac->roam.ucACWeights[0], pMac->roam.ucACWeights[1],
+>>>>>>> 657b0e9... prima update
             pMac->roam.ucACWeights[2], pMac->roam.ucACWeights[3]);
         //Restore AC weight in case we change it 
         WLANTL_SetACWeights(pMac->roam.gVosContext, pMac->roam.ucACWeights);
@@ -7831,12 +8688,15 @@ eHalStatus csrRoamProcessDisassocDeauth( tpAniSirGlobal pMac, tSmeCmd *pCommand,
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     else
     {
         smsLog(pMac, LOGW, FL(" failed with status %d"), status);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     return (status);
 }
 
@@ -7860,6 +8720,7 @@ eHalStatus csrRoamIssueDisassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId,
     do
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("  reason = %d\n"), reason );
         pCommand = csrGetCommandBuffer( pMac );
         if ( !pCommand ) 
@@ -7872,6 +8733,13 @@ eHalStatus csrRoamIssueDisassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId,
         {
             smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("  reason = %d\n"), reason );
+        pCommand = csrGetCommandBuffer( pMac );
+        if ( !pCommand ) 
+        {
+            smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_RESOURCES;
             break;
         }
@@ -7912,10 +8780,14 @@ eHalStatus csrRoamIssueDisassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId,
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandRoam( pMac, pCommand );
         }
     } while( 0 );
@@ -7942,20 +8814,28 @@ eHalStatus csrRoamIssueStopBssCmd( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandRoam( pMac, pCommand );
         }
     }
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
         smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_RESOURCES;
     }
     return ( status );
@@ -7985,10 +8865,14 @@ eHalStatus csrRoamDisconnectInternal(tpAniSirGlobal pMac, tANI_U32 sessionId, eC
                 
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG2, FL("called\n"));
 =======
         smsLog(pMac, LOG2, FL("called"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG2, FL("called\n"));
+>>>>>>> 657b0e9... prima update
         status = csrRoamIssueDisassociateCmd(pMac, sessionId, reason);
     }
     return (status);
@@ -8027,6 +8911,7 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
         return eHAL_STATUS_FAILURE;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 
@@ -8036,6 +8921,9 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
         pConnectProfile->pAddIEAssoc = NULL;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, &pSession->connectedProfile, sizeof(tCsrRoamConnectedProfile));
     pConnectProfile->AuthType = pProfile->negotiatedAuthType;
         pConnectProfile->AuthInfo = pProfile->AuthType;
@@ -8050,6 +8938,7 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
     pConnectProfile->beaconInterval = pSirBssDesc->beaconInterval;
 
     palCopyMemory(pMac->hHdd, &pConnectProfile->Keys, &pProfile->Keys, sizeof(tCsrKeys));
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -8069,6 +8958,8 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
     }
     
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     //Save bssid
     csrGetBssIdBssDesc(pMac, pSirBssDesc, &pConnectProfile->bssid);
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -8079,12 +8970,15 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
     }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     if( NULL == pIesTemp )
     {
         status = csrGetParsedBssDescriptionIEs(pMac, pSirBssDesc, &pIesTemp);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_CCX
     if ((csrIsProfileCCX(pProfile) || 
          ((pIesTemp->CCXVersion.present) 
@@ -8092,6 +8986,7 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
               || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA) 
               || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK) 
               || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN) 
+<<<<<<< HEAD
 <<<<<<< HEAD
               || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
         && (!(csrIsProfile11r( pProfile ))) 
@@ -8101,6 +8996,10 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
 #endif
               || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK))))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
+        && (!(csrIsProfile11r( pProfile ))) 
+>>>>>>> 657b0e9... prima update
         && (pMac->roam.configParam.isCcxIniFeatureEnabled))
     {
         pConnectProfile->isCCXAssoc = 1;
@@ -8108,12 +9007,18 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
 #endif
     //save ssid
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     if( NULL == pIesTemp )
     {
         status = csrGetParsedBssDescriptionIEs(pMac, pSirBssDesc, &pIesTemp);
     }
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     if(HAL_STATUS_SUCCESS(status))
     {
         if(pIesTemp->SSID.present)
@@ -8126,6 +9031,7 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
         //Save the bss desc
         status = csrRoamSaveConnectedBssDesc(pMac, sessionId, pSirBssDesc);
 <<<<<<< HEAD
+<<<<<<< HEAD
            if( CSR_IS_QOS_BSS(pIesTemp) )
            {
 =======
@@ -8134,6 +9040,10 @@ eHalStatus csrRoamSaveConnectedInfomation(tpAniSirGlobal pMac, tANI_U32 sessionI
            {
               //Some HT AP's dont send WMM IE so in that case we assume all HT Ap's are Qos Enabled AP's
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           if( CSR_IS_QOS_BSS(pIesTemp) )
+           {
+>>>>>>> 657b0e9... prima update
               pConnectProfile->qap = TRUE;
            }
            else
@@ -8208,10 +9118,14 @@ static void csrRoamJoinRspProcessor( tpAniSirGlobal pMac, tSirSmeJoinRsp *pSmeJo
         pSession->joinFailStatusCode.statusCode = pSmeJoinRsp->statusCode;
         pSession->joinFailStatusCode.reasonCode = pSmeJoinRsp->protStatusCode;
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "SmeJoinReq failed with statusCode= 0x%08lX [%d]\n", pSmeJoinRsp->statusCode, pSmeJoinRsp->statusCode );
 =======
         smsLog( pMac, LOGW, "SmeJoinReq failed with statusCode= 0x%08lX [%d]", pSmeJoinRsp->statusCode, pSmeJoinRsp->statusCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "SmeJoinReq failed with statusCode= 0x%08lX [%d]\n", pSmeJoinRsp->statusCode, pSmeJoinRsp->statusCode );
+>>>>>>> 657b0e9... prima update
 #if   defined WLAN_FEATURE_NEIGHBOR_ROAMING
         /* If Join fails while Handoff is in progress, indicate disassociated event to supplicant to reconnect */
         if (csrRoamIsHandoffInProgress(pMac))
@@ -8251,10 +9165,14 @@ eHalStatus csrRoamIssueJoin( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDes
 {
     eHalStatus status;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG1, "Attempting to Join Bssid= %02x-%02x-%02x-%02x-%02x-%02x\n", 
 =======
     smsLog( pMac, LOG1, "Attempting to Join Bssid= %02x-%02x-%02x-%02x-%02x-%02x",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG1, "Attempting to Join Bssid= %02x-%02x-%02x-%02x-%02x-%02x\n", 
+>>>>>>> 657b0e9... prima update
                   pSirBssDesc->bssId[ 0 ],pSirBssDesc->bssId[ 1 ],pSirBssDesc->bssId[ 2 ],
                   pSirBssDesc->bssId[ 3 ],pSirBssDesc->bssId[ 4 ],pSirBssDesc->bssId[ 5 ] );
     
@@ -8262,10 +9180,14 @@ eHalStatus csrRoamIssueJoin( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDes
     csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_JOIN_REQ, sessionId);
     // attempt to Join this BSS...
 <<<<<<< HEAD
+<<<<<<< HEAD
     status = csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes );
 =======
     status = csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes, eWNI_SME_JOIN_REQ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    status = csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes );
+>>>>>>> 657b0e9... prima update
     return (status);
 }
 
@@ -8277,6 +9199,7 @@ static eHalStatus csrRoamIssueReassociate( tpAniSirGlobal pMac, tANI_U32 session
     csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_REASSOC_REQ, sessionId );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGE, FL("  calling csrSendSmeReassocReqMsg\n"));
     
     // attempt to Join this BSS...
@@ -8287,6 +9210,12 @@ static eHalStatus csrRoamIssueReassociate( tpAniSirGlobal pMac, tANI_U32 session
     // attempt to Join this BSS...
     return csrSendJoinReqMsg( pMac, sessionId, pSirBssDesc, pProfile, pIes, eWNI_SME_REASSOC_REQ);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGE, FL("  calling csrSendSmeReassocReqMsg\n"));
+    
+    // attempt to Join this BSS...
+    return csrSendSmeReassocReqMsg( pMac, sessionId, pSirBssDesc, pIes, pProfile );
+>>>>>>> 657b0e9... prima update
 }
 
 void csrRoamReissueRoamCommand(tpAniSirGlobal pMac)
@@ -8319,20 +9248,30 @@ void csrRoamReissueRoamCommand(tpAniSirGlobal pMac)
                 roamInfo.statusCode = pSession->joinFailStatusCode.statusCode;
                 roamInfo.reasonCode = pSession->joinFailStatusCode.reasonCode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE              
                 if (CSR_IS_WDS(&pSession->connectedProfile)){
 #endif
 =======
                 if (CSR_IS_WDS(&pSession->connectedProfile)){
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE              
+                if (CSR_IS_WDS(&pSession->connectedProfile)){
+#endif
+>>>>>>> 657b0e9... prima update
                 pSession->connectState = eCSR_ASSOC_STATE_TYPE_WDS_DISCONNECTED;
                 csrRoamCallCallback(pMac, sessionId, &roamInfo, pCommand->u.roamCmd.roamId, 
                                         eCSR_ROAM_WDS_IND, 
                                         eCSR_ROAM_RESULT_WDS_DISASSOCIATED);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef  WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef  WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                                 }else if (CSR_IS_INFRA_AP(&pSession->connectedProfile)){
                                         pSession->connectState = eCSR_ASSOC_STATE_TYPE_INFRA_DISCONNECTED;
                                         csrRoamCallCallback(pMac, sessionId, &roamInfo, pCommand->u.roamCmd.roamId,
@@ -8340,6 +9279,7 @@ void csrRoamReissueRoamCommand(tpAniSirGlobal pMac)
                                                                                 eCSR_ROAM_RESULT_INFRA_DISASSOCIATED);
                                 }  
  
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif                  
 
@@ -8352,35 +9292,54 @@ void csrRoamReissueRoamCommand(tpAniSirGlobal pMac)
                 {
                     smsLog(pMac, LOGE, " Failed to reissue stop_bss command for WDS after disassociated");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif                  
+
+                if( !HAL_STATUS_SUCCESS( csrRoamIssueStopBss( pMac, sessionId, eCSR_ROAM_SUBSTATE_STOP_BSS_REQ ) ) )
+                {
+                    smsLog(pMac, LOGE, " Failed to reissue stop_bss command for WDS after disassociated\n");
+>>>>>>> 657b0e9... prima update
                     csrRoamComplete( pMac, eCsrNothingToJoin, NULL );
                 }
             }
             else if(eCsrStopRoaming == csrRoamJoinNextBss(pMac, pCommand, eANI_BOOLEAN_TRUE))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, " Failed to reissue join command after disassociated\n");
 =======
                 smsLog(pMac, LOGW, " Failed to reissue join command after disassociated");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, " Failed to reissue join command after disassociated\n");
+>>>>>>> 657b0e9... prima update
                 csrRoamComplete( pMac, eCsrNothingToJoin, NULL );
             }
         }
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, "  Command is not roaming after disassociated\n");
 =======
             smsLog(pMac, LOGW, "  Command is not roaming after disassociated");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, "  Command is not roaming after disassociated\n");
+>>>>>>> 657b0e9... prima update
         }
     }
     else 
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, "   Disassoc rsp cannot continue because no command is available\n");
 =======
         smsLog(pMac, LOGE, "   Disassoc rsp cannot continue because no command is available");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, "   Disassoc rsp cannot continue because no command is available\n");
+>>>>>>> 657b0e9... prima update
     }
 }
 
@@ -8485,10 +9444,14 @@ eHalStatus csrRoamIssueReassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId )
         if ( !pCommand ) 
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
             smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
             return eHAL_STATUS_RESOURCES;
         }
         if ( eSmeCommandRoam == pCommand->command )
@@ -8500,10 +9463,14 @@ eHalStatus csrRoamIssueReassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId )
             else 
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGE, FL(" Unexpected active roam command present \n") );
 =======
                 smsLog( pMac, LOGE, FL(" Unexpected active roam command present ") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGE, FL(" Unexpected active roam command present \n") );
+>>>>>>> 657b0e9... prima update
             }
             if (fRemoveCmd == FALSE)
             {
@@ -8516,10 +9483,14 @@ eHalStatus csrRoamIssueReassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId )
     if(NULL == pCommand)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" fail to get command buffer as expected based on previous connect roam command\n") );
 =======
         smsLog( pMac, LOGE, FL(" fail to get command buffer as expected based on previous connect roam command") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" fail to get command buffer as expected based on previous connect roam command\n") );
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_RESOURCES;
     }
     do 
@@ -8537,10 +9508,14 @@ eHalStatus csrRoamIssueReassociateCmd( tpAniSirGlobal pMac, tANI_U32 sessionId )
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandRoam( pMac, pCommand );
         }
     } while( 0 );
@@ -8558,10 +9533,14 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
     if(NULL == pEntry)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, "   CFG_CNF with active list empty\n");
 =======
         smsLog(pMac, LOGW, "   CFG_CNF with active list empty");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, "   CFG_CNF with active list empty\n");
+>>>>>>> 657b0e9... prima update
         return;
     }
     pCommand = GET_BASE_ADDR(pEntry, tSmeCmd, Link);
@@ -8577,6 +9556,7 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
     if(CSR_IS_ROAMING(pSession) && pSession->fCancelRoaming)
     {
         //the roaming is cancelled. Simply complete the command
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog(pMac, LOGW, FL("  Roam command cancelled\n"));
         csrRoamComplete(pMac, eCsrNothingToJoin, NULL); 
@@ -8595,15 +9575,24 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
         csrRoamComplete(pMac, eCsrNothingToJoin, NULL);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("  Roam command cancelled\n"));
+        csrRoamComplete(pMac, eCsrNothingToJoin, NULL); 
+    }
+>>>>>>> 657b0e9... prima update
     else
     {
         if ( CCM_IS_RESULT_SUCCESS(result) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOG2, "Cfg sequence complete\n");
 =======
             smsLog(pMac, LOG2, "Cfg sequence complete");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG2, "Cfg sequence complete\n");
+>>>>>>> 657b0e9... prima update
             // Successfully set the configuration parameters for the new Bss.  Attempt to
             // join the roaming Bss.
             if(pCommand->u.roamCmd.pRoamBssEntry)
@@ -8614,12 +9603,18 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
             if ( csrIsBssTypeIBSS( pCommand->u.roamCmd.roamProfile.BSSType ) ||
                  CSR_IS_WDS( &pCommand->u.roamCmd.roamProfile ) 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                   || CSR_IS_INFRA_AP(&pCommand->u.roamCmd.roamProfile) 
 #endif
 =======
                   || CSR_IS_INFRA_AP(&pCommand->u.roamCmd.roamProfile) 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+                  || CSR_IS_INFRA_AP(&pCommand->u.roamCmd.roamProfile) 
+#endif
+>>>>>>> 657b0e9... prima update
             )
             {
                 if(!HAL_STATUS_SUCCESS(csrRoamIssueStartBss( pMac, sessionId,
@@ -8627,10 +9622,14 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
                                         pBssDesc, pCommand->u.roamCmd.roamId )))
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, " CSR start BSS failed\n");
 =======
                     smsLog(pMac, LOGW, " CSR start BSS failed");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, " CSR start BSS failed\n");
+>>>>>>> 657b0e9... prima update
                     //We need to complete the command
                     csrRoamComplete(pMac, eCsrStartBssFailure, NULL);
                 }
@@ -8640,10 +9639,14 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
                 if (!pCommand->u.roamCmd.pRoamBssEntry)
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, " pRoamBssEntry is NULL\n");
 =======
                     smsLog(pMac, LOGW, " pRoamBssEntry is NULL");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, " pRoamBssEntry is NULL\n");
+>>>>>>> 657b0e9... prima update
                     //We need to complete the command
                     csrRoamComplete(pMac, eCsrJoinFailure, NULL);
                     return;
@@ -8711,10 +9714,14 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
 #ifdef FEATURE_WLAN_LFR
                         if (csrRoamIsHandoffInProgress(pMac) && 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                 csrRoamIsFastRoamEnabled(pMac))
 =======
                                                 csrRoamIsFastRoamEnabled(pMac, sessionId))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                                csrRoamIsFastRoamEnabled(pMac))
+>>>>>>> 657b0e9... prima update
                         {
                             // Now serialize the reassoc command.
                             status = csrRoamIssueReassociateCmd(pMac, sessionId);
@@ -8744,10 +9751,14 @@ static void csrRoamingStateConfigCnfProcessor( tpAniSirGlobal pMac, tANI_U32 res
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, FL("  found BSSType mismatching the one in BSS description\n"));
 =======
                     smsLog(pMac, LOGW, FL("  found BSSType mismatching the one in BSS description"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, FL("  found BSSType mismatching the one in BSS description\n"));
+>>>>>>> 657b0e9... prima update
                 }
             }//else
         }//if ( WNI_CFG_SUCCESS == result )
@@ -8779,6 +9790,7 @@ static void csrRoamRoamingStateAuthRspProcessor( tpAniSirGlobal pMac, tSirSmeAut
 {
     //No one is sending eWNI_SME_AUTH_REQ to PE.
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, FL("is no-op\n"));
     if ( eSIR_SME_SUCCESS == pSmeAuthRsp->statusCode ) 
     {
@@ -8789,6 +9801,12 @@ static void csrRoamRoamingStateAuthRspProcessor( tpAniSirGlobal pMac, tSirSmeAut
     {
         smsLog( pMac, LOGW, "CSR SmeAuthReq Successful" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, FL("is no-op\n"));
+    if ( eSIR_SME_SUCCESS == pSmeAuthRsp->statusCode ) 
+    {
+        smsLog( pMac, LOGW, "CSR SmeAuthReq Successful\n" );
+>>>>>>> 657b0e9... prima update
         // Successfully authenticated with a new Bss.  Attempt to stop the current Bss and
         // join the new one...
         /***pBssDesc = profGetRoamingBssDesc( pAdapter, &pHddProfile );
@@ -8796,10 +9814,14 @@ static void csrRoamRoamingStateAuthRspProcessor( tpAniSirGlobal pMac, tSirSmeAut
     }
     else {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "CSR SmeAuthReq failed with statusCode= 0x%08lX [%d]\n", pSmeAuthRsp->statusCode, pSmeAuthRsp->statusCode );
 =======
         smsLog( pMac, LOGW, "CSR SmeAuthReq failed with statusCode= 0x%08lX [%d]", pSmeAuthRsp->statusCode, pSmeAuthRsp->statusCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "CSR SmeAuthReq failed with statusCode= 0x%08lX [%d]\n", pSmeAuthRsp->statusCode, pSmeAuthRsp->statusCode );
+>>>>>>> 657b0e9... prima update
         /***profHandleLostLinkAfterReset(pAdapter);
         // In the event the authenticate fails, let the roam processor attempt to join something else...
         roamRoam( pAdapter );***/
@@ -8816,10 +9838,14 @@ static void csrRoamRoamingStateReassocRspProcessor( tpAniSirGlobal pMac, tpSirSm
     if ( eSIR_SME_SUCCESS == pSmeJoinRsp->statusCode ) 
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "CSR SmeReassocReq Successful\n" );
 =======
         smsLog( pMac, LOGW, "CSR SmeReassocReq Successful" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "CSR SmeReassocReq Successful\n" );
+>>>>>>> 657b0e9... prima update
         result = eCsrReassocSuccess;
         /* Defeaturize this part later if needed */
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
@@ -8842,10 +9868,14 @@ static void csrRoamRoamingStateReassocRspProcessor( tpAniSirGlobal pMac, tpSirSm
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "CSR SmeReassocReq failed with statusCode= 0x%08lX [%d]\n", pSmeJoinRsp->statusCode, pSmeJoinRsp->statusCode );
 =======
         smsLog( pMac, LOGW, "CSR SmeReassocReq failed with statusCode= 0x%08lX [%d]", pSmeJoinRsp->statusCode, pSmeJoinRsp->statusCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "CSR SmeReassocReq failed with statusCode= 0x%08lX [%d]\n", pSmeJoinRsp->statusCode, pSmeJoinRsp->statusCode );
+>>>>>>> 657b0e9... prima update
         result = eCsrReassocFailure;
 #ifdef WLAN_FEATURE_VOWIFI_11R
         if ((eSIR_SME_FT_REASSOC_TIMEOUT_FAILURE == pSmeJoinRsp->statusCode) ||
@@ -8936,10 +9966,14 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
     statusCode = SmeDisassocRsp.statusCode;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG2, "csrRoamRoamingStateDisassocRspProcessor sessionId %d\n", sessionId);
 =======
     smsLog( pMac, LOG2, "csrRoamRoamingStateDisassocRspProcessor sessionId %d", sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG2, "csrRoamRoamingStateDisassocRspProcessor sessionId %d\n", sessionId);
+>>>>>>> 657b0e9... prima update
 
     if ( csrIsConnStateInfra( pMac, sessionId ) )
     {
@@ -8963,16 +9997,21 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
         if ( eSIR_SME_SUCCESS == statusCode )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, "CSR SmeDisassocReq force disassociated Successfully\n" );
 =======
             smsLog( pMac, LOG2, "CSR SmeDisassocReq force disassociated Successfully" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, "CSR SmeDisassocReq force disassociated Successfully\n" );
+>>>>>>> 657b0e9... prima update
             //A callback to HDD will be issued from csrRoamComplete so no need to do anything here
         } 
         csrRoamComplete( pMac, eCsrNothingToJoin, NULL );
     }
     else if ( CSR_IS_ROAM_SUBSTATE_DISASSOC_HO( pMac, sessionId ) )
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
        smsLog( pMac, LOGE, "CSR SmeDisassocReq due to HO\n" );
 #if   defined (WLAN_FEATURE_NEIGHBOR_ROAMING)
@@ -9018,10 +10057,15 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
         * dequeue the command from the active list.
         */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog( pMac, LOGE, "CSR SmeDisassocReq due to HO\n" );
+#if   defined (WLAN_FEATURE_NEIGHBOR_ROAMING)
+>>>>>>> 657b0e9... prima update
         pEntry = csrLLPeekHead( &pMac->sme.smeCmdActiveList, LL_ACCESS_LOCK );
         if ( pEntry )
         {
             pCommand = GET_BASE_ADDR( pEntry, tSmeCmd, Link );
+<<<<<<< HEAD
 <<<<<<< HEAD
             // If the head of the queue is Active and it is a ROAM command, remove
             // and put this on the Free queue.
@@ -9043,6 +10087,15 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
                  * no other roam command should be issued.
                  */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            // If the head of the queue is Active and it is a ROAM command, remove
+            // and put this on the Free queue.
+            if ( eSmeCommandRoam == pCommand->command )
+            {
+
+                //we need to process the result first before removing it from active list because state changes 
+                //still happening insides roamQProcessRoamResults so no other roam command should be issued
+>>>>>>> 657b0e9... prima update
                 fRemoveCmd = csrLLRemoveEntry( &pMac->sme.smeCmdActiveList, pEntry, LL_ACCESS_LOCK );
                 if(pCommand->u.roamCmd.fReleaseProfile)
                 {
@@ -9050,6 +10103,7 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
                     pCommand->u.roamCmd.fReleaseProfile = eANI_BOOLEAN_FALSE;
                 }
                 if( fRemoveCmd )
+<<<<<<< HEAD
 <<<<<<< HEAD
                 {
                     csrReleaseCommandRoam( pMac, pCommand );
@@ -9059,16 +10113,26 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
                     smsLog( pMac, LOGE, "  ********csrRoamRoamingStateDisassocRspProcessor fail to remove cmd reason %d\n",
                         pCommand->u.roamCmd.roamReason );
 =======
+=======
+                {
+>>>>>>> 657b0e9... prima update
                     csrReleaseCommandRoam( pMac, pCommand );
+                }
                 else
                 {
+<<<<<<< HEAD
                     smsLog( pMac, LOGE, "%s: fail to remove cmd reason %d",
                             __func__, pCommand->u.roamCmd.roamReason );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGE, "  ********csrRoamRoamingStateDisassocRspProcessor fail to remove cmd reason %d\n",
+                        pCommand->u.roamCmd.roamReason );
+>>>>>>> 657b0e9... prima update
                 }
             }
             else
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 smsLog( pMac, LOGW, "CSR: Roam Completion called but ROAM command is not ACTIVE ...\n" );
 =======
@@ -9080,6 +10144,75 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
         {
 <<<<<<< HEAD
             smsLog( pMac, LOGW, "CSR: Roam Completion called but NO commands are ACTIVE ...\n" );
+        }
+        //notify HDD for handoff, providing the BSSID too
+        roamInfo.reasonCode = eCsrRoamReasonBetterAP;
+
+        palCopyMemory(pMac->hHdd, roamInfo.bssid, pMac->roam.neighborRoamInfo.csrNeighborRoamProfile.BSSIDs.bssid, sizeof(tSirMacAddr));
+
+            csrRoamCallCallback(pMac,sessionId, &roamInfo, 0, eCSR_ROAM_ROAMING_START, eCSR_ROAM_RESULT_NONE);
+
+        status = palAllocateMemory(pMac->hHdd, (void **)&pScanFilter, sizeof(tCsrScanResultFilter));
+        if(HAL_STATUS_SUCCESS(status))
+        {
+            palZeroMemory(pMac->hHdd, pScanFilter, sizeof(tCsrScanResultFilter));
+            status = csrRoamPrepareFilterFromProfile(pMac, &pMac->roam.neighborRoamInfo.csrNeighborRoamProfile, pScanFilter);
+            if(!HAL_STATUS_SUCCESS(status))
+            {
+                smsLog(pMac, LOGE, FL(" csrRoamPrepareFilterFromProfile fail to create scan filter\n"));
+            }
+        
+            status = csrScanGetResult(pMac, pScanFilter, &hBSSList);
+            if(HAL_STATUS_SUCCESS(status))
+            {
+                //copy over the connected profile to apply the same for this connection as well
+                if(HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd, (void **)&pCurRoamProfile, sizeof(tCsrRoamProfile))))
+                {
+                    palZeroMemory(pMac->hHdd, pCurRoamProfile, sizeof(tCsrRoamProfile));
+                    csrRoamCopyProfile(pMac, pCurRoamProfile, pSession->pCurRoamProfile);
+                }
+                //make sure to put it at the head of the cmd queue
+                status = csrRoamIssueConnect(pMac, sessionId, pCurRoamProfile, 
+                                             hBSSList, eCsrSmeIssuedAssocToSimilarAP, 
+                                             roamId, eANI_BOOLEAN_TRUE, eANI_BOOLEAN_FALSE);
+                if(!HAL_STATUS_SUCCESS(status))
+                {
+                    //msg
+                    fCallCallback = eANI_BOOLEAN_TRUE;
+                }
+                /* Notify sub-modules like QoS etc. that handoff happening         */
+                sme_QosCsrEventInd(pMac, sessionId, SME_QOS_CSR_HANDOFF_ASSOC_REQ, NULL);
+                palFreeMemory(pMac->hHdd, pCurRoamProfile);
+            }
+            else
+            {
+                //msg
+                smsLog( pMac, LOGE,"csrRoamRoamingStateDisassocRspProcessor: csrScanGetResult failed");
+                // should have asserted, sending up roam complete instead. Let upper layer
+                // decide what to do next
+                csrCallRoamingCompletionCallback(pMac, pSession, &roamInfo, 0, eCSR_ROAM_RESULT_FAILURE);
+=======
+                smsLog( pMac, LOGW, "CSR: Roam Completion called but ROAM command is not ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
+            }
+        }
+        else
+        {
+<<<<<<< HEAD
+            smsLog(pMac, LOGE, FL(" fail to allocate memory for scan filter\n"));
+            csrCallRoamingCompletionCallback(pMac, pSession, &roamInfo, 0, eCSR_ROAM_RESULT_FAILURE);
+        }
+        if( pScanFilter )
+        {
+
+            csrFreeScanFilter(pMac, pScanFilter);
+            palFreeMemory( pMac->hHdd, pScanFilter );
+        }
+=======
+            smsLog( pMac, LOGE, "%s: NO commands are active", __func__ );
+=======
+            smsLog( pMac, LOGW, "CSR: Roam Completion called but NO commands are ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
         }
         //notify HDD for handoff, providing the BSSID too
         roamInfo.reasonCode = eCsrRoamReasonBetterAP;
@@ -9140,75 +10273,6 @@ void csrRoamRoamingStateDisassocRspProcessor( tpAniSirGlobal pMac, tSirSmeDisass
             csrFreeScanFilter(pMac, pScanFilter);
             palFreeMemory( pMac->hHdd, pScanFilter );
         }
-=======
-            smsLog( pMac, LOGE, "%s: NO commands are active", __func__ );
-        }
-
-        /* Notify HDD about handoff and provide the BSSID too */
-        roamInfo.reasonCode = eCsrRoamReasonBetterAP;
-
-        palCopyMemory(pMac->hHdd, roamInfo.bssid, 
-            pMac->roam.neighborRoamInfo.csrNeighborRoamProfile.BSSIDs.bssid, 
-            sizeof(tSirMacAddr));
-
-        csrRoamCallCallback(pMac,sessionId, &roamInfo, 0, 
-            eCSR_ROAM_ROAMING_START, eCSR_ROAM_RESULT_NONE);
-
-        /* Copy the connected profile to apply the same for this connection as well */
-        if(HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd, 
-           (void **)&pCurRoamProfile, sizeof(tCsrRoamProfile))))
-        {
-            palZeroMemory(pMac->hHdd, pCurRoamProfile, sizeof(tCsrRoamProfile));
-            csrRoamCopyProfile(pMac, pCurRoamProfile, pSession->pCurRoamProfile);
-            //make sure to put it at the head of the cmd queue
-            status = csrRoamIssueConnect(pMac, sessionId, pCurRoamProfile, 
-                    hBSSList, eCsrSmeIssuedAssocToSimilarAP, 
-                    roamId, eANI_BOOLEAN_TRUE, eANI_BOOLEAN_FALSE);
-
-            if(!HAL_STATUS_SUCCESS(status))
-            {
-                smsLog( pMac, LOGE,"%s: csrRoamIssueConnect failed with status %d",
-                        __func__, status);
-                fCallCallback = eANI_BOOLEAN_TRUE;
-            }
-        
-            /* Notify sub-modules like QoS etc. that handoff happening */
-            sme_QosCsrEventInd(pMac, sessionId, SME_QOS_CSR_HANDOFF_ASSOC_REQ, NULL);
-            csrReleaseProfile(pMac, pCurRoamProfile);
-            palFreeMemory(pMac->hHdd, pCurRoamProfile);
-            csrFreeScanFilter(pMac, pScanFilter);
-            palFreeMemory( pMac->hHdd, pScanFilter );
-            return;
-        }
-
-POST_ROAM_FAILURE:
-        if (pScanFilter)
-        {
-            csrFreeScanFilter(pMac, pScanFilter);
-            palFreeMemory( pMac->hHdd, pScanFilter );
-        }
-        if (pCurRoamProfile)
-            palFreeMemory(pMac->hHdd, pCurRoamProfile);
-
-        /* Inform the upper layers that the reassoc failed */
-        vos_mem_zero(&roamInfo, sizeof(tCsrRoamInfo));
-        csrRoamCallCallback(pMac, sessionId,
-                &roamInfo, 0, eCSR_ROAM_FT_REASSOC_FAILED, eSIR_SME_SUCCESS);
-
-        /* 
-         * Issue a disassoc request so that PE/LIM uses this to clean-up the FT session.
-         * Upon success, we would re-enter this routine after receiving the disassoc
-         * response and will fall into the reassoc fail sub-state. And, eventually
-         * call csrRoamComplete which would remove the roam command from SME active 
-         * queue.
-         */
-        if (!HAL_STATUS_SUCCESS(csrRoamIssueDisassociate(pMac, sessionId, 
-            eCSR_ROAM_SUBSTATE_DISASSOC_REASSOC_FAILURE, FALSE)))
-        {
-            smsLog( pMac, LOGE,"%s: csrRoamIssueDisassociate failed with status %d",
-                    __func__, status);
-            csrRoamComplete( pMac, eCsrJoinFailure, NULL );
-        }
 >>>>>>> d97af3b... add prima wlan driver
 #endif
 
@@ -9232,6 +10296,7 @@ POST_ROAM_FAILURE:
             // SSIDs.  In all cases, we set the new Bss configuration here and attempt to join
             
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, "CSR SmeDisassocReq disassociated Successfully\n" );
         }
         else
@@ -9244,6 +10309,13 @@ POST_ROAM_FAILURE:
         {
             smsLog( pMac, LOGE, "SmeDisassocReq failed with statusCode= 0x%08lX", statusCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, "CSR SmeDisassocReq disassociated Successfully\n" );
+        }
+        else
+        {
+            smsLog( pMac, LOGE, "SmeDisassocReq failed with statusCode= 0x%08lX\n", statusCode );
+>>>>>>> 657b0e9... prima update
         }
         //We are not done yet. Get the data and continue roaming
         csrRoamReissueRoamCommand(pMac);
@@ -9255,10 +10327,14 @@ static void csrRoamRoamingStateDeauthRspProcessor( tpAniSirGlobal pMac, tSirSmeD
     tSirResultCodes statusCode;
     //No one is sending eWNI_SME_DEAUTH_REQ to PE.
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, FL("is no-op\n"));
 =======
     smsLog(pMac, LOGW, FL("is no-op"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, FL("is no-op\n"));
+>>>>>>> 657b0e9... prima update
     statusCode = csrGetDeAuthRspStatusCode( pSmeRsp );
     if ( CSR_IS_ROAM_SUBSTATE_DEAUTH_REQ( pMac, pSmeRsp->sessionId) )
     {
@@ -9270,6 +10346,7 @@ static void csrRoamRoamingStateDeauthRspProcessor( tpAniSirGlobal pMac, tSirSmeD
         {
             // Successfully deauth from the 'old' Bss...
             //
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog( pMac, LOG2, "CSR SmeDeauthReq disassociated Successfully\n" );
         }
@@ -9283,6 +10360,13 @@ static void csrRoamRoamingStateDeauthRspProcessor( tpAniSirGlobal pMac, tSirSmeD
         {
             smsLog( pMac, LOGW, "SmeDeauthReq failed with statusCode= 0x%08lX", statusCode );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, "CSR SmeDeauthReq disassociated Successfully\n" );
+        }
+        else
+        {
+            smsLog( pMac, LOGW, "SmeDeauthReq failed with statusCode= 0x%08lX\n", statusCode );
+>>>>>>> 657b0e9... prima update
         }
         //We are not done yet. Get the data and continue roaming
         csrRoamReissueRoamCommand(pMac);
@@ -9296,14 +10380,19 @@ static void csrRoamRoamingStateStartBssRspProcessor( tpAniSirGlobal pMac, tSirSm
     if ( eSIR_SME_SUCCESS == pSmeStartBssRsp->statusCode ) 
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "SmeStartBssReq Successful\n" );
 =======
         smsLog( pMac, LOGW, "SmeStartBssReq Successful" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "SmeStartBssReq Successful\n" );
+>>>>>>> 657b0e9... prima update
         result = eCsrStartBssSuccess;
     }
     else 
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog( pMac, LOGW, "SmeStartBssReq failed with statusCode= 0x%08lX\n", pSmeStartBssRsp->statusCode );
         //Let csrRoamComplete decide what to do
@@ -9316,11 +10405,21 @@ static void csrRoamRoamingStateStartBssRspProcessor( tpAniSirGlobal pMac, tSirSm
 #endif
 =======
         smsLog( pMac, LOGW, "SmeStartBssReq failed with statusCode= 0x%08lX", pSmeStartBssRsp->statusCode );
+=======
+        smsLog( pMac, LOGW, "SmeStartBssReq failed with statusCode= 0x%08lX\n", pSmeStartBssRsp->statusCode );
+>>>>>>> 657b0e9... prima update
         //Let csrRoamComplete decide what to do
         result = eCsrStartBssFailure;
     }
+#ifdef WLAN_SOFTAP_FEATURE
     csrRoamComplete( pMac, result, pSmeStartBssRsp);
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#else
+    csrRoamComplete( pMac, result, &pSmeStartBssRsp->bssDescription );
+#endif
+>>>>>>> 657b0e9... prima update
 }
 
 /*
@@ -9339,6 +10438,7 @@ void csrRoamingStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
         tANI_U32 sessionId = 0;
     pSmeRsp = (tSirSmeRsp *)pMsgBuf;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOG2, "Message %d[0x%04X] received in substate %d\n",
                 pSmeRsp->messageType, pSmeRsp->messageType,
                 pMac->roam.curSubState[pSmeRsp->sessionId] );
@@ -9353,12 +10453,24 @@ void csrRoamingStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
 #endif
 =======
     smsLog( pMac, LOG2, "Message %d[0x%04X] received in substate %d",
+=======
+    smsLog( pMac, LOG2, "Message %d[0x%04X] received in substate %d\n",
+>>>>>>> 657b0e9... prima update
                 pSmeRsp->messageType, pSmeRsp->messageType,
                 pMac->roam.curSubState[pSmeRsp->sessionId] );
+#if defined ANI_PRODUCT_TYPE_AP
+    pSmeRsp->messageType = pal_be16_to_cpu(pSmeRsp->messageType);
+    pSmeRsp->length = pal_be16_to_cpu(pSmeRsp->length);
+    pSmeRsp->statusCode = pal_be32_to_cpu(pSmeRsp->statusCode);
+#else
     pSmeRsp->messageType = (pSmeRsp->messageType);
     pSmeRsp->length = (pSmeRsp->length);
     pSmeRsp->statusCode = (pSmeRsp->statusCode);
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
     switch (pSmeRsp->messageType) 
     {
         
@@ -9401,10 +10513,14 @@ void csrRoamingStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
                  CSR_IS_ROAM_SUBSTATE_DISASSOC_HO( pMac, pSmeRsp->sessionId )         )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("eWNI_SME_DISASSOC_RSP subState = %d\n"), pMac->roam.curSubState[pSmeRsp->sessionId]);
 =======
                 smsLog(pMac, LOG1, FL("eWNI_SME_DISASSOC_RSP subState = %d"), pMac->roam.curSubState[pSmeRsp->sessionId]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("eWNI_SME_DISASSOC_RSP subState = %d\n"), pMac->roam.curSubState[pSmeRsp->sessionId]);
+>>>>>>> 657b0e9... prima update
                 csrRoamRoamingStateDisassocRspProcessor( pMac, (tSirSmeDisassocRsp *)pSmeRsp );
             }
             break;
@@ -9433,10 +10549,14 @@ void csrRoamingStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
         case eWNI_SME_IBSS_PEER_DEPARTED_IND:
             pIbssPeerInd = (tSmeIbssPeerInd*)pSmeRsp;
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, "CSR: Peer departed notification from LIM in joining state\n");
 =======
             smsLog(pMac, LOGE, "CSR: Peer departed notification from LIM in joining state");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "CSR: Peer departed notification from LIM in joining state\n");
+>>>>>>> 657b0e9... prima update
             palZeroMemory( pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo) );
                         roamInfo.staId = (tANI_U8)pIbssPeerInd->staId;
             roamInfo.ucastSig = (tANI_U8)pIbssPeerInd->ucastSig;
@@ -9448,10 +10568,14 @@ void csrRoamingStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
             break;
         default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG1, "Unexpected message type = %d[0x%X] received in substate %d\n",
 =======
             smsLog( pMac, LOG1, "Unexpected message type = %d[0x%X] received in substate %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, "Unexpected message type = %d[0x%X] received in substate %d\n",
+>>>>>>> 657b0e9... prima update
                       pSmeRsp->messageType, pSmeRsp->messageType,
                       pMac->roam.curSubState[pSmeRsp->sessionId] );
 
@@ -9471,6 +10595,7 @@ void csrRoamJoinedStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
     {
        case eWNI_SME_GET_STATISTICS_RSP:
 <<<<<<< HEAD
+<<<<<<< HEAD
           smsLog( pMac, LOG2, FL("Stats rsp from PE\n"));
           csrRoamStatsRspProcessor( pMac, pSirMsg );
           break;
@@ -9480,6 +10605,12 @@ void csrRoamJoinedStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
           csrRoamStatsRspProcessor( pMac, pSirMsg );
           break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          smsLog( pMac, LOG2, FL("Stats rsp from PE\n"));
+          csrRoamStatsRspProcessor( pMac, pSirMsg );
+          break;
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         case eWNI_SME_UPPER_LAYER_ASSOC_CNF:
         {
             tCsrRoamSession  *pSession;
@@ -9489,10 +10620,14 @@ void csrRoamJoinedStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
             tANI_U32 sessionId;
             eHalStatus status;
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG1, FL("ASSOCIATION confirmation can be given to upper layer \n"));
 =======
             smsLog( pMac, LOG1, FL("ASSOCIATION confirmation can be given to upper layer "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, FL("ASSOCIATION confirmation can be given to upper layer \n"));
+>>>>>>> 657b0e9... prima update
             palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
             pRoamInfo = &roamInfo;
             pUpperLayerAssocCnf = (tSirSmeAssocIndToUpperLayerCnf *)pMsgBuf;
@@ -9531,9 +10666,13 @@ void csrRoamJoinedStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
         }
         break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
        default:
           csrRoamCheckForLinkStatusChange( pMac, pSirMsg );
           break;
@@ -9593,10 +10732,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
         if(NULL == pCommand)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
             smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_RESOURCES;
             break;
         }
@@ -9613,10 +10756,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
                 if ( pSetKey->keyLength < CSR_WEP40_KEY_LEN ) 
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGW, "Invalid WEP40 keylength [= %d] in SetContext call\n", pSetKey->keyLength );
 =======
                     smsLog( pMac, LOGW, "Invalid WEP40 keylength [= %d] in SetContext call", pSetKey->keyLength );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGW, "Invalid WEP40 keylength [= %d] in SetContext call\n", pSetKey->keyLength );
+>>>>>>> 657b0e9... prima update
                     break;        
                 }
                 
@@ -9633,10 +10780,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
                 if ( pSetKey->keyLength < CSR_WEP104_KEY_LEN ) 
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGW, "Invalid WEP104 keylength [= %d] in SetContext call\n", pSetKey->keyLength );
 =======
                     smsLog( pMac, LOGW, "Invalid WEP104 keylength [= %d] in SetContext call", pSetKey->keyLength );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGW, "Invalid WEP104 keylength [= %d] in SetContext call\n", pSetKey->keyLength );
+>>>>>>> 657b0e9... prima update
                     break;        
                 }
                 
@@ -9649,10 +10800,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
             if ( pSetKey->keyLength < CSR_TKIP_KEY_LEN )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, "Invalid TKIP keylength [= %d] in SetContext call\n", pSetKey->keyLength );
 =======
                 smsLog( pMac, LOGW, "Invalid TKIP keylength [= %d] in SetContext call", pSetKey->keyLength );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, "Invalid TKIP keylength [= %d] in SetContext call\n", pSetKey->keyLength );
+>>>>>>> 657b0e9... prima update
                 break;
             }
             pCommand->u.setKeyCmd.keyLength = CSR_TKIP_KEY_LEN;
@@ -9663,10 +10818,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
             if ( pSetKey->keyLength < CSR_AES_KEY_LEN )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, "Invalid AES/CCMP keylength [= %d] in SetContext call\n", pSetKey->keyLength );
 =======
                 smsLog( pMac, LOGW, "Invalid AES/CCMP keylength [= %d] in SetContext call", pSetKey->keyLength );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, "Invalid AES/CCMP keylength [= %d] in SetContext call\n", pSetKey->keyLength );
+>>>>>>> 657b0e9... prima update
                 break;
             }
             pCommand->u.setKeyCmd.keyLength = CSR_AES_KEY_LEN;
@@ -9678,10 +10837,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
             if ( pSetKey->keyLength < CSR_WAPI_KEY_LEN )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, "Invalid WAPI keylength [= %d] in SetContext call\n", pSetKey->keyLength );
 =======
                 smsLog( pMac, LOGW, "Invalid WAPI keylength [= %d] in SetContext call", pSetKey->keyLength );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, "Invalid WAPI keylength [= %d] in SetContext call\n", pSetKey->keyLength );
+>>>>>>> 657b0e9... prima update
                 break;
             }
             pCommand->u.setKeyCmd.keyLength = CSR_WAPI_KEY_LEN;
@@ -9694,10 +10857,14 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
             if ( pSetKey->keyLength < CSR_KRK_KEY_LEN )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, "Invalid KRK keylength [= %d] in SetContext call\n", pSetKey->keyLength );
 =======
                 smsLog( pMac, LOGW, "Invalid KRK keylength [= %d] in SetContext call", pSetKey->keyLength );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, "Invalid KRK keylength [= %d] in SetContext call\n", pSetKey->keyLength );
+>>>>>>> 657b0e9... prima update
                 break;
             }
             palCopyMemory( pMac->hHdd, pSession->ccxCckmInfo.krk, pSetKey->Key, CSR_KRK_KEY_LEN );
@@ -9711,6 +10878,7 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
 #ifdef WLAN_FEATURE_11W
         //Check for 11w BIP
 <<<<<<< HEAD
+<<<<<<< HEAD
         else if ( eCSR_ENCRYPT_TYPE_AES_CMAC == pSetKey->encType )
         {
             tANI_U16 count = 0;
@@ -9723,15 +10891,23 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
             palCopyMemory( pMac->hHdd, pCommand->u.setKeyCmd.Key, pSetKey->Key, CSR_AES_KEY_LEN );
 =======
         else if (eCSR_ENCRYPT_TYPE_AES_CMAC == pSetKey->encType)
+=======
+        else if ( eCSR_ENCRYPT_TYPE_AES_CMAC == pSetKey->encType )
+>>>>>>> 657b0e9... prima update
         {
-            if (pSetKey->keyLength < CSR_AES_KEY_LEN)
+            tANI_U16 count = 0;
+            if ( pSetKey->keyLength < CSR_AES_KEY_LEN )
             {
-                smsLog(pMac, LOGW, "Invalid AES/CCMP keylength [= %d] in SetContext call", pSetKey->keyLength);
+                smsLog( pMac, LOGW, "Invalid AES/CCMP keylength [= %d] in SetContext call\n", pSetKey->keyLength );
                 break;
             }
             pCommand->u.setKeyCmd.keyLength = CSR_AES_KEY_LEN;
+<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, pCommand->u.setKeyCmd.Key, pSetKey->Key, CSR_AES_KEY_LEN);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            palCopyMemory( pMac->hHdd, pCommand->u.setKeyCmd.Key, pSetKey->Key, CSR_AES_KEY_LEN );
+>>>>>>> 657b0e9... prima update
         }
 #endif
         status = eHAL_STATUS_SUCCESS;
@@ -9748,14 +10924,19 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
         }
     } while (0);
     // Free the command if there has been a failure, or it is a 
     // "local" operation like the set CCX CCKM KRK key.
+<<<<<<< HEAD
 <<<<<<< HEAD
     if( (!HAL_STATUS_SUCCESS( status ) && ( NULL != pCommand )) 
 #ifdef FEATURE_WLAN_CCX
@@ -9770,6 +10951,13 @@ static eHalStatus csrRoamIssueSetKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessi
 #endif /* FEATURE_WLAN_CCX */
            ) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if( (!HAL_STATUS_SUCCESS( status ) && ( NULL != pCommand )) 
+#ifdef FEATURE_WLAN_CCX
+            || ( eCSR_ENCRYPT_TYPE_KRK == pSetKey->encType ) 
+#endif /* FEATURE_WLAN_CCX */
+            )
+>>>>>>> 657b0e9... prima update
     {
         csrReleaseCommandSetKey( pMac, pCommand );
     }
@@ -9787,10 +10975,14 @@ eHalStatus csrRoamIssueRemoveKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessionId
         if( !csrIsSetKeyAllowed(pMac, sessionId) ) 
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, FL(" wrong state not allowed to set key\n") );
 =======
             smsLog( pMac, LOGW, FL(" wrong state not allowed to set key") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, FL(" wrong state not allowed to set key\n") );
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_CSR_WRONG_STATE;
             break;
         }
@@ -9798,10 +10990,14 @@ eHalStatus csrRoamIssueRemoveKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessionId
         if(NULL == pCommand)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
             smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_RESOURCES;
             break;
         }
@@ -9817,10 +11013,14 @@ eHalStatus csrRoamIssueRemoveKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessionId
             fImediate = eANI_BOOLEAN_FALSE;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("keyType=%d, keyId=%d, PeerMac=%02x, %02x, %02x, %02x, %02x, %02x\n"),       
 =======
         smsLog( pMac, LOGE, FL("keyType=%d, keyId=%d, PeerMac=%02x, %02x, %02x, %02x, %02x, %02x"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("keyType=%d, keyId=%d, PeerMac=%02x, %02x, %02x, %02x, %02x, %02x\n"),       
+>>>>>>> 657b0e9... prima update
             pRemoveKey->encType, pRemoveKey->keyId,
             pCommand->u.removeKeyCmd.peerMac[0],
             pCommand->u.removeKeyCmd.peerMac[1],
@@ -9832,10 +11032,14 @@ eHalStatus csrRoamIssueRemoveKeyCommand( tpAniSirGlobal pMac, tANI_U32 sessionId
         if( !HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
             break;
         }
     } while (0);
@@ -9857,10 +11061,14 @@ eHalStatus csrRoamProcessSetKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
     WLAN_VOS_DIAG_EVENT_DEF(setKeyEvent, vos_event_wlan_security_payload_type);
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(eCSR_ENCRYPT_TYPE_NONE != edType)
 =======
     if(eSIR_ED_NONE != edType)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if(eCSR_ENCRYPT_TYPE_NONE != edType)
+>>>>>>> 657b0e9... prima update
     {
         palZeroMemory(pMac->hHdd, &setKeyEvent, sizeof(vos_event_wlan_security_payload_type));
         if( *(( tANI_U8 *)&pCommand->u.setKeyCmd.peerMac) & 0x01 )
@@ -9877,10 +11085,14 @@ eHalStatus csrRoamProcessSetKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
         }
         palCopyMemory( pMac->hHdd, setKeyEvent.bssid, pSession->connectedProfile.bssid, 6 );
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(CSR_IS_ENC_TYPE_STATIC(edType))
 =======
         if(CSR_IS_ENC_TYPE_STATIC(pCommand->u.setKeyCmd.encType))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(CSR_IS_ENC_TYPE_STATIC(edType))
+>>>>>>> 657b0e9... prima update
         {
             tANI_U32 defKeyId;
             //It has to be static WEP here
@@ -9909,15 +11121,20 @@ eHalStatus csrRoamProcessSetKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, FL(" cannot process not connected\n") );
 =======
         smsLog( pMac, LOGW, FL(" cannot process not connected") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, FL(" cannot process not connected\n") );
+>>>>>>> 657b0e9... prima update
         //Set this status so the error handling take care of the case.
         status = eHAL_STATUS_CSR_WRONG_STATE;
     }
     if( !HAL_STATUS_SUCCESS(status) )
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog( pMac, LOGE, FL("  error status %d\n"), status );
         csrRoamCallCallback( pMac, sessionId, NULL, pCommand->u.setKeyCmd.roamId, eCSR_ROAM_SET_KEY_COMPLETE, eCSR_ROAM_RESULT_FAILURE);
@@ -9929,6 +11146,12 @@ eHalStatus csrRoamProcessSetKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
         if(eSIR_ED_NONE != edType)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("  error status %d\n"), status );
+        csrRoamCallCallback( pMac, sessionId, NULL, pCommand->u.setKeyCmd.roamId, eCSR_ROAM_SET_KEY_COMPLETE, eCSR_ROAM_RESULT_FAILURE);
+#ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
+        if(eCSR_ENCRYPT_TYPE_NONE != edType)
+>>>>>>> 657b0e9... prima update
         {
             if( *(( tANI_U8 *)&pCommand->u.setKeyCmd.peerMac) & 0x01 )
             {
@@ -9972,10 +11195,14 @@ eHalStatus csrRoamProcessRemoveKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pComman
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, FL(" wrong state not allowed to set key\n") );
 =======
         smsLog( pMac, LOGW, FL(" wrong state not allowed to set key") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, FL(" wrong state not allowed to set key\n") );
+>>>>>>> 657b0e9... prima update
         //Set the error status so error handling kicks in below
         status = eHAL_STATUS_CSR_WRONG_STATE;
     }
@@ -10017,6 +11244,7 @@ eHalStatus csrRoamProcessRemoveKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pComman
     if( !HAL_STATUS_SUCCESS( status ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" error status \n"), status );
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
         removeKeyEvent.eventId = WLAN_SECURITY_EVENT_REMOVE_KEY_RSP;
@@ -10027,6 +11255,12 @@ eHalStatus csrRoamProcessRemoveKeyCommand( tpAniSirGlobal pMac, tSmeCmd *pComman
         removeKeyEvent.eventId = WLAN_SECURITY_EVENT_REMOVE_KEY_RSP;
         removeKeyEvent.status = WLAN_SECURITY_STATUS_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" error status \n"), status );
+#ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
+        removeKeyEvent.eventId = WLAN_SECURITY_EVENT_REMOVE_KEY_RSP;
+        removeKeyEvent.status = WLAN_SECURITY_STATUS_FAILURE;;
+>>>>>>> 657b0e9... prima update
         WLAN_VOS_DIAG_EVENT_REPORT(&removeKeyEvent, EVENT_WLAN_SECURITY);
 #endif //FEATURE_WLAN_DIAG_SUPPORT_CSR
         csrRoamCallCallback( pMac, sessionId, NULL, pCommand->u.removeKeyCmd.roamId, eCSR_ROAM_REMOVE_KEY_COMPLETE, eCSR_ROAM_RESULT_FAILURE);
@@ -10116,10 +11350,14 @@ eHalStatus csrRoamPrepareFilterFromProfile(tpAniSirGlobal pMac, tCsrRoamProfile 
                  else 
                  {
 <<<<<<< HEAD
+<<<<<<< HEAD
                          smsLog(pMac, LOG1, FL("process a channel (%d) that is invalid\n"), pProfile->ChannelInfo.ChannelList[index]);
 =======
                          smsLog(pMac, LOG1, FL("process a channel (%d) that is invalid"), pProfile->ChannelInfo.ChannelList[index]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         smsLog(pMac, LOG1, FL("process a channel (%d) that is invalid\n"), pProfile->ChannelInfo.ChannelList[index]);
+>>>>>>> 657b0e9... prima update
                  }
             }
             }
@@ -10131,10 +11369,14 @@ eHalStatus csrRoamPrepareFilterFromProfile(tpAniSirGlobal pMac, tCsrRoamProfile 
         else 
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("Channel list empty\n"));
 =======
             smsLog(pMac, LOGW, FL("Channel list empty"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("Channel list empty\n"));
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_FAILURE;
             break;
         }
@@ -10202,10 +11444,14 @@ tANI_BOOLEAN csrRoamIssueWmStatusChange( tpAniSirGlobal pMac, tANI_U32 sessionId
         if ( !pCommand )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
 =======
             smsLog( pMac, LOGE, FL(" fail to get command buffer") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to get command buffer\n") );
+>>>>>>> 657b0e9... prima update
             break;
         }
         //Change the substate in case it is waiting for key
@@ -10234,10 +11480,14 @@ tANI_BOOLEAN csrRoamIssueWmStatusChange( tpAniSirGlobal pMac, tANI_U32 sessionId
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" fail to send message \n") );
 =======
             smsLog( pMac, LOGE, FL(" fail to send message ") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" fail to send message \n") );
+>>>>>>> 657b0e9... prima update
             csrReleaseCommandWmStatusChange( pMac, pCommand );
         }
 
@@ -10260,10 +11510,14 @@ static void csrUpdateRssi(tpAniSirGlobal pMac, void* pMsg)
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL("pGetRssiReq->pVosContext is NULL\n"));                
 =======
             smsLog( pMac, LOGE, FL("pGetRssiReq->pVosContext is NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL("pGetRssiReq->pVosContext is NULL\n"));                
+>>>>>>> 657b0e9... prima update
             return;
         }
             
@@ -10273,6 +11527,7 @@ static void csrUpdateRssi(tpAniSirGlobal pMac, void* pMsg)
         }
         else
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog( pMac, LOGE, FL("pGetRssiReq->rssiCallback is NULL\n"));                
 =======
@@ -10310,11 +11565,15 @@ static void csrUpdateSnr(tpAniSirGlobal pMac, void* pMsg)
         {
             smsLog(pMac, LOGE, FL("pGetSnrReq->snrCallback is NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL("pGetRssiReq->rssiCallback is NULL\n"));                
+>>>>>>> 657b0e9... prima update
             return;
         }
     }
     else
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog( pMac, LOGE, FL("pGetRssiReq is NULL\n"));    
     }
@@ -10361,6 +11620,12 @@ void csrRoamRssiRspProcessor(tpAniSirGlobal pMac, void* pMsg)
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("pGetRssiReq is NULL\n"));    
+    }
+    return;
+}
+>>>>>>> 657b0e9... prima update
 static void csrRoamRssiIndHdlr(tpAniSirGlobal pMac, void* pMsg)
 {
     WLANTL_TlIndicationReq *pTlRssiInd = (WLANTL_TlIndicationReq*)pMsg;
@@ -10369,6 +11634,7 @@ static void csrRoamRssiIndHdlr(tpAniSirGlobal pMac, void* pMsg)
         if(NULL != pTlRssiInd->tlCallback)
         {
             ((WLANTL_RSSICrossThresholdCBType)(pTlRssiInd->tlCallback))
+<<<<<<< HEAD
 <<<<<<< HEAD
             (pTlRssiInd->pAdapter, pTlRssiInd->rssiNotification, pTlRssiInd->pUserCtxt);
         }
@@ -10382,19 +11648,31 @@ static void csrRoamRssiIndHdlr(tpAniSirGlobal pMac, void* pMsg)
         {
             smsLog( pMac, LOGE, FL("pTlRssiInd->tlCallback is NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            (pTlRssiInd->pAdapter, pTlRssiInd->rssiNotification, pTlRssiInd->pUserCtxt);
+        }
+        else
+        {
+            smsLog( pMac, LOGE, FL("pTlRssiInd->tlCallback is NULL\n"));                
+>>>>>>> 657b0e9... prima update
         }
     }
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("pTlRssiInd is NULL\n"));    
 =======
         smsLog( pMac, LOGE, FL("pTlRssiInd is NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("pTlRssiInd is NULL\n"));    
+>>>>>>> 657b0e9... prima update
     }
     return;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 eHalStatus csrSendResetApCapsChanged(tpAniSirGlobal pMac, tSirMacAddr *bssId)
@@ -10425,6 +11703,8 @@ eHalStatus csrSendResetApCapsChanged(tpAniSirGlobal pMac, tSirMacAddr *bssId)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 {
     tSirSmeAssocInd *pAssocInd;
@@ -10445,11 +11725,15 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
     tpSirSmeSwitchChannelInd pSwitchChnInd;
     tSmeMaxAssocInd *pSmeMaxAssocInd;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined ANI_PRODUCT_TYPE_AP
     pSirMsg->messageType = pal_be16_to_cpu(pSirMsg->messageType);
     pSirMsg->length = pal_be16_to_cpu(pSirMsg->length);
     pSirMsg->statusCode = pal_be32_to_cpu(pSirMsg->statusCode);
 #else
+<<<<<<< HEAD
     pSirMsg->messageType = (pSirMsg->messageType);
     pSirMsg->length = (pSirMsg->length);
     pSirMsg->statusCode = (pSirMsg->statusCode);
@@ -10460,6 +11744,12 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
     pSirMsg->length = (pSirMsg->length);
     pSirMsg->statusCode = (pSirMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pSirMsg->messageType = (pSirMsg->messageType);
+    pSirMsg->length = (pSirMsg->length);
+    pSirMsg->statusCode = (pSirMsg->statusCode);
+#endif
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, &roamInfo, sizeof(roamInfo));
     switch( pSirMsg->messageType ) 
     {
@@ -10467,10 +11757,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             {
                 tCsrRoamSession  *pSession;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOG1, FL("ASSOCIATION Indication from SME\n"));
 =======
                 smsLog( pMac, LOG1, FL("ASSOCIATION Indication from SME"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOG1, FL("ASSOCIATION Indication from SME\n"));
+>>>>>>> 657b0e9... prima update
                 pAssocInd = (tSirSmeAssocInd *)pSirMsg;
                 status = csrRoamGetSessionIdFromBSSID( pMac, (tCsrBssid *)pAssocInd->bssId, &sessionId );
                 if( HAL_STATUS_SUCCESS( status ) )
@@ -10503,6 +11797,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     palCopyMemory(pMac->hHdd, pRoamInfo->peerMac, pAssocInd->peerMacAddr, sizeof(tSirMacAddr));
                     palCopyMemory(pMac->hHdd, &pRoamInfo->bssid, pAssocInd->bssId, sizeof(tCsrBssid));
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                     pRoamInfo->wmmEnabledSta = pAssocInd->wmmEnabledSta;
                     if(CSR_IS_WDS_AP( pRoamInfo->u.pConnectedProfile))
@@ -10510,10 +11805,18 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                         status = csrRoamCallCallback(pMac, sessionId, pRoamInfo, 0, eCSR_ROAM_WDS_IND, eCSR_ROAM_RESULT_WDS_ASSOCIATION_IND);//Sta
 #ifdef WLAN_SOFTAP_FEATURE
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                     pRoamInfo->wmmEnabledSta = pAssocInd->wmmEnabledSta;
                     if(CSR_IS_WDS_AP( pRoamInfo->u.pConnectedProfile))
+#endif 
                         status = csrRoamCallCallback(pMac, sessionId, pRoamInfo, 0, eCSR_ROAM_WDS_IND, eCSR_ROAM_RESULT_WDS_ASSOCIATION_IND);//Sta
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                     if(CSR_IS_INFRA_AP(pRoamInfo->u.pConnectedProfile))
                     {
                         if( CSR_IS_ENC_TYPE_STATIC( pSession->pCurRoamProfile->negotiatedUCEncryptionType ))
@@ -10533,9 +11836,13 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                             pRoamInfo->statusCode = eSIR_SME_ASSOC_REFUSED;// Refused due to Mac filtering 
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif 
+>>>>>>> 657b0e9... prima update
                     /* Send Association completion message to PE */
                     status = csrSendAssocCnfMsg( pMac, pAssocInd, status );//Sta
                     
@@ -10546,9 +11853,13 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     status = csrSendAssocIndToUpperLayerCnfMsg(pMac, pAssocInd, status, sessionId);
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 else if(CSR_IS_INFRA_AP(pRoamInfo->u.pConnectedProfile) && (pRoamInfo->statusCode != eSIR_SME_ASSOC_REFUSED))
                 {
                     pRoamInfo->fReassocReq = pAssocInd->reassocReq;
@@ -10556,18 +11867,26 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     status = csrSendAssocIndToUpperLayerCnfMsg(pMac, pAssocInd, status, sessionId);
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
                 }
             }
             break;
         case eWNI_SME_DISASSOC_IND:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL("DISASSOCIATION Indication from MAC\n"));
 =======
             smsLog( pMac, LOGE, FL("DISASSOCIATION Indication from MAC"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL("DISASSOCIATION Indication from MAC\n"));
+>>>>>>> 657b0e9... prima update
             // Check if AP dis-associated us because of MIC failure. If so,
             // then we need to take action immediately and not wait till the
             // the WmStatusChange requests is pushed and processed
@@ -10593,10 +11912,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 #endif
 #ifdef FEATURE_WLAN_LFR
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (csrRoamIsFastRoamEnabled(pMac) && (csrNeighborRoamStatePreauthDone(pMac)))
 =======
                 if (csrRoamIsFastRoamEnabled(pMac, sessionId) && (csrNeighborRoamStatePreauthDone(pMac)))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                if (csrRoamIsFastRoamEnabled(pMac) && (csrNeighborRoamStatePreauthDone(pMac)))
+>>>>>>> 657b0e9... prima update
                 {
                     csrNeighborRoamTranistionPreauthDoneToDisconnected(pMac);
                 }
@@ -10619,9 +11942,13 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 csrRoamLinkDown(pMac, sessionId);
                 csrRoamIssueWmStatusChange( pMac, sessionId, eCsrDisassociated, pSirMsg );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 if(CSR_IS_INFRA_AP(&pSession->connectedProfile))
                 {
 
@@ -10636,6 +11963,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     palCopyMemory(pMac->hHdd, &pRoamInfo->bssid, pDisassocInd->bssId, sizeof(tCsrBssid));
 
                     status = csrRoamCallCallback(pMac, sessionId, pRoamInfo, 0, eCSR_ROAM_INFRA_IND, eCSR_ROAM_RESULT_DISASSOC_IND);
+<<<<<<< HEAD
 <<<<<<< HEAD
                 }
 #endif                
@@ -10654,12 +11982,19 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     pCommand.u.roamCmd.roamReason = eCsrForcedDeauthSta;
                     vos_mem_copy(pCommand.u.roamCmd.peerMac, pDisassocInd->peerMacAddr, sizeof(tSirMacAddr));
                     csrRoamRemoveDuplicateCommand(pMac, sessionId, &pCommand, eCsrForcedDeauthSta);
+=======
+>>>>>>> 657b0e9... prima update
                 }
+#endif                
             }
             break;
         case eWNI_SME_DEAUTH_IND:
+<<<<<<< HEAD
             smsLog( pMac, LOG1, FL("DEAUTHENTICATION Indication from MAC"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, FL("DEAUTHENTICATION Indication from MAC\n"));
+>>>>>>> 657b0e9... prima update
             pDeauthInd = (tpSirSmeDeauthInd)pSirMsg;
             status = csrRoamGetSessionIdFromBSSID( pMac, (tCsrBssid *)pDeauthInd->bssId, &sessionId );
             if( HAL_STATUS_SUCCESS( status ) )
@@ -10682,10 +12017,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 #endif
 #ifdef FEATURE_WLAN_LFR
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (csrRoamIsFastRoamEnabled(pMac) && (csrNeighborRoamStatePreauthDone(pMac)))
 =======
                 if (csrRoamIsFastRoamEnabled(pMac, sessionId) && (csrNeighborRoamStatePreauthDone(pMac)))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                if (csrRoamIsFastRoamEnabled(pMac) && (csrNeighborRoamStatePreauthDone(pMac)))
+>>>>>>> 657b0e9... prima update
                 {
                     csrNeighborRoamTranistionPreauthDoneToDisconnected(pMac);
                 }
@@ -10708,9 +12047,13 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 csrRoamLinkDown(pMac, sessionId);
                 csrRoamIssueWmStatusChange( pMac, sessionId, eCsrDeauthenticated, pSirMsg );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 if(CSR_IS_INFRA_AP(&pSession->connectedProfile))
                 {
 
@@ -10727,18 +12070,26 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     status = csrRoamCallCallback(pMac, sessionId, pRoamInfo, 0, eCSR_ROAM_INFRA_IND, eCSR_ROAM_RESULT_DEAUTH_IND);
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif                
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif                
+>>>>>>> 657b0e9... prima update
             }
             break;
         
         case eWNI_SME_SWITCH_CHL_REQ:        // in case of STA, the SWITCH_CHANNEL originates from its AP
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, FL("eWNI_SME_SWITCH_CHL_REQ from SME\n"));
 =======
             smsLog( pMac, LOGW, FL("eWNI_SME_SWITCH_CHL_REQ from SME"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, FL("eWNI_SME_SWITCH_CHL_REQ from SME\n"));
+>>>>>>> 657b0e9... prima update
             pSwitchChnInd = (tpSirSmeSwitchChannelInd)pSirMsg;
             //Update with the new channel id.
             //The channel id is hidden in the statusCode.
@@ -10761,11 +12112,16 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 
         case eWNI_SME_DEAUTH_RSP:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, FL("eWNI_SME_DEAUTH_RSP from SME\n"));
 #ifdef WLAN_SOFTAP_FEATURE
 =======
             smsLog( pMac, LOGW, FL("eWNI_SME_DEAUTH_RSP from SME"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, FL("eWNI_SME_DEAUTH_RSP from SME\n"));
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             {
                 tSirSmeDeauthRsp* pDeauthRsp = (tSirSmeDeauthRsp *)pSirMsg;
                 sessionId = pDeauthRsp->sessionId;
@@ -10789,6 +12145,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 }
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
             break;
             
@@ -10802,6 +12159,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             /* session id is invalid here so cant use it to access the array curSubstate as index */
             smsLog( pMac, LOGW, FL("eWNI_SME_DISASSOC_RSP from SME "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+            break;
+            
+        case eWNI_SME_DISASSOC_RSP:
+            smsLog( pMac, LOGW, FL("eWNI_SME_DISASSOC_RSP from SME subState = %d\n"), pMac->roam.curSubState[sessionId]);
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             {
                 tSirSmeDisassocRsp *pDisassocRsp = (tSirSmeDisassocRsp *)pSirMsg;
                 sessionId = pDisassocRsp->sessionId;
@@ -10825,15 +12190,20 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 }
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             break;
         case eWNI_SME_MIC_FAILURE_IND:
             {
                 tpSirSmeMicFailureInd pMicInd = (tpSirSmeMicFailureInd)pSirMsg;
                 tCsrRoamInfo roamInfo, *pRoamInfo = NULL;
                 eCsrRoamResult result = eCSR_ROAM_RESULT_MIC_ERROR_UNICAST;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
                 {
@@ -10860,6 +12230,10 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 {
                     WLAN_VOS_DIAG_EVENT_DEF(secEvent, vos_event_wlan_security_payload_type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
+                {
+>>>>>>> 657b0e9... prima update
                     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
                     if(!pSession)
                     {
@@ -10867,10 +12241,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                         return;
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     WLAN_VOS_DIAG_EVENT_DEF(secEvent, vos_event_wlan_security_payload_type);
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    WLAN_VOS_DIAG_EVENT_DEF(secEvent, vos_event_wlan_security_payload_type);
+>>>>>>> 657b0e9... prima update
                     palZeroMemory(pMac->hHdd, &secEvent, sizeof(vos_event_wlan_security_payload_type));
                     secEvent.eventId = WLAN_SECURITY_EVENT_MIC_ERROR;
                     secEvent.encryptionModeMulticast = 
@@ -10884,6 +12262,9 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 }
 #endif//FEATURE_WLAN_DIAG_SUPPORT_CSR
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                 status = csrRoamGetSessionIdFromBSSID( pMac, (tCsrBssid *)pMicInd->bssId, &sessionId );
                 if( HAL_STATUS_SUCCESS( status ) )
                 {
@@ -10900,6 +12281,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     }
                     csrRoamCallCallback(pMac, sessionId, pRoamInfo, 0, eCSR_ROAM_MIC_ERROR_IND, result);
                 }
+<<<<<<< HEAD
             }
             break;
 #ifdef WLAN_SOFTAP_FEATURE
@@ -10908,15 +12290,24 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             }
             break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            }
+            break;
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         case eWNI_SME_WPS_PBC_PROBE_REQ_IND:
             {
                 tpSirSmeProbeReqInd pProbeReqInd = (tpSirSmeProbeReqInd)pSirMsg;
                 tCsrRoamInfo roamInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOG1, FL("WPS PBC Probe request Indication from SME\n"));
 =======
                 smsLog( pMac, LOG1, FL("WPS PBC Probe request Indication from SME"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOG1, FL("WPS PBC Probe request Indication from SME\n"));
+>>>>>>> 657b0e9... prima update
            
                 status = csrRoamGetSessionIdFromBSSID( pMac, (tCsrBssid *)pProbeReqInd->bssId, &sessionId );
                 if( HAL_STATUS_SUCCESS( status ) )
@@ -10929,9 +12320,13 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             }
             break;        
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             
         case eWNI_SME_WM_STATUS_CHANGE_NTF:
             pStatusChangeMsg = (tSirSmeWmStatusChangeNtf *)pSirMsg;
@@ -10957,10 +12352,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                         else
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             smsLog(pMac, LOGE, "  CSR eSIR_SME_IBSS_NEW_PEER connected BSS is empty\n");
 =======
                             smsLog(pMac, LOGE, "  CSR eSIR_SME_IBSS_NEW_PEER connected BSS is empty");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            smsLog(pMac, LOGE, "  CSR eSIR_SME_IBSS_NEW_PEER connected BSS is empty\n");
+>>>>>>> 657b0e9... prima update
                         }
                         result = eCSR_ROAM_RESULT_IBSS_CONNECT;
                         roamStatus = eCSR_ROAM_CONNECT_STATUS_UPDATE;
@@ -11021,10 +12420,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 #endif //FEATURE_WLAN_DIAG_SUPPORT_CSR
                         csrRoamUpdateConnectedProfileFromNewBss( pMac, sessionId, pNewBss );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                         csrRoamIssueSetContextReq( pMac, sessionId, pSession->connectedProfile.EncryptionType, 
                                                     pSession->pConnectBssDesc,
                                                 &Broadcastaddr,
                                                 FALSE, FALSE, eSIR_TX_RX, 0, 0, NULL, 0 );
+<<<<<<< HEAD
 =======
 
                         if ((eCSR_ENCRYPT_TYPE_NONE ==
@@ -11037,6 +12440,8 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                                      FALSE, FALSE, eSIR_TX_RX, 0, 0, NULL, 0 );
                         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                         result = eCSR_ROAM_RESULT_IBSS_COALESCED;
                         roamStatus = eCSR_ROAM_IBSS_IND;
                         palCopyMemory(pMac->hHdd, &roamInfo.bssid, &pNewBss->bssId, sizeof(tCsrBssid));
@@ -11056,14 +12461,19 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                         }
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, "CSR:  eSIR_SME_JOINED_NEW_BSS received from PE\n");
 =======
                     smsLog(pMac, LOGW, "CSR:  eSIR_SME_JOINED_NEW_BSS received from PE");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, "CSR:  eSIR_SME_JOINED_NEW_BSS received from PE\n");
+>>>>>>> 657b0e9... prima update
                     break;
                 // detection by LIM that the capabilities of the associated AP have changed.
                 case eSIR_SME_AP_CAPS_CHANGED:
                     pApNewCaps = &pStatusChangeMsg->statusChangeInfo.apNewCaps;
+<<<<<<< HEAD
 <<<<<<< HEAD
                     smsLog(pMac, LOGW, "CSR handling eSIR_SME_AP_CAPS_CHANGED\n");
                     status = csrRoamGetSessionIdFromBSSID( pMac, (tCsrBssid *)pApNewCaps->bssId, &sessionId );
@@ -11077,36 +12487,23 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             
 =======
                     smsLog(pMac, LOGW, "CSR handling eSIR_SME_AP_CAPS_CHANGED");
+=======
+                    smsLog(pMac, LOGW, "CSR handling eSIR_SME_AP_CAPS_CHANGED\n");
+>>>>>>> 657b0e9... prima update
                     status = csrRoamGetSessionIdFromBSSID( pMac, (tCsrBssid *)pApNewCaps->bssId, &sessionId );
                     if( HAL_STATUS_SUCCESS( status ) )
                     {
-                        if ((eCSR_ROAMING_STATE_JOINED == pMac->roam.curState[sessionId]) &&
-                                ((eCSR_ROAM_SUBSTATE_JOINED_REALTIME_TRAFFIC == pMac->roam.curSubState[sessionId]) ||
-                                 (eCSR_ROAM_SUBSTATE_NONE == pMac->roam.curSubState[sessionId]) ||
-                                 (eCSR_ROAM_SUBSTATE_JOINED_NON_REALTIME_TRAFFIC == pMac->roam.curSubState[sessionId]) ||
-                                 (eCSR_ROAM_SUBSTATE_JOINED_NO_TRAFFIC == pMac->roam.curSubState[sessionId]))
-                           )
-                        {
-                            smsLog(pMac, LOGW, "Calling csrRoamDisconnectInternal");
-                            csrRoamDisconnectInternal(pMac, sessionId, eCSR_DISCONNECT_REASON_UNSPECIFIED);
-                        }
-                        else
-                        {
-                            smsLog(pMac, LOGW,
-                                    "Skipping csrScanForCapabilityChange as "
-                                    "CSR is in state %d and sub-state %d",
-                                    pMac->roam.curState[sessionId],
-                                    pMac->roam.curSubState[sessionId]);
-                            /* We ignore the caps change event if CSR is not in full connected state.
-                             * Send one event to PE to reset limSentCapsChangeNtf
-                             * Once limSentCapsChangeNtf set 0, lim can send sub sequent CAPS change event
-                             * otherwise lim cannot send any CAPS change events to SME */
-                            csrSendResetApCapsChanged(pMac, &pApNewCaps->bssId);
-                        }
+                    csrScanForCapabilityChange( pMac, pApNewCaps );
+                    result = eCSR_ROAM_RESULT_CAP_CHANGED;
+                    roamStatus = eCSR_ROAM_GEN_INFO;
                     }
                     break;
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            
+>>>>>>> 657b0e9... prima update
                 default:
                     roamStatus = eCSR_ROAM_FAILED;
                     result = eCSR_ROAM_RESULT_NONE;
@@ -11187,10 +12584,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                         pRoamInfo = &roamInfo;
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                         csrRoamIssueSetContextReq( pMac, sessionId, pSession->connectedProfile.EncryptionType, 
                                             pSession->pConnectBssDesc,
                                             &(pIbssPeerInd->peerAddr),
                                             FALSE, TRUE, eSIR_TX_RX, 0, 0, NULL, 0 ); // NO keys... these key parameters don't matter.
+<<<<<<< HEAD
                 }
                 else
                 {
@@ -11210,6 +12611,12 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 {
                     smsLog(pMac, LOGW, "  CSR eSIR_SME_IBSS_NEW_PEER connected BSS is empty");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                }
+                else
+                {
+                    smsLog(pMac, LOGW, "  CSR eSIR_SME_IBSS_NEW_PEER connected BSS is empty\n");
+>>>>>>> 657b0e9... prima update
                 }
                 //send up the sec type for the new peer
                 if (pRoamInfo)
@@ -11253,10 +12660,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                 }
 #endif //FEATURE_WLAN_DIAG_SUPPORT_CSR
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, "CSR: Peer departed notification from LIM\n");
 =======
                 smsLog(pMac, LOGW, "CSR: Peer departed notification from LIM");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, "CSR: Peer departed notification from LIM\n");
+>>>>>>> 657b0e9... prima update
                 roamInfo.staId = (tANI_U8)pIbssPeerInd->staId;
                 roamInfo.ucastSig = (tANI_U8)pIbssPeerInd->ucastSig;
                 roamInfo.bcastSig = (tANI_U8)pIbssPeerInd->bcastSig;
@@ -11307,10 +12718,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                             setKeyEvent.authMode = 
                                 (v_U8_t)diagAuthTypeFromCSRType(pSession->connectedProfile.AuthType);
 <<<<<<< HEAD
+<<<<<<< HEAD
                             if( eSIR_SUCCESS != pRsp->statusCode )
 =======
                             if( eSIR_SME_SUCCESS != pRsp->statusCode )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            if( eSIR_SUCCESS != pRsp->statusCode )
+>>>>>>> 657b0e9... prima update
                             {
                                 setKeyEvent.status = WLAN_SECURITY_STATUS_FAILURE;
                             }
@@ -11319,6 +12734,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 #endif //FEATURE_WLAN_DIAG_SUPPORT_CSR
                         if( CSR_IS_WAIT_FOR_KEY( pMac, sessionId) )
                         {
+<<<<<<< HEAD
 <<<<<<< HEAD
                             //We are done with authentication, whethere succeed or not
                             csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, sessionId);
@@ -11330,6 +12746,12 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                             //We are done with authentication, whethere succeed or not
                             csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            //We are done with authentication, whethere succeed or not
+                            csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, sessionId);
+
+                            csrRoamStopWaitForKeyTimer( pMac );
+>>>>>>> 657b0e9... prima update
                             //We do it here because this linkup function is not called after association 
                             //when a key needs to be set. 
                             if( csrIsConnStateConnectedInfra(pMac, sessionId) ) 
@@ -11346,6 +12768,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                                            sizeof(tSirMacAddr) ) )
                                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     result = eCSR_ROAM_RESULT_AUTHENTICATED;
 =======
 #ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
@@ -11361,6 +12784,9 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 #endif
                                        result = eCSR_ROAM_RESULT_AUTHENTICATED;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                    result = eCSR_ROAM_RESULT_AUTHENTICATED;
+>>>>>>> 657b0e9... prima update
                                 }
                                 else
                                 {
@@ -11372,10 +12798,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                         {
                             result = eCSR_ROAM_RESULT_FAILURE;
 <<<<<<< HEAD
+<<<<<<< HEAD
                             smsLog( pMac, LOGE, "CSR: Roam Completion setkey command failed(%d) PeerMac %02X-%02X-%02X-%02X-%02X-%02X...\n", 
 =======
                             smsLog( pMac, LOGE, "CSR: Roam Completion setkey command failed(%d) PeerMac %02X-%02X-%02X-%02X-%02X-%02X...",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            smsLog( pMac, LOGE, "CSR: Roam Completion setkey command failed(%d) PeerMac %02X-%02X-%02X-%02X-%02X-%02X...\n", 
+>>>>>>> 657b0e9... prima update
                                 pRsp->statusCode, pRsp->peerMacAddr[0], pRsp->peerMacAddr[1], pRsp->peerMacAddr[2],
                                 pRsp->peerMacAddr[3], pRsp->peerMacAddr[4], pRsp->peerMacAddr[5] );
                         }
@@ -11404,19 +12834,27 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     else
                     {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         smsLog( pMac, LOGE, "CSR: Roam Completion called but setkey command is not ACTIVE ...\n" );
 =======
                         smsLog( pMac, LOGE, "CSR: Roam Completion called but setkey command is not ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        smsLog( pMac, LOGE, "CSR: Roam Completion called but setkey command is not ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
                     }
                 }
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGE, "CSR: SetKey Completion called but NO commands are ACTIVE ...\n" );
 =======
                     smsLog( pMac, LOGE, "CSR: SetKey Completion called but NO commands are ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGE, "CSR: SetKey Completion called but NO commands are ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
                 }
                 smeProcessPendingQueue( pMac );
             }
@@ -11454,10 +12892,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                             removeKeyEvent.authMode = 
                                 (v_U8_t)diagAuthTypeFromCSRType(pSession->connectedProfile.AuthType);
 <<<<<<< HEAD
+<<<<<<< HEAD
                             if( eSIR_SUCCESS != pRsp->statusCode )
 =======
                             if( eSIR_SME_SUCCESS != pRsp->statusCode )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            if( eSIR_SUCCESS != pRsp->statusCode )
+>>>>>>> 657b0e9... prima update
                             {
                                 removeKeyEvent.status = WLAN_SECURITY_STATUS_FAILURE;
                             }
@@ -11484,24 +12926,33 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
                     else
                     {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         smsLog( pMac, LOGW, "CSR: Roam Completion called but setkey command is not ACTIVE ...\n" );
 =======
                         smsLog( pMac, LOGW, "CSR: Roam Completion called but setkey command is not ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        smsLog( pMac, LOGW, "CSR: Roam Completion called but setkey command is not ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
                     }
                 }
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGW, "CSR: SetKey Completion called but NO commands are ACTIVE ...\n" );
 =======
                     smsLog( pMac, LOGW, "CSR: SetKey Completion called but NO commands are ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGW, "CSR: SetKey Completion called but NO commands are ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
                 }
                 smeProcessPendingQueue( pMac );
             }
             break;
         case eWNI_SME_GET_STATISTICS_RSP:
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog( pMac, LOG2, FL("Stats rsp from PE\n"));
             csrRoamStatsRspProcessor( pMac, pSirMsg );
@@ -11513,25 +12964,25 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
 
 =======
             smsLog( pMac, LOG2, FL("Stats rsp from PE"));
+=======
+            smsLog( pMac, LOG2, FL("Stats rsp from PE\n"));
+>>>>>>> 657b0e9... prima update
             csrRoamStatsRspProcessor( pMac, pSirMsg );
             break;
-#if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
-        case eWNI_SME_GET_ROAM_RSSI_RSP:
-            smsLog( pMac, LOG2, FL("Stats rsp from PE"));
-            csrRoamRssiRspProcessor( pMac, pSirMsg );
-            break;
-#endif
         case eWNI_SME_GET_RSSI_REQ:
-            smsLog( pMac, LOG2, FL("GetRssiReq from self"));
+            smsLog( pMac, LOG2, FL("GetRssiReq from self\n"));
             csrUpdateRssi( pMac, pSirMsg );
             break;
 
+<<<<<<< HEAD
         case eWNI_SME_GET_SNR_REQ:
             smsLog( pMac, LOG2, FL("GetSnrReq from self"));
             csrUpdateSnr(pMac, pSirMsg);
             break;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
         case eWNI_SME_FT_PRE_AUTH_RSP:
             csrRoamFTPreAuthRspProcessor( pMac, (tpSirFTPreAuthRsp)pSirMsg );
@@ -11540,10 +12991,14 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
         case eWNI_SME_MAX_ASSOC_EXCEEDED:
             pSmeMaxAssocInd = (tSmeMaxAssocInd*)pSirMsg;
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG1, FL("send indication that max assoc have been reached and the new peer cannot be accepted\n"));          
 =======
             smsLog( pMac, LOG1, FL("send indication that max assoc have been reached and the new peer cannot be accepted"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, FL("send indication that max assoc have been reached and the new peer cannot be accepted\n"));          
+>>>>>>> 657b0e9... prima update
             sessionId = pSmeMaxAssocInd->sessionId;
             roamInfo.sessionId = sessionId;
             palCopyMemory(pMac->hHdd, &roamInfo.peerMac, pSmeMaxAssocInd->peerMac, sizeof(tCsrBssid));
@@ -11552,6 +13007,7 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             break;
             
         case eWNI_SME_BTAMP_LOG_LINK_IND:
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog( pMac, LOG1, FL("Establish logical link req from HCI serialized through MC thread\n"));
             btampEstablishLogLinkHdlr( pSirMsg );
@@ -11562,12 +13018,16 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
         break;
 =======
             smsLog( pMac, LOG1, FL("Establish logical link req from HCI serialized through MC thread"));
+=======
+            smsLog( pMac, LOG1, FL("Establish logical link req from HCI serialized through MC thread\n"));
+>>>>>>> 657b0e9... prima update
             btampEstablishLogLinkHdlr( pSirMsg );
             break;
         case eWNI_SME_RSSI_IND:
-            smsLog( pMac, LOG1, FL("RSSI indication from TL serialized through MC thread"));
+            smsLog( pMac, LOG1, FL("RSSI indication from TL serialized through MC thread\n"));
             csrRoamRssiIndHdlr( pMac, pSirMsg );
         break;
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
         case eWNI_SME_CANDIDATE_FOUND_IND:
             smsLog( pMac, LOG2, FL("Candidate found indication from PE"));
@@ -11579,6 +13039,8 @@ void csrRoamCheckForLinkStatusChange( tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg )
             break;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
         default:
             break;
@@ -11628,6 +13090,7 @@ tANI_BOOLEAN csrRoamCompleteRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId,
     tANI_TIMESTAMP curTime = (tANI_TIMESTAMP)palGetTickCount(pMac->hHdd);
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     if(!pSession)
     {
@@ -11635,6 +13098,8 @@ tANI_BOOLEAN csrRoamCompleteRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId,
         return eANI_BOOLEAN_FALSE;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     //Check whether time is up
     if(pSession->fCancelRoaming || fForce || 
        ((curTime - pSession->roamingStartTime) > roamTime) ||
@@ -11642,10 +13107,14 @@ tANI_BOOLEAN csrRoamCompleteRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId,
        eCsrDynamicRoaming == pSession->roamingReason)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("  indicates roaming completion\n"));
 =======
         smsLog(pMac, LOGW, FL("  indicates roaming completion"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("  indicates roaming completion\n"));
+>>>>>>> 657b0e9... prima update
         if(pSession->fCancelRoaming && CSR_IS_LOSTLINK_ROAMING(pSession->roamingReason))
         {
             //roaming is cancelled, tell HDD to indicate disconnect
@@ -11701,10 +13170,14 @@ void csrRoamCancelRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId)
     if(CSR_IS_ROAMING(pSession))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, "   Cancelling roaming\n");
 =======
         smsLog(pMac, LOGW, "   Cancelling roaming");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, "   Cancelling roaming\n");
+>>>>>>> 657b0e9... prima update
         pSession->fCancelRoaming = eANI_BOOLEAN_TRUE;
         if(CSR_IS_ROAM_JOINING(pMac, sessionId) && CSR_IS_ROAM_SUBSTATE_CONFIG(pMac, sessionId))
         {
@@ -11718,10 +13191,14 @@ void csrRoamCancelRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId)
             csrRoamCompleteRoaming(pMac, sessionId, eANI_BOOLEAN_TRUE, roamResult);
             //Since CSR may be in lostlink roaming situation, abort all roaming related activities
 <<<<<<< HEAD
+<<<<<<< HEAD
             csrScanAbortMacScan(pMac);
 =======
             csrScanAbortMacScan(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            csrScanAbortMacScan(pMac);
+>>>>>>> 657b0e9... prima update
             csrRoamStopRoamingTimer(pMac, sessionId);
         }
     }
@@ -11758,6 +13235,7 @@ eHalStatus csrRoamStartRoamingTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, tAN
     if(!pSession)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
         return eHAL_STATUS_FAILURE;
     }
@@ -11767,13 +13245,20 @@ eHalStatus csrRoamStartRoamingTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, tAN
     status = palTimerStart(pMac->hHdd, pSession->hTimerRoaming, interval, eANI_BOOLEAN_FALSE);
 =======
         smsLog(pMac, LOGE, FL("  session %d not found"), sessionId);
+=======
+        smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
     
-    smsLog(pMac, LOG1, " csrScanStartRoamingTimer");
+    smsLog(pMac, LOG1, " csrScanStartRoamingTimer \n ");
     pSession->roamingTimerInfo.sessionId = (tANI_U8)sessionId;
+<<<<<<< HEAD
     status = vos_timer_start(&pSession->hTimerRoaming, interval/PAL_TIMER_TO_MS_UNIT);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    status = palTimerStart(pMac->hHdd, pSession->hTimerRoaming, interval, eANI_BOOLEAN_FALSE);
+>>>>>>> 657b0e9... prima update
     
     return (status);
 }
@@ -11781,16 +13266,21 @@ eHalStatus csrRoamStartRoamingTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, tAN
 eHalStatus csrRoamStopRoamingTimer(tpAniSirGlobal pMac, tANI_U32 sessionId)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     return (palTimerStop(pMac->hHdd, pMac->roam.roamSession[sessionId].hTimerRoaming));
 =======
     return (vos_timer_stop(&pMac->roam.roamSession[sessionId].hTimerRoaming));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return (palTimerStop(pMac->hHdd, pMac->roam.roamSession[sessionId].hTimerRoaming));
+>>>>>>> 657b0e9... prima update
 }
 
 void csrRoamWaitForKeyTimeOutHandler(void *pv)
 {
     tCsrTimerInfo *pInfo = (tCsrTimerInfo *)pv;
     tpAniSirGlobal pMac = pInfo->pMac;
+<<<<<<< HEAD
 <<<<<<< HEAD
     if( CSR_IS_WAIT_FOR_KEY( pMac, pInfo->sessionId ) )
     {
@@ -11807,43 +13297,13 @@ void csrRoamWaitForKeyTimeOutHandler(void *pv)
             pMac->roam.neighborRoamInfo.neighborRoamState,
             pMac->roam.curSubState[pInfo->sessionId]);
 
+=======
+>>>>>>> 657b0e9... prima update
     if( CSR_IS_WAIT_FOR_KEY( pMac, pInfo->sessionId ) )
     {
-#ifdef FEATURE_WLAN_LFR
-        if (csrNeighborRoamIsHandoffInProgress(pMac))
-        {
-            /* 
-             * Enable heartbeat timer when hand-off is in progress
-             * and Key Wait timer expired. 
-             */
-            smsLog(pMac, LOG2, "Enabling HB timer after WaitKey expiry"
-                    " (nHBCount=%d)",
-                    pMac->roam.configParam.HeartbeatThresh24);
-            ccmCfgSetInt(pMac, WNI_CFG_HEART_BEAT_THRESHOLD,
-                    pMac->roam.configParam.HeartbeatThresh24,
-                    NULL, eANI_BOOLEAN_FALSE);
-        }
-#endif
-        smsLog(pMac, LOGW, " SME pre-auth state timeout. ");
+        smsLog(pMac, LOGW, " SME pre-auth state timeout. \n ");
         //Change the substate so command queue is unblocked.
         csrRoamSubstateChange( pMac, eCSR_ROAM_SUBSTATE_NONE, pInfo->sessionId);
-        if (pSession)
-        {
-            if( csrIsConnStateConnectedInfra(pMac, pInfo->sessionId) ) 
-            {
-                csrRoamLinkUp(pMac, pSession->connectedProfile.bssid);
-                smeProcessPendingQueue(pMac);
-            }
-            else
-            {
-                smsLog(pMac, LOGW, "%s: could not post link up",
-                        __func__);
-            }
-        }
-        else
-        {
-            smsLog(pMac, LOGW, "%s: session not found", __func__);
-        }
     }
     
 }
@@ -11852,6 +13312,7 @@ void csrRoamWaitForKeyTimeOutHandler(void *pv)
 eHalStatus csrRoamStartWaitForKeyTimer(tpAniSirGlobal pMac, tANI_U32 interval)
 {
     eHalStatus status;
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     smsLog(pMac, LOG1, " csrScanStartWaitForKeyTimer \n ");
@@ -11871,12 +13332,18 @@ eHalStatus csrRoamStartWaitForKeyTimer(tpAniSirGlobal pMac, tANI_U32 interval)
     smsLog(pMac, LOG1, " csrScanStartWaitForKeyTimer");
     status = vos_timer_start(&pMac->roam.hTimerWaitForKey, interval/PAL_TIMER_TO_MS_UNIT);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    smsLog(pMac, LOG1, " csrScanStartWaitForKeyTimer \n ");
+    status = palTimerStart(pMac->hHdd, pMac->roam.hTimerWaitForKey, interval, eANI_BOOLEAN_FALSE);
+>>>>>>> 657b0e9... prima update
     
     return (status);
 }
 
 eHalStatus csrRoamStopWaitForKeyTimer(tpAniSirGlobal pMac)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     return (palTimerStop(pMac->hHdd, pMac->roam.hTimerWaitForKey));
 =======
@@ -11900,6 +13367,9 @@ eHalStatus csrRoamStopWaitForKeyTimer(tpAniSirGlobal pMac)
 #endif
     return (vos_timer_stop(&pMac->roam.hTimerWaitForKey));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return (palTimerStop(pMac->hHdd, pMac->roam.hTimerWaitForKey));
+>>>>>>> 657b0e9... prima update
 }
 
 void csrRoamIbssJoinTimerHandler(void *pv)
@@ -11934,6 +13404,7 @@ eHalStatus csrRoamStartIbssJoinTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, tA
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG1, " csrRoamStartIbssJoinTimer \n ");
     pSession->ibssJoinTimerInfo.sessionId = (tANI_U8)sessionId;
     status = palTimerStart(pMac->hHdd, pSession->hTimerIbssJoining, interval, eANI_BOOLEAN_FALSE);
@@ -11942,22 +13413,32 @@ eHalStatus csrRoamStartIbssJoinTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, tA
     pSession->ibssJoinTimerInfo.sessionId = (tANI_U8)sessionId;
     status = vos_timer_start(&pSession->hTimerIbssJoining, interval/PAL_TIMER_TO_MS_UNIT);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG1, " csrRoamStartIbssJoinTimer \n ");
+    pSession->ibssJoinTimerInfo.sessionId = (tANI_U8)sessionId;
+    status = palTimerStart(pMac->hHdd, pSession->hTimerIbssJoining, interval, eANI_BOOLEAN_FALSE);
+>>>>>>> 657b0e9... prima update
     
     return (status);
 }
 eHalStatus csrRoamStopIbssJoinTimer(tpAniSirGlobal pMac, tANI_U32 sessionId)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     return (palTimerStop(pMac->hHdd, pMac->roam.roamSession[sessionId].hTimerIbssJoining));
 =======
     return (vos_timer_stop(&pMac->roam.roamSession[sessionId].hTimerIbssJoining));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return (palTimerStop(pMac->hHdd, pMac->roam.roamSession[sessionId].hTimerIbssJoining));
+>>>>>>> 657b0e9... prima update
 }
 void csrRoamCompletion(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamInfo *pRoamInfo, tSmeCmd *pCommand, 
                         eCsrRoamResult roamResult, tANI_BOOLEAN fSuccess)
 {
     eRoamCmdStatus roamStatus = csrGetRoamCompleteStatus(pMac, sessionId);
     tANI_U32 roamId = 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
@@ -11968,10 +13449,13 @@ void csrRoamCompletion(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamInfo *pR
         return;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     
     if(pCommand)
     {
         roamId = pCommand->u.roamCmd.roamId;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if defined(VOSS_ENABLED)
         VOS_ASSERT( sessionId == pCommand->sessionId );
@@ -11979,6 +13463,11 @@ void csrRoamCompletion(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamInfo *pR
 =======
         VOS_ASSERT( sessionId == pCommand->sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(VOSS_ENABLED)
+        VOS_ASSERT( sessionId == pCommand->sessionId );
+#endif
+>>>>>>> 657b0e9... prima update
     }
     if(eCSR_ROAM_ROAMING_COMPLETION == roamStatus)
     {
@@ -11988,12 +13477,17 @@ void csrRoamCompletion(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamInfo *pR
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_ASSERT((CSR_GET_SESSION( pMac, sessionId ))->bRefAssocStartCnt == 0);
         smsLog(pMac, LOGW, FL("  indicates association completion. roamResult = %d\n"), roamResult);
 =======
         VOS_ASSERT(pSession->bRefAssocStartCnt == 0);
         smsLog(pMac, LOGW, FL("  indicates association completion. roamResult = %d"), roamResult);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_ASSERT((CSR_GET_SESSION( pMac, sessionId ))->bRefAssocStartCnt == 0);
+        smsLog(pMac, LOGW, FL("  indicates association completion. roamResult = %d\n"), roamResult);
+>>>>>>> 657b0e9... prima update
         csrRoamCallCallback(pMac, sessionId, pRoamInfo, roamId, roamStatus, roamResult);
     }
 }
@@ -12007,21 +13501,22 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
     tCsrRoamInfo *pRoamInfo = NULL;
     tCsrRoamInfo roamInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
     //Only need to roam for infra station. In this case P2P client will roam as well
     tANI_BOOLEAN fToRoam = CSR_IS_INFRASTRUCTURE(&pSession->connectedProfile);
 =======
     tANI_BOOLEAN fToRoam;
+=======
+>>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
-    /* To silence the KW tool Null chaeck is added */
-    if(!pSession)
-    {
-        smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
-        return eHAL_STATUS_FAILURE;
-    }
     //Only need to roam for infra station. In this case P2P client will roam as well
+<<<<<<< HEAD
     fToRoam = CSR_IS_INFRASTRUCTURE(&pSession->connectedProfile);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tANI_BOOLEAN fToRoam = CSR_IS_INFRASTRUCTURE(&pSession->connectedProfile);
+>>>>>>> 657b0e9... prima update
     pSession->fCancelRoaming = eANI_BOOLEAN_FALSE;
     if ( eWNI_SME_DISASSOC_IND == type )
     {
@@ -12035,6 +13530,7 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
         result = eCSR_ROAM_RESULT_DEAUTH_IND;
         pDeauthIndMsg = (tSirSmeDeauthInd *)pSirMsg;
         pSession->roamingStatusCode = pDeauthIndMsg->statusCode;
+<<<<<<< HEAD
 <<<<<<< HEAD
         pSession->joinFailStatusCode.reasonCode = pDeauthIndMsg->reasonCode;
     }
@@ -12054,11 +13550,19 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
     {
         smsLog(pMac, LOGW, FL("gets an unknown type (%d)"), type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pSession->joinFailStatusCode.reasonCode = pDeauthIndMsg->reasonCode;
+    }
+    else
+    {
+        smsLog(pMac, LOGW, FL("gets an unknown type (%d)\n"), type);
+>>>>>>> 657b0e9... prima update
         result = eCSR_ROAM_RESULT_NONE;
         pSession->joinFailStatusCode.reasonCode = 1;
     }
     
     // call profile lost link routine here
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(!CSR_IS_INFRA_AP(&pSession->connectedProfile))
@@ -12066,6 +13570,11 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
 =======
     if(!CSR_IS_INFRA_AP(&pSession->connectedProfile))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    if(!CSR_IS_INFRA_AP(&pSession->connectedProfile))
+#endif
+>>>>>>> 657b0e9... prima update
     {
         csrRoamCallCallback(pMac, sessionId, NULL, 0, eCSR_ROAM_LOSTLINK_DETECTED, result);
     }
@@ -12080,6 +13589,7 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
     }
     if(!HAL_STATUS_SUCCESS(status))
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
        //If fail to send confirmation to PE, not to trigger roaming
        fToRoam = eANI_BOOLEAN_FALSE;
@@ -12111,32 +13621,39 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
 =======
         //If fail to send confirmation to PE, not to trigger roaming
         fToRoam = eANI_BOOLEAN_FALSE;
+=======
+       //If fail to send confirmation to PE, not to trigger roaming
+       fToRoam = eANI_BOOLEAN_FALSE;
+>>>>>>> 657b0e9... prima update
     }
 
-    //prepare to tell HDD to disconnect
+    //tell HDD to disconnect
     palZeroMemory(pMac->hHdd, &roamInfo, sizeof(tCsrRoamInfo));
     roamInfo.statusCode = (tSirResultCodes)pSession->roamingStatusCode;
     roamInfo.reasonCode = pSession->joinFailStatusCode.reasonCode;
+#ifdef WLAN_SOFTAP_FEATURE
     if( eWNI_SME_DISASSOC_IND == type)
     {
-        //staMacAddr
-        palCopyMemory(pMac->hHdd, roamInfo.peerMac, pDisassocIndMsg->peerMacAddr, sizeof(tSirMacAddr));
-        roamInfo.staId = (tANI_U8)pDisassocIndMsg->staId;
-    }
+            //staMacAddr
+            palCopyMemory(pMac->hHdd, roamInfo.peerMac, pDisassocIndMsg->peerMacAddr, sizeof(tSirMacAddr));
+            roamInfo.staId = (tANI_U8)pDisassocIndMsg->staId;
+        }
     else if( eWNI_SME_DEAUTH_IND == type )
     {
-        //staMacAddr
-        palCopyMemory(pMac->hHdd, roamInfo.peerMac, pDeauthIndMsg->peerMacAddr, sizeof(tSirMacAddr));
-        roamInfo.staId = (tANI_U8)pDeauthIndMsg->staId;
-    }
-    smsLog(pMac, LOGW, FL("roamInfo.staId (%d)"), roamInfo.staId);
-
-    /* See if we can possibly roam.  If so, start the roaming process and notify HDD
-       that we are roaming.  But if we cannot possibly roam, or if we are unable to
-       currently roam, then notify HDD of the lost link */
+            //staMacAddr
+            palCopyMemory(pMac->hHdd, roamInfo.peerMac, pDeauthIndMsg->peerMacAddr, sizeof(tSirMacAddr));
+            roamInfo.staId = (tANI_U8)pDeauthIndMsg->staId;
+        }
+#endif
+    smsLog(pMac, LOGW, FL("roamInfo.staId (%d)\n"), roamInfo.staId);
     if(fToRoam)
     {
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        //Tell HDD about the lost link
+        csrRoamCallCallback(pMac, sessionId, &roamInfo, 0, eCSR_ROAM_LOSTLINK, result);
+>>>>>>> 657b0e9... prima update
         //Only remove the connected BSS in infrastructure mode
         csrRoamRemoveConnectedBssFromScanCache(pMac, &pSession->connectedProfile);
         //Not to do anying for lostlink with WDS
@@ -12167,10 +13684,14 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, " %s Fail to start roaming, status = %d", __FUNCTION__, status);
 =======
                 smsLog(pMac, LOGW, " %s Fail to start roaming, status = %d", __func__, status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, " %s Fail to start roaming, status = %d", __FUNCTION__, status);
+>>>>>>> 657b0e9... prima update
                 fToRoam = eANI_BOOLEAN_FALSE;
             }
         }
@@ -12183,6 +13704,9 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
     if(!fToRoam)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
        if( eWNI_SME_DISASSOC_IND == type)
        {
            //staMacAddr
@@ -12194,6 +13718,7 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
            //staMacAddr
             palCopyMemory(pMac->hHdd, roamInfo.peerMac, pDeauthIndMsg->peerMacAddr, sizeof(tSirMacAddr));
             roamInfo.staId = (tANI_U8)pDeauthIndMsg->staId;
+<<<<<<< HEAD
         }
         //Tell HDD about the lost link
         csrRoamCallCallback(pMac, sessionId, &roamInfo, 0, eCSR_ROAM_LOSTLINK, result);
@@ -12212,14 +13737,22 @@ eHalStatus csrRoamLostLink( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 ty
              * csrRoamCheckForLinkStatusChange API.
              */
             csrRoamCallCallback(pMac, sessionId, &roamInfo, 0, eCSR_ROAM_LOSTLINK, result);
+=======
+>>>>>>> 657b0e9... prima update
         }
-
-       /*No need to start idle scan in case of IBSS/SAP 
+        //Tell HDD about the lost link
+        csrRoamCallCallback(pMac, sessionId, &roamInfo, 0, eCSR_ROAM_LOSTLINK, result);
+       
+        /*No need to start idle scan in case of IBSS/SAP 
          Still enable idle scan for polling in case concurrent sessions are running */
         if(CSR_IS_INFRASTRUCTURE(&pSession->connectedProfile))
         {
+<<<<<<< HEAD
             csrScanStartIdleScan(pMac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           csrScanStartIdleScan(pMac);
+>>>>>>> 657b0e9... prima update
         }
     }
     
@@ -12264,10 +13797,14 @@ eHalStatus csrRoamLostLinkAfterhandoffFailure( tpAniSirGlobal pMac,tANI_U32 sess
              }
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
           smsLog( pMac, LOGW, "Lost link roaming started ...\n");
 =======
           smsLog( pMac, LOGW, "Lost link roaming started ...");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          smsLog( pMac, LOGW, "Lost link roaming started ...\n");
+>>>>>>> 657b0e9... prima update
        }
     }
     else
@@ -12297,29 +13834,41 @@ void csrRoamWmStatusChangeComplete( tpAniSirGlobal pMac )
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGE, " ******csrRoamWmStatusChangeComplete fail to release command\n");
 =======
                 smsLog( pMac, LOGE, " ******csrRoamWmStatusChangeComplete fail to release command");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGE, " ******csrRoamWmStatusChangeComplete fail to release command\n");
+>>>>>>> 657b0e9... prima update
             }
             
         }
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, "CSR: WmStatusChange Completion called but LOST LINK command is not ACTIVE ...\n" );
 =======
             smsLog( pMac, LOGW, "CSR: WmStatusChange Completion called but LOST LINK command is not ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, "CSR: WmStatusChange Completion called but LOST LINK command is not ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
         }
     }
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, "CSR: WmStatusChange Completion called but NO commands are ACTIVE ...\n" );
 =======
         smsLog( pMac, LOGW, "CSR: WmStatusChange Completion called but NO commands are ACTIVE ..." );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, "CSR: WmStatusChange Completion called but NO commands are ACTIVE ...\n" );
+>>>>>>> 657b0e9... prima update
     }
     smeProcessPendingQueue( pMac );
 }
@@ -12348,10 +13897,14 @@ void csrRoamProcessWmStatusChangeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand
             break;
         default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("gets an unknown command %d\n"), pCommand->u.wmStatusChangeCmd.Type);
 =======
             smsLog(pMac, LOGW, FL("gets an unknown command %d"), pCommand->u.wmStatusChangeCmd.Type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("gets an unknown command %d\n"), pCommand->u.wmStatusChangeCmd.Type);
+>>>>>>> 657b0e9... prima update
             break;
     }
     //For WDS, we want to stop BSS as well when it is indicated that it is disconnected.
@@ -12361,10 +13914,14 @@ void csrRoamProcessWmStatusChangeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand
         {
             //This is not good
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("  failed to issue stopBSS command\n"));
 =======
             smsLog(pMac, LOGE, FL("  failed to issue stopBSS command"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("  failed to issue stopBSS command\n"));
+>>>>>>> 657b0e9... prima update
         }
     }
     // Lost Link just triggers a roaming sequence.  We can complte the Lost Link
@@ -12376,6 +13933,9 @@ void csrRoamProcessWmStatusChangeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand
 //The only tricky part is that if phyMode is set to 11abg, this function may return eCSR_CFG_DOT11_MODE_11B
 //instead of eCSR_CFG_DOT11_MODE_11G if everything is set to auto-pick.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRoamProfile *pProfile, 
                                                      tANI_U8 operationChn, eCsrBand *pBand )
@@ -12394,6 +13954,7 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, eCsrPh
 #endif
     eCsrBand eBand;
     
+<<<<<<< HEAD
     //If the global setting for dot11Mode is set to auto/abg, we overwrite the setting in the profile.
 #ifdef WLAN_SOFTAP_FEATURE
 =======
@@ -12407,18 +13968,28 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
     
     //If the global setting for dot11Mode is set to auto/abg, we overwrite the setting in the profile.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    //If the global setting for dot11Mode is set to auto/abg, we overwrite the setting in the profile.
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     if( ((!CSR_IS_INFRA_AP(pProfile )&& !CSR_IS_WDS(pProfile )) && 
          ((eCSR_CFG_DOT11_MODE_AUTO == pMac->roam.configParam.uCfgDot11Mode) ||
          (eCSR_CFG_DOT11_MODE_ABG == pMac->roam.configParam.uCfgDot11Mode))) ||
         (eCSR_CFG_DOT11_MODE_AUTO == cfgDot11Mode) || (eCSR_CFG_DOT11_MODE_ABG == cfgDot11Mode) )
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
     if( (eCSR_CFG_DOT11_MODE_AUTO == pMac->roam.configParam.uCfgDot11Mode) ||
         (eCSR_CFG_DOT11_MODE_ABG == pMac->roam.configParam.uCfgDot11Mode) ||
         (eCSR_CFG_DOT11_MODE_AUTO == cfgDot11Mode) || (eCSR_CFG_DOT11_MODE_ABG == cfgDot11Mode) )
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     {
         switch( pMac->roam.configParam.uCfgDot11Mode )
         {
@@ -12437,12 +14008,16 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
             case eCSR_CFG_DOT11_MODE_11N:
                 cfgDot11Mode = eCSR_CFG_DOT11_MODE_11N;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                 eBand = eCSR_BAND_24;
                 break;            
             //case eCSR_CFG_DOT11_MODE_BEST:
             //    cfgDot11Mode = eCSR_CFG_DOT11_MODE_BEST;
             //    eBand = eCSR_BAND_24;
             //    break;            
+<<<<<<< HEAD
 =======
                 eBand = CSR_IS_CHANNEL_24GHZ(operationChn) ? eCSR_BAND_24 : eCSR_BAND_5G;
                 break;
@@ -12512,6 +14087,8 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
                 }
                 break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             default:
                 // Global dot11 Mode setting is 11a/b/g.
                 // use the channel number to determine the Mode setting.
@@ -12532,6 +14109,7 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
                 }
                 else if ( CSR_IS_CHANNEL_24GHZ(operationChn) )
                 {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     // channel is a 2.4GHz channel.  Set mode to 11g.
                     //
@@ -12562,6 +14140,21 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
                     // performance... now to specify that the user will have to
                     // set the do11Mode in the property page to 11g to force it.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    // channel is a 2.4GHz channel.  Set mode to 11g.
+                    //
+                    // !!LAC - WiFi tests require IBSS networks to start in 11b mode without any change to the
+                    // default parameter settings on the adapter.  We use ACU to start an IBSS through creation
+                    // of a startIBSS profile.   this startIBSS profile has Auto MACProtocol and the 
+                    // adapter property setting for dot11Mode is also AUTO.   So in this case, let's start 
+                    // the IBSS network in 11b mode instead of 11g mode.
+                    //
+                    // so this is for Auto=profile->MacProtocol && Auto=Global.dot11Mode && profile->channel is < 14, 
+                    // then start the IBSS in b mode.
+                    // 
+                    // Note:  we used to have this start as an 11g IBSS for best performance... now to specify that
+                    // the user will have to set the do11Mode in the property page to 11g to force it.
+>>>>>>> 657b0e9... prima update
                     cfgDot11Mode = eCSR_CFG_DOT11_MODE_11B;
                     eBand = eCSR_BAND_24;
                 }
@@ -12596,16 +14189,21 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
                 eBand = eCSR_BAND_5G;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 =======
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        }
+>>>>>>> 657b0e9... prima update
     if(pBand)
     {
         *pBand = eBand;
     }
     
    if (operationChn == 14){ 
+<<<<<<< HEAD
 <<<<<<< HEAD
      smsLog(pMac, LOGE, FL("  Switching to Dot11B mode \n"));
      cfgDot11Mode = eCSR_CFG_DOT11_MODE_11B;
@@ -12634,6 +14232,11 @@ static eCsrCfgDot11Mode csrRoamGetPhyModeBandForBss( tpAniSirGlobal pMac, tCsrRo
         }
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     smsLog(pMac, LOGE, FL("  Switching to Dot11B mode \n"));
+     cfgDot11Mode = eCSR_CFG_DOT11_MODE_11B;
+   }
+>>>>>>> 657b0e9... prima update
     return( cfgDot11Mode );
 }
 
@@ -12667,6 +14270,7 @@ eHalStatus csrRoamIssueStopBss( tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrRoa
     // attempt to stop the Bss (reason code is ignored...)
     status = csrSendMBStopBssReqMsg( pMac, sessionId );
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
     if(!HAL_STATUS_SUCCESS(status))
@@ -12674,6 +14278,9 @@ eHalStatus csrRoamIssueStopBss( tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrRoa
         smsLog(pMac, LOGW, FL("csrSendMBStopBssReqMsg failed with status %d"), status);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
     return (status);
 }
 
@@ -12686,6 +14293,7 @@ eHalStatus csrGetCfgValidChannels(tpAniSirGlobal pMac, tANI_U8 *pChannels, tANI_
                   pNumChan));
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 tPowerdBm csrGetCfgMaxTxPower (tpAniSirGlobal pMac, tANI_U8 channel)
@@ -12748,6 +14356,8 @@ error:
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 tANI_BOOLEAN csrRoamIsChannelValid( tpAniSirGlobal pMac, tANI_U8 channel )
 {
     tANI_BOOLEAN fValid = FALSE;
@@ -12809,10 +14419,14 @@ tANI_BOOLEAN csrRoamIsValid40MhzChannel(tpAniSirGlobal pMac, tANI_U8 channel)
                  * supported channel width and recommended tx width as per standard
                  */
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOG1, "scws %u rtws %u sco %u\n",
 =======
                 smsLog(pMac, LOG1, "scws %u rtws %u sco %u",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOG1, "scws %u rtws %u sco %u\n",
+>>>>>>> 657b0e9... prima update
                     pIes->HTCaps.supportedChannelWidthSet,
                     pIes->HTInfo.recommendedTxWidthSet,
                     pIes->HTInfo.secondaryChannelOffset);
@@ -12836,10 +14450,14 @@ tANI_BOOLEAN csrRoamIsValid40MhzChannel(tpAniSirGlobal pMac, tANI_U8 channel)
                 if((PHY_SINGLE_CHANNEL_CENTERED != eRet) && !csrRoamIsValid40MhzChannel(pMac, centerChn))
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGE, "  Invalid center channel (%d), disable 40MHz mode\n", centerChn);
 =======
                     smsLog(pMac, LOGE, "  Invalid center channel (%d), disable 40MHz mode", centerChn);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGE, "  Invalid center channel (%d), disable 40MHz mode\n", centerChn);
+>>>>>>> 657b0e9... prima update
                     //eRet = PHY_SINGLE_CHANNEL_CENTERED;
                 }
             }
@@ -13065,6 +14683,9 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
     cfgDot11Mode = csrRoamGetPhyModeBandForBss( pMac, pProfile, operationChannel, &eBand );
 #else
@@ -13072,10 +14693,13 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
 #endif
     
 #ifdef WLAN_FEATURE_P2P
+<<<<<<< HEAD
 =======
     cfgDot11Mode = csrRoamGetPhyModeBandForBss( pMac, pProfile, operationChannel, &eBand );
     
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     if( ( (pProfile->csrPersona == VOS_P2P_CLIENT_MODE) ||
           (pProfile->csrPersona == VOS_P2P_GO_MODE) )
      && ( cfgDot11Mode == eCSR_CFG_DOT11_MODE_11B)
@@ -13083,6 +14707,7 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
     {
         /* This should never happen */
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL, 
+<<<<<<< HEAD
 <<<<<<< HEAD
               FL("For P2PClient/P2P-GO (persona %d) cfgDot11Mode is 11B\n"), 
               pProfile->csrPersona);
@@ -13095,6 +14720,13 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
         VOS_ASSERT(0);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              FL("For P2PClient/P2P-GO (persona %d) cfgDot11Mode is 11B\n"), 
+              pProfile->csrPersona);
+        VOS_ASSERT(0);
+    }
+#endif
+>>>>>>> 657b0e9... prima update
     switch( cfgDot11Mode )
     {
         case eCSR_CFG_DOT11_MODE_11G:
@@ -13127,10 +14759,14 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
     {
         default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("sees an unknown pSirNwType (%d)\n"), nwType);
 =======
             smsLog(pMac, LOGE, FL("sees an unknown pSirNwType (%d)"), nwType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("sees an unknown pSirNwType (%d)\n"), nwType);
+>>>>>>> 657b0e9... prima update
         case eSIR_11A_NW_TYPE:
         
             pParam->operationalRateSet.numRates = 8;
@@ -13187,9 +14823,13 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
             break;     
         case eSIR_11G_NW_TYPE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
             /* For P2P Client and P2P GO, disable 11b rates */ 
             if( (pProfile->csrPersona == VOS_P2P_CLIENT_MODE) ||
                 (pProfile->csrPersona == VOS_P2P_GO_MODE)
@@ -13208,9 +14848,13 @@ static void csrRoamGetBssStartParms( tpAniSirGlobal pMac, tCsrRoamProfile *pProf
             }
             else
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif            
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif            
+>>>>>>> 657b0e9... prima update
             {
             pParam->operationalRateSet.numRates = 4;
             pParam->operationalRateSet.rate[0] = SIR_MAC_RATE_1 | CSR_DOT11_BASIC_RATE_MASK;
@@ -13263,10 +14907,14 @@ static void csrRoamGetBssStartParmsFromBssDesc( tpAniSirGlobal pMac, tSirBssDesc
                 if(pIes->SuppRates.num_rates > SIR_MAC_RATESET_EID_MAX)
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL("num_rates :%d is more than SIR_MAC_RATESET_EID_MAX, resetting to SIR_MAC_RATESET_EID_MAX\n"),
 =======
                     smsLog(pMac, LOGE, FL("num_rates :%d is more than SIR_MAC_RATESET_EID_MAX, resetting to SIR_MAC_RATESET_EID_MAX"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGE, FL("num_rates :%d is more than SIR_MAC_RATESET_EID_MAX, resetting to SIR_MAC_RATESET_EID_MAX\n"),
+>>>>>>> 657b0e9... prima update
                       pIes->SuppRates.num_rates);
                     pIes->SuppRates.num_rates = SIR_MAC_RATESET_EID_MAX;
                 }
@@ -13308,6 +14956,9 @@ static void csrRoamDetermineMaxRateForAdHoc( tpAniSirGlobal pMac, tSirMacRateSet
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 //this function finds a valid secondary channel for channel bonding with "channel".
 //Param: channel -- primary channel, caller must validate it
 //       cbChoice -- CB directory
@@ -13357,8 +15008,11 @@ static tANI_U8 csrRoamGetSecondaryChannel(tpAniSirGlobal pMac, tANI_U8 channel, 
     return chnRet;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 eHalStatus csrRoamIssueStartBss( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamStartBssParams *pParam, 
                                  tCsrRoamProfile *pProfile, tSirBssDescription *pBssDesc, tANI_U32 roamId )
 {
@@ -13403,9 +15057,13 @@ eHalStatus csrRoamIssueStartBss( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRo
     pParam->pRSNIE = pProfile->pRSNReqIE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     pParam->privacy           = pProfile->privacy;
     pParam->fwdWPSPBCProbeReq = pProfile->fwdWPSPBCProbeReq;   
     pParam->authType          = pProfile->csr80211AuthType;
@@ -13425,6 +15083,7 @@ eHalStatus csrRoamIssueStartBss( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRo
     pParam->ht_protection   = pProfile->cfg_protection;
     pParam->wps_state       = pProfile->wps_state;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
     
 #ifdef WLAN_SOFTAP_FEATURE
@@ -13439,6 +15098,17 @@ eHalStatus csrRoamIssueStartBss( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRo
     pParam->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, pProfile, pParam->operationChn /* pProfile->operationChannel*/, 
                                         &eBand);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+    
+#ifdef WLAN_SOFTAP_FEATURE
+    pParam->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, pProfile, pParam->operationChn /* pProfile->operationChannel*/, 
+                                        &eBand);
+#else
+    pParam->uCfgDot11Mode = csrRoamGetPhyModeBandForBss(pMac, (eCsrPhyMode)pProfile->phyMode, pProfile->operationChannel, 
+                                        &eBand);
+#endif
+>>>>>>> 657b0e9... prima update
     pParam->bssPersona = pProfile->csrPersona;
     // When starting an IBSS, start on the channel from the Profile.
     status = csrSendMBStartBssReqMsg( pMac, sessionId, pProfile->BSSType, pParam, pBssDesc );
@@ -13449,6 +15119,7 @@ static void csrRoamPrepareBssParams(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
                                      tSirBssDescription *pBssDesc, tBssConfigParam *pBssConfig, tDot11fBeaconIEs *pIes)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     tANI_U8 Channel, SecondChn;
     ePhyChanBondState cbMode = PHY_SINGLE_CHANNEL_CENTERED;
     eCsrCBChoice cbChoice;
@@ -13456,6 +15127,11 @@ static void csrRoamPrepareBssParams(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
     tANI_U8 Channel;
     ePhyChanBondState cbMode = PHY_SINGLE_CHANNEL_CENTERED;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tANI_U8 Channel, SecondChn;
+    ePhyChanBondState cbMode = PHY_SINGLE_CHANNEL_CENTERED;
+    eCsrCBChoice cbChoice;
+>>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 
     if(!pSession)
@@ -13507,15 +15183,20 @@ static void csrRoamPrepareBssParams(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
     if(Channel == 0)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, "   CSR cannot find a channel to start IBSS\n");
 =======
         smsLog(pMac, LOGW, "   CSR cannot find a channel to start IBSS");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, "   CSR cannot find a channel to start IBSS\n");
+>>>>>>> 657b0e9... prima update
     }
     else
     {
   
         csrRoamDetermineMaxRateForAdHoc( pMac, &pSession->bssParams.operationalRateSet );
+<<<<<<< HEAD
 <<<<<<< HEAD
         if (CSR_IS_INFRA_AP(pProfile))
         {
@@ -13525,6 +15206,11 @@ static void csrRoamPrepareBssParams(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
         {
             if(CSR_IS_CHANNEL_24GHZ(Channel) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if (CSR_IS_INFRA_AP(pProfile))
+        {
+            if(CSR_IS_CHANNEL_24GHZ(Channel))
+>>>>>>> 657b0e9... prima update
             {
                 cbMode = pMac->roam.configParam.channelBondingMode24GHz;
             }
@@ -13532,6 +15218,7 @@ static void csrRoamPrepareBssParams(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
             {
                 cbMode = pMac->roam.configParam.channelBondingMode5GHz;
             }
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOG1, "##softap cbMode %d\n", cbMode);
             pBssConfig->cbMode = cbMode;
@@ -13600,6 +15287,69 @@ static void csrRoamPrepareBssParams(tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
             pSession->bssParams.cbMode = cbMode;
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG1, "##softap cbMode %d\n", cbMode);
+            pBssConfig->cbMode = cbMode;
+            pSession->bssParams.cbMode = cbMode;
+        }
+
+        if( CSR_IS_START_IBSS( pProfile ) )
+        {
+           //TBH: channel bonding is not supported for Libra
+            if( pProfile->ChannelInfo.ChannelList && eCSR_OPERATING_CHANNEL_AUTO != pProfile->ChannelInfo.ChannelList[0] )
+            {
+                Channel = pProfile->ChannelInfo.ChannelList[0];
+                cbChoice = pProfile->CBMode;
+            }
+            else {
+                cbChoice = pMac->roam.configParam.cbChoice;
+            }
+            pSession->bssParams.operationChn = Channel;
+            //make sure channel is valid
+            if(!csrRoamIsChannelValid(pMac, Channel))
+            {
+                //set Channel to 0 to let lim know this is invalid
+                //We still send this request down to lim even though we know the channel is wrong because
+                //lim will response with error and hdd's eWNI_SME_START_BSS_RSP handler will roam other profile (if any)
+                Channel = 0;
+                pSession->bssParams.operationChn = 0;
+            }
+            else {
+                tANI_U32 ChannelBondingMode;
+                if(CSR_IS_CHANNEL_24GHZ(Channel))
+                {
+                    ChannelBondingMode = pMac->roam.configParam.channelBondingMode24GHz;
+                }
+                else
+                {
+                    ChannelBondingMode = pMac->roam.configParam.channelBondingMode5GHz;
+                }
+                //now we have a valid channel
+                if(WNI_CFG_CHANNEL_BONDING_MODE_DISABLE != ChannelBondingMode)
+                {
+                    //let's pick a secondard channel
+                    SecondChn = csrRoamGetSecondaryChannel(pMac, Channel, cbChoice);
+                    if(SecondChn > Channel)
+                    {
+                        cbMode = PHY_DOUBLE_CHANNEL_LOW_PRIMARY;
+                    }
+                    else if(SecondChn && SecondChn < Channel)
+                    {
+                        cbMode = PHY_DOUBLE_CHANNEL_HIGH_PRIMARY;
+                    }
+                    else
+                    {
+                        cbMode = PHY_SINGLE_CHANNEL_CENTERED;
+                    }
+                    pSession->bssParams.cbMode = cbMode;
+                }
+                else
+                {
+                    pSession->bssParams.cbMode = PHY_SINGLE_CHANNEL_CENTERED;
+                }
+            }
+        }
+>>>>>>> 657b0e9... prima update
     }
 }
 
@@ -13645,6 +15395,7 @@ static eHalStatus csrRoamStartIbss( tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
                 //Prepare some more parameters for this IBSS
                 csrRoamPrepareBssParams(pMac, sessionId, pProfile, NULL, pBssConfig, NULL);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, NULL, pBssConfig, NULL);
             }
             
@@ -13654,6 +15405,11 @@ static eHalStatus csrRoamStartIbss( tpAniSirGlobal pMac, tANI_U32 sessionId, tCs
                                                 NULL, eANI_BOOLEAN_FALSE);
             }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, NULL, pBssConfig, NULL);
+            }
+            
+>>>>>>> 657b0e9... prima update
             palFreeMemory(pMac->hHdd, pBssConfig);
         }//Allocate memory
     }
@@ -13696,6 +15452,7 @@ eHalStatus csrRoamSetBKIDCache( tpAniSirGlobal pMac, tANI_U32 sessionId, tBkidCa
    if(!CSR_IS_SESSION_VALID( pMac, sessionId ))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog(pMac, LOGE, FL("  Invalid session ID\n"));
        return status;
    }
@@ -13706,6 +15463,12 @@ eHalStatus csrRoamSetBKIDCache( tpAniSirGlobal pMac, tANI_U32 sessionId, tBkidCa
    }
    smsLog(pMac, LOGW, "csrRoamSetBKIDCache called, numItems = %d", numItems);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGE, FL("  Invalid session ID\n"));
+       return status;
+   }
+   smsLog(pMac, LOGW, "csrRoamSetBKIDCache called, numItems = %d\n", numItems);
+>>>>>>> 657b0e9... prima update
    pSession = CSR_GET_SESSION( pMac, sessionId );
    if(numItems <= CSR_MAX_BKID_ALLOWED)
    {
@@ -13728,10 +15491,14 @@ eHalStatus csrRoamGetBKIDCache(tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32
    if(!CSR_IS_SESSION_VALID( pMac, sessionId ))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog(pMac, LOGE, FL("  Invalid session ID\n"));
 =======
        smsLog(pMac, LOGE, FL("  Invalid session ID"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGE, FL("  Invalid session ID\n"));
+>>>>>>> 657b0e9... prima update
        return status;
    }
    pSession = CSR_GET_SESSION( pMac, sessionId );
@@ -13747,10 +15514,14 @@ eHalStatus csrRoamGetBKIDCache(tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32
            if(pSession->NumBkidCache > CSR_MAX_PMKID_ALLOWED)
            {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("NumPmkidCache :%d is more than CSR_MAX_PMKID_ALLOWED, resetting to CSR_MAX_PMKID_ALLOWED\n"),
 =======
                smsLog(pMac, LOGE, FL("NumPmkidCache :%d is more than CSR_MAX_PMKID_ALLOWED, resetting to CSR_MAX_PMKID_ALLOWED"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog(pMac, LOGE, FL("NumPmkidCache :%d is more than CSR_MAX_PMKID_ALLOWED, resetting to CSR_MAX_PMKID_ALLOWED\n"),
+>>>>>>> 657b0e9... prima update
                  pSession->NumBkidCache);
                pSession->NumBkidCache = CSR_MAX_PMKID_ALLOWED;
            }
@@ -13780,10 +15551,14 @@ eHalStatus csrRoamSetPMKIDCache( tpAniSirGlobal pMac, tANI_U32 sessionId,
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, "csrRoamSetPMKIDCache called, numItems = %d\n", numItems);
 =======
     smsLog(pMac, LOGW, "csrRoamSetPMKIDCache called, numItems = %d", numItems);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, "csrRoamSetPMKIDCache called, numItems = %d\n", numItems);
+>>>>>>> 657b0e9... prima update
     if(numItems <= CSR_MAX_PMKID_ALLOWED)
     {
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_CSR
@@ -13813,6 +15588,7 @@ eHalStatus csrRoamSetPMKIDCache( tpAniSirGlobal pMac, tANI_U32 sessionId,
     return (status);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 eHalStatus csrRoamDelPMKIDfromCache( tpAniSirGlobal pMac, tANI_U32 sessionId,
@@ -13849,6 +15625,8 @@ eHalStatus csrRoamDelPMKIDfromCache( tpAniSirGlobal pMac, tANI_U32 sessionId,
     return status;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 tANI_U32 csrRoamGetNumPMKIDCache(tpAniSirGlobal pMac, tANI_U32 sessionId)
 {
     return (pMac->roam.roamSession[sessionId].NumPmkidCache);
@@ -13877,10 +15655,14 @@ eHalStatus csrRoamGetPMKIDCache(tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U3
             if(pSession->NumPmkidCache > CSR_MAX_PMKID_ALLOWED)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("NumPmkidCache :%d is more than CSR_MAX_PMKID_ALLOWED, resetting to CSR_MAX_PMKID_ALLOWED\n"),
 =======
                 smsLog(pMac, LOGE, FL("NumPmkidCache :%d is more than CSR_MAX_PMKID_ALLOWED, resetting to CSR_MAX_PMKID_ALLOWED"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("NumPmkidCache :%d is more than CSR_MAX_PMKID_ALLOWED, resetting to CSR_MAX_PMKID_ALLOWED\n"),
+>>>>>>> 657b0e9... prima update
                   pSession->NumPmkidCache);
                 pSession->NumPmkidCache = CSR_MAX_PMKID_ALLOWED;
             }
@@ -14112,10 +15894,14 @@ eHalStatus csrIsBTAMPAllowed( tpAniSirGlobal pMac, tANI_U32 chnId )
             {
                 //co-exist with IBSS or BT-AMP is not supported
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, " BTAMP is not allowed due to IBSS/BT-AMP exist in session %d\n", sessionId );
 =======
                 smsLog( pMac, LOGW, " BTAMP is not allowed due to IBSS/BT-AMP exist in session %d", sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, " BTAMP is not allowed due to IBSS/BT-AMP exist in session %d\n", sessionId );
+>>>>>>> 657b0e9... prima update
                 status = eHAL_STATUS_CSR_WRONG_STATE;
                 break;
             }
@@ -14125,10 +15911,14 @@ eHalStatus csrIsBTAMPAllowed( tpAniSirGlobal pMac, tANI_U32 chnId )
                     ( (tANI_U8)chnId != pMac->roam.roamSession[sessionId].connectedProfile.operationChannel ) )
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog( pMac, LOGW, " BTAMP is not allowed due to channel (%d) diff than infr channel (%d)\n",
 =======
                     smsLog( pMac, LOGW, " BTAMP is not allowed due to channel (%d) diff than infr channel (%d)",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog( pMac, LOGW, " BTAMP is not allowed due to channel (%d) diff than infr channel (%d)\n",
+>>>>>>> 657b0e9... prima update
                         chnId, pMac->roam.roamSession[sessionId].connectedProfile.operationChannel );
                     status = eHAL_STATUS_CSR_WRONG_STATE;
                     break;
@@ -14163,18 +15953,26 @@ static eHalStatus csrRoamStartWds( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsr
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(VOSS_ENABLED)
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(VOSS_ENABLED)
+>>>>>>> 657b0e9... prima update
         //We don't expect Bt-AMP HDD not to disconnect the last connection first at this time. 
         //Otherwise we need to add code to handle the
         //situation just like IBSS. Though for WDS station, we need to send disassoc to PE first then 
         //send stop_bss to PE, before we can continue.
         VOS_ASSERT( !csrIsConnStateWds( pMac, sessionId ) );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         palZeroMemory(pMac->hHdd, &bssConfig, sizeof(tBssConfigParam));
         /* Assume HDD provide bssid in profile */
         palCopyMemory( pMac->hHdd, &pSession->bssParams.bssid, pProfile->BSSIDs.bssid[0], sizeof(tCsrBssid) );
@@ -14186,10 +15984,14 @@ static eHalStatus csrRoamStartWds( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsr
             //Save profile for late use
             csrFreeRoamProfile( pMac, sessionId );
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd, 
 =======
             if (HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            if (HAL_STATUS_SUCCESS(palAllocateMemory(pMac->hHdd, 
+>>>>>>> 657b0e9... prima update
                                    (void **)&pSession->pCurRoamProfile,
                                    sizeof(tCsrRoamProfile))))
             {
@@ -14198,6 +16000,7 @@ static eHalStatus csrRoamStartWds( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsr
             }
             //Prepare some more parameters for this WDS
             csrRoamPrepareBssParams(pMac, sessionId, pProfile, NULL, &bssConfig, NULL);
+<<<<<<< HEAD
 <<<<<<< HEAD
             status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, NULL, &bssConfig, NULL);
         }
@@ -14211,6 +16014,12 @@ static eHalStatus csrRoamStartWds( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsr
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            status = csrRoamSetBssConfigCfg(pMac, sessionId, pProfile, NULL, &bssConfig, NULL);
+        }
+    }
+    
+>>>>>>> 657b0e9... prima update
     return( status );
 }
 
@@ -14219,12 +16028,17 @@ static eHalStatus csrRoamStartWds( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsr
 //pBuf is caller allocated memory point to &(tSirSmeJoinReq->rsnIE.rsnIEdata[ 0 ]) + pMsg->rsnIE.length;
 //or &(tSirSmeReassocReq->rsnIE.rsnIEdata[ 0 ]) + pMsg->rsnIE.length;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac, 
                                             tSirBssDescription *pBssDescription, 
 =======
 static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
                                             tSirBssDescription *pBssDescription,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac, 
+                                            tSirBssDescription *pBssDescription, 
+>>>>>>> 657b0e9... prima update
                                             tANI_U8 *pBuf, tANI_U8 uapsdMask)
 {
     tCsrChannelSet channelGroup;
@@ -14233,11 +16047,15 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
     tANI_BOOLEAN found = FALSE;
     tANI_U32 size = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
         tANI_U16 i;
 =======
     tANI_S8 pwrLimit = 0;
     tANI_U16 i;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        tANI_U16 i;
+>>>>>>> 657b0e9... prima update
     // plug in neighborhood occupancy info (i.e. BSSes on primary or secondary channels)
     *pBuf++ = (tANI_U8)FALSE;  //tAniTitanCBNeighborInfo->cbBssFoundPri
     *pBuf++ = (tANI_U8)FALSE;  //tAniTitanCBNeighborInfo->cbBssFoundSecDown
@@ -14245,6 +16063,7 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
     // 802.11h
     //We can do this because it is in HOST CPU order for now.
     pAP_capabilityInfo = (tSirMacCapabilityInfo *)&pBssDescription->capabilityInfo;
+<<<<<<< HEAD
 <<<<<<< HEAD
         //tell the target AP my 11H capability only if both AP and STA support 11H and the channel being used is 11a
         if ( csrIs11hSupported( pMac ) && pAP_capabilityInfo->spectrumMgt && eSIR_11A_NW_TYPE == pBssDescription->nwType )   
@@ -14254,6 +16073,11 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
     if ( csrIs11hSupported( pMac ) && pAP_capabilityInfo->spectrumMgt && eSIR_11A_NW_TYPE == pBssDescription->nwType )
     {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        //tell the target AP my 11H capability only if both AP and STA support 11H and the channel being used is 11a
+        if ( csrIs11hSupported( pMac ) && pAP_capabilityInfo->spectrumMgt && eSIR_11A_NW_TYPE == pBssDescription->nwType )   
+        {  
+>>>>>>> 657b0e9... prima update
         fTmp = (tAniBool)pal_cpu_to_be32(1);
     }
     else
@@ -14264,14 +16088,19 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
     pBuf += sizeof(tAniBool);
     *pBuf++ = MIN_STA_PWR_CAP_DBM; // it is for pMsg->powerCap.minTxPower = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
         found = csrSearchChannelListForTxPower(pMac, pBssDescription, &channelGroup);
 =======
     found = csrSearchChannelListForTxPower(pMac, pBssDescription, &channelGroup);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        found = csrSearchChannelListForTxPower(pMac, pBssDescription, &channelGroup);
+>>>>>>> 657b0e9... prima update
     // This is required for 11k test VoWiFi Ent: Test 2.
     // We need the power capabilities for Assoc Req. 
     // This macro is provided by the halPhyCfg.h. We pick our
     // max and min capability by the halPhy provided macros
+<<<<<<< HEAD
 <<<<<<< HEAD
     *pBuf++ = MAX_STA_PWR_CAP_DBM;
 =======
@@ -14285,6 +16114,9 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
         *pBuf++ = MAX_STA_PWR_CAP_DBM;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    *pBuf++ = MAX_STA_PWR_CAP_DBM;
+>>>>>>> 657b0e9... prima update
     size = sizeof(pMac->roam.validChannelList);
     if(HAL_STATUS_SUCCESS(csrGetCfgValidChannels(pMac, (tANI_U8 *)pMac->roam.validChannelList, &size)))
     { 
@@ -14298,10 +16130,14 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("can not find any valid channel\n"));
 =======
         smsLog(pMac, LOGE, FL("can not find any valid channel"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("can not find any valid channel\n"));
+>>>>>>> 657b0e9... prima update
         *pBuf++ = 0;  //tSirSupChnl->numChnl
     }                                                                                                                     
     //Check whether it is ok to enter UAPSD
@@ -14315,10 +16151,14 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" BTC doesn't allow UAPSD for uapsd_mask(0x%X)\n"), uapsdMask);
 =======
         smsLog(pMac, LOGE, FL(" BTC doesn't allow UAPSD for uapsd_mask(0x%X)"), uapsdMask);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL(" BTC doesn't allow UAPSD for uapsd_mask(0x%X)\n"), uapsdMask);
+>>>>>>> 657b0e9... prima update
         *pBuf++ = 0;
     }
 #endif /* WLAN_MDM_CODE_REDUCTION_OPT*/
@@ -14339,18 +16179,25 @@ static void csrPrepareJoinReassocReqBuffer( tpAniSirGlobal pMac,
   */
 eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDescription *pBssDescription, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                               tCsrRoamProfile *pProfile, tDot11fBeaconIEs *pIes )
 =======
                               tCsrRoamProfile *pProfile, tDot11fBeaconIEs *pIes, tANI_U16 messageType )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                              tCsrRoamProfile *pProfile, tDot11fBeaconIEs *pIes )
+>>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
     tSirSmeJoinReq *pMsg;
     tANI_U8 *pBuf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     v_U8_t acm_mask = 0, uapsd_mask;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     tANI_U16 msgLen, wTmp, ieLen;
     tSirMacRateSet OpRateSet;
     tSirMacRateSet ExRateSet;
@@ -14358,15 +16205,19 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
     tANI_U32 dwTmp;
     tANI_U8 wpaRsnIE[DOT11F_IE_RSN_MAX_LEN];    //RSN MAX is bigger than WPA MAX
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tANI_U32 ucDot11Mode = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     if(!pSession)
     {
         smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
         return eHAL_STATUS_FAILURE;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     do {
@@ -14385,6 +16236,12 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
         pSession->joinFailStatusCode.reasonCode = 0;
         memcpy (&pSession->joinFailStatusCode.bssId, &pBssDescription->bssId, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    do {
+        pSession->joinFailStatusCode.statusCode = eSIR_SME_SUCCESS;
+        pSession->joinFailStatusCode.reasonCode = 0;
+>>>>>>> 657b0e9... prima update
         // There are a number of variable length fields to consider.  First, the tSirSmeJoinReq
         // includes a single bssDescription.   bssDescription includes a single tANI_U32 for the 
         // IE fields, but the length field in the bssDescription needs to be interpreted to 
@@ -14400,10 +16257,14 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
         if ( !HAL_STATUS_SUCCESS(status) ) break;
         palZeroMemory(pMac->hHdd, pMsg, msgLen);
 <<<<<<< HEAD
+<<<<<<< HEAD
         pMsg->messageType = pal_cpu_to_be16((tANI_U16)eWNI_SME_JOIN_REQ);
 =======
         pMsg->messageType = pal_cpu_to_be16((tANI_U16)messageType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pMsg->messageType = pal_cpu_to_be16((tANI_U16)eWNI_SME_JOIN_REQ);
+>>>>>>> 657b0e9... prima update
         pMsg->length = pal_cpu_to_be16(msgLen);
         pBuf = &pMsg->sessionId;
         // sessionId
@@ -14437,6 +16298,7 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
         pBuf += sizeof(tSirBssType);
         // dot11mode
 <<<<<<< HEAD
+<<<<<<< HEAD
         *pBuf = (tANI_U8)csrTranslateToWNICfgDot11Mode( pMac, pSession->bssParams.uCfgDot11Mode );
 =======
         ucDot11Mode = csrTranslateToWNICfgDot11Mode( pMac, pSession->bssParams.uCfgDot11Mode );
@@ -14449,6 +16311,9 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
         }
         *pBuf = (tANI_U8)ucDot11Mode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        *pBuf = (tANI_U8)csrTranslateToWNICfgDot11Mode( pMac, pSession->bssParams.uCfgDot11Mode );
+>>>>>>> 657b0e9... prima update
         pBuf++;
         //Persona
         *pBuf = (tANI_U8)pProfile->csrPersona;
@@ -14465,10 +16330,14 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
         pBuf++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     
     
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)        
 #endif /*(WNI_POLARIS_FW_PACKAGE == ADVANCED)*/
+<<<<<<< HEAD
         status = csrGetRateSet(pMac, pProfile, (eCsrPhyMode)pProfile->phyMode, pBssDescription, pIes, &OpRateSet, &ExRateSet);
         if (HAL_STATUS_SUCCESS(status) ) 
 =======
@@ -14477,6 +16346,10 @@ eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDe
         status = csrGetRateSet(pMac, pProfile, (eCsrPhyMode)pProfile->phyMode, pBssDescription, pIes, &OpRateSet, &ExRateSet);
         if (HAL_STATUS_SUCCESS(status) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        status = csrGetRateSet(pMac, pProfile, (eCsrPhyMode)pProfile->phyMode, pBssDescription, pIes, &OpRateSet, &ExRateSet);
+        if (HAL_STATUS_SUCCESS(status) ) 
+>>>>>>> 657b0e9... prima update
         {
             // OperationalRateSet
             if (OpRateSet.numRates) {
@@ -14937,7 +16810,18 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
             //Check whether we need to allocate more memory
             if(ieLen > pSession->nWpaRsnReqIeLength)
             {
+<<<<<<< HEAD
                 if(pSession->pWpaRsnReqIE && pSession->nWpaRsnReqIeLength)
+=======
+                smsLog(pMac, LOGE, FL(" WPA RSN IE length :%d is more than DOT11F_IE_RSN_MAX_LEN, resetting to %d\n"), ieLen, DOT11F_IE_RSN_MAX_LEN);
+                ieLen = DOT11F_IE_RSN_MAX_LEN;
+            }
+#ifdef FEATURE_WLAN_WAPI
+            if( csrIsProfileWapi( pProfile ) )
+            {
+                //Check whether we need to allocate more memory
+                if(ieLen > pSession->nWapiReqIeLength)
+>>>>>>> 657b0e9... prima update
                 {
                     palFreeMemory(pMac->hHdd, pSession->pWpaRsnReqIE);
                 }
@@ -14967,6 +16851,7 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
             pBuf += 2;
                 }
 #ifdef FEATURE_WLAN_CCX
+<<<<<<< HEAD
         // cckmIE
         if( csrIsProfileCCX( pProfile ) )
         {
@@ -15048,6 +16933,496 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
 >>>>>>> d97af3b... add prima wlan driver
         }
 #endif /* FEATURE_WLAN_CCX */
+=======
+        // Never include the cckmIE in an Join Request
+        //length is two bytes
+        *pBuf = 0;
+        *(pBuf + 1) = 0;
+        pBuf += 2;
+#endif 
+>>>>>>> 657b0e9... prima update
+        // addIEScan
+        if(pProfile->nAddIEScanLength && pProfile->pAddIEScan)
+        {
+            ieLen = pProfile->nAddIEScanLength;
+            if(ieLen > pSession->nAddIEScanLength)
+            {
+                if(pSession->pAddIEScan && pSession->nAddIEScanLength)
+        {
+                    palFreeMemory(pMac->hHdd, pSession->pAddIEScan);
+                }
+<<<<<<< HEAD
+<<<<<<< HEAD
+                status = palAllocateMemory(pMac->hHdd, 
+=======
+                status = palAllocateMemory(pMac->hHdd,
+>>>>>>> d97af3b... add prima wlan driver
+=======
+                status = palAllocateMemory(pMac->hHdd, 
+>>>>>>> 657b0e9... prima update
+                                 (void **)&pSession->pAddIEScan, ieLen);
+                if(!HAL_STATUS_SUCCESS(status)) break;
+            }
+            pSession->nAddIEScanLength = ieLen;
+            palCopyMemory(pMac->hHdd, pSession->pAddIEScan, 
+                                      pProfile->pAddIEScan, ieLen);
+            wTmp = pal_cpu_to_be16( ieLen );
+            palCopyMemory( pMac->hHdd, pBuf, &wTmp, sizeof(tANI_U16) );
+            pBuf += sizeof(tANI_U16);
+            palCopyMemory( pMac->hHdd, pBuf, pProfile->pAddIEScan, ieLen );
+            pBuf += ieLen;
+        }
+        else
+        {
+            pSession->nAddIEScanLength = 0;
+            if(pSession->pAddIEScan)
+            {
+                palFreeMemory(pMac->hHdd, pSession->pAddIEScan);
+                pSession->pAddIEScan = NULL;
+            }
+            *pBuf = 0;
+            *(pBuf + 1) = 0;
+            pBuf += 2;
+        }
+        // addIEAssoc
+        if(pProfile->nAddIEAssocLength && pProfile->pAddIEAssoc)
+        {
+            ieLen = pProfile->nAddIEAssocLength;
+            if(ieLen > pSession->nAddIEAssocLength)
+            {
+                if(pSession->pAddIEAssoc && pSession->nAddIEAssocLength)
+                {
+                    palFreeMemory(pMac->hHdd, pSession->pAddIEAssoc);
+<<<<<<< HEAD
+        }
+<<<<<<< HEAD
+                status = palAllocateMemory(pMac->hHdd, 
+=======
+                status = palAllocateMemory(pMac->hHdd,
+>>>>>>> d97af3b... add prima wlan driver
+=======
+                }
+                status = palAllocateMemory(pMac->hHdd, 
+>>>>>>> 657b0e9... prima update
+                                 (void **)&pSession->pAddIEAssoc, ieLen);
+                if(!HAL_STATUS_SUCCESS(status)) break;
+            }
+            pSession->nAddIEAssocLength = ieLen;
+<<<<<<< HEAD
+<<<<<<< HEAD
+            palCopyMemory(pMac->hHdd, pSession->pAddIEAssoc, 
+=======
+            palCopyMemory(pMac->hHdd, pSession->pAddIEAssoc,
+>>>>>>> d97af3b... add prima wlan driver
+=======
+            palCopyMemory(pMac->hHdd, pSession->pAddIEAssoc, 
+>>>>>>> 657b0e9... prima update
+                                      pProfile->pAddIEAssoc, ieLen);
+            wTmp = pal_cpu_to_be16( ieLen );
+            palCopyMemory( pMac->hHdd, pBuf, &wTmp, sizeof(tANI_U16) );
+            pBuf += sizeof(tANI_U16);
+            palCopyMemory( pMac->hHdd, pBuf, pProfile->pAddIEAssoc, ieLen );
+            pBuf += ieLen;
+        }
+        else
+        {
+            pSession->nAddIEAssocLength = 0;
+            if(pSession->pAddIEAssoc)
+            {
+                palFreeMemory(pMac->hHdd, pSession->pAddIEAssoc);
+                pSession->pAddIEAssoc = NULL;
+            }
+            *pBuf = 0;
+            *(pBuf + 1) = 0;
+            pBuf += 2;
+        }
+<<<<<<< HEAD
+<<<<<<< HEAD
+        //Unmask any AC in reassoc that is ACM-set
+        uapsd_mask = (v_U8_t)pProfile->uapsd_mask;
+        if( uapsd_mask && ( NULL != pBssDescription ) )
+        {
+            if( CSR_IS_QOS_BSS(pIes) && CSR_IS_UAPSD_BSS(pIes) )
+            {
+#ifndef WLAN_MDM_CODE_REDUCTION_OPT
+                acm_mask = sme_QosGetACMMask(pMac, pBssDescription, pIes);
+#endif /* WLAN_MDM_CODE_REDUCTION_OPT*/
+                uapsd_mask &= ~(acm_mask);
+            }
+            else
+            {
+                uapsd_mask = 0;
+            }
+        }
+        
+        dwTmp = pal_cpu_to_be32( csrTranslateEncryptTypeToEdType( pProfile->negotiatedUCEncryptionType) );
+        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tANI_U32) );
+        pBuf += sizeof(tANI_U32);        
+        
+=======
+        dwTmp = pal_cpu_to_be32( csrTranslateEncryptTypeToEdType( pProfile->negotiatedUCEncryptionType) );
+        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tANI_U32) );
+        pBuf += sizeof(tANI_U32);        
+>>>>>>> 657b0e9... prima update
+        dwTmp = pal_cpu_to_be32( csrTranslateEncryptTypeToEdType( pProfile->negotiatedMCEncryptionType) );
+        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tANI_U32) );
+        pBuf += sizeof(tANI_U32);        
+#ifdef WLAN_FEATURE_VOWIFI_11R
+<<<<<<< HEAD
+        // is11Rconnection;
+        dwTmp = csrIsProfile11r( pProfile )?  pal_cpu_to_be32(TRUE) : 0; 
+        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+        pBuf += sizeof(tAniBool);        
+#ifdef FEATURE_WLAN_CCX
+        //isCCXconnection;
+        //CCKM profile, ccxversion ie present, not 11r and ini file has CCX enabled
+        dwTmp = ( ((csrIsProfileCCX(pProfile) || 
+                  ((pIes->CCXVersion.present) 
+                   && ((pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_OPEN_SYSTEM) 
+                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA)
+                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK)
+                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN)
+                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
+                 && (!(csrIsProfile11r( pProfile ))) 
+                 && (pMac->roam.configParam.isCcxIniFeatureEnabled)) 
+                ? pal_cpu_to_be32(TRUE) : 0);
+        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+        pBuf += sizeof(tAniBool);        
+#endif // FEATURE_WLAN_CCX
+#endif // WLAN_FEATURE_VOWIFI_11R
+#ifdef FEATURE_WLAN_CCX
+        if ((csrIsProfileCCX(pProfile) || 
+             ((pIes->CCXVersion.present) 
+              && ((pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_OPEN_SYSTEM) 
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA)
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK)
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN)
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
+            && (!(csrIsProfile11r( pProfile ))) 
+=======
+
+        if(eWNI_SME_REASSOC_REQ == messageType )
+=======
+        if (csrIsProfile11r( pProfile ) )
+>>>>>>> 657b0e9... prima update
+        {
+            // is11Rconnection;
+            dwTmp = pal_cpu_to_be32(TRUE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+        else
+        {
+            // is11Rconnection;
+            dwTmp = pal_cpu_to_be32(FALSE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+#endif
+#ifdef FEATURE_WLAN_CCX
+        /* A profile can not be both CCX and 11R. But an 802.11R AP
+         * may be advertising support for CCX as well. So if we are 
+         * associating Open or explicitly CCX then we will get CCX.
+         * If we are associating explictly 11R only then we will get
+         * 11R.
+         */
+        if ((csrIsProfileCCX(pProfile) || 
+             ((pIes->CCXVersion.present) 
+              && ((pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_OPEN_SYSTEM) 
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA) 
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK) 
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN) 
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
+            && (!(csrIsProfile11r( pProfile ))) 
+            && (pMac->roam.configParam.isCcxIniFeatureEnabled))
+        {
+            // isCCXconnection;
+            dwTmp = pal_cpu_to_be32(TRUE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+        else 
+        {
+            //isCCXconnection;
+            dwTmp = pal_cpu_to_be32(FALSE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+        {
+            tCCXTspecInfo ccxTspec;
+            // CCX-Tspec IEs in the ASSOC request is presently not supported
+            // so nullify the TSPEC parameters
+            palZeroMemory(pMac->hHdd, &ccxTspec, sizeof(tCCXTspecInfo));
+            palCopyMemory( pMac->hHdd, pBuf, &ccxTspec, sizeof(tCCXTspecInfo));
+            pBuf += sizeof(tCCXTspecInfo);
+        }
+#endif
+#if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
+        // Fill in isFastTransitionEnabled
+        if (pMac->roam.configParam.isFastTransitionEnabled
+#ifdef FEATURE_WLAN_LFR
+        || csrRoamIsFastRoamEnabled(pMac)
+#endif
+        )
+        {
+            dwTmp = pal_cpu_to_be32(TRUE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+        else
+        {
+            dwTmp = pal_cpu_to_be32(FALSE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+#endif
+#ifdef FEATURE_WLAN_LFR
+        if(csrRoamIsFastRoamEnabled(pMac))
+        {
+            //legacy fast roaming enabled
+            dwTmp = pal_cpu_to_be32(TRUE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+        else
+        {
+            dwTmp = pal_cpu_to_be32(FALSE); 
+            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
+            pBuf += sizeof(tAniBool);        
+        }
+#endif
+        //BssDesc
+        csrPrepareJoinReassocReqBuffer( pMac, pBssDescription, pBuf, 
+                (tANI_U8)pProfile->uapsd_mask);
+        status = palSendMBMessage(pMac->hHdd, pMsg );    
+        if(!HAL_STATUS_SUCCESS(status)) 
+        {
+            break;
+        }
+        //Tush-QoS: notify QoS module that join happening
+        else
+        {
+#ifndef WLAN_MDM_CODE_REDUCTION_OPT
+            sme_QosCsrEventInd(pMac, (v_U8_t)sessionId, SME_QOS_CSR_JOIN_REQ, NULL);
+#endif
+        }
+    } while( 0 );
+    return( status );
+}
+
+eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDescription *pBssDescription, 
+                                    tDot11fBeaconIEs *pIes, tCsrRoamProfile *pProfile )
+{
+    eHalStatus status;
+    tSirSmeReassocReq *pMsg;
+    tANI_U8 *pBuf;
+    v_U8_t acm_mask = 0, uapsd_mask;
+    tANI_U16 msgLen, ieLen, wTmp;
+    tANI_U32 dwTmp;
+    tSirMacRateSet OpRateSet;
+    tSirMacRateSet ExRateSet;
+    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
+    tANI_U8 wpaRsnIE[DOT11F_IE_RSN_MAX_LEN];    //RSN MAX is bigger than WPA MAX
+
+    if(!pSession)
+    {
+        smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
+        return eHAL_STATUS_FAILURE;
+    }
+    
+    /* To satisfy klockworks */
+    if (pBssDescription == NULL)
+    {
+        smsLog(pMac, LOGE, FL(" pBssDescription is NULL\n"));
+        return eHAL_STATUS_FAILURE;
+    }
+    do {
+        // There are a number of variable length fields to consider.  First, the tSirSmeJoinReq
+        // includes a single bssDescription.   bssDescription includes a single tANI_U32 for the 
+        // IE fields, but the length field in the bssDescription needs to be interpreted to 
+        // determine length of the IE fields.
+        //
+        // So, take the size of the JoinReq, subtract the size of the bssDescription and 
+        // add in the length from the bssDescription (then add the size of the 'length' field
+        // itself because that is NOT included in the length field).
+        msgLen = sizeof( tSirSmeReassocReq ) - sizeof( *pBssDescription ) + 
+                 pBssDescription->length + sizeof( pBssDescription->length ) +
+                 sizeof( tCsrWpaIe ) + sizeof( tCsrWpaAuthIe ) + sizeof( tANI_U16 ); // add in the size of the WPA IE that we may build.
+        status = palAllocateMemory(pMac->hHdd, (void **)&pMsg, msgLen);         
+        if ( !HAL_STATUS_SUCCESS(status) ) break;
+        palZeroMemory(pMac->hHdd, pMsg, msgLen);
+        pMsg->messageType = pal_cpu_to_be16((tANI_U16)eWNI_SME_REASSOC_REQ);
+                pMsg->length = pal_cpu_to_be16(msgLen);
+        pBuf = &pMsg->sessionId;
+        // sessionId
+        *pBuf++ = (tANI_U8)sessionId;
+        // transactionId
+        *pBuf = 0;
+        *(pBuf + 1) = 0;
+        pBuf += sizeof (tANI_U16);
+        // ssId
+        if( pIes->SSID.present && pIes->SSID.num_ssid )
+        {
+            // ssId len
+            *pBuf++ = pIes->SSID.num_ssid;
+            palCopyMemory( pMac->hHdd, pBuf, pIes->SSID.ssid, pIes->SSID.num_ssid );
+            pBuf += pIes->SSID.num_ssid;
+        } 
+        else
+        {
+            *pBuf++ = 0;
+        }
+        // selfMacAddr
+        palCopyMemory( pMac->hHdd, (tSirMacAddr *)pBuf, &pSession->selfMacAddr, sizeof(tSirMacAddr) );
+        pBuf += sizeof(tSirMacAddr);
+        // bsstype
+        dwTmp = pal_cpu_to_be32( csrTranslateBsstypeToMacType( pProfile->BSSType ) );
+        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tSirBssType) );
+        pBuf += sizeof(tSirBssType);
+        // dot11mode
+        *pBuf = (tANI_U8)csrTranslateToWNICfgDot11Mode( pMac, pSession->bssParams.uCfgDot11Mode );
+        pBuf++;
+        //Persona
+        *pBuf = (tANI_U8)pProfile->csrPersona;
+        pBuf++;
+        //CBMode
+        *pBuf = (tANI_U8)pSession->bssParams.cbMode;
+        pBuf++;
+
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
+            FL("CSR PERSONA=%d CSR CBMode=%u\n"), pProfile->csrPersona, pSession->bssParams.cbMode);
+
+        // uapsdPerAcBitmask
+        *pBuf = pProfile->uapsd_mask;
+        pBuf++;
+
+        status = csrGetRateSet(pMac, pProfile, (eCsrPhyMode)pProfile->phyMode, 
+                        pBssDescription, pIes, &OpRateSet, &ExRateSet);
+        if (HAL_STATUS_SUCCESS(status) ) 
+        {
+            // OperationalRateSet
+            if (OpRateSet.numRates) 
+            {
+                *pBuf++ = OpRateSet.numRates;
+                palCopyMemory(pMac->hHdd, pBuf, OpRateSet.rate, OpRateSet.numRates);
+                pBuf += OpRateSet.numRates;
+            } 
+            else *pBuf++ = 0;
+            // ExtendedRateSet
+            if (ExRateSet.numRates) 
+            {
+                *pBuf++ = ExRateSet.numRates;
+                palCopyMemory(pMac->hHdd, pBuf, ExRateSet.rate, ExRateSet.numRates);
+                pBuf += ExRateSet.numRates;
+            } 
+            else *pBuf++ = 0;
+        }
+        else
+        {
+            *pBuf++ = 0;
+            *pBuf++ = 0;
+        }
+                // rsnIE
+        if ( csrIsProfileWpa( pProfile ) )
+                {
+                    // Insert the Wpa IE into the join request
+            ieLen = csrRetrieveWpaIe( pMac, pProfile, pBssDescription, pIes,
+                                                   (tCsrWpaIe *)( wpaRsnIE ) );
+                }
+                else if( csrIsProfileRSN( pProfile ) )
+                {
+                    // Insert the RSN IE into the join request
+            ieLen = csrRetrieveRsnIe( pMac, sessionId, pProfile, pBssDescription, pIes,
+                                                    (tCsrRSNIe *)( wpaRsnIE ) );
+        }
+#ifdef FEATURE_WLAN_WAPI
+        else if( csrIsProfileWapi( pProfile ) )
+        {
+            // Insert the WAPI IE into the join request
+            ieLen = csrRetrieveWapiIe( pMac, sessionId, pProfile, pBssDescription, pIes,
+                                                (tCsrWapiIe *)( wpaRsnIE) );
+        }
+#endif /* FEATURE_WLAN_WAPI */
+        else
+        {
+            ieLen = 0;
+        }
+        //remember the IE for future use
+        if( ieLen )
+        {
+            if(ieLen > DOT11F_IE_RSN_MAX_LEN)
+             {
+                 smsLog(pMac, LOGE, FL(" WPA RSN IE length :%d is more than DOT11F_IE_RSN_MAX_LEN, resetting to %d\n"), ieLen, DOT11F_IE_RSN_MAX_LEN);
+                 ieLen = DOT11F_IE_RSN_MAX_LEN;
+             }
+            //Check whether we need to allocate more memory
+            if(ieLen > pSession->nWpaRsnReqIeLength)
+            {
+                if(pSession->pWpaRsnReqIE && pSession->nWpaRsnReqIeLength)
+                {
+                    palFreeMemory(pMac->hHdd, pSession->pWpaRsnReqIE);
+                }
+                status = palAllocateMemory(pMac->hHdd, (void **)&pSession->pWpaRsnReqIE, ieLen);
+                if(!HAL_STATUS_SUCCESS(status)) break;
+            }
+            pSession->nWpaRsnReqIeLength = ieLen;
+            palCopyMemory(pMac->hHdd, pSession->pWpaRsnReqIE, wpaRsnIE, ieLen);
+            wTmp = pal_cpu_to_be16( ieLen );
+            palCopyMemory( pMac->hHdd, pBuf, &wTmp, sizeof(tANI_U16) );
+            pBuf += sizeof(tANI_U16);
+            palCopyMemory( pMac->hHdd, pBuf, wpaRsnIE, ieLen );
+            pBuf += ieLen;
+                }
+                else
+                {
+            //free whatever old info
+            pSession->nWpaRsnReqIeLength = 0;
+            if(pSession->pWpaRsnReqIE)
+            {
+                palFreeMemory(pMac->hHdd, pSession->pWpaRsnReqIE);
+                pSession->pWpaRsnReqIE = NULL;
+            }
+            //length is two bytes
+            *pBuf = 0;
+            *(pBuf + 1) = 0;
+            pBuf += 2;
+                }
+#ifdef FEATURE_WLAN_CCX
+        // cckmIE
+        if( csrIsProfileCCX( pProfile ) )
+        {
+            // Insert the CCKM IE into the join request
+            ieLen = csrConstructCcxCckmIe( pMac, 
+                                          pSession, 
+                                          pProfile, 
+                                          pBssDescription, 
+                                          pSession->pWpaRsnReqIE, 
+                                          pSession->nWpaRsnReqIeLength,
+                                          (void *)( wpaRsnIE ) );
+        }
+        else
+        {
+            ieLen = 0;
+        }
+        //If present, copy the IE into the eWNI_SME_REASSOC_REQ message buffer
+        if( ieLen )
+        {
+            //Copy the CCKM IE over from the temp buffer (wpaRsnIE)
+            wTmp = pal_cpu_to_be16( ieLen );
+            palCopyMemory( pMac->hHdd, pBuf, &wTmp, sizeof(tANI_U16) );
+            pBuf += sizeof(tANI_U16);
+            palCopyMemory( pMac->hHdd, pBuf, wpaRsnIE, ieLen );
+            pBuf += ieLen;
+        }
+        else
+        {
+            //Indicate you have no CCKM IE
+            //length is two bytes
+            *pBuf = 0;
+            *(pBuf + 1) = 0;
+            pBuf += 2;
+        }
+#endif /* FEATURE_WLAN_CCX */
         // addIEScan
         if(pProfile->nAddIEScanLength && pProfile->pAddIEScan)
         {
@@ -15058,11 +17433,7 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
                 {
                     palFreeMemory(pMac->hHdd, pSession->pAddIEScan);
                 }
-<<<<<<< HEAD
                 status = palAllocateMemory(pMac->hHdd, 
-=======
-                status = palAllocateMemory(pMac->hHdd,
->>>>>>> d97af3b... add prima wlan driver
                                  (void **)&pSession->pAddIEScan, ieLen);
                 if(!HAL_STATUS_SUCCESS(status)) break;
             }
@@ -15097,20 +17468,12 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
         {
                     palFreeMemory(pMac->hHdd, pSession->pAddIEAssoc);
         }
-<<<<<<< HEAD
                 status = palAllocateMemory(pMac->hHdd, 
-=======
-                status = palAllocateMemory(pMac->hHdd,
->>>>>>> d97af3b... add prima wlan driver
                                  (void **)&pSession->pAddIEAssoc, ieLen);
                 if(!HAL_STATUS_SUCCESS(status)) break;
         }
             pSession->nAddIEAssocLength = ieLen;
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, pSession->pAddIEAssoc, 
-=======
-            palCopyMemory(pMac->hHdd, pSession->pAddIEAssoc,
->>>>>>> d97af3b... add prima wlan driver
                                       pProfile->pAddIEAssoc, ieLen);
             wTmp = pal_cpu_to_be16( ieLen );
             palCopyMemory( pMac->hHdd, pBuf, &wTmp, sizeof(tANI_U16) );
@@ -15130,7 +17493,6 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
             *(pBuf + 1) = 0;
             pBuf += 2;
         }
-<<<<<<< HEAD
         //Unmask any AC in reassoc that is ACM-set
         uapsd_mask = (v_U8_t)pProfile->uapsd_mask;
         if( uapsd_mask && ( NULL != pBssDescription ) )
@@ -15184,141 +17546,16 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
                   || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA)
                   || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK)
                   || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN)
-                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
-            && (!(csrIsProfile11r( pProfile ))) 
-=======
-
-        if(eWNI_SME_REASSOC_REQ == messageType )
-        {
-            //Unmask any AC in reassoc that is ACM-set
-            uapsd_mask = (v_U8_t)pProfile->uapsd_mask;
-            if( uapsd_mask && ( NULL != pBssDescription ) )
-            {
-                if( CSR_IS_QOS_BSS(pIes) && CSR_IS_UAPSD_BSS(pIes) )
-                {
-#ifndef WLAN_MDM_CODE_REDUCTION_OPT
-                    acm_mask = sme_QosGetACMMask(pMac, pBssDescription, pIes);
-#endif /* WLAN_MDM_CODE_REDUCTION_OPT*/
-                    uapsd_mask &= ~(acm_mask);
-                }
-                else
-                {
-                    uapsd_mask = 0;
-                }
-            }
-        }
-
-        dwTmp = pal_cpu_to_be32( csrTranslateEncryptTypeToEdType( pProfile->negotiatedUCEncryptionType) );
-        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tANI_U32) );
-        pBuf += sizeof(tANI_U32);
-
-        dwTmp = pal_cpu_to_be32( csrTranslateEncryptTypeToEdType( pProfile->negotiatedMCEncryptionType) );
-        palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tANI_U32) );
-        pBuf += sizeof(tANI_U32);
-#ifdef WLAN_FEATURE_11W
-        //MgmtEncryption
-        if (pProfile->MFPEnabled)
-        {
-            dwTmp = pal_cpu_to_be32(eSIR_ED_AES_128_CMAC);
-        }
-        else
-        {
-            dwTmp = pal_cpu_to_be32(eSIR_ED_NONE);
-        }
-        palCopyMemory(pMac->hHdd, pBuf, &dwTmp, sizeof(tANI_U32));
-        pBuf += sizeof(tANI_U32);
-#endif
-#ifdef WLAN_FEATURE_VOWIFI_11R
-        pProfile->MDID.mdiePresent = pBssDescription->mdiePresent;
-        if (csrIsProfile11r( pProfile )
-#ifdef FEATURE_WLAN_CCX
-           && !((pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_OPEN_SYSTEM) &&
-                (pIes->CCXVersion.present) && (pMac->roam.configParam.isCcxIniFeatureEnabled))
-#endif
-        )
-        {
-            // is11Rconnection;
-            dwTmp = pal_cpu_to_be32(TRUE);
-            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
-        }
-        else
-        {
-            // is11Rconnection;
-            dwTmp = pal_cpu_to_be32(FALSE);
-            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
-        }
-#endif
-#ifdef FEATURE_WLAN_CCX
-
-        // isCCXFeatureIniEnabled
-        if (TRUE == pMac->roam.configParam.isCcxIniFeatureEnabled)
-        {
-            dwTmp = pal_cpu_to_be32(TRUE);
-            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
-        }
-        else
-        {
-            dwTmp = pal_cpu_to_be32(FALSE);
-            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
-        }
-
-        /* A profile can not be both CCX and 11R. But an 802.11R AP
-         * may be advertising support for CCX as well. So if we are
-         * associating Open or explicitly CCX then we will get CCX.
-         * If we are associating explictly 11R only then we will get
-         * 11R.
-         */
-        if ((csrIsProfileCCX(pProfile) ||
-                  ((pIes->CCXVersion.present)
-                   && ((pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_OPEN_SYSTEM)
-                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA)
-                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK)
-                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN)
-#ifdef WLAN_FEATURE_11W
-                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK_SHA256)
-#endif
-                       || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK))))
-                 && (pMac->roam.configParam.isCcxIniFeatureEnabled))
-        {
-            // isCCXconnection;
-            dwTmp = pal_cpu_to_be32(TRUE);
-            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
-        }
-        else
-        {
-            //isCCXconnection;
-            dwTmp = pal_cpu_to_be32(FALSE);
-            palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
-        }
-
-        if (eWNI_SME_JOIN_REQ == messageType)
-        {
-            tCCXTspecInfo ccxTspec;
-            // CCX-Tspec IEs in the ASSOC request is presently not supported
-            // so nullify the TSPEC parameters
-            palZeroMemory(pMac->hHdd, &ccxTspec, sizeof(tCCXTspecInfo));
-            palCopyMemory( pMac->hHdd, pBuf, &ccxTspec, sizeof(tCCXTspecInfo));
-            pBuf += sizeof(tCCXTspecInfo);
-        }
-        else if (eWNI_SME_REASSOC_REQ == messageType)
-        {
-        if ((csrIsProfileCCX(pProfile) ||
-             ((pIes->CCXVersion.present)
-              && ((pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_OPEN_SYSTEM)
-                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA)
-                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_WPA_PSK)
-                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN)
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11W
                   || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK_SHA256)
 #endif
                   || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK))))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  || (pProfile->negotiatedAuthType == eCSR_AUTH_TYPE_RSN_PSK)))) 
+            && (!(csrIsProfile11r( pProfile ))) 
+>>>>>>> 657b0e9... prima update
             && (pMac->roam.configParam.isCcxIniFeatureEnabled))
         {
            tCCXTspecInfo ccxTspec;
@@ -15334,6 +17571,7 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
            pBuf += sizeof(ccxTspec.tspec);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         else 
         {
             {
@@ -15341,6 +17579,11 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
         else
         {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        else 
+        {
+            {
+>>>>>>> 657b0e9... prima update
                 tCCXTspecInfo ccxTspec;
                 // CCX-Tspec IEs in the ASSOC request is presently not supported
                 // so nullify the TSPEC parameters
@@ -15354,6 +17597,7 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
         // Fill in isFastTransitionEnabled
         if (pMac->roam.configParam.isFastTransitionEnabled
 #ifdef FEATURE_WLAN_LFR
+<<<<<<< HEAD
 <<<<<<< HEAD
          || csrRoamIsFastRoamEnabled(pMac)
 #endif
@@ -15394,85 +17638,50 @@ eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
         status = palSendMBMessage( pMac->hHdd, pMsg );
 =======
          || csrRoamIsFastRoamEnabled(pMac, sessionId)
+=======
+         || csrRoamIsFastRoamEnabled(pMac)
+>>>>>>> 657b0e9... prima update
 #endif
          )
         {
-            dwTmp = pal_cpu_to_be32(TRUE);
+            dwTmp = pal_cpu_to_be32(TRUE); 
             palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
+            pBuf += sizeof(tAniBool);        
         }
         else
         {
-            dwTmp = pal_cpu_to_be32(FALSE);
+            dwTmp = pal_cpu_to_be32(FALSE); 
             palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
+            pBuf += sizeof(tAniBool);        
         }
 #endif
 #ifdef FEATURE_WLAN_LFR
-        if(csrRoamIsFastRoamEnabled(pMac, sessionId))
+        if(csrRoamIsFastRoamEnabled(pMac))
         {
             //legacy fast roaming enabled
-            dwTmp = pal_cpu_to_be32(TRUE);
+            dwTmp = pal_cpu_to_be32(TRUE); 
             palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
+            pBuf += sizeof(tAniBool);        
         }
         else
         {
-            dwTmp = pal_cpu_to_be32(FALSE);
+            dwTmp = pal_cpu_to_be32(FALSE); 
             palCopyMemory( pMac->hHdd, pBuf, &dwTmp, sizeof(tAniBool) );
-            pBuf += sizeof(tAniBool);
+            pBuf += sizeof(tAniBool);        
         }
 #endif
-
-        // txLdpcIniFeatureEnabled
-        *pBuf = (tANI_U8)pMac->roam.configParam.txLdpcEnable;
-        pBuf++;
-
-        if ((csrIs11hSupported (pMac)) && (CSR_IS_CHANNEL_5GHZ(pBssDescription->channelId)) &&
-            (pIes->Country.present) && (!pMac->roam.configParam.fSupplicantCountryCodeHasPriority))
-        {
-            csrSaveToChannelPower2G_5G( pMac, pIes->Country.num_triplets * sizeof(tSirMacChanInfo),
-                                        (tSirMacChanInfo *)(&pIes->Country.triplets[0]) );
-            csrApplyPower2Current(pMac);
-        }
-
-#ifdef WLAN_FEATURE_11AC
-        // txBFIniFeatureEnabled
-        *pBuf = (tANI_U8)pMac->roam.configParam.txBFEnable;
-        pBuf++;
-
-        // txBFCsnValue
-        *pBuf = (tANI_U8)pMac->roam.configParam.txBFCsnValue;
-        pBuf++;
-#endif
-        *pBuf = (tANI_U8)pMac->roam.configParam.isAmsduSupportInAMPDU;
-        pBuf++;
-
-        //BssDesc
-        csrPrepareJoinReassocReqBuffer( pMac, pBssDescription, pBuf,
-                (tANI_U8)pProfile->uapsd_mask);
-
-        status = palSendMBMessage(pMac->hHdd, pMsg );
-        if(!HAL_STATUS_SUCCESS(status))
-        {
-            break;
-        }
-        else
-        {
+        csrPrepareJoinReassocReqBuffer( pMac, pBssDescription, pBuf, uapsd_mask);
+        
 #ifndef WLAN_MDM_CODE_REDUCTION_OPT
-            if (eWNI_SME_JOIN_REQ == messageType)
-            {
-                //Tush-QoS: notify QoS module that join happening
-                sme_QosCsrEventInd(pMac, (v_U8_t)sessionId, SME_QOS_CSR_JOIN_REQ, NULL);
-            }
-            else if (eWNI_SME_REASSOC_REQ == messageType)
-            {
-                //Tush-QoS: notify QoS module that reassoc happening
-                sme_QosCsrEventInd(pMac, (v_U8_t)sessionId, SME_QOS_CSR_REASSOC_REQ, NULL);
-            }
+        //Tush-QoS: notify QoS module that reassoc happening
+        sme_QosCsrEventInd(pMac, (v_U8_t)sessionId, SME_QOS_CSR_REASSOC_REQ, NULL);
 #endif
+<<<<<<< HEAD
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        status = palSendMBMessage( pMac->hHdd, pMsg );
+>>>>>>> 657b0e9... prima update
     } while( 0 );
     return( status );
 }
@@ -15485,6 +17694,7 @@ eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
     tANI_U8 *pBuf;
     tANI_U16 wTmp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
     if (!CSR_IS_SESSION_VALID( pMac, sessionId ))
@@ -15495,6 +17705,13 @@ eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
     if (!CSR_IS_SESSION_VALID( pMac, sessionId ))
         return eHAL_STATUS_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
+    if (!CSR_IS_SESSION_VALID( pMac, sessionId ))
+        return eHAL_STATUS_FAILURE;
+#endif
+>>>>>>> 657b0e9... prima update
     do {
         status = palAllocateMemory(pMac->hHdd, (void **)&pMsg, sizeof( tSirSmeDisassocReq ));
         if ( !HAL_STATUS_SUCCESS(status) ) break;
@@ -15510,15 +17727,21 @@ eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
         pBuf += sizeof(tANI_U16);
      
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE        
         if ( (pSession->pCurRoamProfile != NULL ) && 
              ( reasonCode == eSIR_MAC_UNSPEC_FAILURE_REASON ) && 
              ((CSR_IS_INFRA_AP(pSession->pCurRoamProfile)) || (CSR_IS_WDS_AP(pSession->pCurRoamProfile))))
+<<<<<<< HEAD
 =======
         if ( (pSession->pCurRoamProfile != NULL) &&
              ((CSR_IS_INFRA_AP(pSession->pCurRoamProfile)) ||
               (CSR_IS_WDS_AP(pSession->pCurRoamProfile))) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         {
             // Set the bssid address before sending the message to LIM
             status = palCopyMemory( pMac->hHdd, (tSirMacAddr *)pBuf, pSession->selfMacAddr, sizeof( tSirMacAddr ) );
@@ -15530,14 +17753,19 @@ eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             // Set the peer MAC address before sending the message to LIM
             status = palCopyMemory( pMac->hHdd, (tSirMacAddr *)pBuf, bssId, sizeof( tSirMacAddr ) );
             pBuf = pBuf + sizeof ( tSirMacAddr );
             status = palCopyMemory( pMac->hHdd, (tSirMacAddr *)pBuf, bssId, sizeof( pMsg->bssId ) );
             pBuf = pBuf + sizeof ( tSirMacAddr );
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         }
@@ -15545,6 +17773,11 @@ eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
 =======
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+        }
+#endif
+>>>>>>> 657b0e9... prima update
         if(!HAL_STATUS_SUCCESS(status))
         {
             palFreeMemory(pMac->hHdd, pMsg);
@@ -15575,9 +17808,13 @@ eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSi
     return( status );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 eHalStatus csrSendMBTkipCounterMeasuresReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_BOOLEAN bEnable, tSirMacAddr bssId )
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -15669,10 +17906,13 @@ csrSendMBGetWPSPBCSessions( tpAniSirGlobal pMac, tANI_U32 sessionId,
         pMsg->messageType = pal_cpu_to_be16((tANI_U16)eWNI_SME_GET_WPSPBC_SESSION_REQ);
         pBuf = (tANI_U8 *)&pMsg->pUsrContext;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         VOS_ASSERT(pBuf);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         wTmpBuf = pBuf;
         // pUsrContext
         dwTmp = pal_cpu_to_be32((tANI_U32)pUsrContext);
@@ -15693,6 +17933,7 @@ csrSendMBGetWPSPBCSessions( tpAniSirGlobal pMac, tANI_U32 sessionId,
     } while( 0 );
     return( status );
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 =======
@@ -15740,6 +17981,9 @@ csrSendChngMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U32 sessionId)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 eHalStatus csrSendMBDeauthReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirMacAddr bssId, tANI_U16 reasonCode )
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -15765,12 +18009,18 @@ eHalStatus csrSendMBDeauthReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirM
         pBuf += sizeof(tANI_U16);
         if ((pSession->pCurRoamProfile != NULL)  && (
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
              (CSR_IS_INFRA_AP(pSession->pCurRoamProfile)) || 
 #endif
 =======
              (CSR_IS_INFRA_AP(pSession->pCurRoamProfile)) || 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+             (CSR_IS_INFRA_AP(pSession->pCurRoamProfile)) || 
+#endif
+>>>>>>> 657b0e9... prima update
              (CSR_IS_WDS_AP(pSession->pCurRoamProfile)))){ 
             // Set the BSSID before sending the message to LIM
             status = palCopyMemory( pMac->hHdd, (tSirMacAddr *)pBuf, pSession->selfMacAddr, sizeof( pMsg->peerMacAddr ) );
@@ -15909,9 +18159,13 @@ eHalStatus csrSendAssocCnfMsg( tpAniSirGlobal pMac, tpSirSmeAssocInd pAssocInd, 
     return( status );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 eHalStatus csrSendAssocIndToUpperLayerCnfMsg(   tpAniSirGlobal pMac, 
                                                 tpSirSmeAssocInd pAssocInd, 
                                                 eHalStatus Halstatus, 
@@ -15957,10 +18211,14 @@ eHalStatus csrSendAssocIndToUpperLayerCnfMsg(   tpAniSirGlobal pMac,
         *pBuf = 11;
         pBuf += sizeof (tANI_U8);
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Instead of copying roam Info, we just copy only WmmEnabled , RsnIE information
 =======
         // Instead of copying roam Info, we just copy only WmmEnabled, RsnIE information
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        // Instead of copying roam Info, we just copy only WmmEnabled , RsnIE information
+>>>>>>> 657b0e9... prima update
         //Wmm
         *pBuf = pAssocInd->wmmEnabledSta;
         pBuf += sizeof (tANI_U8);
@@ -15981,6 +18239,7 @@ eHalStatus csrSendAssocIndToUpperLayerCnfMsg(   tpAniSirGlobal pMac,
     return( status );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 eHalStatus csrSendMBSetContextReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId ,
@@ -15988,6 +18247,11 @@ eHalStatus csrSendMBSetContextReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId ,
 
 eHalStatus csrSendMBSetContextReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+eHalStatus csrSendMBSetContextReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId ,
+>>>>>>> 657b0e9... prima update
             tSirMacAddr peerMacAddr, tANI_U8 numKeys, tAniEdType edType, 
             tANI_BOOLEAN fUnicast, tAniKeyDirection aniKeyDirection,
             tANI_U8 keyId, tANI_U8 keyLength, tANI_U8 *pKey, tANI_U8 paeRole, 
@@ -15999,12 +18263,17 @@ eHalStatus csrSendMBSetContextReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId,
     tAniEdType tmpEdType;
     tAniKeyDirection tmpDirection;
 <<<<<<< HEAD
+<<<<<<< HEAD
     tANI_U8 *pBuf;
     tANI_U8 *p;
 =======
     tANI_U8 *pBuf = NULL;
     tANI_U8 *p = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tANI_U8 *pBuf;
+    tANI_U8 *p;
+>>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
     do {
         if( ( 1 != numKeys ) && ( 0 != numKeys ) ) break;
@@ -16078,10 +18347,14 @@ eHalStatus csrSendMBSetContextReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId,
             if(keyLength == 16)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOG1, "  SME Set keyIdx (%d) encType(%d) key = %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n",
 =======
                 smsLog(pMac, LOG1, "  SME Set keyIdx (%d) encType(%d) key = %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOG1, "  SME Set keyIdx (%d) encType(%d) key = %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n",
+>>>>>>> 657b0e9... prima update
                 keyId, edType, pKey[0], pKey[1], pKey[2], pKey[3], pKey[4],
                 pKey[5], pKey[6], pKey[7], pKey[8],
                 pKey[9], pKey[10], pKey[11], pKey[12], pKey[13], pKey[14], pKey[15]);
@@ -16104,12 +18377,18 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
     tSirNwType nwType;
     ePhyChanBondState cbMode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tANI_U32 authType;
 #endif
 =======
     tANI_U32 authType;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tANI_U32 authType;
+#endif
+>>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 
     if(!pSession)
@@ -16147,21 +18426,30 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
             wTmp = pal_cpu_to_be16( pBssDesc->beaconInterval );
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         else if(pParam->beaconInterval)
         {
             wTmp = pal_cpu_to_be16( pParam->beaconInterval );
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         else
         {
             wTmp = pal_cpu_to_be16( WNI_CFG_BEACON_INTERVAL_STADEF );
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         if(csrIsconcurrentsessionValid (pMac, sessionId, 
                                    pParam->bssPersona) 
@@ -16175,12 +18463,20 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
         {    
            csrValidateMCCBeaconInterval(pMac, pParam->operationChn, &wTmp, sessionId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(csrIsconcurrentsessionValid (pMac, sessionId, 
+                                   pParam->bssPersona) 
+                                   == eHAL_STATUS_SUCCESS )
+        {    
+           csrValidateBeaconInterval(pMac, pParam->operationChn, &wTmp, sessionId,
+>>>>>>> 657b0e9... prima update
                                       pParam->bssPersona);
            //Update the beacon Interval 
            pParam->beaconInterval = wTmp;
         }
         else
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog( pMac,LOGE, FL("****Start BSS failed persona already exists***\n"));
             status = eHAL_STATUS_FAILURE;
@@ -16189,6 +18485,10 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
             status = eHAL_STATUS_FAILURE;
             palFreeMemory( pMac->hHdd, pMsg );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac,LOGE, FL("****Start BSS failed persona already exists***\n"));
+            status = eHAL_STATUS_FAILURE;
+>>>>>>> 657b0e9... prima update
             return status;
         }
 
@@ -16224,9 +18524,13 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
         pBuf += sizeof(ePhyChanBondState);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
         // Set privacy
         *pBuf = pParam->privacy;
         pBuf++;
@@ -16262,13 +18566,18 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
         *pBuf = pParam->wps_state;
         pBuf++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         //Persona
         *pBuf = (tANI_U8)pParam->bssPersona;
         pBuf++;
         
+<<<<<<< HEAD
 <<<<<<< HEAD
         
         
@@ -16280,6 +18589,11 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
 
         // set RSN IE
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        
+        
+        // set RSN IE 
+>>>>>>> 657b0e9... prima update
         if( pParam->nRSNIELength > sizeof(pMsg->rsnIE.rsnIEdata) )
         {
             status = eHAL_STATUS_INVALID_PARAMETER;
@@ -16429,10 +18743,14 @@ eHalStatus csrProcessAddStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
       if(pMsg == NULL)
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
 =======
          smsLog(pMac, LOGE, "in %s msg ptr is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          status = eHAL_STATUS_FAILURE;
          break;
       }
@@ -16444,10 +18762,14 @@ eHalStatus csrProcessAddStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
          {
             pRsp = (tSirSmeAddStaSelfRsp*)pMsg;
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG1, "Add Sta rsp status = %d\n", pRsp->status );
 =======
             smsLog( pMac, LOG1, "Add Sta rsp status = %d", pRsp->status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, "Add Sta rsp status = %d\n", pRsp->status );
+>>>>>>> 657b0e9... prima update
             //Nothing to be done. May be indicate the self sta addition success by calling session callback (TODO).
             csrRoamSessionOpened(pMac, pCommand->sessionId);
             //Remove this command out of the active list
@@ -16461,12 +18783,17 @@ eHalStatus csrProcessAddStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
          else
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, "in %s eWNI_SME_ADD_STA_SELF_RSP Received but NO Add sta session command are ACTIVE ...\n",
                   __FUNCTION__);
 =======
             smsLog(pMac, LOGE, "in %s eWNI_SME_ADD_STA_SELF_RSP Received but NO Add sta session command are ACTIVE ...",
                   __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "in %s eWNI_SME_ADD_STA_SELF_RSP Received but NO Add sta session command are ACTIVE ...\n",
+                  __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_FAILURE;
             break;
          }
@@ -16474,12 +18801,17 @@ eHalStatus csrProcessAddStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
       else
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGE, "in %s eWNI_SME_ADD_STA_SELF_RSP Received but NO commands are ACTIVE ...\n",
                __FUNCTION__);
 =======
          smsLog(pMac, LOGE, "in %s eWNI_SME_ADD_STA_SELF_RSP Received but NO commands are ACTIVE ...",
                __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, "in %s eWNI_SME_ADD_STA_SELF_RSP Received but NO commands are ACTIVE ...\n",
+               __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          status = eHAL_STATUS_FAILURE;
          break;
       }
@@ -16487,28 +18819,38 @@ eHalStatus csrProcessAddStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
    return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 eHalStatus csrSendMBAddSelfStaReqMsg( tpAniSirGlobal pMac, tSirMacAddr macAddr )
 =======
 eHalStatus csrSendMBAddSelfStaReqMsg(tpAniSirGlobal pMac,
                                      tAddStaForSessionCmd *pAddStaReq)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus csrSendMBAddSelfStaReqMsg( tpAniSirGlobal pMac, tSirMacAddr macAddr )
+>>>>>>> 657b0e9... prima update
 {
    tSirSmeAddStaSelfReq *pMsg;
    tANI_U16 msgLen;
    eHalStatus status = eHAL_STATUS_FAILURE;
    do {
 <<<<<<< HEAD
+<<<<<<< HEAD
       msgLen  = sizeof( tANI_U16 ) + sizeof( tANI_U16 ) + sizeof( tSirMacAddr ) /*+
          sizeof( tSirBssType )*/;
 =======
       msgLen  = sizeof(tSirSmeAddStaSelfReq);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      msgLen  = sizeof( tANI_U16 ) + sizeof( tANI_U16 ) + sizeof( tSirMacAddr ) /*+
+         sizeof( tSirBssType )*/;
+>>>>>>> 657b0e9... prima update
       status = palAllocateMemory(pMac->hHdd, (void **)&pMsg, msgLen);
       if ( !HAL_STATUS_SUCCESS(status) ) break;
       palZeroMemory(pMac->hHdd, pMsg, msgLen);
       pMsg->mesgType = pal_cpu_to_be16((tANI_U16)eWNI_SME_ADD_STA_SELF_REQ);
       pMsg->mesgLen = pal_cpu_to_be16(msgLen);
       // self station address
+<<<<<<< HEAD
 <<<<<<< HEAD
       palCopyMemory( pMac->hHdd, (tANI_U8 *)pMsg->selfMacAddr, (tANI_U8 *)macAddr, sizeof(tSirMacAddr) );
         smsLog( pMac, LOG1, FL("selfMac=%02x, %02x, %02x, %02x, %02x, %02x"),       
@@ -16520,6 +18862,10 @@ eHalStatus csrSendMBAddSelfStaReqMsg(tpAniSirGlobal pMac,
 
       smsLog( pMac, LOG1, FL("selfMac=%02x, %02x, %02x, %02x, %02x, %02x"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      palCopyMemory( pMac->hHdd, (tANI_U8 *)pMsg->selfMacAddr, (tANI_U8 *)macAddr, sizeof(tSirMacAddr) );
+        smsLog( pMac, LOG1, FL("selfMac=%02x, %02x, %02x, %02x, %02x, %02x"),       
+>>>>>>> 657b0e9... prima update
             pMsg->selfMacAddr[0],
             pMsg->selfMacAddr[1],
             pMsg->selfMacAddr[2],
@@ -16531,12 +18877,16 @@ eHalStatus csrSendMBAddSelfStaReqMsg(tpAniSirGlobal pMac,
    return( status );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 eHalStatus csrIssueAddStaForSessionReq(tpAniSirGlobal pMac, tANI_U32 sessionId, tSirMacAddr sessionMacAddr)
 =======
 eHalStatus csrIssueAddStaForSessionReq(tpAniSirGlobal pMac,
                                        tANI_U32 sessionId,
                                        tSirMacAddr sessionMacAddr)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus csrIssueAddStaForSessionReq(tpAniSirGlobal pMac, tANI_U32 sessionId, tSirMacAddr sessionMacAddr)
+>>>>>>> 657b0e9... prima update
 {
    eHalStatus status = eHAL_STATUS_SUCCESS;
    tSmeCmd *pCommand;
@@ -16551,24 +18901,32 @@ eHalStatus csrIssueAddStaForSessionReq(tpAniSirGlobal pMac,
       pCommand->sessionId = (tANI_U8)sessionId;
       palCopyMemory( pMac->hHdd, pCommand->u.addStaSessionCmd.selfMacAddr, sessionMacAddr, sizeof( tSirMacAddr ) );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       pCommand->u.addStaSessionCmd.currDeviceMode = pMac->sme.currDeviceMode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       status = csrQueueSmeCommand(pMac, pCommand, TRUE);
       if( !HAL_STATUS_SUCCESS( status ) )
       {
          //Should be panic??
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
          smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
       }
    }
    return (status);
 }
 eHalStatus csrProcessAddStaSessionCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    return csrSendMBAddSelfStaReqMsg( pMac, 
          pCommand->u.addStaSessionCmd.selfMacAddr );
@@ -16583,6 +18941,13 @@ eHalStatus csrRoamOpenSession(tpAniSirGlobal pMac,
                               void *pContext, tANI_U8 *pSelfMacAddr,
                               tANI_U8 *pbSessionId)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   return csrSendMBAddSelfStaReqMsg( pMac, 
+         pCommand->u.addStaSessionCmd.selfMacAddr );
+}
+eHalStatus csrRoamOpenSession( tpAniSirGlobal pMac, csrRoamCompleteCallback callback, void *pContext,
+                          tANI_U8 *pSelfMacAddr, tANI_U8 *pbSessionId )
+>>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
     tANI_U32 i;
@@ -16601,6 +18966,7 @@ eHalStatus csrRoamOpenSession(tpAniSirGlobal pMac,
             palCopyMemory( pMac->hHdd, &pSession->selfMacAddr, pSelfMacAddr, sizeof(tCsrBssid) );
             *pbSessionId = (tANI_U8)i;
 <<<<<<< HEAD
+<<<<<<< HEAD
             status = palTimerAlloc(pMac->hHdd, &pSession->hTimerRoaming, csrRoamRoamingTimerHandler, 
                                     &pSession->roamingTimerInfo);
             if(!HAL_STATUS_SUCCESS(status))
@@ -16617,25 +18983,32 @@ eHalStatus csrRoamOpenSession(tpAniSirGlobal pMac,
 =======
             status = vos_timer_init(&pSession->hTimerRoaming, VOS_TIMER_TYPE_SW,
                                     csrRoamRoamingTimerHandler,
+=======
+            status = palTimerAlloc(pMac->hHdd, &pSession->hTimerRoaming, csrRoamRoamingTimerHandler, 
+>>>>>>> 657b0e9... prima update
                                     &pSession->roamingTimerInfo);
-            if (!HAL_STATUS_SUCCESS(status))
+            if(!HAL_STATUS_SUCCESS(status))
             {
-                smsLog(pMac, LOGE, FL("cannot allocate memory for Roaming timer"));
+                smsLog(pMac, LOGE, FL("cannot allocate memory for Roaming timer\n"));
                 break;
             }
 #ifdef FEATURE_WLAN_BTAMP_UT_RF
-            status = vos_timer_init(&pSession->hTimerJoinRetry, VOS_TIMER_TYPE_SW,
-                                    csrRoamJoinRetryTimerHandler,
+            status = palTimerAlloc(pMac->hHdd, &pSession->hTimerJoinRetry, csrRoamJoinRetryTimerHandler, 
                                     &pSession->joinRetryTimerInfo);
-            if (!HAL_STATUS_SUCCESS(status))
+            if(!HAL_STATUS_SUCCESS(status))
             {
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("cannot allocate memory for joinretry timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("cannot allocate memory for joinretry timer\n"));
+>>>>>>> 657b0e9... prima update
                 break;
             }
 #endif
             pSession->ibssJoinTimerInfo.pMac = pMac;
             pSession->ibssJoinTimerInfo.sessionId = CSR_SESSION_ID_INVALID;
+<<<<<<< HEAD
 <<<<<<< HEAD
             status = palTimerAlloc(pMac->hHdd, &pSession->hTimerIbssJoining, csrRoamIbssJoinTimerHandler, 
                                     &pSession->ibssJoinTimerInfo);
@@ -16648,14 +19021,21 @@ eHalStatus csrRoamOpenSession(tpAniSirGlobal pMac,
 =======
             status = vos_timer_init(&pSession->hTimerIbssJoining, VOS_TIMER_TYPE_SW,
                                     csrRoamIbssJoinTimerHandler,
+=======
+            status = palTimerAlloc(pMac->hHdd, &pSession->hTimerIbssJoining, csrRoamIbssJoinTimerHandler, 
+>>>>>>> 657b0e9... prima update
                                     &pSession->ibssJoinTimerInfo);
-            if (!HAL_STATUS_SUCCESS(status))
+            if(!HAL_STATUS_SUCCESS(status))
             {
-                smsLog(pMac, LOGE, FL("cannot allocate memory for IbssJoining timer"));
+                smsLog(pMac, LOGE, FL("cannot allocate memory for IbssJoining timer\n"));
                 break;
             }
+<<<<<<< HEAD
             status = csrIssueAddStaForSessionReq (pMac, i, pSelfMacAddr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            status = csrIssueAddStaForSessionReq ( pMac, i, pSelfMacAddr );
+>>>>>>> 657b0e9... prima update
             break;
         }
     }
@@ -16677,10 +19057,14 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
       if(pMsg == NULL)
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
 =======
          smsLog(pMac, LOGE, "in %s msg ptr is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          status = eHAL_STATUS_FAILURE;
          break;
       }
@@ -16693,10 +19077,14 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
             tANI_U8 sessionId = pCommand->sessionId;
             pRsp = (tSirSmeDelStaSelfRsp*)pMsg;
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG1, "Del Sta rsp status = %d\n", pRsp->status );
 =======
             smsLog( pMac, LOG1, "Del Sta rsp status = %d", pRsp->status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, "Del Sta rsp status = %d\n", pRsp->status );
+>>>>>>> 657b0e9... prima update
             //This session is done.
             csrCleanupSession(pMac, sessionId);
             if(pCommand->u.delStaSessionCmd.callback)
@@ -16711,19 +19099,27 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
                     if (! HAL_STATUS_SUCCESS( status ) )
                     {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         smsLog(pMac, LOGP, "%s: Failed to Acquire Lock\n", __FUNCTION__);
 =======
                         smsLog(pMac, LOGP, "%s: Failed to Acquire Lock", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        smsLog(pMac, LOGP, "%s: Failed to Acquire Lock\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
                         return status;
                     }
                 }
                 else {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGE, "%s: Failed to Release Lock\n", __FUNCTION__);
 =======
                     smsLog(pMac, LOGE, "%s: Failed to Release Lock", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGE, "%s: Failed to Release Lock\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
                 }
             } 
    
@@ -16738,12 +19134,17 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
          else
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, "in %s eWNI_SME_DEL_STA_SELF_RSP Received but NO Del sta session command are ACTIVE ...\n",
                   __FUNCTION__);
 =======
             smsLog(pMac, LOGE, "in %s eWNI_SME_DEL_STA_SELF_RSP Received but NO Del sta session command are ACTIVE ...",
                   __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "in %s eWNI_SME_DEL_STA_SELF_RSP Received but NO Del sta session command are ACTIVE ...\n",
+                  __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_FAILURE;
             break;
          }
@@ -16751,12 +19152,17 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg)
       else
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGE, "in %s eWNI_SME_DEL_STA_SELF_RSP Received but NO commands are ACTIVE ...\n",
                __FUNCTION__);
 =======
          smsLog(pMac, LOGE, "in %s eWNI_SME_DEL_STA_SELF_RSP Received but NO commands are ACTIVE ...",
                __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, "in %s eWNI_SME_DEL_STA_SELF_RSP Received but NO commands are ACTIVE ...\n",
+               __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          status = eHAL_STATUS_FAILURE;
          break;
       }
@@ -16807,10 +19213,14 @@ eHalStatus csrIssueDelStaForSessionReq(tpAniSirGlobal pMac, tANI_U32 sessionId,
       {
          //Should be panic??
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
 =======
          smsLog( pMac, LOGE, FL(" fail to send message status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, FL(" fail to send message status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
       }
    }
    return (status);
@@ -16868,6 +19278,7 @@ void csrCleanupSession(tpAniSirGlobal pMac, tANI_U32 sessionId)
         csrRoamFreeConnectProfile( pMac, &pSession->connectedProfile );
         csrRoamFreeConnectedInfo ( pMac, &pSession->connectedInfo);
 <<<<<<< HEAD
+<<<<<<< HEAD
         palTimerFree(pMac->hHdd, pSession->hTimerRoaming);
 #ifdef FEATURE_WLAN_BTAMP_UT_RF
         palTimerFree(pMac->hHdd, pSession->hTimerJoinRetry);
@@ -16876,9 +19287,13 @@ void csrCleanupSession(tpAniSirGlobal pMac, tANI_U32 sessionId)
         purgeSmeSessionCmdList(pMac, sessionId);
 =======
         vos_timer_destroy(&pSession->hTimerRoaming);
+=======
+        palTimerFree(pMac->hHdd, pSession->hTimerRoaming);
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_BTAMP_UT_RF
-        vos_timer_destroy(&pSession->hTimerJoinRetry);
+        palTimerFree(pMac->hHdd, pSession->hTimerJoinRetry);
 #endif
+<<<<<<< HEAD
         vos_timer_destroy(&pSession->hTimerIbssJoining);
         purgeSmeSessionCmdList(pMac, sessionId, &pMac->sme.smeCmdPendingList);
         if (pMac->fScanOffload)
@@ -16888,6 +19303,10 @@ void csrCleanupSession(tpAniSirGlobal pMac, tANI_U32 sessionId)
         }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palTimerFree(pMac->hHdd, pSession->hTimerIbssJoining);
+        purgeSmeSessionCmdList(pMac, sessionId);
+>>>>>>> 657b0e9... prima update
         purgeCsrSessionCmdList(pMac, sessionId);
         csrInitSession(pMac, sessionId);
     }
@@ -16909,6 +19328,7 @@ eHalStatus csrRoamCloseSession( tpAniSirGlobal pMac, tANI_U32 sessionId,
         else
         { 
 <<<<<<< HEAD
+<<<<<<< HEAD
             purgeSmeSessionCmdList(pMac, sessionId);
 =======
             purgeSmeSessionCmdList(pMac, sessionId,
@@ -16919,6 +19339,9 @@ eHalStatus csrRoamCloseSession( tpAniSirGlobal pMac, tANI_U32 sessionId,
                         &pMac->sme.smeScanCmdPendingList);
             }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            purgeSmeSessionCmdList(pMac, sessionId);
+>>>>>>> 657b0e9... prima update
             purgeCsrSessionCmdList(pMac, sessionId);
             status = csrIssueDelStaForSessionReq( pMac, sessionId,
                                         pSession->selfMacAddr, callback, pContext);
@@ -17041,10 +19464,14 @@ static void csrRoamLinkUp(tpAniSirGlobal pMac, tCsrBssid bssid)
       profile info from pmac global structure                              */
    
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOGW, " csrRoamLinkUp: WLAN link UP with AP= %02x-%02x-%02x-%02x-%02x-%02x\n", 
 =======
    smsLog(pMac, LOGW, " csrRoamLinkUp: WLAN link UP with AP= %02x-%02x-%02x-%02x-%02x-%02x",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOGW, " csrRoamLinkUp: WLAN link UP with AP= %02x-%02x-%02x-%02x-%02x-%02x\n", 
+>>>>>>> 657b0e9... prima update
           bssid[ 0 ], bssid[ 1 ], bssid[ 2 ],
           bssid[ 3 ], bssid[ 4 ], bssid[ 5 ] );
    /* Check for user misconfig of RSSI trigger threshold                  */
@@ -17089,6 +19516,7 @@ static void csrRoamLinkDown(tpAniSirGlobal pMac, tANI_U32 sessionId)
    csrNeighborRoamIndicateDisconnect(pMac, sessionId);
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
    
     if(!IS_SLM_SESSIONIZATION_SUPPORTED_BY_FW && 
 =======
@@ -17097,6 +19525,10 @@ static void csrRoamLinkDown(tpAniSirGlobal pMac, tANI_U32 sessionId)
     //BMPS_WORKAROUND_NOT_NEEDED
     if(!IS_FEATURE_SUPPORTED_BY_FW(SLM_SESSIONIZATION) && 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   
+    if(!IS_SLM_SESSIONIZATION_SUPPORTED_BY_FW && 
+>>>>>>> 657b0e9... prima update
         csrIsInfraApStarted( pMac ) &&  
         pMac->roam.configParam.doBMPSWorkaround)
    {
@@ -17118,10 +19550,14 @@ void csrRoamTlStatsTimerHandler(void *pv)
    if(WLANTL_GetStatistics(pMac->roam.gVosContext, &tlStats, pMac->roam.connectedInfo.staId))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, FL("csrRoamTlStatsTimerHandler:couldn't get the stats from TL\n"));
 =======
       smsLog(pMac, LOGE, FL("csrRoamTlStatsTimerHandler:couldn't get the stats from TL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, FL("csrRoamTlStatsTimerHandler:couldn't get the stats from TL\n"));
+>>>>>>> 657b0e9... prima update
    }
    else
    {
@@ -17135,6 +19571,7 @@ void csrRoamTlStatsTimerHandler(void *pv)
       {
          //start timer
 <<<<<<< HEAD
+<<<<<<< HEAD
          status = palTimerStart(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer, 
                                 pMac->roam.tlStatsReqInfo.periodicity * PAL_TIMER_TO_MS_UNIT, eANI_BOOLEAN_FALSE);
          if(!HAL_STATUS_SUCCESS(status))
@@ -17147,6 +19584,13 @@ void csrRoamTlStatsTimerHandler(void *pv)
          {
             smsLog(pMac, LOGE, FL("csrRoamTlStatsTimerHandler:cannot start TlStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         status = palTimerStart(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer, 
+                                pMac->roam.tlStatsReqInfo.periodicity * PAL_TIMER_TO_MS_UNIT, eANI_BOOLEAN_FALSE);
+         if(!HAL_STATUS_SUCCESS(status))
+         {
+            smsLog(pMac, LOGE, FL("csrRoamTlStatsTimerHandler:cannot start TlStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
             return;
          }
          pMac->roam.tlStatsReqInfo.timerRunning = TRUE;
@@ -17171,6 +19615,7 @@ void csrRoamPeStatsTimerHandler(void *pv)
       if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:failed to destroy hPeStatsTimer timer\n"));
       }
 
@@ -17183,6 +19628,13 @@ void csrRoamPeStatsTimerHandler(void *pv)
       // Free the entry
       vos_mem_free(pPeStatsReqListEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:failed to destroy hPeStatsTimer timer\n"));
+      }
+
+      // Free the entry
+      palFreeMemory(pMac->hHdd, pPeStatsReqListEntry);
+>>>>>>> 657b0e9... prima update
       pPeStatsReqListEntry = NULL;
    }
    else
@@ -17194,10 +19646,14 @@ void csrRoamPeStatsTimerHandler(void *pv)
          if(!HAL_STATUS_SUCCESS(status))
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:failed to send down stats req to PE\n"));
 =======
             smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:failed to send down stats req to PE"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:failed to send down stats req to PE\n"));
+>>>>>>> 657b0e9... prima update
          }
          else
          {
@@ -17229,10 +19685,14 @@ void csrRoamPeStatsTimerHandler(void *pv)
          if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) ) 
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:cannot start hPeStatsTimer timer\n"));
 =======
             smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:cannot start hPeStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("csrRoamPeStatsTimerHandler:cannot start hPeStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
             return;
          }
          pPeStatsReqListEntry->timerRunning = TRUE;
@@ -17254,10 +19714,14 @@ void csrRoamStatsClientTimerHandler(void *pv)
        if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) ) 
        {
 <<<<<<< HEAD
+<<<<<<< HEAD
           smsLog(pStaEntry->pMac, LOGE, FL("csrGetStatistics:cannot start StatsClient timer\n"));
 =======
           smsLog(pStaEntry->pMac, LOGE, FL("csrGetStatistics:cannot start StatsClient timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          smsLog(pStaEntry->pMac, LOGE, FL("csrGetStatistics:cannot start StatsClient timer\n"));
+>>>>>>> 657b0e9... prima update
        }
 #endif       
    }
@@ -17278,10 +19742,14 @@ eHalStatus csrSendMBStatsReqMsg( tpAniSirGlobal pMac, tANI_U32 statsMask, tANI_U
    if ( !HAL_STATUS_SUCCESS(status) ) 
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOG1, " csrSendMBStatsReqMsg: failed to allocate mem for stats req \n");
 =======
       smsLog(pMac, LOG1, " csrSendMBStatsReqMsg: failed to allocate mem for stats req ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOG1, " csrSendMBStatsReqMsg: failed to allocate mem for stats req \n");
+>>>>>>> 657b0e9... prima update
       return status;
    }
    // need to initiate a stats request to PE
@@ -17293,10 +19761,14 @@ eHalStatus csrSendMBStatsReqMsg( tpAniSirGlobal pMac, tANI_U32 statsMask, tANI_U
    if(!HAL_STATUS_SUCCESS(status))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOG1, " csrSendMBStatsReqMsg: failed to send down the stats req \n");
 =======
       smsLog(pMac, LOG1, " csrSendMBStatsReqMsg: failed to send down the stats req ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOG1, " csrSendMBStatsReqMsg: failed to send down the stats req \n");
+>>>>>>> 657b0e9... prima update
    }
    return status;
 }
@@ -17313,6 +19785,7 @@ void csrRoamStatsRspProcessor(tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg)
    tANI_U32   length = 0;
    v_PVOID_t  pvosGCtx;
 <<<<<<< HEAD
+<<<<<<< HEAD
    v_S7_t     rssi = 0;
    tANI_U32   *pRssi = NULL;
    pSmeStatsRsp = (tAniGetPEStatsRsp *)pSirMsg;
@@ -17328,6 +19801,14 @@ void csrRoamStatsRspProcessor(tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg)
    {
       smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:stats rsp from PE shows failure"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   v_S7_t     rssi = 0;
+   tANI_U32   *pRssi = NULL;
+   pSmeStatsRsp = (tAniGetPEStatsRsp *)pSirMsg;
+   if(pSmeStatsRsp->rc)
+   {
+      smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:stats rsp from PE shows failure\n"));
+>>>>>>> 657b0e9... prima update
       goto post_update;
    }
    tempMask = pSmeStatsRsp->statsMask;
@@ -17346,86 +19827,122 @@ void csrRoamStatsRspProcessor(tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg)
          {
          case eCsrSummaryStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:summary stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:summary stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:summary stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, (tANI_U8 *)&pMac->roam.summaryStatsInfo, 
                                    pStats, sizeof(tCsrSummaryStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy summary stats\n"));
 =======
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy summary stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy summary stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrSummaryStatsInfo);
             length -= sizeof(tCsrSummaryStatsInfo);
             break;
          case eCsrGlobalClassAStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassA stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassA stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassA stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, (tANI_U8 *)&pMac->roam.classAStatsInfo, 
                                    pStats, sizeof(tCsrGlobalClassAStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassA stats\n"));
 =======
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassA stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassA stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassAStatsInfo);
             length -= sizeof(tCsrGlobalClassAStatsInfo);
             break;
          case eCsrGlobalClassBStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassB stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassB stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassB stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, (tANI_U8 *)&pMac->roam.classBStatsInfo, 
                                    pStats, sizeof(tCsrGlobalClassBStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassB stats\n"));
 =======
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassB stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassB stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassBStatsInfo);
             length -= sizeof(tCsrGlobalClassBStatsInfo);
             break;
          case eCsrGlobalClassCStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassC stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassC stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:ClassC stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, (tANI_U8 *)&pMac->roam.classCStatsInfo, 
                                    pStats, sizeof(tCsrGlobalClassCStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassC stats\n"));
 =======
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassC stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy ClassC stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassCStatsInfo);
             length -= sizeof(tCsrGlobalClassCStatsInfo);
             break;
          case eCsrPerStaStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:PerSta stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:PerSta stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamStatsRspProcessor:PerSta stats\n"));
+>>>>>>> 657b0e9... prima update
             if( CSR_MAX_STA > pSmeStatsRsp->staId )
             {
                status = palCopyMemory(pMac->hHdd, (tANI_U8 *)&pMac->roam.perStaStatsInfo[pSmeStatsRsp->staId], 
@@ -17435,29 +19952,41 @@ void csrRoamStatsRspProcessor(tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg)
             {
                status = eHAL_STATUS_FAILURE;
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGE, FL("csrRoamStatsRspProcessor:out bound staId:%d\n"), pSmeStatsRsp->staId);
 =======
                smsLog( pMac, LOGE, FL("csrRoamStatsRspProcessor:out bound staId:%d"), pSmeStatsRsp->staId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGE, FL("csrRoamStatsRspProcessor:out bound staId:%d\n"), pSmeStatsRsp->staId);
+>>>>>>> 657b0e9... prima update
                VOS_ASSERT( 0 );
             }
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy PerSta stats\n"));
 =======
                smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy PerSta stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:failed to copy PerSta stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrPerStaStatsInfo);
             length -= sizeof(tCsrPerStaStatsInfo);
             break;
          default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:unknown stats type\n"));
 =======
             smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:unknown stats type"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, FL("csrRoamStatsRspProcessor:unknown stats type\n"));
+>>>>>>> 657b0e9... prima update
             break;
          }
       }
@@ -17470,16 +19999,20 @@ void csrRoamStatsRspProcessor(tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg)
        pRssi = (tANI_U32*)pStats;
        rssi = (v_S7_t)*pRssi;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
        pStats += sizeof(tANI_U32);
        length -= sizeof(tANI_U32);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    else
    {
        /* If riva is not sending rssi, continue to use the hack */
        rssi = RSSI_HACK_BMPS;
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
    WDA_UpdateRssiBmps(pvosGCtx, pSmeStatsRsp->staId, rssi);
 =======
@@ -17511,6 +20044,9 @@ void csrRoamStatsRspProcessor(tpAniSirGlobal pMac, tSirSmeRsp *pSirMsg)
 
    WDA_UpdateSnrBmps(pvosGCtx, pSmeStatsRsp->staId, snr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDA_UpdateRssiBmps(pvosGCtx, pSmeStatsRsp->staId, rssi);
+>>>>>>> 657b0e9... prima update
 post_update:   
    //make sure to update the pe stats req list 
    pEntry = csrRoamFindInPeStatsReqList(pMac, pSmeStatsRsp->statsMask);
@@ -17545,10 +20081,14 @@ tListElem * csrRoamFindInPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  statsMask
    {
       //list empty
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOG2, "csrRoamFindInPeStatsReqList: List empty, no request to PE\n");
 =======
       smsLog(pMac, LOG2, "csrRoamFindInPeStatsReqList: List empty, no request to PE");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOG2, "csrRoamFindInPeStatsReqList: List empty, no request to PE\n");
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
    while( pEntry )
@@ -17557,10 +20097,14 @@ tListElem * csrRoamFindInPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  statsMask
       if(pTempStaEntry->statsMask == statsMask)
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOG3, "csrRoamFindInPeStatsReqList: match found\n");
 =======
          smsLog(pMac, LOG3, "csrRoamFindInPeStatsReqList: match found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOG3, "csrRoamFindInPeStatsReqList: match found\n");
+>>>>>>> 657b0e9... prima update
          break;
       }
       pEntry = csrLLNext( &pMac->roam.peStatsReqList, pEntry, LL_ACCESS_NOLOCK );
@@ -17579,10 +20123,14 @@ tListElem * csrRoamChecknUpdateClientReqList(tpAniSirGlobal pMac, tCsrStatsClien
       //list empty
       smsLog(pMac, LOG2, "csrRoamChecknUpdateClientReqList: List empty, no request from "
 <<<<<<< HEAD
+<<<<<<< HEAD
              "upper layer client(s)\n");
 =======
              "upper layer client(s)");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "upper layer client(s)\n");
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
    while( pEntry )
@@ -17592,10 +20140,14 @@ tListElem * csrRoamChecknUpdateClientReqList(tpAniSirGlobal pMac, tCsrStatsClien
          (pTempStaEntry->statsMask == pStaEntry->statsMask))
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOG3, "csrRoamChecknUpdateClientReqList: match found\n");
 =======
          smsLog(pMac, LOG3, "csrRoamChecknUpdateClientReqList: match found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOG3, "csrRoamChecknUpdateClientReqList: match found\n");
+>>>>>>> 657b0e9... prima update
          if(update)
          {
             pTempStaEntry->periodicity = pStaEntry->periodicity;
@@ -17618,10 +20170,14 @@ tListElem * csrRoamCheckClientReqList(tpAniSirGlobal pMac, tANI_U32 statsMask)
       //list empty
       smsLog(pMac, LOG2, "csrRoamCheckClientReqList: List empty, no request from "
 <<<<<<< HEAD
+<<<<<<< HEAD
              "upper layer client(s)\n");
 =======
              "upper layer client(s)");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "upper layer client(s)\n");
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
    while( pEntry )
@@ -17630,10 +20186,14 @@ tListElem * csrRoamCheckClientReqList(tpAniSirGlobal pMac, tANI_U32 statsMask)
       if((pTempStaEntry->statsMask & ~(1 << eCsrGlobalClassDStats))  == statsMask)
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOG3, "csrRoamCheckClientReqList: match found\n");
 =======
          smsLog(pMac, LOG3, "csrRoamCheckClientReqList: match found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOG3, "csrRoamCheckClientReqList: match found\n");
+>>>>>>> 657b0e9... prima update
          break;
       }
       pEntry = csrLLNext( &pMac->roam.statsClientReqList, pEntry, LL_ACCESS_NOLOCK );
@@ -17671,6 +20231,7 @@ void csrRoamVccTrigger(tpAniSirGlobal pMac)
       pMac->roam.configParam.vccUlMacLossThreshold;
    VOS_ASSERT( ul_mac_loss_trigger_threshold != 0 );
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOGW, "csrRoamVccTrigger: UL_MAC_LOSS_THRESHOLD is %d\n", 
           ul_mac_loss_trigger_threshold );
    if(ul_mac_loss_trigger_threshold < ul_mac_loss)
@@ -17683,21 +20244,33 @@ void csrRoamVccTrigger(tpAniSirGlobal pMac)
    {
       smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality is POOR ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOGW, "csrRoamVccTrigger: UL_MAC_LOSS_THRESHOLD is %d\n", 
+          ul_mac_loss_trigger_threshold );
+   if(ul_mac_loss_trigger_threshold < ul_mac_loss)
+   {
+      smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality is POOR \n");
+>>>>>>> 657b0e9... prima update
       newVccLinkQuality = eCSR_ROAM_LINK_QUAL_POOR_IND;
    }
    else
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality is GOOD\n");
 =======
       smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality is GOOD");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality is GOOD\n");
+>>>>>>> 657b0e9... prima update
       newVccLinkQuality = eCSR_ROAM_LINK_QUAL_GOOD_IND;
    }
    smsLog(pMac, LOGW, "csrRoamVccTrigger: link qual : *** UL_MAC_LOSS %d *** ",
           ul_mac_loss);
    if(newVccLinkQuality != pMac->roam.vccLinkQuality)
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality changed: trigger necessary\n");
       if(NULL != pMac->roam.linkQualityIndInfo.callback) 
@@ -17709,6 +20282,12 @@ void csrRoamVccTrigger(tpAniSirGlobal pMac)
       {
          smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality indication %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality changed: trigger necessary\n");
+      if(NULL != pMac->roam.linkQualityIndInfo.callback) 
+      {
+         smsLog(pMac, LOGW, "csrRoamVccTrigger: link quality indication %d\n",
+>>>>>>> 657b0e9... prima update
                 newVccLinkQuality );
          
          /* we now invoke the callback once to notify client of initial value   */
@@ -17734,6 +20313,7 @@ VOS_STATUS csrRoamVccTriggerRssiIndCallback(tHalHandle hHal,
      Check for a change in link quality and notify client if necessary
    -------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: RSSI trigger threshold is %d\n", 
           pMac->roam.configParam.vccRssiThreshold);
    if(!csrIsConnStateConnectedInfra(pMac, sessionId))
@@ -17746,33 +20326,52 @@ VOS_STATUS csrRoamVccTriggerRssiIndCallback(tHalHandle hHal,
    {
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: ignoring the indication as we are not connected");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: RSSI trigger threshold is %d\n", 
+          pMac->roam.configParam.vccRssiThreshold);
+   if(!csrIsConnStateConnectedInfra(pMac, sessionId))
+   {
+      smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: ignoring the indication as we are not connected\n");
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_SUCCESS;
    }
    if(WLANTL_HO_THRESHOLD_DOWN == rssiNotification)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality is POOR\n");
 =======
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality is POOR");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality is POOR\n");
+>>>>>>> 657b0e9... prima update
       newVccLinkQuality = eCSR_ROAM_LINK_QUAL_POOR_IND;
    }
    else if(WLANTL_HO_THRESHOLD_UP == rssiNotification)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality is GOOD \n");
 =======
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality is GOOD ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality is GOOD \n");
+>>>>>>> 657b0e9... prima update
       newVccLinkQuality = eCSR_ROAM_LINK_QUAL_GOOD_IND;
    }
    else
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: unknown rssi notification %d\n", rssiNotification);
 =======
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: unknown rssi notification %d", rssiNotification);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: unknown rssi notification %d\n", rssiNotification);
+>>>>>>> 657b0e9... prima update
       //Set to this so the code below won't do anything
       newVccLinkQuality = pMac->roam.vccLinkQuality;    
       VOS_ASSERT(0);
@@ -17780,6 +20379,7 @@ VOS_STATUS csrRoamVccTriggerRssiIndCallback(tHalHandle hHal,
 
    if(newVccLinkQuality != pMac->roam.vccLinkQuality)
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality changed: trigger necessary\n");
       if(NULL != pMac->roam.linkQualityIndInfo.callback) 
@@ -17791,6 +20391,12 @@ VOS_STATUS csrRoamVccTriggerRssiIndCallback(tHalHandle hHal,
       {
          smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality indication %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality changed: trigger necessary\n");
+      if(NULL != pMac->roam.linkQualityIndInfo.callback) 
+      {
+         smsLog(pMac, LOGW, "csrRoamVccTriggerRssiIndCallback: link quality indication %d\n",
+>>>>>>> 657b0e9... prima update
                 newVccLinkQuality);
         /* we now invoke the callback once to notify client of initial value   */
         pMac->roam.linkQualityIndInfo.callback( newVccLinkQuality, 
@@ -17817,10 +20423,14 @@ tCsrStatsClientReqInfo * csrRoamInsertEntryIntoList( tpAniSirGlobal pMac,
       {
          smsLog(pMac, LOGW, "csrRoamInsertEntryIntoList: couldn't allocate memory for the "
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "entry\n");
 =======
                 "entry");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "entry\n");
+>>>>>>> 657b0e9... prima update
          return NULL;
       }
    
@@ -17849,6 +20459,7 @@ tCsrPeStatsReqInfo * csrRoamInsertEntryIntoPeStatsReqList( tpAniSirGlobal pMac,
    if (!HAL_STATUS_SUCCESS(status))
    {
       smsLog(pMac, LOGW, "csrRoamInsertEntryIntoPeStatsReqList: couldn't allocate memory for the "
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "entry\n");
 =======
@@ -17975,42 +20586,62 @@ eHalStatus csrGetSnr(tpAniSirGlobal pMac,
        smsLog(pMac, LOGE, "%s failed to post msg to self", __func__);
        vos_mem_free((v_VOID_t *)pMsg);
        status = eHAL_STATUS_FAILURE;
+=======
+                  "entry\n");
+      return NULL;
+>>>>>>> 657b0e9... prima update
    }
-
-   smsLog(pMac, LOG2, FL("returned"));
-   return status;
+   
+   pNewStaEntry->hPeStatsTimer = pStaEntry->hPeStatsTimer;
+   pNewStaEntry->numClient = pStaEntry->numClient;
+   pNewStaEntry->periodicity = pStaEntry->periodicity;
+   pNewStaEntry->statsMask = pStaEntry->statsMask;
+   pNewStaEntry->pMac = pStaEntry->pMac;
+   pNewStaEntry->staId = pStaEntry->staId;
+   pNewStaEntry->timerRunning = pStaEntry->timerRunning;
+   pNewStaEntry->rspPending = pStaEntry->rspPending;
+   
+   csrLLInsertTail( pStaList, &pNewStaEntry->link, LL_ACCESS_LOCK  );
+   return pNewStaEntry;
 }
-
-#if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
-eHalStatus csrGetRoamRssi(tpAniSirGlobal pMac,
-                            tCsrRssiCallback callback,
+eHalStatus csrGetRssi(tpAniSirGlobal pMac, 
+                            tCsrRssiCallback callback, 
                             tANI_U8 staId, tCsrBssid bssId, void *pContext, void* pVosContext)
-{
+{  
    eHalStatus status = eHAL_STATUS_SUCCESS;
-   tAniGetRssiReq *pMsg;
+   vos_msg_t  msg;
+   tANI_U32 sessionId;
 
+   tAniGetRssiReq *pMsg;
+   smsLog(pMac, LOG2, FL("called"));      
    status = palAllocateMemory(pMac->hHdd, (void **)&pMsg, sizeof(tAniGetRssiReq));
-   if ( !HAL_STATUS_SUCCESS(status) )
+   if ( !HAL_STATUS_SUCCESS(status) ) 
    {
-      smsLog(pMac, LOGE, " csrGetRoamRssi: failed to allocate mem for req");
+      smsLog(pMac, LOGE, " csrGetRssi: failed to allocate mem for req \n");
       return status;
    }
-   // need to initiate a stats request to PE
-   pMsg->msgType = pal_cpu_to_be16((tANI_U16)eWNI_SME_GET_ROAM_RSSI_REQ);
+   csrRoamGetSessionIdFromBSSID(pMac, (tCsrBssid *)bssId, &sessionId);
+
+   pMsg->msgType = pal_cpu_to_be16((tANI_U16)eWNI_SME_GET_RSSI_REQ);
    pMsg->msgLen = (tANI_U16)sizeof(tAniGetRssiReq);
+   pMsg->sessionId = sessionId;
    pMsg->staId = staId;
    pMsg->rssiCallback = callback;
    pMsg->pDevContext = pContext;
    pMsg->pVosContext = pVosContext;
-   status = palSendMBMessage(pMac->hHdd, pMsg );
-   if(!HAL_STATUS_SUCCESS(status))
+   msg.type = eWNI_SME_GET_RSSI_REQ;
+   msg.bodyptr = pMsg;
+   msg.reserved = 0;
+   if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MQ_ID_SME, &msg))
    {
-      smsLog(pMac, LOG1, " csrGetRoamRssi: failed to send down the rssi req");
-      //pMsg is freed by palSendMBMessage
-      status = eHAL_STATUS_FAILURE;
+       smsLog(pMac, LOGE, " csrGetRssi failed to post msg to self \n");   
+       palFreeMemory(pMac->hHdd, (void *)pMsg);
+       status = eHAL_STATUS_FAILURE;
    }
+   smsLog(pMac, LOG2, FL("returned"));      
    return status;
 }
+<<<<<<< HEAD
 #endif
 
 /* ---------------------------------------------------------------------------
@@ -18036,6 +20667,8 @@ tANI_U16 csrGetTLSTAState(tpAniSirGlobal pMac, tANI_U8 staId)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requesterId, 
                             tANI_U32 statsMask, 
                             tCsrStatsCallback callback, 
@@ -18055,20 +20688,28 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
    if( csrIsAllSessionDisconnected(pMac) )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       //smsLog(pMac, LOGW, "csrGetStatistics: wrong state curState(%d) not connected\n", pMac->roam.curState);
 =======
       //smsLog(pMac, LOGW, "csrGetStatistics: wrong state curState(%d) not connected", pMac->roam.curState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      //smsLog(pMac, LOGW, "csrGetStatistics: wrong state curState(%d) not connected\n", pMac->roam.curState);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    if((!statsMask) && (!callback))
    {
       //msg
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "csrGetStatistics: statsMask & callback empty in the request\n");
 =======
       smsLog(pMac, LOGW, "csrGetStatistics: statsMask & callback empty in the request");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrGetStatistics: statsMask & callback empty in the request\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    //for the search list method for deregister
@@ -18083,10 +20724,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
          //msg
          smsLog(pMac, LOGW, "csrGetStatistics: callback is empty in the request & couldn't "
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "find any existing request in statsClientReqList\n");
 =======
                 "find any existing request in statsClientReqList");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "find any existing request in statsClientReqList\n");
+>>>>>>> 657b0e9... prima update
          return eHAL_STATUS_FAILURE;
       }
       else
@@ -18110,6 +20755,7 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
             if(pMac->roam.tlStatsReqInfo.timerRunning)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                status = palTimerStop(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer);
                if(!HAL_STATUS_SUCCESS(status))
                {
@@ -18120,6 +20766,12 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
                {
                   smsLog(pMac, LOGE, FL("csrGetStatistics:cannot stop TlStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               status = palTimerStop(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer);
+               if(!HAL_STATUS_SUCCESS(status))
+               {
+                  smsLog(pMac, LOGE, FL("csrGetStatistics:cannot stop TlStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
                   return eHAL_STATUS_FAILURE;
                }
             }
@@ -18132,10 +20784,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
          if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("csrGetStatistics:failed to destroy Client req timer\n"));
 =======
             smsLog(pMac, LOGE, FL("csrGetStatistics:failed to destroy Client req timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("csrGetStatistics:failed to destroy Client req timer\n"));
+>>>>>>> 657b0e9... prima update
          }
          csrRoamRemoveStatListEntry(pMac, pEntry);
          pStaEntry = NULL;
@@ -18188,10 +20844,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
             if(cache && pMac->roam.tlStatsReqInfo.numClient)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("csrGetStatistics:Looking for cached stats from TL\n"));
 =======
                smsLog(pMac, LOGE, FL("csrGetStatistics:Looking for cached stats from TL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog(pMac, LOGE, FL("csrGetStatistics:Looking for cached stats from TL\n"));
+>>>>>>> 657b0e9... prima update
             }
             else
             {
@@ -18220,10 +20880,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
                      if(WLANTL_GetStatistics(pMac->roam.gVosContext, pTlStats, staId))
                      {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         smsLog(pMac, LOGE, FL("csrGetStatistics:couldn't get the stats from TL\n"));
 =======
                         smsLog(pMac, LOGE, FL("csrGetStatistics:couldn't get the stats from TL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        smsLog(pMac, LOGE, FL("csrGetStatistics:couldn't get the stats from TL\n"));
+>>>>>>> 657b0e9... prima update
                      }
                      else
                      {
@@ -18242,6 +20906,7 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
                   {
                      //start timer
 <<<<<<< HEAD
+<<<<<<< HEAD
                      status = palTimerStart(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer, 
                                             pMac->roam.tlStatsReqInfo.periodicity * PAL_TIMER_TO_MS_UNIT, eANI_BOOLEAN_FALSE);
                      if(!HAL_STATUS_SUCCESS(status))
@@ -18254,6 +20919,13 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
                      {
                         smsLog(pMac, LOGE, FL("csrGetStatistics:cannot start TlStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     status = palTimerStart(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer, 
+                                            pMac->roam.tlStatsReqInfo.periodicity * PAL_TIMER_TO_MS_UNIT, eANI_BOOLEAN_FALSE);
+                     if(!HAL_STATUS_SUCCESS(status))
+                     {
+                        smsLog(pMac, LOGE, FL("csrGetStatistics:cannot start TlStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
                         return eHAL_STATUS_FAILURE;
                      }
                      pMac->roam.tlStatsReqInfo.timerRunning = TRUE;
@@ -18275,10 +20947,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("csrGetStatistics:failed to send down stats req to PE\n"));
 =======
                smsLog(pMac, LOGE, FL("csrGetStatistics:failed to send down stats req to PE"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog(pMac, LOGE, FL("csrGetStatistics:failed to send down stats req to PE\n"));
+>>>>>>> 657b0e9... prima update
             }
             //so that when the stats rsp comes back from PE we respond to upper layer
             //right away
@@ -18294,10 +20970,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
                if(!VOS_IS_STATUS_SUCCESS(WLANTL_GetStatistics(pMac->roam.gVosContext, pTlStats, staId)))
                {
 <<<<<<< HEAD
+<<<<<<< HEAD
                   smsLog(pMac, LOGE, FL("csrGetStatistics:couldn't get the stats from TL\n"));
 =======
                   smsLog(pMac, LOGE, FL("csrGetStatistics:couldn't get the stats from TL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  smsLog(pMac, LOGE, FL("csrGetStatistics:couldn't get the stats from TL\n"));
+>>>>>>> 657b0e9... prima update
                }
                else
                {
@@ -18327,10 +21007,14 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
          {
             //msg
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, "csrGetStatistics: Failed to insert req in statsClientReqList\n");
 =======
             smsLog(pMac, LOGW, "csrGetStatistics: Failed to insert req in statsClientReqList");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, "csrGetStatistics: Failed to insert req in statsClientReqList\n");
+>>>>>>> 657b0e9... prima update
             return eHAL_STATUS_FAILURE;
          }
          pStaEntry->periodicity = periodicity;
@@ -18342,20 +21026,28 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
             if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("csrGetStatistics:cannot init StatsClient timer\n"));
 =======
                smsLog(pMac, LOGE, FL("csrGetStatistics:cannot init StatsClient timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog(pMac, LOGE, FL("csrGetStatistics:cannot init StatsClient timer\n"));
+>>>>>>> 657b0e9... prima update
                return eHAL_STATUS_FAILURE;
             }
             vosStatus = vos_timer_start( &pStaEntry->timer, periodicity );
             if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) ) 
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("csrGetStatistics:cannot start StatsClient timer\n"));
 =======
                smsLog(pMac, LOGE, FL("csrGetStatistics:cannot start StatsClient timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog(pMac, LOGE, FL("csrGetStatistics:cannot start StatsClient timer\n"));
+>>>>>>> 657b0e9... prima update
                return eHAL_STATUS_FAILURE;
             }
          }
@@ -18364,6 +21056,7 @@ eHalStatus csrGetStatistics(tpAniSirGlobal pMac, eCsrStatsRequesterType requeste
    return eHAL_STATUS_SUCCESS;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -18748,6 +21441,8 @@ eHalStatus csrRoamOffloadScanRspHdlr(tpAniSirGlobal pMac, tANI_U8 reason)
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 tCsrPeStatsReqInfo * csrRoamCheckPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  statsMask, 
                                                 tANI_U32 periodicity, tANI_BOOLEAN *pFound, tANI_U8 staId)
 {
@@ -18791,10 +21486,14 @@ tCsrPeStatsReqInfo * csrRoamCheckPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  s
       {
          //msg
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGW, "csrRoamCheckPeStatsReqList: Failed to insert req in peStatsReqList\n");
 =======
          smsLog(pMac, LOGW, "csrRoamCheckPeStatsReqList: Failed to insert req in peStatsReqList");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGW, "csrRoamCheckPeStatsReqList: Failed to insert req in peStatsReqList\n");
+>>>>>>> 657b0e9... prima update
          return NULL;
       }
    }
@@ -18823,10 +21522,14 @@ tCsrPeStatsReqInfo * csrRoamCheckPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  s
          if(!HAL_STATUS_SUCCESS(status))
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:failed to send down stats req to PE\n"));
 =======
             smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:failed to send down stats req to PE"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:failed to send down stats req to PE\n"));
+>>>>>>> 657b0e9... prima update
          }
          else
          {
@@ -18843,14 +21546,19 @@ tCsrPeStatsReqInfo * csrRoamCheckPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  s
             if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:cannot init hPeStatsTimer timer\n"));
 =======
                smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:cannot init hPeStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:cannot init hPeStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
                return NULL;
             }
          }
          //start timer
+<<<<<<< HEAD
 <<<<<<< HEAD
          smsLog(pMac, LOG1, "csrRoamCheckPeStatsReqList:peStatsTimer period %d\n", pTempStaEntry->periodicity);
          vosStatus = vos_timer_start( &pTempStaEntry->hPeStatsTimer, pTempStaEntry->periodicity );
@@ -18864,6 +21572,13 @@ tCsrPeStatsReqInfo * csrRoamCheckPeStatsReqList(tpAniSirGlobal pMac, tANI_U32  s
          {
             smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:cannot start hPeStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOG1, "csrRoamCheckPeStatsReqList:peStatsTimer period %d\n", pTempStaEntry->periodicity);
+         vosStatus = vos_timer_start( &pTempStaEntry->hPeStatsTimer, pTempStaEntry->periodicity );
+         if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) ) 
+         {
+            smsLog(pMac, LOGE, FL("csrRoamCheckPeStatsReqList:cannot start hPeStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
             return NULL;
          }
          pTempStaEntry->timerRunning = TRUE;
@@ -18897,10 +21612,14 @@ void csrRoamRemoveEntryFromPeStatsReqList(tpAniSirGlobal pMac, tCsrPeStatsReqInf
    {
       //list empty
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "csrRoamRemoveEntryFromPeStatsReqList: List empty, no stats req for PE\n");
 =======
       smsLog(pMac, LOGW, "csrRoamRemoveEntryFromPeStatsReqList: List empty, no stats req for PE");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "csrRoamRemoveEntryFromPeStatsReqList: List empty, no stats req for PE\n");
+>>>>>>> 657b0e9... prima update
       return;
    }
    while( pEntry )
@@ -18909,10 +21628,14 @@ void csrRoamRemoveEntryFromPeStatsReqList(tpAniSirGlobal pMac, tCsrPeStatsReqInf
       if( pTempStaEntry && pTempStaEntry->statsMask == pPeStaEntry->statsMask)
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGW, "csrRoamRemoveEntryFromPeStatsReqList: match found\n");
 =======
          smsLog(pMac, LOGW, "csrRoamRemoveEntryFromPeStatsReqList: match found");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGW, "csrRoamRemoveEntryFromPeStatsReqList: match found\n");
+>>>>>>> 657b0e9... prima update
          if(pTempStaEntry->timerRunning)
          {
             vosStatus = vos_timer_stop( &pTempStaEntry->hPeStatsTimer );
@@ -18921,10 +21644,14 @@ void csrRoamRemoveEntryFromPeStatsReqList(tpAniSirGlobal pMac, tCsrPeStatsReqInf
              * and free the memory in the timer CB
              */
 <<<<<<< HEAD
+<<<<<<< HEAD
             if( vosStatus == VOS_STATUS_SUCCESS )
 =======
             if ( vosStatus == VOS_STATUS_SUCCESS )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            if( vosStatus == VOS_STATUS_SUCCESS )
+>>>>>>> 657b0e9... prima update
             {
                /* the timer is successfully stopped */
                pTempStaEntry->timerRunning = FALSE;
@@ -18934,10 +21661,14 @@ void csrRoamRemoveEntryFromPeStatsReqList(tpAniSirGlobal pMac, tCsrPeStatsReqInf
                if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
                {
 <<<<<<< HEAD
+<<<<<<< HEAD
                   smsLog(pMac, LOGE, FL("csrRoamRemoveEntryFromPeStatsReqList:failed to destroy hPeStatsTimer timer\n"));
 =======
                   smsLog(pMac, LOGE, FL("csrRoamRemoveEntryFromPeStatsReqList:failed to destroy hPeStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  smsLog(pMac, LOGE, FL("csrRoamRemoveEntryFromPeStatsReqList:failed to destroy hPeStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
                }
             }
             else
@@ -19000,19 +21731,27 @@ void csrRoamReportStatistics(tpAniSirGlobal pMac, tANI_U32 statsMask,
    if(!callback)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, FL("csrRoamReportStatistics:cannot report callback NULL\n"));
 =======
       smsLog(pMac, LOGE, FL("csrRoamReportStatistics:cannot report callback NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, FL("csrRoamReportStatistics:cannot report callback NULL\n"));
+>>>>>>> 657b0e9... prima update
       return;
    }
    if(!statsMask)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, FL("csrRoamReportStatistics:cannot report statsMask is 0\n"));
 =======
       smsLog(pMac, LOGE, FL("csrRoamReportStatistics:cannot report statsMask is 0"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, FL("csrRoamReportStatistics:cannot report statsMask is 0\n"));
+>>>>>>> 657b0e9... prima update
       return;
    }
    pStats = stats;
@@ -19026,118 +21765,170 @@ void csrRoamReportStatistics(tpAniSirGlobal pMac, tANI_U32 statsMask,
          {
          case eCsrSummaryStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:summary stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:summary stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamReportStatistics:summary stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, pStats, (tANI_U8 *)&pMac->roam.summaryStatsInfo, 
                                    sizeof(tCsrSummaryStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy summary stats\n"));
 =======
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy summary stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy summary stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrSummaryStatsInfo);
             break;
          case eCsrGlobalClassAStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassA stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassA stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassA stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, pStats, (tANI_U8 *)&pMac->roam.classAStatsInfo, 
                                    sizeof(tCsrGlobalClassAStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassA stats\n"));
 =======
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassA stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassA stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassAStatsInfo);
             break;
          case eCsrGlobalClassBStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassB stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassB stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassB stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, pStats, (tANI_U8 *)&pMac->roam.classBStatsInfo, 
                                    sizeof(tCsrGlobalClassBStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassB stats\n"));
 =======
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassB stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassB stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassBStatsInfo);
             break;
          case eCsrGlobalClassCStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassC stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassC stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassC stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, pStats, (tANI_U8 *)&pMac->roam.classCStatsInfo, 
                                    sizeof(tCsrGlobalClassCStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassC stats\n"));
 =======
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassC stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassC stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassCStatsInfo);
             break;
          case eCsrGlobalClassDStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassD stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassD stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamReportStatistics:ClassD stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, pStats, (tANI_U8 *)&pMac->roam.classDStatsInfo, 
                                    sizeof(tCsrGlobalClassDStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassD stats\n"));
 =======
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassD stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy ClassD stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrGlobalClassDStatsInfo);
             break;
          case eCsrPerStaStats:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:PerSta stats\n"));
 =======
             smsLog( pMac, LOG2, FL("csrRoamReportStatistics:PerSta stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG2, FL("csrRoamReportStatistics:PerSta stats\n"));
+>>>>>>> 657b0e9... prima update
             status = palCopyMemory(pMac->hHdd, pStats, (tANI_U8 *)&pMac->roam.perStaStatsInfo[staId], 
                                    sizeof(tCsrPerStaStatsInfo));
             if(!HAL_STATUS_SUCCESS(status))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy PerSta stats\n"));
 =======
                smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy PerSta stats"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOG1, FL("csrRoamReportStatistics:failed to copy PerSta stats\n"));
+>>>>>>> 657b0e9... prima update
             }
             pStats += sizeof(tCsrPerStaStatsInfo);
             break;
          default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOG1, FL("csrRoamReportStatistics:unknown stats type\n"));
 =======
             smsLog( pMac, LOG1, FL("csrRoamReportStatistics:unknown stats type"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOG1, FL("csrRoamReportStatistics:unknown stats type\n"));
+>>>>>>> 657b0e9... prima update
             break;
          }
       }
@@ -19160,10 +21951,14 @@ eHalStatus csrRoamDeregStatisticsReq(tpAniSirGlobal pMac)
       //list empty
       smsLog(pMac, LOGW, "csrRoamDeregStatisticsReq: List empty, no request from "
 <<<<<<< HEAD
+<<<<<<< HEAD
              "upper layer client(s)\n");
 =======
              "upper layer client(s)");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "upper layer client(s)\n");
+>>>>>>> 657b0e9... prima update
       return status;
    }
    while( pEntry )
@@ -19193,6 +21988,7 @@ eHalStatus csrRoamDeregStatisticsReq(tpAniSirGlobal pMac)
          if(pMac->roam.tlStatsReqInfo.timerRunning)
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             status = palTimerStop(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer);
             if(!HAL_STATUS_SUCCESS(status))
             {
@@ -19203,6 +21999,12 @@ eHalStatus csrRoamDeregStatisticsReq(tpAniSirGlobal pMac)
             {
                smsLog(pMac, LOGE, FL("csrRoamDeregStatisticsReq:cannot stop TlStatsTimer timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            status = palTimerStop(pMac->hHdd, pMac->roam.tlStatsReqInfo.hTlStatsTimer);
+            if(!HAL_STATUS_SUCCESS(status))
+            {
+               smsLog(pMac, LOGE, FL("csrRoamDeregStatisticsReq:cannot stop TlStatsTimer timer\n"));
+>>>>>>> 657b0e9... prima update
                //we will continue
             }
          }
@@ -19221,10 +22023,14 @@ eHalStatus csrRoamDeregStatisticsReq(tpAniSirGlobal pMac)
           if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
           {
 <<<<<<< HEAD
+<<<<<<< HEAD
               smsLog(pMac, LOGE, FL("csrRoamDeregStatisticsReq:failed to destroy Client req timer\n"));
 =======
               smsLog(pMac, LOGE, FL("csrRoamDeregStatisticsReq:failed to destroy Client req timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              smsLog(pMac, LOGE, FL("csrRoamDeregStatisticsReq:failed to destroy Client req timer\n"));
+>>>>>>> 657b0e9... prima update
           }
       }
       
@@ -19275,11 +22081,14 @@ eHalStatus csrIsFullPowerNeeded( tpAniSirGlobal pMac, tSmeCmd *pCommand,
             switch( pCommand->u.scanCmd.reason )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
             case eCsrScanGetLfrResult:
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             case eCsrScanGetResult:
             case eCsrScanBGScanAbort:
             case eCsrScanBGScanEnable:
@@ -19375,6 +22184,7 @@ eHalStatus csrIsFullPowerNeeded( tpAniSirGlobal pMac, tSmeCmd *pCommand,
             reason = eSME_LINK_DISCONNECTED_BY_OTHER;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
         else if( eSmeCommandTdlsAddPeer == pCommand->command )
@@ -19385,6 +22195,8 @@ eHalStatus csrIsFullPowerNeeded( tpAniSirGlobal pMac, tSmeCmd *pCommand,
         }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         break;
     case REQUEST_STOP_UAPSD:
     case REQUEST_EXIT_WOWL:
@@ -19408,10 +22220,14 @@ eHalStatus csrIsFullPowerNeeded( tpAniSirGlobal pMac, tSmeCmd *pCommand,
     case LOW_POWER:
         //We are not supposed to do anything
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL( "  cannot process because PMC is in stopped/standby state %d\n" ), pmcState );
 =======
         smsLog( pMac, LOGE, FL( "  cannot process because PMC is in stopped/standby state %d" ), pmcState );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL( "  cannot process because PMC is in stopped/standby state %d\n" ), pmcState );
+>>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_FAILURE;
         break;
     case FULL_POWER:
@@ -19482,6 +22298,7 @@ eHalStatus csrQueueSmeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOL
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     if ((pMac->fScanOffload) && (pCommand->command == eSmeCommandScan))
     {
@@ -19494,6 +22311,8 @@ eHalStatus csrQueueSmeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOL
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     //We can call request full power first before putting the command into pending Q
     //because we are holding SME lock at this point.
     status = csrRequestFullPower( pMac, pCommand );
@@ -19509,10 +22328,14 @@ eHalStatus csrQueueSmeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOL
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
              //Other commands are waiting for PMC callback, queue the new command to the pending Q
 =======
             //Other commands are waiting for PMC callback, queue the new command to the pending Q
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             //Other commands are waiting for PMC callback, queue the new command to the pending Q
+>>>>>>> 657b0e9... prima update
             //no list lock is needed since SME lock is held
             if( !fHighPriority )
             {
@@ -19522,10 +22345,14 @@ eHalStatus csrQueueSmeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOL
                 csrLLInsertHead( &pMac->roam.roamCmdPendingList, &pCommand->Link, eANI_BOOLEAN_FALSE );
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
        }
 =======
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       }
+>>>>>>> 657b0e9... prima update
     }
     else if( eHAL_STATUS_PMC_PENDING == status )
     {
@@ -19543,6 +22370,7 @@ eHalStatus csrQueueSmeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOL
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Not to decrease pMac->roam.sPendingCommands here. Caller will decrease it when it 
         //release the command.
         smsLog( pMac, LOGE, FL( "  cannot queue command %d\n" ), pCommand->command );
@@ -19552,13 +22380,19 @@ eHalStatus csrQueueSmeCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOL
 #ifdef WLAN_SOFTAP_FEATURE
 =======
         //Not to decrease pMac->roam.sPendingCommands here. Caller will decrease it when it
+=======
+        //Not to decrease pMac->roam.sPendingCommands here. Caller will decrease it when it 
+>>>>>>> 657b0e9... prima update
         //release the command.
-        smsLog( pMac, LOGE, FL( "  cannot queue command %d" ), pCommand->command );
+        smsLog( pMac, LOGE, FL( "  cannot queue command %d\n" ), pCommand->command );
     }
-end:
     return ( status );
 }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 eHalStatus csrRoamUpdateAPWPSIE( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirAPWPSIEs* pAPWPSIES )
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -19581,10 +22415,13 @@ eHalStatus csrRoamUpdateAPWPSIE( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirAP
 
         pBuf = (tANI_U8 *)&pMsg->transactionId;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         VOS_ASSERT(pBuf);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         wTmpBuf = pBuf;
         // transactionId
         *pBuf = 0;
@@ -19627,11 +22464,15 @@ eHalStatus csrRoamUpdateWPARSNIEs( tpAniSirGlobal pMac, tANI_U32 sessionId, tSir
         *( pBuf + 1 ) = 0;
         pBuf += sizeof(tANI_U16);
 <<<<<<< HEAD
+<<<<<<< HEAD
  
 =======
         VOS_ASSERT(pBuf);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ 
+>>>>>>> 657b0e9... prima update
         // bssId
         palCopyMemory( pMac->hHdd, (tSirMacAddr *)pBuf, &pSession->selfMacAddr, sizeof(tSirMacAddr) );
         pBuf += sizeof(tSirMacAddr);
@@ -19647,9 +22488,13 @@ eHalStatus csrRoamUpdateWPARSNIEs( tpAniSirGlobal pMac, tANI_U32 sessionId, tSir
     return ( status );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif //#ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif //#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 //eHalStatus csrRoamIssueFTPreauthReq(tHalHandle hHal, tANI_U32 sessionId, tCsrBssid preAuthBssid, tANI_U8 channelId)
@@ -19682,11 +22527,15 @@ eHalStatus csrRoamIssueFTPreauthReq(tHalHandle hHal, tANI_U32 sessionId, tpSirBs
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (csrRoamIs11rAssoc(pMac))
 =======
     if (csrRoamIs11rAssoc(pMac) && 
           (pMac->roam.roamSession[sessionId].connectedProfile.AuthType != eCSR_AUTH_TYPE_OPEN_SYSTEM))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (csrRoamIs11rAssoc(pMac))
+>>>>>>> 657b0e9... prima update
     {
         pftPreAuthReq->ft_ies_length = (tANI_U16)pMac->ft.ftSmeContext.auth_ft_ies_length;
         palCopyMemory(pMac->hHdd, pftPreAuthReq->ft_ies, pMac->ft.ftSmeContext.auth_ft_ies, 
@@ -19719,6 +22568,7 @@ void csrRoamFTPreAuthRspProcessor( tHalHandle hHal, tpSirFTPreAuthRsp pFTPreAuth
 
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOGE, FL("Preauth response status code %d"), pFTPreAuthRsp->status); 
 #endif
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
@@ -19729,6 +22579,12 @@ void csrRoamFTPreAuthRspProcessor( tHalHandle hHal, tpSirFTPreAuthRsp pFTPreAuth
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
     status = csrNeighborRoamPreauthRspHandler(pMac, pFTPreAuthRsp->status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOGE, FL("Preauth response status code %d"), pFTPreAuthRsp->status); 
+#endif
+#ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
+    status = csrNeighborRoamPreauthRspHandler(pMac, (VOS_STATUS)pFTPreAuthRsp->status);
+>>>>>>> 657b0e9... prima update
     if (status != eHAL_STATUS_SUCCESS) {
         /*
          * Bail out if pre-auth was not even processed.
@@ -19745,6 +22601,7 @@ void csrRoamFTPreAuthRspProcessor( tHalHandle hHal, tpSirFTPreAuthRsp pFTPreAuth
     // Indicate SME QoS module the completion of Preauth success. This will trigger the creation of RIC IEs
     pMac->ft.ftSmeContext.psavedFTPreAuthRsp = pFTPreAuthRsp;
 <<<<<<< HEAD
+<<<<<<< HEAD
     sme_QosCsrEventInd(pMac, pMac->ft.ftSmeContext.smeSessionId, SME_QOS_CSR_PREAUTH_SUCCESS_IND, NULL);
     /* Start the pre-auth reassoc interval timer with a period of 400ms. When this expires, 
      * actual transition from the current to handoff AP is triggered */
@@ -19760,14 +22617,22 @@ void csrRoamFTPreAuthRspProcessor( tHalHandle hHal, tpSirFTPreAuthRsp pFTPreAuth
     {
         sme_QosCsrEventInd(pMac, pMac->ft.ftSmeContext.smeSessionId, SME_QOS_CSR_PREAUTH_SUCCESS_IND, NULL);
     }
+=======
+    sme_QosCsrEventInd(pMac, pMac->ft.ftSmeContext.smeSessionId, SME_QOS_CSR_PREAUTH_SUCCESS_IND, NULL);
+>>>>>>> 657b0e9... prima update
     /* Start the pre-auth reassoc interval timer with a period of 400ms. When this expires, 
      * actual transition from the current to handoff AP is triggered */
-    status = vos_timer_start(&pMac->ft.ftSmeContext.preAuthReassocIntvlTimer,
-                                                            60);
+    status = palTimerStart(pMac->hHdd, pMac->ft.ftSmeContext.preAuthReassocIntvlTimer,
+                                                            60 * PAL_TIMER_TO_MS_UNIT,
+                                                            eANI_BOOLEAN_FALSE);
     if (eHAL_STATUS_SUCCESS != status)
     {
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Preauth reassoc interval timer start failed to start with status %d"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Preauth reassoc interval timer start failed to start with status %d\n"), status);
+>>>>>>> 657b0e9... prima update
         return;
     }
     // Save the received response
@@ -19781,10 +22646,14 @@ void csrRoamFTPreAuthRspProcessor( tHalHandle hHal, tpSirFTPreAuthRsp pFTPreAuth
     // If Legacy Fast Roaming is enabled, signal the supplicant  
     // So he can send us a PMK-ID for this candidate AP.
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (csrRoamIsFastRoamEnabled(pMac))
 =======
     if (csrRoamIsFastRoamEnabled(pMac, CSR_SESSION_ID_INVALID))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (csrRoamIsFastRoamEnabled(pMac))
+>>>>>>> 657b0e9... prima update
     {
         // Save the bssid from the received response 
         palCopyMemory(pMac->hHdd, (void *)&roamInfo.bssid, (void *)pFTPreAuthRsp->preAuthbssId, sizeof(tCsrBssid));
@@ -19808,20 +22677,28 @@ void csrRoamJoinRetryTimerHandler(void *pv)
     if( CSR_IS_SESSION_VALID(pMac, sessionId) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL( "  retrying the last roam profile on session %d\n" ), sessionId );
 =======
         smsLog( pMac, LOGE, FL( "  retrying the last roam profile on session %d" ), sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL( "  retrying the last roam profile on session %d\n" ), sessionId );
+>>>>>>> 657b0e9... prima update
         pSession = CSR_GET_SESSION( pMac, sessionId );
         if(pSession->pCurRoamProfile && csrIsConnStateDisconnected(pMac, sessionId))
         {
             if( !HAL_STATUS_SUCCESS(csrRoamJoinLastProfile(pMac, sessionId)) )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                smsLog( pMac, LOGE, FL( "  fail to retry the last roam profile\n" ) );
 =======
                smsLog( pMac, LOGE, FL( "  fail to retry the last roam profile" ) );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               smsLog( pMac, LOGE, FL( "  fail to retry the last roam profile\n" ) );
+>>>>>>> 657b0e9... prima update
             }
         }
     }
@@ -19834,6 +22711,7 @@ eHalStatus csrRoamStartJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, t
     if(pSession->pCurRoamProfile && pSession->maxRetryCount)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" call sessionId %d retry count %d left\n "), sessionId, pSession->maxRetryCount);
         pSession->maxRetryCount--;
         pSession->joinRetryTimerInfo.pMac = pMac;
@@ -19844,23 +22722,34 @@ eHalStatus csrRoamStartJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, t
             smsLog(pMac, LOGE, FL(" fail to start timer status %s \n "), status);
 =======
         smsLog(pMac, LOGE, FL(" call sessionId %d retry count %d left"), sessionId, pSession->maxRetryCount);
+=======
+        smsLog(pMac, LOGE, FL(" call sessionId %d retry count %d left\n "), sessionId, pSession->maxRetryCount);
+>>>>>>> 657b0e9... prima update
         pSession->maxRetryCount--;
         pSession->joinRetryTimerInfo.pMac = pMac;
         pSession->joinRetryTimerInfo.sessionId = (tANI_U8)sessionId;
-        status = vos_timer_start(&pSession->hTimerJoinRetry, interval/PAL_TIMER_TO_MS_UNIT);
-        if (!HAL_STATUS_SUCCESS(status))
+        status = palTimerStart(pMac->hHdd, pSession->hTimerJoinRetry, interval, eANI_BOOLEAN_FALSE);
+        if(!HAL_STATUS_SUCCESS(status))
         {
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL(" fail to start timer status %s"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL(" fail to start timer status %s \n "), status);
+>>>>>>> 657b0e9... prima update
         }
     }
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" not to start timer due to no profile or reach mac ret (%d)\n "), 
 =======
         smsLog(pMac, LOGE, FL(" not to start timer due to no profile or reach mac ret (%d)"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL(" not to start timer due to no profile or reach mac ret (%d)\n "), 
+>>>>>>> 657b0e9... prima update
                pSession->maxRetryCount);
     }
     
@@ -19868,6 +22757,7 @@ eHalStatus csrRoamStartJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, t
 }
 eHalStatus csrRoamStopJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     smsLog(pMac, LOGE, " csrRoamStopJoinRetryTimer \n ");
     if( CSR_IS_SESSION_VALID(pMac, sessionId) )
@@ -19879,6 +22769,12 @@ eHalStatus csrRoamStopJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId)
     {
         return (vos_timer_stop(&pMac->roam.roamSession[sessionId].hTimerJoinRetry));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGE, " csrRoamStopJoinRetryTimer \n ");
+    if( CSR_IS_SESSION_VALID(pMac, sessionId) )
+    {
+        return (palTimerStop(pMac->hHdd, pMac->roam.roamSession[sessionId].hTimerJoinRetry));
+>>>>>>> 657b0e9... prima update
     }
     
     return eHAL_STATUS_SUCCESS;
@@ -19942,6 +22838,7 @@ eHalStatus csrGetCurrentCountryCode(tpAniSirGlobal pMac, tANI_U8 *pCountry)
          WNI_CFG_COUNTRY_CODE_LEN );
    return eHAL_STATUS_SUCCESS;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -20052,3 +22949,5 @@ eHalStatus csrHandoffRequest(tpAniSirGlobal pMac,
 }
 #endif /* WLAN_FEATURE_ROAM_SCAN_OFFLOAD */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

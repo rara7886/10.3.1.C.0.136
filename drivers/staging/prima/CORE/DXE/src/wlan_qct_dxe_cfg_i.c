@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -200,10 +203,14 @@ WLANDXE_ChannelConfigType chanRXLowPriConfig =
 
    /* Number of Descriptor, NOT CLEAR YET !!! */
 <<<<<<< HEAD
+<<<<<<< HEAD
    512,
 =======
    256,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   512,
+>>>>>>> 657b0e9... prima update
 
    /* MAX num RX Buffer, NOT CLEAR YET !!! */
    1,
@@ -244,10 +251,14 @@ WLANDXE_ChannelConfigType chanRXHighPriConfig =
 
    /* Number of Descriptor, NOT CLEAR YET !!! */
 <<<<<<< HEAD
+<<<<<<< HEAD
    40,
 =======
    256,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   40,
+>>>>>>> 657b0e9... prima update
 
    /* MAX num RX Buffer, NOT CLEAR YET !!! */
    1,
@@ -398,10 +409,14 @@ wpt_status dxeCommonDefaultConfig
 
   @  Parameters
 <<<<<<< HEAD
+<<<<<<< HEAD
       WLANDXE_CtrlBlkType     *dxeCtrlBlk,
 =======
       WLANDXE_CtrlBlkType:    *dxeCtrlBlk,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      WLANDXE_CtrlBlkType     *dxeCtrlBlk,
+>>>>>>> 657b0e9... prima update
                                DXE host driver main control block
       WLANDXE_ChannelCBType   *channelEntry
                                Channel specific control block
@@ -425,9 +440,12 @@ wpt_status dxeChannelDefaultConfig
    wpt_uint32                  dxeControlWriteEopInt = 0;
    wpt_uint32                  idx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpt_uint32                  rxResourceCount = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    WLANDXE_ChannelMappingType *mappedChannel = NULL;
 
    /* Sanity Check */
@@ -451,10 +469,14 @@ wpt_status dxeChannelDefaultConfig
    {
       HDXE_MSG(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s Failed to map channel", __FUNCTION__);
 =======
               "%s Failed to map channel", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s Failed to map channel", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -645,6 +667,7 @@ wpt_status dxeChannelDefaultConfig
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    channelEntry->numDesc            = mappedChannel->channelConfig->nDescs;
 =======
    wpalGetNumRxRawPacket(&rxResourceCount);
@@ -658,6 +681,9 @@ wpt_status dxeChannelDefaultConfig
       channelEntry->numDesc         = rxResourceCount / 4;
    }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   channelEntry->numDesc            = mappedChannel->channelConfig->nDescs;
+>>>>>>> 657b0e9... prima update
    channelEntry->assignedDMAChannel = mappedChannel->DMAChannel;
    channelEntry->numFreeDesc             = 0;
    channelEntry->numRsvdDesc             = 0;

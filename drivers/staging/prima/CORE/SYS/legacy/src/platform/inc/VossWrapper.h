@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -53,10 +56,14 @@ extern "C" {
   @file VossWrapper.h
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   @brief This header file contains the various structure definitions and 
 =======
   @brief This header file contains the various structure definitions and
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  @brief This header file contains the various structure definitions and 
+>>>>>>> 657b0e9... prima update
   function prototypes for the RTOS abstraction layer, implemented for VOSS
 
   Copyright (c) 2008 QUALCOMM Incorporated.
@@ -65,6 +72,9 @@ extern "C" {
 ===========================================================================*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 /*=========================================================================== 
     
                        EDIT HISTORY FOR FILE 
@@ -78,6 +88,7 @@ extern "C" {
    
    
   when        who    what, where, why 
+<<<<<<< HEAD
 =======
 /*===========================================================================
 
@@ -93,6 +104,8 @@ extern "C" {
 
   when        who    what, where, why
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   --------    ---    --------------------------------------------------------
   12/15/08    sho    Resolved warnings and errors from AMSS compiler when
                      this is ported to WM
@@ -100,11 +113,15 @@ extern "C" {
                      on WM platform and allow this to work on all VOSS enabled
                      platforms
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   06/24/08    tbh    Modified the file to remove the dependecy on HDD files as 
                      part of Gen6 bring up process. 
   10/29/02 Neelay Das Created file. 
      
 ===========================================================================*/ 
+<<<<<<< HEAD
 =======
   06/24/08    tbh    Modified the file to remove the dependecy on HDD files as
                      part of Gen6 bring up process.
@@ -112,6 +129,8 @@ extern "C" {
 
 ===========================================================================*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
  * Include Files
@@ -121,15 +140,22 @@ extern "C" {
 #include "sirParams.h"
 #include "sysDef.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halDataStruct.h"
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halDataStruct.h"
+#endif
+>>>>>>> 657b0e9... prima update
 #include "aniDbgTest.h"
 #include "vos_timer.h"
 #include "palApi.h"
 #include "vos_types.h"
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "vos_trace.h"
@@ -139,6 +165,12 @@ extern "C" {
 #include "vos_trace.h"
 #include "vos_memory.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include "vos_trace.h"
+#include "vos_memory.h"
+#endif
+>>>>>>> 657b0e9... prima update
 
 /* Interlocked Compare Exchange related definitions */
 
@@ -182,6 +214,9 @@ extern "C" {
 #define TX_AIRGO_TMR_SIGNATURE   0xDEADBEEF
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
 /* Just #define out the thread and queue specific threadX calls, since the plan is to keep
    the Windows port of the MAC non-threaded */
@@ -213,8 +248,11 @@ extern "C" {
 #define TX_DISABLE_INTR tx_disable_intr()
 #define TX_ENABLE_INTR  tx_enable_intr()
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef TIMER_MANAGER
 #define  tx_timer_create(a, b, c, d, e, f, g)   tx_timer_create_intern_debug((v_PVOID_t)pMac, a, b, c, d, e, f, g, __FILE__, __LINE__)
 #else
@@ -222,6 +260,9 @@ extern "C" {
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
 /*-------------------------------------------------------------------------*/
 /*  ThreadX structures are not mapped to Windows structures for the        */
@@ -246,8 +287,11 @@ typedef v_PVOID_t TX_MUTEX;
 /*--------------------------------------------------------------------*/
 typedef v_SLONG_t TX_SEMAPHORE;
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*--------------------------------------------------------------------*/
 /* Timer structure                                                    */
 /* This structure is used to implement ThreadX timer facility.  Just  */
@@ -277,6 +321,9 @@ typedef struct TX_TIMER_STRUCT
 #define TX_TIMER_VALID(timer) (timer.pMac != 0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 typedef struct sAniSirTxWrapper
 {
     // Back pointer to the pAdapter structure, needed for some of the internal routines
@@ -286,18 +333,25 @@ typedef struct sAniSirTxWrapper
 
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 extern v_ULONG_t tx_time_get(v_VOID_t);
 extern v_UINT_t  tx_timer_activate(TX_TIMER*);
 extern v_UINT_t  tx_timer_change(TX_TIMER*, v_ULONG_t, v_ULONG_t);
 extern v_UINT_t  tx_timer_change_context(TX_TIMER*, tANI_U32);
 #ifdef TIMER_MANAGER
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern v_UINT_t  tx_timer_create_intern_debug(v_PVOID_t, TX_TIMER*, char *, v_VOID_t(*)(v_PVOID_t, tANI_U32), 
 =======
 extern v_UINT_t  tx_timer_create_intern_debug(v_PVOID_t, TX_TIMER*, char *, v_VOID_t(*)(v_PVOID_t, tANI_U32),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+extern v_UINT_t  tx_timer_create_intern_debug(v_PVOID_t, TX_TIMER*, char *, v_VOID_t(*)(v_PVOID_t, tANI_U32), 
+>>>>>>> 657b0e9... prima update
                tANI_U32, v_ULONG_t, v_ULONG_t, v_ULONG_t, char* fileName, v_U32_t lineNum );
 #else
 extern v_UINT_t  tx_timer_create_intern(v_PVOID_t, TX_TIMER*, char *, v_VOID_t(*)(v_PVOID_t, tANI_U32), tANI_U32, v_ULONG_t, v_ULONG_t, v_ULONG_t);
@@ -307,6 +361,9 @@ extern v_UINT_t  tx_timer_delete(TX_TIMER*);
 extern v_BOOL_t  tx_timer_running(TX_TIMER*);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
 
 // Routines needed to initialize and cleanup the Windows wrapper
@@ -324,8 +381,11 @@ extern int gHalBufCnt;
 extern v_U64_t utilGetCurrentTime(void);
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef __cplusplus
 }
 #endif

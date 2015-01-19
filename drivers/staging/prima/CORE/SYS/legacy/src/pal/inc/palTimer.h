@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -79,10 +82,14 @@ typedef void (*palTimerCallback)(void *);
 #define PAL_TIMER_TO_SEC_UNIT     1000000
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #ifndef FEATURE_WLAN_PAL_TIMER_DISABLE
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 //PAL timer functions
 //pPalTimer is a pointer to a caller allocated tPalTimer object
 //pContext is a pointer to an object that will be passed in when callback is called
@@ -106,9 +113,13 @@ eHalStatus palTimerStart(tHddHandle, tPalTimerHandle, tANI_U32 uExpireTime, tANI
 //For Windows, if the driver is halting, the callback is not called after this function returns. 
 eHalStatus palTimerStop(tHddHandle, tPalTimerHandle); 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 
 #endif

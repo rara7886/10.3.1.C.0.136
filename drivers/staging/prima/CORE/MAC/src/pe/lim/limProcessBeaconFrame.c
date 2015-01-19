@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -56,6 +59,9 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -68,12 +74,15 @@
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halCommonApi.h"
 #endif
+<<<<<<< HEAD
 =======
 #include "wniCfgSta.h"
 #include "aniGlobal.h"
 #include "cfgApi.h"
 #include "schApi.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #include "utilsApi.h"
 #include "limTypes.h"
 #include "limUtils.h"
@@ -121,6 +130,7 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
     limPrintMacAddr(pMac, pHdr->sa, LOG2);)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
         return;
 
@@ -131,6 +141,11 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
             return;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
+        return;
+
+>>>>>>> 657b0e9... prima update
 
     /**
      * Expect Beacon only when
@@ -143,6 +158,7 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
         (pMac->lim.gLimMlmState == eLIM_MLM_PASSIVE_SCAN_STATE) ||
         (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
         (psessionEntry->limMlmState == eLIM_MLM_WT_JOIN_BEACON_STATE))
     {
         if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
@@ -153,12 +169,19 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
         (psessionEntry->limMlmState == eLIM_MLM_WT_JOIN_BEACON_STATE)
         || pMac->fScanOffload
         )
+=======
+        (psessionEntry->limMlmState == eLIM_MLM_WT_JOIN_BEACON_STATE))
+>>>>>>> 657b0e9... prima update
     {
-        pBeacon = vos_mem_malloc(sizeof(tSchBeaconStruct));
-        if ( NULL == pBeacon )
+        if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
+                                                    (void **)&pBeacon, sizeof(tSchBeaconStruct)))
         {
+<<<<<<< HEAD
             limLog(pMac, LOGE, FL("Unable to allocate memory in limProcessBeaconFrame") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, FL("Unable to PAL allocate memory in limProcessBeaconFrame\n") );
+>>>>>>> 657b0e9... prima update
             return;
         }
 
@@ -170,6 +193,7 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
             // Ignore it and move on.
             limLog(pMac, LOGW,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    FL("Received invalid Beacon in state %X\n"),
                    psessionEntry->limMlmState);
             limPrintMlmState(pMac, LOGW,  psessionEntry->limMlmState);
@@ -179,12 +203,16 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
 
 =======
                    FL("Received invalid Beacon in state %X"),
+=======
+                   FL("Received invalid Beacon in state %X\n"),
+>>>>>>> 657b0e9... prima update
                    psessionEntry->limMlmState);
             limPrintMlmState(pMac, LOGW,  psessionEntry->limMlmState);
-            vos_mem_free(pBeacon);
+            palFreeMemory(pMac->hHdd, pBeacon);
             return;
         }
 
+<<<<<<< HEAD
         /*during scanning, when any session is active, and beacon/Pr belongs to
           one of the session, fill up the following, TBD - HB couter */
         if ((!psessionEntry->lastBeaconDtimPeriod) &&
@@ -197,10 +225,13 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
             psessionEntry->currentBssBeaconCnt++;
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
         MTRACE(macTrace(pMac, TRACE_CODE_RX_MGMT_TSF, 0, pBeacon->timeStamp[0]);)
         MTRACE(macTrace(pMac, TRACE_CODE_RX_MGMT_TSF, 0, pBeacon->timeStamp[1]);)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         if (pMac->fScanOffload)
@@ -210,10 +241,13 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
 
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
         if ((pMac->lim.gLimMlmState  == eLIM_MLM_WT_PROBE_RESP_STATE) ||
             (pMac->lim.gLimMlmState  == eLIM_MLM_PASSIVE_SCAN_STATE))
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
             //If we are scanning for P2P, only accept probe rsp
@@ -225,10 +259,18 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
             if((pMac->lim.gLimHalScanState != eLIM_HAL_SCANNING_STATE) || (NULL == pMac->lim.gpLimMlmScanReq) 
                || !pMac->lim.gpLimMlmScanReq->p2pSearch )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+            //If we are scanning for P2P, only accept probe rsp
+            if((pMac->lim.gLimHalScanState != eLIM_HAL_SCANNING_STATE) || (NULL == pMac->lim.gpLimMlmScanReq) 
+               || !pMac->lim.gpLimMlmScanReq->p2pSearch )
+#endif
+>>>>>>> 657b0e9... prima update
             {
                 limCheckAndAddBssDescription(pMac, pBeacon, pRxPacketInfo, 
                        ((pMac->lim.gLimHalScanState == eLIM_HAL_SCANNING_STATE) ? eANI_BOOLEAN_TRUE : eANI_BOOLEAN_FALSE), 
                        eANI_BOOLEAN_FALSE);
+<<<<<<< HEAD
 <<<<<<< HEAD
             }
         }
@@ -257,26 +299,39 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
              if( (palAllocateMemory(pMac->hHdd, (void**)&psessionEntry->beacon, psessionEntry->bcnLen)) != eHAL_STATUS_SUCCESS)
 =======
 
+=======
+>>>>>>> 657b0e9... prima update
             }
-            /* Calling dfsChannelList which will convert DFS channel
-             * to Active channel for x secs if this channel is DFS channel */
-             limSetDFSChannelList(pMac, pBeacon->channelNumber,
-                                    &pMac->lim.dfschannelList);
         }
         else if (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE)
         {
+#if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+            // STA/AP is in learn mode
+            /* Not sure whether the below 2 lines are needed for the station. TODO If yes, this should be 
+             * uncommented. Also when we tested enabling this, there is a crash as soon as the station
+             * comes up which needs to be fixed*/
+            //if (pMac->lim.gLimSystemRole == eLIM_STA_ROLE)
+              //  limCheckAndAddBssDescription(pMac, pBeacon, pRxPacketInfo, eANI_BOOLEAN_TRUE);
+            limCollectMeasurementData(pMac, pRxPacketInfo, pBeacon);
+           PELOG3(limLog(pMac, LOG3, FL("Parsed WDS info in Beacon frames: wdsLength=%d\n"),
+               pBeacon->propIEinfo.wdsLength);)
+#endif
         }
-        else if (psessionEntry->limMlmState == eLIM_MLM_WT_JOIN_BEACON_STATE)
+        else
         {
             if( psessionEntry->beacon != NULL )
             {
-                vos_mem_free(psessionEntry->beacon);
+                palFreeMemory(pMac->hHdd, psessionEntry->beacon);
                 psessionEntry->beacon = NULL;
              }
              psessionEntry->bcnLen = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo);
+<<<<<<< HEAD
              psessionEntry->beacon = vos_mem_malloc(psessionEntry->bcnLen);
              if ( NULL == psessionEntry->beacon )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             if( (palAllocateMemory(pMac->hHdd, (void**)&psessionEntry->beacon, psessionEntry->bcnLen)) != eHAL_STATUS_SUCCESS)
+>>>>>>> 657b0e9... prima update
              {
                 PELOGE(limLog(pMac, LOGE, FL("Unable to allocate memory to store beacon"));)
               }
@@ -284,11 +339,15 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
               {
                 //Store the Beacon/ProbeRsp. This is sent to csr/hdd in join cnf response. 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, psessionEntry->beacon, WDA_GET_RX_MPDU_DATA(pRxPacketInfo), psessionEntry->bcnLen);
 =======
                 vos_mem_copy(psessionEntry->beacon, WDA_GET_RX_MPDU_DATA(pRxPacketInfo),
                              psessionEntry->bcnLen);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                palCopyMemory(pMac->hHdd, psessionEntry->beacon, WDA_GET_RX_MPDU_DATA(pRxPacketInfo), psessionEntry->bcnLen);
+>>>>>>> 657b0e9... prima update
 
                }
              
@@ -296,10 +355,14 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
             limCheckAndAnnounceJoinSuccess(pMac, pBeacon, pHdr,psessionEntry);
         } // if (pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE)
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pBeacon);
 =======
         vos_mem_free(pBeacon);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory(pMac->hHdd, pBeacon);
+>>>>>>> 657b0e9... prima update
     } // if ((pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) || ...
     else
     {
@@ -323,10 +386,14 @@ limProcessBeaconFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession ps
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             PELOG1(limLog(pMac, LOG1, FL("Received Beacon in unexpected state %d\n"),
 =======
             PELOG1(limLog(pMac, LOG1, FL("Received Beacon in unexpected state %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            PELOG1(limLog(pMac, LOG1, FL("Received Beacon in unexpected state %d\n"),
+>>>>>>> 657b0e9... prima update
                    psessionEntry->limMlmState);
             limPrintMlmState(pMac, LOG1, psessionEntry->limMlmState);)
 #ifdef WLAN_DEBUG                    
@@ -362,6 +429,7 @@ limProcessBeaconFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     limPrintMacAddr(pMac, pHdr->sa, LOG2);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
         return;
 
@@ -372,6 +440,11 @@ limProcessBeaconFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
             return;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
+        return;
+
+>>>>>>> 657b0e9... prima update
 
     /**
      * No session has been established. Expect Beacon only when
@@ -383,6 +456,7 @@ limProcessBeaconFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
         (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
                                                     (void **)&pBeacon, sizeof(tSchBeaconStruct)))
         {
@@ -393,12 +467,19 @@ limProcessBeaconFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
         {
             limLog(pMac, LOGE, FL("Unable to allocate memory in limProcessBeaconFrameNoSession") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
+                                                    (void **)&pBeacon, sizeof(tSchBeaconStruct)))
+        {
+            limLog(pMac, LOGE, FL("Unable to PAL allocate memory in limProcessBeaconFrameNoSession\n") );
+>>>>>>> 657b0e9... prima update
             return;
         }
 
         if (sirConvertBeaconFrame2Struct(pMac, (tANI_U8 *) pRxPacketInfo, pBeacon) != eSIR_SUCCESS)
         {
             // Received wrongly formatted/invalid Beacon. Ignore and move on. 
+<<<<<<< HEAD
 <<<<<<< HEAD
             limLog(pMac, LOGW, FL("Received invalid Beacon in global MLM state %X\n"), pMac->lim.gLimMlmState);
             limPrintMlmState(pMac, LOGW,  pMac->lim.gLimMlmState);
@@ -408,12 +489,18 @@ limProcessBeaconFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
             limPrintMlmState(pMac, LOGW,  pMac->lim.gLimMlmState);
             vos_mem_free(pBeacon);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGW, FL("Received invalid Beacon in global MLM state %X\n"), pMac->lim.gLimMlmState);
+            limPrintMlmState(pMac, LOGW,  pMac->lim.gLimMlmState);
+            palFreeMemory(pMac->hHdd, pBeacon);
+>>>>>>> 657b0e9... prima update
             return;
         }
 
         if ( (pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) ||
              (pMac->lim.gLimMlmState == eLIM_MLM_PASSIVE_SCAN_STATE) )
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
             //If we are scanning for P2P, only accept probe rsp
@@ -444,26 +531,41 @@ limProcessBeaconFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     {
         limLog(pMac, LOG1, FL("Rcvd Beacon in unexpected MLM state %d\n"), pMac->lim.gLimMlmState);
 =======
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
             //If we are scanning for P2P, only accept probe rsp
             if((pMac->lim.gLimHalScanState != eLIM_HAL_SCANNING_STATE) || (NULL == pMac->lim.gpLimMlmScanReq) 
                || !pMac->lim.gpLimMlmScanReq->p2pSearch )
+#endif
             {
                 limCheckAndAddBssDescription(pMac, pBeacon, pRxPacketInfo, eANI_BOOLEAN_TRUE, eANI_BOOLEAN_FALSE);
             }
-            /* Calling dfsChannelList which will convert DFS channel
-             * to Active channel for x secs if this channel is DFS channel */
-            limSetDFSChannelList(pMac, pBeacon->channelNumber,
-                                    &pMac->lim.dfschannelList);
         }
         else if (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE)
         {
+#if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+            // STA/AP is in learn mode
+            /* Not sure whether the below 2 lines are needed for the station. TODO If yes, this should be 
+             * uncommented. Also when we tested enabling this, there is a crash as soon as the station
+             * comes up which needs to be fixed*/
+            //if (pMac->lim.gLimSystemRole == eLIM_STA_ROLE)
+              //  limCheckAndAddBssDescription(pMac, pBeacon, pRxPacketInfo, eANI_BOOLEAN_TRUE);
+            limCollectMeasurementData(pMac, pRxPacketInfo, pBeacon);
+            limLog(pMac, LOG3, FL("Parsed WDS info in Beacon frames: wdsLength=%d\n"),
+               pBeacon->propIEinfo.wdsLength);
+#endif
         }  // end of eLIM_MLM_LEARN_STATE)       
-        vos_mem_free(pBeacon);
+        palFreeMemory(pMac->hHdd, pBeacon);
     } // end of (eLIM_MLM_WT_PROBE_RESP_STATE) || (eLIM_MLM_PASSIVE_SCAN_STATE)
     else
     {
+<<<<<<< HEAD
         limLog(pMac, LOG1, FL("Rcvd Beacon in unexpected MLM state %d"), pMac->lim.gLimMlmState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        limLog(pMac, LOG1, FL("Rcvd Beacon in unexpected MLM state %d\n"), pMac->lim.gLimMlmState);
+>>>>>>> 657b0e9... prima update
         limPrintMlmState(pMac, LOG1, pMac->lim.gLimMlmState);
 #ifdef WLAN_DEBUG                    
         pMac->lim.gLimUnexpBcnCnt++;

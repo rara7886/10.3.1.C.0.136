@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -64,12 +67,18 @@ tSirRetStatus macOpen(tHalHandle * pHalHandle, tHddHandle hHdd, tMacOpenParamete
 tSirRetStatus macClose(tHalHandle hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC 
 tSirRetStatus macPreStart(tHalHandle hHal);
 #endif
 =======
 tSirRetStatus macPreStart(tHalHandle hHal);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC 
+tSirRetStatus macPreStart(tHalHandle hHal);
+#endif
+>>>>>>> 657b0e9... prima update
 
 #endif //__MAC_INIT_API_H
 

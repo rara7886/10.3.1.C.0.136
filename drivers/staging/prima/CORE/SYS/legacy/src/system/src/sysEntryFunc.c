@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -42,9 +45,13 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 /*
  * Airgo Networks, Inc proprietary. All rights reserved
  * sysEntryFunc.cc - This file has all the system level entry functions
@@ -73,6 +80,9 @@
 #include "sysEntryFunc.h"
 #include "sysStartup.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halMacSecurityApi.h"
 #endif
@@ -88,6 +98,7 @@ postPTTMsgApi(tpAniSirGlobal pMac, tSirMsgQ *pMsg);
 #include "vos_types.h"
 #include "vos_packet.h"
 #endif
+<<<<<<< HEAD
 =======
 #include "limTrace.h"
 #include "wlan_qct_wda.h"
@@ -98,6 +109,8 @@ postPTTMsgApi(tpAniSirGlobal pMac, tSirMsgQ *pMsg);
 #include "vos_types.h"
 #include "vos_packet.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // ---------------------------------------------------------------------------
 /**
@@ -121,6 +134,9 @@ sysInitGlobals(tpAniSirGlobal pMac)
 {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, (tANI_U8 *) &pMac->sys, sizeof(pMac->sys));
 
 #if defined(ANI_DEBUG)
@@ -131,6 +147,7 @@ sysInitGlobals(tpAniSirGlobal pMac)
 #else
     pMac->sys.debugOnReset = false;
 #endif
+<<<<<<< HEAD
 
     pMac->sys.gSysEnableScanMode        = 1;
     pMac->sys.gSysEnableLinkMonitorMode = 0;
@@ -147,12 +164,27 @@ sysInitGlobals(tpAniSirGlobal pMac)
     pMac->sys.gSysEnableScanMode        = 1;
     pMac->sys.gSysEnableLinkMonitorMode = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    pMac->sys.gSysEnableScanMode        = 1;
+    pMac->sys.gSysEnableLinkMonitorMode = 0;
+    pMac->sys.fTestRadar                = false;
+    pMac->sys.radarDetected             = false;
+    pMac->sys.gSysdropLimPkts           = false;
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+    if(eHAL_STATUS_SUCCESS != halGlobalInit(pMac))
+        return eSIR_FAILURE;
+#endif
+>>>>>>> 657b0e9... prima update
     schInitGlobals(pMac);
 
     return eSIR_SUCCESS;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 
 
@@ -183,8 +215,11 @@ sysIsLearnScanModeFrame(tpHalBufDesc pBd)
         return 0;
 }
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 // ---------------------------------------------------------------------------
 /**
  * sysBbtProcessMessageCore
@@ -246,6 +281,7 @@ sysBbtProcessMessageCore(tpAniSirGlobal pMac, tpSirMsgQ pMsg, tANI_U32 type,
             pMac->sys.gSysBbtPostedToLim++;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_CCX
     else if (type == SIR_MAC_DATA_FRAME)
     {
@@ -301,6 +337,11 @@ sysBbtProcessMessageCore(tpAniSirGlobal pMac, tpSirMsgQ pMsg, tANI_U32 type,
 #endif
 #ifdef FEATURE_WLAN_CCX
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_CCX
+    else if (type == SIR_MAC_DATA_FRAME)
+    {
+>>>>>>> 657b0e9... prima update
         PELOGW(sysLog(pMac, LOGW, FL("IAPP Frame...\n")););
         //Post the message to PE Queue
         ret = (tSirRetStatus) limPostMsgApi(pMac, pMsg);
@@ -311,12 +352,17 @@ sysBbtProcessMessageCore(tpAniSirGlobal pMac, tpSirMsgQ pMsg, tANI_U32 type,
         }
         pMac->sys.gSysBbtPostedToLim++;
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
 #endif
 =======
 #endif
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    }
+#endif
+>>>>>>> 657b0e9... prima update
     else
     {
         PELOG3(sysLog(pMac, LOG3, "BBT received Invalid type %d subType %d "
@@ -357,6 +403,9 @@ void sysLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...)
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( ANI_OS_TYPE_WINDOWS )
 // ---------------------------------------------------------------------------
 /**
@@ -832,12 +881,20 @@ postPTTMsgApi(tpAniSirGlobal pMac, tSirMsgQ *pMsg)
     return rc;
 } // postPTTMsgApi()
 
+<<<<<<< HEAD
 
 #endif // eDRIVER_TYPE_MFG
 
 #endif // #if defined ANI_OS_TYPE_LINUX || defined ANI_OS_TYPE_OSX
 =======
+=======
+>>>>>>> 657b0e9... prima update
 
+#endif // eDRIVER_TYPE_MFG
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif // #if defined ANI_OS_TYPE_LINUX || defined ANI_OS_TYPE_OSX
+>>>>>>> 657b0e9... prima update
 

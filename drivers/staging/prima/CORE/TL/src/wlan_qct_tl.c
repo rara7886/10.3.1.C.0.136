@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -152,11 +155,17 @@
 #include "wlan_qct_tli_ba.h" 
 #include "wlan_qct_tl_hosupport.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if !defined( FEATURE_WLAN_INTEGRATED_SOC )
 #include "wlan_qct_ssc.h"
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if !defined( FEATURE_WLAN_INTEGRATED_SOC )
+#include "wlan_qct_ssc.h"
+#endif
+>>>>>>> 657b0e9... prima update
 #include "tlDebug.h"
 #ifdef FEATURE_WLAN_WAPI
 /*Included to access WDI_RxBdType */
@@ -165,20 +174,22 @@
 /*Enables debugging behavior in TL*/
 #define TL_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
 //#define WLAN_SOFTAP_FLOWCTRL_EN
 
 //#define BTAMP_TEST
 =======
 /*Enables debugging FC control frame in TL*/
 //#define TL_DEBUG_FC
+=======
+>>>>>>> 657b0e9... prima update
 //#define WLAN_SOFTAP_FLOWCTRL_EN
-//#define BTAMP_TEST
-#ifdef TL_DEBUG_FC
-#include <wlan_qct_pal_status.h>
-#include <wlan_qct_pal_device.h> // wpalReadRegister
-#endif
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+//#define BTAMP_TEST
+>>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -194,12 +205,18 @@ static v_U8_t WLANTL_AIRONET_SNAP_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x40, 0x9
 const v_U8_t WLANTL_BT_AMP_OUI[] =  {0x00, 0x19, 0x58 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 #define WLANTL_BD_PDU_RESERVE_THRESHOLD           80
 #endif
 =======
 #define WLANTL_MAX_SNR_DATA_SAMPLES 20
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+#define WLANTL_BD_PDU_RESERVE_THRESHOLD           80
+#endif
+>>>>>>> 657b0e9... prima update
 
 #ifdef VOLANS_PERF
 #define WLANTL_BD_PDU_INTERRUPT_ENABLE_THRESHOLD  120
@@ -227,6 +244,7 @@ int bdPduInterruptGetThreshold = WLANTL_BD_PDU_INTERRUPT_GET_THRESHOLD;
                      ( WLANTL_CTRL_FRAME_TYPE == ( (_type_sub) & 0x30 ))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*MAX Allowed len processed by TL - MAx MTU + 802.3 header + BD+DXE+XTL*/
 #define WLANTL_MAX_ALLOWED_LEN    1514 + 100
 
@@ -239,12 +257,18 @@ int bdPduInterruptGetThreshold = WLANTL_BD_PDU_INTERRUPT_GET_THRESHOLD;
                      ( WLANTL_LLC_TDLS_TYPE == ( _eth_type))
 #endif
 
+=======
+>>>>>>> 657b0e9... prima update
 /*MAX Allowed len processed by TL - MAx MTU + 802.3 header + BD+DXE+XTL*/
-#define WLANTL_MAX_ALLOWED_LEN    (1514 + 100)
+#define WLANTL_MAX_ALLOWED_LEN    1514 + 100
 
 #define WLANTL_MASK_AC  0x03
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 //some flow_control define
 //LWM mode will be enabled for this station if the egress/ingress falls below this ratio
 #define WLANTL_LWM_EGRESS_INGRESS_THRESHOLD (0.75)
@@ -257,22 +281,31 @@ int bdPduInterruptGetThreshold = WLANTL_BD_PDU_INTERRUPT_GET_THRESHOLD;
 
 #define WLANTL_AC_MASK (0x7)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WLANTL_STAID_OFFSET (0x4)
 #endif
 =======
 #define WLANTL_STAID_OFFSET (0x6)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WLANTL_STAID_OFFSET (0x4)
+#endif
+>>>>>>> 657b0e9... prima update
 
 /* UINT32 type endian swap */
 #define SWAP_ENDIAN_UINT32(a)          ((a) = ((a) >> 0x18 ) |(((a) & 0xFF0000) >> 0x08) | \
                                             (((a) & 0xFF00) << 0x08)  | (((a) & 0xFF) << 0x18))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 /* Maximum value of SNR that can be calculated by the HW */
 #define WLANTL_MAX_HW_SNR 35
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------------
    TID to AC mapping in TL
@@ -381,9 +414,12 @@ typedef struct
 #define WLAN_TL_INVALID_U_SIG 255
 #define WLAN_TL_INVALID_B_SIG 255
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define ENTER() VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO, "Enter:%s", __func__)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #define WLAN_TL_AC_ARRAY_2_MASK( _pSTA, _ucACMask, i ) \
   do\
@@ -416,6 +452,7 @@ WLANTL_GetEtherType
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
 /* FIXME_MUST: during TDLS integration to main/latest, WLANTL_GetEtherType() conflicts.
@@ -437,16 +474,22 @@ WLANTL_GetEtherType_2
 );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_WAPI
 /*---------------------------------------------------------------------------
  * Adding a global variable to be used when doing frame translation in TxAuth
  * state so as to not set the protected bit to 1 in the case of WAI frames
  *---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 v_U8_t gUcIsWai = 0;
 =======
 v_U8_t gUcIsWai;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+v_U8_t gUcIsWai = 0;
+>>>>>>> 657b0e9... prima update
 #endif
 
 /*----------------------------------------------------------------------------
@@ -456,6 +499,7 @@ v_U8_t gUcIsWai;
 /*----------------------------------------------------------------------------
  * Function Declarations and Documentation
  * -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*==========================================================================
@@ -493,6 +537,8 @@ void WLANTL_FreeClientMemory
     return;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*==========================================================================
 
@@ -533,9 +579,12 @@ WLANTL_Open
   v_U8_t          ucIndex; 
   tHalHandle      smeContext;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   v_U32_t i = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #if defined WLAN_FEATURE_NEIGHBOR_ROAMING
   VOS_STATUS      status = VOS_STATUS_SUCCESS;
 #endif
@@ -546,9 +595,12 @@ WLANTL_Open
     Extract TL control block
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   ENTER();
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   vos_alloc_context( pvosGCtx, VOS_MODULE_ID_TL, 
                     (void*)&pTLCb, sizeof(WLANTL_CbType));
 
@@ -557,10 +609,14 @@ WLANTL_Open
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL: Invalid input pointer on WLANTL_Open TL %x Config %x", pTLCb, pTLConfig ));
 =======
                "WLAN TL: Invalid input pointer on WLANTL_Open TL %p Config %p", pTLCb, pTLConfig ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL: Invalid input pointer on WLANTL_Open TL %x Config %x", pTLCb, pTLConfig ));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -572,10 +628,14 @@ WLANTL_Open
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Invalid smeContext", __FUNCTION__));
 =======
                       "%s: Invalid smeContext", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Invalid smeContext", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -589,6 +649,7 @@ WLANTL_Open
              "WLAN TL:WLANTL_Open"));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients = vos_mem_malloc(sizeof(WLANTL_STAClientType) * WLAN_MAX_STA_COUNT);
   if (NULL == pTLCb->atlSTAClients)
   {
@@ -601,31 +662,27 @@ WLANTL_Open
 
 =======
   for ( i =0; i<WLAN_MAX_STA_COUNT; i++ )
+=======
+  pTLCb->atlSTAClients = vos_mem_malloc(sizeof(WLANTL_STAClientType) * WLAN_MAX_STA_COUNT);
+  if (NULL == pTLCb->atlSTAClients)
+>>>>>>> 657b0e9... prima update
   {
-      if ( i < WLAN_NON32_STA_COUNT )
-      {
-          pTLCb->atlSTAClients[i] = vos_mem_malloc(sizeof(WLANTL_STAClientType));
-          /* Allocating memory for LEGACY STA COUNT so as to avoid regression issues.  */
-         if ( NULL == pTLCb->atlSTAClients[i] )
-         {
-             TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "WLAN TL: StaClient allocation failed"));
-             WLANTL_FreeClientMemory(pTLCb->atlSTAClients);
-             vos_free_context(pvosGCtx, VOS_MODULE_ID_TL, pTLCb);
-             return VOS_STATUS_E_FAULT;
-         }
-         vos_mem_zero((v_VOID_t *) pTLCb->atlSTAClients[i], sizeof(WLANTL_STAClientType));
-      }
-      else
-      {
-          pTLCb->atlSTAClients[i] = NULL;
-      }
+    TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "WLAN TL: StaClients allocation failed\n"));
+    vos_free_context(pvosGCtx, VOS_MODULE_ID_TL, pTLCb);
+    return VOS_STATUS_E_FAULT;
   }
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  vos_mem_zero((v_VOID_t *)pTLCb->atlSTAClients, sizeof(WLANTL_STAClientType) * WLAN_MAX_STA_COUNT);
+
+>>>>>>> 657b0e9... prima update
   pTLCb->reorderBufferPool = vos_mem_malloc(sizeof(WLANTL_REORDER_BUFFER_T) * WLANTL_MAX_BA_SESSION);
   if (NULL == pTLCb->reorderBufferPool)
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "WLAN TL: Reorder buffer allocation failed\n"));
+<<<<<<< HEAD
 <<<<<<< HEAD
     vos_mem_free(pTLCb->atlSTAClients);
     vos_free_context(pvosGCtx, VOS_MODULE_ID_TL, pTLCb);
@@ -636,6 +693,12 @@ WLANTL_Open
     vos_free_context(pvosGCtx, VOS_MODULE_ID_TL, pTLCb);
     return VOS_STATUS_E_FAULT;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    vos_mem_free(pTLCb->atlSTAClients);
+    vos_free_context(pvosGCtx, VOS_MODULE_ID_TL, pTLCb);
+    return VOS_STATUS_E_FAULT;
+         
+>>>>>>> 657b0e9... prima update
   }
 
   vos_mem_zero((v_VOID_t *)pTLCb->reorderBufferPool, sizeof(WLANTL_REORDER_BUFFER_T) * WLANTL_MAX_BA_SESSION);
@@ -644,6 +707,7 @@ WLANTL_Open
 
   for ( ucIndex = 0; ucIndex < WLANTL_MAX_AC ; ucIndex++)
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     pTLCb->tlConfigInfo.ucAcWeights[ucIndex] =
                 pTLConfig->ucAcWeights[ucIndex];
@@ -655,6 +719,13 @@ WLANTL_Open
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->tlConfigInfo.ucAcWeights[ucIndex] =
+                pTLConfig->ucAcWeights[ucIndex];
+  }
+
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   // scheduling init to be the last one of previous round
   pTLCb->uCurServedAC = WLANTL_AC_BK;
   pTLCb->ucCurLeftWeight = 1;
@@ -671,11 +742,14 @@ WLANTL_Open
   pTLCb->tlConfigInfo.uMinFramesProcThres =
                 pTLConfig->uMinFramesProcThres;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #ifdef FEATURE_WLAN_TDLS
   pTLCb->ucTdlsPeerCount = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 
   pTLCb->tlConfigInfo.uDelayedTriggerFrmInt =
@@ -697,10 +771,14 @@ WLANTL_Open
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
               "Handoff support module init fail"));
 <<<<<<< HEAD
+<<<<<<< HEAD
     vos_mem_free(pTLCb->atlSTAClients);
 =======
     WLANTL_FreeClientMemory(pTLCb->atlSTAClients);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    vos_mem_free(pTLCb->atlSTAClients);
+>>>>>>> 657b0e9... prima update
     vos_mem_free(pTLCb->reorderBufferPool);
     vos_free_context(pvosGCtx, VOS_MODULE_ID_TL, pTLCb);
     return status;
@@ -759,9 +837,12 @@ WLANTL_Start
     Extract TL control block
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   ENTER();
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
   if ( NULL == pTLCb )
   {
@@ -799,9 +880,13 @@ WLANTL_Start
 
   pTLCb->uResCount = uResCount;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_Start */
 
@@ -847,9 +932,12 @@ WLANTL_Stop
     Extract TL control block
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   ENTER();
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
   if ( NULL == pTLCb )
   {
@@ -891,6 +979,7 @@ WLANTL_Stop
     Clean client stations
    -------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   for ( ucIndex = 0; ucIndex < WLAN_MAX_STA_COUNT ; ucIndex++)
   {
     WLANTL_CleanSTA(&pTLCb->atlSTAClients[ucIndex], 1 /*empty all queues*/);
@@ -902,6 +991,11 @@ WLANTL_Stop
         WLANTL_CleanSTA(pTLCb->atlSTAClients[ucIndex], 1 /*empty all queues*/);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  for ( ucIndex = 0; ucIndex < WLAN_MAX_STA_COUNT ; ucIndex++)
+  {
+    WLANTL_CleanSTA(&pTLCb->atlSTAClients[ucIndex], 1 /*empty all queues*/);
+>>>>>>> 657b0e9... prima update
   }
 
 
@@ -949,9 +1043,12 @@ WLANTL_Close
     Extract TL control block
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   ENTER();
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
   if ( NULL == pTLCb )
   {
@@ -967,10 +1064,14 @@ WLANTL_Close
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Invalid smeContext", __FUNCTION__));
 =======
                       "%s: Invalid smeContext", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Invalid smeContext", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     // continue so that we can cleanup as much as possible
   }
   else
@@ -994,11 +1095,15 @@ WLANTL_Close
   WLANTL_CleanCB(pTLCb, 1 /* empty queues/lists/pkts if any*/);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   vos_mem_free(pTLCb->atlSTAClients);
 =======
   WLANTL_FreeClientMemory(pTLCb->atlSTAClients);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  vos_mem_free(pTLCb->atlSTAClients);
+>>>>>>> 657b0e9... prima update
   vos_mem_free(pTLCb->reorderBufferPool);
 
   /*------------------------------------------------------------------------
@@ -1044,10 +1149,14 @@ WLANTL_ConfigureSwFrameTXXlationForAll
    ------------------------------------------------------------------------*/
   WLANTL_CbType* pTLCb = VOS_GET_TL_CB(pvosGCtx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   if ( NULL == pTLCb )
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -1063,11 +1172,15 @@ WLANTL_ConfigureSwFrameTXXlationForAll
   for ( ucIndex = 0; ucIndex < WLAN_MAX_TID; ucIndex++) 
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if ( 0 != pTLCb->atlSTAClients[ucIndex].ucExists )
 =======
     pClientSTA = pTLCb->atlSTAClients[ucIndex];
     if ( NULL != pClientSTA && 0 != pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if ( 0 != pTLCb->atlSTAClients[ucIndex].ucExists )
+>>>>>>> 657b0e9... prima update
     {
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
       // if this station was not allocated resources to perform HW-based
@@ -1075,6 +1188,7 @@ WLANTL_ConfigureSwFrameTXXlationForAll
       // otherwise use the frame translation supplied by the client
       if (!WDA_IsHwFrameTxTranslationCapable(pvosGCtx, ucIndex))
       {
+<<<<<<< HEAD
 <<<<<<< HEAD
         pTLCb->atlSTAClients[ucIndex].wSTADesc.ucSwFrameTXXlation = 1;
       }
@@ -1089,6 +1203,14 @@ WLANTL_ConfigureSwFrameTXXlationForAll
 #endif
         pClientSTA->wSTADesc.ucSwFrameTXXlation = enableFrameXlation;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pTLCb->atlSTAClients[ucIndex].wSTADesc.ucSwFrameTXXlation = 1;
+      }
+      else
+#endif
+        pTLCb->atlSTAClients[ucIndex].wSTADesc.ucSwFrameTXXlation
+                                             = enableFrameXlation;
+>>>>>>> 657b0e9... prima update
     }
   }
 }
@@ -1206,10 +1328,14 @@ void WLANTL_AssocFailed(v_U8_t staId)
   {
     VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
        " %s fails to start forwarding", __FUNCTION__);
 =======
        " %s fails to start forwarding", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       " %s fails to start forwarding", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
   }
 }
   
@@ -1244,6 +1370,9 @@ VOS_STATUS WLANTL_Finish_ULA( void (*callbackRoutine) (void *callbackContext),
                               void *callbackContext)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
    return WDA_DS_FinishULA( callbackRoutine, callbackContext); 
 #else
@@ -1257,9 +1386,12 @@ VOS_STATUS WLANTL_Finish_ULA( void (*callbackRoutine) (void *callbackContext),
    vosStatus = vos_tx_mq_serialize( VOS_MQ_ID_SSC, &vosMsg);
    return vosStatus;
 #endif
+<<<<<<< HEAD
 =======
    return WDA_DS_FinishULA( callbackRoutine, callbackContext);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -1320,6 +1452,7 @@ WLANTL_RegisterSTAClient
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
   v_U8_t    ucTid = 0;/*Local variable to clear previous replay counters of STA on all TIDs*/
 #endif
@@ -1327,15 +1460,23 @@ WLANTL_RegisterSTAClient
   WLANTL_STAClientType* pClientSTA = NULL;
   v_U8_t    ucTid = 0;/*Local variable to clear previous replay counters of STA on all TIDs*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+  v_U8_t    ucTid = 0;/*Local variable to clear previous replay counters of STA on all TIDs*/
+#endif
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
     Sanity check
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   ENTER();
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   if (( NULL == pwSTADescType ) || ( NULL == pfnSTARx ) ||
       ( NULL == pfnSTAFetchPkt ))
   {
@@ -1363,6 +1504,7 @@ WLANTL_RegisterSTAClient
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 != pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucExists )
   {
     pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucExists++;
@@ -1386,6 +1528,11 @@ WLANTL_RegisterSTAClient
   {
     pClientSTA->ucExists++;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 != pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucExists )
+  {
+    pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucExists++;
+>>>>>>> 657b0e9... prima update
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
       "WLAN TL:Station was already registered on WLANTL_RegisterSTAClient"));
     return VOS_STATUS_E_EXISTS;
@@ -1398,17 +1545,23 @@ WLANTL_RegisterSTAClient
              "WLAN TL:Registering STA Client ID: %d", pwSTADescType->ucSTAId ));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].pfnSTARx       = pfnSTARx;
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].pfnSTAFetchPkt = pfnSTAFetchPkt;
 =======
   pClientSTA->pfnSTARx       = pfnSTARx;
   pClientSTA->pfnSTAFetchPkt = pfnSTAFetchPkt;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].pfnSTARx       = pfnSTARx;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].pfnSTAFetchPkt = pfnSTAFetchPkt;
+>>>>>>> 657b0e9... prima update
 
   /* Only register if different from NULL - TL default Tx Comp Cb will
     release the vos packet */
   if ( NULL != pfnSTATxComp )
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     pTLCb->atlSTAClients[pwSTADescType->ucSTAId].pfnSTATxComp   = pfnSTATxComp;
   }
@@ -1427,12 +1580,23 @@ WLANTL_RegisterSTAClient
   pClientSTA->wSTADesc.ucSTAId  = pwSTADescType->ucSTAId;
   pClientSTA->ptkInstalled = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->atlSTAClients[pwSTADescType->ucSTAId].pfnSTATxComp   = pfnSTATxComp;
+  }
+
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].tlState  = WLANTL_STA_INIT;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].tlPri    =
+                                                    WLANTL_STA_PRI_NORMAL;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucSTAId  =
+    pwSTADescType->ucSTAId;
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Registering STA Client ID: %d with UC %d and BC %d", 
              pwSTADescType->ucSTAId, 
               pwSTADescType->ucUcastSig, pwSTADescType->ucBcastSig));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.wSTAType =
     pwSTADescType->wSTAType;
@@ -1451,16 +1615,28 @@ WLANTL_RegisterSTAClient
     pwSTADescType->ucIsCcxSta;
 =======
   pClientSTA->wSTADesc.wSTAType = pwSTADescType->wSTAType;
+=======
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.wSTAType =
+    pwSTADescType->wSTAType;
+>>>>>>> 657b0e9... prima update
 
-  pClientSTA->wSTADesc.ucQosEnabled = pwSTADescType->ucQosEnabled;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucQosEnabled =
+    pwSTADescType->ucQosEnabled;
 
-  pClientSTA->wSTADesc.ucAddRmvLLC = pwSTADescType->ucAddRmvLLC;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucAddRmvLLC =
+    pwSTADescType->ucAddRmvLLC;
 
-  pClientSTA->wSTADesc.ucProtectedFrame = pwSTADescType->ucProtectedFrame;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucProtectedFrame =
+    pwSTADescType->ucProtectedFrame;
 
 #ifdef FEATURE_WLAN_CCX
+<<<<<<< HEAD
   pClientSTA->wSTADesc.ucIsCcxSta = pwSTADescType->ucIsCcxSta;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucIsCcxSta =
+    pwSTADescType->ucIsCcxSta;
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Registering STA Client ID: %d QoS %d Add LLC %d ProtFrame %d CcxSta %d", 
@@ -1492,10 +1668,14 @@ WLANTL_RegisterSTAClient
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucSwFrameTXXlation =
     pwSTADescType->ucSwFrameTXXlation;
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucSwFrameRXXlation =
     pwSTADescType->ucSwFrameRXXlation;
+<<<<<<< HEAD
 
 #ifdef FEATURE_WLAN_WAPI
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucIsWapiSta =
@@ -1525,26 +1705,38 @@ WLANTL_RegisterSTAClient
 =======
   pClientSTA->wSTADesc.ucSwFrameTXXlation = pwSTADescType->ucSwFrameTXXlation;
   pClientSTA->wSTADesc.ucSwFrameRXXlation = pwSTADescType->ucSwFrameRXXlation;
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_WAPI
-  pClientSTA->wSTADesc.ucIsWapiSta = pwSTADescType->ucIsWapiSta;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wSTADesc.ucIsWapiSta =
+    pwSTADescType->ucIsWapiSta;
 #endif /* FEATURE_WLAN_WAPI */
 
-  vos_copy_macaddr( &pClientSTA->wSTADesc.vSTAMACAddress, &pwSTADescType->vSTAMACAddress);
+  vos_copy_macaddr( &pTLCb->atlSTAClients[pwSTADescType->ucSTAId].
+                      wSTADesc.vSTAMACAddress, &pwSTADescType->vSTAMACAddress);
 
-  vos_copy_macaddr( &pClientSTA->wSTADesc.vBSSIDforIBSS, &pwSTADescType->vBSSIDforIBSS);
+  vos_copy_macaddr( &pTLCb->atlSTAClients[pwSTADescType->ucSTAId].
+                      wSTADesc.vBSSIDforIBSS, &pwSTADescType->vBSSIDforIBSS);
 
-  vos_copy_macaddr( &pClientSTA->wSTADesc.vSelfMACAddress, &pwSTADescType->vSelfMACAddress);
+  vos_copy_macaddr( &pTLCb->atlSTAClients[pwSTADescType->ucSTAId].
+                 wSTADesc.vSelfMACAddress, &pwSTADescType->vSelfMACAddress);
 
+#ifdef ANI_CHIPSET_VOLANS
   /* In volans release L replay check is done at TL */
-  pClientSTA->ucIsReplayCheckValid = pwSTADescType->ucIsReplayCheckValid;
-  pClientSTA->ulTotalReplayPacketsDetected =  0;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucIsReplayCheckValid = 
+    pwSTADescType-> ucIsReplayCheckValid;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ulTotalReplayPacketsDetected =  0;
 /*Clear replay counters of the STA on all TIDs*/
   for(ucTid = 0; ucTid < WLANTL_MAX_TID ; ucTid++)
   {
-    pClientSTA->ullReplayCounter[ucTid] =  0;
+    pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ullReplayCounter[ucTid] =  0;
   }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
   /*--------------------------------------------------------------------
       Set the AC for the registered station to the highest priority AC
@@ -1553,12 +1745,16 @@ WLANTL_RegisterSTAClient
       updated in the pending packets call
     --------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucCurrentAC     = WLANTL_AC_VO;
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucCurrentWeight = 0;
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucServicedAC    = WLANTL_AC_BK;
   
   vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].aucACMask,
                 sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].aucACMask)); 
+<<<<<<< HEAD
 
   vos_mem_zero( &pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wUAPSDInfo,
            sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wUAPSDInfo));
@@ -1572,10 +1768,16 @@ WLANTL_RegisterSTAClient
 
   vos_mem_zero( &pClientSTA->wUAPSDInfo, sizeof(pClientSTA->wUAPSDInfo));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  vos_mem_zero( &pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wUAPSDInfo,
+           sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].wUAPSDInfo));
+>>>>>>> 657b0e9... prima update
 
   /*--------------------------------------------------------------------
     Reordering info and AMSDU de-aggregation
     --------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
   vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].atlBAReorderInfo,
      sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].atlBAReorderInfo[0])*
@@ -1590,20 +1792,31 @@ WLANTL_RegisterSTAClient
 =======
   vos_mem_zero( pClientSTA->atlBAReorderInfo,
      sizeof(pClientSTA->atlBAReorderInfo[0])*
+=======
+  vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].atlBAReorderInfo,
+     sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].atlBAReorderInfo[0])*
+>>>>>>> 657b0e9... prima update
      WLAN_MAX_TID);
 
-  vos_mem_zero( pClientSTA->aucMPDUHeader,
+  vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].aucMPDUHeader,
                 WLANTL_MPDU_HEADER_LEN);
 
+<<<<<<< HEAD
   pClientSTA->ucMPDUHeaderLen   = 0;
   pClientSTA->vosAMSDUChain     = NULL;
   pClientSTA->vosAMSDUChainRoot = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucMPDUHeaderLen   = 0;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].vosAMSDUChain     = NULL;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].vosAMSDUChainRoot = NULL;
+>>>>>>> 657b0e9... prima update
 
 
   /*--------------------------------------------------------------------
     Stats info
     --------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
   vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].auRxCount,
       sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].auRxCount[0])*
@@ -1619,10 +1832,19 @@ WLANTL_RegisterSTAClient
   vos_mem_zero( pClientSTA->auTxCount,
       sizeof(pClientSTA->auRxCount[0])*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].auRxCount,
+      sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].auRxCount[0])*
+      WLAN_MAX_TID);
+
+  vos_mem_zero( pTLCb->atlSTAClients[pwSTADescType->ucSTAId].auTxCount,
+      sizeof(pTLCb->atlSTAClients[pwSTADescType->ucSTAId].auRxCount[0])*
+>>>>>>> 657b0e9... prima update
       WLAN_MAX_TID);
   /* Initial RSSI is always reported as zero because TL doesnt have enough
      data to calculate RSSI. So to avoid reporting zero, we are initializing
      RSSI with RSSI saved in BssDescription during scanning. */
+<<<<<<< HEAD
 <<<<<<< HEAD
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].rssiAvg = rssi;
 
@@ -1649,6 +1871,13 @@ WLANTL_RegisterSTAClient
   vos_atomic_set_U8(
         &pClientSTA->ucTxSuspended, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].rssiAvg = rssi;
+
+  /*Tx not suspended and station fully registered*/
+  vos_atomic_set_U8(
+        &pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucTxSuspended, 0);
+>>>>>>> 657b0e9... prima update
 
   /* Used until multiple station support will be added*/
   pTLCb->ucRegisteredStaId = pwSTADescType->ucSTAId;
@@ -1663,10 +1892,14 @@ WLANTL_RegisterSTAClient
     Statistics info 
     -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   memset(&pTLCb->atlSTAClients[pwSTADescType->ucSTAId].trafficStatistics,
 =======
   memset(&pClientSTA->trafficStatistics,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  memset(&pTLCb->atlSTAClients[pwSTADescType->ucSTAId].trafficStatistics,
+>>>>>>> 657b0e9... prima update
          0, sizeof(WLANTL_TRANSFER_STA_TYPE));
 
 
@@ -1674,10 +1907,14 @@ WLANTL_RegisterSTAClient
     Start with the state suggested by client caller
     -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].tlState = 
     pwSTADescType->ucInitState;
 
   pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucRxBlocked = 1; 
+<<<<<<< HEAD
   /*-----------------------------------------------------------------------
     After all the init is complete we can mark the existance flag 
     ----------------------------------------------------------------------*/
@@ -1695,28 +1932,39 @@ WLANTL_RegisterSTAClient
 =======
   pClientSTA->tlState = pwSTADescType->ucInitState;
   pClientSTA->ucRxBlocked = 1;
+=======
+>>>>>>> 657b0e9... prima update
   /*-----------------------------------------------------------------------
     After all the init is complete we can mark the existance flag 
     ----------------------------------------------------------------------*/
-  pClientSTA->ucExists++;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucExists++;
 
+#ifdef WLAN_SOFTAP_FEATURE
   //flow control fields init
-  pClientSTA->ucLwmModeEnabled = FALSE;
-  pClientSTA->ucLwmEventReported = FALSE;
-  pClientSTA->bmuMemConsumed = 0;
-  pClientSTA->uIngress_length = 0;
-  pClientSTA->uBuffThresholdMax = WLANTL_STA_BMU_THRESHOLD_MAX;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucLwmModeEnabled = FALSE;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].ucLwmEventReported = FALSE;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].bmuMemConsumed = 0;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].uIngress_length = 0;
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].uBuffThresholdMax = WLANTL_STA_BMU_THRESHOLD_MAX;
 
+<<<<<<< HEAD
   pClientSTA->uLwmThreshold = WLANTL_STA_BMU_THRESHOLD_MAX / 3;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[pwSTADescType->ucSTAId].uLwmThreshold = WLANTL_STA_BMU_THRESHOLD_MAX / 3;
+>>>>>>> 657b0e9... prima update
 
   //@@@ HDDSOFTAP does not queue unregistered packet for now
   if ( WLAN_STA_SOFTAP != pwSTADescType->wSTAType )
   { 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
     /*------------------------------------------------------------------------
       Forward received frames while STA was not yet registered 
     -  ----------------------------------------------------------------------*/
@@ -1726,6 +1974,7 @@ WLANTL_RegisterSTAClient
     {
       VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
          " %s fails to start forwarding", __FUNCTION__);
     }
 #ifdef WLAN_SOFTAP_FEATURE
@@ -1733,13 +1982,17 @@ WLANTL_RegisterSTAClient
 #endif
 =======
          " %s fails to start forwarding", __func__);
+=======
+         " %s fails to start forwarding", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     }
-#ifdef FEATURE_WLAN_TDLS
-    if( WLAN_STA_TDLS == pwSTADescType->wSTAType )
-        pTLCb->ucTdlsPeerCount++;
-#endif
+#ifdef WLAN_SOFTAP_FEATURE
   }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_RegisterSTAClient */
 
@@ -1787,9 +2040,12 @@ WLANTL_ClearSTAClient
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   ENTER();
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Sanity check
    ------------------------------------------------------------------------*/
@@ -1800,9 +2056,13 @@ WLANTL_ClearSTAClient
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Extract TL control block
    ------------------------------------------------------------------------*/
@@ -1815,6 +2075,7 @@ WLANTL_ClearSTAClient
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
   if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
@@ -1826,6 +2087,9 @@ WLANTL_ClearSTAClient
 
   if ( 0 == pTLCb->atlSTAClients[ucSTAId]->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL:Station was not previously registered on WLANTL_ClearSTAClient"));
@@ -1839,6 +2103,7 @@ WLANTL_ClearSTAClient
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
   /* decrement ucTdlsPeerCount only if it is non-zero */  
@@ -1848,16 +2113,22 @@ WLANTL_ClearSTAClient
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Clear station
    ------------------------------------------------------------------------*/
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Clearing STA Client ID: %d", ucSTAId ));
 <<<<<<< HEAD
+<<<<<<< HEAD
   WLANTL_CleanSTA(&pTLCb->atlSTAClients[ucSTAId], 1 /*empty packets*/);
 =======
   WLANTL_CleanSTA(pTLCb->atlSTAClients[ucSTAId], 1 /*empty packets*/);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WLANTL_CleanSTA(&pTLCb->atlSTAClients[ucSTAId], 1 /*empty packets*/);
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Clearing STA Reset History RSSI and Region number"));
@@ -1951,6 +2222,7 @@ WLANTL_ChangeSTAState
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
   if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
@@ -1962,6 +2234,9 @@ WLANTL_ChangeSTAState
 
   if ( 0 == pTLCb->atlSTAClients[ucSTAId]->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
      "WLAN TL:Station was not previously registered on WLANTL_ChangeSTAState"));
@@ -1975,6 +2250,7 @@ WLANTL_ChangeSTAState
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Changing state for STA Client ID: %d from %d to %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlState, tlSTAState));
 
   pTLCb->atlSTAClients[ucSTAId].tlState = tlSTAState;
@@ -1983,12 +2259,18 @@ WLANTL_ChangeSTAState
 
   pTLCb->atlSTAClients[ucSTAId]->tlState = tlSTAState;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlState, tlSTAState));
+
+  pTLCb->atlSTAClients[ucSTAId].tlState = tlSTAState;
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_ChangeSTAState */
 
 /*===========================================================================
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   FUNCTION    WLANTL_STAPtkInstalled
@@ -2075,6 +2357,8 @@ WLANTL_STAPtkInstalled
 /*===========================================================================
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   FUNCTION    WLANTL_GetSTAState
 
   DESCRIPTION
@@ -2150,6 +2434,7 @@ WLANTL_GetSTAState
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -2165,6 +2450,11 @@ WLANTL_GetSTAState
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+  {
+    TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+>>>>>>> 657b0e9... prima update
      "WLAN TL:Station was not previously registered on WLANTL_GetSTAState"));
     return VOS_STATUS_E_EXISTS;
   }
@@ -2173,14 +2463,19 @@ WLANTL_GetSTAState
     Get STA state
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   *ptlSTAState = pTLCb->atlSTAClients[ucSTAId].tlState;
 =======
   *ptlSTAState = pTLCb->atlSTAClients[ucSTAId]->tlState;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  *ptlSTAState = pTLCb->atlSTAClients[ucSTAId].tlState;
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_GetSTAState */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*==========================================================================
@@ -2271,6 +2566,8 @@ WLANTL_UpdateSTABssIdforIBSS
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*===========================================================================
 
   FUNCTION    WLANTL_STAPktPending
@@ -2320,6 +2617,7 @@ WLANTL_STAPktPending
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   vos_msg_t      vosMsg;
 #endif
@@ -2327,6 +2625,11 @@ WLANTL_STAPktPending
   WLANTL_STAClientType* pClientSTA = NULL;
   vos_msg_t      vosMsg;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  vos_msg_t      vosMsg;
+#endif
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO,
@@ -2342,9 +2645,13 @@ WLANTL_STAPktPending
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Extract TL control block and check existance
    ------------------------------------------------------------------------*/
@@ -2356,6 +2663,7 @@ WLANTL_STAPktPending
     return VOS_STATUS_E_FAULT;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
@@ -2370,6 +2678,9 @@ WLANTL_STAPktPending
 
   if ( 0 == pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL:Station was not previously registered on WLANTL_STAPktPending"));
@@ -2384,6 +2695,7 @@ WLANTL_STAPktPending
     --------------------------------------------------------------------*/
   pTLCb->ucRegisteredStaId = ucSTAId;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if( WLANTL_STA_AUTHENTICATED != pTLCb->atlSTAClients[ucSTAId].tlState )
   {
@@ -2403,6 +2715,13 @@ WLANTL_STAPktPending
       "WLAN TL:Packet pending indication for STA: %d AC: %d State: %d", 
                ucSTAId, ucAc, pClientSTA->tlState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if( WLANTL_STA_AUTHENTICATED != pTLCb->atlSTAClients[ucSTAId].tlState )
+  {
+    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+      "WLAN TL:Packet pending indication for STA: %d AC: %d State: %d", 
+               ucSTAId, ucAc, pTLCb->atlSTAClients[ucSTAId].tlState);
+>>>>>>> 657b0e9... prima update
   }
 
   /*-----------------------------------------------------------------------
@@ -2411,6 +2730,7 @@ WLANTL_STAPktPending
     To avoid race condition, serialize the updation of AC and AC mask 
     through WLANTL_TX_STAID_AC_IND message.
   -----------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if (WLAN_STA_SOFTAP != pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
@@ -2429,13 +2749,21 @@ WLANTL_STAPktPending
 #else
     if ((WLAN_STA_SOFTAP != pClientSTA->wSTADesc.wSTAType) &&
         !(vos_concurrent_sessions_running()))
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    if (WLAN_STA_SOFTAP != pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
+>>>>>>> 657b0e9... prima update
     {
 #endif
 
-      pClientSTA->aucACMask[ucAc] = 1;
+      pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAc] = 1; 
 
+<<<<<<< HEAD
       vos_atomic_set_U8( &pClientSTA->ucPktPending, 1);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 1);
+>>>>>>> 657b0e9... prima update
 
       /*------------------------------------------------------------------------
         Check if there are enough resources for transmission and tx is not
@@ -2459,9 +2787,13 @@ WLANTL_STAPktPending
               pTLCb->uResCount, pTLCb->ucTxSuspended );
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     }
     else
     {
@@ -2472,9 +2804,13 @@ WLANTL_STAPktPending
       return vos_tx_mq_serialize( VOS_MQ_ID_TL, &vosMsg);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_STAPktPending */
 
@@ -2522,9 +2858,12 @@ WLANTL_SetSTAPriority
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -2549,6 +2888,7 @@ WLANTL_SetSTAPriority
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
@@ -2562,6 +2902,9 @@ WLANTL_SetSTAPriority
 
   if ( 0 == pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL:Station was not previously registered on WLANTL_SetSTAPriority"));
@@ -2574,12 +2917,17 @@ WLANTL_SetSTAPriority
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Changing state for STA Pri ID: %d from %d to %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlPri, tlSTAPri));
   pTLCb->atlSTAClients[ucSTAId].tlPri = tlSTAPri;
 =======
              ucSTAId, pClientSTA->tlPri, tlSTAPri));
   pClientSTA->tlPri = tlSTAPri;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlPri, tlSTAPri));
+  pTLCb->atlSTAClients[ucSTAId].tlPri = tlSTAPri;
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_SetSTAPriority */
@@ -2802,6 +3150,7 @@ WLANTL_TxBAPFrm
    ------------------------------------------------------------------------*/
   ucStaId = pTLCb->tlBAPClient.ucBAPSTAId;
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (( 0 == pMetaInfo->ucDisableFrmXtl ) &&
       ( 0 != pTLCb->atlSTAClients[ucStaId].wSTADesc.ucSwFrameTXXlation ))
   {
@@ -2823,6 +3172,14 @@ WLANTL_TxBAPFrm
                                                     pMetaInfo, &ucWDSEnabled,
                                                     &extraHeadSpace);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if (( 0 == pMetaInfo->ucDisableFrmXtl ) &&
+      ( 0 != pTLCb->atlSTAClients[ucStaId].wSTADesc.ucSwFrameTXXlation ))
+  {
+    vosStatus = WLANTL_Translate8023To80211Header(vosDataBuff, &vosStatus,
+                                                  pTLCb, ucStaId,
+                                                  pMetaInfo->ucUP, &ucWDSEnabled, &extraHeadSpace);
+>>>>>>> 657b0e9... prima update
 
     if ( VOS_STATUS_SUCCESS != vosStatus )
     {
@@ -2846,6 +3203,7 @@ WLANTL_TxBAPFrm
   vosStatus = WDA_DS_BuildTxPacketInfo( pvosGCtx, vosDataBuff , 
                     &vDestMacAddr, pMetaInfo->ucDisableFrmXtl, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     &usPktLen, pTLCb->atlSTAClients[ucStaId].wSTADesc.ucQosEnabled, 
                     ucWDSEnabled, extraHeadSpace, pMetaInfo->ucType,
                             &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSelfMACAddress,
@@ -2853,11 +3211,18 @@ WLANTL_TxBAPFrm
                     pMetaInfo->ucIsEapol, pMetaInfo->ucUP );
 =======
                     &usPktLen, pTLCb->atlSTAClients[ucStaId]->wSTADesc.ucQosEnabled,
+=======
+                    &usPktLen, pTLCb->atlSTAClients[ucStaId].wSTADesc.ucQosEnabled, 
+>>>>>>> 657b0e9... prima update
                     ucWDSEnabled, extraHeadSpace, pMetaInfo->ucType,
-                            &pTLCb->atlSTAClients[ucStaId]->wSTADesc.vSelfMACAddress,
+                            &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSelfMACAddress,
                     pMetaInfo->ucTID, 0 /* No ACK */, pMetaInfo->usTimeStamp,
+<<<<<<< HEAD
                     pMetaInfo->ucIsEapol || pMetaInfo->ucIsWai, pMetaInfo->ucUP );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pMetaInfo->ucIsEapol, pMetaInfo->ucUP );
+>>>>>>> 657b0e9... prima update
 
   if ( VOS_STATUS_SUCCESS != vosStatus )
   {
@@ -2957,9 +3322,12 @@ WLANTL_GetRssi
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -2991,6 +3359,7 @@ WLANTL_GetRssi
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
@@ -3004,6 +3373,9 @@ WLANTL_GetRssi
 
   if ( 0 == pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
          "WLAN TL:Station was not previously registered on WLANTL_GetRssi"));
@@ -3016,10 +3388,14 @@ WLANTL_GetRssi
   if(pTLCb->isBMPS)
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     *pRssi = pTLCb->atlSTAClients[ucSTAId].rssiAvgBmps;
 =======
     *pRssi = pClientSTA->rssiAvgBmps;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    *pRssi = pTLCb->atlSTAClients[ucSTAId].rssiAvgBmps;
+>>>>>>> 657b0e9... prima update
     /* Check If RSSI is zero because we are reading rssAvgBmps updated by HAL in 
     previous GetStatsRequest. It may be updated as zero by Hal because EnterBmps 
     might not have happend by that time. Hence reading the most recent Rssi 
@@ -3027,19 +3403,27 @@ WLANTL_GetRssi
     if(0 == *pRssi)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       *pRssi = pTLCb->atlSTAClients[ucSTAId].rssiAvg;
 =======
       *pRssi = pClientSTA->rssiAvg;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      *pRssi = pTLCb->atlSTAClients[ucSTAId].rssiAvg;
+>>>>>>> 657b0e9... prima update
     }
   }
   else
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     *pRssi = pTLCb->atlSTAClients[ucSTAId].rssiAvg;
 =======
     *pRssi = pClientSTA->rssiAvg;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    *pRssi = pTLCb->atlSTAClients[ucSTAId].rssiAvg;
+>>>>>>> 657b0e9... prima update
   }
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -3052,6 +3436,7 @@ WLANTL_GetRssi
 
 /*==========================================================================
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   FUNCTION    WLANTL_GetSnr
@@ -3191,6 +3576,8 @@ WLANTL_GetSnr
 /*==========================================================================
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   FUNCTION    WLANTL_GetLinkQuality
 
   DESCRIPTION
@@ -3237,9 +3624,12 @@ WLANTL_GetLinkQuality
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Sanity check
@@ -3269,6 +3659,7 @@ WLANTL_GetLinkQuality
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
@@ -3283,6 +3674,10 @@ WLANTL_GetLinkQuality
 
   if ( 0 == pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                  "Station was not previously registered on WLANTL_GetLinkQuality"));
@@ -3293,10 +3688,14 @@ WLANTL_GetLinkQuality
     Copy will not be locked; please read restriction
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   *puLinkQuality = pTLCb->atlSTAClients[ucSTAId].uLinkQualityAvg;
 =======
   *puLinkQuality = pClientSTA->uLinkQualityAvg;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  *puLinkQuality = pTLCb->atlSTAClients[ucSTAId].uLinkQualityAvg;
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLANTL_GetLinkQuality for STA: %d LinkQuality: %d", ucSTAId, *puLinkQuality));
@@ -3364,6 +3763,7 @@ WLANTL_FlushStaTID
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
   if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
@@ -3375,6 +3775,9 @@ WLANTL_FlushStaTID
 
   if ( 0 == pTLCb->atlSTAClients[ucSTAId]->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                  "Station was not previously registered on WLANTL_FlushStaTID"));
@@ -3748,12 +4151,17 @@ WLANTL_TxMgmtFrm
        return vosStatus;
      }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_CCX
     /* CCX IAPP Frame which are data frames but technically used
 =======
 
     /* CCX IAPP/TDLS Frame which are data frames but technically used
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_CCX
+    /* CCX IAPP Frame which are data frames but technically used
+>>>>>>> 657b0e9... prima update
      * for management functionality comes through route.
      */
     if (WLANTL_IS_QOS_DATA_FRAME(wFrmType))                                      \
@@ -3761,9 +4169,13 @@ WLANTL_TxMgmtFrm
         uQosHdr = VOS_TRUE;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
     /*----------------------------------------------------------------------
       Call WDA to build TX header
      ----------------------------------------------------------------------*/
@@ -3940,10 +4352,15 @@ WLANTL_SuspendDataTx
   WLANTL_CbType*  pTLCb = NULL;
   vos_msg_t       vosMsg;
 <<<<<<< HEAD
+<<<<<<< HEAD
   v_U8_t          ucTxSuspendReq, ucTxSuspended;
   v_U32_t         STAId = 0;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  v_U8_t          ucTxSuspendReq, ucTxSuspended;
+  v_U32_t         STAId = 0;
+>>>>>>> 657b0e9... prima update
 
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
@@ -3953,10 +4370,14 @@ WLANTL_SuspendDataTx
    ------------------------------------------------------------------------*/
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( NULL == pTLCb || NULL == pucSTAId )
 =======
   if ( NULL == pTLCb )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( NULL == pTLCb || NULL == pucSTAId )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
           "WLAN TL:Invalid TL pointer from pvosGCtx on WLANTL_SuspendDataTx"));
@@ -3967,6 +4388,9 @@ WLANTL_SuspendDataTx
     Check the type of request: generic suspend, or per station suspend
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   /* Station IDs for Suspend request are received as bitmap                  */
   ucTxSuspendReq = *pucSTAId;
   ucTxSuspended = pTLCb->ucTxSuspended;
@@ -3980,22 +4404,30 @@ WLANTL_SuspendDataTx
   }
 
   if (WLAN_ALL_STA == *pucSTAId)
+<<<<<<< HEAD
 =======
   if (NULL == pucSTAId)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   {
     /* General Suspend Request received */
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
               "WLAN TL:General suspend requested"));
 <<<<<<< HEAD
+<<<<<<< HEAD
     vos_atomic_set_U8( &pTLCb->ucTxSuspended, WLAN_ALL_STA);
 =======
     vos_atomic_set_U8( &pTLCb->ucTxSuspended, 1);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    vos_atomic_set_U8( &pTLCb->ucTxSuspended, WLAN_ALL_STA);
+>>>>>>> 657b0e9... prima update
     vosMsg.reserved = WLAN_MAX_STA_COUNT;
   }
   else
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     /* Station specific Suspend Request received */
     /* Update Station Id Bit map for suspend request */
@@ -4044,16 +4476,45 @@ WLANTL_SuspendDataTx
     }
 
     if ( 0 == pTLCb->atlSTAClients[*pucSTAId]->ucExists )
+=======
+    /* Station specific Suspend Request received */
+    /* Update Station Id Bit map for suspend request */
+    do
+>>>>>>> 657b0e9... prima update
     {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-             "WLAN TL:Station %d was not previously registered on WLANTL_SuspendDataTx", *pucSTAId));
-      return VOS_STATUS_E_EXISTS;
-    }
+       /* If Bit set for this station with STAId */
+      if (ucTxSuspendReq >> (STAId +1) )
+      {
+        /* If it is Not a valid station ID */
+        if ( WLANTL_STA_ID_INVALID( STAId ) )
+        {
+          TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                 "WLAN TL:Invalid station id requested on WLANTL_SuspendDataTx"));
+          STAId++;
+          continue;
+        }
+        /* If this station is Not registered with TL */
+        if ( 0 == pTLCb->atlSTAClients[STAId].ucExists )
+        {
+          TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                 "WLAN TL:Station was not previously registered on WLANTL_SuspendDataTx"));
+          STAId++;
+          continue;
+        }
 
+<<<<<<< HEAD
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
          "WLAN TL:Suspend request for station: %d", *pucSTAId));
     vos_atomic_set_U8( &pTLCb->atlSTAClients[*pucSTAId]->ucTxSuspended, 1);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+               "WLAN TL:Suspend request for station: %d", STAId));
+        vos_atomic_set_U8( &pTLCb->atlSTAClients[STAId].ucTxSuspended, 1);
+      }
+      STAId++;
+    } while ( STAId < WLAN_MAX_STA_COUNT );
+>>>>>>> 657b0e9... prima update
     vosMsg.reserved = *pucSTAId;
   }
 
@@ -4067,10 +4528,14 @@ WLANTL_SuspendDataTx
   {
     VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
        " %s fails to post message", __FUNCTION__);
 =======
        " %s fails to post message", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       " %s fails to post message", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
   }
 
   return VOS_STATUS_SUCCESS;
@@ -4117,10 +4582,15 @@ WLANTL_ResumeDataTx
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
   v_U8_t          ucTxResumeReq;
   v_U32_t         STAId = 0;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  v_U8_t          ucTxResumeReq;
+  v_U32_t         STAId = 0;
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -4129,16 +4599,21 @@ WLANTL_ResumeDataTx
    ------------------------------------------------------------------------*/
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( NULL == pTLCb || NULL == pucSTAId)
 =======
   if ( NULL == pTLCb )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( NULL == pTLCb || NULL == pucSTAId)
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
            "WLAN TL:Invalid TL pointer from pvosGCtx on WLANTL_ResumeDataTx"));
     return VOS_STATUS_E_FAULT;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   ucTxResumeReq = *pucSTAId;
   /*------------------------------------------------------------------------
@@ -4151,15 +4626,26 @@ WLANTL_ResumeDataTx
    ------------------------------------------------------------------------*/
   if ( NULL == pucSTAId )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  ucTxResumeReq = *pucSTAId;
+  /*------------------------------------------------------------------------
+    Check to see the type of resume
+   ------------------------------------------------------------------------*/
+  if ( WLAN_ALL_STA == *pucSTAId)
+>>>>>>> 657b0e9... prima update
   {
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
               "WLAN TL:General resume requested"));
     vos_atomic_set_U8( &pTLCb->ucTxSuspended, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
     /* Set to Resume for all stations */
     for (STAId = 0; STAId < WLAN_MAX_STA_COUNT; STAId++)
          vos_atomic_set_U8( &pTLCb->atlSTAClients[STAId].ucTxSuspended, 0);
+<<<<<<< HEAD
   }
   else
   {
@@ -4192,46 +4678,61 @@ WLANTL_ResumeDataTx
       STAId++;
     } while ( STAId < WLAN_MAX_STA_COUNT );
 =======
+=======
+>>>>>>> 657b0e9... prima update
   }
   else
   {
-    if ( WLANTL_STA_ID_INVALID( *pucSTAId ))
+    do
     {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-            "WLAN TL:Invalid station id %d requested on WLANTL_ResumeDataTx", *pucSTAId));
-      return VOS_STATUS_E_FAULT;
-    }
+      /* If Bit Set for this station with STAId */
+      if (ucTxResumeReq >> (STAId + 1))
+      {
+        /* If it is Not a valid station ID */
+        if ( WLANTL_STA_ID_INVALID( STAId ))
+        {
+          TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                "WLAN TL:Invalid station id requested on WLANTL_ResumeDataTx"));
+          STAId++;
+          continue;
+        }
+        /* If this station is Not registered with TL */
+        if ( 0 == pTLCb->atlSTAClients[STAId].ucExists )
+        {
+          TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                 "WLAN TL:Station was not previously registered on WLANTL_ResumeDataTx"));
+          STAId++;
+          continue;
+        }
 
-    if ( NULL == pTLCb->atlSTAClients[*pucSTAId] )
-    {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-            "WLAN TL:Invalid pTLCb->atlSTAClients pointer for STA Id :%d on "
-            "WLANTL_ResumeDataTx", *pucSTAId));
-      return VOS_STATUS_E_FAULT;
-    }
-
-    if ( 0 == pTLCb->atlSTAClients[*pucSTAId]->ucExists )
-    {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-             "WLAN TL:Station %d was not previously registered on WLANTL_ResumeDataTx", *pucSTAId));
-      return VOS_STATUS_E_EXISTS;
-    }
-
+<<<<<<< HEAD
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
          "WLAN TL:Resume request for station: %d", *pucSTAId));
     vos_atomic_set_U8( &pTLCb->atlSTAClients[*pucSTAId]->ucTxSuspended, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+               "WLAN TL:Resume request for station: %d", STAId));
+        vos_atomic_set_U8( &pTLCb->atlSTAClients[STAId].ucTxSuspended, 0);
+      }
+      STAId++;
+    } while ( STAId < WLAN_MAX_STA_COUNT );
+>>>>>>> 657b0e9... prima update
   }
 
   /*------------------------------------------------------------------------
     Resuming transmission
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( pTLCb->uResCount >=  WDA_TLI_MIN_RES_MF )
 =======
   if (( pTLCb->uResCount >=  WDA_TLI_MIN_RES_MF ) &&
       ( 0 == pTLCb->ucTxSuspended ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( pTLCb->uResCount >=  WDA_TLI_MIN_RES_MF )
+>>>>>>> 657b0e9... prima update
   {
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLAN TL:Resuming transmission"));
@@ -4394,6 +4895,7 @@ WLANTL_GetTxPktCount
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
   if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
@@ -4405,6 +4907,9 @@ WLANTL_GetTxPktCount
 
   if ( 0 == pTLCb->atlSTAClients[ucSTAId]->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL:Station was not previously registered on WLANTL_GetTxPktCount %d",
@@ -4420,10 +4925,14 @@ WLANTL_GetTxPktCount
       //         ucSTAId, ucTid);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   *puTxPktCount = pTLCb->atlSTAClients[ucSTAId].auTxCount[ucTid];
 =======
   *puTxPktCount = pTLCb->atlSTAClients[ucSTAId]->auTxCount[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  *puTxPktCount = pTLCb->atlSTAClients[ucSTAId].auTxCount[ucTid];
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_GetTxPktCount */
@@ -4472,9 +4981,12 @@ WLANTL_GetRxPktCount
 {
   WLANTL_CbType*  pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -4506,6 +5018,7 @@ WLANTL_GetRxPktCount
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
 =======
@@ -4520,6 +5033,10 @@ WLANTL_GetRxPktCount
 
   if ( 0 == pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL:Station was not previously registered on WLANTL_GetRxPktCount"));
@@ -4534,27 +5051,39 @@ WLANTL_GetRxPktCount
              ucSTAId, ucTid));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   *puRxPktCount = pTLCb->atlSTAClients[ucSTAId].auRxCount[ucTid];
 =======
   *puRxPktCount = pClientSTA->auRxCount[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  *puRxPktCount = pTLCb->atlSTAClients[ucSTAId].auRxCount[ucTid];
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_GetRxPktCount */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 VOS_STATUS
 WLANTL_TxFCFrame
 (
   v_PVOID_t       pvosGCtx
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 /*============================================================================
                       TL INTERNAL API DEFINITION
 ============================================================================*/
@@ -4610,21 +5139,30 @@ WLANTL_GetFrames
   vos_pkt_t     **ppFrameDataBuff,
   v_U32_t         uSize,
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   v_U8_t          uFlowMask,
 #endif
 =======
   v_U8_t          uFlowMask,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+  v_U8_t          uFlowMask,
+#endif
+>>>>>>> 657b0e9... prima update
   v_BOOL_t*       pbUrgent
 )
 {
    vos_pkt_t**         pvosDataBuff = (vos_pkt_t**)ppFrameDataBuff;
    WLANTL_CbType*      pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    v_U32_t             uRemaining = uSize;
    vos_pkt_t*          vosRoot;
    vos_pkt_t*          vosTempBuf;
@@ -4637,9 +5175,12 @@ WLANTL_GetFrames
    v_U32_t             uTotalPktLen;
    v_U32_t             i=0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    v_U32_t             j=0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    v_U32_t             ucResult = 0;
    VOS_STATUS          vosStatus;
    WLANTL_STAEventType   wSTAEvent;
@@ -4664,10 +5205,14 @@ WLANTL_GetFrames
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Invalid pMac", __FUNCTION__));
 =======
                       "%s: Invalid pMac", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Invalid pMac", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     return ucResult;
   }
 
@@ -4675,12 +5220,18 @@ WLANTL_GetFrames
                                          each iteration */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   pTLCb->uResCount = uSize;
 #endif
 =======
   pTLCb->uResCount = uSize;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+  pTLCb->uResCount = uSize;
+#endif
+>>>>>>> 657b0e9... prima update
 
   /*-----------------------------------------------------------------------
     Save the root as we will walk this chain as we fill it
@@ -4693,6 +5244,7 @@ WLANTL_GetFrames
   pTLCb->bUrgent      = FALSE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   while (( pTLCb->tlConfigInfo.uMinFramesProcThres < pTLCb->uResCount ) &&
          ( 0 < uRemaining ))
@@ -4704,11 +5256,22 @@ WLANTL_GetFrames
     systemRole = wdaGetGlobalSystemRole(pMac);
 #ifdef WLAN_SOFTAP_FEATURE
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   while (( pTLCb->tlConfigInfo.uMinFramesProcThres < pTLCb->uResCount ) &&
          ( 0 < uRemaining ))
+#else
+  while (( 0 < pTLCb->uResCount ) &&
+         ( 0 < uRemaining ))
+#endif
   {
     systemRole = wdaGetGlobalSystemRole(pMac);
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FLOWCTRL_EN
 /* FIXME: The code has been disabled since it is creating issues in power save */
     if (eSYSTEM_AP_ROLE == systemRole)
@@ -4726,15 +5289,21 @@ WLANTL_GetFrames
     
        if ( ( pTLCb->uResCount > uResLen ) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
            ( uRemaining > uTotalPktLen )
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
            && ( uFlowMask & ( 1 << WDA_TXFLOW_FC ) )
 #endif
           )
+<<<<<<< HEAD
 =======
             ( uRemaining > uTotalPktLen ) &&
             ( uFlowMask & ( 1 << WDA_TXFLOW_FC ) ) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
        {
           TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                    "WLAN TL:Chaining FC frame first on GetFrame"));
@@ -4756,16 +5325,21 @@ WLANTL_GetFrames
        {
           TLLOGW(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "WLAN TL:send fc out of source %s", __FUNCTION__));
 =======
                 "WLAN TL:send fc out of source %s", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "WLAN TL:send fc out of source %s", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
           ucResult = ( pTLCb->uResCount > uResLen )?VOS_TRUE:VOS_FALSE;
           break; /* Out of resources or reached max len */
        }
    }
    else 
 #endif //WLAN_SOFTAP_FLOWCTRL_EN
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif //#ifdef WLAN_SOFTAP_FEATURE
 
@@ -4775,6 +5349,11 @@ WLANTL_GetFrames
     if (( NULL != pTLCb->tlMgmtFrmClient.vosPendingDataBuff ) &&
         ( uFlowMask & ( 1 << WDA_TXFLOW_MGMT ) ) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif //#ifdef WLAN_SOFTAP_FEATURE
+
+    if ( NULL != pTLCb->tlMgmtFrmClient.vosPendingDataBuff )
+>>>>>>> 657b0e9... prima update
     {
       WDA_TLI_PROCESS_FRAME_LEN( pTLCb->tlMgmtFrmClient.vosPendingDataBuff,
                           usPktLen, uResLen, uTotalPktLen);
@@ -4783,15 +5362,21 @@ WLANTL_GetFrames
 
       if ( ( pTLCb->uResCount > uResLen ) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
            ( uRemaining > uTotalPktLen )
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
            && ( uFlowMask & ( 1 << WDA_TXFLOW_MGMT ) )
 #endif
          )
+<<<<<<< HEAD
 =======
            ( uRemaining > uTotalPktLen ) &&
            ( uFlowMask & ( 1 << WDA_TXFLOW_MGMT ) ) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       {
         TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                    "WLAN TL:Chaining management frame on GetFrame"));
@@ -4821,14 +5406,20 @@ WLANTL_GetFrames
     else if (( pTLCb->tlBAPClient.vosPendingDataBuff ) &&
              ( WDA_TLI_MIN_RES_BAP <= pTLCb->uResCount ) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
              ( 0 == pTLCb->ucTxSuspended )
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
            && ( uFlowMask & ( 1 << WDA_TXFLOW_BAP ) )
 #endif
           )
+<<<<<<< HEAD
 =======
              ( 0 == pTLCb->ucTxSuspended )          )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     {
       WDA_TLI_PROCESS_FRAME_LEN( pTLCb->tlBAPClient.vosPendingDataBuff,
                           usPktLen, uResLen, uTotalPktLen);
@@ -4860,6 +5451,7 @@ WLANTL_GetFrames
       else
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
         ucResult = uResLen + WDA_TLI_MIN_RES_MF;
 #else
@@ -4879,10 +5471,18 @@ WLANTL_GetFrames
 #endif
           )
 =======
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
         ucResult = uResLen + WDA_TLI_MIN_RES_MF;
+#else
+        ucResult = ( pTLCb->uResCount > ( uResLen + WDA_TLI_MIN_RES_MF ) )?
+                     VOS_TRUE:VOS_FALSE;
+#endif
         break; /* Out of resources or reached max len */
       }
     }
+<<<<<<< HEAD
     /* note: this feature implemented only after WLAN_INGETRATED_SOC */
     /* search 'EAPOL_HI_PRIORITY' will show EAPOL HI_PRIORITY change in TL and WDI
        by default, EAPOL will be treated as higher priority, which means
@@ -5004,6 +5604,17 @@ WLANTL_GetFrames
               ( uFlowMask & ( 1 << WDA_TXFLOW_AC_VI ) ) ||
               ( uFlowMask & ( 1 << WDA_TXFLOW_AC_VO ) )) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    else if (( WDA_TLI_MIN_RES_DATA <= pTLCb->uResCount )&&
+             ( 0 == pTLCb->ucTxSuspended )
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+           && (( uFlowMask & ( 1 << WDA_TXFLOW_AC_BK ) ) || 
+               ( uFlowMask & ( 1 << WDA_TXFLOW_AC_BE ) ) ||
+               ( uFlowMask & ( 1 << WDA_TXFLOW_AC_VI ) ) || 
+               ( uFlowMask & ( 1 << WDA_TXFLOW_AC_VO ) ))
+#endif
+          )
+>>>>>>> 657b0e9... prima update
     {
       /*---------------------------------------------------------------------
         Check to see if there was any packet left behind previously due to
@@ -5018,6 +5629,7 @@ WLANTL_GetFrames
         ucSTAId             = pTLCb->ucCachedSTAId; 
         ucAC                = pTLCb->ucCachedAC;
 <<<<<<< HEAD
+<<<<<<< HEAD
         pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 0;
 =======
 
@@ -5031,6 +5643,9 @@ WLANTL_GetFrames
         pTLCb->atlSTAClients[ucSTAId]->ucNoMoreData = 0;
         pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 0;
+>>>>>>> 657b0e9... prima update
 
         TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                    "WLAN TL:Chaining cached data frame on GetFrame"));
@@ -5050,6 +5665,7 @@ WLANTL_GetFrames
         /* ucCurrentAC should have correct AC to be served by calling
            WLAN_TLGetNextTxIds */
 <<<<<<< HEAD
+<<<<<<< HEAD
         ucAC = pTLCb->atlSTAClients[ucSTAId].ucCurrentAC;
 
         pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
@@ -5065,15 +5681,23 @@ WLANTL_GetFrames
         }
 
         ucAC = pClientSTA->ucCurrentAC;
+=======
+        ucAC = pTLCb->atlSTAClients[ucSTAId].ucCurrentAC;
+>>>>>>> 657b0e9... prima update
 
-        pClientSTA->ucNoMoreData = 1;
+        pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
         TLLOG4(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,
+<<<<<<< HEAD
                    "WLAN TL: %s get one data frame, station ID %d ", __func__, ucSTAId));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "WLAN TL: %s get one data frame, station ID %d ", __FUNCTION__, ucSTAId));
+>>>>>>> 657b0e9... prima update
         /*-------------------------------------------------------------------
         Check to see that STA is valid and tx is not suspended
          -------------------------------------------------------------------*/
         if ( ( ! WLANTL_STA_ID_INVALID( ucSTAId ) ) &&
+<<<<<<< HEAD
 <<<<<<< HEAD
            ( 0 == pTLCb->atlSTAClients[ucSTAId].ucTxSuspended ) &&
            ( 0 == pTLCb->atlSTAClients[ucSTAId].fcStaTxDisabled) )
@@ -5086,32 +5710,48 @@ WLANTL_GetFrames
 =======
            ( 0 == pClientSTA->ucTxSuspended ) &&
            ( 0 == pClientSTA->fcStaTxDisabled) )
+=======
+           ( 0 == pTLCb->atlSTAClients[ucSTAId].ucTxSuspended ) &&
+           ( 0 == pTLCb->atlSTAClients[ucSTAId].fcStaTxDisabled) )
+>>>>>>> 657b0e9... prima update
         {
           TLLOG4(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,
-                   "WLAN TL: %s sta id valid and not suspended ",__func__));
+                   "WLAN TL: %s sta id valid and not suspended ",__FUNCTION__));
           wSTAEvent = WLANTL_TX_EVENT;
 
+<<<<<<< HEAD
           pfnSTAFsm = tlSTAFsm[pClientSTA->tlState].
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          pfnSTAFsm = tlSTAFsm[pTLCb->atlSTAClients[ucSTAId].tlState].
+>>>>>>> 657b0e9... prima update
                         pfnSTATbl[wSTAEvent];
 
           if ( NULL != pfnSTAFsm )
           {
 <<<<<<< HEAD
+<<<<<<< HEAD
             pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 0;
 =======
             pClientSTA->ucNoMoreData = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 0;
+>>>>>>> 657b0e9... prima update
             vosStatus  = pfnSTAFsm( pvosGCtx, ucSTAId, &vosTempBuf);
 
             if (( VOS_STATUS_SUCCESS != vosStatus ) &&
                 ( NULL != vosTempBuf ))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                  pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp( pvosGCtx,
 =======
                  pClientSTA->pfnSTATxComp( pvosGCtx,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp( pvosGCtx,
+>>>>>>> 657b0e9... prima update
                                                              vosTempBuf,
                                                              vosStatus );
                  vosTempBuf = NULL;
@@ -5140,15 +5780,21 @@ WLANTL_GetFrames
 
         if ( ( pTLCb->uResCount >= (uResLen + WDA_TLI_MIN_RES_BAP ) ) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
            ( uRemaining > uTotalPktLen )
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
            && ( uFlowMask & ( 1 << ucAC ) )
 #endif
            )
+<<<<<<< HEAD
 =======
              ( uRemaining > uTotalPktLen ) &&
              ( uFlowMask & ( 1 << ucAC ) ) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         {
           TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                     "WLAN TL:Chaining data frame on GetFrame"));
@@ -5163,6 +5809,7 @@ WLANTL_GetFrames
           pTLCb->uResCount  -= uResLen;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
           //fow control update
           pTLCb->atlSTAClients[ucSTAId].uIngress_length += uResLen;
@@ -5175,6 +5822,14 @@ WLANTL_GetFrames
           pClientSTA->uBuffThresholdMax = (pClientSTA->uBuffThresholdMax >= uResLen) ?
             (pClientSTA->uBuffThresholdMax - uResLen) : 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+          //fow control update
+          pTLCb->atlSTAClients[ucSTAId].uIngress_length += uResLen;
+          pTLCb->atlSTAClients[ucSTAId].uBuffThresholdMax = (pTLCb->atlSTAClients[ucSTAId].uBuffThresholdMax >= uResLen) ?
+            (pTLCb->atlSTAClients[ucSTAId].uBuffThresholdMax - uResLen) : 0;
+#endif
+>>>>>>> 657b0e9... prima update
 
         }
         else
@@ -5183,6 +5838,7 @@ WLANTL_GetFrames
           pTLCb->vosTempBuf = vosTempBuf;
           pTLCb->ucCachedSTAId = ucSTAId;
           pTLCb->ucCachedAC    = ucAC;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
           ucResult = uResLen + WDA_TLI_MIN_RES_BAP;
@@ -5197,6 +5853,16 @@ WLANTL_GetFrames
           TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "min %d res required by TL.", ucResult ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+          ucResult = uResLen + WDA_TLI_MIN_RES_BAP;
+          TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+               "min %d res required by TL.", ucResult ));
+#else
+          ucResult = ( pTLCb->uResCount >= (uResLen + WDA_TLI_MIN_RES_BAP ))?
+                       VOS_TRUE:VOS_FALSE;
+#endif
+>>>>>>> 657b0e9... prima update
           break; /* Out of resources or reached max len */
         }
       }
@@ -5205,12 +5871,17 @@ WLANTL_GetFrames
            for ( i = 0; i < WLAN_MAX_STA_COUNT; i++)
            {
 <<<<<<< HEAD
+<<<<<<< HEAD
               if ((pTLCb->atlSTAClients[i].ucExists) && 
                   (pTLCb->atlSTAClients[i].ucPktPending))
 =======
               if (NULL != pTLCb->atlSTAClients[i] && (pTLCb->atlSTAClients[i]->ucExists) &&
                   (pTLCb->atlSTAClients[i]->ucPktPending))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              if ((pTLCb->atlSTAClients[i].ucExists) && 
+                  (pTLCb->atlSTAClients[i].ucPktPending))
+>>>>>>> 657b0e9... prima update
               {
                   /* There is station to be Served */
                   break;
@@ -5234,9 +5905,13 @@ WLANTL_GetFrames
              "WLAN TL:Returning from GetFrame: resources = %d suspended = %d",
                  pTLCb->uResCount, pTLCb->ucTxSuspended));
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
       /* TL is starving even when DXE is not in low resource condition 
          Return min resource number required and Let DXE deceide what to do */
       if(( 0 == pTLCb->ucTxSuspended ) && 
@@ -5251,9 +5926,13 @@ WLANTL_GetFrames
          ucResult = WDA_TLI_MIN_RES_DATA;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
        break; /*out of min data resources*/
     }
 
@@ -5321,11 +6000,17 @@ WLANTL_TxComp
   WLANTL_TxCompCBType  pfnTxComp = NULL;
   VOS_STATUS           vosStatus = VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if !defined( FEATURE_WLAN_INTEGRATED_SOC )
   vos_msg_t            vosMsg;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if !defined( FEATURE_WLAN_INTEGRATED_SOC )
+  vos_msg_t            vosMsg;
+#endif
+>>>>>>> 657b0e9... prima update
   vos_pkt_t*           vosTempTx = NULL;
 
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -5369,10 +6054,14 @@ WLANTL_TxComp
 
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL:Calling Tx complete for pkt %x in function %x",
 =======
                "WLAN TL:Calling Tx complete for pkt %p in function %p",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL:Calling Tx complete for pkt %x in function %x",
+>>>>>>> 657b0e9... prima update
                vosDataBuff, pfnTxComp));
 
     vosTempTx = vosDataBuff;
@@ -5385,6 +6074,9 @@ WLANTL_TxComp
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if !defined( FEATURE_WLAN_INTEGRATED_SOC ) 
   if (( 0 == pTLCb->usPendingTxCompleteCount ) &&
       ( pTLCb->uResCount <= WDA_TLI_BD_PDU_RESERVE_THRESHOLD ))
@@ -5395,8 +6087,11 @@ WLANTL_TxComp
     vos_tx_mq_serialize( VOS_MQ_ID_TL, &vosMsg);
   }
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
             "WLAN TL: current TL values are: resources = %d "
@@ -5455,9 +6150,12 @@ WLANTL_CacheSTAFrame
   v_U8_t    ucBcastSig;
   v_BOOL_t  bOldSTAPkt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------  
@@ -5467,12 +6165,17 @@ WLANTL_CacheSTAFrame
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL: Invalid input pointer on WLANTL_CacheSTAFrame TL %x"
                " Packet %x", pTLCb, vosTempBuff ));
 =======
                "WLAN TL: Invalid input pointer on WLANTL_CacheSTAFrame TL %p"
                " Packet %p", pTLCb, vosTempBuff ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL: Invalid input pointer on WLANTL_CacheSTAFrame TL %x"
+               " Packet %x", pTLCb, vosTempBuff ));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -5482,6 +6185,7 @@ WLANTL_CacheSTAFrame
          "WLAN TL:Invalid station id requested on WLANTL_CacheSTAFrame"));
     return VOS_STATUS_E_FAULT;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
@@ -5493,10 +6197,13 @@ WLANTL_CacheSTAFrame
       return VOS_STATUS_E_FAILURE;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Attempting to cache pkt for STA %d, BD DPU Sig: %d with sig UC: %d, BC: %d", 
              ucSTAId, uDPUSig,
+<<<<<<< HEAD
 <<<<<<< HEAD
              pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig,
              pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig));
@@ -5504,6 +6211,10 @@ WLANTL_CacheSTAFrame
              pClientSTA->wSTADesc.ucUcastSig,
              pClientSTA->wSTADesc.ucBcastSig));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig,
+             pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig));
+>>>>>>> 657b0e9... prima update
 
   if(WLANTL_IS_CTRL_FRAME(ucFrmType))
   {
@@ -5527,17 +6238,23 @@ WLANTL_CacheSTAFrame
     ucBcastSig = (v_U8_t)uDPUSig;
     bOldSTAPkt = (( WLAN_TL_INVALID_B_SIG != 
 <<<<<<< HEAD
+<<<<<<< HEAD
                   pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ) &&
       ( ucBcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ));
 =======
                   pClientSTA->wSTADesc.ucBcastSig ) &&
       ( ucBcastSig == pClientSTA->wSTADesc.ucBcastSig ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ) &&
+      ( ucBcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ));
+>>>>>>> 657b0e9... prima update
   }
   else
   {
     ucUcastSig = (v_U8_t)uDPUSig;
     bOldSTAPkt = (( WLAN_TL_INVALID_U_SIG != 
+<<<<<<< HEAD
 <<<<<<< HEAD
                     pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ) &&
         ( ucUcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ));
@@ -5545,6 +6262,10 @@ WLANTL_CacheSTAFrame
                     pClientSTA->wSTADesc.ucUcastSig ) &&
         ( ucUcastSig == pClientSTA->wSTADesc.ucUcastSig ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ) &&
+        ( ucUcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ));
+>>>>>>> 657b0e9... prima update
   }
 
   /*------------------------------------------------------------------------
@@ -5554,15 +6275,20 @@ WLANTL_CacheSTAFrame
     associated station 
   -------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( bOldSTAPkt )
 =======
   if ( bOldSTAPkt || bBcast )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( bOldSTAPkt )
+>>>>>>> 657b0e9... prima update
   {
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLAN TL:Data packet matches old sig for sig DPU: %d UC: %d, "
                "BC: %d - dropping", 
                uDPUSig, 
+<<<<<<< HEAD
 <<<<<<< HEAD
                pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig, 
                pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig));
@@ -5570,10 +6296,15 @@ WLANTL_CacheSTAFrame
                pClientSTA->wSTADesc.ucUcastSig,
                pClientSTA->wSTADesc.ucBcastSig));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig, 
+               pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig));
+>>>>>>> 657b0e9... prima update
     vos_pkt_return_packet(vosTempBuff); 
   }
   else
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     if ( NULL == pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame ) 
     {
@@ -5585,10 +6316,17 @@ WLANTL_CacheSTAFrame
       /*this is the first frame that we are caching */
       pClientSTA->vosBegCachedFrame = vosTempBuff;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if ( NULL == pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame ) 
+    {
+      /*this is the first frame that we are caching */
+      pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame = vosTempBuff;   
+>>>>>>> 657b0e9... prima update
     }
     else
     {
       /*this is a subsequent frame that we are caching: chain to the end */
+<<<<<<< HEAD
 <<<<<<< HEAD
       vos_pkt_chain_packet(pTLCb->atlSTAClients[ucSTAId].vosEndCachedFrame, 
                            vosTempBuff, VOS_TRUE);
@@ -5600,6 +6338,12 @@ WLANTL_CacheSTAFrame
     }
     pClientSTA->vosEndCachedFrame = vosTempBuff;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      vos_pkt_chain_packet(pTLCb->atlSTAClients[ucSTAId].vosEndCachedFrame, 
+                           vosTempBuff, VOS_TRUE);
+    }
+    pTLCb->atlSTAClients[ucSTAId].vosEndCachedFrame = vosTempBuff; 
+>>>>>>> 657b0e9... prima update
   }/*else new packet*/
 
   return VOS_STATUS_SUCCESS; 
@@ -5697,11 +6441,15 @@ WLANTL_ForwardSTAFrames
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   WLANTL_CbType*  pTLCb = NULL; 
 =======
   WLANTL_CbType*  pTLCb = NULL;
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WLANTL_CbType*  pTLCb = NULL; 
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------  
@@ -5712,10 +6460,14 @@ WLANTL_ForwardSTAFrames
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "WLAN TL: Invalid input pointer on WLANTL_ForwardSTAFrames TL %x",
 =======
         "WLAN TL: Invalid input pointer on WLANTL_ForwardSTAFrames TL %p",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        "WLAN TL: Invalid input pointer on WLANTL_ForwardSTAFrames TL %x",
+>>>>>>> 657b0e9... prima update
          pTLCb ));
     return VOS_STATUS_E_FAULT;
   }
@@ -5733,6 +6485,7 @@ WLANTL_ForwardSTAFrames
      Check if station has not been registered in the mean while
      if not registered, flush cached frames.
    ------------------------------------------------------------------------*/ 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
   {
@@ -5755,6 +6508,13 @@ WLANTL_ForwardSTAFrames
        "WLAN TL:Station has been deleted for STA %d - flushing cache", ucSTAId));
     WLANTL_FlushCachedFrames(pClientSTA->vosBegCachedFrame);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists )
+  {
+    TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+       "WLAN TL:Station has been deleted for STA %d - flushing cache", ucSTAId));
+    WLANTL_FlushCachedFrames(pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame);
+>>>>>>> 657b0e9... prima update
     goto done; 
   }
 
@@ -5773,12 +6533,17 @@ WLANTL_ForwardSTAFrames
     Save the new signature values
   ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig  = ucUcastSig;
   pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig  = ucBcastSig;
 =======
   pClientSTA->wSTADesc.ucUcastSig  = ucUcastSig;
   pClientSTA->wSTADesc.ucBcastSig  = ucBcastSig;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig  = ucUcastSig;
+  pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig  = ucBcastSig;
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
        "WLAN TL:Fwd-ing packets for STA %d UC %d BC %d",
@@ -5788,10 +6553,14 @@ WLANTL_ForwardSTAFrames
      Check to see if we have any cached data to forward 
    -------------------------------------------------------------------------*/ 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( NULL != pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame ) 
 =======
   if ( NULL != pClientSTA->vosBegCachedFrame )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( NULL != pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame ) 
+>>>>>>> 657b0e9... prima update
   {
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLAN TL: Fwd-ing Cached packets for station %d", ucSTAId ));
@@ -5799,10 +6568,14 @@ WLANTL_ForwardSTAFrames
     WLANTL_RxCachedFrames( pTLCb, 
                            ucSTAId, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                            pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame);
 =======
                            pClientSTA->vosBegCachedFrame);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame);
+>>>>>>> 657b0e9... prima update
   }
   else
   {
@@ -5815,21 +6588,30 @@ done:
    Clear the station cache 
    -------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame = NULL;   
   pTLCb->atlSTAClients[ucSTAId].vosEndCachedFrame = NULL; 
 =======
   pClientSTA->vosBegCachedFrame = NULL;
   pClientSTA->vosEndCachedFrame = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].vosBegCachedFrame = NULL;   
+  pTLCb->atlSTAClients[ucSTAId].vosEndCachedFrame = NULL; 
+>>>>>>> 657b0e9... prima update
 
     /*-----------------------------------------------------------------------
     After all the init is complete we can mark the existance flag 
     ----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId].ucRxBlocked = 0;
 =======
   pClientSTA->ucRxBlocked = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].ucRxBlocked = 0;
+>>>>>>> 657b0e9... prima update
 
   //WLAN_TL_UNLOCK_STA_CACHE(pTLCb->atlSTAClients[ucSTAId]); 
   return VOS_STATUS_SUCCESS; 
@@ -6130,9 +6912,13 @@ WLANTL_ProcessBAPFrame
 }/*WLANTL_ProcessBAPFrame*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
 /*==========================================================================
 
@@ -6181,6 +6967,7 @@ WLANTL_ProcessFCFrame
 #if 1 //enable processing of only fcStaTxDisabled bitmap for now. the else part is old better qos code.
       // need to revisit the old code for full implementation.
 <<<<<<< HEAD
+<<<<<<< HEAD
   v_U8_t               ucTxSuspended = 0, ucTxSuspendReq = 0, ucTxResumeReq = 0;
   WLANTL_CbType*       pTLCb = NULL;
 
@@ -6198,6 +6985,13 @@ WLANTL_ProcessFCFrame
   /*------------------------------------------------------------------------
    Extract TL control block
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  v_U8_t               ucTxSuspended = 0, ucTxSuspendReq = 0, ucTxResumeReq = 0;
+  WLANTL_CbType*       pTLCb = NULL;
+
+  /*------------------------------------------------------------------------
+     Extract TL control block
+>>>>>>> 657b0e9... prima update
   ------------------------------------------------------------------------*/
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
   if ( NULL == pTLCb )
@@ -6206,6 +7000,7 @@ WLANTL_ProcessFCFrame
           "WLAN TL:Invalid TL pointer from pvosGCtx on WLANTL_SuspendDataTx"));
     return VOS_STATUS_E_FAULT;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   /* Existing Stations with Tx suspended */
@@ -6235,16 +7030,18 @@ WLANTL_ProcessFCFrame
   rxTimeStamp = WDA_GET_RX_TIMESTAMP(pvBDHeader);
   /* hard code of MTU_GLOBAL_TIMER_ADDR to calculate the time between generated and processed */
   wpalReadRegister(0x03081400+0x1D4, &curTick);
+=======
+>>>>>>> 657b0e9... prima update
 
+  /* Existing Stations with Tx suspended */
+  ucTxSuspended = pTLCb->ucTxSuspended;
+
+  /* Suspend Request Received */
+  ucTxSuspendReq = (v_U8_t) WDA_GET_RX_FC_STA_TX_DISABLED_BITMAP(pvBDHeader);
   TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-    "%ld (%ld-%ld): Disabled %x Valid %x\n", curTick > rxTimeStamp ? curTick - rxTimeStamp : rxTimeStamp - (0xFFFFFFFF - curTick),
-    curTick, rxTimeStamp,  ucStaTxDisabledBitmap, ucStaValidBitmap));
-#endif
-  for(ucSTAId = 0; ucStaValidBitmap != 0; ucStaValidBitmap >>=1, ucStaTxDisabledBitmap >>= 1, ucSTAId ++)
-  {
-    if ( (0 == (ucStaValidBitmap & 0x1)) || (pTLCb->atlSTAClients[ucSTAId] && (0 == pTLCb->atlSTAClients[ucSTAId]->ucExists)) )
-        continue;
+         "WLANTL_ProcessFCFrame called for Stations:: Current: %x Requested: %x ", ucTxSuspended, ucTxSuspendReq));
 
+<<<<<<< HEAD
     if (ucStaTxDisabledBitmap & 0x1)
     {
       WLANTL_SuspendDataTx(pvosGCtx, &ucSTAId, NULL);
@@ -6254,6 +7051,20 @@ WLANTL_ProcessFCFrame
       WLANTL_ResumeDataTx(pvosGCtx, &ucSTAId);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  ucTxResumeReq = ucTxSuspendReq ^ ( ucTxSuspended | ucTxSuspendReq );
+  ucTxSuspendReq = ucTxSuspendReq ^ ( ucTxSuspended & ucTxSuspendReq );
+  TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+         "Station Suspend request processed :: Suspend: %x :Resume: %x ", ucTxSuspendReq, ucTxResumeReq));
+
+  if ( 0 != ucTxSuspendReq )
+  {
+    WLANTL_SuspendDataTx(pvosGCtx, &ucTxSuspendReq, NULL);
+  }
+  if ( 0 != ucTxResumeReq )
+  {
+    WLANTL_ResumeDataTx(pvosGCtx, &ucTxResumeReq);
+>>>>>>> 657b0e9... prima update
   }
 
 #else
@@ -6269,10 +7080,14 @@ WLANTL_ProcessFCFrame
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "WLAN TL:Invalid pointer in %s \n", __FUNCTION__));
 =======
         "WLAN TL:Invalid pointer in %s \n", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        "WLAN TL:Invalid pointer in %s \n", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
   vosStatus = vos_pkt_peek_data( pvosDataBuff, 0, (v_PVOID_t)&pvFcRxBd,
@@ -6358,9 +7173,13 @@ WLANTL_ProcessFCFrame
   return VOS_STATUS_SUCCESS;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 
 /*==========================================================================
@@ -6409,9 +7228,12 @@ WLANTL_RxFrames
   vos_pkt_t*          vosDataBuff = (vos_pkt_t*)pFrameDataBuff;
   WLANTL_CbType*      pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   WLANTL_STAFuncType  pfnSTAFsm;
   vos_pkt_t*          vosTempBuff;
   v_U8_t              ucSTAId;
@@ -6423,18 +7245,26 @@ WLANTL_RxFrames
   v_BOOL_t            broadcast  = VOS_FALSE;
   v_BOOL_t            selfBcastLoopback = VOS_FALSE;
 <<<<<<< HEAD
+<<<<<<< HEAD
   static v_U8_t       first_data_pkt_arrived = 0;
   v_U32_t             uDPUSig; 
 #ifdef WLAN_SOFTAP_FEATURE
   v_U16_t             usPktLen;
 =======
   static v_U8_t       first_data_pkt_arrived;
+=======
+  static v_U8_t       first_data_pkt_arrived = 0;
+>>>>>>> 657b0e9... prima update
   v_U32_t             uDPUSig; 
+#ifdef WLAN_SOFTAP_FEATURE
   v_U16_t             usPktLen;
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS_INTERNAL 
   v_U8_t              ucMPDUHLen = 0 ;
   v_U16_t             usEtherType = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
@@ -6470,11 +7300,14 @@ WLANTL_RxFrames
   while ( NULL != vosTempBuff )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     broadcast = VOS_FALSE;
     selfBcastLoopback = VOS_FALSE; 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     vos_pkt_walk_packet_chain( vosDataBuff, &vosDataBuff, 1/*true*/ );
 
     /*---------------------------------------------------------------------
@@ -6494,9 +7327,13 @@ WLANTL_RxFrames
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     /*---------------------------------------------------------------------
       Check if FC frame reported from FW
     ---------------------------------------------------------------------*/
@@ -6512,9 +7349,13 @@ WLANTL_RxFrames
       continue;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
     /* AMSDU HW bug fix
      * After 2nd AMSDU subframe HW could not handle BD correctly
@@ -6542,6 +7383,7 @@ WLANTL_RxFrames
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     vos_pkt_get_packet_length(vosTempBuff, &usPktLen);
 #endif
@@ -6555,11 +7397,17 @@ WLANTL_RxFrames
 #endif
     vos_pkt_get_packet_length(vosTempBuff, &usPktLen);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    vos_pkt_get_packet_length(vosTempBuff, &usPktLen);
+#endif
+>>>>>>> 657b0e9... prima update
 
     /*---------------------------------------------------------------------
       Check if management and send to PE
     ---------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     if ( WLANTL_IS_MGMT_FRAME(ucFrmType) )
 =======
@@ -6569,6 +7417,9 @@ WLANTL_RxFrames
 #endif
        )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if ( WLANTL_IS_MGMT_FRAME(ucFrmType) )
+>>>>>>> 657b0e9... prima update
     {
       TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                  "WLAN TL:Sending packet to management client"));
@@ -6596,6 +7447,7 @@ WLANTL_RxFrames
 #else
         vosStatus = WLANTL_ReadRSSI(pvosGCtx, pvBDHeader, ucSTAId);
 #endif
+<<<<<<< HEAD
 <<<<<<< HEAD
       }
 
@@ -6633,6 +7485,21 @@ WLANTL_RxFrames
       }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      }
+
+      if(!VOS_IS_STATUS_SUCCESS(vosStatus))
+      {
+        TLLOGW(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
+          "Handle RX Management Frame fail within Handoff support module"));
+        /* Do Not Drop packet at here 
+         * Revisit why HO module return fail
+        vos_pkt_return_packet(vosTempBuff);
+        vosTempBuff = vosDataBuff;
+        continue;
+         */
+      }
+>>>>>>> 657b0e9... prima update
       pTLCb->tlMgmtFrmClient.pfnTlMgmtFrmRx( pvosGCtx, vosTempBuff); 
     }
     else /* Data Frame */
@@ -6684,6 +7551,7 @@ WLANTL_RxFrames
         - also we need to make sure that the frames in the cache are fwd-ed to
           the station before the new incoming ones 
       -----------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
       if ((( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) ||
           ( (0 != pTLCb->atlSTAClients[ucSTAId].ucRxBlocked)
@@ -6756,11 +7624,21 @@ WLANTL_RxFrames
 
       if ((( 0 == pClientSTA->ucExists ) ||
           ( (0 != pClientSTA->ucRxBlocked)
+=======
+      if ((( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) ||
+          ( (0 != pTLCb->atlSTAClients[ucSTAId].ucRxBlocked)
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             ///@@@: xg: no checking in SOFTAP for now, will revisit later
-            && (WLAN_STA_SOFTAP != pClientSTA->wSTADesc.wSTAType)
+            && (WLAN_STA_SOFTAP != pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
+#endif
           ) ||
+<<<<<<< HEAD
           ( WLANTL_STA_DISCONNECTED == pClientSTA->tlState)) &&
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          ( WLANTL_STA_DISCONNECTED == pTLCb->atlSTAClients[ucSTAId].tlState)) &&
+>>>>>>> 657b0e9... prima update
             /*Dont buffer Broadcast/Multicast frames. If AP transmits bursts of Broadcast/Multicast data frames, 
              * libra buffers all Broadcast/Multicast packets after authentication with AP, 
              * So it will lead to low resource condition in Rx Data Path.*/
@@ -6769,16 +7647,20 @@ WLANTL_RxFrames
         uDPUSig = WDA_GET_RX_DPUSIG( pvBDHeader );
           //Station has not yet been registered with TL - cache the frame
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         TLLOGW(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
                  "%s: staId %d exist %d tlState %d cache rx frame \n", __func__, ucSTAId,
                  pClientSTA->ucExists, pClientSTA->tlState));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         WLANTL_CacheSTAFrame( pTLCb, ucSTAId, vosTempBuff, uDPUSig, broadcast, ucFrmType);
         vosTempBuff = vosDataBuff;
         continue;
       }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #ifdef FEATURE_WLAN_CCX
@@ -6787,6 +7669,11 @@ WLANTL_RxFrames
 #ifdef FEATURE_WLAN_CCX
       if ((pClientSTA->wSTADesc.ucIsCcxSta)|| broadcast)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+#ifdef FEATURE_WLAN_CCX
+      if ((pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucIsCcxSta)|| broadcast)
+>>>>>>> 657b0e9... prima update
       {
         /*--------------------------------------------------------------------
           Filter the IAPP frames for CCX connection; 
@@ -6816,10 +7703,14 @@ WLANTL_RxFrames
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if ( WLAN_STA_BT_AMP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
 =======
       if ( WLAN_STA_BT_AMP == pClientSTA->wSTADesc.wSTAType )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      if ( WLAN_STA_BT_AMP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
+>>>>>>> 657b0e9... prima update
       {
         /*--------------------------------------------------------------------
           Process the ctrl BAP frame; if data it will return false and it 
@@ -6849,10 +7740,14 @@ WLANTL_RxFrames
       wSTAEvent = WLANTL_RX_EVENT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       pfnSTAFsm = tlSTAFsm[pTLCb->atlSTAClients[ucSTAId].tlState].
 =======
       pfnSTAFsm = tlSTAFsm[pClientSTA->tlState].
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pfnSTAFsm = tlSTAFsm[pTLCb->atlSTAClients[ucSTAId].tlState].
+>>>>>>> 657b0e9... prima update
                       pfnSTATbl[wSTAEvent];
 
       if ( NULL != pfnSTAFsm )
@@ -6870,15 +7765,20 @@ WLANTL_RxFrames
         vosStatus = WLANTL_ReadRSSI(pvosGCtx, pvBDHeader, ucSTAId);
 #endif /*FEATURE_WLAN_GEN6_ROAMING*/
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(!VOS_IS_STATUS_SUCCESS(vosStatus))
 =======
         if (!VOS_IS_STATUS_SUCCESS(vosStatus))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(!VOS_IS_STATUS_SUCCESS(vosStatus))
+>>>>>>> 657b0e9... prima update
         {
           TLLOGW(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
             "Handle RX Data Frame fail within Handoff support module"));
           /* Do Not Drop packet at here 
            * Revisit why HO module return fail
+<<<<<<< HEAD
 <<<<<<< HEAD
           vos_pkt_return_packet(vosTempBuff);
           vosTempBuff = vosDataBuff;
@@ -6900,6 +7800,13 @@ WLANTL_RxFrames
         }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          vos_pkt_return_packet(vosTempBuff);
+          vosTempBuff = vosDataBuff;
+          continue;
+           */
+        }
+>>>>>>> 657b0e9... prima update
         pfnSTAFsm( pvosGCtx, ucSTAId, &vosTempBuff);
       }
       else
@@ -6907,16 +7814,23 @@ WLANTL_RxFrames
           TLLOGW(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
             "WLAN TL:NULL state function, STA:%d, State: %d- dropping packet",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlState));
 =======
                    ucSTAId, pClientSTA->tlState));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlState));
+>>>>>>> 657b0e9... prima update
           /* Drop packet */
           vos_pkt_return_packet(vosTempBuff);
           vosTempBuff = vosDataBuff;
           continue;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
 /* This will be handled within statistics module */
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
@@ -6928,8 +7842,11 @@ WLANTL_RxFrames
 #endif
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     }/* else data frame*/
 
     vosTempBuff = vosDataBuff;
@@ -6983,9 +7900,12 @@ WLANTL_RxCachedFrames
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType* pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   WLANTL_STAFuncType  pfnSTAFsm;
   vos_pkt_t*          vosTempBuff;
   VOS_STATUS          vosStatus;
@@ -6996,10 +7916,14 @@ WLANTL_RxCachedFrames
   v_BOOL_t            bSigMatch  = VOS_FALSE; 
   v_BOOL_t            selfBcastLoopback = VOS_FALSE;
 <<<<<<< HEAD
+<<<<<<< HEAD
   static v_U8_t       first_data_pkt_arrived = 0;
 =======
   static v_U8_t       first_data_pkt_arrived;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  static v_U8_t       first_data_pkt_arrived = 0;
+>>>>>>> 657b0e9... prima update
   v_U32_t             uDPUSig; 
   v_U8_t              ucUcastSig; 
   v_U8_t              ucBcastSig; 
@@ -7026,11 +7950,14 @@ WLANTL_RxCachedFrames
   while ( NULL != vosTempBuff )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     broadcast = VOS_FALSE;
     selfBcastLoopback = VOS_FALSE; 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     vos_pkt_walk_packet_chain( vosDataBuff, &vosDataBuff, 1/*true*/ );
 
           TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -7092,6 +8019,7 @@ WLANTL_RxCachedFrames
       newly added station 
     -------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 
@@ -7104,10 +8032,13 @@ WLANTL_RxCachedFrames
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     if ( broadcast )
     {
       ucBcastSig = (v_U8_t)uDPUSig;
       bSigMatch = (( WLAN_TL_INVALID_B_SIG != 
+<<<<<<< HEAD
 <<<<<<< HEAD
                     pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ) &&
         ( ucBcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ));
@@ -7115,11 +8046,16 @@ WLANTL_RxCachedFrames
                     pClientSTA->wSTADesc.ucBcastSig ) &&
         ( ucBcastSig == pClientSTA->wSTADesc.ucBcastSig ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ) &&
+        ( ucBcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucBcastSig ));
+>>>>>>> 657b0e9... prima update
     }
     else
     {
       ucUcastSig = (v_U8_t)uDPUSig;
       bSigMatch = (( WLAN_TL_INVALID_U_SIG != 
+<<<<<<< HEAD
 <<<<<<< HEAD
                       pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ) &&
           ( ucUcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ));
@@ -7127,6 +8063,10 @@ WLANTL_RxCachedFrames
                       pClientSTA->wSTADesc.ucUcastSig ) &&
           ( ucUcastSig == pClientSTA->wSTADesc.ucUcastSig ));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ) &&
+          ( ucUcastSig == pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig ));
+>>>>>>> 657b0e9... prima update
     }
 
     /*-------------------------------------------------------------------------
@@ -7134,6 +8074,7 @@ WLANTL_RxCachedFrames
     -------------------------------------------------------------------------*/
     if ( !bSigMatch )
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
             TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
         "WLAN TL: Cached packet does not match DPU Sig of the new STA - drop "
@@ -7149,6 +8090,14 @@ WLANTL_RxCachedFrames
         pClientSTA->wSTADesc.ucUcastSig,
         pClientSTA->wSTADesc.ucBcastSig,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+        "WLAN TL: Cached packet does not match DPU Sig of the new STA - drop "
+        " DPU Sig %d  UC %d BC %d B %d",
+        uDPUSig,
+        pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig,
+        pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucUcastSig,
+>>>>>>> 657b0e9... prima update
         broadcast));
 
       /* Drop packet */ 
@@ -7164,10 +8113,14 @@ WLANTL_RxCachedFrames
         from BT-AMP Ctrl path 
     ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
     if ( WLAN_STA_BT_AMP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
 =======
     if ( WLAN_STA_BT_AMP == pClientSTA->wSTADesc.wSTAType )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if ( WLAN_STA_BT_AMP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
+>>>>>>> 657b0e9... prima update
     {
       /*--------------------------------------------------------------------
         Process the ctrl BAP frame; if data it will return false and it 
@@ -7197,10 +8150,14 @@ WLANTL_RxCachedFrames
       wSTAEvent = WLANTL_RX_EVENT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       pfnSTAFsm = tlSTAFsm[pTLCb->atlSTAClients[ucSTAId].tlState].
 =======
       pfnSTAFsm = tlSTAFsm[pClientSTA->tlState].
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pfnSTAFsm = tlSTAFsm[pTLCb->atlSTAClients[ucSTAId].tlState].
+>>>>>>> 657b0e9... prima update
                       pfnSTATbl[wSTAEvent];
 
       if ( NULL != pfnSTAFsm )
@@ -7237,10 +8194,14 @@ WLANTL_RxCachedFrames
         TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
             "WLAN TL:NULL state function, STA:%d, State: %d- dropping packet",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlState));
 =======
                    ucSTAId, pClientSTA->tlState));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   ucSTAId, pTLCb->atlSTAClients[ucSTAId].tlState));
+>>>>>>> 657b0e9... prima update
         /* Drop packet */
         vos_pkt_return_packet(vosTempBuff);
         vosTempBuff = vosDataBuff;
@@ -7319,11 +8280,15 @@ WLANTL_ResourceCB
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
 /*============================================================================
                            TL STATE MACHINE
 ============================================================================*/
 
+<<<<<<< HEAD
 /*==========================================================================
   FUNCTION    WLANTL_STATxConn
 
@@ -7341,41 +8306,57 @@ WLANTL_ResourceCB
    ucSTAId:        identifier of the station being processed
    vosDataBuff:   pointer to the tx vos buffer
 =======
+=======
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
-  FUNCTION   WLANTL_IsTxXmitPending
+  FUNCTION    WLANTL_STATxConn
 
   DESCRIPTION
-    Called by the WDA when it wants to know whether WDA_DS_TX_START_XMIT msg
-    is pending in TL msg queue 
+    Transmit in connected state - only EAPOL and WAI packets allowed
 
   DEPENDENCIES
-    The TL must be registered with WDA before this function can be called.
+    The STA must be registered with TL before this function can be called.
 
   PARAMETERS
 
+<<<<<<< HEAD
     IN
     pvosGCtx:       pointer to the global vos context; a handle to TL's
                     or WDA's control block can be extracted from its context
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   IN
+   pvosGCtx:       pointer to the global vos context; a handle to TL's
+                   control block can be extracted from its context
+   ucSTAId:        identifier of the station being processed
+   vosDataBuff:   pointer to the tx vos buffer
+>>>>>>> 657b0e9... prima update
 
   RETURN VALUE
     The result code associated with performing the operation
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     VOS_STATUS_E_FAULT:   pointer to TL cb is NULL ; access would cause a
                           page fault
     VOS_STATUS_SUCCESS:   Everything is good :)
 
    Other return values are possible coming from the called functions.
    Please check API for additional info.
+<<<<<<< HEAD
 =======
     0:   No WDA_DS_TX_START_XMIT msg pending 
     1:   Msg WDA_DS_TX_START_XMIT already pending in TL msg queue 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   SIDE EFFECTS
 
 ============================================================================*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 VOS_STATUS
 WLANTL_STATxConn
@@ -7399,13 +8380,33 @@ WLANTL_STATxConn
 =======
 v_BOOL_t
 WLANTL_IsTxXmitPending
+=======
+VOS_STATUS
+WLANTL_STATxConn
+>>>>>>> 657b0e9... prima update
 (
-  v_PVOID_t       pvosGCtx
+  v_PVOID_t     pvosGCtx,
+  v_U8_t        ucSTAId,
+  vos_pkt_t**   pvosDataBuff
 )
 {
+<<<<<<< HEAD
 
    WLANTL_CbType*  pTLCb = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   v_U16_t              usPktLen;
+   VOS_STATUS           vosStatus;
+   v_MACADDR_t          vDestMacAddr;
+   vos_pkt_t*           vosDataBuff = NULL;
+   WLANTL_CbType*       pTLCb       = NULL;
+   WLANTL_MetaInfoType  tlMetaInfo;
+   v_U8_t               ucTypeSubtype = 0;
+   v_U8_t               ucTid;
+   v_U8_t               extraHeadSpace = 0;
+   v_U8_t               ucWDSEnabled = 0;
+   v_U8_t               ucAC, ucACMask, i; 
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -7416,10 +8417,14 @@ WLANTL_IsTxXmitPending
   if ( NULL == pTLCb )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
              "WLAN TL:Invalid TL pointer from pvosGCtx on WLANTL_STATxConn");
    *pvosDataBuff = NULL;
     return VOS_STATUS_E_FAULT;
+<<<<<<< HEAD
   }
 
   /*-------------------------------------------------------------------
@@ -7542,398 +8547,8 @@ WLANTL_IsTxXmitPending
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
         "WLAN TL:Invalid TL pointer from pvosGCtx in WLANTL_IsTxXmitPending "));
     return FALSE;
-  }
-
-  return pTLCb->isTxTranmitMsgPending;
-
-}/*WLANTL_IsTxXmitPending */
-
-/*==========================================================================
-  FUNCTION   WLANTL_SetTxXmitPending
-
-  DESCRIPTION
-    Called by the WDA when it wants to indicate that WDA_DS_TX_START_XMIT msg
-    is pending in TL msg queue 
-
-  DEPENDENCIES
-    The TL must be registered with WDA before this function can be called.
-
-  PARAMETERS
-
-    IN
-    pvosGCtx:       pointer to the global vos context; a handle to TL's
-                    or WDA's control block can be extracted from its context
-
-  RETURN VALUE      None
-
-  SIDE EFFECTS
-
-============================================================================*/
-
-v_VOID_t
-WLANTL_SetTxXmitPending
-(
-  v_PVOID_t       pvosGCtx
-)
-{
-
-   WLANTL_CbType*  pTLCb = NULL;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-
-  /*------------------------------------------------------------------------
-    Sanity check
-    Extract TL control block
-   ------------------------------------------------------------------------*/
-  pTLCb = VOS_GET_TL_CB(pvosGCtx);
-  if ( NULL == pTLCb )
-  {
-    TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
-        "WLAN TL:Invalid TL pointer from pvosGCtx in WLANTL_SetTxXmitPending"));
-    return;
-  }
-
-  pTLCb->isTxTranmitMsgPending = 1;
-  return;
-
-}/*WLANTL_SetTxXmitPending  */
-
-/*==========================================================================
-  FUNCTION   WLANTL_ClearTxXmitPending
-
-  DESCRIPTION
-    Called by the WDA when it wants to indicate that no WDA_DS_TX_START_XMIT msg
-    is pending in TL msg queue 
-
-  DEPENDENCIES
-    The TL must be registered with WDA before this function can be called.
-
-  PARAMETERS
-
-    IN
-    pvosGCtx:       pointer to the global vos context; a handle to TL's
-                    or WDA's control block can be extracted from its context
-
-  RETURN VALUE     None
-
-  SIDE EFFECTS
-
-============================================================================*/
-
-v_VOID_t
-WLANTL_ClearTxXmitPending
-(
-  v_PVOID_t       pvosGCtx
-)
-{
-
-   WLANTL_CbType*  pTLCb = NULL;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-
-  /*------------------------------------------------------------------------
-    Sanity check
-    Extract TL control block
-   ------------------------------------------------------------------------*/
-  pTLCb = VOS_GET_TL_CB(pvosGCtx);
-  if ( NULL == pTLCb )
-  {
-    TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
-        "WLAN TL:Invalid TL pointer from pvosGCtx in WLANTL_ClearTxXmitPending "));
-    return;
-  }
-
-  pTLCb->isTxTranmitMsgPending = 0;
-  return;
-}/*WLANTL_ClearTxXmitPending */
-
-/*==========================================================================
-  FUNCTION   WLANTL_TxThreadDebugHandler
-
-  DESCRIPTION
-    Printing TL Snapshot dump, processed under TxThread context, currently
-    information regarding the global TlCb struture. Dumps information related
-    to per active STA connection currently in use by TL.
-
-  DEPENDENCIES
-    The TL must be initialized before this gets called.
-
-  PARAMETERS
-
-    IN
-    pvosGCtx:       pointer to the global vos context; a handle to TL's
-                    or WDA's control block can be extracted from its context
-
-  RETURN VALUE      None
-
-  SIDE EFFECTS
-
-============================================================================*/
-
-v_VOID_t
-WLANTL_TxThreadDebugHandler
-(
- v_PVOID_t *pVosContext
-)
-{
-   WLANTL_CbType* pTLCb = NULL;
-   WLANTL_STAClientType* pClientSTA = NULL;
-   int i = 0;
-   tWDA_CbContext *pWDA = NULL;
-
-   TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
-        "WLAN TL: %s Enter ", __func__));
-
-   pTLCb = VOS_GET_TL_CB(pVosContext);
-   pWDA = (tWDA_CbContext *)vos_get_global_context(VOS_MODULE_ID_WDA, pVosContext);
-
-   if ( NULL == pVosContext || NULL == pTLCb )
-   {
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-                        "Global VoS Context or TL Context are NULL"));
-        return;
-   }
-
-   if (NULL != pWDA)
-   {
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "WDA uTxFlowMask: %d", pWDA->uTxFlowMask));
-   }
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "************************TL DUMP INFORMATION**************"));
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "uDelayedTriggerFrmInt:%d\tuMinFramesProcThres:%d",
-          pTLCb->tlConfigInfo.uDelayedTriggerFrmInt,
-          pTLCb->tlConfigInfo.uMinFramesProcThres));
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "Management Frame Client exists: %d",
-          pTLCb->tlMgmtFrmClient.ucExists));
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "usPendingTxCompleteCount: %d\tucTxSuspended: %d",
-          pTLCb->usPendingTxCompleteCount,
-          pTLCb->ucTxSuspended));
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "uResCount: %d", pTLCb->uResCount));
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "ucRegisteredStaId: %d\tucCurrentSTA: %d",
-          pTLCb->ucRegisteredStaId, pTLCb->ucCurrentSTA));
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "UrgentFrameProcessing: %s\tuFramesProcThres: %d",
-          (pTLCb->bUrgent?"True":"False"), pTLCb->uFramesProcThres));
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "isTxTranmitMsgPending: %d\t isBMPS: %s",
-          pTLCb->isTxTranmitMsgPending, pTLCb->isBMPS?"True":"False"));
-
-#ifdef FEATURE_WLAN_TDLS
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "TDLS Peer Count: %d", pTLCb->ucTdlsPeerCount));
-#endif
-
-   TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "++++++++++++++++++++Registerd Client Information++++++++++"));
-
-   for ( i =0; i<WLAN_MAX_STA_COUNT; i++ )
-   {
-        pClientSTA = pTLCb->atlSTAClients[i];
-        if( NULL == pClientSTA || 0 == pClientSTA->ucExists)
-        {
-                continue;
-        }
-
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "######################STA Index: %d ############################",i));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "WLAN_STADescType:"));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "STAId: %d\t STA MAC Address: %pM", pClientSTA->wSTADesc.ucSTAId,
-              pClientSTA->wSTADesc.vSTAMACAddress.bytes));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "STA Type: %d\tProtectedFrame: %d",
-              pClientSTA->wSTADesc.wSTAType, pClientSTA->wSTADesc.ucProtectedFrame));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-               "QoS: %d\tRxFrameTrans: %d\tTxFrameTrans: %d",
-               pClientSTA->wSTADesc.ucQosEnabled, pClientSTA->wSTADesc.ucSwFrameRXXlation,
-               pClientSTA->wSTADesc.ucSwFrameTXXlation));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "ucUcastSig: %d\tucBcastSig: %d", pClientSTA->wSTADesc.ucUcastSig,
-              pClientSTA->wSTADesc.ucBcastSig));
-
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "ClientIndex: %d\t Exists: %d", i, pClientSTA->ucExists));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "TL State: %d\t TL Priority: %d", pClientSTA->tlState,
-              pClientSTA->tlPri));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "ucTxSuspended: %d\tucPktPending: %d", pClientSTA->ucTxSuspended,
-              pClientSTA->ucPktPending));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "ucEAPOLPktPending: %d\tucNoMoreData: %d",
-              pClientSTA->ucEapolPktPending, pClientSTA->ucNoMoreData));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-               "ucRxBlocked: %d\t fcStaTxDisabled: %d", pClientSTA->ucRxBlocked,
-               pClientSTA->fcStaTxDisabled));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-               "ucCurrentAC: %d\tucServicedAC: %d", pClientSTA->ucCurrentAC,
-               pClientSTA->ucServicedAC));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "TID: %d\tautTxCount[0]: %d\tauRxCount[0]: %d",0, pClientSTA->auTxCount[0],
-              pClientSTA->auRxCount[0]));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-              "aucAcMask[0]: %d\taucAcMask[1]: %d\taucAcMask[2]: %d\taucAcMask[3]: %d\t",
-              pClientSTA->aucACMask[0], pClientSTA->aucACMask[1],
-              pClientSTA->aucACMask[2], pClientSTA->aucACMask[3]));
-        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-               "ucCurrentWeight: %d", pClientSTA->ucCurrentWeight));
-
-        if( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType)
-        {
-            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-                  "TrafficStatistics for SOFTAP Station:"));
-            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-                  "RUF=%d\tRMF=%d\tRBF=%d", pClientSTA->trafficStatistics.rxUCFcnt,
-                                            pClientSTA->trafficStatistics.rxMCFcnt,
-                                            pClientSTA->trafficStatistics.rxBCFcnt));
-            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-                  "RUB=%d\tRMB=%d\tRBB=%d", pClientSTA->trafficStatistics.rxUCBcnt,
-                                            pClientSTA->trafficStatistics.rxMCBcnt,
-                                            pClientSTA->trafficStatistics.rxBCBcnt));
-            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-                  "TUF=%d\tTMF=%d\tTBF=%d", pClientSTA->trafficStatistics.txUCFcnt,
-                                            pClientSTA->trafficStatistics.txMCFcnt,
-                                            pClientSTA->trafficStatistics.txBCFcnt));
-            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-                  "TUB=%d\tTMB=%d\tTBB=%d", pClientSTA->trafficStatistics.txUCBcnt,
-                                            pClientSTA->trafficStatistics.txMCBcnt,
-                                            pClientSTA->trafficStatistics.txBCBcnt));
-        }
-    }
-   return;
-}
-
-/*==========================================================================
-  FUNCTION   WLANTL_TLDebugMessage
-
-  DESCRIPTION
-    Post a TL Snapshot request, posts message in TxThread.
-
-  DEPENDENCIES
-    The TL must be initialized before this gets called.
-
-  PARAMETERS
-
-    IN
-    displaySnapshot Boolean showing whether to dump the snapshot or not.
-
-  RETURN VALUE      None
-
-  SIDE EFFECTS
-
-============================================================================*/
-
-v_VOID_t
-WLANTL_TLDebugMessage
-(
- v_BOOL_t   displaySnapshot
-)
-{
-   vos_msg_t vosMsg;
-   VOS_STATUS status;
-
-   if(displaySnapshot)
-   {
-        vosMsg.reserved = 0;
-        vosMsg.bodyptr  = NULL;
-        vosMsg.type     = WLANTL_TX_SNAPSHOT;
-
-        status = vos_tx_mq_serialize( VOS_MODULE_ID_TL, &vosMsg);
-        if(status != VOS_STATUS_SUCCESS)
-        {
-            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "TX Msg Posting Failed with status: %d",status));
-            return;
-        }
-   }
-   return;
-}
-
-/*============================================================================
-                           TL STATE MACHINE
-============================================================================*/
-
-/*==========================================================================
-  FUNCTION    WLANTL_STATxConn
-
-  DESCRIPTION
-    Transmit in connected state - only EAPOL and WAI packets allowed
-
-  DEPENDENCIES
-    The STA must be registered with TL before this function can be called.
-
-  PARAMETERS
-
-   IN
-   pvosGCtx:       pointer to the global vos context; a handle to TL's
-                   control block can be extracted from its context
-   ucSTAId:        identifier of the station being processed
-   vosDataBuff:   pointer to the tx vos buffer
-
-  RETURN VALUE
-    The result code associated with performing the operation
-
-    VOS_STATUS_E_FAULT:   pointer to TL cb is NULL ; access would cause a
-                          page fault
-    VOS_STATUS_SUCCESS:   Everything is good :)
-
-   Other return values are possible coming from the called functions.
-   Please check API for additional info.
-
-  SIDE EFFECTS
-
-============================================================================*/
-VOS_STATUS
-WLANTL_STATxConn
-(
-  v_PVOID_t     pvosGCtx,
-  v_U8_t        ucSTAId,
-  vos_pkt_t**   pvosDataBuff
-)
-{
-   v_U16_t              usPktLen;
-   VOS_STATUS           vosStatus;
-   v_MACADDR_t          vDestMacAddr;
-   vos_pkt_t*           vosDataBuff = NULL;
-   WLANTL_CbType*       pTLCb       = NULL;
-   WLANTL_STAClientType* pClientSTA = NULL;
-   WLANTL_MetaInfoType  tlMetaInfo;
-   v_U8_t               ucTypeSubtype = 0;
-   v_U8_t               ucTid;
-   v_U8_t               extraHeadSpace = 0;
-   v_U8_t               ucWDSEnabled = 0;
-   v_U8_t               ucAC, ucACMask, i; 
-   v_U8_t               txFlag = HAL_TX_NO_ENCRYPTION_MASK;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-
-  /*------------------------------------------------------------------------
-    Sanity check
-    Extract TL control block
-   ------------------------------------------------------------------------*/
-  pTLCb = VOS_GET_TL_CB(pvosGCtx);
-  if ( NULL == pTLCb )
-  {
-   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-             "WLAN TL:Invalid TL pointer from pvosGCtx on WLANTL_STATxConn");
-   *pvosDataBuff = NULL;
-    return VOS_STATUS_E_FAULT;
-  }
-  pClientSTA = pTLCb->atlSTAClients[ucSTAId];
-
-  if ( NULL == pClientSTA )
-  {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "WLAN TL:Client Memory was not allocated on %s", __func__));
-      return VOS_STATUS_E_FAILURE;
+=======
+>>>>>>> 657b0e9... prima update
   }
 
   /*-------------------------------------------------------------------
@@ -7957,17 +8572,10 @@ WLANTL_STATxConn
   /*------------------------------------------------------------------------
     Fetch packet from HDD
    ------------------------------------------------------------------------*/
-#ifdef FEATURE_WLAN_TDLS
-  if ((WLAN_STA_SOFTAP != pClientSTA->wSTADesc.wSTAType) &&
-      (!vos_concurrent_sessions_running()) &&
-      !pTLCb->ucTdlsPeerCount)
-  {
-#else
-  if ((WLAN_STA_SOFTAP != pClientSTA->wSTADesc.wSTAType) &&
+  if ((WLAN_STA_SOFTAP != pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType) &&
       (!vos_concurrent_sessions_running()))
   {
-#endif
-      ucAC = pClientSTA->ucCurrentAC;
+      ucAC = pTLCb->atlSTAClients[ucSTAId].ucCurrentAC;
 
   /*-------------------------------------------------------------------
       Disable AC temporary - if successfull retrieve re-enable
@@ -7982,55 +8590,61 @@ WLANTL_STATxConn
        To prevent this the AC will be disabled here and if retrieve
        is successfull it will be re-enabled
   -------------------------------------------------------------------*/
-      pClientSTA->aucACMask[ucAC] = 0;
+     pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAC] = 0; 
   }
   else
   {
-      //softap case
-      ucAC = pTLCb->uCurServedAC;
-      pClientSTA->aucACMask[ucAC] = 0;
+    //softap case
+    ucAC = pTLCb->uCurServedAC;
+    pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAC] = 0; 
+
   }
 
-    /*You make an initial assumption that HDD has no more data and if the
+    /*You make an initial assumption that HDD has no more data and if the 
       assumption was wrong you reset the flags to their original state
-     This will prevent from exposing a race condition between checking with HDD
+     This will prevent from exposing a race condition between checking with HDD 
      for packets and setting the flags to false*/
-  //LTI: vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 0);
-  //LTI: pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
-  vos_atomic_set_U8( &pClientSTA->ucPktPending, 0);
-  WLAN_TL_AC_ARRAY_2_MASK( pClientSTA, ucACMask, i);
-    /*You make an initial assumption that HDD has no more data and if the
-           assumption was wrong you reset the flags to their original state
-           This will prevent from exposing a race condition between checking with HDD
-           for packets and setting the flags to false*/
+ //LTI: vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 0);
+ //LTI: pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
+  vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 0);
+    WLAN_TL_AC_ARRAY_2_MASK( &pTLCb->atlSTAClients[ucSTAId], ucACMask, i); 
+#ifdef WLAN_SOFTAP_FEATURE
+    /*You make an initial assumption that HDD has no more data and if the 
+      assumption was wrong you reset the flags to their original state
+     This will prevent from exposing a race condition between checking with HDD 
+     for packets and setting the flags to false*/
   if ( 0 == ucACMask )
   {
-      pClientSTA->ucNoMoreData = 1;
+  pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
   }
   else
   {
-      vos_atomic_set_U8( &pClientSTA->ucPktPending, 1);
+    vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 1);
   }
 
+#endif
 
   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO,
             "WLAN TL: WLANTL_STATxConn fetching packet from HDD for AC: %d AC Mask: %d Pkt Pending: %d", 
-             ucAC, ucACMask, pClientSTA->ucPktPending);
+             ucAC, ucACMask, pTLCb->atlSTAClients[ucSTAId].ucPktPending);
 
   /*------------------------------------------------------------------------
     Fetch tx packet from HDD
    ------------------------------------------------------------------------*/
 //LTI
 #if 0 
+#ifdef WLAN_SOFTAP_FEATURE
   if (WLAN_STA_SOFTAP != pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType && 
      (!vos_concurrent_sessions_running()))
   {
+#endif
     // don't set 0. 
     //vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 0);
     vosStatus = pTLCb->atlSTAClients[ucSTAId].pfnSTAFetchPkt( pvosGCtx,
                                   &ucSTAId,
                                   pTLCb->atlSTAClients[ucSTAId].ucCurrentAC,
                                   &vosDataBuff, &tlMetaInfo );
+#ifdef WLAN_SOFTAP_FEATURE
   }
   else
   {
@@ -8042,8 +8656,9 @@ WLANTL_STATxConn
                                                 &vosDataBuff, &tlMetaInfo );
   }
 #endif
+#endif
 
-  vosStatus = pClientSTA->pfnSTAFetchPkt( pvosGCtx,
+  vosStatus = pTLCb->atlSTAClients[ucSTAId].pfnSTAFetchPkt( pvosGCtx, 
                                &ucSTAId,
                                ucAC,
                                &vosDataBuff, &tlMetaInfo );
@@ -8062,6 +8677,7 @@ WLANTL_STATxConn
     made in the main TL loop
     --------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
     pTLCb->atlSTAClients[ucSTAId].ucCurrentAC     = WLANTL_AC_VO;
     pTLCb->atlSTAClients[ucSTAId].ucCurrentWeight = 0;
 
@@ -8072,6 +8688,12 @@ WLANTL_STATxConn
 
     VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->atlSTAClients[ucSTAId].ucCurrentAC     = WLANTL_AC_VO;
+    pTLCb->atlSTAClients[ucSTAId].ucCurrentWeight = 0;
+
+    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+>>>>>>> 657b0e9... prima update
               "WLAN TL: WLANTL_STATxConn no more packets in HDD for AC: %d AC Mask: %d", 
                ucAC, ucACMask);
 
@@ -8081,6 +8703,7 @@ WLANTL_STATxConn
   /*There are still packets in HDD - set back the pending packets and 
    the no more data assumption*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 1);
   pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 0;
   pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAC] = 1; 
@@ -8089,6 +8712,11 @@ WLANTL_STATxConn
   pClientSTA->ucNoMoreData = 0;
   pClientSTA->aucACMask[ucAC] = 1;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 1);
+  pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 0;
+  pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAC] = 1; 
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_PERF 
   vos_pkt_set_user_data_ptr( vosDataBuff, VOS_PKT_USER_DATA_ID_BAL, 
@@ -8108,10 +8736,14 @@ WLANTL_STATxConn
 
      /* Fail tx for packet */
 <<<<<<< HEAD
+<<<<<<< HEAD
      pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp( pvosGCtx, vosDataBuff,
 =======
      pClientSTA->pfnSTATxComp( pvosGCtx, vosDataBuff,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp( pvosGCtx, vosDataBuff,
+>>>>>>> 657b0e9... prima update
                                                 VOS_STATUS_E_BADMSG);
      vosDataBuff = NULL;
      *pvosDataBuff = NULL;
@@ -8125,10 +8757,14 @@ WLANTL_STATxConn
 
     /* Fail tx for packet */
 <<<<<<< HEAD
+<<<<<<< HEAD
     pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp( pvosGCtx, vosDataBuff,
 =======
     pClientSTA->pfnSTATxComp( pvosGCtx, vosDataBuff,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp( pvosGCtx, vosDataBuff,
+>>>>>>> 657b0e9... prima update
                                                 VOS_STATUS_E_BADMSG);
     vosDataBuff = NULL;
     *pvosDataBuff = NULL;
@@ -8145,10 +8781,14 @@ WLANTL_STATxConn
   if ( WLANTL_TID_INVALID(ucTid)) 
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 =======
      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+>>>>>>> 657b0e9... prima update
             "WLAN TL:Invalid TID sent in meta info %d - defaulting to 0 (BE)", 
              ucTid));
      ucTid = 0; 
@@ -8170,6 +8810,7 @@ WLANTL_STATxConn
    ------------------------------------------------------------------------*/
   if ( ( 0 == tlMetaInfo.ucDisableFrmXtl ) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
       ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucSwFrameTXXlation) )
 #endif //#ifdef FEATURE_WLAN_WAPI
   {
@@ -8186,6 +8827,15 @@ WLANTL_STATxConn
                                                     &tlMetaInfo, &ucWDSEnabled,
                                                     &extraHeadSpace);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucSwFrameTXXlation) )
+#endif //#ifdef FEATURE_WLAN_WAPI
+  {
+    vosStatus =  WLANTL_Translate8023To80211Header( vosDataBuff, &vosStatus,
+                                                    pTLCb, ucSTAId,
+                                                    tlMetaInfo.ucUP, &ucWDSEnabled, &extraHeadSpace);
+
+>>>>>>> 657b0e9... prima update
     if ( VOS_STATUS_SUCCESS != vosStatus )
     {
       TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -8203,14 +8853,19 @@ WLANTL_STATxConn
   ucTypeSubtype |= (WLANTL_80211_DATA_TYPE << 4);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucQosEnabled )
 =======
   if ( pClientSTA->wSTADesc.ucQosEnabled )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucQosEnabled )
+>>>>>>> 657b0e9... prima update
   {
     ucTypeSubtype |= (WLANTL_80211_DATA_QOS_SUBTYPE);
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   vosStatus = (VOS_STATUS)WDA_DS_BuildTxPacketInfo( pvosGCtx, vosDataBuff , &vDestMacAddr,
@@ -8240,15 +8895,23 @@ WLANTL_STATxConn
     txFlag = 0;
   }
 #endif
+=======
+>>>>>>> 657b0e9... prima update
 
   vosStatus = (VOS_STATUS)WDA_DS_BuildTxPacketInfo( pvosGCtx, vosDataBuff , &vDestMacAddr,
                           tlMetaInfo.ucDisableFrmXtl, &usPktLen,
-                          pClientSTA->wSTADesc.ucQosEnabled, ucWDSEnabled,
+                          pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucQosEnabled, ucWDSEnabled, 
                           extraHeadSpace,
+<<<<<<< HEAD
                           ucTypeSubtype, &pClientSTA->wSTADesc.vSelfMACAddress,
                           ucTid, txFlag,
                           tlMetaInfo.usTimeStamp, tlMetaInfo.ucIsEapol || tlMetaInfo.ucIsWai, tlMetaInfo.ucUP );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                          ucTypeSubtype, &pTLCb->atlSTAClients[ucSTAId].wSTADesc.vSelfMACAddress,
+                          ucTid, HAL_TX_NO_ENCRYPTION_MASK,
+                          tlMetaInfo.usTimeStamp, tlMetaInfo.ucIsEapol, tlMetaInfo.ucUP );
+>>>>>>> 657b0e9... prima update
 
   if ( VOS_STATUS_SUCCESS != vosStatus )
   {
@@ -8263,6 +8926,7 @@ WLANTL_STATxConn
     !1 - should this be done for EAPOL frames?
     -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId].auTxCount[ucTid]++;
 
   vos_pkt_set_user_data_ptr( vosDataBuff, VOS_PKT_USER_DATA_ID_TL,
@@ -8273,6 +8937,12 @@ WLANTL_STATxConn
   vos_pkt_set_user_data_ptr( vosDataBuff, VOS_PKT_USER_DATA_ID_TL,
                (v_PVOID_t)pClientSTA->pfnSTATxComp );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].auTxCount[ucTid]++;
+
+  vos_pkt_set_user_data_ptr( vosDataBuff, VOS_PKT_USER_DATA_ID_TL,
+               (v_PVOID_t)pTLCb->atlSTAClients[ucSTAId].pfnSTATxComp );
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Save data to input pointer for TL core
@@ -8282,13 +8952,18 @@ WLANTL_STATxConn
   pTLCb->bUrgent      = TRUE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   /* TX Statistics */
   if (!(tlMetaInfo.ucBcast || tlMetaInfo.ucMcast))
   {
     /* This is TX UC frame */
+<<<<<<< HEAD
 <<<<<<< HEAD
     pTLCb->atlSTAClients[ucSTAId].trafficStatistics.txUCFcnt++;
     pTLCb->atlSTAClients[ucSTAId].trafficStatistics.txUCBcnt += usPktLen;
@@ -8299,6 +8974,12 @@ WLANTL_STATxConn
     pClientSTA->trafficStatistics.txUCBcnt += usPktLen;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->atlSTAClients[ucSTAId].trafficStatistics.txUCFcnt++;
+    pTLCb->atlSTAClients[ucSTAId].trafficStatistics.txUCBcnt += usPktLen;
+  }
+#endif
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_STATxConn */
@@ -8355,10 +9036,14 @@ WLANTL_STATxAuth
    v_U8_t                ucSwFrmXtl = 0;
    v_U8_t                extraHeadSpace = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
    WLANTL_STAClientType *pStaClient;
 =======
    WLANTL_STAClientType *pStaClient = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WLANTL_STAClientType *pStaClient;
+>>>>>>> 657b0e9... prima update
    v_U8_t                ucWDSEnabled = 0;
    v_U8_t                ucTxFlag   = 0; 
    v_U8_t                ucACMask, i; 
@@ -8373,10 +9058,14 @@ WLANTL_STATxAuth
   {
      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "WLAN TL:Invalid input params on WLANTL_STATxAuth TL %x DB %x",
 =======
             "WLAN TL:Invalid input params on WLANTL_STATxAuth TL %x DB %p",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "WLAN TL:Invalid input params on WLANTL_STATxAuth TL %x DB %x",
+>>>>>>> 657b0e9... prima update
              pTLCb, pvosDataBuff));
     if (NULL != pvosDataBuff)
     {
@@ -8384,6 +9073,7 @@ WLANTL_STATxAuth
     }
     if(NULL != pTLCb)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
     }
@@ -8399,11 +9089,14 @@ WLANTL_STATxAuth
             return VOS_STATUS_E_FAILURE;
         }
         pTLCb->atlSTAClients[ucSTAId]->ucNoMoreData = 1;
+=======
+        pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
+>>>>>>> 657b0e9... prima update
     }
     return VOS_STATUS_E_FAULT;
   }
-  pStaClient = pTLCb->atlSTAClients[ucSTAId];
 
+<<<<<<< HEAD
   if ( NULL == pStaClient )
   {
       TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -8411,11 +9104,15 @@ WLANTL_STATxAuth
       return VOS_STATUS_E_FAILURE;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pStaClient = &pTLCb->atlSTAClients[ucSTAId];
+>>>>>>> 657b0e9... prima update
 
   vos_mem_zero(&tlMetaInfo, sizeof(tlMetaInfo));
   /*------------------------------------------------------------------------
     Fetch packet from HDD
    ------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
@@ -8426,6 +9123,9 @@ WLANTL_STATxAuth
   {
 #else
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   if ((WLAN_STA_SOFTAP != pStaClient->wSTADesc.wSTAType) &&
       (!vos_concurrent_sessions_running()))
   {
@@ -8450,9 +9150,13 @@ WLANTL_STATxAuth
   // don't reset it, as other AC queues in HDD may have packets
   //vos_atomic_set_U8( &pStaClient->ucPktPending, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   }
   else
   {
@@ -8463,14 +9167,20 @@ WLANTL_STATxAuth
     //vos_atomic_set_U8( &pStaClient->ucPktPending, 0);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 
   WLAN_TL_AC_ARRAY_2_MASK( pStaClient, ucACMask, i); 
 #ifdef WLAN_SOFTAP_FEATURE
+<<<<<<< HEAD
 =======
 
   WLAN_TL_AC_ARRAY_2_MASK( pStaClient, ucACMask, i); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     /*You make an initial assumption that HDD has no more data and if the 
       assumption was wrong you reset the flags to their original state
      This will prevent from exposing a race condition between checking with HDD 
@@ -8481,9 +9191,13 @@ WLANTL_STATxAuth
     pStaClient->ucNoMoreData = 1;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
   vosStatus = pStaClient->pfnSTAFetchPkt( pvosGCtx, 
                                &ucSTAId,
@@ -8511,20 +9225,32 @@ WLANTL_STATxAuth
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
   WLANTL_StatHandleTXFrame(pvosGCtx, ucSTAId, vosDataBuff, NULL, &tlMetaInfo);
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
 #ifdef WLAN_SOFTAP_FEATURE
 =======
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 657b0e9... prima update
   WLANTL_StatHandleTXFrame(pvosGCtx, ucSTAId, vosDataBuff, NULL, &tlMetaInfo);
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   /*There are still packets in HDD - set back the pending packets and 
    the no more data assumption*/
   vos_atomic_set_U8( &pStaClient->ucPktPending, 1);
   pStaClient->ucNoMoreData = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE
@@ -8536,6 +9262,7 @@ WLANTL_STATxAuth
 #ifdef WLAN_SOFTAP_FEATURE
   }
 #endif
+<<<<<<< HEAD
 =======
 
   if (WLAN_STA_SOFTAP != pStaClient->wSTADesc.wSTAType)
@@ -8544,6 +9271,8 @@ WLANTL_STATxAuth
   //vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 1);
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_PERF 
    vos_pkt_set_user_data_ptr( vosDataBuff, VOS_PKT_USER_DATA_ID_BAL, 
@@ -8559,10 +9288,14 @@ WLANTL_STATxAuth
   if ( WLANTL_TID_INVALID(ucTid)) 
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 =======
      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+>>>>>>> 657b0e9... prima update
             "WLAN TL:Invalid TID sent in meta info %d - defaulting to 0 (BE)", 
              ucTid));
      ucTid = 0; 
@@ -8580,16 +9313,22 @@ WLANTL_STATxAuth
   {
     pStaClient->ucCurrentAC     = ucAC;
 <<<<<<< HEAD
+<<<<<<< HEAD
     pStaClient->ucCurrentWeight = 
                          pTLCb->tlConfigInfo.ucAcWeights[ucAC] - 1;
 =======
     pStaClient->ucCurrentWeight = pTLCb->tlConfigInfo.ucAcWeights[ucAC] - 1;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pStaClient->ucCurrentWeight = 
+                         pTLCb->tlConfigInfo.ucAcWeights[ucAC] - 1;
+>>>>>>> 657b0e9... prima update
 
     pStaClient->aucACMask[pStaClient->ucCurrentAC] = 1;
 
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   if (WLAN_STA_SOFTAP != pStaClient->wSTADesc.wSTAType)
@@ -8599,6 +9338,12 @@ WLANTL_STATxAuth
   if (WLAN_STA_SOFTAP != pStaClient->wSTADesc.wSTAType)
   {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  if (WLAN_STA_SOFTAP != pStaClient->wSTADesc.wSTAType)
+  {
+#endif
+>>>>>>> 657b0e9... prima update
   if ( 0 == pStaClient->ucCurrentWeight ) 
   {
     WLANTL_ACEnumType tempAC = ucAC;
@@ -8612,11 +9357,16 @@ WLANTL_STATxAuth
       {
          pStaClient->ucCurrentAC     = ucNextAC;
 <<<<<<< HEAD
+<<<<<<< HEAD
          pStaClient->ucCurrentWeight = 
                          pTLCb->tlConfigInfo.ucAcWeights[ucNextAC];
 =======
          pStaClient->ucCurrentWeight = pTLCb->tlConfigInfo.ucAcWeights[ucNextAC];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         pStaClient->ucCurrentWeight = 
+                         pTLCb->tlConfigInfo.ucAcWeights[ucNextAC];
+>>>>>>> 657b0e9... prima update
 
          TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                     "WLAN TL: Changing serviced AC to: %d with Weight: %d",
@@ -8628,12 +9378,18 @@ WLANTL_STATxAuth
     }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   }
 #endif
 =======
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  }
+#endif
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Attaching BD header to pkt on WLANTL_STATxAuth"));
@@ -8704,6 +9460,7 @@ WLANTL_STATxAuth
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
        vosStatus = WLANTL_Translate8023To80211Header( vosDataBuff, &vosStatus,
                                                    pTLCb, ucSTAId,
                                                    tlMetaInfo.ucUP, &ucWDSEnabled, &extraHeadSpace);
@@ -8713,6 +9470,11 @@ WLANTL_STATxAuth
                                                     &tlMetaInfo, &ucWDSEnabled,
                                                     &extraHeadSpace);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       vosStatus = WLANTL_Translate8023To80211Header( vosDataBuff, &vosStatus,
+                                                   pTLCb, ucSTAId,
+                                                   tlMetaInfo.ucUP, &ucWDSEnabled, &extraHeadSpace);
+>>>>>>> 657b0e9... prima update
        if ( VOS_STATUS_SUCCESS != vosStatus )
        {
           TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -8726,6 +9488,7 @@ WLANTL_STATxAuth
        tlMetaInfo.ucDisableFrmXtl = 1;
     }
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -8742,6 +9505,9 @@ WLANTL_STATxAuth
     }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*-------------------------------------------------------------------------
     Call HAL to fill BD header
    -------------------------------------------------------------------------*/
@@ -8768,6 +9534,7 @@ WLANTL_STATxAuth
   }
 #endif /* FEATURE_WLAN_WAPI */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
   if ( pStaClient->wSTADesc.wSTAType == WLAN_STA_TDLS )
@@ -8776,6 +9543,8 @@ WLANTL_STATxAuth
   }
 #endif /* FEATURE_WLAN_TDLS */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   vosStatus = (VOS_STATUS)WDA_DS_BuildTxPacketInfo( pvosGCtx, 
                      vosDataBuff , &vDestMacAddr,
@@ -8783,10 +9552,14 @@ WLANTL_STATxAuth
                      pStaClient->wSTADesc.ucQosEnabled, ucWDSEnabled, 
                      extraHeadSpace,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      ucTypeSubtype, &pTLCb->atlSTAClients[ucSTAId].wSTADesc.vSelfMACAddress,
 =======
                      ucTypeSubtype, &pStaClient->wSTADesc.vSelfMACAddress,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     ucTypeSubtype, &pTLCb->atlSTAClients[ucSTAId].wSTADesc.vSelfMACAddress,
+>>>>>>> 657b0e9... prima update
                      ucTid, ucTxFlag, tlMetaInfo.usTimeStamp, 
                      tlMetaInfo.ucIsEapol, tlMetaInfo.ucUP );
 
@@ -8799,9 +9572,13 @@ WLANTL_STATxAuth
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   /* TX Statistics */
   if (!(tlMetaInfo.ucBcast || tlMetaInfo.ucMcast))
   {
@@ -8810,16 +9587,22 @@ WLANTL_STATxAuth
     pStaClient->trafficStatistics.txUCBcnt += usPktLen;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 =======
 
 #ifndef FEATURE_WLAN_TDLS
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+>>>>>>> 657b0e9... prima update
   /*-----------------------------------------------------------------------
     Update tx counter for BA session query for tx side
     -----------------------------------------------------------------------*/
   pStaClient->auTxCount[ucTid]++;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   /* This code is to send traffic with lower priority AC when we does not 
@@ -8834,6 +9617,12 @@ WLANTL_STATxAuth
      get admitted to send it. Today HAL does not downgrade AC so this code 
      does not get executed.(In other words, HAL doesn’t change tid. The if 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  /* This code is to send traffic with lower priority AC when we does not 
+     get admitted to send it. Today HAL does not downgrade AC so this code 
+     does not get executed.(In other words, HAL doesnt change tid. The if 
+>>>>>>> 657b0e9... prima update
      statement is always false.)
      NOTE: In the case of LA downgrade occurs in HDD (that was the change 
      Phani made during WMM-AC plugfest). If WM & BMP also took this approach, 
@@ -8912,6 +9701,7 @@ WLANTL_STATxDisc
 {
    WLANTL_CbType*        pTLCb       = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 
@@ -8920,6 +9710,11 @@ WLANTL_STATxDisc
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Sanity check
     Extract TL control block
@@ -8934,6 +9729,7 @@ WLANTL_STATxDisc
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 
@@ -8945,6 +9741,8 @@ WLANTL_STATxDisc
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Error
    ------------------------------------------------------------------------*/
@@ -8953,6 +9751,7 @@ WLANTL_STATxDisc
             " request"));
 
   *pvosDataBuff = NULL;
+<<<<<<< HEAD
 <<<<<<< HEAD
    pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
    
@@ -8964,6 +9763,12 @@ WLANTL_STATxDisc
    //Should not be anything pending in disconnect state
    vos_atomic_set_U8( &pClientSTA->ucPktPending, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pTLCb->atlSTAClients[ucSTAId].ucNoMoreData = 1;
+   
+   //Should not be anything pending in disconnect state
+   vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 0);
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLANTL_STATxDisc */
@@ -9006,9 +9811,12 @@ WLANTL_STARxConn
 {
    WLANTL_CbType*           pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WLANTL_STAClientType*    pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    v_U16_t                  usEtherType = 0;
    v_U16_t                  usPktLen;
    v_U8_t                   ucMPDUHOffset;
@@ -9044,6 +9852,7 @@ WLANTL_STARxConn
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 
@@ -9054,6 +9863,8 @@ WLANTL_STARxConn
       return VOS_STATUS_E_FAILURE;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Extract BD header and check if valid
@@ -9102,10 +9913,14 @@ WLANTL_STARxConn
     if ( WLANTL_LLC_8021X_TYPE  != usEtherType && WLANTL_LLC_WAI_TYPE  != usEtherType )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 =======
       VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+>>>>>>> 657b0e9... prima update
                  "WLAN TL:RX Frame not EAPOL or WAI EtherType %d - dropping", usEtherType );
       /* Drop packet */
       vos_pkt_return_packet(vosDataBuff);
@@ -9123,6 +9938,7 @@ WLANTL_STARxConn
     {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                  "WLAN TL:RX Frame  EAPOL EtherType %d - processing", usEtherType);
 
@@ -9135,6 +9951,13 @@ WLANTL_STARxConn
       if (( 0 == WDA_GET_RX_FT_DONE(aucBDHeader) ) &&
          ( 0 != pClientSTA->wSTADesc.ucSwFrameRXXlation))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                 "WLAN TL:RX Frame  EAPOL EtherType %d - processing", usEtherType);
+
+      if (( 0 == WDA_GET_RX_FT_DONE(aucBDHeader) ) &&
+         ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucSwFrameRXXlation))
+>>>>>>> 657b0e9... prima update
       {
       if (usMPDUDOffset > ucMPDUHOffset)
       {
@@ -9159,10 +9982,14 @@ WLANTL_STARxConn
       if ( !WLANTL_TID_INVALID( ucTid) ) 
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
         pTLCb->atlSTAClients[ucSTAId].auRxCount[ucTid]++;
 =======
         pClientSTA->auRxCount[ucTid]++;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pTLCb->atlSTAClients[ucSTAId].auRxCount[ucTid]++;
+>>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -9180,6 +10007,7 @@ WLANTL_STARxConn
       wRxMetaInfo.ucUP = ucTid;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
       TLLOG4(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,
                "WLAN TL %s:Sending data chain to station \n", __FUNCTION__));
@@ -9193,17 +10021,25 @@ WLANTL_STARxConn
 #endif
       pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
       TLLOG4(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,
-               "WLAN TL %s:Sending data chain to station \n", __func__));
-      if ( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType )
+               "WLAN TL %s:Sending data chain to station \n", __FUNCTION__));
+      if ( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
       {
         wRxMetaInfo.ucDesSTAId = WLAN_RX_SAP_SELF_STA_ID;
-        pClientSTA->pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
+        pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
                                             &wRxMetaInfo );
       }
       else
+<<<<<<< HEAD
       pClientSTA->pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+      pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
+>>>>>>> 657b0e9... prima update
                                             &wRxMetaInfo );
     }/*EAPOL frame or WAI frame*/
   }/*vos status success*/
@@ -9212,9 +10048,13 @@ WLANTL_STARxConn
 }/* WLANTL_STARxConn */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION    WLANTL_FwdPktToHDD
 
@@ -9252,6 +10092,7 @@ WLANTL_FwdPktToHDD
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    v_MACADDR_t DestMacAddress;
    v_MACADDR_t *pDestMacAddress = &DestMacAddress;
    v_SIZE_t usMacAddSize = VOS_MAC_ADDR_SIZE;
@@ -9268,16 +10109,24 @@ WLANTL_FwdPktToHDD
    v_MACADDR_t              DestMacAddress;
    v_MACADDR_t              *pDestMacAddress = &DestMacAddress;
    v_SIZE_t                 usMacAddSize = VOS_MAC_ADDR_SIZE;
+=======
+   v_MACADDR_t DestMacAddress;
+   v_MACADDR_t *pDestMacAddress = &DestMacAddress;
+   v_SIZE_t usMacAddSize = VOS_MAC_ADDR_SIZE;
+>>>>>>> 657b0e9... prima update
    WLANTL_CbType*           pTLCb = NULL;
-   WLANTL_STAClientType*    pClientSTA = NULL;
    vos_pkt_t*               vosDataBuff ;
    VOS_STATUS               vosStatus = VOS_STATUS_SUCCESS;
-   v_U32_t                  STAMetaInfo;
-   vos_pkt_t*               vosNextDataBuff ;
-   v_U8_t                   ucDesSTAId;
+   v_U32_t                 STAMetaInfo;
+   vos_pkt_t*              vosNextDataBuff ;
+   v_U8_t                  ucDesSTAId;
    WLANTL_RxMetaInfoType    wRxMetaInfo;
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Sanity check
    ------------------------------------------------------------------------*/
@@ -9299,6 +10148,7 @@ WLANTL_FwdPktToHDD
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   if(WLANTL_STA_ID_INVALID(ucSTAId))
@@ -9318,6 +10168,8 @@ WLANTL_FwdPktToHDD
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* This the change required for SoftAp to handle Reordered Buffer. Since a STA
       may have packets destined to multiple destinations we have to process each packet
       at a time and determine its Destination. So the Voschain provided by Reorder code
@@ -9331,10 +10183,14 @@ WLANTL_FwdPktToHDD
                                  (v_PVOID_t *)&STAMetaInfo );
       wRxMetaInfo.ucUP = (v_U8_t)(STAMetaInfo & WLANTL_AC_MASK);
 <<<<<<< HEAD
+<<<<<<< HEAD
       ucDesSTAId = ((v_U8_t)STAMetaInfo) >> WLANTL_STAID_OFFSET; 
 =======
       ucDesSTAId = (v_U8_t)((STAMetaInfo) >> WLANTL_STAID_OFFSET); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      ucDesSTAId = ((v_U8_t)STAMetaInfo) >> WLANTL_STAID_OFFSET; 
+>>>>>>> 657b0e9... prima update
        
       vosStatus = vos_pkt_extract_data( vosDataBuff, 0, (v_VOID_t *)pDestMacAddress, &usMacAddSize);
       if ( VOS_STATUS_SUCCESS != vosStatus )
@@ -9355,6 +10211,7 @@ WLANTL_FwdPktToHDD
           ucDesSTAId = WLAN_RX_BCMC_STA_ID;
           TLLOG4(VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: BC/MC packet, id %d\n", __FUNCTION__, WLAN_RX_BCMC_STA_ID));
       }
       else
@@ -9367,10 +10224,18 @@ WLANTL_FwdPktToHDD
       {
          if (vos_is_macaddr_equal(pDestMacAddress, &pClientSTA->wSTADesc.vSelfMACAddress))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: BC/MC packet, id %d\n", __FUNCTION__, WLAN_RX_BCMC_STA_ID));
+      }
+      else
+      {
+         if (vos_is_macaddr_equal(pDestMacAddress, &pTLCb->atlSTAClients[ucSTAId].wSTADesc.vSelfMACAddress))
+>>>>>>> 657b0e9... prima update
          {
             // destination is AP itself
             ucDesSTAId = WLAN_RX_SAP_SELF_STA_ID;
             TLLOG4(VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW,
+<<<<<<< HEAD
 <<<<<<< HEAD
                      "%s: packet to AP itself, id %d\n", __FUNCTION__, WLAN_RX_SAP_SELF_STA_ID));
          }
@@ -9381,13 +10246,20 @@ WLANTL_FwdPktToHDD
                  "%s: get an station index larger than WLAN_MAX_STA_COUNT %d\n", __FUNCTION__, ucDesSTAId));
 =======
                      "%s: packet to AP itself, id %d\n", __func__, WLAN_RX_SAP_SELF_STA_ID));
+=======
+                     "%s: packet to AP itself, id %d\n", __FUNCTION__, WLAN_RX_SAP_SELF_STA_ID));
+>>>>>>> 657b0e9... prima update
          }
-         else if (( WLAN_MAX_STA_COUNT <= ucDesSTAId ) || (NULL != pTLCb->atlSTAClients[ucDesSTAId] && pTLCb->atlSTAClients[ucDesSTAId]->ucExists == 0))
+         else if ( WLAN_MAX_STA_COUNT <= ucDesSTAId )
          {
             // destination station is something else
             TLLOG4(VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW,
+<<<<<<< HEAD
                  "%s: get an station index larger than WLAN_MAX_STA_COUNT %d\n", __func__, ucDesSTAId));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: get an station index larger than WLAN_MAX_STA_COUNT %d\n", __FUNCTION__, ucDesSTAId));
+>>>>>>> 657b0e9... prima update
             ucDesSTAId = WLAN_RX_SAP_SELF_STA_ID;
          }
 
@@ -9398,6 +10270,7 @@ WLANTL_FwdPktToHDD
       wRxMetaInfo.ucUP = (v_U8_t)(STAMetaInfo & WLANTL_AC_MASK);
       wRxMetaInfo.ucDesSTAId = ucDesSTAId;
      
+<<<<<<< HEAD
 <<<<<<< HEAD
    vosStatus = pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucDesSTAId,
                                             &wRxMetaInfo );
@@ -9410,24 +10283,37 @@ WLANTL_FwdPktToHDD
    }
 =======
       vosStatus = pClientSTA->pfnSTARx( pvosGCtx, vosDataBuff, ucDesSTAId,
+=======
+   vosStatus = pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucDesSTAId,
+>>>>>>> 657b0e9... prima update
                                             &wRxMetaInfo );
-      if ( VOS_STATUS_SUCCESS != vosStatus )
-      {
-          TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+  if ( VOS_STATUS_SUCCESS != vosStatus )
+  {
+     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                 "WLAN TL: failed to send pkt to HDD \n"));
+<<<<<<< HEAD
           vos_pkt_return_packet(vosDataBuff);
 
           return vosStatus;
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     vos_pkt_return_packet(vosDataBuff);
+     return vosStatus;
+   }
+>>>>>>> 657b0e9... prima update
       vosDataBuff = vosNextDataBuff;
    }
    return VOS_STATUS_SUCCESS;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* WLANTL_SOFTAP_FEATURE */ 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* WLANTL_SOFTAP_FEATURE */ 
+>>>>>>> 657b0e9... prima update
 
 /*==========================================================================
   FUNCTION    WLANTL_STARxAuth
@@ -9467,9 +10353,12 @@ WLANTL_STARxAuth
 {
    WLANTL_CbType*           pTLCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WLANTL_STAClientType*    pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    v_U8_t                   ucAsf; /* AMSDU sub frame */
    v_U16_t                  usMPDUDOffset;
    v_U8_t                   ucMPDUHOffset;
@@ -9479,10 +10368,14 @@ WLANTL_STARxAuth
    v_U8_t                   ucTid;
 #ifdef FEATURE_WLAN_WAPI
 <<<<<<< HEAD
+<<<<<<< HEAD
    v_U16_t                  usEtherType;
 =======
    v_U16_t                  usEtherType = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   v_U16_t                  usEtherType;
+>>>>>>> 657b0e9... prima update
 #endif
    v_U16_t                  usPktLen;
    vos_pkt_t*               vosDataBuff ;
@@ -9490,25 +10383,35 @@ WLANTL_STARxAuth
    VOS_STATUS               vosStatus;
    WLANTL_RxMetaInfoType    wRxMetaInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    static v_U8_t            ucPMPDUHLen = 0;
 #ifdef WLAN_SOFTAP_FEATURE
    v_U8_t*                  STAMetaInfoPtr;
 #endif
 #ifdef ANI_CHIPSET_VOLANS
+<<<<<<< HEAD
 =======
    static v_U8_t            ucPMPDUHLen;
    v_U32_t*                  STAMetaInfoPtr;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    v_U8_t                   ucEsf=0; /* first subframe of AMSDU flag */
    v_U64_t                  ullcurrentReplayCounter=0; /*current replay counter*/
    v_U64_t                  ullpreviousReplayCounter=0; /*previous replay counter*/
    v_U16_t                  ucUnicastBroadcastType=0; /*It denotes whether received frame is UC or BC*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 =======
    struct _BARFrmStruct     *pBarFrame = NULL;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -9532,6 +10435,7 @@ WLANTL_STARxAuth
     return VOS_STATUS_E_FAULT;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 
@@ -9542,6 +10446,8 @@ WLANTL_STARxAuth
       return VOS_STATUS_E_FAILURE;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Extract BD header and check if valid
@@ -9554,6 +10460,7 @@ WLANTL_STARxAuth
   ucMPDUHLen    = (v_U8_t)WDA_GET_RX_MPDU_HEADER_LEN(aucBDHeader);
   ucTid         = (v_U8_t)WDA_GET_RX_TID(aucBDHeader);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
   /*Host based replay check is needed for unicast data frames*/
@@ -9573,6 +10480,12 @@ WLANTL_STARxAuth
   /*Host based replay check is needed for unicast data frames*/
   ucUnicastBroadcastType  = (v_U16_t)WDA_IS_RX_BCAST(aucBDHeader);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+  /*Host based replay check is needed for unicast data frames*/
+  ucUnicastBroadcastType  = (v_U16_t)WDA_IS_RX_BCAST(aucBDHeader);
+#endif
+>>>>>>> 657b0e9... prima update
   if(0 != ucMPDUHLen)
   {
     ucPMPDUHLen = ucMPDUHLen;
@@ -9619,10 +10532,14 @@ WLANTL_STARxAuth
 
 #ifdef FEATURE_WLAN_WAPI
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucIsWapiSta )
 =======
   if ( pClientSTA->wSTADesc.ucIsWapiSta )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucIsWapiSta )
+>>>>>>> 657b0e9... prima update
   {
     vosStatus = WLANTL_GetEtherType(aucBDHeader, vosDataBuff, ucMPDUHLen, &usEtherType);
     if( VOS_IS_STATUS_SUCCESS(vosStatus) )
@@ -9670,10 +10587,14 @@ WLANTL_STARxAuth
   if ( !WLANTL_TID_INVALID( ucTid) ) 
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     pTLCb->atlSTAClients[ucSTAId].auRxCount[ucTid]++;
 =======
     pClientSTA->auRxCount[ucTid]++;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->atlSTAClients[ucSTAId].auRxCount[ucTid]++;
+>>>>>>> 657b0e9... prima update
   }
   else
   {
@@ -9707,10 +10628,14 @@ WLANTL_STARxAuth
     ----------------------------------------------------------------------*/
   if (( 0 == WDA_GET_RX_FT_DONE(aucBDHeader) ) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
       ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucSwFrameRXXlation) &&
 =======
       ( 0 != pClientSTA->wSTADesc.ucSwFrameRXXlation) &&
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucSwFrameRXXlation) &&
+>>>>>>> 657b0e9... prima update
       ( WLANTL_IS_DATA_FRAME(WDA_GET_RX_TYPE_SUBTYPE(aucBDHeader)) ))
   {
     if(0 == ucMPDUHLen)
@@ -9737,6 +10662,7 @@ WLANTL_STARxAuth
        Category. Voschain or Buffer returned by BA would be unchain and this
        Meta Data would help in routing the packets to appropriate Destination */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
     {
@@ -9747,29 +10673,45 @@ WLANTL_STARxAuth
 #endif
 =======
     if( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType)
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    if( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
+>>>>>>> 657b0e9... prima update
     {
-       STAMetaInfoPtr = (v_U32_t *)(ucTid | (WDA_GET_RX_ADDR3_IDX(aucBDHeader) << WLANTL_STAID_OFFSET));
+       STAMetaInfoPtr = (v_U8_t *)(ucTid | (WDA_GET_RX_ADDR3_IDX(aucBDHeader) << WLANTL_STAID_OFFSET));
        vos_pkt_set_user_data_ptr( vosDataBuff, VOS_PKT_USER_DATA_ID_TL,
                                  (v_PVOID_t)STAMetaInfoPtr);
     }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Check to see if re-ordering session is in place
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 != pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists )
 =======
   if ( 0 != pClientSTA->atlBAReorderInfo[ucTid].ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 != pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     WLANTL_MSDUReorder( pTLCb, &vosDataBuff, aucBDHeader, ucSTAId, ucTid );
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 657b0e9... prima update
 if(0 == ucUnicastBroadcastType
 #ifdef FEATURE_ON_CHIP_REORDERING
    && (WLANHAL_IsOnChipReorderingEnabledForTID(pvosGCtx, ucSTAId, ucTid) != TRUE)
@@ -9778,10 +10720,14 @@ if(0 == ucUnicastBroadcastType
 {
   /* replay check code : check whether replay check is needed or not */
 <<<<<<< HEAD
+<<<<<<< HEAD
   if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
 =======
   if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
   {
       /* replay check is needed for the station */
 
@@ -9804,10 +10750,14 @@ if(0 == ucUnicastBroadcastType
               
               /* Getting 48-bit previous replay counter from TL control  block */
 <<<<<<< HEAD
+<<<<<<< HEAD
               ullpreviousReplayCounter = pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid];
 =======
               ullpreviousReplayCounter = pClientSTA->ullReplayCounter[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              ullpreviousReplayCounter = pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid];
+>>>>>>> 657b0e9... prima update
 
               VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO,
                "WLAN TL: AMSDU previousReplayCounter [0x%llX]\n",ullpreviousReplayCounter);
@@ -9820,16 +10770,21 @@ if(0 == ucUnicastBroadcastType
               {
                    /* Not a replay paket, update previous replay counter in TL CB */    
 <<<<<<< HEAD
+<<<<<<< HEAD
                    pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid] = ullcurrentReplayCounter;
 =======
                    pClientSTA->ullReplayCounter[ucTid] = ullcurrentReplayCounter;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid] = ullcurrentReplayCounter;
+>>>>>>> 657b0e9... prima update
               }
               else
               {
                   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                   "WLAN TL: AMSDU Drop the replay packet with PN : [0x%llX]\n",ullcurrentReplayCounter);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                   pTLCb->atlSTAClients[ucSTAId].ulTotalReplayPacketsDetected++;
                   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -9841,6 +10796,12 @@ if(0 == ucUnicastBroadcastType
                   "WLAN TL: AMSDU total dropped replay packets on STA ID  %X is [0x%lX]\n",
                   ucSTAId,  pClientSTA->ulTotalReplayPacketsDetected);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  pTLCb->atlSTAClients[ucSTAId].ulTotalReplayPacketsDetected++;
+                  VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                  "WLAN TL: AMSDU total dropped replay packets on STA ID  %X is [0x%lX]\n",
+                  ucSTAId,  pTLCb->atlSTAClients[ucSTAId].ulTotalReplayPacketsDetected);
+>>>>>>> 657b0e9... prima update
 
                   /* Drop the packet */
                   vos_pkt_return_packet(vosDataBuff);
@@ -9860,10 +10821,14 @@ if(0 == ucUnicastBroadcastType
 
            /* Getting 48-bit previous replay counter from TL control  block */
 <<<<<<< HEAD
+<<<<<<< HEAD
            ullpreviousReplayCounter = pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid];
 =======
            ullpreviousReplayCounter = pClientSTA->ullReplayCounter[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           ullpreviousReplayCounter = pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid];
+>>>>>>> 657b0e9... prima update
 
            VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO,
                "WLAN TL: Non-AMSDU previousReplayCounter [0x%llX]\n",ullpreviousReplayCounter);
@@ -9876,16 +10841,21 @@ if(0 == ucUnicastBroadcastType
            {
                 /* Not a replay paket, update previous replay counter in TL CB */    
 <<<<<<< HEAD
+<<<<<<< HEAD
                 pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid] = ullcurrentReplayCounter;
 =======
                 pClientSTA->ullReplayCounter[ucTid] = ullcurrentReplayCounter;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                pTLCb->atlSTAClients[ucSTAId].ullReplayCounter[ucTid] = ullcurrentReplayCounter;
+>>>>>>> 657b0e9... prima update
            }
            else
            {
               VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                "WLAN TL: Non-AMSDU Drop the replay packet with PN : [0x%llX]\n",ullcurrentReplayCounter);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                pTLCb->atlSTAClients[ucSTAId].ulTotalReplayPacketsDetected++;
                VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -9897,6 +10867,12 @@ if(0 == ucUnicastBroadcastType
                 "WLAN TL: Non-AMSDU total dropped replay packets on STA ID %X is [0x%lX]\n",
                 ucSTAId, pClientSTA->ulTotalReplayPacketsDetected);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               pTLCb->atlSTAClients[ucSTAId].ulTotalReplayPacketsDetected++;
+               VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                "WLAN TL: Non-AMSDU total dropped replay packets on STA ID %X is [0x%lX]\n",
+                ucSTAId, pTLCb->atlSTAClients[ucSTAId].ulTotalReplayPacketsDetected);
+>>>>>>> 657b0e9... prima update
 
                /* Repaly packet, drop the packet */
                vos_pkt_return_packet(vosDataBuff);
@@ -9907,6 +10883,7 @@ if(0 == ucUnicastBroadcastType
 }
 /*It is a broadast packet DPU has already done replay check for 
   broadcast packets no need to do replay check of these packets*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif /*End of #ifdef ANI_CHIPSET_VOLANS*/
 
@@ -9920,10 +10897,19 @@ if(0 == ucUnicastBroadcastType
   {
     if( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /*End of #ifdef ANI_CHIPSET_VOLANS*/
+
+  if ( NULL != vosDataBuff )
+  {
+#ifdef WLAN_SOFTAP_FEATURE
+    if( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
+>>>>>>> 657b0e9... prima update
     {
       WLANTL_FwdPktToHDD( pvosGCtx, vosDataBuff, ucSTAId );
     }
     else
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
     {
@@ -9945,6 +10931,12 @@ if(0 == ucUnicastBroadcastType
 #endif
       pClientSTA->pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+    {
+      wRxMetaInfo.ucUP = ucTid;
+      pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
+>>>>>>> 657b0e9... prima update
                                             &wRxMetaInfo );
     }
   }/* if not NULL */
@@ -10090,6 +11082,7 @@ WLANTL_McProcessMsg
     FlushACRspPtr = (tpFlushACRsp)(message->bodyptr);
     // Make sure the call back function is not null.
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_ASSERT(pTLCb->tlBAPClient.pfnFlushOpCompleteCb != NULL);
 =======
     if ( NULL == pTLCb->tlBAPClient.pfnFlushOpCompleteCb )
@@ -10100,6 +11093,9 @@ WLANTL_McProcessMsg
       return VOS_STATUS_E_FAULT;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_ASSERT(pTLCb->tlBAPClient.pfnFlushOpCompleteCb != NULL);
+>>>>>>> 657b0e9... prima update
 
     TLLOG2(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
             "Received message:  Flush complete received by TL"));
@@ -10309,11 +11305,15 @@ WLANTL_TxProcessMsg
    v_U8_t          ucUcastSig;
    v_U8_t          ucBcastSig;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
    WLANTL_CbType*  pTLCb = NULL;
    WLANTL_ACEnumType    ucAC;
 #endif
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
+<<<<<<< HEAD
    void (*callbackRoutine) (void *callbackContext);
    void *callbackContext;
 #endif
@@ -10324,6 +11324,11 @@ WLANTL_TxProcessMsg
    void (*callbackRoutine) (void *callbackContext);
    void *callbackContext;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   void (*callbackRoutine) (void *callbackContext);
+   void *callbackContext;
+#endif
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -10367,9 +11372,13 @@ WLANTL_TxProcessMsg
                                            ucUcastSig, ucBcastSig);
     break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   case WLANTL_TX_STAID_AC_IND:
       pTLCb = VOS_GET_TL_CB(pvosGCtx);
       if ( NULL == pTLCb )
@@ -10380,6 +11389,7 @@ WLANTL_TxProcessMsg
       }
 
       ucAC = message->bodyval &  WLANTL_AC_MASK;
+<<<<<<< HEAD
 <<<<<<< HEAD
       ucSTAId = (v_U8_t)message->bodyval >> WLANTL_STAID_OFFSET;  
       pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAC] = 1; 
@@ -10405,19 +11415,31 @@ WLANTL_TxProcessMsg
       }
 
       pClientSTA->aucACMask[ucAC] = 1;
+=======
+      ucSTAId = (v_U8_t)message->bodyval >> WLANTL_STAID_OFFSET;  
+      pTLCb->atlSTAClients[ucSTAId].aucACMask[ucAC] = 1; 
+>>>>>>> 657b0e9... prima update
 
-      vos_atomic_set_U8( &pClientSTA->ucPktPending, 1);
+      vos_atomic_set_U8( &pTLCb->atlSTAClients[ucSTAId].ucPktPending, 1);
       vosStatus = WDA_DS_StartXmit(pvosGCtx);
       break;
-
+#endif 
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
   case WDA_DS_TX_START_XMIT:
+<<<<<<< HEAD
       WLANTL_ClearTxXmitPending(pvosGCtx);
       vosStatus = WDA_DS_TxFrames( pvosGCtx );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    vosStatus = WDA_DS_TxFrames( pvosGCtx );
+
+>>>>>>> 657b0e9... prima update
       break;
 
   case WDA_DS_FINISH_ULA:
     callbackContext = (void *)message->bodyval;
+<<<<<<< HEAD
 <<<<<<< HEAD
    
     callbackRoutine = message->bodyptr;
@@ -10436,6 +11458,13 @@ WLANTL_TxProcessMsg
     WDA_TransportChannelDebug(NULL, VOS_TRUE, VOS_FALSE);
     break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   
+    callbackRoutine = message->bodyptr;
+    callbackRoutine(callbackContext);
+    break;
+#endif
+>>>>>>> 657b0e9... prima update
 
   default:
     /*no processing for now*/
@@ -10487,9 +11516,13 @@ WLANTL_TxFreeMsg
 }/*WLANTL_TxFreeMsg*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
 
   FUNCTION    WLANTL_TxFCFrame
@@ -10536,10 +11569,14 @@ WLANTL_TxFCFrame
 
   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL: Send FC frame %s", __FUNCTION__);
 =======
                "WLAN TL: Send FC frame %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL: Send FC frame %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Sanity check
@@ -10548,10 +11585,14 @@ WLANTL_TxFCFrame
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL:Invalid parameter %s", __FUNCTION__));
 =======
                "WLAN TL:Invalid parameter %s", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL:Invalid parameter %s", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_INVAL;
   }
   /*------------------------------------------------------------------------
@@ -10563,10 +11604,14 @@ WLANTL_TxFCFrame
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "WLAN TL:Invalid pointer in %s \n", __FUNCTION__));
 =======
         "WLAN TL:Invalid pointer in %s \n", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        "WLAN TL:Invalid pointer in %s \n", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_INVAL;
   }
   
@@ -10585,10 +11630,14 @@ WLANTL_TxFCFrame
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: failed to reserve FC TX BD %d\n",__FUNCTION__, sizeof(tHalFcTxBd)));
 =======
                  "%s: failed to reserve FC TX BD %d\n",__func__, sizeof(tHalFcTxBd)));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: failed to reserve FC TX BD %d\n",__FUNCTION__, sizeof(tHalFcTxBd)));
+>>>>>>> 657b0e9... prima update
     vos_pkt_return_packet( pPacket );
     return VOS_STATUS_E_FAULT;
   }
@@ -10630,10 +11679,14 @@ WLANTL_TxFCFrame
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Fill FC TX BD unsuccessful\n", __FUNCTION__));
 =======
                  "%s: Fill FC TX BD unsuccessful\n", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Fill FC TX BD unsuccessful\n", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     vos_pkt_return_packet( pPacket );
     return VOS_STATUS_E_FAULT;
   }
@@ -10642,10 +11695,14 @@ WLANTL_TxFCFrame
   {
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Previous FC TX BD not sent\n", __FUNCTION__));
 =======
                  "%s: Previous FC TX BD not sent\n", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Previous FC TX BD not sent\n", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     vos_pkt_return_packet(pTLCb->vosTxFCBuf);
   }
 
@@ -10657,18 +11714,26 @@ WLANTL_TxFCFrame
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL: send FC frame leave %s", __FUNCTION__));
 =======
                "WLAN TL: send FC frame leave %s", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL: send FC frame leave %s", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
 #endif
   return VOS_STATUS_SUCCESS;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /*==========================================================================
   FUNCTION    WLANTL_GetTxResourcesCB
@@ -10712,17 +11777,25 @@ WLANTL_GetTxResourcesCB
   v_U8_t          ucBAP      = 0;
   v_U8_t          ucData     = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FLOWCTRL_EN
   tBssSystemRole systemRole;
   tpAniSirGlobal pMac;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
   /*------------------------------------------------------------------------
     Extract TL control block
@@ -10767,9 +11840,13 @@ WLANTL_GetTxResourcesCB
   
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FLOWCTRL_EN
   /* FIXME: disabled since creating issues in power-save, needs to be addressed */ 
   pTLCb->sendFCFrame ++;
@@ -10786,9 +11863,13 @@ WLANTL_GetTxResourcesCB
   }
 #endif //WLAN_SOFTAP_FLOWCTRL_EN 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif //WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif //WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
   ucData = ( pTLCb->uResCount >=  WDA_TLI_MIN_RES_DATA );
   ucBAP  = ( pTLCb->uResCount >=  WDA_TLI_MIN_RES_BAP ) &&
@@ -10828,12 +11909,16 @@ WLANTL_GetTxResourcesCB
    IN
     pTLCb:            TL control block
 <<<<<<< HEAD
+<<<<<<< HEAD
     ucStaId:          station ID
 =======
    IN/OUT 
     ucStaId:          station ID. Incase of TDLS, this returns actual TDLS
                       station ID used
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    ucStaId:          station ID
+>>>>>>> 657b0e9... prima update
 
    IN/OUT
     vosDataBuff:      vos data buffer, will contain the new header on output
@@ -10858,12 +11943,17 @@ WLANTL_Translate8023To80211Header
   VOS_STATUS*     pvosStatus,
   WLANTL_CbType*  pTLCb,
 <<<<<<< HEAD
+<<<<<<< HEAD
   v_U8_t          ucStaId,
   v_U8_t          ucUP,
 =======
   v_U8_t          *pucStaId,
   WLANTL_MetaInfoType *tlMetaInfo,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  v_U8_t          ucStaId,
+  v_U8_t          ucUP,
+>>>>>>> 657b0e9... prima update
   v_U8_t          *ucWDSEnabled,
   v_U8_t          *extraHeadSpace
 )
@@ -10875,6 +11965,7 @@ WLANTL_Translate8023To80211Header
   v_U8_t                 ucHeaderSize = 0;
   v_VOID_t               *ppvBDHeader = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   v_U8_t                 ucQoSOffset = WLAN80211_MANDATORY_HEADER_SIZE;
 #endif
@@ -10883,6 +11974,11 @@ WLANTL_Translate8023To80211Header
   v_U8_t                 ucQoSOffset = WLAN80211_MANDATORY_HEADER_SIZE;
   v_U8_t                 ucStaId;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  v_U8_t                 ucQoSOffset = WLAN80211_MANDATORY_HEADER_SIZE;
+#endif
+>>>>>>> 657b0e9... prima update
 
   *ucWDSEnabled = 0; // default WDS off.
   vosStatus = vos_pkt_pop_head( vosDataBuff, &w8023Header,
@@ -10895,6 +11991,7 @@ WLANTL_Translate8023To80211Header
      return vosStatus;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   if ( 0 != pTLCb->atlSTAClients[ucStaId].wSTADesc.ucAddRmvLLC )
@@ -10949,6 +12046,10 @@ WLANTL_Translate8023To80211Header
 
   if ( 0 != pClientSTA->wSTADesc.ucAddRmvLLC )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  if ( 0 != pTLCb->atlSTAClients[ucStaId].wSTADesc.ucAddRmvLLC )
+>>>>>>> 657b0e9... prima update
   {
     /* Push the length */
     vosStatus = vos_pkt_push_head(vosDataBuff,
@@ -11000,15 +12101,20 @@ WLANTL_Translate8023To80211Header
 
 #ifdef BTAMP_TEST
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucStaId].wSTADesc.wSTAType = WLAN_STA_BT_AMP;
 =======
   pClientSTA->wSTADesc.wSTAType = WLAN_STA_BT_AMP;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucStaId].wSTADesc.wSTAType = WLAN_STA_BT_AMP;
+>>>>>>> 657b0e9... prima update
 #endif
 
   // Find the space required for the 802.11 header format
   // based on the frame control fields.
   ucHeaderSize = MandatoryucHeaderSize;
+<<<<<<< HEAD
 <<<<<<< HEAD
   if (pTLCb->atlSTAClients[ucStaId].wSTADesc.ucQosEnabled)
   {  
@@ -11022,14 +12128,22 @@ WLANTL_Translate8023To80211Header
 #endif
 =======
   if (pClientSTA->wSTADesc.ucQosEnabled)
+=======
+  if (pTLCb->atlSTAClients[ucStaId].wSTADesc.ucQosEnabled)
+>>>>>>> 657b0e9... prima update
   {  
     ucHeaderSize += sizeof(pw80211Header->usQosCtrl);
   }
-  if (pClientSTA->wSTADesc.wSTAType == WLAN_STA_BT_AMP)
+  if (pTLCb->atlSTAClients[ucStaId].wSTADesc.wSTAType == WLAN_STA_BT_AMP)
   {  
     ucHeaderSize += sizeof(pw80211Header->optvA4);
+#ifdef WLAN_SOFTAP_FEATURE
     ucQoSOffset += sizeof(pw80211Header->optvA4);
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
   }
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -11045,6 +12159,9 @@ WLANTL_Translate8023To80211Header
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   /* Check for alignment */
   *extraHeadSpace = (v_U8_t)((((v_U32_t)(ppvBDHeader)) & 0x7) % 0x4);
@@ -11063,8 +12180,11 @@ WLANTL_Translate8023To80211Header
     }
   }
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   // OK now we have the space. Fill the 80211 header
   /* Fill A2 */
@@ -11076,6 +12196,7 @@ WLANTL_Translate8023To80211Header
 
 #ifdef FEATURE_WLAN_WAPI
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( WLANTL_STA_AUTHENTICATED == pTLCb->atlSTAClients[ucStaId].tlState && gUcIsWai != 1 )
 #else
   if ( WLANTL_STA_AUTHENTICATED == pTLCb->atlSTAClients[ucStaId].tlState )
@@ -11086,14 +12207,20 @@ WLANTL_Translate8023To80211Header
 =======
   if (( WLANTL_STA_AUTHENTICATED == pClientSTA->tlState ||
         pClientSTA->ptkInstalled ) && gUcIsWai != 1)
+=======
+  if ( WLANTL_STA_AUTHENTICATED == pTLCb->atlSTAClients[ucStaId].tlState && gUcIsWai != 1 )
+>>>>>>> 657b0e9... prima update
 #else
-  if ( WLANTL_STA_AUTHENTICATED == pClientSTA->tlState ||
-       pClientSTA->ptkInstalled )
+  if ( WLANTL_STA_AUTHENTICATED == pTLCb->atlSTAClients[ucStaId].tlState )
 #endif
   {
     pw80211Header->wFrmCtrl.wep =
+<<<<<<< HEAD
                  pClientSTA->wSTADesc.ucProtectedFrame;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 pTLCb->atlSTAClients[ucStaId].wSTADesc.ucProtectedFrame;
+>>>>>>> 657b0e9... prima update
   }
 
   pw80211Header->usDurationId = 0;
@@ -11103,6 +12230,7 @@ WLANTL_Translate8023To80211Header
 
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if(pTLCb->atlSTAClients[ucStaId].wSTADesc.ucQosEnabled)
   {
@@ -11120,6 +12248,17 @@ WLANTL_Translate8023To80211Header
 
       *((v_U16_t *)((v_U8_t *)ppvBDHeader + ucQoSOffset)) = tlMetaInfo->ucUP;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if(pTLCb->atlSTAClients[ucStaId].wSTADesc.ucQosEnabled)
+  {
+      pw80211Header->wFrmCtrl.subType  = WLANTL_80211_DATA_QOS_SUBTYPE;
+
+#ifdef WLAN_SOFTAP_FEATURE
+      *((v_U16_t *)((v_U8_t *)ppvBDHeader + ucQoSOffset)) = ucUP;
+#else
+      pw80211Header->usQosCtrl = ucUP;
+#endif
+>>>>>>> 657b0e9... prima update
 
   }
   else
@@ -11132,6 +12271,7 @@ WLANTL_Translate8023To80211Header
   }
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   switch( pTLCb->atlSTAClients[ucStaId].wSTADesc.wSTAType )
   {
@@ -11149,37 +12289,32 @@ WLANTL_Translate8023To80211Header
       case WLAN_STA_BT_AMP:
 =======
   switch( pClientSTA->wSTADesc.wSTAType )
+=======
+  switch( pTLCb->atlSTAClients[ucStaId].wSTADesc.wSTAType )
+>>>>>>> 657b0e9... prima update
   {
-     case WLAN_STA_IBSS:
+      case WLAN_STA_IBSS:
         pw80211Header->wFrmCtrl.toDS          = 0;
         pw80211Header->wFrmCtrl.fromDS        = 0;
-
-        /*
-         * If the frame is a multicast frame, then, the Address1
-         * should be the destination address filled in the packet. Which is
-         * the multicast address. Otherwise, set it to BSSID
-         */
-        if (0 == tlMetaInfo->ucBcast && 1 == tlMetaInfo->ucMcast)
-        {
-           vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA1,
-                             (v_MACADDR_t*)&w8023Header.vDA);
-        }
-        else
-        {
-           vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA1,
-                 &pClientSTA->wSTADesc.vSTAMACAddress);
-        }
+        /*Fix me*/
+        vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA1,
+              &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSTAMACAddress);
         vos_mem_copy( pw80211Header->vA3,
-              &pClientSTA->wSTADesc.vBSSIDforIBSS ,
+              &pTLCb->atlSTAClients[ucStaId].wSTADesc.vBSSIDforIBSS ,
               VOS_MAC_ADDR_SIZE);
         break;
 
+<<<<<<< HEAD
      case WLAN_STA_BT_AMP:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      case WLAN_STA_BT_AMP:
+>>>>>>> 657b0e9... prima update
         *ucWDSEnabled = 1; // WDS on.
         pw80211Header->wFrmCtrl.toDS          = 1;
         pw80211Header->wFrmCtrl.fromDS        = 1;
         vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA1,
+<<<<<<< HEAD
 <<<<<<< HEAD
               &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSTAMACAddress);
         vos_mem_copy( pw80211Header->vA2,
@@ -11198,26 +12333,35 @@ WLANTL_Translate8023To80211Header
       case WLAN_STA_SOFTAP:
 =======
               &pClientSTA->wSTADesc.vSTAMACAddress);
+=======
+              &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSTAMACAddress);
+>>>>>>> 657b0e9... prima update
         vos_mem_copy( pw80211Header->vA2,
-              w8023Header.vSA, VOS_MAC_ADDR_SIZE);
+                w8023Header.vSA, VOS_MAC_ADDR_SIZE);
         vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA3,
-              &pClientSTA->wSTADesc.vSTAMACAddress);
+              &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSTAMACAddress);
         /* fill the optional A4 header */
         vos_mem_copy( pw80211Header->optvA4,
-              w8023Header.vSA, VOS_MAC_ADDR_SIZE);
+                w8023Header.vSA, VOS_MAC_ADDR_SIZE);
         TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
-                 "BTAMP CASE NOW ---------staid=%d\n",
-                 ucStaId));
+            "BTAMP CASE NOW ---------staid=%d\n",
+            ucStaId));
         break;
 
+<<<<<<< HEAD
      case WLAN_STA_SOFTAP:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+      case WLAN_STA_SOFTAP:
+>>>>>>> 657b0e9... prima update
         *ucWDSEnabled = 0; // WDS off.
         pw80211Header->wFrmCtrl.toDS          = 0;
         pw80211Header->wFrmCtrl.fromDS        = 1;
         /*Copy the DA to A1*/
         vos_mem_copy( pw80211Header->vA1, w8023Header.vDA , VOS_MAC_ADDR_SIZE);   
         vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA2,
+<<<<<<< HEAD
 <<<<<<< HEAD
               &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSelfMACAddress);
         vos_mem_copy( pw80211Header->vA3,
@@ -11240,37 +12384,33 @@ WLANTL_Translate8023To80211Header
             ucStaId));
 =======
               &pClientSTA->wSTADesc.vSelfMACAddress);
+=======
+              &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSelfMACAddress);
+>>>>>>> 657b0e9... prima update
         vos_mem_copy( pw80211Header->vA3,
-              w8023Header.vSA, VOS_MAC_ADDR_SIZE);
+                w8023Header.vSA, VOS_MAC_ADDR_SIZE);
         TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
-                 "sw 802 to 80211 softap case  ---------staid=%d\n",
-                 ucStaId));
-        break;
-#ifdef FEATURE_WLAN_TDLS
-     case WLAN_STA_TDLS:
-        pw80211Header->wFrmCtrl.toDS          = 0;
-        pw80211Header->wFrmCtrl.fromDS        = 0;
-        /*Fix me*/
-        vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA1,
-              &pClientSTA->wSTADesc.vSTAMACAddress);
-        vos_mem_copy( pw80211Header->vA3,
-              &pClientSTA->wSTADesc.vBSSIDforIBSS ,
-              VOS_MAC_ADDR_SIZE);
-        VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
-              ("TL:TDLS CASE NOW ---------staid=%d\n"), ucStaId);
+            "sw 802 to 80211 softap case  ---------staid=%d\n",
+            ucStaId));
         break;
 #endif
-     case WLAN_STA_INFRA:
-     default:
+
+      case WLAN_STA_INFRA:
+      default:
         pw80211Header->wFrmCtrl.toDS          = 1;
         pw80211Header->wFrmCtrl.fromDS        = 0;
         vos_copy_macaddr( (v_MACADDR_t*)&pw80211Header->vA1,
-              &pClientSTA->wSTADesc.vSTAMACAddress);
+              &pTLCb->atlSTAClients[ucStaId].wSTADesc.vSTAMACAddress);
         vos_mem_copy( pw80211Header->vA3, w8023Header.vDA , VOS_MAC_ADDR_SIZE);
         TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+<<<<<<< HEAD
                  "REGULAR INFRA LINK CASE---------staid=%d\n",
                  ucStaId));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "REGULAR INFRA LINK CASE---------staid=%d\n",
+            ucStaId));
+>>>>>>> 657b0e9... prima update
         break;
   }
   // OK now we have the space. Fill the 80211 header
@@ -11284,10 +12424,14 @@ WLANTL_Translate8023To80211Header
    BEGIN LOG FUNCTION    !!! Remove me or clean me
 =============================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLANTL_DEBUG 
 =======
 #if 0 //def WLANTL_DEBUG
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLANTL_DEBUG 
+>>>>>>> 657b0e9... prima update
 
 #define WLANTL_DEBUG_FRAME_BYTE_PER_LINE    16
 #define WLANTL_DEBUG_FRAME_BYTE_PER_BYTE    4
@@ -11416,9 +12560,13 @@ WLANTL_Translate80211To8023Header
   {
   case 0:
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     if ( w80211Header.wFrmCtrl.toDS )
     {
       //SoftAP AP mode
@@ -11435,13 +12583,19 @@ WLANTL_Translate80211To8023Header
       vos_mem_copy( w8023Header.vSA, w80211Header.vA2, VOS_MAC_ADDR_SIZE);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
     /* IBSS */
     vos_mem_copy( w8023Header.vDA, w80211Header.vA1, VOS_MAC_ADDR_SIZE);
     vos_mem_copy( w8023Header.vSA, w80211Header.vA2, VOS_MAC_ADDR_SIZE);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     break;
   case 1:
     if ( w80211Header.wFrmCtrl.toDS )
@@ -11477,6 +12631,7 @@ WLANTL_Translate80211To8023Header
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucAddRmvLLC )
 =======
   if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
@@ -11488,6 +12643,9 @@ WLANTL_Translate80211To8023Header
 
   if ( 0 != pTLCb->atlSTAClients[ucSTAId]->wSTADesc.ucAddRmvLLC )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 != pTLCb->atlSTAClients[ucSTAId].wSTADesc.ucAddRmvLLC )
+>>>>>>> 657b0e9... prima update
   {
     // Extract the LLC header
     vosStatus = vos_pkt_pop_head( vosDataBuff, aucLLCHeader,
@@ -11552,6 +12710,7 @@ WLANTL_Translate80211To8023Header
   return VOS_STATUS_SUCCESS;
 }/*WLANTL_Translate80211To8023Header*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*==========================================================================
@@ -11675,6 +12834,8 @@ WLANTL_FindFrameTypeBcMcUc
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #if 0
 #ifdef WLAN_PERF 
 /*==========================================================================
@@ -11842,11 +13003,17 @@ WLANTL_PrepareBDHeader
   v_U8_t      ucHeaderOffset;
   v_U8_t      ucHeaderLen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef WLAN_SOFTAP_FEATURE
   v_PVOID_t   pvPeekData;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifndef WLAN_SOFTAP_FEATURE
+  v_PVOID_t   pvPeekData;
+#endif
+>>>>>>> 657b0e9... prima update
   v_U8_t      ucBDHeaderLen = WLANTL_BD_HEADER_LEN(ucDisableFrmXtl);
 
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -11880,9 +13047,13 @@ WLANTL_PrepareBDHeader
     Extract MAC address
    -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   {
    v_SIZE_t usMacAddrSize = VOS_MAC_ADDR_SIZE;
    *pvosStatus = vos_pkt_extract_data( vosDataBuff,
@@ -11892,6 +13063,9 @@ WLANTL_PrepareBDHeader
                                      &usMacAddrSize );
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
   *pvosStatus = vos_pkt_peek_data( vosDataBuff,
                                      ucBDHeaderLen +
@@ -11902,8 +13076,11 @@ WLANTL_PrepareBDHeader
   /*Fix me*/
   vos_copy_macaddr(pvDestMacAdddr, (v_MACADDR_t*)pvPeekData);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   if ( VOS_STATUS_SUCCESS != *pvosStatus )
   {
      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -11959,9 +13136,13 @@ WLANTL_PrepareBDHeader
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 //THIS IS A HACK AND NEEDS TO BE FIXED FOR CONCURRENCY
 /*==========================================================================
   FUNCTION    WLAN_TLGetNextTxIds
@@ -12019,10 +13200,14 @@ WLAN_TLAPGetNextTxIds
   v_U8_t          uFlowMask; // TX FlowMask from WDA
   uint8           ucACMask; 
 <<<<<<< HEAD
+<<<<<<< HEAD
   uint8           i; 
 =======
   uint8           i = 0; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  uint8           i; 
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Extract TL control block
   ------------------------------------------------------------------------*/
@@ -12092,6 +13277,7 @@ WLAN_TLAPGetNextTxIds
       for ( ; ucNextSTA < WLAN_MAX_STA_COUNT; ucNextSTA ++ )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
         WLAN_TL_AC_ARRAY_2_MASK (&pTLCb->atlSTAClients[ucNextSTA], ucACMask, i); 
 
         if ( (0 == pTLCb->atlSTAClients[ucNextSTA].ucExists) ||
@@ -12106,12 +13292,16 @@ WLAN_TLAPGetNextTxIds
             continue;
         }
         WLAN_TL_AC_ARRAY_2_MASK (pTLCb->atlSTAClients[ucNextSTA], ucACMask, i);
+=======
+        WLAN_TL_AC_ARRAY_2_MASK (&pTLCb->atlSTAClients[ucNextSTA], ucACMask, i); 
+>>>>>>> 657b0e9... prima update
 
-        if ( (0 == pTLCb->atlSTAClients[ucNextSTA]->ucExists) ||
-             ((0 == pTLCb->atlSTAClients[ucNextSTA]->ucPktPending) && !(ucACMask)) ||
+        if ( (0 == pTLCb->atlSTAClients[ucNextSTA].ucExists) ||
+             ((0 == pTLCb->atlSTAClients[ucNextSTA].ucPktPending) && !(ucACMask)) ||
              (0 == (ucACMask & ucACFilter)) )
 
         {
+<<<<<<< HEAD
           //current station does not exist or have any packet to serve.
           continue;
         }
@@ -12122,6 +13312,9 @@ WLAN_TLAPGetNextTxIds
                  "%s Sta %d not in auth state so skipping it.",
                  __func__, ucNextSTA));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          //current statioin does not exist or have any packet to serve.
+>>>>>>> 657b0e9... prima update
           continue;
         }
 
@@ -12129,6 +13322,7 @@ WLAN_TLAPGetNextTxIds
         //Station is allowed to send when it is not in LWM mode. When station is in LWM mode,
         //station is allowed to send only after FW reports FW memory is below threshold and on-fly
         //packets are less then allowed value
+<<<<<<< HEAD
 <<<<<<< HEAD
         if ( (TRUE == pTLCb->atlSTAClients[ucNextSTA].ucLwmModeEnabled) && 
              ((FALSE == pTLCb->atlSTAClients[ucNextSTA].ucLwmEventReported) || 
@@ -12138,6 +13332,11 @@ WLAN_TLAPGetNextTxIds
              ((FALSE == pTLCb->atlSTAClients[ucNextSTA]->ucLwmEventReported) ||
                  (0 < pTLCb->atlSTAClients[ucNextSTA]->uBuffThresholdMax))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if ( (TRUE == pTLCb->atlSTAClients[ucNextSTA].ucLwmModeEnabled) && 
+             ((FALSE == pTLCb->atlSTAClients[ucNextSTA].ucLwmEventReported) || 
+                 (0 < pTLCb->atlSTAClients[ucNextSTA].uBuffThresholdMax))
+>>>>>>> 657b0e9... prima update
            )
         {
           continue;
@@ -12148,10 +13347,14 @@ WLAN_TLAPGetNextTxIds
         *pucSTAId = ucNextSTA;
         pTLCb->ucCurrentSTA = ucNextSTA;
 <<<<<<< HEAD
+<<<<<<< HEAD
         pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC = pTLCb->uCurServedAC;
 =======
         pTLCb->atlSTAClients[*pucSTAId]->ucCurrentAC = pTLCb->uCurServedAC;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC = pTLCb->uCurServedAC;
+>>>>>>> 657b0e9... prima update
   
         TLLOG4(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,
                    " TL serve one station AC: %d  W: %d StaId: %d",
@@ -12245,24 +13448,36 @@ WLAN_TLGetNextTxIds
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Invalid pMac", __FUNCTION__));
 =======
                       "%s: Invalid pMac", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Invalid pMac", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
   systemRole = wdaGetGlobalSystemRole(pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   if ((eSYSTEM_AP_ROLE == systemRole) || (vos_concurrent_sessions_running()))
   {
     return WLAN_TLAPGetNextTxIds(pvosGCtx,pucSTAId);
   }
+<<<<<<< HEAD
 
   
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Extract TL control block
   ------------------------------------------------------------------------*/
@@ -12274,6 +13489,7 @@ WLAN_TLGetNextTxIds
     return VOS_STATUS_E_FAULT;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -12287,6 +13503,8 @@ WLAN_TLGetNextTxIds
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   if ( VOS_STATUS_SUCCESS != WDA_DS_GetTxFlowMask( pvosGCtx, &uFlowMask ) )
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -12307,6 +13525,7 @@ WLAN_TLGetNextTxIds
         ucCount++ )
   {
     ucNextSTA = ( (ucNextSTA+1) >= WLAN_MAX_STA_COUNT )?0:(ucNextSTA+1);
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     if (( pTLCb->atlSTAClients[ucNextSTA].ucExists ) &&
@@ -12338,6 +13557,16 @@ WLAN_TLGetNextTxIds
                __func__, ucNextSTA));
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    if (( pTLCb->atlSTAClients[ucNextSTA].ucExists ) &&
+        ( pTLCb->atlSTAClients[ucNextSTA].ucPktPending ))
+    {
+      TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+      "STA ID: %d on WLAN_TLGetNextTxIds", *pucSTAId));
+      pTLCb->ucCurrentSTA = ucNextSTA; 
+      break;
+>>>>>>> 657b0e9... prima update
     }
   }
 
@@ -12354,10 +13583,14 @@ WLAN_TLGetNextTxIds
 
   /*Convert the array to a mask for easier operation*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   WLAN_TL_AC_ARRAY_2_MASK( &pTLCb->atlSTAClients[*pucSTAId], ucACMask, i); 
 =======
   WLAN_TL_AC_ARRAY_2_MASK( pTLCb->atlSTAClients[*pucSTAId], ucACMask, i);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WLAN_TL_AC_ARRAY_2_MASK( &pTLCb->atlSTAClients[*pucSTAId], ucACMask, i); 
+>>>>>>> 657b0e9... prima update
   
   if ( 0 == ucACMask )
   {
@@ -12377,6 +13610,7 @@ WLAN_TLGetNextTxIds
     exit this function at this point during the main Tx loop
   -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 < pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight  )
   {
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -12391,6 +13625,14 @@ WLAN_TLGetNextTxIds
                   pTLCb->atlSTAClients[*pucSTAId]->ucCurrentAC ,
                   pTLCb->atlSTAClients[*pucSTAId]->ucCurrentWeight));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 < pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight  )
+  {
+    TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+                  "WLAN TL: Maintaining serviced AC to: %d for Weight: %d",
+                  pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC ,
+                  pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_SUCCESS;
   }
 
@@ -12398,10 +13640,14 @@ WLAN_TLGetNextTxIds
      Choose highest priority AC - !!! optimize me
   -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   ucNextAC = pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC;
 =======
   ucNextAC = pTLCb->atlSTAClients[*pucSTAId]->ucCurrentAC;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  ucNextAC = pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC;
+>>>>>>> 657b0e9... prima update
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "Next AC: %d", ucNextAC));
 
@@ -12414,6 +13660,7 @@ WLAN_TLGetNextTxIds
     if ( 0 != ( ucACMask & ( 1 << ucNextAC ) & uFlowMask ))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
        pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC     = 
                                    (WLANTL_ACEnumType)ucNextAC;
        pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight =
@@ -12422,10 +13669,16 @@ WLAN_TLGetNextTxIds
                                    (WLANTL_ACEnumType)ucNextAC;
        pTLCb->atlSTAClients[*pucSTAId]->ucCurrentWeight =
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC     = 
+                                   (WLANTL_ACEnumType)ucNextAC;
+       pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight =
+>>>>>>> 657b0e9... prima update
                        pTLCb->tlConfigInfo.ucAcWeights[ucNextAC];
 
         TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                   "WLAN TL: Switching serviced AC to: %d with Weight: %d",
+<<<<<<< HEAD
 <<<<<<< HEAD
                   pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC ,
                   pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight));
@@ -12433,6 +13686,10 @@ WLAN_TLGetNextTxIds
                   pTLCb->atlSTAClients[*pucSTAId]->ucCurrentAC ,
                   pTLCb->atlSTAClients[*pucSTAId]->ucCurrentWeight));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC ,
+                  pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight));
+>>>>>>> 657b0e9... prima update
        break;
     }
 
@@ -12446,17 +13703,25 @@ WLAN_TLGetNextTxIds
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              " C AC: %d C W: %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC,
              pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight));
 =======
              pTLCb->atlSTAClients[*pucSTAId]->ucCurrentAC,
              pTLCb->atlSTAClients[*pucSTAId]->ucCurrentWeight));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             pTLCb->atlSTAClients[*pucSTAId].ucCurrentAC,
+             pTLCb->atlSTAClients[*pucSTAId].ucCurrentWeight));
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }/* WLAN_TLGetNextTxIds */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
 
 /*==========================================================================
@@ -12603,8 +13868,11 @@ WLAN_TLGetNextTxIds
   return VOS_STATUS_SUCCESS;
 }/* WLAN_TLGetNextTxIds */
 #endif //WLAN_SOFTAP_FEATURE
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 /*==========================================================================
@@ -12664,9 +13932,25 @@ WLANTL_MgmtFrmRxDefaultCb
     vos_pkt_return_packet((vos_pkt_t *)vosBuff);
   }
 
+#if !defined( FEATURE_WLAN_INTEGRATED_SOC )
+  if(!vos_is_load_unload_in_progress(VOS_MODULE_ID_TL, NULL))
+  {
+      TLLOGP(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
+                 "WLAN TL:Fatal failure: No registered Mgmt Frm client on pkt RX"));
+      VOS_ASSERT(0);
+  }
+  else
+  {
+#endif
       TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                  "WLAN TL: No registered Mgmt Frm client on pkt RX. Load/Unload in progress, Ignore"));
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if !defined( FEATURE_WLAN_INTEGRATED_SOC )
+  }
+#endif
+>>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_E_FAILURE;
 }/*WLANTL_MgmtFrmRxDefaultCb*/
@@ -12674,10 +13958,14 @@ WLANTL_MgmtFrmRxDefaultCb
 /*==========================================================================
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   FUNCTION    WLANTL_STARxDefaultCb
 =======
   FUNCTION   WLANTL_BAPRxDefaultCb
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  FUNCTION    WLANTL_STARxDefaultCb
+>>>>>>> 657b0e9... prima update
 
   DESCRIPTION
     Default BAP rx callback: asserts all the time. If this function gets
@@ -12742,10 +14030,14 @@ WLANTL_STARxDefaultCb
                ucSTAId));
   vos_pkt_return_packet(vosDataBuff);
 <<<<<<< HEAD
+<<<<<<< HEAD
   return VOS_STATUS_E_FAILURE;
 =======
   return VOS_STATUS_SUCCESS;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  return VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
 }/*WLANTL_MgmtFrmRxDefaultCb*/
 
 
@@ -12887,6 +14179,7 @@ WLANTL_CleanCB
   for ( ucIndex = 0; ucIndex < WLAN_MAX_STA_COUNT ; ucIndex++)
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WLANTL_CleanSTA( &pTLCb->atlSTAClients[ucIndex], ucEmpty);
 =======
     if(NULL != pTLCb->atlSTAClients[ucIndex])
@@ -12894,6 +14187,9 @@ WLANTL_CleanCB
         WLANTL_CleanSTA( pTLCb->atlSTAClients[ucIndex], ucEmpty);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WLANTL_CleanSTA( &pTLCb->atlSTAClients[ucIndex], ucEmpty);
+>>>>>>> 657b0e9... prima update
   }
 
   /*-------------------------------------------------------------------------
@@ -13024,10 +14320,14 @@ WLANTL_CleanSTA
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "WLAN TL:Non NULL vosAMSDUChainRoot (=%x) on WLANTL_CleanSTA," 
 =======
                "WLAN TL:Non NULL vosAMSDUChainRoot (=%p) on WLANTL_CleanSTA,"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "WLAN TL:Non NULL vosAMSDUChainRoot (=%x) on WLANTL_CleanSTA," 
+>>>>>>> 657b0e9... prima update
                "suspecting a memory corruption"));
 
   }
@@ -13161,6 +14461,7 @@ WLANTL_EnableUAPSDForAC
   pTLCb = VOS_GET_TL_CB(pvosGCtx);
   if (( NULL == pTLCb ) || WLANTL_STA_ID_INVALID( ucSTAId )
 <<<<<<< HEAD
+<<<<<<< HEAD
       ||   WLANTL_AC_INVALID(ucAC) || ( 0 == uServiceInt ) )
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
@@ -13192,35 +14493,38 @@ WLANTL_EnableUAPSDForAC
 
 =======
       ||   WLANTL_AC_INVALID(ucAC))
+=======
+      ||   WLANTL_AC_INVALID(ucAC) || ( 0 == uServiceInt ) )
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                "WLAN TL:Invalid input params on WLANTL_EnableUAPSDForAC"
-               " TL: %p  STA: %d  AC: %d",
-               pTLCb, ucSTAId, ucAC));
+               " TL: %x  STA: %d  AC: %d SI: %d", 
+               pTLCb, ucSTAId, ucAC, uServiceInt ));
     return VOS_STATUS_E_FAULT;
   }
 
-  if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
-  {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "WLAN TL:Client Memory was not allocated on %s", __func__));
-      return VOS_STATUS_E_FAILURE;
-  }
-
   /*Set this flag in order to remember that this is a trigger enabled AC*/
-  pTLCb->atlSTAClients[ucSTAId]->wUAPSDInfo[ucAC].ucSet = 1;
+  pTLCb->atlSTAClients[ucSTAId].wUAPSDInfo[ucAC].ucSet = 1; 
+  
+  TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
+             "WLAN TL:Enabling U-APSD in FW for STA: %d AC: %d SI: %d SPI: %d "
+             "DI: %d",
+             ucSTAId, ucAC, uServiceInt, uSuspendInt,
+             pTLCb->tlConfigInfo.uDelayedTriggerFrmInt));
 
-#ifdef FEATURE_WLAN_TDLS
-  if(pTLCb->atlSTAClients[ucSTAId]->wSTADesc.wSTAType != WLAN_STA_TDLS)
-#endif
-  {
-    if( 0 == uServiceInt )
-    {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-               "WLAN TL:Input params on WLANTL_EnableUAPSDForAC"
-               " SI: %d", uServiceInt ));
-    }
+  /*Save all info for HAL*/
+  halUAPSDInfo.staidx         = ucSTAId; 
+  halUAPSDInfo.ac             = ucAC;   
+  halUAPSDInfo.up             = ucUP;   
+  halUAPSDInfo.srvInterval    = uServiceInt;  
+  halUAPSDInfo.susInterval    = uSuspendInt;
+  halUAPSDInfo.delayInterval  = pTLCb->tlConfigInfo.uDelayedTriggerFrmInt; 
 
+  /*Notify HAL*/
+  vosStatus = WDA_EnableUapsdAcParams(pvosGCtx, ucSTAId, &halUAPSDInfo);
+
+<<<<<<< HEAD
     TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLAN TL:Enabling U-APSD in FW for STA: %d AC: %d SI: %d SPI: %d "
                "DI: %d",
@@ -13239,6 +14543,8 @@ WLANTL_EnableUAPSDForAC
     vosStatus = WDA_EnableUapsdAcParams(pvosGCtx, ucSTAId, &halUAPSDInfo);
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   return vosStatus;
 
 }/*WLANTL_EnableUAPSDForAC*/
@@ -13295,6 +14601,7 @@ WLANTL_DisableUAPSDForAC
     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                "WLAN TL:Invalid input params on WLANTL_DisableUAPSDForAC"
 <<<<<<< HEAD
+<<<<<<< HEAD
                " TL: %x  STA: %d  AC: %d", pTLCb, ucSTAId, ucAC ));
     return VOS_STATUS_E_FAULT;
   }
@@ -13303,19 +14610,19 @@ WLANTL_DisableUAPSDForAC
   pTLCb->atlSTAClients[ucSTAId].wUAPSDInfo[ucAC].ucSet = 1; 
 =======
                " TL: %p  STA: %d  AC: %d", pTLCb, ucSTAId, ucAC ));
+=======
+               " TL: %x  STA: %d  AC: %d", pTLCb, ucSTAId, ucAC ));
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
-  if ( NULL == pTLCb->atlSTAClients[ucSTAId] )
-  {
-      TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-          "WLAN TL:Client Memory was not allocated on %s", __func__));
-      return VOS_STATUS_E_FAILURE;
-  }
-
   /*Reset this flag as this is no longer a trigger enabled AC*/
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId]->wUAPSDInfo[ucAC].ucSet = 1;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].wUAPSDInfo[ucAC].ucSet = 1; 
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:Disabling U-APSD in FW for STA: %d AC: %d ",
@@ -13531,9 +14838,12 @@ VOS_STATUS WLANTL_GetStatistics
 {
   WLANTL_CbType            *pTLCb  = VOS_GET_TL_CB(pAdapter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType*     pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   VOS_STATUS                status = VOS_STATUS_SUCCESS;
   WLANTL_TRANSFER_STA_TYPE *statistics = NULL;
 
@@ -13542,16 +14852,21 @@ VOS_STATUS WLANTL_GetStatistics
     Extract TL control block 
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (NULL == pTLCb) 
 =======
   if ( NULL == pTLCb )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if (NULL == pTLCb) 
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
             "WLAN TL:Invalid TL pointer on WLANTL_GetStatistics"));
     return VOS_STATUS_E_FAULT;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if(0 == pTLCb->atlSTAClients[STAid].ucExists)
 =======
@@ -13566,6 +14881,9 @@ VOS_STATUS WLANTL_GetStatistics
 
   if(0 == pClientSTA->ucExists)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if(0 == pTLCb->atlSTAClients[STAid].ucExists)
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL: %d STA ID does not exist", STAid));
@@ -13580,10 +14898,14 @@ VOS_STATUS WLANTL_GetStatistics
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
 =======
   statistics = &pClientSTA->trafficStatistics;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
+>>>>>>> 657b0e9... prima update
   memcpy(statBuffer, statistics, sizeof(WLANTL_TRANSFER_STA_TYPE));
 
   return status;
@@ -13613,9 +14935,12 @@ VOS_STATUS WLANTL_ResetStatistics
 {
   WLANTL_CbType            *pTLCb  = VOS_GET_TL_CB(pAdapter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType*     pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   VOS_STATUS                status = VOS_STATUS_SUCCESS;
   WLANTL_TRANSFER_STA_TYPE *statistics = NULL;
 
@@ -13631,6 +14956,7 @@ VOS_STATUS WLANTL_ResetStatistics
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if(0 == pTLCb->atlSTAClients[STAid].ucExists)
 =======
   pClientSTA = pTLCb->atlSTAClients[STAid];
@@ -13644,6 +14970,9 @@ VOS_STATUS WLANTL_ResetStatistics
 
   if(0 == pClientSTA->ucExists)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if(0 == pTLCb->atlSTAClients[STAid].ucExists)
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL: %d STA ID does not exist", STAid));
@@ -13651,10 +14980,14 @@ VOS_STATUS WLANTL_ResetStatistics
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
 =======
   statistics = &pClientSTA->trafficStatistics;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
+>>>>>>> 657b0e9... prima update
   vos_mem_zero((v_VOID_t *)statistics, sizeof(WLANTL_TRANSFER_STA_TYPE));
 
   return status;
@@ -13688,9 +15021,12 @@ VOS_STATUS WLANTL_GetSpecStatistic
 {
   WLANTL_CbType            *pTLCb  = VOS_GET_TL_CB(pAdapter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType*     pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   VOS_STATUS                status = VOS_STATUS_SUCCESS;
   WLANTL_TRANSFER_STA_TYPE *statistics = NULL;
 
@@ -13704,6 +15040,7 @@ VOS_STATUS WLANTL_GetSpecStatistic
             "WLAN TL:Invalid TL pointer on WLANTL_GetStatistics"));
     return VOS_STATUS_E_FAULT;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   if(0 == pTLCb->atlSTAClients[STAid].ucExists)
@@ -13719,6 +15056,10 @@ VOS_STATUS WLANTL_GetSpecStatistic
 
   if(0 == pClientSTA->ucExists)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  if(0 == pTLCb->atlSTAClients[STAid].ucExists)
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL: %d STA ID does not exist", STAid));
@@ -13733,10 +15074,14 @@ VOS_STATUS WLANTL_GetSpecStatistic
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
 =======
   statistics = &pClientSTA->trafficStatistics;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
+>>>>>>> 657b0e9... prima update
   switch(statType)
   {
     case WLANTL_STATIC_TX_UC_FCNT:
@@ -13836,9 +15181,12 @@ VOS_STATUS WLANTL_ResetSpecStatistic
 {
   WLANTL_CbType            *pTLCb  = VOS_GET_TL_CB(pAdapter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType*     pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   VOS_STATUS                status = VOS_STATUS_SUCCESS;
   WLANTL_TRANSFER_STA_TYPE *statistics = NULL;
 
@@ -13854,6 +15202,7 @@ VOS_STATUS WLANTL_ResetSpecStatistic
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if(0 == pTLCb->atlSTAClients[STAid].ucExists)
 =======
   pClientSTA = pTLCb->atlSTAClients[STAid];
@@ -13867,6 +15216,9 @@ VOS_STATUS WLANTL_ResetSpecStatistic
 
   if(0 == pClientSTA->ucExists)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if(0 == pTLCb->atlSTAClients[STAid].ucExists)
+>>>>>>> 657b0e9... prima update
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
     "WLAN TL: %d STA ID does not exist", STAid));
@@ -13874,10 +15226,14 @@ VOS_STATUS WLANTL_ResetSpecStatistic
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
 =======
   statistics = &pClientSTA->trafficStatistics;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  statistics = &pTLCb->atlSTAClients[STAid].trafficStatistics;
+>>>>>>> 657b0e9... prima update
   switch(statType)
   {
     case WLANTL_STATIC_TX_UC_FCNT:
@@ -13974,6 +15330,7 @@ VOS_STATUS WLANTL_ReadRSSI
    if(NULL == tlCtxt)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "%s Invalid TL handle", __FUNCTION__));
       return VOS_STATUS_E_INVAL;
    }
@@ -13991,19 +15348,30 @@ VOS_STATUS WLANTL_ReadRSSI
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR, "%s Invalid TL handle", __FUNCTION__));
+      return VOS_STATUS_E_INVAL;
+   }
+
+>>>>>>> 657b0e9... prima update
    currentRSSI0 = WLANTL_GETRSSI0(pBDHeader);
    currentRSSI1 = WLANTL_GETRSSI1(pBDHeader);
    currentRSSI  = (currentRSSI0 > currentRSSI1) ? currentRSSI0 : currentRSSI1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    tlCtxt->atlSTAClients[STAid].rssiAvg = currentRSSI;
 =======
    tlCtxt->atlSTAClients[STAid]->rssiAvg = currentRSSI;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tlCtxt->atlSTAClients[STAid].rssiAvg = currentRSSI;
+>>>>>>> 657b0e9... prima update
 
    return VOS_STATUS_SUCCESS;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*==========================================================================
@@ -14084,6 +15452,8 @@ VOS_STATUS WLANTL_ReadSNR
    return VOS_STATUS_SUCCESS;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*
  DESCRIPTION 
@@ -14212,10 +15582,14 @@ void WLANTL_PowerStateChangedCB
    {
      VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "Invalid TL Control Block", __FUNCTION__ );
 =======
                 "%s: Invalid TL Control Block", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "Invalid TL Control Block", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
      return;
    }
 
@@ -14335,9 +15709,13 @@ static VOS_STATUS WLANTL_GetEtherType
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION      WLANTL_GetSoftAPStatistics
 
@@ -14373,6 +15751,7 @@ VOS_STATUS WLANTL_GetSoftAPStatistics(v_PVOID_t pAdapter, WLANTL_TRANSFER_STA_TY
     for (i = 0; i < WLAN_MAX_STA_COUNT; i++)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (pTLCb->atlSTAClients[i].wSTADesc.wSTAType == WLAN_STA_SOFTAP)
 =======
         if ( NULL == pTLCb->atlSTAClients[i])
@@ -14381,6 +15760,9 @@ VOS_STATUS WLANTL_GetSoftAPStatistics(v_PVOID_t pAdapter, WLANTL_TRANSFER_STA_TY
         }
         if (pTLCb->atlSTAClients[i]->wSTADesc.wSTAType == WLAN_STA_SOFTAP)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if (pTLCb->atlSTAClients[i].wSTADesc.wSTAType == WLAN_STA_SOFTAP)
+>>>>>>> 657b0e9... prima update
         {
            vosStatus = WLANTL_GetStatistics(pAdapter, &statBufferTemp, i);// Can include staId 1 because statistics not collected for it
 
@@ -14412,6 +15794,7 @@ VOS_STATUS WLANTL_GetSoftAPStatistics(v_PVOID_t pAdapter, WLANTL_TRANSFER_STA_TY
 
     return vosStatus;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 #ifdef ANI_CHIPSET_VOLANS
@@ -14495,6 +15878,10 @@ static VOS_STATUS WLANTL_GetEtherType_2
 #endif /* FEATURE_WLAN_TDLS */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 657b0e9... prima update
 /*===============================================================================
   FUNCTION      WLANTL_IsReplayPacket
      
@@ -14587,9 +15974,13 @@ WLANTL_GetReplayCounterFromRxBD
 }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /*===============================================================================
   FUNCTION      WLANTL_PostResNeeded
@@ -14618,10 +16009,14 @@ void WLANTL_PostResNeeded(v_PVOID_t pvosGCtx)
   {
     VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
        " %s fails to post message", __FUNCTION__);
 =======
        " %s fails to post message", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       " %s fails to post message", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
   }
 }
 
@@ -14647,6 +16042,7 @@ void WLANTL_UpdateRssiBmps(v_PVOID_t pvosGCtx, v_U8_t staId, v_S7_t rssi)
 {
   WLANTL_CbType* pTLCb = VOS_GET_TL_CB(pvosGCtx);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if (NULL != pTLCb)
   {
@@ -14683,10 +16079,14 @@ void WLANTL_UpdateSnrBmps(v_PVOID_t pvosGCtx, v_U8_t staId, v_S7_t snr)
   WLANTL_CbType* pTLCb = VOS_GET_TL_CB(pvosGCtx);
 
   if (NULL != pTLCb && NULL != pTLCb->atlSTAClients[staId])
+=======
+  if (NULL != pTLCb)
+>>>>>>> 657b0e9... prima update
   {
-    pTLCb->atlSTAClients[staId]->snrAvgBmps = snr;
+    pTLCb->atlSTAClients[staId].rssiAvgBmps = rssi;
   }
 }
+<<<<<<< HEAD
 
 /*===============================================================================
   FUNCTION       WLANTL_UpdateLinkCapacity
@@ -14816,3 +16216,5 @@ WLANTL_GetSTALinkCapacity
     return VOS_STATUS_SUCCESS;
 }/* WLANTL_GetSTALinkCapacity */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

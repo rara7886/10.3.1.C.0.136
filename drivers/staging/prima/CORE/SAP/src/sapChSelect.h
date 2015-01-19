@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -45,6 +48,7 @@
 #if !defined( __SAP_CH_SELECT_H )
 #define __SAP_CH_SELECT_H
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 /*
@@ -53,6 +57,8 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*===========================================================================
 
                       s a p C h S e l e c t . h
@@ -115,6 +121,7 @@
 #define SAP_DEFAULT_5GHZ_CHANNEL      (40)
 #define SAP_CHANNEL_NOT_SELECTED (0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #define SOFTAP_HT20_CHANNELWIDTH 0
@@ -143,10 +150,13 @@ typedef enum
 } tSapChannel;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**
 * Structure holding information of each channel in the spectrum, 
 * it contains the channel number, the computed weight
 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 typedef struct {
     v_U16_t chNum;      // Channel Number
@@ -161,6 +171,10 @@ typedef struct {
     v_U16_t chNum;      // Channel Number
     v_U16_t channelWidth;      // Channel Width
 >>>>>>> d97af3b... add prima wlan driver
+=======
+typedef struct {
+    v_U16_t chNum;      // Channel Number
+>>>>>>> 657b0e9... prima update
     v_U16_t bssCount;   // bss found in scanresult for this channel
     v_S31_t rssiAgr;    // Max value of rssi among all BSS(es) from scanresult for this channel
     v_U32_t weight;     // Weightage of this channel
@@ -172,9 +186,12 @@ typedef struct {
 * decision for the best operating channel based on dfs formula
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 typedef struct {
     tSapSpectChInfo *pSpectCh;//tDfsSpectChInfo *pSpectCh;  // Ptr to the channels in the entire spectrum band
     v_U8_t numSpectChans;      // Total num of channels in the spectrum

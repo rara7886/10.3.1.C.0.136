@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -54,9 +57,13 @@
 
   ========================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef CONFIG_CFG80211
+>>>>>>> 657b0e9... prima update
 
 #include <wlan_hdd_includes.h>
 #include <wlan_hdd_hostapd.h>
@@ -65,14 +72,18 @@
 #include "wlan_hdd_p2p.h"
 #include "sapApi.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #include "wlan_hdd_main.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>
 #include <linux/etherdevice.h>
 #include <net/ieee80211_radiotap.h>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -117,6 +128,8 @@ const char *tdls_action_frame_type[] = {"TDLS Setup Request",
                                         "TDLS Discovery Request" };
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 extern struct net_device_ops net_ops_struct;
 
@@ -133,9 +146,13 @@ static void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
                                                tANI_U8 frameType );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 eHalStatus wlan_hdd_remain_on_channel_callback( tHalHandle hHal, void* pCtx,
                                                 eHalStatus status )
 {
@@ -163,6 +180,7 @@ eHalStatus wlan_hdd_remain_on_channel_callback( tHalHandle hHal, void* pCtx,
                    __func__);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         cfg80211_remain_on_channel_expired( pRemainChanCtx->dev,
                               pRemainChanCtx->cookie,
                               &pRemainChanCtx->chan,
@@ -177,15 +195,19 @@ eHalStatus wlan_hdd_remain_on_channel_callback( tHalHandle hHal, void* pCtx,
 #else
                               pRemainChanCtx->dev,
 #endif
+=======
+        cfg80211_remain_on_channel_expired( pRemainChanCtx->dev,
+>>>>>>> 657b0e9... prima update
                               pRemainChanCtx->cookie,
                               &pRemainChanCtx->chan,
-#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
-                              pRemainChanCtx->chan_type,
-#endif
-                              GFP_KERNEL);
+                              pRemainChanCtx->chan_type, GFP_KERNEL );
     }
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    vos_mem_free( pRemainChanCtx );
+>>>>>>> 657b0e9... prima update
 
     if ( ( WLAN_HDD_INFRA_STATION == pAdapter->device_mode ) ||
          ( WLAN_HDD_P2P_CLIENT == pAdapter->device_mode ) ||
@@ -194,10 +216,14 @@ eHalStatus wlan_hdd_remain_on_channel_callback( tHalHandle hHal, void* pCtx,
     {
         tANI_U8 sessionId = pAdapter->sessionId;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
         sme_DeregisterMgmtFrame(
                    hHal, sessionId,
                    (SIR_MAC_MGMT_FRAME << 2) | ( SIR_MAC_MGMT_PROBE_REQ << 4),
                     NULL, 0 );
+<<<<<<< HEAD
 =======
         if( REMAIN_ON_CHANNEL_REQUEST == pRemainChanCtx->rem_on_chan_request )
         {
@@ -207,6 +233,8 @@ eHalStatus wlan_hdd_remain_on_channel_callback( tHalHandle hHal, void* pCtx,
                        NULL, 0 );
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     }
     else if ( ( WLAN_HDD_SOFTAP== pAdapter->device_mode ) ||
               ( WLAN_HDD_P2P_GO == pAdapter->device_mode )
@@ -219,18 +247,25 @@ eHalStatus wlan_hdd_remain_on_channel_callback( tHalHandle hHal, void* pCtx,
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     vos_mem_free( pRemainChanCtx );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     complete(&pAdapter->cancel_rem_on_chan_var);
     return eHAL_STATUS_SUCCESS;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void wlan_hdd_cancel_existing_remain_on_channel(hdd_adapter_t *pAdapter)
 =======
 void wlan_hdd_cancel_existing_remain_on_channel(hdd_adapter_t *pAdapter)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static void wlan_hdd_cancel_existing_remain_on_channel(hdd_adapter_t *pAdapter)
+>>>>>>> 657b0e9... prima update
 {
     hdd_cfg80211_state_t *cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
     int status = 0;
@@ -317,12 +352,16 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
                                    struct net_device *dev,
                                    struct ieee80211_channel *chan,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                    enum nl80211_channel_type channel_type,
 =======
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
                                    enum nl80211_channel_type channel_type,
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                   enum nl80211_channel_type channel_type,
+>>>>>>> 657b0e9... prima update
                                    unsigned int duration, u64 *cookie,
                                    rem_on_channel_request_type_t request_type )
 {
@@ -332,6 +371,7 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
     hddLog(VOS_TRACE_LEVEL_INFO, "%s: device_mode = %d",
                                  __func__,pAdapter->device_mode);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     hddLog( LOG1,
         "chan(hw_val)0x%x chan(centerfreq) %d chan type 0x%x, duration %d",
@@ -348,6 +388,12 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
         chan->hw_value, chan->center_freq, duration );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    hddLog( LOG1,
+        "chan(hw_val)0x%x chan(centerfreq) %d chan type 0x%x, duration %d",
+        chan->hw_value, chan->center_freq, channel_type, duration );
+
+>>>>>>> 657b0e9... prima update
     //Cancel existing remain On Channel if any
     wlan_hdd_cancel_existing_remain_on_channel(pAdapter);
 
@@ -381,12 +427,16 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
                    sizeof(struct ieee80211_channel) );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     pRemainChanCtx->chan_type = channel_type;
 =======
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
     pRemainChanCtx->chan_type = channel_type;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pRemainChanCtx->chan_type = channel_type;
+>>>>>>> 657b0e9... prima update
     pRemainChanCtx->duration = duration;
     pRemainChanCtx->dev = dev;
     *cookie = (tANI_U32) pRemainChanCtx;
@@ -409,6 +459,7 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
                        WLAN_HDD_GET_HAL_CTX(pAdapter), sessionId,
                        chan->hw_value, duration,
 <<<<<<< HEAD
+<<<<<<< HEAD
                        wlan_hdd_remain_on_channel_callback, pAdapter );
 
         sme_RegisterMgmtFrame(WLAN_HDD_GET_HAL_CTX(pAdapter),
@@ -425,6 +476,13 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
                                   (SIR_MAC_MGMT_PROBE_REQ << 4), NULL, 0 );
         }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                       wlan_hdd_remain_on_channel_callback, pAdapter );
+
+        sme_RegisterMgmtFrame(WLAN_HDD_GET_HAL_CTX(pAdapter),
+                              sessionId, (SIR_MAC_MGMT_FRAME << 2) |
+                              (SIR_MAC_MGMT_PROBE_REQ << 4), NULL, 0 );
+>>>>>>> 657b0e9... prima update
 
     }
     else if ( ( WLAN_HDD_SOFTAP== pAdapter->device_mode ) ||
@@ -465,6 +523,7 @@ static int wlan_hdd_request_remain_on_channel( struct wiphy *wiphy,
 
 int wlan_hdd_cfg80211_remain_on_channel( struct wiphy *wiphy,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 struct net_device *dev,
                                 struct ieee80211_channel *chan,
                                 enum nl80211_channel_type channel_type,
@@ -476,24 +535,24 @@ int wlan_hdd_cfg80211_remain_on_channel( struct wiphy *wiphy,
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
                                 struct wireless_dev *wdev,
 #else
+=======
+>>>>>>> 657b0e9... prima update
                                 struct net_device *dev,
-#endif
                                 struct ieee80211_channel *chan,
-#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
                                 enum nl80211_channel_type channel_type,
-#endif
                                 unsigned int duration, u64 *cookie )
 {
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
-    struct net_device *dev = wdev->netdev;
-#endif
     return wlan_hdd_request_remain_on_channel(wiphy, dev,
+<<<<<<< HEAD
                                         chan,
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0))
                                         channel_type,
 #endif
                                         duration, cookie,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                        chan, channel_type, duration, cookie,
+>>>>>>> 657b0e9... prima update
                                         REMAIN_ON_CHANNEL_REQUEST);
 }
 
@@ -508,6 +567,7 @@ void hdd_remainChanReadyHandler( hdd_adapter_t *pAdapter )
     {
         if( REMAIN_ON_CHANNEL_REQUEST == pRemainChanCtx->rem_on_chan_request )
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             cfg80211_ready_on_channel( pAdapter->dev, (tANI_U32)pRemainChanCtx,
                                &pRemainChanCtx->chan, pRemainChanCtx->chan_type,
@@ -524,6 +584,10 @@ void hdd_remainChanReadyHandler( hdd_adapter_t *pAdapter )
                                pRemainChanCtx->chan_type,
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            cfg80211_ready_on_channel( pAdapter->dev, (tANI_U32)pRemainChanCtx,
+                               &pRemainChanCtx->chan, pRemainChanCtx->chan_type,
+>>>>>>> 657b0e9... prima update
                                pRemainChanCtx->duration, GFP_KERNEL );
         }
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
@@ -542,6 +606,7 @@ void hdd_remainChanReadyHandler( hdd_adapter_t *pAdapter )
 }
 
 int wlan_hdd_cfg80211_cancel_remain_on_channel( struct wiphy *wiphy,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                       struct net_device *dev, u64 cookie )
 {
@@ -563,25 +628,28 @@ int wlan_hdd_cfg80211_cancel_remain_on_channel( struct wiphy *wiphy,
                                                 struct net_device *dev,
 #endif
                                                 u64 cookie )
+=======
+                                      struct net_device *dev, u64 cookie )
+>>>>>>> 657b0e9... prima update
 {
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
-    struct net_device *dev = wdev->netdev;
-#endif
     hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR(dev);
     hdd_cfg80211_state_t *cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
-    hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX( pAdapter );
-    int status;
+    int status = 0;
 
     hddLog( LOG1, "Cancel remain on channel req");
 
-    status = wlan_hdd_validate_context(pHddCtx);
-
-    if (0 != status)
+    if (((hdd_context_t*)pAdapter->pHddCtx)->isLogpInProgress)
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
                    "%s: HDD context is not valid", __func__);
         return status;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
+                "%s:LOGP in Progress. Ignore!!!", __func__);
+        return -EAGAIN;
+>>>>>>> 657b0e9... prima update
     }
     /* FIXME cancel currently running remain on chan.
      * Need to check cookie and cancel accordingly
@@ -595,12 +663,17 @@ int wlan_hdd_cfg80211_cancel_remain_on_channel( struct wiphy *wiphy,
         return -EINVAL;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     /* wait until remain on channel ready event received 
 =======
 
     /* wait until remain on channel ready event received
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    /* wait until remain on channel ready event received 
+>>>>>>> 657b0e9... prima update
      * for already issued remain on channel request */
     status = wait_for_completion_interruptible_timeout(&pAdapter->rem_on_chan_ready_event,
             msecs_to_jiffies(WAIT_REM_CHAN_READY));
@@ -643,6 +716,7 @@ int wlan_hdd_cfg80211_cancel_remain_on_channel( struct wiphy *wiphy,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
 =======
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
@@ -657,6 +731,9 @@ int wlan_hdd_action( struct wiphy *wiphy, struct wireless_dev *wdev,
                      bool dont_wait_for_ack, u64 *cookie )
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
+>>>>>>> 657b0e9... prima update
 int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
                      struct ieee80211_channel *chan, bool offchan,
                      enum nl80211_channel_type channel_type,
@@ -678,6 +755,7 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
 #endif //LINUX_VERSION_CODE
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR( dev );
     hdd_cfg80211_state_t *cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
 =======
@@ -688,11 +766,16 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
     hdd_cfg80211_state_t *cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
     hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX( pAdapter );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR( dev );
+    hdd_cfg80211_state_t *cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
+>>>>>>> 657b0e9... prima update
     tANI_U16 extendedWait = 0;
     tANI_U8 type = WLAN_HDD_GET_TYPE_FRM_FC(buf[0]);
     tANI_U8 subType = WLAN_HDD_GET_SUBTYPE_FRM_FC(buf[0]);
     tActionFrmType actionFrmType;
     bool noack = 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     int status;
@@ -700,11 +783,14 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
     tANI_U8 *pTxFrmBuf = (tANI_U8 *) buf; // For SA Query, we have to set protect bit
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
     hdd_adapter_t *goAdapter;
 #endif
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     status = wlan_hdd_validate_context(pHddCtx);
@@ -750,6 +836,8 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
     noack = dont_wait_for_ack;
 #endif
@@ -803,6 +891,7 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
 
     if( NULL != cfgState->buf )
 <<<<<<< HEAD
+<<<<<<< HEAD
         return -EBUSY;
 =======
     {
@@ -820,6 +909,9 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
         }
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        return -EBUSY;
+>>>>>>> 657b0e9... prima update
 
     hddLog( LOG1, "Action frame tx request");
 
@@ -856,6 +948,7 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
 
         status = wlan_hdd_request_remain_on_channel(wiphy, dev,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         chan, channel_type, wait, cookie,
 =======
                                         chan,
@@ -864,6 +957,9 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
 #endif
                                         wait, cookie,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                        chan, channel_type, wait, cookie,
+>>>>>>> 657b0e9... prima update
                                         OFF_CHANNEL_ACTION_TX);
 
         if(0 != status)
@@ -876,6 +972,7 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
             goto err_rem_channel;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
         /* This will extend timer in LIM when sending Any action frame
@@ -884,6 +981,9 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
          */
         extendedWait = (tANI_U16)wait;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
         /* Wait for driver to be ready on the requested channel */
         status = wait_for_completion_interruptible_timeout(
                      &pAdapter->offchannel_tx_event,
@@ -940,9 +1040,12 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
     {
         tANI_U8 sessionId = pAdapter->sessionId;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         if ((type == SIR_MAC_MGMT_FRAME) &&
                 (subType == SIR_MAC_MGMT_ACTION) &&
                 (buf[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET] == WLAN_HDD_PUBLIC_ACTION_FRAME))
@@ -961,6 +1064,7 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #ifdef WLAN_FEATURE_11W
@@ -975,6 +1079,9 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
         }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
         if (eHAL_STATUS_SUCCESS !=
                sme_sendAction( WLAN_HDD_GET_HAL_CTX(pAdapter),
                                sessionId, buf, len, extendedWait, noack))
@@ -1008,6 +1115,7 @@ err:
 err_rem_channel:
     *cookie = (tANI_U32)cfgState;
 <<<<<<< HEAD
+<<<<<<< HEAD
     cfg80211_mgmt_tx_status( pAdapter->dev, *cookie, buf, len, FALSE, GFP_KERNEL );
 =======
     cfg80211_mgmt_tx_status(
@@ -1018,10 +1126,14 @@ err_rem_channel:
 #endif
                             *cookie, buf, len, FALSE, GFP_KERNEL );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    cfg80211_mgmt_tx_status( pAdapter->dev, *cookie, buf, len, FALSE, GFP_KERNEL );
+>>>>>>> 657b0e9... prima update
     return 0;
 }
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
+<<<<<<< HEAD
 <<<<<<< HEAD
 int wlan_hdd_cfg80211_mgmt_tx_cancel_wait(struct wiphy *wiphy, 
 =======
@@ -1035,6 +1147,9 @@ int wlan_hdd_cfg80211_mgmt_tx_cancel_wait(struct wiphy *wiphy,
 #else
 int wlan_hdd_cfg80211_mgmt_tx_cancel_wait(struct wiphy *wiphy,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+int wlan_hdd_cfg80211_mgmt_tx_cancel_wait(struct wiphy *wiphy, 
+>>>>>>> 657b0e9... prima update
                                           struct net_device *dev,
                                           u64 cookie)
 {
@@ -1042,9 +1157,12 @@ int wlan_hdd_cfg80211_mgmt_tx_cancel_wait(struct wiphy *wiphy,
 }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 void hdd_sendActionCnf( hdd_adapter_t *pAdapter, tANI_BOOLEAN actionSendSuccess )
 {
@@ -1069,6 +1187,7 @@ void hdd_sendActionCnf( hdd_adapter_t *pAdapter, tANI_BOOLEAN actionSendSuccess 
          * data while sending tx ack status.
          * */
 <<<<<<< HEAD
+<<<<<<< HEAD
          cfg80211_mgmt_tx_status( pAdapter->dev, cfgState->action_cookie,
 =======
          cfg80211_mgmt_tx_status(
@@ -1079,6 +1198,9 @@ void hdd_sendActionCnf( hdd_adapter_t *pAdapter, tANI_BOOLEAN actionSendSuccess 
 #endif
                 cfgState->action_cookie,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         cfg80211_mgmt_tx_status( pAdapter->dev, cfgState->action_cookie,
+>>>>>>> 657b0e9... prima update
                 cfgState->buf, cfgState->len, actionSendSuccess, GFP_KERNEL );
          vos_mem_free( cfgState->buf );
          cfgState->buf = NULL;
@@ -1135,6 +1257,7 @@ int hdd_setP2pNoa( struct net_device *dev, tANI_U8 *command )
     VOS_STATUS status = VOS_STATUS_SUCCESS;
     tP2pPsConfig NoA;
 <<<<<<< HEAD
+<<<<<<< HEAD
     int count, duration, interval;
     char *param;
 
@@ -1149,18 +1272,26 @@ int hdd_setP2pNoa( struct net_device *dev, tANI_U8 *command )
 
 =======
     int count, duration, start_time;
+=======
+    int count, duration, interval;
+>>>>>>> 657b0e9... prima update
     char *param;
 
-    param = strnchr(command, strlen(command), ' ');
+    param = strchr(command, ' ');
     if (param == NULL)
-      return -EINVAL;
+        return -1;
     param++;
-    sscanf(param, "%d %d %d", &count, &start_time, &duration);
+    sscanf(param, "%d %d %d", &count, &duration, &interval);
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
                "%s: P2P_SET GO NoA: count=%d duration=%d interval=%d \n",
+<<<<<<< HEAD
                 __func__, count, start_time, duration);
     duration = MS_TO_MUS(duration);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __func__, count, duration, interval);
+
+>>>>>>> 657b0e9... prima update
     /* PS Selection
      * Periodic NoA (2)
      * Single NOA   (4)
@@ -1180,10 +1311,14 @@ int hdd_setP2pNoa( struct net_device *dev, tANI_U8 *command )
         NoA.psSelection = P2P_POWER_SAVE_TYPE_PERIODIC_NOA;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     NoA.interval = interval;
 =======
     NoA.interval = MS_TO_MUS(100);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    NoA.interval = interval;
+>>>>>>> 657b0e9... prima update
     NoA.count = count;
     NoA.sessionid = pAdapter->sessionId;
 
@@ -1230,6 +1365,7 @@ int hdd_setP2pOpps( struct net_device *dev, tANI_U8 *command )
     int legacy_ps, opp_ps, ctwindow;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     param = strchr(command, ' ');
     if (param == NULL)
         return -1;
@@ -1238,6 +1374,11 @@ int hdd_setP2pOpps( struct net_device *dev, tANI_U8 *command )
     if (param == NULL)
         return -EINVAL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    param = strchr(command, ' ');
+    if (param == NULL)
+        return -1;
+>>>>>>> 657b0e9... prima update
     param++;
     sscanf(param, "%d %d %d", &legacy_ps, &opp_ps, &ctwindow);
     VOS_TRACE (VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
@@ -1342,9 +1483,13 @@ int hdd_setP2pPs( struct net_device *dev, void *msgData )
     return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 static tANI_U8 wlan_hdd_get_session_type( enum nl80211_iftype type )
 {
@@ -1376,6 +1521,7 @@ static tANI_U8 wlan_hdd_get_session_type( enum nl80211_iftype type )
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
 =======
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0))
@@ -1389,6 +1535,9 @@ struct wireless_dev* wlan_hdd_add_virtual_intf(
                   u32 *flags, struct vif_params *params )
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
+>>>>>>> 657b0e9... prima update
 struct net_device* wlan_hdd_add_virtual_intf(
                   struct wiphy *wiphy, char *name, enum nl80211_iftype type,
                   u32 *flags, struct vif_params *params )
@@ -1453,18 +1602,23 @@ int wlan_hdd_add_virtual_intf( struct wiphy *wiphy, char *name,
     }
     EXIT();
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
 =======
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
     return pAdapter->dev->ieee80211_ptr;
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
+>>>>>>> 657b0e9... prima update
     return pAdapter->dev;
 #else
     return 0;
 #endif
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 int wlan_hdd_del_virtual_intf( struct wiphy *wiphy, struct net_device *dev )
 {
@@ -1496,42 +1650,40 @@ void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
 int wlan_hdd_del_virtual_intf( struct wiphy *wiphy, struct wireless_dev *wdev )
 #else
+=======
+>>>>>>> 657b0e9... prima update
 int wlan_hdd_del_virtual_intf( struct wiphy *wiphy, struct net_device *dev )
-#endif
 {
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
-    struct net_device *dev = wdev->netdev;
-#endif
-    hdd_context_t *pHddCtx = (hdd_context_t*) wiphy_priv(wiphy);
-    hdd_adapter_t *pVirtAdapter = WLAN_HDD_GET_PRIV_PTR(dev);
-    int status;
-    ENTER();
+     hdd_context_t *pHddCtx = (hdd_context_t*) wiphy_priv(wiphy);
+     hdd_adapter_t *pVirtAdapter = WLAN_HDD_GET_PRIV_PTR(dev);
+     ENTER();
 
-    hddLog(VOS_TRACE_LEVEL_INFO, "%s: device_mode = %d",
-           __func__,pVirtAdapter->device_mode);
+     hddLog(VOS_TRACE_LEVEL_INFO, "%s: device_mode = %d",
+            __func__,pVirtAdapter->device_mode);
+     if (pHddCtx->isLogpInProgress)
+     {
+         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
+                "%s:LOGP in Progress. Ignore!!!", __func__);
+         return -EAGAIN;
+     }
 
-    status = wlan_hdd_validate_context(pHddCtx);
-
-    if (0 != status)
-    {
-        VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-                   "%s: HDD context is not valid", __func__);
-        return status;
-    }
-
-    wlan_hdd_release_intf_addr( pHddCtx,
+     wlan_hdd_release_intf_addr( pHddCtx,
                                  pVirtAdapter->macAddressCurrent.bytes );
 
-    hdd_stop_adapter( pHddCtx, pVirtAdapter );
-    hdd_close_adapter( pHddCtx, pVirtAdapter, TRUE );
-    EXIT();
-    return 0;
+     hdd_stop_adapter( pHddCtx, pVirtAdapter );
+     hdd_close_adapter( pHddCtx, pVirtAdapter, TRUE );
+     EXIT();
+     return 0;
 }
 
 void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
+<<<<<<< HEAD
                                         tANI_U32 nFrameLength,
                                         tANI_U8* pbFrames,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                        tANI_U32 nFrameLength, tANI_U8* pbFrames,
+>>>>>>> 657b0e9... prima update
                                         tANI_U8 frameType )  
 {
     //Indicate a Frame over Monitor Intf.
@@ -1541,6 +1693,7 @@ void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
     int flag = HDD_RX_FLAG_IV_STRIPPED | HDD_RX_FLAG_DECRYPTED |
                HDD_RX_FLAG_MMIC_STRIPPED;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
     hdd_context_t* pHddCtx = (hdd_context_t*)(pMonAdapter->pHddCtx);
 #endif
@@ -1549,18 +1702,23 @@ void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
     VOS_ASSERT( (pbFrames != NULL) );
 =======
 #ifdef WLAN_OPEN_SOURCE
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
     hdd_context_t* pHddCtx = (hdd_context_t*)(pMonAdapter->pHddCtx);
 #endif
-#endif
     hddLog( LOG1, FL("Indicate Frame over Monitor Intf"));
 
+<<<<<<< HEAD
     if (NULL == pbFrames)
     {
         hddLog(LOGE, FL("NULL frame pointer"));
         return;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_ASSERT( (pbFrames != NULL) );
+>>>>>>> 657b0e9... prima update
 
     /* room for the radiotap header based on driver features
      * 1 Byte for RADIO TAP Flag, 1 Byte padding and 2 Byte for
@@ -1600,6 +1758,7 @@ void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
      skb->dev = pMonAdapter->dev;
      skb->protocol = eth_type_trans( skb, skb->dev );
 <<<<<<< HEAD
+<<<<<<< HEAD
      skb->ip_summed = CHECKSUM_UNNECESSARY;
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
      wake_lock_timeout(&pHddCtx->rx_wake_lock, HDD_WAKE_LOCK_DURATION);
@@ -1610,6 +1769,11 @@ void hdd_sendMgmtFrameOverMonitorIface( hdd_adapter_t *pMonAdapter,
      wake_lock_timeout(&pHddCtx->rx_wake_lock, msecs_to_jiffies(HDD_WAKE_LOCK_DURATION));
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     skb->ip_summed = CHECKSUM_UNNECESSARY;
+#ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
+     wake_lock_timeout(&pHddCtx->rx_wake_lock, HDD_WAKE_LOCK_DURATION);
+>>>>>>> 657b0e9... prima update
 #endif
      rxstat = netif_rx_ni(skb);
      if( NET_RX_SUCCESS == rxstat )
@@ -1627,6 +1791,7 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
                             tANI_U8* pbFrames,
                             tANI_U8 frameType,
 <<<<<<< HEAD
+<<<<<<< HEAD
                             tANI_U32 rxChan )
 {
     tANI_U16 freq;
@@ -1640,6 +1805,13 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
     tANI_U8 type = 0;
     tANI_U8 subType = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            tANI_U32 rxChan )
+{
+    tANI_U16 freq;
+    tANI_U8 type = 0;
+    tANI_U8 subType = 0; 
+>>>>>>> 657b0e9... prima update
     tActionFrmType actionFrmType;
     hdd_cfg80211_state_t *cfgState = NULL;
 
@@ -1648,6 +1820,7 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
 
     if (NULL == pAdapter)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         hddLog( LOGE, FL("pAdapter is NULL"));
         return;
@@ -1688,32 +1861,11 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
     if (NULL == pbFrames)
     {
         hddLog(LOGE, FL("pbFrames is NULL"));
+=======
+        hddLog( LOGE, FL("pAdapter is NULL"));
+>>>>>>> 657b0e9... prima update
         return;
     }
-
-    type = WLAN_HDD_GET_TYPE_FRM_FC(pbFrames[0]);
-    subType = WLAN_HDD_GET_SUBTYPE_FRM_FC(pbFrames[0]);
-
-    /* Get pAdapter from Destination mac address of the frame */
-    if ((type == SIR_MAC_MGMT_FRAME) &&
-            (subType != SIR_MAC_MGMT_PROBE_REQ))
-    {
-         pAdapter = hdd_get_adapter_by_macaddr( WLAN_HDD_GET_CTX(pAdapter),
-                            &pbFrames[WLAN_HDD_80211_FRM_DA_OFFSET]);
-         if (NULL == pAdapter)
-         {
-             /* Under assumtion that we don't receive any action frame
-              * with BCST as destination we dropping action frame
-              */
-             hddLog(VOS_TRACE_LEVEL_FATAL,"pAdapter for action frame is NULL Macaddr = "
-                               MAC_ADDRESS_STR ,
-                               MAC_ADDR_ARRAY(&pbFrames[WLAN_HDD_80211_FRM_DA_OFFSET]));
-             hddLog(VOS_TRACE_LEVEL_FATAL, "%s: Frame Type = %d Frame Length = %d"
-                              " subType = %d \n",__func__,frameType,nFrameLength,subType);
-             return;
-         }
-    }
-
 
     if (NULL == pAdapter->dev)
     {
@@ -1727,18 +1879,34 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
         return;
     }
 
+<<<<<<< HEAD
     if ((WLAN_HDD_SOFTAP == pAdapter->device_mode) ||
         (WLAN_HDD_P2P_GO == pAdapter->device_mode ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if( !nFrameLength )
+    {
+        hddLog( LOGE, FL("Frame Length is Invalid ZERO"));
+        return;
+    }
+
+    if( ( WLAN_HDD_SOFTAP == pAdapter->device_mode ) 
+            || ( WLAN_HDD_P2P_GO == pAdapter->device_mode )
+      )
+>>>>>>> 657b0e9... prima update
     {
         hdd_adapter_t *pMonAdapter =
             hdd_get_mon_adapter( WLAN_HDD_GET_CTX(pAdapter) );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if( NULL != pMonAdapter )
 =======
         if (NULL != pMonAdapter)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if( NULL != pMonAdapter )
+>>>>>>> 657b0e9... prima update
         {
             hddLog( LOG1, FL("Indicate Frame over Monitor Interface"));
             hdd_sendMgmtFrameOverMonitorIface( pMonAdapter, nFrameLength,
@@ -1761,6 +1929,7 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     type = WLAN_HDD_GET_TYPE_FRM_FC(pbFrames[0]);
     subType = WLAN_HDD_GET_SUBTYPE_FRM_FC(pbFrames[0]);
     cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
@@ -1781,99 +1950,38 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
             hdd_sendActionCnf(pAdapter, TRUE);
         }
 =======
+=======
+    type = WLAN_HDD_GET_TYPE_FRM_FC(pbFrames[0]);
+    subType = WLAN_HDD_GET_SUBTYPE_FRM_FC(pbFrames[0]);
+>>>>>>> 657b0e9... prima update
     cfgState = WLAN_HDD_GET_CFG_STATE_PTR( pAdapter );
     
     if ((type == SIR_MAC_MGMT_FRAME) && 
-        (subType == SIR_MAC_MGMT_ACTION))
+            (subType == SIR_MAC_MGMT_ACTION) &&
+            (pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET] == WLAN_HDD_PUBLIC_ACTION_FRAME))
     {
-        if(pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET] == WLAN_HDD_PUBLIC_ACTION_FRAME)
+        actionFrmType = pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_TYPE_OFFSET];
+        hddLog(LOG1, "Rx Action Frame %u \n", actionFrmType);
+        if (((actionFrmType == WLAN_HDD_PROV_DIS_RESP) &&
+                    (cfgState->actionFrmState == HDD_PD_REQ_ACK_PENDING)) ||
+                ((actionFrmType == WLAN_HDD_GO_NEG_RESP) &&
+                 (cfgState->actionFrmState == HDD_GO_NEG_REQ_ACK_PENDING)))
         {
-            // public action frame
-            if((pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET+1] == SIR_MAC_ACTION_VENDOR_SPECIFIC) &&
-                vos_mem_compare(&pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET+2], SIR_MAC_P2P_OUI, SIR_MAC_P2P_OUI_SIZE))
-            // P2P action frames
-            {
-                actionFrmType = pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_TYPE_OFFSET];
-                hddLog(LOG1, "Rx Action Frame %u \n", actionFrmType);
-#ifdef WLAN_FEATURE_P2P_DEBUG
-                if(actionFrmType >= MAX_P2P_ACTION_FRAME_TYPE)
-                {
-                    hddLog(VOS_TRACE_LEVEL_ERROR,"[P2P] unknown[%d] <--- OTA",
-                                                                actionFrmType);
-                }
-                else
-                {
-                    hddLog(VOS_TRACE_LEVEL_ERROR,"[P2P] %s <--- OTA",
-                    p2p_action_frame_type[actionFrmType]);
-                    if( (actionFrmType == WLAN_HDD_PROV_DIS_REQ) &&
-                        (globalP2PConnectionStatus == P2P_NOT_ACTIVE) )
-                    {
-                         globalP2PConnectionStatus = P2P_GO_NEG_PROCESS;
-                         hddLog(LOGE,"[P2P State]Inactive state to "
-                           "GO negotiation progress state");
-                    }
-                    else if( (actionFrmType == WLAN_HDD_GO_NEG_CNF) &&
-                        (globalP2PConnectionStatus == P2P_GO_NEG_PROCESS) )
-                    {
-                         globalP2PConnectionStatus = P2P_GO_NEG_COMPLETED;
-                 hddLog(LOGE,"[P2P State]GO negotiation progress to "
-                             "GO negotiation completed state");
-                    }
-                    else if( (actionFrmType == WLAN_HDD_INVITATION_REQ) &&
-                        (globalP2PConnectionStatus == P2P_NOT_ACTIVE) )
-                    {
-                         globalP2PConnectionStatus = P2P_GO_NEG_COMPLETED;
-                         hddLog(LOGE,"[P2P State]Inactive state to GO negotiation"
-                                     " completed state Autonomous GO formation");
-                    }
-                }
-#endif
-
-                if (((actionFrmType == WLAN_HDD_PROV_DIS_RESP) &&
-                            (cfgState->actionFrmState == HDD_PD_REQ_ACK_PENDING)) ||
-                        ((actionFrmType == WLAN_HDD_GO_NEG_RESP) &&
-                         (cfgState->actionFrmState == HDD_GO_NEG_REQ_ACK_PENDING)))
-                {
-                    hddLog(LOG1, "%s: ACK_PENDING and But received RESP for Action frame ",
-                            __func__);
-                    hdd_sendActionCnf(pAdapter, TRUE);
-                }
-            }
-#ifdef FEATURE_WLAN_TDLS
-            else if(pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET+1] == WLAN_HDD_PUBLIC_ACTION_TDLS_DISC_RESP)
-            {
-                u8 *mac = &pbFrames[WLAN_HDD_80211_FRM_DA_OFFSET+6];
-#ifdef WLAN_FEATURE_TDLS_DEBUG
-                hddLog(VOS_TRACE_LEVEL_ERROR,"[TDLS] TDLS Discovery Response," MAC_ADDRESS_STR " RSSI[%d] <--- OTA",
-                 MAC_ADDR_ARRAY(mac),rxRssi);
-#endif
-                wlan_hdd_tdls_set_rssi(pAdapter, mac, rxRssi);
-                wlan_hdd_tdls_recv_discovery_resp(pAdapter, mac);
-            }
-#endif
+            hddLog(LOG1, "%s: ACK_PENDING and But received RESP for Action frame ", 
+                    __func__);
+            hdd_sendActionCnf(pAdapter, TRUE);
         }
-#ifdef WLAN_FEATURE_TDLS_DEBUG
-        if(pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET] == WLAN_HDD_TDLS_ACTION_FRAME)
-        {
-            actionFrmType = pbFrames[WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET+1];
-            if(actionFrmType >= MAX_TDLS_ACTION_FRAME_TYPE)
-            {
-                hddLog(VOS_TRACE_LEVEL_ERROR,"[TDLS] unknown[%d] <--- OTA",
-                                                            actionFrmType);
-            }
-            else
-            {
-                hddLog(VOS_TRACE_LEVEL_ERROR,"[TDLS] %s <--- OTA",
-                    tdls_action_frame_type[actionFrmType]);
-            }
-        }
+<<<<<<< HEAD
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     }
 
     //Indicate Frame Over Normal Interface
     hddLog( LOG1, FL("Indicate Frame over NL80211 Interface"));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,4,0))
 =======
@@ -1883,6 +1991,9 @@ void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
                       GFP_ATOMIC );
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(3,4,0))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,4,0))
+>>>>>>> 657b0e9... prima update
     cfg80211_rx_mgmt( pAdapter->dev, freq, 0,
                       pbFrames, nFrameLength,
                       GFP_ATOMIC );
@@ -1940,6 +2051,7 @@ static void hdd_wlan_tx_complete( hdd_adapter_t* pAdapter,
     unsigned char *pos;
     struct sk_buff *skb = cfgState->skb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
     hdd_context_t *pHddCtx = (hdd_context_t*)(pAdapter->pHddCtx);
 #endif
@@ -1950,6 +2062,11 @@ static void hdd_wlan_tx_complete( hdd_adapter_t* pAdapter,
 #endif
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
+    hdd_context_t *pHddCtx = (hdd_context_t*)(pAdapter->pHddCtx);
+#endif
+>>>>>>> 657b0e9... prima update
 
     /* 2 Byte for TX flags and 1 Byte for Retry count */
     u32 rtHdrLen = sizeof(*rthdr) + 3;
@@ -2006,6 +2123,7 @@ static void hdd_wlan_tx_complete( hdd_adapter_t* pAdapter,
 
     skb_set_mac_header( skb, 0 );
 <<<<<<< HEAD
+<<<<<<< HEAD
     skb->ip_summed = CHECKSUM_UNNECESSARY;
     skb->pkt_type  = PACKET_OTHERHOST;
     skb->protocol  = htons(ETH_P_802_2);
@@ -2014,14 +2132,20 @@ static void hdd_wlan_tx_complete( hdd_adapter_t* pAdapter,
     wake_lock_timeout(&pHddCtx->rx_wake_lock, HDD_WAKE_LOCK_DURATION);
 =======
     skb->ip_summed = CHECKSUM_NONE;
+=======
+    skb->ip_summed = CHECKSUM_UNNECESSARY;
+>>>>>>> 657b0e9... prima update
     skb->pkt_type  = PACKET_OTHERHOST;
     skb->protocol  = htons(ETH_P_802_2);
     memset( skb->cb, 0, sizeof( skb->cb ) );
-#ifdef WLAN_OPEN_SOURCE
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
+<<<<<<< HEAD
     wake_lock_timeout(&pHddCtx->rx_wake_lock, msecs_to_jiffies(HDD_WAKE_LOCK_DURATION));
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    wake_lock_timeout(&pHddCtx->rx_wake_lock, HDD_WAKE_LOCK_DURATION);
+>>>>>>> 657b0e9... prima update
 #endif
     if (in_interrupt())
         netif_rx( skb );
@@ -2029,6 +2153,7 @@ static void hdd_wlan_tx_complete( hdd_adapter_t* pAdapter,
         netif_rx_ni( skb );
 
     /* Enable Queues which we have disabled earlier */
+<<<<<<< HEAD
 <<<<<<< HEAD
     netif_tx_start_all_queues( pAdapter->dev ); 
 
@@ -2040,3 +2165,9 @@ static void hdd_wlan_tx_complete( hdd_adapter_t* pAdapter,
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    netif_tx_start_all_queues( pAdapter->dev ); 
+
+}
+#endif // CONFIG_CFG80211
+>>>>>>> 657b0e9... prima update

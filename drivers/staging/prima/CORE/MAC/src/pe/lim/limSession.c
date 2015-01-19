@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,10 +46,15 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*
+ * */
+>>>>>>> 657b0e9... prima update
 /**=========================================================================
   
   \file  limSession.c
@@ -99,6 +107,9 @@ void peInitBeaconParams(tpAniSirGlobal pMac, tpPESession psessionEntry)
 
     // Number of legacy STAs associated 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, (void*)&psessionEntry->gLim11bParams, sizeof(tLimProtStaParams)); 
     palZeroMemory(pMac->hHdd, (void*)&psessionEntry->gLim11aParams, sizeof(tLimProtStaParams)); 
     palZeroMemory(pMac->hHdd, (void*)&psessionEntry->gLim11gParams, sizeof(tLimProtStaParams)); 
@@ -106,6 +117,7 @@ void peInitBeaconParams(tpAniSirGlobal pMac, tpPESession psessionEntry)
     palZeroMemory(pMac->hHdd, (void*)&psessionEntry->gLimHt20Params, sizeof(tLimProtStaParams)); 
     palZeroMemory(pMac->hHdd, (void*)&psessionEntry->gLimLsigTxopParams, sizeof(tLimProtStaParams)); 
     palZeroMemory(pMac->hHdd, (void*)&psessionEntry->gLimOlbcParams, sizeof(tLimProtStaParams));
+<<<<<<< HEAD
 =======
     vos_mem_set((void*)&psessionEntry->gLim11bParams, sizeof(tLimProtStaParams), 0);
     vos_mem_set((void*)&psessionEntry->gLim11aParams, sizeof(tLimProtStaParams), 0);
@@ -115,6 +127,8 @@ void peInitBeaconParams(tpAniSirGlobal pMac, tpPESession psessionEntry)
     vos_mem_set((void*)&psessionEntry->gLimLsigTxopParams, sizeof(tLimProtStaParams), 0);
     vos_mem_set((void*)&psessionEntry->gLimOlbcParams, sizeof(tLimProtStaParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 /*--------------------------------------------------------------------------
@@ -142,6 +156,7 @@ tpPESession peCreateSession(tpAniSirGlobal pMac, tANI_U8 *bssid , tANI_U8* sessi
         if(pMac->lim.gpSession[i].valid == FALSE)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             palZeroMemory(pMac, (void*)&pMac->lim.gpSession[i], sizeof(tPESession));
 
             //Allocate space for Station Table for this session.
@@ -159,23 +174,29 @@ tpPESession peCreateSession(tpAniSirGlobal pMac, tANI_U8 *bssid , tANI_U8* sessi
                 palFreeMemory(pMac->hHdd,pMac->lim.gpSession[i].dph.dphHashTable.pHashTable);
 =======
             vos_mem_set((void*)&pMac->lim.gpSession[i], sizeof(tPESession), 0);
+=======
+            palZeroMemory(pMac, (void*)&pMac->lim.gpSession[i], sizeof(tPESession));
+>>>>>>> 657b0e9... prima update
 
             //Allocate space for Station Table for this session.
-            pMac->lim.gpSession[i].dph.dphHashTable.pHashTable = vos_mem_malloc(
-                                                  sizeof(tpDphHashNode)*numSta);
-            if ( NULL == pMac->lim.gpSession[i].dph.dphHashTable.pHashTable )
+            if (eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd,
+                     (void **) &pMac->lim.gpSession[i].dph.dphHashTable.pHashTable, sizeof(tpDphHashNode)*numSta))
             {
-                limLog(pMac, LOGE, FL("memory allocate failed!"));
+                limLog(pMac, LOGE, FL("memory allocate failed!\n"));
                 return NULL;
             }
 
-            pMac->lim.gpSession[i].dph.dphHashTable.pDphNodeArray = vos_mem_malloc(
-                                                       sizeof(tDphHashNode)*numSta);
-            if ( NULL == pMac->lim.gpSession[i].dph.dphHashTable.pDphNodeArray )
+            if (eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd,
+                  (void **) &pMac->lim.gpSession[i].dph.dphHashTable.pDphNodeArray, sizeof(tDphHashNode)*numSta))
             {
+<<<<<<< HEAD
                 limLog(pMac, LOGE, FL("memory allocate failed!"));
                 vos_mem_free(pMac->lim.gpSession[i].dph.dphHashTable.pHashTable);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                limLog(pMac, LOGE, FL("memory allocate failed!\n"));
+                palFreeMemory(pMac->hHdd,pMac->lim.gpSession[i].dph.dphHashTable.pHashTable);
+>>>>>>> 657b0e9... prima update
                 return NULL;
             }
             pMac->lim.gpSession[i].dph.dphHashTable.size = numSta;
@@ -183,6 +204,7 @@ tpPESession peCreateSession(tpAniSirGlobal pMac, tANI_U8 *bssid , tANI_U8* sessi
             dphHashTableClassInit(pMac, 
                            &pMac->lim.gpSession[i].dph.dphHashTable);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             pMac->lim.gpSession[i].gpLimPeerIdxpool = vos_mem_malloc(sizeof(
@@ -201,6 +223,8 @@ tpPESession peCreateSession(tpAniSirGlobal pMac, tANI_U8 *bssid , tANI_U8* sessi
             pMac->lim.gpSession[i].gLimNumOfCurrentSTAs = 0;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             /* Copy the BSSID to the session table */
             sirCopyMacAddr(pMac->lim.gpSession[i].bssId, bssid);
             pMac->lim.gpSession[i].valid = TRUE;
@@ -232,6 +256,7 @@ tpPESession peCreateSession(tpAniSirGlobal pMac, tANI_U8 *bssid , tANI_U8* sessi
             pMac->lim.gpSession[i].htRecommendedTxWidthSet = 0;
             pMac->lim.gpSession[i].htSecondaryChannelOffset = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
             vos_mem_set(pMac->lim.gpSession[i].peerAIDBitmap,
@@ -240,6 +265,8 @@ tpPESession peCreateSession(tpAniSirGlobal pMac, tANI_U8 *bssid , tANI_U8* sessi
             pMac->lim.gpSession[i].fWaitForProbeRsp = 0;
             pMac->lim.gpSession[i].fIgnoreCapsChange = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             return(&pMac->lim.gpSession[i]);
         }
     }
@@ -284,6 +311,7 @@ tpPESession peFindSessionByBssid(tpAniSirGlobal pMac,  tANI_U8*  bssid,    tANI_
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*--------------------------------------------------------------------------
   \brief peFindSessionByBssIdx() - looks up the PE session given the bssIdx.
@@ -310,6 +338,8 @@ tpPESession peFindSessionByBssIdx(tpAniSirGlobal pMac,  tANI_U8 bssIdx)
     return NULL;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------------
   \brief peFindSessionBySessionId() - looks up the PE session given the session ID.
@@ -415,55 +445,76 @@ void peDeleteSession(tpAniSirGlobal pMac, tpPESession psessionEntry)
     if(psessionEntry->pLimStartBssReq != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->pLimStartBssReq );
 =======
         vos_mem_free( psessionEntry->pLimStartBssReq );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->pLimStartBssReq );
+>>>>>>> 657b0e9... prima update
         psessionEntry->pLimStartBssReq = NULL;
     }
 
     if(psessionEntry->pLimJoinReq != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->pLimJoinReq );
 =======
         vos_mem_free( psessionEntry->pLimJoinReq );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->pLimJoinReq );
+>>>>>>> 657b0e9... prima update
         psessionEntry->pLimJoinReq = NULL;
     }
 
     if(psessionEntry->pLimReAssocReq != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->pLimReAssocReq );
 =======
         vos_mem_free( psessionEntry->pLimReAssocReq );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->pLimReAssocReq );
+>>>>>>> 657b0e9... prima update
         psessionEntry->pLimReAssocReq = NULL;
     }
 
     if(psessionEntry->pLimMlmJoinReq != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->pLimMlmJoinReq );
 =======
         vos_mem_free( psessionEntry->pLimMlmJoinReq );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->pLimMlmJoinReq );
+>>>>>>> 657b0e9... prima update
         psessionEntry->pLimMlmJoinReq = NULL;
     }
 
     if(psessionEntry->dph.dphHashTable.pHashTable != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, psessionEntry->dph.dphHashTable.pHashTable);
 =======
         vos_mem_free(psessionEntry->dph.dphHashTable.pHashTable);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory(pMac->hHdd, psessionEntry->dph.dphHashTable.pHashTable);
+>>>>>>> 657b0e9... prima update
         psessionEntry->dph.dphHashTable.pHashTable = NULL;
     }
 
     if(psessionEntry->dph.dphHashTable.pDphNodeArray != NULL)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         palFreeMemory(pMac->hHdd, psessionEntry->dph.dphHashTable.pDphNodeArray);
         psessionEntry->dph.dphHashTable.pDphNodeArray = NULL;
@@ -474,39 +525,48 @@ void peDeleteSession(tpAniSirGlobal pMac, tpPESession psessionEntry)
         palFreeMemory( pMac->hHdd, psessionEntry->beacon);
 =======
         vos_mem_free(psessionEntry->dph.dphHashTable.pDphNodeArray);
+=======
+        palFreeMemory(pMac->hHdd, psessionEntry->dph.dphHashTable.pDphNodeArray);
+>>>>>>> 657b0e9... prima update
         psessionEntry->dph.dphHashTable.pDphNodeArray = NULL;
-    }
-
-    if(psessionEntry->gpLimPeerIdxpool != NULL)
-    {
-        vos_mem_free(psessionEntry->gpLimPeerIdxpool);
-        psessionEntry->gpLimPeerIdxpool = NULL;
     }
 
     if(psessionEntry->beacon != NULL)
     {
+<<<<<<< HEAD
         vos_mem_free( psessionEntry->beacon);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->beacon);
+>>>>>>> 657b0e9... prima update
         psessionEntry->beacon = NULL;
     }
 
     if(psessionEntry->assocReq != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->assocReq);
 =======
         vos_mem_free( psessionEntry->assocReq);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->assocReq);
+>>>>>>> 657b0e9... prima update
         psessionEntry->assocReq = NULL;
     }
 
     if(psessionEntry->assocRsp != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->assocRsp);
 =======
         vos_mem_free( psessionEntry->assocRsp);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory( pMac->hHdd, psessionEntry->assocRsp);
+>>>>>>> 657b0e9... prima update
         psessionEntry->assocRsp = NULL;
     }
 
@@ -520,6 +580,7 @@ void peDeleteSession(tpAniSirGlobal pMac, tpPESession psessionEntry)
             {
                 if( ((tpSirAssocReq)(psessionEntry->parsedAssocReq[i]))->assocReqFrame )
                 {
+<<<<<<< HEAD
 <<<<<<< HEAD
                    palFreeMemory(pMac->hHdd, 
                       ((tpSirAssocReq)(psessionEntry->parsedAssocReq[i]))->assocReqFrame);
@@ -535,10 +596,19 @@ void peDeleteSession(tpAniSirGlobal pMac, tpPESession psessionEntry)
                 }
                 vos_mem_free(psessionEntry->parsedAssocReq[i]);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   palFreeMemory(pMac->hHdd, 
+                      ((tpSirAssocReq)(psessionEntry->parsedAssocReq[i]))->assocReqFrame);
+                   ((tpSirAssocReq)(psessionEntry->parsedAssocReq[i]))->assocReqFrame = NULL;
+                   ((tpSirAssocReq)(psessionEntry->parsedAssocReq[i]))->assocReqFrameLength = 0;
+                }
+                palFreeMemory(pMac->hHdd, (void *)psessionEntry->parsedAssocReq[i]);
+>>>>>>> 657b0e9... prima update
                 psessionEntry->parsedAssocReq[i] = NULL;
             }
         }
         // Cleanup the whole block
+<<<<<<< HEAD
 <<<<<<< HEAD
         palFreeMemory(pMac->hHdd, (void *)psessionEntry->parsedAssocReq);
         psessionEntry->parsedAssocReq = NULL;
@@ -567,6 +637,11 @@ void peDeleteSession(tpAniSirGlobal pMac, tpPESession psessionEntry)
         psessionEntry->pLimMlmReassocReq = NULL;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palFreeMemory(pMac->hHdd, (void *)psessionEntry->parsedAssocReq);
+        psessionEntry->parsedAssocReq = NULL;
+    }
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_CCX
     limCleanupCcxCtxt(pMac, psessionEntry); 

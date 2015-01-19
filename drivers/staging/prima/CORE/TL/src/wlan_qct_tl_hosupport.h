@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -298,11 +301,15 @@ VOS_STATUS WLANTL_HSSerializeTlIndication
    v_U8_t      rssiNotification,
    v_PVOID_t   pUserCtxt,
 <<<<<<< HEAD
+<<<<<<< HEAD
    WLANTL_RSSICrossThresholdCBType cbFunction
 =======
    WLANTL_RSSICrossThresholdCBType cbFunction,
    v_U8_t      avgRssi
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WLANTL_RSSICrossThresholdCBType cbFunction
+>>>>>>> 657b0e9... prima update
 );
 
 /*==========================================================================
@@ -322,14 +329,20 @@ VOS_STATUS WLANTL_StatHandleTXFrame
    v_U8_t           STAid,
    vos_pkt_t       *dataBuffer,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    v_PVOID_t        pBDHeader
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
   ,WLANTL_MetaInfoType *txMetaInfo
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
    v_PVOID_t        pBDHeader,
    WLANTL_MetaInfoType *txMetaInfo
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 );
 
 #endif //FEATURE_WLAN_GEN6_ROAMING

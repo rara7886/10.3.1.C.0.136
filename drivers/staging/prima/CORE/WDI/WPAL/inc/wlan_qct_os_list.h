@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -225,10 +228,14 @@ typedef vos_list_node_t wpt_list_node;
 //wpt_status wpal_list_remove_front( wpt_list *pList, wpt_list_node **ppNode );
 #define wpal_list_remove_front(pList, ppNode) \
 <<<<<<< HEAD
+<<<<<<< HEAD
     (wpt_status)vos_list_remove_front( (vos_list_t *)(pList), (vos_list_node_t **)(ppNode) )
 =======
   ((wpt_status)vos_list_remove_front( (vos_list_t *)(pList), (vos_list_node_t **)(ppNode) ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    (wpt_status)vos_list_remove_front( (vos_list_t *)(pList), (vos_list_node_t **)(ppNode) )
+>>>>>>> 657b0e9... prima update
 
 
 /**---------------------------------------------------------------------------
@@ -443,12 +450,17 @@ typedef vos_list_node_t wpt_list_node;
 //                                   wpt_list_node *pNode );         
 #define wpal_list_insert_after(pList, pNodeToInsert, pNode) \
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_LIST_STATUS_BASIC_CHECK( vos_list_insert_after((vos_list_t *)(pList), \
          (vos_list_node_t *)(pNodeToInsert), (vos_list_node_t *)(pNode) )
 =======
     (WPAL_LIST_STATUS_BASIC_CHECK( vos_list_insert_after((vos_list_t *)(pList), \
                                                          (vos_list_node_t *)(pNodeToInsert), (vos_list_node_t *)(pNode) ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_LIST_STATUS_BASIC_CHECK( vos_list_insert_after((vos_list_t *)(pList), \
+         (vos_list_node_t *)(pNodeToInsert), (vos_list_node_t *)(pNode) )
+>>>>>>> 657b0e9... prima update
 
 
 /**---------------------------------------------------------------------------

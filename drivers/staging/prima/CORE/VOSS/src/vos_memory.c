@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -74,6 +77,7 @@
  * Include Files
  * ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #include "vos_memory.h"
 #include "vos_trace.h"
@@ -88,6 +92,12 @@
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+#include "vos_memory.h"
+#include "vos_trace.h"
+
+>>>>>>> 657b0e9... prima update
 #ifdef MEMORY_DEBUG
 #include "wlan_hdd_dp_utils.h"
 
@@ -143,10 +153,14 @@ void vos_mem_clean()
  
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: List is not Empty. listSize %d ", __FUNCTION__, (int)listSize);
 =======
              "%s: List is not Empty. listSize %d ", __func__, (int)listSize);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: List is not Empty. listSize %d ", __FUNCTION__, (int)listSize);
+>>>>>>> 657b0e9... prima update
 
        do
        {
@@ -163,12 +177,15 @@ void vos_mem_clean()
           }
        }while(vosStatus == VOS_STATUS_SUCCESS);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #ifdef CONFIG_HALT_KMEMLEAK
        BUG_ON(0);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     }
 }
 
@@ -188,6 +205,7 @@ v_VOID_t * vos_mem_malloc_debug( v_SIZE_t size, char* fileName, v_U32_t lineNum)
    {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: called with arg > 1024K; passed in %d !!!", __FUNCTION__,size); 
        return NULL;
    }
@@ -199,15 +217,24 @@ v_VOID_t * vos_mem_malloc_debug( v_SIZE_t size, char* fileName, v_U32_t lineNum)
       
 =======
                "%s: called with arg > 1024K; passed in %d !!!", __func__,size); 
+=======
+               "%s: called with arg > 1024K; passed in %d !!!", __FUNCTION__,size); 
+>>>>>>> 657b0e9... prima update
        return NULL;
    }
-
    if (in_interrupt())
    {
+<<<<<<< HEAD
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be "
                  "called from interrupt context!!!", __func__);
        return NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+               "%s is being called in interrupt context, using GPF_ATOMIC.", __FUNCTION__);
+       return kmalloc(size, GFP_ATOMIC);
+      
+>>>>>>> 657b0e9... prima update
    }
 
    new_size = size + sizeof(struct s_vos_mem_struct) + 8; 
@@ -232,10 +259,14 @@ v_VOID_t * vos_mem_malloc_debug( v_SIZE_t size, char* fileName, v_U32_t lineNum)
       {
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: Unable to insert node into List vosStatus %d\n", __FUNCTION__, vosStatus);
 =======
              "%s: Unable to insert node into List vosStatus %d\n", __func__, vosStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: Unable to insert node into List vosStatus %d\n", __FUNCTION__, vosStatus);
+>>>>>>> 657b0e9... prima update
       }
 
       memPtr = (v_VOID_t*)(memStruct + 1); 
@@ -245,6 +276,7 @@ v_VOID_t * vos_mem_malloc_debug( v_SIZE_t size, char* fileName, v_U32_t lineNum)
 
 v_VOID_t vos_mem_free( v_VOID_t *ptr )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -256,6 +288,8 @@ v_VOID_t vos_mem_free( v_VOID_t *ptr )
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     if (ptr != NULL)
     {
         VOS_STATUS vosStatus;
@@ -285,10 +319,14 @@ v_VOID_t vos_mem_free( v_VOID_t *ptr )
         {
             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Unallocated memory (double free?)", __FUNCTION__);
 =======
                       "%s: Unallocated memory (double free?)", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Unallocated memory (double free?)", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             VOS_ASSERT(0);
         }
     }
@@ -296,6 +334,7 @@ v_VOID_t vos_mem_free( v_VOID_t *ptr )
 #else
 v_VOID_t * vos_mem_malloc( v_SIZE_t size )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    if (size > (1024*1024))
    {
@@ -308,10 +347,16 @@ v_VOID_t * vos_mem_malloc( v_SIZE_t size )
    {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: called with arg > 1024K; passed in %d !!!", __func__,size); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if (size > (1024*1024))
+   {
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: called with arg > 1024K; passed in %d !!!", __FUNCTION__,size); 
+>>>>>>> 657b0e9... prima update
        return NULL;
    }
    if (in_interrupt())
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
       return NULL;
@@ -329,6 +374,11 @@ v_VOID_t * vos_mem_malloc( v_SIZE_t size )
    }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+      return NULL;
+   }
+>>>>>>> 657b0e9... prima update
    return kmalloc(size, GFP_KERNEL);
 }   
 
@@ -336,6 +386,7 @@ v_VOID_t vos_mem_free( v_VOID_t *ptr )
 {
     if (ptr == NULL)
       return;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -350,6 +401,8 @@ v_VOID_t vos_mem_free( v_VOID_t *ptr )
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     kfree(ptr);
 }
 #endif
@@ -359,10 +412,14 @@ v_VOID_t vos_mem_set( v_VOID_t *ptr, v_SIZE_t numBytes, v_BYTE_t value )
    if (ptr == NULL)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s called with NULL parameter ptr", __FUNCTION__);
 =======
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s called with NULL parameter ptr", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s called with NULL parameter ptr", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return;
    }
    memset(ptr, value, numBytes);
@@ -379,10 +436,14 @@ v_VOID_t vos_mem_zero( v_VOID_t *ptr, v_SIZE_t numBytes )
    if (ptr == NULL)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s called with NULL parameter ptr", __FUNCTION__);
 =======
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s called with NULL parameter ptr", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s called with NULL parameter ptr", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return;
    }
    memset(ptr, 0, numBytes);
@@ -407,10 +468,14 @@ v_VOID_t vos_mem_copy( v_VOID_t *pDst, const v_VOID_t *pSrc, v_SIZE_t numBytes )
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                 "%s called with NULL parameter, source:%p destination:%p",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, pSrc, pDst);
 =======
                 __func__, pSrc, pDst);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, pSrc, pDst);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return;
    }
@@ -433,10 +498,14 @@ v_VOID_t vos_mem_move( v_VOID_t *pDst, const v_VOID_t *pSrc, v_SIZE_t numBytes )
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                 "%s called with NULL parameter, source:%p destination:%p",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, pSrc, pDst);
 =======
                 __func__, pSrc, pDst);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, pSrc, pDst);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return;
    }
@@ -456,10 +525,14 @@ v_BOOL_t vos_mem_compare( v_VOID_t *pMemory1, v_VOID_t *pMemory2, v_U32_t numByt
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                 "%s called with NULL parameter, p1:%p p2:%p",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, pMemory1, pMemory2);
 =======
                 __func__, pMemory1, pMemory2);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, pMemory1, pMemory2);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_FALSE;
    }
@@ -507,10 +580,14 @@ v_VOID_t * vos_mem_dma_malloc_debug( v_SIZE_t size, char* fileName, v_U32_t line
    if (in_interrupt())
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
 
@@ -536,10 +613,14 @@ v_VOID_t * vos_mem_dma_malloc_debug( v_SIZE_t size, char* fileName, v_U32_t line
       {
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: Unable to insert node into List vosStatus %d\n", __FUNCTION__, vosStatus);
 =======
              "%s: Unable to insert node into List vosStatus %d\n", __func__, vosStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: Unable to insert node into List vosStatus %d\n", __FUNCTION__, vosStatus);
+>>>>>>> 657b0e9... prima update
       }
 
       memPtr = (v_VOID_t*)(memStruct + 1); 
@@ -583,10 +664,14 @@ v_VOID_t* vos_mem_dma_malloc( v_SIZE_t size )
    if (in_interrupt())
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
    return kmalloc(size, GFP_KERNEL);

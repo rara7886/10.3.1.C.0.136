@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -221,9 +224,12 @@ VOS_STATUS hdd_string_to_hex( char *pSrcMac, int length, char *pDescMac )
    int k;
    char temp[3] = {0};
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    int rv;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    //18 is MAC Address length plus the colons
    if ( !pSrcMac && (length > 18 || length < 18) )
@@ -235,12 +241,16 @@ VOS_STATUS hdd_string_to_hex( char *pSrcMac, int length, char *pDescMac )
    {
        memcpy(temp, pSrcMac+i, 2);
 <<<<<<< HEAD
+<<<<<<< HEAD
        pDescMac[k++] = (char)simple_strtoul (temp, NULL, 16);
 =======
        rv = kstrtou8(temp, 16, &pDescMac[k++]);
        if (rv < 0)
            return VOS_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       pDescMac[k++] = (char)simple_strtoul (temp, NULL, 16);
+>>>>>>> 657b0e9... prima update
        i += 3;
    }
 

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -143,30 +146,42 @@ VOS_STATUS vos_lock_init ( vos_lock_t *lock )
    if ( lock == NULL)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__FUNCTION__);
 =======
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_FAULT; 
    }
    // check for 'already initialized' lock
    if ( LINUX_LOCK_COOKIE == lock->cookie )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: already initialized lock",__FUNCTION__);
 =======
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: already initialized lock",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: already initialized lock",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_BUSY;
    }
       
    if (in_interrupt())
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAULT; 
    }
       
@@ -211,30 +226,42 @@ VOS_STATUS vos_lock_acquire ( vos_lock_t* lock )
       if ( lock == NULL )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT;
       }
       // check if lock refers to an initialized object
       if ( LINUX_LOCK_COOKIE != lock->cookie )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock",__FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_INVAL;
       }
 
       if (in_interrupt())
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT; 
       }
       if ((lock->processID == current->pid) && 
@@ -248,6 +275,7 @@ VOS_STATUS vos_lock_acquire ( vos_lock_t* lock )
       }
       // Acquire a Lock
 <<<<<<< HEAD
+<<<<<<< HEAD
       mutex_lock( &lock->m_lock ); 
       rc = mutex_is_locked( &lock->m_lock );
       if (rc == 0) 
@@ -256,12 +284,19 @@ VOS_STATUS vos_lock_acquire ( vos_lock_t* lock )
                 "%s: unable to lock mutex (rc = %d)", __FUNCTION__, rc);
 =======
       mutex_lock( &lock->m_lock );
+=======
+      mutex_lock( &lock->m_lock ); 
+>>>>>>> 657b0e9... prima update
       rc = mutex_is_locked( &lock->m_lock );
-      if (rc == 0)
+      if (rc == 0) 
       {
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock mutex (rc = %d)", __func__, rc);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: unable to lock mutex (rc = %d)", __FUNCTION__, rc);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAILURE;
       }
  
@@ -280,10 +315,14 @@ VOS_STATUS vos_lock_acquire ( vos_lock_t* lock )
       {
          // lock is already destroyed
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Lock is already destroyed", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Lock is already destroyed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Lock is already destroyed", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          mutex_unlock(&lock->m_lock);
          return VOS_STATUS_E_FAILURE;
       }
@@ -324,10 +363,14 @@ VOS_STATUS vos_lock_release ( vos_lock_t *lock )
       if ( lock == NULL )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT;
       }
 
@@ -335,20 +378,28 @@ VOS_STATUS vos_lock_release ( vos_lock_t *lock )
       if ( LINUX_LOCK_COOKIE != lock->cookie )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock",__FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_INVAL;
       }
 
       if (in_interrupt())
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT; 
       }
 
@@ -358,10 +409,14 @@ VOS_STATUS vos_lock_release ( vos_lock_t *lock )
       if ( lock->processID != current->pid )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: current task pid does not match original task pid!!",__FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: current task pid does not match original task pid!!",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: current task pid does not match original task pid!!",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 #ifdef VOS_NESTED_LOCK_DEBUG
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,"%s: Lock held by=%d being released by=%d", __func__, lock->processID, current->pid);
 #endif
@@ -428,30 +483,42 @@ VOS_STATUS vos_lock_destroy( vos_lock_t *lock )
       if ( NULL == lock )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT; 
       }
 
       if ( LINUX_LOCK_COOKIE != lock->cookie )
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: uninitialized lock", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_INVAL;
       }
 
       if (in_interrupt())
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT; 
       }
 
@@ -459,10 +526,14 @@ VOS_STATUS vos_lock_destroy( vos_lock_t *lock )
       if (!mutex_trylock(&lock->m_lock))
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: lock is not released", __FUNCTION__);
 =======
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: lock is not released", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: lock is not released", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_BUSY;
       }
       lock->cookie = 0;

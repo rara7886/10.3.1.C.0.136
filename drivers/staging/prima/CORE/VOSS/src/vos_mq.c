@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -101,10 +104,14 @@ __inline VOS_STATUS vos_mq_init(pVosMqType pMq)
   if (pMq == NULL) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: NULL pointer passed",__FUNCTION__);
 =======
          "%s: NULL pointer passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return VOS_STATUS_E_FAILURE;
   }
 
@@ -143,10 +150,14 @@ __inline void vos_mq_deinit(pVosMqType pMq)
   if (pMq == NULL) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: NULL pointer passed",__FUNCTION__);
 =======
          "%s: NULL pointer passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return ;
   }
 
@@ -180,10 +191,14 @@ __inline void vos_mq_put(pVosMqType pMq, pVosMsgWrapper pMsgWrapper)
   if ((pMq == NULL) || (pMsgWrapper == NULL)) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: NULL pointer passed",__FUNCTION__);
 =======
          "%s: NULL pointer passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return ;
   }
 
@@ -223,10 +238,14 @@ __inline pVosMsgWrapper vos_mq_get(pVosMqType pMq)
   if (pMq == NULL) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: NULL pointer passed",__FUNCTION__);
 =======
          "%s: NULL pointer passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return NULL;
   }
  
@@ -236,10 +255,14 @@ __inline pVosMsgWrapper vos_mq_get(pVosMqType pMq)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: VOS Message Queue is empty",__FUNCTION__);
 =======
              "%s: VOS Message Queue is empty",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: VOS Message Queue is empty",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
   }
   else
   {
@@ -280,10 +303,14 @@ __inline v_BOOL_t vos_is_mq_empty(pVosMqType pMq)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: NULL pointer passed",__FUNCTION__);
 =======
          "%s: NULL pointer passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return VOS_STATUS_E_FAILURE;
   }
 

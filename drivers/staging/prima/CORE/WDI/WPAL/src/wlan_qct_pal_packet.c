@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -86,6 +89,7 @@ typedef struct
 
 /* Storage for DXE CB function pointer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static wpalPacketLowPacketCB wpalPacketAvailableCB = NULL;
 =======
 static wpalPacketLowPacketCB wpalPacketAvailableCB;
@@ -96,6 +100,9 @@ static wpalPacketLowPacketCB wpalPacketAvailableCB;
  * temporary it should be stored */
 static wpt_log_data_stall_type wpalTrasportStallInfo;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static wpalPacketLowPacketCB wpalPacketAvailableCB = NULL;
+>>>>>>> 657b0e9... prima update
 
 /*
    wpalPacketInit is no-op for VOSS-support wpt_packet
@@ -151,11 +158,14 @@ VOS_STATUS wpalPacketRXLowResourceCB(vos_pkt_t *pPacket, v_VOID_t *userData)
 
    wpalPacketAvailableCB( (wpt_packet *)pPacket, userData );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    wpalPacketAvailableCB = NULL;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    return VOS_STATUS_SUCCESS;
 }
 
@@ -175,6 +185,7 @@ wpt_packet * wpalPacketAlloc(wpt_packet_type pktType, wpt_uint32 nPktSize,
    vos_pkt_t*   pVosPkt   = NULL;
    void*        pData     = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /* Initialize DXE CB function pointer storage */
@@ -184,6 +195,12 @@ wpt_packet * wpalPacketAlloc(wpt_packet_type pktType, wpt_uint32 nPktSize,
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   /* Initialize DXE CB function pointer storage */
+   wpalPacketAvailableCB = NULL;
+>>>>>>> 657b0e9... prima update
    switch (pktType)
    {
    case eWLAN_PAL_PKT_TYPE_TX_802_11_MGMT:
@@ -209,6 +226,7 @@ wpt_packet * wpalPacketAlloc(wpt_packet_type pktType, wpt_uint32 nPktSize,
       }
 #endif /* FEATURE_R33D */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       if((NULL != pVosPkt) && (VOS_STATUS_E_RESOURCES != vosStatus))
       {
@@ -222,6 +240,8 @@ wpt_packet * wpalPacketAlloc(wpt_packet_type pktType, wpt_uint32 nPktSize,
          }
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       break;
 
    default:
@@ -282,10 +302,14 @@ wpt_uint32 wpalPacketGetLength(wpt_packet *pPkt)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL packet pointer", __FUNCTION__);
 =======
                 "%s : NULL packet pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL packet pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -302,10 +326,14 @@ wpt_uint32 wpalPacketGetLength(wpt_packet *pPkt)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s  failed\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
          __FUNCTION__);
 =======
          __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         __FUNCTION__);
+>>>>>>> 657b0e9... prima update
    }
 
    return ((wpt_uint32)len);
@@ -332,10 +360,14 @@ wpt_status wpalPacketRawTrimHead(wpt_packet *pPkt, wpt_uint32 size)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL packet pointer", __FUNCTION__);
 =======
                 "%s : NULL packet pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL packet pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -346,10 +378,14 @@ wpt_status wpalPacketRawTrimHead(wpt_packet *pPkt, wpt_uint32 size)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s  Invalid trim(%d)\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
          __FUNCTION__, size);
 =======
          __func__, size);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         __FUNCTION__, size);
+>>>>>>> 657b0e9... prima update
       status = eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -373,10 +409,14 @@ wpt_status wpalPacketRawTrimTail(wpt_packet *pPkt, wpt_uint32 size)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL packet pointer", __FUNCTION__);
 =======
                 "%s : NULL packet pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL packet pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -386,10 +426,14 @@ wpt_status wpalPacketRawTrimTail(wpt_packet *pPkt, wpt_uint32 size)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s  Invalid trim(%d)\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
          __FUNCTION__, size);
 =======
          __func__, size);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         __FUNCTION__, size);
+>>>>>>> 657b0e9... prima update
       status = eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -416,10 +460,14 @@ wpt_uint8 *wpalPacketGetRawBuf(wpt_packet *pPkt)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL packet pointer", __FUNCTION__);
 =======
                 "%s : NULL packet pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL packet pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
 
@@ -452,10 +500,14 @@ wpt_status wpalPacketSetRxLength(wpt_packet *pPkt, wpt_uint32 len)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL packet pointer", __FUNCTION__);
 =======
                 "%s : NULL packet pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL packet pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -464,10 +516,14 @@ wpt_status wpalPacketSetRxLength(wpt_packet *pPkt, wpt_uint32 len)
    {
      WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s  Invalid packet type(%d)\n",  __FUNCTION__, 
 =======
                 "%s  Invalid packet type(%d)\n",  __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s  Invalid packet type(%d)\n",  __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
                 WPAL_PACKET_GET_TYPE(pPkt));
      return eWLAN_PAL_STATUS_E_INVAL;
    }
@@ -561,10 +617,14 @@ wpt_status wpalIteratorInit(wpt_iterator *pIter, wpt_packet *pPacket)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL input pointers %x %x", __FUNCTION__, pPacket, pIter);
 =======
                 "%s : NULL input pointers %x %x", __func__, pPacket, pIter);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL input pointers %x %x", __FUNCTION__, pPacket, pIter);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -573,10 +633,14 @@ wpt_status wpalIteratorInit(wpt_iterator *pIter, wpt_packet *pPacket)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : Invalid Packet Info", __FUNCTION__);
 =======
                 "%s : Invalid Packet Info", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : Invalid Packet Info", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -597,10 +661,14 @@ wpt_status wpalIteratorInit(wpt_iterator *pIter, wpt_packet *pPacket)
      {
         WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s : Failed to allocate memory ", __FUNCTION__);
 =======
                   "%s : Failed to allocate memory ", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s : Failed to allocate memory ", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eWLAN_PAL_STATUS_E_INVAL;
      }
 
@@ -641,10 +709,14 @@ wpt_status wpalIteratorNext(wpt_iterator *pIter, wpt_packet *pPacket, void **ppA
    {
      WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s  Invalid input parameters \n",  __FUNCTION__ );
 =======
                 "%s  Invalid input parameters \n",  __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s  Invalid input parameters \n",  __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
      return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -705,10 +777,14 @@ wpt_status wpalLockPacketForTransfer( wpt_packet *pPacket)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL input pointer", __FUNCTION__);
 =======
                 "%s : NULL input pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL input pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -748,10 +824,14 @@ wpt_status wpalLockPacketForTransfer( wpt_packet *pPacket)
       {
          WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     " WLAN_PAL: %s: Invalid packet type %d!",  __FUNCTION__, 
 =======
                     " WLAN_PAL: %s: Invalid packet type %d!",  __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    " WLAN_PAL: %s: Invalid packet type %d!",  __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
                     WPAL_PACKET_GET_TYPE(pPacket) ); 
          WPAL_ASSERT(0); 
          return eWLAN_PAL_STATUS_E_FAILURE;
@@ -769,10 +849,14 @@ wpt_status wpalLockPacketForTransfer( wpt_packet *pPacket)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : Failed to allocate memory ", __FUNCTION__);
 =======
                 "%s : Failed to allocate memory ", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : Failed to allocate memory ", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -802,10 +886,14 @@ wpt_status wpalUnlockPacket( wpt_packet *pPacket)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL input pointer pPacket", __FUNCTION__);
 =======
                 "%s : NULL input pointer pPacket", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL input pointer pPacket", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -816,10 +904,14 @@ wpt_status wpalUnlockPacket( wpt_packet *pPacket)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s : NULL input pointer pInfo", __FUNCTION__);
 =======
                 "%s : NULL input pointer pInfo", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s : NULL input pointer pInfo", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -852,6 +944,7 @@ wpt_status wpalUnlockPacket( wpt_packet *pPacket)
          /*RX Packets need to be DMA-ed from the device, perform DMA mapping 
            accordingly */
 <<<<<<< HEAD
+<<<<<<< HEAD
          itReturnOSPktAddrFromDevice(pPacket, pInfo->pPhyAddr, pInfo->uLen);   
 =======
          if(NULL == pInfo->pPhyAddr)
@@ -864,6 +957,9 @@ wpt_status wpalUnlockPacket( wpt_packet *pPacket)
             itReturnOSPktAddrFromDevice(pPacket, pInfo->pPhyAddr, pInfo->uLen);   
          }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         itReturnOSPktAddrFromDevice(pPacket, pInfo->pPhyAddr, pInfo->uLen);   
+>>>>>>> 657b0e9... prima update
       }
       break;
 
@@ -871,10 +967,14 @@ wpt_status wpalUnlockPacket( wpt_packet *pPacket)
       {
          WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     " WLAN_PAL: %s: Invalid packet type %d!",  __FUNCTION__, 
 =======
                     " WLAN_PAL: %s: Invalid packet type %d!",  __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    " WLAN_PAL: %s: Invalid packet type %d!",  __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
                     WPAL_PACKET_GET_TYPE(pPacket) ); 
          WPAL_ASSERT(0); 
          return eWLAN_PAL_STATUS_E_FAILURE;
@@ -905,12 +1005,17 @@ wpt_status wpalIsPacketLocked( wpt_packet *pPacket)
    if (NULL == pPacket)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                 "%s : NULL input pointer", __FUNCTION__);
 =======
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_WARN,
                 "%s : NULL input pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+                "%s : NULL input pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -920,6 +1025,7 @@ wpt_status wpalIsPacketLocked( wpt_packet *pPacket)
                     eWLAN_PAL_STATUS_SUCCESS;
 }/*wpalIsPacketLocked*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
@@ -1017,3 +1123,5 @@ void wpalPacketStallDumpLog
 }
 #endif /* FEATURE_WLAN_DIAG_SUPPORT */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

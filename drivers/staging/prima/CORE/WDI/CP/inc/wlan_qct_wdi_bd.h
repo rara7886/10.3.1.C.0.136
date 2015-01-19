@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -20,6 +23,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -41,6 +45,8 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef WLAN_QCT_WDI_BD_H
 #define WLAN_QCT_WDI_BD_H
 
@@ -57,12 +63,17 @@ DESCRIPTION
   
       
 <<<<<<< HEAD
+<<<<<<< HEAD
   Copyright (c) 2010 QUALCOMM Incorporated. All Rights Reserved.
   Qualcomm Confidential and Proprietary
 =======
   Copyright (c) 2010 Qualcomm Technologies, Inc. All Rights Reserved.
   Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  Copyright (c) 2010 QUALCOMM Incorporated. All Rights Reserved.
+  Qualcomm Confidential and Proprietary
+>>>>>>> 657b0e9... prima update
 ===========================================================================*/
 
 
@@ -317,6 +328,7 @@ typedef struct
         /* 0x10 */
 #ifdef WPT_BIG_BYTE_ENDIAN
 <<<<<<< HEAD
+<<<<<<< HEAD
     
         /** This is the length (in number of bytes) of the entire MPDU 
         (header and data). Note that the length does not include FCS field. */
@@ -333,39 +345,46 @@ typedef struct
 =======
 
         /** This is the length (in number of bytes) of the entire MPDU
+=======
+    
+        /** This is the length (in number of bytes) of the entire MPDU 
+>>>>>>> 657b0e9... prima update
         (header and data). Note that the length does not include FCS field. */
         wpt_uint32 mpduLength:16;
-
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-        wpt_uint32 offloadScanLearn:1;
-        wpt_uint32 roamCandidateInd:1;
-#else
-        wpt_uint32 reserved22:2;
-#endif
-
+    
 #ifdef WCN_PRONTO
-        wpt_uint32 reserved3: 1;
-        wpt_uint32 rxDXEPriorityRouting:1;
+        wpt_uint32 reserved3: 3;
+        wpt_uint32 rxDXEPriorityRouting:1; 
 #else
-        wpt_uint32 reserved3:2;
+        wpt_uint32 reserved3:4;
 #endif //WCN_PRONTO
+<<<<<<< HEAD
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    
+>>>>>>> 657b0e9... prima update
         /** Traffic Identifier
         Indicates the traffic class the frame belongs to. For non QoS frames,
         this field is set to zero. */
         wpt_uint32 tid:4;
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        
+>>>>>>> 657b0e9... prima update
         wpt_uint32 reserved4:8;
 #else
         wpt_uint32 reserved4:8;
         wpt_uint32 tid:4;
 #ifdef WCN_PRONTO
+<<<<<<< HEAD
 <<<<<<< HEAD
         wpt_uint32 rxDXEPriorityRouting:1; 
         wpt_uint32 reserved3: 3;
@@ -379,20 +398,22 @@ typedef struct
 =======
         wpt_uint32 rxDXEPriorityRouting:1;
         wpt_uint32 reserved3: 1;
+=======
+        wpt_uint32 rxDXEPriorityRouting:1; 
+        wpt_uint32 reserved3: 3;
+>>>>>>> 657b0e9... prima update
 #else
-        wpt_uint32 reserved3:2;
+        wpt_uint32 reserved3:4;
 #endif //WCN_PRONTO
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-        wpt_uint32 roamCandidateInd:1;
-        wpt_uint32 offloadScanLearn:1;
-#else
-        wpt_uint32 reserved22:2;
-#endif
-
+    
         wpt_uint32 mpduLength:16;
 #endif
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
         /* 0x14 */
 #ifdef WPT_BIG_BYTE_ENDIAN
     
@@ -517,11 +538,15 @@ typedef struct
         /** reserved8 from a hardware perspective.
         Used by SW to propogate frame type/subtype information */
 <<<<<<< HEAD
+<<<<<<< HEAD
         wpt_uint32 frameTypeSubtype:8;
 =======
         wpt_uint32 frameTypeSubtype:6;
         wpt_uint32 rfBand:2;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        wpt_uint32 frameTypeSubtype:8;
+>>>>>>> 657b0e9... prima update
     
         /** Filled RPE gives the current sequence number in bitmap */
         wpt_uint32 currentPktSeqNo:12;
@@ -533,11 +558,15 @@ typedef struct
         wpt_uint32 expectedPktSeqNo:12;
         wpt_uint32 currentPktSeqNo:12;
 <<<<<<< HEAD
+<<<<<<< HEAD
         wpt_uint32 frameTypeSubtype:8;
 =======
         wpt_uint32 rfBand:2;
         wpt_uint32 frameTypeSubtype:6;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        wpt_uint32 frameTypeSubtype:8;
+>>>>>>> 657b0e9... prima update
 #endif
     
         /* 0x48 */

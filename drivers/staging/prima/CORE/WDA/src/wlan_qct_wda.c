@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -70,9 +73,13 @@
 2010-08-19    adwivedi    WLAN DAL AL(WDA) layer for Prima
 ===========================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
 #include "vos_mq.h" 
 #include "vos_api.h" 
 #include "vos_packet.h" 
@@ -95,14 +102,20 @@
 #include "btcApi.h"
 #include "vos_sched.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef ANI_MANF_DIAG
 #include "pttMsgApi.h"
 #include "wlan_qct_sys.h"
 #endif /* ANI_MANF_DIAG */
+<<<<<<< HEAD
 =======
 #include "pttMsgApi.h"
 #include "wlan_qct_sys.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /* Used MACRO's */
 /* Get WDA context from vOSS module */
 #define VOS_GET_WDA_CTXT(a)            vos_get_context(VOS_MODULE_ID_WDA, a)
@@ -145,13 +158,17 @@
 #define WDA_NUM_PWR_SAVE_CFG       11
 #define WDA_TX_COMPLETE_TIME_OUT_VALUE 1000
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define WDA_TRAFFIC_STATS_TIME_OUT_VALUE 1000
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   
 #define WDA_MAX_RETRIES_TILL_RING_EMPTY  1000   /* MAX 10000 msec = 10 seconds wait */
 
 #define WDA_WAIT_MSEC_TILL_RING_EMPTY    10    /* 10 msec wait per cycle */
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* extern declarations */
 extern void vos_WDAComplete_cback(v_PVOID_t pVosContext);
@@ -169,6 +186,10 @@ extern void vos_WDAComplete_cback(v_PVOID_t pVosContext);
 extern wpt_uint8 WDI_GetActiveSessionsCount (void *pWDICtx, wpt_macAddr macBSSID, wpt_boolean skipBSSID);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/* extern declarations */
+extern void vos_WDAComplete_cback(v_PVOID_t pVosContext);
+>>>>>>> 657b0e9... prima update
 /* forward declarations */
 void WDA_SendMsg(tWDA_CbContext *pWDA, tANI_U16 msgType, 
                                         void *pBodyptr, tANI_U32 bodyVal) ;
@@ -191,9 +212,12 @@ static VOS_STATUS wdaCreateTimers(tWDA_CbContext *pWDA) ;
 static VOS_STATUS wdaDestroyTimers(tWDA_CbContext *pWDA);
 void WDA_BaCheckActivity(tWDA_CbContext *pWDA) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 void WDA_TimerTrafficStatsInd(tWDA_CbContext *pWDA);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 void WDA_HALDumpCmdCallback(WDI_HALDumpCmdRspParamsType *wdiRspParams, void* pUserData);
 #ifdef WLAN_FEATURE_VOWIFI_11R
 VOS_STATUS WDA_ProcessAggrAddTSReq(tWDA_CbContext *pWDA, tAggrAddTsParams *pAggrAddTsReqParams);
@@ -208,6 +232,7 @@ static VOS_STATUS WDA_ProcessSetRssiFilterReq(tWDA_CbContext *pWDA, tSirSetRSSIF
 static VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA, tSirUpdateScanParams *pUpdateScanParams);
 #endif // FEATURE_WLAN_SCAN_PNO
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 VOS_STATUS WDA_ProcessRoamScanOffloadReq(tWDA_CbContext *pWDA,tSirRoamOffloadScanReq *pRoamOffloadScanReqParams);
@@ -216,6 +241,8 @@ void WDA_ConvertSirAuthToWDIAuth(WDI_AuthType *AuthType, v_U8_t csrAuthType);
 void WDA_ConvertSirEncToWDIEnc(WDI_EdType *EncrType, v_U8_t csrEncrType);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 static VOS_STATUS WDA_Process8023MulticastListReq (
                                        tWDA_CbContext *pWDA,
@@ -250,6 +277,7 @@ static VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA, tpSirGtk
 VOS_STATUS WDA_ProcessSetTmLevelReq(tWDA_CbContext *pWDA,
                                     tAniSetTmLevelReq *setTmLevelReq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
 VOS_STATUS WDA_ProcessUpdateOpMode(tWDA_CbContext *pWDA, 
@@ -261,6 +289,8 @@ VOS_STATUS WDA_ProcessLPHBConfReq(tWDA_CbContext *pWDA,
                                   tSirLPHBReq *pData);
 #endif /* FEATURE_WLAN_LPHB */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_open
  * Allocate the WDA context 
@@ -293,10 +323,14 @@ VOS_STATUS WDA_open(v_PVOID_t pVosContext, v_PVOID_t pOSContext,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "WDI Sync Event init failed - status = %d\n", status);
 <<<<<<< HEAD
+<<<<<<< HEAD
       status = VOS_STATUS_E_FAILURE;
 =======
       goto error;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      status = VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
    /* Init Frame transfer event */
    status = vos_event_init(&wdaContext->txFrameEvent);
@@ -305,10 +339,14 @@ VOS_STATUS WDA_open(v_PVOID_t pVosContext, v_PVOID_t pOSContext,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "VOS Mgmt Frame Event init failed - status = %d\n", status);
 <<<<<<< HEAD
+<<<<<<< HEAD
       status = VOS_STATUS_E_FAILURE;
 =======
       goto error;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      status = VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
    status = vos_event_init(&wdaContext->suspendDataTxEvent);
    if(!VOS_IS_STATUS_SUCCESS(status)) 
@@ -316,10 +354,14 @@ VOS_STATUS WDA_open(v_PVOID_t pVosContext, v_PVOID_t pOSContext,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
             "VOS suspend data tx Event init failed - status = %d\n", status);
 <<<<<<< HEAD
+<<<<<<< HEAD
       status = VOS_STATUS_E_FAILURE;
 =======
       goto error;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      status = VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
    status = vos_event_init(&wdaContext->waitOnWdiIndicationCallBack);
    if(!VOS_IS_STATUS_SUCCESS(status)) 
@@ -327,10 +369,14 @@ VOS_STATUS WDA_open(v_PVOID_t pVosContext, v_PVOID_t pOSContext,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
             "VOS wait On Wdi Ind Event init failed - status = %d\n", status);
 <<<<<<< HEAD
+<<<<<<< HEAD
       status = VOS_STATUS_E_FAILURE;
 =======
       goto error;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      status = VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
    vos_trace_setLevel(VOS_MODULE_ID_WDA,VOS_TRACE_LEVEL_ERROR);
    wdaContext->driverMode = pMacParams->driverType;
@@ -340,10 +386,14 @@ VOS_STATUS WDA_open(v_PVOID_t pVosContext, v_PVOID_t pOSContext,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                                   "WDI Init failed" );
 <<<<<<< HEAD
+<<<<<<< HEAD
       status = VOS_STATUS_E_FAILURE;
 =======
       goto error;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      status = VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
    else 
    {
@@ -359,12 +409,15 @@ VOS_STATUS WDA_open(v_PVOID_t pVosContext, v_PVOID_t pOSContext,
    }
    return status;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 error:
       vos_free_context(pVosContext, VOS_MODULE_ID_WDA, wdaContext);
       return VOS_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 /*
@@ -403,10 +456,14 @@ void WDA_wdiStartCallback(WDI_StartRspParamsType *wdiRspParams,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invoked with invalid pVosContext", __FUNCTION__ );
 =======
                  "%s: Invoked with invalid pVosContext", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid pVosContext", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return;
    }
    wdaContext = VOS_GET_WDA_CTXT(pVosContext);
@@ -414,20 +471,28 @@ void WDA_wdiStartCallback(WDI_StartRspParamsType *wdiRspParams,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invoked with invalid wdaContext", __FUNCTION__ );
 =======
                  "%s: Invoked with invalid wdaContext", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid wdaContext", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return;
    }
    if (WDI_STATUS_SUCCESS != wdiRspParams->wdiStatus)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: WDI_Start() failure reported", __FUNCTION__ );
 =======
                  "%s: WDI_Start() failure reported", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: WDI_Start() failure reported", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
    }
    else
    {
@@ -462,10 +527,14 @@ void WDA_wdiStartCallback(WDI_StartRspParamsType *wdiRspParams,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Unable to unblock WDA_start", __FUNCTION__ );
 =======
                  "%s: Unable to unblock WDA_start", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Unable to unblock WDA_start", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
    }
    return;
 }
@@ -484,10 +553,14 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invoked with invalid pVosContext", __FUNCTION__ );
 =======
                  "%s: Invoked with invalid pVosContext", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid pVosContext", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    wdaContext = VOS_GET_WDA_CTXT(pVosContext);
@@ -495,10 +568,14 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invoked with invalid wdaContext", __FUNCTION__ );
 =======
                  "%s: Invoked with invalid wdaContext", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid wdaContext", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    /* Non-FTM mode, WDA status for START must be INIT
@@ -509,10 +586,14 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: Invoked from wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                  __FUNCTION__, wdaContext->wdaState );
 =======
                  __func__, wdaContext->wdaState );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 __FUNCTION__, wdaContext->wdaState );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    /* initialize the wdiStartParam.  Note that we can create this on
@@ -526,10 +607,14 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Unable to prepare Config TLV", __FUNCTION__ );
 =======
                  "%s: Unable to prepare Config TLV", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Unable to prepare Config TLV", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    /* note from here onwards if an error occurs we must
@@ -547,10 +632,14 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: WDI Start failed", __FUNCTION__ );
 =======
                  "%s: WDI Start failed", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: WDI Start failed", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       vos_mem_free(wdiStartParam.pConfigBuffer);
       return VOS_STATUS_E_FAILURE;
    }
@@ -563,20 +652,28 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: Timeout occurred during WDI_Start", __FUNCTION__ );
 =======
                     "%s: Timeout occurred during WDI_Start", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: Timeout occurred during WDI_Start", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       }
       else
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                     "%s: Error %d while waiting for WDI_Start",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     __FUNCTION__, status);
 =======
                     __func__, status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    __FUNCTION__, status);
+>>>>>>> 657b0e9... prima update
       }
       vos_mem_free(wdiStartParam.pConfigBuffer);
       return VOS_STATUS_E_FAILURE;
@@ -589,16 +686,21 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: WDI_Start() failure detected", __FUNCTION__ );
 =======
                  "%s: WDI_Start() failure detected", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: WDI_Start() failure detected", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    /* FTM mode does not need to monitor BA activity */
    if ( eDRIVER_TYPE_MFG != wdaContext->driverMode )
    {
       status = wdaCreateTimers(wdaContext) ;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
       if(VOS_STATUS_SUCCESS == status)
@@ -610,6 +712,8 @@ VOS_STATUS WDA_start(v_PVOID_t pVosContext)
    {
       vos_event_init(&wdaContext->ftmStopDoneEvent);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return status;
 }
@@ -632,6 +736,7 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
    tANI_U32       *configDataValue;
    WDI_WlanVersionType wcnssCompiledApiVersion;
 <<<<<<< HEAD
+<<<<<<< HEAD
    if ((NULL == pMac)||(NULL == wdaContext))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -644,6 +749,12 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: Invoked with invalid wdaContext or pMac", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if ((NULL == pMac)||(NULL == wdaContext))
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                 "%s: Invoked with invalid wdaContext or pMac", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -661,10 +772,14 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:configParam is NULL", __FUNCTION__);
 =======
                            "%s:configParam is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:configParam is NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return VOS_STATUS_E_NOMEM;
    }
@@ -1490,6 +1605,7 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
                             + sizeof(tHalCfg) + tlvStruct->length) ; 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    for (i = 0; i < QWLAN_HAL_CFG_MWS_COEX_MAX_VICTIM; i++)
    {
@@ -1554,6 +1670,8 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
                             + sizeof(tHalCfg) + tlvStruct->length) ;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* QWLAN_HAL_CFG_WCNSS_API_VERSION */
    tlvStruct->type = QWLAN_HAL_CFG_WCNSS_API_VERSION  ;
    tlvStruct->length = sizeof(tANI_U32);
@@ -1610,6 +1728,7 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
    tlvStruct = (tHalCfg *)( (tANI_U8 *) tlvStruct 
                             + sizeof(tHalCfg) + tlvStruct->length) ; 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    /* QWLAN_HAL_CFG_ENABLE_LPWR_IMG_TRANSITION   */
@@ -1787,6 +1906,8 @@ VOS_STATUS WDA_prepareConfigTLV(v_PVOID_t pVosContext,
                             + sizeof(tHalCfg) + tlvStruct->length) ;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wdiStartParams->usConfigBufferLen = (tANI_U8 *)tlvStruct - tlvStructStart ;
 #ifdef WLAN_DEBUG
    {
@@ -1826,6 +1947,7 @@ handle_failure:
  * call the voss call back function
  */ 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void WDA_stopCallback(WDI_Status status, v_PVOID_t *pVosContext)
 {
    tWDA_CbContext *wdaContext= (tWDA_CbContext *)VOS_GET_WDA_CTXT(pVosContext);
@@ -1843,35 +1965,29 @@ void WDA_stopCallback(WDI_Status status, v_PVOID_t *pVosContext)
    }
 =======
 void WDA_stopCallback(WDI_Status status, void* pUserData)
+=======
+void WDA_stopCallback(WDI_Status status, v_PVOID_t *pVosContext)
+>>>>>>> 657b0e9... prima update
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *wdaContext;
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-   
-   wdaContext = (tWDA_CbContext *)pWdaParams->pWdaContext;
-
+   tWDA_CbContext *wdaContext= (tWDA_CbContext *)VOS_GET_WDA_CTXT(pVosContext);
    if (NULL == wdaContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: Invoked with invalid wdaContext", __func__ );
+                 "%s: Invoked with invalid wdaContext", __FUNCTION__ );
       return ;
    }
-
    /* free the config structure */
-   if(pWdaParams->wdaWdiApiMsgParam != NULL)
+   if(wdaContext->wdaWdiApiMsgParam != NULL)
    {
-      vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+      vos_mem_free(wdaContext->wdaWdiApiMsgParam);
+      wdaContext->wdaWdiApiMsgParam = NULL;
    }
+<<<<<<< HEAD
    vos_mem_free(pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS != status)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -1882,6 +1998,7 @@ void WDA_stopCallback(WDI_Status status, void* pUserData)
    {
       wdaContext->wdaState = WDA_STOP_STATE;
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
    /* Indicate VOSS about the start complete */
    vos_WDAComplete_cback(pVosContext);
@@ -1903,6 +2020,10 @@ void WDA_stopCallback(WDI_Status status, void* pUserData)
    vos_WDAComplete_cback(wdaContext->pVosContext);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   /* Indicate VOSS about the start complete */
+   vos_WDAComplete_cback(pVosContext);
+>>>>>>> 657b0e9... prima update
    return ;
 }
 /*
@@ -1916,6 +2037,7 @@ VOS_STATUS WDA_stop(v_PVOID_t pVosContext, tANI_U8 reason)
    WDI_StopReqParamsType *wdiStopReq;
    tWDA_CbContext *pWDA = (tWDA_CbContext *)VOS_GET_WDA_CTXT(pVosContext);
 <<<<<<< HEAD
+<<<<<<< HEAD
    if (NULL == pWDA)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -1926,13 +2048,16 @@ VOS_STATUS WDA_stop(v_PVOID_t pVosContext, tANI_U8 reason)
 =======
    tWDA_ReqParams *pWdaParams ;
 
+=======
+>>>>>>> 657b0e9... prima update
    if (NULL == pWDA)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: Invoked with invalid pWDA", __func__ );
+                 "%s: Invoked with invalid pWDA", __FUNCTION__ );
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
    if (pWDA->wdiFailed == true)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
@@ -1941,6 +2066,8 @@ VOS_STATUS WDA_stop(v_PVOID_t pVosContext, tANI_U8 reason)
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* FTM mode stay START_STATE */
    if( (WDA_READY_STATE != pWDA->wdaState) &&
        (WDA_INIT_STATE != pWDA->wdaState) &&
@@ -1953,6 +2080,7 @@ VOS_STATUS WDA_stop(v_PVOID_t pVosContext, tANI_U8 reason)
    if(NULL == wdiStopReq)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__);
       VOS_ASSERT(0);
@@ -1978,43 +2106,41 @@ VOS_STATUS WDA_stop(v_PVOID_t pVosContext, tANI_U8 reason)
                            (WDI_StopRspCb)WDA_stopCallback, pVosContext);
 =======
                            "%s: VOS MEM Alloc Failure", __func__);
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
-
    wdiStopReq->wdiStopReason = reason;
    wdiStopReq->wdiReqStatusCB = NULL;
-   
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
+   if(NULL != pWDA->wdaWdiApiMsgParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
+                           "%s:wdaWdiApiMsgParam is not NULL", __FUNCTION__);
       VOS_ASSERT(0);
       vos_mem_free(wdiStopReq);
-      return VOS_STATUS_E_NOMEM;
+      return VOS_STATUS_E_FAILURE;
    }
-
-   if ( (eDRIVER_TYPE_MFG != pWDA->driverMode) &&
-        (VOS_TRUE == pWDA->wdaTimersCreated))
+   if ( eDRIVER_TYPE_MFG != pWDA->driverMode )
    {
       wdaDestroyTimers(pWDA);
-      pWDA->wdaTimersCreated = VOS_FALSE;
    }
-
-   pWdaParams->wdaWdiApiMsgParam = (v_PVOID_t *)wdiStopReq;
-   pWdaParams->wdaMsgParam = NULL;
-   pWdaParams->pWdaContext = pWDA;
-
+   pWDA->wdaWdiApiMsgParam = (v_PVOID_t *)wdiStopReq;
    /* call WDI stop */
    wdiStatus = WDI_Stop(wdiStopReq,
+<<<<<<< HEAD
                            (WDI_StopRspCb)WDA_stopCallback, pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           (WDI_StopRspCb)WDA_stopCallback, pVosContext);
+>>>>>>> 657b0e9... prima update
    if (IS_WDI_STATUS_FAILURE(wdiStatus) )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                                   "error in WDA Stop" );
+<<<<<<< HEAD
 <<<<<<< HEAD
       vos_mem_free(pWDA->wdaWdiApiMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
@@ -2041,6 +2167,12 @@ VOS_STATUS WDA_stop(v_PVOID_t pVosContext, tANI_U8 reason)
       }
    }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      vos_mem_free(pWDA->wdaWdiApiMsgParam);
+      pWDA->wdaWdiApiMsgParam = NULL;
+      status = VOS_STATUS_E_FAILURE;
+   }
+>>>>>>> 657b0e9... prima update
    return status;
 }
 /*
@@ -2057,10 +2189,14 @@ VOS_STATUS WDA_close(v_PVOID_t pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invoked with invalid wdaContext", __FUNCTION__ );
 =======
                  "%s: Invoked with invalid wdaContext", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid wdaContext", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    if((WDA_INIT_STATE != wdaContext->wdaState) && 
@@ -2162,6 +2298,7 @@ VOS_STATUS WDA_GetWcnssWlanCompiledVersion(v_PVOID_t pvosGCtx,
 {
    tWDA_CbContext *pWDA;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
              "%s: Entered", __FUNCTION__);
    if ((NULL == pvosGCtx) || (NULL == pVersion))
@@ -2176,6 +2313,14 @@ VOS_STATUS WDA_GetWcnssWlanCompiledVersion(v_PVOID_t pvosGCtx,
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "%s: Invoked with invalid parameter", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+             "%s: Entered", __FUNCTION__);
+   if ((NULL == pvosGCtx) || (NULL == pVersion))
+   {
+      VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                "%s: Invoked with invalid parameter", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2184,10 +2329,14 @@ VOS_STATUS WDA_GetWcnssWlanCompiledVersion(v_PVOID_t pvosGCtx,
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid WDA context", __FUNCTION__);
 =======
                 "%s: Invalid WDA context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid WDA context", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2204,6 +2353,7 @@ VOS_STATUS WDA_GetWcnssWlanReportedVersion(v_PVOID_t pvosGCtx,
 {
    tWDA_CbContext *pWDA;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
              "%s: Entered", __FUNCTION__);
    if ((NULL == pvosGCtx) || (NULL == pVersion))
@@ -2218,6 +2368,14 @@ VOS_STATUS WDA_GetWcnssWlanReportedVersion(v_PVOID_t pvosGCtx,
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "%s: Invoked with invalid parameter", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+             "%s: Entered", __FUNCTION__);
+   if ((NULL == pvosGCtx) || (NULL == pVersion))
+   {
+      VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                "%s: Invoked with invalid parameter", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2226,10 +2384,14 @@ VOS_STATUS WDA_GetWcnssWlanReportedVersion(v_PVOID_t pvosGCtx,
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid WDA context", __FUNCTION__);
 =======
                 "%s: Invalid WDA context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid WDA context", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2247,6 +2409,7 @@ VOS_STATUS WDA_GetWcnssSoftwareVersion(v_PVOID_t pvosGCtx,
    tWDA_CbContext *pWDA;
    VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
    if ((NULL == pvosGCtx) || (NULL == pVersion))
    {
@@ -2259,6 +2422,13 @@ VOS_STATUS WDA_GetWcnssSoftwareVersion(v_PVOID_t pvosGCtx,
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "%s: Invoked with invalid parameter", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: Entered", __FUNCTION__);
+   if ((NULL == pvosGCtx) || (NULL == pVersion))
+   {
+      VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                "%s: Invoked with invalid parameter", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2267,10 +2437,14 @@ VOS_STATUS WDA_GetWcnssSoftwareVersion(v_PVOID_t pvosGCtx,
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid WDA context", __FUNCTION__);
 =======
                 "%s: Invalid WDA context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid WDA context", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2288,6 +2462,7 @@ VOS_STATUS WDA_GetWcnssHardwareVersion(v_PVOID_t pvosGCtx,
    tWDA_CbContext *pWDA;
    VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
    if ((NULL == pvosGCtx) || (NULL == pVersion))
    {
@@ -2300,6 +2475,13 @@ VOS_STATUS WDA_GetWcnssHardwareVersion(v_PVOID_t pvosGCtx,
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "%s: Invoked with invalid parameter", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: Entered", __FUNCTION__);
+   if ((NULL == pvosGCtx) || (NULL == pVersion))
+   {
+      VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                "%s: Invoked with invalid parameter", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2308,10 +2490,14 @@ VOS_STATUS WDA_GetWcnssHardwareVersion(v_PVOID_t pvosGCtx,
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid WDA context", __FUNCTION__);
 =======
                 "%s: Invalid WDA context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid WDA context", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2331,6 +2517,7 @@ VOS_STATUS WDA_WniCfgDnld(tWDA_CbContext *pWDA)
    v_VOID_t *pCfgBinary = NULL;
    v_SIZE_t cbCfgBinarySize = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
    
    v_BOOL_t bStatus = VOS_FALSE;
    if (NULL == pMac )
@@ -2338,13 +2525,19 @@ VOS_STATUS WDA_WniCfgDnld(tWDA_CbContext *pWDA)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: Invoked with invalid MAC context ", __FUNCTION__ );
 =======
+=======
+   
+>>>>>>> 657b0e9... prima update
    v_BOOL_t bStatus = VOS_FALSE;
-
    if (NULL == pMac )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: Invoked with invalid MAC context ", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid MAC context ", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2398,11 +2591,15 @@ VOS_STATUS WDA_WniCfgDnld(tWDA_CbContext *pWDA)
     */
    processCfgDownloadReq(pMac,cbCfgBinarySize,pCfgBinary);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    if( pFileImage != NULL )
    {
       vos_mem_free( pFileImage );
    }
    return vosStatus;
+<<<<<<< HEAD
    
 fail:
    if(pCfgBinary != NULL)
@@ -2416,6 +2613,13 @@ fail:
 fail:
    vos_mem_free( pFileImage );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   
+fail:
+   if(pCfgBinary != NULL)
+      vos_mem_free( pFileImage );
+   
+>>>>>>> 657b0e9... prima update
    return vosStatus;
 }
 /* -----------------------------------------------------------------
@@ -2433,6 +2637,7 @@ VOS_STATUS WDA_SuspendDataTxCallback( v_PVOID_t      pvosGCtx,
    tWDA_CbContext *pWDA = (tWDA_CbContext *)VOS_GET_WDA_CTXT(pvosGCtx);
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Entered " ,__FUNCTION__);
    if (NULL == pWDA )
    {
@@ -2445,6 +2650,13 @@ VOS_STATUS WDA_SuspendDataTxCallback( v_PVOID_t      pvosGCtx,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: Invoked with invalid WDA context ", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Entered " ,__FUNCTION__);
+   if (NULL == pWDA )
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                 "%s: Invoked with invalid WDA context ", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -2484,6 +2696,7 @@ VOS_STATUS WDA_SuspendDataTx(tWDA_CbContext *pWDA)
    VOS_STATUS status = VOS_STATUS_E_FAILURE;
    tANI_U8 eventIdx = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
    tANI_U8 ucSTAId = 0;
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
@@ -2493,6 +2706,12 @@ VOS_STATUS WDA_SuspendDataTx(tWDA_CbContext *pWDA)
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                       "%s: Entered " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tANI_U8 ucSTAId = 0;
+
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                      "%s: Entered " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    pWDA->txStatus = WDA_TL_TX_SUSPEND_FAILURE;
    if (pWDA->txSuspendTimedOut) 
    {
@@ -2510,11 +2729,16 @@ VOS_STATUS WDA_SuspendDataTx(tWDA_CbContext *pWDA)
    }
    /*Indicate TL to suspend transmission for all Sta Id */
 <<<<<<< HEAD
+<<<<<<< HEAD
    ucSTAId = WLAN_ALL_STA;
    status = WLANTL_SuspendDataTx(pWDA->pVosContext, &ucSTAId,
 =======
    status = WLANTL_SuspendDataTx(pWDA->pVosContext, NULL,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   ucSTAId = WLAN_ALL_STA;
+   status = WLANTL_SuspendDataTx(pWDA->pVosContext, &ucSTAId,
+>>>>>>> 657b0e9... prima update
                                                 WDA_SuspendDataTxCallback);
    if(status != VOS_STATUS_SUCCESS)
    {
@@ -2530,10 +2754,14 @@ VOS_STATUS WDA_SuspendDataTx(tWDA_CbContext *pWDA)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR, 
                  "%s: Status %d when waiting for Suspend Data TX Event",
 <<<<<<< HEAD
+<<<<<<< HEAD
                  __FUNCTION__, status);
 =======
                  __func__, status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 __FUNCTION__, status);
+>>>>>>> 657b0e9... prima update
       /* Set this flag to true when TL suspend times out, so that when TL 
        * suspend eventually happens and calls the callback, TL can be resumed 
        * right away by looking at this flag when true.*/
@@ -2557,6 +2785,7 @@ VOS_STATUS WDA_ResumeDataTx(tWDA_CbContext *pWDA)
 {
    VOS_STATUS status = VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
    tANI_U8 ucSTAId = 0;
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
@@ -2570,6 +2799,14 @@ VOS_STATUS WDA_ResumeDataTx(tWDA_CbContext *pWDA)
 
    status = WLANTL_ResumeDataTx(pWDA->pVosContext, NULL);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tANI_U8 ucSTAId = 0;
+
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                      "%s: Entered " ,__FUNCTION__);
+   ucSTAId = WLAN_ALL_STA;
+   status = WLANTL_ResumeDataTx(pWDA->pVosContext, &ucSTAId);
+>>>>>>> 657b0e9... prima update
    return status;
 }
 /*
@@ -2584,6 +2821,7 @@ void WDA_InitScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    VOS_STATUS      status;      
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -2596,6 +2834,13 @@ void WDA_InitScanReqCallback(WDI_Status wdiStatus, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -2604,6 +2849,7 @@ void WDA_InitScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    if(NULL == pWDA_ScanParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "%s: pWDA_ScanParam received NULL", __FUNCTION__);
       VOS_ASSERT(0);
@@ -2615,6 +2861,12 @@ void WDA_InitScanReqCallback(WDI_Status wdiStatus, void* pUserData)
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: pWDA_ScanParam received NULL", __FUNCTION__);
+      VOS_ASSERT(0);
+	  vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    if(WDI_STATUS_SUCCESS != wdiStatus)
@@ -2624,10 +2876,14 @@ void WDA_InitScanReqCallback(WDI_Status wdiStatus, void* pUserData)
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                   "%s error in Resume Tx ", __FUNCTION__ );
 =======
                                   "%s error in Resume Tx ", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                  "%s error in Resume Tx ", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       }
    }
    /* free WDI command buffer */
@@ -2637,12 +2893,16 @@ void WDA_InitScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    
    /* assign status to scan params */
 <<<<<<< HEAD
+<<<<<<< HEAD
    pWDA_ScanParam->status = CONVERT_WDI2SIR_STATUS(wdiStatus) ;
 =======
    /* without converting the Status to Failure or Success Just
       pass the same status to lim */
    pWDA_ScanParam->status = wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pWDA_ScanParam->status = CONVERT_WDI2SIR_STATUS(wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    /* send SCAN RSP message back to PE */
    WDA_SendMsg(pWDA, WDA_INIT_SCAN_RSP, (void *)pWDA_ScanParam, 0) ;
    return ;
@@ -2664,6 +2924,7 @@ VOS_STATUS  WDA_ProcessInitScanReq(tWDA_CbContext *pWDA,
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiInitScanParam) 
    {
@@ -2676,6 +2937,13 @@ VOS_STATUS  WDA_ProcessInitScanReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s:VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiInitScanParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s:VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -2684,10 +2952,14 @@ VOS_STATUS  WDA_ProcessInitScanReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiInitScanParam);
       return VOS_STATUS_E_NOMEM;
@@ -2701,6 +2973,7 @@ VOS_STATUS  WDA_ProcessInitScanReq(tWDA_CbContext *pWDA,
    wdiInitScanParam->wdiReqInfo.ucFrameType = initScanParams->frameType ;
    wdiInitScanParam->wdiReqInfo.ucFrameLength = initScanParams->frameLength ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
    wdiInitScanParam->wdiReqInfo.bUseNOA = initScanParams->useNoA;
    wdiInitScanParam->wdiReqInfo.scanDuration = initScanParams->scanDuration;
@@ -2712,6 +2985,15 @@ VOS_STATUS  WDA_ProcessInitScanReq(tWDA_CbContext *pWDA,
    wdiInitScanParam->wdiReqInfo.bUseNOA = initScanParams->useNoA;
    wdiInitScanParam->wdiReqInfo.scanDuration = initScanParams->scanDuration;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+   wdiInitScanParam->wdiReqInfo.bUseNOA = initScanParams->useNoA;
+   wdiInitScanParam->wdiReqInfo.scanDuration = initScanParams->scanDuration;
+#else
+   wdiInitScanParam->wdiReqInfo.bUseNOA = 0;
+   wdiInitScanParam->wdiReqInfo.scanDuration = 0;
+#endif
+>>>>>>> 657b0e9... prima update
    wdiInitScanParam->wdiReqInfo.wdiScanEntry.activeBSScnt = 
                                      initScanParams->scanEntry.activeBSScnt ;
    for (i=0; i < initScanParams->scanEntry.activeBSScnt; i++)
@@ -2775,6 +3057,7 @@ void WDA_StartScanReqCallback(WDI_StartScanRspParamsType *pScanRsp,
    tStartScanParams *pWDA_ScanParam;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -2787,6 +3070,13 @@ void WDA_StartScanReqCallback(WDI_StartScanRspParamsType *pScanRsp,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -2796,6 +3086,7 @@ void WDA_StartScanReqCallback(WDI_StartScanRspParamsType *pScanRsp,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "%s: pWDA_ScanParam received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
 	  vos_mem_free(pWdaParams);
@@ -2804,11 +3095,17 @@ void WDA_StartScanReqCallback(WDI_StartScanRspParamsType *pScanRsp,
       VOS_ASSERT(0) ;
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "%s: pWDA_ScanParam received NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    if(NULL == pWdaParams->wdaWdiApiMsgParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "%s: wdaWdiApiMsgParam is NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
@@ -2818,6 +3115,11 @@ void WDA_StartScanReqCallback(WDI_StartScanRspParamsType *pScanRsp,
       VOS_ASSERT(0) ;
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: wdaWdiApiMsgParam is NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
@@ -2826,10 +3128,14 @@ void WDA_StartScanReqCallback(WDI_StartScanRspParamsType *pScanRsp,
    
    /* assign status to scan params */
 <<<<<<< HEAD
+<<<<<<< HEAD
    pWDA_ScanParam->status = CONVERT_WDI2SIR_STATUS(pScanRsp->wdiStatus) ;
 =======
    pWDA_ScanParam->status = pScanRsp->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pWDA_ScanParam->status = CONVERT_WDI2SIR_STATUS(pScanRsp->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    /* send SCAN RSP message back to PE */
    WDA_SendMsg(pWDA, WDA_START_SCAN_RSP, (void *)pWDA_ScanParam, 0) ;
    return ;
@@ -2849,6 +3155,7 @@ VOS_STATUS  WDA_ProcessStartScanReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiStartScanParams) 
    {
@@ -2861,6 +3168,13 @@ VOS_STATUS  WDA_ProcessStartScanReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiStartScanParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -2869,10 +3183,14 @@ VOS_STATUS  WDA_ProcessStartScanReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiStartScanParams);
       return VOS_STATUS_E_NOMEM;
@@ -2913,6 +3231,7 @@ void WDA_EndScanReqCallback(WDI_Status status, void* pUserData)
    tEndScanParams *endScanParam;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                              "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -2925,6 +3244,13 @@ void WDA_EndScanReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                    "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                             "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                   "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -2933,6 +3259,7 @@ void WDA_EndScanReqCallback(WDI_Status status, void* pUserData)
    if(NULL == endScanParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                    "%s: endScanParam received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
@@ -2944,6 +3271,12 @@ void WDA_EndScanReqCallback(WDI_Status status, void* pUserData)
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "%s: endScanParam received NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+	  vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    } 
    
@@ -2952,10 +3285,14 @@ void WDA_EndScanReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams) ;
    /* assign status to scan params */
 <<<<<<< HEAD
+<<<<<<< HEAD
    endScanParam->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    endScanParam->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   endScanParam->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    /* send response back to PE */
    WDA_SendMsg(pWDA, WDA_END_SCAN_RSP, (void *)endScanParam, 0) ;
    return ;
@@ -2975,6 +3312,7 @@ VOS_STATUS  WDA_ProcessEndScanReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                              "------> %s " ,__FUNCTION__);
    if(NULL == wdiEndScanParams) 
    {
@@ -2987,6 +3325,13 @@ VOS_STATUS  WDA_ProcessEndScanReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                             "------> %s " ,__FUNCTION__);
+   if(NULL == wdiEndScanParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -2995,10 +3340,14 @@ VOS_STATUS  WDA_ProcessEndScanReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiEndScanParams);
       return VOS_STATUS_E_NOMEM;
@@ -3038,6 +3387,7 @@ void WDA_FinishScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    VOS_STATUS      status;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -3050,6 +3400,13 @@ void WDA_FinishScanReqCallback(WDI_Status wdiStatus, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                   "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                  "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -3059,6 +3416,7 @@ void WDA_FinishScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    if(NULL == finishScanParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "%s: finishScanParam is NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
@@ -3070,6 +3428,12 @@ void WDA_FinishScanReqCallback(WDI_Status wdiStatus, void* pUserData)
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: finishScanParam is NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+	  vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
@@ -3084,6 +3448,7 @@ void WDA_FinishScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                   "%s error in Resume Tx ", __FUNCTION__ );
    }
    finishScanParam->status = CONVERT_WDI2SIR_STATUS(wdiStatus) ;
@@ -3092,6 +3457,11 @@ void WDA_FinishScanReqCallback(WDI_Status wdiStatus, void* pUserData)
    }
    finishScanParam->status = wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                  "%s error in Resume Tx ", __FUNCTION__ );
+   }
+   finishScanParam->status = CONVERT_WDI2SIR_STATUS(wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_FINISH_SCAN_RSP, (void *)finishScanParam, 0) ;
    return ;
 }
@@ -3110,6 +3480,7 @@ VOS_STATUS  WDA_ProcessFinishScanReq(tWDA_CbContext *pWDA,
    tANI_U8 i = 0;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                              "------> %s " ,__FUNCTION__);
    if(NULL == wdiFinishScanParams) 
    {
@@ -3122,6 +3493,13 @@ VOS_STATUS  WDA_ProcessFinishScanReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                             "------> %s " ,__FUNCTION__);
+   if(NULL == wdiFinishScanParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -3130,10 +3508,14 @@ VOS_STATUS  WDA_ProcessFinishScanReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiFinishScanParams);
       return VOS_STATUS_E_NOMEM;
@@ -3205,6 +3587,7 @@ void WDA_JoinReqCallback(WDI_Status status, void* pUserData)
    tSwitchChannelParams *joinReqParam;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -3217,6 +3600,13 @@ void WDA_JoinReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -3229,10 +3619,14 @@ void WDA_JoinReqCallback(WDI_Status status, void* pUserData)
    /* reset macSTASelf */
    vos_mem_set(pWDA->macSTASelf, sizeof(pWDA->macSTASelf),0 );
 <<<<<<< HEAD
+<<<<<<< HEAD
    joinReqParam->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    joinReqParam->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   joinReqParam->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_SWITCH_CHANNEL_RSP, (void *)joinReqParam , 0) ;
    return ;
 }
@@ -3250,6 +3644,7 @@ VOS_STATUS WDA_ProcessJoinReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiJoinReqParam) 
    {
@@ -3258,19 +3653,26 @@ VOS_STATUS WDA_ProcessJoinReq(tWDA_CbContext *pWDA,
       VOS_ASSERT(0);
 =======
                                           "------> %s " ,__func__);
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    if(NULL == wdiJoinReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
+<<<<<<< HEAD
       vos_mem_free(joinReqParam);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
@@ -3279,11 +3681,14 @@ VOS_STATUS WDA_ProcessJoinReq(tWDA_CbContext *pWDA,
    }
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiJoinReqParam);
-      vos_mem_free(joinReqParam);
       return VOS_STATUS_E_NOMEM;
    }
+<<<<<<< HEAD
 
    /*if the BSSID or self STA in pWDA is NULL, join request can't be processed*/
    if(WDA_IS_NULL_MAC_ADDRESS(pWDA->macBSSID) || 
@@ -3303,6 +3708,8 @@ VOS_STATUS WDA_ProcessJoinReq(tWDA_CbContext *pWDA,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* copy the BSSID for pWDA */
    vos_mem_copy(wdiJoinReqParam->wdiReqInfo.macBSSID, pWDA->macBSSID, 
                                              sizeof(tSirMacAddr)) ;
@@ -3352,6 +3759,7 @@ void WDA_SwitchChannelReqCallback(
    tSwitchChannelParams *pSwitchChanParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -3364,6 +3772,13 @@ void WDA_SwitchChannelReqCallback(
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                    "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                   "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -3377,10 +3792,14 @@ void WDA_SwitchChannelReqCallback(
    vos_mem_free(pWdaParams) ;
    pSwitchChanParams->status = 
 <<<<<<< HEAD
+<<<<<<< HEAD
                           CONVERT_WDI2SIR_STATUS(wdiSwitchChanRsp->wdiStatus) ;
 =======
                           wdiSwitchChanRsp->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                          CONVERT_WDI2SIR_STATUS(wdiSwitchChanRsp->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_SWITCH_CHANNEL_RSP, (void *)pSwitchChanParams , 0) ;
    return ;
 }
@@ -3398,6 +3817,7 @@ VOS_STATUS WDA_ProcessChannelSwitchReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiSwitchChanParam) 
    {
@@ -3410,6 +3830,13 @@ VOS_STATUS WDA_ProcessChannelSwitchReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiSwitchChanParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -3418,10 +3845,14 @@ VOS_STATUS WDA_ProcessChannelSwitchReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSwitchChanParam);
       return VOS_STATUS_E_NOMEM;
@@ -3476,6 +3907,7 @@ void WDA_ConfigBssReqCallback(WDI_ConfigBSSRspParamsType *wdiConfigBssRsp
    tAddStaParams *staConfigBssParam;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -3488,6 +3920,13 @@ void WDA_ConfigBssReqCallback(WDI_ConfigBSSRspParamsType *wdiConfigBssRsp
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                   "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                  "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -3496,10 +3935,14 @@ void WDA_ConfigBssReqCallback(WDI_ConfigBSSRspParamsType *wdiConfigBssRsp
    staConfigBssParam = &configBssReqParam->staContext ;
    configBssReqParam->status = 
 <<<<<<< HEAD
+<<<<<<< HEAD
                      CONVERT_WDI2SIR_STATUS(wdiConfigBssRsp->wdiStatus);
 =======
                      wdiConfigBssRsp->wdiStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     CONVERT_WDI2SIR_STATUS(wdiConfigBssRsp->wdiStatus);
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS == wdiConfigBssRsp->wdiStatus)
    {
       vos_mem_copy(configBssReqParam->bssId, wdiConfigBssRsp->macBSSID, 
@@ -3578,20 +4021,28 @@ void WDA_ConfigBssReqCallback(WDI_ConfigBSSRspParamsType *wdiConfigBssRsp
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: fail to set STA idx associated with BSS index", __FUNCTION__);
 =======
                     "%s: fail to set STA idx associated with BSS index", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: fail to set STA idx associated with BSS index", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ;
       }
       if(WDI_DS_AddSTAMemPool(pWDA->pWdiContext, wdiConfigBssRsp->ucSTAIdx))
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: add BSS into mempool fail", __FUNCTION__);
 =======
                     "%s: add BSS into mempool fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: add BSS into mempool fail", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ;
       }
 #ifdef WLAN_FEATURE_VOWIFI
@@ -3627,6 +4078,7 @@ VOS_STATUS WDA_ProcessConfigBssReq(tWDA_CbContext *pWDA,
 {
    WDI_Status status = WDI_STATUS_SUCCESS ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    WDI_ConfigBSSReqParamsType *wdiConfigBssReqParam =
                              (WDI_ConfigBSSReqParamsType *)vos_mem_malloc(
                                    sizeof(WDI_ConfigBSSReqParamsType)) ;
@@ -3639,24 +4091,23 @@ VOS_STATUS WDA_ProcessConfigBssReq(tWDA_CbContext *pWDA,
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
    WDI_ConfigBSSReqParamsType *wdiConfigBssReqParam;
+=======
+   WDI_ConfigBSSReqParamsType *wdiConfigBssReqParam =
+                             (WDI_ConfigBSSReqParamsType *)vos_mem_malloc(
+                                   sizeof(WDI_ConfigBSSReqParamsType)) ;
+>>>>>>> 657b0e9... prima update
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
-   if (NULL == configBssReqParam)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
-                           "%s: configBssReqParam is NULL", __func__);
-      return VOS_STATUS_E_INVAL;
-   }
-
-   wdiConfigBssReqParam = (WDI_ConfigBSSReqParamsType *)vos_mem_malloc(
-                          sizeof(WDI_ConfigBSSReqParamsType)) ;
-
+                                          "------> %s " ,__FUNCTION__);
    if(NULL == wdiConfigBssReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -3665,19 +4116,26 @@ VOS_STATUS WDA_ProcessConfigBssReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiConfigBssReqParam);
       return VOS_STATUS_E_NOMEM;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                            "%s: maxTxPower %d", __func__, configBssReqParam->maxTxPower);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    vos_mem_set(wdiConfigBssReqParam, sizeof(WDI_ConfigBSSReqParamsType), 0);
    WDA_UpdateBSSParams(pWDA, &wdiConfigBssReqParam->wdiReqInfo, 
                        configBssReqParam) ;
@@ -3718,6 +4176,7 @@ void WDA_PostAssocReqCallback(WDI_PostAssocRspParamsType *wdiPostAssocRsp,
       &postAssocReqParam->addStaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    postAssocReqParam->status = 
                    CONVERT_WDI2SIR_STATUS(wdiPostAssocRsp->wdiStatus) ;
@@ -3726,6 +4185,11 @@ void WDA_PostAssocReqCallback(WDI_PostAssocRspParamsType *wdiPostAssocRsp,
    postAssocReqParam->status = 
                    wdiPostAssocRsp->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   postAssocReqParam->status = 
+                   CONVERT_WDI2SIR_STATUS(wdiPostAssocRsp->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS == wdiPostAssocRsp->wdiStatus)
    {
       staPostAssocParam->staIdx = wdiPostAssocRsp->bssParams.ucSTAIdx ;
@@ -3756,19 +4220,27 @@ VOS_STATUS WDA_ProcessPostAssocReq(tWDA_CbContext *pWDA,
                                    sizeof(WDI_PostAssocReqParamsType)) ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    if(NULL == wdiPostAssocReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -3777,10 +4249,14 @@ VOS_STATUS WDA_ProcessPostAssocReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "%s: wdaMsgParam or wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
 =======
              "%s: wdaMsgParam or wdaWdiApiMsgParam is not NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "%s: wdaMsgParam or wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -3837,6 +4313,7 @@ void WDA_AddStaReqCallback(WDI_ConfigSTARspParamsType *wdiConfigStaRsp,
    tAddStaParams *addStaReqParam;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -3847,6 +4324,12 @@ void WDA_AddStaReqCallback(WDI_ConfigSTARspParamsType *wdiConfigStaRsp,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,"%s: pWdaParams is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,"%s: pWdaParams is NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -3854,10 +4337,14 @@ void WDA_AddStaReqCallback(WDI_ConfigSTARspParamsType *wdiConfigStaRsp,
    addStaReqParam = (tAddStaParams *)pWdaParams->wdaMsgParam;
    addStaReqParam->status = 
 <<<<<<< HEAD
+<<<<<<< HEAD
                    CONVERT_WDI2SIR_STATUS(wdiConfigStaRsp->wdiStatus) ;
 =======
                    wdiConfigStaRsp->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   CONVERT_WDI2SIR_STATUS(wdiConfigStaRsp->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS == wdiConfigStaRsp->wdiStatus)
    {
       addStaReqParam->staIdx = wdiConfigStaRsp->ucSTAIdx;
@@ -3869,6 +4356,7 @@ void WDA_AddStaReqCallback(WDI_ConfigSTARspParamsType *wdiConfigStaRsp,
       addStaReqParam->ucBcastSig = wdiConfigStaRsp->ucBcastSig;
       /* update staIndex as valid index for BA if STA is HT capable*/
 <<<<<<< HEAD
+<<<<<<< HEAD
       if(addStaReqParam->staType == STA_ENTRY_PEER && addStaReqParam->htCapable)
 =======
 #ifdef FEATURE_WLAN_TDLS 
@@ -3878,6 +4366,9 @@ void WDA_AddStaReqCallback(WDI_ConfigSTARspParamsType *wdiConfigStaRsp,
       if(addStaReqParam->staType == STA_ENTRY_PEER && addStaReqParam->htCapable)
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      if(addStaReqParam->staType == STA_ENTRY_PEER && addStaReqParam->htCapable)
+>>>>>>> 657b0e9... prima update
       {
          pWDA->wdaStaInfo[addStaReqParam->staIdx].bssIdx = 
                                                     wdiConfigStaRsp->ucBssIdx;
@@ -3888,10 +4379,14 @@ void WDA_AddStaReqCallback(WDI_ConfigSTARspParamsType *wdiConfigStaRsp,
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: add STA into mempool fail", __FUNCTION__);
 =======
                     "%s: add STA into mempool fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: add STA into mempool fail", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ;
          return ;
       }
@@ -3915,6 +4410,7 @@ VOS_STATUS WDA_ProcessAddStaReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiConfigStaReqParam) 
    {
@@ -3927,6 +4423,13 @@ VOS_STATUS WDA_ProcessAddStaReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiConfigStaReqParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -3935,10 +4438,14 @@ VOS_STATUS WDA_ProcessAddStaReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiConfigStaReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -3978,6 +4485,7 @@ void WDA_DelBSSReqCallback(WDI_DelBSSRspParamsType *wdiDelBssRsp,
    tANI_U8  staIdx,tid;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -3990,16 +4498,27 @@ void WDA_DelBSSReqCallback(WDI_DelBSSRspParamsType *wdiDelBssRsp,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
             "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+            "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
    pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
    delBssReqParam = (tDeleteBssParams *)pWdaParams->wdaMsgParam;
 <<<<<<< HEAD
+<<<<<<< HEAD
    delBssReqParam->status = CONVERT_WDI2SIR_STATUS(wdiDelBssRsp->wdiStatus) ;
 =======
    delBssReqParam->status = wdiDelBssRsp->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   delBssReqParam->status = CONVERT_WDI2SIR_STATUS(wdiDelBssRsp->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS == wdiDelBssRsp->wdiStatus)
    {
       vos_mem_copy(delBssReqParam->bssid, wdiDelBssRsp->macBSSID, 
@@ -4009,30 +4528,42 @@ void WDA_DelBSSReqCallback(WDI_DelBSSRspParamsType *wdiDelBssRsp,
    {
      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Get STA index from BSS index Fail", __FUNCTION__);
 =======
                  "%s: Get STA index from BSS index Fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Get STA index from BSS index Fail", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      VOS_ASSERT(0) ;
    }
    if(WDI_DS_DelSTAMemPool(pWDA->pWdiContext, staIdx))
    {
      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: DEL STA from MemPool Fail", __FUNCTION__);
 =======
                  "%s: DEL STA from MemPool Fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: DEL STA from MemPool Fail", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      VOS_ASSERT(0) ;
    }
    if(WDI_DS_ClearStaIdxPerBssIdx(pWDA->pWdiContext, delBssReqParam->bssIdx, staIdx))
    {
      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Clear STA index form table Fail", __FUNCTION__);
 =======
                  "%s: Clear STA index form table Fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Clear STA index form table Fail", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      VOS_ASSERT(0) ;
    }
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
@@ -4072,6 +4603,7 @@ VOS_STATUS WDA_ProcessDelBssReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiDelBssReqParam) 
    {
@@ -4084,6 +4616,13 @@ VOS_STATUS WDA_ProcessDelBssReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiDelBssReqParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -4092,10 +4631,14 @@ VOS_STATUS WDA_ProcessDelBssReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiDelBssReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -4133,6 +4676,7 @@ void WDA_DelSTAReqCallback(WDI_DelSTARspParamsType *wdiDelStaRsp,
    tDeleteStaParams *delStaReqParam;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -4145,26 +4689,41 @@ void WDA_DelSTAReqCallback(WDI_DelSTARspParamsType *wdiDelStaRsp,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+               "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
    pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
    delStaReqParam = (tDeleteStaParams *)pWdaParams->wdaMsgParam;
 <<<<<<< HEAD
+<<<<<<< HEAD
    delStaReqParam->status = CONVERT_WDI2SIR_STATUS(wdiDelStaRsp->wdiStatus) ;
 =======
    delStaReqParam->status = wdiDelStaRsp->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   delStaReqParam->status = CONVERT_WDI2SIR_STATUS(wdiDelStaRsp->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS == wdiDelStaRsp->wdiStatus)
    {
       if(WDI_DS_DelSTAMemPool(pWDA->pWdiContext, wdiDelStaRsp->ucSTAIdx))
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: DEL STA from MemPool Fail", __FUNCTION__);
 =======
                     "%s: DEL STA from MemPool Fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: DEL STA from MemPool Fail", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ;
       }
       delStaReqParam->staIdx = wdiDelStaRsp->ucSTAIdx ;
@@ -4193,6 +4752,7 @@ VOS_STATUS WDA_ProcessDelStaReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiDelStaReqParam) 
    {
@@ -4205,6 +4765,13 @@ VOS_STATUS WDA_ProcessDelStaReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiDelStaReqParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -4213,10 +4780,14 @@ VOS_STATUS WDA_ProcessDelStaReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiDelStaReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -4249,6 +4820,7 @@ void WDA_ProcessAddStaSelfRsp(WDI_AddSTASelfRspParamsType* pwdiAddSTASelfRsp, vo
    tAddStaSelfParams *pAddStaSelfRsp = NULL; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -4261,6 +4833,13 @@ void WDA_ProcessAddStaSelfRsp(WDI_AddSTASelfRspParamsType* pwdiAddSTASelfRsp, vo
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -4289,19 +4868,27 @@ VOS_STATUS WDA_ProcessAddStaSelfReq( tWDA_CbContext *pWDA, tpAddStaSelfParams pA
    tWDA_ReqParams *pWdaParams; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    if( NULL == wdiAddStaSelfReq )
    {
       VOS_ASSERT( 0 );
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "%s: Unable to allocate memory " ,__FUNCTION__);
 =======
                                           "%s: Unable to allocate memory " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "%s: Unable to allocate memory " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return( VOS_STATUS_E_NOMEM );
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
@@ -4310,19 +4897,26 @@ VOS_STATUS WDA_ProcessAddStaSelfReq( tWDA_CbContext *pWDA, tpAddStaSelfParams pA
       VOS_ASSERT( 0 );
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "%s: Unable to allocate memory " ,__FUNCTION__);
 =======
                                           "%s: Unable to allocate memory " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "%s: Unable to allocate memory " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       vos_mem_free(wdiAddStaSelfReq) ;
       return( VOS_STATUS_E_NOMEM );
    }
    wdiAddStaSelfReq->wdiReqStatusCB = NULL;
    vos_mem_copy( wdiAddStaSelfReq->wdiAddSTASelfInfo.selfMacAddr, pAddStaSelfReq->selfMacAddr, 6);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wdiAddStaSelfReq->wdiAddSTASelfInfo.currDeviceMode = pAddStaSelfReq->currDeviceMode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* Store Init Req pointer, as this will be used for response */
    /* store Params pass it to WDI */
    pWdaParams->pWdaContext = pWDA;
@@ -4355,6 +4949,7 @@ void WDA_DelSTASelfRespCallback(WDI_DelSTASelfRspParamsType *
    tDelStaSelfParams     *delStaSelfParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if (NULL == pWdaParams)
    {
@@ -4367,6 +4962,13 @@ void WDA_DelSTASelfRespCallback(WDI_DelSTASelfRspParamsType *
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: Invalid pWdaParams pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if (NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: Invalid pWdaParams pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return;
    }
@@ -4374,10 +4976,14 @@ void WDA_DelSTASelfRespCallback(WDI_DelSTASelfRspParamsType *
    delStaSelfParams = (tDelStaSelfParams *)pWdaParams->wdaMsgParam;
    delStaSelfParams->status = 
 <<<<<<< HEAD
+<<<<<<< HEAD
                CONVERT_WDI2SIR_STATUS(wdiDelStaSelfRspParams->wdiStatus) ;
 =======
                wdiDelStaSelfRspParams->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               CONVERT_WDI2SIR_STATUS(wdiDelStaSelfRspParams->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
@@ -4398,21 +5004,30 @@ void WDA_DelSTASelfReqCallback(WDI_Status   wdiStatus,
    
    VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "<------ %s, wdiStatus: %d pWdaParams: 0x%x",
               __FUNCTION__, wdiStatus, pWdaParams); 
 =======
              "<------ %s, wdiStatus: %d pWdaParams: %p",
               __func__, wdiStatus, pWdaParams); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "<------ %s, wdiStatus: %d pWdaParams: 0x%x",
+              __FUNCTION__, wdiStatus, pWdaParams); 
+>>>>>>> 657b0e9... prima update
 
    if (NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Invalid pWdaParams pointer", __FUNCTION__);
 =======
               "%s: Invalid pWdaParams pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Invalid pWdaParams pointer", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return;
    }
@@ -4421,10 +5036,14 @@ void WDA_DelSTASelfReqCallback(WDI_Status   wdiStatus,
    delStaSelfParams = (tDelStaSelfParams *)pWdaParams->wdaMsgParam;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    delStaSelfParams->status = CONVERT_WDI2SIR_STATUS(wdiStatus) ;
 =======
    delStaSelfParams->status = wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   delStaSelfParams->status = CONVERT_WDI2SIR_STATUS(wdiStatus) ;
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(wdiStatus))
    {
@@ -4453,19 +5072,27 @@ VOS_STATUS WDA_ProcessDelSTASelfReq(tWDA_CbContext *pWDA,
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    if( NULL == wdiDelStaSelfReq )
    {
       VOS_ASSERT( 0 );
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "%s: Unable to allocate memory " ,__FUNCTION__);
 =======
                                           "%s: Unable to allocate memory " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "%s: Unable to allocate memory " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return( VOS_STATUS_E_NOMEM );
    }
    
@@ -4475,10 +5102,14 @@ VOS_STATUS WDA_ProcessDelSTASelfReq(tWDA_CbContext *pWDA,
       VOS_ASSERT( 0 );
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                "%s: Unable to allocate memory " ,__FUNCTION__);
 =======
                                "%s: Unable to allocate memory " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               "%s: Unable to allocate memory " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       vos_mem_free(wdiDelStaSelfReq) ;
       return( VOS_STATUS_E_NOMEM );
    }
@@ -4532,10 +5163,14 @@ void WDA_SendMsg(tWDA_CbContext *pWDA, tANI_U16 msgType,
       }
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: limPostMsgApi is failed " ,__FUNCTION__);
 =======
                       "%s: limPostMsgApi is failed " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: limPostMsgApi is failed " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
    }
    return ;
@@ -4577,10 +5212,13 @@ void WDA_UpdateBSSParams(tWDA_CbContext *pWDA,
    wdiBssParams->bHiddenSSIDEn = wdaBssParams->bHiddenSSIDEn ;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wdiBssParams->ucRMFEnabled = wdaBssParams->rmfEnabled;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* copy SSID into WDI structure */
    wdiBssParams->wdiSSID.ucLength = wdaBssParams->ssId.length ;
    vos_mem_copy(wdiBssParams->wdiSSID.sSSID,
@@ -4620,9 +5258,13 @@ void WDA_UpdateBSSParams(tWDA_CbContext *pWDA,
          else
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
             for( keyIndex=0; keyIndex < SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS; 
                                                                   keyIndex++)
             {
@@ -4644,6 +5286,9 @@ void WDA_UpdateBSSParams(tWDA_CbContext *pWDA,
             wdiBssParams->wdiExtSetKeyParam.ucNumKeys = 
                SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
             wdiBssParams->wdiExtSetKeyParam.wdiKey[0].keyId =
                wdaBssParams->extSetStaKeyParam.key.keyId;
@@ -4662,8 +5307,11 @@ void WDA_UpdateBSSParams(tWDA_CbContext *pWDA,
                          SIR_MAC_MAX_KEY_LENGTH);
             wdiBssParams->wdiExtSetKeyParam.ucNumKeys = 1;
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          }
       }
       wdiBssParams->wdiExtSetKeyParam.ucSingleTidRc = wdaBssParams->extSetStaKeyParam.singleTidRc;
@@ -4696,11 +5344,15 @@ void WDA_UpdateSTAParams(tWDA_CbContext *pWDA,
    wdiStaParams->usAssocId = wdaStaParams->assocId;
    wdiStaParams->wdiSTAType = wdaStaParams->staType;
 <<<<<<< HEAD
+<<<<<<< HEAD
    
 =======
    wdiStaParams->staIdx = wdaStaParams->staIdx;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   
+>>>>>>> 657b0e9... prima update
    wdiStaParams->ucShortPreambleSupported = 
                                         wdaStaParams->shortPreambleSupported;
    vos_mem_copy(wdiStaParams->macSTA, wdaStaParams->staMac, 
@@ -4765,6 +5417,7 @@ void WDA_UpdateSTAParams(tWDA_CbContext *pWDA,
    wdiStaParams->ucDsssCckMode40Mhz = wdaStaParams->fDsssCckMode40Mhz;
    wdiStaParams->ucEncryptType = wdaStaParams->encryptType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
    wdiStaParams->ucP2pCapableSta = wdaStaParams->p2pCapableSta;
 #endif
@@ -4773,15 +5426,21 @@ void WDA_UpdateSTAParams(tWDA_CbContext *pWDA,
    wdiStaParams->ucVhtTxChannelWidthSet = wdaStaParams->vhtTxChannelWidthSet;
 #endif
 =======
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
    wdiStaParams->ucP2pCapableSta = wdaStaParams->p2pCapableSta;
+#endif
 #ifdef WLAN_FEATURE_11AC
    wdiStaParams->ucVhtCapableSta = wdaStaParams->vhtCapable;
    wdiStaParams->ucVhtTxChannelWidthSet = wdaStaParams->vhtTxChannelWidthSet;
-   wdiStaParams->ucVhtTxBFEnabled = wdaStaParams->vhtTxBFCapable;
 #endif
+<<<<<<< HEAD
    wdiStaParams->ucHtLdpcEnabled= wdaStaParams->htLdpcCapable;
    wdiStaParams->ucVhtLdpcEnabled = wdaStaParams->vhtLdpcCapable;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    return ;
 }
 /*
@@ -4895,10 +5554,13 @@ static inline v_U8_t WDA_ConvertWniCfgIdToHALCfgId(v_U32_t wniCfgId)
       case WNI_CFG_ENABLE_CLOSE_LOOP:
          return QWLAN_HAL_CFG_ENABLE_CLOSE_LOOP;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       case WNI_CFG_ENABLE_LPWR_IMG_TRANSITION:
          return QWLAN_HAL_CFG_ENABLE_LPWR_IMG_TRANSITION;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       default:
       {
          VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -4919,10 +5581,14 @@ void WDA_UpdateCfgCallback(WDI_Status   wdiStatus, void* pUserData)
                   (WDI_UpdateCfgReqParamsType *)pWDA->wdaWdiCfgApiMsgParam ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    /*
     * currently there is no response message is expected between PE and
     * WDA, Failure return from WDI is a ASSERT condition
@@ -4931,10 +5597,14 @@ void WDA_UpdateCfgCallback(WDI_Status   wdiStatus, void* pUserData)
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: CFG (%d) config failure \n", __FUNCTION__, 
 =======
                   "%s: CFG (%d) config failure \n", __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: CFG (%d) config failure \n", __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
               ((tHalCfg *)(wdiCfgParam->pConfigBuffer))->type);
    }
    
@@ -4958,6 +5628,7 @@ VOS_STATUS WDA_UpdateCfg(tWDA_CbContext *pWDA, tSirMsgQ *cfgParam)
    tANI_U8        *configDataValue;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if (NULL == pMac )
    {
@@ -4970,6 +5641,13 @@ VOS_STATUS WDA_UpdateCfg(tWDA_CbContext *pWDA, tSirMsgQ *cfgParam)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: Invoked with invalid MAC context ", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if (NULL == pMac )
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                 "%s: Invoked with invalid MAC context ", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    if(WDA_START_STATE != pWDA->wdaState)
@@ -4981,10 +5659,14 @@ VOS_STATUS WDA_UpdateCfg(tWDA_CbContext *pWDA, tSirMsgQ *cfgParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:wdaWdiCfgApiMsgParam is not NULL", __FUNCTION__); 
 =======
                            "%s:wdaWdiCfgApiMsgParam is not NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:wdaWdiCfgApiMsgParam is not NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -4995,10 +5677,14 @@ VOS_STATUS WDA_UpdateCfg(tWDA_CbContext *pWDA, tSirMsgQ *cfgParam)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -5008,10 +5694,14 @@ VOS_STATUS WDA_UpdateCfg(tWDA_CbContext *pWDA, tSirMsgQ *cfgParam)
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                              "%s: VOS MEM Alloc Failure \n", __FUNCTION__);
 =======
                              "%s: VOS MEM Alloc Failure \n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             "%s: VOS MEM Alloc Failure \n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       vos_mem_free(wdiCfgReqParam);
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
@@ -5073,10 +5763,14 @@ VOS_STATUS WDA_GetWepKeysFromCfg( tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invoked with invalid MAC context ", __FUNCTION__ );
 =======
                  "%s: Invoked with invalid MAC context ", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invoked with invalid MAC context ", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    if( eSIR_SUCCESS != wlan_cfgGetInt( pMac, WNI_CFG_WEP_DEFAULT_KEYID,
@@ -5132,6 +5826,7 @@ void WDA_SetBssKeyReqCallback(WDI_Status status, void* pUserData)
    tSetBssKeyParams *setBssKeyParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -5144,6 +5839,13 @@ void WDA_SetBssKeyReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -5152,10 +5854,14 @@ void WDA_SetBssKeyReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    setBssKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    setBssKeyParams->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   setBssKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_SET_BSSKEY_RSP, (void *)setBssKeyParams , 0) ;
    return ;
 }
@@ -5175,6 +5881,7 @@ VOS_STATUS WDA_ProcessSetBssKeyReq(tWDA_CbContext *pWDA,
    v_U8_t keyIndex;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiSetBssKeyParam) 
    {
@@ -5187,6 +5894,13 @@ VOS_STATUS WDA_ProcessSetBssKeyReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiSetBssKeyParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -5195,10 +5909,14 @@ VOS_STATUS WDA_ProcessSetBssKeyReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSetBssKeyParam);
       return VOS_STATUS_E_NOMEM;
@@ -5274,6 +5992,7 @@ void WDA_RemoveBssKeyReqCallback(WDI_Status status, void* pUserData)
    tRemoveBssKeyParams *removeBssKeyParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -5286,6 +6005,13 @@ void WDA_RemoveBssKeyReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                   "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                  "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -5295,10 +6021,14 @@ void WDA_RemoveBssKeyReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams) ;
    
 <<<<<<< HEAD
+<<<<<<< HEAD
    removeBssKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    removeBssKeyParams->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   removeBssKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_REMOVE_BSSKEY_RSP, (void *)removeBssKeyParams , 0) ;
    return ;
 }
@@ -5317,6 +6047,7 @@ VOS_STATUS WDA_ProcessRemoveBssKeyReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiRemoveBssKeyParam) 
    {
@@ -5329,6 +6060,13 @@ VOS_STATUS WDA_ProcessRemoveBssKeyReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiRemoveBssKeyParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -5337,10 +6075,14 @@ VOS_STATUS WDA_ProcessRemoveBssKeyReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiRemoveBssKeyParam);
       return VOS_STATUS_E_NOMEM;
@@ -5380,6 +6122,7 @@ void WDA_SetStaKeyReqCallback(WDI_Status status, void* pUserData)
    tSetStaKeyParams *setStaKeyParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -5392,6 +6135,13 @@ void WDA_SetStaKeyReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR
                 ,"%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR
+                ,"%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -5400,10 +6150,14 @@ void WDA_SetStaKeyReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    setStaKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    setStaKeyParams->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   setStaKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_SET_STAKEY_RSP, (void *)setStaKeyParams , 0) ;
    return ;
 }
@@ -5423,6 +6177,7 @@ VOS_STATUS WDA_ProcessSetStaKeyReq(tWDA_CbContext *pWDA,
    v_U8_t keyIndex;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiSetStaKeyParam) 
    {
@@ -5435,6 +6190,13 @@ VOS_STATUS WDA_ProcessSetStaKeyReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiSetStaKeyParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -5443,10 +6205,14 @@ VOS_STATUS WDA_ProcessSetStaKeyReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSetStaKeyParam);
       return VOS_STATUS_E_NOMEM;
@@ -5472,9 +6238,13 @@ VOS_STATUS WDA_ProcessSetStaKeyReq(tWDA_CbContext *pWDA,
       else
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
          for( keyIndex=0; keyIndex < SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS; 
                                                                   keyIndex++)
          {
@@ -5501,6 +6271,9 @@ VOS_STATUS WDA_ProcessSetStaKeyReq(tWDA_CbContext *pWDA,
          wdiSetStaKeyParam->wdiKeyInfo.ucNumKeys = 
                                           SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
          wdiSetStaKeyParam->wdiKeyInfo.wdiKey[0].keyId =
                                                 setStaKeyParams->key.keyId;
@@ -5519,8 +6292,11 @@ VOS_STATUS WDA_ProcessSetStaKeyReq(tWDA_CbContext *pWDA,
                                               SIR_MAC_MAX_KEY_LENGTH);
          wdiSetStaKeyParam->wdiKeyInfo.ucNumKeys = 1;
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       }
    }
    wdiSetStaKeyParam->wdiKeyInfo.ucSingleTidRc = setStaKeyParams->singleTidRc;
@@ -5554,6 +6330,7 @@ void WDA_SetBcastStaKeyReqCallback(WDI_Status status, void* pUserData)
    tSetStaKeyParams *setStaKeyParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -5566,6 +6343,13 @@ void WDA_SetBcastStaKeyReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -5574,10 +6358,14 @@ void WDA_SetBcastStaKeyReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    setStaKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    setStaKeyParams->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   setStaKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_SET_STA_BCASTKEY_RSP, (void *)setStaKeyParams , 0) ;
    return ;
 }
@@ -5598,6 +6386,7 @@ VOS_STATUS WDA_ProcessSetBcastStaKeyReq(tWDA_CbContext *pWDA,
    v_U8_t keyIndex;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiSetStaKeyParam) 
    {
@@ -5610,6 +6399,13 @@ VOS_STATUS WDA_ProcessSetBcastStaKeyReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiSetStaKeyParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -5618,10 +6414,14 @@ VOS_STATUS WDA_ProcessSetBcastStaKeyReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSetStaKeyParam);
       return VOS_STATUS_E_NOMEM;
@@ -5636,9 +6436,13 @@ VOS_STATUS WDA_ProcessSetBcastStaKeyReq(tWDA_CbContext *pWDA,
    if(setStaKeyParams->encType != eSIR_ED_NONE)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
       for( keyIndex=0; keyIndex < SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS; 
                                                                keyIndex++)
       {
@@ -5660,6 +6464,9 @@ VOS_STATUS WDA_ProcessSetBcastStaKeyReq(tWDA_CbContext *pWDA,
       wdiSetStaKeyParam->wdiKeyInfo.ucNumKeys = 
                                        SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
       wdiSetStaKeyParam->wdiKeyInfo.wdiKey[0].keyId =
                                              setStaKeyParams->key.keyId;
@@ -5678,8 +6485,11 @@ VOS_STATUS WDA_ProcessSetBcastStaKeyReq(tWDA_CbContext *pWDA,
                                            SIR_MAC_MAX_KEY_LENGTH);
       wdiSetStaKeyParam->wdiKeyInfo.ucNumKeys = 1;
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    wdiSetStaKeyParam->wdiKeyInfo.ucSingleTidRc = setStaKeyParams->singleTidRc;
    /* Store set key pointer, as this will be used for response */
@@ -5711,6 +6521,7 @@ void WDA_RemoveStaKeyReqCallback(WDI_Status status, void* pUserData)
    tRemoveStaKeyParams *removeStaKeyParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -5723,6 +6534,13 @@ void WDA_RemoveStaKeyReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                   "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                  "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -5731,10 +6549,14 @@ void WDA_RemoveStaKeyReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    removeStaKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    removeStaKeyParams->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   removeStaKeyParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_REMOVE_STAKEY_RSP, (void *)removeStaKeyParams , 0) ;
    return ;
 }
@@ -5753,6 +6575,7 @@ VOS_STATUS WDA_ProcessRemoveStaKeyReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiRemoveStaKeyParam) 
    {
@@ -5765,6 +6588,13 @@ VOS_STATUS WDA_ProcessRemoveStaKeyReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiRemoveStaKeyParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -5773,10 +6603,14 @@ VOS_STATUS WDA_ProcessRemoveStaKeyReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiRemoveStaKeyParam);
       return VOS_STATUS_E_NOMEM;
@@ -5824,6 +6658,7 @@ WDA_processSetLinkStateStatus WDA_IsHandleSetLinkStateReq(
          * No need to handle these messages.
          */
 <<<<<<< HEAD
+<<<<<<< HEAD
          vos_mem_copy(pWDA->macBSSID,linkStateParams->bssid, 
                                                    sizeof(tSirMacAddr));
          vos_mem_copy(pWDA->macSTASelf,linkStateParams->selfMacAddr, 
@@ -5832,19 +6667,13 @@ WDA_processSetLinkStateStatus WDA_IsHandleSetLinkStateReq(
          if( !WDA_IS_NULL_MAC_ADDRESS(linkStateParams->bssid) )
          {
             vos_mem_copy(pWDA->macBSSID,linkStateParams->bssid, 
+=======
+         vos_mem_copy(pWDA->macBSSID,linkStateParams->bssid, 
+>>>>>>> 657b0e9... prima update
                                                    sizeof(tSirMacAddr));
-         }
-         else
-         {
-            VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_FATAL,
-               "%s: BSSID in set link state is NULL ", __func__);
-            VOS_ASSERT(0);
-         }
-
-         if( !WDA_IS_NULL_MAC_ADDRESS(linkStateParams->selfMacAddr) )
-         {
-            vos_mem_copy(pWDA->macSTASelf,linkStateParams->selfMacAddr, 
+         vos_mem_copy(pWDA->macSTASelf,linkStateParams->selfMacAddr, 
                                                    sizeof(tSirMacAddr));
+<<<<<<< HEAD
          }
          else
          {
@@ -5854,6 +6683,8 @@ WDA_processSetLinkStateStatus WDA_IsHandleSetLinkStateReq(
          }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          /* UMAC is issuing the setlink state with PREASSOC twice (before set 
          *channel and after ) so reset the WDA state to ready when the second 
          * time UMAC issue the link state with PREASSOC 
@@ -5870,9 +6701,13 @@ WDA_processSetLinkStateStatus WDA_IsHandleSetLinkStateReq(
          //populate linkState info in WDACbCtxt
          pWDA->linkState = linkStateParams->state;
 <<<<<<< HEAD
+<<<<<<< HEAD
          status = WDA_IGNORE_SET_LINK_STATE;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         status = WDA_IGNORE_SET_LINK_STATE;
+>>>>>>> 657b0e9... prima update
          break;
       default:
          if(pWDA->wdaState != WDA_READY_STATE)
@@ -5886,20 +6721,25 @@ WDA_processSetLinkStateStatus WDA_IsHandleSetLinkStateReq(
             {
                pWDA->wdaState = WDA_READY_STATE;
 <<<<<<< HEAD
+<<<<<<< HEAD
             }
             VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                         "Set link state called when WDA is not in READY STATE " );
             status = WDA_IGNORE_SET_LINK_STATE;
 =======
                /* Don't ignore the set link in this case*/
+=======
+>>>>>>> 657b0e9... prima update
             }
-            else
-            {
-               VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+            VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                         "Set link state called when WDA is not in READY STATE " );
+<<<<<<< HEAD
                status = WDA_IGNORE_SET_LINK_STATE;
             }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            status = WDA_IGNORE_SET_LINK_STATE;
+>>>>>>> 657b0e9... prima update
          }
          break;
    }
@@ -5917,6 +6757,7 @@ void WDA_SetLinkStateCallback(WDI_Status status, void* pUserData)
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -5929,6 +6770,13 @@ void WDA_SetLinkStateCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
              "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+             "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -5940,12 +6788,16 @@ void WDA_SetLinkStateCallback(WDI_Status status, void* pUserData)
    if( ((linkStateParams->state == eSIR_LINK_POSTASSOC_STATE) &&
          status == WDI_STATUS_SUCCESS) ||  ((status == WDI_STATUS_SUCCESS) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
        (linkStateParams->state == eSIR_LINK_AP_STATE)) )
 =======
        (linkStateParams->state == eSIR_LINK_AP_STATE)) ||
        ((status == WDI_STATUS_SUCCESS) &&
        (linkStateParams->state == eSIR_LINK_IBSS_STATE)))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       (linkStateParams->state == eSIR_LINK_AP_STATE)) )
+>>>>>>> 657b0e9... prima update
    {
       WDA_START_TIMER(&pWDA->wdaTimers.baActivityChkTmr);
    }
@@ -5983,16 +6835,21 @@ VOS_STATUS WDA_ProcessSetLinkState(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:pMac is NULL", __FUNCTION__);
 =======
                            "%s:pMac is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pMac is NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSetLinkStateParam);
       return VOS_STATUS_E_FAILURE;
    }
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiSetLinkStateParam) 
@@ -6006,6 +6863,13 @@ VOS_STATUS WDA_ProcessSetLinkState(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiSetLinkStateParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -6014,10 +6878,14 @@ VOS_STATUS WDA_ProcessSetLinkState(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSetLinkStateParam);
       return VOS_STATUS_E_NOMEM;
@@ -6043,10 +6911,14 @@ VOS_STATUS WDA_ProcessSetLinkState(tWDA_CbContext *pWDA,
       /* Stop Timer only other than GO role and concurrent session */
       if( (linkStateParams->state == eSIR_LINK_IDLE_STATE)
 <<<<<<< HEAD
+<<<<<<< HEAD
           && !vos_concurrent_sessions_running() &&
 =======
           && (0 == WDI_GetActiveSessionsCount(pWDA->pWdiContext, linkStateParams->bssid, TRUE)) &&
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          && !vos_concurrent_sessions_running() &&
+>>>>>>> 657b0e9... prima update
           (wdaGetGlobalSystemRole(pMac) != eSYSTEM_AP_ROLE) )
       {
          WDA_STOP_TIMER(&pWDA->wdaTimers.baActivityChkTmr);
@@ -6080,10 +6952,14 @@ void WDA_GetStatsReqParamsCallback(
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    pGetPEStatsRspParams = 
        (tAniGetPEStatsRsp *)vos_mem_malloc(sizeof(tAniGetPEStatsRsp) +
        (wdiGetStatsRsp->usMsgLen - sizeof(WDI_GetStatsRspParamsType)));
@@ -6092,10 +6968,14 @@ void WDA_GetStatsReqParamsCallback(
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return;
    }
@@ -6104,18 +6984,26 @@ void WDA_GetStatsReqParamsCallback(
    pGetPEStatsRspParams->msgLen = sizeof(tAniGetPEStatsRsp) + 
                    (wdiGetStatsRsp->usMsgLen - sizeof(WDI_GetStatsRspParamsType));
 <<<<<<< HEAD
+<<<<<<< HEAD
    pGetPEStatsRspParams->msgLen  = wdiGetStatsRsp->usMsgLen + sizeof(tANI_U8);
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pGetPEStatsRspParams->msgLen  = wdiGetStatsRsp->usMsgLen + sizeof(tANI_U8);
+>>>>>>> 657b0e9... prima update
 
   //Fill the Session Id Properly in PE
    pGetPEStatsRspParams->sessionId = 0;
    pGetPEStatsRspParams->rc = 
 <<<<<<< HEAD
+<<<<<<< HEAD
                       CONVERT_WDI2VOS_STATUS(wdiGetStatsRsp->wdiStatus);
 =======
                       wdiGetStatsRsp->wdiStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      CONVERT_WDI2VOS_STATUS(wdiGetStatsRsp->wdiStatus);
+>>>>>>> 657b0e9... prima update
    pGetPEStatsRspParams->staId   = wdiGetStatsRsp->ucSTAIdx;
    pGetPEStatsRspParams->statsMask = wdiGetStatsRsp->uStatsMask;
    vos_mem_copy( pGetPEStatsRspParams + 1,
@@ -6139,10 +7027,14 @@ VOS_STATUS WDA_ProcessGetStatsReq(tWDA_CbContext *pWDA,
    tAniGetPEStatsRsp *pGetPEStatsRspParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    wdiGetStatsParam.wdiGetStatsParamsInfo.ucSTAIdx = 
                                           pGetStatsParams->staId;
    wdiGetStatsParam.wdiGetStatsParamsInfo.uStatsMask = 
@@ -6160,6 +7052,7 @@ VOS_STATUS WDA_ProcessGetStatsReq(tWDA_CbContext *pWDA,
       {
           VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
           VOS_ASSERT(0);
 		  vos_mem_free(pGetStatsParams);
@@ -6168,6 +7061,11 @@ VOS_STATUS WDA_ProcessGetStatsReq(tWDA_CbContext *pWDA,
           VOS_ASSERT(0);
           vos_mem_free(pGetStatsParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+          VOS_ASSERT(0);
+		  vos_mem_free(pGetStatsParams);
+>>>>>>> 657b0e9... prima update
           return VOS_STATUS_E_NOMEM;
       }
       pGetPEStatsRspParams->msgType = WDA_GET_STATISTICS_RSP;
@@ -6181,6 +7079,7 @@ VOS_STATUS WDA_ProcessGetStatsReq(tWDA_CbContext *pWDA,
    vos_mem_free(pGetStatsParams);
    return CONVERT_WDI2VOS_STATUS(status);
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -6314,6 +7213,8 @@ VOS_STATUS WDA_ProcessGetRoamRssiReq(tWDA_CbContext *pWDA,
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_UpdateEDCAParamCallback
  * call back function for Update EDCA params from WDI
@@ -6324,6 +7225,7 @@ void WDA_UpdateEDCAParamCallback(WDI_Status status, void* pUserData)
    tEdcaParams *pEdcaParams; 
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
@@ -6337,6 +7239,13 @@ void WDA_UpdateEDCAParamCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -6360,6 +7269,7 @@ VOS_STATUS WDA_ProcessUpdateEDCAParamReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiEdcaParam) 
    {
@@ -6369,19 +7279,27 @@ VOS_STATUS WDA_ProcessUpdateEDCAParamReq(tWDA_CbContext *pWDA,
 	  vos_mem_free(pEdcaParams);
 =======
                                           "------> %s " ,__func__);
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    if(NULL == wdiEdcaParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
+<<<<<<< HEAD
       vos_mem_free(pEdcaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  vos_mem_free(pEdcaParams);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
@@ -6393,12 +7311,16 @@ VOS_STATUS WDA_ProcessUpdateEDCAParamReq(tWDA_CbContext *pWDA,
    wdiEdcaParam->wdiEDCAInfo.ucEDCAParamsValid = pEdcaParams->highPerformance;
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiEdcaParam);
-      vos_mem_free(pEdcaParams);
+	  vos_mem_free(pEdcaParams);
       return VOS_STATUS_E_NOMEM;
    }
    wdiEdcaParam->wdiEDCAInfo.ucBssIdx = pEdcaParams->bssIdx;
+<<<<<<< HEAD
    /*
     Since firmware is not using highperformance flag, we have removed
     this flag from wdiEDCAInfo structure to match sizeof the structure
@@ -6410,6 +7332,9 @@ VOS_STATUS WDA_ProcessUpdateEDCAParamReq(tWDA_CbContext *pWDA,
                   pEdcaParams->highPerformance;
    */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEdcaParam->wdiEDCAInfo.ucEDCAParamsValid = pEdcaParams->highPerformance;
+>>>>>>> 657b0e9... prima update
    WDA_UpdateEdcaParamsForAC(pWDA, &wdiEdcaParam->wdiEDCAInfo.wdiEdcaBEInfo,
                                                            &pEdcaParams->acbe);
    WDA_UpdateEdcaParamsForAC(pWDA, &wdiEdcaParam->wdiEDCAInfo.wdiEdcaBKInfo,
@@ -6448,6 +7373,7 @@ void WDA_AddBAReqCallback(WDI_AddBARspinfoType *pAddBARspParams,
    tAddBAParams *pAddBAReqParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -6460,6 +7386,13 @@ void WDA_AddBAReqCallback(WDI_AddBARspinfoType *pAddBARspParams,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                 "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -6468,10 +7401,14 @@ void WDA_AddBAReqCallback(WDI_AddBARspinfoType *pAddBARspParams,
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
    vos_mem_free(pWdaParams);
 <<<<<<< HEAD
+<<<<<<< HEAD
    pAddBAReqParams->status = CONVERT_WDI2SIR_STATUS(pAddBARspParams->wdiStatus) ;
 =======
    pAddBAReqParams->status = pAddBARspParams->wdiStatus ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pAddBAReqParams->status = CONVERT_WDI2SIR_STATUS(pAddBARspParams->wdiStatus) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_ADDBA_RSP, (void *)pAddBAReqParams , 0) ;
    return ;
 }
@@ -6490,6 +7427,7 @@ VOS_STATUS WDA_ProcessAddBAReq(tWDA_CbContext *pWDA, VOS_STATUS status,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiAddBAReqParam) 
    {
@@ -6502,6 +7440,13 @@ VOS_STATUS WDA_ProcessAddBAReq(tWDA_CbContext *pWDA, VOS_STATUS status,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiAddBAReqParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -6510,10 +7455,14 @@ VOS_STATUS WDA_ProcessAddBAReq(tWDA_CbContext *pWDA, VOS_STATUS status,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiAddBAReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -6558,6 +7507,7 @@ void WDA_AddBASessionReqCallback(
    tAddBAParams *pAddBAReqParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -6570,6 +7520,13 @@ void WDA_AddBASessionReqCallback(
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+               "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -6578,6 +7535,7 @@ void WDA_AddBASessionReqCallback(
    if( NULL == pAddBAReqParams )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "%s: pAddBAReqParams received NULL " ,__FUNCTION__);
       VOS_ASSERT( 0 );
@@ -6589,6 +7547,12 @@ void WDA_AddBASessionReqCallback(
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "%s: pAddBAReqParams received NULL " ,__FUNCTION__);
+      VOS_ASSERT( 0 );
+	  vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
@@ -6626,9 +7590,13 @@ void WDA_AddBASessionReqCallback(
          WDA_SET_BA_TXFLAG(pWDA, curSta, tid) ;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
       pWDA->wdaMsgParam = NULL;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pWDA->wdaMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
       WDA_SendMsg(pWDA, WDA_ADDBA_RSP, (void *)pAddBAReqParams , 0) ;
    }
    /*Reset the WDA state to READY */
@@ -6649,6 +7617,7 @@ VOS_STATUS WDA_ProcessAddBASessionReq(tWDA_CbContext *pWDA,
                           sizeof(WDI_AddBASessionReqParamsType)) ;
    tWDA_ReqParams *pWdaParams ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiAddBASessionReqParam) 
@@ -6658,13 +7627,19 @@ VOS_STATUS WDA_ProcessAddBASessionReq(tWDA_CbContext *pWDA,
 =======
    WLANTL_STAStateType tlSTAState = 0;
 
+=======
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
    if(NULL == wdiAddBASessionReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -6673,10 +7648,14 @@ VOS_STATUS WDA_ProcessAddBASessionReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiAddBASessionReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -6715,6 +7694,7 @@ VOS_STATUS WDA_ProcessAddBASessionReq(tWDA_CbContext *pWDA,
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)wdiAddBASessionReqParam ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    /* In TDLS case, there is a possibility that TL hasn't registered peer yet, but
@@ -6738,11 +7718,14 @@ VOS_STATUS WDA_ProcessAddBASessionReq(tWDA_CbContext *pWDA,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    status = WDI_AddBASessionReq(wdiAddBASessionReqParam, 
               (WDI_AddBASessionRspCb)WDA_AddBASessionReqCallback, pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
        "Failure in ADD BA Session REQ Params WDI API, free all the memory " );
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
@@ -6758,6 +7741,11 @@ VOS_STATUS WDA_ProcessAddBASessionReq(tWDA_CbContext *pWDA,
       pWDA->wdaState = WDA_READY_STATE;
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       "Failure in ADD BA Session REQ Params WDI API, free all the memory " );
+      vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
+      vos_mem_free(pWdaParams->wdaMsgParam);
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWdaParams);
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
@@ -6777,10 +7765,14 @@ void WDA_DelBANotifyTL(tWDA_CbContext *pWDA,
    { 
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                    "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ; 
       return; 
    } 
@@ -6809,6 +7801,7 @@ void WDA_DelBAReqCallback(WDI_Status status, void* pUserData)
    tDelBAParams *pDelBAReqParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -6821,6 +7814,13 @@ void WDA_DelBAReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -6858,11 +7858,15 @@ VOS_STATUS WDA_ProcessDelBAReq(tWDA_CbContext *pWDA,
    tANI_U8 tid = 0;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiDelBAReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+<<<<<<< HEAD
 =======
                                           "------> %s " ,__func__);
    if(NULL == wdiDelBAReqParam) 
@@ -6870,6 +7874,8 @@ VOS_STATUS WDA_ProcessDelBAReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -6878,10 +7884,14 @@ VOS_STATUS WDA_ProcessDelBAReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiDelBAReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -6925,6 +7935,7 @@ void WDA_AddTSReqCallback(WDI_Status status, void* pUserData)
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -6937,6 +7948,13 @@ void WDA_AddTSReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -6946,10 +7964,14 @@ void WDA_AddTSReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams);
    
 <<<<<<< HEAD
+<<<<<<< HEAD
    pAddTsReqParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    pAddTsReqParams->status = status ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pAddTsReqParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_ADD_TS_RSP, (void *)pAddTsReqParams , 0) ;
    return ;
 }
@@ -6968,6 +7990,7 @@ VOS_STATUS WDA_ProcessAddTSReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiAddTSReqParam) 
    {
@@ -6980,6 +8003,13 @@ VOS_STATUS WDA_ProcessAddTSReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiAddTSReqParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -6988,10 +8018,14 @@ VOS_STATUS WDA_ProcessAddTSReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiAddTSReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -7094,10 +8128,14 @@ void WDA_DelTSReqCallback(WDI_Status status, void* pUserData)
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
    vos_mem_free(pWdaParams->wdaMsgParam) ;
    vos_mem_free(pWdaParams);
@@ -7122,6 +8160,7 @@ VOS_STATUS WDA_ProcessDelTSReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiDelTSReqParam) 
    {
@@ -7134,6 +8173,13 @@ VOS_STATUS WDA_ProcessDelTSReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiDelTSReqParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -7142,10 +8188,14 @@ VOS_STATUS WDA_ProcessDelTSReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiDelTSReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -7181,6 +8231,7 @@ void WDA_UpdateBeaconParamsCallback(WDI_Status status, void* pUserData)
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -7193,6 +8244,13 @@ void WDA_UpdateBeaconParamsCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -7219,6 +8277,7 @@ VOS_STATUS WDA_ProcessUpdateBeaconParams(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiUpdateBeaconParams) 
    {
@@ -7231,6 +8290,13 @@ VOS_STATUS WDA_ProcessUpdateBeaconParams(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiUpdateBeaconParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -7239,10 +8305,14 @@ VOS_STATUS WDA_ProcessUpdateBeaconParams(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiUpdateBeaconParams);
       return VOS_STATUS_E_NOMEM;
@@ -7304,6 +8374,7 @@ void WDA_TSMStatsReqCallback(WDI_TSMStatsRspParamsType *pwdiTSMStatsRspParams, v
  
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ Entering: %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -7316,6 +8387,13 @@ void WDA_TSMStatsReqCallback(WDI_TSMStatsRspParamsType *pwdiTSMStatsRspParams, v
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ Entering: %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -7325,10 +8403,14 @@ void WDA_TSMStatsReqCallback(WDI_TSMStatsRspParamsType *pwdiTSMStatsRspParams, v
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "%s: pTsmRspParams received NULL " ,__FUNCTION__);
 =======
                                           "%s: pTsmRspParams received NULL " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "%s: pTsmRspParams received NULL " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT( 0 );
       return ;
    }
@@ -7362,6 +8444,9 @@ VOS_STATUS WDA_ProcessTsmStatsReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams = NULL;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                                           "------> Entering: %s " ,__FUNCTION__);
    if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
    {
@@ -7370,19 +8455,26 @@ VOS_STATUS WDA_ProcessTsmStatsReq(tWDA_CbContext *pWDA,
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 =======
                                           "------> Entering: %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wdiTSMReqParam = (WDI_TSMStatsReqParamsType *)vos_mem_malloc(
                                  sizeof(WDI_TSMStatsReqParamsType));
    if(NULL == wdiTSMReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -7391,10 +8483,14 @@ VOS_STATUS WDA_ProcessTsmStatsReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiTSMReqParam);
       return VOS_STATUS_E_NOMEM;
@@ -7419,9 +8515,12 @@ VOS_STATUS WDA_ProcessTsmStatsReq(tWDA_CbContext *pWDA,
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       WDA_SendMsg(pWDA, WDA_TSM_STATS_RSP, (void *)pTsmStats , 0) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
   return CONVERT_WDI2VOS_STATUS(status) ;
 } 
@@ -7435,10 +8534,14 @@ void WDA_SendBeaconParamsCallback(WDI_Status status, void* pUserData)
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    return ;
 }
 /*
@@ -7453,14 +8556,19 @@ VOS_STATUS WDA_ProcessSendBeacon(tWDA_CbContext *pWDA,
    WDI_SendBeaconParamsType wdiSendBeaconReqParam; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    vos_mem_copy(wdiSendBeaconReqParam.wdiSendBeaconParamsInfo.macBSSID, 
                               pSendbeaconParams->bssId, sizeof(tSirMacAddr));
    wdiSendBeaconReqParam.wdiSendBeaconParamsInfo.beaconLength = 
                               pSendbeaconParams->beaconLength;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    wdiSendBeaconReqParam.wdiSendBeaconParamsInfo.timIeOffset = 
@@ -7471,21 +8579,20 @@ VOS_STATUS WDA_ProcessSendBeacon(tWDA_CbContext *pWDA,
                               pSendbeaconParams->p2pIeOffset;
 #endif
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
    wdiSendBeaconReqParam.wdiSendBeaconParamsInfo.timIeOffset = 
                               pSendbeaconParams->timIeOffset;
-   /* p2pIeOffset should be atleast greater than timIeOffset */
-   if ((pSendbeaconParams->p2pIeOffset != 0) &&
-           (pSendbeaconParams->p2pIeOffset <
-            pSendbeaconParams->timIeOffset))
-   {
-       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-               "Invalid p2pIeOffset = %hu ", pSendbeaconParams->p2pIeOffset);
-       VOS_ASSERT( 0 );
-       return WDI_STATUS_E_FAILURE;
-   }
+#endif
+#ifdef WLAN_FEATURE_P2P
    wdiSendBeaconReqParam.wdiSendBeaconParamsInfo.usP2PIeOffset = 
                               pSendbeaconParams->p2pIeOffset;
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
    /* Copy the beacon template to local buffer */
    vos_mem_copy(wdiSendBeaconReqParam.wdiSendBeaconParamsInfo.beacon, 
                  pSendbeaconParams->beacon, pSendbeaconParams->beaconLength);
@@ -7509,10 +8616,14 @@ void WDA_UpdateProbeRspParamsCallback(WDI_Status status, void* pUserData)
 {
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    return ;
 }
 
@@ -7529,10 +8640,14 @@ VOS_STATUS WDA_ProcessUpdateProbeRspTemplate(tWDA_CbContext *pWDA,
          vos_mem_malloc(sizeof(WDI_UpdateProbeRspTemplateParamsType));
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    if (!wdiSendProbeRspParam)
       return CONVERT_WDI2VOS_STATUS(WDI_STATUS_MEM_FAILURE);
@@ -7579,6 +8694,7 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -7591,6 +8707,13 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -7599,6 +8722,7 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
    if( NULL == pMaxTxPowerParams )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "%s: pMaxTxPowerParams received NULL " ,__FUNCTION__);
       VOS_ASSERT(0);
@@ -7610,6 +8734,12 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "%s: pMaxTxPowerParams received NULL " ,__FUNCTION__);
+      VOS_ASSERT(0);
+	  vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
   
@@ -7628,10 +8758,14 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_SetMaxTxPowerCallBack
 =======
  * FUNCTION: WDA_ProcessSetMaxTxPowerReq
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * FUNCTION: WDA_SetMaxTxPowerCallBack
+>>>>>>> 657b0e9... prima update
  * Request to WDI to send set Max Tx Power Request
  */ 
  VOS_STATUS WDA_ProcessSetMaxTxPowerReq(tWDA_CbContext *pWDA,
@@ -7640,6 +8774,7 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
    WDI_Status status = WDI_STATUS_SUCCESS;
    WDI_SetMaxTxPowerParamsType *wdiSetMaxTxPowerParams = NULL;
    tWDA_ReqParams *pWdaParams = NULL;
+<<<<<<< HEAD
 <<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
@@ -7656,16 +8791,31 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
                                           "------> %s " ,__func__);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                                          "------> %s " ,__FUNCTION__);
+   if((NULL != pWDA->wdaMsgParam) ||(NULL != pWDA->wdaWdiApiMsgParam))
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+             "%s: wdaMsgParam or  wdaWdiApiMsgParam is not NULL", __FUNCTION__);
+      VOS_ASSERT(0);
+      return VOS_STATUS_E_FAILURE;
+   }
+>>>>>>> 657b0e9... prima update
    wdiSetMaxTxPowerParams = (WDI_SetMaxTxPowerParamsType *)vos_mem_malloc(
                                  sizeof(WDI_SetMaxTxPowerParamsType));
    if(NULL == wdiSetMaxTxPowerParams) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -7674,10 +8824,14 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
                            "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       vos_mem_free(wdiSetMaxTxPowerParams);
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
@@ -7705,15 +8859,19 @@ void WDA_SetMaxTxPowerCallBack(WDI_SetMaxTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       /* send response to UMAC*/
        WDA_SendMsg(pWDA, WDA_SET_MAX_TX_POWER_RSP, MaxTxPowerParams , 0) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return CONVERT_WDI2VOS_STATUS(status);
    
 }
 #endif
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
@@ -7816,12 +8974,16 @@ void WDA_SetTxPowerCallBack(WDI_SetTxPowerRspMsg * pwdiSetMaxTxPowerRsp,
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_SetP2PGONOAReqParamsCallback
  *  Free the memory. No need to send any response to PE in this case
  */ 
 void WDA_SetP2PGONOAReqParamsCallback(WDI_Status status, void* pUserData)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
@@ -7849,6 +9011,15 @@ void WDA_SetP2PGONOAReqParamsCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                                          "<------ %s " ,__FUNCTION__);
+   vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+   pWDA->wdaWdiApiMsgParam = NULL;
+   vos_mem_free(pWDA->wdaMsgParam) ;
+   pWDA->wdaMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
    /* 
     * No respone required for SIR_HAL_SET_P2P_GO_NOA_REQ 
     * so just free the request param here
@@ -7868,6 +9039,7 @@ VOS_STATUS WDA_ProcessSetP2PGONOAReq(tWDA_CbContext *pWDA,
                 (WDI_SetP2PGONOAReqParamsType *)vos_mem_malloc(
                                    sizeof(WDI_SetP2PGONOAReqParamsType)) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiSetP2PGONOAReqParam) 
@@ -7880,28 +9052,22 @@ VOS_STATUS WDA_ProcessSetP2PGONOAReq(tWDA_CbContext *pWDA,
 =======
    tWDA_ReqParams *pWdaParams = NULL;
 
+=======
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
    if(NULL == wdiSetP2PGONOAReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
-
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__);
-      vos_mem_free(pP2pPsConfigParams);
-      vos_mem_free(wdiSetP2PGONOAReqParam);
-      VOS_ASSERT(0);
-      return VOS_STATUS_E_NOMEM;
-   }
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wdiSetP2PGONOAReqParam->wdiP2PGONOAInfo.ucOpp_ps = 
                                     pP2pPsConfigParams->opp_ps;
    wdiSetP2PGONOAReqParam->wdiP2PGONOAInfo.uCtWindow = 
@@ -7917,6 +9083,9 @@ VOS_STATUS WDA_ProcessSetP2PGONOAReq(tWDA_CbContext *pWDA,
    wdiSetP2PGONOAReqParam->wdiP2PGONOAInfo.ucPsSelection = 
                                     pP2pPsConfigParams->psSelection;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    if((NULL != pWDA->wdaMsgParam) ||
                              (NULL != pWDA->wdaWdiApiMsgParam))
    {
@@ -7926,6 +9095,7 @@ VOS_STATUS WDA_ProcessSetP2PGONOAReq(tWDA_CbContext *pWDA,
       vos_mem_free(wdiSetP2PGONOAReqParam);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
    wdiSetP2PGONOAReqParam->wdiReqStatusCB = NULL ;
    /* Store msg pointer from PE, as this will be used for response */
    pWDA->wdaMsgParam = (void *)pP2pPsConfigParams ;
@@ -7935,36 +9105,46 @@ VOS_STATUS WDA_ProcessSetP2PGONOAReq(tWDA_CbContext *pWDA,
        (WDI_SetP2PGONOAReqParamsRspCb)WDA_SetP2PGONOAReqParamsCallback, pWDA);
 =======
 
+=======
+>>>>>>> 657b0e9... prima update
    wdiSetP2PGONOAReqParam->wdiReqStatusCB = NULL ;
    /* Store msg pointer from PE, as this will be used for response */
-   pWdaParams->wdaMsgParam = (void *)pP2pPsConfigParams ;
-
+   pWDA->wdaMsgParam = (void *)pP2pPsConfigParams ;
    /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)wdiSetP2PGONOAReqParam ;
-   pWdaParams->pWdaContext = pWDA;
-
+   pWDA->wdaWdiApiMsgParam = (void *)wdiSetP2PGONOAReqParam ;
    status = WDI_SetP2PGONOAReq(wdiSetP2PGONOAReqParam, 
+<<<<<<< HEAD
        (WDI_SetP2PGONOAReqParamsRspCb)WDA_SetP2PGONOAReqParamsCallback, pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       (WDI_SetP2PGONOAReqParamsRspCb)WDA_SetP2PGONOAReqParamsCallback, pWDA);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
           "Failure in Set P2P GO NOA Req WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       vos_mem_free(pWDA->wdaMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams->wdaMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return CONVERT_WDI2VOS_STATUS(status);
 
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -7992,152 +9172,38 @@ void WDA_AggrAddTSReqCallback(WDI_Status status, void* pUserData)
 =======
 
 #ifdef FEATURE_WLAN_TDLS
-/*
- * FUNCTION: WDA_SetP2PGONOAReqParamsCallback
- *  Free the memory. No need to send any response to PE in this case
- */
-void WDA_SetTDLSLinkEstablishReqParamsCallback(WDI_SetTdlsLinkEstablishReqResp *wdiSetTdlsLinkEstablishReqRsp,
-                                               void* pUserData)
-{
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *pWDA = NULL;
-   tTdlsLinkEstablishParams *pTdlsLinkEstablishParams;
-
-
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-   pWDA = (tWDA_CbContext *) pWdaParams->pWdaContext;
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-   pTdlsLinkEstablishParams = (tTdlsLinkEstablishParams *)pWdaParams->wdaMsgParam ;
-   if( NULL == pTdlsLinkEstablishParams )
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                                          "%s: pTdlsLinkEstablishParams "
-                                          "received NULL " ,__func__);
-      VOS_ASSERT(0);
-      vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-      vos_mem_free(pWdaParams);
-      return ;
-   }
-   pTdlsLinkEstablishParams->status = CONVERT_WDI2SIR_STATUS(
-                                               wdiSetTdlsLinkEstablishReqRsp->wdiStatus);
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
-   vos_mem_free(pWdaParams);
-   /* send response to UMAC*/
-   WDA_SendMsg(pWDA, WDA_SET_TDLS_LINK_ESTABLISH_REQ_RSP, pTdlsLinkEstablishParams, 0) ;
-
-   return ;
-}
-
-VOS_STATUS WDA_ProcessSetTdlsLinkEstablishReq(tWDA_CbContext *pWDA,
-                                              tTdlsLinkEstablishParams *pTdlsLinkEstablishParams)
-{
-    WDI_Status status = WDI_STATUS_SUCCESS ;
-    WDI_SetTDLSLinkEstablishReqParamsType *wdiSetTDLSLinkEstablishReqParam =
-                                      (WDI_SetTDLSLinkEstablishReqParamsType *)vos_mem_malloc(
-                                           sizeof(WDI_SetTDLSLinkEstablishReqParamsType)) ;
-    tWDA_ReqParams *pWdaParams = NULL;
-    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-               "------> %s " ,__func__);
-    if(NULL == wdiSetTDLSLinkEstablishReqParam)
-    {
-        VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                   "%s: VOS MEM Alloc Failure", __func__);
-        VOS_ASSERT(0);
-        return VOS_STATUS_E_NOMEM;
-    }
-    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-    if(NULL == pWdaParams)
-    {
-        VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                   "%s: VOS MEM Alloc Failure", __func__);
-        vos_mem_free(pTdlsLinkEstablishParams);
-        vos_mem_free(wdiSetTDLSLinkEstablishReqParam);
-        VOS_ASSERT(0);
-        return VOS_STATUS_E_NOMEM;
-    }
-    wdiSetTDLSLinkEstablishReqParam->wdiTDLSLinkEstablishInfo.uStaIdx =
-                                                  pTdlsLinkEstablishParams->staIdx;
-    wdiSetTDLSLinkEstablishReqParam->wdiTDLSLinkEstablishInfo.uIsResponder =
-                                                  pTdlsLinkEstablishParams->isResponder;
-    wdiSetTDLSLinkEstablishReqParam->wdiTDLSLinkEstablishInfo.uUapsdQueues =
-                                                  pTdlsLinkEstablishParams->uapsdQueues;
-    wdiSetTDLSLinkEstablishReqParam->wdiTDLSLinkEstablishInfo.uMaxSp =
-                                                  pTdlsLinkEstablishParams->maxSp;
-    wdiSetTDLSLinkEstablishReqParam->wdiTDLSLinkEstablishInfo.uIsBufSta =
-                                                  pTdlsLinkEstablishParams->isBufsta;
-
-    wdiSetTDLSLinkEstablishReqParam->wdiReqStatusCB = NULL ;
-    /* Store msg pointer from PE, as this will be used for response */
-    pWdaParams->wdaMsgParam = (void *)pTdlsLinkEstablishParams ;
-    /* store Params pass it to WDI */
-    pWdaParams->wdaWdiApiMsgParam = (void *)wdiSetTDLSLinkEstablishReqParam ;
-    pWdaParams->pWdaContext = pWDA;
-
-    status = WDI_SetTDLSLinkEstablishReq(wdiSetTDLSLinkEstablishReqParam,
-                                         (WDI_SetTDLSLinkEstablishReqParamsRspCb)
-                                         WDA_SetTDLSLinkEstablishReqParamsCallback,
-                                         pWdaParams);
-    if(IS_WDI_STATUS_FAILURE(status))
-    {
-        VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                   "Failure in Set P2P GO NOA Req WDI API, free all the memory " );
-        vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
-        vos_mem_free(pWdaParams->wdaMsgParam);
-        vos_mem_free(pWdaParams);
-    }
-    return CONVERT_WDI2VOS_STATUS(status);
-}
+=======
 #endif
-
-
 #ifdef WLAN_FEATURE_VOWIFI_11R
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_AggrAddTSReqCallback
  * send ADD AGGREGATED TS RSP back to PE
  */ 
 void WDA_AggrAddTSReqCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
-   tWDA_CbContext *pWDA;
-   tAggrAddTsParams *pAggrAddTsReqParams;
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
+   tAggrAddTsParams *pAggrAddTsReqParams = 
+                           (tAggrAddTsParams *)pWDA->wdaMsgParam ;
    int i;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-
-   pWDA = pWdaParams->pWdaContext;
-   pAggrAddTsReqParams = (tAggrAddTsParams *)pWdaParams->wdaMsgParam ;
+                                          "<------ %s " ,__FUNCTION__);
+   vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+   pWDA->wdaWdiApiMsgParam = NULL;
+   pWDA->wdaMsgParam = NULL;
    
    for( i = 0; i < HAL_QOS_NUM_AC_MAX; i++ )
    {
-      pAggrAddTsReqParams->status[i] = (status) ;
+      pAggrAddTsReqParams->status[i] = CONVERT_WDI2SIR_STATUS(status) ;
    }
    WDA_SendMsg(pWDA, WDA_AGGR_QOS_RSP, (void *)pAggrAddTsReqParams , 0) ;
+<<<<<<< HEAD
 
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
    vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    return ;
 }/* WLAN_FEATURE_VOWIFI_11R */
 /*
@@ -8150,6 +9216,7 @@ VOS_STATUS WDA_ProcessAggrAddTSReq(tWDA_CbContext *pWDA,
    WDI_Status status = WDI_STATUS_SUCCESS ;
    int i;
    WDI_AggrAddTSReqParamsType *wdiAggrAddTSReqParam;
+<<<<<<< HEAD
 <<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
@@ -8171,27 +9238,31 @@ VOS_STATUS WDA_ProcessAggrAddTSReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams = NULL;
 
 
+=======
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
+   if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s:wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
+      VOS_ASSERT(0);
+      return VOS_STATUS_E_FAILURE;
+   }
+   
    wdiAggrAddTSReqParam = (WDI_AggrAddTSReqParamsType *)vos_mem_malloc(
                            sizeof(WDI_AggrAddTSReqParamsType)) ;
    if(NULL == wdiAggrAddTSReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      VOS_ASSERT(0);
-      return VOS_STATUS_E_NOMEM;
-   }
-
-
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __func__);
       vos_mem_free(pAggrAddTsReqParams);
       vos_mem_free(wdiAggrAddTSReqParam);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -8264,6 +9335,7 @@ VOS_STATUS WDA_ProcessAggrAddTSReq(tWDA_CbContext *pWDA,
    
    /* Store ADD TS pointer, as this will be used for response */
 <<<<<<< HEAD
+<<<<<<< HEAD
    pWDA->wdaMsgParam = (void *)pAggrAddTsReqParams ;
    /* store Params pass it to WDI */
    pWDA->wdaWdiApiMsgParam = (void *)wdiAggrAddTSReqParam ;
@@ -8271,24 +9343,32 @@ VOS_STATUS WDA_ProcessAggrAddTSReq(tWDA_CbContext *pWDA,
                              (WDI_AggrAddTsRspCb)WDA_AggrAddTSReqCallback, pWDA);
 =======
    pWdaParams->wdaMsgParam = (void *)pAggrAddTsReqParams ;
+=======
+   pWDA->wdaMsgParam = (void *)pAggrAddTsReqParams ;
+>>>>>>> 657b0e9... prima update
    /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)wdiAggrAddTSReqParam ;
-
-   pWdaParams->pWdaContext = pWDA;
-
+   pWDA->wdaWdiApiMsgParam = (void *)wdiAggrAddTSReqParam ;
    status = WDI_AggrAddTSReq(wdiAggrAddTSReqParam, 
+<<<<<<< HEAD
                              (WDI_AggrAddTsRspCb)WDA_AggrAddTSReqCallback, pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             (WDI_AggrAddTsRspCb)WDA_AggrAddTSReqCallback, pWDA);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in ADD TS REQ Params WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       vos_mem_free(pWDA->wdaMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams);
@@ -8302,6 +9382,8 @@ VOS_STATUS WDA_ProcessAggrAddTSReq(tWDA_CbContext *pWDA,
       WDA_SendMsg(pWdaParams->pWdaContext, WDA_AGGR_QOS_RSP, 
                         (void *)pAggrAddTsReqParams , 0) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
@@ -8315,12 +9397,17 @@ void WDA_EnterImpsReqCallback(WDI_Status status, void* pUserData)
    tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    WDA_SendMsg(pWDA, WDA_ENTER_IMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
 =======
                                           "<------ %s " ,__func__);
    WDA_SendMsg(pWDA, WDA_ENTER_IMPS_RSP, NULL , status) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   WDA_SendMsg(pWDA, WDA_ENTER_IMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
+>>>>>>> 657b0e9... prima update
    return ;
 }
 /*
@@ -8332,20 +9419,29 @@ VOS_STATUS WDA_ProcessEnterImpsReq(tWDA_CbContext *pWDA)
    WDI_Status status = WDI_STATUS_SUCCESS ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    status = WDI_EnterImpsReq((WDI_EnterImpsRspCb)WDA_EnterImpsReqCallback, pWDA);
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in Enter IMPS REQ WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pWDA->wdaWdiApiMsgParam = NULL;
+      pWDA->wdaMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
       WDA_SendMsg(pWDA, WDA_ENTER_IMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
@@ -8359,12 +9455,17 @@ void WDA_ExitImpsReqCallback(WDI_Status status, void* pUserData)
    tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    WDA_SendMsg(pWDA, WDA_EXIT_IMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
 =======
                                           "<------ %s " ,__func__);
    WDA_SendMsg(pWDA, WDA_EXIT_IMPS_RSP, NULL , (status)) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   WDA_SendMsg(pWDA, WDA_EXIT_IMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
+>>>>>>> 657b0e9... prima update
    return ;
 }
 /*
@@ -8376,25 +9477,35 @@ VOS_STATUS WDA_ProcessExitImpsReq(tWDA_CbContext *pWDA)
    WDI_Status status = WDI_STATUS_SUCCESS ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    status = WDI_ExitImpsReq((WDI_ExitImpsRspCb)WDA_ExitImpsReqCallback, pWDA);
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in Exit IMPS REQ WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pWDA->wdaWdiApiMsgParam = NULL;
+      pWDA->wdaMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
       WDA_SendMsg(pWDA, WDA_EXIT_IMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_EnterBmpsReqCallback
  * send Enter BMPS RSP back to PE
@@ -8421,37 +9532,32 @@ void WDA_EnterBmpsReqCallback(WDI_Status status, void* pUserData)
 /*
 =======
  * FUNCTION: WDA_EnterBmpsRespCallback
+=======
+ * FUNCTION: WDA_EnterBmpsReqCallback
+>>>>>>> 657b0e9... prima update
  * send Enter BMPS RSP back to PE
  */ 
-void WDA_EnterBmpsRespCallback(WDI_EnterBmpsRspParamsType *pwdiEnterBmpsRsp, void* pUserData)
+void WDA_EnterBmpsReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
-   tEnterBmpsParams *pEnterBmpsRspParams;
-
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
+              "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
       return ;
    }
-
-   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
-   pEnterBmpsRspParams = (tEnterBmpsParams *)pWdaParams->wdaMsgParam;
-
-   pEnterBmpsRspParams->bssIdx = pwdiEnterBmpsRsp->bssIdx;
-   pEnterBmpsRspParams->status = (pwdiEnterBmpsRsp->wdiStatus);
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
+   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext ;
+   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
-   WDA_SendMsg(pWDA, WDA_ENTER_BMPS_RSP, (void *)pEnterBmpsRspParams , 0);
-
+   WDA_SendMsg(pWDA, WDA_ENTER_BMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
    return ;
 }
 /*
+<<<<<<< HEAD
  * FUNCTION: WDA_EnterBmpsReqCallback
  * Free memory and send Enter BMPS RSP back to PE.
  * Invoked when Enter BMPS REQ failed in WDI and no RSP callback is generated.
@@ -8488,6 +9594,8 @@ void WDA_EnterBmpsReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessEnterBmpsReq
  * Request to WDI to Enter BMPS power state.
  */ 
@@ -8498,6 +9606,7 @@ VOS_STATUS WDA_ProcessEnterBmpsReq(tWDA_CbContext *pWDA,
    WDI_EnterBmpsReqParamsType *wdiEnterBmpsReqParams;
    tWDA_ReqParams *pWdaParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if ((NULL == pWDA) || (NULL == pEnterBmpsReqParams))
@@ -8511,6 +9620,13 @@ VOS_STATUS WDA_ProcessEnterBmpsReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: invalid param", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if ((NULL == pWDA) || (NULL == pEnterBmpsReqParams))
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: invalid param", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -8519,10 +9635,14 @@ VOS_STATUS WDA_ProcessEnterBmpsReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
                            "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       WDA_SendMsg(pWDA, WDA_ENTER_BMPS_RSP, NULL ,
          CONVERT_WDI2SIR_STATUS(WDI_STATUS_MEM_FAILURE)) ;
@@ -8533,10 +9653,14 @@ VOS_STATUS WDA_ProcessEnterBmpsReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
                            "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiEnterBmpsReqParams);
       WDA_SendMsg(pWDA, WDA_ENTER_BMPS_RSP, NULL ,
@@ -8552,6 +9676,7 @@ VOS_STATUS WDA_ProcessEnterBmpsReq(tWDA_CbContext *pWDA,
    wdiEnterBmpsReqParams->wdiEnterBmpsInfo.numBeaconPerRssiAverage = (wpt_uint32)pEnterBmpsReqParams->numBeaconPerRssiAverage;
    wdiEnterBmpsReqParams->wdiEnterBmpsInfo.bRssiFilterEnable = (wpt_uint8)pEnterBmpsReqParams->bRssiFilterEnable;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEnterBmpsReqParams->wdiReqStatusCB = NULL;
    // we are done with the input
    vos_mem_free(pEnterBmpsReqParams);
@@ -8566,23 +9691,35 @@ VOS_STATUS WDA_ProcessEnterBmpsReq(tWDA_CbContext *pWDA,
    wdiEnterBmpsReqParams->wdiReqStatusCB = WDA_EnterBmpsReqCallback;
    wdiEnterBmpsReqParams->pUserData = pWdaParams;
 
+=======
+   wdiEnterBmpsReqParams->wdiReqStatusCB = NULL;
+   // we are done with the input
+   vos_mem_free(pEnterBmpsReqParams);
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiEnterBmpsReqParams;
-   pWdaParams->wdaMsgParam = pEnterBmpsReqParams;
    pWdaParams->pWdaContext = pWDA;
+   pWdaParams->wdaMsgParam = NULL;
    status = WDI_EnterBmpsReq(wdiEnterBmpsReqParams,
+<<<<<<< HEAD
                     (WDI_EnterBmpsRspCb)WDA_EnterBmpsRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    (WDI_EnterBmpsRspCb)WDA_EnterBmpsReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if (IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in Enter BMPS REQ WDI API, free all the memory" );
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaMsgParam);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWdaParams);
       WDA_SendMsg(pWDA, WDA_ENTER_BMPS_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
    }
@@ -8601,6 +9738,7 @@ static void WDA_SendExitBmpsRsp(tWDA_CbContext *pWDA,
 
 
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_ExitBmpsReqCallback
  * send Exit BMPS RSP back to PE
@@ -8623,23 +9761,26 @@ void WDA_ExitBmpsReqCallback(WDI_Status status, void* pUserData)
    pExitBmpsReqParams = (tExitBmpsParams *)pWdaParams->wdaMsgParam ;
 =======
  * FUNCTION: WDA_ExitBmpsRespCallback
+=======
+ * FUNCTION: WDA_ExitBmpsReqCallback
+>>>>>>> 657b0e9... prima update
  * send Exit BMPS RSP back to PE
  */ 
-void WDA_ExitBmpsRespCallback(WDI_ExitBmpsRspParamsType *pwdiExitBmpsRsp, void* pUserData)
+void WDA_ExitBmpsReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
-   tExitBmpsParams *pExitBmpsRspParams;
-
+   tExitBmpsParams *pExitBmpsReqParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
+              "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
       return ;
    }
+<<<<<<< HEAD
 
    pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
    pExitBmpsRspParams = (tExitBmpsParams *)pWdaParams->wdaMsgParam;
@@ -8647,10 +9788,15 @@ void WDA_ExitBmpsRespCallback(WDI_ExitBmpsRspParamsType *pwdiExitBmpsRsp, void* 
    pExitBmpsRspParams->bssIdx = pwdiExitBmpsRsp->bssIdx;
    pExitBmpsRspParams->status = (pwdiExitBmpsRsp->wdiStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext ;
+   pExitBmpsReqParams = (tExitBmpsParams *)pWdaParams->wdaMsgParam ;
+>>>>>>> 657b0e9... prima update
 
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    pExitBmpsReqParams->status = CONVERT_WDI2SIR_STATUS(status) ;
    WDA_SendMsg(pWDA, WDA_EXIT_BMPS_RSP, (void *)pExitBmpsReqParams , 0) ;
@@ -8698,6 +9844,13 @@ void WDA_ExitBmpsReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pExitBmpsReqParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+   WDA_SendMsg(pWDA, WDA_EXIT_BMPS_RSP, (void *)pExitBmpsReqParams , 0) ;
+   return ;
+}
+/*
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessExitBmpsReq
  * Request to WDI to Exit BMPS power state.
  */ 
@@ -8711,6 +9864,7 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiExitBmpsReqParams) 
    {
@@ -8723,6 +9877,13 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiExitBmpsReqParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       WDA_SendExitBmpsRsp(pWDA, WDI_STATUS_MEM_FAILURE, pExitBmpsReqParams);
       return VOS_STATUS_E_NOMEM;
@@ -8732,10 +9893,14 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiExitBmpsReqParams);
       return VOS_STATUS_E_NOMEM;
@@ -8745,6 +9910,7 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
    wdiExitBmpsReqParams->wdiExitBmpsInfo.bssIdx = pExitBmpsReqParams->bssIdx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiExitBmpsReqParams->wdiReqStatusCB = NULL;
       
 =======
@@ -8752,6 +9918,10 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
    wdiExitBmpsReqParams->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiExitBmpsReqParams->wdiReqStatusCB = NULL;
+      
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiExitBmpsReqParams;
@@ -8759,18 +9929,26 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pExitBmpsReqParams;
    status = WDI_ExitBmpsReq(wdiExitBmpsReqParams,
 <<<<<<< HEAD
+<<<<<<< HEAD
                              (WDI_ExitBmpsRspCb)WDA_ExitBmpsReqCallback, pWdaParams);
 =======
                              (WDI_ExitBmpsRspCb)WDA_ExitBmpsRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             (WDI_ExitBmpsRspCb)WDA_ExitBmpsReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in Exit BMPS REQ WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
       vos_mem_free(pWdaParams->wdaMsgParam) ;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      vos_mem_free(pWdaParams->wdaMsgParam) ;
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
       vos_mem_free(pWdaParams) ;
       WDA_SendExitBmpsRsp(pWDA, status, pExitBmpsReqParams);
@@ -8778,6 +9956,7 @@ VOS_STATUS WDA_ProcessExitBmpsReq(tWDA_CbContext *pWDA,
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_EnterUapsdReqCallback
  * send Enter UAPSD RSP back to PE
@@ -8807,35 +9986,35 @@ void WDA_EnterUapsdReqCallback(WDI_Status status, void* pUserData)
 /*
 =======
  * FUNCTION: WDA_EnterUapsdRespCallback
+=======
+ * FUNCTION: WDA_EnterUapsdReqCallback
+>>>>>>> 657b0e9... prima update
  * send Enter UAPSD RSP back to PE
  */ 
-void WDA_EnterUapsdRespCallback(  WDI_EnterUapsdRspParamsType *pwdiEnterUapsdRspParams, void* pUserData)
+void WDA_EnterUapsdReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
-   tUapsdParams *pEnterUapsdRsqParams;
+   tUapsdParams *pEnterUapsdReqParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
+              "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
       return ;
    }
-
-   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
-   pEnterUapsdRsqParams = (tUapsdParams *)pWdaParams->wdaMsgParam;
-
-   pEnterUapsdRsqParams->bssIdx = pwdiEnterUapsdRspParams->bssIdx;
-   pEnterUapsdRsqParams->status = (pwdiEnterUapsdRspParams->wdiStatus);
-
+   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext ;
+   pEnterUapsdReqParams = (tUapsdParams *)pWdaParams->wdaMsgParam ;
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
-   WDA_SendMsg(pWDA, WDA_ENTER_UAPSD_RSP, (void *)pEnterUapsdRsqParams , 0) ;
+   pEnterUapsdReqParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+   WDA_SendMsg(pWDA, WDA_ENTER_UAPSD_RSP, (void *)pEnterUapsdReqParams , 0) ;
    return ;
 }
 /*
+<<<<<<< HEAD
  * FUNCTION: WDA_EnterUapsdReqCallback
  * Free memory and send Enter UAPSD RSP back to PE.
  * Invoked when Enter UAPSD REQ failed in WDI and no RSP callback is generated.
@@ -8872,6 +10051,8 @@ void WDA_EnterUapsdReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessEnterUapsdReq
  * Request to WDI to Enter UAPSD power state.
  */ 
@@ -8885,6 +10066,7 @@ VOS_STATUS WDA_ProcessEnterUapsdReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiEnterUapsdReqParams) 
    {
@@ -8897,6 +10079,13 @@ VOS_STATUS WDA_ProcessEnterUapsdReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiEnterUapsdReqParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -8905,10 +10094,14 @@ VOS_STATUS WDA_ProcessEnterUapsdReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiEnterUapsdReqParams);
       return VOS_STATUS_E_NOMEM;
@@ -8932,11 +10125,15 @@ VOS_STATUS WDA_ProcessEnterUapsdReq(tWDA_CbContext *pWDA,
    wdiEnterUapsdReqParams->wdiEnterUapsdInfo.bssIdx = pEnterUapsdReqParams->bssIdx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEnterUapsdReqParams->wdiReqStatusCB = NULL; 
 =======
    wdiEnterUapsdReqParams->wdiReqStatusCB = WDA_EnterUapsdReqCallback;
    wdiEnterUapsdReqParams->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEnterUapsdReqParams->wdiReqStatusCB = NULL; 
+>>>>>>> 657b0e9... prima update
 
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
@@ -8945,10 +10142,14 @@ VOS_STATUS WDA_ProcessEnterUapsdReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pEnterUapsdReqParams;
    status = WDI_EnterUapsdReq(wdiEnterUapsdReqParams,
 <<<<<<< HEAD
+<<<<<<< HEAD
                               (WDI_EnterUapsdRspCb)WDA_EnterUapsdReqCallback, pWdaParams);
 =======
                               (WDI_EnterUapsdRspCb)WDA_EnterUapsdRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                              (WDI_EnterUapsdRspCb)WDA_EnterUapsdReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -8960,6 +10161,7 @@ VOS_STATUS WDA_ProcessEnterUapsdReq(tWDA_CbContext *pWDA,
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_ExitUapsdReqCallback
  * send Exit UAPSD RSP back to PE
@@ -8993,58 +10195,37 @@ VOS_STATUS WDA_ProcessExitUapsdReq(tWDA_CbContext *pWDA)
 }
 =======
  * FUNCTION: WDA_ExitUapsdRespCallback
+=======
+ * FUNCTION: WDA_ExitUapsdReqCallback
+>>>>>>> 657b0e9... prima update
  * send Exit UAPSD RSP back to PE
  */ 
-void WDA_ExitUapsdRespCallback(WDI_ExitUapsdRspParamsType *pwdiExitRspParam, void* pUserData)
+void WDA_ExitUapsdReqCallback(WDI_Status status, void* pUserData)
 {
-
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *pWDA;
-   tExitUapsdParams *pExitUapsdRspParams;
-
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
-   }
-
-   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
-   pExitUapsdRspParams = (tExitUapsdParams *)pWdaParams->wdaMsgParam;
-
-   pExitUapsdRspParams->bssIdx = pwdiExitRspParam->bssIdx;
-   pExitUapsdRspParams->status = (pwdiExitRspParam->wdiStatus);
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-   vos_mem_free(pWdaParams) ;
-
-   WDA_SendMsg(pWDA, WDA_EXIT_UAPSD_RSP, (void *)pExitUapsdRspParams, 0) ;
+                                          "<------ %s " ,__FUNCTION__);
+   WDA_SendMsg(pWDA, WDA_EXIT_UAPSD_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
    return ;
 }
 /*
- * FUNCTION: WDA_ExitUapsdReqCallback
- * Free memory and send Exit UAPSD RSP back to PE.
- * Invoked when Exit UAPSD REQ failed in WDI and no RSP callback is generated.
- */
-void WDA_ExitUapsdReqCallback(WDI_Status wdiStatus, void* pUserData)
+ * FUNCTION: WDA_ProcessExitUapsdReq
+ * Request to WDI to Exit UAPSD power state.
+ */ 
+VOS_STATUS WDA_ProcessExitUapsdReq(tWDA_CbContext *pWDA)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *pWDA;
-   tExitUapsdParams *pExitUapsdRspParams;
-
+   WDI_Status status = WDI_STATUS_SUCCESS ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
-   if(NULL == pWdaParams)
+                                          "------> %s " ,__FUNCTION__);
+   status = WDI_ExitUapsdReq((WDI_ExitUapsdRspCb)WDA_ExitUapsdReqCallback, pWDA);
+   if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
+              "Failure in Exit UAPSD REQ WDI API, free all the memory " );
+      pWDA->wdaWdiApiMsgParam = NULL;
+      pWDA->wdaMsgParam = NULL;
    }
+<<<<<<< HEAD
 
    pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
    pExitUapsdRspParams = (tExitUapsdParams *)pWdaParams->wdaMsgParam;
@@ -9115,6 +10296,10 @@ VOS_STATUS WDA_ProcessExitUapsdReq(tWDA_CbContext *pWDA,
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   return CONVERT_WDI2VOS_STATUS(status) ;
+}
+>>>>>>> 657b0e9... prima update
 
 /*
  * FUNCTION: WDA_SetPwrSaveCfgReqCallback
@@ -9124,6 +10309,7 @@ void WDA_SetPwrSaveCfgReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
@@ -9137,6 +10323,13 @@ void WDA_SetPwrSaveCfgReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -9171,6 +10364,7 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if ((NULL == pWDA) || (NULL == pPowerSaveCfg))
    {
@@ -9180,19 +10374,27 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
 	  vos_mem_free(pPowerSaveCfg);
 =======
                                           "------> %s " ,__func__);
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    if ((NULL == pWDA) || (NULL == pPowerSaveCfg))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: invalid param", __func__);
+                           "%s: invalid param", __FUNCTION__);
       VOS_ASSERT(0);
+<<<<<<< HEAD
       vos_mem_free(pPowerSaveCfg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  vos_mem_free(pPowerSaveCfg);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    wdiPowerSaveCfg = vos_mem_malloc(sizeof(WDI_UpdateCfgReqParamsType));
    if (NULL == wdiPowerSaveCfg)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__);
       VOS_ASSERT(0);
@@ -9202,12 +10404,18 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
       VOS_ASSERT(0);
       vos_mem_free(pPowerSaveCfg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+      VOS_ASSERT(0);
+	  vos_mem_free(pPowerSaveCfg);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
@@ -9219,6 +10427,12 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
       vos_mem_free(wdiPowerSaveCfg);
       vos_mem_free(pPowerSaveCfg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+      VOS_ASSERT(0);
+      vos_mem_free(wdiPowerSaveCfg);
+	  vos_mem_free(pPowerSaveCfg);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    configParamSize = (sizeof(tHalCfg) + (sizeof(tANI_U32))) * WDA_NUM_PWR_SAVE_CFG;
@@ -9226,6 +10440,7 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
    if(NULL == configParam)
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                 "%s: VOS MEM Alloc Failure \n", __FUNCTION__);
 	  VOS_ASSERT(0);
@@ -9239,6 +10454,13 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
       vos_mem_free(wdiPowerSaveCfg);
       vos_mem_free(pPowerSaveCfg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: VOS MEM Alloc Failure \n", __FUNCTION__);
+	  VOS_ASSERT(0);
+      vos_mem_free(pWdaParams);
+      vos_mem_free(wdiPowerSaveCfg);
+	  vos_mem_free(pPowerSaveCfg);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    vos_mem_set(configParam, configParamSize, 0);
@@ -9343,6 +10565,7 @@ VOS_STATUS WDA_ProcessSetPwrSaveCfgReq(tWDA_CbContext *pWDA,
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_SetUapsdAcParamsReqCallback
  * 
  */ 
@@ -9354,13 +10577,16 @@ void WDA_SetUapsdAcParamsReqCallback(WDI_Status status, void* pUserData)
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
 =======
  * FUNCTION: WDA_SetUapsdAcParamsRespCallback
+=======
+ * FUNCTION: WDA_SetUapsdAcParamsReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_SetUapsdAcParamsRespCallback(WDI_Status status, void* pUserData)
+void WDA_SetUapsdAcParamsReqCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ;
-
+   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                                           "<------ %s " ,__func__);
 
    if(NULL == pWdaParams)
@@ -9373,11 +10599,16 @@ void WDA_SetUapsdAcParamsRespCallback(WDI_Status status, void* pUserData)
 
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
+>>>>>>> 657b0e9... prima update
    vos_mem_free(pWdaParams);
 
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_SetUapsdAcParamsReqCallback
@@ -9409,6 +10640,8 @@ void WDA_SetUapsdAcParamsReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_SetUapsdAcParamsReq
  * Request to WDI to set the UAPSD params for an ac (sta mode).
  */ 
@@ -9423,6 +10656,7 @@ VOS_STATUS WDA_SetUapsdAcParamsReq(v_PVOID_t pVosContext, v_U8_t staIdx,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiUapsdParams) 
    {
@@ -9435,6 +10669,13 @@ VOS_STATUS WDA_SetUapsdAcParamsReq(v_PVOID_t pVosContext, v_U8_t staIdx,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiUapsdParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -9443,10 +10684,14 @@ VOS_STATUS WDA_SetUapsdAcParamsReq(v_PVOID_t pVosContext, v_U8_t staIdx,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiUapsdParams);
       return VOS_STATUS_E_NOMEM;
@@ -9458,12 +10703,16 @@ VOS_STATUS WDA_SetUapsdAcParamsReq(v_PVOID_t pVosContext, v_U8_t staIdx,
    wdiUapsdParams->wdiUapsdInfo.uSusInterval = pUapsdInfo->susInterval;
    wdiUapsdParams->wdiUapsdInfo.ucUp = pUapsdInfo->up;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiUapsdParams->wdiReqStatusCB = NULL;
 =======
    wdiUapsdParams->wdiReqStatusCB = WDA_SetUapsdAcParamsReqCallback;
    wdiUapsdParams->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiUapsdParams->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    pWDA = vos_get_context( VOS_MODULE_ID_WDA, pVosContext );
    pWdaParams->pWdaContext = pWDA;
    /* Store param pointer as passed in by caller */
@@ -9472,10 +10721,14 @@ VOS_STATUS WDA_SetUapsdAcParamsReq(v_PVOID_t pVosContext, v_U8_t staIdx,
    pWdaParams->wdaWdiApiMsgParam = (void *)wdiUapsdParams;
    status = WDI_SetUapsdAcParamsReq(wdiUapsdParams, 
 <<<<<<< HEAD
+<<<<<<< HEAD
               (WDI_SetUapsdAcParamsCb)WDA_SetUapsdAcParamsReqCallback,
 =======
               (WDI_SetUapsdAcParamsCb)WDA_SetUapsdAcParamsRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              (WDI_SetUapsdAcParamsCb)WDA_SetUapsdAcParamsReqCallback,
+>>>>>>> 657b0e9... prima update
               pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -9505,6 +10758,7 @@ VOS_STATUS WDA_ClearUapsdAcParamsReq(v_PVOID_t pVosContext, v_U8_t staIdx, wpt_u
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_UpdateUapsdParamsReqCallback
  * 
  */ 
@@ -9525,33 +10779,27 @@ void WDA_UpdateUapsdParamsReqCallback(WDI_Status status, void* pUserData)
 /*
 =======
  * FUNCTION: WDA_UpdateUapsdParamsRespCallback
+=======
+ * FUNCTION: WDA_UpdateUapsdParamsReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_UpdateUapsdParamsRespCallback(WDI_Status status, void* pUserData)
+void WDA_UpdateUapsdParamsReqCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
-
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
-   vos_mem_free(pWdaParams->wdaMsgParam);
-   vos_mem_free(pWdaParams);
+                                          "<------ %s " ,__FUNCTION__);
+   vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+   pWDA->wdaWdiApiMsgParam = NULL;
+   pWDA->wdaMsgParam = NULL;
 
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-           "WDA_UpdateUapsdParamsRespCallback invoked " );
+           "WDA_UpdateUapsdParamsReqCallback invoked " );
    return ;
 }
 /*
+<<<<<<< HEAD
  * FUNCTION: WDA_UpdateUapsdParamsReqCallback
  * Free memory.
  * Invoked when UpdateUAPSDParams REQ failed in WDI and no RSP callback is generated.
@@ -9582,6 +10830,8 @@ void WDA_UpdateUapsdParamsReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_UpdateUapsdParamsReq
  * Request to WDI to update UAPSD params (in softAP mode) for a station.
  */ 
@@ -9594,6 +10844,7 @@ VOS_STATUS WDA_UpdateUapsdParamsReq(tWDA_CbContext *pWDA,
       (WDI_UpdateUapsdReqParamsType *)vos_mem_malloc(
          sizeof(WDI_UpdateUapsdReqParamsType)) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiUpdateUapsdParams) 
@@ -9603,13 +10854,19 @@ VOS_STATUS WDA_UpdateUapsdParamsReq(tWDA_CbContext *pWDA,
 =======
    tWDA_ReqParams *pWdaParams = NULL;
 
+=======
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
    if(NULL == wdiUpdateUapsdParams) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -9617,11 +10874,15 @@ VOS_STATUS WDA_UpdateUapsdParamsReq(tWDA_CbContext *pWDA,
    wdiUpdateUapsdParams->wdiUpdateUapsdInfo.ucSTAIdx = pUpdateUapsdInfo->staIdx;
    wdiUpdateUapsdParams->wdiUpdateUapsdInfo.ucUapsdACMask = pUpdateUapsdInfo->uapsdACMask;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    if((NULL != pWDA->wdaMsgParam) ||
                   (NULL != pWDA->wdaWdiApiMsgParam))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s:wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
+<<<<<<< HEAD
       vos_mem_free(wdiUpdateUapsdParams);
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
@@ -9643,40 +10904,52 @@ VOS_STATUS WDA_UpdateUapsdParamsReq(tWDA_CbContext *pWDA,
                            "%s: VOS MEM Alloc Failure", __func__); 
       VOS_ASSERT(0);
       vos_mem_free(pUpdateUapsdInfo);
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(wdiUpdateUapsdParams);
-      return VOS_STATUS_E_NOMEM;
+      VOS_ASSERT(0);
+      return VOS_STATUS_E_FAILURE;
    }
    /* Store param pointer as passed in by caller */
-   pWdaParams->wdaMsgParam = pUpdateUapsdInfo;
+   pWDA->wdaMsgParam = pUpdateUapsdInfo;
    /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)wdiUpdateUapsdParams;
-   pWdaParams->pWdaContext = pWDA;
-
+   pWDA->wdaWdiApiMsgParam = (void *)wdiUpdateUapsdParams;
    wstatus = WDI_UpdateUapsdParamsReq(wdiUpdateUapsdParams, 
+<<<<<<< HEAD
                     (WDI_UpdateUapsdParamsCb)WDA_UpdateUapsdParamsRespCallback,
                     pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                      (WDI_UpdateUapsdParamsCb)WDA_UpdateUapsdParamsReqCallback, pWDA);
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in Set UAPSD params REQ WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
       status = CONVERT_WDI2VOS_STATUS(wstatus);
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       vos_mem_free(pWDA->wdaMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
       status = CONVERT_WDI2VOS_STATUS(wstatus) ;
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams->wdaMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return status;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_ConfigureRxpFilterCallback
  * 
@@ -9692,27 +10965,38 @@ void WDA_ConfigureRxpFilterCallback(WDI_Status   wdiStatus, void* pUserData)
                   "%s: RXP config filter failure \n", __FUNCTION__ );
 =======
  * FUNCTION: WDA_ConfigureRxpFilterRespCallback
+=======
+ * FUNCTION: WDA_ConfigureRxpFilterCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_ConfigureRxpFilterRespCallback(WDI_Status   wdiStatus, void* pUserData)
+void WDA_ConfigureRxpFilterCallback(WDI_Status   wdiStatus, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(WDI_STATUS_SUCCESS != wdiStatus)
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                   "%s: RXP config filter failure \n", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: RXP config filter failure \n", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
    }
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -9722,6 +11006,7 @@ void WDA_ConfigureRxpFilterRespCallback(WDI_Status   wdiStatus, void* pUserData)
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_ConfigureRxpFilterReqCallback
@@ -9754,6 +11039,8 @@ void WDA_ConfigureRxpFilterReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessConfigureRxpFilterReq
  * 
  */ 
@@ -9768,6 +11055,7 @@ VOS_STATUS WDA_ProcessConfigureRxpFilterReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiRxpFilterParams) 
    {
@@ -9780,6 +11068,13 @@ VOS_STATUS WDA_ProcessConfigureRxpFilterReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiRxpFilterParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pWlanSuspendParam);
       return VOS_STATUS_E_NOMEM;
@@ -9789,10 +11084,14 @@ VOS_STATUS WDA_ProcessConfigureRxpFilterReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiRxpFilterParams);
       vos_mem_free(pWlanSuspendParam);
@@ -9804,21 +11103,29 @@ VOS_STATUS WDA_ProcessConfigureRxpFilterReq(tWDA_CbContext *pWDA,
              pWlanSuspendParam->configuredMcstBcstFilterSetting;
    
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiRxpFilterParams->wdiReqStatusCB = NULL;
 =======
    wdiRxpFilterParams->wdiReqStatusCB = WDA_ConfigureRxpFilterReqCallback;
    wdiRxpFilterParams->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiRxpFilterParams->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    pWdaParams->pWdaContext = pWDA;
    pWdaParams->wdaMsgParam = pWlanSuspendParam;
    pWdaParams->wdaWdiApiMsgParam = (void *)wdiRxpFilterParams;
    wstatus = WDI_ConfigureRxpFilterReq(wdiRxpFilterParams, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                       (WDI_ConfigureRxpFilterCb)WDA_ConfigureRxpFilterCallback,
 =======
                       (WDI_ConfigureRxpFilterCb)WDA_ConfigureRxpFilterRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      (WDI_ConfigureRxpFilterCb)WDA_ConfigureRxpFilterCallback,
+>>>>>>> 657b0e9... prima update
                       pWdaParams);
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
@@ -9840,10 +11147,14 @@ void WDA_WdiIndicationCallback( WDI_Status   wdiStatus,
 {
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 }
 /*
  * FUNCTION: WDA_ProcessWlanSuspendInd
@@ -9856,42 +11167,59 @@ VOS_STATUS WDA_ProcessWlanSuspendInd(tWDA_CbContext *pWDA,
    WDI_SuspendParamsType wdiSuspendParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    wdiSuspendParams.wdiSuspendParams.ucConfiguredMcstBcstFilterSetting =
                           pWlanSuspendParam->configuredMcstBcstFilterSetting;
    wdiSuspendParams.wdiReqStatusCB = WDA_WdiIndicationCallback;
    wdiSuspendParams.pUserData = pWDA;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO, "%s: %d" ,__FUNCTION__, pWlanSuspendParam->configuredMcstBcstFilterSetting);
 =======
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO, "%s: %d" ,__func__, pWlanSuspendParam->configuredMcstBcstFilterSetting);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO, "%s: %d" ,__FUNCTION__, pWlanSuspendParam->configuredMcstBcstFilterSetting);
+>>>>>>> 657b0e9... prima update
    wdiStatus = WDI_HostSuspendInd(&wdiSuspendParams);
    if(WDI_STATUS_PENDING == wdiStatus)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "Pending received for %s:%d ",__FUNCTION__,__LINE__ );
 =======
               "Pending received for %s:%d ",__func__,__LINE__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "Pending received for %s:%d ",__FUNCTION__,__LINE__ );
+>>>>>>> 657b0e9... prima update
    }
    else if( WDI_STATUS_SUCCESS_SYNC != wdiStatus )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "Failure in %s:%d ",__FUNCTION__,__LINE__ );
 =======
               "Failure in %s:%d ",__func__,__LINE__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "Failure in %s:%d ",__FUNCTION__,__LINE__ );
+>>>>>>> 657b0e9... prima update
    }
    vos_mem_free(pWlanSuspendParam);
    return CONVERT_WDI2VOS_STATUS(wdiStatus) ;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
@@ -9931,6 +11259,8 @@ VOS_STATUS WDA_ProcessExcludeUnecryptInd(tWDA_CbContext *pWDA,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_ProcessWlanResumeCallback
  * 
@@ -9941,6 +11271,7 @@ void WDA_ProcessWlanResumeCallback(
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
@@ -9954,6 +11285,13 @@ void WDA_ProcessWlanResumeCallback(
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -9961,10 +11299,14 @@ void WDA_ProcessWlanResumeCallback(
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Process Wlan Resume failure \n", __FUNCTION__ );
 =======
                   "%s: Process Wlan Resume failure \n", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Process Wlan Resume failure \n", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
    }
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
    vos_mem_free(pWdaParams->wdaMsgParam);
@@ -9985,6 +11327,7 @@ VOS_STATUS WDA_ProcessWlanResumeReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiResumeParams) 
    {
@@ -9997,6 +11340,13 @@ VOS_STATUS WDA_ProcessWlanResumeReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiResumeParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -10005,10 +11355,14 @@ VOS_STATUS WDA_ProcessWlanResumeReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiResumeParams);
       return VOS_STATUS_E_NOMEM;
@@ -10016,10 +11370,14 @@ VOS_STATUS WDA_ProcessWlanResumeReq(tWDA_CbContext *pWDA,
    wdiResumeParams->wdiResumeParams.ucConfiguredMcstBcstFilterSetting =
                           pWlanResumeParam->configuredMcstBcstFilterSetting;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO, "%s: %d" ,__FUNCTION__, pWlanResumeParam->configuredMcstBcstFilterSetting);
 =======
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO, "%s: %d" ,__func__, pWlanResumeParam->configuredMcstBcstFilterSetting);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO, "%s: %d" ,__FUNCTION__, pWlanResumeParam->configuredMcstBcstFilterSetting);
+>>>>>>> 657b0e9... prima update
    wdiResumeParams->wdiReqStatusCB = NULL;
    pWdaParams->wdaMsgParam = pWlanResumeParam;
    pWdaParams->wdaWdiApiMsgParam = wdiResumeParams;
@@ -10041,6 +11399,7 @@ VOS_STATUS WDA_ProcessWlanResumeReq(tWDA_CbContext *pWDA,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_SetBeaconFilterReqCallback
  * 
  */ 
@@ -10055,18 +11414,25 @@ void WDA_SetBeaconFilterReqCallback(WDI_Status status, void* pUserData)
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
  * FUNCTION: WDA_SetBeaconFilterRespCallback
+=======
+ * FUNCTION: WDA_SetBeaconFilterReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_SetBeaconFilterRespCallback(WDI_Status status, void* pUserData)
+void WDA_SetBeaconFilterReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -10082,6 +11448,7 @@ void WDA_SetBeaconFilterRespCallback(WDI_Status status, void* pUserData)
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_SetBeaconFilterReqCallback
@@ -10114,6 +11481,8 @@ void WDA_SetBeaconFilterReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_SetBeaconFilterReq
  * Request to WDI to send the beacon filtering related information.
  */ 
@@ -10129,6 +11498,7 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiBeaconFilterInfo) 
    {
@@ -10141,6 +11511,13 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiBeaconFilterInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -10149,10 +11526,14 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiBeaconFilterInfo);
       return VOS_STATUS_E_NOMEM;
@@ -10165,12 +11546,15 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
       pBeaconFilterInfo->capabilityMask;
    wdiBeaconFilterInfo->wdiBeaconFilterInfo.usIeNum = pBeaconFilterInfo->ieNum;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    //Fill the BssIdx
    wdiBeaconFilterInfo->wdiBeaconFilterInfo.bssIdx = pBeaconFilterInfo->bssIdx;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    //Fill structure with info contained in the beaconFilterTable
    dstPtr = (tANI_U8 *)wdiBeaconFilterInfo + sizeof(WDI_BeaconFilterInfoType);
    srcPtr = (tANI_U8 *)pBeaconFilterInfo + sizeof(tBeaconFilterMsg);
@@ -10181,12 +11565,16 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
    }
    vos_mem_copy(dstPtr, srcPtr, filterLength);
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiBeaconFilterInfo->wdiReqStatusCB = NULL;
 =======
    wdiBeaconFilterInfo->wdiReqStatusCB = WDA_SetBeaconFilterReqCallback;
    wdiBeaconFilterInfo->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiBeaconFilterInfo->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiBeaconFilterInfo;
@@ -10195,10 +11583,14 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
 
    status = WDI_SetBeaconFilterReq(wdiBeaconFilterInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                    (WDI_SetBeaconFilterCb)WDA_SetBeaconFilterReqCallback, pWdaParams);
 =======
                                    (WDI_SetBeaconFilterCb)WDA_SetBeaconFilterRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                   (WDI_SetBeaconFilterCb)WDA_SetBeaconFilterReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -10210,6 +11602,7 @@ VOS_STATUS WDA_SetBeaconFilterReq(tWDA_CbContext *pWDA,
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_RemBeaconFilterReqCallback
  * 
@@ -10278,60 +11671,24 @@ VOS_STATUS WDA_RemBeaconFilterReq(tWDA_CbContext *pWDA,
                                    (WDI_RemBeaconFilterCb)WDA_RemBeaconFilterReqCallback, pWDA);
 =======
  * FUNCTION: WDA_RemBeaconFilterRespCallback
+=======
+ * FUNCTION: WDA_RemBeaconFilterReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_RemBeaconFilterRespCallback(WDI_Status status, void* pUserData)
+void WDA_RemBeaconFilterReqCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
-
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
-   vos_mem_free(pWdaParams->wdaMsgParam);
-   vos_mem_free(pWdaParams);
-
+                                          "<------ %s " ,__FUNCTION__);
+   vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+   pWDA->wdaWdiApiMsgParam = NULL;
+   pWDA->wdaMsgParam = NULL;
+   
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "WDA_RemBeaconFilterRespCallback invoked " );
+              "WDA_RemBeaconFilterReqCallback invoked " );
    return ;
-}
-/*
- * FUNCTION: WDA_RemBeaconFilterReqCallback
- * Free memory.
- * Invoked when RemBeaconFilter REQ failed in WDI and no RSP callback is generated.
- */
-void WDA_RemBeaconFilterReqCallback(WDI_Status wdiStatus, void* pUserData)
-{
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
-   }
-
-   if(IS_WDI_STATUS_FAILURE(wdiStatus))
-   {
-      vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-      vos_mem_free(pWdaParams->wdaMsgParam);
-      vos_mem_free(pWdaParams);
-   }
-
-   return;
 }
     // TODO: PE does not have this feature for now implemented,
     // but the support for removing beacon filter exists between
@@ -10349,66 +11706,69 @@ VOS_STATUS WDA_RemBeaconFilterReq(tWDA_CbContext *pWDA,
    WDI_RemBeaconFilterReqParamsType *wdiBeaconFilterInfo = 
       (WDI_RemBeaconFilterReqParamsType *)vos_mem_malloc(
          sizeof(WDI_RemBeaconFilterReqParamsType) + pBeaconFilterInfo->ucIeCount) ;
-   tWDA_ReqParams *pWdaParams ;
-
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
    if(NULL == wdiBeaconFilterInfo) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      VOS_ASSERT(0);
-      vos_mem_free(wdiBeaconFilterInfo);
-      vos_mem_free(pBeaconFilterInfo);
-      return VOS_STATUS_E_NOMEM;
-   }
-
-   wdiBeaconFilterInfo->wdiBeaconFilterInfo.ucIeCount =
+   wdiBeaconFilterInfo->wdiBeaconFilterInfo.ucIeCount = 
       pBeaconFilterInfo->ucIeCount;
    //Fill structure with info contained in the ucRemIeId
-   vos_mem_copy(wdiBeaconFilterInfo->wdiBeaconFilterInfo.ucRemIeId,
+   vos_mem_copy(wdiBeaconFilterInfo->wdiBeaconFilterInfo.ucRemIeId, 
                 pBeaconFilterInfo->ucRemIeId,
                 wdiBeaconFilterInfo->wdiBeaconFilterInfo.ucIeCount);
-   wdiBeaconFilterInfo->wdiReqStatusCB = WDA_RemBeaconFilterReqCallback;
-   wdiBeaconFilterInfo->pUserData = pWdaParams;
+   wdiBeaconFilterInfo->wdiReqStatusCB = NULL;
+   if((NULL != pWDA->wdaMsgParam) ||
+                  (NULL != pWDA->wdaWdiApiMsgParam))
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s:wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
+      vos_mem_free(wdiBeaconFilterInfo);
+      VOS_ASSERT(0);
+      return VOS_STATUS_E_FAILURE;
+   }
    
    /* Store param pointer as passed in by caller */
-   pWdaParams->wdaMsgParam = pBeaconFilterInfo;
+   pWDA->wdaMsgParam = pBeaconFilterInfo;
    /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)wdiBeaconFilterInfo;
-
-   pWdaParams->pWdaContext = pWDA;
-
+   pWDA->wdaWdiApiMsgParam = (void *)wdiBeaconFilterInfo;
    wstatus = WDI_RemBeaconFilterReq(wdiBeaconFilterInfo, 
+<<<<<<< HEAD
                                    (WDI_RemBeaconFilterCb)WDA_RemBeaconFilterRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                   (WDI_RemBeaconFilterCb)WDA_RemBeaconFilterReqCallback, pWDA);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "Failure in Remove Beacon Filter REQ WDI API, free all the memory " );
       status = CONVERT_WDI2VOS_STATUS(wstatus);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       vos_mem_free(pWDA->wdaMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams->wdaMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return status;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_SetRSSIThresholdsReqCallback
  * 
@@ -10424,18 +11784,25 @@ void WDA_SetRSSIThresholdsReqCallback(WDI_Status status, void* pUserData)
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
  * FUNCTION: WDA_SetRSSIThresholdsRespCallback
+=======
+ * FUNCTION: WDA_SetRSSIThresholdsReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_SetRSSIThresholdsRespCallback(WDI_Status status, void* pUserData)
+void WDA_SetRSSIThresholdsReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -10446,6 +11813,7 @@ void WDA_SetRSSIThresholdsRespCallback(WDI_Status status, void* pUserData)
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_SetRSSIThresholdsReqCallback
@@ -10477,6 +11845,8 @@ void WDA_SetRSSIThresholdsReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_SetRSSIThresholdsReq
  * Request to WDI to set the RSSI thresholds (sta mode).
  */ 
@@ -10492,6 +11862,7 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal pMac, tSirRSSIThresholds *pBm
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiRSSIThresholdsInfo) 
    {
@@ -10504,6 +11875,13 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal pMac, tSirRSSIThresholds *pBm
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiRSSIThresholdsInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -10512,10 +11890,14 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal pMac, tSirRSSIThresholds *pBm
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiRSSIThresholdsInfo);
       return VOS_STATUS_E_NOMEM;
@@ -10531,11 +11913,15 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal pMac, tSirRSSIThresholds *pBm
    wdiRSSIThresholdsInfo->wdiRSSIThresholdsInfo.bRssiThres2PosNotify = pBmpsThresholds->bRssiThres2PosNotify;
    wdiRSSIThresholdsInfo->wdiRSSIThresholdsInfo.bRssiThres3PosNotify = pBmpsThresholds->bRssiThres3PosNotify;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiRSSIThresholdsInfo->wdiReqStatusCB = NULL;
 =======
    wdiRSSIThresholdsInfo->wdiReqStatusCB = WDA_SetRSSIThresholdsReqCallback;
    wdiRSSIThresholdsInfo->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiRSSIThresholdsInfo->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    pVosContext = vos_get_global_context(VOS_MODULE_ID_PE, (void *)pMac);
    pWDA = vos_get_context( VOS_MODULE_ID_WDA, pVosContext );
 
@@ -10546,10 +11932,14 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal pMac, tSirRSSIThresholds *pBm
    pWdaParams->wdaMsgParam = pBmpsThresholds;
    wstatus = WDI_SetRSSIThresholdsReq(wdiRSSIThresholdsInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                      (WDI_SetRSSIThresholdsCb)WDA_SetRSSIThresholdsReqCallback, pWdaParams);
 =======
                                      (WDI_SetRSSIThresholdsCb)WDA_SetRSSIThresholdsRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                     (WDI_SetRSSIThresholdsCb)WDA_SetRSSIThresholdsReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -10563,6 +11953,7 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal pMac, tSirRSSIThresholds *pBm
 }/*WDA_SetRSSIThresholdsReq*/
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_HostOffloadReqCallback
  * 
  */ 
@@ -10573,10 +11964,17 @@ void WDA_HostOffloadReqCallback(WDI_Status status, void* pUserData)
  */ 
 void WDA_HostOffloadRespCallback(WDI_Status status, void* pUserData)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * FUNCTION: WDA_HostOffloadReqCallback
+ * 
+ */ 
+void WDA_HostOffloadReqCallback(WDI_Status status, void* pUserData)
+>>>>>>> 657b0e9... prima update
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
@@ -10590,6 +11988,13 @@ void WDA_HostOffloadRespCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -10600,6 +12005,7 @@ void WDA_HostOffloadRespCallback(WDI_Status status, void* pUserData)
 
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
               "WDA_HostOffloadReqCallback invoked " );
    return ;
@@ -10640,6 +12046,12 @@ void WDA_HostOffloadReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "WDA_HostOffloadReqCallback invoked " );
+   return ;
+}
+/*
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessHostOffloadReq
  * Request to WDI to set the filter to minimize unnecessary host wakeup due 
  * to broadcast traffic   (sta mode).
@@ -10656,19 +12068,27 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s: offloadType=%x" ,__FUNCTION__, pHostOffloadParams->offloadType);
 =======
                                           "------> %s: offloadType=%x" ,__func__, pHostOffloadParams->offloadType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s: offloadType=%x" ,__FUNCTION__, pHostOffloadParams->offloadType);
+>>>>>>> 657b0e9... prima update
 
    if(NULL == wdiHostOffloadInfo) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -10676,6 +12096,7 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
@@ -10686,6 +12107,11 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
       vos_mem_free(wdiHostOffloadInfo);
       vos_mem_free(pHostOffloadParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+      VOS_ASSERT(0);
+      vos_mem_free(wdiHostOffloadInfo);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
 
@@ -10695,6 +12121,7 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
       pHostOffloadParams->enableOrDisable;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiHostOffloadInfo->wdiHostOffloadInfo.bssIdx = 
                                     pHostOffloadParams->bssIdx;
 =======
@@ -10702,6 +12129,10 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
              pHostOffloadParams->bssId, sizeof(wpt_macAddr));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiHostOffloadInfo->wdiHostOffloadInfo.bssIdx = 
+                                    pHostOffloadParams->bssIdx;
+>>>>>>> 657b0e9... prima update
    switch (wdiHostOffloadInfo->wdiHostOffloadInfo.ucOffloadType)
    {
       case SIR_IPV4_ARP_REPLY_OFFLOAD:
@@ -10764,10 +12195,13 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
             wdiHostOffloadInfo->wdiNsOffloadParams.targetIPv6Addr2Valid = 0;
          }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
          wdiHostOffloadInfo->wdiNsOffloadParams.slotIdx =
                         pHostOffloadParams->nsOffloadInfo.slotIdx;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          break;
 #endif //WLAN_NS_OFFLOAD
       default:
@@ -10779,6 +12213,9 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
       }
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    wdiHostOffloadInfo->wdiReqStatusCB = NULL;
    if((NULL != pWDA->wdaMsgParam) ||
                   (NULL != pWDA->wdaWdiApiMsgParam))
@@ -10789,6 +12226,7 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
       vos_mem_free(wdiHostOffloadInfo);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiHostOffloadInfo;
@@ -10801,16 +12239,21 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
    wdiHostOffloadInfo->wdiReqStatusCB = WDA_HostOffloadReqCallback;
    wdiHostOffloadInfo->pUserData = pWdaParams;
 
+=======
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
-   pWdaParams->wdaMsgParam = pHostOffloadParams;
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiHostOffloadInfo;
    pWdaParams->pWdaContext = pWDA;
-
+   pWdaParams->wdaMsgParam = pHostOffloadParams;
 
    wstatus = WDI_HostOffloadReq(wdiHostOffloadInfo, 
+<<<<<<< HEAD
                                (WDI_HostOffloadCb)WDA_HostOffloadRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               (WDI_HostOffloadCb)WDA_HostOffloadReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
@@ -10825,6 +12268,7 @@ VOS_STATUS WDA_ProcessHostOffloadReq(tWDA_CbContext *pWDA,
 
 }/*WDA_HostOffloadReq*/
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_KeepAliveReqCallback
  * 
@@ -10847,33 +12291,28 @@ void WDA_KeepAliveReqCallback(WDI_Status status, void* pUserData)
 /*
 =======
  * FUNCTION: WDA_KeepAliveRespCallback
+=======
+ * FUNCTION: WDA_KeepAliveReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_KeepAliveRespCallback(WDI_Status status, void* pUserData)
+void WDA_KeepAliveReqCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData ; 
-
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-   vos_mem_free(pWdaParams->wdaMsgParam);
-   vos_mem_free(pWdaParams);
-
+                                          "<------ %s " ,__FUNCTION__);
+   vos_mem_free(pWDA->wdaWdiApiMsgParam);
+   vos_mem_free(pWDA->wdaMsgParam);
+   pWDA->wdaWdiApiMsgParam = NULL;
+   pWDA->wdaMsgParam = NULL; 
+   
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "WDA_KeepAliveRespCallback invoked " );
+              "WDA_KeepAliveReqCallback invoked " );
    return ;
 }
 /*
+<<<<<<< HEAD
  * FUNCTION: WDA_KeepAliveReqCallback
  * Free memory.
  * Invoked when KeepAlive REQ failed in WDI and no RSP callback is generated.
@@ -10904,6 +12343,8 @@ void WDA_KeepAliveReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessKeepAliveReq
  * Request to WDI to send Keep Alive packets to minimize unnecessary host 
  * wakeup due to broadcast traffic   (sta mode).
@@ -10917,6 +12358,7 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
       (WDI_KeepAliveReqParamsType *)vos_mem_malloc(
          sizeof(WDI_KeepAliveReqParamsType)) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
     if(NULL == wdiKeepAliveInfo) 
@@ -10929,16 +12371,18 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
 =======
    tWDA_ReqParams *pWdaParams;
 
+=======
+>>>>>>> 657b0e9... prima update
     VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
     if(NULL == wdiKeepAliveInfo) 
     {
         VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                   "%s: VOS MEM Alloc Failure", __func__); 
+                   "%s: VOS MEM Alloc Failure", __FUNCTION__); 
         VOS_ASSERT(0);
-        vos_mem_free(pKeepAliveParams);
         return VOS_STATUS_E_NOMEM;
     }
+<<<<<<< HEAD
 
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
    if(NULL == pWdaParams)
@@ -10952,10 +12396,13 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     wdiKeepAliveInfo->wdiKeepAliveInfo.ucPacketType = 
       pKeepAliveParams->packetType;
     wdiKeepAliveInfo->wdiKeepAliveInfo.ucTimePeriod = 
       pKeepAliveParams->timePeriod;
+<<<<<<< HEAD
 <<<<<<< HEAD
     wdiKeepAliveInfo->wdiKeepAliveInfo.bssIdx = 
                                 pKeepAliveParams->bssIdx;
@@ -10965,6 +12412,10 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
                  pKeepAliveParams->bssId,
                  sizeof(wpt_macAddr));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    wdiKeepAliveInfo->wdiKeepAliveInfo.bssIdx = 
+                                pKeepAliveParams->bssIdx;
+>>>>>>> 657b0e9... prima update
 
     if(pKeepAliveParams->packetType == SIR_KEEP_ALIVE_UNSOLICIT_ARP_RSP)
     {
@@ -10991,6 +12442,9 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
                     0);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     wdiKeepAliveInfo->wdiReqStatusCB = NULL;
     if((NULL != pWDA->wdaMsgParam) ||
        (NULL != pWDA->wdaWdiApiMsgParam))
@@ -11001,6 +12455,7 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
       vos_mem_free(wdiKeepAliveInfo);
       return VOS_STATUS_E_FAILURE;
     }
+<<<<<<< HEAD
     /* Store param pointer as passed in by caller */
     pWDA->wdaMsgParam = pKeepAliveParams;
     /* store Params pass it to WDI */
@@ -11009,13 +12464,19 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
     wdiKeepAliveInfo->wdiReqStatusCB = WDA_KeepAliveReqCallback;
     wdiKeepAliveInfo->pUserData = pWdaParams;
 
+=======
+>>>>>>> 657b0e9... prima update
     /* Store param pointer as passed in by caller */
-    pWdaParams->wdaMsgParam = pKeepAliveParams;
+    pWDA->wdaMsgParam = pKeepAliveParams;
     /* store Params pass it to WDI */
+<<<<<<< HEAD
     pWdaParams->wdaWdiApiMsgParam = (void *)wdiKeepAliveInfo;
     pWdaParams->pWdaContext = pWDA;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pWDA->wdaWdiApiMsgParam = (void *)wdiKeepAliveInfo;
+>>>>>>> 657b0e9... prima update
     VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,"WDA HIP : %d.%d.%d.%d",
               wdiKeepAliveInfo->wdiKeepAliveInfo.aHostIpv4Addr[0],
               wdiKeepAliveInfo->wdiKeepAliveInfo.aHostIpv4Addr[1],
@@ -11040,31 +12501,42 @@ VOS_STATUS WDA_ProcessKeepAliveReq(tWDA_CbContext *pWDA,
               wdiKeepAliveInfo->wdiKeepAliveInfo.ucPacketType); 
     wstatus = WDI_KeepAliveReq(wdiKeepAliveInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                              (WDI_KeepAliveCb)WDA_KeepAliveReqCallback, pWDA);
 =======
                              (WDI_KeepAliveCb)WDA_KeepAliveRespCallback, pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             (WDI_KeepAliveCb)WDA_KeepAliveReqCallback, pWDA);
+>>>>>>> 657b0e9... prima update
     if(IS_WDI_STATUS_FAILURE(wstatus))
     {
         VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                    "Failure in Keep Alive REQ WDI API, free all the memory " );
         status = CONVERT_WDI2VOS_STATUS(wstatus);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
         vos_mem_free(pWDA->wdaMsgParam);
         pWDA->wdaWdiApiMsgParam = NULL;
         pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
         vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
         vos_mem_free(pWdaParams->wdaMsgParam);
         vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     }
     return status;
 
 }/*WDA_KeepAliveReq*/
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_WowlAddBcPtrnReqCallback
  * 
@@ -11080,20 +12552,25 @@ void WDA_WowlAddBcPtrnReqCallback(WDI_Status status, void* pUserData)
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
  * FUNCTION: WDA_WowlAddBcPtrnRespCallback
+=======
+ * FUNCTION: WDA_WowlAddBcPtrnReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_WowlAddBcPtrnRespCallback(
-                                 WDI_WowlAddBcPtrnRspParamsType *pWdiWowlAddBcstPtrRsp, 
-                                 void* pUserData)
+void WDA_WowlAddBcPtrnReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -11103,6 +12580,7 @@ void WDA_WowlAddBcPtrnRespCallback(
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_WowlAddBcPtrnReqCallback
@@ -11136,6 +12614,8 @@ void WDA_WowlAddBcPtrnReqCallback(WDI_Status wdiStatus, void* pUserData)
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessWowlAddBcPtrnReq
  * Request to WDI to add WOWL Bcast pattern
  */ 
@@ -11150,6 +12630,7 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiWowlAddBcPtrnInfo) 
    {
@@ -11162,6 +12643,13 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiWowlAddBcPtrnInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -11170,10 +12658,14 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiWowlAddBcPtrnInfo);
       return VOS_STATUS_E_NOMEM;
@@ -11213,6 +12705,7 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiWowlAddBcPtrnInfo->wdiReqStatusCB = NULL;
 =======
    vos_mem_copy(wdiWowlAddBcPtrnInfo->wdiWowlAddBcPtrnInfo.bssId,
@@ -11221,6 +12714,9 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
    wdiWowlAddBcPtrnInfo->wdiReqStatusCB = WDA_WowlAddBcPtrnReqCallback;
    wdiWowlAddBcPtrnInfo->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiWowlAddBcPtrnInfo->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiWowlAddBcPtrnInfo;
@@ -11228,10 +12724,14 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pWowlAddBcPtrnParams;
    wstatus = WDI_WowlAddBcPtrnReq(wdiWowlAddBcPtrnInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                  (WDI_WowlAddBcPtrnCb)WDA_WowlAddBcPtrnReqCallback, pWdaParams);
 =======
                                  (WDI_WowlAddBcPtrnCb)WDA_WowlAddBcPtrnRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                 (WDI_WowlAddBcPtrnCb)WDA_WowlAddBcPtrnReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -11245,6 +12745,7 @@ VOS_STATUS WDA_ProcessWowlAddBcPtrnReq(tWDA_CbContext *pWDA,
 
 }/*WDA_ProcessWowlAddBcPtrnReq*/
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_WowlDelBcPtrnReqCallback
  * 
@@ -11260,20 +12761,25 @@ void WDA_WowlDelBcPtrnReqCallback(WDI_Status status, void* pUserData)
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
  * FUNCTION: WDA_WowlDelBcPtrnRespCallback
+=======
+ * FUNCTION: WDA_WowlDelBcPtrnReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_WowlDelBcPtrnRespCallback(
-                        WDI_WowlDelBcPtrnRspParamsType *pWdiWowlDelBcstPtrRsp, 
-                        void* pUserData)
+void WDA_WowlDelBcPtrnReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -11283,6 +12789,7 @@ void WDA_WowlDelBcPtrnRespCallback(
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_WowlDelBcPtrnReqCallback
@@ -11315,6 +12822,8 @@ void WDA_WowlDelBcPtrnReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessWowlDelBcPtrnReq
  * Request to WDI to delete WOWL Bcast pattern
  */ 
@@ -11329,6 +12838,7 @@ VOS_STATUS WDA_ProcessWowlDelBcPtrnReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiWowlDelBcPtrnInfo) 
    {
@@ -11341,6 +12851,13 @@ VOS_STATUS WDA_ProcessWowlDelBcPtrnReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiWowlDelBcPtrnInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -11349,16 +12866,21 @@ VOS_STATUS WDA_ProcessWowlDelBcPtrnReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiWowlDelBcPtrnInfo);
       return VOS_STATUS_E_NOMEM;
    }
    wdiWowlDelBcPtrnInfo->wdiWowlDelBcPtrnInfo.ucPatternId = 
       pWowlDelBcPtrnParams->ucPatternId;
+<<<<<<< HEAD
 <<<<<<< HEAD
    wdiWowlDelBcPtrnInfo->wdiReqStatusCB = NULL;
 =======
@@ -11369,6 +12891,9 @@ VOS_STATUS WDA_ProcessWowlDelBcPtrnReq(tWDA_CbContext *pWDA,
    wdiWowlDelBcPtrnInfo->wdiReqStatusCB = WDA_WowlDelBcPtrnReqCallback;
    wdiWowlDelBcPtrnInfo->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiWowlDelBcPtrnInfo->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiWowlDelBcPtrnInfo;
@@ -11376,10 +12901,14 @@ VOS_STATUS WDA_ProcessWowlDelBcPtrnReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pWowlDelBcPtrnParams;
    wstatus = WDI_WowlDelBcPtrnReq(wdiWowlDelBcPtrnInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                  (WDI_WowlDelBcPtrnCb)WDA_WowlDelBcPtrnReqCallback, pWdaParams);
 =======
                                  (WDI_WowlDelBcPtrnCb)WDA_WowlDelBcPtrnRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                 (WDI_WowlDelBcPtrnCb)WDA_WowlDelBcPtrnReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -11394,6 +12923,7 @@ VOS_STATUS WDA_ProcessWowlDelBcPtrnReq(tWDA_CbContext *pWDA,
 }/*WDA_ProcessWowlDelBcPtrnReq*/
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_WowlEnterReqCallback
  * 
  */ 
@@ -11404,11 +12934,18 @@ void WDA_WowlEnterReqCallback(WDI_Status status, void* pUserData)
  */ 
 void WDA_WowlEnterRespCallback(WDI_WowlEnterRspParamsType *pwdiWowlEnterRspParam, void* pUserData)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * FUNCTION: WDA_WowlEnterReqCallback
+ * 
+ */ 
+void WDA_WowlEnterReqCallback(WDI_Status status, void* pUserData)
+>>>>>>> 657b0e9... prima update
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
    tSirHalWowlEnterParams *pWowlEnterParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
@@ -11422,12 +12959,20 @@ void WDA_WowlEnterRespCallback(WDI_WowlEnterRspParamsType *pwdiWowlEnterRspParam
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
    pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext ;
    pWowlEnterParams =  (tSirHalWowlEnterParams *)pWdaParams->wdaMsgParam ;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
@@ -11442,16 +12987,26 @@ void WDA_WowlEnterRespCallback(WDI_WowlEnterRspParamsType *pwdiWowlEnterRspParam
    pWowlEnterParams->status = 
                (pwdiWowlEnterRspParam->status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+   vos_mem_free(pWdaParams) ;
+
+   pWowlEnterParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    WDA_SendMsg(pWDA, WDA_WOWL_ENTER_RSP, (void *)pWowlEnterParams , 0) ;
    return ;
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessWowlEnterReq
  * Request to WDI to enter WOWL 
  */ 
 VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA, 
                                    tSirHalWowlEnterParams *pWowlEnterParams)
+<<<<<<< HEAD
 {
    VOS_STATUS status = VOS_STATUS_SUCCESS;
    WDI_Status wstatus;
@@ -11471,19 +13026,23 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
  * Invoked when WOWL Enter REQ failed in WDI and no RSP callback is generated.
  */
 void WDA_WowlEnterReqCallback(WDI_Status wdiStatus, void* pUserData)
+=======
+>>>>>>> 657b0e9... prima update
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *pWDA;
-   tSirHalWowlEnterParams *pWowlEnterParams;
-
+   VOS_STATUS status = VOS_STATUS_SUCCESS;
+   WDI_Status wstatus;
+   WDI_WowlEnterReqParamsType *wdiWowlEnterInfo = 
+      (WDI_WowlEnterReqParamsType *)vos_mem_malloc(
+         sizeof(WDI_WowlEnterReqParamsType)) ;
+   tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
-   if(NULL == pWdaParams)
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiWowlEnterInfo) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
+<<<<<<< HEAD
       return;
    }
 
@@ -11521,6 +13080,8 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
       VOS_ASSERT(0);
+=======
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
@@ -11528,20 +13089,27 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiWowlEnterInfo);
       return VOS_STATUS_E_NOMEM;
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
    vos_mem_zero(pWdaParams, sizeof(tWDA_ReqParams));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    vos_mem_copy(wdiWowlEnterInfo->wdiWowlEnterInfo.magicPtrn,
                 pWowlEnterParams->magicPtrn,
                 sizeof(tSirMacAddr));
@@ -11579,6 +13147,7 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
 #endif // WLAN_WAKEUP_EVENTS
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiWowlEnterInfo->wdiReqStatusCB = NULL;
 =======
    wdiWowlEnterInfo->wdiWowlEnterInfo.bssIdx = 
@@ -11587,6 +13156,9 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
    wdiWowlEnterInfo->wdiReqStatusCB = WDA_WowlEnterReqCallback;
    wdiWowlEnterInfo->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiWowlEnterInfo->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiWowlEnterInfo;
@@ -11594,10 +13166,14 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pWowlEnterParams;
    wstatus = WDI_WowlEnterReq(wdiWowlEnterInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                              (WDI_WowlEnterReqCb)WDA_WowlEnterReqCallback, pWdaParams);
 =======
                              (WDI_WowlEnterReqCb)WDA_WowlEnterRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             (WDI_WowlEnterReqCb)WDA_WowlEnterReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -11611,6 +13187,7 @@ VOS_STATUS WDA_ProcessWowlEnterReq(tWDA_CbContext *pWDA,
 
 }/*WDA_ProcessWowlEnterReq*/
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_WowlExitReqCallback
  * 
@@ -11637,118 +13214,37 @@ VOS_STATUS WDA_ProcessWowlExitReq(tWDA_CbContext *pWDA)
    wstatus = WDI_WowlExitReq((WDI_WowlExitReqCb)WDA_WowlExitReqCallback, pWDA);
 =======
  * FUNCTION: WDA_WowlExitRespCallback
+=======
+ * FUNCTION: WDA_WowlExitReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_WowlExitRespCallback( WDI_WowlExitRspParamsType *pwdiWowlExitRsp, void* pUserData)
+void WDA_WowlExitReqCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *pWDA;
-   tSirHalWowlExitParams *pWowlExitParams;
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                                          "<------ %s " ,__func__);
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext ;
-   pWowlExitParams =  (tSirHalWowlExitParams *)pWdaParams->wdaMsgParam ;
-
-   pWowlExitParams->bssIdx = pwdiWowlExitRsp->bssIdx;
-   pWowlExitParams->status = (pwdiWowlExitRsp->status);
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-   vos_mem_free(pWdaParams) ;
-
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-   WDA_SendMsg(pWDA, WDA_WOWL_EXIT_RSP, (void *)pWowlExitParams, 0) ;
+                                          "<------ %s " ,__FUNCTION__);
+   WDA_SendMsg(pWDA, WDA_WOWL_EXIT_RSP, NULL , CONVERT_WDI2SIR_STATUS(status)) ;
    return ;
-}
-/*
- * FUNCTION: WDA_WowlExitReqCallback
- * Free memory and send WOWL Exit RSP back to PE.
- * Invoked when WOWL Exit REQ failed in WDI and no RSP callback is generated.
- */
-void WDA_WowlExitReqCallback(WDI_Status wdiStatus, void* pUserData)
-{
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   tWDA_CbContext *pWDA;
-   tSirHalWowlExitParams *pWowlExitParams;
-
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
-   }
-
-   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
-   pWowlExitParams =  (tSirHalWowlExitParams *)pWdaParams->wdaMsgParam;
-   pWowlExitParams->status = wdiStatus;
-
-   if(IS_WDI_STATUS_FAILURE(wdiStatus))
-   {
-      vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-      vos_mem_free(pWdaParams);
-      WDA_SendMsg(pWDA, WDA_WOWL_EXIT_RSP, (void *)pWowlExitParams, 0);
-   }
-
-   return;
 }
 /*
  * FUNCTION: WDA_ProcessWowlExitReq
  * Request to WDI to add WOWL Bcast pattern
  */ 
-VOS_STATUS WDA_ProcessWowlExitReq(tWDA_CbContext *pWDA, 
-                                            tSirHalWowlExitParams  *pWowlExitParams)
+VOS_STATUS WDA_ProcessWowlExitReq(tWDA_CbContext *pWDA)
 {
    VOS_STATUS status = VOS_STATUS_SUCCESS;
    WDI_Status wstatus;
-   WDI_WowlExitReqParamsType *wdiWowlExitInfo = 
-      (WDI_WowlExitReqParamsType *)vos_mem_malloc(
-         sizeof(WDI_WowlExitReqParamsType)) ;
-   tWDA_ReqParams *pWdaParams ;
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
-   if(NULL == wdiWowlExitInfo) 
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      VOS_ASSERT(0);
-      return VOS_STATUS_E_NOMEM;
-   }
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      VOS_ASSERT(0);
-      vos_mem_free(wdiWowlExitInfo);
-      return VOS_STATUS_E_NOMEM;
-   }
 
-   wdiWowlExitInfo->wdiWowlExitInfo.bssIdx = 
-      pWowlExitParams->bssIdx;
-
-   wdiWowlExitInfo->wdiReqStatusCB = WDA_WowlExitReqCallback;
-   wdiWowlExitInfo->pUserData = pWdaParams;
-
-   /* Store param pointer as passed in by caller */
-   /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = wdiWowlExitInfo;
-   pWdaParams->pWdaContext = pWDA;
-   pWdaParams->wdaMsgParam = pWowlExitParams;
-
+<<<<<<< HEAD
    wstatus = WDI_WowlExitReq(wdiWowlExitInfo,
                             (WDI_WowlExitReqCb)WDA_WowlExitRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                                          "------> %s " ,__FUNCTION__);
+   wstatus = WDI_WowlExitReq((WDI_WowlExitReqCb)WDA_WowlExitReqCallback, pWDA);
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
@@ -11756,15 +13252,21 @@ VOS_STATUS WDA_ProcessWowlExitReq(tWDA_CbContext *pWDA,
               "Failure in Wowl exit REQ WDI API, free all the memory " );
       status = CONVERT_WDI2VOS_STATUS(wstatus);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       vos_mem_free(pWDA->wdaMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams->wdaMsgParam);
       vos_mem_free(pWdaParams) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return status;
 }/*WDA_ProcessWowlExitReq*/
@@ -11786,6 +13288,7 @@ void WDA_NvDownloadReqCallback(WDI_NvDownloadRspInfoType *pNvDownloadRspParams,
                                                             void* pUserData)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    tWDA_CbContext *pWDA= ( tWDA_CbContext *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "<------ %s " ,__FUNCTION__);
@@ -11798,24 +13301,22 @@ void WDA_NvDownloadReqCallback(WDI_NvDownloadRspInfoType *pNvDownloadRspParams,
    tWDA_ReqParams *pWdaParams= ( tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
 
+=======
+   tWDA_CbContext *pWDA= ( tWDA_CbContext *)pUserData;
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-
-   pWDA = pWdaParams->pWdaContext;
-
+                                          "<------ %s " ,__FUNCTION__);
    /*Cleaning */
+<<<<<<< HEAD
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
    vos_mem_free(pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+   pWDA->wdaWdiApiMsgParam = NULL;
+   pWDA->wdaMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
    vos_WDAComplete_cback(pWDA->pVosContext);
    return ;
 }
@@ -11832,6 +13333,7 @@ VOS_STATUS WDA_NVDownload_Start(v_PVOID_t pVosContext)
    WDI_Status status = WDI_STATUS_E_FAILURE;
    WDI_NvDownloadReqParamsType * wdiNvDownloadReqParam =NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pWDA) 
@@ -11847,40 +13349,61 @@ VOS_STATUS WDA_NVDownload_Start(v_PVOID_t pVosContext)
 =======
    tWDA_ReqParams *pWdaParams ;
 
+=======
+>>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "------> %s " ,__func__);
+                                          "------> %s " ,__FUNCTION__);
    if(NULL == pWDA) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                            "%s:pWDA is NULL", __func__); 
       VOS_ASSERT(0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pWDA is NULL", __FUNCTION__); 
+      return VOS_STATUS_E_FAILURE;
+   }
+   if(NULL != pWDA->wdaWdiApiMsgParam)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s:wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    
    /* Get the NV structure base address and size from VOS */
+<<<<<<< HEAD
 <<<<<<< HEAD
    vos_nv_getNVBuffer(&pNvBuffer,&bufferSize);
 =======
    vos_nv_getNVEncodedBuffer(&pNvBuffer,&bufferSize);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   vos_nv_getNVBuffer(&pNvBuffer,&bufferSize);
+>>>>>>> 657b0e9... prima update
    wdiNvDownloadReqParam = (WDI_NvDownloadReqParamsType *)vos_mem_malloc(
                                           sizeof(WDI_NvDownloadReqParamsType)) ;
    if(NULL == wdiNvDownloadReqParam) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
    /* Copy Params to wdiNvDownloadReqParam*/
    wdiNvDownloadReqParam->wdiBlobInfo.pBlobAddress = pNvBuffer;
    wdiNvDownloadReqParam->wdiBlobInfo.uBlobSize = bufferSize;
+<<<<<<< HEAD
 <<<<<<< HEAD
    /* store Params pass it to WDI */
    pWDA->wdaWdiApiMsgParam = (void *)wdiNvDownloadReqParam ;
@@ -11899,22 +13422,24 @@ VOS_STATUS WDA_NVDownload_Start(v_PVOID_t pVosContext)
       return VOS_STATUS_E_NOMEM;
    }
 
+=======
+>>>>>>> 657b0e9... prima update
    /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)wdiNvDownloadReqParam ;
-   pWdaParams->wdaMsgParam = NULL;
-   pWdaParams->pWdaContext = pWDA;
-   
-
+   pWDA->wdaWdiApiMsgParam = (void *)wdiNvDownloadReqParam ;
    wdiNvDownloadReqParam->wdiReqStatusCB = NULL ;
-
    status = WDI_NvDownloadReq(wdiNvDownloadReqParam, 
+<<<<<<< HEAD
                     (WDI_NvDownloadRspCb)WDA_NvDownloadReqCallback,(void *)pWdaParams);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    (WDI_NvDownloadRspCb)WDA_NvDownloadReqCallback,(void *)pWDA);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
             "Failure in NV Download REQ Params WDI API, free all the memory " );
+<<<<<<< HEAD
 <<<<<<< HEAD
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       pWDA->wdaWdiApiMsgParam = NULL;
@@ -11922,6 +13447,10 @@ VOS_STATUS WDA_NVDownload_Start(v_PVOID_t pVosContext)
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+      pWDA->wdaWdiApiMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
@@ -11937,6 +13466,7 @@ void WDA_FlushAcReqCallback(WDI_Status status, void* pUserData)
    tFlushACRsp *pFlushACRspParams;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
@@ -11949,6 +13479,13 @@ void WDA_FlushAcReqCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -11959,6 +13496,7 @@ void WDA_FlushAcReqCallback(WDI_Status status, void* pUserData)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       VOS_ASSERT(0);
 	  vos_mem_free(pWdaParams);
@@ -11967,6 +13505,11 @@ void WDA_FlushAcReqCallback(WDI_Status status, void* pUserData)
       VOS_ASSERT(0);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+      VOS_ASSERT(0);
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    vos_mem_zero(pFlushACRspParams,sizeof(tFlushACRsp));   
@@ -11975,10 +13518,14 @@ void WDA_FlushAcReqCallback(WDI_Status status, void* pUserData)
    pFlushACRspParams->ucSTAId = pFlushACReqParams->ucSTAId;
    pFlushACRspParams->ucTid = pFlushACReqParams->ucTid;
 <<<<<<< HEAD
+<<<<<<< HEAD
    pFlushACRspParams->status = CONVERT_WDI2SIR_STATUS(status) ;
 =======
    pFlushACRspParams->status = (status) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pFlushACRspParams->status = CONVERT_WDI2SIR_STATUS(status) ;
+>>>>>>> 657b0e9... prima update
    vos_mem_free(pWdaParams->wdaMsgParam) ;
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams);
@@ -12005,10 +13552,14 @@ VOS_STATUS WDA_ProcessFlushAcReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -12017,20 +13568,28 @@ VOS_STATUS WDA_ProcessFlushAcReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiFlushAcReqParam);
       return VOS_STATUS_E_NOMEM;
    }
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    wdiFlushAcReqParam->wdiFlushAcInfo.ucSTAId = pFlushAcReqParams->ucSTAId;
    wdiFlushAcReqParam->wdiFlushAcInfo.ucTid = pFlushAcReqParams->ucTid;
    wdiFlushAcReqParam->wdiFlushAcInfo.usMesgLen = pFlushAcReqParams->mesgLen;
@@ -12055,6 +13614,7 @@ VOS_STATUS WDA_ProcessFlushAcReq(tWDA_CbContext *pWDA,
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_BtAmpEventReqCallback
  * 
  */ 
@@ -12065,12 +13625,19 @@ void WDA_BtAmpEventReqCallback(WDI_Status status, void* pUserData)
  */ 
 void WDA_BtAmpEventRespCallback(WDI_Status status, void* pUserData)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * FUNCTION: WDA_BtAmpEventReqCallback
+ * 
+ */ 
+void WDA_BtAmpEventReqCallback(WDI_Status status, void* pUserData)
+>>>>>>> 657b0e9... prima update
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    tWDA_CbContext *pWDA; 
    WDI_BtAmpEventParamsType *wdiBtAmpEventParam;
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
@@ -12084,6 +13651,13 @@ void WDA_BtAmpEventRespCallback(WDI_Status status, void* pUserData)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+   if(NULL == pWdaParams)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -12103,6 +13677,7 @@ void WDA_BtAmpEventRespCallback(WDI_Status status, void* pUserData)
     */
    return ;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -12147,6 +13722,9 @@ void WDA_BtAmpEventReqCallback(WDI_Status wdiStatus, void* pUserData)
    return;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_ProcessBtAmpEventReq
  * Request to WDI to Update with BT AMP events.
@@ -12161,6 +13739,7 @@ VOS_STATUS WDA_ProcessBtAmpEventReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiBtAmpEventParam) 
    {
@@ -12173,6 +13752,13 @@ VOS_STATUS WDA_ProcessBtAmpEventReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiBtAmpEventParam) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -12181,10 +13767,14 @@ VOS_STATUS WDA_ProcessBtAmpEventReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiBtAmpEventParam);
       return VOS_STATUS_E_NOMEM;
@@ -12192,11 +13782,15 @@ VOS_STATUS WDA_ProcessBtAmpEventReq(tWDA_CbContext *pWDA,
    wdiBtAmpEventParam->wdiBtAmpEventInfo.ucBtAmpEventType = 
       pBtAmpEventParams->btAmpEventType;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiBtAmpEventParam->wdiReqStatusCB = NULL;
 =======
    wdiBtAmpEventParam->wdiReqStatusCB = WDA_BtAmpEventReqCallback;
    wdiBtAmpEventParam->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiBtAmpEventParam->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store BT AMP event pointer, as this will be used for response */
    /* store Params pass it to WDI */
    pWdaParams->pWdaContext = pWDA;
@@ -12204,10 +13798,14 @@ VOS_STATUS WDA_ProcessBtAmpEventReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaWdiApiMsgParam = wdiBtAmpEventParam;
    status = WDI_BtAmpEventReq(wdiBtAmpEventParam, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                               (WDI_BtAmpEventRspCb)WDA_BtAmpEventReqCallback, pWdaParams);
 =======
                               (WDI_BtAmpEventRspCb)WDA_BtAmpEventRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                              (WDI_BtAmpEventRspCb)WDA_BtAmpEventReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -12224,9 +13822,13 @@ VOS_STATUS WDA_ProcessBtAmpEventReq(tWDA_CbContext *pWDA,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_FTMCommandReqCallback
  * Handle FTM CMD response came from HAL
@@ -12240,15 +13842,20 @@ void WDA_FTMCommandReqCallback(void *ftmCmdRspData,
    {
       VOS_TRACE(VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s, invalid input 0x%x, 0x%x",__FUNCTION__,  pWDA, ftmCmdRspData);
 =======
                 "%s, invalid input %p, %p",__func__,  pWDA, ftmCmdRspData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s, invalid input 0x%x, 0x%x",__FUNCTION__,  pWDA, ftmCmdRspData);
+>>>>>>> 657b0e9... prima update
       return;
    }
    /* Release Current FTM Command Request */
    vos_mem_free(pWDA->wdaFTMCmdReq);
    pWDA->wdaFTMCmdReq = NULL;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifndef WLAN_FTM_STUB
    /* Post FTM Responce to HDD FTM */
@@ -12258,6 +13865,12 @@ void WDA_FTMCommandReqCallback(void *ftmCmdRspData,
    /* Post FTM Responce to HDD FTM */
    wlan_sys_ftm(ftmCmdRspData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifndef WLAN_FTM_STUB
+   /* Post FTM Responce to HDD FTM */
+   wlan_sys_ftm(ftmCmdRspData);
+#endif /* WLAN_FTM_STUB */
+>>>>>>> 657b0e9... prima update
    return;
 }
 /*
@@ -12285,9 +13898,13 @@ VOS_STATUS WDA_ProcessFTMCommand(tWDA_CbContext *pWDA,
    return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_OEM_DATA_SUPPORT
 /*
  * FUNCTION: WDA_StartOemDataReqCallback
@@ -12298,6 +13915,7 @@ void WDA_StartOemDataReqCallback(
                                                         void* pUserData)
 {
    VOS_STATUS status = VOS_STATUS_E_FAILURE;
+<<<<<<< HEAD
 <<<<<<< HEAD
    tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
    tStartOemDataRsp *pOemDataRspParams = NULL ;
@@ -12311,25 +13929,22 @@ void WDA_StartOemDataReqCallback(
 =======
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA; 
+=======
+   tWDA_CbContext *pWDA = (tWDA_CbContext *)pUserData ; 
+>>>>>>> 657b0e9... prima update
    tStartOemDataRsp *pOemDataRspParams = NULL ;
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0) ;
-      return ;
-   }
-   pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext;
-
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWDA) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                            "%s:pWDA is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pWDA is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return ;
    }
@@ -12348,6 +13963,7 @@ void WDA_StartOemDataReqCallback(
       return;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
    // Free the memory allocated during request.
    vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
    vos_mem_free(pWDA->wdaMsgParam) ;
@@ -12357,14 +13973,20 @@ void WDA_StartOemDataReqCallback(
     * Now go ahead and copy other stuff for PE in incase of sucess only 
 =======
 
+=======
+>>>>>>> 657b0e9... prima update
    // Free the memory allocated during request.
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
-   vos_mem_free(pWdaParams->wdaMsgParam);
-   vos_mem_free(pWdaParams) ;
-
+   vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
+   vos_mem_free(pWDA->wdaMsgParam) ;
+   pWDA->wdaWdiApiMsgParam = NULL;
+   pWDA->wdaMsgParam = NULL;
    /* 
+<<<<<<< HEAD
     * Now go ahead and copy other stuff for PE in incase of success only 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    * Now go ahead and copy other stuff for PE in incase of sucess only 
+>>>>>>> 657b0e9... prima update
     * Also, here success always means that we have atleast one BSSID.
     */
    vos_mem_copy(pOemDataRspParams->oemDataRsp, wdiOemDataRspParams->oemDataRsp, OEM_DATA_RSP_SIZE);
@@ -12388,9 +14010,12 @@ VOS_STATUS WDA_ProcessStartOemDataReq(tWDA_CbContext *pWDA,
    WDI_Status             status = WDI_STATUS_SUCCESS;
    WDI_oemDataReqParamsType     *wdiOemDataReqParams = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    tWDA_ReqParams *pWdaParams ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    wdiOemDataReqParams = (WDI_oemDataReqParamsType*)vos_mem_malloc(sizeof(WDI_oemDataReqParamsType)) ;
    
@@ -12398,14 +14023,19 @@ VOS_STATUS WDA_ProcessStartOemDataReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
    
+<<<<<<< HEAD
 <<<<<<< HEAD
    vos_mem_copy(wdiOemDataReqParams->wdiOemDataReqInfo.selfMacAddr, pOemDataReqParams->selfMacAddr, sizeof(tSirMacAddr));
    vos_mem_copy(wdiOemDataReqParams->wdiOemDataReqInfo.oemDataReq, pOemDataReqParams->oemDataReq, OEM_DATA_REQ_SIZE);
@@ -12430,20 +14060,26 @@ VOS_STATUS WDA_ProcessStartOemDataReq(tWDA_CbContext *pWDA,
       pOemDataReqParams->selfMacAddr, sizeof(tSirMacAddr));
    vos_mem_copy(wdiOemDataReqParams->wdiOemDataReqInfo.oemDataReq, 
       pOemDataReqParams->oemDataReq, OEM_DATA_REQ_SIZE);
+=======
+   vos_mem_copy(wdiOemDataReqParams->wdiOemDataReqInfo.selfMacAddr, pOemDataReqParams->selfMacAddr, sizeof(tSirMacAddr));
+   vos_mem_copy(wdiOemDataReqParams->wdiOemDataReqInfo.oemDataReq, pOemDataReqParams->oemDataReq, OEM_DATA_REQ_SIZE);
+>>>>>>> 657b0e9... prima update
 
    wdiOemDataReqParams->wdiReqStatusCB = NULL;
 
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
+   if((NULL != pWDA->wdaMsgParam) ||
+                           (NULL != pWDA->wdaWdiApiMsgParam))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      vos_mem_free(wdiOemDataReqParams);
-      vos_mem_free(pOemDataReqParams);
+                           "%s:wdaWdiApiMsgParam is Not NULL", __FUNCTION__); 
       VOS_ASSERT(0);
-      return VOS_STATUS_E_NOMEM;
+      vos_mem_free(wdiOemDataReqParams);
+      return VOS_STATUS_E_FAILURE;
    }
+   pWDA->wdaMsgParam          =          (void *)pOemDataReqParams;
+   pWDA->wdaWdiApiMsgParam    =          (void *)wdiOemDataReqParams;
 
+<<<<<<< HEAD
    pWdaParams->pWdaContext       = (void*)pWDA;
    pWdaParams->wdaMsgParam       = (void*)pOemDataReqParams;
    pWdaParams->wdaWdiApiMsgParam = (void*)wdiOemDataReqParams;
@@ -12451,26 +14087,36 @@ VOS_STATUS WDA_ProcessStartOemDataReq(tWDA_CbContext *pWDA,
    status = WDI_StartOemDataReq(wdiOemDataReqParams, 
       (WDI_oemDataRspCb)WDA_StartOemDataReqCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   status = WDI_StartOemDataReq(wdiOemDataReqParams, (WDI_oemDataRspCb)WDA_StartOemDataReqCallback, pWDA);
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
          "Failure in Start OEM DATA REQ Params WDI API, free all the memory " );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWDA->wdaWdiApiMsgParam) ;
       vos_mem_free(pWDA->wdaMsgParam);
       pWDA->wdaWdiApiMsgParam = NULL;
       pWDA->wdaMsgParam = NULL;
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams->wdaMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 #endif /* FEATURE_OEM_DATA_SUPPORT */
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * FUNCTION: WDA_SetTxPerTrackingReqCallback
  * 
@@ -12508,20 +14154,24 @@ void WDA_SetTxPerTrackingReqCallback(WDI_Status status, void* pUserData)
 void WDA_GTKOffloadReqCallback(WDI_Status status, void* pUserData)
 =======
  * FUNCTION: WDA_SetTxPerTrackingRespCallback
+=======
+ * FUNCTION: WDA_SetTxPerTrackingReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_SetTxPerTrackingRespCallback(WDI_Status status, void* pUserData)
+void WDA_SetTxPerTrackingReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
+                 "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
       return ;
    }
+<<<<<<< HEAD
 
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams->wdaMsgParam);
@@ -12560,34 +14210,32 @@ void WDA_SetTxPerTrackingReqCallback(WDI_Status wdiStatus, void* pUserData)
               "<------ %s, wdiStatus: %d", __func__, wdiStatus);
 
    if(NULL == pWdaParams)
+=======
+   
+   if(NULL != pWdaParams->wdaMsgParam)
+>>>>>>> 657b0e9... prima update
    {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
+      vos_mem_free(pWdaParams->wdaMsgParam);
    }
-
-   if(IS_WDI_STATUS_FAILURE(wdiStatus))
+   if(NULL != pWdaParams->wdaWdiApiMsgParam)
    {
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-      vos_mem_free(pWdaParams->wdaMsgParam);
-      vos_mem_free(pWdaParams);
    }
-
-   return;
+   
+   vos_mem_free(pWdaParams);
+   return ;
 }
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
 /*
- * FUNCTION: WDA_GTKOffloadRespCallback
+ * FUNCTION: WDA_HostOffloadReqCallback
  * 
  */ 
-void WDA_GTKOffloadRespCallback( WDI_GtkOffloadRspParams  *pwdiGtkOffloadRsparams,
-                                        void* pUserData)
+void WDA_GTKOffloadReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
 
    VOS_ASSERT(NULL != pWdaParams);
    
@@ -12597,22 +14245,12 @@ void WDA_GTKOffloadRespCallback( WDI_GtkOffloadRspParams  *pwdiGtkOffloadRsparam
 
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "WDA_GTKOffloadRespCallback invoked " );
+              "WDA_GTKOffloadReqCallback invoked " );
 
    return ;
 }
-/*
- * FUNCTION: WDA_GTKOffloadReqCallback
- * Free memory.
- * Invoked when GTKOffload REQ failed in WDI and no RSP callback is generated.
- */
-void WDA_GTKOffloadReqCallback(WDI_Status wdiStatus, void* pUserData)
-{
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
 
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
+<<<<<<< HEAD
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -12631,6 +14269,8 @@ void WDA_GTKOffloadReqCallback(WDI_Status wdiStatus, void* pUserData)
    return;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_ProcessGTKOffloadReq
  * Request to WDI to set the filter to minimize unnecessary host wakeup due 
@@ -12640,10 +14280,14 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
                                     tpSirGtkOffloadParams pGtkOffloadParams)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_STATUS status = VOS_STATUS_SUCCESS;
 =======
    WDI_Status status = WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_STATUS status = VOS_STATUS_SUCCESS;
+>>>>>>> 657b0e9... prima update
    WDI_GtkOffloadReqMsg *wdiGtkOffloadReqMsg = 
       (WDI_GtkOffloadReqMsg *)vos_mem_malloc(
          sizeof(WDI_GtkOffloadReqMsg)) ;
@@ -12651,19 +14295,27 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    if(NULL == wdiGtkOffloadReqMsg) 
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -12673,10 +14325,14 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiGtkOffloadReqMsg);
       return VOS_STATUS_E_NOMEM;
@@ -12686,12 +14342,15 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
    // Fill wdiGtkOffloadInfo from pGtkOffloadParams
    //
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    vos_mem_copy(wdiGtkOffloadReqMsg->gtkOffloadReqParams.bssId,
              pGtkOffloadParams->bssId, sizeof (wpt_macAddr));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wdiGtkOffloadReqMsg->gtkOffloadReqParams.ulFlags = pGtkOffloadParams->ulFlags;
    // Copy KCK
    vos_mem_copy(&(wdiGtkOffloadReqMsg->gtkOffloadReqParams.aKCK[0]), &(pGtkOffloadParams->aKCK[0]), 16);
@@ -12702,6 +14361,7 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
                 &(pGtkOffloadParams->ullKeyReplayCounter), sizeof(v_U64_t));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiGtkOffloadReqMsg->wdiReqStatusCB = NULL;
 
    VOS_ASSERT((NULL == pWDA->wdaMsgParam) && 
@@ -12711,6 +14371,12 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
    wdiGtkOffloadReqMsg->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiGtkOffloadReqMsg->wdiReqStatusCB = NULL;
+
+   VOS_ASSERT((NULL == pWDA->wdaMsgParam) && 
+              (NULL == pWDA->wdaWdiApiMsgParam));
+>>>>>>> 657b0e9... prima update
 
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)wdiGtkOffloadReqMsg;
@@ -12719,10 +14385,14 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pGtkOffloadParams;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    status = WDI_GTKOffloadReq(wdiGtkOffloadReqMsg, (WDI_GtkOffloadCb)WDA_GTKOffloadReqCallback, pWdaParams);
 =======
    status = WDI_GTKOffloadReq(wdiGtkOffloadReqMsg, (WDI_GtkOffloadCb)WDA_GTKOffloadRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   status = WDI_GTKOffloadReq(wdiGtkOffloadReqMsg, (WDI_GtkOffloadCb)WDA_GTKOffloadReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -12738,6 +14408,7 @@ VOS_STATUS WDA_ProcessGTKOffloadReq(tWDA_CbContext *pWDA,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_GtkOffloadGetInfoCallback 
  * 
  */ 
@@ -12749,10 +14420,17 @@ void WDA_GtkOffloadGetInfoCallback(WDI_Status status, void * pUserData)
 void WDA_GtkOffloadGetInfoRespCallback( WDI_GtkOffloadGetInfoRspParams *pwdiGtkOffloadGetInfoRsparams,
                                     void * pUserData)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * FUNCTION: WDA_GtkOffloadGetInfoCallback 
+ * 
+ */ 
+void WDA_GtkOffloadGetInfoCallback(WDI_Status status, void * pUserData)
+>>>>>>> 657b0e9... prima update
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
    tpSirGtkOffloadGetInfoRspParams pGtkOffloadGetInfoReq;
+<<<<<<< HEAD
 <<<<<<< HEAD
    tpSirGtkOffloadGetInfoRspParams pGtkOffloadGetInfoRsp = vos_mem_malloc(sizeof(tpSirGtkOffloadGetInfoRspParams)) ;
    tANI_U8 i;
@@ -12767,6 +14445,14 @@ void WDA_GtkOffloadGetInfoRespCallback( WDI_GtkOffloadGetInfoRspParams *pwdiGtkO
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tpSirGtkOffloadGetInfoRspParams pGtkOffloadGetInfoRsp = vos_mem_malloc(sizeof(tpSirGtkOffloadGetInfoRspParams)) ;
+   tANI_U8 i;
+   vos_msg_t vosMsg;
+
+   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    VOS_ASSERT(NULL != pWdaParams);
 
@@ -12779,6 +14465,7 @@ void WDA_GtkOffloadGetInfoRespCallback( WDI_GtkOffloadGetInfoRspParams *pwdiGtkO
    /* Message Header */
    pGtkOffloadGetInfoRsp->mesgType = eWNI_PMC_GTK_OFFLOAD_GETINFO_RSP;
 <<<<<<< HEAD
+<<<<<<< HEAD
    pGtkOffloadGetInfoRsp->mesgLen = sizeof(tpSirGtkOffloadGetInfoRspParams);
 
    pGtkOffloadGetInfoRsp->ulStatus            = pGtkOffloadGetInfoReq->ulStatus;
@@ -12789,17 +14476,23 @@ void WDA_GtkOffloadGetInfoRespCallback( WDI_GtkOffloadGetInfoRspParams *pwdiGtkO
 
 =======
    pGtkOffloadGetInfoRsp->mesgLen = sizeof(tSirGtkOffloadGetInfoRspParams);
+=======
+   pGtkOffloadGetInfoRsp->mesgLen = sizeof(tpSirGtkOffloadGetInfoRspParams);
+>>>>>>> 657b0e9... prima update
 
-   pGtkOffloadGetInfoRsp->ulStatus            = pwdiGtkOffloadGetInfoRsparams->ulStatus;
-   pGtkOffloadGetInfoRsp->ullKeyReplayCounter = pwdiGtkOffloadGetInfoRsparams->ullKeyReplayCounter;
-   pGtkOffloadGetInfoRsp->ulTotalRekeyCount   = pwdiGtkOffloadGetInfoRsparams->ulTotalRekeyCount;
-   pGtkOffloadGetInfoRsp->ulGTKRekeyCount     = pwdiGtkOffloadGetInfoRsparams->ulGTKRekeyCount;
-   pGtkOffloadGetInfoRsp->ulIGTKRekeyCount    = pwdiGtkOffloadGetInfoRsparams->ulIGTKRekeyCount;
+   pGtkOffloadGetInfoRsp->ulStatus            = pGtkOffloadGetInfoReq->ulStatus;
+   pGtkOffloadGetInfoRsp->ullKeyReplayCounter = pGtkOffloadGetInfoReq->ullKeyReplayCounter;
+   pGtkOffloadGetInfoRsp->ulTotalRekeyCount   = pGtkOffloadGetInfoReq->ulTotalRekeyCount;
+   pGtkOffloadGetInfoRsp->ulGTKRekeyCount     = pGtkOffloadGetInfoReq->ulGTKRekeyCount;
+   pGtkOffloadGetInfoRsp->ulIGTKRekeyCount    = pGtkOffloadGetInfoReq->ulIGTKRekeyCount;
 
+<<<<<<< HEAD
    vos_mem_copy( pGtkOffloadGetInfoRsp->bssId,
                        pwdiGtkOffloadGetInfoRsparams->bssId,
                        sizeof (wpt_macAddr));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* VOS message wrapper */
    vosMsg.type = eWNI_PMC_GTK_OFFLOAD_GETINFO_RSP;
    vosMsg.bodyptr = (void *)pGtkOffloadGetInfoRsp;
@@ -12814,6 +14507,7 @@ void WDA_GtkOffloadGetInfoRespCallback( WDI_GtkOffloadGetInfoRspParams *pwdiGtkO
    vos_mem_free(pWdaParams->wdaMsgParam) ;
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -12855,6 +14549,8 @@ void WDA_GtkOffloadGetInfoReqCallback(WDI_Status wdiStatus, void * pUserData)
 
    return;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 #endif
 
@@ -12872,6 +14568,7 @@ VOS_STATUS WDA_ProcessSetTxPerTrackingReq(tWDA_CbContext *pWDA, tSirTxPerTrackin
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiSetTxPerTrackingReqParams) 
    {
@@ -12884,6 +14581,13 @@ VOS_STATUS WDA_ProcessSetTxPerTrackingReq(tWDA_CbContext *pWDA, tSirTxPerTrackin
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiSetTxPerTrackingReqParams) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pTxPerTrackingParams);
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
@@ -12893,10 +14597,14 @@ VOS_STATUS WDA_ProcessSetTxPerTrackingReq(tWDA_CbContext *pWDA, tSirTxPerTrackin
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pwdiSetTxPerTrackingReqParams);
       vos_mem_free(pTxPerTrackingParams);
       VOS_ASSERT(0);
@@ -12911,11 +14619,15 @@ VOS_STATUS WDA_ProcessSetTxPerTrackingReq(tWDA_CbContext *pWDA, tSirTxPerTrackin
    pwdiSetTxPerTrackingReqParams->wdiTxPerTrackingParam.uTxPerTrackingWatermark = 
       pTxPerTrackingParams->uTxPerTrackingWatermark;
 <<<<<<< HEAD
+<<<<<<< HEAD
    pwdiSetTxPerTrackingReqParams->wdiReqStatusCB = NULL;
 =======
    pwdiSetTxPerTrackingReqParams->wdiReqStatusCB = WDA_SetTxPerTrackingReqCallback;
    pwdiSetTxPerTrackingReqParams->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pwdiSetTxPerTrackingReqParams->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store param pointer as passed in by caller */
    /* store Params pass it to WDI 
       Ideally, the memory allocated here will be free at WDA_SetTxPerTrackingReqCallback */
@@ -12924,10 +14636,14 @@ VOS_STATUS WDA_ProcessSetTxPerTrackingReq(tWDA_CbContext *pWDA, tSirTxPerTrackin
    pWdaParams->wdaMsgParam = pTxPerTrackingParams;
    wstatus = WDI_SetTxPerTrackingReq(pwdiSetTxPerTrackingReqParams, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     (WDI_SetTxPerTrackingRspCb)WDA_SetTxPerTrackingReqCallback, pWdaParams);
 =======
                                     (WDI_SetTxPerTrackingRspCb)WDA_SetTxPerTrackingRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                    (WDI_SetTxPerTrackingRspCb)WDA_SetTxPerTrackingReqCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
    if(IS_WDI_STATUS_FAILURE(wstatus))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -12954,10 +14670,14 @@ void WDA_HALDumpCmdCallback(WDI_HALDumpCmdRspParamsType *wdiRspParams,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: pWdaParams received NULL", __FUNCTION__);
 =======
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -12999,10 +14719,14 @@ VOS_STATUS WDA_HALDumpCmdReq(tpAniSirGlobal   pMac, tANI_U32  cmd,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    /* Allocate memory WDI request structure*/
@@ -13033,29 +14757,41 @@ VOS_STATUS WDA_HALDumpCmdReq(tpAniSirGlobal   pMac, tANI_U32  cmd,
    /* Send command to WDI */
    status = WDI_HALDumpCmdReq(wdiHALDumpCmdReqParam, WDA_HALDumpCmdCallback, pWdaParams);
 <<<<<<< HEAD
+<<<<<<< HEAD
    vStatus = vos_wait_single_event( &(pVosContext->wdaCompleteEvent), 1000 );
 =======
    vStatus = vos_wait_single_event( &(pVosContext->wdaCompleteEvent), WDA_DUMPCMD_WAIT_TIMEOUT );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   vStatus = vos_wait_single_event( &(pVosContext->wdaCompleteEvent), 1000 );
+>>>>>>> 657b0e9... prima update
    if ( vStatus != VOS_STATUS_SUCCESS )
    {
       if ( vStatus == VOS_STATUS_E_TIMEOUT )
       {
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: Timeout occured before WDA_HALDUMP complete\n",__FUNCTION__);
 =======
          "%s: Timeout occurred before WDA_HALDUMP complete\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: Timeout occured before WDA_HALDUMP complete\n",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       }
       else
       {
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
          "%s: WDA_HALDUMP reporting  other error \n",__FUNCTION__);
 =======
          "%s: WDA_HALDUMP reporting  other error \n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         "%s: WDA_HALDUMP reporting  other error \n",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       }
       VOS_ASSERT(0);
    }
@@ -13070,10 +14806,14 @@ VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA,
                                            tpSirGtkOffloadGetInfoRspParams pGtkOffloadGetInfoRsp)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_STATUS status = VOS_STATUS_SUCCESS;
 =======
    WDI_Status status = WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_STATUS status = VOS_STATUS_SUCCESS;
+>>>>>>> 657b0e9... prima update
    WDI_GtkOffloadGetInfoReqMsg *pwdiGtkOffloadGetInfoReqMsg = 
       (WDI_GtkOffloadGetInfoReqMsg *)vos_mem_malloc(sizeof(WDI_GtkOffloadGetInfoReqMsg));
    tWDA_ReqParams *pWdaParams ;
@@ -13082,10 +14822,14 @@ VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -13095,24 +14839,34 @@ VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiGtkOffloadGetInfoReqMsg);
       return VOS_STATUS_E_NOMEM;
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    pwdiGtkOffloadGetInfoReqMsg->wdiReqStatusCB = NULL;
 
    VOS_ASSERT((NULL == pWDA->wdaMsgParam) && 
               (NULL == pWDA->wdaWdiApiMsgParam));
+<<<<<<< HEAD
 =======
    pwdiGtkOffloadGetInfoReqMsg->wdiReqStatusCB = WDA_GtkOffloadGetInfoReqCallback;
    pwdiGtkOffloadGetInfoReqMsg->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiGtkOffloadGetInfoReqMsg;
@@ -13121,6 +14875,7 @@ VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pGtkOffloadGetInfoRsp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    status = WDI_GTKOffloadGetInfoReq(pwdiGtkOffloadGetInfoReqMsg, (WDI_GtkOffloadGetInfoCb)WDA_GtkOffloadGetInfoCallback, pWdaParams);
 =======
    vos_mem_copy(pwdiGtkOffloadGetInfoReqMsg->WDI_GtkOffloadGetInfoReqParams.bssId,
@@ -13128,6 +14883,9 @@ VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA,
 
    status = WDI_GTKOffloadGetInfoReq(pwdiGtkOffloadGetInfoReqMsg, (WDI_GtkOffloadGetInfoCb)WDA_GtkOffloadGetInfoRespCallback, pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   status = WDI_GTKOffloadGetInfoReq(pwdiGtkOffloadGetInfoReqMsg, (WDI_GtkOffloadGetInfoCb)WDA_GtkOffloadGetInfoCallback, pWdaParams);
+>>>>>>> 657b0e9... prima update
 
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -13145,6 +14903,7 @@ VOS_STATUS WDA_ProcessGTKOffloadGetInfoReq(tWDA_CbContext *pWDA,
 #endif // WLAN_FEATURE_GTK_OFFLOAD
 
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_ProcessAddPeriodicTxPtrnInd
@@ -13240,6 +14999,8 @@ VOS_STATUS WDA_ProcessDelPeriodicTxPtrnInd(tWDA_CbContext *pWDA,
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * -------------------------------------------------------------------------
  * DATA interface with WDI for Mgmt Frames
  * ------------------------------------------------------------------------- 
@@ -13261,10 +15022,14 @@ VOS_STATUS WDA_TxComplete( v_PVOID_t pVosContext, vos_pkt_t *pData,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s:pWDA is NULL", 
 <<<<<<< HEAD
+<<<<<<< HEAD
                            __FUNCTION__); 
 =======
                            __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -13292,12 +15057,17 @@ VOS_STATUS WDA_TxComplete( v_PVOID_t pVosContext, vos_pkt_t *pData,
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:packet (0x%X) is already freed", 
                            __FUNCTION__, pData);
 =======
                            "%s:packet (%p) is already freed",
                            __func__, pData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:packet (0x%X) is already freed", 
+                           __FUNCTION__, pData);
+>>>>>>> 657b0e9... prima update
          //Return from here since we reaching here because the packet already timeout
          return status;
       }
@@ -13343,31 +15113,44 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:pWDA %x or pFrmBuf %x is NULL", 
                            __FUNCTION__,pWDA,pFrmBuf); 
 =======
                            "%s:pWDA %p or pFrmBuf %p is NULL",
                            __func__,pWDA,pFrmBuf); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pWDA %x or pFrmBuf %x is NULL", 
+                           __FUNCTION__,pWDA,pFrmBuf); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO_HIGH, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                "Tx Mgmt Frame Subtype: %d alloc(%x)\n", pFc->subType, pFrmBuf);
 =======
                "Tx Mgmt Frame Subtype: %d alloc(%p)\n", pFc->subType, pFrmBuf);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "Tx Mgmt Frame Subtype: %d alloc(%x)\n", pFc->subType, pFrmBuf);
+>>>>>>> 657b0e9... prima update
    pMac = (tpAniSirGlobal )VOS_GET_MAC_CTXT(pWDA->pVosContext);
    if(NULL == pMac)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:pMac is NULL", __FUNCTION__); 
 =======
                            "%s:pMac is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pMac is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -13397,10 +15180,14 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
            {
                VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                        "Tx Complete timeout Timer Stop Sucess ");
 =======
                        "Tx Complete timeout Timer Stop Success ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                       "Tx Complete timeout Timer Stop Sucess ");
+>>>>>>> 657b0e9... prima update
            }
        }
 
@@ -13435,12 +15222,16 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
       return VOS_STATUS_E_FAILURE;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    /* Get system role, use the self station if in unknown role or STA role */
    systemRole = wdaGetGlobalSystemRole(pMac);
    if (( eSYSTEM_UNKNOWN_ROLE == systemRole ) || 
        (( eSYSTEM_STA_ROLE == systemRole )
 #ifdef FEATURE_WLAN_CCX
       && frmType == HAL_TXRX_FRM_802_11_MGMT
+<<<<<<< HEAD
 #endif
             ))
    {
@@ -13466,6 +15257,12 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
          txFlag |= HAL_USE_SELF_STA_REQUESTED_MASK;
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+            ))
+   {
+       txFlag |= HAL_USE_SELF_STA_REQUESTED_MASK;
+>>>>>>> 657b0e9... prima update
    }
 
    /* Divert Disassoc/Deauth frames thru self station, as by the time unicast
@@ -13473,12 +15270,18 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
    if ((pFc->type == SIR_MAC_MGMT_FRAME))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        if ((pFc->subType == SIR_MAC_MGMT_DISASSOC) ||
                (pFc->subType == SIR_MAC_MGMT_DEAUTH) ||
                (pFc->subType == SIR_MAC_MGMT_REASSOC_RSP) ||
 =======
        if ((pFc->subType == SIR_MAC_MGMT_REASSOC_RSP) ||
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       if ((pFc->subType == SIR_MAC_MGMT_DISASSOC) ||
+               (pFc->subType == SIR_MAC_MGMT_DEAUTH) ||
+               (pFc->subType == SIR_MAC_MGMT_REASSOC_RSP) ||
+>>>>>>> 657b0e9... prima update
                (pFc->subType == SIR_MAC_MGMT_PROBE_REQ))
        {
              /*Send Probe request frames on self sta idx*/
@@ -13535,19 +15338,27 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR, 
                  "%s: Status %d when waiting for TX Frame Event",
 <<<<<<< HEAD
+<<<<<<< HEAD
                  __FUNCTION__, status);
 =======
                  __func__, status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 __FUNCTION__, status);
+>>>>>>> 657b0e9... prima update
       pWDA->pTxCbFunc = NULL;   /*To stop the limTxComplete being called again  , 
                                 after the packet gets completed(packet freed once)*/
 
       /* TX MGMT fail with COMP timeout, try to detect DXE stall */
 <<<<<<< HEAD
+<<<<<<< HEAD
       WDA_TransportChannelDebug(0, 1);
 =======
       WDA_TransportChannelDebug(pMac, 1, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      WDA_TransportChannelDebug(0, 1);
+>>>>>>> 657b0e9... prima update
 
       /*Tag Frame as timed out for later deletion*/
       vos_pkt_set_user_data_ptr( (vos_pkt_t *)pFrmBuf, VOS_PKT_USER_DATA_ID_WDA, 
@@ -13574,6 +15385,7 @@ VOS_STATUS WDA_TxPacket(tWDA_CbContext *pWDA,
       }
       status = VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
    return status;
 }
@@ -13657,6 +15469,11 @@ static VOS_STATUS WDA_ProcessDHCPStartInd (tWDA_CbContext *pWDA,
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   return status;
+}
+/*
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_McProcessMsg
  * Trigger DAL-AL to start CFG download 
  */ 
@@ -13668,25 +15485,34 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:pMsg is NULL", __FUNCTION__); 
 =======
                            "%s:pMsg is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pMsg is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "=========> %s msgType: %x " ,__FUNCTION__, pMsg->type);
 =======
                     "=========> %s msgType: %x " ,__func__, pMsg->type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "=========> %s msgType: %x " ,__FUNCTION__, pMsg->type);
+>>>>>>> 657b0e9... prima update
    
    pWDA = (tWDA_CbContext *)vos_get_context( VOS_MODULE_ID_WDA, pVosContext );
    if(NULL == pWDA )
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s:pWDA is NULL", __FUNCTION__); 
       VOS_ASSERT(0);
@@ -13696,6 +15522,11 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       VOS_ASSERT(0);
       vos_mem_free(pMsg->bodyptr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pWDA is NULL", __FUNCTION__); 
+      VOS_ASSERT(0);
+	  vos_mem_free(pMsg->bodyptr);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    /* Process all the WDA messages.. */
@@ -13859,6 +15690,7 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          break;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
       case WDA_GET_ROAM_RSSI_REQ:
@@ -13868,6 +15700,8 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       case WDA_PWR_SAVE_CFG:
       {
          if(pWDA->wdaState == WDA_READY_STATE)
@@ -13955,10 +15789,14 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          if(pWDA->wdaState == WDA_READY_STATE)
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             WDA_ProcessExitUapsdReq(pWDA);
 =======
             WDA_ProcessExitUapsdReq(pWDA, (tExitUapsdParams *)pMsg->bodyptr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            WDA_ProcessExitUapsdReq(pWDA);
+>>>>>>> 657b0e9... prima update
          }
          else
          {
@@ -14083,10 +15921,14 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       case WDA_WOWL_EXIT_REQ:
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          WDA_ProcessWowlExitReq(pWDA);
 =======
          WDA_ProcessWowlExitReq(pWDA, (tSirHalWowlExitParams *)pMsg->bodyptr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         WDA_ProcessWowlExitReq(pWDA);
+>>>>>>> 657b0e9... prima update
          break;
       }
       case WDA_TL_FLUSH_AC_REQ:
@@ -14132,6 +15974,7 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
       case WDA_SET_TX_POWER_REQ:
@@ -14141,6 +15984,9 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          break;
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
       case WDA_SET_P2P_GO_NOA_REQ:
       {
          WDA_ProcessSetP2PGONOAReq(pWDA,
@@ -14148,15 +15994,20 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          break;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
       /* timer related messages */
       case WDA_TIMER_BA_ACTIVITY_REQ:
       {
          WDA_BaCheckActivity(pWDA) ;
          break ;
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -14167,6 +16018,8 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          break;
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
       case WDA_AGGR_QOS_REQ:
       {
@@ -14175,18 +16028,26 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       }
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+>>>>>>> 657b0e9... prima update
       case WDA_FTM_CMD_REQ:
       {
          WDA_ProcessFTMCommand(pWDA, (tPttMsgbuffer *)pMsg->bodyptr) ;
          break ;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_OEM_DATA_SUPPORT
       case WDA_START_OEM_DATA_REQ:
       {
@@ -14237,6 +16098,7 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       }
 #endif // FEATURE_WLAN_SCAN_PNO
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
       case WDA_ROAM_SCAN_OFFLOAD_REQ:
@@ -14246,6 +16108,8 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       case WDA_SET_TX_PER_TRACKING_REQ:
       {
          WDA_ProcessSetTxPerTrackingReq(pWDA, (tSirTxPerTrackingParam *)pMsg->bodyptr);
@@ -14305,6 +16169,7 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          WDA_ProcessSetTmLevelReq(pWDA, (tAniSetTmLevelReq *)pMsg->bodyptr);
          break;
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
@@ -14368,6 +16233,8 @@ VOS_STATUS WDA_McProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          break;
       }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
       default:
       {
@@ -14400,10 +16267,14 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:pWDA is NULL", __FUNCTION__); 
 =======
                            "%s:pWDA is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pWDA is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return ;
    }
@@ -14430,10 +16301,13 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          rssiNotification.bRssiThres3PosCross = 
             wdiLowLevelInd->wdiIndicationData.wdiLowRSSIInfo.bRssiThres3PosCross;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
          rssiNotification.avgRssi = (v_S7_t) 
             ((-1)*wdiLowLevelInd->wdiIndicationData.wdiLowRSSIInfo.avgRssi);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          WLANTL_BMPSRSSIRegionChangedNotification(
             pWDA->pVosContext,
             &rssiNotification);
@@ -14442,6 +16316,7 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
       }
       case WDI_MISSED_BEACON_IND:
       {
+<<<<<<< HEAD
 <<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                      "Received WDI_MISSED_BEACON_IND from WDI ");
@@ -14465,6 +16340,12 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
              wdiLowLevelInd->wdiIndicationData.wdiMissedBeaconInd.bssIdx;
          WDA_SendMsg(pWDA, WDA_MISSED_BEACON_IND, (void *)pMissBeacInd , 0) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                     "Received WDI_MISSED_BEACON_IND from WDI ");
+         /* send IND to PE */
+         WDA_SendMsg(pWDA, WDA_MISSED_BEACON_IND, NULL, 0) ;
+>>>>>>> 657b0e9... prima update
          break ;
       }
       case WDI_UNKNOWN_ADDR2_FRAME_RX_IND:
@@ -14484,10 +16365,14 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          {
             VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                   "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
                                   "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                  "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             break;
          }
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
@@ -14524,9 +16409,12 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
       case WDI_FATAL_ERROR_IND:
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
          pWDA->wdiFailed = true;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          /* TODO: Decode Ind and send Ind to PE */
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                                   "Received WDI_FATAL_ERROR_IND from WDI ");
@@ -14543,10 +16431,14 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          {
             VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                   "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
                                   "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                  "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             break;
          }
          vos_mem_copy(pDelSTACtx->addr2,
@@ -14574,10 +16466,14 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          {
             VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                              "%s: VOS MEM Alloc Failure-pSmeCoexInd", __FUNCTION__);
 =======
                              "%s: VOS MEM Alloc Failure-pSmeCoexInd", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             "%s: VOS MEM Alloc Failure-pSmeCoexInd", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             break;
          }
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
@@ -14639,6 +16535,7 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          break;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
       case WDI_P2P_NOA_START_IND :
@@ -14689,6 +16586,9 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
       }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
       case WDI_P2P_NOA_ATTR_IND :
       {
          tSirP2PNoaAttr   *pP2pNoaAttr = 
@@ -14730,13 +16630,18 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          break;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_SCAN_PNO
       case WDI_PREF_NETWORK_FOUND_IND:
       {
          vos_msg_t vosMsg;
+<<<<<<< HEAD
 <<<<<<< HEAD
          tSirPrefNetworkFoundInd *pPrefNetworkFoundInd = (tSirPrefNetworkFoundInd *)vos_mem_malloc(sizeof(tSirPrefNetworkFoundInd));
 =======
@@ -14746,6 +16651,9 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
              (tSirPrefNetworkFoundInd *)vos_mem_malloc(size);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         tSirPrefNetworkFoundInd *pPrefNetworkFoundInd = (tSirPrefNetworkFoundInd *)vos_mem_malloc(sizeof(tSirPrefNetworkFoundInd));
+>>>>>>> 657b0e9... prima update
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
                               "Received WDI_PREF_NETWORK_FOUND_IND from WDI");
          if (NULL == pPrefNetworkFoundInd)
@@ -14758,10 +16666,14 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          /* Message Header */
          pPrefNetworkFoundInd->mesgType = eWNI_SME_PREF_NETWORK_FOUND_IND;
 <<<<<<< HEAD
+<<<<<<< HEAD
          pPrefNetworkFoundInd->mesgLen = sizeof(*pPrefNetworkFoundInd);
 =======
          pPrefNetworkFoundInd->mesgLen = size;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         pPrefNetworkFoundInd->mesgLen = sizeof(*pPrefNetworkFoundInd);
+>>>>>>> 657b0e9... prima update
 
          /* Info from WDI Indication */ 
          pPrefNetworkFoundInd->ssId.length = 
@@ -14770,6 +16682,7 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          vos_mem_copy( pPrefNetworkFoundInd->ssId.ssId, 
                   wdiLowLevelInd->wdiIndicationData.wdiPrefNetworkFoundInd.ssId.sSSID, 
                   pPrefNetworkFoundInd->ssId.length);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
          if (NULL !=
@@ -14788,6 +16701,8 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
             pPrefNetworkFoundInd->frameLength = 0;
          }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          pPrefNetworkFoundInd ->rssi = wdiLowLevelInd->wdiIndicationData.wdiPrefNetworkFoundInd.rssi; 
          /* VOS message wrapper */
          vosMsg.type = eWNI_SME_PREF_NETWORK_FOUND_IND;
@@ -14876,6 +16791,7 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
       }
   
 <<<<<<< HEAD
+<<<<<<< HEAD
       default:
       {
          /* TODO error */
@@ -14962,6 +16878,8 @@ void WDA_lowLevelIndCallback(WDI_LowLevelIndType *wdiLowLevelInd,
          break;
       }
 
+=======
+>>>>>>> 657b0e9... prima update
       default:
       {
          /* TODO error */
@@ -14985,10 +16903,14 @@ void WDA_TriggerBaReqCallback(WDI_TriggerBARspParamsType *wdiTriggerBaRsp,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -14998,10 +16920,14 @@ void WDA_TriggerBaReqCallback(WDI_TriggerBARspParamsType *wdiTriggerBaRsp,
    vos_mem_free(pWdaParams) ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    if(WDI_STATUS_SUCCESS == wdiTriggerBaRsp->wdiStatus)
    {
       tANI_U8 i = 0 ;
@@ -15016,10 +16942,14 @@ void WDA_TriggerBaReqCallback(WDI_TriggerBARspParamsType *wdiTriggerBaRsp,
       { 
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
            "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
            "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ;
          return; 
       }
@@ -15055,13 +16985,16 @@ void WDA_TriggerBaReqCallback(WDI_TriggerBARspParamsType *wdiTriggerBaRsp,
    return ;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
+=======
+>>>>>>> 657b0e9... prima update
 /*
- * API to activate/deactivate Traffic Stats timer. Traffic stats timer is only needed
- * during MCC
+ * BA Activity check timer handler
  */
+<<<<<<< HEAD
 void WDA_TrafficStatsTimerActivate(wpt_boolean activate)
 {
    wpt_uint32 enabled;
@@ -15202,6 +17135,8 @@ void WDA_TimerTrafficStatsInd(tWDA_CbContext *pWDA)
 /*
  * BA Activity check timer handler
  */
+=======
+>>>>>>> 657b0e9... prima update
 void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
 {
    tANI_U8 curSta = 0 ;
@@ -15215,10 +17150,14 @@ void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:pWDA is NULL", __FUNCTION__); 
 =======
                            "%s:pWDA is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:pWDA is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return ;
    }
@@ -15231,6 +17170,7 @@ void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
    /* walk through all STA entries and find out TX packet count */ 
    for(curSta = 0 ; curSta < pWDA->wdaMaxSta ; curSta++)
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
       for(tid = 0 ; tid < STACFG_MAX_TC ; tid++)
       {
@@ -15245,6 +17185,10 @@ void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
     for(tid = 0 ; tid < STACFG_MAX_TC ; tid++)
     {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      for(tid = 0 ; tid < STACFG_MAX_TC ; tid++)
+      {
+>>>>>>> 657b0e9... prima update
          WLANTL_STAStateType tlSTAState ;
          tANI_U32 txPktCount = 0 ;
          tANI_U8 validStaIndex = pWDA->wdaStaInfo[curSta].ucValidStaIndex ;
@@ -15293,10 +17237,14 @@ void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
             "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ; 
          return; 
       }
@@ -15306,10 +17254,14 @@ void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
       {
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
             "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT(0) ; 
          vos_mem_free(pWdaParams);
          return; 
@@ -15328,10 +17280,14 @@ void WDA_BaCheckActivity(tWDA_CbContext *pWDA)
       wdiTriggerBaReq->wdiReqStatusCB = NULL ;
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       pWdaParams->pWdaContext = pWDA;
       pWdaParams->wdaWdiApiMsgParam = wdiTriggerBaReq ;
       pWdaParams->wdaMsgParam = NULL; 
@@ -15380,10 +17336,14 @@ static VOS_STATUS wdaCreateTimers(tWDA_CbContext *pWDA)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s:MAC context is NULL", __FUNCTION__); 
 =======
                            "%s:MAC context is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s:MAC context is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -15405,10 +17365,14 @@ static VOS_STATUS wdaCreateTimers(tWDA_CbContext *pWDA)
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                                "Unable to create BA activity timer");
 <<<<<<< HEAD
+<<<<<<< HEAD
       return eSIR_FAILURE ;
 =======
       return VOS_STATUS_E_FAILURE ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return eSIR_FAILURE ;
+>>>>>>> 657b0e9... prima update
    }
    val = SYS_MS_TO_TICKS( WDA_TX_COMPLETE_TIME_OUT_VALUE ) ; 
    /* Tx Complete Timeout timer */
@@ -15426,6 +17390,7 @@ static VOS_STATUS wdaCreateTimers(tWDA_CbContext *pWDA)
          VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                                   "Unable to Destroy BA activity timer");
 <<<<<<< HEAD
+<<<<<<< HEAD
          return eSIR_FAILURE ;
       } 
       return eSIR_FAILURE ;
@@ -15433,38 +17398,18 @@ static VOS_STATUS wdaCreateTimers(tWDA_CbContext *pWDA)
    return eSIR_SUCCESS ;
 =======
          return VOS_STATUS_E_FAILURE ;
+=======
+         return eSIR_FAILURE ;
+>>>>>>> 657b0e9... prima update
       } 
-      return VOS_STATUS_E_FAILURE ;
+      return eSIR_FAILURE ;
    }
-
-   val = SYS_MS_TO_TICKS( WDA_TRAFFIC_STATS_TIME_OUT_VALUE );
-
-   /* Traffic Stats timer */
-   status = WDA_CREATE_TIMER(&pWDA->wdaTimers.trafficStatsTimer,
-                         "Traffic Stats timer", WDA_TimerHandler,
-                         WDA_TIMER_TRAFFIC_STATS_IND, val, val, TX_NO_ACTIVATE) ;
-   if(status != TX_SUCCESS)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                               "Unable to create traffic stats timer");
-      /* Destroy timer of BA activity check timer */
-      status = WDA_DESTROY_TIMER(&pWDA->wdaTimers.baActivityChkTmr);
-      if(status != TX_SUCCESS)
-      {
-         VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                                  "Unable to Destroy BA activity timer");
-      }
-      /* Destroy timer of tx complete timer */
-      status = WDA_DESTROY_TIMER(&pWDA->wdaTimers.TxCompleteTimer);
-      if(status != TX_SUCCESS)
-      {
-         VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                                  "Unable to Tx complete timer");
-      }
-      return VOS_STATUS_E_FAILURE ;
-   }
+<<<<<<< HEAD
    return VOS_STATUS_SUCCESS ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   return eSIR_SUCCESS ;
+>>>>>>> 657b0e9... prima update
 }
 /*
  * WDA common routine to destroy timer used by WDA.
@@ -15487,6 +17432,7 @@ static VOS_STATUS wdaDestroyTimers(tWDA_CbContext *pWDA)
       return eSIR_FAILURE ;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
                            
 =======
    status = WDA_DESTROY_TIMER(&pWDA->wdaTimers.trafficStatsTimer);
@@ -15497,6 +17443,9 @@ static VOS_STATUS wdaDestroyTimers(tWDA_CbContext *pWDA)
       return eSIR_FAILURE ;
    }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           
+>>>>>>> 657b0e9... prima update
    return eSIR_SUCCESS ;
 }
 /*
@@ -15549,6 +17498,7 @@ eHalStatus WDA_SetRegDomain(void * clientCtxt, v_REGDOMAIN_t regId)
    }
    return eHAL_STATUS_SUCCESS;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif  /* FEATURE_WLAN_INTEGRATED_SOC */
 
@@ -15646,112 +17596,109 @@ void WDA_SetPowerParamsCallback(WDI_Status status, void* pUserData)
    }
    return ;
 =======
+=======
+#endif  /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_SCAN_PNO
 /*
- * FUNCTION: WDA_PNOScanRespCallback
+ * FUNCTION: WDA_PNOScanReqCallback
  * 
  */ 
-void WDA_PNOScanRespCallback(WDI_Status status, void* pUserData)
+void WDA_PNOScanReqCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-   if(NULL == pWdaParams)
+                                          "<------ %s " ,__FUNCTION__);
+    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
+              "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
       return ;
    }
+   if( pWdaParams != NULL )
+   {
+      if( pWdaParams->wdaWdiApiMsgParam != NULL )
+      {
+         vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+      }
+      if( pWdaParams->wdaMsgParam != NULL)
+      {
+         vos_mem_free(pWdaParams->wdaMsgParam);
+      }
 
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-   vos_mem_free(pWdaParams->wdaMsgParam);
-   vos_mem_free(pWdaParams);
+      vos_mem_free(pWdaParams) ;
+   }
 
    return ;
 }
 /*
- * FUNCTION: WDA_PNOScanReqCallback
- * Free memory.
- * Invoked when PNOScan REQ failed in WDI and no RSP callback is generated.
- */
-void WDA_PNOScanReqCallback(WDI_Status wdiStatus, void* pUserData)
+ * FUNCTION: WDA_UpdateScanParamsCallback
+ * 
+ */ 
+void WDA_UpdateScanParamsCallback(WDI_Status status, void* pUserData)
 {
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-
+   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
-   if(NULL == pWdaParams)
+                                          "<------ %s " ,__FUNCTION__);
+    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
-   }
-
-   if(IS_WDI_STATUS_FAILURE(wdiStatus))
-   {
-      vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-      vos_mem_free(pWdaParams->wdaMsgParam);
-      vos_mem_free(pWdaParams);
-   }
-
-   return;
-}
-/*
- * FUNCTION: WDA_UpdateScanParamsRespCallback
- *
- */
-void WDA_UpdateScanParamsRespCallback(WDI_Status status, void* pUserData)
-{
-   tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "%s: pWdaParams received NULL", __func__);
+              "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
       return ;
    }
-
-   vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-   vos_mem_free(pWdaParams->wdaMsgParam);
-   vos_mem_free(pWdaParams);
-
+   if( pWdaParams != NULL )
+   {
+      if( pWdaParams->wdaWdiApiMsgParam != NULL )
+      {
+         vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+      }
+      if( pWdaParams->wdaMsgParam != NULL)
+      {
+         vos_mem_free(pWdaParams->wdaMsgParam);
+      }
+      vos_mem_free(pWdaParams) ;
+   }
    return ;
 }
 /*
- * FUNCTION: WDA_UpdateScanParamsReqCallback
- * Free memory.
- * Invoked when UpdateScanParams REQ failed in WDI and no RSP callback is generated.
- */
-void WDA_UpdateScanParamsReqCallback(WDI_Status wdiStatus, void* pUserData)
+ * FUNCTION: WDA_SetPowerParamsCallback
+ * 
+ */ 
+void WDA_SetPowerParamsCallback(WDI_Status status, void* pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
 
-   VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-              "<------ %s, wdiStatus: %d", __func__, wdiStatus);
-
-   if(NULL == pWdaParams)
+     VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+                                          "<------ %s " ,__FUNCTION__);
+    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                 "%s: pWdaParams received NULL", __func__);
-      VOS_ASSERT(0);
-      return;
+              "%s: pWdaParams received NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+      return ;
    }
-
-   if(IS_WDI_STATUS_FAILURE(wdiStatus))
+   if( pWdaParams != NULL )
    {
-      vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
-      vos_mem_free(pWdaParams->wdaMsgParam);
-      vos_mem_free(pWdaParams);
+      if( pWdaParams->wdaWdiApiMsgParam != NULL )
+      {
+         vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
+      }
+      if( pWdaParams->wdaMsgParam != NULL)
+      {
+         vos_mem_free(pWdaParams->wdaMsgParam);
+      }
+      vos_mem_free(pWdaParams) ;
    }
+<<<<<<< HEAD
 
    return;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   return ;
+>>>>>>> 657b0e9... prima update
 }
 /*
  * FUNCTION: WDA_ProcessSetPreferredNetworkList
@@ -15767,6 +17714,7 @@ VOS_STATUS WDA_ProcessSetPrefNetworkReq(tWDA_CbContext *pWDA,
    v_U8_t   i; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiPNOScanReqInfo) 
    {
@@ -15779,6 +17727,13 @@ VOS_STATUS WDA_ProcessSetPrefNetworkReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiPNOScanReqInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -15787,10 +17742,14 @@ VOS_STATUS WDA_ProcessSetPrefNetworkReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiPNOScanReqInfo);
       return VOS_STATUS_E_NOMEM;
@@ -15827,6 +17786,7 @@ VOS_STATUS WDA_ProcessSetPrefNetworkReq(tWDA_CbContext *pWDA,
    vos_mem_copy( &pwdiPNOScanReqInfo->wdiPNOScanInfo.a5GProbeTemplate,
                 pPNOScanReqParams->p5GProbeTemplate,
                 pwdiPNOScanReqInfo->wdiPNOScanInfo.us5GProbeSize);
+<<<<<<< HEAD
 <<<<<<< HEAD
    pwdiPNOScanReqInfo->wdiReqStatusCB = NULL;
    if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
@@ -16006,100 +17966,30 @@ VOS_STATUS WDA_ProcessRoamScanOffloadReq(tWDA_CbContext *pWDA,
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
    if (NULL == pWdaParams)
+=======
+   pwdiPNOScanReqInfo->wdiReqStatusCB = NULL;
+   if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
+>>>>>>> 657b0e9... prima update
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__);
+             "%s: wdaMsgParam or wdaWdiApiMsgParam is not NULL", __FUNCTION__); 
       VOS_ASSERT(0);
-      vos_mem_free(pwdiRoamScanOffloadReqParams);
-      return VOS_STATUS_E_NOMEM;
+      vos_mem_free(pwdiPNOScanReqInfo) ;
+      vos_mem_free(pWdaParams);
+      return VOS_STATUS_E_FAILURE;
    }
-
-   pwdiRoamNetworkType =
-   &pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork;
-   pwdiRoamOffloadScanInfo =
-   &pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo;
-   vos_mem_zero (pwdiRoamScanOffloadReqParams,sizeof(WDI_RoamScanOffloadReqParamsType));
-   csrAuthType = pRoamOffloadScanReqParams->ConnectedNetwork.authentication;
-   pwdiRoamOffloadScanInfo->RoamScanOffloadEnabled =
-          pRoamOffloadScanReqParams->RoamScanOffloadEnabled;
-   vos_mem_copy(pwdiRoamNetworkType->currAPbssid,
-                pRoamOffloadScanReqParams->ConnectedNetwork.currAPbssid,
-                sizeof(pwdiRoamNetworkType->currAPbssid));
-   WDA_ConvertSirAuthToWDIAuth(&pwdiRoamNetworkType->authentication,
-                                csrAuthType);
-   WDA_ConvertSirEncToWDIEnc(&pwdiRoamNetworkType->encryption,
-       pRoamOffloadScanReqParams->ConnectedNetwork.encryption);
-   WDA_ConvertSirEncToWDIEnc(&pwdiRoamNetworkType->mcencryption,
-       pRoamOffloadScanReqParams->ConnectedNetwork.mcencryption);
-   pwdiRoamOffloadScanInfo->LookupThreshold =
-           pRoamOffloadScanReqParams->LookupThreshold ;
-   pwdiRoamOffloadScanInfo->RoamRssiDiff =
-           pRoamOffloadScanReqParams->RoamRssiDiff ;
-   pwdiRoamOffloadScanInfo->Command =
-           pRoamOffloadScanReqParams->Command ;
-   pwdiRoamOffloadScanInfo->StartScanReason =
-           pRoamOffloadScanReqParams->StartScanReason ;
-   pwdiRoamOffloadScanInfo->NeighborScanTimerPeriod =
-           pRoamOffloadScanReqParams->NeighborScanTimerPeriod ;
-   pwdiRoamOffloadScanInfo->NeighborRoamScanRefreshPeriod =
-           pRoamOffloadScanReqParams->NeighborRoamScanRefreshPeriod ;
-   pwdiRoamOffloadScanInfo->NeighborScanChannelMinTime =
-           pRoamOffloadScanReqParams->NeighborScanChannelMinTime ;
-   pwdiRoamOffloadScanInfo->NeighborScanChannelMaxTime =
-           pRoamOffloadScanReqParams->NeighborScanChannelMaxTime ;
-   pwdiRoamOffloadScanInfo->EmptyRefreshScanPeriod =
-           pRoamOffloadScanReqParams->EmptyRefreshScanPeriod ;
-   pwdiRoamOffloadScanInfo->IsCCXEnabled =
-           pRoamOffloadScanReqParams->IsCCXEnabled ;
-   vos_mem_copy(&pwdiRoamNetworkType->ssId.sSSID,
-                &pRoamOffloadScanReqParams->ConnectedNetwork.ssId.ssId,
-                pRoamOffloadScanReqParams->ConnectedNetwork.ssId.length);
-   pwdiRoamNetworkType->ssId.ucLength =
-           pRoamOffloadScanReqParams->ConnectedNetwork.ssId.length;
-   vos_mem_copy(pwdiRoamNetworkType->ChannelCache,
-                pRoamOffloadScanReqParams->ConnectedNetwork.ChannelCache,
-                pRoamOffloadScanReqParams->ConnectedNetwork.ChannelCount);
-   pwdiRoamNetworkType->ChannelCount =
-           pRoamOffloadScanReqParams->ConnectedNetwork.ChannelCount;
-   pwdiRoamOffloadScanInfo->ChannelCacheType =
-           pRoamOffloadScanReqParams->ChannelCacheType;
-   vos_mem_copy(pwdiRoamOffloadScanInfo->ValidChannelList,
-                pRoamOffloadScanReqParams->ValidChannelList,
-                pRoamOffloadScanReqParams->ValidChannelCount);
-   pwdiRoamOffloadScanInfo->ValidChannelCount =
-           pRoamOffloadScanReqParams->ValidChannelCount;
-   pwdiRoamOffloadScanInfo->us24GProbeSize =
-    (pRoamOffloadScanReqParams->us24GProbeTemplateLen<WDI_PNO_MAX_PROBE_SIZE)?
-    pRoamOffloadScanReqParams->us24GProbeTemplateLen:WDI_PNO_MAX_PROBE_SIZE;
-   vos_mem_copy(&pwdiRoamOffloadScanInfo->a24GProbeTemplate,
-                pRoamOffloadScanReqParams->p24GProbeTemplate,
-                pwdiRoamOffloadScanInfo->us24GProbeSize);
-   pwdiRoamOffloadScanInfo->us5GProbeSize =
-    (pRoamOffloadScanReqParams->us5GProbeTemplateLen<WDI_PNO_MAX_PROBE_SIZE)?
-    pRoamOffloadScanReqParams->us5GProbeTemplateLen:WDI_PNO_MAX_PROBE_SIZE;
-   vos_mem_copy(&pwdiRoamOffloadScanInfo->a5GProbeTemplate,
-                pRoamOffloadScanReqParams->p5GProbeTemplate,
-                pwdiRoamOffloadScanInfo->us5GProbeSize);
-   pwdiRoamOffloadScanInfo->MDID.mdiePresent =
-           pRoamOffloadScanReqParams->MDID.mdiePresent;
-   pwdiRoamOffloadScanInfo->MDID.mobilityDomain =
-           pRoamOffloadScanReqParams->MDID.mobilityDomain;
-   pwdiRoamOffloadScanInfo->nProbes =
-           pRoamOffloadScanReqParams->nProbes;
-   pwdiRoamOffloadScanInfo->HomeAwayTime =
-           pRoamOffloadScanReqParams->HomeAwayTime;
-   pwdiRoamScanOffloadReqParams->wdiReqStatusCB = NULL;
+   
    /* Store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)pwdiRoamScanOffloadReqParams;
+   pWdaParams->wdaWdiApiMsgParam = (void *)pwdiPNOScanReqInfo;
    pWdaParams->pWdaContext = pWDA;
    /* Store param pointer as passed in by caller */
-   pWdaParams->wdaMsgParam = pRoamOffloadScanReqParams;
-   status = WDI_RoamScanOffloadReq(pwdiRoamScanOffloadReqParams,
-                           (WDI_RoamOffloadScanCb)WDA_RoamOffloadScanReqCallback, pWdaParams);
+   pWdaParams->wdaMsgParam = pPNOScanReqParams;
+   status = WDI_SetPreferredNetworkReq(pwdiPNOScanReqInfo, 
+                           (WDI_PNOScanCb)WDA_PNOScanReqCallback, pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-              "Failure in Start Roam Candidate Lookup Req WDI API, free all the memory " );
+              "Failure in Set PNO REQ WDI API, free all the memory " );
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
       vos_mem_free(pWdaParams->wdaMsgParam);
       pWdaParams->wdaWdiApiMsgParam = NULL;
@@ -16107,18 +17997,21 @@ VOS_STATUS WDA_ProcessRoamScanOffloadReq(tWDA_CbContext *pWDA,
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
-#endif
-
 /*
- * FUNCTION: WDA_RssiFilterRespCallback
+ * FUNCTION: WDA_RssiFilterCallback
  * 
  */ 
+<<<<<<< HEAD
 void WDA_RssiFilterRespCallback(WDI_Status status, void* pUserData)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void WDA_RssiFilterCallback(WDI_Status status, void* pUserData)
+>>>>>>> 657b0e9... prima update
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 
@@ -16136,6 +18029,12 @@ void WDA_RssiFilterRespCallback(WDI_Status status, void* pUserData)
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+
+   VOS_ASSERT(NULL != pWdaParams);
+   
+>>>>>>> 657b0e9... prima update
    vos_mem_free(pWdaParams->wdaMsgParam) ;
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
@@ -16143,6 +18042,7 @@ void WDA_RssiFilterRespCallback(WDI_Status status, void* pUserData)
    return ;
 }
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * FUNCTION: WDA_RssiFilterReqCallback
@@ -16175,6 +18075,8 @@ void WDA_RssiFilterReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessSetPreferredNetworkList
  * Request to WDI to set Preferred Network List.Offload
  */ 
@@ -16186,6 +18088,7 @@ VOS_STATUS WDA_ProcessSetRssiFilterReq(tWDA_CbContext *pWDA,
       (WDI_SetRssiFilterReqParamsType *)vos_mem_malloc(sizeof(WDI_SetRssiFilterReqParamsType)) ;
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiSetRssiFilterReqInfo) 
@@ -16199,6 +18102,13 @@ VOS_STATUS WDA_ProcessSetRssiFilterReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiSetRssiFilterReqInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -16207,16 +18117,23 @@ VOS_STATUS WDA_ProcessSetRssiFilterReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiSetRssiFilterReqInfo);
       return VOS_STATUS_E_NOMEM;
    }
    pwdiSetRssiFilterReqInfo->rssiThreshold = pRssiFilterParams->rssiThreshold;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    pwdiSetRssiFilterReqInfo->wdiReqStatusCB = NULL;
    if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
    {
@@ -16227,11 +18144,14 @@ VOS_STATUS WDA_ProcessSetRssiFilterReq(tWDA_CbContext *pWDA,
       vos_mem_free(pWdaParams);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 =======
    pwdiSetRssiFilterReqInfo->wdiReqStatusCB = WDA_RssiFilterReqCallback;
    pwdiSetRssiFilterReqInfo->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiSetRssiFilterReqInfo;
    pWdaParams->pWdaContext = pWDA;
@@ -16239,10 +18159,14 @@ VOS_STATUS WDA_ProcessSetRssiFilterReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pRssiFilterParams;
    status = WDI_SetRssiFilterReq( pwdiSetRssiFilterReqInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                  (WDI_PNOScanCb)WDA_RssiFilterCallback, 
 =======
                                  (WDI_PNOScanCb)WDA_RssiFilterRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                 (WDI_PNOScanCb)WDA_RssiFilterCallback, 
+>>>>>>> 657b0e9... prima update
                                  pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -16271,6 +18195,7 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
    v_U8_t i; 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == wdiUpdateScanParamsInfoType) 
    {
@@ -16283,6 +18208,13 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == wdiUpdateScanParamsInfoType) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -16291,10 +18223,14 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiUpdateScanParamsInfoType);
       return VOS_STATUS_E_NOMEM;
@@ -16334,12 +18270,17 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
 
    wdiUpdateScanParamsInfoType->wdiUpdateScanParamsInfo.ucChannelCount = 
 <<<<<<< HEAD
+<<<<<<< HEAD
       (pUpdateScanParams->ucChannelCount < WDI_PNO_MAX_NETW_CHANNELS)?
       pUpdateScanParams->ucChannelCount:WDI_PNO_MAX_NETW_CHANNELS;
 =======
       (pUpdateScanParams->ucChannelCount < WDI_PNO_MAX_NETW_CHANNELS_EX)?
       pUpdateScanParams->ucChannelCount:WDI_PNO_MAX_NETW_CHANNELS_EX;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      (pUpdateScanParams->ucChannelCount < WDI_PNO_MAX_NETW_CHANNELS)?
+      pUpdateScanParams->ucChannelCount:WDI_PNO_MAX_NETW_CHANNELS;
+>>>>>>> 657b0e9... prima update
 
    for ( i = 0; i < 
          wdiUpdateScanParamsInfoType->wdiUpdateScanParamsInfo.ucChannelCount ; 
@@ -16354,6 +18295,9 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    wdiUpdateScanParamsInfoType->wdiReqStatusCB = NULL;
    if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
    {
@@ -16364,11 +18308,14 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
       vos_mem_free(wdiUpdateScanParamsInfoType);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 =======
    wdiUpdateScanParamsInfoType->wdiReqStatusCB = WDA_UpdateScanParamsReqCallback;
    wdiUpdateScanParamsInfoType->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
      /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = wdiUpdateScanParamsInfoType;
    pWdaParams->pWdaContext = pWDA;
@@ -16379,10 +18326,14 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
 
    status = WDI_UpdateScanParamsReq(wdiUpdateScanParamsInfoType, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     (WDI_UpdateScanParamsCb)WDA_UpdateScanParamsCallback, 
 =======
                     (WDI_UpdateScanParamsCb)WDA_UpdateScanParamsRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    (WDI_UpdateScanParamsCb)WDA_UpdateScanParamsCallback, 
+>>>>>>> 657b0e9... prima update
                     pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -16395,6 +18346,7 @@ VOS_STATUS WDA_ProcessUpdateScanParams(tWDA_CbContext *pWDA,
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
 #endif // FEATURE_WLAN_SCAN_PNO
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 /*
@@ -16519,23 +18471,27 @@ void WDA_SetPowerParamsReqCallback(WDI_Status wdiStatus, void* pUserData)
    return;
 }
 
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 /*
- * FUNCTION: WDA_8023MulticastListRespCallback
+ * FUNCTION: WDA_8023MulticastListReqCallback
  * 
  */ 
-void WDA_8023MulticastListRespCallback(
-                        WDI_RcvFltPktSetMcListRspParamsType  *pwdiRcvFltPktSetMcListRspInfo,
-                        void * pUserData)
+void WDA_8023MulticastListReqCallback(WDI_Status status, void * pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
-                                          "<------ %s " ,__func__);
+                                          "<------ %s " ,__FUNCTION__);
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -16545,6 +18501,7 @@ void WDA_8023MulticastListRespCallback(
    vos_mem_free(pWdaParams) ;
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
               "WDA_8023MulticastListReqCallback invoked " );
    return ;
@@ -16585,6 +18542,12 @@ void WDA_8023MulticastListReqCallback(WDI_Status wdiStatus, void* pUserData)
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "WDA_8023MulticastListReqCallback invoked " );
+   return ;
+}
+/*
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_Process8023MulticastListReq
  * Request to WDI to add 8023 Multicast List
  */ 
@@ -16597,10 +18560,14 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
    tANI_U8         i;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    pwdiFltPktSetMcListReqParamsType = 
       (WDI_RcvFltPktSetMcListReqParamsType *)vos_mem_malloc(
                              sizeof(WDI_RcvFltPktSetMcListReqParamsType)
@@ -16609,16 +18576,21 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
       vos_mem_free(pwdiFltPktSetMcListReqParamsType);
@@ -16640,6 +18612,21 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+      vos_mem_free(pwdiFltPktSetMcListReqParamsType);
+      return VOS_STATUS_E_NOMEM;
+   }
+   if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+             "%s: wdaMsgParam or wdaWdiApiMsgParam is not NULL",
+              __FUNCTION__);
+      vos_mem_free(pwdiFltPktSetMcListReqParamsType);
+      vos_mem_free(pWdaParams);
+      return VOS_STATUS_E_FAILURE;
+   }
+>>>>>>> 657b0e9... prima update
    //
    // Fill pwdiFltPktSetMcListReqParamsType from pRcvFltMcAddrList
    //
@@ -16658,6 +18645,7 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
                    sizeof(tSirMacAddr));
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
    pwdiFltPktSetMcListReqParamsType->wdiReqStatusCB = NULL;
   /* WDA_VOS_ASSERT((NULL == pWDA->wdaMsgParam) && 
                   (NULL == pWDA->wdaWdiApiMsgParam)); */
@@ -16666,6 +18654,11 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
    pwdiFltPktSetMcListReqParamsType->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pwdiFltPktSetMcListReqParamsType->wdiReqStatusCB = NULL;
+  /* WDA_VOS_ASSERT((NULL == pWDA->wdaMsgParam) && 
+                  (NULL == pWDA->wdaWdiApiMsgParam)); */
+>>>>>>> 657b0e9... prima update
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiFltPktSetMcListReqParamsType;
    pWdaParams->pWdaContext = pWDA;
@@ -16674,10 +18667,14 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
    status = WDI_8023MulticastListReq(
                         pwdiFltPktSetMcListReqParamsType, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                         (WDI_8023MulticastListCb)WDA_8023MulticastListReqCallback,
 =======
                         (WDI_8023MulticastListCb)WDA_8023MulticastListRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        (WDI_8023MulticastListCb)WDA_8023MulticastListReqCallback,
+>>>>>>> 657b0e9... prima update
                         pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -16691,6 +18688,7 @@ VOS_STATUS WDA_Process8023MulticastListReq (tWDA_CbContext *pWDA,
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_ReceiveFilterSetFilterReqCallback
  * 
  */ 
@@ -16701,25 +18699,34 @@ void WDA_ReceiveFilterSetFilterReqCallback(WDI_Status status, void * pUserData)
                                           "<------ %s " ,__FUNCTION__);
 =======
  * FUNCTION: WDA_ReceiveFilterSetFilterRespCallback
+=======
+ * FUNCTION: WDA_ReceiveFilterSetFilterReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_ReceiveFilterSetFilterRespCallback(
-                        WDI_SetRcvPktFilterRspParamsType *pwdiSetRcvPktFilterRspInfo, 
-                        void * pUserData)
+void WDA_ReceiveFilterSetFilterReqCallback(WDI_Status status, void * pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    /*WDA_VOS_ASSERT(NULL != pWdaParams);*/
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: pWdaParams received NULL", __FUNCTION__);
 =======
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -16729,6 +18736,7 @@ void WDA_ReceiveFilterSetFilterRespCallback(
    vos_mem_free(pWdaParams) ;
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
               "WDA_ReceiveFilterSetFilterReqCallback invoked " );
    return ;
@@ -16771,6 +18779,11 @@ void WDA_ReceiveFilterSetFilterReqCallback(WDI_Status   wdiStatus,
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "WDA_ReceiveFilterSetFilterReqCallback invoked " );
+   return ;
+}
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_ProcessReceiveFilterSetFilterReq
  * Request to WDI to set Receive Filters
@@ -16787,6 +18800,7 @@ VOS_STATUS WDA_ProcessReceiveFilterSetFilterReq (tWDA_CbContext *pWDA,
    tANI_U8         i;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiSetRcvPktFilterReqParamsType) 
    {
@@ -16799,6 +18813,13 @@ VOS_STATUS WDA_ProcessReceiveFilterSetFilterReq (tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiSetRcvPktFilterReqParamsType) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -16807,10 +18828,14 @@ VOS_STATUS WDA_ProcessReceiveFilterSetFilterReq (tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiSetRcvPktFilterReqParamsType);
       return VOS_STATUS_E_NOMEM;
@@ -16878,11 +18903,15 @@ VOS_STATUS WDA_ProcessReceiveFilterSetFilterReq (tWDA_CbContext *pWDA,
                          wdiPktFilterCfg.paramsData[i].dataMask[5]);
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
    pwdiSetRcvPktFilterReqParamsType->wdiReqStatusCB = NULL;
 =======
    pwdiSetRcvPktFilterReqParamsType->wdiReqStatusCB = WDA_ReceiveFilterSetFilterReqCallback;
    pwdiSetRcvPktFilterReqParamsType->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pwdiSetRcvPktFilterReqParamsType->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiSetRcvPktFilterReqParamsType;
    pWdaParams->pWdaContext = pWDA;
@@ -16890,10 +18919,14 @@ VOS_STATUS WDA_ProcessReceiveFilterSetFilterReq (tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pRcvPktFilterCfg;
    status = WDI_ReceiveFilterSetFilterReq(pwdiSetRcvPktFilterReqParamsType,
 <<<<<<< HEAD
+<<<<<<< HEAD
            (WDI_ReceiveFilterSetFilterCb)WDA_ReceiveFilterSetFilterReqCallback,
 =======
            (WDI_ReceiveFilterSetFilterCb)WDA_ReceiveFilterSetFilterRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           (WDI_ReceiveFilterSetFilterCb)WDA_ReceiveFilterSetFilterReqCallback,
+>>>>>>> 657b0e9... prima update
            pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -16907,6 +18940,7 @@ VOS_STATUS WDA_ProcessReceiveFilterSetFilterReq (tWDA_CbContext *pWDA,
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_FilterMatchCountReqCallback
  * 
  */ 
@@ -16919,6 +18953,12 @@ void WDA_FilterMatchCountRespCallback(
                             WDI_RcvFltPktMatchCntRspParamsType *pwdiRcvFltPktMatchRspParams, 
                             void * pUserData)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * FUNCTION: WDA_FilterMatchCountReqCallback
+ * 
+ */ 
+void WDA_FilterMatchCountReqCallback(WDI_Status status, void * pUserData)
+>>>>>>> 657b0e9... prima update
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    tWDA_CbContext *pWDA;
@@ -16930,15 +18970,20 @@ void WDA_FilterMatchCountRespCallback(
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    /*WDA_VOS_ASSERT(NULL != pWdaParams);*/
 
    if(NULL == pRcvFltPktMatchCntRsp)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                  "%s: pRcvFltPktMatchCntRsp is NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
@@ -16948,12 +18993,18 @@ void WDA_FilterMatchCountRespCallback(
       VOS_ASSERT(0) ;
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: pRcvFltPktMatchCntRsp is NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+	  vos_mem_free(pWdaParams);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                  "%s: pWdaParams received NULL", __FUNCTION__);
       VOS_ASSERT(0) ;
@@ -16963,6 +19014,11 @@ void WDA_FilterMatchCountRespCallback(
       VOS_ASSERT(0) ;
       vos_mem_free(pRcvFltPktMatchCntRsp);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+      VOS_ASSERT(0) ;
+	  vos_mem_free(pRcvFltPktMatchCntRsp);
+>>>>>>> 657b0e9... prima update
       return ;
    }
    pWDA = (tWDA_CbContext *)pWdaParams->pWdaContext ;
@@ -16975,10 +19031,14 @@ void WDA_FilterMatchCountRespCallback(
    pRcvFltPktMatchCntRsp->mesgLen = sizeof(tSirRcvFltPktMatchRsp);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    pRcvFltPktMatchCntRsp->status = pRcvFltPktMatchCntReq->status;
 =======
    pRcvFltPktMatchCntRsp->status = pwdiRcvFltPktMatchRspParams->wdiStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pRcvFltPktMatchCntRsp->status = pRcvFltPktMatchCntReq->status;
+>>>>>>> 657b0e9... prima update
 
    for (i = 0; i < SIR_MAX_NUM_FILTERS; i++)
    {   
@@ -16998,6 +19058,7 @@ void WDA_FilterMatchCountRespCallback(
    vos_mem_free(pWdaParams->wdaMsgParam) ;
    vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
    vos_mem_free(pWdaParams) ;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -17039,6 +19100,8 @@ void WDA_FilterMatchCountReqCallback(WDI_Status wdiStatus, void * pUserData)
 
    return;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 /*
  * FUNCTION: WDA_ProcessPacketFilterMatchCountReq
@@ -17052,6 +19115,7 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiRcvFltPktMatchCntReqParamsType) 
    {
@@ -17064,6 +19128,13 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiRcvFltPktMatchCntReqParamsType) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -17072,15 +19143,22 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiRcvFltPktMatchCntReqParamsType);
       return VOS_STATUS_E_NOMEM;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -17091,6 +19169,7 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
       return VOS_STATUS_E_FAILURE;
    }
    pwdiRcvFltPktMatchCntReqParamsType->wdiReqStatusCB = NULL;
+<<<<<<< HEAD
 =======
 
    pwdiRcvFltPktMatchCntReqParamsType->wdiReqStatusCB = WDA_FilterMatchCountReqCallback;
@@ -17100,6 +19179,8 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
                  pRcvFltPktMatchRsp->bssId, 
                  sizeof(wpt_macAddr));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiRcvFltPktMatchCntReqParamsType;
@@ -17108,10 +19189,14 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
    pWdaParams->wdaMsgParam = pRcvFltPktMatchRsp;
    status = WDI_FilterMatchCountReq(pwdiRcvFltPktMatchCntReqParamsType, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                  (WDI_FilterMatchCountCb)WDA_FilterMatchCountReqCallback,
 =======
                  (WDI_FilterMatchCountCb)WDA_FilterMatchCountRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 (WDI_FilterMatchCountCb)WDA_FilterMatchCountReqCallback,
+>>>>>>> 657b0e9... prima update
                  pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -17127,6 +19212,7 @@ VOS_STATUS WDA_ProcessPacketFilterMatchCountReq (tWDA_CbContext *pWDA, tpSirRcvF
 }
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FUNCTION: WDA_ReceiveFilterSetFilterReqCallback
  * 
  */ 
@@ -17137,25 +19223,34 @@ void WDA_ReceiveFilterClearFilterReqCallback(WDI_Status status, void * pUserData
                                           "<------ %s " ,__FUNCTION__);
 =======
  * FUNCTION: WDA_ReceiveFilterClearFilterRespCallback
+=======
+ * FUNCTION: WDA_ReceiveFilterSetFilterReqCallback
+>>>>>>> 657b0e9... prima update
  * 
  */ 
-void WDA_ReceiveFilterClearFilterRespCallback(
-                        WDI_RcvFltPktClearRspParamsType *pwdiRcvFltPktClearRspParamsType, 
-                        void * pUserData)
+void WDA_ReceiveFilterClearFilterReqCallback(WDI_Status status, void * pUserData)
 {
    tWDA_ReqParams *pWdaParams = (tWDA_ReqParams *)pUserData;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 /*   WDA_VOS_ASSERT(NULL != pWdaParams); */
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: pWdaParams received NULL", __FUNCTION__);
 =======
                  "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -17165,6 +19260,7 @@ void WDA_ReceiveFilterClearFilterRespCallback(
    vos_mem_free(pWdaParams) ;
    //print a msg, nothing else to do
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
               "WDA_ReceiveFilterClearFilterReqCallback invoked " );
    return ;
@@ -17205,6 +19301,12 @@ void WDA_ReceiveFilterClearFilterReqCallback(WDI_Status wdiStatus, void* pUserDa
 }
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "WDA_ReceiveFilterClearFilterReqCallback invoked " );
+   return ;
+}
+/*
+>>>>>>> 657b0e9... prima update
  * FUNCTION: WDA_ProcessReceiveFilterClearFilterReq
  * Request to WDI to clear Receive Filters
  */
@@ -17216,6 +19318,7 @@ VOS_STATUS WDA_ProcessReceiveFilterClearFilterReq (tWDA_CbContext *pWDA,
       (WDI_RcvFltPktClearReqParamsType *)vos_mem_malloc(sizeof(WDI_RcvFltPktClearReqParamsType));
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiRcvFltPktClearReqParamsType)
@@ -17229,6 +19332,13 @@ VOS_STATUS WDA_ProcessReceiveFilterClearFilterReq (tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiRcvFltPktClearReqParamsType)
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -17237,10 +19347,14 @@ VOS_STATUS WDA_ProcessReceiveFilterClearFilterReq (tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__);
 =======
                            "%s: VOS MEM Alloc Failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiRcvFltPktClearReqParamsType);
       return VOS_STATUS_E_NOMEM;
@@ -17253,11 +19367,15 @@ VOS_STATUS WDA_ProcessReceiveFilterClearFilterReq (tWDA_CbContext *pWDA,
                          pRcvFltPktClearParam->bssId, sizeof(wpt_macAddr));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    pwdiRcvFltPktClearReqParamsType->wdiReqStatusCB = NULL;
 =======
    pwdiRcvFltPktClearReqParamsType->wdiReqStatusCB = WDA_ReceiveFilterClearFilterReqCallback;
    pwdiRcvFltPktClearReqParamsType->pUserData = pWdaParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pwdiRcvFltPktClearReqParamsType->wdiReqStatusCB = NULL;
+>>>>>>> 657b0e9... prima update
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiRcvFltPktClearReqParamsType;
    pWdaParams->pWdaContext = pWDA;
@@ -17265,10 +19383,14 @@ VOS_STATUS WDA_ProcessReceiveFilterClearFilterReq (tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pRcvFltPktClearParam;
    status = WDI_ReceiveFilterClearFilterReq(pwdiRcvFltPktClearReqParamsType,
 <<<<<<< HEAD
+<<<<<<< HEAD
        (WDI_ReceiveFilterClearFilterCb)WDA_ReceiveFilterClearFilterReqCallback,
 =======
        (WDI_ReceiveFilterClearFilterCb)WDA_ReceiveFilterClearFilterRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       (WDI_ReceiveFilterClearFilterCb)WDA_ReceiveFilterClearFilterReqCallback,
+>>>>>>> 657b0e9... prima update
        pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -17276,10 +19398,13 @@ VOS_STATUS WDA_ProcessReceiveFilterClearFilterReq (tWDA_CbContext *pWDA,
               "Failure in WDA_ProcessReceiveFilterClearFilterReq(), free all the memory " );
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam) ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       vos_mem_free(pWdaParams->wdaMsgParam);
       vos_mem_free(pWdaParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    }
    return CONVERT_WDI2VOS_STATUS(status) ;
 }
@@ -17298,6 +19423,7 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
    tWDA_ReqParams *pWdaParams ;
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if(NULL == pwdiSetPowerParamsReqInfo) 
    {
@@ -17310,6 +19436,13 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if(NULL == pwdiSetPowerParamsReqInfo) 
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -17318,10 +19451,14 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(pwdiSetPowerParamsReqInfo);
       return VOS_STATUS_E_NOMEM;
@@ -17341,6 +19478,9 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
    pwdiSetPowerParamsReqInfo->wdiSetPowerParamsInfo.uBETInterval      = 
       pPowerParams->uBETInterval; 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    pwdiSetPowerParamsReqInfo->wdiReqStatusCB = NULL;
    if((NULL != pWDA->wdaMsgParam) || (NULL != pWDA->wdaWdiApiMsgParam))
    {
@@ -17351,6 +19491,7 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
       vos_mem_free(pWdaParams);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 =======
    pwdiSetPowerParamsReqInfo->wdiSetPowerParamsInfo.uMaxLIModulatedDTIM =
       pPowerParams->uMaxLIModulatedDTIM;
@@ -17358,6 +19499,8 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
    pwdiSetPowerParamsReqInfo->pUserData = pWdaParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /* Store Params pass it to WDI */
    pWdaParams->wdaWdiApiMsgParam = (void *)pwdiSetPowerParamsReqInfo;
    pWdaParams->pWdaContext = pWDA;
@@ -17365,10 +19508,14 @@ VOS_STATUS WDA_ProcessSetPowerParamsReq(tWDA_CbContext *pWDA,
    pWdaParams->wdaMsgParam = pPowerParams;
    status = WDI_SetPowerParamsReq( pwdiSetPowerParamsReqInfo, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                  (WDI_SetPowerParamsCb)WDA_SetPowerParamsCallback, 
 =======
                                  (WDI_SetPowerParamsCb)WDA_SetPowerParamsRespCallback,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                 (WDI_SetPowerParamsCb)WDA_SetPowerParamsCallback, 
+>>>>>>> 657b0e9... prima update
                                  pWdaParams);
    if(IS_WDI_STATUS_FAILURE(status))
    {
@@ -17392,19 +19539,27 @@ void WDA_SetTmLevelRspCallback(WDI_Status status, void* pUserData)
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "<------ %s " ,__FUNCTION__);
 =======
                                           "<------ %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "<------ %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    if(NULL == pWdaParams)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: pWdaParams received NULL", __FUNCTION__);
 =======
               "%s: pWdaParams received NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: pWdaParams received NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0) ;
       return ;
    }
@@ -17438,10 +19593,14 @@ VOS_STATUS WDA_ProcessSetTmLevelReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_NOMEM;
    }
@@ -17451,10 +19610,14 @@ VOS_STATUS WDA_ProcessSetTmLevelReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                            "%s: VOS MEM Alloc Failure", __FUNCTION__); 
 =======
                            "%s: VOS MEM Alloc Failure", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                           "%s: VOS MEM Alloc Failure", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       vos_mem_free(wdiSetTmLevelReq);
       return VOS_STATUS_E_NOMEM;
@@ -17462,10 +19625,14 @@ VOS_STATUS WDA_ProcessSetTmLevelReq(tWDA_CbContext *pWDA,
 
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
 =======
                                           "------> %s " ,__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    wdiSetTmLevelReq->tmMode  = setTmLevelReq->tmMode;
    wdiSetTmLevelReq->tmLevel = setTmLevelReq->newTmLevel;
@@ -17481,10 +19648,14 @@ VOS_STATUS WDA_ProcessSetTmLevelReq(tWDA_CbContext *pWDA,
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Failure set thernal mitigation level free all the memory " );
 =======
                  "Failure setting thermal mitigation level, freeing memory" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Failure set thernal mitigation level free all the memory " );
+>>>>>>> 657b0e9... prima update
       vos_mem_free(pWdaParams->wdaMsgParam) ;
       vos_mem_free(pWdaParams->wdaWdiApiMsgParam);
       vos_mem_free(pWdaParams) ;
@@ -17500,6 +19671,7 @@ VOS_STATUS WDA_ProcessTxControlInd(tWDA_CbContext *pWDA,
    
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           "------> %s " ,__FUNCTION__);
    if( pTxCtrlParam == NULL )
    {
@@ -17512,6 +19684,13 @@ VOS_STATUS WDA_ProcessTxControlInd(tWDA_CbContext *pWDA,
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
                            "%s: Input tpTxControlParams is NULL", __func__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          "------> %s " ,__FUNCTION__);
+   if( pTxCtrlParam == NULL )
+   {
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+                           "%s: Input tpTxControlParams is NULL", __FUNCTION__); 
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    if( pTxCtrlParam->stopTx == eANI_BOOLEAN_TRUE )
@@ -17531,6 +19710,7 @@ VOS_STATUS WDA_ProcessTxControlInd(tWDA_CbContext *pWDA,
 void WDA_featureCapsExchange(v_PVOID_t pVosContext)
 {
    VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
 <<<<<<< HEAD
       "%s:enter", __FUNCTION__ );
    WDI_featureCapsExchangeReq( NULL, pVosContext);
@@ -17552,6 +19732,12 @@ void WDA_disableCapablityFeature(tANI_U8 feature_index)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      "%s:enter", __FUNCTION__ );
+   WDI_featureCapsExchangeReq( NULL, pVosContext);
+}
+
+>>>>>>> 657b0e9... prima update
  /*  FUNCTION    WDA_getHostWlanFeatCaps
   *  Wrapper for WDI API, that will return if the feature (enum value).passed
   *  to this API is supported or not in Host
@@ -17577,9 +19763,12 @@ tANI_U8 WDA_getFwWlanFeatCaps(tANI_U8 featEnumValue)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * FUNCTION: WDA_shutdown
  * Shutdown WDA/WDI without handshaking with Riva.
@@ -17595,10 +19784,14 @@ VOS_STATUS WDA_shutdown(v_PVOID_t pVosContext, wpt_boolean closeTransport)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: Invoked with invalid pWDA", __FUNCTION__ );
 =======
             "%s: Invoked with invalid pWDA", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: Invoked with invalid pWDA", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
@@ -17609,6 +19802,7 @@ VOS_STATUS WDA_shutdown(v_PVOID_t pVosContext, wpt_boolean closeTransport)
    {
       VOS_ASSERT(0);
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
    if(NULL != pWDA->wdaWdiApiMsgParam)
    {
@@ -17628,16 +19822,29 @@ VOS_STATUS WDA_shutdown(v_PVOID_t pVosContext, wpt_boolean closeTransport)
 
    if ( (eDRIVER_TYPE_MFG != pWDA->driverMode) &&
         (VOS_TRUE == pWDA->wdaTimersCreated))
+=======
+   if(NULL != pWDA->wdaWdiApiMsgParam)
+>>>>>>> 657b0e9... prima update
    {
-      wdaDestroyTimers(pWDA);
-      pWDA->wdaTimersCreated = VOS_FALSE;
+      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
+            "%s:wdaWdiApiMsgParam is not NULL", __FUNCTION__);
+      VOS_ASSERT(0);
+      /* the last request was not freed, probably a SSR
+       * initiated by WLAN driver (WDI timeout) */
+      vos_mem_free(pWDA->wdaWdiApiMsgParam);
    }
-   else
+   if ( eDRIVER_TYPE_MFG != pWDA->driverMode )
    {
+<<<<<<< HEAD
       vos_event_destroy(&pWDA->ftmStopDoneEvent);
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      wdaDestroyTimers(pWDA);
+   }
+   pWDA->wdaWdiApiMsgParam = NULL;
+>>>>>>> 657b0e9... prima update
    /* call WDI shutdown */
    wdiStatus = WDI_Shutdown(closeTransport);
    if (IS_WDI_STATUS_FAILURE(wdiStatus) )
@@ -17683,6 +19890,7 @@ VOS_STATUS WDA_shutdown(v_PVOID_t pVosContext, wpt_boolean closeTransport)
    return status;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * FUNCTION: WDA_stopFailed
  * WDA stop failed
@@ -17693,14 +19901,17 @@ void WDA_stopFailed(v_PVOID_t pVosContext)
    tWDA_CbContext *pWDA = (tWDA_CbContext *)VOS_GET_WDA_CTXT(pVosContext);
 =======
 
+=======
+>>>>>>> 657b0e9... prima update
 /*
- * FUNCTION: WDA_setNeedShutdown
- * WDA stop failed or WDA NVDownload failed
+ * FUNCTION: WDA_stopFailed
+ * WDA stop failed
  */
 
-void WDA_setNeedShutdown(v_PVOID_t pVosContext)
+void WDA_stopFailed(v_PVOID_t pVosContext)
 {
    tWDA_CbContext *pWDA = (tWDA_CbContext *)VOS_GET_WDA_CTXT(pVosContext);
+<<<<<<< HEAD
    if(pWDA == NULL)
    {
        VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -17708,6 +19919,8 @@ void WDA_setNeedShutdown(v_PVOID_t pVosContext)
        return;
    }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    pWDA->needShutdown  = TRUE;
 }
 /*
@@ -17718,6 +19931,7 @@ void WDA_setNeedShutdown(v_PVOID_t pVosContext)
 v_BOOL_t WDA_needShutdown(v_PVOID_t pVosContext)
 {
    tWDA_CbContext *pWDA = (tWDA_CbContext *)VOS_GET_WDA_CTXT(pVosContext);
+<<<<<<< HEAD
 <<<<<<< HEAD
    return pWDA->needShutdown;   
 }
@@ -17760,43 +19974,13 @@ void WDA_SetUpdateOpModeReqCallback(WDI_Status status, void* pUserData)
     */
 
    return ;
+=======
+   return pWDA->needShutdown;   
+>>>>>>> 657b0e9... prima update
 }
 
-VOS_STATUS WDA_ProcessUpdateOpMode(tWDA_CbContext *pWDA, 
-                                   tUpdateVHTOpMode *pData)
-{
-   WDI_Status status = WDI_STATUS_SUCCESS ;
-   tWDA_ReqParams *pWdaParams ;
-   WDI_UpdateVHTOpMode *wdiTemp = (WDI_UpdateVHTOpMode *)vos_mem_malloc(
-                                             sizeof(WDI_UpdateVHTOpMode)) ;
-   if(NULL == wdiTemp) 
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      VOS_ASSERT(0);
-      return VOS_STATUS_E_NOMEM;
-   }
-   pWdaParams = (tWDA_ReqParams *)vos_mem_malloc(sizeof(tWDA_ReqParams)) ;
-   if(NULL == pWdaParams)
-   {
-      VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-                           "%s: VOS MEM Alloc Failure", __func__); 
-      VOS_ASSERT(0);
-      vos_mem_free(wdiTemp);
-      return VOS_STATUS_E_NOMEM;
-   }
 
-   wdiTemp->opMode = pData->opMode;
-   wdiTemp->staId  = pData->staId;
-   
-   pWdaParams->pWdaContext = pWDA;
-   /* Store Req pointer, as this will be used for response */
-   pWdaParams->wdaMsgParam = (void *)pData;
-   /* store Params pass it to WDI */
-   pWdaParams->wdaWdiApiMsgParam = (void *)wdiTemp ;
-
-   status = WDI_UpdateVHTOpModeReq( wdiTemp, (WDI_UpdateVHTOpModeCb) WDA_SetUpdateOpModeReqCallback, pWdaParams);
-
+<<<<<<< HEAD
    if(IS_WDI_STATUS_FAILURE(status))
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
@@ -17809,6 +19993,8 @@ VOS_STATUS WDA_ProcessUpdateOpMode(tWDA_CbContext *pWDA,
 } 
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*==========================================================================
   FUNCTION   WDA_TransportChannelDebug
@@ -17820,11 +20006,15 @@ VOS_STATUS WDA_ProcessUpdateOpMode(tWDA_CbContext *pWDA,
 
   PARAMETERS
 <<<<<<< HEAD
+<<<<<<< HEAD
     displaySnapshot : Dispaly DXE snapshot option
 =======
     pMac : upper MAC context pointer
     displaySnapshot : Display DXE snapshot option
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    displaySnapshot : Dispaly DXE snapshot option
+>>>>>>> 657b0e9... prima update
     enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification
@@ -17836,6 +20026,7 @@ VOS_STATUS WDA_ProcessUpdateOpMode(tWDA_CbContext *pWDA,
 void WDA_TransportChannelDebug
 (
 <<<<<<< HEAD
+<<<<<<< HEAD
    v_BOOL_t   displaySnapshot,
    v_BOOL_t   toggleStallDetect
 =======
@@ -17843,11 +20034,16 @@ void WDA_TransportChannelDebug
   v_BOOL_t       displaySnapshot,
   v_BOOL_t       toggleStallDetect
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   v_BOOL_t   displaySnapshot,
+   v_BOOL_t   toggleStallDetect
+>>>>>>> 657b0e9... prima update
 )
 {
    WDI_TransportChannelDebug(displaySnapshot, toggleStallDetect);
    return;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -17949,3 +20145,5 @@ VOS_STATUS WDA_ProcessLPHBConfReq(tWDA_CbContext *pWDA,
 #endif /* FEATURE_WLAN_LPHB */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

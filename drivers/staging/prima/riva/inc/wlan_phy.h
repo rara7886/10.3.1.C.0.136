@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -50,6 +53,7 @@
 Contains definitions of all PHY related structures that aree needed by FTM/PTT
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Copyright (c) 2007 QUALCOMM Incorporated. 
 All Rights Reserved. 
 Qualcomm Confidential and Proprietary 
@@ -58,6 +62,11 @@ Copyright (c) 2007 Qualcomm Technologies, Inc. All Rights Reserved.
 Qualcomm Technologies Proprietary and Confidential
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+Copyright (c) 2007 QUALCOMM Incorporated. 
+All Rights Reserved. 
+Qualcomm Confidential and Proprietary 
+>>>>>>> 657b0e9... prima update
 ============================================================================*/
 #include <wlan_nv.h>
  
@@ -114,6 +123,7 @@ typedef enum {
    PHYDBG_PREAMBLE_MIXED,
    PHYDBG_PREAMBLE_SHORTB,
 <<<<<<< HEAD
+<<<<<<< HEAD
    PHYDBG_PREAMBLE_LONGB
 =======
    PHYDBG_PREAMBLE_LONGB,
@@ -122,6 +132,9 @@ typedef enum {
    PHYDBG_LDPC_PREAMBLE_GREENFIELD = 0x11,
    PHYDBG_LDPC_PREAMBLE_MIXED = 0x12
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   PHYDBG_PREAMBLE_LONGB
+>>>>>>> 657b0e9... prima update
 } ePhyDbgPreamble;
 
 
@@ -249,23 +262,29 @@ typedef tANI_U32 eGainSteps;
 #define DPD_RESPONSE_SIZE 128
 typedef PACKED_PRE struct PACKED_POST {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tANI_U8  dpdCalFailCnt;                     //Count for number of times DPD cal failed.
     tANI_U8  dpdCalSuccessCnt;                  //Count for number of times DPD cal passed.
     tANI_U8  dpdColdBootRepeatCalStatus;
     tANI_U8  dpdLastIteration;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     tANI_S16 dpd_threshold[DPD_RESPONSE_SIZE];
     tANI_S16 dpd_aoffset[DPD_RESPONSE_SIZE];
     tANI_S16 dpd_again[DPD_RESPONSE_SIZE];
     tANI_S16 dpd_poffset[DPD_RESPONSE_SIZE];
     tANI_S16 dpd_pgain[DPD_RESPONSE_SIZE];
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tANI_S32 dpd_sample[20];
     tANI_U8  dpd_try;
     tANI_U8  band;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }sDPDcorrectionCalValues;
 
 typedef PACKED_PRE struct PACKED_POST {
@@ -941,6 +960,7 @@ typedef enum
 #define MIN_TPC_GAIN_LUT_DBM_2DEC_PLACES    (MIN_TPC_GAIN_LUT_DBM * 100)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 typedef enum
 {
@@ -953,4 +973,6 @@ typedef enum
 }eRfBandwidth;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif /* WLAN_PHY_H */

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -126,16 +129,22 @@ VOS_STATUS vos_preOpen ( v_CONTEXT_t *pVosContext );
 VOS_STATUS vos_preClose( v_CONTEXT_t *pVosContext );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 
 VOS_STATUS vos_preStart( v_CONTEXT_t vosContext );
 
 #endif
+<<<<<<< HEAD
 =======
 
 VOS_STATUS vos_preStart( v_CONTEXT_t vosContext );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize );
 
@@ -278,10 +287,14 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
                              
 v_BOOL_t vos_is_apps_power_collapse_allowed(void* pHddCtx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void vos_abort_mac_scan(void);
 =======
 void vos_abort_mac_scan(tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void vos_abort_mac_scan(void);
+>>>>>>> 657b0e9... prima update
 
 /**
   @brief vos_wlanShutdown() - This API will shutdown WLAN driver
@@ -336,6 +349,7 @@ VOS_STATUS vos_wlanReInit(void);
 VOS_STATUS vos_wlanRestart(void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /**
   @brief vos_fwDumpReq()
@@ -354,4 +368,6 @@ VOS_STATUS vos_wlanRestart(void);
 v_VOID_t vos_fwDumpReq(tANI_U32 cmd, tANI_U32 arg1, tANI_U32 arg2,
                         tANI_U32 arg3, tANI_U32 arg4);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif // if !defined __VOS_NVITEM_H

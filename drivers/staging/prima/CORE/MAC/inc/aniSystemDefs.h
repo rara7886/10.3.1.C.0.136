@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -142,12 +145,18 @@ typedef enum eAniKeyDirection
     eSIR_RX_ONLY,
     eSIR_TX_RX,
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     eSIR_TX_DEFAULT,
 #endif
 =======
     eSIR_TX_DEFAULT,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    eSIR_TX_DEFAULT,
+#endif
+>>>>>>> 657b0e9... prima update
     eSIR_DONOT_USE_KEY_DIRECTION = SIR_MAX_ENUM_SIZE
 } tAniKeyDirection;
 
@@ -189,6 +198,7 @@ typedef struct sSirAddie
 #ifdef FEATURE_WLAN_CCX
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // The CCKM IE needs to be in the 
 // Join and Reassoc Req. 
 typedef struct sSirCCKMie
@@ -203,6 +213,14 @@ typedef struct sSirCCKMie
     tANI_U16       length;
     tANI_U8        cckmIEdata[SIR_MAC_MAX_IE_LENGTH+2];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+// The CCKM IE needs to be in the 
+// Join and Reassoc Req. 
+typedef struct sSirCCKMie
+{
+    tANI_U16       length;
+    tANI_U8        cckmIEdata[SIR_MAC_MAX_IE_LENGTH+2];  
+>>>>>>> 657b0e9... prima update
 } tSirCCKMie, *tpSirCCKMie;
 
 #endif

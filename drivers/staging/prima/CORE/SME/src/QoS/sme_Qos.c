@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,9 +46,12 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**=========================================================================
   
   \file  sme_Qos.c
@@ -53,11 +59,17 @@
   \brief implementation for SME QoS APIs
   
 <<<<<<< HEAD
+<<<<<<< HEAD
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   
+   Qualcomm Confidential and Proprietary.
+>>>>>>> 657b0e9... prima update
   
   ========================================================================*/
 /* $Header$ */
@@ -66,6 +78,9 @@
   ------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halInternal.h" //Check if the below include of aniGobal.h is sufficient for Volans too.
 #endif
@@ -73,10 +88,13 @@
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "aniGlobal.h"
 #endif
+<<<<<<< HEAD
 =======
 
 #include "aniGlobal.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #include "smeInside.h"
 #include "vos_diag_core_event.h"
@@ -185,10 +203,14 @@ typedef enum
   Category as specified in 802.11e/WMM
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 sme_QosEdcaAcType sme_QosUPtoACMap[SME_QOS_WMM_UP_MAX] = 
 =======
 sme_QosEdcaAcType sme_QosUPtoACMap[SME_QOS_WMM_UP_MAX] =
 >>>>>>> d97af3b... add prima wlan driver
+=======
+sme_QosEdcaAcType sme_QosUPtoACMap[SME_QOS_WMM_UP_MAX] = 
+>>>>>>> 657b0e9... prima update
 {
    SME_QOS_EDCA_AC_BE, /* User Priority 0 */
    SME_QOS_EDCA_AC_BK, /* User Priority 1 */
@@ -559,10 +581,14 @@ eHalStatus sme_QosOpen(tpAniSirGlobal pMac)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: initializing SME-QoS module",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    //init the control block
    //(note that this will make all sessions invalid)
    vos_mem_zero(&sme_QosCb, sizeof(sme_QosCb));
@@ -576,10 +602,14 @@ eHalStatus sme_QosOpen(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
                 "%s: %d: cannot initialize Flow List",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    
@@ -596,10 +626,14 @@ eHalStatus sme_QosOpen(tpAniSirGlobal pMac)
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
                    "%s: %d: cannot initialize cmd list for session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId);
          return eHAL_STATUS_FAILURE;
       }
@@ -614,10 +648,14 @@ eHalStatus sme_QosOpen(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
                 "%s: %d: cannot register with pmcRegisterPowerSaveCheck()",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    //the routine registered here gets called by PMC whenever there is a device 
@@ -630,19 +668,27 @@ eHalStatus sme_QosOpen(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
                 "%s: %d: cannot register with pmcRegisterDeviceStateUpdateInd()",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: done initializing SME-QoS module",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    return eHAL_STATUS_SUCCESS;
 }
 /* --------------------------------------------------------------------------
@@ -661,10 +707,14 @@ eHalStatus sme_QosClose(tpAniSirGlobal pMac)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: closing down SME-QoS",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    // deregister with PMC
    if(!HAL_STATUS_SUCCESS(
       pmcDeregisterDeviceStateUpdateInd(pMac, sme_QosPmcDeviceStateUpdateInd)))
@@ -672,10 +722,14 @@ eHalStatus sme_QosClose(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
                 "%s: %d: cannot deregister with pmcDeregisterDeviceStateUpdateInd()",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    }
    if(!HAL_STATUS_SUCCESS(
       pmcDeregisterPowerSaveCheck(pMac, sme_QosPmcCheckRoutine)))
@@ -683,10 +737,14 @@ eHalStatus sme_QosClose(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
                 "%s: %d: cannot deregister with pmcDeregisterPowerSaveCheck()",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    }
    //cleanup control block
    //close the flow list
@@ -729,10 +787,14 @@ eHalStatus sme_QosClose(tpAniSirGlobal pMac)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: closed down QoS",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    return eHAL_STATUS_SUCCESS;
 }
 /*--------------------------------------------------------------------------
@@ -781,10 +843,14 @@ sme_QosStatusType sme_QosSetupReq(tHalHandle hHal, tANI_U32 sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS Setup requested by client on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    lock_status = sme_AcquireGlobalLock( &pMac->sme );
    if ( !HAL_STATUS_SUCCESS( lock_status ) )
@@ -792,10 +858,14 @@ sme_QosStatusType sme_QosSetupReq(tHalHandle hHal, tANI_U32 sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Unable to obtain lock",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return SME_QOS_STATUS_SETUP_FAILURE_RSP;
    }
    //Make sure the session is valid
@@ -804,10 +874,14 @@ sme_QosStatusType sme_QosSetupReq(tHalHandle hHal, tANI_U32 sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Supplied Session ID %d is invalid",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       status = SME_QOS_STATUS_SETUP_FAILURE_RSP;
    }
@@ -820,10 +894,14 @@ sme_QosStatusType sme_QosSetupReq(tHalHandle hHal, tANI_U32 sessionId,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: Supplied Session ID %d is inactive",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId);
          status = SME_QOS_STATUS_SETUP_FAILURE_RSP;
       }
@@ -834,10 +912,14 @@ sme_QosStatusType sme_QosSetupReq(tHalHandle hHal, tANI_U32 sessionId,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: QoS request on session %d assigned Flow ID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, *pQosFlowID);
          //Call the internal function for QoS setup,
          // adding a layer of abstraction
@@ -850,10 +932,14 @@ sme_QosStatusType sme_QosSetupReq(tHalHandle hHal, tANI_U32 sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS setup return status on session %d is %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, status);
    return status;
 }
@@ -891,10 +977,14 @@ sme_QosStatusType sme_QosModifyReq(tHalHandle hHal,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS Modify requested by client for Flow %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              QosFlowID);
    lock_status = sme_AcquireGlobalLock( &pMac->sme );
    if ( !HAL_STATUS_SUCCESS( lock_status ) )
@@ -902,10 +992,14 @@ sme_QosStatusType sme_QosModifyReq(tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Unable to obtain lock",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return SME_QOS_STATUS_MODIFY_SETUP_FAILURE_RSP;
    }
    //Call the internal function for QoS modify, adding a layer of abstraction
@@ -914,10 +1008,14 @@ sme_QosStatusType sme_QosModifyReq(tHalHandle hHal,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS Modify return status on Flow %d is %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              QosFlowID, status);
    return status;
 }
@@ -945,10 +1043,14 @@ sme_QosStatusType sme_QosReleaseReq(tHalHandle hHal, v_U32_t QosFlowID)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS Release requested by client for Flow %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              QosFlowID);
    lock_status = sme_AcquireGlobalLock( &pMac->sme );
    if ( !HAL_STATUS_SUCCESS( lock_status ) )
@@ -956,10 +1058,14 @@ sme_QosStatusType sme_QosReleaseReq(tHalHandle hHal, v_U32_t QosFlowID)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Unable to obtain lock",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return SME_QOS_STATUS_RELEASE_FAILURE_RSP;
    }
    //Call the internal function for QoS release, adding a layer of abstraction
@@ -968,10 +1074,14 @@ sme_QosStatusType sme_QosReleaseReq(tHalHandle hHal, v_U32_t QosFlowID)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS Release return status on Flow %d is %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              QosFlowID, status);
    return status;
 }
@@ -999,10 +1109,14 @@ eHalStatus sme_QosSetParams(tpAniSirGlobal pMac, sme_QosWmmTspecInfo * pQoSInfo)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Invalid AC %d (via UP %d)",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 ac, pQoSInfo->ts_info.up );
       return eHAL_STATUS_FAILURE;
    }
@@ -1011,10 +1125,14 @@ eHalStatus sme_QosSetParams(tpAniSirGlobal pMac, sme_QosWmmTspecInfo * pQoSInfo)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: QoS default params set for AC %d (via UP %d)",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              ac, pQoSInfo->ts_info.up );
    return eHAL_STATUS_SUCCESS;
 }
@@ -1049,10 +1167,14 @@ eHalStatus sme_QosMsgProcessor( tpAniSirGlobal pMac,  v_U16_t msg_type,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: msg = %d for QoS",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, msg_type);
 =======
              __func__, __LINE__, msg_type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, msg_type);
+>>>>>>> 657b0e9... prima update
    //switch on the msg type & make the state transition accordingly
    switch(msg_type)
    {
@@ -1102,10 +1224,14 @@ eHalStatus sme_QosMsgProcessor( tpAniSirGlobal pMac,  v_U16_t msg_type,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: unknown msg type = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__, msg_type);
 =======
                    __func__, __LINE__, msg_type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__, msg_type);
+>>>>>>> 657b0e9... prima update
          break;
    }
    return status;
@@ -1131,10 +1257,14 @@ eHalStatus sme_QosValidateParams(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
              "%s: %d: validation for QAP & APSD",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    do
    {
       if(!HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs(pMac, pBssDesc, &pIes)))
@@ -1143,10 +1273,14 @@ eHalStatus sme_QosValidateParams(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: csrGetParsedBssDescriptionIEs() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          break;
       }
       //check if the AP is QAP & it supports APSD
@@ -1156,10 +1290,14 @@ eHalStatus sme_QosValidateParams(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: AP doesn't support QoS",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          
          break;
       }
@@ -1170,10 +1308,14 @@ eHalStatus sme_QosValidateParams(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: AP doesn't support APSD",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          break;
       }
       status = eHAL_STATUS_SUCCESS;
@@ -1181,10 +1323,14 @@ eHalStatus sme_QosValidateParams(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: validated with status = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, status);
 =======
              __func__, __LINE__, status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, status);
+>>>>>>> 657b0e9... prima update
    if(pIes)
    {
       vos_mem_free(pIes);
@@ -1212,10 +1358,14 @@ eHalStatus sme_QosCsrEventInd(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: On Session %d Event %d received from CSR",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, ind );
    switch(ind)
    {
@@ -1271,20 +1421,28 @@ eHalStatus sme_QosCsrEventInd(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: On Session %d Unknown Event %d received from CSR",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, ind );
          break;
    }
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: On Session %d processed Event %d with status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, ind, status );
    return status;
 }
@@ -1307,10 +1465,14 @@ v_U8_t sme_QosGetACMMask(tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc, t
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    for(ac = SME_QOS_EDCA_AC_BE; ac < SME_QOS_EDCA_AC_MAX; ac++)
    {
       if(sme_QosIsACM(pMac, pSirBssDesc, ac, pIes))
@@ -1322,10 +1484,14 @@ v_U8_t sme_QosGetACMMask(tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc, t
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: mask is %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, acm_mask);
 =======
              __func__, __LINE__, acm_mask);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, acm_mask);
+>>>>>>> 657b0e9... prima update
    return acm_mask;
 }
 /*-------------------------------------------------------------------------- 
@@ -1390,10 +1556,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for flow %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, QosFlowID);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    // if caller sent an empty TSPEC, fill up with the default one
@@ -1402,10 +1572,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN, 
                 "%s: %d: caller sent an empty QoS param list, using defaults",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       // find the AC with UPType passed in
       ac = sme_QosUpToAc(UPType);
       if(SME_QOS_EDCA_AC_MAX == ac)
@@ -1413,10 +1587,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: invalid AC %d from UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    ac, UPType);
          
          return SME_QOS_STATUS_SETUP_INVALID_PARAMS_RSP;
@@ -1432,10 +1610,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: invalid AC %d from UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    ac, pQoSInfo->ts_info.up);
          
          return SME_QOS_STATUS_SETUP_INVALID_PARAMS_RSP;
@@ -1446,10 +1628,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: invalid params",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          return SME_QOS_STATUS_SETUP_INVALID_PARAMS_RSP;
       }
       Tspec_Info = *pQoSInfo;
@@ -1470,10 +1656,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                 "%s: %d: buffering the setup request for flow %d in state %d "
                 "since another request is pending",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, 
 =======
                 __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                 QosFlowID, pACInfo->curr_state );
       bufferCommand = VOS_TRUE;
    }
@@ -1489,10 +1679,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                    "%s: %d: buffering the setup request for flow %d in state %d, "
                    "waiting for full power",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__, 
 =======
                    __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                    QosFlowID, pACInfo->curr_state );
          bufferCommand = VOS_TRUE;
       }
@@ -1515,10 +1709,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: couldn't buffer the setup request in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->curr_state );
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -1528,10 +1726,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Buffered setup request for flow = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID);
       return SME_QOS_STATUS_SETUP_REQ_PENDING_RSP;
    }
@@ -1547,10 +1749,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                 "%s: %d: On session %d with AC %d in state SME_QOS_LINK_UP "
                 "sme_QosSetup returned with status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, ac, status);
       if(SME_QOS_STATUS_SETUP_REQ_PENDING_RSP != status)
       {
@@ -1571,10 +1777,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                       "%s: %d: couldn't allocate memory for the new "
                       "entry in the Flow List",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
             return SME_QOS_STATUS_SETUP_FAILURE_RSP;
          }
          pentry->ac_type = ac;
@@ -1596,10 +1806,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                             "SME_QOS_LINK_UP tspec_mask_status is %d "
                          "but should not be set yet",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, ac, pACInfo->tspec_mask_status);
                //ASSERT
                VOS_ASSERT(0);
@@ -1642,10 +1856,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: Creating entry on session %d at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, pentry, QosFlowID);
          csrLLInsertTail(&sme_QosCb.flow_list, &pentry->link, VOS_TRUE);
       }
@@ -1656,10 +1874,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                    "%s: %d: On session %d unexpected status %d "
                    "returned by sme_QosSetup",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, status);
          new_state = pACInfo->curr_state;
          if(buffered_cmd && hoRenewal)
@@ -1676,10 +1898,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED, 
                 "%s: %d: Buffering setup request for flow %d in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID, pACInfo->curr_state );
       //buffer cmd
       cmd.command = SME_QOS_SETUP_REQ;
@@ -1698,10 +1924,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                    "%s: %d: On session %d couldn't buffer the setup "
                    "request for flow %d in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, QosFlowID, pACInfo->curr_state );
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -1724,10 +1954,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED, 
                       "%s: %d: tspec_mask_status = %d for AC = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       pACInfo->tspec_mask_status, ac);
             if(!pACInfo->tspec_mask_status)
             {
@@ -1735,10 +1969,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                          "%s: %d: tspec_mask_status can't be 0 for ac = %d in "
                          "state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          ac, pACInfo->curr_state);
                //ASSERT
                VOS_ASSERT(0);
@@ -1813,6 +2051,7 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED,
                    "%s: %d: tmask = %d, new_tmask = %d in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
                    tmask, new_tmask, pACInfo->curr_state );
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED,
@@ -1825,6 +2064,13 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                    "%s: %d: tspec_mask_status = %d for AC = %d",
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+                   tmask, new_tmask, pACInfo->curr_state );
+         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED,
+                   "%s: %d: tspec_mask_status = %d for AC = %d",
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->tspec_mask_status, ac);
          if(tmask)
          {
@@ -1858,10 +2104,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: failed to aggregate params",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                // unable to service the request
                // nothing is pending so vote powersave back on
                pSession->readyForPowerSave = VOS_TRUE;
@@ -1872,9 +2122,12 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          {
             tmask = new_tmask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             pACInfo->requested_QoSInfo[tmask-1] = Tspec_Info;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -1882,10 +2135,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: no flows running for ac = %d while in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    ac, pACInfo->curr_state );
          //ASSERT
          VOS_ASSERT(0);
@@ -1902,10 +2159,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                 "%s: %d: On session %d with AC %d in state SME_QOS_QOS_ON "
                 "sme_QosSetup returned with status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, ac, status);
       if(SME_QOS_STATUS_SETUP_REQ_PENDING_RSP != status)
       {
@@ -1926,10 +2187,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                       "%s: %d: couldn't allocate memory for the new "
                       "entry in the Flow List",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
             return SME_QOS_STATUS_SETUP_FAILURE_RSP;
          }
          pentry->ac_type = ac;
@@ -1941,10 +2206,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: Creating flow %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    QosFlowID);
          if((SME_QOS_STATUS_SETUP_SUCCESS_NO_ACM_NO_APSD_RSP == status)||
             (SME_QOS_STATUS_SETUP_SUCCESS_APSD_SET_ALREADY == status))
@@ -1978,10 +2247,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                                "%s: %d: couldn't notify other "
                                "entries on this AC =%d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                                __FUNCTION__, __LINE__, ac);
 =======
                                __func__, __LINE__, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               __FUNCTION__, __LINE__, ac);
+>>>>>>> 657b0e9... prima update
                   }
                }
             }
@@ -2004,10 +2277,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: On session %d creating entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, pentry, QosFlowID);
          csrLLInsertTail(&sme_QosCb.flow_list, &pentry->link, VOS_TRUE);
       }
@@ -2018,10 +2295,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
                    "%s: %d: On session %d unexpected status %d "
                    "returned by sme_QosSetup",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, status);
          new_state = pACInfo->curr_state;
       }
@@ -2032,10 +2313,14 @@ sme_QosStatusType sme_QosInternalSetupReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: setup requested in unexpected state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pACInfo->curr_state);
       // unable to service the request
       // nothing is pending so vote powersave back on
@@ -2111,10 +2396,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked for flow %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              QosFlowID);
 
    vos_mem_zero(&search_key, sizeof(sme_QosSearchInfo));
@@ -2130,10 +2419,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: no match found for flowID = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID);
       return SME_QOS_STATUS_MODIFY_SETUP_INVALID_PARAMS_RSP;
    }
@@ -2151,10 +2444,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: invalid params",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return SME_QOS_STATUS_MODIFY_SETUP_INVALID_PARAMS_RSP;
    }
    // For modify, make sure that direction, TID and UP are not being altered
@@ -2165,10 +2462,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                "%s: %d: Modification of direction/tid/up is not allowed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, __LINE__);
 =======
                __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
 
      return SME_QOS_STATUS_MODIFY_SETUP_INVALID_PARAMS_RSP;
    }
@@ -2187,10 +2488,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                 "%s: %d: buffering the modify request for flow %d in state %d "
                 "since another request is pending",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, 
 =======
                 __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                 QosFlowID, pACInfo->curr_state );
       bufferCommand = VOS_TRUE;
    }
@@ -2206,10 +2511,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                    "%s: %d: buffering the modify request for flow %d in state %d, "
                    "waiting for full power",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__, 
 =======
                    __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                    QosFlowID, pACInfo->curr_state );
          bufferCommand = VOS_TRUE;
       }
@@ -2228,10 +2537,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: couldn't buffer the modify request in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->curr_state );
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -2241,10 +2554,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Buffered modify request for flow = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID);
       return SME_QOS_STATUS_MODIFY_SETUP_PENDING_RSP;
    }
@@ -2262,10 +2579,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                    "%s: %d: couldn't allocate memory for the new "
                    "entry in the Flow List",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          // unable to service the request
          // nothing is pending so vote powersave back on
          pSession->readyForPowerSave = VOS_TRUE;
@@ -2287,10 +2608,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                 "%s: %d: On session %d creating modified "
                 "entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, pNewEntry, pNewEntry->QosFlowID);
       //add the new entry under construction to the Flow List
       csrLLInsertTail(&sme_QosCb.flow_list, &pNewEntry->link, VOS_TRUE);
@@ -2309,10 +2634,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                    "%s: %d: On session %d with AC %d in state SME_QOS_QOS_ON "
                    "sme_QosSetup returned with status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, ac, status);
          if(SME_QOS_STATUS_SETUP_REQ_PENDING_RSP != status)
          {
@@ -2361,10 +2690,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                                "%s: %d: couldn't notify other "
                                "entries on this AC =%d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                                __FUNCTION__, __LINE__, ac);
 =======
                                __func__, __LINE__, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               __FUNCTION__, __LINE__, ac);
+>>>>>>> 657b0e9... prima update
                   }
                }
                else if(SME_QOS_STATUS_SETUP_SUCCESS_NO_ACM_NO_APSD_RSP == status)
@@ -2388,10 +2721,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
                       "%s: %d: On session %d unexpected status %d "
                       "returned by sme_QosSetup",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, status);
             new_state = SME_QOS_QOS_ON;
          }
@@ -2402,10 +2739,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: sme_QosUpdateParams() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          // unable to service the request
          // nothing is pending so vote powersave back on
          pSession->readyForPowerSave = VOS_TRUE;
@@ -2430,10 +2771,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED, 
                 "%s: %d: Buffering modify request for flow %d in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID, pACInfo->curr_state );
       //buffer cmd
       cmd.command = SME_QOS_MODIFY_REQ;
@@ -2447,10 +2792,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: couldn't buffer the modify request in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->curr_state );
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -2466,10 +2815,14 @@ sme_QosStatusType sme_QosInternalModifyReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: modify requested in unexpected state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pACInfo->curr_state);
       // unable to service the request
       // nothing is pending so vote powersave back on
@@ -2524,10 +2877,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked for flow %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              QosFlowID);
 
    vos_mem_zero(&search_key, sizeof(sme_QosSearchInfo));
@@ -2544,10 +2901,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: no match found for flowID = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID);
       return SME_QOS_STATUS_RELEASE_INVALID_PARAMS_RSP;
    }
@@ -2572,10 +2933,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                 "%s: %d: buffering the release request for flow %d in state %d "
                 "since another request is pending",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, 
 =======
                 __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                 QosFlowID, pACInfo->curr_state );
       bufferCommand = VOS_TRUE;
    }
@@ -2591,10 +2956,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                    "%s: %d: buffering the release request for flow %d in state %d, "
                    "waiting for full power",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__, 
 =======
                    __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                    QosFlowID, pACInfo->curr_state );
          bufferCommand = VOS_TRUE;
       }
@@ -2612,10 +2981,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: couldn't buffer the release request in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->curr_state );
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -2625,10 +2998,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Buffered release request for flow = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 QosFlowID);
       return SME_QOS_STATUS_RELEASE_REQ_PENDING_RSP;
    }
@@ -2640,10 +3017,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                 "%s: %d: tspec_mask_status = %d for AC = %d with "
                 "entry tspec_mask = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, 
 =======
                 __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                 pACInfo->tspec_mask_status, ac, flow_info->tspec_mask);
 
       //check if multiple flows running on the ac
@@ -2715,10 +3096,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                             "for AC %d in state %d as Addts is pending "
                          "on other Tspec index of this AC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, ac, pACInfo->curr_state);
 
                // Buffer the (aggregated) tspec request for downstream flows.
@@ -2737,10 +3122,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                             "%s: %d: On session %d unable to buffer the AddTS "
                             "request for AC %d TSPEC %d in state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                             __FUNCTION__, __LINE__,
 =======
                             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                             sessionId, ac, SME_QOS_TSPEC_MASK_BIT_2_SET, pACInfo->curr_state);
 
                   // unable to buffer the request
@@ -2771,10 +3160,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                       "%s: %d: On session %d with AC %d in state SME_QOS_QOS_ON "
                       "sme_QosSetup returned with status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, status);
             if(SME_QOS_STATUS_SETUP_REQ_PENDING_RSP != status)
             {
@@ -2799,10 +3192,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: Deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info, QosFlowID);
                csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
                pDeletedFlow = flow_info;
@@ -2820,10 +3217,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                                "%s: %d: couldn't notify other "
                                "entries on this AC =%d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                                __FUNCTION__, __LINE__, ac);
 =======
                                __func__, __LINE__, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               __FUNCTION__, __LINE__, ac);
+>>>>>>> 657b0e9... prima update
                   }
                }
                status = SME_QOS_STATUS_RELEASE_SUCCESS_RSP;
@@ -2842,10 +3243,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                          "%s: %d: On session %d unexpected status %d "
                          "returned by sme_QosSetup",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, status);
                new_state = SME_QOS_LINK_UP;
                pACInfo->num_flows[flow_info->tspec_mask - 1]--;
@@ -2856,10 +3261,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                          "%s: %d: On session %d deleting entry at "
                          "%p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, flow_info, QosFlowID);
                csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
                pDeletedFlow = flow_info;
@@ -2878,10 +3287,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosUpdateParams() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
             // unable to service the request
             // nothing is pending so vote powersave back on
             pSession->readyForPowerSave = VOS_TRUE;
@@ -2942,10 +3355,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: sme_QosDelTsReq() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                status = SME_QOS_STATUS_RELEASE_FAILURE_RSP;
                // we won't be waiting for a response from the AP
                // so vote powersave back on
@@ -2984,10 +3401,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: Reassoc failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                status = SME_QOS_STATUS_RELEASE_FAILURE_RSP;
                // we won't be waiting for a response from the AP
                // so vote powersave back on
@@ -3005,10 +3426,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                       "%s: %d: nothing to do for AC = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__, ac);
 =======
                       __func__, __LINE__, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__, ac);
+>>>>>>> 657b0e9... prima update
             // we won't be waiting for a response from the AP
             // so vote powersave back on
             pSession->readyForPowerSave = VOS_TRUE;
@@ -3044,10 +3469,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                       "%s: %d: Exceeded the array bounds of pACInfo->num_flows",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
             VOS_ASSERT (0);
             return SME_QOS_STATUS_RELEASE_INVALID_PARAMS_RSP;
          }
@@ -3064,10 +3493,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: On session %d deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, flow_info, QosFlowID);
          csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
          pDeletedFlow = flow_info;
@@ -3098,10 +3531,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: couldn't buffer the release request in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->curr_state );
          // unable to service the request
          // nothing is pending so vote powersave back on
@@ -3118,10 +3555,14 @@ sme_QosStatusType sme_QosInternalReleaseReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: release request in unexpected state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pACInfo->curr_state );
       //ASSERT
       VOS_ASSERT(0);
@@ -3192,10 +3633,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Session Id %d is invalid",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       return status;
    }
@@ -3205,10 +3650,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Session %d is inactive",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       return status;
    }
@@ -3217,12 +3666,17 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Session %d has an Invalid BSS Descriptor",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
                 sessionId, ac);
 =======
                 __func__, __LINE__,
                 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+                sessionId, ac);
+>>>>>>> 657b0e9... prima update
       return status;
    }
    hstatus = csrGetParsedBssDescriptionIEs(pMac,
@@ -3233,12 +3687,17 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                 "%s: %d: On session %d unable to parse BSS IEs",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
                 sessionId, ac);
 =======
                 __func__, __LINE__,
                 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+                sessionId, ac);
+>>>>>>> 657b0e9... prima update
       return status;
    }
 
@@ -3249,16 +3708,23 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: On session %d AP doesn't support QoS",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       vos_mem_free(pIes);
       //notify HDD through the synchronous status msg
       return SME_QOS_STATUS_SETUP_NOT_QOS_AP_RSP;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    if(pTspec_Info->max_service_interval || pTspec_Info->min_service_interval)
    {
       pTspec_Info->ts_info.psb = 1;
@@ -3267,12 +3733,15 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
    {
       pTspec_Info->ts_info.psb = 0;
    }
+<<<<<<< HEAD
 =======
 
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_DEBUG,
              "%s: UAPSD/PSB set %d: ", __func__, __LINE__,
              pTspec_Info->ts_info.psb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    pACInfo = &pSession->ac_info[ac];
    do
@@ -3288,6 +3757,7 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                       "%s: %d: Request is looking for APSD but PMC doesn't "
                       "have support for APSD",
+<<<<<<< HEAD
 <<<<<<< HEAD
                       __FUNCTION__, __LINE__);
             break;
@@ -3310,6 +3780,11 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
          }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+            break;
+         }
+>>>>>>> 657b0e9... prima update
          if(SME_QOS_MAX_TID == pTspec_Info->ts_info.tid)
          {
             //App didn't set TID, generate one
@@ -3324,19 +3799,27 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosAddTsReq() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
             break;
          }
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                    "%s: %d: On session %d AddTS on AC %d is pending",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, ac);
          status = SME_QOS_STATUS_SETUP_REQ_PENDING_RSP;
          break;
@@ -3358,10 +3841,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                       "%s: %d: On session %d reassoc needed "
                       "to disable APSD on AC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac);
             csrGetModifyProfileFields(pMac, sessionId, &modifyProfileFields);
             modifyProfileFields.uapsd_mask |= pSession->apsdMask;
@@ -3374,10 +3861,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: Unable to request reassociation",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                break;
             }
             else
@@ -3386,10 +3877,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                          "%s: %d: On session %d reassociation to enable "
                          "APSD on AC %d is pending",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, ac);
                status = SME_QOS_STATUS_SETUP_REQ_PENDING_RSP;
                pACInfo->reassoc_pending = VOS_TRUE;
@@ -3403,10 +3898,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                       "%s: %d: Request is not looking for APSD & Admission "
                       "Control isn't mandatory for the AC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
             //return success right away
             status = SME_QOS_STATUS_SETUP_SUCCESS_NO_ACM_NO_APSD_RSP;
          }
@@ -3419,10 +3918,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: On session %d AP doesn't support APSD",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId);
          break;
       }
@@ -3435,10 +3938,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                    "%s: %d: Request is looking for APSD and it is already "
                    "set for the AC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          break;
       }
       else
@@ -3452,10 +3959,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                       "%s: %d: On session %d reassoc needed "
                       "to enable APSD on AC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac);
             //reassoc logic
             // update the UAPSD mask to include the new 
@@ -3471,10 +3982,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: Unable to request reassociation",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                break;
             }
             else
@@ -3483,10 +3998,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
                          "%s: %d: On session %d reassociation to enable "
                          "APSD on AC %d is pending",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, ac);
                status = SME_QOS_STATUS_SETUP_REQ_PENDING_RSP;
                pACInfo->reassoc_pending = VOS_TRUE;
@@ -3498,10 +4017,14 @@ sme_QosStatusType sme_QosSetup(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: no support for APSD or BMPS from PMC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          }
       }
    }while(0);
@@ -3522,9 +4045,12 @@ eHalStatus sme_QosProcessSetKeySuccessInd(tpAniSirGlobal pMac, v_U8_t sessionId,
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN, 
             "########### Set Key Complete #############");
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     (void)sme_QosProcessBufferedCmd(sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     return eHAL_STATUS_SUCCESS;
 }
 #endif
@@ -3560,10 +4086,14 @@ eHalStatus sme_QosCCXSaveTspecResponse(tpAniSirGlobal pMac, v_U8_t sessionId, tD
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
             "%s: Copy Tspec to local data structure ac=%d, tspecIdx=%d", 
 <<<<<<< HEAD
+<<<<<<< HEAD
             __FUNCTION__, ac, tspecIndex);
 =======
             __func__, ac, tspecIndex);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            __FUNCTION__, ac, tspecIndex);
+>>>>>>> 657b0e9... prima update
 
     if (pAddtsRsp->rsp.wmeTspecPresent)
     {
@@ -3613,20 +4143,28 @@ eHalStatus sme_QosCCXProcessReassocTspecRsp(tpAniSirGlobal pMac, v_U8_t sessionI
     if (tspecIeLen < sizeof(tDot11fIEWMMTSPEC)) {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 FL("CCX Tspec IE len %d less than min %d"), 
 =======
                 FL("CCX Tspec IE len %d less than min %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                FL("CCX Tspec IE len %d less than min %d"), 
+>>>>>>> 657b0e9... prima update
                 tspecIeLen, sizeof(tDot11fIEWMMTSPEC));
         return eHAL_STATUS_FAILURE;
     }
 
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
              "TspecLen = %d, pbFrames = %p, pTspecIE = %p\n", 
 =======
              "TspecLen = %d, pbFrames = %p, pTspecIE = %p",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "TspecLen = %d, pbFrames = %p, pTspecIE = %p\n", 
+>>>>>>> 657b0e9... prima update
              tspecIeLen, pCsrConnectedInfo->pbFrames, pTspecIE);
 
     numTspec = (tspecIeLen)/sizeof(tDot11fIEWMMTSPEC);
@@ -3635,12 +4173,17 @@ eHalStatus sme_QosCCXProcessReassocTspecRsp(tpAniSirGlobal pMac, v_U8_t sessionI
         pACInfo = &pSession->ac_info[ac];
         tspec_mask_status = pACInfo->tspec_mask_status;
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN, 
                 FL("UP=%d, ac=%d, tspec_mask_status=%x"), 
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN,
                 FL("UP=%d, ac=%d, tspec_mask_status=%x"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN, 
+                FL("UP=%d, ac=%d, tspec_mask_status=%x"), 
+>>>>>>> 657b0e9... prima update
                 pTspecIE->user_priority, ac,  tspec_mask_status );
 
             for (tspec_flow_index = 0; tspec_flow_index < SME_QOS_TSPEC_INDEX_MAX; tspec_flow_index++) {
@@ -3713,10 +4256,14 @@ static void sme_QosCopyTspecInfo(tpAniSirGlobal pMac, sme_QosWmmTspecInfo *pTspe
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: %d: up = %d, tid = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
             __FUNCTION__, __LINE__,
 =======
             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
             pTspec_Info->ts_info.up,
             pTspec_Info->ts_info.tid);
 }
@@ -3790,11 +4337,14 @@ eHalStatus sme_QosCreateTspecRICIE(tpAniSirGlobal pMac, sme_QosWmmTspecInfo *pTs
     VOS_ASSERT(NULL != pRICIdentifier);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     if (pRICBuffer == NULL || pRICIdentifier == NULL || pRICLength == NULL)
         return eHAL_STATUS_FAILURE;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     vos_mem_zero(&ricIE, sizeof(tDot11fIERICDataDesc));
 
     ricIE.present = 1;
@@ -3811,10 +4361,14 @@ eHalStatus sme_QosCreateTspecRICIE(tpAniSirGlobal pMac, sme_QosWmmTspecInfo *pTs
     ricIE.TSPEC.max_service_int = pTspec_Info->max_service_interval;
     ricIE.TSPEC.mean_data_rate = pTspec_Info->mean_data_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
     ricIE.TSPEC.medium_time = pTspec_Info->medium_time;
 =======
     ricIE.TSPEC.medium_time = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    ricIE.TSPEC.medium_time = pTspec_Info->medium_time;
+>>>>>>> 657b0e9... prima update
     ricIE.TSPEC.min_data_rate = pTspec_Info->min_data_rate;
     ricIE.TSPEC.min_phy_rate = pTspec_Info->min_phy_rate;
     ricIE.TSPEC.min_service_int = pTspec_Info->min_service_interval;
@@ -3859,10 +4413,14 @@ eHalStatus sme_QosCreateTspecRICIE(tpAniSirGlobal pMac, sme_QosWmmTspecInfo *pTs
     ricIE.WMMTSPEC.max_service_int = pTspec_Info->max_service_interval;
     ricIE.WMMTSPEC.mean_data_rate = pTspec_Info->mean_data_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
     ricIE.WMMTSPEC.medium_time = pTspec_Info->medium_time;
 =======
     ricIE.WMMTSPEC.medium_time = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    ricIE.WMMTSPEC.medium_time = pTspec_Info->medium_time;
+>>>>>>> 657b0e9... prima update
     ricIE.WMMTSPEC.min_data_rate = pTspec_Info->min_data_rate;
     ricIE.WMMTSPEC.min_phy_rate = pTspec_Info->min_phy_rate;
     ricIE.WMMTSPEC.min_service_int = pTspec_Info->min_service_interval;
@@ -3925,10 +4483,14 @@ eHalStatus sme_QosProcessFTReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
             {
                 VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                         FL("Copying the currentQos to requestedQos for AC=%d, flow=%d\n"),
 =======
                         FL("Copying the currentQos to requestedQos for AC=%d, flow=%d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        FL("Copying the currentQos to requestedQos for AC=%d, flow=%d\n"),
+>>>>>>> 657b0e9... prima update
                         ac, tspec_flow_index );
 
                 pACInfo->requested_QoSInfo[tspec_flow_index] = pACInfo->curr_QoSInfo[tspec_flow_index];
@@ -3968,10 +4530,14 @@ eHalStatus sme_QosProcessFTReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN,
                 "%s: %d: Flow List empty, nothing to update",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -3983,10 +4549,14 @@ eHalStatus sme_QosProcessFTReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                     "%s: %d: Changing FlowID %d reason to SETUP and HO renewal to FALSE",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     __FUNCTION__, __LINE__,
 =======
                     __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                     flow_info->QosFlowID);
             flow_info->reason = SME_QOS_REASON_SETUP;
             flow_info->hoRenewal = eANI_BOOLEAN_TRUE;
@@ -4006,10 +4576,14 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
     int i, j = 0;
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: %d: invoked on session %d", __FUNCTION__, __LINE__,
 =======
             "%s: %d: invoked on session %d", __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: %d: invoked on session %d", __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
             sessionId);
 
     pSession = &sme_QosCb.sessionInfo[sessionId];
@@ -4022,10 +4596,14 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                 "%s: %d: couldn't allocate memory for the msg buffer",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
 
         return eHAL_STATUS_FAILURE;
       }
@@ -4047,6 +4625,7 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
         {
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     FL("ac=%d, tspec_mask_staus=%x, tspec_index=%d\n"), 
                     i, pSession->ac_info[i].tspec_mask_status, j);
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
@@ -4057,6 +4636,12 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
                     FL("direction = %d"), pSession->ac_info[i].addTsRsp[j].rsp.tspec.tsinfo.traffic.direction);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    FL("ac=%d, tspec_mask_staus=%x, tspec_index=%d\n"), 
+                    i, pSession->ac_info[i].tspec_mask_status, j);
+            VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
+                    FL("direction = %d\n"), pSession->ac_info[i].addTsRsp[j].rsp.tspec.tsinfo.traffic.direction);
+>>>>>>> 657b0e9... prima update
             // Check if any flow is active on this AC
             if ((pSession->ac_info[i].tspec_mask_status) & (1 << j))
             {
@@ -4066,10 +4651,14 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
                 {
                     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_WARN, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                             FL("Found tspec entry AC=%d, flow=%d, direction = %d\n"), i, j, direction);
 =======
                             FL("Found tspec entry AC=%d, flow=%d, direction = %d"), i, j, direction);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            FL("Found tspec entry AC=%d, flow=%d, direction = %d\n"), i, j, direction);
+>>>>>>> 657b0e9... prima update
                     pMsg->aggrInfo.aggrAddTsInfo[i].dialogToken =
                         sme_QosAssignDialogToken();
                     pMsg->aggrInfo.aggrAddTsInfo[i].lleTspecPresent =
@@ -4101,10 +4690,14 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
 
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
 <<<<<<< HEAD
+<<<<<<< HEAD
             "Sending aggregated message to HAL 0x%x\n", pMsg->aggrInfo.tspecIdx);
 =======
             "Sending aggregated message to HAL 0x%x", pMsg->aggrInfo.tspecIdx);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "Sending aggregated message to HAL 0x%x\n", pMsg->aggrInfo.tspecIdx);
+>>>>>>> 657b0e9... prima update
 
     if(HAL_STATUS_SUCCESS(palSendMBMessage(pMac->hHdd, pMsg)))
     {
@@ -4112,10 +4705,14 @@ eHalStatus sme_QosFTAggrQosReq( tpAniSirGlobal pMac, v_U8_t sessionId )
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                 "%s: %d: sent down a AGGR QoS req to PE",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
     }
 
     return status;
@@ -4169,6 +4766,7 @@ eHalStatus sme_QosProcessFTRICResponse(tpAniSirGlobal pMac, v_U8_t sessionId, tD
     if (pRicDataDesc->TSDelay.present)
         ConvertTSDelay(pMac, &pAddtsRsp->rsp.delay, &pRicDataDesc->TSDelay);
 <<<<<<< HEAD
+<<<<<<< HEAD
     //return sme_QosProcessAddTsRsp(pMac, &addtsRsp);
     return eHAL_STATUS_SUCCESS;
    }
@@ -4183,6 +4781,11 @@ eHalStatus sme_QosProcessFTRICResponse(tpAniSirGlobal pMac, v_U8_t sessionId, tD
     return eHAL_STATUS_SUCCESS;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    //return sme_QosProcessAddTsRsp(pMac, &addtsRsp);
+    return eHAL_STATUS_SUCCESS;
+   }
+>>>>>>> 657b0e9... prima update
 eHalStatus sme_QosProcessAggrQosRsp(tpAniSirGlobal pMac, void *pMsgBuf)
 {
     tpSirAggrQosRsp pAggrRsp = (tpSirAggrQosRsp)pMsgBuf;
@@ -4205,10 +4808,14 @@ eHalStatus sme_QosProcessAggrQosRsp(tpAniSirGlobal pMac, void *pMsgBuf)
 
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     FL("Addts rsp from LIM AC=%d, flow=%d dir=%d, tspecIdx=%x\n"),
 =======
                     FL("Addts rsp from LIM AC=%d, flow=%d dir=%d, tspecIdx=%x"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    FL("Addts rsp from LIM AC=%d, flow=%d dir=%d, tspecIdx=%x\n"),
+>>>>>>> 657b0e9... prima update
                     i, j, direction, pAggrRsp->aggrInfo.tspecIdx);
             // Check if the direction is Uplink or bi-directional
             if( ((1<<i) & pAggrRsp->aggrInfo.tspecIdx) &&
@@ -4223,10 +4830,14 @@ eHalStatus sme_QosProcessAggrQosRsp(tpAniSirGlobal pMac, void *pMsgBuf)
 
                 VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                         FL("%s: Processing Addts rsp from LIM AC=%d, flow=%d\n"), i, j);
 =======
                         FL("Processing Addts rsp from LIM AC=%d, flow=%d"), i, j);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        FL("%s: Processing Addts rsp from LIM AC=%d, flow=%d\n"), i, j);
+>>>>>>> 657b0e9... prima update
                 /* post ADD TS response for each */
                 if (sme_QosProcessAddTsRsp(pMac, &addtsRsp) != eHAL_STATUS_SUCCESS)
                 {
@@ -4250,6 +4861,7 @@ eHalStatus sme_QosProcessFTReassocRspEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
     tCsrRoamSession *pCsrSession = CSR_GET_SESSION( pMac, sessionId );
     tCsrRoamConnectedInfo *pCsrConnectedInfo = &pCsrSession->connectedInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
     tANI_U32    ricRspLen = pCsrConnectedInfo->nRICRspLength;
 
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -4270,10 +4882,18 @@ eHalStatus sme_QosProcessFTReassocRspEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
             "%s: %d: invoked on session %d",
             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tANI_U32    ricRspLen = pCsrConnectedInfo->nRICRspLength;
+
+    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
+            "%s: %d: invoked on session %d",
+            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
             sessionId);
 
     pSession = &sme_QosCb.sessionInfo[sessionId];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     pRicDataDesc = (tDot11fIERICDataDesc *)pCsrConnectedInfo->pbFrames + pCsrConnectedInfo->nBeaconLength +
         pCsrConnectedInfo->nAssocReqLength + pCsrConnectedInfo->nAssocRspLength;
@@ -4282,6 +4902,10 @@ eHalStatus sme_QosProcessFTReassocRspEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
         (pCsrConnectedInfo->nBeaconLength + pCsrConnectedInfo->nAssocReqLength +
         pCsrConnectedInfo->nAssocRspLength));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pRicDataDesc = (tDot11fIERICDataDesc *)pCsrConnectedInfo->pbFrames + pCsrConnectedInfo->nBeaconLength +
+        pCsrConnectedInfo->nAssocReqLength + pCsrConnectedInfo->nAssocRspLength;
+>>>>>>> 657b0e9... prima update
 
     for(ac = SME_QOS_EDCA_AC_BE; ac < SME_QOS_EDCA_AC_MAX; ac++)
     {
@@ -4318,20 +4942,28 @@ eHalStatus sme_QosProcessFTReassocRspEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
                             {
                                 VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         FL("Processing RIC Response for AC %d, TSPEC Flow index %d with RIC ID %d \n"),
 =======
                                         FL("Processing RIC Response for AC %d, TSPEC Flow index %d with RIC ID %d "),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                        FL("Processing RIC Response for AC %d, TSPEC Flow index %d with RIC ID %d \n"),
+>>>>>>> 657b0e9... prima update
                                         ac, tspec_flow_index, pRicDataDesc->RICData.Identifier);
                                 status = sme_QosProcessFTRICResponse(pMac, sessionId, pRicDataDesc, ac, tspec_flow_index);
                                 if (eHAL_STATUS_SUCCESS != status)
                                 {
                                     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                             FL("Failed with status %d for AC %d in TSPEC Flow index = %d\n"),
 =======
                                             FL("Failed with status %d for AC %d in TSPEC Flow index = %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                            FL("Failed with status %d for AC %d in TSPEC Flow index = %d\n"),
+>>>>>>> 657b0e9... prima update
                                             status, ac, tspec_flow_index);
                                 }
                             }
@@ -4349,10 +4981,14 @@ eHalStatus sme_QosProcessFTReassocRspEv(tpAniSirGlobal pMac, v_U8_t sessionId, v
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 FL("RIC Response still follows despite traversing through all ACs. Remaining len = %d\n"), ricRspLen);
 =======
                 FL("RIC Response still follows despite traversing through all ACs. Remaining len = %d"), ricRspLen);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                FL("RIC Response still follows despite traversing through all ACs. Remaining len = %d\n"), ricRspLen);
+>>>>>>> 657b0e9... prima update
         VOS_ASSERT(0);
     }
 
@@ -4398,10 +5034,14 @@ eHalStatus sme_QosAddTsReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for AC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, ac);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    pMsg = (tSirAddtsReq *)vos_mem_malloc(sizeof(tSirAddtsReq));
@@ -4411,10 +5051,14 @@ eHalStatus sme_QosAddTsReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: couldn't allocate memory for the msg buffer",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_zero(pMsg, sizeof(tSirAddtsReq));
@@ -4467,6 +5111,7 @@ eHalStatus sme_QosAddTsReq(tpAniSirGlobal pMac,
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: %d: BSS descriptor is NULL so we don't send requst to PE",
                 __FUNCTION__, __LINE__);
 =======
@@ -4474,6 +5119,10 @@ eHalStatus sme_QosAddTsReq(tpAniSirGlobal pMac,
                 __func__, __LINE__);
       vos_mem_free(pMsg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: %d: BSS descriptor is NULL so we don't send requst to PE",
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_copy( &pMsg->bssId[ 0 ], 
@@ -4482,10 +5131,14 @@ eHalStatus sme_QosAddTsReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: up = %d, tid = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, 
 =======
              __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
              pTspec_Info->ts_info.up,
              pTspec_Info->ts_info.tid);
 #ifdef FEATURE_WLAN_CCX
@@ -4501,10 +5154,14 @@ eHalStatus sme_QosAddTsReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: sent down a ADDTS req to PE",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //event: EVENT_WLAN_QOS
 #ifdef FEATURE_WLAN_DIAG_SUPPORT          
       qos.eventId = SME_QOS_DIAG_ADDTS_REQ;
@@ -4545,10 +5202,14 @@ eHalStatus sme_QosDelTsReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for AC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, ac);
    pMsg = (tSirDeltsReq *)vos_mem_malloc(sizeof(tSirDeltsReq));
    if (!pMsg)
@@ -4557,10 +5218,14 @@ eHalStatus sme_QosDelTsReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: couldn't allocate memory for the msg buffer",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_zero(pMsg, sizeof(tSirDeltsReq));
@@ -4602,11 +5267,15 @@ eHalStatus sme_QosDelTsReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: BSS descriptor is NULL so we don't send request to PE",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
       vos_mem_free(pMsg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_copy( &pMsg->bssId[ 0 ], 
@@ -4616,10 +5285,14 @@ eHalStatus sme_QosDelTsReq(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: up = %d, tid = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, 
 =======
              __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
              pTspecInfo->ts_info.up,
              pTspecInfo->ts_info.tid);
    vos_mem_zero(&pACInfo->curr_QoSInfo[tspec_mask - 1], 
@@ -4630,10 +5303,14 @@ eHalStatus sme_QosDelTsReq(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: sme_QosDelTsReq:Test: sent down a DELTS req to PE",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //event: EVENT_WLAN_QOS
 #ifdef FEATURE_WLAN_DIAG_SUPPORT          
       qos.eventId = SME_QOS_DIAG_DELTS;
@@ -4670,11 +5347,14 @@ eHalStatus sme_QosProcessAddTsRsp(tpAniSirGlobal pMac, void *pMsgBuf)
     sme_QosEdcaAcType ac;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_DIAG_SUPPORT
     WLAN_VOS_DIAG_EVENT_DEF(qos, vos_event_wlan_qos_payload_type);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     pSession = &sme_QosCb.sessionInfo[sessionId];
 
@@ -4682,10 +5362,14 @@ eHalStatus sme_QosProcessAddTsRsp(tpAniSirGlobal pMac, void *pMsgBuf)
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
             "%s: %d: invoked on session %d for UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
             __FUNCTION__, __LINE__,
 =======
             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
             sessionId, up);
 
     ac = sme_QosUpToAc(up);
@@ -4695,10 +5379,14 @@ eHalStatus sme_QosProcessAddTsRsp(tpAniSirGlobal pMac, void *pMsgBuf)
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: invalid AC %d from UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, ac, up);
 =======
                 __func__, __LINE__, ac, up);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, ac, up);
+>>>>>>> 657b0e9... prima update
 
         return eHAL_STATUS_FAILURE;
     }
@@ -4712,6 +5400,7 @@ eHalStatus sme_QosProcessAddTsRsp(tpAniSirGlobal pMac, void *pMsgBuf)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_DIAG_SUPPORT
    WLAN_VOS_DIAG_EVENT_DEF(qos, vos_event_wlan_qos_payload_type);
 #endif
@@ -4723,6 +5412,14 @@ eHalStatus sme_QosProcessAddTsRsp(tpAniSirGlobal pMac, void *pMsgBuf)
              "%s: %d: Invoked on session %d with return code %d",
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_DIAG_SUPPORT
+   WLAN_VOS_DIAG_EVENT_DEF(qos, vos_event_wlan_qos_payload_type);
+#endif
+   VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
+             "%s: %d: Invoked on session %d with return code %d",
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, paddts_rsp->rc);
    // our outstanding request has been serviced
    // we can go into powersave
@@ -4764,10 +5461,14 @@ eHalStatus sme_QosProcessDelTsRsp(tpAniSirGlobal pMac, void *pMsgBuf)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: Invoked on session %d with return code %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, pDeltsRsp->rc);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    // our outstanding request has been serviced
@@ -4805,10 +5506,14 @@ eHalStatus sme_QosProcessDelTsInd(tpAniSirGlobal pMac, void *pMsgBuf)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: Invoked on session %d for UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, up);
    ac = sme_QosUpToAc(up);
    if(SME_QOS_EDCA_AC_MAX == ac)
@@ -4817,10 +5522,14 @@ eHalStatus sme_QosProcessDelTsInd(tpAniSirGlobal pMac, void *pMsgBuf)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: invalid AC %d from UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 ac, up);
       return eHAL_STATUS_FAILURE;
    }
@@ -4839,10 +5548,14 @@ eHalStatus sme_QosProcessDelTsInd(tpAniSirGlobal pMac, void *pMsgBuf)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: no match found for ac = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, 
 =======
                 __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
                 search_key.key.ac_type);
       //ASSERT
       VOS_ASSERT(0);
@@ -4889,10 +5602,14 @@ eHalStatus sme_QosProcessAssocCompleteEv(tpAniSirGlobal pMac, v_U8_t sessionId, 
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    if(((SME_QOS_INIT == pSession->ac_info[SME_QOS_EDCA_AC_BE].curr_state)&&
@@ -4908,10 +5625,14 @@ eHalStatus sme_QosProcessAssocCompleteEv(tpAniSirGlobal pMac, v_U8_t sessionId, 
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: pEvent_info is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          return status;
       }
       if(!((sme_QosAssocInfo *)pEvent_info)->pBssDesc)
@@ -4920,10 +5641,14 @@ eHalStatus sme_QosProcessAssocCompleteEv(tpAniSirGlobal pMac, v_U8_t sessionId, 
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: pBssDesc is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          return status;
       }
       if((pSession->assocInfo.pBssDesc) &&
@@ -4933,10 +5658,14 @@ eHalStatus sme_QosProcessAssocCompleteEv(tpAniSirGlobal pMac, v_U8_t sessionId, 
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: assoc with the same BSS, no update needed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -4948,10 +5677,14 @@ eHalStatus sme_QosProcessAssocCompleteEv(tpAniSirGlobal pMac, v_U8_t sessionId, 
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: wrong state: BE %d, BK %d, VI %d, VO %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pSession->ac_info[SME_QOS_EDCA_AC_BE].curr_state,
                 pSession->ac_info[SME_QOS_EDCA_AC_BK].curr_state,
                 pSession->ac_info[SME_QOS_EDCA_AC_VI].curr_state,
@@ -4988,10 +5721,14 @@ eHalStatus sme_QosProcessAssocCompleteEv(tpAniSirGlobal pMac, v_U8_t sessionId, 
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, ac, pACInfo->curr_state);
                //ASSERT
                VOS_ASSERT(0);
@@ -5019,10 +5756,14 @@ eHalStatus sme_QosProcessReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
 
@@ -5033,10 +5774,14 @@ eHalStatus sme_QosProcessReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
                "%s: %d: no need for state transition, should "
                "already be in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, __LINE__);
 =======
                __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
        VOS_ASSERT(pSession->ac_info[0].curr_state == SME_QOS_HANDOFF);
        VOS_ASSERT(pSession->ac_info[1].curr_state == SME_QOS_HANDOFF);
        VOS_ASSERT(pSession->ac_info[2].curr_state == SME_QOS_HANDOFF);
@@ -5052,10 +5797,14 @@ eHalStatus sme_QosProcessReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
                 "%s: %d: no need for state transition, should "
                 "already be in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(pSession->ac_info[0].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[1].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[2].curr_state == SME_QOS_HANDOFF);
@@ -5075,10 +5824,14 @@ eHalStatus sme_QosProcessReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
                 "%s: %d: no need for state transition, should "
                 "already be in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(pSession->ac_info[0].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[1].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[2].curr_state == SME_QOS_HANDOFF);
@@ -5108,10 +5861,14 @@ eHalStatus sme_QosProcessReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, pACInfo->curr_state);
             //ASSERT
             VOS_ASSERT(0);
@@ -5133,11 +5890,15 @@ eHalStatus sme_QosProcessReassocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
 eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId, void * pEvent_info)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    tpSirSmeJoinRsp pSmeJoinRsp = (tpSirSmeJoinRsp) pEvent_info;
 =======
 
    tCsrRoamSession *pCsrRoamSession = CSR_GET_SESSION( pMac, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tpSirSmeJoinRsp pSmeJoinRsp = (tpSirSmeJoinRsp) pEvent_info;
+>>>>>>> 657b0e9... prima update
    sme_QosSessionInfo *pSession;
    sme_QosACInfo *pACInfo;
    sme_QosEdcaAcType ac, ac_index;
@@ -5150,10 +5911,14 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    // our pending reassociation has completed
@@ -5166,10 +5931,14 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: pEvent_info is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return status;
    }
    if(!((sme_QosAssocInfo *)pEvent_info)->pBssDesc)
@@ -5178,10 +5947,14 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: pBssDesc is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return status;
    }
    status = sme_QosSaveAssocInfo(pSession, pEvent_info);
@@ -5191,10 +5964,14 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: sme_QosSaveAssocInfo() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    }
 //TBH: Assuming both handoff algo & 11r willn't be enabled at the same time   
    if(pSession->handoffRequested)
@@ -5208,6 +5985,7 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
    if (pSession->ftHandoffInProgress)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        if (csrRoamIs11rAssoc(pMac)) {
            if (pSmeJoinRsp->parsedRicRspLen) {
 =======
@@ -5216,11 +5994,16 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
            if (pCsrRoamSession && pCsrRoamSession->connectedInfo.nRICRspLength)
            {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       if (csrRoamIs11rAssoc(pMac)) {
+           if (pSmeJoinRsp->parsedRicRspLen) {
+>>>>>>> 657b0e9... prima update
                status = sme_QosProcessFTReassocRspEv(pMac, sessionId, pEvent_info);
            }
        }
 #ifdef FEATURE_WLAN_CCX
        // If CCX association check for TSPEC IEs in the reassoc rsp frame
+<<<<<<< HEAD
 <<<<<<< HEAD
        if (csrRoamIsCCXAssoc(pMac)) {
            if (pSmeJoinRsp->tspecIeLen) {
@@ -5230,6 +6013,10 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
            if (pCsrRoamSession && pCsrRoamSession->connectedInfo.nTspecIeLength)
            {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       if (csrRoamIsCCXAssoc(pMac)) {
+           if (pSmeJoinRsp->tspecIeLen) {
+>>>>>>> 657b0e9... prima update
                status = sme_QosCCXProcessReassocTspecRsp(pMac, sessionId, pEvent_info);
            }
        }
@@ -5301,10 +6088,14 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
                   VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                             "%s: %d: no match found for ac = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                             __FUNCTION__, __LINE__,
 =======
                             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                             search_key.key.ac_type);
                   //ASSERT
                   VOS_ASSERT(0);
@@ -5328,10 +6119,14 @@ eHalStatus sme_QosProcessReassocSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, pACInfo->curr_state);
             //ASSERT
             VOS_ASSERT(0);
@@ -5360,10 +6155,14 @@ eHalStatus sme_QosProcessReassocFailureEv(tpAniSirGlobal pMac, v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    // our pending reassociation has completed
@@ -5404,10 +6203,14 @@ eHalStatus sme_QosProcessReassocFailureEv(tpAniSirGlobal pMac, v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, pACInfo->curr_state);
             //ASSERT
             VOS_ASSERT(0);
@@ -5436,10 +6239,14 @@ eHalStatus sme_QosProcessHandoffAssocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    for(ac = SME_QOS_EDCA_AC_BE; ac < SME_QOS_EDCA_AC_MAX; ac++) 
@@ -5458,6 +6265,7 @@ eHalStatus sme_QosProcessHandoffAssocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId
             if(pSession->ftHandoffInProgress)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                          "%s: %d: SME_QOS_CSR_HANDOFF_ASSOC_REQ received in "
                          "SME_QOS_HANDOFF state with FT in progress"
@@ -5468,6 +6276,12 @@ eHalStatus sme_QosProcessHandoffAssocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId
                          "SME_QOS_HANDOFF state with FT in progress"
                          , __func__, __LINE__); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
+                         "%s: %d: SME_QOS_CSR_HANDOFF_ASSOC_REQ received in "
+                         "SME_QOS_HANDOFF state with FT in progress"
+                         , __FUNCTION__, __LINE__); 
+>>>>>>> 657b0e9... prima update
                break; 
             }
 #endif            
@@ -5478,10 +6292,14 @@ eHalStatus sme_QosProcessHandoffAssocReqEv(tpAniSirGlobal pMac, v_U8_t sessionId
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, pACInfo->curr_state);
             //ASSERT
             VOS_ASSERT(0);
@@ -5523,10 +6341,14 @@ eHalStatus sme_QosProcessHandoffSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    //go back to original state before handoff
@@ -5563,10 +6385,14 @@ eHalStatus sme_QosProcessHandoffSuccessEv(tpAniSirGlobal pMac, v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, pACInfo->curr_state);
             //ASSERT
             VOS_ASSERT(0);
@@ -5593,10 +6419,14 @@ eHalStatus sme_QosProcessHandoffFailureEv(tpAniSirGlobal pMac, v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    for(ac = SME_QOS_EDCA_AC_BE; ac < SME_QOS_EDCA_AC_MAX; ac++) 
@@ -5629,10 +6459,14 @@ eHalStatus sme_QosProcessHandoffFailureEv(tpAniSirGlobal pMac, v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId, ac, pACInfo->curr_state);
             //ASSERT
             VOS_ASSERT(0);
@@ -5666,10 +6500,14 @@ eHalStatus sme_QosProcessDisconnectEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    if((pSession->handoffRequested)
@@ -5684,10 +6522,14 @@ eHalStatus sme_QosProcessDisconnectEv(tpAniSirGlobal pMac, v_U8_t sessionId, voi
                 "%s: %d: no need for state transition, should "
                 "already be in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(pSession->ac_info[0].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[1].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[2].curr_state == SME_QOS_HANDOFF);
@@ -5738,10 +6580,14 @@ eHalStatus sme_QosProcessJoinReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, void *
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    if(pSession->handoffRequested)
@@ -5750,10 +6596,14 @@ eHalStatus sme_QosProcessJoinReqEv(tpAniSirGlobal pMac, v_U8_t sessionId, void *
                 "%s: %d: no need for state transition, should "
                 "already be in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(pSession->ac_info[0].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[1].curr_state == SME_QOS_HANDOFF);
       VOS_ASSERT(pSession->ac_info[2].curr_state == SME_QOS_HANDOFF);
@@ -5800,10 +6650,14 @@ eHalStatus sme_QosProcessPreauthSuccessInd(tpAniSirGlobal pMac, v_U8_t sessionId
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
             "%s: %d: invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
             __FUNCTION__, __LINE__,
 =======
             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
             sessionId);
 
     pSession = &sme_QosCb.sessionInfo[sessionId];
@@ -5827,10 +6681,14 @@ eHalStatus sme_QosProcessPreauthSuccessInd(tpAniSirGlobal pMac, v_U8_t sessionId
                 VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                         "%s: %d: On session %d AC %d is in wrong state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                         __FUNCTION__, __LINE__,
 =======
                         __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                         sessionId, ac, pACInfo->curr_state);
                 //ASSERT
                 VOS_ASSERT(0);
@@ -5860,10 +6718,14 @@ eHalStatus sme_QosProcessPreauthSuccessInd(tpAniSirGlobal pMac, v_U8_t sessionId
         {
             volatile v_U8_t   tspec_index = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
             ricIELength = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
             pACInfo = &pSession->ac_info[ac];
             tspec_pending_status = pACInfo->tspec_pending;
             tspec_mask_status = pACInfo->tspec_mask_status;
@@ -5932,10 +6794,14 @@ eHalStatus sme_QosProcessAddTsFailureRsp(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, up);
    ac = sme_QosUpToAc(up);
    if(SME_QOS_EDCA_AC_MAX == ac)
@@ -5944,10 +6810,14 @@ eHalStatus sme_QosProcessAddTsFailureRsp(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: invalid AC %d from UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, ac, up);
 =======
                 __func__, __LINE__, ac, up);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, ac, up);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    pSession = &sme_QosCb.sessionInfo[sessionId];
@@ -5960,10 +6830,14 @@ eHalStatus sme_QosProcessAddTsFailureRsp(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: On session %d an AddTS is not pending on AC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, ac);
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -5979,10 +6853,14 @@ eHalStatus sme_QosProcessAddTsFailureRsp(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: On session %d no match found for ac = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, search_key.key.ac_type);
       //ASSERT
       VOS_ASSERT(0);
@@ -6036,10 +6914,14 @@ static eHalStatus sme_QosUpdateTspecMask(v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for AC %d TSPEC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, search_key.key.ac_type, new_tspec_mask);
 
    pSession = &sme_QosCb.sessionInfo[sessionId];
@@ -6053,10 +6935,14 @@ static eHalStatus sme_QosUpdateTspecMask(v_U8_t sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Exceeded the array bounds of pSession->ac_info",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT (0);
       return eHAL_STATUS_FAILURE;
    }
@@ -6067,10 +6953,14 @@ static eHalStatus sme_QosUpdateTspecMask(v_U8_t sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Flow List empty, nothing to update",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
@@ -6090,10 +6980,14 @@ static eHalStatus sme_QosUpdateTspecMask(v_U8_t sessionId,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: Flow %d matches",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
                pACInfo->num_flows[flow_info->tspec_mask - 1]--;
                pACInfo->num_flows[new_tspec_mask - 1]++;
@@ -6109,10 +7003,14 @@ static eHalStatus sme_QosUpdateTspecMask(v_U8_t sessionId,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: Flow %d matches",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
                pACInfo->num_flows[flow_info->tspec_mask - 1]--;
                pACInfo->num_flows[new_tspec_mask - 1]++;
@@ -6162,10 +7060,14 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, up);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    ac = sme_QosUpToAc(up);
@@ -6175,10 +7077,14 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: invalid AC %d from UP %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__, ac, up);
 =======
                 __func__, __LINE__, ac, up);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__, ac, up);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    pACInfo = &pSession->ac_info[ac];
@@ -6189,6 +7095,7 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: On session %d an AddTS is not pending on AC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
                 sessionId, ac);
       //ASSERT
@@ -6197,6 +7104,12 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
                 __func__, __LINE__,
                 sessionId, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+                sessionId, ac);
+      //ASSERT
+      VOS_ASSERT(0);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    //App is looking for APSD or the App which was looking for APSD has been 
@@ -6224,14 +7137,19 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: Exceeded the array bounds of pACInfo->requested_QosInfo",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          VOS_ASSERT (0);
          return eHAL_STATUS_FAILURE;
       }
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
    pACInfo->curr_QoSInfo[tspec_pending - 1] = 
       pACInfo->requested_QoSInfo[tspec_pending - 1];
@@ -6287,6 +7205,10 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
              sessionId, pRsp->tspec.mediumTime);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pACInfo->curr_QoSInfo[tspec_pending - 1] = 
+      pACInfo->requested_QoSInfo[tspec_pending - 1];
+>>>>>>> 657b0e9... prima update
    /* Check if the current flow is for bi-directional. If so, update the number of flows
     * to reflect that all flows are aggregated into tspec index 0. */
    if((pACInfo->curr_QoSInfo[pACInfo->tspec_pending - 1].ts_info.direction == SME_QOS_WMM_TS_DIR_BOTH) &&
@@ -6331,10 +7253,14 @@ eHalStatus sme_QosProcessAddTsSuccessRsp(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: On session %d no match found for ac %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, search_key.key.ac_type);
       //ASSERT
       VOS_ASSERT(0);
@@ -6415,19 +7341,27 @@ eHalStatus sme_QosAggregateParams(
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    if(!pInput_Tspec_Info)
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: input is NULL, nothing to aggregate",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    if(!pCurrent_Tspec_Info)
@@ -6435,14 +7369,19 @@ eHalStatus sme_QosAggregateParams(
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Current is NULL, can't aggregate",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_copy(&TspecInfo, pCurrent_Tspec_Info, 
                 sizeof(sme_QosWmmTspecInfo));
+<<<<<<< HEAD
 <<<<<<< HEAD
    /*-------------------------------------------------------------------------
      APSD preference is only meaningful if service interval was set by app
@@ -6458,6 +7397,12 @@ eHalStatus sme_QosAggregateParams(
       (pCurrent_Tspec_Info->ts_info.direction !=
       pInput_Tspec_Info->ts_info.direction))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   /*-------------------------------------------------------------------------
+     APSD preference is only meaningful if service interval was set by app
+   -------------------------------------------------------------------------*/
+   if(pCurrent_Tspec_Info->min_service_interval && pInput_Tspec_Info->min_service_interval)
+>>>>>>> 657b0e9... prima update
    {
       TspecInfo.min_service_interval = VOS_MIN(
          pCurrent_Tspec_Info->min_service_interval,
@@ -6468,6 +7413,7 @@ eHalStatus sme_QosAggregateParams(
       TspecInfo.min_service_interval = pInput_Tspec_Info->min_service_interval;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
    if(pCurrent_Tspec_Info->max_service_interval)
 =======
    if(pCurrent_Tspec_Info->max_service_interval &&
@@ -6475,6 +7421,9 @@ eHalStatus sme_QosAggregateParams(
       (pCurrent_Tspec_Info->ts_info.direction !=
       pInput_Tspec_Info->ts_info.direction))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if(pCurrent_Tspec_Info->max_service_interval)
+>>>>>>> 657b0e9... prima update
    {
       TspecInfo.max_service_interval = VOS_MIN(
          pCurrent_Tspec_Info->max_service_interval,
@@ -6625,20 +7574,28 @@ static eHalStatus sme_QosUpdateParams(v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: invoked on session %d for AC %d TSPEC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, ac, tspec_mask);
    if(!pTspec_Info)
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: output is NULL, can't aggregate",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_zero(&Tspec_Info, sizeof(sme_QosWmmTspecInfo));
@@ -6648,10 +7605,14 @@ static eHalStatus sme_QosUpdateParams(v_U8_t sessionId,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Flow List empty, nothing to update",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    pSession = &sme_QosCb.sessionInfo[sessionId];
@@ -6671,10 +7632,14 @@ static eHalStatus sme_QosUpdateParams(v_U8_t sessionId,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: Flow %d matches",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    flow_info->QosFlowID);
          
          if((SME_QOS_REASON_RELEASE == flow_info->reason ) ||
@@ -6685,10 +7650,14 @@ static eHalStatus sme_QosUpdateParams(v_U8_t sessionId,
                       "%s: %d: Skipping Flow %d as it is marked "
                       "for release/modify",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       flow_info->QosFlowID);
          }
          else if(!HAL_STATUS_SUCCESS(sme_QosAggregateParams(&flow_info->QoSInfo, 
@@ -6699,10 +7668,14 @@ static eHalStatus sme_QosUpdateParams(v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosAggregateParams() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__);
 =======
                       __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          }
       }
       pEntry = pNextEntry;
@@ -6731,10 +7704,14 @@ sme_QosWmmUpType sme_QosAcToUp(sme_QosEdcaAcType ac)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED, 
              "%s: %d: ac = %d up = %d returned",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, ac, up);
 =======
              __func__, __LINE__, ac, up);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, ac, up);
+>>>>>>> 657b0e9... prima update
    return up;
 }
 /*--------------------------------------------------------------------------
@@ -6755,10 +7732,14 @@ sme_QosEdcaAcType sme_QosUpToAc(sme_QosWmmUpType up)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_MED, 
              "%s: %d: up = %d ac = %d returned",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, up, ac);
 =======
              __func__, __LINE__, up, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, up, ac);
+>>>>>>> 657b0e9... prima update
    return ac;
 }
 /*--------------------------------------------------------------------------
@@ -6786,10 +7767,14 @@ static void sme_QosStateTransition(v_U8_t sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
              "%s: %d: On session %d new state=%d, old state=%d, for AC=%d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, 
 =======
              __func__, __LINE__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, 
+>>>>>>> 657b0e9... prima update
              sessionId, pACInfo->curr_state, pACInfo->prev_state, ac );
 }
 /*--------------------------------------------------------------------------
@@ -6815,10 +7800,14 @@ tListElem *sme_QosFindInFlowList(sme_QosSearchInfo search_key)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Flow List empty, can't search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
    while( pEntry )
@@ -6836,10 +7825,14 @@ tListElem *sme_QosFindInFlowList(sme_QosSearchInfo search_key)
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: match found on flowID, ending search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                break;
             }
          }
@@ -6851,10 +7844,14 @@ tListElem *sme_QosFindInFlowList(sme_QosSearchInfo search_key)
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: match found on ac, ending search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                break;
             }
          }
@@ -6866,10 +7863,14 @@ tListElem *sme_QosFindInFlowList(sme_QosSearchInfo search_key)
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: match found on reason, ending search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                break;
             }
          }
@@ -6882,10 +7883,14 @@ tListElem *sme_QosFindInFlowList(sme_QosSearchInfo search_key)
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: match found on reason, ending search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
 
                break;
             }
@@ -6923,10 +7928,14 @@ eHalStatus sme_QosFindAllInFlowList(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Flow List empty, can't search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    while( pEntry )
@@ -6945,20 +7954,28 @@ eHalStatus sme_QosFindAllInFlowList(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: match found on flowID, ending search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                status = fnp(pMac, pEntry);
                if(eHAL_STATUS_FAILURE == status)
                {
                   VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                             "%s: %d: Failed to process entry",
 <<<<<<< HEAD
+<<<<<<< HEAD
                             __FUNCTION__, __LINE__);
 =======
                             __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                   break;
                }
             }
@@ -6971,10 +7988,14 @@ eHalStatus sme_QosFindAllInFlowList(tpAniSirGlobal pMac,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                          "%s: %d: match found on ac, ending search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                flow_info->hoRenewal = pSession->ac_info[flow_info->ac_type].hoRenewal;
                status = fnp(pMac, pEntry);
                if(eHAL_STATUS_FAILURE == status)
@@ -6982,10 +8003,14 @@ eHalStatus sme_QosFindAllInFlowList(tpAniSirGlobal pMac,
                   VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                             "%s: %d: Failed to process entry",
 <<<<<<< HEAD
+<<<<<<< HEAD
                             __FUNCTION__, __LINE__);
 =======
                             __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                   break;
                }
             }
@@ -7015,10 +8040,14 @@ v_BOOL_t sme_QosIsACM(tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: pSirBssDesc is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return VOS_FALSE;
    }
 
@@ -7036,10 +8065,14 @@ v_BOOL_t sme_QosIsACM(tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: csrGetParsedBssDescriptionIEs() failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__);
 =======
                    __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
          return VOS_FALSE;
       }
 
@@ -7066,10 +8099,14 @@ v_BOOL_t sme_QosIsACM(tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc,
              VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                        "%s: %d: unknown AC = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                        __FUNCTION__, __LINE__, ac);
 =======
                        __func__, __LINE__, ac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                       __FUNCTION__, __LINE__, ac);
+>>>>>>> 657b0e9... prima update
              //Assert
              VOS_ASSERT(0);
              break;
@@ -7078,10 +8115,14 @@ v_BOOL_t sme_QosIsACM(tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: ACM = %d for AC = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, ret_val, ac );
 =======
              __func__, __LINE__, ret_val, ac );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, ret_val, ac );
+>>>>>>> 657b0e9... prima update
    if (NULL == pIes)
    {
       /* IEs were allocated locally so free them */
@@ -7111,10 +8152,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Flow List empty, nothing to buffer",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    while( pEntry )
@@ -7148,10 +8193,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
                          "%s: %d: couldn't buffer the setup request for "
                          "flow %d in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
             }
             else
@@ -7160,10 +8209,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
                          "%s: %d: buffered a setup request for "
                          "flow %d in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
             }
          }
@@ -7179,10 +8232,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
                          "%s: %d: couldn't buffer the release request for "
                          "flow %d in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
             }
             else
@@ -7191,10 +8248,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
                          "%s: %d: buffered a release request for "
                          "flow %d in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
             }
          }
@@ -7211,10 +8272,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
                          "%s: %d: couldn't buffer the modify request for "
                          "flow %d in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
             }
             else
@@ -7223,10 +8288,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
                          "%s: %d: buffered a modify request for "
                          "flow %d in handoff state",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          flow_info->QosFlowID);
             }
          }
@@ -7234,10 +8303,14 @@ static eHalStatus sme_QosBufferExistingFlows(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                    "%s: %d: Deleting original entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    flow_info, flow_info->QosFlowID);
          csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
          vos_mem_free(flow_info);
@@ -7266,6 +8339,7 @@ static eHalStatus sme_QosDeleteExistingFlows(tpAniSirGlobal pMac,
    if(!pEntry)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                 "%s: %d: Flow List empty, nothing to delete",
                 __FUNCTION__, __LINE__);
@@ -7274,6 +8348,11 @@ static eHalStatus sme_QosDeleteExistingFlows(tpAniSirGlobal pMac,
                 "%s: %d: Flow List empty, nothing to delete",
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
+                "%s: %d: Flow List empty, nothing to delete",
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    while( pEntry )
@@ -7295,10 +8374,14 @@ static eHalStatus sme_QosDeleteExistingFlows(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                    "%s: %d: Deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    flow_info, flow_info->QosFlowID);
          //delete the entry from Flow List
          csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
@@ -7326,10 +8409,14 @@ eHalStatus sme_QosBufferCmd(sme_QosCmdInfo *pcmd, v_BOOL_t insert_head)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: Invoked",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    pentry = (sme_QosCmdInfoEntry *) vos_mem_malloc(sizeof(sme_QosCmdInfoEntry));
    if (!pentry)
    {
@@ -7337,10 +8424,14 @@ eHalStatus sme_QosBufferCmd(sme_QosCmdInfo *pcmd, v_BOOL_t insert_head)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Memory allocation failure",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    // copy the entire CmdInfo
@@ -7376,10 +8467,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: Invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    if(!csrLLIsListEmpty( &pSession->bufferedCommandList, VOS_FALSE ))
@@ -7391,10 +8486,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: no more buffered commands on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId);
          pSession->readyForPowerSave = VOS_TRUE;
          return eHAL_STATUS_FAILURE;
@@ -7418,10 +8517,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosInternalSetupReq failed on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId);
             halStatus = eHAL_STATUS_FAILURE;
          }
@@ -7436,10 +8539,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosInternalReleaseReq failed on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId);
             halStatus = eHAL_STATUS_FAILURE;
          }
@@ -7455,10 +8562,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosInternalModifyReq failed on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId);
             halStatus = eHAL_STATUS_FAILURE;
          }
@@ -7475,10 +8586,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: sme_QosReRequestAddTS failed on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       sessionId);
             halStatus = eHAL_STATUS_FAILURE;
          }
@@ -7488,10 +8603,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: On session %d unknown cmd = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, pcmd->cmdInfo.command);
          //ASSERT
          VOS_ASSERT(0);
@@ -7505,10 +8624,14 @@ static eHalStatus sme_QosProcessBufferedCmd(v_U8_t sessionId)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: cmd buffer empty",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       pSession->readyForPowerSave = VOS_TRUE;
    }
    return halStatus;
@@ -7531,14 +8654,19 @@ static eHalStatus sme_QosDeleteBufferedRequests(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: Invoked on session %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__, sessionId);
 =======
              __func__, __LINE__, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__, sessionId);
+>>>>>>> 657b0e9... prima update
    pSession = &sme_QosCb.sessionInfo[sessionId];
    pEntry = csrLLPeekHead( &pSession->bufferedCommandList, VOS_TRUE );
    if(!pEntry)
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Buffered List empty, nothing to delete on session %d",
@@ -7548,12 +8676,18 @@ static eHalStatus sme_QosDeleteBufferedRequests(tpAniSirGlobal pMac,
                 "%s: %d: Buffered List empty, nothing to delete on session %d",
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
+                "%s: %d: Buffered List empty, nothing to delete on session %d",
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       return eHAL_STATUS_FAILURE;
    }
    while( pEntry )
    {
       pNextEntry = csrLLNext( &pSession->bufferedCommandList, pEntry, VOS_TRUE );
+<<<<<<< HEAD
 <<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: deleting entry from buffered List",
@@ -7563,6 +8697,11 @@ static eHalStatus sme_QosDeleteBufferedRequests(tpAniSirGlobal pMac,
                 "%s: %d: deleting entry from buffered List",
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
+                "%s: %d: deleting entry from buffered List",
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //delete the entry from Flow List
       csrLLRemoveEntry(&pSession->bufferedCommandList, pEntry, VOS_TRUE );
       // reclaim the memory
@@ -7594,10 +8733,14 @@ eHalStatus sme_QosSaveAssocInfo(sme_QosSessionInfo *pSession, sme_QosAssocInfo *
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: pAssoc_info is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    //clean up the assoc info if already set
@@ -7615,10 +8758,14 @@ eHalStatus sme_QosSaveAssocInfo(sme_QosSessionInfo *pSession, sme_QosAssocInfo *
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: couldn't allocate memory for the bss Descriptor",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    vos_mem_copy(pBssDesc, pAssoc_info->pBssDesc, bssLen);
@@ -7655,10 +8802,14 @@ eHalStatus sme_QosSetupFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -7677,10 +8828,14 @@ eHalStatus sme_QosSetupFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Entry with flowID = %d getting notified",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info->QosFlowID);
    }
    return eHAL_STATUS_SUCCESS;
@@ -7708,10 +8863,14 @@ eHalStatus sme_QosModificationNotifyFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -7730,10 +8889,14 @@ eHalStatus sme_QosModificationNotifyFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Entry with flowID = %d getting notified",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info->QosFlowID);
    }
    return eHAL_STATUS_SUCCESS;
@@ -7757,10 +8920,14 @@ eHalStatus sme_QosModifyFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
    }
@@ -7776,10 +8943,14 @@ eHalStatus sme_QosModifyFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Deleting original entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info, flow_info->QosFlowID);
       csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
       // reclaim the memory
@@ -7813,10 +8984,14 @@ eHalStatus sme_QosDelTsIndFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -7834,10 +9009,14 @@ eHalStatus sme_QosDelTsIndFnp(tpAniSirGlobal pMac, tListElem *pEntry)
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
              "%s: %d: Deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              flow_info, flow_info->QosFlowID);
    csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
    // reclaim the memory
@@ -7870,10 +9049,14 @@ eHalStatus sme_QosReassocSuccessEvFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -7982,10 +9165,14 @@ eHalStatus sme_QosReassocSuccessEvFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info, flow_info->QosFlowID);
       csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
       // reclaim the memory
@@ -8025,10 +9212,14 @@ eHalStatus sme_QosAddTsFailureFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -8082,10 +9273,14 @@ eHalStatus sme_QosAddTsFailureFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info, flow_info->QosFlowID);
       csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
       // reclaim the memory
@@ -8129,10 +9324,14 @@ eHalStatus sme_QosAddTsSuccessFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Entry is NULL",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
       return eHAL_STATUS_FAILURE;
@@ -8147,10 +9346,14 @@ eHalStatus sme_QosAddTsSuccessFnp(tpAniSirGlobal pMac, tListElem *pEntry)
                 "%s: %d: No need to notify the HDD, the ADDTS "
                 "success is not for index = %d of the AC = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info->tspec_mask, ac);
       return eHAL_STATUS_SUCCESS;
    }
@@ -8284,10 +9487,14 @@ eHalStatus sme_QosAddTsSuccessFnp(tpAniSirGlobal pMac, tListElem *pEntry)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Deleting entry at %p with flowID %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 flow_info, flow_info->QosFlowID);
       //delete the entry from Flow List
       csrLLRemoveEntry(&sme_QosCb.flow_list, pEntry, VOS_TRUE );
@@ -8383,10 +9590,14 @@ void sme_QosPmcFullPowerCallback(void *callbackContext, eHalStatus status)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: PMC failed to put the chip in Full power",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       //ASSERT
       VOS_ASSERT(0);
    }
@@ -8496,6 +9707,7 @@ void sme_QosPmcDeviceStateUpdateInd(void *callbackContext, tPmcState pmcState)
    default:
       status = eHAL_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
                 "%s: %d: nothing to process in PMC state %d",
                 __FUNCTION__, __LINE__,
@@ -8504,6 +9716,11 @@ void sme_QosPmcDeviceStateUpdateInd(void *callbackContext, tPmcState pmcState)
                 "%s: %d: nothing to process in PMC state %d",
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
+                "%s: %d: nothing to process in PMC state %d",
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pmcState);
    }
    if(!HAL_STATUS_SUCCESS(status))
@@ -8511,10 +9728,14 @@ void sme_QosPmcDeviceStateUpdateInd(void *callbackContext, tPmcState pmcState)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: ignoring Device(PMC) state change to %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pmcState);
    }
 
@@ -8541,10 +9762,14 @@ eHalStatus sme_QosProcessOutOfUapsdMode(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
                 "%s: %d: Flow List empty, can't search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    while( pEntry )
@@ -8588,10 +9813,14 @@ eHalStatus sme_QosProcessIntoUapsdMode(tpAniSirGlobal pMac)
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Flow List empty, can't search",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
    while( pEntry )
@@ -8601,6 +9830,7 @@ eHalStatus sme_QosProcessIntoUapsdMode(tpAniSirGlobal pMac)
       pSession = &sme_QosCb.sessionInfo[flow_info->sessionId];
       //only notify the flows which already successfully setup UAPSD
 <<<<<<< HEAD
+<<<<<<< HEAD
       if((flow_info->QoSInfo.max_service_interval ||
           flow_info->QoSInfo.min_service_interval) &&
          (SME_QOS_REASON_REQ_SUCCESS == flow_info->reason))
@@ -8608,6 +9838,11 @@ eHalStatus sme_QosProcessIntoUapsdMode(tpAniSirGlobal pMac)
       if( (flow_info->QoSInfo.ts_info.psb) &&
          (SME_QOS_REASON_REQ_SUCCESS == flow_info->reason) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      if((flow_info->QoSInfo.max_service_interval ||
+          flow_info->QoSInfo.min_service_interval) &&
+         (SME_QOS_REASON_REQ_SUCCESS == flow_info->reason))
+>>>>>>> 657b0e9... prima update
       {
          flow_info->QoSCallback(pMac, flow_info->HDDcontext, 
                                 &pSession->ac_info[flow_info->ac_type].curr_QoSInfo[flow_info->tspec_mask - 1],
@@ -8669,10 +9904,14 @@ v_BOOL_t sme_QosIsTSInfoAckPolicyValid(tpAniSirGlobal pMac,
      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                "%s: %d: Session Id %d is invalid",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, __LINE__,
 =======
                __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                sessionId);
      return VOS_FALSE;
   }
@@ -8684,10 +9923,14 @@ v_BOOL_t sme_QosIsTSInfoAckPolicyValid(tpAniSirGlobal pMac,
      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                "%s: %d: Session %d is inactive",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, __LINE__,
 =======
                __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                sessionId);
      return VOS_FALSE;
   }
@@ -8697,10 +9940,14 @@ v_BOOL_t sme_QosIsTSInfoAckPolicyValid(tpAniSirGlobal pMac,
      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                "%s: %d: Session %d has an Invalid BSS Descriptor",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, __LINE__,
 =======
                __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                sessionId);
      return VOS_FALSE;
   }
@@ -8713,10 +9960,14 @@ v_BOOL_t sme_QosIsTSInfoAckPolicyValid(tpAniSirGlobal pMac,
      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                "%s: %d: On session %d unable to parse BSS IEs",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, __LINE__,
 =======
                __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                sessionId);
      return VOS_FALSE;
   }
@@ -8729,10 +9980,14 @@ v_BOOL_t sme_QosIsTSInfoAckPolicyValid(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: On session %d HT Caps aren't present but application set ack policy to HT ",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       
       vos_mem_free(pIes);
@@ -8773,10 +10028,14 @@ static eHalStatus qosIssueCommand( tpAniSirGlobal pMac, v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                          "%s: %d: fail to get command buffer for command %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__, cmdType);
 =======
                          __func__, __LINE__, cmdType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__, cmdType);
+>>>>>>> 657b0e9... prima update
             break;
         }
         pCommand->command = cmdType;
@@ -8795,10 +10054,14 @@ static eHalStatus qosIssueCommand( tpAniSirGlobal pMac, v_U8_t sessionId,
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                          "%s: %d: NULL pointer passed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__);
 =======
                          __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
                status = eHAL_STATUS_INVALID_PARAMETER;
             }
             break;
@@ -8811,10 +10074,14 @@ static eHalStatus qosIssueCommand( tpAniSirGlobal pMac, v_U8_t sessionId,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                       "%s: %d: invalid command type %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__, cmdType );
 =======
                       __func__, __LINE__, cmdType );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__, cmdType );
+>>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_INVALID_PARAMETER;
             break;
         }
@@ -8856,10 +10123,14 @@ tANI_BOOLEAN qosProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand )
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                       "%s: %d: invalid command type %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__, pCommand->command );
 =======
                       __func__, __LINE__, pCommand->command );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__, pCommand->command );
+>>>>>>> 657b0e9... prima update
             break;
         }//switch
     } while(0);
@@ -8886,10 +10157,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
              "%s: %d: Invoked",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__);
 =======
              __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
    for (sessionId = 0; sessionId < CSR_ROAM_SESSION_MAX; ++sessionId)
    {
       pSession = &sme_QosCb.sessionInfo[sessionId];
@@ -8900,10 +10175,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                 "%s: %d: Session %d is active",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId);
       if( HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs(pMac, pSession->assocInfo.pBssDesc, &pIesLocal)) )
       {
@@ -8925,10 +10204,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                          "%s: %d: On session %d AC %d has QoS active",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId, ac);
                // Does this AC require ACM?
                if(( acm_mask & (1 << (SME_QOS_EDCA_AC_VO - ac)) ) || addtsWhenACMNotSet )
@@ -8937,10 +10220,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                   VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                             "%s: %d: On session %d AC %d has ACM enabled",
 <<<<<<< HEAD
+<<<<<<< HEAD
                             __FUNCTION__, __LINE__,
 =======
                             __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                            __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                             sessionId, ac);
                   // Are any TSPECs active?
                   if( pACInfo->tspec_mask_status )
@@ -8959,11 +10246,16 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                      }
                      // Does TSPEC 1 really require UAPSD?
 <<<<<<< HEAD
+<<<<<<< HEAD
                      fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[tspec1 - 1].max_service_interval || 
                                                  pACInfo->curr_QoSInfo[tspec1 - 1].min_service_interval);
 =======
                      fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[tspec1 - 1].ts_info.psb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[tspec1 - 1].max_service_interval || 
+                                                 pACInfo->curr_QoSInfo[tspec1 - 1].min_service_interval);
+>>>>>>> 657b0e9... prima update
                      //double check whether we need to do anything
                      if( fIsUapsdNeeded )
                      {
@@ -8979,11 +10271,16 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                      {
                         // Does TSPEC 2 really require UAPSD?
 <<<<<<< HEAD
+<<<<<<< HEAD
                         fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[tspec2 - 1].max_service_interval || 
                                                     pACInfo->curr_QoSInfo[tspec2 - 1].min_service_interval);
 =======
                         fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[tspec2 - 1].ts_info.psb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[tspec2 - 1].max_service_interval || 
+                                                    pACInfo->curr_QoSInfo[tspec2 - 1].min_service_interval);
+>>>>>>> 657b0e9... prima update
                         if( fIsUapsdNeeded )
                         {
                            //No need to inform HDD
@@ -9003,10 +10300,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                                "%s: %d: On session %d AC %d has QoS enabled and ACM is set, but no TSPEC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                                __FUNCTION__, __LINE__,
 =======
                                __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                                sessionId, ac);
                      VOS_ASSERT(0);
                   }
@@ -9015,11 +10316,16 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                {
                   //Since ACM bit is not set, there should be only one QoS information for both directions.
 <<<<<<< HEAD
+<<<<<<< HEAD
                   fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[0].max_service_interval || 
                                               pACInfo->curr_QoSInfo[0].min_service_interval);
 =======
                   fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[0].ts_info.psb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  fIsUapsdNeeded = (v_BOOL_t)(pACInfo->curr_QoSInfo[0].max_service_interval || 
+                                              pACInfo->curr_QoSInfo[0].min_service_interval);
+>>>>>>> 657b0e9... prima update
                   if(fIsUapsdNeeded)
                   {
                      // we need UAPSD on this AC (and we may not currently have it)
@@ -9027,10 +10333,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
                                "%s: %d: On session %d AC %d has ACM disabled, uapsd mask now 0x%X",
 <<<<<<< HEAD
+<<<<<<< HEAD
                                __FUNCTION__, __LINE__,
 =======
                                __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                                sessionId, ac, uapsd_mask);
                   }
                }
@@ -9057,10 +10367,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
                VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                          "%s: %d: On Session %d Reassoc failed",
 <<<<<<< HEAD
+<<<<<<< HEAD
                          __FUNCTION__, __LINE__,
 =======
                          __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                         __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                          sessionId);
             }
          }
@@ -9070,10 +10384,14 @@ sme_QosStatusType sme_QosTriggerUapsdChange( tpAniSirGlobal pMac )
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                    "%s: %d: On Session %d failed to parse IEs",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId);
       }
    }
@@ -9097,10 +10415,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
              "%s: %d: Invoked on session %d for AC %d TSPEC %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, ac, tspecMask);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    pACInfo = &pSession->ac_info[ac];
@@ -9121,10 +10443,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
                    "for AC %d in state %d as Addts is pending "
                 "on other AC or waiting for full power",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 sessionId, ac, pACInfo->curr_state);
       //buffer cmd
       cmd.command = SME_QOS_RESEND_REQ;
@@ -9139,10 +10465,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
                    "%s: %d: On session %d unable to buffer the AddTS "
                    "request for AC %d TSPEC %d in state %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    sessionId, ac, tspecMask, pACInfo->curr_state);
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -9163,10 +10493,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
                    "%s: %d: sme_QosSetup returned in SME_QOS_QOS_ON state on "
                    "AC %d with status =%d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    ac, status);
          if(SME_QOS_STATUS_SETUP_REQ_PENDING_RSP != status)
          {
@@ -9187,10 +10521,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
                       "%s: %d: UAPSD is setup already status = %d "
                       "returned by sme_QosSetup",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       status);  
          }
          else
@@ -9199,10 +10537,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                       "%s: %d: unexpected status = %d returned by sme_QosSetup",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       __FUNCTION__, __LINE__,
 =======
                       __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                       status);
          }
       }
@@ -9212,10 +10554,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: Re-Add request in state = %d  buffer the request",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pACInfo->curr_state);
       cmd.command = SME_QOS_RESEND_REQ;
       cmd.pMac = pMac;
@@ -9228,10 +10574,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                    "%s: %d: couldn't buffer the readd request in state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    pACInfo->curr_state );
          // unable to buffer the request
          // nothing is pending so vote powersave back on
@@ -9248,10 +10598,14 @@ static sme_QosStatusType sme_QosReRequestAddTS(tpAniSirGlobal pMac,
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                 "%s: %d: ReAdd request in unexpected state = %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__,
 =======
                 __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                 pACInfo->curr_state );
       // unable to service the request
       // nothing is pending so vote powersave back on
@@ -9288,10 +10642,14 @@ static eHalStatus sme_QosRequestReassoc(tpAniSirGlobal pMac, tANI_U8 sessionId,
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH,
              "%s: %d: Invoked on session %d with UAPSD mask 0x%X",
 <<<<<<< HEAD
+<<<<<<< HEAD
              __FUNCTION__, __LINE__,
 =======
              __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
              sessionId, pModFields->uapsd_mask);
    pSession = &sme_QosCb.sessionInfo[sessionId];
    status = csrReassoc(pMac, sessionId, pModFields, &pSession->roamID, fForce);
@@ -9306,10 +10664,14 @@ static eHalStatus sme_QosRequestReassoc(tpAniSirGlobal pMac, tANI_U8 sessionId,
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
                    "%s: %d: AC[%d] is in state [%d]",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__, __LINE__,
 =======
                    __func__, __LINE__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__, __LINE__,
+>>>>>>> 657b0e9... prima update
                    ac, pACInfo->curr_state );
          // If it is already in HANDOFF state, don't do anything since we
          // MUST preserve the previous state and sme_QosStateTransition
@@ -9334,10 +10696,14 @@ static v_U32_t sme_QosAssignFlowId(void)
                 "%s: %d: Software Test made the flow counter wrap, "
                 "QoS may no longer be functional",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
 =======
                 __func__, __LINE__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, __LINE__);
+>>>>>>> 657b0e9... prima update
       sme_QosCb.nextFlowId = SME_QOS_MIN_FLOW_ID;
    }
    else

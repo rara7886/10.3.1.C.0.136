@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -69,14 +72,20 @@
 #include "cfgDef.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     #include <wniCfgAp.h>
 #else
     #include <wniCfgSta.h>
 #endif
+<<<<<<< HEAD
 =======
     #include <wniCfgSta.h>
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------*/
 /* CFG miscellaneous definition                                       */

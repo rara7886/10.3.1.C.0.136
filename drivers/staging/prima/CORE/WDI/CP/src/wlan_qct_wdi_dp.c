@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -96,10 +99,13 @@
 
 #include "wlan_qct_dev_defs.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define MAC_ADDR_ARRAY(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 #define MAC_ADDRESS_STR "%02x:%02x:%02x:%02x:%02x:%02x"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 extern uint8 WDA_IsWcnssWlanCompiledVersionGreaterThanOrEqual(uint8 major, uint8 minor, uint8 version, uint8 revision);
 extern uint8 WDA_IsWcnssWlanReportedVersionGreaterThanOrEqual(uint8 major, uint8 minor, uint8 version, uint8 revision);
@@ -144,14 +150,20 @@ WDI_DP_UtilsInit
   WDI_RxBdType*  pAmsduRxBdFixMask; 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
     // WQ to be used for filling the TxBD
   pWDICtx->ucDpuRF = BMUWQ_BTQM_TX_MGMT; 
 #endif //FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+<<<<<<< HEAD
 =======
     // WQ to be used for filling the TxBD
   pWDICtx->ucDpuRF = BMUWQ_BTQM_TX_MGMT; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_PERF
   pWDICtx->uBdSigSerialNum = 0;
@@ -390,11 +402,14 @@ WDI_TxBdFastFwd
     ucTxFlag:    different option setting for TX.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     ucProtMgmtFrame: for management frames, whether the frame is
                      protected (protect bit is set in FC)
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     uTimeStamp:      Timestamp when the frame was received from HDD. (usec)
    
    @return
@@ -414,9 +429,12 @@ WDI_FillTxBd
     void*                  pTxBd, 
     wpt_uint8              ucTxFlag, 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     wpt_uint8              ucProtMgmtFrame,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     wpt_uint32             uTimeStamp,
     wpt_uint8*             staIndex
 )
@@ -480,18 +498,26 @@ WDI_FillTxBd
     pBd->bdt   = HWBD_TYPE_GENERIC; 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+>>>>>>> 657b0e9... prima update
     // Route all trigger enabled frames to FW WQ, for FW to suspend trigger frame generation 
     // when no traffic is exists on trigger enabled ACs
     if(ucTxFlag & WDI_TRIGGER_ENABLED_AC_MASK) {
         pBd->dpuRF = pWDICtx->ucDpuRF; 
     } else 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif //FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif //FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+>>>>>>> 657b0e9... prima update
     {
         pBd->dpuRF = BMUWQ_BTQM_TX_MGMT; 
     }
@@ -573,6 +599,7 @@ WDI_FillTxBd
             pBd->bdRate = (ucUnicastDst)? WDI_TXBD_BDRATE_DEFAULT : WDI_BDRATE_BCDATA_FRAME;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
         if ( ucTxFlag & WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME)
@@ -581,6 +608,8 @@ WDI_FillTxBd
         }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         pBd->rmf    = WDI_RMF_DISABLED;     
 
         /* sanity: Might already be set by caller, but enforce it here again */
@@ -642,6 +671,7 @@ WDI_FillTxBd
          --------------------------------------------------------------------*/
          /* apply to both ucast/mcast mgmt frames */
 <<<<<<< HEAD
+<<<<<<< HEAD
          if (useStaRateForBcastFrames)
          {
              pBd->bdRate = (ucUnicastDst)? WDI_BDRATE_BCMGMT_FRAME : WDI_TXBD_BDRATE_DEFAULT; 
@@ -655,22 +685,23 @@ WDI_FillTxBd
 =======
          /* Probe requests are sent using BD rate */
          if( ucSubType ==  WDI_MAC_MGMT_PROBE_REQ )
+=======
+         if (useStaRateForBcastFrames)
+>>>>>>> 657b0e9... prima update
          {
-             pBd->bdRate = WDI_BDRATE_BCMGMT_FRAME;
+             pBd->bdRate = (ucUnicastDst)? WDI_BDRATE_BCMGMT_FRAME : WDI_TXBD_BDRATE_DEFAULT; 
          }
          else
          {
-             if (useStaRateForBcastFrames)
-             {
-                 pBd->bdRate = (ucUnicastDst)? WDI_BDRATE_BCMGMT_FRAME : WDI_TXBD_BDRATE_DEFAULT;
-             }
-             else
-             {
-                 pBd->bdRate = WDI_BDRATE_BCMGMT_FRAME;
-             }
+             pBd->bdRate = WDI_BDRATE_BCMGMT_FRAME;
          }
+<<<<<<< HEAD
          if ( ucTxFlag & WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+         if ( ucTxFlag & WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME) 
+>>>>>>> 657b0e9... prima update
          {
            pBd->bdRate = WDI_BDRATE_CTRL_FRAME;
          }
@@ -723,11 +754,15 @@ WDI_FillTxBd
         uTxBdSignature = WDI_TXBD_SIG_MGMT_MAGIC; 
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(ucTxFlag & WDI_USE_SELF_STA_REQUESTED_MASK)
 =======
         if((ucTxFlag & WDI_USE_SELF_STA_REQUESTED_MASK) &&
             !(ucIsRMF && ucProtMgmtFrame))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if(ucTxFlag & WDI_USE_SELF_STA_REQUESTED_MASK)
+>>>>>>> 657b0e9... prima update
         {
 #ifdef HAL_SELF_STA_PER_BSS
             // Get the (self) station index from ADDR2, which should be the self MAC addr
@@ -737,12 +772,16 @@ WDI_FillTxBd
            {
                 WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR, "WDI_STATableFindStaidByAddr failed");
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return WDI_STATUS_E_FAILURE;
 =======
                 WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR, "STA ID = %d " MAC_ADDRESS_STR,
                                         ucStaId, MAC_ADDR_ARRAY(*(wpt_macAddr*)pAddr2));
                 return WDI_STATUS_E_NOT_ALLOWED;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
            }
 #else
             ucStaId = pWDICtx->ucSelfStaId;
@@ -857,10 +896,14 @@ WDI_FillTxBd
               if (WDI_STATUS_SUCCESS != wdiStatus)
               {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return WDI_STATUS_E_FAILURE;
 =======
                 return WDI_STATUS_E_NOT_ALLOWED;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
               }
 
               // Get the Bss Index related to the staId
@@ -908,9 +951,12 @@ WDI_FillTxBd
             if(ucIsRMF && pSta->rmfEnabled)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 pBd->dpuNE = !ucProtMgmtFrame;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                 pBd->rmf = 1;
                 if(!ucUnicastDst)
                     pBd->dpuDescIdx = pSta->bcastMgmtDpuIndex; /* IGTK */
@@ -972,6 +1018,7 @@ WDI_FillTxBd
             return VOS_STATUS_E_FAILURE;
         } */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     } 
     
@@ -994,6 +1041,11 @@ WDI_FillTxBd
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    } 
+    
+>>>>>>> 657b0e9... prima update
     /*------------------------------------------------------------------------
        Over SDIO bus, SIF won't swap data bytes to/from data FIFO. 
        In order for MAC modules to recognize BD in Riva's default endian
@@ -1008,10 +1060,14 @@ WDI_FillTxBd
     pBd->txBdSignature = uTxBdSignature ;
 #endif        
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
     return wdiStatus;
 }/*WDI_FillTxBd*/
 
@@ -1097,6 +1153,7 @@ WDI_SwapTxBd(wpt_uint8 *pBd)
  @brief WDI_RxAmsduBdFix - fix for HW issue for AMSDU 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   
  @param   pWDICtx:       Context to the WDI
           pBDHeader - pointer to the BD header
@@ -1107,6 +1164,12 @@ WDI_SwapTxBd(wpt_uint8 *pBd)
           pBDHeader - pointer to the BD header
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+ @param   pWDICtx:       Context to the WDI
+          pBDHeader - pointer to the BD header
+  
+>>>>>>> 657b0e9... prima update
  @return None
 */
 void 

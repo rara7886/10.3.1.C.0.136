@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -172,6 +175,7 @@ typedef struct sPmcInfo
                                                                                 has finished */ 
     void *impsCallbackContext;  /* value to be passed as parameter to routine specified above */
 <<<<<<< HEAD
+<<<<<<< HEAD
     tPalTimerHandle hImpsTimer;  /* timer to use with IMPS */
     vos_timer_t hTrafficTimer;  /* timer to measure traffic for BMPS */
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
@@ -180,12 +184,19 @@ typedef struct sPmcInfo
     tPalTimerHandle hExitPowerSaveTimer;  /* timer for deferred exiting of power save mode */
 =======
     vos_timer_t hImpsTimer;  /* timer to use with IMPS */
+=======
+    tPalTimerHandle hImpsTimer;  /* timer to use with IMPS */
+>>>>>>> 657b0e9... prima update
     vos_timer_t hTrafficTimer;  /* timer to measure traffic for BMPS */
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
-    vos_timer_t hDiagEvtTimer;  /* timer to report PMC state through DIAG event */
+    tPalTimerHandle hDiagEvtTimer;  /* timer to report PMC state through DIAG event */
 #endif
+<<<<<<< HEAD
     vos_timer_t hExitPowerSaveTimer;  /* timer for deferred exiting of power save mode */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tPalTimerHandle hExitPowerSaveTimer;  /* timer for deferred exiting of power save mode */
+>>>>>>> 657b0e9... prima update
     tDblLinkList powerSaveCheckList; /* power save check routine list */
     tDblLinkList requestFullPowerList; /* request full power callback routine list */
     tANI_U32 cLastTxUnicastFrames;  /* transmit unicast frame count at last BMPS traffic timer expiration */
@@ -226,6 +237,7 @@ typedef struct sPmcInfo
     void *wakeReasonIndCBContext;  /* value to be passed as parameter to routine specified above */
 #endif // WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 /* If TRUE driver will go to BMPS only if host operatiing system asks to enter BMPS.
@@ -236,6 +248,8 @@ typedef struct sPmcInfo
     tANI_U8     ImpsReqFailCnt;
     tANI_U8     ImpsReqTimerfailCnt;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 } tPmcInfo, *tpPmcInfo;
 
 

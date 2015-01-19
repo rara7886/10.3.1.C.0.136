@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,6 +60,7 @@
 
 #include "wniApi.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
 #include "wniCfgAp.h"
 #else
@@ -67,9 +71,21 @@
 #include "halCommonApi.h"
 #endif
 =======
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+#include "wniCfgAp.h"
+#else
+>>>>>>> 657b0e9... prima update
 #include "wniCfgSta.h"
+#endif
 #include "aniGlobal.h"
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halCommonApi.h"
+#endif
+>>>>>>> 657b0e9... prima update
 #include "schApi.h"
 #include "utilsApi.h"
 #include "limApi.h"
@@ -82,6 +98,7 @@
 
 #include "parserApi.h"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 tSirRetStatus
@@ -98,6 +115,8 @@ limValidateIEInformationInProbeRspFrame (tANI_U8 *pRxPacketInfo)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**
  * limProcessProbeRspFrame
  *
@@ -134,6 +153,7 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
     tANI_U8 wmeEnabled =    false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
                                                 (void **)&pProbeRsp, sizeof(tSirProbeRespBeacon)))
     {
@@ -144,6 +164,12 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
     {
         limLog(pMac, LOGE, FL("Unable to allocate memory in limProcessProbeRspFrame") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
+                                                (void **)&pProbeRsp, sizeof(tSirProbeRespBeacon)))
+    {
+        limLog(pMac, LOGE, FL("Unable to PAL allocate memory in limProcessProbeRspFrame\n") );
+>>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -151,12 +177,18 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
     pProbeRsp->wpa.length               = 0;
     pProbeRsp->propIEinfo.apName.length = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
     pProbeRsp->propIEinfo.aniIndicator  = 0;
     pProbeRsp->propIEinfo.wdsLength     = 0;
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
     pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
@@ -167,6 +199,7 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
              WDA_GET_RX_MPDU_LEN(pRxPacketInfo));
     limPrintMacAddr(pMac, pHdr->sa, LOG2);)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
    {
@@ -186,13 +219,15 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
 
    // Validate IE information before processing Probe Response Frame
    if (limValidateIEInformationInProbeRspFrame(pRxPacketInfo) != eSIR_SUCCESS)
+=======
+   if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
+>>>>>>> 657b0e9... prima update
    {
-       PELOG1(limLog(pMac, LOG1,
-                 FL("Parse error ProbeResponse, length=%d"), frameLen);)
-       vos_mem_free(pProbeRsp);
+       palFreeMemory(pMac->hHdd, pProbeRsp);    
        return;
    }
 >>>>>>> d97af3b... add prima wlan driver
+
 
     /**
      * Expect Probe Response only when
@@ -211,17 +246,22 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
      * Ignore Probe Response frame in all other states
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
         // TO SUPPORT BT-AMP
 =======
         /*  */
    // TO SUPPORT BT-AMP
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        // TO SUPPORT BT-AMP
+>>>>>>> 657b0e9... prima update
     if (((pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) ||   //mlm state check should be global - 18th oct
         (pMac->lim.gLimMlmState == eLIM_MLM_PASSIVE_SCAN_STATE) ||     //mlm state check should be global - 18th oct
         (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE) ||            //mlm state check should be global - 18th oct 
         (psessionEntry->limMlmState == eLIM_MLM_WT_JOIN_BEACON_STATE) ||
         (psessionEntry->limMlmState == eLIM_MLM_LINK_ESTABLISHED_STATE) )||
         ((GET_LIM_SYSTEM_ROLE(psessionEntry) == eLIM_STA_IN_IBSS_ROLE) &&
+<<<<<<< HEAD
 <<<<<<< HEAD
          (psessionEntry->limMlmState == eLIM_MLM_BSS_STARTED_STATE)))
     {
@@ -243,29 +283,25 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
 =======
         (psessionEntry->limMlmState == eLIM_MLM_BSS_STARTED_STATE)) ||
         pMac->fScanOffload)
+=======
+         (psessionEntry->limMlmState == eLIM_MLM_BSS_STARTED_STATE)))
+>>>>>>> 657b0e9... prima update
     {
         frameLen = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo);
-
-        if (pMac->lim.gLimBackgroundScanMode == eSIR_ROAMING_SCAN)
-        {
-            VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
-                      FL("Probe Resp Frame Received: BSSID " MAC_ADDRESS_STR " (RSSI %d)"),
-                      MAC_ADDR_ARRAY(pHdr->bssId),
-                      (uint)abs((tANI_S8)WDA_GET_RX_RSSI_DB(pRxPacketInfo)));
-        }
 
         // Get pointer to Probe Response frame body
         pBody = WDA_GET_RX_MPDU_DATA(pRxPacketInfo);
 
-        if (sirConvertProbeFrame2Struct(pMac, pBody, frameLen, pProbeRsp) == eSIR_FAILURE ||
-            !pProbeRsp->ssidPresent) // Enforce Mandatory IEs
+        if (sirConvertProbeFrame2Struct(pMac, pBody, frameLen, pProbeRsp)
+                          ==eSIR_FAILURE)
         {
             PELOG1(limLog(pMac, LOG1,
-               FL("Parse error ProbeResponse, length=%d"),
+               FL("PArse error ProbeResponse, length=%d\n"),
                frameLen);)
-            vos_mem_free(pProbeRsp);
+            palFreeMemory(pMac->hHdd, pProbeRsp);
             return;
         }
+<<<<<<< HEAD
 
         if (pMac->fScanOffload)
         {
@@ -275,6 +311,9 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
 
         //To Support BT-AMP
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                                                            //To Support BT-AMP                    
+>>>>>>> 657b0e9... prima update
         if ((pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) ||    //mlm state check should be global - 18th oct
             (pMac->lim.gLimMlmState == eLIM_MLM_PASSIVE_SCAN_STATE))
             limCheckAndAddBssDescription(pMac, pProbeRsp, pRxPacketInfo, 
@@ -282,6 +321,9 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
         else if (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE)           //mlm state check should be global - 18th oct
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined(ANI_PRODUCT_TYPE_AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
             // STA/AP is in learn mode
             /* Not sure whether the below 2 lines are needed for the station. TODO If yes, this should be 
@@ -294,14 +336,18 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                FL("Parsed WDS info in ProbeRsp frames: wdsLength=%d\n"),
                pProbeRsp->propIEinfo.wdsLength);)
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         }
         else if (psessionEntry->limMlmState ==
                                      eLIM_MLM_WT_JOIN_BEACON_STATE)
         {
             if( psessionEntry->beacon != NULL )//Either Beacon/probe response is required. Hence store it in same buffer.
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 palFreeMemory(pMac->hHdd, psessionEntry->beacon);
                 psessionEntry->beacon = NULL;
@@ -319,6 +365,15 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             psessionEntry->beacon = vos_mem_malloc(psessionEntry->bcnLen);
             if ( NULL == psessionEntry->beacon )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                palFreeMemory(pMac->hHdd, psessionEntry->beacon);
+                psessionEntry->beacon = NULL;
+            }
+            psessionEntry->bcnLen = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo);
+            if ((palAllocateMemory(pMac->hHdd, (void**)&psessionEntry->beacon,
+                                   psessionEntry->bcnLen))
+                != eHAL_STATUS_SUCCESS)
+>>>>>>> 657b0e9... prima update
             {
                 PELOGE(limLog(pMac, LOGE,
                               FL("Unable to allocate memory to store beacon"));)
@@ -326,6 +381,7 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             else
             {
                 //Store the Beacon/ProbeRsp. This is sent to csr/hdd in join cnf response. 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 palCopyMemory(pMac->hHdd, psessionEntry->beacon,
                               WDA_GET_RX_MPDU_DATA(pRxPacketInfo),
@@ -335,6 +391,11 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                              WDA_GET_RX_MPDU_DATA(pRxPacketInfo),
                              psessionEntry->bcnLen);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                palCopyMemory(pMac->hHdd, psessionEntry->beacon,
+                              WDA_GET_RX_MPDU_DATA(pRxPacketInfo),
+                              psessionEntry->bcnLen);
+>>>>>>> 657b0e9... prima update
             }
 
             // STA in WT_JOIN_BEACON_STATE
@@ -356,14 +417,19 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             {
                 /// Could not get BSSID from CFG. Log error.
 <<<<<<< HEAD
+<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("could not retrieve BSSID\n"));
 =======
                 limLog(pMac, LOGP, FL("could not retrieve BSSID"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                limLog(pMac, LOGP, FL("could not retrieve BSSID\n"));
+>>>>>>> 657b0e9... prima update
             }
             #endif //TO SUPPORT BT-AMP
             sirCopyMacAddr(currentBssId,psessionEntry->bssId);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             if ( !palEqualMemory( pMac->hHdd,currentBssId, pHdr->bssId, sizeof(tSirMacAddr)) )
             {
@@ -373,6 +439,11 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             {
                 vos_mem_free(pProbeRsp);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            if ( !palEqualMemory( pMac->hHdd,currentBssId, pHdr->bssId, sizeof(tSirMacAddr)) )
+            {
+                palFreeMemory(pMac->hHdd, pProbeRsp);    
+>>>>>>> 657b0e9... prima update
                 return;
             }
 
@@ -380,10 +451,14 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             {
                 limLog(pMac, LOGW,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     FL("Received Probe Resp from AP. So it is alive!!\n"));
 =======
                     FL("Received Probe Resp from AP. So it is alive!!"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    FL("Received Probe Resp from AP. So it is alive!!\n"));
+>>>>>>> 657b0e9... prima update
 
                 if (pProbeRsp->HTInfo.present)
                     limReceivedHBHandler(pMac, (tANI_U8)pProbeRsp->HTInfo.primaryChannel, psessionEntry);
@@ -392,6 +467,9 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined ANI_PRODUCT_TYPE_CLIENT || defined (ANI_AP_CLIENT_SDK)
             
             if (psessionEntry->limSystemRole == eLIM_STA_ROLE)
@@ -407,11 +485,14 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     limCancelDot11hQuiet(pMac, psessionEntry);
                 }
 
+<<<<<<< HEAD
 =======
             
             if (psessionEntry->limSystemRole == eLIM_STA_ROLE)
             {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                 if (pProbeRsp->channelSwitchPresent ||
                     pProbeRsp->propIEinfo.propChannelSwitchPresent)
                 {
@@ -424,9 +505,13 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             }
         
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             
             /**
             * Now Process EDCA Parameters, if EDCAParamSet count is different.
@@ -442,10 +527,14 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             limGetWmeMode(psessionEntry, &wmeEnabled);
            PELOG2(limLog(pMac, LOG2,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     FL("wmeEdcaPresent: %d wmeEnabled: %d, edcaPresent: %d, qosEnabled: %d,  edcaParams.qosInfo.count: %d schObject.gLimEdcaParamSetCount: %d\n"),
 =======
                     FL("wmeEdcaPresent: %d wmeEnabled: %d, edcaPresent: %d, qosEnabled: %d,  edcaParams.qosInfo.count: %d schObject.gLimEdcaParamSetCount: %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    FL("wmeEdcaPresent: %d wmeEnabled: %d, edcaPresent: %d, qosEnabled: %d,  edcaParams.qosInfo.count: %d schObject.gLimEdcaParamSetCount: %d\n"),
+>>>>>>> 657b0e9... prima update
                           pProbeRsp->wmeEdcaPresent, wmeEnabled, pProbeRsp->edcaPresent, qosEnabled,
                           pProbeRsp->edcaParams.qosInfo.count, psessionEntry->gLimEdcaParamSetCount);)
             if (((pProbeRsp->wmeEdcaPresent && wmeEnabled) ||
@@ -454,10 +543,14 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             {
                 if (schBeaconEdcaProcess(pMac, &pProbeRsp->edcaParams, psessionEntry) != eSIR_SUCCESS)
 <<<<<<< HEAD
+<<<<<<< HEAD
                     PELOGE(limLog(pMac, LOGE, FL("EDCA parameter processing error\n"));)
 =======
                     PELOGE(limLog(pMac, LOGE, FL("EDCA parameter processing error"));)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    PELOGE(limLog(pMac, LOGE, FL("EDCA parameter processing error\n"));)
+>>>>>>> 657b0e9... prima update
                 else if (pStaDs != NULL)
                 {
                     // If needed, downgrade the EDCA parameters
@@ -469,6 +562,7 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                         limSendEdcaParams(pMac, psessionEntry->gLimEdcaParamsActive, pStaDs->bssId, eANI_BOOLEAN_FALSE);
                 }
                 else
+<<<<<<< HEAD
 <<<<<<< HEAD
                     PELOGE(limLog(pMac, LOGE, FL("Self Entry missing in Hash Table\n"));)
 
@@ -484,6 +578,11 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                limDetectChangeInApCapabilities(pMac, pProbeRsp, psessionEntry);
            }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    PELOGE(limLog(pMac, LOGE, FL("Self Entry missing in Hash Table\n"));)
+
+            }
+>>>>>>> 657b0e9... prima update
         }
         else if ((psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE) &&
                  (psessionEntry->limMlmState == eLIM_MLM_BSS_STARTED_STATE))
@@ -491,10 +590,14 @@ limProcessProbeRspFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
     } // if ((pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) || ...
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     palFreeMemory(pMac->hHdd, pProbeRsp);
 =======
     vos_mem_free(pProbeRsp);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palFreeMemory(pMac->hHdd, pProbeRsp);
+>>>>>>> 657b0e9... prima update
     // Ignore Probe Response frame in all other states
     return;
 } /*** end limProcessProbeRspFrame() ***/
@@ -509,6 +612,7 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     tSirProbeRespBeacon    *pProbeRsp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
                                                 (void **)&pProbeRsp, sizeof(tSirProbeRespBeacon)))
     {
@@ -519,6 +623,12 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     {
         limLog(pMac, LOGE, FL("Unable to allocate memory in limProcessProbeRspFrameNoSession") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
+                                                (void **)&pProbeRsp, sizeof(tSirProbeRespBeacon)))
+    {
+        limLog(pMac, LOGE, FL("Unable to PAL allocate memory in limProcessProbeRspFrameNoSession\n") );
+>>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -526,12 +636,18 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     pProbeRsp->wpa.length               = 0;
     pProbeRsp->propIEinfo.apName.length = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
     pProbeRsp->propIEinfo.aniIndicator  = 0;
     pProbeRsp->propIEinfo.wdsLength     = 0;
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
     pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
@@ -542,6 +658,7 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
              WDA_GET_RX_MPDU_LEN(pRxPacketInfo));
     limPrintMacAddr(pMac, pHdr->sa, LOG2);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
     {
@@ -568,19 +685,25 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
 #endif
      // Validate IE information before processing Probe Response Frame
     if (limValidateIEInformationInProbeRspFrame(pRxPacketInfo) != eSIR_SUCCESS)
+=======
+    if (limDeactivateMinChannelTimerDuringScan(pMac) != eSIR_SUCCESS)
+>>>>>>> 657b0e9... prima update
     {
-       PELOG1(limLog(pMac, LOG1,FL("Parse error ProbeResponse, length=%d"),
-              frameLen);)
-       vos_mem_free(pProbeRsp);
-       return;
+        palFreeMemory(pMac->hHdd, pProbeRsp);
+        return;
     }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
     /*  Since there is no psessionEntry, PE cannot be in the following states:
      *   - eLIM_MLM_WT_JOIN_BEACON_STATE
      *   - eLIM_MLM_LINK_ESTABLISHED_STATE
      *   - eLIM_MLM_BSS_STARTED_STATE
      *  Hence, expect Probe Response only when
      *   1. STA is in scan mode waiting for Beacon/Probe response 
+<<<<<<< HEAD
 <<<<<<< HEAD
      *  
      *  Ignore Probe Response frame in all other states
@@ -639,11 +762,18 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     }
     else if( (pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) ||
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     *  
+     *  Ignore Probe Response frame in all other states
+     */
+    if( (pMac->lim.gLimMlmState == eLIM_MLM_WT_PROBE_RESP_STATE) ||
+>>>>>>> 657b0e9... prima update
         (pMac->lim.gLimMlmState == eLIM_MLM_PASSIVE_SCAN_STATE)  ||     //mlm state check should be global - 18th oct
         (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE) )
     {
         frameLen = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         if (pMac->lim.gLimBackgroundScanMode == eSIR_ROAMING_SCAN)
@@ -655,11 +785,14 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
         }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         // Get pointer to Probe Response frame body
         pBody = WDA_GET_RX_MPDU_DATA(pRxPacketInfo);
 
         if (sirConvertProbeFrame2Struct(pMac, pBody, frameLen, pProbeRsp) == eSIR_FAILURE)
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             limLog(pMac, LOG1, FL("Parse error ProbeResponse, length=%d\n"), frameLen);
             palFreeMemory(pMac->hHdd, pProbeRsp);
@@ -667,6 +800,10 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
             limLog(pMac, LOG1, FL("Parse error ProbeResponse, length=%d"), frameLen);
             vos_mem_free(pProbeRsp);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOG1, FL("Parse error ProbeResponse, length=%d\n"), frameLen);
+            palFreeMemory(pMac->hHdd, pProbeRsp);
+>>>>>>> 657b0e9... prima update
             return;
         }
 
@@ -676,6 +813,9 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
         else if (pMac->lim.gLimMlmState == eLIM_MLM_LEARN_STATE)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined(ANI_PRODUCT_TYPE_AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
             // STA/AP is in learn mode
             /* Not sure whether the below 2 lines are needed for the station. TODO If yes, this should be 
@@ -688,6 +828,7 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
                FL("Parsed WDS info in ProbeRsp frames: wdsLength=%d\n"),
                pProbeRsp->propIEinfo.wdsLength);
 #endif
+<<<<<<< HEAD
         }
     } 
     palFreeMemory(pMac->hHdd, pProbeRsp);
@@ -696,5 +837,10 @@ limProcessProbeRspFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo)
     } 
     vos_mem_free(pProbeRsp);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        }
+    } 
+    palFreeMemory(pMac->hHdd, pProbeRsp);
+>>>>>>> 657b0e9... prima update
     return;
 } /*** end limProcessProbeRspFrameNew() ***/

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -383,9 +386,13 @@ VOS_STATUS WLANTL_ChainFrontPkts
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
  
    FUNCTION    WLANTL_FillReplayCounter
@@ -417,8 +424,12 @@ void WLANTL_FillReplayCounter
    v_U8_t                 ucSlotIndex
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /*ANI_CHIPSET_VOLANS*/
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /*ANI_CHIPSET_VOLANS*/
+>>>>>>> 657b0e9... prima update
 
 #endif /* #ifndef WLAN_QCT_TLI_H */

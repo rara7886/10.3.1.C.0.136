@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -71,6 +74,7 @@ enum
     eLIM_REASSOC_FAIL_TIMER,
     eLIM_PRE_AUTH_CLEANUP_TIMER,
 <<<<<<< HEAD
+<<<<<<< HEAD
     eLIM_HEART_BEAT_TIMER,    
     eLIM_BACKGROUND_SCAN_TIMER,
 #ifdef ANI_PRODUCT_TYPE_AP
@@ -80,6 +84,13 @@ enum
     eLIM_HEART_BEAT_TIMER,
     eLIM_BACKGROUND_SCAN_TIMER,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    eLIM_HEART_BEAT_TIMER,    
+    eLIM_BACKGROUND_SCAN_TIMER,
+#ifdef ANI_PRODUCT_TYPE_AP
+    eLIM_LEARN_INTERVAL_TIMER,
+#endif
+>>>>>>> 657b0e9... prima update
     eLIM_KEEPALIVE_TIMER,
     eLIM_CNF_WAIT_TIMER,
     eLIM_AUTH_RSP_TIMER,
@@ -90,6 +101,7 @@ enum
     eLIM_LEARN_DURATION_TIMER,
     eLIM_QUIET_TIMER,
     eLIM_QUIET_BSS_TIMER,
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     eLIM_WPS_OVERLAP_TIMER, 
@@ -102,15 +114,26 @@ enum
 #endif
 =======
     eLIM_WPS_OVERLAP_TIMER,
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    eLIM_WPS_OVERLAP_TIMER, 
+#endif
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
     eLIM_FT_PREAUTH_RSP_TIMER,
 #endif
+#ifdef WLAN_FEATURE_P2P
     eLIM_REMAIN_CHN_TIMER,
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
     eLIM_PERIODIC_PROBE_REQ_TIMER,
 #ifdef FEATURE_WLAN_CCX
     eLIM_TSM_TIMER,
 #endif
+<<<<<<< HEAD
 <<<<<<< HEAD
 };
 
@@ -127,15 +150,17 @@ void limCreateTimers(tpAniSirGlobal);
     eLIM_PERIODIC_JOIN_PROBE_REQ_TIMER,
     eLIM_INSERT_SINGLESHOT_NOA_TIMER,
     eLIM_CONVERT_ACTIVE_CHANNEL_TO_PASSIVE
+=======
+>>>>>>> 657b0e9... prima update
 };
 
-#define LIM_DISASSOC_DEAUTH_ACK_TIMEOUT         500
-#define LIM_INSERT_SINGLESHOTNOA_TIMEOUT_VALUE  500
-
-
 // Timer Handler functions
+<<<<<<< HEAD
 v_UINT_t limCreateTimers(tpAniSirGlobal);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void limCreateTimers(tpAniSirGlobal);
+>>>>>>> 657b0e9... prima update
 void limTimerHandler(void *, tANI_U32);
 void limAuthResponseTimerHandler(void *, tANI_U32);
 void limAssocFailureTimerHandler(void *, tANI_U32);
@@ -152,12 +177,18 @@ void limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal, tANI_U32, tANI_U16);
 void limActivateCnfTimer(tpAniSirGlobal, tANI_U16, tpPESession);
 void limActivateAuthRspTimer(tpAniSirGlobal, tLimPreAuthNode *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 void limUpdateOlbcCacheTimerHandler(void *, tANI_U32);
 #endif
 =======
 void limUpdateOlbcCacheTimerHandler(void *, tANI_U32);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+void limUpdateOlbcCacheTimerHandler(void *, tANI_U32);
+#endif
+>>>>>>> 657b0e9... prima update
 void limAddtsResponseTimerHandler(void *, tANI_U32);
 void limChannelSwitchTimerHandler(void *, tANI_U32);
 void limQuietTimerHandler(void *, tANI_U32);
@@ -179,13 +210,17 @@ void limCBScanDurationTimerHandler(void *, tANI_U32);
  *
  * @param  pMac    - Pointer to Global MAC structure
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * @param  psessionEntry - Pointer to PE session entry
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  *
  * @return TX_SUCCESS - timer is activated
  *         errors - fail to start the timer
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 v_UINT_t limActivateHearBeatTimer(tpAniSirGlobal pMac);
 
@@ -195,12 +230,19 @@ void limWPSOverlapTimerHandler(void *pMacGlobal, tANI_U32 param);
 #endif
 =======
 v_UINT_t limActivateHearBeatTimer(tpAniSirGlobal pMac, tpPESession psessionEntry);
+=======
+v_UINT_t limActivateHearBeatTimer(tpAniSirGlobal pMac);
+>>>>>>> 657b0e9... prima update
 
+#ifdef WLAN_SOFTAP_FEATURE
 #if 0
 void limWPSOverlapTimerHandler(void *pMacGlobal, tANI_U32 param);
 #endif
+<<<<<<< HEAD
 #ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
 void limMissedBeaconInActiveMode(void *pMacGlobal, tpPESession psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 #endif /* __LIM_TIMER_UTILS_H */

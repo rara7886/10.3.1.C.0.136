@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,10 +46,13 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #if !defined( __SME_FTAPI_H )
 #define __SME_FTAPI_H
 
@@ -58,6 +64,7 @@
   \brief macros and prototype for SME APIs
   
 <<<<<<< HEAD
+<<<<<<< HEAD
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
@@ -66,6 +73,11 @@
    
    Qualcomm Technologies Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   
+   Qualcomm Confidential and Proprietary.
+>>>>>>> 657b0e9... prima update
   
   ========================================================================*/
 typedef enum eFTIEState
@@ -97,6 +109,7 @@ typedef struct sFTSMEContext
     // Saved pFTPreAuthRsp
     tpSirFTPreAuthRsp psavedFTPreAuthRsp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     // Time to trigger reassoc once pre-auth is successful
     tPalTimerHandle   preAuthReassocIntvlTimer;
@@ -108,6 +121,11 @@ typedef struct sFTSMEContext
     vos_timer_t       preAuthReassocIntvlTimer;
     tCsrRoamSetKey    *pCsrFTKeyInfo;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    // Time to trigger reassoc once pre-auth is successful
+    tPalTimerHandle   preAuthReassocIntvlTimer;
+>>>>>>> 657b0e9... prima update
 
 } tftSMEContext, *tpftSMEContext;
 
@@ -117,15 +135,20 @@ typedef struct sFTSMEContext
 void sme_FTOpen(tHalHandle hHal);
 void sme_FTClose(tHalHandle hHal);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, tANI_U8 *ft_ies, tANI_U16 ft_ies_length );
 =======
 void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies, tANI_U16 ft_ies_length );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, tANI_U8 *ft_ies, tANI_U16 ft_ies_length );
+>>>>>>> 657b0e9... prima update
 eHalStatus sme_FTUpdateKey( tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo );
 void csrFTPreAuthRspProcessor( tHalHandle hHal, tpSirFTPreAuthRsp pFTPreAuthRsp );
 void sme_GetFTPreAuthResponse( tHalHandle hHal, tANI_U8 *ft_ies, tANI_U32 ft_ies_ip_len, tANI_U16 *ft_ies_length );
 void sme_GetRICIEs( tHalHandle hHal, tANI_U8 *ric_ies, tANI_U32 ric_ies_ip_len, tANI_U32 *ric_ies_length );
 void sme_PreauthReassocIntvlTimerCallback(void *context);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 void sme_SetFTPreAuthState(tHalHandle hHal, v_BOOL_t state);
@@ -133,6 +156,8 @@ v_BOOL_t sme_GetFTPreAuthState(tHalHandle hHal);
 v_BOOL_t sme_GetFTPTKState(tHalHandle hHal);
 void sme_SetFTPTKState(tHalHandle hHal, v_BOOL_t state);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 #endif //#if !defined( __SME_FTAPI_H )

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -88,10 +91,14 @@
   ------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SME_TOTAL_COMMAND  20
 =======
 #define SME_TOTAL_COMMAND  30
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define SME_TOTAL_COMMAND  20
+>>>>>>> 657b0e9... prima update
 
 
 typedef struct sGenericPmcCmd
@@ -115,18 +122,25 @@ typedef struct sGenericQosCmd
 } tGenericQosCmd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 typedef struct sRemainChlCmd
 {
     tANI_U8 chn;
     tANI_U8 phyMode;
     tANI_U32 duration;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tANI_U8 isP2PProbeReqAllowed;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     void* callback;
     void* callbackCtx;
 }tRemainChlCmd;
@@ -135,6 +149,7 @@ typedef struct sNoACmd
 {
     tP2pPsConfig NoA;
 } tNoACmd;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 =======
@@ -219,6 +234,9 @@ typedef struct s_tdls_cmd
 } tTdlsCmd;
 #endif  /* FEATURE_WLAN_TDLS */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 typedef struct tagSmeCmd
 {
@@ -238,6 +256,7 @@ typedef struct tagSmeCmd
         tOemDataCmd oemDataCmd;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
         tRemainChlCmd remainChlCmd;
         tNoACmd NoACmd;
@@ -245,14 +264,21 @@ typedef struct tagSmeCmd
         tAddStaForSessionCmd addStaSessionCmd;
         tDelStaForSessionCmd delStaSessionCmd;
 =======
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
         tRemainChlCmd remainChlCmd;
         tNoACmd NoACmd;
+#endif
         tAddStaForSessionCmd addStaSessionCmd;
         tDelStaForSessionCmd delStaSessionCmd;
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
         tTdlsCmd  tdlsCmd;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     }u;
 }tSmeCmd;
 
@@ -269,11 +295,15 @@ void smePushCommand( tpAniSirGlobal pMac, tSmeCmd *pCmd, tANI_BOOLEAN fHighPrior
 void smeProcessPendingQueue( tpAniSirGlobal pMac );
 void smeReleaseCommand(tpAniSirGlobal pMac, tSmeCmd *pCmd);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId);
 =======
 void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId,
         tDblLinkList *pList);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId);
+>>>>>>> 657b0e9... prima update
 tANI_BOOLEAN smeCommandPending(tpAniSirGlobal pMac);
 tANI_BOOLEAN pmcProcessCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand );
 //this function is used to abort a command where the normal processing of the command
@@ -319,18 +349,25 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg);
     \param  hHal - The handle returned by macOpen.
     \param  pRequest - Pointer to the offload request.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     \param  sessionId .  Session index of the session
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     \return eHalStatus
             eHAL_STATUS_FAILURE  Cannot set the offload.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId);
 =======
 eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId);
+>>>>>>> 657b0e9... prima update
 #endif //WLAN_NS_OFFLOAD
 
 #ifdef FEATURE_WLAN_SCAN_PNO
@@ -338,6 +375,7 @@ eHalStatus pmcSetPreferredNetworkList(tHalHandle hHal, tpSirPNOScanReq pRequest,
 eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChannel *pChannelList, tANI_U8 b11dResolved);
 eHalStatus pmcSetRssiFilter(tHalHandle hHal,   v_U8_t        rssiThreshold);
 #endif // FEATURE_WLAN_SCAN_PNO
+<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams);
 
@@ -379,4 +417,9 @@ eHalStatus csrUpdateBgScanConfigIniChannelList(tpAniSirGlobal pMac, eCsrBand eBa
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams);
+
+tANI_BOOLEAN csrRoamGetConcurrencyConnectStatusForBmps(tpAniSirGlobal pMac);
+>>>>>>> 657b0e9... prima update
 #endif //#if !defined( __SMEINSIDE_H )

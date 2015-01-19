@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,12 +46,17 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
 =======
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*
+ * Airgo Networks, Inc proprietary. All rights reserved.
+>>>>>>> 657b0e9... prima update
  * This file sirMacProtDef.h contains the MAC/PHY protocol
  * definitions used across various projects.
  * Author:        Chandra Modumudi
@@ -64,10 +72,14 @@
 #include "palTypes.h"
 #include "sirTypes.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "wniCfgAp.h"
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#include "wniCfgAp.h"
+>>>>>>> 657b0e9... prima update
 #include "aniCompiler.h"
 
 
@@ -188,13 +200,17 @@
 #define SIR_MAC_ACTION_DLP             2
 #define SIR_MAC_ACTION_BLKACK          3
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define SIR_MAC_ACTION_PUBLIC_USAGE    4
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #if defined WLAN_FEATURE_VOWIFI
 #define SIR_MAC_ACTION_RRM             5
 #endif
 #define SIR_MAC_ACTION_HT              7
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define SIR_MAC_ACTION_WME            17
 #if defined WLAN_FEATURE_P2P
@@ -207,6 +223,11 @@
 #ifdef WLAN_FEATURE_11AC
 #define SIR_MAC_ACTION_VHT            21
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define SIR_MAC_ACTION_WME            17
+#if defined WLAN_FEATURE_P2P
+#define SIR_MAC_ACTION_PUBLIC_USAGE 4
+>>>>>>> 657b0e9... prima update
 #endif
 
 // QoS management action codes
@@ -261,6 +282,7 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 //VHT Action Field 
 #ifdef WLAN_FEATURE_11AC
@@ -268,6 +290,8 @@
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 // HT Action Field Codes
 #define SIR_MAC_SM_POWER_SAVE       1
 
@@ -281,6 +305,7 @@
 #define SIR_MAC_BLKACK_ADD_RSP      1
 #define SIR_MAC_BLKACK_DEL          2
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 #define SIR_MAC_ACTION_VENDOR_SPECIFIC 9
 #define SIR_MAC_ACTION_VENDOR_SPECIFIC_CATEGORY     0x7F
@@ -291,12 +316,17 @@
 //11w SA query request/response action frame category code
 #define SIR_MAC_ACTION_SA_QUERY               8 
 =======
+=======
+#if defined WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 #define SIR_MAC_ACTION_VENDOR_SPECIFIC 9
 #define SIR_MAC_ACTION_VENDOR_SPECIFIC_CATEGORY     0x7F
 #define SIR_MAC_ACTION_P2P_SUBTYPE_PRESENCE_RSP     2
+#endif
 
 #ifdef WLAN_FEATURE_11W
 //11w SA query request/response action frame category code
+<<<<<<< HEAD
 #define SIR_MAC_ACTION_SA_QUERY          8
 #define SIR_MAC_SA_QUERY_REQ             0
 #define SIR_MAC_SA_QUERY_RSP             1
@@ -314,6 +344,9 @@
 #define SIR_MAC_TDLS_DIS_REQ             10
 #define SIR_MAC_TDLS_DIS_RSP             14
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define SIR_MAC_ACTION_SA_QUERY               8 
+>>>>>>> 657b0e9... prima update
 #endif
 
 #define SIR_MAC_MAX_RANDOM_LENGTH   2306
@@ -450,9 +483,12 @@
 #define SIR_MAC_VHT_OPERATION_EID      192
 #define SIR_MAC_VHT_EXT_BSS_LOAD_EID   193
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define SIR_MAC_VHT_OPMODE_EID         199
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 #define SIR_MAC_MAX_SUPPORTED_MCS_SET    16
 
@@ -490,9 +526,13 @@
 #define SIR_MAC_WSC_OUI             "\x00\x50\xf2\x04"
 #define SIR_MAC_WSC_OUI_SIZE        4
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 #define SIR_MAC_P2P_OUI             "\x50\x6f\x9a\x09"
 #define SIR_MAC_P2P_OUI_SIZE        4
 #define SIR_P2P_NOA_ATTR            12
@@ -500,9 +540,13 @@
 #define SIR_MAX_NOA_DESCR           2
 #define SIR_P2P_IE_HEADER_LEN       6
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 // min size of wme oui header: oui(3) + type + subtype + version
 #define SIR_MAC_OUI_WME_HDR_MIN       6
@@ -548,6 +592,7 @@
 
 #ifdef WLAN_NS_OFFLOAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SIR_MAC_NS_OFFLOAD_SIZE        1  //support only one IPv6 offload
 #define SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA   2 //Number of target IP in NA frames. It must be at least 2
 =======
@@ -556,6 +601,10 @@
 #define SIR_MAC_IPV6_ADDR_LEN               16
 #define SIR_IPV6_ADDR_VALID                 1
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define SIR_MAC_NS_OFFLOAD_SIZE        1  //support only one IPv6 offload
+#define SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA   2 //Number of target IP in NA frames. It must be at least 2
+>>>>>>> 657b0e9... prima update
 #endif //WLAN_NS_OFFLOAD
 #define SIR_MAC_ARP_OFFLOAD_SIZE        1
 
@@ -683,6 +732,7 @@
 // bitname must be one of the above, eg ESS, CF_POLLABLE, etc.
 #define SIR_MAC_CLEAR_CAPABILITY(u16value, bitname) \
 <<<<<<< HEAD
+<<<<<<< HEAD
     (u16value) &= (~(SIR_MAC_SET_##bitname(0)))
 =======
   ((u16value) &= (~(SIR_MAC_SET_##bitname(0))))
@@ -691,6 +741,9 @@
 #define BA_INITIATOR       2
 #define BA_BOTH_DIRECTIONS 3
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    (u16value) &= (~(SIR_MAC_SET_##bitname(0)))
+>>>>>>> 657b0e9... prima update
 
 /// Status Code (present in Management response frames) enum
 
@@ -811,6 +864,7 @@ typedef enum eSirMacReasonCodes
     eSIR_MAC_1X_AUTH_FAILURE_REASON                  = 23, //IEEE 802.1X authentication failed
     eSIR_MAC_CIPHER_SUITE_REJECTED_REASON            = 24, //Cipher suite rejected because of the security policy
 <<<<<<< HEAD
+<<<<<<< HEAD
     // reserved                                        25 - 31
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -822,6 +876,9 @@ typedef enum eSirMacReasonCodes
     eSIR_MAC_ROBUST_MGMT_FRAMES_POLICY_VIOLATION     = 31, //Robust management frames policy violation
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    // reserved                                        25 - 31
+>>>>>>> 657b0e9... prima update
     eSIR_MAC_QOS_UNSPECIFIED_REASON                  = 32, //Disassociated for unspecified, QoS-related reason
     eSIR_MAC_QAP_NO_BANDWIDTH_REASON                 = 33, //Disassociated because QoS AP lacks sufficient bandwidth for this QoS STA
     eSIR_MAC_XS_UNACKED_FRAMES_REASON                = 34, //Disassociated because excessive number of frames need to be acknowledged, but are not
@@ -1365,15 +1422,21 @@ typedef __ani_attr_pre_packed struct sSirMacTspecIE
     tANI_U16            mediumTime;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef LX5280
 __ani_attr_packed
 #else
 __ani_attr_aligned_4  __ani_attr_packed
 #endif
 tSirMacTspecIE;
+<<<<<<< HEAD
 =======
 __ani_attr_packed tSirMacTspecIE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // max size of the classifier params in the tclas IE
 #define SIR_MAC_CLSPARAM_LEN 253
@@ -1667,6 +1730,7 @@ typedef  struct sSirMacRpiReportIE
 } tSirMacRpiReportIE, *tpSirMacRpiReportIE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define SIR_MAC_MAX_SUPP_RATES            32
 
@@ -1792,6 +1856,8 @@ typedef struct sSirHtCap {
     tANI_U8  antennaSelectionInfo;
 }tSirHTCap;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // HT Cap and HT IE Size defines
 #define HT_CAPABILITY_IE_SIZE                       28
@@ -2411,6 +2477,7 @@ typedef __ani_attr_pre_packed struct sSirMacActionFrameHdr
 } __ani_attr_packed tSirMacActionFrameHdr, *tpSirMacActionFrameHdr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 =======
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
@@ -2422,6 +2489,9 @@ typedef __ani_attr_pre_packed struct sSirMacVendorSpecificFrameHdr
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 typedef __ani_attr_pre_packed struct sSirMacVendorSpecificPublicActionFrameHdr
 {
     tANI_U8    category;
@@ -2441,9 +2511,13 @@ typedef __ani_attr_pre_packed struct sSirMacP2PActionFrameHdr
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 typedef  struct sSirMacMeasActionFrameHdr
 {
@@ -2844,7 +2918,10 @@ typedef __ani_attr_pre_packed struct sSirPhy11aHdr
 } __ani_attr_packed tSirPhy11aHdr, *tpSirPhy11aHdr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define SIR_MAC_MIN_IE_LEN 2 // Minimum IE length for IE validation
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif /* __MAC_PROT_DEFS_H */

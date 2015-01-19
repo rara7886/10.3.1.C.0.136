@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,6 +47,7 @@
 
 #if !defined( HDD_CONNECTION_H__ ) 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define HDD_CONNECTION_H__ 
 #include <wlan_hdd_mib.h>
 #define HDD_MAX_NUM_IBSS_STA ( 4 )
@@ -57,18 +61,27 @@
                           (((staId) >= 4) && ((staId) < 0xFF))
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define HDD_CONNECTION_H__ 
+#include <wlan_hdd_mib.h>
+#define HDD_MAX_NUM_IBSS_STA ( 4 )
+>>>>>>> 657b0e9... prima update
 #define TKIP_COUNTER_MEASURE_STARTED 1
 #define TKIP_COUNTER_MEASURE_STOPED  0 
 /* Timeout (in ms) for Link to Up before Registering Station */
 #define ASSOC_LINKUP_TIMEOUT 60
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define IBSS_BROADCAST_STAID 0
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 typedef enum 
 {
    /** Not associated in Infra or participating in an IBSS / Ad-hoc network.*/
    eConnectionState_NotConnected,
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -76,6 +89,8 @@ typedef enum
    eConnectionState_Connecting,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /** Associated in an Infrastructure network.*/
    eConnectionState_Associated,
 
@@ -89,10 +104,14 @@ typedef enum
    /** Disconnecting in an Infrastructure network.*/
    eConnectionState_Disconnecting
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	
+>>>>>>> 657b0e9... prima update
 }eConnectionState;
 /**This structure stores the connection information */
 typedef struct connection_info_s
@@ -133,11 +152,14 @@ typedef struct connection_info_s
     /** Remembers authenticated state */
    v_U8_t uIsAuthenticated;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
    /** Dot11Mode */
    tANI_U32 dot11Mode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    
 }connection_info_t;
 /*Forward declaration of Adapter*/
@@ -146,12 +168,18 @@ typedef struct hdd_context_s hdd_context_t;
 typedef struct hdd_station_ctx hdd_station_ctx_t;
 typedef struct hdd_ap_ctx_s  hdd_ap_ctx_t;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_CFG80211   
 typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
 #endif
 =======
 typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef CONFIG_CFG80211   
+typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
+#endif
+>>>>>>> 657b0e9... prima update
 
 
 extern v_BOOL_t hdd_connIsConnected( hdd_station_ctx_t *pHddStaCtx );
@@ -161,19 +189,26 @@ extern eHalStatus hdd_smeRoamCallback( void *pContext, tCsrRoamInfo *pRoamInfo, 
 extern v_VOID_t hdd_connSaveConnectInfo( hdd_adapter_t *pAdapter, tCsrRoamInfo *pRoamInfo, eCsrRoamBssType eBssType );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 inline v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx, 
 =======
 v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+inline v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx, 
+>>>>>>> 657b0e9... prima update
         eMib_dot11DesiredBssType *pConnectedBssType );
 
 int hdd_SetGENIEToCsr( hdd_adapter_t *pAdapter, eCsrAuthType *RSNAuthType );
 
 int hdd_set_csr_auth_type( hdd_adapter_t *pAdapter, eCsrAuthType RSNAuthType );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 VOS_STATUS hdd_roamRegisterTDLSSTA( hdd_adapter_t *pAdapter,
                                     tANI_U8 *peerMac, tANI_U16 staId, tANI_U8 ucastSig);
 void hdd_PerformRoamSetKeyComplete(hdd_adapter_t *pAdapter);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif

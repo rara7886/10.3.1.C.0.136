@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -78,11 +81,14 @@
 #define WE_RX                 9
 #define WE_ENABLE_CHAIN      10
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define WE_SET_PWR_CNTL_MODE 11
 #define WE_ENABLE_DPD        12
 #define WE_SET_CB            13
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /* Private ioctls and their sub-ioctls */
 #define WLAN_FTM_PRIV_SET_NONE_GET_INT    (SIOCIWFIRSTPRIV + 1)
@@ -115,19 +121,30 @@
 #define WE_SET_NV_DEFAULTS    1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define WLAN_FTM_PRIV_SET_VAR_INT_GET_NONE   (SIOCIWFIRSTPRIV + 7)
 #define WE_SET_RSSI_OFFSET 1
 
 
+<<<<<<< HEAD
 #define WE_FTM_MAX_STR_LEN 1024
 #define MAX_FTM_VAR_ARGS  7
 
 #define MAX_NV_TABLE_SIZE  30000
 =======
+=======
+>>>>>>> 657b0e9... prima update
 #define WE_FTM_MAX_STR_LEN 1024
+#define MAX_FTM_VAR_ARGS  7
 
+<<<<<<< HEAD
 #define MAX_NV_TABLE_SIZE  40000
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define MAX_NV_TABLE_SIZE  30000
+>>>>>>> 657b0e9... prima update
 
 typedef enum {
     WLAN_FTM_CMD_START = 1,
@@ -187,9 +204,13 @@ typedef struct wlan_hdd_ftm_status_s
     v_BOOL_t  cmd_iwpriv;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 657b0e9... prima update
     /** Large size of NV Table Handle **/
     eNvTable  processingNVTable;
     v_U32_t   targetNVTableSize;
@@ -197,9 +218,13 @@ typedef struct wlan_hdd_ftm_status_s
     v_U32_t   processedNVTableSize;
     v_U8_t   *tempNVTableBuffer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 
 } wlan_hdd_ftm_status_t;
 typedef struct ftm_msg_s
@@ -246,10 +271,14 @@ typedef struct rateStr2rateIndex_s
 #define FTM_VOS_EVENT_WAIT_TIME 10000
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SIZE_OF_TABLE(a) sizeof(a)/sizeof(a[0])                      
 =======
 #define SIZE_OF_TABLE(a) (sizeof(a) / sizeof(a[0]))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define SIZE_OF_TABLE(a) sizeof(a)/sizeof(a[0])                      
+>>>>>>> 657b0e9... prima update
 
 int wlan_hdd_ftm_open(hdd_context_t *pHddCtx);
 void wlan_hdd_process_ftm_cmd (hdd_context_t *pHddCtx,tAniNlHdr *wnl);

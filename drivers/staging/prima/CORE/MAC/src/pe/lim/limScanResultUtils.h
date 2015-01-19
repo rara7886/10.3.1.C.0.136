@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,9 +46,12 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limScanResultUtils.h contains the utility definitions
@@ -73,6 +79,7 @@ void    limRestorePreScanState(tpAniSirGlobal);
 void    limCopyScanResult(tpAniSirGlobal, tANI_U8 *);
 void    limReInitScanResults(tpAniSirGlobal);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 void    limInitLfrHashTable(tpAniSirGlobal);
@@ -83,6 +90,8 @@ void    limDeleteCachedLfrScanResults(tpAniSirGlobal);
 void    limReInitLfrScanResults(tpAniSirGlobal);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 tANI_U32 limDeactivateMinChannelTimerDuringScan(tpAniSirGlobal);
 void    limCheckAndAddBssDescription(tpAniSirGlobal, tpSirProbeRespBeacon, tANI_U8 *, tANI_BOOLEAN, tANI_U8);
 #if defined WLAN_FEATURE_VOWIFI

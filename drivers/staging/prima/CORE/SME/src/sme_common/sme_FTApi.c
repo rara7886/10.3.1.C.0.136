@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -74,6 +77,7 @@ void sme_FTOpen(tHalHandle hHal)
     pMac->ft.ftSmeContext.reassoc_ft_ies = NULL;                        
     pMac->ft.ftSmeContext.reassoc_ft_ies_length = 0;       
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     status = palTimerAlloc(pMac->hHdd, &pMac->ft.ftSmeContext.preAuthReassocIntvlTimer, 
 =======
@@ -81,6 +85,10 @@ void sme_FTOpen(tHalHandle hHal)
     pMac->ft.ftSmeContext.setFTPTKState = FALSE;
     status = vos_timer_init(&pMac->ft.ftSmeContext.preAuthReassocIntvlTimer,VOS_TIMER_TYPE_SW,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    status = palTimerAlloc(pMac->hHdd, &pMac->ft.ftSmeContext.preAuthReassocIntvlTimer, 
+>>>>>>> 657b0e9... prima update
                             sme_PreauthReassocIntvlTimerCallback, (void *)pMac);
 
     if (eHAL_STATUS_SUCCESS != status)
@@ -91,9 +99,12 @@ void sme_FTOpen(tHalHandle hHal)
 
     pMac->ft.ftSmeContext.psavedFTPreAuthRsp = NULL;                        
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     pMac->ft.ftSmeContext.pCsrFTKeyInfo = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     pMac->ft.ftSmeContext.FTState = eFT_START_READY;
 }
@@ -109,10 +120,14 @@ void sme_FTClose(tHalHandle hHal)
     {
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" Freeing %p and setting to NULL\n"), 
 =======
         smsLog( pMac, LOGE, FL(" Freeing %p and setting to NULL"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" Freeing %p and setting to NULL\n"), 
+>>>>>>> 657b0e9... prima update
             pMac->ft.ftSmeContext.auth_ft_ies);
 #endif
         vos_mem_free(pMac->ft.ftSmeContext.auth_ft_ies);
@@ -124,10 +139,14 @@ void sme_FTClose(tHalHandle hHal)
     {
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" Freeing %p and setting to NULL\n"), 
 =======
         smsLog( pMac, LOGE, FL(" Freeing %p and setting to NULL"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" Freeing %p and setting to NULL\n"), 
+>>>>>>> 657b0e9... prima update
             pMac->ft.ftSmeContext.reassoc_ft_ies);
 #endif
         vos_mem_free(pMac->ft.ftSmeContext.reassoc_ft_ies);
@@ -142,16 +161,21 @@ void sme_FTClose(tHalHandle hHal)
     {
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL("%s: Freeing %p and setting to NULL\n"), 
 =======
         smsLog( pMac, LOGE, FL("%s: Freeing %p and setting to NULL"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL("%s: Freeing %p and setting to NULL\n"), 
+>>>>>>> 657b0e9... prima update
             pMac->ft.ftSmeContext.psavedFTPreAuthRsp);
 #endif
         vos_mem_free(pMac->ft.ftSmeContext.psavedFTPreAuthRsp);
         pMac->ft.ftSmeContext.psavedFTPreAuthRsp = NULL;                        
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     palTimerFree(pMac->hHdd, pMac->ft.ftSmeContext.preAuthReassocIntvlTimer);
 }
@@ -172,6 +196,11 @@ v_BOOL_t sme_GetFTPreAuthState(tHalHandle hHal)
   return pMac->ft.ftSmeContext.setFTPreAuthState;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palTimerFree(pMac->hHdd, pMac->ft.ftSmeContext.preAuthReassocIntvlTimer);
+}
+
+>>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------------
   Each time the supplicant sends down the FT IEs to the driver.
@@ -179,10 +208,14 @@ v_BOOL_t sme_GetFTPreAuthState(tHalHandle hHal)
   the FT IEs to PE.
   ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, tANI_U8 *ft_ies, 
 =======
 void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, tANI_U8 *ft_ies, 
+>>>>>>> 657b0e9... prima update
         tANI_U16 ft_ies_length )
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -194,20 +227,28 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
     if (ft_ies == NULL) 
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" ft ies is NULL\n"));
 =======
         smsLog( pMac, LOGE, FL(" ft ies is NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGE, FL(" ft ies is NULL\n"));
+>>>>>>> 657b0e9... prima update
         sme_ReleaseGlobalLock( &pMac->sme );
         return; 
     }
 
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOGE, "FT IEs Req is received in state %d\n", 
 =======
     smsLog( pMac, LOGE, "FT IEs Req is received in state %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOGE, "FT IEs Req is received in state %d\n", 
+>>>>>>> 657b0e9... prima update
         pMac->ft.ftSmeContext.FTState);
 #endif
 
@@ -230,10 +271,14 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
             {
                smsLog( pMac, LOGE, FL("Memory allocation failed for "
 <<<<<<< HEAD
+<<<<<<< HEAD
                                       "auth_ft_ies\n"));
 =======
                                       "auth_ft_ies"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                      "auth_ft_ies\n"));
+>>>>>>> 657b0e9... prima update
                sme_ReleaseGlobalLock( &pMac->sme );
                return;
             }
@@ -245,6 +290,9 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
 
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
             smsLog( pMac, LOGE, "ft_ies_length=%d\n", ft_ies_length);
             /*
             smsLog( pMac, LOGE, "%d: New Auth ft_ies_length=%02x%02x%02x\n", 
@@ -252,9 +300,12 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
                 pMac->ft.ftSmeContext.auth_ft_ies[1],
                 pMac->ft.ftSmeContext.auth_ft_ies[2]);
                 */
+<<<<<<< HEAD
 =======
             smsLog( pMac, LOG1, "ft_ies_length=%d", ft_ies_length);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
             break;
 
@@ -268,6 +319,7 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
             // TBD
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, 
                 "Pre-auth done and now receiving---> AUTH REQ <---- in state %d\n", 
                 pMac->ft.ftSmeContext.FTState);
@@ -278,6 +330,12 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
                 pMac->ft.ftSmeContext.FTState);
             smsLog( pMac, LOGE, "Unhandled reception of FT IES in state %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, 
+                "Pre-auth done and now receiving---> AUTH REQ <---- in state %d\n", 
+                pMac->ft.ftSmeContext.FTState);
+            smsLog( pMac, LOGE, "Unhandled reception of FT IES in state %d\n", 
+>>>>>>> 657b0e9... prima update
                 pMac->ft.ftSmeContext.FTState);
 #endif
             break;
@@ -289,10 +347,14 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
             // At this juncture we are ready to start sending Re-Assoc Req.
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, "New Reassoc Req=%p in state %d\n", 
 =======
             smsLog( pMac, LOGE, "New Reassoc Req=%p in state %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, "New Reassoc Req=%p in state %d\n", 
+>>>>>>> 657b0e9... prima update
                 ft_ies, pMac->ft.ftSmeContext.FTState);
 #endif
             if ((pMac->ft.ftSmeContext.reassoc_ft_ies) && 
@@ -309,10 +371,14 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
             {
                smsLog( pMac, LOGE, FL("Memory allocation failed for "
 <<<<<<< HEAD
+<<<<<<< HEAD
                                       "reassoc_ft_ies\n"));
 =======
                                       "reassoc_ft_ies"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                      "reassoc_ft_ies\n"));
+>>>>>>> 657b0e9... prima update
                sme_ReleaseGlobalLock( &pMac->sme );
                return;
             }
@@ -322,6 +388,7 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
                 
             pMac->ft.ftSmeContext.FTState = eFT_SET_KEY_WAIT;
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog( pMac, LOGE, "ft_ies_length=%d state=%d\n", ft_ies_length,
                 pMac->ft.ftSmeContext.FTState);
@@ -335,16 +402,30 @@ void sme_SetFTIEs( tHalHandle hHal, tANI_U8 sessionId, const tANI_U8 *ft_ies,
             smsLog( pMac, LOG1, "ft_ies_length=%d state=%d", ft_ies_length,
                 pMac->ft.ftSmeContext.FTState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, "ft_ies_length=%d state=%d\n", ft_ies_length,
+                pMac->ft.ftSmeContext.FTState);
+            /*
+            smsLog( pMac, LOGE, "%d: New Auth ft_ies_length=%02x%02x%02x\n", 
+                current->pid, pMac->ft.ftSmeContext.reassoc_ft_ies[0],
+                pMac->ft.ftSmeContext.reassoc_ft_ies[1],
+                pMac->ft.ftSmeContext.reassoc_ft_ies[2]);
+                */
+>>>>>>> 657b0e9... prima update
 #endif
             
             break;
 
         default:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" Unhandled state=%d\n"),
 =======
             smsLog( pMac, LOGE, FL(" Unhandled state=%d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, FL(" Unhandled state=%d\n"),
+>>>>>>> 657b0e9... prima update
                 pMac->ft.ftSmeContext.FTState);
             break;
     }
@@ -357,6 +438,7 @@ eHalStatus sme_FTSendUpdateKeyInd(tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo)
     tANI_U16 msgLen;
     eHalStatus status = eHAL_STATUS_FAILURE;
     tAniEdType tmpEdType;
+<<<<<<< HEAD
 <<<<<<< HEAD
     tAniKeyDirection tmpDirection;
     //tANI_U8 *pBuf;
@@ -371,17 +453,26 @@ eHalStatus sme_FTSendUpdateKeyInd(tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo)
           smsLog(pMac, LOGE, FL("%02x"), pFTKeyInfo->Key[i]); 
 =======
     tSirKeyMaterial *keymaterial = NULL;
+=======
+    tAniKeyDirection tmpDirection;
+    //tANI_U8 *pBuf;
+    tANI_U8 *p = NULL;
+>>>>>>> 657b0e9... prima update
     tAniEdType edType;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
-#if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
     int i = 0;
 
-    smsLog(pMac, LOG1, FL("keyLength %d"), pFTKeyInfo->keyLength);
+    smsLog(pMac, LOGE, FL("keyLength %d\n"), pFTKeyInfo->keyLength);
 
+<<<<<<< HEAD
     for (i=0; i<pFTKeyInfo->keyLength; i++)
       smsLog(pMac, LOG1, FL("%02x"), pFTKeyInfo->Key[i]);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      for(i=0; i<pFTKeyInfo->keyLength; i++)
+          smsLog(pMac, LOGE, FL("%02x"), pFTKeyInfo->Key[i]); 
+>>>>>>> 657b0e9... prima update
 
     msgLen  = sizeof( tANI_U16) + sizeof( tANI_U16 ) + 
        sizeof( pMsg->keyMaterial.length ) + sizeof( pMsg->keyMaterial.edType ) + 
@@ -397,6 +488,7 @@ eHalStatus sme_FTSendUpdateKeyInd(tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo)
     pMsg->messageType = pal_cpu_to_be16((tANI_U16)eWNI_SME_FT_UPDATE_KEY);
     pMsg->length = pal_cpu_to_be16(msgLen);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     p = (tANI_U8 *)&pMsg->keyMaterial;
 
@@ -461,46 +553,64 @@ eHalStatus sme_FTSendUpdateKeyInd(tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo)
     edType = csrTranslateEncryptTypeToEdType( pFTKeyInfo->encType );
     tmpEdType = pal_cpu_to_be32(edType);
     keymaterial->edType = tmpEdType;
+=======
+    p = (tANI_U8 *)&pMsg->keyMaterial;
+>>>>>>> 657b0e9... prima update
 
-    // Set the pMsg->keyMaterial.length field (this length is defined as all
-    // data that follows the edType field
+    // Set the pMsg->keyMaterial.length field (this length is defined as all data that follows the edType field
     // in the tSirKeyMaterial keyMaterial; field).
     //
-    // !!NOTE:  This keyMaterial.length contains the length of a MAX size key,
-    // though the keyLength can be
+    // !!NOTE:  This keyMaterial.length contains the length of a MAX size key, though the keyLength can be 
     // shorter than this max size.  Is LIM interpreting this ok ?
-    keymaterial->numKeys = 1;
-    keymaterial->key[ 0 ].keyId = pFTKeyInfo->keyId;
-    keymaterial->key[ 0 ].unicast = (tANI_U8)eANI_BOOLEAN_TRUE;
-    keymaterial->key[ 0 ].keyDirection = pFTKeyInfo->keyDirection;
+    p = pal_set_U16( p, pal_cpu_to_be16((tANI_U16)( sizeof( pMsg->keyMaterial.numKeys ) + 
+                                                    ( pMsg->keyMaterial.numKeys * sizeof( pMsg->keyMaterial.key ) ) )) );
 
-    palCopyMemory( pMac->hHdd, &keymaterial->key[ 0 ].keyRsc,
-                   pFTKeyInfo->keyRsc, CSR_MAX_RSC_LEN );
+    // set pMsg->keyMaterial.edType
+    edType = csrTranslateEncryptTypeToEdType( pFTKeyInfo->encType );
+    tmpEdType = pal_cpu_to_be32(edType);
+    palCopyMemory( pMac->hHdd, p, (tANI_U8 *)&tmpEdType, sizeof(tAniEdType) );
+    p += sizeof( pMsg->keyMaterial.edType );
 
-    keymaterial->key[ 0 ].paeRole = pFTKeyInfo->paeRole;
+    // set the pMsg->keyMaterial.numKeys field
+    *p = pMsg->keyMaterial.numKeys;
+    p += sizeof( pMsg->keyMaterial.numKeys );   
 
-    keymaterial->key[ 0 ].keyLength = pFTKeyInfo->keyLength;
+    // set pSirKey->keyId = keyId;
+    *p = pMsg->keyMaterial.key[ 0 ].keyId;
+    p += sizeof( pMsg->keyMaterial.key[ 0 ].keyId );
 
-    if ( pFTKeyInfo->keyLength && pFTKeyInfo->Key )
-    {
-        palCopyMemory( pMac->hHdd, &keymaterial->key[ 0 ].key,
-                       pFTKeyInfo->Key, pFTKeyInfo->keyLength );
+    // set pSirKey->unicast = (tANI_U8)fUnicast;
+    *p = (tANI_U8)eANI_BOOLEAN_TRUE;
+    p += sizeof( pMsg->keyMaterial.key[ 0 ].unicast );
+
+    // set pSirKey->keyDirection = aniKeyDirection;
+    tmpDirection = pal_cpu_to_be32(pFTKeyInfo->keyDirection);
+    palCopyMemory( pMac->hHdd, p, (tANI_U8 *)&tmpDirection, sizeof(tAniKeyDirection) );
+    p += sizeof(tAniKeyDirection);
+    //    pSirKey->keyRsc = ;;
+    palCopyMemory( pMac->hHdd, p, pFTKeyInfo->keyRsc, CSR_MAX_RSC_LEN );
+    p += sizeof( pMsg->keyMaterial.key[ 0 ].keyRsc );
+
+    // set pSirKey->paeRole
+    *p = pFTKeyInfo->paeRole;   // 0 is Supplicant
+    p++;
+
+    // set pSirKey->keyLength = keyLength;
+    p = pal_set_U16( p, pal_cpu_to_be16(pFTKeyInfo->keyLength) );
+
+    if ( pFTKeyInfo->keyLength && pFTKeyInfo->Key ) 
+    {   
+        palCopyMemory( pMac->hHdd, p, pFTKeyInfo->Key, pFTKeyInfo->keyLength ); 
         if(pFTKeyInfo->keyLength == 16)
         {
-          smsLog(pMac, LOG1, "SME Set Update Ind keyIdx (%d) encType(%d) key = "
-          "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
-          pMsg->keyMaterial.key[0].keyId, (tAniEdType)pMsg->keyMaterial.edType,
-          pMsg->keyMaterial.key[0].key[0], pMsg->keyMaterial.key[0].key[1],
-          pMsg->keyMaterial.key[0].key[2], pMsg->keyMaterial.key[0].key[3],
-          pMsg->keyMaterial.key[0].key[4], pMsg->keyMaterial.key[0].key[5],
-          pMsg->keyMaterial.key[0].key[6], pMsg->keyMaterial.key[0].key[7],
-          pMsg->keyMaterial.key[0].key[8], pMsg->keyMaterial.key[0].key[9],
-          pMsg->keyMaterial.key[0].key[10], pMsg->keyMaterial.key[0].key[11],
-          pMsg->keyMaterial.key[0].key[12], pMsg->keyMaterial.key[0].key[13],
-          pMsg->keyMaterial.key[0].key[14], pMsg->keyMaterial.key[0].key[15]);
+            smsLog(pMac, LOG1, "  SME Set keyIdx (%d) encType(%d) key = %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n",
+            pFTKeyInfo->keyId, edType, pFTKeyInfo->Key[0], pFTKeyInfo->Key[1], pFTKeyInfo->Key[2], pFTKeyInfo->Key[3], pFTKeyInfo->Key[4],
+            pFTKeyInfo->Key[5], pFTKeyInfo->Key[6], pFTKeyInfo->Key[7], pFTKeyInfo->Key[8],
+            pFTKeyInfo->Key[9], pFTKeyInfo->Key[10], pFTKeyInfo->Key[11], pFTKeyInfo->Key[12], pFTKeyInfo->Key[13], pFTKeyInfo->Key[14], pFTKeyInfo->Key[15]);
         }
     }
 
+<<<<<<< HEAD
     vos_mem_copy( &pMsg->bssId[ 0 ],
                   &pFTKeyInfo->peerMac[ 0 ],
                   sizeof(tCsrBssid) );
@@ -510,11 +620,14 @@ eHalStatus sme_FTSendUpdateKeyInd(tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo)
            pMsg->bssId[3], pMsg->bssId[4], pMsg->bssId[5]);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     status = palSendMBMessage(pMac->hHdd, pMsg);
 
     return( status );
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 v_BOOL_t sme_GetFTPTKState(tHalHandle hHal)
@@ -530,6 +643,8 @@ void sme_SetFTPTKState(tHalHandle hHal, v_BOOL_t state)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 eHalStatus sme_FTUpdateKey( tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo )
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -542,6 +657,7 @@ eHalStatus sme_FTUpdateKey( tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo )
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (pFTKeyInfo == NULL) 
     {
         smsLog( pMac, LOGE, "%s: pFTKeyInfo is NULL\n", __FUNCTION__);
@@ -553,15 +669,22 @@ eHalStatus sme_FTUpdateKey( tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo )
     smsLog( pMac, LOG1, "sme_FTUpdateKey is received in state %d", 
 =======
     if (pFTKeyInfo == NULL)
+=======
+    if (pFTKeyInfo == NULL) 
+>>>>>>> 657b0e9... prima update
     {
-        smsLog( pMac, LOGE, "%s: pFTKeyInfo is NULL", __func__);
+        smsLog( pMac, LOGE, "%s: pFTKeyInfo is NULL\n", __FUNCTION__);
         sme_ReleaseGlobalLock( &pMac->sme );
-        return eHAL_STATUS_FAILURE;
+        return eHAL_STATUS_FAILURE; 
     }
 
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
+<<<<<<< HEAD
     smsLog( pMac, LOG1, "sme_FTUpdateKey is received in state %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOG1, "sme_FTUpdateKey is received in state %d", 
+>>>>>>> 657b0e9... prima update
         pMac->ft.ftSmeContext.FTState);
 #endif
 
@@ -569,6 +692,7 @@ eHalStatus sme_FTUpdateKey( tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo )
     switch(pMac->ft.ftSmeContext.FTState)
     {
     case eFT_SET_KEY_WAIT:
+<<<<<<< HEAD
 <<<<<<< HEAD
        status = sme_FTSendUpdateKeyInd( hHal, pFTKeyInfo );
        pMac->ft.ftSmeContext.FTState = eFT_START_READY;
@@ -605,6 +729,14 @@ eHalStatus sme_FTUpdateKey( tHalHandle hHal, tCsrRoamSetKey * pFTKeyInfo )
     default:
        smsLog( pMac, LOGE, "%s: Unhandled state=%d", __func__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       status = sme_FTSendUpdateKeyInd( hHal, pFTKeyInfo );
+       pMac->ft.ftSmeContext.FTState = eFT_START_READY;
+       break;
+          
+    default:
+       smsLog( pMac, LOGE, "%s: Unhandled state=%d\n", __FUNCTION__,
+>>>>>>> 657b0e9... prima update
                pMac->ft.ftSmeContext.FTState);
        status = eHAL_STATUS_FAILURE;
        break;
@@ -656,10 +788,14 @@ void sme_GetFTPreAuthResponse( tHalHandle hHal, tANI_U8 *ft_ies,
 
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOGE, FL(" Filled auth resp = %d\n"), *ft_ies_length);
 =======
     smsLog( pMac, LOGE, FL(" Filled auth resp = %d"), *ft_ies_length);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOGE, FL(" Filled auth resp = %d\n"), *ft_ies_length);
+>>>>>>> 657b0e9... prima update
 #endif
     sme_ReleaseGlobalLock( &pMac->sme );
     return;
@@ -699,10 +835,14 @@ void sme_GetRICIEs( tHalHandle hHal, tANI_U8 *ric_ies, tANI_U32 ric_ies_ip_len,
 
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog( pMac, LOGE, FL(" Filled ric ies = %d\n"), *ric_ies_length);
 =======
     smsLog( pMac, LOGE, FL(" Filled ric ies = %d"), *ric_ies_length);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog( pMac, LOGE, FL(" Filled ric ies = %d\n"), *ric_ies_length);
+>>>>>>> 657b0e9... prima update
 #endif
 
     sme_ReleaseGlobalLock( &pMac->sme );

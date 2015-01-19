@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -55,6 +58,7 @@
 #include <vos_trace.h>
 // Global variables
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct hdd_context_s *pHddCtx = NULL;
 
 static int gWiFiChannel = 0;  /* WiFi associated channel 1-13, or 0 (none) */
@@ -65,6 +69,12 @@ static struct hdd_context_s *pHddCtx;
 static int gWiFiChannel;  /* WiFi associated channel 1-13, or 0 (none) */
 static int gAmpChannel;   /* AMP associated channel 1-13, or 0 (none) */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static struct hdd_context_s *pHddCtx = NULL;
+
+static int gWiFiChannel = 0;  /* WiFi associated channel 1-13, or 0 (none) */
+static int gAmpChannel = 0;   /* AMP associated channel 1-13, or 0 (none) */
+>>>>>>> 657b0e9... prima update
 static int gBtcDriverMode = WLAN_HDD_INFRA_STATION;  /* Driver mode in BTC */
 
 
@@ -218,9 +228,12 @@ void send_btc_nlink_msg (int type, int dest_pid)
          VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
             "BTC: Attempt to send unknown nlink message %d\n", type);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
          kfree_skb(skb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          return;
    }
    if(dest_pid == 0)

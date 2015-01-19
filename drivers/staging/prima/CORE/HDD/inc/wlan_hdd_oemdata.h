@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -62,6 +65,7 @@
 
 #ifndef OEM_DATA_REQ_SIZE
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define OEM_DATA_REQ_SIZE 70
 #endif
 
@@ -74,6 +78,13 @@
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 1968
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define OEM_DATA_REQ_SIZE 70
+#endif
+
+#ifndef OEM_DATA_RSP_SIZE
+#define OEM_DATA_RSP_SIZE 968
+>>>>>>> 657b0e9... prima update
 #endif
 
 struct iw_oem_data_req

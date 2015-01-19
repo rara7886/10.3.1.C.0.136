@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -69,10 +72,14 @@ void dump_pmc_callbackRoutine (void *callbackContext, eHalStatus status)
 {
     tpAniSirGlobal pMac = (tpAniSirGlobal)callbackContext;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, "*********Received callback from PMC with status = %d\n*********",status);
 =======
     pmcLog(pMac, LOGW, "*********Received callback from PMC with status = %d\n*********",status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, "*********Received callback from PMC with status = %d\n*********",status);
+>>>>>>> 657b0e9... prima update
 }
 
 #ifdef WLAN_WAKEUP_EVENTS
@@ -80,10 +87,14 @@ void dump_pmc_callbackRoutine2 (void *callbackContext, tpSirWakeReasonInd pWakeR
 {
     tpAniSirGlobal pMac = (tpAniSirGlobal)callbackContext;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, "*********Received callback from PMC with reason = %d\n*********",pWakeReasonInd->ulReason);
 =======
     pmcLog(pMac, LOGW, "*********Received callback from PMC with reason = %d\n*********",pWakeReasonInd->ulReason);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, "*********Received callback from PMC with reason = %d\n*********",pWakeReasonInd->ulReason);
+>>>>>>> 657b0e9... prima update
 }
 #endif // WLAN_WAKEUP_EVENTS
 
@@ -91,10 +102,14 @@ void dump_pmc_deviceUpdateRoutine (void *callbackContext, tPmcState pmcState)
 {
     tpAniSirGlobal pMac = (tpAniSirGlobal)callbackContext;
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, "*********Received msg from PMC: Device is in %s state\n*********", pmcGetPmcStateStr(pmcState));
 =======
     pmcLog(pMac, LOGW, "*********Received msg from PMC: Device is in %s state\n*********", pmcGetPmcStateStr(pmcState));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, "*********Received msg from PMC: Device is in %s state\n*********", pmcGetPmcStateStr(pmcState));
+>>>>>>> 657b0e9... prima update
 }
 
 static char *
@@ -119,10 +134,14 @@ dump_pmc_state( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3
     p += log_sprintf( pMac,p, " PMC: wowlModeRequired = %d\n\n", pMac->pmc.wowlModeRequired);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOGW, "\n%s", ptr);
 =======
     pmcLog(pMac, LOGW, "\n%s", ptr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOGW, "\n%s", ptr);
+>>>>>>> 657b0e9... prima update
 
     return p;
 }
@@ -252,6 +271,7 @@ dump_pmc_enter_wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32
     tSirRetStatus status;
     tANI_U32 length;
 <<<<<<< HEAD
+<<<<<<< HEAD
     (void) arg3; (void) arg4;
     
 =======
@@ -260,16 +280,24 @@ dump_pmc_enter_wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32
     (void) arg4;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    (void) arg3; (void) arg4;
+    
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, &wowlEnterParams, sizeof(tSirSmeWowlEnterParams));
 
     if (arg1 == 0 && arg2 == 0)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog(pMac, LOGE, "Requesting WoWL but neither magic pkt and ptrn byte matching is being enabled\n");
 =======
         pmcLog(pMac, LOGE,
                "Requesting WoWL but neither magic pkt and ptrn byte matching is being enabled\n");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, "Requesting WoWL but neither magic pkt and ptrn byte matching is being enabled\n");
+>>>>>>> 657b0e9... prima update
         return p;
     }
     if(arg1 == 1)
@@ -281,11 +309,15 @@ dump_pmc_enter_wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32
         if (eSIR_SUCCESS != status)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, "Reading of WNI_CFG_STA_ID from CFG failed. Using hardcoded STA MAC Addr\n");
 =======
             pmcLog(pMac, LOGE,
                    "Reading of WNI_CFG_STA_ID from CFG failed. Using hardcoded STA MAC Addr\n");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "Reading of WNI_CFG_STA_ID from CFG failed. Using hardcoded STA MAC Addr\n");
+>>>>>>> 657b0e9... prima update
             wowlEnterParams.magicPtrn[0] = 0x00;
             wowlEnterParams.magicPtrn[1] = 0x0a;
             wowlEnterParams.magicPtrn[2] = 0xf5;
@@ -300,6 +332,7 @@ dump_pmc_enter_wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     pMac->pmc.bmpsEnabled = TRUE;
     pMac->pmc.wowlEnabled = TRUE;
 #ifdef WLAN_WAKEUP_EVENTS
@@ -312,16 +345,19 @@ dump_pmc_enter_wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32
         pmcLog(pMac, LOGE, "Enter valid sessionId\n");
         return p;
     }
+=======
+>>>>>>> 657b0e9... prima update
     pMac->pmc.bmpsEnabled = TRUE;
     pMac->pmc.wowlEnabled = TRUE;
-
-    sessionId = (tANI_U8 ) arg3;
 #ifdef WLAN_WAKEUP_EVENTS
-    (void)sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, dump_pmc_callbackRoutine2, pMac, 
-                        &wowlEnterParams, sessionId);
+    (void)sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, dump_pmc_callbackRoutine2, pMac, &wowlEnterParams);
 #else // WLAN_WAKEUP_EVENTS
+<<<<<<< HEAD
     (void)sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, &wowlEnterParams, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    (void)sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, &wowlEnterParams);
+>>>>>>> 657b0e9... prima update
 #endif // WLAN_WAKEUP_EVENTS
     return p;
 }
@@ -339,6 +375,7 @@ dump_pmc_remove_ptrn( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U3
 {
     tSirWowlDelBcastPtrn delPattern;
 <<<<<<< HEAD
+<<<<<<< HEAD
     (void) arg2; (void) arg3; (void) arg4;
 
     palZeroMemory(pMac->hHdd, &delPattern, sizeof(tSirWowlDelBcastPtrn));
@@ -352,11 +389,19 @@ dump_pmc_remove_ptrn( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U3
 
     if((arg1 <= 7) || (arg2 == CSR_ROAM_SESSION_MAX))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    (void) arg2; (void) arg3; (void) arg4;
+
+    palZeroMemory(pMac->hHdd, &delPattern, sizeof(tSirWowlDelBcastPtrn));
+
+    if(arg1 <= 7)
+>>>>>>> 657b0e9... prima update
     {
         delPattern.ucPatternId = (tANI_U8)arg1;
     }
     else
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog(pMac, LOGE, "dump_pmc_remove_ptrn: Invalid pattern Id %d\n",arg1);
         return p;
@@ -371,6 +416,13 @@ dump_pmc_remove_ptrn( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U3
     sessionId = (tANI_U8 ) arg2;
     (void)pmcWowlDelBcastPattern(pMac, &delPattern, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, "dump_pmc_remove_ptrn: Invalid pattern Id %d\n",arg1);
+        return p;
+    }
+
+    (void)pmcWowlDelBcastPattern(pMac, &delPattern);
+>>>>>>> 657b0e9... prima update
     return p;
 }
 
@@ -405,15 +457,19 @@ dump_pmc_test_Wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 
     tSirWowlDelBcastPtrn delPattern;
     tSirSmeWowlEnterParams wowlEnterParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tANI_U8            sessionId = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     smeRsp.statusCode = eSIR_SME_SUCCESS;
     palZeroMemory(pMac->hHdd, &addPattern, sizeof(tSirWowlAddBcastPtrn));
     palZeroMemory(pMac->hHdd, &delPattern, sizeof(tSirWowlDelBcastPtrn));
     palZeroMemory(pMac->hHdd, &wowlEnterParams, sizeof(tSirSmeWowlEnterParams));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     (void) arg1; (void) arg2; (void) arg3; (void) arg4;
 
@@ -430,20 +486,27 @@ dump_pmc_test_Wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 
         pmcLog(pMac, LOGE, "dump_pmc_test_Wowl: Invalid sessionId\n");
         return p;
     }
+=======
+    (void) arg1; (void) arg2; (void) arg3; (void) arg4;
+>>>>>>> 657b0e9... prima update
 
-    sessionId = (tANI_U8 ) arg1;
     //Add pattern
-    sme_WowlAddBcastPattern(pMac, &addPattern, sessionId);
+    sme_WowlAddBcastPattern(pMac, &addPattern);
 
     //Delete pattern
+<<<<<<< HEAD
     sme_WowlDelBcastPattern(pMac, &delPattern, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    sme_WowlDelBcastPattern(pMac, &delPattern);
+>>>>>>> 657b0e9... prima update
 
     //Force the device into BMPS
     pMac->pmc.pmcState = BMPS;
 
     //Enter Wowl
 #ifdef WLAN_WAKEUP_EVENTS
+<<<<<<< HEAD
 <<<<<<< HEAD
     sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, dump_pmc_callbackRoutine2, pMac, &wowlEnterParams);
 #else // WLAN_WAKEUP_EVENTS
@@ -454,6 +517,11 @@ dump_pmc_test_Wowl( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 
 #else // WLAN_WAKEUP_EVENTS
     sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, &wowlEnterParams, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, dump_pmc_callbackRoutine2, pMac, &wowlEnterParams);
+#else // WLAN_WAKEUP_EVENTS
+    sme_EnterWowl(pMac, dump_pmc_callbackRoutine, pMac, &wowlEnterParams);
+>>>>>>> 657b0e9... prima update
 #endif // WLAN_WAKEUP_EVENTS
     smeRsp.messageType = eWNI_PMC_ENTER_WOWL_RSP;
     pmcMessageProcessor(pMac, &smeRsp);
@@ -489,6 +557,7 @@ static tDumpFuncEntry pmcMenuDumpTable[] = {
     //Unit Test Related
     {913,   "PMC: Test UAPSD",          dump_pmc_test_uapsd},
 <<<<<<< HEAD
+<<<<<<< HEAD
     {914,   "PMC: Test WOWL",           dump_pmc_test_Wowl},
     // WoWL Related
     {915,   "PMC: Enter WoWL: Syntax: dump 915 <enable_magic_pkt> <enable_ptrn_match>",  dump_pmc_enter_wowl},
@@ -496,11 +565,18 @@ static tDumpFuncEntry pmcMenuDumpTable[] = {
     {917,   "PMC: Remove a pattern: Syntax: dump 917 <pattern_id(0-7)>",  dump_pmc_remove_ptrn},
 =======
     {914,   "PMC: Test WOWL : Syntax :dump 914 <sessionId>",           dump_pmc_test_Wowl},
+=======
+    {914,   "PMC: Test WOWL",           dump_pmc_test_Wowl},
+>>>>>>> 657b0e9... prima update
     // WoWL Related
-    {915,   "PMC: Enter WoWL: Syntax: dump 915 <enable_magic_pkt> <enable_ptrn_match> <sessionId>",  dump_pmc_enter_wowl},
+    {915,   "PMC: Enter WoWL: Syntax: dump 915 <enable_magic_pkt> <enable_ptrn_match>",  dump_pmc_enter_wowl},
     {916,   "PMC: Exit WoWL",  dump_pmc_exit_wowl},
+<<<<<<< HEAD
     {917,   "PMC: Remove a pattern: Syntax: dump 917 <pattern_id(0-7) <sessionId>>",  dump_pmc_remove_ptrn},
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    {917,   "PMC: Remove a pattern: Syntax: dump 917 <pattern_id(0-7)>",  dump_pmc_remove_ptrn},
+>>>>>>> 657b0e9... prima update
     {918,   "PMC: Enable BMPS",         dump_pmc_enable_bmps},
     {919,   "PMC: Disable BMPS",        dump_pmc_disable_bmps}
 };

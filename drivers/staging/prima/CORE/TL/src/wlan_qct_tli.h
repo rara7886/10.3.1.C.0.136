@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,11 +46,16 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * */
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*
+ * */
+>>>>>>> 657b0e9... prima update
 #ifndef WLAN_QCT_TLI_H
 #define WLAN_QCT_TLI_H
 
@@ -62,10 +70,15 @@ DESCRIPTION
   layer module.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Copyright (c) 2008 QUALCOMM Incorporated. All Rights Reserved.
   Qualcomm Confidential and Proprietary
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  Copyright (c) 2008 QUALCOMM Incorporated. All Rights Reserved.
+  Qualcomm Confidential and Proprietary
+>>>>>>> 657b0e9... prima update
 ===========================================================================*/
 
 
@@ -124,9 +137,13 @@ when        who    what, where, why
 
 #define STATIC  static
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -135,14 +152,20 @@ when        who    what, where, why
 #define WLAN_MAX_TID                          8
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 /** The define is moved to external header file to be used by HDD */
 #ifndef WLAN_SOFTAP_FEATURE
 /*Maximum number of supported stations */
 #define WLAN_MAX_STA_COUNT                    5
 #endif
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*Offset of the OUI field inside the LLC/SNAP header*/
 #define WLANTL_LLC_OUI_OFFSET                 3
 
@@ -151,10 +174,14 @@ when        who    what, where, why
 
 /*Offset of the protocol type field inside the LLC/SNAP header*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WLANTL_LLC_PROTO_TYPE_OFFSET  WLANTL_LLC_OUI_OFFSET +  WLANTL_LLC_OUI_SIZE
 =======
 #define WLANTL_LLC_PROTO_TYPE_OFFSET  (WLANTL_LLC_OUI_OFFSET +  WLANTL_LLC_OUI_SIZE)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WLANTL_LLC_PROTO_TYPE_OFFSET  WLANTL_LLC_OUI_OFFSET +  WLANTL_LLC_OUI_SIZE
+>>>>>>> 657b0e9... prima update
 
 /*Size of the protocol type field inside the LLC/SNAP header*/
 #define WLANTL_LLC_PROTO_TYPE_SIZE            2
@@ -166,12 +193,15 @@ when        who    what, where, why
 #define WLANTL_LLC_WAI_TYPE              0x88b4
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
 #define WLANTL_LLC_TDLS_TYPE             0x890d
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*Length offset inside the AMSDU sub-frame header*/
 #define WLANTL_AMSDU_SUBFRAME_LEN_OFFSET     12
 
@@ -219,6 +249,7 @@ when        who    what, where, why
 #define WLANTL_80211_NULL_QOS_SUBTYPE  0x0C
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*Defines for internal utility functions */
 #define WLANTL_FRAME_TYPE_BCAST 0xff
@@ -226,6 +257,8 @@ when        who    what, where, why
 #define WLANTL_FRAME_TYPE_UCAST 0x00
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*-------------------------------------------------------------------------
   BT-AMP related definition - !!! should probably be moved to BT-AMP header
@@ -269,6 +302,7 @@ when        who    what, where, why
 /*get TL control block from vos global context */
 #define VOS_GET_TL_CB(_pvosGCtx) \
 <<<<<<< HEAD
+<<<<<<< HEAD
         (WLANTL_CbType*)vos_get_context( VOS_MODULE_ID_TL, _pvosGCtx)
 
 /* Check whether Rx frame is LS or EAPOL packet (other than data) */
@@ -283,6 +317,14 @@ when        who    what, where, why
   ((WLANTL_BT_AMP_TYPE_AR == usType) || (WLANTL_BT_AMP_TYPE_SEC == usType) || \
    (WLANTL_BT_AMP_TYPE_LS_REQ == usType) || (WLANTL_BT_AMP_TYPE_LS_REP == usType))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        (WLANTL_CbType*)vos_get_context( VOS_MODULE_ID_TL, _pvosGCtx)
+
+/* Check whether Rx frame is LS or EAPOL packet (other than data) */
+#define WLANTL_BAP_IS_NON_DATA_PKT_TYPE(usType) \
+        (WLANTL_BT_AMP_TYPE_AR == usType) || (WLANTL_BT_AMP_TYPE_SEC == usType) || \
+        (WLANTL_BT_AMP_TYPE_LS_REQ == usType) || (WLANTL_BT_AMP_TYPE_LS_REP == usType)
+>>>>>>> 657b0e9... prima update
 
 /*get RSSI0 from a RX BD*/
 /* 7 bits in phystats represent -100dBm to +27dBm */
@@ -292,6 +334,7 @@ when        who    what, where, why
 /*get RSSI1 from a RX BD*/
 #define WLANTL_GETRSSI1(pBD)    (WDA_GETRSSI1(pBD) - WLAN_TL_RSSI_CORRECTION)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* Check whether Rx frame is LS or EAPOL packet (other than data) */
 #define WLANTL_BAP_IS_NON_DATA_PKT_TYPE(usType) \
@@ -305,6 +348,12 @@ when        who    what, where, why
   ((WLANTL_BT_AMP_TYPE_AR == usType) || (WLANTL_BT_AMP_TYPE_SEC == usType) || \
    (WLANTL_BT_AMP_TYPE_LS_REQ == usType) || (WLANTL_BT_AMP_TYPE_LS_REP == usType))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/* Check whether Rx frame is LS or EAPOL packet (other than data) */
+#define WLANTL_BAP_IS_NON_DATA_PKT_TYPE(usType) \
+        (WLANTL_BT_AMP_TYPE_AR == usType) || (WLANTL_BT_AMP_TYPE_SEC == usType) || \
+        (WLANTL_BT_AMP_TYPE_LS_REQ == usType) || (WLANTL_BT_AMP_TYPE_LS_REP == usType)
+>>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   TL signals for TX thread
@@ -331,11 +380,14 @@ typedef enum
   WLANTL_FINISH_ULA   = 5,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /* Serialized Snapshot request indication */
   WLANTL_TX_SNAPSHOT = 6,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   WLANTL_TX_MAX
 }WLANTL_TxSignalsType;
 
@@ -452,12 +504,18 @@ typedef struct
 {
    v_BOOL_t     isAvailable;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
    v_U64_t      ullReplayCounter[WLANTL_MAX_WINSIZE];
 #endif
 =======
    v_U64_t      ullReplayCounter[WLANTL_MAX_WINSIZE];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+   v_U64_t      ullReplayCounter[WLANTL_MAX_WINSIZE];
+#endif
+>>>>>>> 657b0e9... prima update
    v_PVOID_t    arrayBuffer[WLANTL_MAX_WINSIZE];
 } WLANTL_REORDER_BUFFER_T;
 
@@ -517,10 +575,13 @@ typedef struct
 
   WLANTL_REORDER_BUFFER_T     *reorderBuffer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   v_U16_t            LastSN;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }WLANTL_BAReorderType;
 
 
@@ -578,6 +639,7 @@ typedef struct
   v_S7_t                        rssiAvgBmps;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* Value of the averaged RSSI for this station */
   v_U32_t                       uLinkQualityAvg;
 
@@ -601,6 +663,11 @@ typedef struct
   v_S7_t                        snrAvgBmps;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /* Value of the averaged RSSI for this station */
+  v_U32_t                       uLinkQualityAvg;
+
+>>>>>>> 657b0e9... prima update
   /* Tx packet count per station per TID */
   v_U32_t                       auTxCount[WLAN_MAX_TID];
 
@@ -632,6 +699,7 @@ typedef struct
   /*Packet pending flag - set if tx is pending for the station*/
   v_U8_t                        ucPktPending;
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   /*used on tx packet to signal when there is no more data to tx for the 
 =======
@@ -641,6 +709,10 @@ typedef struct
 
   /*used on tx packet to signal when there is no more data to tx for the
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+  /*used on tx packet to signal when there is no more data to tx for the 
+>>>>>>> 657b0e9... prima update
    moment=> packets can be passed to BAL */
   v_U8_t                    ucNoMoreData;
 
@@ -666,9 +738,13 @@ typedef struct
   vos_pkt_t*                 vosEndCachedFrame;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
   /* LWM related fields */
 
@@ -717,12 +793,18 @@ typedef struct
   /* Queue to keep unicast station management frame */
   vos_list_t pStaManageQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 #ifdef ANI_CHIPSET_VOLANS
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 657b0e9... prima update
  /* 1 means replay check is needed for the station,
   * 0 means replay check is not needed for the station*/
   v_BOOL_t      ucIsReplayCheckValid;
@@ -733,6 +815,7 @@ typedef struct
  /* It contains no of replay packets found per STA.
     It is for debugging purpose only.*/
   v_U32_t       ulTotalReplayPacketsDetected;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -745,6 +828,10 @@ typedef struct
 
   v_U32_t       linkCapacity;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+>>>>>>> 657b0e9... prima update
 }WLANTL_STAClientType;
 
 /*---------------------------------------------------------------------------
@@ -839,11 +926,15 @@ typedef struct
 
   /* list of the active stations */
 <<<<<<< HEAD
+<<<<<<< HEAD
   WLANTL_STAClientType      *atlSTAClients; /*Allocate memory [WLAN_MAX_STA_COUNT] of station */
 =======
   WLANTL_STAClientType*      atlSTAClients[WLAN_MAX_STA_COUNT];
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WLANTL_STAClientType      *atlSTAClients; /*Allocate memory [WLAN_MAX_STA_COUNT] of station */
+>>>>>>> 657b0e9... prima update
 
   /* information on the management frame client */
   WLANTL_MgmtFrmClientType  tlMgmtFrmClient;
@@ -884,9 +975,13 @@ typedef struct
   v_BOOL_t                  bUrgent;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
   /* resource flag */
   v_U32_t bd_pduResCount;
@@ -937,6 +1032,7 @@ typedef struct
   v_U8_t done_once;
   v_U8_t uFramesProcThres;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
   /*whether we are in BMPS/UAPSD/WOWL mode, since the latter 2 need to be BMPS first*/
   v_BOOL_t                  isBMPS;
@@ -952,6 +1048,11 @@ typedef struct
   /* Whether WDA_DS_TX_START_XMIT msg is pending or not */
   v_BOOL_t   isTxTranmitMsgPending;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+  /*whether we are in BMPS/UAPSD/WOWL mode, since the latter 2 need to be BMPS first*/
+  v_BOOL_t                  isBMPS;
+>>>>>>> 657b0e9... prima update
 }WLANTL_CbType;
 
 /*==========================================================================
@@ -976,10 +1077,14 @@ typedef struct
                     or BAL's control block can be extracted from its context
     uSize:          maximum size accepted by the lower layer
 <<<<<<< HEAD
+<<<<<<< HEAD
     uFlowMask       TX flow control mask. Each bit is defined as 
 =======
     uFlowMask       TX flow control mask. Each bit is defined as
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    uFlowMask       TX flow control mask. Each bit is defined as 
+>>>>>>> 657b0e9... prima update
                     WDA_TXFlowEnumType
 
     OUT
@@ -1005,12 +1110,18 @@ WLANTL_GetFrames
   vos_pkt_t     **ppFrameDataBuff,
   v_U32_t         uSize,
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   v_U8_t          uFlowMask,
 #endif
 =======
   v_U8_t          uFlowMask,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+  v_U8_t          uFlowMask,
+#endif
+>>>>>>> 657b0e9... prima update
   v_BOOL_t*       pbUrgent
 );
 
@@ -1394,12 +1505,16 @@ WLANTL_PrepareBDHeader
    IN
     pTLCb:            TL control block
 <<<<<<< HEAD
+<<<<<<< HEAD
     ucStaId:          station ID
 =======
 
     *pucStaId         Station ID. In case of TDLS, this return the actual
                       station index used to transmit.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    ucStaId:          station ID
+>>>>>>> 657b0e9... prima update
 
    IN/OUT
     vosDataBuff:      vos data buffer, will contain the new header on output
@@ -1420,6 +1535,7 @@ WLANTL_Translate8023To80211Header
   VOS_STATUS*     pvosStatus,
   WLANTL_CbType*  pTLCb,
 <<<<<<< HEAD
+<<<<<<< HEAD
   v_U8_t          ucStaId,
   v_U8_t          ucUP,
   v_U8_t          *ucWDSEnabled,
@@ -1433,6 +1549,14 @@ WLANTL_Translate8023To80211Header
   v_U8_t          *extraHeadSpace
 );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  v_U8_t          ucStaId,
+  v_U8_t          ucUP,
+  v_U8_t          *ucWDSEnabled,
+  v_U8_t          *extraHeadSpace
+);
+
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION    WLANTL_Translate80211To8023Header
 
@@ -1468,16 +1592,21 @@ WLANTL_Translate80211To8023Header
   vos_pkt_t*      vosDataBuff,
   VOS_STATUS*     pvosStatus,
 <<<<<<< HEAD
+<<<<<<< HEAD
   v_U16_t         usActualHLen,  
 =======
   v_U16_t         usActualHLen,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  v_U16_t         usActualHLen,  
+>>>>>>> 657b0e9... prima update
   v_U8_t          ucHeaderLen,
   WLANTL_CbType*  pTLCb,
   v_U8_t          ucSTAId
 );
 
 /*==========================================================================
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   FUNCTION    WLANTL_FindFrameTypeBcMcUc
@@ -1520,6 +1649,8 @@ WLANTL_FindFrameTypeBcMcUc
 
 /*==========================================================================
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   FUNCTION    WLANTL_MgmtFrmRxDefaultCb
 
@@ -1770,6 +1901,7 @@ VOS_STATUS WLANTL_ReadRSSI
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*==========================================================================
 
@@ -1789,6 +1921,8 @@ VOS_STATUS WLANTL_ReadSNR
    v_U8_t           STAid
 );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 void WLANTL_PowerStateChangedCB
@@ -1798,6 +1932,7 @@ void WLANTL_PowerStateChangedCB
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 /*==========================================================================
   FUNCTION   WLANTL_FwdPktToHDD 
@@ -1805,6 +1940,11 @@ void WLANTL_PowerStateChangedCB
 /*==========================================================================
   FUNCTION   WLANTL_FwdPktToHDD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+/*==========================================================================
+  FUNCTION   WLANTL_FwdPktToHDD 
+>>>>>>> 657b0e9... prima update
 
   DESCRIPTION
     Determine the Destation Station ID and route the Frame to Upper Layer
@@ -1840,7 +1980,11 @@ WLANTL_FwdPktToHDD
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* #ifdef WLANTL_SOFTAP_FEATURE */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* #ifdef WLANTL_SOFTAP_FEATURE */
+>>>>>>> 657b0e9... prima update
 #endif /* #ifndef WLAN_QCT_TLI_H */

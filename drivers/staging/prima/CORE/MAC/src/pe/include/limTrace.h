@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,6 +47,7 @@
 
 /**=========================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   \file  limTrace.h
 
@@ -55,11 +59,19 @@
 * All Rights Reserved.
 * Qualcomm Atheros Confidential and Proprietary.
 *  \file  limTrace.h
+=======
+>>>>>>> 657b0e9... prima update
 
-*  \brief definition for trace related APIs
+  \file  limTrace.h
 
+  \brief definition for trace related APIs
+
+<<<<<<< HEAD
 *  \author Sunit Bhatia
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  \author Sunit Bhatia
+>>>>>>> 657b0e9... prima update
 
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
 
@@ -77,10 +89,15 @@
 #ifdef LIM_TRACE_RECORD
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CASE_RETURN_STRING( str )           \
     case ( ( str ) ): return( #str ); break \
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define CASE_RETURN_STRING( str )           \
+    case ( ( str ) ): return( #str ); break \
+>>>>>>> 657b0e9... prima update
 
 
 #define LIM_TRACE_GET_SSN(data)    (((data) >> 16) & 0xff)
@@ -101,10 +118,14 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 typedef enum {
 =======
 enum {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+typedef enum {
+>>>>>>> 657b0e9... prima update
     TRACE_CODE_MLM_STATE,
     TRACE_CODE_SME_STATE,
     TRACE_CODE_TX_MGMT,
@@ -114,12 +135,17 @@ enum {
     TRACE_CODE_TX_SME_MSG,
     TRACE_CODE_RX_SME_MSG,
 <<<<<<< HEAD
+<<<<<<< HEAD
     TRACE_CODE_TX_HAL_MSG,
     TRACE_CODE_RX_HAL_MSG,
 =======
     TRACE_CODE_TX_WDA_MSG,
     TRACE_CODE_RX_WDA_MSG,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    TRACE_CODE_TX_HAL_MSG,
+    TRACE_CODE_RX_HAL_MSG,
+>>>>>>> 657b0e9... prima update
     TRACE_CODE_TX_LIM_MSG,
     TRACE_CODE_RX_LIM_MSG,
     TRACE_CODE_TX_CFG_MSG,
@@ -129,9 +155,12 @@ enum {
     TRACE_CODE_TIMER_ACTIVATE,
     TRACE_CODE_TIMER_DEACTIVATE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     TRACE_CODE_INFO_LOG
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 };
 
 

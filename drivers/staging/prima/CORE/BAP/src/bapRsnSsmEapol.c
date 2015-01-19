@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -66,12 +69,18 @@
 //#include "aniSsmUtils.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define CHECK_RETVAL(retVal) \
               assert(retVal == ANI_OK); \
               if (retVal != ANI_OK) return ANI_E_FAILED;
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 //TODO: Put these in an array after EAPOL_TYPE is made an enum
 #define ANI_EAPOL_TYPE_PACKET_STR    "EAP"
@@ -95,10 +104,14 @@
 #define EAPOL_BODY_LEN_SIZE 2
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ANI_SSM_LEGACY_RC4_KEY_SIGN_OFFSET EAPOL_BODY_POS + 28
 =======
 #define ANI_SSM_LEGACY_RC4_KEY_SIGN_OFFSET (EAPOL_BODY_POS + 28)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define ANI_SSM_LEGACY_RC4_KEY_SIGN_OFFSET EAPOL_BODY_POS + 28
+>>>>>>> 657b0e9... prima update
 
 /**
  * Bitmasks for the RSN Key Information field
@@ -118,10 +131,14 @@
 #define ANI_SSM_RSN_KEY_INDEX_OFFSET      4
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ANI_SSM_RSN_KEY_MIC_OFFSET EAPOL_BODY_POS + 77
 =======
 #define ANI_SSM_RSN_KEY_MIC_OFFSET (EAPOL_BODY_POS + 77)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define ANI_SSM_RSN_KEY_MIC_OFFSET EAPOL_BODY_POS + 77
+>>>>>>> 657b0e9... prima update
 
 /**
  * Other hard coded values for convenience:

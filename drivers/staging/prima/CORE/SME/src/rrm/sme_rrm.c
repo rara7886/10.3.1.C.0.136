@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,10 +46,15 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*
+ * */
+>>>>>>> 657b0e9... prima update
 /**=========================================================================
   
   \file  sme_Rrm.c
@@ -66,11 +74,17 @@
   Include Files
   ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halInternal.h"
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halInternal.h"
+#endif
+>>>>>>> 657b0e9... prima update
 #include "aniGlobal.h"
 #include "smeInside.h"
 #include "sme_Api.h"
@@ -160,10 +174,14 @@ void rrmIndicateNeighborReportResult(tpAniSirGlobal pMac, VOS_STATUS vosStatus)
     if (VOS_TIMER_STATE_RUNNING == vos_timer_getCurrentState(&pMac->rrm.rrmSmeContext.neighborReqControlInfo.neighborRspWaitTimer))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_ASSERT(VOS_STATUS_SUCCESS == vosStatus);
 =======
         smsLog( pMac, LOG1, FL("No entry in neighbor report cache"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_ASSERT(VOS_STATUS_SUCCESS == vosStatus);
+>>>>>>> 657b0e9... prima update
         vos_timer_stop(&pMac->rrm.rrmSmeContext.neighborReqControlInfo.neighborRspWaitTimer);
     }
     callback = pMac->rrm.rrmSmeContext.neighborReqControlInfo.neighborRspCallbackInfo.neighborRspCallback;
@@ -217,19 +235,27 @@ static eHalStatus sme_RrmSendBeaconReportXmitInd( tpAniSirGlobal pMac, tCsrScanR
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Beacon report xmit Ind to PE\n");
 =======
    smsLog( pMac, LOGE, "Beacon report xmit Ind to PE");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Beacon report xmit Ind to PE\n");
+>>>>>>> 657b0e9... prima update
 #endif
 
    if( NULL == pResultArr && !measurementDone )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, "Beacon report xmit Ind to PE Failed\n");
 =======
       smsLog( pMac, LOGE, "Beacon report xmit Ind to PE Failed");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, "Beacon report xmit Ind to PE Failed\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
@@ -248,10 +274,14 @@ static eHalStatus sme_RrmSendBeaconReportXmitInd( tpAniSirGlobal pMac, tCsrScanR
        vos_mem_zero( pBeaconRep, length );
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog( pMac, LOGE, FL("Allocated memory for pBeaconRep\n"));
 =======
        smsLog( pMac, LOGE, FL("Allocated memory for pBeaconRep"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog( pMac, LOGE, FL("Allocated memory for pBeaconRep\n"));
+>>>>>>> 657b0e9... prima update
 #endif
        pBeaconRep->messageType = eWNI_SME_BEACON_REPORT_RESP_XMIT_IND;
        pBeaconRep->length = length;
@@ -267,10 +297,13 @@ static eHalStatus sme_RrmSendBeaconReportXmitInd( tpAniSirGlobal pMac, tCsrScanR
            ie_len = GET_IE_LEN_IN_BSS( pBssDesc->length );
            pBeaconRep->pBssDescription[msgCounter] = vos_mem_malloc ( ie_len+sizeof(tSirBssDescription) );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
            if (NULL == pBeaconRep->pBssDescription[msgCounter])
                break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
            vos_mem_copy( pBeaconRep->pBssDescription[msgCounter], pBssDesc, sizeof(tSirBssDescription) );
            vos_mem_copy( &pBeaconRep->pBssDescription[msgCounter]->ieFields[0], pBssDesc->ieFields, ie_len  );
 
@@ -295,6 +328,7 @@ static eHalStatus sme_RrmSendBeaconReportXmitInd( tpAniSirGlobal pMac, tCsrScanR
        pBeaconRep->fMeasureDone = (pCurResult)?false:measurementDone;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
        status = palSendMBMessage(pMac->hHdd, pBeaconRep);
 
        smsLog( pMac, LOGW, "SME Sent BcnRepXmit to PE numBss %d\n", pBeaconRep->numBssDesc);
@@ -302,8 +336,12 @@ static eHalStatus sme_RrmSendBeaconReportXmitInd( tpAniSirGlobal pMac, tCsrScanR
        smsLog(pMac, LOGW, "SME Sending BcnRepXmit to PE numBss %d",
               pBeaconRep->numBssDesc);
 
+=======
+>>>>>>> 657b0e9... prima update
        status = palSendMBMessage(pMac->hHdd, pBeaconRep);
 >>>>>>> d97af3b... add prima wlan driver
+
+       smsLog( pMac, LOGW, "SME Sent BcnRepXmit to PE numBss %d\n", pBeaconRep->numBssDesc);
 
    } while (pCurResult);
 
@@ -337,10 +375,14 @@ static eHalStatus sme_RrmSendScanResult( tpAniSirGlobal pMac, tANI_U8 num_chan, 
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Send scan result to PE \n");
 =======
    smsLog( pMac, LOGE, "Send scan result to PE ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Send scan result to PE \n");
+>>>>>>> 657b0e9... prima update
 #endif
 
    vos_mem_zero( &filter, sizeof(filter) );
@@ -359,10 +401,14 @@ static eHalStatus sme_RrmSendScanResult( tpAniSirGlobal pMac, tANI_U8 num_chan, 
       }
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Allocated memory for SSIDList\n"));
 =======
       smsLog( pMac, LOGE, FL("Allocated memory for SSIDList"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Allocated memory for SSIDList\n"));
+>>>>>>> 657b0e9... prima update
 #endif
       vos_mem_zero( filter.SSIDs.SSIDList, sizeof(tCsrSSIDInfo) );
 
@@ -389,10 +435,14 @@ static eHalStatus sme_RrmSendScanResult( tpAniSirGlobal pMac, tANI_U8 num_chan, 
       vos_mem_free( filter.SSIDs.SSIDList );
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Free memory for SSIDList\n") );
 =======
       smsLog( pMac, LOGE, FL("Free memory for SSIDList") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Free memory for SSIDList\n") );
+>>>>>>> 657b0e9... prima update
 #endif
    }
 
@@ -465,10 +515,14 @@ static eHalStatus sme_RrmScanRequestCallback(tHalHandle halHandle, void *pContex
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Scan Request callback \n");
 =======
    smsLog( pMac, LOGE, "Scan Request callback ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Scan Request callback \n");
+>>>>>>> 657b0e9... prima update
 #endif
    //if any more channels are pending, start a timer of a random value within randomization interval.
    //
@@ -485,10 +539,14 @@ static eHalStatus sme_RrmScanRequestCallback(tHalHandle halHandle, void *pContex
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, "Set timer for interval %d \n", interval);
 =======
       smsLog( pMac, LOGE, "Set timer for interval %d ", interval);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, "Set timer for interval %d \n", interval);
+>>>>>>> 657b0e9... prima update
 #endif
       vos_timer_start( &pSmeRrmContext->IterMeasTimer, interval );
 
@@ -500,10 +558,14 @@ static eHalStatus sme_RrmScanRequestCallback(tHalHandle halHandle, void *pContex
       vos_mem_free( pSmeRrmContext->channelList.ChannelList );
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Free memory for ChannelList\n") );
 =======
       smsLog( pMac, LOGE, FL("Free memory for ChannelList") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Free memory for ChannelList\n") );
+>>>>>>> 657b0e9... prima update
 #endif
    }
 
@@ -532,20 +594,28 @@ eHalStatus sme_RrmIssueScanReq( tpAniSirGlobal pMac )
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Issue scan request \n" );
 =======
    smsLog( pMac, LOGE, "Issue scan request " );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Issue scan request \n" );
+>>>>>>> 657b0e9... prima update
 #endif
 
    vos_mem_zero( &scanRequest, sizeof(scanRequest));
 
    /* set scanType, active or passive */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
    scanRequest.bcnRptReqScan = TRUE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
    scanRequest.scanType = pSmeRrmContext->measMode;
 
    vos_mem_copy(scanRequest.bssid,
@@ -562,10 +632,14 @@ eHalStatus sme_RrmIssueScanReq( tpAniSirGlobal pMac )
       }
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Allocated memory for pSSIDList\n"));
 =======
       smsLog( pMac, LOGE, FL("Allocated memory for pSSIDList"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Allocated memory for pSSIDList\n"));
+>>>>>>> 657b0e9... prima update
 #endif
       vos_mem_zero( scanRequest.SSIDs.SSIDList, sizeof(tCsrSSIDInfo) );
       scanRequest.SSIDs.SSIDList->SSID.length = pSmeRrmContext->ssId.length;
@@ -577,10 +651,14 @@ eHalStatus sme_RrmIssueScanReq( tpAniSirGlobal pMac )
    scanRequest.maxChnTime = pSmeRrmContext->duration;
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "For Duration %d \n", pSmeRrmContext->duration );
 =======
    smsLog( pMac, LOGE, "For Duration %d ", pSmeRrmContext->duration );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "For Duration %d \n", pSmeRrmContext->duration );
+>>>>>>> 657b0e9... prima update
 #endif
 
    /* set BSSType to default type */
@@ -592,10 +670,14 @@ eHalStatus sme_RrmIssueScanReq( tpAniSirGlobal pMac )
    scanRequest.ChannelInfo.ChannelList = &pSmeRrmContext->channelList.ChannelList[pSmeRrmContext->currentIndex];
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "On channel %d \n", pSmeRrmContext->channelList.ChannelList[pSmeRrmContext->currentIndex] );
 =======
    smsLog( pMac, LOGE, "On channel %d ", pSmeRrmContext->channelList.ChannelList[pSmeRrmContext->currentIndex] );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "On channel %d \n", pSmeRrmContext->channelList.ChannelList[pSmeRrmContext->currentIndex] );
+>>>>>>> 657b0e9... prima update
 #endif
 
    /* set requestType to full scan */
@@ -609,10 +691,14 @@ eHalStatus sme_RrmIssueScanReq( tpAniSirGlobal pMac )
       vos_mem_free(scanRequest.SSIDs.SSIDList);
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Free memory for SSIDList\n"));
 =======
       smsLog( pMac, LOGE, FL("Free memory for SSIDList"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Free memory for SSIDList\n"));
+>>>>>>> 657b0e9... prima update
 #endif
    }
 
@@ -640,10 +726,14 @@ void sme_RrmProcessBeaconReportReqInd(tpAniSirGlobal pMac, void *pMsgBuf)
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Received Beacon report request ind Channel = %d\n", pBeaconReq->channelInfo.channelNum );
 =======
    smsLog( pMac, LOGE, "Received Beacon report request ind Channel = %d", pBeaconReq->channelInfo.channelNum );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Received Beacon report request ind Channel = %d\n", pBeaconReq->channelInfo.channelNum );
+>>>>>>> 657b0e9... prima update
 #endif
    //section 11.10.8.1 (IEEE Std 802.11k-2008) 
    //channel 0 and 255 has special meaning.
@@ -660,19 +750,27 @@ void sme_RrmProcessBeaconReportReqInd(tpAniSirGlobal pMac, void *pMsgBuf)
       }
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Allocated memory for ChannelList\n") );
 =======
       smsLog( pMac, LOGE, FL("Allocated memory for ChannelList") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Allocated memory for ChannelList\n") );
+>>>>>>> 657b0e9... prima update
 #endif
       csrGetCfgValidChannels( pMac, pSmeRrmContext->channelList.ChannelList, &len );
       pSmeRrmContext->channelList.numOfChannels = (tANI_U8)len;
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, "channel == 0 perfoming on all channels \n");
 =======
       smsLog( pMac, LOGE, "channel == 0 performing on all channels");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, "channel == 0 perfoming on all channels \n");
+>>>>>>> 657b0e9... prima update
 #endif
    }
    else
@@ -687,10 +785,14 @@ void sme_RrmProcessBeaconReportReqInd(tpAniSirGlobal pMac, void *pMsgBuf)
 #if defined WLAN_VOWIFI_DEBUG
       else
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, "channel == 255  \n");
 =======
          smsLog( pMac, LOGE, "channel == 255");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, "channel == 255  \n");
+>>>>>>> 657b0e9... prima update
 #endif
 
       len += pBeaconReq->channelList.numChannels;
@@ -703,30 +805,42 @@ void sme_RrmProcessBeaconReportReqInd(tpAniSirGlobal pMac, void *pMsgBuf)
       }
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog( pMac, LOGE, FL("Allocated memory for ChannelList\n") );
 =======
       smsLog( pMac, LOGE, FL("Allocated memory for ChannelList") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog( pMac, LOGE, FL("Allocated memory for ChannelList\n") );
+>>>>>>> 657b0e9... prima update
 #endif
 
       if ( pBeaconReq->channelInfo.channelNum != 255 )
       {
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, "channel == %d  \n", pBeaconReq->channelInfo.channelNum );
 =======
          smsLog( pMac, LOGE, "channel == %d  ", pBeaconReq->channelInfo.channelNum );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, "channel == %d  \n", pBeaconReq->channelInfo.channelNum );
+>>>>>>> 657b0e9... prima update
 #endif
          if(csrRoamIsChannelValid( pMac, pBeaconReq->channelInfo.channelNum ))
             pSmeRrmContext->channelList.ChannelList[pSmeRrmContext->channelList.numOfChannels++] = pBeaconReq->channelInfo.channelNum;
 #if defined WLAN_VOWIFI_DEBUG
          else
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGE, "is Invalid channel, Ignoring this channel\n" ); 
 =======
             smsLog( pMac, LOGE, "is Invalid channel, Ignoring this channel" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGE, "is Invalid channel, Ignoring this channel\n" ); 
+>>>>>>> 657b0e9... prima update
 #endif
       }
 
@@ -762,10 +876,14 @@ void sme_RrmProcessBeaconReportReqInd(tpAniSirGlobal pMac, void *pMsgBuf)
          pSmeRrmContext->currentIndex = 0;
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, "Send beacon report after scan \n" );
 =======
          smsLog( pMac, LOGE, "Send beacon report after scan " );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, "Send beacon report after scan \n" );
+>>>>>>> 657b0e9... prima update
 #endif
          sme_RrmIssueScanReq( pMac ); 
          break;
@@ -773,28 +891,40 @@ void sme_RrmProcessBeaconReportReqInd(tpAniSirGlobal pMac, void *pMsgBuf)
          //Get the current scan results for the given channel and send it.
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, "Send beacon report from table \n" );
 =======
          smsLog( pMac, LOGE, "Send beacon report from table " );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, "Send beacon report from table \n" );
+>>>>>>> 657b0e9... prima update
 #endif
          sme_RrmSendScanResult( pMac, pSmeRrmContext->channelList.numOfChannels, pSmeRrmContext->channelList.ChannelList, true );
          vos_mem_free( pSmeRrmContext->channelList.ChannelList );
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, FL("Free memory for ChannelList\n") );
 =======
          smsLog( pMac, LOGE, FL("Free memory for ChannelList") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, FL("Free memory for ChannelList\n") );
+>>>>>>> 657b0e9... prima update
 #endif
          break;
       default:
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog( pMac, LOGE, "Unknown beacon report request mode\n");
 =======
          smsLog( pMac, LOGE, "Unknown beacon report request mode");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog( pMac, LOGE, "Unknown beacon report request mode\n");
+>>>>>>> 657b0e9... prima update
 #endif
          /* Indicate measurement completion to PE */
          /* If this is not done, pCurrentReq pointer will not be freed and 
@@ -828,6 +958,7 @@ VOS_STATUS sme_RrmNeighborReportRequest(tpAniSirGlobal pMac, tANI_U8 sessionId,
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, FL("Request to send Neighbor report request received \n"));
 #endif
    if( !CSR_IS_SESSION_VALID( pMac, sessionId ) )
@@ -840,6 +971,13 @@ VOS_STATUS sme_RrmNeighborReportRequest(tpAniSirGlobal pMac, tANI_U8 sessionId,
    {  
       smsLog( pMac, LOGE, FL("Invalid session %d"), sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, FL("Request to send Neighbor report request received \n"));
+#endif
+   if( !CSR_IS_SESSION_VALID( pMac, sessionId ) )
+   {  
+      smsLog( pMac, LOGE, FL("Invalid session %d\n"), sessionId );
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
    pSession = CSR_GET_SESSION( pMac, sessionId );
@@ -862,20 +1000,28 @@ VOS_STATUS sme_RrmNeighborReportRequest(tpAniSirGlobal pMac, tANI_U8 sessionId,
    vos_mem_zero( pMsg, sizeof(tSirNeighborReportReqInd) );
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, FL(" Allocated memory for Neighbor request\n") );
 =======
    smsLog( pMac, LOGE, FL(" Allocated memory for Neighbor request") );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, FL(" Allocated memory for Neighbor request\n") );
+>>>>>>> 657b0e9... prima update
 #endif
 
    rrmLLPurgeNeighborCache(pMac, &pMac->rrm.rrmSmeContext.neighborReportCache);
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, FL("Purged the neighbor cache before sending Neighbor request: Status = %d\n"), status );
 =======
    smsLog( pMac, LOGE, FL("Purged the neighbor cache before sending Neighbor request: Status = %d"), status );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, FL("Purged the neighbor cache before sending Neighbor request: Status = %d\n"), status );
+>>>>>>> 657b0e9... prima update
 #endif
 
    pMsg->messageType = eWNI_SME_NEIGHBOR_REPORT_REQ_IND;
@@ -918,6 +1064,7 @@ static void rrmCalculateNeighborAPRoamScore(tpAniSirGlobal pMac, tpRrmNeighborRe
     tANI_U32    roamScore = 0;
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_ASSERT(pNeighborReportDesc != NULL);
     VOS_ASSERT(pNeighborReportDesc->pNeighborBssDescription != NULL);
 =======
@@ -932,6 +1079,10 @@ static void rrmCalculateNeighborAPRoamScore(tpAniSirGlobal pMac, tpRrmNeighborRe
         return;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_ASSERT(pNeighborReportDesc != NULL);
+    VOS_ASSERT(pNeighborReportDesc->pNeighborBssDescription != NULL);
+>>>>>>> 657b0e9... prima update
 
     pNeighborBssDesc = pNeighborReportDesc->pNeighborBssDescription;
 
@@ -996,6 +1147,7 @@ void rrmStoreNeighborRptByRoamScore(tpAniSirGlobal pMac, tpRrmNeighborReportDesc
    tRrmNeighborReportDesc  *pTempNeighborReportDesc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    VOS_ASSERT(pNeighborReportDesc != NULL);
    VOS_ASSERT(pNeighborReportDesc->pNeighborBssDescription != NULL);
 
@@ -1018,6 +1170,14 @@ void rrmStoreNeighborRptByRoamScore(tpAniSirGlobal pMac, tpRrmNeighborReportDesc
    {
        smsLog(pMac, LOGE, FL("Neighbor report cache is empty.. Adding a entry now"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   VOS_ASSERT(pNeighborReportDesc != NULL);
+   VOS_ASSERT(pNeighborReportDesc->pNeighborBssDescription != NULL);
+
+   if (csrLLIsListEmpty(&pSmeRrmContext->neighborReportCache, LL_ACCESS_LOCK))
+   {
+       smsLog(pMac, LOGE, FL("Neighbor report cache is empty.. Adding a entry now\n"));
+>>>>>>> 657b0e9... prima update
         /* Neighbor list cache is empty. Insert this entry in the tail */
        csrLLInsertTail(&pSmeRrmContext->neighborReportCache, &pNeighborReportDesc->List, LL_ACCESS_LOCK);
        return;
@@ -1081,10 +1241,14 @@ eHalStatus sme_RrmProcessNeighborReport(tpAniSirGlobal pMac, void *pMsgBuf)
        if (NULL == pNeighborReportDesc)
        {
 <<<<<<< HEAD
+<<<<<<< HEAD
            smsLog( pMac, LOGE, "Failed to allocate memory for RRM Neighbor report desc\n");
 =======
            smsLog( pMac, LOGE, "Failed to allocate memory for RRM Neighbor report desc");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           smsLog( pMac, LOGE, "Failed to allocate memory for RRM Neighbor report desc\n");
+>>>>>>> 657b0e9... prima update
            status = eHAL_STATUS_FAILED_ALLOC;
            goto end;
             
@@ -1095,11 +1259,15 @@ eHalStatus sme_RrmProcessNeighborReport(tpAniSirGlobal pMac, void *pMsgBuf)
        if (NULL == pNeighborReportDesc->pNeighborBssDescription)
        {
 <<<<<<< HEAD
+<<<<<<< HEAD
            smsLog( pMac, LOGE, "Failed to allocate memory for RRM Neighbor report BSS Description\n");
 =======
            smsLog( pMac, LOGE, "Failed to allocate memory for RRM Neighbor report BSS Description");
            vos_mem_free(pNeighborReportDesc);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           smsLog( pMac, LOGE, "Failed to allocate memory for RRM Neighbor report BSS Description\n");
+>>>>>>> 657b0e9... prima update
            status = eHAL_STATUS_FAILED_ALLOC;
            goto end;
        }
@@ -1109,10 +1277,14 @@ eHalStatus sme_RrmProcessNeighborReport(tpAniSirGlobal pMac, void *pMsgBuf)
 
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog( pMac, LOGE, "Received neighbor report with Neighbor BSSID: %02x:%02x:%02x:%02x:%02x:%02x \n",
 =======
        smsLog( pMac, LOGE, "Received neighbor report with Neighbor BSSID: %02x:%02x:%02x:%02x:%02x:%02x ",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog( pMac, LOGE, "Received neighbor report with Neighbor BSSID: %02x:%02x:%02x:%02x:%02x:%02x \n",
+>>>>>>> 657b0e9... prima update
                     pNeighborRpt->sNeighborBssDescription[i].bssId[0], 
                     pNeighborRpt->sNeighborBssDescription[i].bssId[1], 
                     pNeighborRpt->sNeighborBssDescription[i].bssId[2], 
@@ -1132,10 +1304,14 @@ eHalStatus sme_RrmProcessNeighborReport(tpAniSirGlobal pMac, void *pMsgBuf)
        else
        {
 <<<<<<< HEAD
+<<<<<<< HEAD
            smsLog(pMac, LOGE, FL("Roam score of BSSID  %02x:%02x:%02x:%02x:%02x:%02x is 0, Ignoring.."), 
 =======
            smsLog(pMac, LOGE, FL("Roam score of BSSID  %02x:%02x:%02x:%02x:%02x:%02x is 0, Ignoring.."),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           smsLog(pMac, LOGE, FL("Roam score of BSSID  %02x:%02x:%02x:%02x:%02x:%02x is 0, Ignoring.."), 
+>>>>>>> 657b0e9... prima update
                         pNeighborRpt->sNeighborBssDescription[i].bssId[0],
                         pNeighborRpt->sNeighborBssDescription[i].bssId[1],
                         pNeighborRpt->sNeighborBssDescription[i].bssId[2],
@@ -1177,10 +1353,14 @@ eHalStatus sme_RrmMsgProcessor( tpAniSirGlobal pMac,  v_U16_t msg_type,
 {
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, 
 <<<<<<< HEAD
+<<<<<<< HEAD
          FL(" Msg = %d for RRM measurement\n") , msg_type );
 =======
          FL(" Msg = %d for RRM measurement") , msg_type );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         FL(" Msg = %d for RRM measurement\n") , msg_type );
+>>>>>>> 657b0e9... prima update
 
    //switch on the msg type & make the state transition accordingly
    switch(msg_type)
@@ -1197,10 +1377,14 @@ eHalStatus sme_RrmMsgProcessor( tpAniSirGlobal pMac,  v_U16_t msg_type,
          //err msg
          VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                FL("sme_RrmMsgProcessor:unknown msg type = %d\n"), msg_type);
 =======
                FL("sme_RrmMsgProcessor:unknown msg type = %d"), msg_type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               FL("sme_RrmMsgProcessor:unknown msg type = %d\n"), msg_type);
+>>>>>>> 657b0e9... prima update
 
          break;
    }
@@ -1229,10 +1413,14 @@ void rrmIterMeasTimerHandle( v_PVOID_t userData )
    tpAniSirGlobal pMac = (tpAniSirGlobal) userData;
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Randomization timer expired...send on next channel \n");
 =======
    smsLog( pMac, LOGE, "Randomization timer expired...send on next channel ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Randomization timer expired...send on next channel \n");
+>>>>>>> 657b0e9... prima update
 #endif
     //Issue a scan req for next channel.
     sme_RrmIssueScanReq( pMac ); 
@@ -1257,10 +1445,14 @@ void rrmNeighborRspTimeoutHandler
    tpAniSirGlobal pMac = (tpAniSirGlobal) userData;
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOGE, "Neighbor Response timed out \n");
 =======
    smsLog( pMac, LOGE, "Neighbor Response timed out ");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOGE, "Neighbor Response timed out \n");
+>>>>>>> 657b0e9... prima update
 #endif
     rrmIndicateNeighborReportResult(pMac, VOS_STATUS_E_FAILURE);
     return;
@@ -1464,10 +1656,14 @@ tRrmNeighborReportDesc* smeRrmGetFirstBssEntryFromNeighborCache( tpAniSirGlobal 
    {
       //list empty
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, FL("List empty\n"));
 =======
       smsLog(pMac, LOGW, FL("List empty"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, FL("List empty\n"));
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
 
@@ -1500,10 +1696,14 @@ tRrmNeighborReportDesc* smeRrmGetNextBssEntryFromNeighborCache( tpAniSirGlobal p
    {
       //list empty
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, FL("List empty\n"));
 =======
       smsLog(pMac, LOGW, FL("List empty"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, FL("List empty\n"));
+>>>>>>> 657b0e9... prima update
       return NULL;
    }
 
@@ -1520,10 +1720,14 @@ void csrCcxSendAdjacentApRepMsg(tpAniSirGlobal pMac, tCsrRoamSession *pSession)
    tANI_U32 roamTS2;
    
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog( pMac, LOG1, "Adjacent AP Report Msg to PE\n");
 =======
    smsLog( pMac, LOG1, "Adjacent AP Report Msg to PE");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog( pMac, LOG1, "Adjacent AP Report Msg to PE\n");
+>>>>>>> 657b0e9... prima update
 
    length = sizeof(tSirAdjacentApRepInd );
    pAdjRep = vos_mem_malloc ( length );

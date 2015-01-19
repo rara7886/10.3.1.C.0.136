@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -152,8 +155,12 @@ wpt_boolean wpalTraceCheckLevel( wpt_moduleid module, wpt_tracelevel level );
 void wpalTraceDisplay(void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #define WPAL_BUG VOS_BUG
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 #endif // __WLAN_QCT_PAL_TRACE_H

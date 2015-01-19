@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -63,6 +66,7 @@
 //Global variables
 static DEFINE_MUTEX(nl_srv_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct sock *nl_srv_sock = NULL;
 static nl_srv_msg_callback nl_srv_msg_handler[NLINK_MAX_CALLBACKS];
 
@@ -76,6 +80,11 @@ const char driverUnLoaded[] = "KNLCLOSE";
 #endif /* WLAN_KD_READY_NOTIFIER */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static struct sock *nl_srv_sock = NULL;
+static nl_srv_msg_callback nl_srv_msg_handler[NLINK_MAX_CALLBACKS];
+
+>>>>>>> 657b0e9... prima update
 //Forward declaration
 static void nl_srv_rcv (struct sk_buff *sk);
 static void nl_srv_rcv_skb (struct sk_buff *skb);
@@ -88,6 +97,7 @@ static void nl_srv_rcv_msg (struct sk_buff *skb, struct nlmsghdr *nlh);
 int nl_srv_init(void)
 {
    int retcode = 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
    nl_srv_sock = netlink_kernel_create(&init_net, WLAN_NLINK_PROTO_FAMILY,
       WLAN_NLINK_MCAST_GRP_ID, nl_srv_rcv, NULL, THIS_MODULE);
@@ -110,6 +120,10 @@ int nl_srv_init(void)
       WLAN_NLINK_MCAST_GRP_ID, nl_srv_rcv, NULL, THIS_MODULE);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   nl_srv_sock = netlink_kernel_create(&init_net, WLAN_NLINK_PROTO_FAMILY,
+      WLAN_NLINK_MCAST_GRP_ID, nl_srv_rcv, NULL, THIS_MODULE);
+>>>>>>> 657b0e9... prima update
 
    if (nl_srv_sock != NULL) {
       memset(nl_srv_msg_handler, 0, sizeof(nl_srv_msg_handler));
@@ -126,15 +140,18 @@ int nl_srv_init(void)
  * Netlink service is unusable after this.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void nl_srv_exit(void)
 {
 =======
 #ifdef WLAN_KD_READY_NOTIFIER
 void nl_srv_exit(int dst_pid)
 #else
+=======
+>>>>>>> 657b0e9... prima update
 void nl_srv_exit(void)
-#endif /* WLAN_KD_READY_NOTIFIER */
 {
+<<<<<<< HEAD
 #ifdef WLAN_KD_READY_NOTIFIER
    if (0 != dst_pid)
    {
@@ -142,6 +159,8 @@ void nl_srv_exit(void)
    }
 #endif /* WLAN_KD_READY_NOTIFIER */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    netlink_kernel_release(nl_srv_sock);
 }
 
@@ -198,6 +217,7 @@ int nl_srv_ucast(struct sk_buff *skb, int dst_pid)
    int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    NETLINK_CB(skb).pid = 0; //sender's pid
 =======
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0))
@@ -206,6 +226,9 @@ int nl_srv_ucast(struct sk_buff *skb, int dst_pid)
    NETLINK_CB(skb).portid = 0; //sender's pid
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   NETLINK_CB(skb).pid = 0; //sender's pid
+>>>>>>> 657b0e9... prima update
    NETLINK_CB(skb).dst_group = 0; //not multicast
 
    err = netlink_unicast(nl_srv_sock, skb, dst_pid, MSG_DONTWAIT);
@@ -226,6 +249,7 @@ int nl_srv_bcast(struct sk_buff *skb)
    int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    NETLINK_CB(skb).pid = 0; //sender's pid
 =======
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0))
@@ -234,6 +258,9 @@ int nl_srv_bcast(struct sk_buff *skb)
    NETLINK_CB(skb).portid = 0; //sender's pid
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   NETLINK_CB(skb).pid = 0; //sender's pid
+>>>>>>> 657b0e9... prima update
    NETLINK_CB(skb).dst_group = WLAN_NLINK_MCAST_GRP_ID; //destination group
 
    err = netlink_broadcast(nl_srv_sock, skb, 0, WLAN_NLINK_MCAST_GRP_ID, GFP_KERNEL);
@@ -337,6 +364,7 @@ static void nl_srv_rcv_msg (struct sk_buff *skb, struct nlmsghdr *nlh)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_KD_READY_NOTIFIER
 /*
@@ -429,3 +457,5 @@ void nl_srv_nl_close_indication
 #endif /* WLAN_KD_READY_NOTIFIER */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -79,6 +82,7 @@
 #define SCH_DIAG_RR_LOWER_RATE        0x2
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define TIM_IE_SIZE 0x6
 =======
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
@@ -87,6 +91,9 @@
 #define TIM_IE_SIZE 0x7
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define TIM_IE_SIZE 0x6
+>>>>>>> 657b0e9... prima update
 
 // ----------------------- Beacon processing ------------------------
 
@@ -100,6 +107,7 @@
 
 /// Maximum allowable size of a beacon frame
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #define SCH_MAX_BEACON_SIZE    2048
 #else
@@ -108,6 +116,13 @@
 =======
 #define SCH_MAX_BEACON_SIZE    512
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+#define SCH_MAX_BEACON_SIZE    2048
+#else
+#define SCH_MAX_BEACON_SIZE    512
+#endif
+>>>>>>> 657b0e9... prima update
 
 #define SCH_MAX_PROBE_RESP_SIZE 512
 
@@ -121,10 +136,14 @@ struct schMisc {
     /// Trailing portion of the beacon frame to be written to TFP
     tANI_U8 *gSchBeaconFrameEnd;
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
     /// Size of the beginning portion
     tANI_U16 gSchBeaconOffsetBegin;
     /// Size of the trailing portion
@@ -172,12 +191,18 @@ struct schMisc {
     tANI_U8   fBeaconChanged;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(WLAN_SOFTAP_FEATURE) && defined(WLAN_FEATURE_P2P) 
     tANI_U16 p2pIeOffset;
 #endif
 =======
     tANI_U16 p2pIeOffset;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(WLAN_SOFTAP_FEATURE) && defined(WLAN_FEATURE_P2P) 
+    tANI_U16 p2pIeOffset;
+#endif
+>>>>>>> 657b0e9... prima update
 
 };
 
@@ -208,11 +233,17 @@ typedef struct sAniSirSch
     tANI_U8 gSchScanReqRcvd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     tANI_U8 gSchRRRecd;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+    tANI_U8 gSchRRRecd;
+#endif
+>>>>>>> 657b0e9... prima update
 
     /// Debug flag to disable beacon generation
     tANI_U32 gSchGenBeacon;

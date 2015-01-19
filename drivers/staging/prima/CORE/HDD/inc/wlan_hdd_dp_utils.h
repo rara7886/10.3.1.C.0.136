@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -48,6 +51,7 @@
 /**=============================================================================
   wlan_hdd_dp_utils.h
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   \brief      Utility functions for data path module
   
@@ -61,22 +65,24 @@
   
 =======
 
+=======
+  
+>>>>>>> 657b0e9... prima update
   \brief      Utility functions for data path module
-
+  
   Description...
                Copyright 2008 (c) Qualcomm, Incorporated.
                All Rights Reserved.
-<<<<<<< HEAD:CORE/HDD/inc/wlan_hdd_dp_utils.h
                Qualcomm Confidential and Proprietary.
   
-=======
-               Qualcomm Technologies Confidential and Proprietary.
-
->>>>>>> 009551c... wlan: hdd: remove obsolete "WLAN_SOFTAP_FEATURE" featurization:prima/CORE/HDD/inc/wlan_hdd_dp_utils.h
   ==============================================================================**/
 /* $HEADER$ */
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+>>>>>>> 657b0e9... prima update
 /**-----------------------------------------------------------------------------
   Include files
   ----------------------------------------------------------------------------*/
@@ -88,21 +94,31 @@
 #include <linux/spinlock.h>
 #include <vos_trace.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #include <vos_list.h>
 #endif
 =======
 #include <vos_list.h>
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include <vos_list.h>
+#endif
+>>>>>>> 657b0e9... prima update
 
 /**-----------------------------------------------------------------------------
   Preprocessor definitions and constants
  ----------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+>>>>>>> 657b0e9... prima update
 /**-----------------------------------------------------------------------------
   Type declarations
  ----------------------------------------------------------------------------*/
@@ -142,10 +158,14 @@ VOS_INLINE_FN v_VOID_t hdd_list_destroy( hdd_list_t *pList )
    if ( pList->count !=0 )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "%s: list length not equal to zero",__FUNCTION__);
 =======
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "%s: list length not equal to zero",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "%s: list length not equal to zero",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
    }
 }
 

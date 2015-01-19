@@ -1,9 +1,13 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+>>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -22,6 +26,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 /** ------------------------------------------------------------------------- * 
@@ -42,25 +47,35 @@
 =======
 /** ------------------------------------------------------------------------- *
     ------------------------------------------------------------------------- *
+=======
+>>>>>>> 657b0e9... prima update
 
+/** ------------------------------------------------------------------------- * 
+    ------------------------------------------------------------------------- *  
 
+  
     \file palApi.h
-
+  
     \brief Exports and types for the Platform Abstraction Layer interfaces.
-
-    $Id$
-
+  
+    $Id$ 
+  
     Copyright (C) 2006 Airgo Networks, Incorporated
     This file contains all the interfaces for thge Platform Abstration Layer
-    functions.  It is intended to be included in all modules that are using
+    functions.  It is intended to be included in all modules that are using 
     the PAL interfaces.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+>>>>>>> 657b0e9... prima update
    ========================================================================== */
 #ifndef PALAPI_H__
 #define PALAPI_H__
 
 #include "halTypes.h"
+<<<<<<< HEAD
 <<<<<<< HEAD
 #include "palPipes.h"
 //#include "palErrIsr.h"
@@ -83,24 +98,33 @@
     \todo
     - palReadRegister:  register read 
 =======
+=======
+#include "palPipes.h"
+//#include "palErrIsr.h"
+//#include "halFrameInfo.h"
+>>>>>>> 657b0e9... prima update
 
 /**
     \mainpage Platform Abstraction Layer (PAL)
-
+    
     \section intro Introduction
-
+    
     palApi is the Platform Abstration Layer.
-
-    This is the latest attempt to abstract the entire Platform, including the
-    hardware, chip, OS and Bus into a generic API.  We are doing this to give
+    
+    This is the latest attempt to abstract the entire Platform, including the 
+    hardware, chip, OS and Bus into a generic API.  We are doing this to give 
     the MAC the ability to call
-    generic APIs that will allow the MAC to function in an abstract manner
+    generic APIs that will allow the MAC to function in an abstract manner 
     with any Airgo chipset, on any supported OS (Windows and Linux for now)
     across any system bus interface (PCI, PCIe, Cardbus, USB, etc.).
-
+    
     \todo
+<<<<<<< HEAD
     - palReadRegister:  register read
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    - palReadRegister:  register read 
+>>>>>>> 657b0e9... prima update
         -# add an Open/Close abstraction to accomodate the PAL before the entire MAC is loaded.
         -# Review with Linux folks to see this basic scructure works for them.
         -# Figure out how to organize the directory structure
@@ -109,6 +133,7 @@
     - palTx: an abstraction for transmit frames that manages the Td and Tm rings
     - palRx: an abstracion for receiving frames from a chip across any of the supported buses
     - palInterrupt: abstract the interrupts into the HAL
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     
@@ -120,6 +145,12 @@
     \section impl_notes Implementation Notes
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    
+    \section impl_notes Implementation Notes
+    
+>>>>>>> 657b0e9... prima update
     \subsection subsection_codeStructure Code strucure
 
  */
@@ -131,6 +162,7 @@
 
     \brief chip and bus agnostic funtion to read a register value
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     \param hHdd - HDD context handle
     
@@ -145,18 +177,25 @@
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param regAddress - address (offset) of the register to be read from the start
     of register space.
-
+    
     \param pRegValue - pointer to the memory where the register contents are written
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palReadRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 *pRegValue );
 
@@ -166,6 +205,7 @@ eHalStatus palReadRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 *pReg
     \fn palWriteRegister
 
     \brief chip and bus agnostic funtion to write a register value
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -181,18 +221,25 @@ eHalStatus palReadRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 *pReg
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param regAddress - address (offset) of the register to be read from the start
     of register space.
-
+    
     \param pRegValue - pointer to the value being written into the register
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palWriteRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 regValue );
 
@@ -201,6 +248,7 @@ eHalStatus palWriteRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 regV
     \fn palAsyncWriteRegister
 
     \brief chip and bus agnostic async funtion to write a register value
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -216,18 +264,25 @@ eHalStatus palWriteRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 regV
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param regAddress - address (offset) of the register to be written from the start
     of register space.
-
+    
     \param regValue - value being written into the register
-
-    \return eHalStatus - status of the register write.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the register write.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 
 eHalStatus palAsyncWriteRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32 regValue );
@@ -238,6 +293,7 @@ eHalStatus palAsyncWriteRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32
     \fn palReadDeviceMemory
 
     \brief chip and bus agnostic funtion to read memory from the chip
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -256,21 +312,28 @@ eHalStatus palAsyncWriteRegister( tHddHandle hHdd, tANI_U32 regAddress, tANI_U32
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
-    \param memOffset - address (offset) of the memory from the top of the
+    
+    \param memOffset - address (offset) of the memory from the top of the 
     memory map (as exposed to the host) where the memory will be read from.
-
+    
     \param pBuffer - pointer to a buffer where the memory will be placed in host
     memory space after retreived from the chip.
-
+    
     \param numBytes - the number of bytes to be read.
-
-    \return eHalStatus - status of the memory read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palReadDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );
 
@@ -279,6 +342,7 @@ eHalStatus palReadDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pB
     \fn palWriteDeviceMemory
 
     \brief chip and bus agnostic funtion to write memory to the chip
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -299,29 +363,37 @@ eHalStatus palReadDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pB
 eHalStatus palWriteDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );  
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
-    \param memOffset - address (offset) of the memory from the top of the on-chip
+    
+    \param memOffset - address (offset) of the memory from the top of the on-chip 
     memory that will be written.
-
-    \param pBuffer - pointer to a buffer that has the source data that will be
+    
+    \param pBuffer - pointer to a buffer that has the source data that will be 
     written to the chip.
-
+    
     \param numBytes - the number of bytes to be written.
-
-    \return eHalStatus - status of the memory read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
-
+    
   -------------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus palWriteDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus palWriteDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );  
+>>>>>>> 657b0e9... prima update
 
 
 /** ---------------------------------------------------------------------------
 
     \fn palAllocateMemory
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     \brief OS agnostic funtion to allocate host memory.   
     
@@ -346,25 +418,33 @@ eHalStatus palWriteDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *p
     \brief OS agnostic funtion to allocate host memory.
 
     \note  Host memory that needs to be shared between the host and the
+=======
+    \brief OS agnostic funtion to allocate host memory.   
+    
+    \note  Host memory that needs to be shared between the host and the 
+>>>>>>> 657b0e9... prima update
     device needs to be allocated with the palAllocateSharedMemory()
     and free'd with palFreeSharedMemory() functions.
-
+        
     \param hHdd - HDD context handle
-
-    \param ppMemory - pointer to a void pointer where the address of the
+    
+    \param ppMemory - pointer to a void pointer where the address of the 
     memory allocated will be placed upon return from this function.
-
+    
     \param numBytes - the number of bytes to allocate.
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.  In the case of a failure, a non-successful return code will be
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail.  In the case of a failure, a non-successful return code will be 
     returned and no memory will be allocated (the *ppMemory will be NULL so don't
     try to use it unless the status returns success).
-
+    
   -------------------------------------------------------------------------------*/
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_PAL_MEM_DISABLE
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef MEMORY_DEBUG
 #define palAllocateMemory(hHdd, ppMemory, numBytes) palAllocateMemory_debug(hHdd, ppMemory, numBytes, __FILE__, __LINE__)
 eHalStatus palAllocateMemory_debug( tHddHandle hHdd, void **ppMemory, tANI_U32 numBytes, char* fileName, tANI_U32 lineNum );
@@ -377,6 +457,7 @@ eHalStatus palAllocateMemory( tHddHandle hHdd, void **ppMemory, tANI_U32 numByte
 
     \fn palFreeMemory
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     \brief OS agnostic funtion to free host memory that was allocated with 
     palAllcoateMemory() calls.
@@ -396,22 +477,29 @@ eHalStatus palAllocateMemory( tHddHandle hHdd, void **ppMemory, tANI_U32 numByte
     
 =======
     \brief OS agnostic funtion to free host memory that was allocated with
+=======
+    \brief OS agnostic funtion to free host memory that was allocated with 
+>>>>>>> 657b0e9... prima update
     palAllcoateMemory() calls.
-
-    \note  Host memory that needs to be shared between the host and the
+    
+    \note  Host memory that needs to be shared between the host and the 
     device needs to be allocated with the palAllocateSharedMemory()
     and free'd with palFreeSharedMemory() functions.
-
+        
     \param hHdd - HDD context handle
-
+    
     \param pMemory - pointer to memory that will be free'd.
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.  In the case of a failure, a non-successful return code will be
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail.  In the case of a failure, a non-successful return code will be 
     returned and no memory will be allocated (the *ppMemory will be NULL so don't
     try to use it unless the status returns success).
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palFreeMemory( tHddHandle hHdd, void *pMemory );
 
@@ -422,6 +510,7 @@ eHalStatus palFreeMemory( tHddHandle hHdd, void *pMemory );
     \fn palFillMemory
 
     \brief OS agnostic funtion to fill host memory with a specified byte value
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -439,20 +528,27 @@ eHalStatus palFreeMemory( tHddHandle hHdd, void *pMemory );
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param pMemory - pointer to memory that will be filled.
-
+    
     \param numBytes - the number of bytes to be filled.
-
+    
     \param fillValue - the byte to be written to fill the memory with.
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.  In the case of a failure, a non-successful return code will be
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail.  In the case of a failure, a non-successful return code will be 
     returned and no memory will be allocated (the *ppMemory will be NULL so don't
     try to use it unless the status returns success).
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palFillMemory( tHddHandle hHdd, void *pMemory, tANI_U32 numBytes, tANI_BYTE fillValue );
 
@@ -461,6 +557,7 @@ eHalStatus palFillMemory( tHddHandle hHdd, void *pMemory, tANI_U32 numBytes, tAN
     \fn palCopyMemory
 
     \brief OS agnostic funtion to copy host memory from one location to another
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -475,17 +572,26 @@ eHalStatus palFillMemory( tHddHandle hHdd, void *pMemory, tANI_U32 numBytes, tAN
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param pSrc - pointer to source memory location (to copy from)
 
     \param pSrc - pointer to destination memory location (to copy to)
-
+    
     \param numBytes - the number of bytes to be be copied.
+<<<<<<< HEAD
 
     \return eHalStatus - status of the memory copy
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    \return eHalStatus - status of the memory copy 
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palCopyMemory( tHddHandle hHdd, void *pDst, const void *pSrc, tANI_U32 numBytes );
 
@@ -494,6 +600,7 @@ eHalStatus palCopyMemory( tHddHandle hHdd, void *pDst, const void *pSrc, tANI_U3
     \fn palFillMemory
 
     \brief OS agnostic funtion to fill host memory with a specified byte value
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -511,36 +618,48 @@ eHalStatus palCopyMemory( tHddHandle hHdd, void *pDst, const void *pSrc, tANI_U3
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param pMemory - pointer to memory that will be filled.
-
+    
     \param numBytes - the number of bytes to be filled.
-
+    
     \param fillValue - the byte to be written to fill the memory with.
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.  In the case of a failure, a non-successful return code will be
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail.  In the case of a failure, a non-successful return code will be 
     returned and no memory will be allocated (the *ppMemory will be NULL so don't
     try to use it unless the status returns success).
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 ANI_INLINE_FUNCTION
 eHalStatus palZeroMemory( tHddHandle hHdd, void *pMemory, tANI_U32 numBytes )
 {
     return( palFillMemory( hHdd, pMemory, numBytes, 0 ) );
 <<<<<<< HEAD
+<<<<<<< HEAD
 } 
 =======
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+} 
+>>>>>>> 657b0e9... prima update
 
 
 /** ---------------------------------------------------------------------------
 
     \fn palEqualMemory
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     \brief OS agnostic funtion to compare two pieces of memory, similar to 
     memcmp function in standard C.
@@ -561,27 +680,36 @@ tANI_BOOLEAN palEqualMemory( tHddHandle hHdd, void *pMemory1, void *pMemory2, tA
 
 =======
     \brief OS agnostic funtion to compare two pieces of memory, similar to
+=======
+    \brief OS agnostic funtion to compare two pieces of memory, similar to 
+>>>>>>> 657b0e9... prima update
     memcmp function in standard C.
-
+        
     \param hHdd - HDD context handle
-
+    
     \param pMemory1 - pointer to one location in memory to compare.
 
     \param pMemory2 - pointer to second location in memory to compare.
-
+    
     \param numBytes - the number of bytes to compare.
-
+    
     \return tANI_BOOLEAN - returns a boolean value that tells if the memory
-    locations are equal or now equal.
-
+    locations are equal or now equal. 
+    
   -------------------------------------------------------------------------------*/
+<<<<<<< HEAD
 tANI_BOOLEAN palEqualMemory( tHddHandle hHdd, void *pMemory1, void *pMemory2, tANI_U32 numBytes );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+tANI_BOOLEAN palEqualMemory( tHddHandle hHdd, void *pMemory1, void *pMemory2, tANI_U32 numBytes ); 
+
+>>>>>>> 657b0e9... prima update
 /** ---------------------------------------------------------------------------
 
     \fn palFillDeviceMemory
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     \brief OS agnostic funtion to fill device memory with a specified 
     32bit value
@@ -608,29 +736,36 @@ tANI_BOOLEAN palEqualMemory( tHddHandle hHdd, void *pMemory1, void *pMemory2, tA
     
 =======
     \brief OS agnostic funtion to fill device memory with a specified
+=======
+    \brief OS agnostic funtion to fill device memory with a specified 
+>>>>>>> 657b0e9... prima update
     32bit value
-
+    
     \param hHdd - HDD context handle
-
+    
     \param memOffset - offset of the memory on the device to fill.
-
+    
     \param numBytes - the number of bytes to be filled.
-
+    
     \param fillValue - the byte pattern to fill into memory on the device
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.
-
-    eHAL_STATUS_DEVICE_MEMORY_LENGTH_ERROR - length of the device memory is not
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail. 
+    
+    eHAL_STATUS_DEVICE_MEMORY_LENGTH_ERROR - length of the device memory is not 
     a multiple of 4 bytes.
-
-    eHAL_STATUS_DEVICE_MEMORY_MISALIGNED - memory address is not aligned on a
+    
+    eHAL_STATUS_DEVICE_MEMORY_MISALIGNED - memory address is not aligned on a 
     4 byte boundary.
-
-    \note return failure if the memOffset is not 32bit aligned and not a
+    
+    \note return failure if the memOffset is not 32bit aligned and not a 
     multiple of 4 bytes (the device does not support anything else).
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palFillDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 numBytes, tANI_BYTE fillValue );
 
@@ -640,6 +775,7 @@ eHalStatus palFillDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 nu
     \fn palZeroDeviceMemory
 
     \brief OS agnostic funtion to fill device memory with a specified byte value
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -664,37 +800,48 @@ eHalStatus palFillDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 nu
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
+    
     \param memOffset - offset of the memory on the device to fill.
-
+    
     \param numBytes - the number of bytes to be filled.
-
+    
     \param fillValue - the 32bit pattern to fill the memory with.
-
-    \return eHalStatus - status of the register read.  Note that this function
-    can fail.
-
-    eHAL_STATUS_DEVICE_MEMORY_LENGTH_ERROR - length of the device memory is not
+    
+    \return eHalStatus - status of the register read.  Note that this function 
+    can fail. 
+    
+    eHAL_STATUS_DEVICE_MEMORY_LENGTH_ERROR - length of the device memory is not 
     a multiple of 4 bytes.
-
-    eHAL_STATUS_DEVICE_MEMORY_MISALIGNED - memory address is not aligned on a
+    
+    eHAL_STATUS_DEVICE_MEMORY_MISALIGNED - memory address is not aligned on a 
     4 byte boundary.
-
-    \note return failure if the memOffset is not 32bit aligned and not a
+    
+    \note return failure if the memOffset is not 32bit aligned and not a 
     multiple of 4 bytes (the device does not support anything else).
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 ANI_INLINE_FUNCTION
 eHalStatus palZeroDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 numBytes )
 {
     return( palFillDeviceMemory( hHdd, memOffset, numBytes, 0 ) );
 <<<<<<< HEAD
+<<<<<<< HEAD
 } 
 =======
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+} 
+>>>>>>> 657b0e9... prima update
 
 /*----------------------------------------------------------------------------------
 
@@ -702,6 +849,7 @@ eHalStatus palZeroDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 nu
 
     \param hHdd - HDD context handle
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     \param frmType - Frame type
     
@@ -710,10 +858,16 @@ eHalStatus palZeroDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 nu
     \param frmType - Frame type
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    \param frmType - Frame type
+    
+>>>>>>> 657b0e9... prima update
     \param size
 
     \param data -
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     \param ppPacket  - 
 
@@ -723,6 +877,11 @@ eHalStatus palZeroDeviceMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U32 nu
 
     \return eHalStatus -
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    \param ppPacket  - 
+
+    \return eHalStatus -     
+>>>>>>> 657b0e9... prima update
 ----------------------------------------------------------------------------------*/
 eHalStatus palPktAlloc(tHddHandle hHdd, eFrameType frmType, tANI_U16 size, void **data, void **ppPacket) ;
 
@@ -745,10 +904,14 @@ eHalStatus palSpinLockGive( tHddHandle hHdd, tPalSpinLockHandle hSpinLock );
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //This function send a message to MAC, 
 =======
 //This function send a message to MAC,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+//This function send a message to MAC, 
+>>>>>>> 657b0e9... prima update
 //pMsgBuf is a buffer allocated by caller. The actual structure varies base on message type
 //The beginning of the buffer can always map to tSirMbMsg
 //This function must take care of padding if it is required for the OS
@@ -763,12 +926,17 @@ extern void palGetUnicastStats(tHddHandle hHdd, tANI_U32 *tx, tANI_U32 *rx);
 
     \param hHdd - HDD context handle
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     \return tick count. 
 =======
 
     \return tick count.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+    \return tick count. 
+>>>>>>> 657b0e9... prima update
 ----------------------------------------------------------------------------------*/
 tANI_U32 palGetTickCount(tHddHandle hHdd);
 
@@ -778,6 +946,7 @@ tANI_U32 palGetTickCount(tHddHandle hHdd);
 
     \brief chip and bus agnostic function to read memory from the PHY register space as memory
     i.e. to read more than 4 bytes from the contiguous register space
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param hHdd - HDD context handle
@@ -796,21 +965,28 @@ tANI_U32 palGetTickCount(tHddHandle hHdd);
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param hHdd - HDD context handle
-
-    \param memOffset - address (offset) of the memory from the top of the
+    
+    \param memOffset - address (offset) of the memory from the top of the 
     memory map (as exposed to the host) where the memory will be read from.
-
+    
     \param pBuffer - pointer to a buffer where the memory will be placed in host
     memory space after retreived from the chip.
-
+    
     \param numBytes - the number of bytes to be read.
-
-    \return eHalStatus - status of the memory read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palReadRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );
 
@@ -823,6 +999,7 @@ eHalStatus palReadRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuff
     API does the write asynchronously.
 
     \param hHdd - HDD context handle
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param memOffset - address (offset) of the memory from the top of the on-chip 
@@ -840,18 +1017,26 @@ eHalStatus palReadRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuff
 =======
 
     \param memOffset - address (offset) of the memory from the top of the on-chip
+=======
+    
+    \param memOffset - address (offset) of the memory from the top of the on-chip 
+>>>>>>> 657b0e9... prima update
     memory that will be written.
-
-    \param pBuffer - pointer to a buffer that has the source data that will be
+    
+    \param pBuffer - pointer to a buffer that has the source data that will be 
     written to the chip.
-
+    
     \param numBytes - the number of bytes to be written.
-
-    \return eHalStatus - status of the memory read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palAsyncWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );
 
@@ -860,6 +1045,7 @@ eHalStatus palAsyncWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 
     \fn palWriteRegMemory
     \brief chip and bus agnostic function to write memory to the PHY register space as memory
     i.e. to write more than 4 bytes from the contiguous register space. The difference from the
+<<<<<<< HEAD
 <<<<<<< HEAD
     above routine is, in USB interface, this routine performs the write synchronously where as 
     the above routine performs it asynchronously.
@@ -880,23 +1066,30 @@ eHalStatus palAsyncWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 
     
 =======
     above routine is, in USB interface, this routine performs the write synchronously where as
+=======
+    above routine is, in USB interface, this routine performs the write synchronously where as 
+>>>>>>> 657b0e9... prima update
     the above routine performs it asynchronously.
 
     \param hHdd - HDD context handle
-
-    \param memOffset - address (offset) of the memory from the top of the on-chip
+    
+    \param memOffset - address (offset) of the memory from the top of the on-chip 
     memory that will be written.
-
-    \param pBuffer - pointer to a buffer that has the source data that will be
+    
+    \param pBuffer - pointer to a buffer that has the source data that will be 
     written to the chip.
-
+    
     \param numBytes - the number of bytes to be written.
-
-    \return eHalStatus - status of the memory read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuffer, tANI_U32 numBytes );
 
@@ -905,6 +1098,7 @@ eHalStatus palWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuf
 
     \fn palWaitRegVal
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     \brief is a blocking function which reads the register and waits for the given number of iterations 
     until the read value matches the waitRegVal. The delay between is perIterWaitInNanoSec(in nanoseconds)
@@ -917,15 +1111,22 @@ eHalStatus palWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuf
     
 =======
     \brief is a blocking function which reads the register and waits for the given number of iterations
+=======
+    \brief is a blocking function which reads the register and waits for the given number of iterations 
+>>>>>>> 657b0e9... prima update
     until the read value matches the waitRegVal. The delay between is perIterWaitInNanoSec(in nanoseconds)
-
+    
     \param hHdd - HDD context handle
-
+    
     \param reg - address of the register to be read
-
+    
     \param mask - mask to be applied for the read value
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param waitRegVal - expected value from the register after applying the mask.
 
     \param perIterWaitInNanoSec - delay between the two iterations in nanoseconds
@@ -933,6 +1134,7 @@ eHalStatus palWriteRegMemory( tHddHandle hHdd, tANI_U32 memOffset, tANI_U8 *pBuf
     \param numIter - max number of reads before the timeout
 
     \param pReadRegVal - the value read from the register
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \return eHalStatus - status of the memory read.  Note that this function 
@@ -946,12 +1148,22 @@ eHalStatus palWaitRegVal( tHddHandle hHdd, tANI_U32 reg, tANI_U32 mask,
 
     \return eHalStatus - status of the memory read.  Note that this function
     can fail.  In particular, when the card is removed, this function will return
+=======
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
+>>>>>>> 657b0e9... prima update
     a failure.
-
+    
   -------------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus palWaitRegVal( tHddHandle hHdd, tANI_U32 reg, tANI_U32 mask,
                              tANI_U32 waitRegVal, tANI_U32 perIterWaitInNanoSec,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus palWaitRegVal( tHddHandle hHdd, tANI_U32 reg, tANI_U32 mask, 
+                             tANI_U32 waitRegVal, tANI_U32 perIterWaitInNanoSec, 
+>>>>>>> 657b0e9... prima update
                              tANI_U32 numIter, tANI_U32 *pReadRegVal );
 
 /** ---------------------------------------------------------------------------
@@ -962,6 +1174,7 @@ eHalStatus palWaitRegVal( tHddHandle hHdd, tANI_U32 reg, tANI_U32 mask,
     and writes back the new value to the register
 
     \param hHdd - HDD context handle
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     \param reg - address of the register to be modified.
@@ -976,17 +1189,24 @@ eHalStatus palWaitRegVal( tHddHandle hHdd, tANI_U32 reg, tANI_U32 mask,
     
 =======
 
+=======
+    
+>>>>>>> 657b0e9... prima update
     \param reg - address of the register to be modified.
-
+    
     \param andMask - The value read will be ANDed with this mask
 
     \parma orMask - The value after applying the andMask will be ORed with this value
-
-    \return eHalStatus - status of the memory read.  Note that this function
-    can fail.  In particular, when the card is removed, this function will return
+    
+    \return eHalStatus - status of the memory read.  Note that this function 
+    can fail.  In particular, when the card is removed, this function will return 
     a failure.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus palReadModifyWriteReg( tHddHandle hHdd, tANI_U32 reg, tANI_U32 andMask, tANI_U32 orMask );
 
@@ -1014,10 +1234,14 @@ tANI_U16 pal_cpu_to_be16(tANI_U16 x) ;
 
 // Need to eliminate these and use the ani_cpu_to_le, etc. macros....
 <<<<<<< HEAD
+<<<<<<< HEAD
 ANI_INLINE_FUNCTION unsigned long i_htonl( unsigned long ul ) 
 =======
 ANI_INLINE_FUNCTION unsigned long i_htonl( unsigned long ul )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ANI_INLINE_FUNCTION unsigned long i_htonl( unsigned long ul ) 
+>>>>>>> 657b0e9... prima update
 {
   return( ( ( ul & 0x000000ff ) << 24 ) |
           ( ( ul & 0x0000ff00 ) <<  8 ) |
@@ -1051,6 +1275,7 @@ ANI_INLINE_FUNCTION unsigned long i_ntohl( unsigned long ul )
 
     \note Caller must validate the byte array has enough space to hold the vlaue
 <<<<<<< HEAD
+<<<<<<< HEAD
         
     \param ptr - Starting address of a byte array
     
@@ -1061,14 +1286,21 @@ ANI_INLINE_FUNCTION unsigned long i_ntohl( unsigned long ul )
     
 =======
 
+=======
+        
+>>>>>>> 657b0e9... prima update
     \param ptr - Starting address of a byte array
-
+    
     \param value - The value to assign to the byte array
-
-    \return - The address to the byte after the assignment. This may or may not
+    
+    \return - The address to the byte after the assignment. This may or may not 
     be valid. Caller to verify.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 ANI_INLINE_FUNCTION tANI_U8 * pal_set_U32(tANI_U8 *ptr, tANI_U32 value)
 {
@@ -1096,6 +1328,7 @@ ANI_INLINE_FUNCTION tANI_U8 * pal_set_U32(tANI_U8 *ptr, tANI_U32 value)
 
     \note Caller must validate the byte array has enough space to hold the vlaue
 <<<<<<< HEAD
+<<<<<<< HEAD
         
     \param ptr - Starting address of a byte array
     
@@ -1106,14 +1339,21 @@ ANI_INLINE_FUNCTION tANI_U8 * pal_set_U32(tANI_U8 *ptr, tANI_U32 value)
     
 =======
 
+=======
+        
+>>>>>>> 657b0e9... prima update
     \param ptr - Starting address of a byte array
-
+    
     \param value - The value to assign to the byte array
-
-    \return - The address to the byte after the assignment. This may or may not
+    
+    \return - The address to the byte after the assignment. This may or may not 
     be valid. Caller to verify.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 ANI_INLINE_FUNCTION tANI_U8 * pal_set_U16(tANI_U8 *ptr, tANI_U16 value)
 {
@@ -1137,6 +1377,7 @@ ANI_INLINE_FUNCTION tANI_U8 * pal_set_U16(tANI_U8 *ptr, tANI_U16 value)
 
     \note Caller must validate the byte array has enough space to hold the vlaue
 <<<<<<< HEAD
+<<<<<<< HEAD
         
     \param ptr - Starting address of a byte array
     
@@ -1148,15 +1389,22 @@ ANI_INLINE_FUNCTION tANI_U8 * pal_set_U16(tANI_U8 *ptr, tANI_U16 value)
     
 =======
 
+=======
+        
+>>>>>>> 657b0e9... prima update
     \param ptr - Starting address of a byte array
-
-    \param pValue - Pointer to a caller allocated buffer for 16 bit value. Value is to assign
+    
+    \param pValue - Pointer to a caller allocated buffer for 16 bit value. Value is to assign 
     to this location.
-
-    \return - The address to the byte after the assignment. This may or may not
+    
+    \return - The address to the byte after the assignment. This may or may not 
     be valid. Caller to verify.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 ANI_INLINE_FUNCTION tANI_U8 * pal_get_U16(tANI_U8 *ptr, tANI_U16 *pValue)
 {
@@ -1180,6 +1428,7 @@ ANI_INLINE_FUNCTION tANI_U8 * pal_get_U16(tANI_U8 *ptr, tANI_U16 *pValue)
 
     \note Caller must validate the byte array has enough space to hold the vlaue
 <<<<<<< HEAD
+<<<<<<< HEAD
         
     \param ptr - Starting address of a byte array
     
@@ -1191,15 +1440,22 @@ ANI_INLINE_FUNCTION tANI_U8 * pal_get_U16(tANI_U8 *ptr, tANI_U16 *pValue)
     
 =======
 
+=======
+        
+>>>>>>> 657b0e9... prima update
     \param ptr - Starting address of a byte array
-
-    \param pValue - Pointer to a caller allocated buffer for 32 bit value. Value is to assign
+    
+    \param pValue - Pointer to a caller allocated buffer for 32 bit value. Value is to assign 
     to this location.
-
-    \return - The address to the byte after the assignment. This may or may not
+    
+    \return - The address to the byte after the assignment. This may or may not 
     be valid. Caller to verify.
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 ANI_INLINE_FUNCTION tANI_U8 * pal_get_U32(tANI_U8 *ptr, tANI_U32 *pValue)
 {

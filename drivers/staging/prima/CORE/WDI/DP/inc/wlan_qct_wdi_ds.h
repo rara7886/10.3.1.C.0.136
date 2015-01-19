@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -84,6 +87,7 @@ typedef struct
    wpt_uint8 frmType;
    wpt_uint8 fStaType;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpt_uint8 fProtectedFrame;
    wpt_uint16 fPktlen;
    wpt_status txCompleteStatus;
@@ -93,6 +97,11 @@ typedef struct
    wpt_status txCompleteStatus;
    wpt_uint8  staIdx;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpt_uint8 fProtectedFrame;
+   wpt_uint16 fPktlen;
+   wpt_status txCompleteStatus;
+>>>>>>> 657b0e9... prima update
 } WDI_DS_TxMetaInfoType;
 
 
@@ -119,10 +128,14 @@ typedef struct
    wpt_uint8 type:2;
    wpt_uint8 subtype:4;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpt_uint8 reserved0:2;
 =======
    wpt_uint8 rfBand:2;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpt_uint8 reserved0:2;
+>>>>>>> 657b0e9... prima update
 
    wpt_uint16 rtsf:1;  //For beacon only. 1 ~V Riva TSF is bigger(later) than the one received
    wpt_uint16 bsf:1;   //1 Riva sends the last beacon, 0 not.
@@ -176,6 +189,7 @@ typedef struct
    wpt_uint32 rssi0;
    wpt_uint32 rssi1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #ifdef WLAN_FEATURE_11W
@@ -186,6 +200,8 @@ typedef struct
    wpt_uint32 roamCandidateInd;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 } WDI_DS_RxMetaInfoType;
 
 typedef struct sPktMetaInfo
@@ -354,6 +370,7 @@ WDI_Status WDI_DS_GetStaIdxFromBssIdx(void *pContext, wpt_uint8 bssIdx, wpt_uint
 WDI_Status WDI_DS_ClearStaIdxPerBssIdx(void *pContext, wpt_uint8 bssIdx, wpt_uint8 staIdx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* @brief: WDI_DS_GetTrafficStats
  * This function should be invoked to fetch the current stats
@@ -386,4 +403,6 @@ void WDI_DS_ActivateTrafficStats(void);
 void WDI_DS_ClearTrafficStats(void);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif

@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +22,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
+<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -45,6 +49,8 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifndef __WLAN_HDD_POWER_H
 #define __WLAN_HDD_POWER_H
@@ -55,6 +61,7 @@
 
   \brief Linux HDD Power
 <<<<<<< HEAD
+<<<<<<< HEAD
          Copyright 2008 (c) Qualcomm, Incorporated.
          All Rights Reserved.
          Qualcomm Confidential and Proprietary.
@@ -63,6 +70,11 @@
          All Rights Reserved.
          Qualcomm Technologies Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         Copyright 2008 (c) Qualcomm, Incorporated.
+         All Rights Reserved.
+         Qualcomm Confidential and Proprietary.
+>>>>>>> 657b0e9... prima update
 
   ==========================================================================*/
 
@@ -120,6 +132,7 @@
 
 void hdd_conf_mcastbcast_filter(hdd_context_t* pHddCtx, v_BOOL_t setfilter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 VOS_STATUS hdd_conf_hostarpoffload(hdd_context_t* pHddCtx, v_BOOL_t fenable);
 =======
 VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t* pAdapter, v_BOOL_t fenable);
@@ -136,4 +149,7 @@ void hdd_conf_gtk_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable);
 void hdd_conf_ns_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+VOS_STATUS hdd_conf_hostarpoffload(hdd_context_t* pHddCtx, v_BOOL_t fenable);
+>>>>>>> 657b0e9... prima update
 #endif // if !defined __WLAN_QCT_DRIVER_H

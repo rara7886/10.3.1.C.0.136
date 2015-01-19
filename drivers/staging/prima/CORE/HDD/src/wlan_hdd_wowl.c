@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,10 +68,14 @@
 #define WOWL_PTRN_MAX_SIZE          128
 #define WOWL_PTRN_MASK_MAX_SIZE      16
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WOWL_MAX_PTRNS_ALLOWED        8
 =======
 #define WOWL_MAX_PTRNS_ALLOWED       16
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WOWL_MAX_PTRNS_ALLOWED        8
+>>>>>>> 657b0e9... prima update
 #define WOWL_INTER_PTRN_TOKENIZER   ';'
 #define WOWL_INTRA_PTRN_TOKENIZER   ':'
 
@@ -76,6 +83,7 @@
  * Type Declarations
  * -------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static struct hdd_context_s *pAdapterHandle = NULL;
 
@@ -89,6 +97,13 @@ static v_U8_t g_hdd_wowl_ptrns_count = 0;
 
 int hdd_parse_hex(unsigned char c)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static struct hdd_context_s *pAdapterHandle = NULL;
+
+char *g_hdd_wowl_ptrns[WOWL_MAX_PTRNS_ALLOWED]; //Patterns 0-7 
+
+static int parse_hex(unsigned char c)
+>>>>>>> 657b0e9... prima update
 {
   if (c >= '0' && c <= '9')
     return c-'0';
@@ -113,6 +128,7 @@ static inline int find_ptrn_len(const char* ptrn)
 static void hdd_wowl_callback( void *pContext, eHalStatus halStatus )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
     "%s: Return code = (%ld)\n", __FUNCTION__, halStatus );
 }
@@ -131,6 +147,11 @@ static void hdd_wowl_wakeIndication_callback( void *pContext,
 }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
+    "%s: Return code = (%ld)\n", __FUNCTION__, halStatus );
+}
+>>>>>>> 657b0e9... prima update
 
 static void dump_hdd_wowl_ptrn(tSirWowlAddBcastPtrn *ptrn)
 {
@@ -163,20 +184,27 @@ static void dump_hdd_wowl_ptrn(tSirWowlAddBcastPtrn *ptrn)
               : TRUE otherwise
   ===========================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn) 
 =======
 v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn) 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn) 
+>>>>>>> 657b0e9... prima update
 {
   tSirWowlAddBcastPtrn localPattern;
   int i, first_empty_slot, len, offset;
   eHalStatus halStatus;
   const char *temp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
   v_U8_t sessionId = pAdapter->sessionId;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   len = find_ptrn_len(ptrn);
 
@@ -200,10 +228,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
           "%s: Cannot add anymore patterns. No free slot!", __FUNCTION__);
 =======
           "%s: Cannot add anymore patterns. No free slot!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "%s: Cannot add anymore patterns. No free slot!", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return VOS_FALSE;
     }
 
@@ -228,16 +260,21 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
           "%s: Malformed pattern string. Skip!\n", __FUNCTION__);
 =======
           "%s: Malformed pattern string. Skip!\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "%s: Malformed pattern string. Skip!\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       ptrn += len; 
       goto next_ptrn;
     }
 
     // Extract the pattern size
     localPattern.ucPatternSize = 
+<<<<<<< HEAD
 <<<<<<< HEAD
       ( parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
 
@@ -251,16 +288,27 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     localPattern.ucPatternMaskSize = 
       ( hdd_parse_hex( ptrn[3] ) * 0x10 ) + hdd_parse_hex( ptrn[4] );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      ( parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
+
+    // Extract the pattern mask size
+    localPattern.ucPatternMaskSize = 
+      ( parse_hex( ptrn[3] ) * 0x10 ) + parse_hex( ptrn[4] );
+>>>>>>> 657b0e9... prima update
 
     if(localPattern.ucPatternSize > WOWL_PTRN_MAX_SIZE ||
        localPattern.ucPatternMaskSize > WOWL_PTRN_MASK_MAX_SIZE)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
           "%s: Invalid length specified. Skip!\n", __FUNCTION__);
 =======
           "%s: Invalid length specified. Skip!\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "%s: Invalid length specified. Skip!\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       ptrn += len; 
       goto next_ptrn;
     }
@@ -271,10 +319,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
           "%s: Malformed pattern string..skip!\n", __FUNCTION__);
 =======
           "%s: Malformed pattern string..skip!\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "%s: Malformed pattern string..skip!\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       ptrn += len; 
       goto next_ptrn;
     }
@@ -285,10 +337,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
           "%s: Malformed pattern string...skip!\n", __FUNCTION__);
 =======
           "%s: Malformed pattern string...skip!\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "%s: Malformed pattern string...skip!\n", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       ptrn += len; 
       goto next_ptrn;
     }
@@ -303,10 +359,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       localPattern.ucPattern[i] = 
 <<<<<<< HEAD
+<<<<<<< HEAD
         (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
 =======
         (hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
+>>>>>>> 657b0e9... prima update
       ptrn += 2; //skip to next byte
     }
 
@@ -317,10 +377,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       localPattern.ucPatternMask[i] = 
 <<<<<<< HEAD
+<<<<<<< HEAD
         (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
 =======
         (hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
+>>>>>>> 657b0e9... prima update
       ptrn += 2; //skip to next byte
     }
 
@@ -330,10 +394,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
           "%s: kmalloc failure", __FUNCTION__);
 =======
           "%s: kmalloc failure", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "%s: kmalloc failure", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return VOS_FALSE;
     }
 
@@ -344,10 +412,14 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
 
     // Register the pattern downstream
 <<<<<<< HEAD
+<<<<<<< HEAD
     halStatus = sme_WowlAddBcastPattern( pAdapterHandle->hHal, &localPattern );
 =======
     halStatus = sme_WowlAddBcastPattern( hHal, &localPattern, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    halStatus = sme_WowlAddBcastPattern( pAdapterHandle->hHal, &localPattern );
+>>>>>>> 657b0e9... prima update
     if ( !HAL_STATUS_SUCCESS( halStatus ) )
     {
       // Add failed, so invalidate the local storage
@@ -382,6 +454,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
               : TRUE otherwise
   ===========================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn) 
 {
   tSirWowlDelBcastPtrn delPattern;
@@ -390,14 +463,19 @@ v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn)
   eHalStatus halStatus;
 =======
 v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn) 
+=======
+v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn) 
+>>>>>>> 657b0e9... prima update
 {
   tSirWowlDelBcastPtrn delPattern;
   unsigned char id;
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
   v_BOOL_t patternFound = VOS_FALSE;
   eHalStatus halStatus;
+<<<<<<< HEAD
   v_U8_t sessionId = pAdapter->sessionId;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   // Detect pattern
   for (id=0; id<WOWL_MAX_PTRNS_ALLOWED && g_hdd_wowl_ptrns[id] != NULL; id++)
@@ -414,10 +492,14 @@ v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
   {
     delPattern.ucPatternId = id;
 <<<<<<< HEAD
+<<<<<<< HEAD
     halStatus = sme_WowlDelBcastPattern( pAdapterHandle->hHal, &delPattern );
 =======
     halStatus = sme_WowlDelBcastPattern( hHal, &delPattern, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    halStatus = sme_WowlDelBcastPattern( pAdapterHandle->hHal, &delPattern );
+>>>>>>> 657b0e9... prima update
     if ( HAL_STATUS_SUCCESS( halStatus ) )
     {
       // Remove from local storage as well
@@ -433,6 +515,7 @@ v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
 }
 
 /**============================================================================
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   @brief hdd_add_wowl_ptrn_debugfs() - Function which will add a WoW pattern
@@ -611,6 +694,8 @@ v_BOOL_t hdd_del_wowl_ptrn_debugfs(hdd_adapter_t *pAdapter, v_U8_t pattern_idx)
 
 /**============================================================================
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   @brief hdd_enter_wowl() - Function which will enable WoWL. Atleast one
   of MP and PBM must be enabled
 
@@ -625,9 +710,12 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
   tSirSmeWowlEnterParams wowParams;
   eHalStatus halStatus;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   wowParams.ucPatternFilteringEnable = enable_pbm;
   wowParams.ucMagicPktEnable = enable_mp;
@@ -638,6 +726,7 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
   }
 
   // Request to put Libra into WoWL
+<<<<<<< HEAD
 <<<<<<< HEAD
   halStatus = sme_EnterWowl( pAdapterHandle->hHal, hdd_wowl_callback, 
       pAdapterHandle, &wowParams );
@@ -650,6 +739,10 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
 #endif // WLAN_WAKEUP_EVENTS
                              &wowParams, pAdapter->sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  halStatus = sme_EnterWowl( pAdapterHandle->hHal, hdd_wowl_callback, 
+      pAdapterHandle, &wowParams );
+>>>>>>> 657b0e9... prima update
 
   if ( !HAL_STATUS_SUCCESS( halStatus ) )
   {
@@ -671,6 +764,7 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
                     : TRUE otherwise
   ===========================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 v_BOOL_t hdd_exit_wowl (void) 
 {
   eHalStatus halStatus;
@@ -678,12 +772,18 @@ v_BOOL_t hdd_exit_wowl (void)
   halStatus = sme_ExitWowl( pAdapterHandle->hHal );
 =======
 v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter) 
+=======
+v_BOOL_t hdd_exit_wowl (void) 
+>>>>>>> 657b0e9... prima update
 {
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
   eHalStatus halStatus;
 
+<<<<<<< HEAD
   halStatus = sme_ExitWowl( hHal );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  halStatus = sme_ExitWowl( pAdapterHandle->hHal );
+>>>>>>> 657b0e9... prima update
   if ( !HAL_STATUS_SUCCESS( halStatus ) )
   {
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
@@ -702,6 +802,7 @@ v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter)
                     : TRUE otherwise
   ===========================================================================*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 v_BOOL_t hdd_init_wowl (void *pAdapter) 
 {
   pAdapterHandle = (struct hdd_context_s*)pAdapter;
@@ -711,15 +812,24 @@ v_BOOL_t hdd_init_wowl (hdd_adapter_t*pAdapter)
   hdd_context_t *pHddCtx = NULL;
   pHddCtx = pAdapter->pHddCtx;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+v_BOOL_t hdd_init_wowl (void *pAdapter) 
+{
+  pAdapterHandle = (struct hdd_context_s*)pAdapter;
+>>>>>>> 657b0e9... prima update
 
   memset(g_hdd_wowl_ptrns, 0, sizeof(g_hdd_wowl_ptrns));
 
   //Add any statically configured patterns 
 <<<<<<< HEAD
+<<<<<<< HEAD
   hdd_add_wowl_ptrn(pAdapterHandle->cfg_ini->wowlPattern); 
 =======
   hdd_add_wowl_ptrn(pAdapter, pHddCtx->cfg_ini->wowlPattern); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  hdd_add_wowl_ptrn(pAdapterHandle->cfg_ini->wowlPattern); 
+>>>>>>> 657b0e9... prima update
 
   return VOS_TRUE;
 }

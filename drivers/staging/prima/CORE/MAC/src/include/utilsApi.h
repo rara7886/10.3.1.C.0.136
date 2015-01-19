@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -45,9 +48,13 @@
 /*
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ *
+>>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * Author:              Kevin Nguyen
  * Date:                02/27/02
@@ -65,6 +72,9 @@
 #include "aniGlobal.h"
 #include "utilsGlobal.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined VOSS_ENABLED
 #include "VossWrapper.h"
 #elif defined ANI_OS_TYPE_LINUX
@@ -90,9 +100,12 @@ extern void rt_sched_unlock();
 #define SIR_SCHED_UNLOCK()  TX_ENABLE_INTR;
 
 #endif
+<<<<<<< HEAD
 =======
 #include "VossWrapper.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #define LOG_INDEX_FOR_MODULE( modId ) ( ( modId ) - LOG_FIRST_MODULE_ID )
 #define GET_MIN_VALUE(__val1, __val2) ((__val1 < __val2) ? __val1 : __val2)
@@ -105,10 +118,13 @@ extern void logDbg(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 debugLevel, cons
 extern tANI_U32 gPktAllocCnt, gPktFreeCnt;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 extern  VOS_TRACE_LEVEL getVosDebugLevel(tANI_U32 debugLevel);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /// Debug dumps
 extern void logPrintf(tpAniSirGlobal, tANI_U32, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4);
 
@@ -145,6 +161,9 @@ extern void cfgDeInit(tpAniSirGlobal);
 void sirDumpBuf(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 level, tANI_U8 *buf, tANI_U32 size);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined ANI_OS_TYPE_LINUX
 
 
@@ -173,8 +192,11 @@ extern void sysSuspendThreads(tpAniSirGlobal pMac);
 #define RTAI_MAX_BUF_SIZE       BUF_8192
 
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // --------------------------------------------------------------------
 /**
@@ -747,6 +769,9 @@ static inline tANI_U8 convertCW(tANI_U16 cw)
 #define upToAc(up)                ((WLAN_UP_TO_AC_MAP >> ((up) << 2)) & 0x03)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined VOSS_ENABLED
 
 #define sirBusyWait(microsecond)   vos_busy_wait(microsecond / 1000)
@@ -820,8 +845,11 @@ sirSleepWaitIntern(tANI_U32 duration)
     }
 #endif
 } // sirSleepWait
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // -------------------------------------------------------------------
 
@@ -890,10 +918,14 @@ void ConverttoBigEndian(void *ptr, tANI_U16 size);
 void CreateScanCtsFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tSirMacAddr selfMac);
 void CreateScanDataNullFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr,
 <<<<<<< HEAD
+<<<<<<< HEAD
                              tANI_U8 pwrMgmt, tSirMacAddr bssid, 
 =======
                              tANI_U8 pwrMgmt, tSirMacAddr bssid,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                             tANI_U8 pwrMgmt, tSirMacAddr bssid, 
+>>>>>>> 657b0e9... prima update
                              tSirMacAddr selfMacAddr);
 void CreateInitScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tBssSystemRole role);
 void CreateFinishScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tBssSystemRole role);

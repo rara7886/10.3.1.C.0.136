@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -76,6 +79,7 @@
 #define AAG_PTK_PRF_HM_POS 6
 #define AAG_PTK_PRF_LN_POS 12
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define AAG_PTK_PRF_HN_POS AAG_PTK_PRF_LN_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE
 
 #define AAG_PTK_PRF_TEXT_LEN AAG_PTK_PRF_HN_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE
@@ -84,6 +88,11 @@
 
 #define AAG_PTK_PRF_TEXT_LEN (AAG_PTK_PRF_HN_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define AAG_PTK_PRF_HN_POS AAG_PTK_PRF_LN_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE
+
+#define AAG_PTK_PRF_TEXT_LEN AAG_PTK_PRF_HN_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE
+>>>>>>> 657b0e9... prima update
 
 #define AAG_GTK_PRF_CONST "Group key expansion"
 #define AAG_GTK_PRF_CONST_LEN 19
@@ -92,10 +101,14 @@
 #define AAG_GTK_PRF_NONCE_POS 6
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define AAG_GTK_PRF_TEXT_LEN AAG_GTK_PRF_NONCE_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE
 =======
 #define AAG_GTK_PRF_TEXT_LEN (AAG_GTK_PRF_NONCE_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define AAG_GTK_PRF_TEXT_LEN AAG_GTK_PRF_NONCE_POS + ANI_EAPOL_KEY_RSN_NONCE_SIZE
+>>>>>>> 657b0e9... prima update
 
 /**
  * aagGetKeyMaterialLen
@@ -257,10 +270,14 @@ aagPrf(v_U32_t cryptHandle,
        v_U32_t prfLen)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     static v_U8_t y = 0;
 =======
     static v_U8_t y;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    static v_U8_t y = 0;
+>>>>>>> 657b0e9... prima update
 
     v_U8_t *hmacText = NULL;
     v_U8_t *resultOffset = result;

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,10 +47,15 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * Airgo Networks, Inc proprietary. All rights reserved.
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ *
+ * Airgo Networks, Inc proprietary. All rights reserved.
+>>>>>>> 657b0e9... prima update
  * This file sirTypes.h contains the common types
  *
  * Author:    V. K. Kandarpa
@@ -62,6 +70,9 @@
 
 #include "halTypes.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 /*
  typedef unsigned char  tANI_U8;
  typedef unsigned short tANI_U16;
@@ -80,8 +91,11 @@
 #define inline __inline
 #endif
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /* ********************************************** *
  *                                                *

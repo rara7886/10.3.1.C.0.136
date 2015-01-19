@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -351,6 +354,7 @@ typedef struct
 } vos_log_qos_tspec_pkt_type;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
    This packet contains data information when stall detected
@@ -390,6 +394,8 @@ typedef struct
 } vos_log_rssi_pkt_type;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*------------------------------------------------------------------------- 
   Function declarations and documenation
   ------------------------------------------------------------------------*/

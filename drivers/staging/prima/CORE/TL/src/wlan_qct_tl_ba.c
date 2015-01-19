@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -103,10 +106,13 @@
 #define WLANTL_BA_REORDERING_AGING_TIMER   30   /* 30 millisec */
 #define WLANTL_BA_MIN_FREE_RX_VOS_BUFFER   0    /* RX VOS buffer low threshold */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define CSN_WRAP_AROUND_THRESHOLD          3000 /* CSN wrap around threshold */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 /*==========================================================================
@@ -136,9 +142,12 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    WLANTL_BAReorderType        *ReorderInfo;
    WLANTL_CbType               *pTLHandle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WLANTL_STAClientType*       pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    vos_pkt_t                   *vosDataBuff;
    VOS_STATUS                   status = VOS_STATUS_SUCCESS;
    v_U8_t                       ucSTAID;
@@ -147,12 +156,15 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    WLANTL_RxMetaInfoType        wRxMetaInfo;
    v_U32_t                      fwIdx = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WDI_DS_RxMetaInfoType       *pRxMetadata;
    vos_pkt_t                   *pCurrent;
    vos_pkt_t                   *pNext;
    v_S15_t                      seq;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    if(NULL == timerUdata)
@@ -179,6 +191,7 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    ReorderInfo = &pTLHandle->atlSTAClients[ucSTAID].atlBAReorderInfo[ucTID];
 =======
    pClientSTA = pTLHandle->atlSTAClients[ucSTAID];
@@ -190,6 +203,9 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
 
    ReorderInfo = &pClientSTA->atlBAReorderInfo[ucTID];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   ReorderInfo = &pTLHandle->atlSTAClients[ucSTAID].atlBAReorderInfo[ucTID];
+>>>>>>> 657b0e9... prima update
    if(NULL == ReorderInfo)
    {
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Reorder data NULL, this could not happen SID %d, TID %d", 
@@ -198,10 +214,14 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    if(0 == pTLHandle->atlSTAClients[ucSTAID].atlBAReorderInfo[ucTID].ucExists)
 =======
    if(0 == pClientSTA->atlBAReorderInfo[ucTID].ucExists)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if(0 == pTLHandle->atlSTAClients[ucSTAID].atlBAReorderInfo[ucTID].ucExists)
+>>>>>>> 657b0e9... prima update
    {
        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Reorder session doesn't exist SID %d, TID %d", 
                    ucSTAID, ucTID));
@@ -215,10 +235,14 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    if( pTLHandle->atlSTAClients[ucSTAID].atlBAReorderInfo[ucTID].ucExists == 0 )
 =======
    if( 0 == pClientSTA->atlBAReorderInfo[ucTID].ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if( pTLHandle->atlSTAClients[ucSTAID].atlBAReorderInfo[ucTID].ucExists == 0 )
+>>>>>>> 657b0e9... prima update
    {
       vos_lock_release(&ReorderInfo->reorderLock);
       return;
@@ -249,6 +273,7 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
    /* Do replay check before giving packets to upper layer 
       replay check code : check whether replay check is needed or not */
@@ -258,6 +283,12 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
       replay check code : check whether replay check is needed or not */
    if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+   /* Do replay check before giving packets to upper layer 
+      replay check code : check whether replay check is needed or not */
+   if(VOS_TRUE == pTLHandle->atlSTAClients[ucSTAID].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
    {
        v_U64_t    ullpreviousReplayCounter = 0;
        v_U64_t    ullcurrentReplayCounter = 0;
@@ -269,10 +300,14 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
        {
          /*Get previous reply counter*/
 <<<<<<< HEAD
+<<<<<<< HEAD
          ullpreviousReplayCounter = pTLHandle->atlSTAClients[ucSTAID].ullReplayCounter[ucTID];
 =======
          ullpreviousReplayCounter = pClientSTA->ullReplayCounter[ucTID];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         ullpreviousReplayCounter = pTLHandle->atlSTAClients[ucSTAID].ullReplayCounter[ucTID];
+>>>>>>> 657b0e9... prima update
 
          /*Get current replay counter of packet in reorder buffer*/
          ullcurrentReplayCounter = ReorderInfo->reorderBuffer->ullReplayCounter[ucloopCounter];
@@ -287,19 +322,27 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
            {
                /*Increment the debug counter*/
 <<<<<<< HEAD
+<<<<<<< HEAD
                pTLHandle->atlSTAClients[ucSTAID].ulTotalReplayPacketsDetected++;
 =======
                pClientSTA->ulTotalReplayPacketsDetected++;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               pTLHandle->atlSTAClients[ucSTAID].ulTotalReplayPacketsDetected++;
+>>>>>>> 657b0e9... prima update
 
                /*A replay packet found*/
                VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                 "WLANTL_ReorderingAgingTimerExpierCB: total dropped replay packets on STA ID %X is [0x%lX]\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 ucSTAID, pTLHandle->atlSTAClients[ucSTAID].ulTotalReplayPacketsDetected);
 =======
                 ucSTAID, pClientSTA->ulTotalReplayPacketsDetected);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                ucSTAID, pTLHandle->atlSTAClients[ucSTAID].ulTotalReplayPacketsDetected);
+>>>>>>> 657b0e9... prima update
 
                VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                 "WLANTL_ReorderingAgingTimerExpierCB: replay packet found with PN : [0x%llX]\n",
@@ -316,10 +359,14 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
            {
               /*Not a replay packet update previous replay counter*/
 <<<<<<< HEAD
+<<<<<<< HEAD
               pTLHandle->atlSTAClients[ucSTAID].ullReplayCounter[ucTID] = ullcurrentReplayCounter;
 =======
               pClientSTA->ullReplayCounter[ucTID] = ullcurrentReplayCounter;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              pTLHandle->atlSTAClients[ucSTAID].ullReplayCounter[ucTID] = ullcurrentReplayCounter;
+>>>>>>> 657b0e9... prima update
            }
          }
          else
@@ -331,9 +378,13 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
        } 
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
    status = WLANTL_ChainFrontPkts(fwIdx, opCode, 
                                   &vosDataBuff, ReorderInfo, NULL);
@@ -348,10 +399,14 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    if(NULL == pTLHandle->atlSTAClients[ucSTAID].pfnSTARx)
 =======
    if(NULL == pClientSTA->pfnSTARx)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if(NULL == pTLHandle->atlSTAClients[ucSTAID].pfnSTARx)
+>>>>>>> 657b0e9... prima update
    {
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Callback function NULL with STAID %d", ucSTAID));
       if(!VOS_IS_STATUS_SUCCESS(vos_lock_release(&ReorderInfo->reorderLock)))
@@ -371,6 +426,7 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
       return;
    }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  
    if( WLAN_STA_SOFTAP == pTLHandle->atlSTAClients[ucSTAID].wSTADesc.wSTAType)
@@ -395,10 +451,15 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
 
    if( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE  
+   if( WLAN_STA_SOFTAP == pTLHandle->atlSTAClients[ucSTAID].wSTADesc.wSTAType)
+>>>>>>> 657b0e9... prima update
    {
       WLANTL_FwdPktToHDD( expireHandle->pAdapter, vosDataBuff, ucSTAID);
    }
    else
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
    {
@@ -409,6 +470,12 @@ v_VOID_t WLANTL_ReorderingAgingTimerExpierCB
       wRxMetaInfo.ucUP = ucTID;
       pClientSTA->pfnSTARx(expireHandle->pAdapter,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+   {
+      wRxMetaInfo.ucUP = ucTID;
+      pTLHandle->atlSTAClients[ucSTAID].pfnSTARx(expireHandle->pAdapter,
+>>>>>>> 657b0e9... prima update
                                            vosDataBuff, ucSTAID, &wRxMetaInfo);
    }
    if(!VOS_IS_STATUS_SUCCESS(vos_lock_release(&ReorderInfo->reorderLock)))
@@ -450,10 +517,14 @@ void WLANTL_InitBAReorderBuffer
    {
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                        "%s: Invalid TL Control Block", __FUNCTION__));
 =======
                        "%s: Invalid TL Control Block", __func__));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                       "%s: Invalid TL Control Block", __FUNCTION__));
+>>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -464,12 +535,18 @@ void WLANTL_InitBAReorderBuffer
       {
          pTLCb->reorderBufferPool[idx].arrayBuffer[pIdx] = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
          pTLCb->reorderBufferPool[idx].ullReplayCounter[pIdx] = 0; 
 #endif
 =======
          pTLCb->reorderBufferPool[idx].ullReplayCounter[pIdx] = 0; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+         pTLCb->reorderBufferPool[idx].ullReplayCounter[pIdx] = 0; 
+#endif
+>>>>>>> 657b0e9... prima update
       }
    }
 
@@ -525,11 +602,15 @@ WLANTL_BaSessionAdd
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   WLANTL_CbType        *pTLCb = NULL; 
 =======
   WLANTL_CbType        *pTLCb = NULL;
   WLANTL_STAClientType *pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WLANTL_CbType        *pTLCb = NULL; 
+>>>>>>> 657b0e9... prima update
   WLANTL_BAReorderType *reorderInfo;
   v_U32_t               idx;
   VOS_STATUS            status = VOS_STATUS_SUCCESS;
@@ -564,6 +645,7 @@ WLANTL_BaSessionAdd
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) 
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
@@ -577,6 +659,9 @@ WLANTL_BaSessionAdd
 
   if ( 0 == pClientSTA->ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) 
+>>>>>>> 657b0e9... prima update
   {
     VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
           "WLAN TL:Station was not yet registered on WLANTL_BaSessionAdd");
@@ -587,6 +672,7 @@ WLANTL_BaSessionAdd
     Verify that BA session was not already added
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 != pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists ) 
   {
     pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists++;
@@ -595,6 +681,11 @@ WLANTL_BaSessionAdd
   {
     pClientSTA->atlBAReorderInfo[ucTid].ucExists++;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 != pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists ) 
+  {
+    pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists++;
+>>>>>>> 657b0e9... prima update
     VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
               "WLAN TL:BA session already exists on WLANTL_BaSessionAdd");
     return VOS_STATUS_E_EXISTS;
@@ -604,34 +695,47 @@ WLANTL_BaSessionAdd
     Initialize new BA session 
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   reorderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
 =======
   reorderInfo = &pClientSTA->atlBAReorderInfo[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  reorderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
+>>>>>>> 657b0e9... prima update
 
   for(idx = 0; idx < WLANTL_MAX_BA_SESSION; idx++)
   {
     if(VOS_TRUE == pTLCb->reorderBufferPool[idx].isAvailable)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].reorderBuffer =
 =======
       pClientSTA->atlBAReorderInfo[ucTid].reorderBuffer =
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].reorderBuffer =
+>>>>>>> 657b0e9... prima update
                                             &(pTLCb->reorderBufferPool[idx]);
       pTLCb->reorderBufferPool[idx].isAvailable = VOS_FALSE;
       TLLOG4(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,"%dth buffer available, buffer PTR 0x%p",
                   idx,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].reorderBuffer
 =======
                   pClientSTA->atlBAReorderInfo[ucTid].reorderBuffer
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].reorderBuffer
+>>>>>>> 657b0e9... prima update
                   ));
       break;
     }
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  
   
@@ -640,6 +744,11 @@ WLANTL_BaSessionAdd
   
   if( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE  
+  
+  if( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType)
+>>>>>>> 657b0e9... prima update
   {
       if( WLANTL_MAX_BA_SESSION == idx) 
       {
@@ -649,9 +758,13 @@ WLANTL_BaSessionAdd
       }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
   reorderInfo->timerUdata.pAdapter     = pvosGCtx;
   reorderInfo->timerUdata.pTLHandle    = (v_PVOID_t)pTLCb;
   reorderInfo->timerUdata.STAID        = ucSTAId;
@@ -679,6 +792,7 @@ WLANTL_BaSessionAdd
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists++;
   pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].usCount   = 0;
   pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucCIndex  = 0;
@@ -698,19 +812,31 @@ WLANTL_BaSessionAdd
   pClientSTA->atlBAReorderInfo[ucTid].ucExists++;
   pClientSTA->atlBAReorderInfo[ucTid].usCount   = 0;
   pClientSTA->atlBAReorderInfo[ucTid].ucCIndex  = 0;
+=======
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists++;
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].usCount   = 0;
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucCIndex  = 0;
+>>>>>>> 657b0e9... prima update
   if(0 == winSize)
   {
-    pClientSTA->atlBAReorderInfo[ucTid].winSize = WLANTL_MAX_WINSIZE;
+    pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].winSize =
+                                                   WLANTL_MAX_WINSIZE;
   }
   else
   {
-    pClientSTA->atlBAReorderInfo[ucTid].winSize   = winSize;
+    pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].winSize   = winSize;
   }
+<<<<<<< HEAD
   pClientSTA->atlBAReorderInfo[ucTid].SSN       = SSN;
   pClientSTA->atlBAReorderInfo[ucTid].sessionID = sessionID;
   pClientSTA->atlBAReorderInfo[ucTid].pendingFramesCount = 0;
   pClientSTA->atlBAReorderInfo[ucTid].LastSN = SSN;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].SSN       = SSN;
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].sessionID = sessionID;
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].pendingFramesCount = 0;
+>>>>>>> 657b0e9... prima update
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "WLAN TL:New BA session added for STA: %d TID: %d",
              ucSTAId, ucTid));
@@ -758,11 +884,15 @@ WLANTL_BaSessionDel
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   WLANTL_CbType*          pTLCb       = NULL; 
 =======
   WLANTL_CbType*          pTLCb       = NULL;
   WLANTL_STAClientType    *pClientSTA   = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WLANTL_CbType*          pTLCb       = NULL; 
+>>>>>>> 657b0e9... prima update
   vos_pkt_t*              vosDataBuff = NULL;
   VOS_STATUS              vosStatus   = VOS_STATUS_E_FAILURE;
   VOS_STATUS              lockStatus = VOS_STATUS_E_FAILURE;  
@@ -801,6 +931,7 @@ WLANTL_BaSessionDel
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) &&
       ( 0 == pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists ))
   {
@@ -814,31 +945,36 @@ WLANTL_BaSessionDel
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 
   if ( NULL == pClientSTA )
+=======
+  if (( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) &&
+      ( 0 == pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists ))
+>>>>>>> 657b0e9... prima update
   {
-    TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
-        "WLAN TL:Client Memory was not allocated on %s", __func__));
-    return VOS_STATUS_E_FAILURE;
-  }
-
-  if (( 0 == pClientSTA->ucExists ) &&
-      ( 0 == pClientSTA->atlBAReorderInfo[ucTid].ucExists ))
-  {
-    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
+    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
           "WLAN TL:Station was not yet registered on WLANTL_BaSessionDel");
     return VOS_STATUS_E_EXISTS;
   }
+<<<<<<< HEAD
   else if(( 0 == pClientSTA->ucExists ) &&
           ( 0 != pClientSTA->atlBAReorderInfo[ucTid].ucExists ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  else if(( 0 == pTLCb->atlSTAClients[ucSTAId].ucExists ) &&
+          ( 0 != pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists ))
+>>>>>>> 657b0e9... prima update
   {
     VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_WARN,
           "STA was deleted but BA info is still there, just remove BA info");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     reOrderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
 =======
     reOrderInfo = &pClientSTA->atlBAReorderInfo[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    reOrderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
+>>>>>>> 657b0e9... prima update
     reOrderInfo->reorderBuffer->isAvailable = VOS_TRUE;
     memset(&reOrderInfo->reorderBuffer->arrayBuffer[0],
            0,
@@ -853,10 +989,14 @@ WLANTL_BaSessionDel
     Verify that BA session was added
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   if ( 0 == pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists )
 =======
   if ( 0 == pClientSTA->atlBAReorderInfo[ucTid].ucExists )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( 0 == pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists )
+>>>>>>> 657b0e9... prima update
   {
     VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLAN TL:BA session does not exists on WLANTL_BaSessionDel");
@@ -868,10 +1008,14 @@ WLANTL_BaSessionDel
      Send all pending packets to HDD 
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   reOrderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
 =======
   reOrderInfo = &pClientSTA->atlBAReorderInfo[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  reOrderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
+>>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
      Invalidate reorder info here. This ensures that no packets are 
@@ -881,6 +1025,7 @@ WLANTL_BaSessionDel
   if(!VOS_IS_STATUS_SUCCESS(lockStatus))
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
           "Unable to acquire reorder vos lock in %s\n", __FUNCTION__));
     return lockStatus;
@@ -892,6 +1037,12 @@ WLANTL_BaSessionDel
   }
   pClientSTA->atlBAReorderInfo[ucTid].ucExists = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "Unable to acquire reorder vos lock in %s\n", __FUNCTION__));
+    return lockStatus;
+  }
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists = 0;
+>>>>>>> 657b0e9... prima update
 
   TLLOG2(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
                "WLAN TL: Fwd all packets to HDD on WLANTL_BaSessionDel"));
@@ -919,15 +1070,21 @@ WLANTL_BaSessionDel
               vosDataBuff ));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if ( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
 =======
     if ( WLAN_STA_SOFTAP == pClientSTA->wSTADesc.wSTAType )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    if ( WLAN_STA_SOFTAP == pTLCb->atlSTAClients[ucSTAId].wSTADesc.wSTAType )
+>>>>>>> 657b0e9... prima update
     {
       WLANTL_FwdPktToHDD( pvosGCtx, vosDataBuff, ucSTAId);
     }
     else
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
     {
@@ -938,6 +1095,12 @@ WLANTL_BaSessionDel
       wRxMetaInfo.ucUP = ucTid;
       pClientSTA->pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+    {
+      wRxMetaInfo.ucUP = ucTid;
+      pTLCb->atlSTAClients[ucSTAId].pfnSTARx( pvosGCtx, vosDataBuff, ucSTAId,
+>>>>>>> 657b0e9... prima update
                                             &wRxMetaInfo );
     }
   }
@@ -953,10 +1116,14 @@ WLANTL_BaSessionDel
     if(!VOS_IS_STATUS_SUCCESS(vosStatus))
     { 
 <<<<<<< HEAD
+<<<<<<< HEAD
        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Timer stop fail", vosStatus));
 =======
        TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Timer stop fail: %d", vosStatus));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Timer stop fail", vosStatus));
+>>>>>>> 657b0e9... prima update
        return vosStatus;
     }
   }
@@ -980,6 +1147,7 @@ WLANTL_BaSessionDel
     Delete session 
    ------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].usCount  = 0;
   pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucCIndex = 0;
   reOrderInfo->winSize   = 0;
@@ -993,6 +1161,13 @@ WLANTL_BaSessionDel
   reOrderInfo->sessionID = 0;
   reOrderInfo->LastSN = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].usCount  = 0;
+  pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucCIndex = 0;
+  reOrderInfo->winSize   = 0;
+  reOrderInfo->SSN       = 0;
+  reOrderInfo->sessionID = 0;
+>>>>>>> 657b0e9... prima update
 
   while (vos_lock_destroy(&reOrderInfo->reorderLock) == VOS_STATUS_E_BUSY)
   {
@@ -1080,9 +1255,12 @@ WLANTL_AMSDUProcess
   v_U8_t          ucAef; /* Error in AMSDU sub frame */
   WLANTL_CbType*  pTLCb = NULL; 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WLANTL_STAClientType *pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   v_U8_t          MPDUHeaderAMSDUHeader[WLANTL_MPDU_HEADER_LEN + TL_AMSDU_SUBFRM_HEADER_LEN];
   v_U16_t         subFrameLength;
   v_U16_t         paddingSize;
@@ -1090,10 +1268,14 @@ WLANTL_AMSDUProcess
   v_U16_t         MPDUDataOffset;
   v_U16_t         packetLength; 
 <<<<<<< HEAD
+<<<<<<< HEAD
   static v_U32_t  numAMSDUFrames = 0;
 =======
   static v_U32_t  numAMSDUFrames;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  static v_U32_t  numAMSDUFrames = 0;
+>>>>>>> 657b0e9... prima update
   vos_pkt_t*      vosDataBuff;
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
   /*------------------------------------------------------------------------
@@ -1120,6 +1302,7 @@ WLANTL_AMSDUProcess
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   pClientSTA = pTLCb->atlSTAClients[ucSTAId];
 
@@ -1131,11 +1314,14 @@ WLANTL_AMSDUProcess
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Check frame
    ------------------------------------------------------------------------*/
   ucAef =  (v_U8_t)WDA_GET_RX_AEF( pvBDHeader );
   ucFsf =  (v_U8_t)WDA_GET_RX_ESF( pvBDHeader );
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   MPDUDataOffset = (v_U16_t)WDA_GET_RX_MPDU_DATA_OFFSET(pvBDHeader) - WLANHAL_RX_BD_HEADER_SIZE;
@@ -1147,6 +1333,14 @@ WLANTL_AMSDUProcess
   /* On Prima, MPDU data offset not includes BD header size */
   MPDUDataOffset = (v_U16_t)WDA_GET_RX_MPDU_DATA_OFFSET(pvBDHeader);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  MPDUDataOffset = (v_U16_t)WDA_GET_RX_MPDU_DATA_OFFSET(pvBDHeader) - WLANHAL_RX_BD_HEADER_SIZE;
+#else
+  /* On Prima, MPDU data offset not includes BD header size */
+  MPDUDataOffset = (v_U16_t)WDA_GET_RX_MPDU_DATA_OFFSET(pvBDHeader);
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 
   if ( WLANHAL_RX_BD_AEF_SET == ucAef ) 
   {
@@ -1166,6 +1360,7 @@ WLANTL_AMSDUProcess
      * MPDU header should be stored into context to recover next frames
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     /* Assumed here Address4 is never part of AMSDU received at TL */
     if (ucMPDUHLen > WLANTL_MPDU_HEADER_LEN)
@@ -1177,6 +1372,8 @@ WLANTL_AMSDUProcess
     }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     vStatus = vos_pkt_pop_head(vosDataBuff, MPDUHeaderAMSDUHeader, ucMPDUHLen + TL_AMSDU_SUBFRM_HEADER_LEN);
     if(!VOS_IS_STATUS_SUCCESS(vStatus))
     {
@@ -1185,6 +1382,7 @@ WLANTL_AMSDUProcess
       *ppVosDataBuff = NULL;
       return VOS_STATUS_SUCCESS; /*Not a transport error*/ 
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     pTLCb->atlSTAClients[ucSTAId].ucMPDUHeaderLen = ucMPDUHLen;
     memcpy(pTLCb->atlSTAClients[ucSTAId].aucMPDUHeader, MPDUHeaderAMSDUHeader, ucMPDUHLen);
@@ -1202,6 +1400,15 @@ WLANTL_AMSDUProcess
   {
     /* Trim garbage, size is frameLoop */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pTLCb->atlSTAClients[ucSTAId].ucMPDUHeaderLen = ucMPDUHLen;
+    memcpy(pTLCb->atlSTAClients[ucSTAId].aucMPDUHeader, MPDUHeaderAMSDUHeader, ucMPDUHLen);
+    /* AMSDU header stored to handle gabage data within next frame */
+  }
+  else
+  {
+    /* Trim gabage, size is frameLoop */
+>>>>>>> 657b0e9... prima update
     if(MPDUDataOffset > 0)
     {
       vStatus = vos_pkt_trim_head(vosDataBuff, MPDUDataOffset);
@@ -1227,10 +1434,14 @@ WLANTL_AMSDUProcess
 
   /* Put in MPDU header into all the frame */
 <<<<<<< HEAD
+<<<<<<< HEAD
   vStatus = vos_pkt_push_head(vosDataBuff, pTLCb->atlSTAClients[ucSTAId].aucMPDUHeader, pTLCb->atlSTAClients[ucSTAId].ucMPDUHeaderLen);
 =======
   vStatus = vos_pkt_push_head(vosDataBuff, pClientSTA->aucMPDUHeader, pClientSTA->ucMPDUHeaderLen);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  vStatus = vos_pkt_push_head(vosDataBuff, pTLCb->atlSTAClients[ucSTAId].aucMPDUHeader, pTLCb->atlSTAClients[ucSTAId].ucMPDUHeaderLen);
+>>>>>>> 657b0e9... prima update
   if(!VOS_IS_STATUS_SUCCESS(vStatus))
   {
     TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"MPDU Header Push back fail"));
@@ -1312,9 +1523,12 @@ VOS_STATUS WLANTL_MSDUReorder
 {
    WLANTL_BAReorderType *currentReorderInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WLANTL_STAClientType *pClientSTA = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    vos_pkt_t            *vosPktIdx;
    v_U8_t               ucOpCode; 
    v_U8_t               ucSlotIdx;
@@ -1327,12 +1541,18 @@ VOS_STATUS WLANTL_MSDUReorder
    VOS_TIMER_STATE      timerState;
    v_SIZE_t             rxFree;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
    v_U64_t              ullreplayCounter = 0; /* 48-bit replay counter */
 #endif
 =======
    v_U64_t              ullreplayCounter = 0; /* 48-bit replay counter */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+   v_U64_t              ullreplayCounter = 0; /* 48-bit replay counter */
+#endif
+>>>>>>> 657b0e9... prima update
    if((NULL == pTLCb) || (*vosDataBuff == NULL))
    {
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Invalid ARG pTLCb 0x%p, vosDataBuff 0x%p",
@@ -1340,6 +1560,7 @@ VOS_STATUS WLANTL_MSDUReorder
       return VOS_STATUS_E_INVAL;
    }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    currentReorderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
 =======
@@ -1354,6 +1575,9 @@ VOS_STATUS WLANTL_MSDUReorder
 
    currentReorderInfo = &pClientSTA->atlBAReorderInfo[ucTid];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   currentReorderInfo = &pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid];
+>>>>>>> 657b0e9... prima update
 
    lockStatus = vos_lock_acquire(&currentReorderInfo->reorderLock);
    if(!VOS_IS_STATUS_SUCCESS(lockStatus))
@@ -1363,10 +1587,14 @@ VOS_STATUS WLANTL_MSDUReorder
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    if( pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists == 0 )
 =======
    if( pClientSTA->atlBAReorderInfo[ucTid].ucExists == 0 )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if( pTLCb->atlSTAClients[ucSTAId].atlBAReorderInfo[ucTid].ucExists == 0 )
+>>>>>>> 657b0e9... prima update
    {
      vos_lock_release(&currentReorderInfo->reorderLock);
      return VOS_STATUS_E_INVAL;
@@ -1381,10 +1609,14 @@ VOS_STATUS WLANTL_MSDUReorder
 #ifdef WLANTL_HAL_VOLANS
    /* Replay check code : check whether replay check is needed or not */
 <<<<<<< HEAD
+<<<<<<< HEAD
    if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
 =======
    if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
    {
            /* Getting 48-bit replay counter from the RX BD */
            ullreplayCounter = WDA_DS_GetReplayCounter(aucBDHeader);
@@ -1401,16 +1633,21 @@ VOS_STATUS WLANTL_MSDUReorder
    ucCIndexOrig = currentReorderInfo->ucCIndex;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    switch(ucOpCode) 
 =======
    switch(ucOpCode)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   switch(ucOpCode) 
+>>>>>>> 657b0e9... prima update
    {
       case WLANTL_OPCODE_INVALID:
          /* Do nothing just pass through current frame */
          break;
 
       case WLANTL_OPCODE_QCUR_FWDBUF:
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
          if (currentReorderInfo->LastSN > CSN)
@@ -1440,6 +1677,8 @@ VOS_STATUS WLANTL_MSDUReorder
          }
          currentReorderInfo->LastSN = CSN;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
          if(0 == currentReorderInfo->pendingFramesCount)
          {
             //This frame will be fwd'ed to the OS. The next slot is the one we expect next
@@ -1456,19 +1695,28 @@ VOS_STATUS WLANTL_MSDUReorder
                                       vosDataBuff,
                                       ucSlotIdx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
          if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
 =======
          if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+         if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
          {
              WLANTL_FillReplayCounter(currentReorderInfo,
                                ullreplayCounter, ucSlotIdx);
          }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
          if(VOS_STATUS_E_RESOURCES == status)
          {
             /* This is the case slot index is already cycle one route, route all the frames Qed */
@@ -1563,6 +1811,7 @@ VOS_STATUS WLANTL_MSDUReorder
 
       case WLANTL_OPCODE_QCUR:
 <<<<<<< HEAD
+<<<<<<< HEAD
          status = WLANTL_QueueCurrent(currentReorderInfo,
                                       vosDataBuff,
                                       ucSlotIdx);
@@ -1600,14 +1849,25 @@ VOS_STATUS WLANTL_MSDUReorder
                                       ucSlotIdx);
            if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         status = WLANTL_QueueCurrent(currentReorderInfo,
+                                      vosDataBuff,
+                                      ucSlotIdx);
+#ifdef ANI_CHIPSET_VOLANS
+           if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
            {
                WLANTL_FillReplayCounter(currentReorderInfo,
                                  ullreplayCounter, ucSlotIdx);
            }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
          if(VOS_STATUS_E_RESOURCES == status)
          {
             /* This is the case slot index is already cycle one route, route all the frames Qed */
@@ -1665,19 +1925,28 @@ VOS_STATUS WLANTL_MSDUReorder
                                       vosDataBuff,
                                       ucSlotIdx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
            if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
 =======
            if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+           if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
            {
                WLANTL_FillReplayCounter(currentReorderInfo,
                                  ullreplayCounter, ucSlotIdx);
            }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
          if(VOS_STATUS_E_RESOURCES == status)
          {
             vos_pkt_return_packet(vosPktIdx); 
@@ -1809,19 +2078,28 @@ VOS_STATUS WLANTL_MSDUReorder
                                       vosDataBuff,
                                       ucSlotIdx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
            if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
 =======
            if(VOS_TRUE == pClientSTA->ucIsReplayCheckValid)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+           if(VOS_TRUE == pTLCb->atlSTAClients[ucSTAId].ucIsReplayCheckValid)
+>>>>>>> 657b0e9... prima update
            {
                WLANTL_FillReplayCounter(currentReorderInfo,
                                  ullreplayCounter, ucSlotIdx);
            }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
          if(!VOS_IS_STATUS_SUCCESS(status))
          {
             TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Q Current frame fail %d",
@@ -1857,6 +2135,7 @@ VOS_STATUS WLANTL_MSDUReorder
     * Otherwise, RX thread could be stall */
    vos_pkt_get_available_buffer_pool(VOS_PKT_TYPE_RX_RAW, &rxFree);
 <<<<<<< HEAD
+<<<<<<< HEAD
    if(WLANTL_BA_MIN_FREE_RX_VOS_BUFFER > rxFree)
    {
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"RX Free", rxFree));
@@ -1867,6 +2146,12 @@ VOS_STATUS WLANTL_MSDUReorder
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO, "RX Free: %d", rxFree));
       TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO, "RX free buffer count is too low, Pending frame count is %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if(WLANTL_BA_MIN_FREE_RX_VOS_BUFFER > rxFree)
+   {
+      TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"RX Free", rxFree));
+      TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"RX free buffer count is too low, Pending frame count is %d",
+>>>>>>> 657b0e9... prima update
                   currentReorderInfo->pendingFramesCount));
       vosPktIdx = NULL;
       status = WLANTL_ChainFrontPkts(ucFwdIdx,
@@ -1933,10 +2218,14 @@ VOS_STATUS WLANTL_MSDUReorder
          if(!VOS_IS_STATUS_SUCCESS(timerStatus))
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Timer start fail", timerStatus));
 =======
             TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Timer start fail: %d", timerStatus));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            TLLOGE(VOS_TRACE(VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,"Timer start fail", timerStatus));
+>>>>>>> 657b0e9... prima update
             lockStatus = vos_lock_release(&currentReorderInfo->reorderLock);
             if(!VOS_IS_STATUS_SUCCESS(lockStatus))
             {
@@ -2151,9 +2440,13 @@ VOS_STATUS WLANTL_ChainFrontPkts
    return status; 
 }/*WLANTL_ChainFrontPkts*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
  
   FUNCTION    WLANTL_FillReplayCounter
@@ -2197,7 +2490,11 @@ void WLANTL_FillReplayCounter
    return;
 }/*WLANTL_FillReplayCounter*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /*End of #ifdef WLANTL_HAL_VOLANS*/
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /*End of #ifdef WLANTL_HAL_VOLANS*/
+>>>>>>> 657b0e9... prima update
 

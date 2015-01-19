@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -63,10 +66,14 @@ dump_csr( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI
     static tCsrRoamProfile x;
     static tSirMacSSid ssid;   //To be allocated for array of SSIDs
 <<<<<<< HEAD
+<<<<<<< HEAD
     static tANI_U8 sessionId = 0; // Defined for fixed session ID
 =======
     static tANI_U8 sessionId; // Defined for fixed session ID
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    static tANI_U8 sessionId = 0; // Defined for fixed session ID
+>>>>>>> 657b0e9... prima update
     palZeroMemory(pMac->hHdd, (void*)&x, sizeof(x)); 
     x.SSIDs.numOfSSIDs=1 ;
     x.SSIDs.SSIDList[0].SSID = ssid ;
@@ -86,10 +93,14 @@ static char *dump_btcSetEvent( tpAniSirGlobal pMac, tANI_U32 arg1,
     if( arg1 < BT_EVENT_TYPE_MAX )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" signal BT event (%d) handle (%d) 3rd param(%d)\n"), arg1, arg2, arg3);
 =======
         smsLog(pMac, LOGE, FL(" signal BT event (%d) handle (%d) 3rd param(%d)"), arg1, arg2, arg3);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL(" signal BT event (%d) handle (%d) 3rd param(%d)\n"), arg1, arg2, arg3);
+>>>>>>> 657b0e9... prima update
         vos_mem_zero(&btEvent, sizeof(tSmeBtEvent));
         btEvent.btEventType = arg1;
         switch( arg1 )
@@ -124,6 +135,7 @@ static char *dump_btcSetEvent( tpAniSirGlobal pMac, tANI_U32 arg1,
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" invalid event (%d)\n"), arg1);
     }
     return p;
@@ -154,15 +166,24 @@ static char* dump_csrApConcScanParams( tpAniSirGlobal pMac, tANI_U32 arg1,
     return p;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL(" invalid event (%d)\n"), arg1);
+    }
+    return p;
+}
+>>>>>>> 657b0e9... prima update
 
 static tDumpFuncEntry csrMenuDumpTable[] = {
     {0,     "CSR (850-860)",                                    NULL},
     {851,   "CSR: CSR testing connection to AniNet",            dump_csr},
     {852,   "BTC: Fake BT events (event, handle)",              dump_btcSetEvent},
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     {853,   "CSR: Split Scan related params",                   dump_csrApConcScanParams},
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 };
 
 void csrDumpInit(tHalHandle hHal)

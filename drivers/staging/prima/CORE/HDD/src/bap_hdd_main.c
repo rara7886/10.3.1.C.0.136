@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -99,12 +102,18 @@
 #include <net/bluetooth/hci_core.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #include <wlan_hdd_misc.h>
 #endif
 =======
 #include <wlan_hdd_misc.h>
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include <wlan_hdd_misc.h>
+#endif
+>>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -209,6 +218,9 @@ if I exceed that.  ( Think 8-bit CPUs.  And the limitations of an 8-bit length
 //#define DUMPLOG
 #if defined DUMPLOG
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define DUMPLOG(n, name1, name2, aStr, size) \
     if (1) \
 {\
@@ -218,6 +230,7 @@ if I exceed that.  ( Think 8-bit CPUs.  And the limitations of an 8-bit length
         DBGLOG("%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
     DBGLOG("\n"); \
 }
+<<<<<<< HEAD
 =======
 #define DUMPLOG(n, name1, name2, aStr, size) do {                       \
         int i;                                                          \
@@ -227,6 +240,8 @@ if I exceed that.  ( Think 8-bit CPUs.  And the limitations of an 8-bit length
         DBGLOG("\n");                                                   \
     } while (0)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #else
 #define DUMPLOG(n, name1, name2, aStr, size)
 #endif
@@ -523,10 +538,14 @@ static VOS_STATUS WLANBAP_STAFetchPktCB
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: pVosPkt(vos_pkt_t *)=%p\n", __FUNCTION__,
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: pVosPkt(vos_pkt_t *)=%p\n", __func__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: pVosPkt(vos_pkt_t *)=%p\n", __FUNCTION__,
+>>>>>>> 657b0e9... prima update
                pVosPkt );
 
     VosStatus = WLANBAP_XlateTxDataPkt( pctx->bapHdl, pPhyCtx->PhyLinkHdl,
@@ -551,10 +570,14 @@ static VOS_STATUS WLANBAP_STAFetchPktCB
     *tlMetaInfo = TlMetaInfo;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: *vosDataBuff(vos_pkt_t *)=%p\n", __FUNCTION__, *vosDataBuff );
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: *vosDataBuff(vos_pkt_t *)=%p\n", __func__, *vosDataBuff );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: *vosDataBuff(vos_pkt_t *)=%p\n", __FUNCTION__, *vosDataBuff );
+>>>>>>> 657b0e9... prima update
 
     return(VOS_STATUS_SUCCESS);
 } // WLANBAP_STAFetchPktCB()
@@ -625,10 +648,14 @@ static VOS_STATUS WLANBAP_STARxCB
        if (!((VosStatus == VOS_STATUS_SUCCESS) || (VosStatus == VOS_STATUS_E_EMPTY)))
        {
 <<<<<<< HEAD
+<<<<<<< HEAD
            VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,"%s: Failure walking packet chain", __FUNCTION__);
 =======
            VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,"%s: Failure walking packet chain", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+           VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,"%s: Failure walking packet chain", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
            return VOS_STATUS_E_FAILURE;
        }
        
@@ -653,10 +680,14 @@ static VOS_STATUS WLANBAP_STARxCB
        {
            VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: Failure extracting skb from vos pkt. "
 <<<<<<< HEAD
+<<<<<<< HEAD
              "VosStatus = %d\n", __FUNCTION__, VosStatus );
 =======
              "VosStatus = %d\n", __func__, VosStatus );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             "VosStatus = %d\n", __FUNCTION__, VosStatus );
+>>>>>>> 657b0e9... prima update
 
            VosStatus = VOS_STATUS_E_FAILURE;
 
@@ -718,10 +749,14 @@ static VOS_STATUS WLANBAP_TxCompCB
     BslPhyLinkCtxType* pctx;
     BslClientCtxType* ppctx;
 <<<<<<< HEAD
+<<<<<<< HEAD
     static int num_packets = 0;
 =======
     static int num_packets;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    static int num_packets = 0;
+>>>>>>> 657b0e9... prima update
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "WLANBAP_TxCompCB. vosDataBuff(vos_pkt_t *)=%p\n", vosDataBuff );
 
@@ -743,10 +778,14 @@ static VOS_STATUS WLANBAP_TxCompCB
     {
         //This is bad but still try to free the VOSS resources if we can
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_pkt_return_packet( vosDataBuff );
         return VOS_STATUS_E_FAILURE;
     }
@@ -768,10 +807,14 @@ static VOS_STATUS WLANBAP_TxCompCB
     if (num_packets == 0 )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: Sending up number of completed packets.  num_packets = %d.\n", __FUNCTION__, num_packets );
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: Sending up number of completed packets.  num_packets = %d.\n", __func__, num_packets );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: Sending up number of completed packets.  num_packets = %d.\n", __FUNCTION__, num_packets );
+>>>>>>> 657b0e9... prima update
         WLANBAP_TxPacketMonitorHandler ( (v_PVOID_t) ppctx->bapHdl ); // our handle in BAP
     }
 
@@ -972,10 +1015,14 @@ static VOS_STATUS WLANBAP_EventCB
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "pctx is NULL in %s", __FUNCTION__);
 =======
                      "pctx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "pctx is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_FAULT;
 
@@ -1543,10 +1590,14 @@ static VOS_STATUS WLANBAP_EventCB
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: Failure extracting skb from vos pkt. "
 <<<<<<< HEAD
+<<<<<<< HEAD
           "VosStatus = %d\n", __FUNCTION__, VosStatus );
 =======
           "VosStatus = %d\n", __func__, VosStatus );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+          "VosStatus = %d\n", __FUNCTION__, VosStatus );
+>>>>>>> 657b0e9... prima update
 
         // return the packet
         VosStatus = vos_pkt_return_packet( pVosPkt );
@@ -1623,10 +1674,14 @@ static BOOL BslFindAndInitClientCtx
     if ( !VOS_IS_STATUS_SUCCESS( VosStatus ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientLock already inited",__FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientLock already inited",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientLock already inited",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
         // return(0);
     }
 
@@ -1635,10 +1690,14 @@ static BOOL BslFindAndInitClientCtx
         if ( !BslClientCtx[i].used )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientCtx[%d] selected",__FUNCTION__, i);
 =======
             VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientCtx[%d] selected",__func__, i);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientCtx[%d] selected",__FUNCTION__, i);
+>>>>>>> 657b0e9... prima update
             BslClientCtx[i].used = TRUE;
             break;
         }
@@ -1663,10 +1722,14 @@ static BOOL BslFindAndInitClientCtx
         pctx->used = FALSE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_GetNewHndl Failed",__FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_GetNewHndl Failed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_GetNewHndl Failed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return(FALSE);
     }
@@ -1682,10 +1745,14 @@ static BOOL BslFindAndInitClientCtx
         pctx->used = FALSE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_BAPRegsiterBAPCallaback Failed",__FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_BAPRegsiterBAPCallaback Failed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_BAPRegsiterBAPCallaback Failed",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return(FALSE);
     }
@@ -2386,10 +2453,14 @@ static BOOL BslProcessHCICommand
         /* Flush the TX queue */
 //#ifdef BAP_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s:HCI Flush command  - will flush Tx Queue", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s:HCI Flush command  - will flush Tx Queue", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s:HCI Flush command  - will flush Tx Queue", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 //#endif //BAP_DEBUG
         // JEZ100604: Temporary short cut
         pPhyCtx = &BslPhyLinkCtx[0];
@@ -2424,10 +2495,14 @@ static BOOL BslProcessHCICommand
 
         /* Flush the TX queue */
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:HCI Flush command  - will flush Tx Queue for pkt type %d", __FUNCTION__, FlushCmd.packet_type);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:HCI Flush command  - will flush Tx Queue for pkt type %d", __func__, FlushCmd.packet_type);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:HCI Flush command  - will flush Tx Queue for pkt type %d", __FUNCTION__, FlushCmd.packet_type);
+>>>>>>> 657b0e9... prima update
         // We support BE traffic only
         if(WLANTL_AC_BE == FlushCmd.packet_type)
         {
@@ -3334,10 +3409,14 @@ static BOOL BslProcessHCICommand
 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "BslProcessHCICommand: HCI_Write_Remote_AMP_ASSOC_Cmd Count = %d", Count);
 <<<<<<< HEAD
+<<<<<<< HEAD
         DUMPLOG(1, __FUNCTION__, "HCI_Write_Remote_AMP_ASSOC cmd",
 =======
         DUMPLOG(1, __func__, "HCI_Write_Remote_AMP_ASSOC cmd",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        DUMPLOG(1, __FUNCTION__, "HCI_Write_Remote_AMP_ASSOC cmd",
+>>>>>>> 657b0e9... prima update
                 pBuf,
                 Count);
 
@@ -3629,10 +3708,14 @@ static BOOL BslProcessACLDataTx
 #endif
 #if 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     static int num_packets = 0;
 =======
     static int num_packets;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    static int num_packets = 0;
+>>>>>>> 657b0e9... prima update
 #endif
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_LOW, "BslProcessACLDataTx\n" );
@@ -3810,9 +3893,13 @@ int BSL_Init ( v_PVOID_t  pvosGCtx )
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     if (VOS_STA_SAP_MODE == hdd_get_conparam())
     {
         status = hdd_get_front_adapter ( pHddCtx, &pAdapterNode );
@@ -3830,9 +3917,13 @@ int BSL_Init ( v_PVOID_t  pvosGCtx )
      }
     else
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         pAdapter = hdd_get_adapter(pHddCtx, WLAN_HDD_INFRA_STATION);
 
 
@@ -4143,10 +4234,14 @@ static int BSL_Flush(struct hci_dev *hdev)
 
     //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "BSL_Flush - will flush ALL Tx Queues");
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s - will flush ALL Tx Queues", __FUNCTION__);
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s - will flush ALL Tx Queues", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s - will flush ALL Tx Queues", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     /* Flush the TX queue */
     // JEZ100604: Temporary short cut
@@ -4199,37 +4294,53 @@ static int BSL_Write(struct sk_buff *skb)
     BslHciWorkStructure *pHciContext;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s", __FUNCTION__);
 =======
     //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     // Sanity check inputs
     if ( skb == NULL )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         //return -EFAULT; /* Bad address */
         return 0;
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __FUNCTION__, skb->len);
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __func__, skb->len);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __FUNCTION__, skb->len);
+>>>>>>> 657b0e9... prima update
 
     // Sanity check inputs
     if ( 0 == skb->len )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is empty", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is empty", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is empty", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         //return -EFAULT; /* Bad address */
         return 0;
     }
@@ -4240,10 +4351,14 @@ static int BSL_Write(struct sk_buff *skb)
     if ( hdev == NULL )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         //return -ENODEV; /* no device */
         return 0;
     }
@@ -4254,10 +4369,14 @@ static int BSL_Write(struct sk_buff *skb)
     if ( pctx == NULL )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         //return -EFAULT; /* Bad address */
         return 0;
         /* Maybe I should return "no device" */
@@ -4272,10 +4391,14 @@ static int BSL_Write(struct sk_buff *skb)
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                   "%s: HCI ACL data tx, skb=%p",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   __FUNCTION__, skb);
 =======
                   __func__, skb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  __FUNCTION__, skb);
+>>>>>>> 657b0e9... prima update
         // ACL data
         hdev->stat.acl_tx++;
         // Correct way of doing this...
@@ -4291,10 +4414,14 @@ static int BSL_Write(struct sk_buff *skb)
     case HCI_COMMAND_PKT:
         // Defer the HCI command writes
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         hdev->stat.cmd_tx++;
 
         // Allocate an HCI context. To use as a "container" for the "work" to be deferred.
@@ -4304,10 +4431,14 @@ static int BSL_Write(struct sk_buff *skb)
             // no memory for HCI context.  Nothing we can do but drop
             VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Unable to allocate context", __FUNCTION__);
 =======
                       "%s: Unable to allocate context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Unable to allocate context", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
             kfree_skb(skb);
             return 0;
         }
@@ -4324,10 +4455,14 @@ static int BSL_Write(struct sk_buff *skb)
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                   "%s: Scheduling work for skb %p, BT-AMP Client context %p, work %p",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   __FUNCTION__, skb, pctx, pHciContext);
 =======
                   __func__, skb, pctx, pHciContext);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  __FUNCTION__, skb, pctx, pHciContext);
+>>>>>>> 657b0e9... prima update
 
         status = schedule_work(&pHciContext->hciInterfaceProcessing);
 
@@ -4335,10 +4470,14 @@ static int BSL_Write(struct sk_buff *skb)
         if ( 0 == status )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: hciInterfaceProcessing work already queued. This should never happen.", __FUNCTION__);
 =======
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: hciInterfaceProcessing work already queued. This should never happen.", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: hciInterfaceProcessing work already queued. This should never happen.", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         }
 
 
@@ -4348,10 +4487,14 @@ static int BSL_Write(struct sk_buff *skb)
         break;
     case HCI_SCODATA_PKT:
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         hdev->stat.sco_tx++;
         // anything else including HCI events and SCO data
         status = FALSE;
@@ -4400,19 +4543,27 @@ static void bslWriteFinish(struct work_struct *work)
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_LOW,
               "%s: Entered, context %p",
 <<<<<<< HEAD
+<<<<<<< HEAD
               __FUNCTION__, pctx);
 =======
               __func__, pctx);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              __FUNCTION__, pctx);
+>>>>>>> 657b0e9... prima update
 
     // Sanity check inputs
     if ( pctx == NULL )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return; // -EFAULT; /* Bad address */
     }
 
@@ -4423,6 +4574,7 @@ static void bslWriteFinish(struct work_struct *work)
     // Sanity check inputs
     if ( skb == NULL )
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __FUNCTION__);
         return; // -EFAULT; /* Bad address */
@@ -4436,6 +4588,13 @@ static void bslWriteFinish(struct work_struct *work)
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __func__, skb->len);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __FUNCTION__);
+        return; // -EFAULT; /* Bad address */
+    }
+
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __FUNCTION__, skb->len);
+>>>>>>> 657b0e9... prima update
 
     hdev = (struct hci_dev *)(skb->dev);
 
@@ -4443,10 +4602,14 @@ static void bslWriteFinish(struct work_struct *work)
     if ( hdev == NULL )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return; // -ENODEV; /* no device */
     }
 
@@ -4455,10 +4618,14 @@ static void bslWriteFinish(struct work_struct *work)
     if ( pctx != (BslClientCtxType *)hci_get_drvdata(hdev));
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx and hdev not consistent - bad i/p", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx and hdev not consistent - bad i/p", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx and hdev not consistent - bad i/p", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return; // -EFAULT; /* Bad address */
         /* Maybe I should return "no device" */
         //return -ENODEV; /* no device */
@@ -4469,10 +4636,14 @@ static void bslWriteFinish(struct work_struct *work)
     {
     case HCI_COMMAND_PKT:
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         hdev->stat.cmd_tx++;
         // HCI command
         status = BslProcessHCICommand( pctx, skb->data, skb->len-CMD_TLV_TYPE_AND_LEN_SIZE);
@@ -4482,10 +4653,14 @@ static void bslWriteFinish(struct work_struct *work)
         break;
     case HCI_SCODATA_PKT:
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __FUNCTION__);
 =======
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         hdev->stat.sco_tx++;
         // anything else including HCI events and SCO data
         status = FALSE;
@@ -4499,10 +4674,14 @@ static void bslWriteFinish(struct work_struct *work)
     VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
               "%s: Freeing skb %p",
 <<<<<<< HEAD
+<<<<<<< HEAD
               __FUNCTION__, skb);
 =======
               __func__, skb);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              __FUNCTION__, skb);
+>>>>>>> 657b0e9... prima update
 
     consume_skb(skb);
 

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -129,10 +132,14 @@
 #elif defined(__GNUC__)
 #define __ani_attr_pre_packed 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __ani_attr_packed                       __attribute__((packed))
 =======
 #define __ani_attr_packed                       __packed
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define __ani_attr_packed                       __attribute__((packed))
+>>>>>>> 657b0e9... prima update
 #define __ani_attr_aligned_2                    __attribute__((aligned(2)))
 #define __ani_attr_aligned_4                    __attribute__((aligned(4)))
 #define __ani_attr_aligned_8                    __attribute__((aligned(8)))
@@ -153,16 +160,22 @@
 
 #if defined(ANI_DATAPATH_SECTION)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define  __DP_SRC_RX                __attribute__  ((section(".dpsrcrx")))
 #define  __DP_SRC_TX                __attribute__  ((section(".dpsrctx")))
 #define  __DP_SRC                   __attribute__  ((section(".dpsrc")))
 #define  __ANIHDD_MODULE            __attribute__  ((section(".anihdd")))
+<<<<<<< HEAD
 =======
 #define  __DP_SRC_RX                __attribute__((section(".dpsrcrx")))
 #define  __DP_SRC_TX                __attribute__((section(".dpsrctx")))
 #define  __DP_SRC                   __attribute__((section(".dpsrc")))
 #define  __ANIHDD_MODULE            __attribute__((section(".anihdd")))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #else
 #define  __DP_SRC_RX 
 #define  __DP_SRC_TX

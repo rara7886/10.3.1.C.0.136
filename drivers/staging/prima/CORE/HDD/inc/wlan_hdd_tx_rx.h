@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,6 +50,7 @@
 
 /**===========================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   \file  wlan_hdd_tx_rx.h
   
@@ -62,20 +66,32 @@
   -------------------------------------------------------------------------*/ 
 =======
 
+=======
+  
+>>>>>>> 657b0e9... prima update
   \file  wlan_hdd_tx_rx.h
-
+  
   \brief Linux HDD Tx/RX APIs
+         Copyright 2008 (c) Qualcomm, Incorporated.
+         All Rights Reserved.
+         Qualcomm Confidential and Proprietary.
+  
   ==========================================================================*/
-
-/*---------------------------------------------------------------------------
+  
+/*--------------------------------------------------------------------------- 
   Include files
+<<<<<<< HEAD
   -------------------------------------------------------------------------*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  -------------------------------------------------------------------------*/ 
+>>>>>>> 657b0e9... prima update
 #include <wlan_hdd_includes.h>
 #include <vos_api.h>
 #include <linux/skbuff.h>
 #include <wlan_qct_tl.h>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*--------------------------------------------------------------------------- 
   Preprocessor definitions and constants
@@ -85,6 +101,11 @@
   Preprocessor definitions and constants
   -------------------------------------------------------------------------*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*--------------------------------------------------------------------------- 
+  Preprocessor definitions and constants
+  -------------------------------------------------------------------------*/ 
+>>>>>>> 657b0e9... prima update
 #define HDD_ETHERTYPE_802_1_X              ( 0x888E )
 #define HDD_ETHERTYPE_802_1_X_FRAME_OFFSET ( 12 )
 #define HDD_ETHERTYPE_802_1_X_SIZE         ( 2 )
@@ -126,12 +147,18 @@
 extern int hdd_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_CFG80211   
 extern int hdd_mon_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
 #endif
 =======
 extern int hdd_mon_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef CONFIG_CFG80211   
+extern int hdd_mon_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
+#endif
+>>>>>>> 657b0e9... prima update
 /**============================================================================
   @brief hdd_tx_timeout() - Function called by OS if there is any
   timeout during transmission. Since HDD simply enqueues packet
@@ -252,9 +279,13 @@ extern VOS_STATUS hdd_rx_packet_cbk( v_VOID_t *vosContext,
                                      WLANTL_RxMetaInfoType* pRxMetaInfo );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
 /**============================================================================
   @brief hdd_IsEAPOLPacket() - Checks the packet is EAPOL or not.
@@ -265,21 +296,31 @@ extern VOS_STATUS hdd_rx_packet_cbk( v_VOID_t *vosContext,
   ===========================================================================*/
 extern v_BOOL_t hdd_IsEAPOLPacket( vos_pkt_t *pVosPacket );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 #ifdef CONFIG_CFG80211
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+#ifdef CONFIG_CFG80211
+>>>>>>> 657b0e9... prima update
 /**============================================================================
   @brief hdd_mon_tx_mgmt_pkt() - Transmit MGMT packet received on monitor 
                                  interface.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   @param pAdapter: [in] SAP/P2P GO adaptor. 
 =======
   @param pAdapter: [in] SAP/P2P GO adapter.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  @param pAdapter: [in] SAP/P2P GO adaptor. 
+>>>>>>> 657b0e9... prima update
   ===========================================================================*/
 void hdd_mon_tx_mgmt_pkt(hdd_adapter_t* pAdapter);
 
@@ -289,6 +330,7 @@ void hdd_mon_tx_mgmt_pkt(hdd_adapter_t* pAdapter);
   @param work: [in] workqueue structure.
   ===========================================================================*/
 void hdd_mon_tx_work_queue(struct work_struct *work);
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 =======
@@ -311,5 +353,8 @@ VOS_STATUS hdd_Ibss_GetStaId(hdd_station_ctx_t *pHddStaCtx,
   ===========================================================================*/
 void hdd_tx_rx_pkt_cnt_stat_timer_handler( void *pAdapter);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 #endif    // end #if !defined( WLAN_HDD_TX_RX_H )

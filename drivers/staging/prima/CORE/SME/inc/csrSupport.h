@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,6 +47,7 @@
 
 /** ------------------------------------------------------------------------- * 
 <<<<<<< HEAD
+<<<<<<< HEAD
     ------------------------------------------------------------------------- *  
 
   
@@ -54,14 +58,22 @@
    Copyright (C) 2006 Airgo Networks, Incorporated
  
 =======
+=======
+    ------------------------------------------------------------------------- *  
+>>>>>>> 657b0e9... prima update
 
+  
     \file csrSupport.h
-
+  
     Exports and types for the Common Scan and Roaming supporting interfaces.
   
    Copyright (C) 2006 Airgo Networks, Incorporated
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ 
+>>>>>>> 657b0e9... prima update
    ========================================================================== */
 #ifndef CSR_SUPPORT_H__
 #define CSR_SUPPORT_H__
@@ -82,10 +94,14 @@
 #define CSR_RSN_OUI_SIZE              ( 4 )
 #define CSR_RSN_VERSION_SUPPORTED     ( 1 )
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CSR_RSN_MAX_AUTH_SUITES       ( 2 )
 =======
 #define CSR_RSN_MAX_AUTH_SUITES       ( 4 )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define CSR_RSN_MAX_AUTH_SUITES       ( 2 )
+>>>>>>> 657b0e9... prima update
 #define CSR_RSN_MAX_CYPHERS           ( 5 )
 #define CSR_RSN_MAX_UNICAST_CYPHERS   ( 5 )
 #define CSR_RSN_MAX_MULTICAST_CYPHERS ( 1 )
@@ -611,12 +627,16 @@ typedef __ani_attr_pre_packed struct tagCsrRSNCapabilities
     tANI_U16 PTKSAReplayCounter:2;
     tANI_U16 GTKSAReplayCounter:2;
 <<<<<<< HEAD
+<<<<<<< HEAD
     tANI_U16 Reserved:10;
 =======
     tANI_U16 MFPRequired:1;
     tANI_U16 MFPCapable:1;
     tANI_U16 Reserved:8;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tANI_U16 Reserved:10;
+>>>>>>> 657b0e9... prima update
 } __ani_attr_packed tCsrRSNCapabilities;
 
 typedef __ani_attr_pre_packed struct tagCsrRSNPMKIe 
@@ -847,6 +867,7 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                                  tVOS_CON_MODE currBssPersona);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //BeaconInterval valiadation for MCC support
 eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId, 
 =======
@@ -856,16 +877,24 @@ eHalStatus csrUpdatep2pBeaconInterval(tpAniSirGlobal pMac);
 //BeaconInterval validation for MCC support
 eHalStatus csrValidateMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+//BeaconInterval valiadation for MCC support
+eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId, 
+>>>>>>> 657b0e9... prima update
                                      tANI_U16 *beaconInterval, tANI_U32 cursessionId,
                                      tVOS_CON_MODE currBssPersona);
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 tANI_BOOLEAN csrIsProfile11r( tCsrRoamProfile *pProfile );
 <<<<<<< HEAD
+<<<<<<< HEAD
 tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType );
 =======
 tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType, tANI_U8 mdiePresent);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType );
+>>>>>>> 657b0e9... prima update
 #endif
 
 #ifdef FEATURE_WLAN_CCX

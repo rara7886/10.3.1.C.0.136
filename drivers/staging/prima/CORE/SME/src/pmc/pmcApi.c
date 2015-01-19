@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +22,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
+<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -45,6 +49,8 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /******************************************************************************
 *
@@ -52,6 +58,7 @@
 *
 * Description: Routines that make up the Power Management Control (PMC) API.
 *
+<<<<<<< HEAD
 <<<<<<< HEAD
 * Copyright 2008 (c) Qualcomm, Incorporated.  
 * All Rights Reserved.
@@ -61,6 +68,11 @@
 * All Rights Reserved.
 * Qualcomm Technologies Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+* Copyright 2008 (c) Qualcomm, Incorporated.  
+* All Rights Reserved.
+* Qualcomm Confidential and Proprietary.
+>>>>>>> 657b0e9... prima update
 *
 ******************************************************************************/
 
@@ -108,10 +120,14 @@ eHalStatus pmcOpen (tHalHandle hHal)
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcOpen\n"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcOpen"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcOpen\n"));
+>>>>>>> 657b0e9... prima update
 
     /* Initialize basic PMC information about device. */
     pMac->pmc.powerSource = BATTERY_POWER;
@@ -134,6 +150,7 @@ eHalStatus pmcOpen (tHalHandle hHal)
 
     /* Allocate a timer to use with IMPS. */
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (palTimerAlloc(pMac->hHdd, &pMac->pmc.hImpsTimer, pmcImpsTimerExpired, hHal) != eHAL_STATUS_SUCCESS)
     {
         smsLog(pMac, LOGE, FL("Cannot allocate timer for IMPS\n"));
@@ -142,6 +159,11 @@ eHalStatus pmcOpen (tHalHandle hHal)
     {
         pmcLog(pMac, LOGE, FL("Cannot allocate timer for IMPS"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (palTimerAlloc(pMac->hHdd, &pMac->pmc.hImpsTimer, pmcImpsTimerExpired, hHal) != eHAL_STATUS_SUCCESS)
+    {
+        smsLog(pMac, LOGE, FL("Cannot allocate timer for IMPS\n"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -151,15 +173,20 @@ eHalStatus pmcOpen (tHalHandle hHal)
                                 VOS_TIMER_TYPE_SW, pmcTrafficTimerExpired, hHal)))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot allocate timer for traffic measurement\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot allocate timer for traffic measurement"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot allocate timer for traffic measurement\n"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
     /* Allocate a timer used to report current PMC state through periodic DIAG event */
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (palTimerAlloc(pMac->hHdd, &pMac->pmc.hDiagEvtTimer, pmcDiagEvtTimerExpired, hHal) != eHAL_STATUS_SUCCESS)
     {
@@ -169,6 +196,11 @@ eHalStatus pmcOpen (tHalHandle hHal)
     {
         pmcLog(pMac, LOGE, FL("Cannot allocate timer for diag event reporting"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (palTimerAlloc(pMac->hHdd, &pMac->pmc.hDiagEvtTimer, pmcDiagEvtTimerExpired, hHal) != eHAL_STATUS_SUCCESS)
+    {
+        smsLog(pMac, LOGE, FL("Cannot allocate timer for diag event reporting\n"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 #endif
@@ -178,6 +210,7 @@ eHalStatus pmcOpen (tHalHandle hHal)
     pMac->pmc.bmpsConfig.bmpsPeriod = WNI_CFG_LISTEN_INTERVAL_STADEF;
 
     /* Allocate a timer used to schedule a deferred power save mode exit. */
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (palTimerAlloc(pMac->hHdd, &pMac->pmc.hExitPowerSaveTimer,
                       pmcExitPowerSaveTimerExpired, hHal) != eHAL_STATUS_SUCCESS)
@@ -189,6 +222,12 @@ eHalStatus pmcOpen (tHalHandle hHal)
     {
         pmcLog(pMac, LOGE, FL("Cannot allocate exit power save mode timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (palTimerAlloc(pMac->hHdd, &pMac->pmc.hExitPowerSaveTimer,
+                      pmcExitPowerSaveTimerExpired, hHal) != eHAL_STATUS_SUCCESS)
+    {
+        smsLog(pMac, LOGE, FL("Cannot allocate exit power save mode timer\n"));
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -197,20 +236,28 @@ eHalStatus pmcOpen (tHalHandle hHal)
     if (csrLLOpen(pMac->hHdd, &pMac->pmc.powerSaveCheckList) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot initialize power save check routine list\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot initialize power save check routine list"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot initialize power save check routine list\n"));
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
     if (csrLLOpen(pMac->hHdd, &pMac->pmc.requestFullPowerList) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot initialize request full power callback routine list\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot initialize request full power callback routine list"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot initialize request full power callback routine list\n"));
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -220,10 +267,14 @@ eHalStatus pmcOpen (tHalHandle hHal)
       eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, "PMC: cannot initialize request BMPS callback routine list\n");
 =======
         pmcLog(pMac, LOGE, "PMC: cannot initialize request BMPS callback routine list");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, "PMC: cannot initialize request BMPS callback routine list\n");
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -231,10 +282,14 @@ eHalStatus pmcOpen (tHalHandle hHal)
     if (csrLLOpen(pMac->hHdd, &pMac->pmc.requestStartUapsdList) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, "PMC: cannot initialize request start UAPSD callback routine list\n");
 =======
         pmcLog(pMac, LOGE, "PMC: cannot initialize request start UAPSD callback routine list");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, "PMC: cannot initialize request start UAPSD callback routine list\n");
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -242,20 +297,28 @@ eHalStatus pmcOpen (tHalHandle hHal)
     if (csrLLOpen(pMac->hHdd, &pMac->pmc.deviceStateUpdateIndList) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, "PMC: cannot initialize device state update indication callback list\n");
 =======
         pmcLog(pMac, LOGE, "PMC: cannot initialize device state update indication callback list");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, "PMC: cannot initialize device state update indication callback list\n");
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
     if (csrLLOpen(pMac->hHdd, &pMac->pmc.deferredMsgList) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot initialize deferred msg list\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot initialize deferred msg list"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot initialize deferred msg list\n"));
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -285,10 +348,14 @@ eHalStatus pmcStart (tHalHandle hHal)
     tSirMacHTMIMOPowerSaveState  htMimoPowerSaveState;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcStart\n"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcStart"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcStart\n"));
+>>>>>>> 657b0e9... prima update
 
     /* Initialize basic PMC information about device. */
     pMac->pmc.pmcState = FULL_POWER;
@@ -316,12 +383,15 @@ eHalStatus pmcStart (tHalHandle hHal)
     pMac->pmc.cLastTxUnicastFrames = 0;
     pMac->pmc.cLastRxUnicastFrames = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     pMac->pmc.ImpsReqFailed = VOS_FALSE;
     pMac->pmc.ImpsReqFailCnt = 0;
     pMac->pmc.ImpsReqTimerFailed = 0;
     pMac->pmc.ImpsReqTimerfailCnt = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     /* Configure SMPS. */
     if (pMac->pmc.smpsEnabled && (pMac->pmc.powerSource != AC_POWER || pMac->pmc.smpsConfig.enterOnAc))
@@ -375,6 +445,7 @@ eHalStatus pmcStop (tHalHandle hHal)
     tPmcDeferredMsg *pDeferredMsg;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcStop\n"));
 
     /* Cancel any running timers. */
@@ -383,12 +454,19 @@ eHalStatus pmcStop (tHalHandle hHal)
         smsLog(pMac, LOGE, FL("Cannot cancel IMPS timer\n"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcStop"));
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcStop\n"));
+>>>>>>> 657b0e9... prima update
 
     /* Cancel any running timers. */
-    if (vos_timer_stop(&pMac->pmc.hImpsTimer) != VOS_STATUS_SUCCESS)
+    if (palTimerStop(pMac->hHdd, pMac->pmc.hImpsTimer) != eHAL_STATUS_SUCCESS)
     {
+<<<<<<< HEAD
         pmcLog(pMac, LOGE, FL("Cannot cancel IMPS timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot cancel IMPS timer\n"));
+>>>>>>> 657b0e9... prima update
     }
 
     pmcStopTrafficTimer(hHal);
@@ -398,6 +476,7 @@ eHalStatus pmcStop (tHalHandle hHal)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (palTimerStop(pMac->hHdd, pMac->pmc.hExitPowerSaveTimer) != eHAL_STATUS_SUCCESS)
     {
         smsLog(pMac, LOGE, FL("Cannot cancel exit power save mode timer\n"));
@@ -406,6 +485,11 @@ eHalStatus pmcStop (tHalHandle hHal)
     {
         pmcLog(pMac, LOGE, FL("Cannot cancel exit power save mode timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if (palTimerStop(pMac->hHdd, pMac->pmc.hExitPowerSaveTimer) != eHAL_STATUS_SUCCESS)
+    {
+        smsLog(pMac, LOGE, FL("Cannot cancel exit power save mode timer\n"));
+>>>>>>> 657b0e9... prima update
     }
 
     /* Do all the callbacks. */
@@ -452,6 +536,7 @@ eHalStatus pmcClose (tHalHandle hHal)
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcClose\n"));
 
     /* Free up allocated resources. */
@@ -474,26 +559,33 @@ eHalStatus pmcClose (tHalHandle hHal)
         smsLog(pMac, LOGE, FL("Cannot deallocate exit power save mode timer\n"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcClose"));
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcClose\n"));
+>>>>>>> 657b0e9... prima update
 
     /* Free up allocated resources. */
-    if (vos_timer_destroy(&pMac->pmc.hImpsTimer) != VOS_STATUS_SUCCESS)
+    if (palTimerFree(pMac->hHdd, pMac->pmc.hImpsTimer) != eHAL_STATUS_SUCCESS)
     {
-        pmcLog(pMac, LOGE, FL("Cannot deallocate IMPS timer"));
+        smsLog(pMac, LOGE, FL("Cannot deallocate IMPS timer\n"));
     }
     if (!VOS_IS_STATUS_SUCCESS(vos_timer_destroy(&pMac->pmc.hTrafficTimer)))
     {
-        pmcLog(pMac, LOGE, FL("Cannot deallocate traffic timer"));
+        smsLog(pMac, LOGE, FL("Cannot deallocate traffic timer\n"));
     }
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
-    if (vos_timer_destroy(&pMac->pmc.hDiagEvtTimer) != VOS_STATUS_SUCCESS)
+    if (palTimerFree(pMac->hHdd, pMac->pmc.hDiagEvtTimer) != eHAL_STATUS_SUCCESS)
     {
-        pmcLog(pMac, LOGE, FL("Cannot deallocate timer for diag event reporting"));
+        smsLog(pMac, LOGE, FL("Cannot deallocate timer for diag event reporting\n"));
     }
 #endif
-    if (vos_timer_destroy(&pMac->pmc.hExitPowerSaveTimer) != VOS_STATUS_SUCCESS)
+    if (palTimerFree(pMac->hHdd, pMac->pmc.hExitPowerSaveTimer) != eHAL_STATUS_SUCCESS)
     {
+<<<<<<< HEAD
         pmcLog(pMac, LOGE, FL("Cannot deallocate exit power save mode timer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot deallocate exit power save mode timer\n"));
+>>>>>>> 657b0e9... prima update
     }
 
     /*
@@ -535,10 +627,14 @@ eHalStatus pmcSignalPowerEvent (tHalHandle hHal, tPmcPowerEvent event)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcSignalPowerEvent, event %d\n"), event);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcSignalPowerEvent, event %d"), event);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcSignalPowerEvent, event %d\n"), event);
+>>>>>>> 657b0e9... prima update
 
     /* Take action based on the event being signaled. */
     switch (event)
@@ -597,10 +693,14 @@ eHalStatus pmcSignalPowerEvent (tHalHandle hHal, tPmcPowerEvent event)
 #endif //GEN6_ONWARDS
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid event %d\n"), event);
 =======
         pmcLog(pMac, LOGE, FL("Invalid event %d"), event);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid event %d\n"), event);
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -634,10 +734,14 @@ eHalStatus pmcSetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcSetConfigPowerSave, power save mode %d\n"), psMode);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcSetConfigPowerSave, power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcSetConfigPowerSave, power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
 
     /* Configure the specified power saving mode. */
     switch (psMode)
@@ -646,17 +750,23 @@ eHalStatus pmcSetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
     case ePMC_IDLE_MODE_POWER_SAVE:
         pMac->pmc.impsConfig = *(tpPmcImpsConfigParams)pConfigParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG3, FL("IMPS configuration"));
         smsLog(pMac, LOG3, "          enter on AC: %d\n",
 =======
         pmcLog(pMac, LOG3, FL("IMPS configuration"));
         pmcLog(pMac, LOG3, "          enter on AC: %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG3, FL("IMPS configuration"));
+        smsLog(pMac, LOG3, "          enter on AC: %d\n",
+>>>>>>> 657b0e9... prima update
                pMac->pmc.impsConfig.enterOnAc);
         break;
 
     case ePMC_BEACON_MODE_POWER_SAVE:
         pMac->pmc.bmpsConfig = *(tpPmcBmpsConfigParams)pConfigParams;
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog(pMac, LOG3, FL("BMPS configuration"));
         smsLog(pMac, LOG3, "          enter on AC: %d\n",
@@ -683,27 +793,35 @@ eHalStatus pmcSetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
 =======
         pmcLog(pMac, LOG3, FL("BMPS configuration"));
         pmcLog(pMac, LOG3, "          enter on AC: %d",
+=======
+        smsLog(pMac, LOG3, FL("BMPS configuration"));
+        smsLog(pMac, LOG3, "          enter on AC: %d\n",
+>>>>>>> 657b0e9... prima update
                pMac->pmc.bmpsConfig.enterOnAc);
-        pmcLog(pMac, LOG3, "          TX threshold: %d",
+        smsLog(pMac, LOG3, "          TX threshold: %d\n",
                pMac->pmc.bmpsConfig.txThreshold);
-        pmcLog(pMac, LOG3, "          RX threshold: %d",
+        smsLog(pMac, LOG3, "          RX threshold: %d\n",
                pMac->pmc.bmpsConfig.rxThreshold);
-        pmcLog(pMac, LOG3, "          traffic measurement period (ms): %d",
+        smsLog(pMac, LOG3, "          traffic measurement period (ms): %d\n",
                pMac->pmc.bmpsConfig.trafficMeasurePeriod);
-        pmcLog(pMac, LOG3, "          BMPS period: %d",
+        smsLog(pMac, LOG3, "          BMPS period: %d\n",
                pMac->pmc.bmpsConfig.bmpsPeriod);
-        pmcLog(pMac, LOG3, "          beacons to forward code: %d",
+        smsLog(pMac, LOG3, "          beacons to forward code: %d\n",
                pMac->pmc.bmpsConfig.forwardBeacons);
-        pmcLog(pMac, LOG3, "          value of N: %d",
+        smsLog(pMac, LOG3, "          value of N: %d\n",
                pMac->pmc.bmpsConfig.valueOfN);
-        pmcLog(pMac, LOG3, "          use PS poll: %d",
+        smsLog(pMac, LOG3, "          use PS poll: %d\n",
                pMac->pmc.bmpsConfig.usePsPoll);
-        pmcLog(pMac, LOG3, "          set PM on last frame: %d",
+        smsLog(pMac, LOG3, "          set PM on last frame: %d\n",
                pMac->pmc.bmpsConfig.setPmOnLastFrame);
-        pmcLog(pMac, LOG3, "          value of enableBeaconEarlyTermination: %d",
+        smsLog(pMac, LOG3, "          value of enableBeaconEarlyTermination: %d\n",
                pMac->pmc.bmpsConfig.enableBeaconEarlyTermination);
+<<<<<<< HEAD
         pmcLog(pMac, LOG3, "          value of bcnEarlyTermWakeInterval: %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG3, "          value of bcnEarlyTermWakeInterval: %d\n",
+>>>>>>> 657b0e9... prima update
                pMac->pmc.bmpsConfig.bcnEarlyTermWakeInterval);
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
@@ -723,6 +841,7 @@ eHalStatus pmcSetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
     case ePMC_SPATIAL_MULTIPLEX_POWER_SAVE:
         pMac->pmc.smpsConfig = *(tpPmcSmpsConfigParams)pConfigParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG3, FL("SMPS configuration"));
         smsLog(pMac, LOG3, "          mode: %d\n", pMac->pmc.smpsConfig.mode);
         smsLog(pMac, LOG3, "          enter on AC: %d\n",
@@ -731,15 +850,24 @@ eHalStatus pmcSetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
         pmcLog(pMac, LOG3, "          mode: %d", pMac->pmc.smpsConfig.mode);
         pmcLog(pMac, LOG3, "          enter on AC: %d",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG3, FL("SMPS configuration"));
+        smsLog(pMac, LOG3, "          mode: %d\n", pMac->pmc.smpsConfig.mode);
+        smsLog(pMac, LOG3, "          enter on AC: %d\n",
+>>>>>>> 657b0e9... prima update
                pMac->pmc.smpsConfig.enterOnAc);
         break;
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
 =======
         pmcLog(pMac, LOGE, FL("Invalid power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -778,10 +906,14 @@ eHalStatus pmcGetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcGetConfigPowerSave, power save mode %d\n"), psMode);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcGetConfigPowerSave, power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcGetConfigPowerSave, power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
 
     /* Configure the specified power saving mode. */
     switch (psMode)
@@ -801,10 +933,14 @@ eHalStatus pmcGetConfigPowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode, v
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
 =======
         pmcLog(pMac, LOGE, FL("Invalid power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -842,10 +978,14 @@ eHalStatus pmcEnablePowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode)
 #endif
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcEnablePowerSave, power save mode %d\n"), psMode);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcEnablePowerSave, power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcEnablePowerSave, power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
 
     /* Enable the specified power saving mode. */
     switch (psMode)
@@ -891,10 +1031,14 @@ eHalStatus pmcEnablePowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode)
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
 =======
         pmcLog(pMac, LOGE, FL("Invalid power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -923,19 +1067,27 @@ eHalStatus pmcStartAutoBmpsTimer (tHalHandle hHal)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, FL("Entering pmcStartAutoBmpsTimer\n"));
 =======
    pmcLog(pMac, LOG2, FL("Entering pmcStartAutoBmpsTimer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, FL("Entering pmcStartAutoBmpsTimer\n"));
+>>>>>>> 657b0e9... prima update
 
    /* Check if BMPS is enabled. */
    if (!pMac->pmc.bmpsEnabled)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enable BMPS timer. BMPS is disabled\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enable BMPS timer. BMPS is disabled");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enable BMPS timer. BMPS is disabled\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
@@ -977,10 +1129,14 @@ eHalStatus pmcStopAutoBmpsTimer (tHalHandle hHal)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, FL("Entering pmcStopAutoBmpsTimer\n"));
 =======
    pmcLog(pMac, LOG2, FL("Entering pmcStopAutoBmpsTimer"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, FL("Entering pmcStopAutoBmpsTimer\n"));
+>>>>>>> 657b0e9... prima update
 
    pMac->pmc.autoBmpsEntryEnabled = FALSE;
    /* If uapsd session is not required or HDD has not requested BMPS, stop the auto bmps timer.*/
@@ -1022,10 +1178,14 @@ eHalStatus pmcDisablePowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcDisablePowerSave, power save mode %d\n"), psMode);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcDisablePowerSave, power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcDisablePowerSave, power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
 
     /* Disable the specified power saving mode. */
     switch (psMode)
@@ -1063,10 +1223,14 @@ eHalStatus pmcDisablePowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode)
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
 =======
         pmcLog(pMac, LOGE, FL("Invalid power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -1101,10 +1265,14 @@ eHalStatus pmcQueryPowerState (tHalHandle hHal, tPmcPowerState *pPowerState,
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcQueryPowerState\n"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcQueryPowerState"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcQueryPowerState\n"));
+>>>>>>> 657b0e9... prima update
 
     /* Return current power state based on PMC state. */
     if(pPowerState != NULL)
@@ -1157,10 +1325,14 @@ tANI_BOOLEAN pmcIsPowerSaveEnabled (tHalHandle hHal, tPmcPowerSavingMode psMode)
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcIsPowerSaveEnabled, power save mode %d\n"), psMode);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcIsPowerSaveEnabled, power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcIsPowerSaveEnabled, power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
 
     /* Check ability to enter based on the specified power saving mode. */
     switch (psMode)
@@ -1187,10 +1359,14 @@ tANI_BOOLEAN pmcIsPowerSaveEnabled (tHalHandle hHal, tPmcPowerSavingMode psMode)
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
 =======
         pmcLog(pMac, LOGE, FL("Invalid power save mode %d"), psMode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid power save mode %d\n"), psMode);
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return FALSE;
     }
@@ -1241,6 +1417,7 @@ eHalStatus pmcRequestFullPower (tHalHandle hHal, void (*callbackRoutine) (void *
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcRequestFullPower"));
 
     if( !PMC_IS_READY(pMac) )
@@ -1255,6 +1432,14 @@ eHalStatus pmcRequestFullPower (tHalHandle hHal, void (*callbackRoutine) (void *
         pmcLog(pMac, LOGE, FL("Requesting Full Power when PMC not ready"));
         pmcLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcRequestFullPower"));
+
+    if( !PMC_IS_READY(pMac) )
+    {
+        smsLog(pMac, LOGE, FL("Requesting Full Power when PMC not ready\n"));
+        smsLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s\n"), 
+>>>>>>> 657b0e9... prima update
             pMac->pmc.pmcReady, pmcGetPmcStateStr(pMac->pmc.pmcState));
         return eHAL_STATUS_FAILURE;
     }
@@ -1274,6 +1459,7 @@ eHalStatus pmcRequestFullPower (tHalHandle hHal, void (*callbackRoutine) (void *
     /* If in IMPS State, then cancel the timer. */
     if (pMac->pmc.pmcState == IMPS)
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (palTimerStop(pMac->hHdd, pMac->pmc.hImpsTimer) != eHAL_STATUS_SUCCESS)
         {
             smsLog(pMac, LOGE, FL("Cannot cancel IMPS timer\n"));
@@ -1282,10 +1468,18 @@ eHalStatus pmcRequestFullPower (tHalHandle hHal, void (*callbackRoutine) (void *
 
 =======
         if (vos_timer_stop(&pMac->pmc.hImpsTimer) != VOS_STATUS_SUCCESS)
+=======
+        if (palTimerStop(pMac->hHdd, pMac->pmc.hImpsTimer) != eHAL_STATUS_SUCCESS)
+>>>>>>> 657b0e9... prima update
         {
-            pmcLog(pMac, LOGE, FL("Cannot cancel IMPS timer"));
+            smsLog(pMac, LOGE, FL("Cannot cancel IMPS timer\n"));
+            return eHAL_STATUS_FAILURE;
         }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
     /* Enter Request Full Power State. */
     if (pmcEnterRequestFullPowerState(hHal, fullPowerReason) != eHAL_STATUS_SUCCESS)
         return eHAL_STATUS_FAILURE;
@@ -1298,10 +1492,14 @@ eHalStatus pmcRequestFullPower (tHalHandle hHal, void (*callbackRoutine) (void *
         if (palAllocateMemory(pMac->hHdd, (void **)&pEntry, sizeof(tRequestFullPowerEntry)) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot allocate memory for request full power routine list entry\n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot allocate memory for request full power routine list entry"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot allocate memory for request full power routine list entry\n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             return eHAL_STATUS_FAILURE;
         }
@@ -1366,10 +1564,14 @@ eHalStatus pmcRequestImps (tHalHandle hHal, tANI_U32 impsPeriod,
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcRequestImps"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcRequestImps"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcRequestImps"));
+>>>>>>> 657b0e9... prima update
 
     status = pmcEnterImpsCheck( pMac );
     if( HAL_STATUS_SUCCESS( status ) )
@@ -1423,19 +1625,27 @@ eHalStatus pmcRegisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*checkRouti
     tpPowerSaveCheckEntry pEntry;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcRegisterPowerSaveCheck"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcRegisterPowerSaveCheck"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcRegisterPowerSaveCheck"));
+>>>>>>> 657b0e9... prima update
 
     /* Allocate entry for power save check routine list. */
     if (palAllocateMemory(pMac->hHdd, (void **)&pEntry, sizeof(tPowerSaveCheckEntry)) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot allocate memory for power save check routine list entry\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot allocate memory for power save check routine list entry"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot allocate memory for power save check routine list entry\n"));
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -1475,10 +1685,14 @@ eHalStatus pmcDeregisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*checkRou
     tpPowerSaveCheckEntry pPowerSaveCheckEntry;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcDeregisterPowerSaveCheck"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcDeregisterPowerSaveCheck"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcDeregisterPowerSaveCheck"));
+>>>>>>> 657b0e9... prima update
 
     /* Find entry in the power save check routine list that matches
        the specified routine and remove it. */
@@ -1493,10 +1707,14 @@ eHalStatus pmcDeregisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*checkRou
                 if (palFreeMemory(pMac->hHdd, pPowerSaveCheckEntry) != eHAL_STATUS_SUCCESS)
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL("Cannot free memory for power save check routine list entry\n"));
 =======
                     pmcLog(pMac, LOGE, FL("Cannot free memory for power save check routine list entry"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGE, FL("Cannot free memory for power save check routine list entry\n"));
+>>>>>>> 657b0e9... prima update
                     PMC_ABORT;
                     return eHAL_STATUS_FAILURE;
                 }
@@ -1504,10 +1722,14 @@ eHalStatus pmcDeregisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*checkRou
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Cannot remove power save check routine list entry\n"));
 =======
                 pmcLog(pMac, LOGE, FL("Cannot remove power save check routine list entry"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Cannot remove power save check routine list entry\n"));
+>>>>>>> 657b0e9... prima update
                 return eHAL_STATUS_FAILURE;
             }
             return eHAL_STATUS_SUCCESS;
@@ -1532,10 +1754,14 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
         pCommand = GET_BASE_ADDR(pEntry, tSmeCmd, Link);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOG2, FL("process message = %d\n"), pMsg->messageType);
 =======
         pmcLog(pMac, LOG2, FL("process message = %d"), pMsg->messageType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG2, FL("process message = %d\n"), pMsg->messageType);
+>>>>>>> 657b0e9... prima update
 
     /* Process each different type of message. */
     switch (pMsg->messageType)
@@ -1543,6 +1769,7 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
 
     /* We got a response to our IMPS request.  */
     case eWNI_PMC_ENTER_IMPS_RSP:
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_ENTER_IMPS_RSP with status = %d\n"), pMsg->statusCode);
             if( (eSmeCommandEnterImps != pCommand->command) && (eSmeCommandEnterStandby != pCommand->command) )
@@ -1554,6 +1781,12 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             {
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_IMPS_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_ENTER_IMPS_RSP with status = %d\n"), pMsg->statusCode);
+            if( (eSmeCommandEnterImps != pCommand->command) && (eSmeCommandEnterStandby != pCommand->command) )
+            {
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_IMPS_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1562,6 +1795,7 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             /* Enter IMPS State if response indicates success. */
             if (pMsg->statusCode == eSIR_SME_SUCCESS)
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     pmcEnterImpsState(pMac);
             }
@@ -1599,6 +1833,16 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
                 }
                 pmcEnterFullPowerState(pMac);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pmcEnterImpsState(pMac);
+            }
+
+            /* If response is failure, then we stay in Full Power State and tell everyone that we aren't going into IMPS. */
+            else {
+                smsLog(pMac, LOGE, FL("Response message to request to enter IMPS indicates failure, status %x\n"),
+                       pMsg->statusCode);
+                    pmcEnterFullPowerState(pMac);
+>>>>>>> 657b0e9... prima update
             }
         }
         else if (pMac->pmc.pmcState == REQUEST_STANDBY)
@@ -1607,12 +1851,17 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMsg->statusCode == eSIR_SME_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     pmcEnterStandbyState(pMac);
                     pmcDoStandbyCallbacks(pMac, eHAL_STATUS_SUCCESS);
 =======
                 pmcEnterStandbyState(pMac);
                 pmcDoStandbyCallbacks(pMac, eHAL_STATUS_SUCCESS);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pmcEnterStandbyState(pMac);
+                    pmcDoStandbyCallbacks(pMac, eHAL_STATUS_SUCCESS);
+>>>>>>> 657b0e9... prima update
             }
 
             /* If response is failure, then we stay in Full Power State
@@ -1620,20 +1869,27 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
                 smsLog(pMac, LOGE, "PMC: response message to request to enter "
                        "standby indicates failure, status %x\n", pMsg->statusCode);
                     pmcEnterFullPowerState(pMac);
                     pmcDoStandbyCallbacks(pMac, eHAL_STATUS_FAILURE);
+<<<<<<< HEAD
 =======
                 pmcLog(pMac, LOGE, "PMC: response message to request to enter "
                        "standby indicates failure, status %x", pMsg->statusCode);
                 pmcEnterFullPowerState(pMac);
                 pmcDoStandbyCallbacks(pMac, eHAL_STATUS_FAILURE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             }
         }
         else
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOGE, "PMC: Enter IMPS rsp rcvd when device is "
                "in %d state\n", pMac->pmc.pmcState);
@@ -1641,11 +1897,16 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             pmcLog(pMac, LOGE, "PMC: Enter IMPS rsp rcvd when device is "
                "in %d state", pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "PMC: Enter IMPS rsp rcvd when device is "
+               "in %d state\n", pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
         }
         break;
 
     /* We got a response to our wake from IMPS request. */
     case eWNI_PMC_EXIT_IMPS_RSP:
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_EXIT_IMPS_RSP with status = %d\n"), pMsg->statusCode);
             if( eSmeCommandExitImps != pCommand->command )
@@ -1657,6 +1918,12 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             {
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_IMPS_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_EXIT_IMPS_RSP with status = %d\n"), pMsg->statusCode);
+            if( eSmeCommandExitImps != pCommand->command )
+            {
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_IMPS_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1664,11 +1931,15 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_FULL_POWER)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got Exit IMPS Response Message while in state %d\n"), pMac->pmc.pmcState);
 =======
                 pmcLog(pMac, LOGE, FL("Got Exit IMPS Response Message while "
                    "in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got Exit IMPS Response Message while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
                 break;
             }
 
@@ -1676,18 +1947,24 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMsg->statusCode != eSIR_SME_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGP, FL("Response message to request to exit IMPS indicates failure, status %x\n"),
                        pMsg->statusCode);
 =======
                 pmcLog(pMac, LOGE, FL("Response message to request to exit "
                    "IMPS indicates failure, status %x"), pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGP, FL("Response message to request to exit IMPS indicates failure, status %x\n"),
+                       pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
             }
             pmcEnterFullPowerState(pMac);
         break;
 
     /* We got a response to our BMPS request.  */
     case eWNI_PMC_ENTER_BMPS_RSP:
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_ENTER_BMPS_RSP with status = %d\n"), pMsg->statusCode);
             if( eSmeCommandEnterBmps != pCommand->command )
@@ -1699,6 +1976,12 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             {
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_BMPS_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_ENTER_BMPS_RSP with status = %d\n"), pMsg->statusCode);
+            if( eSmeCommandEnterBmps != pCommand->command )
+            {
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_BMPS_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1707,11 +1990,15 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_BMPS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got Enter BMPS Response Message while in state %d\n"), pMac->pmc.pmcState);
 =======
                 pmcLog(pMac, LOGE,
                        FL("Got Enter BMPS Response Message while in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got Enter BMPS Response Message while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
                 break;
             }
 
@@ -1728,11 +2015,15 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Response message to request to enter BMPS indicates failure, status %x\n"),
 =======
                 pmcLog(pMac, LOGE,
                        FL("Response message to request to enter BMPS indicates failure, status %x"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Response message to request to enter BMPS indicates failure, status %x\n"),
+>>>>>>> 657b0e9... prima update
                    pMsg->statusCode);
                 pmcEnterFullPowerState(pMac);
                 //Do not call UAPSD callback here since it may be re-entered
@@ -1742,6 +2033,7 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
 
     /* We got a response to our wake from BMPS request. */
     case eWNI_PMC_EXIT_BMPS_RSP:
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_EXIT_BMPS_RSP with status = %d\n"), pMsg->statusCode);
             if( eSmeCommandExitBmps != pCommand->command )
@@ -1753,6 +2045,12 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             {
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_BMPS_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_EXIT_BMPS_RSP with status = %d\n"), pMsg->statusCode);
+            if( eSmeCommandExitBmps != pCommand->command )
+            {
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_BMPS_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1760,11 +2058,15 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_FULL_POWER)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got Exit BMPS Response Message while in state %d\n"), pMac->pmc.pmcState);
 =======
                 pmcLog(pMac, LOGE,
                        FL("Got Exit BMPS Response Message while in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got Exit BMPS Response Message while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
                 break;
             }
 
@@ -1772,11 +2074,15 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMsg->statusCode != eSIR_SME_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGP, FL("Response message to request to exit BMPS indicates failure, status %x\n"),
 =======
                 pmcLog(pMac, LOGP,
                        FL("Response message to request to exit BMPS indicates failure, status %x"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGP, FL("Response message to request to exit BMPS indicates failure, status %x\n"),
+>>>>>>> 657b0e9... prima update
                        pMsg->statusCode);
             }
             pmcEnterFullPowerState(pMac);
@@ -1784,6 +2090,7 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
 
         /* We got a response to our Start UAPSD request.  */
         case eWNI_PMC_ENTER_UAPSD_RSP:
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_ENTER_UAPSD_RSP with status = %d\n"), pMsg->statusCode);
             if( eSmeCommandEnterUapsd != pCommand->command )
@@ -1795,6 +2102,12 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
         {
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_UAPSD_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_ENTER_UAPSD_RSP with status = %d\n"), pMsg->statusCode);
+            if( eSmeCommandEnterUapsd != pCommand->command )
+        {
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_UAPSD_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1802,11 +2115,15 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_START_UAPSD)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got Enter Uapsd rsp Message while in state %d\n"), pMac->pmc.pmcState);
 =======
                 pmcLog(pMac, LOGE,
                        FL("Got Enter Uapsd rsp Message while in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got Enter Uapsd rsp Message while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
                 break;
             }
 
@@ -1820,12 +2137,17 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             BMPS mode*/
             else {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, "PMC: response message to request to enter "
                    "UAPSD indicates failure, status %x\n", pMsg->statusCode);
 =======
                 pmcLog(pMac, LOGE, "PMC: response message to request to enter "
                    "UAPSD indicates failure, status %x", pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, "PMC: response message to request to enter "
+                   "UAPSD indicates failure, status %x\n", pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
                 //Need to reset the UAPSD flag so pmcEnterBmpsState won't try to enter UAPSD.
                 pMac->pmc.uapsdSessionRequired = FALSE;
                 pmcEnterBmpsState(pMac);
@@ -1837,6 +2159,7 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
       /* We got a response to our Stop UAPSD request.  */
       case eWNI_PMC_EXIT_UAPSD_RSP:
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_EXIT_UAPSD_RSP with status = %d\n"), pMsg->statusCode);
             if( eSmeCommandExitUapsd != pCommand->command )
             {
@@ -1847,6 +2170,12 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             {
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_UAPSD_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOG2, FL("Rcvd eWNI_PMC_EXIT_UAPSD_RSP with status = %d\n"), pMsg->statusCode);
+            if( eSmeCommandExitUapsd != pCommand->command )
+            {
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_UAPSD_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1854,16 +2183,21 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_STOP_UAPSD)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got Exit Uapsd rsp Message while in state %d\n"), pMac->pmc.pmcState);
 =======
                 pmcLog(pMac, LOGE,
                        FL("Got Exit Uapsd rsp Message while in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got Exit Uapsd rsp Message while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
                 break;
             }
 
          /* Enter BMPS State */
          if (pMsg->statusCode != eSIR_SME_SUCCESS) {
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOGP, "PMC: response message to request to exit "
                "UAPSD indicates failure, status %x\n", pMsg->statusCode);
@@ -1871,6 +2205,10 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             pmcLog(pMac, LOGP, "PMC: response message to request to exit "
                "UAPSD indicates failure, status %x", pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGP, "PMC: response message to request to exit "
+               "UAPSD indicates failure, status %x\n", pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
          }
             pmcEnterBmpsState(pMac);
          break;
@@ -1881,10 +2219,14 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if( eSmeCommandEnterWowl != pCommand->command )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_WOWL_RSP without request\n"));
 =======
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_WOWL_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_ENTER_WOWL_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1892,10 +2234,14 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_ENTER_WOWL)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got eWNI_PMC_ENTER_WOWL_RSP while in state %s\n"), 
 =======
                 pmcLog(pMac, LOGE, FL("Got eWNI_PMC_ENTER_WOWL_RSP while in state %s"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got eWNI_PMC_ENTER_WOWL_RSP while in state %s\n"), 
+>>>>>>> 657b0e9... prima update
                     pmcGetPmcStateStr(pMac->pmc.pmcState));
                 break;
             }
@@ -1910,12 +2256,17 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             BMPS mode*/
          else {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, "PMC: response message to request to enter "
                "WOWL indicates failure, status %x\n", pMsg->statusCode);
 =======
             pmcLog(pMac, LOGE, "PMC: response message to request to enter "
                "WOWL indicates failure, status %x", pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "PMC: response message to request to enter "
+               "WOWL indicates failure, status %x\n", pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
                 pmcEnterBmpsState(pMac);
                 pmcDoEnterWowlCallbacks(pMac, eHAL_STATUS_FAILURE);
          }
@@ -1927,10 +2278,14 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if( eSmeCommandExitWowl != pCommand->command )
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_WOWL_RSP without request\n"));
 =======
                 pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_WOWL_RSP without request"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_WOWL_RSP without request\n"));
+>>>>>>> 657b0e9... prima update
                 fRemoveCommand = eANI_BOOLEAN_FALSE;
                 break;
             }
@@ -1938,15 +2293,20 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             if (pMac->pmc.pmcState != REQUEST_EXIT_WOWL)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Got Exit WOWL rsp Message while in state %d\n"), pMac->pmc.pmcState);
 =======
                 pmcLog(pMac, LOGE, FL("Got Exit WOWL rsp Message while in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Got Exit WOWL rsp Message while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
                 break;
             }
 
          /* Enter BMPS State */
          if (pMsg->statusCode != eSIR_SME_SUCCESS) {
+<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOGP, "PMC: response message to request to exit "
                "WOWL indicates failure, status %x\n", pMsg->statusCode);
@@ -1954,16 +2314,24 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
             pmcLog(pMac, LOGP, "PMC: response message to request to exit "
                "WOWL indicates failure, status %x", pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGP, "PMC: response message to request to exit "
+               "WOWL indicates failure, status %x\n", pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
          }
             pmcEnterBmpsState(pMac);
          break;
 
     default:
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Invalid message type %d received\n"), pMsg->messageType);
 =======
         pmcLog(pMac, LOGE, FL("Invalid message type %d received"), pMsg->messageType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Invalid message type %d received\n"), pMsg->messageType);
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         break;
         }//switch
@@ -1980,10 +2348,14 @@ static void pmcProcessResponse( tpAniSirGlobal pMac, tSirSmeRsp *pMsg )
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("message type %d received but no request is found\n"), pMsg->messageType);
 =======
         pmcLog(pMac, LOGE, FL("message type %d received but no request is found"), pMsg->messageType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("message type %d received but no request is found\n"), pMsg->messageType);
+>>>>>>> 657b0e9... prima update
     }
 }
 
@@ -2008,10 +2380,14 @@ void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg)
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcMessageProcessor, message type %d\n"), pMsg->messageType);
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcMessageProcessor, message type %d"), pMsg->messageType);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcMessageProcessor, message type %d\n"), pMsg->messageType);
+>>>>>>> 657b0e9... prima update
 
     switch( pMsg->messageType )
     {
@@ -2020,10 +2396,14 @@ void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg)
     {
         /* Device left BMPS on its own. */
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_BMPS_IND with status = %d\n"), pMsg->statusCode);
 =======
         pmcLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_BMPS_IND with status = %d"), pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("Rcvd eWNI_PMC_EXIT_BMPS_IND with status = %d\n"), pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
         /* Check that we are in the correct state for this message. */
         switch(pMac->pmc.pmcState)
         {
@@ -2036,6 +2416,7 @@ void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg)
         case REQUEST_EXIT_WOWL:
         case REQUEST_FULL_POWER:
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("Got eWNI_PMC_EXIT_BMPS_IND while in state %d\n"), pMac->pmc.pmcState);
             break;
         default:
@@ -2046,6 +2427,12 @@ void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg)
         default:
             pmcLog(pMac, LOGE, FL("Got eWNI_PMC_EXIT_BMPS_IND while in state %d"), pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("Got eWNI_PMC_EXIT_BMPS_IND while in state %d\n"), pMac->pmc.pmcState);
+            break;
+        default:
+            smsLog(pMac, LOGE, FL("Got eWNI_PMC_EXIT_BMPS_IND while in state %d\n"), pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -2054,10 +2441,14 @@ void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg)
         if (pMsg->statusCode != eSIR_SME_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGP, FL("Exit BMPS indication indicates failure, status %x\n"), pMsg->statusCode);
 =======
             pmcLog(pMac, LOGP, FL("Exit BMPS indication indicates failure, status %x"), pMsg->statusCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGP, FL("Exit BMPS indication indicates failure, status %x\n"), pMsg->statusCode);
+>>>>>>> 657b0e9... prima update
         }
         else
         {
@@ -2082,10 +2473,14 @@ tANI_BOOLEAN pmcValidateConnectState( tHalHandle hHal )
    if ( !csrIsInfraConnected( pMac ) )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "PMC: STA not associated. BMPS cannot be entered\n");
 =======
       pmcLog(pMac, LOGW, "PMC: STA not associated. BMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "PMC: STA not associated. BMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
       return eANI_BOOLEAN_FALSE;
    }
 
@@ -2093,19 +2488,27 @@ tANI_BOOLEAN pmcValidateConnectState( tHalHandle hHal )
    if ( csrIsIBSSStarted( pMac ) )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "PMC: IBSS started. BMPS cannot be entered\n");
 =======
       pmcLog(pMac, LOGW, "PMC: IBSS started. BMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "PMC: IBSS started. BMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
       return eANI_BOOLEAN_FALSE;
    }
    if ( csrIsBTAMPStarted( pMac ) )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "PMC: BT-AMP exists. BMPS cannot be entered\n");
 =======
       pmcLog(pMac, LOGW, "PMC: BT-AMP exists. BMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "PMC: BT-AMP exists. BMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
       return eANI_BOOLEAN_FALSE;
    }
    if ((vos_concurrent_sessions_running()) &&
@@ -2114,10 +2517,14 @@ tANI_BOOLEAN pmcValidateConnectState( tHalHandle hHal )
        (vos_get_concurrency_mode()& VOS_P2P_GO)))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "PMC: Multiple active sessions exists. BMPS cannot be entered\n");
 =======
       pmcLog(pMac, LOGW, "PMC: Multiple active sessions exists. BMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "PMC: Multiple active sessions exists. BMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
       return eANI_BOOLEAN_FALSE;
    }
    return eANI_BOOLEAN_TRUE;
@@ -2131,19 +2538,27 @@ tANI_BOOLEAN pmcAllowImps( tHalHandle hHal )
     if ( csrIsIBSSStarted( pMac ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog(pMac, LOGW, "PMC: IBSS started. IMPS cannot be entered\n");
 =======
        pmcLog(pMac, LOGW, "PMC: IBSS started. IMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGW, "PMC: IBSS started. IMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
        return eANI_BOOLEAN_FALSE;
     }
     if ( csrIsBTAMPStarted( pMac ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog(pMac, LOGW, "PMC: BT-AMP exists. IMPS cannot be entered\n");
 =======
        pmcLog(pMac, LOGW, "PMC: BT-AMP exists. IMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGW, "PMC: BT-AMP exists. IMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
        return eANI_BOOLEAN_FALSE;
     }
 
@@ -2151,10 +2566,14 @@ tANI_BOOLEAN pmcAllowImps( tHalHandle hHal )
     if ( !csrIsAllSessionDisconnected( pMac ) )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
        smsLog(pMac, LOGW, "PMC: Atleast one connected session. IMPS cannot be entered\n");
 =======
        pmcLog(pMac, LOGW, "PMC: Atleast one connected session. IMPS cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGW, "PMC: Atleast one connected session. IMPS cannot be entered\n");
+>>>>>>> 657b0e9... prima update
        return eANI_BOOLEAN_FALSE;
     }
 
@@ -2199,19 +2618,27 @@ eHalStatus pmcRequestBmps (
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, "PMC: entering pmcRequestBmps");
 =======
    pmcLog(pMac, LOG2, "PMC: entering pmcRequestBmps");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, "PMC: entering pmcRequestBmps");
+>>>>>>> 657b0e9... prima update
 
    /* If already in BMPS, just return. */
    if (pMac->pmc.pmcState == BMPS || REQUEST_START_UAPSD == pMac->pmc.pmcState || UAPSD == pMac->pmc.pmcState)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOG2, "PMC: Device already in BMPS pmcState %d", pMac->pmc.pmcState);
 =======
       pmcLog(pMac, LOG2, "PMC: Device already in BMPS pmcState %d", pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOG2, "PMC: Device already in BMPS pmcState %d", pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
       pMac->pmc.bmpsRequestedByHdd = TRUE;
       return eHAL_STATUS_SUCCESS;
    }
@@ -2235,12 +2662,17 @@ eHalStatus pmcRequestBmps (
                sizeof(tRequestBmpsEntry)) != eHAL_STATUS_SUCCESS)
          {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, "PMC: cannot allocate memory for request "
                   "BMPS routine list entry\n");
 =======
             pmcLog(pMac, LOGE, "PMC: cannot allocate memory for request "
                   "BMPS routine list entry");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, "PMC: cannot allocate memory for request "
+                  "BMPS routine list entry\n");
+>>>>>>> 657b0e9... prima update
             return eHAL_STATUS_FAILURE;
          }
 
@@ -2258,6 +2690,7 @@ eHalStatus pmcRequestBmps (
          status = eHAL_STATUS_FAILURE;
       }
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    /* Retry to enter the BMPS if the
@@ -2279,6 +2712,8 @@ eHalStatus pmcRequestBmps (
       }
    }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    return status;
 }
@@ -2321,6 +2756,7 @@ eHalStatus pmcStartUapsd (
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, "PMC: entering pmcStartUapsd");
 
    if( !PMC_IS_READY(pMac) )
@@ -2335,6 +2771,14 @@ eHalStatus pmcStartUapsd (
        pmcLog(pMac, LOGE, FL("Requesting UAPSD when PMC not ready"));
        pmcLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, "PMC: entering pmcStartUapsd");
+
+   if( !PMC_IS_READY(pMac) )
+   {
+       smsLog(pMac, LOGE, FL("Requesting UAPSD when PMC not ready\n"));
+       smsLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s\n"), 
+>>>>>>> 657b0e9... prima update
            pMac->pmc.pmcReady, pmcGetPmcStateStr(pMac->pmc.pmcState));
        return eHAL_STATUS_FAILURE;
    }
@@ -2343,10 +2787,14 @@ eHalStatus pmcStartUapsd (
    if (!pMac->pmc.bmpsEnabled)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enter UAPSD. BMPS is disabled\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enter UAPSD. BMPS is disabled");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enter UAPSD. BMPS is disabled\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_PMC_DISABLED;
    }
 
@@ -2354,10 +2802,14 @@ eHalStatus pmcStartUapsd (
    if (!pMac->pmc.uapsdEnabled)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enter UAPSD. UAPSD is disabled\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enter UAPSD. UAPSD is disabled");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enter UAPSD. UAPSD is disabled\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_PMC_DISABLED;
    }
 
@@ -2369,10 +2821,14 @@ eHalStatus pmcStartUapsd (
    if (!pmcValidateConnectState( pMac ))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: STA not associated with an AP. UAPSD cannot be entered\n");
 =======
       pmcLog(pMac, LOGE, "PMC: STA not associated with an AP. UAPSD cannot be entered");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: STA not associated with an AP. UAPSD cannot be entered\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
@@ -2387,12 +2843,17 @@ eHalStatus pmcStartUapsd (
             sizeof(tStartUapsdEntry)) != eHAL_STATUS_SUCCESS)
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
          smsLog(pMac, LOGE, "PMC: cannot allocate memory for request "
             "start UAPSD routine list entry\n");
 =======
          pmcLog(pMac, LOGE, "PMC: cannot allocate memory for request "
             "start UAPSD routine list entry");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         smsLog(pMac, LOGE, "PMC: cannot allocate memory for request "
+            "start UAPSD routine list entry\n");
+>>>>>>> 657b0e9... prima update
          return eHAL_STATUS_FAILURE;
       }
 
@@ -2436,10 +2897,14 @@ eHalStatus pmcStopUapsd (tHalHandle hHal)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, "PMC: entering pmcStopUapsd");
 =======
    pmcLog(pMac, LOG2, "PMC: entering pmcStopUapsd");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, "PMC: entering pmcStopUapsd");
+>>>>>>> 657b0e9... prima update
 
    /* Clear any buffered command for entering UAPSD */
    pMac->pmc.uapsdSessionRequired = FALSE;
@@ -2449,12 +2914,17 @@ eHalStatus pmcStopUapsd (tHalHandle hHal)
    if (pMac->pmc.pmcState != UAPSD && pMac->pmc.pmcState != REQUEST_STOP_UAPSD)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGW, "PMC: Device is already out of UAPSD "
          "state. Current state is %d\n", pMac->pmc.pmcState);
 =======
       pmcLog(pMac, LOGW, "PMC: Device is already out of UAPSD "
          "state. Current state is %d", pMac->pmc.pmcState);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGW, "PMC: Device is already out of UAPSD "
+         "state. Current state is %d\n", pMac->pmc.pmcState);
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_SUCCESS;
    }
 
@@ -2493,24 +2963,33 @@ extern eHalStatus pmcRequestStandby (
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, "PMC: entering pmcRequestStandby");
 =======
    pmcLog(pMac, LOG2, "PMC: entering pmcRequestStandby");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, "PMC: entering pmcRequestStandby");
+>>>>>>> 657b0e9... prima update
 
    /* Check if standby is enabled. */
    if (!pMac->pmc.standbyEnabled)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enter standby. Standby is disabled\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enter standby. Standby is disabled");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enter standby. Standby is disabled\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_PMC_DISABLED;
    }
 
    if( !PMC_IS_READY(pMac) )
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
        smsLog(pMac, LOGE, FL("Requesting standby when PMC not ready\n"));
        smsLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s\n"), 
@@ -2518,6 +2997,10 @@ extern eHalStatus pmcRequestStandby (
        pmcLog(pMac, LOGE, FL("Requesting standby when PMC not ready"));
        pmcLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGE, FL("Requesting standby when PMC not ready\n"));
+       smsLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s\n"), 
+>>>>>>> 657b0e9... prima update
            pMac->pmc.pmcReady, pmcGetPmcStateStr(pMac->pmc.pmcState));
        return eHAL_STATUS_FAILURE;
    }
@@ -2565,19 +3048,27 @@ extern eHalStatus pmcRegisterDeviceStateUpdateInd (tHalHandle hHal,
     tpDeviceStateUpdateIndEntry pEntry;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcRegisterDeviceStateUpdateInd"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcRegisterDeviceStateUpdateInd"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcRegisterDeviceStateUpdateInd"));
+>>>>>>> 657b0e9... prima update
 
     /* Allocate entry for device power state update indication. */
     if (palAllocateMemory(pMac->hHdd, (void **)&pEntry, sizeof(tDeviceStateUpdateIndEntry)) != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot allocate memory for device power state update indication\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot allocate memory for device power state update indication"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot allocate memory for device power state update indication\n"));
+>>>>>>> 657b0e9... prima update
         PMC_ABORT;
         return eHAL_STATUS_FAILURE;
     }
@@ -2609,10 +3100,14 @@ eHalStatus pmcDeregisterDeviceStateUpdateInd (tHalHandle hHal,
     tpDeviceStateUpdateIndEntry pDeviceStateUpdateIndEntry;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcDeregisterDeviceStateUpdateInd"));
 =======
     pmcLog(pMac, LOG2, FL("Entering pmcDeregisterDeviceStateUpdateInd"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcDeregisterDeviceStateUpdateInd"));
+>>>>>>> 657b0e9... prima update
 
     /* Find entry in the power save update routine list that matches
        the specified routine and remove it. */
@@ -2625,19 +3120,27 @@ eHalStatus pmcDeregisterDeviceStateUpdateInd (tHalHandle hHal,
             if (!csrLLRemoveEntry(&pMac->pmc.deviceStateUpdateIndList, pEntry, FALSE))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Cannot remove device state update ind entry from list\n"));
 =======
                 pmcLog(pMac, LOGE, FL("Cannot remove device state update ind entry from list"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Cannot remove device state update ind entry from list\n"));
+>>>>>>> 657b0e9... prima update
                 return eHAL_STATUS_FAILURE;
             }
             if (palFreeMemory(pMac->hHdd, pDeviceStateUpdateIndEntry) != eHAL_STATUS_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("Cannot free memory for device state update ind routine list entry\n"));
 =======
                 pmcLog(pMac, LOGE, FL("Cannot free memory for device state update ind routine list entry"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("Cannot free memory for device state update ind routine list entry\n"));
+>>>>>>> 657b0e9... prima update
                 PMC_ABORT;
                 return eHAL_STATUS_FAILURE;
             }
@@ -2665,6 +3168,7 @@ eHalStatus pmcReady(tHalHandle hHal)
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     smsLog(pMac, LOG2, FL("Entering pmcReady"));
 
     if(pMac->pmc.pmcState == STOPPED)
@@ -2677,6 +3181,13 @@ eHalStatus pmcReady(tHalHandle hHal)
     {
         pmcLog(pMac, LOGP, FL("pmcReady is invoked even before pmcStart"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, FL("Entering pmcReady"));
+
+    if(pMac->pmc.pmcState == STOPPED)
+    {
+        smsLog(pMac, LOGP, FL("pmcReady is invoked even before pmcStart"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -2704,6 +3215,7 @@ eHalStatus pmcReady(tHalHandle hHal)
 eHalStatus pmcWowlAddBcastPattern (
     tHalHandle hHal, 
 <<<<<<< HEAD
+<<<<<<< HEAD
     tpSirWowlAddBcastPtrn pattern)
 {
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
@@ -2714,12 +3226,18 @@ eHalStatus pmcWowlAddBcastPattern (
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tpSirWowlAddBcastPtrn pattern)
+{
+    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT
     vos_log_powersave_wow_add_ptrn_pkt_type *log_ptr = NULL;
     WLAN_VOS_DIAG_LOG_ALLOC(log_ptr, vos_log_powersave_wow_add_ptrn_pkt_type, LOG_WLAN_POWERSAVE_WOW_ADD_PTRN_C);
 #endif //#ifdef FEATURE_WLAN_DIAG_SUPPORT
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     smsLog(pMac, LOG2, "PMC: entering pmcWowlAddBcastPattern");
 
@@ -2739,6 +3257,13 @@ eHalStatus pmcWowlAddBcastPattern (
     {
         pmcLog(pMac, LOGE, FL("Session not found "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, "PMC: entering pmcWowlAddBcastPattern");
+
+    if(pattern == NULL)
+    {
+        smsLog(pMac, LOGE, FL("Null broadcast pattern being passed\n"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -2762,15 +3287,20 @@ eHalStatus pmcWowlAddBcastPattern (
     if(pattern->ucPatternId >= SIR_WOWL_BCAST_MAX_NUM_PATTERNS )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Pattern Id must range from 0 to %d\n"), SIR_WOWL_BCAST_MAX_NUM_PATTERNS-1);
 =======
         pmcLog(pMac, LOGE, FL("Pattern Id must range from 0 to %d"), SIR_WOWL_BCAST_MAX_NUM_PATTERNS-1);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Pattern Id must range from 0 to %d\n"), SIR_WOWL_BCAST_MAX_NUM_PATTERNS-1);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
     if( pMac->pmc.pmcState == STANDBY || pMac->pmc.pmcState == REQUEST_STANDBY )
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot add WoWL Pattern as chip is in %s state\n"),
            pmcGetPmcStateStr(pMac->pmc.pmcState));
@@ -2803,31 +3333,42 @@ eHalStatus pmcWowlAddBcastPattern (
         smsLog(pMac, LOGE, FL("Send of eWNI_PMC_WOWL_ADD_BCAST_PTRN to PE failed\n"));
 =======
         pmcLog(pMac, LOGE, FL("Cannot add WoWL Pattern as chip is in %s state"),
+=======
+        smsLog(pMac, LOGE, FL("Cannot add WoWL Pattern as chip is in %s state\n"),
+>>>>>>> 657b0e9... prima update
            pmcGetPmcStateStr(pMac->pmc.pmcState));
         return eHAL_STATUS_FAILURE;
     }
-
     if( pMac->pmc.pmcState == IMPS || pMac->pmc.pmcState == REQUEST_IMPS )
     {
-        pmcLog(pMac, LOGE, FL("Cannot add WoWL Pattern as chip is in %s state"),
-           pmcGetPmcStateStr(pMac->pmc.pmcState));
-        return eHAL_STATUS_FAILURE;
-    }
+        //Wake up the chip first
+        eHalStatus status = pmcDeferMsg( pMac, eWNI_PMC_WOWL_ADD_BCAST_PTRN, 
+                                    pattern, sizeof(tSirWowlAddBcastPtrn) );
 
-    if( !csrIsConnStateConnected(pMac, sessionId) )
-    {
-        pmcLog(pMac, LOGE, FL("Cannot add WoWL Pattern session in %d state"),
-           pSession->connectState);
-        return eHAL_STATUS_FAILURE;
+        if( eHAL_STATUS_PMC_PENDING == status )
+        {
+            return eHAL_STATUS_SUCCESS;
+        }
+        else 
+        {
+            //either fail or already in full power
+            if( !HAL_STATUS_SUCCESS( status ) )
+            {
+                return ( status );
+            }
+            //else let it through because it is in full power state
+        }
     }
-
-    vos_mem_copy(pattern->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr));
 
     if (pmcSendMessage(hHal, eWNI_PMC_WOWL_ADD_BCAST_PTRN, pattern, sizeof(tSirWowlAddBcastPtrn))
         != eHAL_STATUS_SUCCESS)
     {
+<<<<<<< HEAD
         pmcLog(pMac, LOGE, FL("Send of eWNI_PMC_WOWL_ADD_BCAST_PTRN to PE failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Send of eWNI_PMC_WOWL_ADD_BCAST_PTRN to PE failed\n"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -2846,6 +3387,7 @@ eHalStatus pmcWowlAddBcastPattern (
 eHalStatus pmcWowlDelBcastPattern (
     tHalHandle hHal, 
 <<<<<<< HEAD
+<<<<<<< HEAD
     tpSirWowlDelBcastPtrn pattern)
 {
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
@@ -2856,6 +3398,11 @@ eHalStatus pmcWowlDelBcastPattern (
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tpSirWowlDelBcastPtrn pattern)
+{
+    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
     WLAN_VOS_DIAG_EVENT_DEF(wowRequest, vos_event_wlan_powersave_wow_payload_type);
@@ -2867,6 +3414,7 @@ eHalStatus pmcWowlDelBcastPattern (
     WLAN_VOS_DIAG_EVENT_REPORT(&wowRequest, EVENT_WLAN_POWERSAVE_WOW);
 #endif
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     smsLog(pMac, LOG2, "PMC: entering pmcWowlDelBcastPattern");
 
@@ -2886,6 +3434,13 @@ eHalStatus pmcWowlDelBcastPattern (
     {
         pmcLog(pMac, LOGE, FL("Pattern Id must range from 0 to %d"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    smsLog(pMac, LOG2, "PMC: entering pmcWowlDelBcastPattern");
+
+    if(pattern->ucPatternId >= SIR_WOWL_BCAST_MAX_NUM_PATTERNS )
+    {
+        smsLog(pMac, LOGE, FL("Pattern Id must range from 0 to %d\n"), 
+>>>>>>> 657b0e9... prima update
             SIR_WOWL_BCAST_MAX_NUM_PATTERNS-1);
         return eHAL_STATUS_FAILURE;
     }
@@ -2893,14 +3448,19 @@ eHalStatus pmcWowlDelBcastPattern (
     if(pMac->pmc.pmcState == STANDBY || pMac->pmc.pmcState == REQUEST_STANDBY)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Cannot delete WoWL Pattern as chip is in %s state\n"),
 =======
         pmcLog(pMac, LOGE, FL("Cannot delete WoWL Pattern as chip is in %s state"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Cannot delete WoWL Pattern as chip is in %s state\n"),
+>>>>>>> 657b0e9... prima update
            pmcGetPmcStateStr(pMac->pmc.pmcState));
         return eHAL_STATUS_FAILURE;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     if( pMac->pmc.pmcState == IMPS || pMac->pmc.pmcState == REQUEST_IMPS )
     {
@@ -2909,13 +3469,17 @@ eHalStatus pmcWowlDelBcastPattern (
 =======
     vos_mem_copy(pattern->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr));
 
+=======
+>>>>>>> 657b0e9... prima update
     if( pMac->pmc.pmcState == IMPS || pMac->pmc.pmcState == REQUEST_IMPS )
     {
-        eHalStatus status;
-
         //Wake up the chip first
+<<<<<<< HEAD
         status = pmcDeferMsg( pMac, eWNI_PMC_WOWL_DEL_BCAST_PTRN, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        eHalStatus status = pmcDeferMsg( pMac, eWNI_PMC_WOWL_DEL_BCAST_PTRN, 
+>>>>>>> 657b0e9... prima update
                                     pattern, sizeof(tSirWowlDelBcastPtrn) );
 
         if( eHAL_STATUS_PMC_PENDING == status )
@@ -2937,10 +3501,14 @@ eHalStatus pmcWowlDelBcastPattern (
         != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL("Send of eWNI_PMC_WOWL_DEL_BCAST_PTRN to PE failed\n"));
 =======
         pmcLog(pMac, LOGE, FL("Send of eWNI_PMC_WOWL_DEL_BCAST_PTRN to PE failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGE, FL("Send of eWNI_PMC_WOWL_DEL_BCAST_PTRN to PE failed\n"));
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -2991,6 +3559,7 @@ eHalStatus pmcEnterWowl (
     void *wakeReasonIndCBContext,
 #endif // WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
+<<<<<<< HEAD
     tpSirSmeWowlEnterParams wowlEnterParams)
 {
    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
@@ -3000,6 +3569,11 @@ eHalStatus pmcEnterWowl (
    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tpSirSmeWowlEnterParams wowlEnterParams)
+{
+   tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT    
    WLAN_VOS_DIAG_EVENT_DEF(wowRequest, vos_event_wlan_powersave_wow_payload_type);
@@ -3019,6 +3593,7 @@ eHalStatus pmcEnterWowl (
        wowRequest.wow_type |= 2;
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
    WLAN_VOS_DIAG_EVENT_REPORT(&wowRequest, EVENT_WLAN_POWERSAVE_WOW);
 #endif
@@ -3030,22 +3605,24 @@ eHalStatus pmcEnterWowl (
        smsLog(pMac, LOGE, FL("Requesting WoWL when PMC not ready\n"));
        smsLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s\n"), 
 =======
+=======
+
+>>>>>>> 657b0e9... prima update
    WLAN_VOS_DIAG_EVENT_REPORT(&wowRequest, EVENT_WLAN_POWERSAVE_WOW);
 #endif
 
-   pmcLog(pMac, LOG2, FL("PMC: entering pmcEnterWowl"));
-
-   if( NULL == pSession )
-   {
-       pmcLog(pMac, LOGE, FL("Session not found "));
-       return eHAL_STATUS_FAILURE;
-   }
+   smsLog(pMac, LOG2, "PMC: entering pmcEnterWowl\n");
 
    if( !PMC_IS_READY(pMac) )
    {
+<<<<<<< HEAD
        pmcLog(pMac, LOGE, FL("Requesting WoWL when PMC not ready"));
        pmcLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       smsLog(pMac, LOGE, FL("Requesting WoWL when PMC not ready\n"));
+       smsLog(pMac, LOGE, FL("pmcReady = %d pmcState = %s\n"), 
+>>>>>>> 657b0e9... prima update
            pMac->pmc.pmcReady, pmcGetPmcStateStr(pMac->pmc.pmcState));
        return eHAL_STATUS_FAILURE;
    }
@@ -3054,10 +3631,14 @@ eHalStatus pmcEnterWowl (
    if (!pMac->pmc.bmpsEnabled)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enter WoWL. BMPS is disabled\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enter WoWL. BMPS is disabled");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enter WoWL. BMPS is disabled\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_PMC_DISABLED;
    }
 
@@ -3065,10 +3646,14 @@ eHalStatus pmcEnterWowl (
    if (!pMac->pmc.wowlEnabled)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enter WoWL. WoWL is disabled\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enter WoWL. WoWL is disabled");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enter WoWL. WoWL is disabled\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_PMC_DISABLED;
    }
 
@@ -3076,12 +3661,17 @@ eHalStatus pmcEnterWowl (
    if (!pmcValidateConnectState( pMac ))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot enable WOWL. STA not associated "
              "with an Access Point in Infra Mode with single active session\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot enable WOWL. STA not associated "
              "with an Access Point in Infra Mode with single active session");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot enable WOWL. STA not associated "
+             "with an Access Point in Infra Mode with single active session\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
@@ -3090,16 +3680,21 @@ eHalStatus pmcEnterWowl (
    if(pMac->pmc.uapsdSessionRequired)
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Cannot request WOWL. Pending UAPSD request\n");
 =======
       pmcLog(pMac, LOGE, "PMC: Cannot request WOWL. Pending UAPSD request");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Cannot request WOWL. Pending UAPSD request\n");
+>>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
    /* Check that entry into a power save mode is allowed at this time. */
    if (pMac->pmc.pmcState == FULL_POWER && !pmcPowerSaveCheck(hHal))
    {
+<<<<<<< HEAD
 <<<<<<< HEAD
       smsLog(pMac, LOGE, "PMC: Power save check failed. WOWL request "
              "will not be accepted\n");
@@ -3116,6 +3711,13 @@ eHalStatus pmcEnterWowl (
                sizeof(tSirMacAddr));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      smsLog(pMac, LOGE, "PMC: Power save check failed. WOWL request "
+             "will not be accepted\n");
+      return eHAL_STATUS_FAILURE;
+   }
+
+>>>>>>> 657b0e9... prima update
    // To avoid race condition, set callback routines before sending message.
    /* cache the WOWL information */
    pMac->pmc.wowlEnterParams = *wowlEnterParams;
@@ -3160,10 +3762,14 @@ eHalStatus pmcExitWowl (tHalHandle hHal)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    smsLog(pMac, LOG2, "PMC: entering pmcExitWowl");
 =======
    pmcLog(pMac, LOG2, "PMC: entering pmcExitWowl");
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   smsLog(pMac, LOG2, "PMC: entering pmcExitWowl");
+>>>>>>> 657b0e9... prima update
 
    /* Clear any buffered command for entering WOWL */
    pMac->pmc.wowlModeRequired = FALSE;
@@ -3190,6 +3796,7 @@ eHalStatus pmcExitWowl (tHalHandle hHal)
             eHAL_STATUS_FAILURE  Cannot set the offload.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId)
 {
@@ -3223,33 +3830,38 @@ eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tAN
 =======
 eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, 
                                    tANI_U8 sessionId)
+=======
+eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId)
+>>>>>>> 657b0e9... prima update
 {
     tpSirHostOffloadReq pRequestBuf;
     vos_msg_t msg;
+    tpPESession     psessionEntry;
+    tANI_U8   sessionId;
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
-    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 
-    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: IP address = %d.%d.%d.%d", __func__,
-        pRequest->params.hostIpv4Addr[0], pRequest->params.hostIpv4Addr[1],
-        pRequest->params.hostIpv4Addr[2], pRequest->params.hostIpv4Addr[3]);
-
-    if(NULL == pSession )
+    if((psessionEntry = peFindSessionByBssid( pMac, bssId,&sessionId)) == NULL )
     {
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: SESSION not Found\n", __func__);
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Unable to find"
+        "the psessionEntry for bssid : 0x%x:0x%x:0x%x:0x%x:0x%x:0x%x", 
+        __FUNCTION__,bssId[5],bssId[4],bssId[3],bssId[2],bssId[1],bssId[0]);
         return eHAL_STATUS_FAILURE;
     }
+
+    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: IP address = %d.%d.%d.%d", __FUNCTION__,
+        pRequest->params.hostIpv4Addr[0], pRequest->params.hostIpv4Addr[1],
+        pRequest->params.hostIpv4Addr[2], pRequest->params.hostIpv4Addr[3]);
 
     pRequestBuf = vos_mem_malloc(sizeof(tSirHostOffloadReq));
     if (NULL == pRequestBuf)
     {
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for host offload request", __func__);
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for host offload request", __FUNCTION__);
         return eHAL_STATUS_FAILED_ALLOC;
     }
-
-    vos_mem_copy(pRequest->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr));
-
     vos_mem_copy(pRequestBuf, pRequest, sizeof(tSirHostOffloadReq));
 >>>>>>> d97af3b... add prima wlan driver
+
+    pRequestBuf->bssIdx = psessionEntry->bssIdx;
 
     msg.type = WDA_SET_HOST_OFFLOAD;
     msg.reserved = 0;
@@ -3257,10 +3869,14 @@ eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest,
     if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MODULE_ID_WDA, &msg))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_HOST_OFFLOAD message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_HOST_OFFLOAD message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_HOST_OFFLOAD message to WDA", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -3277,6 +3893,7 @@ eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest,
             eHAL_STATUS_FAILURE  Cannot set the keepalive.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 *bssId)
 {
@@ -3298,27 +3915,36 @@ eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8
 
 =======
 eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 sessionId)
+=======
+eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 *bssId)
+>>>>>>> 657b0e9... prima update
 {
     tpSirKeepAliveReq pRequestBuf;
     vos_msg_t msg;
+    tpPESession     psessionEntry;
+    tANI_U8   sessionId;
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
-    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
-
-    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_LOW, "%s: "
-                  "WDA_SET_KEEP_ALIVE message", __func__);
-
-    if(pSession == NULL )
+    if((psessionEntry = peFindSessionByBssid( pMac, bssId,&sessionId)) == NULL )
     {
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
-           " Session not Found", __func__);
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Unable to find"
+        "the psessionEntry for bssid : 0x%x:0x%x:0x%x:0x%x:0x%x:0x%x", 
+        __FUNCTION__,bssId[5],bssId[4],bssId[3],bssId[2],bssId[1],bssId[0]);
         return eHAL_STATUS_FAILURE;
     }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_LOW, "%s: "
+                  "WDA_SET_KEEP_ALIVE message", __FUNCTION__);
+
+>>>>>>> 657b0e9... prima update
     pRequestBuf = vos_mem_malloc(sizeof(tSirKeepAliveReq));
     if (NULL == pRequestBuf)
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
                   "Not able to allocate memory for keep alive request",
+<<<<<<< HEAD
 <<<<<<< HEAD
                   __FUNCTION__);
         return eHAL_STATUS_FAILED_ALLOC;
@@ -3328,12 +3954,15 @@ eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8
     pRequestBuf->bssIdx = psessionEntry->bssIdx;
 =======
                   __func__);
+=======
+                  __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
-
-    vos_mem_copy(pRequest->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr));
     vos_mem_copy(pRequestBuf, pRequest, sizeof(tSirKeepAliveReq));
 >>>>>>> d97af3b... add prima wlan driver
+
+    pRequestBuf->bssIdx = psessionEntry->bssIdx;
 
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_LOW, "buff TP %d "
               "input TP %d ", pRequestBuf->timePeriod, pRequest->timePeriod);
@@ -3346,10 +3975,14 @@ eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
                   "Not able to post WDA_SET_KEEP_ALIVE message to WDA",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   __FUNCTION__);
 =======
                   __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -3369,6 +4002,7 @@ eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8
             eHAL_STATUS_FAILURE  Cannot set the offload.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId)
 {
@@ -3393,45 +4027,61 @@ eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_
 =======
 eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, 
                                  tANI_U8 sessionId)
+=======
+eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId)
+>>>>>>> 657b0e9... prima update
 {
-    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
     tpSirHostOffloadReq pRequestBuf;
     vos_msg_t msg;
-    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
-
-    if( NULL == pSession )
+    int i;
+    tpPESession     psessionEntry;
+    tANI_U8   sessionId;
+    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
+    if((psessionEntry = peFindSessionByBssid( pMac, bssId,&sessionId)) == NULL )
     {
-        pmcLog(pMac, LOGE, FL("Session not found "));
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Unable to find"
+        "the psessionEntry for bssid : 0x%x:0x%x:0x%x:0x%x:0x%x:0x%x", 
+        __FUNCTION__,bssId[5],bssId[4],bssId[3],bssId[2],bssId[1],bssId[0]);
         return eHAL_STATUS_FAILURE;
     }
-
-    vos_mem_copy(pRequest->bssId, pSession->connectedProfile.bssid, 
-                sizeof(tSirMacAddr));
 
     pRequestBuf = vos_mem_malloc(sizeof(tSirHostOffloadReq));
     if (NULL == pRequestBuf)
     {
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for NS offload request", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for NS offload request", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
     vos_mem_copy(pRequestBuf, pRequest, sizeof(tSirHostOffloadReq));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     pRequestBuf->bssIdx = psessionEntry->bssIdx;
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    pRequestBuf->bssIdx = psessionEntry->bssIdx;
+
+>>>>>>> 657b0e9... prima update
     msg.type = WDA_SET_NS_OFFLOAD;
     msg.reserved = 0;
     msg.bodyptr = pRequestBuf;
     if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MODULE_ID_WDA, &msg))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post SIR_HAL_SET_HOST_OFFLOAD message to HAL", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post SIR_HAL_SET_HOST_OFFLOAD message to HAL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post SIR_HAL_SET_HOST_OFFLOAD message to HAL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -3454,10 +4104,14 @@ void pmcClosePowerSaveCheckList(tpAniSirGlobal pMac)
         if (palFreeMemory(pMac->hHdd, pPowerSaveCheckEntry) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot free memory \n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot free memory "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot free memory \n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -3479,10 +4133,14 @@ void pmcCloseRequestFullPowerList(tpAniSirGlobal pMac)
         if (palFreeMemory(pMac->hHdd, pRequestFullPowerEntry) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot free memory \n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot free memory "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot free memory \n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -3504,10 +4162,14 @@ void pmcCloseRequestBmpsList(tpAniSirGlobal pMac)
         if (palFreeMemory(pMac->hHdd, pRequestBmpsEntry) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot free memory \n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot free memory "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot free memory \n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -3529,10 +4191,14 @@ void pmcCloseRequestStartUapsdList(tpAniSirGlobal pMac)
         if (palFreeMemory(pMac->hHdd, pStartUapsdEntry) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot free memory \n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot free memory "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot free memory \n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -3554,10 +4220,14 @@ void pmcCloseDeviceStateUpdateList(tpAniSirGlobal pMac)
         if (palFreeMemory(pMac->hHdd, pDeviceStateUpdateIndEntry) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot free memory \n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot free memory "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot free memory \n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -3579,10 +4249,14 @@ void pmcCloseDeferredMsgList(tpAniSirGlobal pMac)
         if (palFreeMemory(pMac->hHdd, pDeferredMsg) != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("Cannot free memory \n"));
 =======
             pmcLog(pMac, LOGE, FL("Cannot free memory "));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("Cannot free memory \n"));
+>>>>>>> 657b0e9... prima update
             PMC_ABORT;
             break;
         }
@@ -3600,10 +4274,14 @@ pmcPopulateMacHeader( tpAniSirGlobal pMac,
                       tANI_U8 type,
                       tANI_U8 subType,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       tSirMacAddr peerAddr ,
 =======
                       tSirMacAddr peerAddr,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      tSirMacAddr peerAddr ,
+>>>>>>> 657b0e9... prima update
                       tSirMacAddr selfMacAddr)
 {
     tSirRetStatus   statusCode = eSIR_SUCCESS;
@@ -3675,10 +4353,14 @@ pmcPrepareProbeReqTemplate(tpAniSirGlobal pMac,
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
                   "Failed to calculate the packed size f"
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "or a Probe Request (0x%08x).\n", nStatus );
 =======
                   "or a Probe Request (0x%08x).", nStatus );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "or a Probe Request (0x%08x).\n", nStatus );
+>>>>>>> 657b0e9... prima update
 
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fProbeRequest );
@@ -3689,10 +4371,14 @@ pmcPrepareProbeReqTemplate(tpAniSirGlobal pMac,
                   "There were warnings while calculating"
                   "the packed size for a Probe Request ("
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "0x%08x).\n", nStatus );
 =======
                   "0x%08x).", nStatus );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "0x%08x).\n", nStatus );
+>>>>>>> 657b0e9... prima update
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -3703,19 +4389,27 @@ pmcPrepareProbeReqTemplate(tpAniSirGlobal pMac,
     // Next, we fill out the buffer descriptor:
     nSirStatus = pmcPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 SIR_MAC_MGMT_PROBE_REQ, bssId ,selfMacAddr);
 =======
                                 SIR_MAC_MGMT_PROBE_REQ, bssId,selfMacAddr);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                SIR_MAC_MGMT_PROBE_REQ, bssId ,selfMacAddr);
+>>>>>>> 657b0e9... prima update
 
     if ( eSIR_SUCCESS != nSirStatus )
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "Failed to populate the buffer descriptor for a Probe Request (%d).\n",
 =======
         "Failed to populate the buffer descriptor for a Probe Request (%d).",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        "Failed to populate the buffer descriptor for a Probe Request (%d).\n",
+>>>>>>> 657b0e9... prima update
                 nSirStatus );
         return nSirStatus;      // allocated!
     }
@@ -3728,20 +4422,28 @@ pmcPrepareProbeReqTemplate(tpAniSirGlobal pMac,
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "Failed to pack a Probe Request (0x%08x).\n", nStatus );
 =======
                   "Failed to pack a Probe Request (0x%08x).", nStatus );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "Failed to pack a Probe Request (0x%08x).\n", nStatus );
+>>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;    // allocated!
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
             "There were warnings while packing a Probe Request (0x%08x).\n" );
 =======
             "There were warnings while packing a Probe Request" );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "There were warnings while packing a Probe Request (0x%08x).\n" );
+>>>>>>> 657b0e9... prima update
     }
 
     *pusLen = nPayload + sizeof(tSirMacMgmtHdr); 
@@ -3762,6 +4464,7 @@ eHalStatus pmcSetPreferredNetworkList
     vos_msg_t msg;
     tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
+<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U8 ucDot11Mode; 
 
@@ -3791,15 +4494,25 @@ eHalStatus pmcSetPreferredNetworkList
                *((v_U32_t *) &pRequest->aNetworks[1].ssId.ssId[28]));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tANI_U8 ucDot11Mode; 
+
+    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: SSID = %s, %s", __FUNCTION__,
+        pRequest->aNetworks[0].ssId.ssId, pRequest->aNetworks[1].ssId.ssId);
+>>>>>>> 657b0e9... prima update
 
     pRequestBuf = vos_mem_malloc(sizeof(tSirPNOScanReq));
     if (NULL == pRequestBuf)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for PNO request", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for PNO request", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for PNO request", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
@@ -3811,11 +4524,15 @@ eHalStatus pmcSetPreferredNetworkList
 
     /*Prepare a probe request for 2.4GHz band and one for 5GHz band*/
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
     pmcPrepareProbeReqTemplate(pMac,SIR_PNO_24G_DEFAULT_CH, ucDot11Mode, pSession->selfMacAddr, 
                                pRequestBuf->p24GProbeTemplate, &pRequestBuf->us24GProbeTemplateLen); 
 
     pmcPrepareProbeReqTemplate(pMac,SIR_PNO_5G_DEFAULT_CH, ucDot11Mode, pSession->selfMacAddr, 
                                pRequestBuf->p5GProbeTemplate, &pRequestBuf->us5GProbeTemplateLen); 
+<<<<<<< HEAD
 
 =======
     if (eSIR_SUCCESS == pmcPrepareProbeReqTemplate(pMac, SIR_PNO_24G_DEFAULT_CH,
@@ -3873,6 +4590,9 @@ eHalStatus pmcSetPreferredNetworkList
         }
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 
     msg.type     = WDA_SET_PNO_REQ;
     msg.reserved = 0;
@@ -3880,10 +4600,14 @@ eHalStatus pmcSetPreferredNetworkList
     if (!VOS_IS_STATUS_SUCCESS(vos_mq_post_message(VOS_MODULE_ID_WDA, &msg)))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_PNO_REQ message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_PNO_REQ message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_PNO_REQ message to WDA", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -3893,10 +4617,14 @@ eHalStatus pmcSetPreferredNetworkList
     pMac->pmc.preferredNetworkFoundIndCallbackContext = callbackContext;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "-%s", __FUNCTION__);
 =======
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "-%s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "-%s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     return eHAL_STATUS_SUCCESS;
 }
@@ -3911,10 +4639,14 @@ eHalStatus pmcSetRssiFilter(tHalHandle hHal,   v_U8_t        rssiThreshold)
     if (NULL == pRequestBuf)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for PNO request", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for PNO request", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for PNO request", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
@@ -3927,10 +4659,14 @@ eHalStatus pmcSetRssiFilter(tHalHandle hHal,   v_U8_t        rssiThreshold)
     if (!VOS_IS_STATUS_SUCCESS(vos_mq_post_message(VOS_MODULE_ID_WDA, &msg)))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_PNO_REQ message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_PNO_REQ message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_PNO_REQ message to WDA", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -3946,19 +4682,27 @@ eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChanne
     int i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s started", __FUNCTION__);
 =======
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s started", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s started", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     pRequestBuf = vos_mem_malloc(sizeof(tSirUpdateScanParams));
     if (NULL == pRequestBuf)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for UpdateScanParams request", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for UpdateScanParams request", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for UpdateScanParams request", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
@@ -3969,6 +4713,7 @@ eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChanne
     pRequestBuf->b11dResolved   = b11dResolved;
     pRequestBuf->ucChannelCount = 
 <<<<<<< HEAD
+<<<<<<< HEAD
         ( pChannelList->numChannels < SIR_PNO_MAX_NETW_CHANNELS )?
         pChannelList->numChannels:SIR_PNO_MAX_NETW_CHANNELS;
 
@@ -3977,13 +4722,20 @@ eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChanne
 =======
         ( pChannelList->numChannels < SIR_PNO_MAX_NETW_CHANNELS_EX )?
         pChannelList->numChannels:SIR_PNO_MAX_NETW_CHANNELS_EX;
+=======
+        ( pChannelList->numChannels < SIR_PNO_MAX_NETW_CHANNELS )?
+        pChannelList->numChannels:SIR_PNO_MAX_NETW_CHANNELS;
+>>>>>>> 657b0e9... prima update
 
-    for (i=0; i < pRequestBuf->ucChannelCount; i++)
+    for (i=0; i < pChannelList->numChannels; i++)
     {    
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
                   "%s: Channel List %d: %d", __FUNCTION__, i, pChannelList->channelList[i] );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         pRequestBuf->aChannels[i] = pChannelList->channelList[i];
     }
     pRequestBuf->usPassiveMinChTime = pRequest->nPassiveMinChnTime;
@@ -3998,10 +4750,14 @@ eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChanne
     if (!VOS_IS_STATUS_SUCCESS(vos_mq_post_message(VOS_MODULE_ID_WDA, &msg)))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_UPDATE_SCAN_PARAMS message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_UPDATE_SCAN_PARAMS message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_UPDATE_SCAN_PARAMS message to WDA", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -4011,10 +4767,14 @@ eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChanne
 #endif // FEATURE_WLAN_SCAN_PNO
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams)
 =======
 eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams, tANI_BOOLEAN forced)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams)
+>>>>>>> 657b0e9... prima update
 {
     tSirSetPowerParamsReq* pRequestBuf;
     vos_msg_t msg;
@@ -4022,11 +4782,15 @@ eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams
     tpPESession     psessionEntry;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if((psessionEntry = peGetValidPowerSaveSession(pMac))== NULL)
 =======
     psessionEntry = peGetValidPowerSaveSession(pMac);
     if (!forced && (psessionEntry == NULL))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if((psessionEntry = peGetValidPowerSaveSession(pMac))== NULL)
+>>>>>>> 657b0e9... prima update
     {
         return eHAL_STATUS_NOT_INITIALIZED;
     }
@@ -4035,10 +4799,14 @@ eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams
     if (NULL == pRequestBuf)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for Power Paramrequest", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for Power Paramrequest", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for Power Paramrequest", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
@@ -4053,10 +4821,14 @@ eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams
     if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MODULE_ID_WDA, &msg))
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_POWER_PARAMS_REQ message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_POWER_PARAMS_REQ message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_POWER_PARAMS_REQ message to WDA", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -4070,16 +4842,21 @@ eHalStatus pmcGetFilterMatchCount
     tHalHandle hHal, 
     FilterMatchCountCallback callbackRoutine, 
 <<<<<<< HEAD
+<<<<<<< HEAD
     void *callbackContext
 =======
     void *callbackContext,
     tANI_U8  sessionId
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    void *callbackContext
+>>>>>>> 657b0e9... prima update
 )
 {
     tpSirRcvFltPktMatchRsp  pRequestBuf;
     vos_msg_t               msg;
     tpAniSirGlobal          pMac = PMAC_STRUCT(hHal);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
@@ -4097,10 +4874,16 @@ eHalStatus pmcGetFilterMatchCount
         return eHAL_STATUS_FAILURE;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
+        "%s: filterId = %d", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     pRequestBuf = vos_mem_malloc(sizeof(tSirRcvFltPktMatchRsp));
     if (NULL == pRequestBuf)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
                   "%s: Not able to allocate "
@@ -4110,14 +4893,20 @@ eHalStatus pmcGetFilterMatchCount
 
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
+=======
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
+>>>>>>> 657b0e9... prima update
                   "%s: Not able to allocate "
-                  "memory for Get PC Filter Match Count request", __func__);
+                  "memory for Get PC Filter Match Count request", __FUNCTION__);
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
+<<<<<<< HEAD
     vos_mem_copy(pRequestBuf->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr)); 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     msg.type = WDA_PACKET_COALESCING_FILTER_MATCH_COUNT_REQ;
     msg.reserved = 0;
     msg.bodyptr = pRequestBuf;
@@ -4140,11 +4929,15 @@ eHalStatus pmcGetFilterMatchCount
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
             "%s: Not able to post WDA_PACKET_COALESCING_FILTER_MATCH_COUNT_REQ "
 <<<<<<< HEAD
+<<<<<<< HEAD
             "message to WDA", __FUNCTION__);
 =======
             "message to WDA", __func__);
         vos_mem_free(pRequestBuf);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "message to WDA", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -4163,6 +4956,7 @@ eHalStatus pmcGetFilterMatchCount
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload)
 {
     tpSirGtkOffloadParams pRequestBuf;
@@ -4174,13 +4968,16 @@ eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload)
 =======
 eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload, 
                                   tANI_U8 sessionId)
+=======
+eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload)
+>>>>>>> 657b0e9... prima update
 {
     tpSirGtkOffloadParams pRequestBuf;
     vos_msg_t msg;
-    tpAniSirGlobal   pMac = PMAC_STRUCT(hHal);
-    tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
+    int i;
 
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "%s: KeyReplayCounter: %d", 
+<<<<<<< HEAD
                 __func__, pGtkOffload->ullKeyReplayCounter);
 
     if(NULL == pSession )
@@ -4190,11 +4987,15 @@ eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload,
         return eHAL_STATUS_FAILURE;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, pGtkOffload->ullKeyReplayCounter);
+>>>>>>> 657b0e9... prima update
 
     pRequestBuf = (tpSirGtkOffloadParams)vos_mem_malloc(sizeof(tSirGtkOffloadParams));
     if (NULL == pRequestBuf)
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate "
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "memory for GTK offload request", __FUNCTION__);
         return eHAL_STATUS_FAILED_ALLOC;
@@ -4204,14 +5005,19 @@ eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload,
         
 =======
                   "memory for GTK offload request", __func__);
+=======
+                  "memory for GTK offload request", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
-    vos_mem_copy(pGtkOffload->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr)); 
-
     vos_mem_copy(pRequestBuf, pGtkOffload, sizeof(tSirGtkOffloadParams));
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        
+>>>>>>> 657b0e9... prima update
     msg.type = WDA_GTK_OFFLOAD_REQ;
     msg.reserved = 0;
     msg.bodyptr = pRequestBuf;
@@ -4219,10 +5025,14 @@ eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload,
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post "
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "SIR_HAL_SET_GTK_OFFLOAD message to HAL", __FUNCTION__);
 =======
                   "SIR_HAL_SET_GTK_OFFLOAD message to HAL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "SIR_HAL_SET_GTK_OFFLOAD message to HAL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -4240,15 +5050,20 @@ eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload,
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 eHalStatus pmcGetGTKOffload(tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext)
 =======
 eHalStatus pmcGetGTKOffload(tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, 
                                   void *callbackContext, tANI_U8 sessionId)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+eHalStatus pmcGetGTKOffload(tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext)
+>>>>>>> 657b0e9... prima update
 {
     tpSirGtkOffloadGetInfoRspParams  pRequestBuf;
     vos_msg_t               msg;
     tpAniSirGlobal          pMac = PMAC_STRUCT(hHal);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: filterId = %d", 
@@ -4264,29 +5079,26 @@ eHalStatus pmcGetGTKOffload(tHalHandle hHal, GTKOffloadGetInfoCallback callbackR
 
 =======
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
+=======
+>>>>>>> 657b0e9... prima update
 
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: filterId = %d", 
-                __func__);
+                __FUNCTION__);
 
-    if(NULL == pSession )
-    {
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, 
-                  "%s: Session not found ", __func__);
-        return eHAL_STATUS_FAILURE;
-    }
-
-    pRequestBuf = (tpSirGtkOffloadGetInfoRspParams)
-                        vos_mem_malloc(sizeof (tSirGtkOffloadGetInfoRspParams));
+    pRequestBuf = vos_mem_malloc(sizeof(tSirGtkOffloadGetInfoRspParams));
     if (NULL == pRequestBuf)
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate "
-                  "memory for Get GTK offload request", __func__);
+                  "memory for Get GTK Offload request", __FUNCTION__);
         return eHAL_STATUS_FAILED_ALLOC;
     }
 
+<<<<<<< HEAD
     vos_mem_copy(pRequestBuf->bssId, pSession->connectedProfile.bssid, sizeof(tSirMacAddr)); 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     msg.type = WDA_GTK_OFFLOAD_GETINFO_REQ;
     msg.reserved = 0;
     msg.bodyptr = pRequestBuf;
@@ -4307,10 +5119,14 @@ eHalStatus pmcGetGTKOffload(tHalHandle hHal, GTKOffloadGetInfoCallback callbackR
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_GTK_OFFLOAD_GETINFO_REQ message to WDA", 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     __FUNCTION__);
 =======
                     __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -4318,6 +5134,7 @@ eHalStatus pmcGetGTKOffload(tHalHandle hHal, GTKOffloadGetInfoCallback callbackR
     return eHAL_STATUS_SUCCESS;
 }
 #endif // WLAN_FEATURE_GTK_OFFLOAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -4339,3 +5156,5 @@ void pmcResetImpsFailStatus (tHalHandle hHal)
     pMac->pmc.ImpsReqTimerFailed = VOS_FALSE;
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

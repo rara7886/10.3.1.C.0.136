@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -45,11 +48,14 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2011-2013 Qualcomm Atheros, Inc.
  * All Rights Reserved.
  * Qualcomm Atheros Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  *
  * Woodside Networks, Inc proprietary. All rights reserved
  * sysStartup.h: System startup header file.
@@ -66,11 +72,17 @@
 # define __SYSSTARTUP_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halDataStruct.h"
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halDataStruct.h"
+#endif
+>>>>>>> 657b0e9... prima update
 #include "sirParams.h"
 
 /* Defines */
@@ -79,11 +91,17 @@
 
 extern void sysMACCleanup(void *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 extern void sysBbtProcessMessage( tHalHandle hHal, tpHalBufDesc pBD );
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+extern void sysBbtProcessMessage( tHalHandle hHal, tpHalBufDesc pBD );
+#endif
+>>>>>>> 657b0e9... prima update
 extern tSirRetStatus sysBbtProcessMessageCore(struct sAniSirGlobal *, tpSirMsgQ,
                                                tANI_U32, tANI_U32);
 

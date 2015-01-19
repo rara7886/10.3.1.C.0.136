@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -173,10 +176,14 @@ WLANBAP_GetCurrentChannel
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -186,10 +193,14 @@ WLANBAP_GetCurrentChannel
   {
      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "halHandle is NULL in %s", __FUNCTION__);
 =======
                   "halHandle is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "halHandle is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return VOS_STATUS_E_FAULT;
   }
 
@@ -198,10 +209,14 @@ WLANBAP_GetCurrentChannel
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Get CFG failed in %s", __FUNCTION__);
 =======
                  "Get CFG failed in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Get CFG failed in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 

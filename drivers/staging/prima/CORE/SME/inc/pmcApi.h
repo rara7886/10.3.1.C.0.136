@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -363,11 +366,15 @@ extern eHalStatus pmcDeregisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*c
 
 extern void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 extern void pmcResetImpsFailStatus (tHalHandle hHal);
 extern v_BOOL_t IsPmcImpsReqFailed (tHalHandle hHal);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 
 extern eHalStatus pmcRequestBmps (
 
@@ -419,6 +426,7 @@ void pmcDumpInit(tHalHandle hHal);
 
 extern eHalStatus pmcWowlAddBcastPattern (
 <<<<<<< HEAD
+<<<<<<< HEAD
 
    tHalHandle hHal, 
 
@@ -431,16 +439,25 @@ extern eHalStatus pmcWowlDelBcastPattern (
 
    tpSirWowlDelBcastPtrn pattern);
 =======
+=======
+
+>>>>>>> 657b0e9... prima update
    tHalHandle hHal, 
-   tpSirWowlAddBcastPtrn pattern, 
-   tANI_U8  sessionId);
+
+   tpSirWowlAddBcastPtrn pattern);
 
 
 extern eHalStatus pmcWowlDelBcastPattern (
+
    tHalHandle hHal, 
+<<<<<<< HEAD
    tpSirWowlDelBcastPtrn pattern,
    tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+   tpSirWowlDelBcastPtrn pattern);
+>>>>>>> 657b0e9... prima update
 
 
 extern eHalStatus pmcEnterWowl ( 
@@ -456,20 +473,28 @@ extern eHalStatus pmcEnterWowl (
     void *wakeReasonIndCBContext,
 #endif // WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
+<<<<<<< HEAD
     tpSirSmeWowlEnterParams wowlEnterParams);
 =======
     tpSirSmeWowlEnterParams wowlEnterParams, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tpSirSmeWowlEnterParams wowlEnterParams);
+>>>>>>> 657b0e9... prima update
 
 extern eHalStatus pmcExitWowl (tHalHandle hHal);
 
 
 extern eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           tANI_U8 *bssId);
 =======
                                           tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                          tANI_U8 *bssId);
+>>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
     \fn pmcSetKeepAlive
@@ -481,10 +506,14 @@ extern eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pReque
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 *bssId);
 =======
 extern eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+extern eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 *bssId);
+>>>>>>> 657b0e9... prima update
 
 extern tANI_BOOLEAN pmcValidateConnectState( tHalHandle hHal );
 
@@ -504,11 +533,15 @@ extern eHalStatus pmcSetRssiFilter(tHalHandle hHal, v_U8_t rssiThreshold);
 typedef void(*FilterMatchCountCallback)(void *callbackContext,
                                         tpSirRcvFltPktMatchRsp pRcvFltPktMatchRsp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern eHalStatus pmcGetFilterMatchCount(tHalHandle hHal, FilterMatchCountCallback callbackRoutine, void *callbackContext);
 =======
 extern eHalStatus pmcGetFilterMatchCount(tHalHandle hHal, FilterMatchCountCallback callbackRoutine, 
                                                 void *callbackContext, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+extern eHalStatus pmcGetFilterMatchCount(tHalHandle hHal, FilterMatchCountCallback callbackRoutine, void *callbackContext);
+>>>>>>> 657b0e9... prima update
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
@@ -525,10 +558,14 @@ typedef void(*GTKOffloadGetInfoCallback)(void *callbackContext, tpSirGtkOffloadG
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload);
 =======
 extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload);
+>>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
     \fn pmcGetGTKOffload
@@ -540,12 +577,16 @@ extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkO
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern eHalStatus pmcGetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext);
 =======
 extern eHalStatus pmcGetGTKOffload(tHalHandle hHal,
                                    GTKOffloadGetInfoCallback callbackRoutine,
                                    void *callbackContext, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+extern eHalStatus pmcGetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext);
+>>>>>>> 657b0e9... prima update
 #endif // WLAN_FEATURE_GTK_OFFLOAD
 
 #endif

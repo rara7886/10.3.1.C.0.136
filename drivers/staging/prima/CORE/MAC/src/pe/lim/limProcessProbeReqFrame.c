@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -55,14 +58,20 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
 #include "wniCfgSta.h"
 #endif
+<<<<<<< HEAD
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #include "aniGlobal.h"
 #include "cfgApi.h"
 
@@ -79,9 +88,13 @@ void limSendP2PProbeResponse(tpAniSirGlobal pMac, tANI_U8 *pBd,
                       tpPESession psessionEntry);
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 void
 
 limSendSmeProbeReqInd(tpAniSirGlobal pMac,
@@ -123,12 +136,17 @@ void limGetWPSPBCSessions(tpAniSirGlobal pMac, tANI_U8 *addr,
     curTime = (tANI_TIMESTAMP)(palGetTickCount(pMac->hHdd) / PAL_TICKS_PER_SECOND);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     palFillMemory( pMac->hHdd, (tANI_U8 *)addr, sizeof(tSirMacAddr), 0);
     palFillMemory( pMac->hHdd, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN, 0);
 =======
     vos_mem_set((tANI_U8 *)addr, sizeof(tSirMacAddr), 0);
     vos_mem_set((tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palFillMemory( pMac->hHdd, (tANI_U8 *)addr, sizeof(tSirMacAddr), 0);
+    palFillMemory( pMac->hHdd, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN, 0);
+>>>>>>> 657b0e9... prima update
 
     for (pbc = psessionEntry->pAPWPSPBCSession; pbc; pbc = pbc->next) {
 
@@ -140,12 +158,17 @@ void limGetWPSPBCSessions(tpAniSirGlobal pMac, tANI_U8 *addr,
             break;
             
 <<<<<<< HEAD
+<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, (tANI_U8 *)addr, (tANI_U8 *)pbc->addr, sizeof(tSirMacAddr));
         palCopyMemory(pMac->hHdd, (tANI_U8 *)uuid_e, (tANI_U8 *)pbc->uuid_e, SIR_WPS_UUID_LEN);                
 =======
         vos_mem_copy((tANI_U8 *)addr, (tANI_U8 *)pbc->addr, sizeof(tSirMacAddr));
         vos_mem_copy((tANI_U8 *)uuid_e, (tANI_U8 *)pbc->uuid_e, SIR_WPS_UUID_LEN);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        palCopyMemory(pMac->hHdd, (tANI_U8 *)addr, (tANI_U8 *)pbc->addr, sizeof(tSirMacAddr));
+        palCopyMemory(pMac->hHdd, (tANI_U8 *)uuid_e, (tANI_U8 *)pbc->uuid_e, SIR_WPS_UUID_LEN);                
+>>>>>>> 657b0e9... prima update
         }
 
     if (count > 1)
@@ -161,10 +184,14 @@ void limGetWPSPBCSessions(tpAniSirGlobal pMac, tANI_U8 *addr,
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     PELOGE(limLog(pMac, LOGE, FL("overlap = %d\n"), *overlap);)
 =======
     PELOGE(limLog(pMac, LOGE, FL("overlap = %d"), *overlap);)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    PELOGE(limLog(pMac, LOGE, FL("overlap = %d\n"), *overlap);)
+>>>>>>> 657b0e9... prima update
     PELOGE(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOGE, addr, sizeof(tSirMacAddr));)
     PELOGE(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOGE, uuid_e, SIR_WPS_UUID_LEN);)
 
@@ -199,6 +226,7 @@ static void limRemoveTimeoutPBCsessions(tpAniSirGlobal pMac, tSirWPSPBCSession *
                 pbc = pbc->next;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         PELOG4(limLog(pMac, LOG4, FL("WPS PBC sessions remove\n"));)
         PELOG4(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, prev->addr, sizeof(tSirMacAddr));)
         PELOG4(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, prev->uuid_e, SIR_WPS_UUID_LEN);)
@@ -211,6 +239,13 @@ static void limRemoveTimeoutPBCsessions(tpAniSirGlobal pMac, tSirWPSPBCSession *
         
         vos_mem_free(prev);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        PELOG4(limLog(pMac, LOG4, FL("WPS PBC sessions remove\n"));)
+        PELOG4(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, prev->addr, sizeof(tSirMacAddr));)
+        PELOG4(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, prev->uuid_e, SIR_WPS_UUID_LEN);)
+        
+        palFreeMemory(pMac->hHdd, prev);
+>>>>>>> 657b0e9... prima update
        }
 }
 
@@ -220,6 +255,7 @@ void limRemovePBCSessions(tpAniSirGlobal pMac, tSirMacAddr pRemoveMac,tpPESessio
     prev = pbc = psessionEntry->pAPWPSPBCSession;
 
     while (pbc) {
+<<<<<<< HEAD
 <<<<<<< HEAD
         if (palEqualMemory(pMac->hHdd, (tANI_U8 *)pbc->addr, 
               (tANI_U8 *)pRemoveMac, sizeof(tSirMacAddr))) {
@@ -235,6 +271,14 @@ void limRemovePBCSessions(tpAniSirGlobal pMac, tSirMacAddr pRemoveMac,tpPESessio
             psessionEntry->pAPWPSPBCSession = pbc->next;
             vos_mem_free(pbc);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if (palEqualMemory(pMac->hHdd, (tANI_U8 *)pbc->addr, 
+              (tANI_U8 *)pRemoveMac, sizeof(tSirMacAddr))) {
+          prev->next = pbc->next;
+          if (pbc == psessionEntry->pAPWPSPBCSession)
+            psessionEntry->pAPWPSPBCSession = pbc->next;
+            palFreeMemory(pMac->hHdd, pbc);
+>>>>>>> 657b0e9... prima update
             return;
         }
         prev = pbc;
@@ -278,10 +322,14 @@ static void limUpdatePBCSessionEntry(tpAniSirGlobal pMac,
     curTime = (tANI_TIMESTAMP)(palGetTickCount(pMac->hHdd) / PAL_TICKS_PER_SECOND);
             
 <<<<<<< HEAD
+<<<<<<< HEAD
     PELOG4(limLog(pMac, LOG4, FL("Receive WPS probe reques curTime=%d\n"), curTime);)
 =======
     PELOG4(limLog(pMac, LOG4, FL("Receive WPS probe reques curTime=%d"), curTime);)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    PELOG4(limLog(pMac, LOG4, FL("Receive WPS probe reques curTime=%d\n"), curTime);)
+>>>>>>> 657b0e9... prima update
     PELOG4(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, addr, sizeof(tSirMacAddr));)
     PELOG4(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, uuid_e, SIR_WPS_UUID_LEN);)
 
@@ -289,12 +337,17 @@ static void limUpdatePBCSessionEntry(tpAniSirGlobal pMac,
 
     while (pbc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (palEqualMemory(pMac->hHdd, (tANI_U8 *)pbc->addr, (tANI_U8 *)addr, sizeof(tSirMacAddr)) &&
             palEqualMemory(pMac->hHdd, (tANI_U8 *)pbc->uuid_e, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN)) {
 =======
         if (vos_mem_compare((tANI_U8 *)pbc->addr, (tANI_U8 *)addr, sizeof(tSirMacAddr)) &&
             vos_mem_compare((tANI_U8 *)pbc->uuid_e, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN)) {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        if (palEqualMemory(pMac->hHdd, (tANI_U8 *)pbc->addr, (tANI_U8 *)addr, sizeof(tSirMacAddr)) &&
+            palEqualMemory(pMac->hHdd, (tANI_U8 *)pbc->uuid_e, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN)) {
+>>>>>>> 657b0e9... prima update
             if (prev)
                 prev->next = pbc->next;
             else
@@ -306,6 +359,7 @@ static void limUpdatePBCSessionEntry(tpAniSirGlobal pMac,
     }
 
     if (!pbc) {
+<<<<<<< HEAD
 <<<<<<< HEAD
         if (eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd,
             (void **) &pbc, sizeof(tSirWPSPBCSession)))
@@ -320,15 +374,23 @@ static void limUpdatePBCSessionEntry(tpAniSirGlobal pMac,
 =======
         pbc = vos_mem_malloc(sizeof(tSirWPSPBCSession));
         if ( NULL == pbc )
+=======
+        if (eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd,
+            (void **) &pbc, sizeof(tSirWPSPBCSession)))
+>>>>>>> 657b0e9... prima update
         {
-            PELOGE(limLog(pMac, LOGE, FL("memory allocate failed!"));)
+            PELOGE(limLog(pMac, LOGE, FL("memory allocate failed!\n"));)
             return;
         }
-        vos_mem_copy((tANI_U8 *)pbc->addr, (tANI_U8 *)addr, sizeof(tSirMacAddr));
+        palCopyMemory(pMac->hHdd, (tANI_U8 *)pbc->addr, (tANI_U8 *)addr, sizeof(tSirMacAddr));
     
         if (uuid_e)
+<<<<<<< HEAD
             vos_mem_copy((tANI_U8 *)pbc->uuid_e, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            palCopyMemory(pMac->hHdd, (tANI_U8 *)pbc->uuid_e, (tANI_U8 *)uuid_e, SIR_WPS_UUID_LEN);
+>>>>>>> 657b0e9... prima update
     }
     
     pbc->next = psessionEntry->pAPWPSPBCSession;
@@ -378,10 +440,14 @@ void limWPSPBCTimeout(tpAniSirGlobal pMac, tpPESession psessionEntry)
     curTime = (tANI_TIMESTAMP)(palGetTickCount(pMac->hHdd) / PAL_TICKS_PER_SECOND);
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     PELOG3(limLog(pMac, LOG3, FL("WPS PBC cleanup timeout curTime=%d\n"), curTime);)
 =======
     PELOG3(limLog(pMac, LOG3, FL("WPS PBC cleanup timeout curTime=%d"), curTime);)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    PELOG3(limLog(pMac, LOG3, FL("WPS PBC cleanup timeout curTime=%d\n"), curTime);)
+>>>>>>> 657b0e9... prima update
 
     prev = psessionEntry->pAPWPSPBCSession; 
     if(prev)
@@ -436,9 +502,13 @@ void limWPSPBCClose(tpAniSirGlobal pMac, tpPESession psessionEntry)
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /**
  * limCheck11bRates
@@ -515,6 +585,7 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         // Don't send probe response if P2P go is scanning till scan come to idle state. 
         if((psessionEntry->pePersona == VOS_P2P_GO_MODE) && ((pMac->lim.gpLimRemainOnChanReq )
@@ -526,6 +597,8 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
         }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
        pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
 
         if ( (psessionEntry->limSystemRole == eLIM_AP_ROLE) ||
@@ -553,9 +626,13 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
                 if (psessionEntry->pePersona == VOS_P2P_GO_MODE)
                 {
                     tANI_U8 i = 0, rate_11b = 0, other_rates = 0;
@@ -595,10 +672,15 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     }
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
                 if ((psessionEntry->limSystemRole == eLIM_AP_ROLE))
                 {
                   
@@ -626,6 +708,7 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
                     if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
                         limLog(pMac, LOGP,"Failed to cfg get id %d\n", WNI_CFG_WPS_ENABLE );
@@ -633,6 +716,11 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
                         limLog(pMac, LOGP,"Failed to cfg get id %d", WNI_CFG_WPS_ENABLE );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+                    if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
+                        limLog(pMac, LOGP,"Failed to cfg get id %d\n", WNI_CFG_WPS_ENABLE );
+>>>>>>> 657b0e9... prima update
 
                     wpsApEnable = tmp & WNI_CFG_WPS_ENABLE_AP;
                     if ((wpsApEnable) &&
@@ -640,6 +728,7 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                         (probeReq.probeReqWscIeInfo.DevicePasswordID.id == WSC_PASSWD_ID_PUSH_BUTTON))
                     {
                         // send the probe req to WSM when it is from a PBC station 
+<<<<<<< HEAD
 <<<<<<< HEAD
                         if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
                                (void **)&pSirSmeProbeReq, sizeof(tSirSmeProbeReq)))
@@ -655,16 +744,28 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                             limLog(pMac, LOGP,
                                FL("call to AllocateMemory failed for eWNI_SME_PROBE_REQ"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
+                               (void **)&pSirSmeProbeReq, sizeof(tSirSmeProbeReq)))
+                        {
+                            // Log error
+                            limLog(pMac, LOGP,
+                               FL("call to palAllocateMemory failed for eWNI_SME_PROBE_REQ\n"));
+>>>>>>> 657b0e9... prima update
                             return;
                         }
                         msgQ.type = eWNI_SME_PROBE_REQ;
                         msgQ.bodyval = 0;
                         msgQ.bodyptr = pSirSmeProbeReq;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined(ANI_PRODUCT_TYPE_AP) && defined(ANI_LITTLE_BYTE_ENDIAN)
                         sirStoreU16N((tANI_U8*)&pSirSmeProbeReq->messageType, eWNI_SME_PROBE_REQ);
                         sirStoreU16N((tANI_U8*)&pSirSmeProbeReq->length, sizeof(tSirSmeProbeReq));
 #else
+<<<<<<< HEAD
 
                         pSirSmeProbeReq->messageType = eWNI_SME_PROBE_REQ;
                         pSirSmeProbeReq->length = sizeof(tSirSmeProbeReq);
@@ -672,12 +773,19 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                         pSirSmeProbeReq->sessionId = psessionEntry->smeSessionId;
                         palCopyMemory( pMac->hHdd, pSirSmeProbeReq->peerMacAddr, pHdr->sa, sizeof(tSirMacAddr));
 =======
+=======
+>>>>>>> 657b0e9... prima update
 
                         pSirSmeProbeReq->messageType = eWNI_SME_PROBE_REQ;
                         pSirSmeProbeReq->length = sizeof(tSirSmeProbeReq);
+#endif
                         pSirSmeProbeReq->sessionId = psessionEntry->smeSessionId;
+<<<<<<< HEAD
                         vos_mem_copy(pSirSmeProbeReq->peerMacAddr, pHdr->sa, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        palCopyMemory( pMac->hHdd, pSirSmeProbeReq->peerMacAddr, pHdr->sa, sizeof(tSirMacAddr));
+>>>>>>> 657b0e9... prima update
                         pSirSmeProbeReq->devicePasswdId = probeReq.probeReqWscIeInfo.DevicePasswordID.id;
                         MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
                        if (limSysProcessMmhMsgApi(pMac, &msgQ,  ePROT) != eSIR_SUCCESS){
@@ -685,16 +793,23 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                         }
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
                 }
 #endif
 =======
                 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+                }
+#endif
+>>>>>>> 657b0e9... prima update
             }
 
             ssId.length = psessionEntry->ssId.length;
              /* Copy the SSID from sessio entry to local variable */
+<<<<<<< HEAD
 <<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ssId.ssId,
                        psessionEntry->ssId.ssId,
@@ -704,6 +819,11 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                          psessionEntry->ssId.ssId,
                          psessionEntry->ssId.length);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            palCopyMemory( pMac->hHdd, ssId.ssId,
+                       psessionEntry->ssId.ssId,
+                       psessionEntry->ssId.length);
+>>>>>>> 657b0e9... prima update
 
             // Compare received SSID with current SSID. If they
             // match, reply with Probe Response.
@@ -713,10 +833,14 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     goto multipleSSIDcheck;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (palEqualMemory( pMac->hHdd,(tANI_U8 *) &ssId,
 =======
                 if (vos_mem_compare((tANI_U8 *) &ssId,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                if (palEqualMemory( pMac->hHdd,(tANI_U8 *) &ssId,
+>>>>>>> 657b0e9... prima update
                               (tANI_U8 *) &(probeReq.ssId), (tANI_U8) (ssId.length + 1)) )
                 {
                     limSendProbeRspMgmtFrame(pMac, pHdr->sa, &ssId, DPH_USE_MGMT_STAID,
@@ -725,18 +849,26 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     break;
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
                 else if (psessionEntry->pePersona == VOS_P2P_GO_MODE)
                 {
                     tANI_U8   direct_ssid[7] = "DIRECT-";
                     tANI_U8   direct_ssid_len = 7;
 <<<<<<< HEAD
+<<<<<<< HEAD
                     if (palEqualMemory( pMac->hHdd, (tANI_U8 *) &direct_ssid,
 =======
                     if (vos_mem_compare((tANI_U8 *) &direct_ssid,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    if (palEqualMemory( pMac->hHdd, (tANI_U8 *) &direct_ssid,
+>>>>>>> 657b0e9... prima update
                               (tANI_U8 *) &(probeReq.ssId.ssId), (tANI_U8) (direct_ssid_len)) )
                     {
                         limSendProbeRspMgmtFrame(pMac, pHdr->sa, &ssId, DPH_USE_MGMT_STAID,
@@ -746,9 +878,13 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     }
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
                 else
                 {
                    PELOG3(limLog(pMac, LOG3,
@@ -760,6 +896,9 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             else
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
                 tANI_U32    cfg;
                 
@@ -785,11 +924,14 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                     // Broadcast SSID in the Probe Request.
                     // Reply with SSID we're configured with.
 #ifdef WLAN_SOFTAP_FEATURE
+<<<<<<< HEAD
 =======
                 {
                     // Broadcast SSID in the Probe Request.
                     // Reply with SSID we're configured with.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                     //Turn off the SSID length to 0 if hidden SSID feature is present
                     if(psessionEntry->ssidHidden)
                       /*We are returning from here as probe request contains the broadcast SSID.
@@ -797,9 +939,13 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
                         //ssId.length = 0;
                            return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
                     limSendProbeRspMgmtFrame(pMac, pHdr->sa, &ssId, DPH_USE_MGMT_STAID,
                                              DPH_NON_KEEPALIVE_FRAME, psessionEntry,
                                              probeReq.p2pIePresent);
@@ -808,6 +954,9 @@ limProcessProbeReqFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo,tpPESession 
             }
 multipleSSIDcheck:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
             if (!psessionEntry->pLimStartBssReq->ssId.length)
             {
@@ -841,8 +990,11 @@ multipleSSIDcheck:
             }
             else
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
             {
                PELOG3(limLog(pMac, LOG3,
                    FL("Ignoring ProbeReq frame with unmatched SSID received from "));
@@ -882,9 +1034,13 @@ multipleSSIDcheck:
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 static void
 limIndicateProbeReqToHDD(tpAniSirGlobal pMac, tANI_U8 *pBd,
                          tpPESession psessionEntry)
@@ -902,18 +1058,26 @@ limIndicateProbeReqToHDD(tpAniSirGlobal pMac, tANI_U8 *pBd,
                (tANI_U8*)pHdr, (frameLen + sizeof(tSirMacMgmtHdr)), 
                psessionEntry->smeSessionId, WDA_GET_RX_CH(pBd),
 <<<<<<< HEAD
+<<<<<<< HEAD
                psessionEntry);
 =======
                psessionEntry, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               psessionEntry);
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P_INTERNAL
     limSendP2PProbeResponse(pMac, pBd, psessionEntry);
 #endif
 } /*** end limIndicateProbeReqToHDD() ***/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /**
  * limProcessProbeReqFrame_multiple_BSS
@@ -943,9 +1107,13 @@ limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal pMac, tANI_U8 *pBd,  tpPESes
     if (psessionEntry != NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
         if ((eLIM_AP_ROLE == psessionEntry->limSystemRole)
 #ifdef WLAN_FEATURE_P2P_INTERNAL
          || (psessionEntry->limSystemRole == eLIM_P2P_DEVICE_ROLE)
@@ -955,9 +1123,13 @@ limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal pMac, tANI_U8 *pBd,  tpPESes
             limIndicateProbeReqToHDD(pMac, pBd, psessionEntry);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
         limProcessProbeReqFrame(pMac,pBd,psessionEntry);
         return;
     }
@@ -968,9 +1140,13 @@ limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal pMac, tANI_U8 *pBd,  tpPESes
         if ( (psessionEntry != NULL) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
             if ((eLIM_AP_ROLE == psessionEntry->limSystemRole)
 #ifdef WLAN_FEATURE_P2P_INTERNAL
              || (psessionEntry->limSystemRole == eLIM_P2P_DEVICE_ROLE)
@@ -980,9 +1156,13 @@ limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal pMac, tANI_U8 *pBd,  tpPESes
                 limIndicateProbeReqToHDD(pMac, pBd, psessionEntry);
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
             if ( (eLIM_AP_ROLE == psessionEntry->limSystemRole) ||
                 (eLIM_STA_IN_IBSS_ROLE == psessionEntry->limSystemRole) ||
                 (eLIM_BT_AMP_AP_ROLE == psessionEntry->limSystemRole) ||
@@ -997,9 +1177,13 @@ limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal pMac, tANI_U8 *pBd,  tpPESes
 } /*** end limProcessProbeReqFrame_multiple_BSS() ***/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /**
  * limSendSmeProbeReqInd()
  *
@@ -1036,6 +1220,7 @@ limSendSmeProbeReqInd(tpAniSirGlobal pMac,
     tSirSmeProbeReqInd     *pSirSmeProbeReqInd;
     tSirMsgQ                msgQ;   
 <<<<<<< HEAD
+<<<<<<< HEAD
         
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeProbeReqInd, sizeof(tSirSmeProbeReqInd)))
     {
@@ -1051,6 +1236,14 @@ limSendSmeProbeReqInd(tpAniSirGlobal pMac,
         limLog(pMac, LOGP,
             FL("call to AllocateMemory failed for eWNI_SME_PROBE_REQ"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        
+    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSirSmeProbeReqInd, sizeof(tSirSmeProbeReqInd)))
+    {
+        // Log error
+        limLog(pMac, LOGP,
+            FL("call to palAllocateMemory failed for eWNI_SME_PROBE_REQ\n"));
+>>>>>>> 657b0e9... prima update
             return;
     }
     
@@ -1062,6 +1255,7 @@ limSendSmeProbeReqInd(tpAniSirGlobal pMac,
     pSirSmeProbeReqInd->length = sizeof(tSirSmeProbeReq);
     pSirSmeProbeReqInd->sessionId = psessionEntry->smeSessionId;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pSirSmeProbeReqInd->bssId, psessionEntry->bssId, sizeof(tSirMacAddr));
     palCopyMemory( pMac->hHdd, pSirSmeProbeReqInd->WPSPBCProbeReq.peerMacAddr, peerMacAddr, sizeof(tSirMacAddr));
@@ -1077,6 +1271,14 @@ limSendSmeProbeReqInd(tpAniSirGlobal pMac,
     pSirSmeProbeReqInd->WPSPBCProbeReq.probeReqIELen = (tANI_U16)ProbeReqIELen;
     vos_mem_copy(pSirSmeProbeReqInd->WPSPBCProbeReq.probeReqIE, pProbeReqIE, ProbeReqIELen);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palCopyMemory( pMac->hHdd, pSirSmeProbeReqInd->bssId, psessionEntry->bssId, sizeof(tSirMacAddr));
+    palCopyMemory( pMac->hHdd, pSirSmeProbeReqInd->WPSPBCProbeReq.peerMacAddr, peerMacAddr, sizeof(tSirMacAddr));
+
+    MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
+    pSirSmeProbeReqInd->WPSPBCProbeReq.probeReqIELen = (tANI_U16)ProbeReqIELen;
+    palCopyMemory( pMac->hHdd, pSirSmeProbeReqInd->WPSPBCProbeReq.probeReqIE, pProbeReqIE, ProbeReqIELen);
+>>>>>>> 657b0e9... prima update
     
     if (limSysProcessMmhMsgApi(pMac, &msgQ,  ePROT) != eSIR_SUCCESS){
                             PELOGE(limLog(pMac, LOGE, FL("couldnt send the probe req to hdd"));)
@@ -1084,9 +1286,13 @@ limSendSmeProbeReqInd(tpAniSirGlobal pMac,
         
 } /*** end limSendSmeProbeReqInd() ***/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P_INTERNAL
 void limSendP2PProbeResponse(tpAniSirGlobal pMac, tANI_U8 *pBd, 
                       tpPESession psessionEntry)
@@ -1103,10 +1309,14 @@ void limSendP2PProbeResponse(tpAniSirGlobal pMac, tANI_U8 *pBd,
 
     if( (pBody[0] == 0) && (pBody[1] == ssId.length) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
       (palEqualMemory( pMac->hHdd, ssId.ssId, pBody + 2, 
 =======
       (vos_mem_compare(ssId.ssId, pBody + 2,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      (palEqualMemory( pMac->hHdd, ssId.ssId, pBody + 2, 
+>>>>>>> 657b0e9... prima update
                        ssId.length)))
     {
         // Parse Probe Request frame
@@ -1123,10 +1333,14 @@ void limSendP2PProbeResponse(tpAniSirGlobal pMac, tANI_U8 *pBd,
         {
             ssId.length = psessionEntry->ssId.length;
 <<<<<<< HEAD
+<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, ssId.ssId, psessionEntry->ssId.ssId,psessionEntry->ssId.length);
 =======
             vos_mem_copy(ssId.ssId, psessionEntry->ssId.ssId,psessionEntry->ssId.length);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            palCopyMemory(pMac->hHdd, ssId.ssId, psessionEntry->ssId.ssId,psessionEntry->ssId.length);
+>>>>>>> 657b0e9... prima update
             limSendProbeRspMgmtFrame(pMac, pHdr->sa, &ssId, DPH_USE_MGMT_STAID, DPH_NON_KEEPALIVE_FRAME, 
                                      psessionEntry, probeReq.p2pIePresent );
         } 

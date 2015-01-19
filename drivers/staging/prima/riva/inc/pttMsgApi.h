@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -112,6 +115,7 @@ typedef enum {
    PTT_MSG_SET_REG_DOMAIN = 0x3023,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 //new NV format Service
    PTT_MSG_GET_NV_BIN = 0x3030,
@@ -119,6 +123,8 @@ typedef enum {
    PTT_MSG_GET_DICTIONARY = 0x3032,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 //Device Register Access
    PTT_MSG_DBG_READ_REGISTER = 0x3040,
    PTT_MSG_DBG_WRITE_REGISTER = 0x3041,
@@ -348,6 +354,7 @@ typedef PACKED_PRE struct PACKED_POST {
 } tMsgPttSetRegDomain;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 typedef PACKED_PRE struct PACKED_POST {
 	tANI_U32 tableSize;
@@ -364,6 +371,8 @@ typedef PACKED_PRE struct PACKED_POST {
 } tMsgPttSetNvBin;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 //Device Register Access
 typedef PACKED_PRE struct PACKED_POST {
    tANI_U32 regAddr;
@@ -870,10 +879,13 @@ typedef PACKED_PRE union PACKED_POST pttMsgUnion{
    tMsgPttGetNvField GetNvField;
    tMsgPttSetNvField SetNvField;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	tMsgPttGetNvBin GetNvBin;
 	tMsgPttSetNvBin SetNvBin;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    tMsgPttDbgReadRegister DbgReadRegister;
    tMsgPttDbgWriteRegister DbgWriteRegister;
    tMsgPttDbgReadMemory DbgReadMemory;

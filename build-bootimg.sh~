@@ -66,11 +66,12 @@ echo "=====> COPY RAMDISK"
     rm -rf $RAMDISK_TMP_DIR/.git
     find $RAMDISK_TMP_DIR -name .gitkeep | xargs rm --force
     find $RAMDISK_TMP_DIR -name .gitignore | xargs rm --force
+    find $KERNEL_DIR -name *~ | xargs rm --force
 
 # install cross compiler
 
     if [ ! -d $TOOLCHAIN_DIR/arm-eabi-4.6 ]; then
-        mkdir -p $TOOLCHAIN_DIR/arm-eabi-4.6
+        sudo mkdir -p $TOOLCHAIN_DIR/arm-eabi-4.6
         cd $TOOLCHAIN_DIR
 	git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6
 	cd $KERNEL_DIR
@@ -122,17 +123,11 @@ mkdir -p $BIN_DIR
 cp $OBJ_DIR/arch/arm/boot/zImage $BIN_DIR/kernel
 
 # create boot image
-    if [ ! -d $KERNEL_DIR/ramdisk/lib ]; then
-    	mkdir $KERNEL_DIR/ramdisk/lib
-    fi
-    cp $OBJ_DIR/fs/exfat/exfat.ko $KERNEL_DIR/ramdisk/lib/texfat.ko
-    find $KERNEL_DIR/ramdisk/lib -name "*.ko" | xargs -i $CROSS_COMPILE"strip" --strip-unneeded {}
-
     cd $RAMDISK_TMP_DIR
     find . | cpio --quiet -H newc -o | gzip > $BIN_DIR/ramdisk-$IMAGE_NAME.img
     cd $KERNEL_DIR
     $KERNEL_DIR/release-tools/mkbootimg \
-       --cmdline "androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 console=tty0,115200 fbcon=rotate:0 fbcon=font:VGA8x16 vmalloc=400M androidboot.emmc=true" \
+       --cmdline "androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 vmalloc=400M androidboot.emmc=true" \
        --base $KERNEL_BASEADDRESS --ramdiskaddr $KERNEL_RAMDISK_OFFSET --kernel $BIN_DIR/kernel \
        --ramdisk $BIN_DIR/ramdisk-$IMAGE_NAME.img --output $BIN_DIR/$IMAGE_NAME.img
     echo "  $BIN_DIR/$IMAGE_NAME.img"
@@ -162,36 +157,20 @@ fi
     
 
     mkdir -p $tmpcwm/system/lib/modules/prima
-<<<<<<< HEAD
-    find $OBJ_DIR -name "*.ko" | xargs -i cp {} $tmpcwm/system/lib/modules/
-    find $tmpcwm/system/lib/modules -name "*.ko" | xargs -i $CROSS_COMPILE"strip" --strip-unneeded {}
-    mv $tmpcwm/system/lib/modules/wlan.ko $tmpcwm/system/lib/modules/prima/prima_wlan.ko
-    #mv $tmpcwm/system/lib/modules/exfat.ko $tmpcwm/system/lib/modules/texfat.ko
-    #rm $tmpcwm/system/lib/modules/texfat.ko
-    
-orginal(){
-=======
 
->>>>>>> 657b0e9... prima update
     cp $OBJ_DIR/drivers/staging/prima/wlan.ko $tmpcwm/system/lib/modules/prima/prima_wlan.ko
     $CROSS_COMPILE"strip" --strip-unneeded $tmpcwm/system/lib/modules/prima/prima_wlan.ko
 
     cp $OBJ_DIR/net/wireless/cfg80211.ko $tmpcwm/system/lib/modules/
     $CROSS_COMPILE"strip" --strip-unneeded $tmpcwm/system/lib/modules/cfg80211.ko
 
-<<<<<<< HEAD
-    cp $OBJ_DIR/fs/exfat/exfat.ko $tmpcwm/system/lib/modules/texfat.ko
-    $CROSS_COMPILE"strip" --strip-unneeded $tmpcwm/system/lib/modules/texfat.ko
-}
-=======
     #cp $OBJ_DIR/drivers/exfat/texfat.ko $tmpcwm/system/lib/modules/
 
->>>>>>> 657b0e9... prima update
 
     mkdir -p $tmpcwm/system/etc/firmware/wlan/prima/
     cp $KERNEL_DIR/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat $tmpcwm/system/etc/firmware/wlan/prima/
     cp $KERNEL_DIR/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini $tmpcwm/system/etc/firmware/wlan/prima/
-    # cp $KERNEL_DIR/drivers/staging/prima/firmware_bin/WCNSS_qcom_wlan_nv.bin $tmpcwm/system/etc/firmware/wlan/prima/
+    cp $KERNEL_DIR/drivers/staging/prima/firmware_bin/WCNSS_qcom_wlan_nv.bin $tmpcwm/system/etc/firmware/wlan/prima/
 
     cd $tmpcwm
     zip -rq ../cwm.zip ./* && cd ../

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,10 +46,15 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*
+ * */
+>>>>>>> 657b0e9... prima update
 #if !defined( PALTYPES_H__ )
 #define PALTYPES_H__
 
@@ -73,6 +81,9 @@
 #endif /* WINXP_APPS_BUILD */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "halLegacyPalTypes.h"
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
@@ -100,11 +111,14 @@
 
 #endif
 
+<<<<<<< HEAD
 =======
 #include "halLegacyPalTypes.h"
 
 #ifndef MK_IMAGE_HDR
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 //
 // Validate the Bus type being built....
@@ -112,16 +126,23 @@
 #if defined(ANI_BUS_TYPE_PCI)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_SDIO) || defined( ANI_BUS_TYPE_PLATFORM )
 =======
 #if defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_PLATFORM )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_SDIO) || defined( ANI_BUS_TYPE_PLATFORM )
+>>>>>>> 657b0e9... prima update
 #error "more than one ANI_BUS_TYPE_xxx is defined for this build"
 #endif //
 
 #elif defined( ANI_BUS_TYPE_PCIe )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( ANI_BUS_TYPE_PCI ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_SDIO) || defined( ANI_BUS_TYPE_PLATFORM )
 #error "more than one ANI_BUS_TYPE_xxx is defined for this build"
 #endif
@@ -135,14 +156,18 @@
 #elif defined( ANI_BUS_TYPE_SDIO )
 
 #if defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_PCI) || defined( ANI_BUS_TYPE_PLATFORM )
+<<<<<<< HEAD
 =======
 #if defined( ANI_BUS_TYPE_PCI ) || defined( ANI_BUS_TYPE_PLATFORM )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #error "more than one ANI_BUS_TYPE_xxx is defined for this build"
 #endif
 
 #elif defined( ANI_BUS_TYPE_PLATFORM )
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_PCI) || defined( ANI_BUS_TYPE_SDIO )
 #error "more than one ANI_BUS_TYPE_xxx is defined for this build"
@@ -156,6 +181,13 @@
 
 #elif !( defined( ANI_BUS_TYPE_PCIe ) || defined(ANI_BUS_TYPE_PCI) || defined( ANI_BUS_TYPE_PLATFORM ) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_PCI) || defined( ANI_BUS_TYPE_SDIO )
+#error "more than one ANI_BUS_TYPE_xxx is defined for this build"
+#endif
+
+#elif !( defined( ANI_BUS_TYPE_PCIe ) || defined( ANI_BUS_TYPE_USB ) || defined(ANI_BUS_TYPE_PCI) || defined(ANI_BUS_TYPE_SDIO) || defined( ANI_BUS_TYPE_PLATFORM ) )
+>>>>>>> 657b0e9... prima update
 
 #error "NONE of the ANI_BUS_TYPE_xxx are defined for this build"
 
@@ -165,6 +197,7 @@
 //
 // Validate the OS Type being built...
 //
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if ( defined( ANI_OS_TYPE_WINDOWS ) && defined( ANI_OS_TYPE_LINUX ) && defined(ANI_OS_TYPE_OSX) && defined(ANI_OS_TYPE_AMSS) && \
       defined( ANI_OS_TYPE_ANDROID ) )
@@ -185,13 +218,20 @@
 #elif defined( ANI_OS_TYPE_QNX )    // QNX
 
 #if defined(ANI_OS_TYPE_ANDROID)
+=======
+#if ( defined( ANI_OS_TYPE_WINDOWS ) && defined( ANI_OS_TYPE_LINUX ) && defined(ANI_OS_TYPE_OSX) && defined(ANI_OS_TYPE_AMSS) && \
+      defined( ANI_OS_TYPE_ANDROID ) )
+>>>>>>> 657b0e9... prima update
 #error "more than one ANI_OS_TYPE_xxx is defined for this build"
-#endif
 
-
-#elif !defined(ANI_OS_TYPE_ANDROID) && !defined(ANI_OS_TYPE_QNX)  // NONE
+#elif !( defined( ANI_OS_TYPE_WINDOWS ) || defined( ANI_OS_TYPE_LINUX ) || defined(ANI_OS_TYPE_OSX) || defined(ANI_OS_TYPE_AMSS) \
+         || defined (ANI_OS_TYPE_ANDROID) )
 #error "NONE of the ANI_OS_TYPE_xxx are defined for this build"
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 #endif
 
 
@@ -234,16 +274,26 @@
 // Common type definitions...
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 typedef unsigned char  tANI_U8;
 typedef   signed char  tANI_S8;
 
 typedef unsigned short tANI_U16;
 typedef   signed short tANI_S16;
+<<<<<<< HEAD
 
 typedef unsigned long  tANI_U32;
 typedef   signed long  tANI_S32;
 
+=======
+
+typedef unsigned long  tANI_U32;
+typedef   signed long  tANI_S32;
+
+>>>>>>> 657b0e9... prima update
 #if defined ANI_OS_TYPE_WINDOWS
 typedef unsigned __int64 tANI_U64;
 #else
@@ -262,20 +312,29 @@ typedef tANI_U8 tANI_BYTE;
 #else
 typedef tANI_U32     tANI_U32_OR_PTR;
 #endif
+<<<<<<< HEAD
 =======
 
 typedef tANI_U32     tANI_U32_OR_PTR;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // Buffer address; could be virt or phys; could be 32- or 64-bit depending on compile option
 typedef tANI_U32_OR_PTR    tANI_BUFFER_ADDR;
 // which boolean is the most usefule...or both ?
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 typedef tANI_U8 tANI_BOOLEAN;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+typedef tANI_U8 tANI_BOOLEAN;
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 
 typedef enum tagAniBoolean 
 {
@@ -329,6 +388,9 @@ typedef void *tHddHandle;
 #define PAL_PKT_FLD_8021P_MASK    PAL_BIT_MASK(PAL_PKT_FLD_8021P_OFFSET)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( ANI_OS_TYPE_WINDOWS ) || defined (ANI_OS_TYPE_OSX)
     #define PAL_PKT_FLD_8021P_BIT_OFFSET 0
 #elif defined( ANI_OS_TYPE_LINUX )
@@ -336,8 +398,11 @@ typedef void *tHddHandle;
 #elif defined( ANI_OS_TYPE_AMSS )
     #define PAL_PKT_FLD_8021P_BIT_OFFSET 0
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 /*
@@ -357,9 +422,15 @@ typedef void * tPalSemaphoreHandle;
 #define PAL_TICKS_PER_SECOND        100
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 typedef tANI_U32 tANI_TIMESTAMP;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+typedef tANI_U32 tANI_TIMESTAMP;
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 #endif

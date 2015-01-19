@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -81,9 +84,13 @@
   ------------------------------------------------------------------------*/
 #include <vos_trace.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 /*--------------------------------------------------------------------------
   Preprocessor definitions and constants
   ------------------------------------------------------------------------*/
@@ -121,12 +128,16 @@ moduleTraceInfo gVosTraceInfo[ VOS_MODULE_ID_MAX ] =
    [VOS_MODULE_ID_BAP]        = { VOS_DEFAULT_TRACE_LEVEL, "BAP" },
    [VOS_MODULE_ID_TL]         = { VOS_DEFAULT_TRACE_LEVEL, "TL " },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
    [VOS_MODULE_ID_BAL]        = { VOS_DEFAULT_TRACE_LEVEL, "BAL" },
    [VOS_MODULE_ID_SAL]        = { VOS_DEFAULT_TRACE_LEVEL, "SAL" },
    [VOS_MODULE_ID_SSC]        = { VOS_DEFAULT_TRACE_LEVEL, "SSC" },
 #endif
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+<<<<<<< HEAD
    [VOS_MODULE_ID_WDI]        = { VOS_DEFAULT_TRACE_LEVEL, "WDI"},
 #endif
    [VOS_MODULE_ID_HDD]        = { VOS_DEFAULT_TRACE_LEVEL, "HDD" },
@@ -144,17 +155,29 @@ moduleTraceInfo gVosTraceInfo[ VOS_MODULE_ID_MAX ] =
    [VOS_MODULE_ID_HDD_SOFTAP] = { VOS_DEFAULT_TRACE_LEVEL, "HSP" },
 #endif
 =======
+=======
+>>>>>>> 657b0e9... prima update
    [VOS_MODULE_ID_WDI]        = { VOS_DEFAULT_TRACE_LEVEL, "WDI"},
+#endif
    [VOS_MODULE_ID_HDD]        = { VOS_DEFAULT_TRACE_LEVEL, "HDD" },
    [VOS_MODULE_ID_SME]        = { VOS_DEFAULT_TRACE_LEVEL, "SME" },
    [VOS_MODULE_ID_PE]         = { VOS_DEFAULT_TRACE_LEVEL, "PE " },
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+   [VOS_MODULE_ID_HAL]        = { VOS_DEFAULT_TRACE_LEVEL, "HAL" },
+#else
    [VOS_MODULE_ID_WDA]        = { VOS_DEFAULT_TRACE_LEVEL, "WDA" },
+#endif
    [VOS_MODULE_ID_SYS]        = { VOS_DEFAULT_TRACE_LEVEL, "SYS" },
    [VOS_MODULE_ID_VOSS]       = { VOS_DEFAULT_TRACE_LEVEL, "VOS" },
+#ifdef WLAN_SOFTAP_FEATURE
    [VOS_MODULE_ID_SAP]        = { VOS_DEFAULT_TRACE_LEVEL, "SAP" },
    [VOS_MODULE_ID_HDD_SOFTAP] = { VOS_DEFAULT_TRACE_LEVEL, "HSP" },
+<<<<<<< HEAD
    [VOS_MODULE_ID_PMC]        = { VOS_DEFAULT_TRACE_LEVEL, "PMC" },
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 };
 
 
@@ -167,10 +190,14 @@ void vos_trace_setLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level )
    if ( level >= VOS_TRACE_LEVEL_MAX )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       pr_err("%s: Invalid trace level %d passed in!\n", __FUNCTION__, level);
 =======
       pr_err("%s: Invalid trace level %d passed in!\n", __func__, level);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pr_err("%s: Invalid trace level %d passed in!\n", __FUNCTION__, level);
+>>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -194,10 +221,14 @@ void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on)
    if ( level < 0  || level >= VOS_TRACE_LEVEL_MAX )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       pr_err("%s: Invalid trace level %d passed in!\n", __FUNCTION__, level);
 =======
       pr_err("%s: Invalid trace level %d passed in!\n", __func__, level);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pr_err("%s: Invalid trace level %d passed in!\n", __FUNCTION__, level);
+>>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -205,10 +236,14 @@ void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on)
    if ( module < 0 || module >= VOS_MODULE_ID_MAX )
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       pr_err("%s: Invalid module id %d passed in!\n", __FUNCTION__, module);
 =======
       pr_err("%s: Invalid module id %d passed in!\n", __func__, module);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pr_err("%s: Invalid module id %d passed in!\n", __FUNCTION__, module);
+>>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -264,6 +299,7 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...)
     va_end( val );
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -333,6 +369,9 @@ void vos_wconn_trace_exit(void)
 
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 
 #ifdef VOS_ENABLE_TRACING
 
@@ -364,9 +403,12 @@ void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat
    char strBuffer[VOS_TRACE_BUFFER_SIZE];
    int n;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    unsigned long irq_flag;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    // Print the trace message when the desired level bit is set in the module
    // tracel level mask.
@@ -377,26 +419,36 @@ void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat
       // can index into this array with the level and get the right string.  The
       // vos trace levels are...
 <<<<<<< HEAD
+<<<<<<< HEAD
       // none, Fata, Error, Warning, Info, InfoHigh, InfoMed, InfoLow
       static const char * TRACE_LEVEL_STR[] = { "  ", "F ", "E ", "W ", "I ", "IH", "IM", "IL" };
 =======
       // none, Fatal, Error, Warning, Info, InfoHigh, InfoMed, InfoLow, Debug
       static const char * TRACE_LEVEL_STR[] = { "  ", "F ", "E ", "W ", "I ", "IH", "IM", "IL", "D" };
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      // none, Fata, Error, Warning, Info, InfoHigh, InfoMed, InfoLow
+      static const char * TRACE_LEVEL_STR[] = { "  ", "F ", "E ", "W ", "I ", "IH", "IM", "IL" };
+>>>>>>> 657b0e9... prima update
       va_list val;
       va_start(val, strFormat);
 
       // print the prefix string into the string buffer...
 <<<<<<< HEAD
+<<<<<<< HEAD
       n = snprintf(strBuffer, VOS_TRACE_BUFFER_SIZE, "[WLAN][%d:%2s:%3s] ",
 =======
       n = snprintf(strBuffer, VOS_TRACE_BUFFER_SIZE, "wlan: [%d:%2s:%3s] ",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      n = snprintf(strBuffer, VOS_TRACE_BUFFER_SIZE, "[WLAN][%d:%2s:%3s] ",
+>>>>>>> 657b0e9... prima update
                    in_interrupt() ? 0 : current->pid,
                    (char *) TRACE_LEVEL_STR[ level ],
                    (char *) gVosTraceInfo[ module ].moduleNameStr );
 
       // print the formatted log message after the prefix string.
+<<<<<<< HEAD
 <<<<<<< HEAD
       vsnprintf(strBuffer + n, VOS_TRACE_BUFFER_SIZE - n, strFormat, val );
       pr_err("%s\n", strBuffer);
@@ -415,6 +467,11 @@ void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat
       }
      va_end(val);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      vsnprintf(strBuffer + n, VOS_TRACE_BUFFER_SIZE - n, strFormat, val );
+      pr_err("%s\n", strBuffer);
+      va_end( val);
+>>>>>>> 657b0e9... prima update
    }
 }
 
@@ -422,6 +479,7 @@ void vos_trace_display(void)
 {
    VOS_MODULE_ID moduleId;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    pr_err("     1)FATAL  2)ERROR  3)WARN  4)INFO  5)INFO_H  6)INFO_M  7)INFO_L\n");
    for (moduleId = 0; moduleId < VOS_MODULE_ID_MAX; ++moduleId)
@@ -433,6 +491,12 @@ void vos_trace_display(void)
    {
       pr_err("%2d)%s    %s        %s       %s       %s        %s         %s         %s        %s\n",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   pr_err("     1)FATAL  2)ERROR  3)WARN  4)INFO  5)INFO_H  6)INFO_M  7)INFO_L\n");
+   for (moduleId = 0; moduleId < VOS_MODULE_ID_MAX; ++moduleId)
+   {
+      pr_err("%2d)%s    %s        %s       %s       %s        %s         %s         %s\n",
+>>>>>>> 657b0e9... prima update
              (int)moduleId,
              gVosTraceInfo[moduleId].moduleNameStr,
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_FATAL)) ? "X":" ",
@@ -442,15 +506,20 @@ void vos_trace_display(void)
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_HIGH)) ? "X":" ",
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_MED)) ? "X":" ",
 <<<<<<< HEAD
+<<<<<<< HEAD
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_LOW)) ? "X":" "
 =======
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_LOW)) ? "X":" ",
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_DEBUG)) ? "X":" "
 >>>>>>> d97af3b... add prima wlan driver
+=======
+             (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_LOW)) ? "X":" "
+>>>>>>> 657b0e9... prima update
          );
    }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*----------------------------------------------------------------------------
@@ -505,4 +574,6 @@ void vos_trace_hex_dump( VOS_MODULE_ID module, VOS_TRACE_LEVEL level,
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif

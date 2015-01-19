@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -175,10 +178,14 @@ WLANBAP_InitConnectionAcceptTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -234,10 +241,14 @@ WLANBAP_DeinitConnectionAcceptTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -287,10 +298,14 @@ WLANBAP_StartConnectionAcceptTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -344,10 +359,14 @@ WLANBAP_StopConnectionAcceptTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -401,10 +420,14 @@ WLANBAP_ConnectionAcceptTimerHandler
   {
      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "WLAN BAP: Fatal error in %s", __FUNCTION__ );
 =======
                 "WLAN BAP: Fatal error in %s", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "WLAN BAP: Fatal error in %s", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
      VOS_ASSERT(0);
      return; 
   }
@@ -471,10 +494,14 @@ WLANBAP_InitLinkSupervisionTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -530,10 +557,14 @@ WLANBAP_DeinitLinkSupervisionTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -583,10 +614,14 @@ WLANBAP_StartLinkSupervisionTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -638,10 +673,14 @@ WLANBAP_StopLinkSupervisionTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -695,10 +734,14 @@ WLANBAP_LinkSupervisionTimerHandler
     {
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "WLAN BAP: Fatal error in %s", __FUNCTION__ );
 =======
                 "WLAN BAP: Fatal error in %s", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "WLAN BAP: Fatal error in %s", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
        VOS_ASSERT(0);
        return; 
     }
@@ -706,19 +749,27 @@ WLANBAP_LinkSupervisionTimerHandler
     phy_link_handle = pBtampCtx->phy_link_handle;
      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "WLAN BAP:In LinkSupervision Timer handler %s", __FUNCTION__ );
 =======
                 "WLAN BAP:In LinkSupervision Timer handler %s", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "WLAN BAP:In LinkSupervision Timer handler %s", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
 
     if(pBtampCtx->dataPktPending == VOS_TRUE)
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: Data seen. Do nothing", __FUNCTION__ );
 =======
                     "%s: Data seen. Do nothing", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: Data seen. Do nothing", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
 
         pBtampCtx->dataPktPending = VOS_FALSE;
         pBtampCtx->lsReqPktPending = VOS_FALSE;
@@ -735,10 +786,14 @@ WLANBAP_LinkSupervisionTimerHandler
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "#########WLAN BAP: LinkSupervision Timed OUT######## %s", __FUNCTION__ );
 =======
                     "#########WLAN BAP: LinkSupervision Timed OUT######## %s", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "#########WLAN BAP: LinkSupervision Timed OUT######## %s", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
 
      /*---------------------------------------------------------------------
     Feed this timeout to the BTAMP FSM 
@@ -756,10 +811,14 @@ WLANBAP_LinkSupervisionTimerHandler
     {    
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "%s: Resend the LS packet", __FUNCTION__ );
 =======
                     "%s: Resend the LS packet", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    "%s: Resend the LS packet", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
 
         /* If we have transmit pkt pending and the time out occurred,resend the ls packet */
         WLANBAP_StopLinkSupervisionTimer(pBtampCtx);
@@ -814,10 +873,14 @@ WLANBAP_StartTxPacketMonitorTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -869,10 +932,14 @@ WLANBAP_StopTxPacketMonitorTimer
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __FUNCTION__);
 =======
                  "Invalid BAP pointer in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return VOS_STATUS_E_FAULT;
   }
 
@@ -942,10 +1009,14 @@ WLANBAP_SendCompletedPktsEvent
        if (uTxCompleted) { 
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "wlan bap: %s Log Link handle - %d No Of Pkts - %d", __FUNCTION__, 
 =======
                   "wlan bap: %s Log Link handle - %d No Of Pkts - %d", __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "wlan bap: %s Log Link handle - %d No Of Pkts - %d", __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
                   pLogLinkContext->log_link_handle, uTxCompleted);  
        }
      }
@@ -1031,10 +1102,14 @@ WLANBAP_SendCompletedDataBlksEvent
        if (uTxCompleted) { 
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "wlan bap: %s Log Link handle - %d No Of Pkts - %d", __FUNCTION__, 
 =======
                   "wlan bap: %s Log Link handle - %d No Of Pkts - %d", __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "wlan bap: %s Log Link handle - %d No Of Pkts - %d", __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
                   pLogLinkContext->log_link_handle, uTxCompleted);  
        }
      }
@@ -1097,10 +1172,14 @@ WLANBAP_TxPacketMonitorHandler
   {
      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "WLAN BAP: Fatal error in %s", __FUNCTION__ );
 =======
                 "WLAN BAP: Fatal error in %s", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "WLAN BAP: Fatal error in %s", __FUNCTION__ );
+>>>>>>> 657b0e9... prima update
      VOS_ASSERT(0);
      return; 
   }
@@ -1109,10 +1188,14 @@ WLANBAP_TxPacketMonitorHandler
   /* Trace the tBtampCtx being passed in. */
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "WLAN BAP Context Monitor: pBtampCtx value = %x in %s:%d", pBtampCtx, __FUNCTION__, __LINE__ );
 =======
             "WLAN BAP Context Monitor: pBtampCtx value = %x in %s:%d", pBtampCtx, __func__, __LINE__ );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "WLAN BAP Context Monitor: pBtampCtx value = %x in %s:%d", pBtampCtx, __FUNCTION__, __LINE__ );
+>>>>>>> 657b0e9... prima update
 #endif //BAP_DEBUG
 
   if(WLANBAP_FLOW_CONTROL_MODE_BLOCK_BASED == pBtampCtx->ucDataTrafficMode)

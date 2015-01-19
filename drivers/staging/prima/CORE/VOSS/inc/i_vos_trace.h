@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -90,11 +93,14 @@
 void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat, ... );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 void vos_trace_hex_dump( VOS_MODULE_ID module, VOS_TRACE_LEVEL level,
                                 void *data, int buf_len );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 void vos_trace_display(void);
 
 void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on );
@@ -112,6 +118,7 @@ void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on 
 #if defined( WLAN_DEBUG )
 #define VOS_TRACE vos_trace_msg
 <<<<<<< HEAD
+<<<<<<< HEAD
 #else
 #define VOS_TRACE(arg...) 
 =======
@@ -120,6 +127,10 @@ void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on 
 #define VOS_TRACE(arg...)
 #define VOS_TRACE_HEX_DUMP(arg...)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#else
+#define VOS_TRACE(arg...) 
+>>>>>>> 657b0e9... prima update
 #endif
 
 
@@ -130,12 +141,16 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...);
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define VOS_ASSERT( _condition )                          \
 if ( ! ( _condition ) )                                   \
 {                                                         \
    printk(KERN_CRIT "VOS ASSERT in %s Line %d\n", __FUNCTION__, __LINE__); \
    WARN_ON(1); \
 }
+<<<<<<< HEAD
 =======
 #define VOS_ASSERT( _condition ) do {                                   \
         if ( ! ( _condition ) )                                         \
@@ -145,6 +160,8 @@ if ( ! ( _condition ) )                                   \
         }                                                               \
     } while(0)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #else 
 
@@ -160,12 +177,16 @@ if ( ! ( _condition ) )                                   \
 #ifdef PANIC_ON_BUG
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define VOS_BUG( _condition ) \
 if ( ! ( _condition ) )       \
 {                             \
    printk(KERN_CRIT "VOS BUG in %s Line %d\n", __FUNCTION__, __LINE__); \
    BUG_ON(1); \
 }
+<<<<<<< HEAD
 
 #else
 
@@ -194,6 +215,17 @@ if ( ! ( _condition ) )       \
         }                                                               \
     } while(0)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+#else
+
+#define VOS_BUG( _condition ) \
+if ( ! ( _condition ) )       \
+{                             \
+   printk(KERN_CRIT "VOS BUG in %s Line %d\n", __FUNCTION__, __LINE__); \
+   WARN_ON(1); \
+}
+>>>>>>> 657b0e9... prima update
 
 #endif
 

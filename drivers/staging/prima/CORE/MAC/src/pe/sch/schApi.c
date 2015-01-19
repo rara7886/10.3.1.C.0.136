@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,6 +60,7 @@
  */
 #include "palTypes.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "sirWrapper.h"
 #include "aniGlobal.h"
 #include "wniCfgAp.h"
@@ -64,18 +68,29 @@
 #include "aniGlobal.h"
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#include "sirWrapper.h"
+#include "aniGlobal.h"
+#include "wniCfgAp.h"
+>>>>>>> 657b0e9... prima update
 
 #include "sirMacProtDef.h"
 #include "sirMacPropExts.h"
 #include "sirCommon.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halDataStruct.h"
 #include "halCommonApi.h"
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #include "cfgApi.h"
 #include "pmmApi.h"
@@ -88,12 +103,18 @@
 #include "schSysParams.h"
 #include "limTrace.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #include "limTypes.h"
 #endif
 =======
 #include "limTypes.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include "limTypes.h"
+#endif
+>>>>>>> 657b0e9... prima update
 
 #include "wlan_qct_wda.h"
 
@@ -250,6 +271,9 @@ tSirRetStatus
 schPostMessage(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_OSX)
    PELOG3(schLog(pMac, LOG3, FL("Going to post message (%x) to SCH message queue\n"),
            pMsg->type);)
@@ -258,9 +282,12 @@ schPostMessage(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
 #else
     schProcessMessage(pMac, pMsg);
 #endif 
+<<<<<<< HEAD
 =======
     schProcessMessage(pMac, pMsg);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -292,6 +319,7 @@ schSendStartScanRsp(tpAniSirGlobal pMac)
     tANI_U32        retCode;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     PELOG1(schLog(pMac, LOG1, FL("Sending LIM message to go into scan\n"));)
     msgQ.type = SIR_SCH_START_SCAN_RSP;
     if ((retCode = limPostMsgApi(pMac, &msgQ)) != eSIR_SUCCESS)
@@ -304,6 +332,13 @@ schSendStartScanRsp(tpAniSirGlobal pMac)
         schLog(pMac, LOGE,
                FL("Posting START_SCAN_RSP to LIM failed, reason=%X"), retCode);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    PELOG1(schLog(pMac, LOG1, FL("Sending LIM message to go into scan\n"));)
+    msgQ.type = SIR_SCH_START_SCAN_RSP;
+    if ((retCode = limPostMsgApi(pMac, &msgQ)) != eSIR_SUCCESS)
+        schLog(pMac, LOGE,
+               FL("Posting START_SCAN_RSP to LIM failed, reason=%X\n"), retCode);
+>>>>>>> 657b0e9... prima update
 }
 
 /**
@@ -334,6 +369,7 @@ schSendStartScanRsp(tpAniSirGlobal pMac)
 tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tANI_U16 size, tpPESession psessionEntry)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     tSirMsgQ msgQ;
     tpSendbeaconParams beaconParams = NULL;
     tSirRetStatus retCode;
@@ -350,15 +386,27 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
   tSirMsgQ msgQ;
   tpSendbeaconParams beaconParams = NULL;
   tSirRetStatus retCode;
+=======
+    tSirMsgQ msgQ;
+    tpSendbeaconParams beaconParams = NULL;
+    tSirRetStatus retCode;
+>>>>>>> 657b0e9... prima update
 
   schLog( pMac, LOG2,
-         FL( "Indicating HAL to copy the beacon template [%d bytes] to memory" ),
-         size );
+      FL( "Indicating HAL to copy the beacon template [%d bytes] to memory\n" ),
+      size );
 
+<<<<<<< HEAD
   beaconParams = vos_mem_malloc(sizeof(tSendbeaconParams));
   if ( NULL == beaconParams )
       return eSIR_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
+          (void **) &beaconParams,
+          sizeof( tSendbeaconParams )))
+    return eSIR_FAILURE;
+>>>>>>> 657b0e9... prima update
 
   msgQ.type = WDA_SEND_BEACON_REQ;
 
@@ -368,6 +416,7 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
   // Fill in tSendbeaconParams members
   /* Knock off all pMac global addresses */
   // limGetBssid( pMac, beaconParams->bssId);
+<<<<<<< HEAD
 <<<<<<< HEAD
   palCopyMemory(pMac, beaconParams->bssId, psessionEntry->bssId, sizeof(psessionEntry->bssId));
 
@@ -381,22 +430,23 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
 #endif
 =======
   vos_mem_copy(beaconParams->bssId, psessionEntry->bssId, sizeof(psessionEntry->bssId));
+=======
+  palCopyMemory(pMac, beaconParams->bssId, psessionEntry->bssId, sizeof(psessionEntry->bssId));
+>>>>>>> 657b0e9... prima update
 
+#ifdef WLAN_SOFTAP_FEATURE
   beaconParams->timIeOffset = pMac->sch.schObject.gSchBeaconOffsetBegin;
-  /* p2pIeOffset should be atleast greater than timIeOffset */
-  if ((pMac->sch.schObject.p2pIeOffset != 0) &&
-          (pMac->sch.schObject.p2pIeOffset <
-           pMac->sch.schObject.gSchBeaconOffsetBegin))
-  {
-      schLog(pMac, LOGE,FL("Invalid p2pIeOffset:[%d]"),
-              pMac->sch.schObject.p2pIeOffset);
-      VOS_ASSERT( 0 );
-      return eSIR_FAILURE;
-  }
+#ifdef WLAN_FEATURE_P2P
   beaconParams->p2pIeOffset = pMac->sch.schObject.p2pIeOffset;
+#endif
 #ifdef WLAN_SOFTAP_FW_BEACON_TX_PRNT_LOG
+<<<<<<< HEAD
   schLog(pMac, LOGE,FL("TimIeOffset:[%d]"),beaconParams->TimIeOffset );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  schLog(pMac, LOGE,FL("TimIeOffset:[%d]\n"),beaconParams->TimIeOffset );
+#endif
+>>>>>>> 657b0e9... prima update
 #endif
 
   beaconParams->beacon = beaconPayload;
@@ -410,15 +460,20 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
   if (psessionEntry->beacon )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     palFreeMemory(pMac->hHdd, psessionEntry->beacon);
 =======
     vos_mem_free(psessionEntry->beacon);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palFreeMemory(pMac->hHdd, psessionEntry->beacon);
+>>>>>>> 657b0e9... prima update
   }
 
   psessionEntry->bcnLen = 0;
   psessionEntry->beacon = NULL;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if ( eHAL_STATUS_SUCCESS == palAllocateMemory( pMac->hHdd,(void **) &psessionEntry->beacon, size)) 
   {
@@ -429,6 +484,11 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
   {
     vos_mem_copy(psessionEntry->beacon, beaconPayload, size);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( eHAL_STATUS_SUCCESS == palAllocateMemory( pMac->hHdd,(void **) &psessionEntry->beacon, size)) 
+  {
+    palCopyMemory(pMac->hHdd, psessionEntry->beacon, beaconPayload, size);
+>>>>>>> 657b0e9... prima update
     psessionEntry->bcnLen = size;
   }
 
@@ -437,14 +497,19 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
   {
     schLog( pMac, LOGE,
 <<<<<<< HEAD
+<<<<<<< HEAD
         FL("Posting SEND_BEACON_REQ to HAL failed, reason=%X\n"),
 =======
         FL("Posting SEND_BEACON_REQ to HAL failed, reason=%X"),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        FL("Posting SEND_BEACON_REQ to HAL failed, reason=%X\n"),
+>>>>>>> 657b0e9... prima update
         retCode );
   } else
   {
     schLog( pMac, LOG2,
+<<<<<<< HEAD
 <<<<<<< HEAD
         FL("Successfully posted WDA_SEND_BEACON_REQ to HAL\n"));
 
@@ -453,6 +518,11 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
         FL("Successfully posted WDA_SEND_BEACON_REQ to HAL"));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        FL("Successfully posted WDA_SEND_BEACON_REQ to HAL\n"));
+
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     if( (psessionEntry->limSystemRole == eLIM_AP_ROLE ) 
         && (psessionEntry->proxyProbeRspEn)
         && (pMac->sch.schObject.fBeaconChanged))
@@ -461,6 +531,7 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
                                     &psessionEntry->DefProbeRspIeBitmap[0])))
         {
             /* check whether we have to free any memory */
+<<<<<<< HEAD
 <<<<<<< HEAD
             schLog(pMac, LOGE, FL("FAILED to send probe response template with retCode %d\n"), retCode);
         }
@@ -471,11 +542,18 @@ tSirRetStatus schSendBeaconReq( tpAniSirGlobal pMac, tANI_U8 *beaconPayload, tAN
         }
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            schLog(pMac, LOGE, FL("FAILED to send probe response template with retCode %d\n"), retCode);
+        }
+    }
+#endif
+>>>>>>> 657b0e9... prima update
   }
 
   return retCode;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEntry
@@ -484,6 +562,11 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
 tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEntry
                                   ,tANI_U32* IeBitmap)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEntry
+                                    ,tANI_U32* IeBitmap)
+>>>>>>> 657b0e9... prima update
 {
     tSirMsgQ  msgQ;
     tANI_U8 *pFrame2Hal = pMac->sch.schObject.gSchProbeRspTemplate;
@@ -495,19 +578,26 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     tANI_U32             addnIELen=0;
     tSirRetStatus        nSirStatus;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tANI_U8              *addIE = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     nStatus = dot11fGetPackedProbeResponseSize( pMac, &psessionEntry->probeRespFrame, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
         schLog( pMac, LOGE, FL("Failed to calculate the packed size f"
 <<<<<<< HEAD
+<<<<<<< HEAD
                                "or a Probe Response (0x%08x).\n"),
 =======
                                "or a Probe Response (0x%08x)."),
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               "or a Probe Response (0x%08x).\n"),
+>>>>>>> 657b0e9... prima update
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fProbeResponse );
@@ -516,6 +606,7 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     {
         schLog( pMac, LOGE, FL("There were warnings while calculating"
                                "the packed size for a Probe Response "
+<<<<<<< HEAD
 <<<<<<< HEAD
                                "(0x%08x).\n"), nStatus );
     }
@@ -569,65 +660,63 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     palZeroMemory( pMac->hHdd, pFrame2Hal, nBytes );
 =======
                                "(0x%08x)."), nStatus );
+=======
+                               "(0x%08x).\n"), nStatus );
+>>>>>>> 657b0e9... prima update
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
-
-    //Check if probe response IE is present or not
-    if (wlan_cfgGetInt(pMac, WNI_CFG_PROBE_RSP_ADDNIE_FLAG, &addnIEPresent) != eSIR_SUCCESS)
+    
+    //Check if probe response IE is set first before checking beacon/probe rsp IE
+    if(wlan_cfgGetInt(pMac, WNI_CFG_PROBE_RSP_ADDNIE_FLAG, &addnIEPresent) != eSIR_SUCCESS)
     {
-        schLog(pMac, LOGE, FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_FLAG"));
+        schLog(pMac, LOGE, FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_FLAG\n"));
         return retCode;
     }
 
-    if (addnIEPresent)
+    if(!addnIEPresent)
     {
-        //Probe rsp IE available
-        addIE = vos_mem_malloc(WNI_CFG_PROBE_RSP_ADDNIE_DATA1_LEN);
-        if ( NULL == addIE )
+        //TODO: If additional IE needs to be added. Add then alloc required buffer.
+        if(wlan_cfgGetInt(pMac, WNI_CFG_PROBE_RSP_BCN_ADDNIE_FLAG, &addnIEPresent) != eSIR_SUCCESS)
         {
-             schLog(pMac, LOGE,
-                 FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA1 length"));
-             return retCode;
-        }
-
-        if (wlan_cfgGetStrLen(pMac, WNI_CFG_PROBE_RSP_ADDNIE_DATA1,
-                                               &addnIELen) != eSIR_SUCCESS)
-        {
-            schLog(pMac, LOGE,
-                FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA1 length"));
-
-            vos_mem_free(addIE);
+            schLog(pMac, LOGE, FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_FLAG\n"));
             return retCode;
         }
-
-        if (addnIELen <= WNI_CFG_PROBE_RSP_ADDNIE_DATA1_LEN && addnIELen &&
-                                 (nBytes + addnIELen) <= SIR_MAX_PACKET_SIZE)
+    
+        if(addnIEPresent)
         {
-            if ( eSIR_SUCCESS != wlan_cfgGetStr(pMac,
-                                    WNI_CFG_PROBE_RSP_ADDNIE_DATA1, &addIE[0],
-                                    &addnIELen) )
+            if(wlan_cfgGetStrLen(pMac, WNI_CFG_PROBE_RSP_BCN_ADDNIE_DATA, &addnIELen) != eSIR_SUCCESS)
             {
-               schLog(pMac, LOGE,
-                   FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA1 String"));
-
-               vos_mem_free(addIE);
-               return retCode;
+                schLog(pMac, LOGE, FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_DATA length"));
+                return retCode;
             }
         }
     }
-
-    if (addnIEPresent)
+    else
     {
-        if ((nBytes + addnIELen) <= SIR_MAX_PACKET_SIZE )
-            nBytes += addnIELen;
-        else
-            addnIEPresent = false; //Dont include the IE.
+        //Probe rsp IE available
+        if(wlan_cfgGetStrLen(pMac, WNI_CFG_PROBE_RSP_ADDNIE_DATA1, &addnIELen) != eSIR_SUCCESS)
+        {
+            limLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_DATA length"));
+            return retCode;
+        }
     }
 
+    if(addnIEPresent)
+    {
+        if((nBytes + addnIELen) <= SIR_MAX_PACKET_SIZE ) 
+            nBytes += addnIELen;
+        else 
+            addnIEPresent = false; //Dont include the IE.     
+    }
+       
     // Paranoia:
+<<<<<<< HEAD
     vos_mem_set(pFrame2Hal, nBytes, 0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    palZeroMemory( pMac->hHdd, pFrame2Hal, nBytes );
+>>>>>>> 657b0e9... prima update
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame2Hal, SIR_MAC_MGMT_FRAME,
@@ -637,6 +726,7 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     {
         schLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
 <<<<<<< HEAD
+<<<<<<< HEAD
                                "tor for a Probe Response (%d).\n"),
                 nSirStatus );
 =======
@@ -645,10 +735,15 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
 
         vos_mem_free(addIE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               "tor for a Probe Response (%d).\n"),
+                nSirStatus );
+>>>>>>> 657b0e9... prima update
         return retCode;
     }
 
     pMacHdr = ( tpSirMacMgmtHdr ) pFrame2Hal;
+<<<<<<< HEAD
 <<<<<<< HEAD
   
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
@@ -658,12 +753,18 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+    sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
+    
+>>>>>>> 657b0e9... prima update
     // That done, pack the Probe Response:
     nStatus = dot11fPackProbeResponse( pMac, &psessionEntry->probeRespFrame, pFrame2Hal + sizeof(tSirMacMgmtHdr),
                                        nPayload, &nPayload );
 
     if ( DOT11F_FAILED( nStatus ) )
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         schLog( pMac, LOGE, FL("Failed to pack a Probe Response (0x%08x).\n"),
                 nStatus );
@@ -673,11 +774,16 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
 
         vos_mem_free(addIE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        schLog( pMac, LOGE, FL("Failed to pack a Probe Response (0x%08x).\n"),
+                nStatus );
+>>>>>>> 657b0e9... prima update
         return retCode;                 // allocated!
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         schLog( pMac, LOGE, FL("There were warnings while packing a P"
+<<<<<<< HEAD
 <<<<<<< HEAD
                                "robe Response (0x%08x).\n") );
     }
@@ -695,16 +801,21 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     {
         vos_mem_copy ( &pFrame2Hal[nBytes - addnIELen],
                              &addIE[0], addnIELen);
+=======
+                               "robe Response (0x%08x).\n") );
+>>>>>>> 657b0e9... prima update
     }
 
-    /* free the allocated Memory */
-    vos_mem_free(addIE);
-
-    pprobeRespParams = vos_mem_malloc(sizeof( tSendProbeRespParams ));
-    if ( NULL == pprobeRespParams )
+    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
+                                                (void **) &pprobeRespParams,
+                                                sizeof( tSendProbeRespParams )))
     {
+<<<<<<< HEAD
         schLog( pMac, LOGE, FL("limSendProbeRspTemplateToHal: HAL probe response params malloc failed for bytes %d"), nBytes );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        schLog( pMac, LOGE, FL("limSendProbeRspTemplateToHal: HAL probe response params malloc failed for bytes %d\n"), nBytes );
+>>>>>>> 657b0e9... prima update
     }
     else
     {
@@ -714,6 +825,7 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
                             nBytes);)
         */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         sirCopyMacAddr( pprobeRespParams->bssId  ,  psessionEntry->bssId);
         pprobeRespParams->pProbeRespTemplate   = pFrame2Hal;
@@ -728,6 +840,14 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
         vos_mem_copy(pprobeRespParams->ucProxyProbeReqValidIEBmap,IeBitmap,(sizeof(tANI_U32) * 8));
         msgQ.type     = WDA_UPDATE_PROBE_RSP_TEMPLATE_IND;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        sirCopyMacAddr( pprobeRespParams->bssId  ,  psessionEntry->bssId);
+        pprobeRespParams->pProbeRespTemplate   = pFrame2Hal;
+        pprobeRespParams->probeRespTemplateLen = nBytes;
+        palCopyMemory(pMac,pprobeRespParams->ucProxyProbeReqValidIEBmap,IeBitmap,
+                            (sizeof(tANI_U32) * 8));
+        msgQ.type     = WDA_UPDATE_PROBE_RSP_TEMPLATE_IND; 
+>>>>>>> 657b0e9... prima update
         msgQ.reserved = 0;
         msgQ.bodyptr  = pprobeRespParams;
         msgQ.bodyval  = 0;
@@ -736,12 +856,17 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
         {
             /* free the allocated Memory */
 <<<<<<< HEAD
+<<<<<<< HEAD
             schLog( pMac,LOGE, FL("limSendProbeRspTemplateToHal: FAIL bytes %d retcode[%X]\n"), nBytes , retCode );
             palFreeMemory(pMac->hHdd,pprobeRespParams);
 =======
             schLog( pMac,LOGE, FL("limSendProbeRspTemplateToHal: FAIL bytes %d retcode[%X]"), nBytes, retCode );
             vos_mem_free(pprobeRespParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            schLog( pMac,LOGE, FL("limSendProbeRspTemplateToHal: FAIL bytes %d retcode[%X]\n"), nBytes , retCode );
+            palFreeMemory(pMac->hHdd,pprobeRespParams);
+>>>>>>> 657b0e9... prima update
         }
         else
         {
@@ -752,7 +877,11 @@ tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal pMac,tpPESession psessionEn
     return retCode;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 

@@ -1,9 +1,13 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+>>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -25,6 +29,7 @@
 
 /*============================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
 Copyright (c) 2007 QUALCOMM Incorporated.
 All Rights Reserved.
 Qualcomm Confidential and Proprietary
@@ -33,6 +38,11 @@ Copyright (c) 2007 Qualcomm Technologies, Inc.
 All Rights Reserved.
 Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
+=======
+Copyright (c) 2007 QUALCOMM Incorporated.
+All Rights Reserved.
+Qualcomm Confidential and Proprietary
+>>>>>>> 657b0e9... prima update
 
 logDump.h
 
@@ -73,6 +83,7 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ... );
 
 char *
 <<<<<<< HEAD
+<<<<<<< HEAD
 dump_thread_info( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 char *
@@ -85,15 +96,24 @@ dump_cfg_set( tpAniSirGlobal pMac, tANI_U32 arg1,
 char *
 dump_cfg_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, 
 =======
+=======
+dump_thread_info( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
+
+char *
+>>>>>>> 657b0e9... prima update
 dump_log_level_set( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 char *
-dump_cfg_set( tpAniSirGlobal pMac, tANI_U32 arg1,
+dump_cfg_set( tpAniSirGlobal pMac, tANI_U32 arg1, 
               tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 char *
+<<<<<<< HEAD
 dump_cfg_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+dump_cfg_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, 
+>>>>>>> 657b0e9... prima update
               tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 char *
@@ -101,10 +121,14 @@ dump_cfg_group_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2,
                     tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void logDumpRegisterTable( tpAniSirGlobal pMac, tDumpFuncEntry *pEntry, 
 =======
 void logDumpRegisterTable( tpAniSirGlobal pMac, tDumpFuncEntry *pEntry,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void logDumpRegisterTable( tpAniSirGlobal pMac, tDumpFuncEntry *pEntry, 
+>>>>>>> 657b0e9... prima update
                            tANI_U32   nItems );
 
 

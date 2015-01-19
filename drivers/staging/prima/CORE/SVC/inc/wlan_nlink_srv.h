@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -59,10 +62,14 @@
 
 #include <linux/skbuff.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/netlink.h>
 =======
 #include <net/netlink.h>
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#include <linux/netlink.h>
+>>>>>>> 657b0e9... prima update
 #include <wlan_nlink_common.h>
 
 #define NLINK_MAX_CALLBACKS (WLAN_NL_MSG_MAX - WLAN_NL_MSG_BASE)
@@ -70,6 +77,7 @@
 typedef int (* nl_srv_msg_callback)(struct sk_buff * skb);
 
 int nl_srv_init(void);
+<<<<<<< HEAD
 <<<<<<< HEAD
 void nl_srv_exit(void);
 =======
@@ -79,10 +87,14 @@ void nl_srv_exit(int dst_pid);
 void nl_srv_exit(void);
 #endif /* WLAN_KD_READY_NOTIFIER */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void nl_srv_exit(void);
+>>>>>>> 657b0e9... prima update
 int nl_srv_register(tWlanNlModTypes msg_type, nl_srv_msg_callback msg_handler);
 int nl_srv_unregister(tWlanNlModTypes msg_type, nl_srv_msg_callback msg_handler);
 int nl_srv_ucast(struct sk_buff * skb, int dst_pid);
 int nl_srv_bcast(struct sk_buff * skb);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -91,4 +103,7 @@ void nl_srv_nl_ready_indication(void);
 void nl_srv_nl_close_indication(int pid);
 #endif /* WLAN_KD_READY_NOTIFIER */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 #endif

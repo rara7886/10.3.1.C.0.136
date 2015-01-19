@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -20,6 +23,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -41,6 +45,8 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limSendSmeRspMessages.h contains the definitions for
@@ -52,10 +58,14 @@
  * Date           Modified by    Modification Information
  * --------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
  * 
 =======
  *
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * 
+>>>>>>> 657b0e9... prima update
  */
 #ifndef __LIM_SEND_SME_RSP_H
 #define __LIM_SEND_SME_RSP_H
@@ -70,11 +80,14 @@ void limSendSmeRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes, tANI_U8 , tANI_U16
 void limSendSmeStartBssRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes,tpPESession,tANI_U8,tANI_U16);
 void limSendSmeScanRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes,tANI_U8, tANI_U16);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 void limSendSmeLfrScanRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes,tANI_U8, tANI_U16);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 void limPostSmeScanRspMessage(tpAniSirGlobal, tANI_U16, tSirResultCodes,tANI_U8,tANI_U16); 
 void limSendSmeAuthRsp(tpAniSirGlobal, tSirResultCodes,
                        tSirMacAddr, tAniAuthType, tANI_U16,tpPESession,tANI_U8,tANI_U16);
@@ -85,6 +98,7 @@ void limSendSmeDeauthNtf(tpAniSirGlobal, tSirMacAddr, tSirResultCodes, tANI_U16,
 void limSendSmeDisassocInd(tpAniSirGlobal, tpDphHashNode,tpPESession);
 void limSendSmeDeauthInd(tpAniSirGlobal, tpDphHashNode, tpPESession psessionEntry);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
@@ -92,6 +106,10 @@ void limSendSmeDeauthInd(tpAniSirGlobal, tpDphHashNode, tpPESession psessionEntr
 void limSendSmeCandidateFoundInd(tpAniSirGlobal, tANI_U8);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+
+>>>>>>> 657b0e9... prima update
 
 void limSendSmeWmStatusChangeNtf(tpAniSirGlobal, tSirSmeStatusChangeCode, tANI_U32 *, tANI_U16, tANI_U8);
 void limSendSmeSetContextRsp(tpAniSirGlobal,
@@ -100,11 +118,17 @@ void limSendSmePromiscuousModeRsp(tpAniSirGlobal pMac);
 void limSendSmeNeighborBssInd(tpAniSirGlobal,
                               tLimScanResultNode *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
 void limSendSmeMeasurementInd(tpAniSirGlobal);
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+void limSendSmeMeasurementInd(tpAniSirGlobal);
+#endif
+>>>>>>> 657b0e9... prima update
 void limHandleDeleteBssRsp(tpAniSirGlobal pMac,tpSirMsgQ MsgQ);
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -122,11 +146,14 @@ void limSendSmeStatsRsp(tpAniSirGlobal pMac, tANI_U16 msgtype, void * stats);
 
 void limSendSmePEStatisticsRsp(tpAniSirGlobal pMac, tANI_U16 msgtype, void * stats);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 void limSendSmePEGetRoamRssiRsp(tpAniSirGlobal pMac, tANI_U16 msgtype, void * stats);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 void limSendSmeRemoveKeyRsp(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCodes resultCode,tpPESession,tANI_U8,tANI_U16);
 
 
@@ -144,6 +171,7 @@ void limSendSmePreChannelSwitchInd(tpAniSirGlobal pMac);
 void limSendSmePostChannelSwitchInd(tpAniSirGlobal pMac);
 void limSendSmeMaxAssocExceededNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tANI_U8 smesessionId);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
 void limSendSmeTdlsDisRsp(tpAniSirGlobal pMac, tSirResultCodes statusCode, tANI_U16 msgType);
@@ -154,6 +182,8 @@ void limSendSmeTdlsLinkEstablishReqRsp(tpAniSirGlobal pMac,
                                        tANI_U8 status);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #endif /* __LIM_SEND_SME_RSP_H */
 

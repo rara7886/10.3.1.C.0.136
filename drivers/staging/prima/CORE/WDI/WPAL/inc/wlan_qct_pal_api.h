@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -76,10 +79,14 @@
 
 // macro to get the ceiling of an integer division operation...
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WPAL_CEIL_DIV( _a, _b ) ( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ) 
 =======
 #define WPAL_CEIL_DIV( _a, _b ) (( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WPAL_CEIL_DIV( _a, _b ) ( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ) 
+>>>>>>> 657b0e9... prima update
 
 // macro to return the floor of an integer division operation
 #define WPAL_FLOOR_DIV( _a, _b ) ( ( (_a) - ( (_a) % (_b) ) ) / (_b) )
@@ -89,12 +96,17 @@
 
 #define WPAL_SWAP_U32(_x) \
 <<<<<<< HEAD
+<<<<<<< HEAD
    ( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
    ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) )
 =======
   (( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
    ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   ( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
+   ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) )
+>>>>>>> 657b0e9... prima update
 
 // Endian operations for Big Endian and Small Endian modes
 #ifndef ANI_BIG_BYTE_ENDIAN
@@ -337,6 +349,7 @@ wpt_status wpalRivaSubystemRestart(void);
 ---------------------------------------------------------------------------*/
 void wpalWlanReload(void);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 /*---------------------------------------------------------------------------
@@ -365,4 +378,6 @@ void wpalFwDumpReq(wpt_uint32 cmd, wpt_uint32 arg1, wpt_uint32 arg2,
                     wpt_uint32 arg3, wpt_uint32 arg4);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif // __WLAN_QCT_PAL_API_H

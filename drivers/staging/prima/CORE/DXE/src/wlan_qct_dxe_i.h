@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,9 +46,12 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef WLAN_QCT_DXE_I_H
 #define WLAN_QCT_DXE_I_H
 
@@ -57,6 +63,7 @@
                
    This file contains the external API exposed by the wlan data transfer abstraction layer module.
 <<<<<<< HEAD
+<<<<<<< HEAD
    Copyright (c) 2011 QUALCOMM Incorporated.
    All Rights Reserved.
    Qualcomm Confidential and Proprietary
@@ -65,6 +72,11 @@
    All Rights Reserved.
    Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   Copyright (c) 2011 QUALCOMM Incorporated.
+   All Rights Reserved.
+   Qualcomm Confidential and Proprietary
+>>>>>>> 657b0e9... prima update
 ========================================================================*/
 
 /*===========================================================================
@@ -110,10 +122,15 @@ when           who        what, where, why
 /* Start with base address */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WLANDXE_BMU_AVAILABLE_BD_PDU     0x03080084
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WLANDXE_BMU_AVAILABLE_BD_PDU     0x03080084
+
+>>>>>>> 657b0e9... prima update
 #ifdef WCN_PRONTO
 #define WLANDXE_CCU_DXE_INT_SELECT       0xfb2050dc
 #define WLANDXE_CCU_DXE_INT_SELECT_STAT  0xfb2050e0
@@ -134,6 +151,7 @@ when           who        what, where, why
 #endif
 #endif /* PAL_OS_TYPE_BMP */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define WLANDXE_REGISTER_BASE_ADDRESS    WLANDXE_WCNSS_BASE_ADDRESS + 0x202000
 
@@ -184,43 +202,47 @@ when           who        what, where, why
 #define WLANDXE_BMU_AVAILABLE_BD_PDU     (WLANDXE_WCNSS_BASE_ADDRESS + 0x80084)
 
 #define WLANDXE_REGISTER_BASE_ADDRESS    (WLANDXE_WCNSS_BASE_ADDRESS + 0x202000)
+=======
+#define WLANDXE_REGISTER_BASE_ADDRESS    WLANDXE_WCNSS_BASE_ADDRESS + 0x202000
+>>>>>>> 657b0e9... prima update
 
 /* Common over the channels register addresses */
-#define WALNDEX_DMA_CSR_ADDRESS          (WLANDXE_REGISTER_BASE_ADDRESS + 0x00)
-#define WALNDEX_DMA_ENCH_ADDRESS         (WLANDXE_REGISTER_BASE_ADDRESS + 0x04)
-#define WALNDEX_DMA_CH_EN_ADDRESS        (WLANDXE_REGISTER_BASE_ADDRESS + 0x08)
-#define WALNDEX_DMA_CH_DONE_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x0C)
-#define WALNDEX_DMA_CH_ERR_ADDRESS       (WLANDXE_REGISTER_BASE_ADDRESS + 0x10)
-#define WALNDEX_DMA_CH_STOP_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x14)
+#define WALNDEX_DMA_CSR_ADDRESS          WLANDXE_REGISTER_BASE_ADDRESS + 0x00
+#define WALNDEX_DMA_ENCH_ADDRESS         WLANDXE_REGISTER_BASE_ADDRESS + 0x04
+#define WALNDEX_DMA_CH_EN_ADDRESS        WLANDXE_REGISTER_BASE_ADDRESS + 0x08
+#define WALNDEX_DMA_CH_DONE_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x0C
+#define WALNDEX_DMA_CH_ERR_ADDRESS       WLANDXE_REGISTER_BASE_ADDRESS + 0x10
+#define WALNDEX_DMA_CH_STOP_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x14
 
 /* Interrupt Control register address */
-#define WLANDXE_INT_MASK_REG_ADDRESS     (WLANDXE_REGISTER_BASE_ADDRESS + 0x18)
-#define WLANDXE_INT_SRC_MSKD_ADDRESS     (WLANDXE_REGISTER_BASE_ADDRESS + 0x1C)
-#define WLANDXE_INT_SRC_RAW_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x20)
-#define WLANDXE_INT_ED_SRC_ADDRESS       (WLANDXE_REGISTER_BASE_ADDRESS + 0x24)
-#define WLANDXE_INT_DONE_SRC_ADDRESS     (WLANDXE_REGISTER_BASE_ADDRESS + 0x28)
-#define WLANDXE_INT_ERR_SRC_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x2C)
-#define WLANDXE_INT_CLR_ADDRESS          (WLANDXE_REGISTER_BASE_ADDRESS + 0x30)
-#define WLANDXE_INT_ED_CLR_ADDRESS       (WLANDXE_REGISTER_BASE_ADDRESS + 0x34)
-#define WLANDXE_INT_DONE_CLR_ADDRESS     (WLANDXE_REGISTER_BASE_ADDRESS + 0x38)
-#define WLANDXE_INT_ERR_CLR_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x3C)
+#define WLANDXE_INT_MASK_REG_ADDRESS     WLANDXE_REGISTER_BASE_ADDRESS + 0x18
+#define WLANDXE_INT_SRC_MSKD_ADDRESS     WLANDXE_REGISTER_BASE_ADDRESS + 0x1C
+#define WLANDXE_INT_SRC_RAW_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x20
+#define WLANDXE_INT_ED_SRC_ADDRESS       WLANDXE_REGISTER_BASE_ADDRESS + 0x24
+#define WLANDXE_INT_DONE_SRC_ADDRESS     WLANDXE_REGISTER_BASE_ADDRESS + 0x28
+#define WLANDXE_INT_ERR_SRC_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x2C
+#define WLANDXE_INT_CLR_ADDRESS          WLANDXE_REGISTER_BASE_ADDRESS + 0x30
+#define WLANDXE_INT_ED_CLR_ADDRESS       WLANDXE_REGISTER_BASE_ADDRESS + 0x34
+#define WLANDXE_INT_DONE_CLR_ADDRESS     WLANDXE_REGISTER_BASE_ADDRESS + 0x38
+#define WLANDXE_INT_ERR_CLR_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x3C
 
-#define WLANDXE_DMA_CH_PRES_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x40)
-#define WLANDXE_ARB_CH_MSK_CLR_ADDRRESS  (WLANDXE_REGISTER_BASE_ADDRESS + 0x74)
+#define WLANDXE_DMA_CH_PRES_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x40
+#define WLANDXE_ARB_CH_MSK_CLR_ADDRRESS  WLANDXE_REGISTER_BASE_ADDRESS + 0x74
 
 /* Channel Counter register */
-#define WLANDXE_DMA_COUNTER_0            (WLANDXE_REGISTER_BASE_ADDRESS + 0x200)
-#define WLANDXE_DMA_COUNTER_1            (WLANDXE_REGISTER_BASE_ADDRESS + 0x204)
-#define WLANDXE_DMA_COUNTER_2            (WLANDXE_REGISTER_BASE_ADDRESS + 0x208)
-#define WLANDXE_DMA_COUNTER_3            (WLANDXE_REGISTER_BASE_ADDRESS + 0x20C)
-#define WLANDXE_DMA_COUNTER_4            (WLANDXE_REGISTER_BASE_ADDRESS + 0x210)
-#define WLANDXE_DMA_COUNTER_5            (WLANDXE_REGISTER_BASE_ADDRESS + 0x214)
-#define WLANDXE_DMA_COUNTER_6            (WLANDXE_REGISTER_BASE_ADDRESS + 0x218)
+#define WLANDXE_DMA_COUNTER_0            WLANDXE_REGISTER_BASE_ADDRESS + 0x200
+#define WLANDXE_DMA_COUNTER_1            WLANDXE_REGISTER_BASE_ADDRESS + 0x204
+#define WLANDXE_DMA_COUNTER_2            WLANDXE_REGISTER_BASE_ADDRESS + 0x208
+#define WLANDXE_DMA_COUNTER_3            WLANDXE_REGISTER_BASE_ADDRESS + 0x20C
+#define WLANDXE_DMA_COUNTER_4            WLANDXE_REGISTER_BASE_ADDRESS + 0x210
+#define WLANDXE_DMA_COUNTER_5            WLANDXE_REGISTER_BASE_ADDRESS + 0x214
+#define WLANDXE_DMA_COUNTER_6            WLANDXE_REGISTER_BASE_ADDRESS + 0x218
 
-#define WLANDXE_ENGINE_STAT_ADDRESS      (WLANDXE_REGISTER_BASE_ADDRESS + 0x64)
-#define WLANDXE_BMU_SB_QDAT_AV_ADDRESS   (WLANDXE_REGISTER_BASE_ADDRESS + 0x5c)
+#define WLANDXE_ENGINE_STAT_ADDRESS      WLANDXE_REGISTER_BASE_ADDRESS + 0x64
+#define WLANDXE_BMU_SB_QDAT_AV_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x5c
 
 /* Channel Base address */
+<<<<<<< HEAD
 #define WLANDXE_DMA_CHAN0_BASE_ADDRESS   (WLANDXE_REGISTER_BASE_ADDRESS + 0x400)
 #define WLANDXE_DMA_CHAN1_BASE_ADDRESS   (WLANDXE_REGISTER_BASE_ADDRESS + 0x440)
 #define WLANDXE_DMA_CHAN2_BASE_ADDRESS   (WLANDXE_REGISTER_BASE_ADDRESS + 0x480)
@@ -229,6 +251,15 @@ when           who        what, where, why
 #define WLANDXE_DMA_CHAN5_BASE_ADDRESS   (WLANDXE_REGISTER_BASE_ADDRESS + 0x540)
 #define WLANDXE_DMA_CHAN6_BASE_ADDRESS   (WLANDXE_REGISTER_BASE_ADDRESS + 0x580)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WLANDXE_DMA_CHAN0_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x400
+#define WLANDXE_DMA_CHAN1_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x440
+#define WLANDXE_DMA_CHAN2_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x480
+#define WLANDXE_DMA_CHAN3_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x4C0
+#define WLANDXE_DMA_CHAN4_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x500
+#define WLANDXE_DMA_CHAN5_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x540
+#define WLANDXE_DMA_CHAN6_BASE_ADDRESS   WLANDXE_REGISTER_BASE_ADDRESS + 0x580
+>>>>>>> 657b0e9... prima update
 
 /* Channel specific register offset */
 #define WLANDXE_DMA_CH_CTRL_REG          0x0000
@@ -445,9 +476,12 @@ when           who        what, where, why
 
 #define WLANDXE_CH_STAT_MASKED_MASK     0x00000008
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define WLANDXE_CH_STAT_ENABLED_MASK    0x00000001
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /* Till here WCNSS DXE register information
  * This is temporary definition location to make compile and unit test
  * If official msmreg.h integrated, this part will be eliminated */
@@ -712,9 +746,12 @@ typedef struct
    wpt_boolean                     rxPalPacketUnavailable;
    wpt_boolean                     driverReloadInProcessing;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpt_boolean                     smsmToggled;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 } WLANDXE_CtrlBlkType;
 
 /*==========================================================================

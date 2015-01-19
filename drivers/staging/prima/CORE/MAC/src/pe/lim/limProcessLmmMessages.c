@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,9 +47,13 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ *
+>>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limProcessLmmMessages.cc contains the code
  * for processing SME/LMM messages related to ANI feature set.
@@ -61,6 +68,7 @@
 #include "aniGlobal.h"
 #include "wniApi.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -69,6 +77,13 @@
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+#include "wniCfgAp.h"
+#else
+#include "wniCfgSta.h"
+#endif
+>>>>>>> 657b0e9... prima update
 #include "cfgApi.h"
 #include "sirApi.h"
 #include "schApi.h"
@@ -82,6 +97,9 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED) && (WNI_POLARIS_FW_PRODUCT == AP)
 /**
  * limIsSmeMeasurementReqValid()
@@ -827,5 +845,8 @@ limProcessLmmMessages(tpAniSirGlobal pMac, tANI_U32 msgType, tANI_U32 *pMsgBuf)
 } /*** end limProcessLmmMessages() ***/
 
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

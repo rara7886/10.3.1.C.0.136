@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -267,10 +270,14 @@ WLAN_BAPReadLinkQuality
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIReadLinkQuality) ||
@@ -278,10 +285,14 @@ WLAN_BAPReadLinkQuality
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -298,10 +309,14 @@ WLAN_BAPReadLinkQuality
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid Physical link handle in %s", __FUNCTION__);
 =======
                    "Invalid Physical link handle in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid Physical link handle in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Read_Link_Quality.status
             = WLANBAP_ERROR_INVALID_HCI_CMND_PARAM;
     }
@@ -376,10 +391,14 @@ WLAN_BAPReadRSSI
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIReadRSSI) ||
@@ -387,10 +406,14 @@ WLAN_BAPReadRSSI
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -407,10 +430,14 @@ WLAN_BAPReadRSSI
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid Physical link handle in %s", __FUNCTION__);
 =======
                    "Invalid Physical link handle in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid Physical link handle in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Read_RSSI.status
             = WLANBAP_ERROR_INVALID_HCI_CMND_PARAM;
     }
@@ -497,10 +524,14 @@ WLAN_BAPReadLocalAMPInfo
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 657b0e9... prima update
 
 
     /* Format the command complete event to return... */ 
@@ -601,10 +632,14 @@ WLAN_BAPReadLocalAMPAssoc
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "param is NULL in %s", __FUNCTION__);
 =======
                      "param is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "param is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_FAULT;
     }
@@ -612,6 +647,7 @@ WLAN_BAPReadLocalAMPAssoc
     if (NULL == hHal) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                      "hHal is NULL in %s", __FUNCTION__);
       return VOS_STATUS_E_FAULT;
@@ -623,14 +659,21 @@ WLAN_BAPReadLocalAMPAssoc
             "In %s, phy_link_handle = %d", __FUNCTION__, 
 =======
                      "hHal is NULL in %s", __func__);
+=======
+                     "hHal is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAULT;
     }
 
-    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, 
+<<<<<<< HEAD
             "In %s, phy_link_handle = %d", __func__, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "In %s, phy_link_handle = %d", __FUNCTION__, 
+>>>>>>> 657b0e9... prima update
             pBapHCIReadLocalAMPAssoc->phy_link_handle); 
 
     /* Update the MAC address and SSID if in case the Read Local AMP Assoc
@@ -780,10 +823,14 @@ AMP ASSOC Pal Capabilities: Size: 4 Octets
             &nConsumed);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: nConsumed value: %d", __FUNCTION__,  nConsumed); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: nConsumed value: %d", __func__,  nConsumed); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: nConsumed value: %d", __FUNCTION__,  nConsumed); 
+>>>>>>> 657b0e9... prima update
 
     /* Format the command complete event to return... */ 
     pBapHCIEvent->bapHCIEventCode = BTAMP_TLV_HCI_COMMAND_COMPLETE_EVENT;
@@ -796,10 +843,14 @@ AMP ASSOC Pal Capabilities: Size: 4 Octets
        btampContext->phy_link_handle) { 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Wrong Physical Link handle in Read Local AMP Assoc cmd: current: %x, new: %x", __FUNCTION__,  
 =======
                 "%s: Wrong Physical Link handle in Read Local AMP Assoc cmd: current: %x, new: %x", __func__,  
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Wrong Physical Link handle in Read Local AMP Assoc cmd: current: %x, new: %x", __FUNCTION__,  
+>>>>>>> 657b0e9... prima update
                 btampContext->phy_link_handle, 
                 pBapHCIReadLocalAMPAssoc->phy_link_handle);
 
@@ -873,20 +924,28 @@ WLAN_BAPWriteRemoteAMPAssoc
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 657b0e9... prima update
 
     /* Fill in the event structure */ 
     bapEvent.event = eWLAN_BAP_HCI_WRITE_REMOTE_AMP_ASSOC;
     bapEvent.params = pBapHCIWriteRemoteAMPAssoc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %x", __FUNCTION__,  btampContext); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %p", __func__,  btampContext);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %x", __FUNCTION__,  btampContext); 
+>>>>>>> 657b0e9... prima update
 
     /* Handle event */ 
     vosStatus = btampFsm(btampContext, &bapEvent, &status);

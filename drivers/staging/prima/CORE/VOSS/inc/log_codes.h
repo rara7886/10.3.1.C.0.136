@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -2026,6 +2029,7 @@ when       who     what, where, why
 #define LOG_GNSS_PDSM_PPM_SESSION_END_C                             ((0x4E9) + LOG_1X_BASE_C)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* The last defined DMSS log code */
 #define LOG_1X_LAST_C                                   ((0x4E9) + LOG_1X_BASE_C)
 =======
@@ -2034,6 +2038,10 @@ when       who     what, where, why
 /* The last defined DMSS log code */
 #define LOG_1X_LAST_C                                   ((0x801) + LOG_1X_BASE_C)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/* The last defined DMSS log code */
+#define LOG_1X_LAST_C                                   ((0x4E9) + LOG_1X_BASE_C)
+>>>>>>> 657b0e9... prima update
 
 
 /* This is only here for old (pre equipment ID update) logging code */

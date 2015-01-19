@@ -23,6 +23,7 @@ ui_print("Set Permission");
 set_perm(0, 0, 0644, "system/etc/firmware/wlan/prima/WCNSS_cfg.dat");
 set_perm(0, 0, 0644, "system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini");
 #set_perm(0, 0, 0644, "system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin");
+<<<<<<< HEAD
 
 set_perm(0, 0, 0644, "system/lib/modules/prima/prima_wlan.ko");
 set_perm(0, 0, 0644, "system/lib/modules/cfg80211.ko");
@@ -50,6 +51,11 @@ set_perm(0, 0, 0644, "system/lib/modules/oprofile.ko");
 #set_perm(0, 0, 0644, "system/lib/modules/exfat_fs.ko");
 
 
+=======
+set_perm(0, 0, 0644, "system/lib/modules/prima/prima_wlan.ko");
+set_perm(0, 0, 0644, "system/lib/modules/cfg80211.ko");
+#set_perm(0, 0, 0644, "system/lib/modules/texfat.ko");
+>>>>>>> 657b0e9... prima update
 
 ui_print("flash complete. Enjoy!");
 set_progress(1.000000);

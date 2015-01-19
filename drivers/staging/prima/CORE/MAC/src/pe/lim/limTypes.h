@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -42,9 +45,13 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limTypes.h contains the definitions used by all
@@ -66,15 +73,23 @@
 #include "utilsApi.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halCommonApi.h"
 #endif 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
+<<<<<<< HEAD
 #include "wlan_qct_wdi_ds.h"
 #endif
 =======
 #include "wlan_qct_wdi_ds.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#include "wlan_qct_wdi_ds.h"
+#endif
+>>>>>>> 657b0e9... prima update
 
 #include "limApi.h"
 #include "limDebug.h"
@@ -94,6 +109,9 @@
 #define LIM_MLM_MSG_START           1000
 #define LIM_MLM_SCAN_REQ            LIM_MLM_MSG_START
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define LIM_MLM_SCAN_CNF            LIM_MLM_MSG_START + 1
 #define LIM_MLM_START_REQ           LIM_MLM_MSG_START + 2
 #define LIM_MLM_START_CNF           LIM_MLM_MSG_START + 3
@@ -130,6 +148,7 @@
 #define LIM_MLM_DELBA_IND           LIM_MLM_MSG_START + 38
 #define LIM_MLM_REMOVEKEY_REQ  LIM_MLM_MSG_START + 39
 #define LIM_MLM_REMOVEKEY_CNF  LIM_MLM_MSG_START + 40
+<<<<<<< HEAD
 
 #ifdef FEATURE_OEM_DATA_SUPPORT
 #define LIM_MLM_OEM_DATA_REQ            LIM_MLM_MSG_START + 41
@@ -176,6 +195,12 @@
 #define LIM_MLM_OEM_DATA_REQ            (LIM_MLM_MSG_START + 41)
 #define LIM_MLM_OEM_DATA_CNF            (LIM_MLM_MSG_START + 42)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+#ifdef FEATURE_OEM_DATA_SUPPORT
+#define LIM_MLM_OEM_DATA_REQ            LIM_MLM_MSG_START + 41
+#define LIM_MLM_OEM_DATA_CNF            LIM_MLM_MSG_START + 42
+>>>>>>> 657b0e9... prima update
 #endif
 
 #define LIM_HASH_ADD            0
@@ -263,16 +288,22 @@ typedef struct sLimMlmStartReq
     tANI_U8                    dualCTSProtection;
     tANI_U8                    txChannelWidthSet;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
     tANI_U8              ssidHidden;
     tANI_U8              wps_state;
     tANI_U8              obssProtEnabled;
 #endif
+<<<<<<< HEAD
 =======
     tANI_U8              ssidHidden;
     tANI_U8              wps_state;
     tANI_U8              obssProtEnabled;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 } tLimMlmStartReq, *tpLimMlmStartReq;
 
 typedef struct sLimMlmStartCnf
@@ -326,10 +357,14 @@ typedef struct sLimMlmAssocInd
     tAniSSID             ssId;
     tSirRSNie            rsnIE;
 <<<<<<< HEAD
+<<<<<<< HEAD
     tSirAddie            addIE; // additional IE recevied from the peer, which possibly includes WSC IE and/or P2P IE.
 =======
     tSirAddie            addIE; // additional IE received from the peer, which possibly includes WSC IE and/or P2P IE.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tSirAddie            addIE; // additional IE recevied from the peer, which possibly includes WSC IE and/or P2P IE.
+>>>>>>> 657b0e9... prima update
     tSirMacCapabilityInfo capabilityInfo;
     tAniBool                spectrumMgtIndicator;
     tSirMacPowerCapInfo     powerCap;
@@ -337,6 +372,7 @@ typedef struct sLimMlmAssocInd
     tANI_U8                 sessionId;
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tAniBool               WmmStaInfoPresent;
@@ -354,9 +390,27 @@ typedef struct sLimMlmAssocInd
     tSirNeighborBssInfo  neighborList[1]; // List received from STA
 #endif
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     tAniBool               WmmStaInfoPresent;
+#endif
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED) 
+    tANI_U16                  seqNum;
+    tAniBool             wniIndicator;
+    tAniBool             bpIndicator;
+    tSirBpIndicatorType  bpType;
+    tSirNwType           nwType;
+    tSirAssocType        assocType; // Indicates whether STA is LB'ed or not
+    tSirLoad             load; // Current load on the radio for LB
+    tANI_U32                  numBss; // List received from STA
+    tSirNeighborBssInfo  neighborList[1]; // List received from STA
+#endif
+>>>>>>> 657b0e9... prima update
     // Required for indicating the frames to upper layer
     tANI_U32             beaconLength;
     tANI_U8*             beaconPtr;
@@ -389,15 +443,20 @@ typedef struct sLimMlmReassocInd
     tAniSSID             ssId;
     tSirRSNie            rsnIE;
 <<<<<<< HEAD
+<<<<<<< HEAD
     tSirAddie            addIE; // additional IE recevied from the peer, which can be WSC IE and/or P2P IE.
 =======
     tSirAddie            addIE; // additional IE received from the peer, which can be WSC IE and/or P2P IE.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tSirAddie            addIE; // additional IE recevied from the peer, which can be WSC IE and/or P2P IE.
+>>>>>>> 657b0e9... prima update
     tSirMacCapabilityInfo capabilityInfo;
     tAniBool                spectrumMgtIndicator;
     tSirMacPowerCapInfo     powerCap;
     tSirSupChnl             supportedChannels;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tAniBool               WmmStaInfoPresent;
@@ -415,9 +474,27 @@ typedef struct sLimMlmReassocInd
     tSirNeighborBssInfo  neighborList[1]; // List received from STA
 #endif
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     tAniBool               WmmStaInfoPresent;
+#endif
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED) 
+    tANI_U16                  seqNum;
+    tAniBool             wniIndicator;
+    tAniBool             bpIndicator;
+    tSirBpIndicatorType  bpType;
+    tSirNwType           nwType;
+    tSirAssocType        reassocType; // Indicates whether STA is LB'ed or not
+    tSirLoad             load; // Current load on the radio for LB
+    tANI_U32                  numBss; // List received from STA
+    tSirNeighborBssInfo  neighborList[1]; // List received from STA
+#endif
+>>>>>>> 657b0e9... prima update
     // Required for indicating the frames to upper layer
     tANI_U32             beaconLength;
     tANI_U8*             beaconPtr;
@@ -567,11 +644,17 @@ typedef struct sLimMlmLinkTestStopReq
     tSirMacAddr    peerMacAddr;
     tANI_U8       sessionId;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
     tANI_U16             aid;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+    tANI_U16             aid;
+#endif
+>>>>>>> 657b0e9... prima update
 } tLimMlmLinkTestStopReq, *tpLimMlmLinkTestStopReq;
 
 
@@ -757,14 +840,20 @@ void limHandleCFGparamUpdate(tpAniSirGlobal, tANI_U32);
 void limApplyConfiguration(tpAniSirGlobal,tpPESession);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 void limSetCfgProtection(tpAniSirGlobal pMac, tpPESession pesessionEntry);
 #else
 void limSetCfgProtection(tpAniSirGlobal pMac);
 #endif
+<<<<<<< HEAD
 =======
 void limSetCfgProtection(tpAniSirGlobal pMac, tpPESession pesessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 // Function to Initialize MLM state machine on STA
@@ -789,10 +878,14 @@ void limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal, tANI_U8 *,tpPESession)
 void limProcessAuthFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 #ifdef WLAN_FEATURE_VOWIFI_11R
 <<<<<<< HEAD
+<<<<<<< HEAD
 int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *, void *body);
 =======
 tSirRetStatus limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *, void *body);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *, void *body);
+>>>>>>> 657b0e9... prima update
 #endif
 
 void limProcessAssocReqFrame(tpAniSirGlobal, tANI_U8 *, tANI_U8, tpPESession);
@@ -804,12 +897,18 @@ void limProcessDisassocFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 void limProcessDeauthFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 void limProcessActionFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 void limProcessActionFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxMetaInfo);
 #endif
 =======
 void limProcessActionFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxMetaInfo);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined WLAN_FEATURE_P2P
+void limProcessActionFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxMetaInfo);
+#endif
+>>>>>>> 657b0e9... prima update
 
 
 tSirRetStatus limPopulateMacHeader(tpAniSirGlobal, tANI_U8*, tANI_U8, tANI_U8, tSirMacAddr,tSirMacAddr);
@@ -831,6 +930,7 @@ void limSendAddtsRspActionFrame(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr,
                            tANI_U16 statusCode, tSirAddtsReqInfo *addts, tSirMacScheduleIE *pSchedule,tpPESession);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
 void limSendAssocRspMgmtFrame(tpAniSirGlobal, tANI_U16, tANI_U16, tSirMacAddr, tANI_U8, tpDphHashNode pSta,tpPESession);
 #endif
@@ -846,10 +946,21 @@ void limSendNullDataFrame(tpAniSirGlobal, tpDphHashNode);
 void limSendDisassocMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr, tpPESession, tANI_BOOLEAN waitForAck);
 void limSendDeauthMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr, tpPESession, tANI_BOOLEAN waitForAck);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+void limSendAssocRspMgmtFrame(tpAniSirGlobal, tANI_U16, tANI_U16, tSirMacAddr, tANI_U8, tpDphHashNode pSta,tpPESession);
+#endif
+void limSendAssocRspMgmtFrame(tpAniSirGlobal, tANI_U16, tANI_U16, tSirMacAddr, tANI_U8, tpDphHashNode pSta,tpPESession);
+
+void limSendNullDataFrame(tpAniSirGlobal, tpDphHashNode);
+void limSendDisassocMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr,tpPESession);
+void limSendDeauthMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr,tpPESession);
+>>>>>>> 657b0e9... prima update
 
 void limContinueChannelScan(tpAniSirGlobal);
 tSirResultCodes limMlmAddBss(tpAniSirGlobal, tLimMlmStartReq *,tpPESession psessionEntry);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if 1 //(WNI_POLARIS_FW_PACKAGE == ADVANCED) && defined(ANI_PRODUCT_TYPE_AP)
 tSirRetStatus limSendChannelSwitchMgmtFrame(tpAniSirGlobal, tSirMacAddr, tANI_U8, tANI_U8, tANI_U8, tpPESession);
@@ -860,6 +971,10 @@ tSirRetStatus limSendChannelSwitchMgmtFrame(tpAniSirGlobal, tSirMacAddr, tANI_U8
 tSirRetStatus limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,tSirMacAddr peer,tANI_U8 nMode, tpPESession  psessionEntry );
 tSirRetStatus limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,tSirMacAddr peer,tANI_U8 nChanWidth, tANI_U8 nNewChannel, tANI_U8 ncbMode, tpPESession  psessionEntry );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if 1 //(WNI_POLARIS_FW_PACKAGE == ADVANCED) && defined(ANI_PRODUCT_TYPE_AP)
+tSirRetStatus limSendChannelSwitchMgmtFrame(tpAniSirGlobal, tSirMacAddr, tANI_U8, tANI_U8, tANI_U8, tpPESession);
+>>>>>>> 657b0e9... prima update
 #endif
 
 #if defined WLAN_FEATURE_VOWIFI
@@ -872,6 +987,7 @@ tSirRetStatus limSendRadioMeasureReportActionFrame(tpAniSirGlobal, tANI_U8, tANI
 void limProcessIappFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 #endif
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
@@ -908,6 +1024,8 @@ tSirRetStatus limSendTdlsTeardownFrame(tpAniSirGlobal pMac,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 // Algorithms & Link Monitoring related functions
 tSirBackgroundScanMode limSelectsBackgroundScanMode(tpAniSirGlobal);
 void limTriggerBackgroundScan(tpAniSirGlobal);
@@ -920,6 +1038,9 @@ void limHandleHeartBeatFailure(tpAniSirGlobal,tpPESession);
 void limTearDownLinkWithAp(tpAniSirGlobal,tANI_U8, tSirMacReasonCodes);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef ANI_PRODUCT_TYPE_AP
 /// Function that performs periodic release of AIDs
 void limReleaseAIDHandler(tpAniSirGlobal);
@@ -933,8 +1054,11 @@ void limHandleCFpollRsp(tANI_U32);
 /// Function that processes PS-poll message from PMM
 void limHandlePSpoll(tANI_U32);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /// Function that sends keep alive message to peer(s)
 void limSendKeepAliveToPeer(tpAniSirGlobal);
@@ -1009,10 +1133,13 @@ void limSendHalFinishScanReq( tpAniSirGlobal, tLimLimHalScanState);
 
 void limContinuePostChannelScan(tpAniSirGlobal pMac);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 void limCovertChannelScanType(tpAniSirGlobal pMac,tANI_U8 channelNum, tANI_BOOLEAN passiveToActive);
 void limSetDFSChannelList(tpAniSirGlobal pMac,tANI_U8 channelNum, tSirDFSChannelList *dfsChannelList);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 void limContinueChannelLearn( tpAniSirGlobal );
 //WLAN_SUSPEND_LINK Related
 tANI_U8 limIsLinkSuspended(tpAniSirGlobal pMac);
@@ -1047,10 +1174,14 @@ void limProcessLearnIntervalTimeout(tpAniSirGlobal pMac);
 //11w SA query request action frame handler
 tSirRetStatus limSendSaQueryResponseFrame( tpAniSirGlobal pMac, 
 <<<<<<< HEAD
+<<<<<<< HEAD
                    tANI_U16 transId, tSirMacAddr peer,tpPESession psessionEntry);
 =======
                    tANI_U8 *transId, tSirMacAddr peer,tpPESession psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   tANI_U16 transId, tSirMacAddr peer,tpPESession psessionEntry);
+>>>>>>> 657b0e9... prima update
 #endif
 // Inline functions
 
@@ -1085,10 +1216,14 @@ limPostSmeMessage(tpAniSirGlobal pMac, tANI_U32 msgType, tANI_U32 *pMsgBuf)
     if(pMsgBuf == NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         limLog(pMac, LOGE,FL("Buffer is Pointing to NULL\n"));
 =======
         limLog(pMac, LOGE,FL("Buffer is Pointing to NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        limLog(pMac, LOGE,FL("Buffer is Pointing to NULL\n"));
+>>>>>>> 657b0e9... prima update
            return;
     }
       
@@ -1134,10 +1269,14 @@ limPostMlmMessage(tpAniSirGlobal pMac, tANI_U32 msgType, tANI_U32 *pMsgBuf)
     if(pMsgBuf == NULL)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         limLog(pMac, LOGE,FL("Buffer is Pointing to NULL\n"));
 =======
         limLog(pMac, LOGE,FL("Buffer is Pointing to NULL"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        limLog(pMac, LOGE,FL("Buffer is Pointing to NULL\n"));
+>>>>>>> 657b0e9... prima update
            return;
     }
     msg.type = (tANI_U16) msgType;
@@ -1211,9 +1350,13 @@ limGetIElenFromBssDescription(tpSirBssDescription pBssDescr)
 } /*** end limGetIElenFromBssDescription() ***/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /**
  * limSendBeaconInd()
  *
@@ -1231,12 +1374,18 @@ limGetIElenFromBssDescription(tpSirBssDescription pBssDescr)
 void 
 limSendBeaconInd(tpAniSirGlobal pMac, tpPESession psessionEntry);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 
 void limGetWPSPBCSessions(tpAniSirGlobal pMac, tANI_U8 *addr, tANI_U8 *uuid_e, eWPSPBCOverlap *overlap, tpPESession psessionEntry);
 void limWPSPBCTimeout(tpAniSirGlobal pMac, tpPESession psessionEntry);
@@ -1249,9 +1398,13 @@ limIsSmeGetWPSPBCSessionsReqValid(tpAniSirGlobal pMac, tSirSmeGetWPSPBCSessionsR
 
 #define LIM_WPS_OVERLAP_TIMER_MS                 10000
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 void
 limSuspendLink(tpAniSirGlobal pMac, tSirLinkTrafficCheck trafficCheck,  SUSPEND_RESUME_LINK_CALLBACK callback, tANI_U32 *data);
@@ -1262,6 +1415,7 @@ void
 limChangeChannelWithCallback(tpAniSirGlobal pMac, tANI_U8 newChannel, 
    CHANGE_CHANNEL_CALLBACK callback, tANI_U32 *cbdata, tpPESession psessionEntry);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 void limSendSmeMgmtFrameInd(
@@ -1274,53 +1428,26 @@ void limAbortRemainOnChan(tpAniSirGlobal pMac);
 tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf);
 #endif
 =======
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 void limSendSmeMgmtFrameInd(
                     tpAniSirGlobal pMac, tANI_U8 frameType,
                     tANI_U8  *frame, tANI_U32 frameLen, tANI_U16 sessionId,
-                    tANI_U32 rxChan, tpPESession psessionEntry,
-                    tANI_S8 rxRssi);
+                    tANI_U32 rxChan, tpPESession psessionEntry);
 void limProcessRemainOnChnTimeout(tpAniSirGlobal pMac);
-void limProcessInsertSingleShotNOATimeout(tpAniSirGlobal pMac);
-void limConvertActiveChannelToPassiveChannel(tpAniSirGlobal pMac);
 void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg);
 void limAbortRemainOnChan(tpAniSirGlobal pMac);
 tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf);
-void limProcessRegdDefdSmeReqAfterNOAStart(tpAniSirGlobal pMac);
-#ifdef FEATURE_WLAN_TDLS_INTERNAL
-void limProcessTdlsFrame(tpAniSirGlobal, tANI_U32 *);
-void limProcessTdlsPublicActionFrame(tpAniSirGlobal pMac, tANI_U32 *pBd, 
-                                                               tpPESession) ;
-#ifdef FEATURE_WLAN_TDLS_NEGATIVE
-#define LIM_TDLS_NEGATIVE_WRONG_BSSID_IN_DSCV_REQ   0x1 /* 5.1.4-5 */
-#define LIM_TDLS_NEGATIVE_WRONG_BSSID_IN_SETUP_REQ  0x2 /* 5.2.4-16 */
-#define LIM_TDLS_NEGATIVE_STATUS_37_IN_SETUP_CNF    0x4 /* 5.2.4-10 */
-#define LIM_TDLS_NEGATIVE_SEND_REQ_TO_SETUP_REQ     0x8 /* 5.2.4-20/32 */
-#define LIM_TDLS_NEGATIVE_RSP_TIMEOUT_TO_SETUP_REQ  0x10 /* 5.2.3.4 */
-#define LIM_TDLS_NEGATIVE_TREAT_TDLS_PROHIBIT_AP    0x20 /* 5.2.4-49 */
-   /* following is not paticularily tested in WFA test plan, but will help to validate our TDLS behavior in-house */
-#define LIM_TDLS_NEGATIVE_WRONG_BSSID_IN_DSCV_RSP   0x40
-#define LIM_TDLS_NEGATIVE_WRONG_BSSID_IN_SETUP_RSP  0x80
-
-void limTdlsSetNegativeBehavior(tpAniSirGlobal pMac, tANI_U8 value, tANI_BOOLEAN on);
 #endif
-#endif
-
-void limProcessDisassocAckTimeout(tpAniSirGlobal pMac);
-void limProcessDeauthAckTimeout(tpAniSirGlobal pMac);
-eHalStatus limSendDisassocCnf(tpAniSirGlobal pMac);
-eHalStatus limSendDeauthCnf(tpAniSirGlobal pMac);
-
-#ifdef WLAN_FEATURE_VOWIFI_11R
-typedef struct sSetLinkCbackParams
-{
-    void * cbackDataPtr;
-} tSetLinkCbackParams;
-#endif
+<<<<<<< HEAD
 
 void limProcessRxScanEvent(tpAniSirGlobal mac, void *buf);
 
 int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg);
 void limRemainOnChnRsp(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif /* __LIM_TYPES_H */
 

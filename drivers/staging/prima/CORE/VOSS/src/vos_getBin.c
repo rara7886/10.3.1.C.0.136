@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,10 +50,14 @@
   \brief
   Description...
 <<<<<<< HEAD
+<<<<<<< HEAD
    Copyright (c) 2012 Qualcomm Atheros, Inc.
 =======
    Copyright (c) 2012-2013 Qualcomm Atheros, Inc.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   Copyright (c) 2012 Qualcomm Atheros, Inc.
+>>>>>>> 657b0e9... prima update
    All Rights Reserved.
    Qualcomm Atheros Confidential and Proprietary.
   ==============================================================================*/
@@ -72,10 +79,14 @@
   ----------------------------------------------------------------------------*/
 extern tVOS_CONCURRENCY_MODE hdd_get_concurrency_mode ( void );
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+>>>>>>> 657b0e9... prima update
 /**-----------------------------------------------------------------------------
   Function declarations and documenation
   ----------------------------------------------------------------------------*/
@@ -121,11 +132,14 @@ VOS_STATUS vos_get_binary_blob( VOS_BINARY_ID binaryId,
            pFileName = WLAN_HO_CFG_FILE;
            break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         case VOS_BINARY_ID_DICT_CONFIG:
            pFileName = WLAN_DICT_FILE;
            break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         default:
            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "Invalid binaryID");
            return VosSts;
@@ -153,6 +167,7 @@ VOS_STATUS vos_get_binary_blob( VOS_BINARY_ID binaryId,
        else {
              VosSts = VOS_STATUS_E_FAILURE;
        }
+<<<<<<< HEAD
 <<<<<<< HEAD
     }       
     
@@ -191,19 +206,46 @@ tVOS_CONCURRENCY_MODE vos_get_concurrency_mode( void )
     }
 
     return VosSts;
+=======
+    }       
+    
+    return VosSts;                                  
+>>>>>>> 657b0e9... prima update
 }
 
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+VOS_STATUS vos_get_fwbinary( v_VOID_t **ppBinary, v_SIZE_t *pNumBytes )
+{        
+   v_CONTEXT_t pVosContext;
+   VOS_STATUS status = VOS_STATUS_SUCCESS;
 
+   pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS,NULL);
+
+   if(pVosContext) {
+
+         status = hdd_request_firmware(WLAN_FW_FILE,((VosContextType*)(pVosContext))->pHDDContext,ppBinary,pNumBytes);
+
+   } 
+   return status;      
+}         
+#endif
+
+#ifdef WLAN_SOFTAP_FEATURE
 tVOS_CON_MODE vos_get_conparam( void )
 {
-    tVOS_CON_MODE con_mode;
+    tVOS_CON_MODE con_mode; 
     con_mode = hdd_get_conparam ( );
     return con_mode;
 }
+#endif
 tVOS_CONCURRENCY_MODE vos_get_concurrency_mode( void )
 {
+<<<<<<< HEAD
     tVOS_CONCURRENCY_MODE con_mode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tVOS_CONCURRENCY_MODE con_mode; 
+>>>>>>> 657b0e9... prima update
     con_mode = hdd_get_concurrency_mode ( );
     return con_mode;
 }
@@ -214,10 +256,14 @@ v_BOOL_t vos_concurrent_sessions_running(void)
     v_U8_t j=0;
     hdd_context_t *pHddCtx;
 <<<<<<< HEAD
+<<<<<<< HEAD
     v_CONTEXT_t pVosContext = vos_get_global_context( VOS_MODULE_ID_HDD, NULL );    
 =======
     v_CONTEXT_t pVosContext = vos_get_global_context( VOS_MODULE_ID_HDD, NULL );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    v_CONTEXT_t pVosContext = vos_get_global_context( VOS_MODULE_ID_HDD, NULL );    
+>>>>>>> 657b0e9... prima update
 
     if (NULL != pVosContext)
     {

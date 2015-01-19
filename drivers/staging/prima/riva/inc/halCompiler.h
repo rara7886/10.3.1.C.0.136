@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -150,6 +153,7 @@
 #elif defined(ANI_COMPILER_TYPE_RVCT)
 /* Nothing defined so far */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 /* 
@@ -171,6 +175,8 @@
 #define POSTPACK
 #else
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #define __ani_attr_packed
 #define __ani_attr_pre_packed                   __packed
 #define __ani_attr_aligned_2                    __align(2)
@@ -182,10 +188,13 @@
 #define PACKED_POST
 #define ALIGN(__value)                          __align(__value)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #else
 #error "Unknown compiler"
 #endif

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -165,20 +168,28 @@ WLAN_BAPReset
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if (btampHandle == NULL) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "btampHandle is NULL in %s", __FUNCTION__);
 =======
                      "btampHandle is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "btampHandle is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
       return VOS_STATUS_E_FAULT;
     }
@@ -189,10 +200,14 @@ WLAN_BAPReset
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "hHal is NULL in %s", __FUNCTION__);
 =======
                      "hHal is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "hHal is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_FAULT;
     }
@@ -324,10 +339,14 @@ WLAN_BAPFlush
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if (btampHandle == NULL) {
@@ -401,10 +420,14 @@ WLAN_EnhancedBAPFlush
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     /* Validate params */ 
@@ -412,10 +435,14 @@ WLAN_EnhancedBAPFlush
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -489,20 +516,28 @@ WLAN_BAPReadConnectionAcceptTimeout
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -566,10 +601,14 @@ WLAN_BAPWriteConnectionAcceptTimeout
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIWriteConnectionAcceptTimeout)
@@ -577,10 +616,14 @@ WLAN_BAPWriteConnectionAcceptTimeout
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -593,10 +636,14 @@ WLAN_BAPWriteConnectionAcceptTimeout
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                    "Out of range for connection accept timeout parameters in %s",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Write_Connection_Accept_TO.status
             = WLANBAP_ERROR_INVALID_HCI_CMND_PARAM;
     }
@@ -669,10 +716,14 @@ WLAN_BAPReadLinkSupervisionTimeout
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIReadLinkSupervisionTimeout) ||
@@ -680,10 +731,14 @@ WLAN_BAPReadLinkSupervisionTimeout
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -695,10 +750,14 @@ WLAN_BAPReadLinkSupervisionTimeout
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid Physical link handle in %s", __FUNCTION__);
 =======
                    "Invalid Physical link handle in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid Physical link handle in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Read_Link_Supervision_TO.link_supervision_timeout
             = 0x00; /* Invalid value */
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Read_Link_Supervision_TO.log_link_handle
@@ -773,10 +832,14 @@ WLAN_BAPWriteLinkSupervisionTimeout
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIWriteLinkSupervisionTimeout) ||
@@ -784,10 +847,14 @@ WLAN_BAPWriteLinkSupervisionTimeout
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -799,10 +866,14 @@ WLAN_BAPWriteLinkSupervisionTimeout
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid Physical link handle in %s", __FUNCTION__);
 =======
                    "Invalid Physical link handle in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid Physical link handle in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Write_Link_Supervision_TO.log_link_handle
             = pBapHCIWriteLinkSupervisionTimeout->log_link_handle;
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Write_Link_Supervision_TO.status
@@ -877,20 +948,28 @@ WLAN_BAPReadLogicalLinkAcceptTimeout
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -954,10 +1033,14 @@ WLAN_BAPWriteLogicalLinkAcceptTimeout
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIWriteLogicalLinkAcceptTimeout)
@@ -965,10 +1048,14 @@ WLAN_BAPWriteLogicalLinkAcceptTimeout
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -981,10 +1068,14 @@ WLAN_BAPWriteLogicalLinkAcceptTimeout
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                    "Out of range for logical connection accept timeout parameters in %s",
 <<<<<<< HEAD
+<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         pBapHCIEvent->u.btampCommandCompleteEvent.cc_event.Write_Logical_Link_Accept_TO.status
             = WLANBAP_ERROR_INVALID_HCI_CMND_PARAM;
     }
@@ -1054,10 +1145,14 @@ WLAN_BAPSetEventMaskPage2
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCISetEventMaskPage2)
@@ -1065,10 +1160,14 @@ WLAN_BAPSetEventMaskPage2
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1137,20 +1236,28 @@ WLAN_BAPReadLocationData
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1227,10 +1334,14 @@ WLAN_BAPWriteLocationData
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIWriteLocationData)
@@ -1238,10 +1349,14 @@ WLAN_BAPWriteLocationData
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1316,20 +1431,28 @@ WLAN_BAPReadFlowControlMode
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1529,20 +1652,28 @@ WLAN_BAPSetShortRangeMode
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1678,20 +1809,28 @@ WLAN_BAPVendorSpecificCmd0
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1786,20 +1925,28 @@ WLAN_BAPVendorSpecificCmd1
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
 =======
                "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: btampHandle value: %x", __FUNCTION__,  btampHandle);
+>>>>>>> 657b0e9... prima update
 
     /* Validate params */
     if ((NULL == btampHandle) || (NULL == pBapHCIEvent))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "Invalid input parameters in %s", __FUNCTION__);
 =======
                    "Invalid input parameters in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "Invalid input parameters in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 

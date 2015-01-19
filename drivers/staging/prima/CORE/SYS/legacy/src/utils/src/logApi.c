@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,15 +49,20 @@
  * Airgo Networks, Inc proprietary. All rights reserved.
  * logApi.cc - Handles log messages for all the modules.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Author:        Kevin Nguyen    
 =======
  * Author:        Kevin Nguyen
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * Author:        Kevin Nguyen    
+>>>>>>> 657b0e9... prima update
  * Date:          02/27/02
  * History:-
  * 02/11/02       Created.
  * 03/12/02       Rearrange logDebug parameter list and add more params.
  * --------------------------------------------------------------------
+<<<<<<< HEAD
 <<<<<<< HEAD
  * 
  */
@@ -63,10 +71,16 @@
  *
  */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * 
+ */
+#define WNI_PRINT_DEBUG
+>>>>>>> 657b0e9... prima update
 
 #include <sirCommon.h>
 #include <sirDebug.h>
 #include <utilsApi.h>
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
 #include <halCommonApi.h>
@@ -80,6 +94,15 @@
 
 #include <stdarg.h>
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
+#include <halCommonApi.h>
+#endif
+#include <wlan_qct_wda.h>
+
+#include <stdarg.h>
+#include "sirWrapper.h"
+>>>>>>> 657b0e9... prima update
 #include "utilsGlobal.h"
 #include "macInitApi.h"
 #include "palApi.h"
@@ -92,6 +115,9 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 //This is not right here. Need to find a better place. 
 //_vsnprintf is a function in Windows
 //Temporary workaround.
@@ -113,6 +139,7 @@
   }
   
 
+<<<<<<< HEAD
 // ---------------------------------------------------------------------
 /**
  * logInit() 
@@ -121,6 +148,11 @@
 /**
  * logInit()
 >>>>>>> d97af3b... add prima wlan driver
+=======
+// ---------------------------------------------------------------------
+/**
+ * logInit() 
+>>>>>>> 657b0e9... prima update
  *
  * FUNCTION:
  * This function is called to prepare the logging utility.
@@ -136,10 +168,14 @@
  * @return None
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 tSirRetStatus 
 =======
 tSirRetStatus
 >>>>>>> d97af3b... add prima wlan driver
+=======
+tSirRetStatus 
+>>>>>>> 657b0e9... prima update
 logInit(tpAniSirGlobal pMac)
 {
     tANI_U32    i;
@@ -152,6 +188,7 @@ logInit(tpAniSirGlobal pMac)
         pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = LOG1;
 #else
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef LX5280
         pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = LOGE;
 #else
@@ -162,6 +199,14 @@ logInit(tpAniSirGlobal pMac)
         pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = LOGW;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef LX5280
+        pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = LOGE;
+#else
+        pMac->utils.gLogEvtLevel[i] = pMac->utils.gLogDbgLevel[i] = LOGW;
+#endif
+#endif
+>>>>>>> 657b0e9... prima update
     }
     return eSIR_SUCCESS;
 
@@ -175,10 +220,14 @@ logDeinit(tpAniSirGlobal pMac)
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * logDbg() 
 =======
  * logDbg()
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ * logDbg() 
+>>>>>>> 657b0e9... prima update
  *
  *FUNCTION:
  * This function is called to log a debug message.
@@ -200,6 +249,9 @@ logDeinit(tpAniSirGlobal pMac)
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined(ANI_OS_TYPE_OSX)
 #if defined ANI_FIREWIRE_LOG
 #include <IOKit/firewire/FireLog.h>
@@ -209,8 +261,11 @@ logDeinit(tpAniSirGlobal pMac)
 #endif
 #define tx_time_get()   (0)
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 void logDbg(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 debugLevel, const char *pStr,...)
 {
@@ -225,6 +280,7 @@ void logDbg(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 debugLevel, const char 
 
         logDebug(pMac, modId, debugLevel, pStr, marker);
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         va_end( marker );              /* Reset variable arguments.      */
     }      
@@ -236,14 +292,23 @@ static inline VOS_TRACE_LEVEL getVosDebugLevel(tANI_U32 debugLevel)
 {   
 =======
 
+=======
+        
+>>>>>>> 657b0e9... prima update
         va_end( marker );              /* Reset variable arguments.      */
-    }
+    }      
 #endif
 }
 
+<<<<<<< HEAD
 VOS_TRACE_LEVEL getVosDebugLevel(tANI_U32 debugLevel)
 {
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef VOSS_ENABLED
+static inline VOS_TRACE_LEVEL getVosDebugLevel(tANI_U32 debugLevel)
+{   
+>>>>>>> 657b0e9... prima update
     switch(debugLevel)
     {
         case LOGP:
@@ -273,6 +338,7 @@ static inline VOS_MODULE_ID getVosModuleId(tANI_U8 modId)
         case SIR_PHY_MODULE_ID:
             return VOS_MODULE_ID_WDA;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         case SIR_LIM_MODULE_ID:
         case SIR_SCH_MODULE_ID:
@@ -284,6 +350,12 @@ static inline VOS_MODULE_ID getVosModuleId(tANI_U8 modId)
         case SIR_LIM_MODULE_ID:
         case SIR_SCH_MODULE_ID:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+        case SIR_LIM_MODULE_ID:
+        case SIR_SCH_MODULE_ID:
+        case SIR_PMM_MODULE_ID:
+>>>>>>> 657b0e9... prima update
         case SIR_CFG_MODULE_ID:
         case SIR_MNT_MODULE_ID:
         case SIR_DPH_MODULE_ID:
@@ -293,10 +365,14 @@ static inline VOS_MODULE_ID getVosModuleId(tANI_U8 modId)
         case SIR_SYS_MODULE_ID:
             return VOS_MODULE_ID_SYS;
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    
+>>>>>>> 657b0e9... prima update
         case SIR_SMS_MODULE_ID:
             return VOS_MODULE_ID_SME;
 
@@ -305,9 +381,13 @@ static inline VOS_MODULE_ID getVosModuleId(tANI_U8 modId)
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif // VOSS_ENABLED
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif // VOSS_ENABLED
+>>>>>>> 657b0e9... prima update
 
 #define LOG_SIZE 256
 void logDebug(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 debugLevel, const char *pStr, va_list marker)
@@ -319,6 +399,7 @@ void logDebug(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 debugLevel, const cha
     vosDebugLevel = getVosDebugLevel(debugLevel);
     vosModuleId = getVosModuleId(modId);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef ANI_OS_TYPE_ANDROID
     vsnprintf(logBuffer, LOG_SIZE - 1, pStr, marker);
@@ -334,6 +415,19 @@ void logDebug(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 debugLevel, const cha
 =======
     vsnprintf(logBuffer, LOG_SIZE - 1, pStr, marker);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_OS_TYPE_ANDROID
+    vsnprintf(logBuffer, LOG_SIZE - 1, pStr, marker);
+#else
+
+#ifdef WINDOWS_DT
+    RtlStringCbVPrintfA( &logBuffer[ 0 ], LOG_SIZE - 1, pStr, marker );
+#else
+    _vsnprintf(logBuffer, LOG_SIZE - 1, (char *)pStr, marker);
+#endif
+
+#endif
+>>>>>>> 657b0e9... prima update
     VOS_TRACE(vosModuleId, vosDebugLevel, "%s", logBuffer);
 
     // The caller must check loglevel

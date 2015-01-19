@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -85,6 +88,7 @@ when        who          what, where, why
 #include "wlan_qct_tli.h"
 #include "tlDebug.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
 #include "wlan_bal_misc.h"
 #endif
@@ -95,15 +99,21 @@ when        who          what, where, why
 
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
+=======
+#if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
+#include "wlan_bal_misc.h"
+#endif
+>>>>>>> 657b0e9... prima update
 
-#define WDA_DS_DXE_RES_COUNT   (WDA_TLI_MIN_RES_DATA + 20)
+#define WDA_DS_DXE_RES_COUNT   WDA_TLI_MIN_RES_DATA + 20
 
-/* macro's for acessing TL API/data structures */
-#define WDA_TL_SET_TX_XMIT_PENDING(a) WLANTL_SetTxXmitPending(a)
-#define WDA_TL_IS_TX_XMIT_PENDING(a) WLANTL_IsTxXmitPending(a)
-#define WDA_TL_CLEAR_TX_XMIT_PENDING(a) WLANTL_ClearTxXmitPending(a)
+#define VOS_TO_WPAL_PKT(_vos_pkt) ((wpt_packet*)_vos_pkt)
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
 #define WDA_HI_FLOW_MASK 0xF0
 #define WDA_LO_FLOW_MASK 0x0F
 
@@ -113,6 +123,7 @@ WDA_DS_TxCompleteCB
  v_PVOID_t pvosGCtx, 
  v_PVOID_t pFrameDataBuff
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -239,6 +250,133 @@ WDA_DS_PrepareBDHeader
         ucHeaderLen += WLANTL_802_11_HEADER_QOS_CTL;
       }
 
+=======
+#endif
+
+#if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
+/*==========================================================================
+   FUNCTION    WDA_DS_PrepareBDHeader
+
+  DESCRIPTION
+    Inline function for preparing BD header before HAL processing.
+
+  DEPENDENCIES
+    Just notify HAL that suspend in TL is complete.
+
+  PARAMETERS
+
+   IN
+    vosDataBuff:      vos data buffer
+    ucDisableFrmXtl:  is frame xtl disabled
+
+   OUT
+    ppvBDHeader:      it will contain the BD header
+    pvDestMacAddr:   it will contain the destination MAC address
+    pvosStatus:       status of the combined processing
+    pusPktLen:        packet len.
+
+  RETURN VALUE
+    No return.
+
+  SIDE EFFECTS
+
+============================================================================*/
+void
+WDA_DS_PrepareBDHeader
+(
+  vos_pkt_t*      vosDataBuff,
+  v_PVOID_t*      ppvBDHeader,
+  v_MACADDR_t*    pvDestMacAddr,
+  v_U8_t          ucDisableFrmXtl,
+  VOS_STATUS*     pvosStatus,
+  v_U16_t*        pusPktLen,
+  v_U8_t          ucQosEnabled,
+  v_U8_t          ucWDSEnabled,
+  v_U8_t          extraHeadSpace
+)
+{
+  v_U8_t      ucHeaderOffset;
+  v_U8_t      ucHeaderLen;
+#ifndef WLAN_SOFTAP_FEATURE
+  v_PVOID_t   pvPeekData;
+#endif
+  v_U8_t      ucBDHeaderLen = WLANTL_BD_HEADER_LEN(ucDisableFrmXtl);
+
+  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+  /*-------------------------------------------------------------------------
+    Get header pointer from VOSS
+    !!! make sure reserve head zeros out the memory
+   -------------------------------------------------------------------------*/
+  vos_pkt_get_packet_length( vosDataBuff, pusPktLen);
+
+  if ( WLANTL_MAC_HEADER_LEN(ucDisableFrmXtl) > *pusPktLen )
+  {
+    TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+               "WLAN TL: Length of the packet smaller than expected network"
+               " header %d", *pusPktLen ));
+
+    *pvosStatus = VOS_STATUS_E_INVAL;
+    return;
+  }
+
+  vos_pkt_reserve_head( vosDataBuff, ppvBDHeader,
+                        ucBDHeaderLen );
+  if ( NULL == *ppvBDHeader )
+  {
+    TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                "WLAN TL:VOSS packet corrupted on Attach BD header"));
+    *pvosStatus = VOS_STATUS_E_INVAL;
+    return;
+  }
+
+  /*-----------------------------------------------------------------------
+    Extract MAC address
+   -----------------------------------------------------------------------*/
+#ifdef WLAN_SOFTAP_FEATURE
+  {
+   v_SIZE_t usMacAddrSize = VOS_MAC_ADDR_SIZE;
+   *pvosStatus = vos_pkt_extract_data( vosDataBuff,
+                                     ucBDHeaderLen +
+                                     WLANTL_MAC_ADDR_ALIGN(ucDisableFrmXtl),
+                                     (v_PVOID_t)pvDestMacAddr,
+                                     &usMacAddrSize );
+  }
+#else
+  *pvosStatus = vos_pkt_peek_data( vosDataBuff,
+                                     ucBDHeaderLen +
+                                     WLANTL_MAC_ADDR_ALIGN(ucDisableFrmXtl),
+                                     (v_PVOID_t)&pvPeekData,
+                                     VOS_MAC_ADDR_SIZE );
+
+  /*Fix me*/
+  vos_copy_macaddr(pvDestMacAddr, (v_MACADDR_t*)pvPeekData);
+#endif
+  if ( VOS_STATUS_SUCCESS != *pvosStatus )
+  {
+     TLLOGE(VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                "WLAN TL:Failed while attempting to extract MAC Addr %d",
+                *pvosStatus));
+  }
+  else
+  {
+    /*---------------------------------------------------------------------
+        Fill MPDU info fields:
+          - MPDU data start offset
+          - MPDU header start offset
+          - MPDU header length
+          - MPDU length - this is a 16b field - needs swapping
+    --------------------------------------------------------------------*/
+    ucHeaderOffset = ucBDHeaderLen;
+    ucHeaderLen    = WLANTL_MAC_HEADER_LEN(ucDisableFrmXtl);
+
+    if ( 0 != ucDisableFrmXtl )
+    {
+      if ( 0 != ucQosEnabled )
+      {
+        ucHeaderLen += WLANTL_802_11_HEADER_QOS_CTL;
+      }
+
+>>>>>>> 657b0e9... prima update
       // Similar to Qos we need something for WDS format !
       if ( ucWDSEnabled != 0 )
       {
@@ -267,9 +405,12 @@ WDA_DS_PrepareBDHeader
 
 }/* WLANTL_PrepareBDHeader */
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_PERF
 /*==========================================================================
@@ -319,6 +460,9 @@ void WDA_TLI_FastHwFwdDataFrame
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   /* FIXME WDI/WDA should support this function
      once HAL supports it
@@ -399,11 +543,14 @@ void WDA_TLI_FastHwFwdDataFrame
    *pvosStatus = VOS_STATUS_SUCCESS;
    return;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
   /* FIXME WDI/WDA should support this function
      once HAL supports it
    */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 #endif /*WLAN_PERF*/
 
@@ -460,9 +607,13 @@ VOS_STATUS WDA_DS_Register
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
   tWDA_CbContext      *wdaContext = NULL;
   WDI_Status          wdiStatus;
 
@@ -522,6 +673,9 @@ VOS_STATUS WDA_DS_Register
 
   return VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else /* FEATURE_WLAN_INTEGRATED_SOC */
   VOS_STATUS          vosStatus;
   WLANBAL_TlRegType   tlReg;
@@ -577,8 +731,11 @@ VOS_STATUS WDA_DS_Register
 
   return vosStatus;
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 /*==========================================================================
@@ -613,12 +770,17 @@ WDA_DS_StartXmit
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   vos_msg_t                    sMessage;
 =======
   vos_msg_t                    sMessage;
   VOS_STATUS                   status;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+  vos_msg_t                    sMessage;
+>>>>>>> 657b0e9... prima update
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   if ( NULL == pvosGCtx )
@@ -629,6 +791,7 @@ WDA_DS_StartXmit
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   if(WDA_TL_IS_TX_XMIT_PENDING( pvosGCtx ))
   {  
@@ -636,6 +799,8 @@ WDA_DS_StartXmit
     return VOS_STATUS_SUCCESS;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /* Serialize our event  */
   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_HIGH,
              "Serializing WDA TX Start Xmit event" );
@@ -646,10 +811,14 @@ WDA_DS_StartXmit
   sMessage.type    = WDA_DS_TX_START_XMIT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   return vos_tx_mq_serialize(VOS_MQ_ID_TL, &sMessage);
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
   return WLANBAL_StartXmit( pvosGCtx );
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
   WDA_TL_SET_TX_XMIT_PENDING(pvosGCtx);
 
@@ -663,6 +832,8 @@ WDA_DS_StartXmit
   }
   return status;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -770,6 +941,7 @@ WDA_DS_BuildTxPacketInfo
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   VOS_STATUS             vosStatus;
   WDI_DS_TxMetaInfoType* pTxMetaInfo = NULL;
@@ -780,6 +952,12 @@ WDA_DS_BuildTxPacketInfo
   v_SIZE_t               usMacAddrSize;
   wpt_FrameCtrl          *pFrameControl;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+  VOS_STATUS             vosStatus;
+  WDI_DS_TxMetaInfoType* pTxMetaInfo = NULL;
+  v_SIZE_t               usMacAddrSize;
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -824,6 +1002,7 @@ WDA_DS_BuildTxPacketInfo
   pTxMetaInfo->fPktlen = *pusPktLen;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /* For management frames, peek into Frame Control
      field to get value of Protected Frame bit */
@@ -849,6 +1028,8 @@ WDA_DS_BuildTxPacketInfo
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   // Dst address
   usMacAddrSize = VOS_MAC_ADDR_SIZE;
   vosStatus = vos_pkt_extract_data( vosDataBuff,
@@ -875,6 +1056,7 @@ WDA_DS_BuildTxPacketInfo
   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_INFO_LOW,
              "WLAN TL: Dump TX meta info: "
              "txFlags:%d, qosEnabled:%d, ac:%d, "
+<<<<<<< HEAD
 <<<<<<< HEAD
              "isEapol:%d, fdisableFrmXlt:%d" "frmType%d",
              pTxMetaInfo->txFlags, ucQosEnabled, pTxMetaInfo->ac,
@@ -910,12 +1092,44 @@ WDA_DS_BuildTxPacketInfo
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
              "isEapol:%d, fdisableFrmXlt:%d, frmType:%d",
+=======
+             "isEapol:%d, fdisableFrmXlt:%d" "frmType%d",
+>>>>>>> 657b0e9... prima update
              pTxMetaInfo->txFlags, ucQosEnabled, pTxMetaInfo->ac,
-             pTxMetaInfo->isEapol, pTxMetaInfo->fdisableFrmXlt,
-             pTxMetaInfo->frmType );
+             pTxMetaInfo->isEapol, pTxMetaInfo->fdisableFrmXlt, pTxMetaInfo->frmType );
 
   return VOS_STATUS_SUCCESS;
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#else  /* FEATURE_WLAN_INTEGRATED_SOC */
+  VOS_STATUS   vosStatus;
+  v_PVOID_t    pvBDHeader;
+
+  WDA_DS_PrepareBDHeader( vosDataBuff, &pvBDHeader, pvDestMacAddr, ucDisableFrmXtl,
+                  &vosStatus, pusPktLen, ucQosEnabled, ucWDSEnabled, extraHeadSpace );
+
+  if ( VOS_STATUS_SUCCESS != vosStatus )
+  {
+    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+               "WLAN TL:Failed while attempting to prepare BD %d", vosStatus );
+    return vosStatus;
+  }
+
+  vosStatus = WLANHAL_FillTxBd( pvosGCtx, typeSubtype, pvDestMacAddr, pAddr2,
+                    &uTid, ucDisableFrmXtl, pvBDHeader, txFlag, timeStamp );
+
+  if ( VOS_STATUS_SUCCESS != vosStatus )
+  {
+    VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+               "WLAN TL:Failed while attempting to fill BD %d", vosStatus );
+    return vosStatus;
+  }
+
+  return VOS_STATUS_SUCCESS;
+
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -947,14 +1161,21 @@ WDA_DS_TrimRxPacketInfo
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
   /* Nothing to trim
    * Do Nothing */
 
   return VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
   VOS_STATUS vosStatus = VOS_STATUS_SUCCESS;
   v_U16_t  usPktLen;
@@ -1002,8 +1223,11 @@ WDA_DS_TrimRxPacketInfo
 
   return vosStatus;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -1045,9 +1269,13 @@ WDA_DS_PeekRxPacketInfo
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Sanity check
    ------------------------------------------------------------------------*/
@@ -1069,6 +1297,9 @@ WDA_DS_PeekRxPacketInfo
      
   return VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
   VOS_STATUS vosStatus;
 
@@ -1089,8 +1320,11 @@ WDA_DS_PeekRxPacketInfo
 
   return VOS_STATUS_SUCCESS;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -1136,9 +1370,13 @@ WDA_DS_GetFrameTypeSubType
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Sanity check
    ------------------------------------------------------------------------*/
@@ -1153,6 +1391,9 @@ WDA_DS_GetFrameTypeSubType
 
   return VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
   v_PVOID_t           pvBDHeader = pRxHeader;
   v_U16_t             usFrmCtrl  = 0; 
@@ -1187,8 +1428,11 @@ WDA_DS_GetFrameTypeSubType
   
   return VOS_STATUS_SUCCESS;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -1226,6 +1470,9 @@ WDA_DS_RxAmsduBdFix
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   /* Do nothing for Prima */
   return VOS_STATUS_SUCCESS;
@@ -1236,10 +1483,13 @@ WDA_DS_RxAmsduBdFix
   WLANHAL_RxAmsduBdFix(pvosGCtx, pvBDHeader);
   return VOS_STATUS_SUCCESS;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
   /* Do nothing for Prima */
   return VOS_STATUS_SUCCESS;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 /*==========================================================================
@@ -1276,9 +1526,13 @@ WDA_DS_GetRssi
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
   VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
          "WDA:halPS_GetRssi no longer supported. Need replacement");
 
@@ -1286,12 +1540,18 @@ WDA_DS_GetRssi
 
   return VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
   halPS_GetRssi(vos_get_context(VOS_MODULE_ID_SME, pvosGCtx), puRssi);
   return VOS_STATUS_SUCCESS;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }
 
 /*==========================================================================
@@ -1328,19 +1588,29 @@ WDA_DS_GetTxResources
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
   /* Return minimum necessary number of packet(DXE descriptor) for data */
   /* TODO Need to get this from DXE??? */
   *puResCount = WDA_TLI_BD_PDU_RESERVE_THRESHOLD + 50;
   return VOS_STATUS_SUCCESS;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
   return WLANBAL_GetTxResources( pvosGCtx, puResCount );
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#else  /* FEATURE_WLAN_INTEGRATED_SOC */
+  return WLANBAL_GetTxResources( pvosGCtx, puResCount );
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 }
 
 
@@ -1373,6 +1643,9 @@ WDA_DS_GetReplayCounter
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
   return WDA_GET_RX_REPLAY_COUNT( pRxHeader );
 #else  /* FEATURE_WLAN_INTEGRATED_SOC */
@@ -1409,11 +1682,14 @@ WDA_DS_GetReplayCounter
 }
 
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
+<<<<<<< HEAD
 =======
   return WDA_GET_RX_REPLAY_COUNT( pRxHeader );
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
    FUNCTION    WDA_DS_TxFrames
 
@@ -1461,9 +1737,12 @@ WDA_DS_TxFrames
   v_U32_t     uDataAvailRes;
   WLANTL_TxCompCBType  pfnTxComp = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   v_U32_t     uTxFailCount = 0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   wdaContext = (tWDA_CbContext *)vos_get_context(VOS_MODULE_ID_WDA, pvosGCtx);
   if ( NULL == wdaContext )
@@ -1520,6 +1799,7 @@ WDA_DS_TxFrames
     if ( WDI_STATUS_SUCCESS != wdiStatus )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                    "WDA : Pushing a packet to WDI failed.");
       VOS_ASSERT( wdiStatus != WDI_STATUS_E_NOT_ALLOWED );
@@ -1532,6 +1812,11 @@ WDA_DS_TxFrames
       }
       VOS_ASSERT( wdiStatus == WDI_STATUS_E_NOT_ALLOWED );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                   "WDA : Pushing a packet to WDI failed.");
+      VOS_ASSERT( wdiStatus != WDI_STATUS_E_NOT_ALLOWED );
+>>>>>>> 657b0e9... prima update
       //We need to free the packet here
       vos_pkt_get_user_data_ptr(pTxPacket, VOS_PKT_USER_DATA_ID_TL, (void **)&pfnTxComp);
       if(pfnTxComp)
@@ -1543,6 +1828,7 @@ WDA_DS_TxFrames
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   if ( uTxFailCount )
   {
@@ -1552,6 +1838,8 @@ WDA_DS_TxFrames
   }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*Data tx*/
   uDataAvailRes = WDI_GetAvailableResCount(wdaContext->pWdiContext, 
                                            WDI_DATA_POOL_ID);
@@ -1595,6 +1883,7 @@ WDA_DS_TxFrames
     if ( WDI_STATUS_SUCCESS != wdiStatus )
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                    "WDA : Pushing a packet to WDI failed.");
       VOS_ASSERT( wdiStatus != WDI_STATUS_E_NOT_ALLOWED );
@@ -1607,6 +1896,11 @@ WDA_DS_TxFrames
       }
       VOS_ASSERT( wdiStatus == WDI_STATUS_E_NOT_ALLOWED );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
+                   "WDA : Pushing a packet to WDI failed.");
+      VOS_ASSERT( wdiStatus != WDI_STATUS_E_NOT_ALLOWED );
+>>>>>>> 657b0e9... prima update
       //We need to free the packet here
       vos_pkt_get_user_data_ptr(pTxPacket, VOS_PKT_USER_DATA_ID_TL, (void **)&pfnTxComp);
       if(pfnTxComp)
@@ -1618,6 +1912,7 @@ WDA_DS_TxFrames
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   if ( uTxFailCount )
   {
@@ -1627,10 +1922,13 @@ WDA_DS_TxFrames
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   WDI_DS_TxComplete(wdaContext->pWdiContext, ucTxResReq);
 
   return vosStatus;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
@@ -1638,6 +1936,11 @@ WDA_DS_TxFrames
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
    FUNCTION    WDA_DS_TxFlowControlCallback
 
@@ -1723,9 +2026,13 @@ WDA_DS_TxFlowControlCallback
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update
 
 /*==========================================================================
    FUNCTION    WDA_DS_GetTxFlowMask
@@ -1759,9 +2066,13 @@ WDA_DS_GetTxFlowMask
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
    tWDA_CbContext* wdaContext = NULL;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
@@ -1787,10 +2098,14 @@ WDA_DS_GetTxFlowMask
 
    return VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
    *puFlowMask = WDA_TXFLOWMASK;
    return VOS_STATUS_SUCCESS;
 #endif  /* FEATURE_WLAN_INTEGRATED_SOC */
+<<<<<<< HEAD
 }
 
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
@@ -1798,6 +2113,11 @@ WDA_DS_GetTxFlowMask
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+}
+
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 657b0e9... prima update
 v_VOID_t 
 WDA_DS_TxCompleteCB
 (
@@ -1840,6 +2160,10 @@ WDA_DS_TxCompleteCB
   wdaContext->pfnTxCompleteCallback( pvosGCtx, pFrameDataBuff, vosStatus );
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif  /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif  /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 657b0e9... prima update

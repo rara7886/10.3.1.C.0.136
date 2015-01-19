@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -24,6 +27,7 @@
  * Copyright (C) 2007-2009 QUALCOMM Incorporated. All rights reserved. Proprietary and Confidential.
  */
 
+<<<<<<< HEAD
 /*
  * DO NOT EDIT - This file is generated automaticlly
 =======
@@ -49,6 +53,10 @@
 /*
  * DO NOT EDIT - This file is generated automatically
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*
+ * DO NOT EDIT - This file is generated automaticlly
+>>>>>>> 657b0e9... prima update
  */
 
 /*
@@ -261,9 +269,12 @@ unsigned char *gCfgParamName[] = {
     (unsigned char *)"MAX_AMSDU_LENGTH",
     (unsigned char *)"MPDU_DENSITY",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     (unsigned char *)"NUM_BUFF_ADVERT",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     (unsigned char *)"MAX_RX_AMPDU_FACTOR",
     (unsigned char *)"SHORT_GI_20MHZ",
     (unsigned char *)"SHORT_GI_40MHZ",
@@ -272,9 +283,13 @@ unsigned char *gCfgParamName[] = {
     (unsigned char *)"NUM_BEACON_PER_RSSI_AVERAGE",
     (unsigned char *)"RSSI_FILTER_PERIOD",
 <<<<<<< HEAD
+<<<<<<< HEAD
     (unsigned char *)"FT_RSSI_FILTER_PERIOD",
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    (unsigned char *)"FT_RSSI_FILTER_PERIOD",
+>>>>>>> 657b0e9... prima update
     (unsigned char *)"MIN_RSSI_THRESHOLD",
     (unsigned char *)"NTH_BEACON_FILTER",
     (unsigned char *)"BROADCAST_FRAME_FILTER_ENABLE",
@@ -293,9 +308,12 @@ unsigned char *gCfgParamName[] = {
     (unsigned char *)"BA_AUTO_SETUP",
     (unsigned char *)"ADDBA_REQ_DECLINE",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     (unsigned char *)"DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     (unsigned char *)"BG_SCAN_CHANNEL_LIST",
     (unsigned char *)"MAX_MEDIUM_TIME",
     (unsigned char *)"MAX_MPDUS_IN_AMPDU",
@@ -361,6 +379,7 @@ unsigned char *gCfgParamName[] = {
     (unsigned char *)"GO_KEEP_ALIVE_TIMEOUT",
     (unsigned char *)"ENABLE_MC_ADDR_LIST",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     (unsigned char *)"ENABLE_UC_FILTER",
     (unsigned char *)"ENABLE_LPWR_IMG_TRANSITION",
@@ -377,6 +396,8 @@ unsigned char *gCfgParamName[] = {
     (unsigned char *)"ANTENNA_DIVESITY",
     (unsigned char *)"GO_LINK_MONITOR_TIMEOUT",
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 };
 
 

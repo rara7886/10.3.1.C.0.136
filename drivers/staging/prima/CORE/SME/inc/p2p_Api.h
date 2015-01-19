@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,10 +46,13 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /******************************************************************************
 *
 * Name:  p2p_Api.h
@@ -54,12 +60,17 @@
 * Description: P2P FSM defines.
 *
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
 * Qualcomm Confidential and Proprietary.
 =======
 * Copyright 2008 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
 * Qualcomm Technologies Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+* Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+* Qualcomm Confidential and Proprietary.
+>>>>>>> 657b0e9... prima update
 *
 ******************************************************************************/
 
@@ -93,6 +104,7 @@ typedef struct sRemainOnChn{
 }tRemainOnChn, tpRemainOnChn;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define SIZE_OF_NOA_DESCRIPTOR 13
 #define MAX_NOA_PERIOD_IN_MICROSECS 3000000
@@ -103,6 +115,8 @@ typedef struct sRemainOnChn{
 #define P2P_SINGLE_NOA 4
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P_INTERNAL
 
 #define MAX_SOCIAL_CHANNELS 3
@@ -120,14 +134,20 @@ typedef struct sRemainOnChn{
 #define P2P_COUNTRY_CODE_LEN 3
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define P2P_CLEAR_POWERSAVE 0
 #define P2P_OPPORTUNISTIC_PS 1
 #define P2P_PERIODIC_NOA 2
 #define P2P_SINGLE_NOA 4
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /* Wi-Fi Direct Device Discovery Type */
 typedef enum ep2pDiscoverType {
    /** Driver must perform device discovery only using the scan phase*/
@@ -456,6 +476,7 @@ typedef struct sp2pContext
    tANI_U32 ActionFrameSendTimeout;
    eListenDiscoverableState listenDiscoverableState;
 <<<<<<< HEAD
+<<<<<<< HEAD
    tPalTimerHandle listenTimerHandler;
    tPalTimerHandle WPSRegistrarCheckTimerHandler;
    tANI_U32 WPSRegistrarSet;
@@ -474,6 +495,16 @@ typedef struct sp2pContext
    vos_timer_t retryActionFrameTimer;
    vos_timer_t actionFrameTimer;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   tPalTimerHandle listenTimerHandler;
+   tPalTimerHandle WPSRegistrarCheckTimerHandler;
+   tANI_U32 WPSRegistrarSet;
+   tANI_U8 bWaitForWPSReady;
+   tANI_U8 bInGroupFormation;
+   tPalTimerHandle discoverTimer;
+   tPalTimerHandle retryActionFrameTimer;
+   tPalTimerHandle actionFrameTimer;
+>>>>>>> 657b0e9... prima update
    tPalTimerHandle nextActionFrameTimer;
    tANI_U8 peerMacAddress[P2P_MAC_ADDRESS_LEN];
    tANI_U8 selfMacAddress[P2P_MAC_ADDRESS_LEN];
@@ -526,6 +557,7 @@ typedef struct sp2pContext
 } tp2pContext, *tPp2pContext;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 eHalStatus sme_RemainOnChannel( tHalHandle hHal, tANI_U8 sessionId,
                                 tANI_U8 channel, tANI_U32 duration,
@@ -538,6 +570,13 @@ eHalStatus sme_RemainOnChannel( tHalHandle hHal, tANI_U8 sessionId,
                                 void *pContext,
                                 tANI_U8 isP2PProbeReqAllowed);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+eHalStatus sme_RemainOnChannel( tHalHandle hHal, tANI_U8 sessionId,
+                                tANI_U8 channel, tANI_U32 duration,
+                                remainOnChanCallback callback, 
+                                void *pContext );
+>>>>>>> 657b0e9... prima update
 eHalStatus sme_ReportProbeReq( tHalHandle hHal, tANI_U8 flag );
 eHalStatus sme_updateP2pIe( tHalHandle hHal, void *p2pIe, 
                             tANI_U32 p2pIeLength );
@@ -554,13 +593,17 @@ eHalStatus p2pRemainOnChannel( tHalHandle hHal, tANI_U8 sessionId,
                                tANI_U8 channel, tANI_U32 duration,
                                remainOnChanCallback callback, void *pContext,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                                tANI_U8 isP2PProbeReqAllowed,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
                                eP2PRemainOnChnReason reason);
 #else
 eHalStatus p2pRemainOnChannel( tHalHandle hHal, tANI_U8 sessionId,
                                tANI_U8 channel, tANI_U32 duration,
+<<<<<<< HEAD
 <<<<<<< HEAD
                                remainOnChanCallback callback, void *pContext);
 =======
@@ -568,6 +611,9 @@ eHalStatus p2pRemainOnChannel( tHalHandle hHal, tANI_U8 sessionId,
                                void *pContext,
                                tANI_U8 isP2PProbeReqAllowed);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                               remainOnChanCallback callback, void *pContext);
+>>>>>>> 657b0e9... prima update
 #endif
 eHalStatus p2pSendAction( tHalHandle hHal, tANI_U8 sessionId,
                           const tANI_U8 *pBuf, tANI_U32 len,
@@ -575,9 +621,12 @@ eHalStatus p2pSendAction( tHalHandle hHal, tANI_U8 sessionId,
 eHalStatus p2pCancelRemainOnChannel( tHalHandle hHal, tANI_U8 sessionId );
 eHalStatus p2pSetPs( tHalHandle hHal, tP2pPsConfig *pNoA );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 tSirRFBand GetRFBand(tANI_U8 channel);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P_INTERNAL
 eHalStatus p2pRemainOnChannelCallback(tHalHandle halHandle, void *pContext, eHalStatus scan_status);
 eHalStatus P2P_DiscoverRequest(tHalHandle hHal, tANI_U8 SessionID, tP2PDiscoverRequest *pDiscoverRequest, 

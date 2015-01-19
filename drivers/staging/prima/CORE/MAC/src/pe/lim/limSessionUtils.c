@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -20,6 +23,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -41,6 +45,8 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**=========================================================================
 
   \file  limSessionUtils.c
@@ -48,10 +54,14 @@
   \author Sunit Bhatia
   
 <<<<<<< HEAD
+<<<<<<< HEAD
   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
 =======
   Copyright 2008 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+>>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 
@@ -276,10 +286,14 @@ isLimSessionOffChannel(tpAniSirGlobal pMac, tANI_U8 sessionId)
   \brief peGetActiveSessionChannel() - Gets the operating channel of first  
                                     valid session. Returns 0 if there is no
 <<<<<<< HEAD
+<<<<<<< HEAD
 									valid session.
 =======
                                     valid session.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+									valid session.
+>>>>>>> 657b0e9... prima update
 
   \param pMac                   - pointer to global adapter context
   
@@ -292,9 +306,12 @@ peGetActiveSessionChannel (tpAniSirGlobal pMac, tANI_U8* resumeChannel, ePhyChan
 {
     tANI_U8 i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     ePhyChanBondState prevPhyCbState = PHY_SINGLE_CHANNEL_CENTERED;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
     // Initialize the pointers passed to INVALID values in case we don't find a valid session
     *resumeChannel = 0;
@@ -313,6 +330,7 @@ peGetActiveSessionChannel (tpAniSirGlobal pMac, tANI_U8* resumeChannel, ePhyChan
                 *resumePhyCbState = limGet11ACPhyCBState(pMac, 
                                     pMac->lim.gpSession[i].currentOperChannel,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     pMac->lim.gpSession[i].htSecondaryChannelOffset);
             }
 #endif
@@ -325,6 +343,11 @@ peGetActiveSessionChannel (tpAniSirGlobal pMac, tANI_U8* resumeChannel, ePhyChan
             *resumePhyCbState = (*resumePhyCbState > prevPhyCbState )? *resumePhyCbState : prevPhyCbState;
             prevPhyCbState = *resumePhyCbState;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                    pMac->lim.gpSession[i].htSecondaryChannelOffset);
+            }
+#endif
+>>>>>>> 657b0e9... prima update
         }
     }
     return;
@@ -444,6 +467,7 @@ limIsInMCC (tpAniSirGlobal pMac)
     return FALSE;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 /*--------------------------------------------------------------------------
@@ -500,3 +524,5 @@ tANI_U8 limIsFastRoamEnabled(tpAniSirGlobal pMac, tANI_U8 sessionId)
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

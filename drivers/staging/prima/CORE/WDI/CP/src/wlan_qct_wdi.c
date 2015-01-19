@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -106,6 +109,7 @@
 #include "wlan_hal_msg.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 #include "pttMsgApi.h"
 #endif /* ANI_MANF_DIAG */
@@ -113,6 +117,11 @@
 #include "pttMsgApi.h"
 #include "vos_trace.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+#include "pttMsgApi.h"
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 
 /*===========================================================================
    WLAN DAL Control Path Internal Data Definitions and Declarations
@@ -123,15 +132,19 @@
 #define MAC_ADDRESS_STR "%02x:%02x:%02x:%02x:%02x:%02x"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define FEATURE_NOT_SUPPORTED 127
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_SCAN_PNO
 #define WDI_PNO_VERSION_MASK 0x8000
 #endif
 
 /* host capability bitmap global */
+<<<<<<< HEAD
 <<<<<<< HEAD
 static tWlanFeatCaps *gpHostWlanFeatCaps = NULL;
 /* FW capability bitmap global */
@@ -141,10 +154,16 @@ static tWlanFeatCaps *gpHostWlanFeatCaps;
 /* FW capability bitmap global */
 static tWlanFeatCaps *gpFwWlanFeatCaps;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static tWlanFeatCaps *gpHostWlanFeatCaps = NULL;
+/* FW capability bitmap global */
+static tWlanFeatCaps *gpFwWlanFeatCaps = NULL;
+>>>>>>> 657b0e9... prima update
 /* array of features supported. Need to add a new feature
  * and other two places - wlan_hal_msg.h and halMsg.c (FW file)
  */
 static placeHolderInCapBitmap supportEnabledFeatures[] =
+<<<<<<< HEAD
 <<<<<<< HEAD
    {MCC, P2P, DOT11AC, SLM_SESSIONIZATION};
 
@@ -200,6 +219,11 @@ static placeHolderInCapBitmap supportEnabledFeatures[] =
 
 /*-------------------------------------------------------------------------- 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   {MCC, P2P, DOT11AC, SLM_SESSIONIZATION};
+
+/*--------------------------------------------------------------------------
+>>>>>>> 657b0e9... prima update
    WLAN DAL  State Machine
  --------------------------------------------------------------------------*/
 WPT_STATIC const WDI_MainFsmEntryType wdiMainFSM[WDI_MAX_ST] =
@@ -232,10 +256,14 @@ WPT_STATIC const WDI_MainFsmEntryType wdiMainFSM[WDI_MAX_ST] =
     WDI_MainRsp,                /*WDI_RESPONSE_EVENT*/
     WDI_MainClose,              /*WDI_CLOSE_EVENT*/
 <<<<<<< HEAD
+<<<<<<< HEAD
     NULL                        /*WDI_SHUTDOWN_EVENT*/
 =======
     WDI_MainShutdown            /*WDI_SHUTDOWN_EVENT*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    NULL                        /*WDI_SHUTDOWN_EVENT*/
+>>>>>>> 657b0e9... prima update
   }},
 
   /*WDI_BUSY_ST*/
@@ -307,6 +335,7 @@ WDI_ReqProcFuncType  pfnReqProcTbl[WDI_MAX_UMAC_IND] =
   WDI_ProcessRemoveStaBcastKeyReq,     /* WDI_RMV_STA_BCAST_KEY_REQ  */
   WDI_ProcessSetMaxTxPowerReq,         /*WDI_SET_MAX_TX_POWER_REQ*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   WDI_ProcessP2PGONOAReq,              /* WDI_P2P_GO_NOTICE_OF_ABSENCE_REQ */
 #else
@@ -315,6 +344,13 @@ WDI_ReqProcFuncType  pfnReqProcTbl[WDI_MAX_UMAC_IND] =
 =======
   WDI_ProcessP2PGONOAReq,              /* WDI_P2P_GO_NOTICE_OF_ABSENCE_REQ */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+  WDI_ProcessP2PGONOAReq,              /* WDI_P2P_GO_NOTICE_OF_ABSENCE_REQ */
+#else
+  NULL,
+#endif
+>>>>>>> 657b0e9... prima update
   /* PowerSave APIs */
   WDI_ProcessEnterImpsReq,         /* WDI_ENTER_IMPS_REQ  */
   WDI_ProcessExitImpsReq,          /* WDI_EXIT_IMPS_REQ  */
@@ -346,14 +382,20 @@ WDI_ReqProcFuncType  pfnReqProcTbl[WDI_MAX_UMAC_IND] =
   WDI_ProcessAddSTASelfReq,         /* WDI_ADD_STA_SELF_REQ */
   WDI_ProcessDelSTASelfReq,          /* WDI DEL STA SELF REQ */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef ANI_MANF_DIAG
   WDI_ProcessFTMCommandReq,            /* WDI_FTM_CMD_REQ */
 #else
   NULL,
 #endif /* ANI_MANF_DIAG */
+<<<<<<< HEAD
 =======
   WDI_ProcessFTMCommandReq,            /* WDI_FTM_CMD_REQ */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_OEM_DATA_SUPPORT
   WDI_ProcessStartOemDataReq,     /*WDI_START_OEM_DATA_REQ*/
@@ -413,6 +455,7 @@ WDI_ReqProcFuncType  pfnReqProcTbl[WDI_MAX_UMAC_IND] =
   WDI_ProcessSetTmLevelReq,             /*WDI_SET_TM_LEVEL_REQ*/
   WDI_ProcessFeatureCapsExchangeReq,    /* WDI_FEATURE_CAPS_EXCHANGE_REQ */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
   WDI_ProcessUpdateVHTOpModeReq,        /* WDI_UPDATE_VHT_OP_MODE_REQ */
@@ -441,10 +484,13 @@ WDI_ReqProcFuncType  pfnReqProcTbl[WDI_MAX_UMAC_IND] =
   NULL,
 #endif /* FEATURE_WLAN_LPHB */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*-------------------------------------------------------------------------
     Indications
   -------------------------------------------------------------------------*/
   WDI_ProcessHostSuspendInd,            /* WDI_HOST_SUSPEND_IND*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   WDI_ProcessTrafficStatsInd,           /* WDI_TRAFFIC_STATS_IND*/
@@ -458,6 +504,8 @@ WDI_ReqProcFuncType  pfnReqProcTbl[WDI_MAX_UMAC_IND] =
   WDI_ProcessAddPeriodicTxPtrnInd,      /* WDI_ADD_PERIODIC_TX_PATTERN_IND */
   WDI_ProcessDelPeriodicTxPtrnInd,      /* WDI_DEL_PERIODIC_TX_PATTERN_IND */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 };
 
 
@@ -560,6 +608,7 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
   WDI_ProcessHostResumeRsp,        /*WDI_HOST_RESUME_RESP*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   WDI_ProcessP2PGONOARsp,           /*WDI_P2P_GO_NOTICE_OF_ABSENCE_RESP */
 #else
@@ -572,10 +621,23 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
   NULL,
 #endif /* ANI_MANF_DIAG */
 =======
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
   WDI_ProcessP2PGONOARsp,           /*WDI_P2P_GO_NOTICE_OF_ABSENCE_RESP */
+#else
+  NULL,
+#endif
 
+#ifdef ANI_MANF_DIAG
   WDI_ProcessFTMCommandRsp,         /* WDI_FTM_CMD_RESP */
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#else
+  NULL,
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 
   WDI_ProcessKeepAliveRsp,       /* WDI_KEEP_ALIVE_RESP  */
 
@@ -591,10 +653,14 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
 
   WDI_ProcessSetTxPerTrackingRsp,      /* WDI_SET_TX_PER_TRACKING_RESP  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*---------------------------------------------------------------------
     Indications
   ---------------------------------------------------------------------*/
@@ -617,10 +683,14 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
   WDI_ProcessHALDumpCmdRsp,       /* WDI_HAL_DUMP_CMD_RESP */
   WDI_ProcessShutdownRsp,         /* WDI_SHUTDOWN_RESP */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   WDI_ProcessSetPowerParamsRsp,         /*WDI_SET_POWER_PARAMS_RESP*/
 #ifdef FEATURE_WLAN_CCX
   WDI_ProcessTsmStatsRsp,          /* WDI_TSM_STATS_RESP  */
@@ -628,10 +698,14 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
   NULL,
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
   WDI_ProcessGtkOffloadRsp,             /* WDI_GTK_OFFLOAD_RESP  */
   WDI_ProcessGTKOffloadGetInfoRsp,      /* WDI_GTK_OFFLOAD_GETINFO_RESP  */
@@ -641,6 +715,7 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
 #endif // WLAN_FEATURE_GTK_OFFLOAD
   WDI_ProcessSetTmLevelRsp,             /* WDI_SET_TM_LEVEL_RESP */
   WDI_ProcessFeatureCapsExchangeRsp,    /* WDI_FEATURE_CAPS_EXCHANGE_RESP */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -671,6 +746,9 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
     NULL,
 #endif /* FEATURE_WLAN_LPHB */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*---------------------------------------------------------------------
     Indications
   ---------------------------------------------------------------------*/
@@ -686,6 +764,7 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
   WDI_ProcessTxCompleteInd,         /* WDI_HAL_TX_COMPLETE_IND  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   WDI_ProcessP2pNoaAttrInd,         /*WDI_HOST_NOA_ATTR_IND*/
 #else
@@ -694,6 +773,13 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
 =======
   WDI_ProcessP2pNoaAttrInd,         /*WDI_HOST_NOA_ATTR_IND*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+  WDI_ProcessP2pNoaAttrInd,         /*WDI_HOST_NOA_ATTR_IND*/
+#else
+  NULL,
+#endif
+>>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_SCAN_PNO
   WDI_ProcessPrefNetworkFoundInd,   /* WDI_HAL_PREF_NETWORK_FOUND_IND */
@@ -708,6 +794,7 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
 #endif // WLAN_WAKEUP_EVENTS
 
   WDI_ProcessTxPerHitInd,               /* WDI_HAL_TX_PER_HIT_IND  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -728,6 +815,8 @@ WDI_RspProcFuncType  pfnRspProcTbl[WDI_MAX_RESP] =
 
   WDI_ProcessPeriodicTxPtrnFwInd,   /* WDI_HAL_PERIODIC_TX_PTRN_FW_IND */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 };
 
 
@@ -985,11 +1074,14 @@ static char *WDI_getReqMsgString(wpt_uint16 wdiReqMsgId)
     CASE_RETURN_STRING( WDI_SET_MAX_TX_POWER_REQ );
     CASE_RETURN_STRING( WDI_P2P_GO_NOTICE_OF_ABSENCE_REQ );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
     CASE_RETURN_STRING( WDI_TDLS_LINK_ESTABLISH_REQ );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     CASE_RETURN_STRING( WDI_ENTER_IMPS_REQ );
     CASE_RETURN_STRING( WDI_EXIT_IMPS_REQ );
     CASE_RETURN_STRING( WDI_ENTER_BMPS_REQ );
@@ -1024,11 +1116,14 @@ static char *WDI_getReqMsgString(wpt_uint16 wdiReqMsgId)
     CASE_RETURN_STRING( WDI_UPDATE_SCAN_PARAMS_REQ );
   #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
     CASE_RETURN_STRING( WDI_ROAM_SCAN_OFFLOAD_REQ );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     CASE_RETURN_STRING( WDI_SET_TX_PER_TRACKING_REQ );
     CASE_RETURN_STRING( WDI_8023_MULTICAST_LIST_REQ );
     CASE_RETURN_STRING( WDI_RECEIVE_FILTER_SET_FILTER_REQ );
@@ -1039,6 +1134,7 @@ static char *WDI_getReqMsgString(wpt_uint16 wdiReqMsgId)
     CASE_RETURN_STRING( WDI_SHUTDOWN_REQ );
     CASE_RETURN_STRING( WDI_SET_POWER_PARAMS_REQ );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     CASE_RETURN_STRING( WDI_TRAFFIC_STATS_IND );
     CASE_RETURN_STRING( WDI_GET_ROAM_RSSI_REQ );
@@ -1046,6 +1142,8 @@ static char *WDI_getReqMsgString(wpt_uint16 wdiReqMsgId)
     CASE_RETURN_STRING( WDI_EXCLUDE_UNENCRYPTED_IND );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     default:
         return "Unknown WDI MessageId";
   }
@@ -1101,12 +1199,15 @@ static char *WDI_getRespMsgString(wpt_uint16 wdiRespMsgId)
     CASE_RETURN_STRING( WDI_SET_MAX_TX_POWER_RESP );
     CASE_RETURN_STRING( WDI_P2P_GO_NOTICE_OF_ABSENCE_RESP );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
     CASE_RETURN_STRING( WDI_TDLS_LINK_ESTABLISH_REQ_RESP );
     CASE_RETURN_STRING( WDI_HAL_TDLS_IND );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     CASE_RETURN_STRING( WDI_ENTER_IMPS_RESP );
     CASE_RETURN_STRING( WDI_EXIT_IMPS_RESP );
     CASE_RETURN_STRING( WDI_ENTER_BMPS_RESP );
@@ -1141,11 +1242,14 @@ static char *WDI_getRespMsgString(wpt_uint16 wdiRespMsgId)
     CASE_RETURN_STRING( WDI_UPDATE_SCAN_PARAMS_RESP );
   #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
     CASE_RETURN_STRING( WDI_ROAM_SCAN_OFFLOAD_RESP );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     CASE_RETURN_STRING( WDI_SET_TX_PER_TRACKING_RESP );
     CASE_RETURN_STRING( WDI_8023_MULTICAST_LIST_RESP );
     CASE_RETURN_STRING( WDI_RECEIVE_FILTER_SET_FILTER_RESP );
@@ -1155,15 +1259,19 @@ static char *WDI_getRespMsgString(wpt_uint16 wdiRespMsgId)
     CASE_RETURN_STRING( WDI_SHUTDOWN_RESP );
     CASE_RETURN_STRING( WDI_SET_POWER_PARAMS_RESP );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     CASE_RETURN_STRING( WDI_GET_ROAM_RSSI_RESP );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     default:
         return "Unknown WDI MessageId";
   }
 }
 
 /**
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   @brief WDI_TraceHostFWCapabilities - Parses both host and Firmware
@@ -1262,6 +1370,8 @@ void WDI_TraceHostFWCapabilities(tANI_U32 *capabilityBitmap)
 
 /**
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  @brief WDI_getHALStatusMsgString prints the HAL status in string.
 
  @param halStatusId: HAL status Id
@@ -1385,10 +1495,14 @@ WDI_Init
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                "%s: Failure while initializing STA Table, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, wdiStatus);
 =======
                __func__, wdiStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wdiStatus);
+>>>>>>> 657b0e9... prima update
     goto fail_STATableInit;
   }
 
@@ -1401,10 +1515,14 @@ WDI_Init
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                "%s: Failed to open PAL, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, wptStatus);
 =======
                __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
     goto fail_wpalOpen;
   }
 
@@ -1416,10 +1534,14 @@ WDI_Init
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                "%s: Failed to init mutex, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, wptStatus);
 =======
                __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
     goto fail_mutex;
   }
 
@@ -1432,6 +1554,7 @@ WDI_Init
   {
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
               "%s: Failed to init response timer, status %d",
+<<<<<<< HEAD
 <<<<<<< HEAD
                __FUNCTION__, wptStatus);
     goto fail_timer;
@@ -1453,6 +1576,12 @@ WDI_Init
     goto fail_timer2;
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wptStatus);
+    goto fail_timer;
+  }
+
+>>>>>>> 657b0e9... prima update
   /* Initialize the  WDI Pending Request Queue*/
   wptStatus = wpal_list_init(&(gWDICb.wptPendingQueue));
   if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus )
@@ -1460,10 +1589,14 @@ WDI_Init
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
               "%s: Failed to init pending request queue, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, wptStatus);
 =======
                __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
     goto fail_pend_queue;
   }
 
@@ -1474,10 +1607,14 @@ WDI_Init
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
               "%s: Failed to init assoc session queue, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, wptStatus);
 =======
                __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
     goto fail_assoc_queue;
   }
 
@@ -1490,10 +1627,14 @@ WDI_Init
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                  "%s: Failed to init BSS %d pending queue, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                  __FUNCTION__, i, wptStatus);
 =======
                  __func__, i, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 __FUNCTION__, i, wptStatus);
+>>>>>>> 657b0e9... prima update
       goto fail_bss_queue;
     }
   }
@@ -1510,10 +1651,14 @@ WDI_Init
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                "%s: Failed to initialize the DP Util Module, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__, wdiStatus);
 =======
                __func__, wdiStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__, wdiStatus);
+>>>>>>> 657b0e9... prima update
     goto fail_dp_util_init;
   }
 
@@ -1524,10 +1669,14 @@ WDI_Init
      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                 "%s: Failed to initialize power state event, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, wptStatus);
 =======
                 __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
      goto fail_power_event;
   }
 
@@ -1538,10 +1687,14 @@ WDI_Init
      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                 "%s: Failed to initialize WCTS action event, status %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __FUNCTION__, wptStatus);
 =======
                 __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
      goto fail_wcts_event;
   }
 
@@ -1562,10 +1715,14 @@ WDI_Init
   {
      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Failed to open WCTS transport", __FUNCTION__);
 =======
                 "%s: Failed to open WCTS transport", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Failed to open WCTS transport", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      goto fail_wcts_open;
   }
 
@@ -1580,10 +1737,14 @@ WDI_Init
     {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Failed to open the DT Transport", __FUNCTION__);
 =======
                  "%s: Failed to open the DT Transport", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Failed to open the DT Transport", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       goto fail_wdts_open;
     }
   }
@@ -1618,10 +1779,14 @@ WDI_Init
      {
         WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "%s: Failed to reset WCTS action event", __FUNCTION__);
 =======
                    "%s: Failed to reset WCTS action event", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "%s: Failed to reset WCTS action event", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      }
 
      WCTS_CloseTransport(gWDICb.wctsHandle);
@@ -1638,10 +1803,14 @@ WDI_Init
         {
            WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "%s: Failed to wait on WCTS action event", __FUNCTION__);
 =======
                       "%s: Failed to wait on WCTS action event", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                      "%s: Failed to wait on WCTS action event", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         }
      }
      else
@@ -1669,10 +1838,13 @@ WDI_Init
   wpal_list_destroy(&(gWDICb.wptPendingQueue));
  fail_pend_queue:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   wpalTimerDelete(&gWDICb.ssrTimer);
  fail_timer2:
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   wpalTimerDelete(&gWDICb.wptResponseTimer);
  fail_timer:
   wpalMutexDelete(&gWDICb.wptMutex);
@@ -1682,6 +1854,7 @@ WDI_Init
   WDI_STATableClose(&gWDICb);
  fail_STATableInit:
 <<<<<<< HEAD
+<<<<<<< HEAD
   gWDIInitialized = eWLAN_PAL_FALSE;
 
   return WDI_STATUS_E_FAILURE;
@@ -1690,6 +1863,11 @@ WDI_Init
 
   return WDI_STATUS_E_FAILURE; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  gWDIInitialized = eWLAN_PAL_FALSE;
+
+  return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
 
 }/*WDI_Init*/;
 
@@ -1877,10 +2055,14 @@ WDI_Close
   {
      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Failed to reset WCTS action event", __FUNCTION__);
 =======
                 "%s: Failed to reset WCTS action event", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Failed to reset WCTS action event", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      /* fall through and try to finish closing via the FSM */
   }
 
@@ -1907,10 +2089,14 @@ WDI_Close
      {
         WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                    "%s: Failed to wait on WCTS action event", __FUNCTION__);
 =======
                    "%s: Failed to wait on WCTS action event", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   "%s: Failed to wait on WCTS action event", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      }
   }
 
@@ -1960,11 +2146,14 @@ WDI_Close
   wptStatus = wpalTimerDelete( &gWDICb.wptResponseTimer);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /*destroy the SSR timer */
   wptStatus = wpalTimerDelete( &gWDICb.ssrTimer);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*invalidate the main synchro mutex */
   wptStatus = wpalMutexDelete(&gWDICb.wptMutex);
   if ( eWLAN_PAL_STATUS_SUCCESS !=  wptStatus )
@@ -2035,10 +2224,14 @@ WDI_Shutdown
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: Failed to process shutdown event", __FUNCTION__);
 =======
             "%s: Failed to process shutdown event", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: Failed to process shutdown event", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
    }
    /* Destroy the Set Power State event */
    wptStatus = wpalEventDelete(&gWDICb.setPowerStateEvent);
@@ -2067,10 +2260,14 @@ WDI_Shutdown
    else
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* Riva is crashed then SMD is already closed so cleaning all
 =======
       /* Riva is crashed then SMD is already closed so cleaning all 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      /* Riva is crashed then SMD is already closed so cleaning all
+>>>>>>> 657b0e9... prima update
          the pending messages in the transport queue  */
       WCTS_ClearPendingQueue(gWDICb.wctsHandle);
    }
@@ -2087,10 +2284,13 @@ WDI_Shutdown
    /*destroy the response timer */
    wptStatus = wpalTimerDelete( &gWDICb.wptResponseTimer);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    /*destroy the SSR timer */
    wptStatus = wpalTimerDelete( &gWDICb.ssrTimer);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    /*invalidate the main synchro mutex */
    wptStatus = wpalMutexDelete(&gWDICb.wptMutex);
@@ -2098,10 +2298,14 @@ WDI_Shutdown
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: Failed to delete mutex %d",  __FUNCTION__, wptStatus);
 =======
             "%s: Failed to delete mutex %d",  __func__, wptStatus);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: Failed to delete mutex %d",  __FUNCTION__, wptStatus);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
    }
    /* Free the global variables */
@@ -3101,6 +3305,7 @@ WDI_SetMaxTxPowerReq
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /**
  @brief WDI_SetTxPowerReq will be called when the upper
@@ -3154,6 +3359,8 @@ WDI_SetTxPowerReq
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_CCX
 WDI_Status
 WDI_TSMStatsReq
@@ -3167,10 +3374,14 @@ WDI_TSMStatsReq
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
   /*------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
     Sanity Check
 =======
     Sanity Check 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    Sanity Check
+>>>>>>> 657b0e9... prima update
   ------------------------------------------------------------------------*/
   if ( eWLAN_PAL_FALSE == gWDIInitialized )
   {
@@ -3178,16 +3389,21 @@ WDI_TSMStatsReq
               "WDI API call before module is initialized - Fail request");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     return WDI_STATUS_E_NOT_ALLOWED;
 =======
     return WDI_STATUS_E_NOT_ALLOWED; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return WDI_STATUS_E_NOT_ALLOWED;
+>>>>>>> 657b0e9... prima update
   }
 
   /*------------------------------------------------------------------------
     Fill in Event data and post to the Main FSM
   ------------------------------------------------------------------------*/
   wdiEventData.wdiRequest      = WDI_TSM_STATS_REQ;
+<<<<<<< HEAD
 <<<<<<< HEAD
   wdiEventData.pEventData      = pwdiTsmReqParams;
   wdiEventData.uEventDataSize  = sizeof(*pwdiTsmReqParams);
@@ -3197,6 +3413,11 @@ WDI_TSMStatsReq
   wdiEventData.uEventDataSize  = sizeof(*pwdiTsmReqParams); 
   wdiEventData.pCBfnc          = wdiReqStatusCb; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiEventData.pEventData      = pwdiTsmReqParams;
+  wdiEventData.uEventDataSize  = sizeof(*pwdiTsmReqParams);
+  wdiEventData.pCBfnc          = wdiReqStatusCb;
+>>>>>>> 657b0e9... prima update
   wdiEventData.pUserData       = pUserData;
 
   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
@@ -3205,12 +3426,17 @@ WDI_TSMStatsReq
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*========================================================================
 
 =======
 /*======================================================================== 
  
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/*========================================================================
+
+>>>>>>> 657b0e9... prima update
                             QoS and BA APIs
 
 ==========================================================================*/
@@ -3902,9 +4128,12 @@ WDI_Status
 WDI_ExitUapsdReq
 (
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WDI_ExitUapsdReqParamsType *pwdiExitUapsdReqParams,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    WDI_ExitUapsdRspCb  wdiExitUapsdRspCb,
    void*                   pUserData
 )
@@ -3928,12 +4157,17 @@ WDI_ExitUapsdReq
   ------------------------------------------------------------------------*/
   wdiEventData.wdiRequest      = WDI_EXIT_UAPSD_REQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
   wdiEventData.pEventData      = NULL;
   wdiEventData.uEventDataSize  = 0;
 =======
   wdiEventData.pEventData      = pwdiExitUapsdReqParams;
   wdiEventData.uEventDataSize  = sizeof(*pwdiExitUapsdReqParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiEventData.pEventData      = NULL;
+  wdiEventData.uEventDataSize  = 0;
+>>>>>>> 657b0e9... prima update
   wdiEventData.pCBfnc          = wdiExitUapsdRspCb;
   wdiEventData.pUserData       = pUserData;
 
@@ -3995,10 +4229,14 @@ WDI_UpdateUapsdParamsReq
   wdiEventData.wdiRequest      = WDI_UPDATE_UAPSD_PARAM_REQ;
   wdiEventData.pEventData      = pwdiUpdateUapsdReqParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
   wdiEventData.uEventDataSize  = sizeof(*pwdiUpdateUapsdReqParams);;
 =======
   wdiEventData.uEventDataSize  = sizeof(*pwdiUpdateUapsdReqParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiEventData.uEventDataSize  = sizeof(*pwdiUpdateUapsdReqParams);;
+>>>>>>> 657b0e9... prima update
   wdiEventData.pCBfnc          = wdiUpdateUapsdParamsCb;
   wdiEventData.pUserData       = pUserData;
 
@@ -4177,10 +4415,14 @@ WDI_SetBeaconFilterReq
    wdiEventData.wdiRequest      = WDI_SET_BEACON_FILTER_REQ;
    wdiEventData.pEventData      = pwdiBeaconFilterReqParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiBeaconFilterReqParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiBeaconFilterReqParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiBeaconFilterReqParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiBeaconFilterCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4239,10 +4481,14 @@ WDI_RemBeaconFilterReq
    wdiEventData.wdiRequest      = WDI_REM_BEACON_FILTER_REQ;
    wdiEventData.pEventData      = pwdiBeaconFilterReqParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiBeaconFilterReqParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiBeaconFilterReqParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiBeaconFilterReqParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiBeaconFilterCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4303,10 +4549,14 @@ WDI_SetRSSIThresholdsReq
    wdiEventData.wdiRequest      = WDI_SET_RSSI_THRESHOLDS_REQ;
    wdiEventData.pEventData      = pwdiRSSIThresholdsParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiRSSIThresholdsParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiRSSIThresholdsParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiRSSIThresholdsParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiSetRSSIThresholdsCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4367,10 +4617,14 @@ WDI_HostOffloadReq
    wdiEventData.wdiRequest      = WDI_HOST_OFFLOAD_REQ;
    wdiEventData.pEventData      = pwdiHostOffloadParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiHostOffloadParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiHostOffloadParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiHostOffloadParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiHostOffloadCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4492,10 +4746,14 @@ WDI_WowlAddBcPtrnReq
    wdiEventData.wdiRequest      = WDI_WOWL_ADD_BC_PTRN_REQ;
    wdiEventData.pEventData      = pwdiWowlAddBcPtrnParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlAddBcPtrnParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlAddBcPtrnParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiWowlAddBcPtrnParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiWowlAddBcPtrnCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4555,10 +4813,14 @@ WDI_WowlDelBcPtrnReq
    wdiEventData.wdiRequest      = WDI_WOWL_DEL_BC_PTRN_REQ;
    wdiEventData.pEventData      = pwdiWowlDelBcPtrnParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlDelBcPtrnParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlDelBcPtrnParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiWowlDelBcPtrnParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiWowlDelBcPtrnCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4619,10 +4881,14 @@ WDI_WowlEnterReq
    wdiEventData.wdiRequest      = WDI_WOWL_ENTER_REQ;
    wdiEventData.pEventData      = pwdiWowlEnterParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlEnterParams);;
 =======
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlEnterParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.uEventDataSize  = sizeof(*pwdiWowlEnterParams);;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiWowlEnterCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4657,9 +4923,12 @@ WDI_Status
 WDI_WowlExitReq
 (
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   WDI_WowlExitReqParamsType*    pwdiWowlExitParams,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   WDI_WowlExitReqCb              wdiWowlExitCb,
   void*                          pUserData
 )
@@ -4683,12 +4952,17 @@ WDI_WowlExitReq
    ------------------------------------------------------------------------*/
    wdiEventData.wdiRequest      = WDI_WOWL_EXIT_REQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.pEventData      = NULL;
    wdiEventData.uEventDataSize  = 0;
 =======
    wdiEventData.pEventData      = pwdiWowlExitParams;
    wdiEventData.uEventDataSize  = sizeof(*pwdiWowlExitParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.pEventData      = NULL;
+   wdiEventData.uEventDataSize  = 0;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pCBfnc          = wdiWowlExitCb;
    wdiEventData.pUserData       = pUserData;
 
@@ -4874,10 +5148,14 @@ WDI_BtAmpEventReq
 #ifdef FEATURE_OEM_DATA_SUPPORT
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  @brief WDI_Start Oem Data Req will be called when the upper MAC
 =======
  @brief WDI_Start Oem Data Req will be called when the upper MAC 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief WDI_Start Oem Data Req will be called when the upper MAC
+>>>>>>> 657b0e9... prima update
         wants to notify the lower mac on a oem data Req event.Upon
         the call of this API the WLAN DAL will pack and send a
         HAL OEM Data Req event request message to the lower RIVA
@@ -4888,12 +5166,17 @@ WDI_BtAmpEventReq
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
  @param pwdiOemDataReqParams: the Oem Data Req as
 =======
   
  @param pwdiOemDataReqParams: the Oem Data Req as 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+ @param pwdiOemDataReqParams: the Oem Data Req as
+>>>>>>> 657b0e9... prima update
         specified by the Device Interface
 
         wdiStartOemDataRspCb: callback for passing back the
@@ -4932,6 +5215,7 @@ WDI_StartOemDataReq
    ------------------------------------------------------------------------*/
    wdiEventData.wdiRequest      = WDI_START_OEM_DATA_REQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wdiEventData.pEventData      = pwdiOemDataReqParams;
    wdiEventData.uEventDataSize  = sizeof(*pwdiOemDataReqParams);
    wdiEventData.pCBfnc          = wdiOemDataRspCb;
@@ -4940,6 +5224,11 @@ WDI_StartOemDataReq
    wdiEventData.uEventDataSize  = sizeof(*pwdiOemDataReqParams); 
    wdiEventData.pCBfnc          = wdiOemDataRspCb; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.pEventData      = pwdiOemDataReqParams;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiOemDataReqParams);
+   wdiEventData.pCBfnc          = wdiOemDataRspCb;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pUserData       = pUserData;
 
    return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
@@ -5196,6 +5485,7 @@ WDI_GetStatsReq
 }/*WDI_GetStatsReq*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 /**
@@ -5258,6 +5548,8 @@ WDI_GetRoamRssiReq
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /**
  @brief WDI_UpdateCfgReq will be called when the upper MAC when
@@ -5673,9 +5965,13 @@ WDI_NvDownloadReq
 }/*WDI_NVDownloadReq*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_SetP2PGONOAReq will be called when the
         upper MAC wants to send Notice of Absence
@@ -5734,6 +6030,7 @@ WDI_SetP2PGONOAReq
   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
 
 }/*WDI_SetP2PGONOAReq*/
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -5797,6 +6094,8 @@ WDI_SetTDLSLinkEstablishReq
 
 }/*WDI_SetTDLSLinkEstablishReq*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 
 /**
@@ -5916,9 +6215,13 @@ WDI_AggrAddTSReq
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_FTMCommandReq
         Post FTM Command Event
@@ -5964,9 +6267,13 @@ WDI_FTMCommandReq
   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_HostResumeReq will be called
 
@@ -6135,6 +6442,7 @@ WDI_SetTxPerTrackingReq
 /**
  @brief WDI_SetTmLevelReq
 <<<<<<< HEAD
+<<<<<<< HEAD
         If HW Thermal condition changed, driver should react based on new
         HW thermal condition.
 
@@ -6147,16 +6455,24 @@ WDI_SetTxPerTrackingReq
 
 =======
         If HW Thermal condition changed, driver should react based on new 
+=======
+        If HW Thermal condition changed, driver should react based on new
+>>>>>>> 657b0e9... prima update
         HW thermal condition.
 
  @param pwdiSetTmLevelReq: New thermal condition information
-  
+
         pwdiSetTmLevelRspCb: callback
-  
+
         usrData: user data will be passed back with the
+<<<<<<< HEAD
         callback 
   
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        callback
+
+>>>>>>> 657b0e9... prima update
  @return Result of the function call
 */
 WDI_Status
@@ -6165,10 +6481,14 @@ WDI_SetTmLevelReq
    WDI_SetTmLevelReqType        *pwdiSetTmLevelReq,
    WDI_SetTmLevelCb              pwdiSetTmLevelRspCb,
 <<<<<<< HEAD
+<<<<<<< HEAD
    void                         *usrData
 =======
    void                         *usrData  
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   void                         *usrData
+>>>>>>> 657b0e9... prima update
 )
 {
    WDI_EventInfoType      wdiEventData;
@@ -6176,10 +6496,14 @@ WDI_SetTmLevelReq
 
    /*------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
      Sanity Check
 =======
      Sanity Check 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     Sanity Check
+>>>>>>> 657b0e9... prima update
    ------------------------------------------------------------------------*/
    if ( eWLAN_PAL_FALSE == gWDIInitialized )
    {
@@ -6187,16 +6511,21 @@ WDI_SetTmLevelReq
                "WDI API call before module is initialized - Fail request");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
      return WDI_STATUS_E_NOT_ALLOWED;
 =======
      return WDI_STATUS_E_NOT_ALLOWED; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     return WDI_STATUS_E_NOT_ALLOWED;
+>>>>>>> 657b0e9... prima update
    }
 
    /*------------------------------------------------------------------------
      Fill in Event data and post to the Main FSM
    ------------------------------------------------------------------------*/
    wdiEventData.wdiRequest      = WDI_SET_TM_LEVEL_REQ;
+<<<<<<< HEAD
 <<<<<<< HEAD
    wdiEventData.pEventData      = pwdiSetTmLevelReq;
    wdiEventData.uEventDataSize  = sizeof(*pwdiSetTmLevelReq);
@@ -6206,6 +6535,11 @@ WDI_SetTmLevelReq
    wdiEventData.uEventDataSize  = sizeof(*pwdiSetTmLevelReq);
    wdiEventData.pCBfnc          = pwdiSetTmLevelRspCb; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiEventData.pEventData      = pwdiSetTmLevelReq;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiSetTmLevelReq);
+   wdiEventData.pCBfnc          = pwdiSetTmLevelRspCb;
+>>>>>>> 657b0e9... prima update
    wdiEventData.pUserData       = usrData;
 
    return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
@@ -6213,12 +6547,17 @@ WDI_SetTmLevelReq
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  @brief WDI_HostSuspendInd
 
 =======
  @brief WDI_HostSuspendInd 
   
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief WDI_HostSuspendInd
+
+>>>>>>> 657b0e9... prima update
         Suspend Indication from the upper layer will be sent
         down to HAL
 
@@ -6263,6 +6602,7 @@ WDI_HostSuspendInd
 }/*WDI_HostSuspendInd*/
 
 /**
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  @brief WDI_TrafficStatsInd
@@ -6437,6 +6777,8 @@ WDI_DelPeriodicTxPtrnInd
 
 /**
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  @brief WDI_HALDumpCmdReq
         Post HAL DUMP Command Event
 
@@ -7261,10 +7603,14 @@ WDI_ProcessStartReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -7357,6 +7703,7 @@ WDI_ProcessStopReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
@@ -7365,6 +7712,11 @@ WDI_ProcessStopReq
      WDI_ASSERT(0);
      goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
   }
 
   /*-----------------------------------------------------------------------
@@ -7380,10 +7732,14 @@ WDI_ProcessStopReq
                 pEventData, pwdiStopParams, wdiStopRspCb);
      WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
      return WDI_STATUS_E_FAILURE;
 =======
      goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
   }
 
   /*-----------------------------------------------------------------------
@@ -7415,6 +7771,7 @@ WDI_ProcessStopReq
 
         WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
         return VOS_STATUS_E_FAILURE;
      }
      /* Stop Transport Driver, DXE */
@@ -7425,21 +7782,21 @@ WDI_ProcessStopReq
      status = wpalEventWait(&pWDICtx->setPowerStateEvent,
 =======
         goto fail;
+=======
+        return VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
      }
      /* Stop Transport Driver, DXE */
-     status = WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_DOWN, WDI_SetPowerStateCb);
-     if( eWLAN_PAL_STATUS_SUCCESS != status ) 
-     {
-        WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
-                "WDTS_SetPowerState returned with status %d when trying to notify DTS that host is entering Power Down state\n", status);
-        WDI_ASSERT(0);
-        goto fail;
-     }
+     WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_DOWN, WDI_SetPowerStateCb);
      /*
       * Wait for the event to be set once the ACK comes back from DXE
       */
+<<<<<<< HEAD
      status = wpalEventWait(&pWDICtx->setPowerStateEvent, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     status = wpalEventWait(&pWDICtx->setPowerStateEvent,
+>>>>>>> 657b0e9... prima update
                             WDI_SET_POWER_STATE_TIMEOUT);
      if (eWLAN_PAL_STATUS_SUCCESS != status)
      {
@@ -7448,10 +7805,14 @@ WDI_ProcessStopReq
 
         WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
         return VOS_STATUS_E_FAILURE;
 =======
         goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        return VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
       }
   }
 
@@ -7461,6 +7822,7 @@ WDI_ProcessStopReq
   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                        wdiStopRspCb, pEventData->pUserData, WDI_STOP_RESP);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 fail:
@@ -7472,6 +7834,8 @@ failRequest:
    return WDI_STATUS_E_FAILURE;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessStopReq*/
 
 /**
@@ -7579,10 +7943,14 @@ WDI_ProcessInitScanReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "%s: Invalid parameters", __FUNCTION__);
 =======
         "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_E_FAILURE;
   }
@@ -7610,11 +7978,16 @@ WDI_ProcessInitScanReq
   wpalMutexRelease(&pWDICtx->wptMutex);
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   if (pwdiInitScanParams->wdiReqInfo.bUseNOA)
 =======
   if ((pwdiInitScanParams->wdiReqInfo.bUseNOA) && (!WDI_getFwWlanFeatCaps(P2P_GO_NOA_DECOUPLE_INIT_SCAN)))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  if (pwdiInitScanParams->wdiReqInfo.bUseNOA)
+>>>>>>> 657b0e9... prima update
   {
     /*This is temporary fix.
      * It shold be removed once host and riva changes are in sync*/
@@ -7654,6 +8027,7 @@ WDI_ProcessInitScanReq
         &pwdiInitScanParams->wdiReqInfo.wdiMACMgmtHdr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     halInitScanConReqMsg.initScanParams.useNoA = pwdiInitScanParams->wdiReqInfo.bUseNOA;
     halInitScanConReqMsg.initScanParams.scanDuration = pwdiInitScanParams->wdiReqInfo.scanDuration;
@@ -7662,6 +8036,12 @@ WDI_ProcessInitScanReq
     halInitScanConReqMsg.initScanParams.useNoA = pwdiInitScanParams->wdiReqInfo.bUseNOA;
     halInitScanConReqMsg.initScanParams.scanDuration = pwdiInitScanParams->wdiReqInfo.scanDuration;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+    halInitScanConReqMsg.initScanParams.useNoA = pwdiInitScanParams->wdiReqInfo.bUseNOA;
+    halInitScanConReqMsg.initScanParams.scanDuration = pwdiInitScanParams->wdiReqInfo.scanDuration;
+#endif
+>>>>>>> 657b0e9... prima update
 
     halInitScanConReqMsg.initScanParams.scanEntry.activeBSScnt =
       pwdiInitScanParams->wdiReqInfo.wdiScanEntry.activeBSScnt;
@@ -7773,10 +8153,14 @@ WDI_ProcessStartScanReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -7872,10 +8256,14 @@ WDI_ProcessEndScanReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -7962,10 +8350,14 @@ WDI_ProcessFinishScanReq
   wpt_uint16                    usSendSize           = 0;
   wpt_uint8                     i                    = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   wpt_status                    wptStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   tHalFinishScanReqMsg          halFinishScanReqMsg;
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -7978,10 +8370,14 @@ WDI_ProcessFinishScanReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -8006,10 +8402,14 @@ WDI_ProcessFinishScanReq
 
     wpalMutexRelease(&pWDICtx->wptMutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
     return WDI_STATUS_E_NOT_ALLOWED;
 =======
     return WDI_STATUS_E_NOT_ALLOWED; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return WDI_STATUS_E_NOT_ALLOWED;
+>>>>>>> 657b0e9... prima update
   }
 
   /*-----------------------------------------------------------------------
@@ -8025,6 +8425,7 @@ WDI_ProcessFinishScanReq
   {
      // notify DTS that we are entering BMPS
 <<<<<<< HEAD
+<<<<<<< HEAD
      WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_BMPS, NULL);
 =======
      wptStatus = WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_BMPS, NULL);
@@ -8035,6 +8436,9 @@ WDI_ProcessFinishScanReq
         WDI_ASSERT(0);
      }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_BMPS, NULL);
+>>>>>>> 657b0e9... prima update
   }
 
   /*-----------------------------------------------------------------------
@@ -8129,10 +8533,13 @@ WDI_ProcessBSSSessionJoinReq
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   wpalMutexAcquire(&pWDICtx->wptMutex);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Check to see if we have any session with this BSSID already stored, we
     should not
@@ -8145,6 +8552,7 @@ WDI_ProcessBSSSessionJoinReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "Association for this BSSID is already in place");
 
     return WDI_STATUS_E_NOT_ALLOWED;
@@ -8154,15 +8562,18 @@ WDI_ProcessBSSSessionJoinReq
 =======
           "Association for this BSSID: " MAC_ADDRESS_STR " is already in place",
           MAC_ADDR_ARRAY(pwdiJoinParams->wdiReqInfo.macBSSID));
+=======
+              "Association for this BSSID is already in place");
+>>>>>>> 657b0e9... prima update
 
-    /*reset the bAssociationInProgress otherwise the next 
-     *join request will be queued*/
-    pWDICtx->bAssociationInProgress = eWLAN_PAL_FALSE;
-    wpalMutexRelease(&pWDICtx->wptMutex);
-    return WDI_STATUS_E_NOT_ALLOWED; 
+    return WDI_STATUS_E_NOT_ALLOWED;
   }
 
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wpalMutexAcquire(&pWDICtx->wptMutex);
+>>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Fetch an empty session block
   ------------------------------------------------------------------------*/
@@ -8174,11 +8585,14 @@ WDI_ProcessBSSSessionJoinReq
               "DAL has no free sessions - cannot run another join");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     /*reset the bAssociationInProgress otherwise the next 
      *join request will be queued*/
     pWDICtx->bAssociationInProgress = eWLAN_PAL_FALSE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     wpalMutexRelease(&pWDICtx->wptMutex);
     return WDI_STATUS_RES_FAILURE;
   }
@@ -8279,10 +8693,14 @@ WDI_ProcessJoinReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -8357,10 +8775,14 @@ WDI_ProcessConfigBSSReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -8441,6 +8863,7 @@ WDI_ProcessConfigBSSReq
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                 "%s: Association sequence for this BSS does not yet exist." MAC_ADDRESS_STR "wdiBssType %d",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __func__, MAC_ADDR_ARRAY(pwdiConfigBSSParams->wdiReqInfo.macBSSID),
                 pwdiConfigBSSParams->wdiReqInfo.wdiBSSType);
 
@@ -8449,6 +8872,11 @@ WDI_ProcessConfigBSSReq
                 pwdiConfigBSSParams->wdiReqInfo.wdiBSSType);
       
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                __func__, MAC_ADDR_ARRAY(pwdiConfigBSSParams->wdiReqInfo.macBSSID),
+                pwdiConfigBSSParams->wdiReqInfo.wdiBSSType);
+
+>>>>>>> 657b0e9... prima update
       /* for IBSS testing */
       wpalMutexRelease(&pWDICtx->wptMutex);
       return WDI_STATUS_E_NOT_ALLOWED;
@@ -8464,12 +8892,17 @@ WDI_ProcessConfigBSSReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. " MAC_ADDRESS_STR " bssIdx %d",
               __func__, MAC_ADDR_ARRAY(pwdiConfigBSSParams->wdiReqInfo.macBSSID),
 =======
               "%s: Association sequence for this BSS exists but currently queued. " MAC_ADDRESS_STR " bssIdx %d", 
               __func__, MAC_ADDR_ARRAY(pwdiConfigBSSParams->wdiReqInfo.macBSSID), 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. " MAC_ADDRESS_STR " bssIdx %d",
+              __func__, MAC_ADDR_ARRAY(pwdiConfigBSSParams->wdiReqInfo.macBSSID),
+>>>>>>> 657b0e9... prima update
               ucCurrentBSSSesIdx);
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -8490,6 +8923,7 @@ WDI_ProcessConfigBSSReq
 #ifdef WLAN_FEATURE_11AC
   if (WDI_getFwWlanFeatCaps(DOT11AC))
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  uMsgSize = sizeof(halConfigBssReqMsg.uBssParams.configBssParams_V1); // Version - 1 For 11AC
   else
 #endif
@@ -8500,6 +8934,12 @@ WDI_ProcessConfigBSSReq
 #endif
      uMsgSize = sizeof(halConfigBssReqMsg.uBssParams.configBssParams); // default Version - 0 Structure
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  uMsgSize = sizeof(halConfigBssReqMsg.uBssParams.configBssParams_V1); // Version - 1 For 11AC
+  else
+#endif
+	  uMsgSize = sizeof(halConfigBssReqMsg.uBssParams.configBssParams); // default Version - 0 Structure
+>>>>>>> 657b0e9... prima update
 
   /*-----------------------------------------------------------------------
     Get message buffer
@@ -8533,6 +8973,7 @@ WDI_ProcessConfigBSSReq
   halConfigBssReqMsg.uBssParams.configBssParams.staContext.bssIdx = pBSSSes->ucBSSIdx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   wpalMemoryCopy( pSendBuffer+usDataOffset,
                   &halConfigBssReqMsg.uBssParams.configBssParams,
                   uMsgSize);
@@ -8557,6 +8998,11 @@ WDI_ProcessConfigBSSReq
     }
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wpalMemoryCopy( pSendBuffer+usDataOffset,
+                  &halConfigBssReqMsg.uBssParams.configBssParams,
+                  uMsgSize);
+>>>>>>> 657b0e9... prima update
 
   pWDICtx->wdiReqStatusCB     = pwdiConfigBSSParams->wdiReqStatusCB;
   pWDICtx->pReqStatusUserData = pwdiConfigBSSParams->pUserData;
@@ -8609,10 +9055,14 @@ WDI_ProcessDelBSSReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -8754,10 +9204,14 @@ WDI_ProcessPostAssocReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -8778,6 +9232,7 @@ WDI_ProcessPostAssocReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "%s: Association sequence for this BSS does not yet exist - "
               "operation not allowed. macBSSID " MAC_ADDRESS_STR,
@@ -8786,6 +9241,11 @@ WDI_ProcessPostAssocReq
               "%s: Association sequence for this BSS does not yet exist - " 
               "operation not allowed. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+              "%s: Association sequence for this BSS does not yet exist - "
+              "operation not allowed. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(pwdiPostAssocParams->wdiBSSParams.macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -8800,10 +9260,14 @@ WDI_ProcessPostAssocReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(pwdiPostAssocParams->wdiBSSParams.macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -8872,9 +9336,12 @@ WDI_ProcessPostAssocReq
              "This station does not exist in the WDI Station Table %d");
     wpalMutexRelease(&pWDICtx->wptMutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     wpalMemoryFree(pSendBuffer);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     return WDI_STATUS_E_FAILURE;
   }
 
@@ -8896,9 +9363,12 @@ WDI_ProcessPostAssocReq
              "This station does not exist in the WDI Station Table %d");
     wpalMutexRelease(&pWDICtx->wptMutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     wpalMemoryFree(pSendBuffer);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     return WDI_STATUS_E_FAILURE;
   }
 
@@ -8973,10 +9443,14 @@ WDI_ProcessDelSTAReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9006,12 +9480,17 @@ WDI_ProcessDelSTAReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+              "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -9107,10 +9586,14 @@ WDI_ProcessSetBssKeyReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9134,10 +9617,14 @@ WDI_ProcessSetBssKeyReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d",
 =======
               "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d", 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d",
+>>>>>>> 657b0e9... prima update
               __func__, pwdiSetBSSKeyParams->wdiBSSKeyInfo.ucBssIdx);
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -9261,10 +9748,14 @@ WDI_ProcessRemoveBssKeyReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9288,10 +9779,14 @@ WDI_ProcessRemoveBssKeyReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d",
 =======
               "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d", 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d",
+>>>>>>> 657b0e9... prima update
               __func__, pwdiRemoveBSSKeyParams->wdiKeyInfo.ucBssIdx);
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -9397,10 +9892,14 @@ WDI_ProcessSetStaKeyReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9430,12 +9929,17 @@ WDI_ProcessSetStaKeyReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+              "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -9489,9 +9993,13 @@ WDI_ProcessSetStaKeyReq
   halSetStaKeyReqMsg.setStaKeyParams.singleTidRc = pwdiSetSTAKeyParams->wdiKeyInfo.ucSingleTidRc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   for(keyIndex = 0; keyIndex < pwdiSetSTAKeyParams->wdiKeyInfo.ucNumKeys ;
                                                                  keyIndex++)
   {
@@ -9513,6 +10021,9 @@ WDI_ProcessSetStaKeyReq
                         WDI_MAX_KEY_LENGTH);
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
   halSetStaKeyReqMsg.setStaKeyParams.key.keyId =
                       pwdiSetSTAKeyParams->wdiKeyInfo.wdiKey[0].keyId;
@@ -9531,8 +10042,11 @@ WDI_ProcessSetStaKeyReq
                          pwdiSetSTAKeyParams->wdiKeyInfo.wdiKey[0].key,
                         WDI_MAX_KEY_LENGTH);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   wpalMemoryCopy( pSendBuffer+usDataOffset,
                     &halSetStaKeyReqMsg.setStaKeyParams,
@@ -9587,10 +10101,14 @@ WDI_ProcessRemoveStaKeyReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9620,12 +10138,17 @@ WDI_ProcessRemoveStaKeyReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+              "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -9640,10 +10163,14 @@ WDI_ProcessRemoveStaKeyReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -9740,10 +10267,14 @@ WDI_ProcessSetStaBcastKeyReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9827,9 +10358,13 @@ WDI_ProcessSetStaBcastKeyReq
   halSetStaKeyReqMsg.setStaKeyParams.singleTidRc = pwdiSetSTAKeyParams->wdiKeyInfo.ucSingleTidRc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   for(keyIndex = 0; keyIndex < pwdiSetSTAKeyParams->wdiKeyInfo.ucNumKeys ;
                                                                  keyIndex++)
   {
@@ -9851,6 +10386,9 @@ WDI_ProcessSetStaBcastKeyReq
                         WDI_MAX_KEY_LENGTH);
    }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
   halSetStaKeyReqMsg.setStaKeyParams.key.keyId =
                       pwdiSetSTAKeyParams->wdiKeyInfo.wdiKey[0].keyId;
@@ -9869,8 +10407,11 @@ WDI_ProcessSetStaBcastKeyReq
                          pwdiSetSTAKeyParams->wdiKeyInfo.wdiKey[0].key,
                         WDI_MAX_KEY_LENGTH);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   wpalMemoryCopy( pSendBuffer+usDataOffset,
                     &halSetStaKeyReqMsg.setStaKeyParams,
@@ -9925,10 +10466,14 @@ WDI_ProcessRemoveStaBcastKeyReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -9958,12 +10503,17 @@ WDI_ProcessRemoveStaBcastKeyReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+              "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -9978,10 +10528,14 @@ WDI_ProcessRemoveStaBcastKeyReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
                __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -10080,10 +10634,14 @@ WDI_ProcessAddTSpecReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -10113,12 +10671,17 @@ WDI_ProcessAddTSpecReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
               "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+              "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -10268,10 +10831,14 @@ WDI_ProcessDelTSpecReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -10295,6 +10862,7 @@ WDI_ProcessDelTSpecReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
             "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
             __func__, MAC_ADDR_ARRAY(pwdiDelTSParams->wdiDelTSInfo.macBSSID));
@@ -10305,6 +10873,12 @@ WDI_ProcessDelTSpecReq
             __func__, MAC_ADDR_ARRAY(pwdiDelTSParams->wdiDelTSInfo.macBSSID));
     
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+            "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+            __func__, MAC_ADDR_ARRAY(pwdiDelTSParams->wdiDelTSInfo.macBSSID));
+
+>>>>>>> 657b0e9... prima update
     wpalMutexRelease(&pWDICtx->wptMutex);
     return WDI_STATUS_E_NOT_ALLOWED;
   }
@@ -10317,10 +10891,14 @@ WDI_ProcessDelTSpecReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(pwdiDelTSParams->wdiDelTSInfo.macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -10395,10 +10973,14 @@ WDI_ProcessUpdateEDCAParamsReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -10422,10 +11004,14 @@ WDI_ProcessUpdateEDCAParamsReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d",
 =======
             "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d", 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: Association sequence for this BSS does not yet exist. ucBssIdx %d",
+>>>>>>> 657b0e9... prima update
             __func__, pwdiUpdateEDCAParams->wdiEDCAInfo.ucBssIdx);
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -10518,10 +11104,14 @@ WDI_ProcessAddBASessionReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -10555,6 +11145,7 @@ WDI_ProcessAddBASessionReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
           "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
           __func__, MAC_ADDR_ARRAY(macBSSID));
@@ -10565,6 +11156,12 @@ WDI_ProcessAddBASessionReq
           __func__, MAC_ADDR_ARRAY(macBSSID));
       
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+          "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+          __func__, MAC_ADDR_ARRAY(macBSSID));
+
+>>>>>>> 657b0e9... prima update
     wpalMutexRelease(&pWDICtx->wptMutex);
     return WDI_STATUS_E_NOT_ALLOWED;
   }
@@ -10577,10 +11174,14 @@ WDI_ProcessAddBASessionReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
                __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -10677,10 +11278,14 @@ WDI_ProcessDelBAReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -10711,12 +11316,17 @@ WDI_ProcessDelBAReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
             "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
             "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+            "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
             __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -10774,16 +11384,21 @@ WDI_ProcessDelBAReq
 WDI_Status
 WDI_ProcessTSMStatsReq
 <<<<<<< HEAD
+<<<<<<< HEAD
 (
 =======
 ( 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+(
+>>>>>>> 657b0e9... prima update
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
   WDI_TSMStatsReqParamsType*  pwdiTSMParams;
   WDI_TsmRspCb                wdiTSMRspCb;
+<<<<<<< HEAD
 <<<<<<< HEAD
   wpt_uint8                   ucCurrentBSSSesIdx   = 0;
   WDI_BSSSessionType*         pBSSSes              = NULL;
@@ -10799,23 +11414,31 @@ WDI_ProcessTSMStatsReq
        Sanity check
 =======
   wpt_uint8                   ucCurrentBSSSesIdx   = 0; 
+=======
+  wpt_uint8                   ucCurrentBSSSesIdx   = 0;
+>>>>>>> 657b0e9... prima update
   WDI_BSSSessionType*         pBSSSes              = NULL;
-  wpt_uint8*                  pSendBuffer          = NULL; 
+  wpt_uint8*                  pSendBuffer          = NULL;
   wpt_uint16                  usDataOffset         = 0;
   wpt_uint16                  usSendSize           = 0;
-  WDI_Status                  wdiStatus            = WDI_STATUS_SUCCESS; 
+  WDI_Status                  wdiStatus            = WDI_STATUS_SUCCESS;
   tTsmStatsParams             halTsmStatsReqParams = {0};
-  
+
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
+<<<<<<< HEAD
        Sanity check 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       Sanity check
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------*/
   if (( NULL == pEventData ) || ( NULL == pEventData->pEventData ) ||
       ( NULL == pEventData->pCBfnc ))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
      WDI_ASSERT(0);
@@ -10825,12 +11448,18 @@ WDI_ProcessTSMStatsReq
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
   }
 
   pwdiTSMParams = (WDI_TSMStatsReqParamsType*)pEventData->pEventData;
   wdiTSMRspCb   = (WDI_TsmRspCb)pEventData->pCBfnc;
   /*-------------------------------------------------------------------------
     Check to see if we are in the middle of an association, if so queue, if
+<<<<<<< HEAD
 <<<<<<< HEAD
     not it means it is free to process request
   -------------------------------------------------------------------------*/
@@ -10847,32 +11476,44 @@ WDI_ProcessTSMStatsReq
     return WDI_STATUS_E_NOT_ALLOWED;
 =======
     not it means it is free to process request 
+=======
+    not it means it is free to process request
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------*/
   wpalMutexAcquire(&pWDICtx->wptMutex);
 
-  ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx, pwdiTSMParams->wdiTsmStatsParamsInfo.bssid, &pBSSSes); 
-  if ( NULL == pBSSSes ) 
+  ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx, pwdiTSMParams->wdiTsmStatsParamsInfo.bssid, &pBSSSes);
+  if ( NULL == pBSSSes )
   {
-    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
-            "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+            "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
             __func__, MAC_ADDR_ARRAY(pwdiTSMParams->wdiTsmStatsParamsInfo.bssid));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
+<<<<<<< HEAD
     return WDI_STATUS_E_NOT_ALLOWED; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return WDI_STATUS_E_NOT_ALLOWED;
+>>>>>>> 657b0e9... prima update
   }
 
   /*------------------------------------------------------------------------
     Check if this BSS is being currently processed or queued,
 <<<<<<< HEAD
+<<<<<<< HEAD
     if queued - queue the new request as well
 =======
     if queued - queue the new request as well 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if queued - queue the new request as well
+>>>>>>> 657b0e9... prima update
   ------------------------------------------------------------------------*/
   if ( eWLAN_PAL_TRUE == pBSSSes->bAssocReqQueued )
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
 <<<<<<< HEAD
               "s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
               __func__, MAC_ADDR_ARRAY(pwdiTSMParams->wdiTsmStatsParamsInfo.bssid));
@@ -10882,17 +11523,25 @@ WDI_ProcessTSMStatsReq
     return wdiStatus;
 =======
               "s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
+=======
+              "s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(pwdiTSMParams->wdiTsmStatsParamsInfo.bssid));
 
-    wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData); 
+    wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
     wpalMutexRelease(&pWDICtx->wptMutex);
+<<<<<<< HEAD
     return wdiStatus; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return wdiStatus;
+>>>>>>> 657b0e9... prima update
   }
 
   wpalMutexRelease(&pWDICtx->wptMutex);
   /*-----------------------------------------------------------------------
     Get message buffer
+<<<<<<< HEAD
 <<<<<<< HEAD
     ! TO DO : proper conversion into the HAL Message Request Format
   -----------------------------------------------------------------------*/
@@ -10904,6 +11553,12 @@ WDI_ProcessTSMStatsReq
   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_TSM_STATS_REQ, 
                                                     sizeof(halTsmStatsReqParams), 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    ! TO DO : proper conversion into the HAL Message Request Format
+  -----------------------------------------------------------------------*/
+  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_TSM_STATS_REQ,
+                                                    sizeof(halTsmStatsReqParams),
+>>>>>>> 657b0e9... prima update
                                                     &pSendBuffer, &usDataOffset,                                                     &usSendSize))||
       ( usSendSize < (usDataOffset + sizeof(halTsmStatsReqParams) )))
   {
@@ -10912,16 +11567,21 @@ WDI_ProcessTSMStatsReq
                 pEventData, pwdiTSMParams, wdiTSMRspCb);
      WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
      return WDI_STATUS_E_FAILURE;
 =======
      return WDI_STATUS_E_FAILURE; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
   }
 
   halTsmStatsReqParams.tsmTID = pwdiTSMParams->wdiTsmStatsParamsInfo.ucTid;
   wpalMemoryCopy(halTsmStatsReqParams.bssId,
                  pwdiTSMParams->wdiTsmStatsParamsInfo.bssid,
                  WDI_MAC_ADDR_LEN);
+<<<<<<< HEAD
 <<<<<<< HEAD
   wpalMemoryCopy( pSendBuffer+usDataOffset,
                   &halTsmStatsReqParams,
@@ -10940,17 +11600,26 @@ WDI_ProcessTSMStatsReq
   wpalMemoryCopy( pSendBuffer+usDataOffset, 
                   &halTsmStatsReqParams, 
                   sizeof(halTsmStatsReqParams)); 
+=======
+  wpalMemoryCopy( pSendBuffer+usDataOffset,
+                  &halTsmStatsReqParams,
+                  sizeof(halTsmStatsReqParams));
+>>>>>>> 657b0e9... prima update
 
   pWDICtx->wdiReqStatusCB     = pwdiTSMParams->wdiReqStatusCB;
-  pWDICtx->pReqStatusUserData = pwdiTSMParams->pUserData; 
+  pWDICtx->pReqStatusUserData = pwdiTSMParams->pUserData;
 
   /*-------------------------------------------------------------------------
-    Send TSM Stats Request to HAL 
+    Send TSM Stats Request to HAL
   -------------------------------------------------------------------------*/
-  return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize, 
+  return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                        wdiTSMRspCb, pEventData->pUserData,
+<<<<<<< HEAD
                        WDI_TSM_STATS_RESP); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                       WDI_TSM_STATS_RESP);
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessTSMStatsReq*/
 
 #endif
@@ -10988,10 +11657,14 @@ WDI_ProcessFlushAcReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -11062,10 +11735,14 @@ WDI_ProcessBtAmpEventReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -11127,10 +11804,14 @@ WDI_ProcessAddSTASelfReq
   wpt_uint16                            usDataOffset        = 0;
   wpt_uint16                            usSendSize          = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
   tAddStaSelfParams                     halAddSTASelfParams;
 =======
   tAddStaSelfParams_V1                  halAddSTASelfParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  tAddStaSelfParams                     halAddSTASelfParams;
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -11142,10 +11823,14 @@ WDI_ProcessAddSTASelfReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -11160,6 +11845,7 @@ WDI_ProcessAddSTASelfReq
   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
                         WDI_ADD_STA_SELF_REQ,
 <<<<<<< HEAD
+<<<<<<< HEAD
                         sizeof(tAddStaSelfParams),
                         &pSendBuffer, &usDataOffset, &usSendSize))||
       ( usSendSize < (usDataOffset + sizeof(tAddStaSelfParams) )))
@@ -11168,6 +11854,11 @@ WDI_ProcessAddSTASelfReq
                         &pSendBuffer, &usDataOffset, &usSendSize))||
       ( usSendSize < (usDataOffset + sizeof(tAddStaSelfParams_V1) )))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                        sizeof(tAddStaSelfParams),
+                        &pSendBuffer, &usDataOffset, &usSendSize))||
+      ( usSendSize < (usDataOffset + sizeof(tAddStaSelfParams) )))
+>>>>>>> 657b0e9... prima update
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
               "Unable to get send buffer in ADD STA SELF REQ %x %x %x",
@@ -11181,6 +11872,7 @@ WDI_ProcessAddSTASelfReq
                  sizeof(pWDICtx->wdiCacheAddSTASelfReq));
 
   wpalMemoryCopy(halAddSTASelfParams.selfMacAddr,
+<<<<<<< HEAD
 <<<<<<< HEAD
                    pwdiAddSTASelfReqParams->wdiAddSTASelfInfo.selfMacAddr, 6) ;
 
@@ -11203,6 +11895,12 @@ WDI_ProcessAddSTASelfReq
   wpalMemoryCopy( pSendBuffer+usDataOffset, &halAddSTASelfParams,
                                          sizeof(tAddStaSelfParams_V1));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                   pwdiAddSTASelfReqParams->wdiAddSTASelfInfo.selfMacAddr, 6) ;
+
+  wpalMemoryCopy( pSendBuffer+usDataOffset, &halAddSTASelfParams,
+                                         sizeof(tAddStaSelfParams));
+>>>>>>> 657b0e9... prima update
 
   pWDICtx->wdiReqStatusCB     = pwdiAddSTASelfReqParams->wdiReqStatusCB;
   pWDICtx->pReqStatusUserData = pwdiAddSTASelfReqParams->pUserData;
@@ -11250,10 +11948,14 @@ WDI_ProcessDelSTASelfReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -11300,10 +12002,14 @@ WDI_ProcessDelSTASelfReq
 #ifdef FEATURE_OEM_DATA_SUPPORT
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  @brief Process Start Oem Data Request function (called when Main
 =======
  @brief Process Start Oem Data Request function (called when Main 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Process Start Oem Data Request function (called when Main
+>>>>>>> 657b0e9... prima update
         FSM allows it)
 
  @param  pWDICtx:         pointer to the WLAN DAL context
@@ -11322,10 +12028,14 @@ WDI_ProcessStartOemDataReq
   WDI_oemDataReqParamsType*    pwdiOemDataReqParams = NULL;
   WDI_oemDataRspCb             wdiOemDataRspCb;
 <<<<<<< HEAD
+<<<<<<< HEAD
   wpt_uint8*                   pSendBuffer         = NULL;
 =======
   wpt_uint8*                   pSendBuffer         = NULL; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wpt_uint8*                   pSendBuffer         = NULL;
+>>>>>>> 657b0e9... prima update
   wpt_uint16                   usDataOffset        = 0;
   wpt_uint16                   usSendSize          = 0;
   wpt_uint16                   reqLen;
@@ -11339,10 +12049,14 @@ WDI_ProcessStartOemDataReq
   {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
   }
@@ -11357,10 +12071,14 @@ WDI_ProcessStartOemDataReq
   reqLen = sizeof(tStartOemDataReqParams);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
 =======
   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
+>>>>>>> 657b0e9... prima update
                          WDI_START_OEM_DATA_REQ, reqLen,
                               &pSendBuffer, &usDataOffset, &usSendSize))||
         (usSendSize < (usDataOffset + reqLen)))
@@ -11380,14 +12098,19 @@ WDI_ProcessStartOemDataReq
 
   pWDICtx->wdiReqStatusCB     = pwdiOemDataReqParams->wdiReqStatusCB;
 <<<<<<< HEAD
+<<<<<<< HEAD
   pWDICtx->pReqStatusUserData = pwdiOemDataReqParams->pUserData;
 =======
   pWDICtx->pReqStatusUserData = pwdiOemDataReqParams->pUserData; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  pWDICtx->pReqStatusUserData = pwdiOemDataReqParams->pUserData;
+>>>>>>> 657b0e9... prima update
 
   /*-------------------------------------------------------------------------
     Send Start Request to HAL
   -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiOemDataRspCb, pEventData->pUserData,
@@ -11397,6 +12120,11 @@ WDI_ProcessStartOemDataReq
                         wdiOemDataRspCb, pEventData->pUserData, 
                                             WDI_START_OEM_DATA_RESP); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiOemDataRspCb, pEventData->pUserData,
+                                            WDI_START_OEM_DATA_RESP);
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessStartOemDataReq*/
 #endif
 
@@ -11434,10 +12162,14 @@ WDI_ProcessHostResumeReq
   {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: Invalid parameters ",__FUNCTION__);
 =======
                "%s: Invalid parameters ",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: Invalid parameters ",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
   }
@@ -11511,10 +12243,14 @@ WDI_ProcessSetTxPerTrackingReq
    {
        WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters ",__FUNCTION__);
 =======
                 "%s: Invalid parameters ",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters ",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
        WDI_ASSERT(0);
        return WDI_STATUS_E_FAILURE;
    }
@@ -11592,10 +12328,14 @@ WDI_ProcessHostSuspendInd
   {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: Invalid parameters in Suspend ind",__FUNCTION__);
 =======
                "%s: Invalid parameters in Suspend ind",__func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: Invalid parameters in Suspend ind",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
   }
@@ -11622,10 +12362,14 @@ WDI_ProcessHostSuspendInd
 
   halWlanSuspendIndparams.activeSessionCount =
 <<<<<<< HEAD
+<<<<<<< HEAD
        WDI_GetActiveSessionsCount(pWDICtx);
 =======
        WDI_GetActiveSessionsCount(pWDICtx, NULL, eWLAN_PAL_TRUE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       WDI_GetActiveSessionsCount(pWDICtx);
+>>>>>>> 657b0e9... prima update
 
   wpalMemoryCopy( pSendBuffer+usDataOffset, &halWlanSuspendIndparams,
                                          sizeof(tHalWlanHostSuspendIndParam));
@@ -11641,6 +12385,7 @@ WDI_ProcessHostSuspendInd
 }/*WDI_ProcessHostSuspendInd*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*==========================================================================
                   MISC CONTROL PROCESSING REQUEST API
 ==========================================================================*/
@@ -11653,34 +12398,52 @@ WDI_ProcessHostSuspendInd
 =======
 
 
+=======
+/*==========================================================================
+                  MISC CONTROL PROCESSING REQUEST API
+==========================================================================*/
+>>>>>>> 657b0e9... prima update
 /**
- @brief Process Traffic Stats Indications function (called when Main FSM allows it)
+ @brief Process Channel Switch Request function (called when
+        Main FSM allows it)
 
  @param  pWDICtx:         pointer to the WLAN DAL context
+<<<<<<< HEAD
               pEventData:      pointer to the event information structure
 >>>>>>> d97af3b... add prima wlan driver
+=======
+         pEventData:      pointer to the event information structure
+>>>>>>> 657b0e9... prima update
 
  @see
  @return Result of the function call
 */
 WDI_Status
 <<<<<<< HEAD
+<<<<<<< HEAD
 WDI_ProcessChannelSwitchReq
 =======
 WDI_ProcessTrafficStatsInd
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WDI_ProcessChannelSwitchReq
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
   WDI_SwitchChReqParamsType*   pwdiSwitchChParams;
   WDI_SwitchChRspCb            wdiSwitchChRspCb;
   wpt_uint8*                   pSendBuffer         = NULL;
   wpt_uint16                   usDataOffset        = 0;
   wpt_uint16                   usSendSize          = 0;
   tSwitchChannelReqMsg         halSwitchChannelReq = {{0}};
+<<<<<<< HEAD
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -11708,336 +12471,8 @@ WDI_ProcessTrafficStatsInd
   wpt_uint16                     usSendSize          = 0;
   WDI_Status                     wdiStatus;
   tStatsClassBIndParams*         pStatsClassBIndParams;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-  /*-------------------------------------------------------------------------
-     Sanity check
-  -------------------------------------------------------------------------*/
-  if (( NULL == pEventData ) || ( NULL == pEventData->pEventData ))
-  {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Invalid parameters in Traffic Stats ind",__func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-  pTrafficStatsIndParams = (WDI_TrafficStatsIndType *)pEventData->pEventData;
-
-  if(pTrafficStatsIndParams->length != sizeof(tStaStatsClassB)*(HAL_NUM_STA))
-  {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Invalid parameters in Traffic Stats ind",__func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
-                         WDI_TRAFFIC_STATS_IND,
-                     sizeof(tStatsClassBIndParams),
-                     &pSendBuffer, &usDataOffset, &usSendSize))||
-        (usSendSize < (usDataOffset + sizeof(tStatsClassBIndParams))))
-  {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_FATAL,
-                  "Unable to get send buffer in Traffic Stats Ind ");
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-  pStatsClassBIndParams = (tStatsClassBIndParams*)(pSendBuffer+usDataOffset);
-
-  pStatsClassBIndParams->duration = pTrafficStatsIndParams->duration;
-
-  wpalMemoryCopy(pStatsClassBIndParams->staStatsClassB,
-                 pTrafficStatsIndParams->pTrafficStats,
-                 pTrafficStatsIndParams->length);
-
-  /*-------------------------------------------------------------------------
-    Send Suspend Request to HAL
-  -------------------------------------------------------------------------*/
-  pWDICtx->wdiReqStatusCB     = pTrafficStatsIndParams->wdiReqStatusCB;
-  pWDICtx->pReqStatusUserData = pTrafficStatsIndParams->pUserData;
-
-  wdiStatus = WDI_SendIndication( pWDICtx, pSendBuffer, usSendSize);
-  return  ( wdiStatus != WDI_STATUS_SUCCESS )?wdiStatus:WDI_STATUS_SUCCESS_SYNC;
-}/*WDI_ProcessTrafficStatsInd*/
-
-#ifdef WLAN_FEATURE_11W
-/**
- @brief Process Exclude Unencrypted Indications function (called
-        when Main FSM allows it)
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-              pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessExcludeUnencryptInd
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-  WDI_ExcludeUnencryptIndType*       pWDIExcUnencIndParams;
-  wpt_uint8*                     pSendBuffer         = NULL;
-  wpt_uint16                     usDataOffset        = 0;
-  wpt_uint16                     usSendSize          = 0;
-  WDI_Status                     wdiStatus;
-  tHalWlanExcludeUnEncryptedIndParam* pHalExcUnencIndParams;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-  /*-------------------------------------------------------------------------
-     Sanity check
-  -------------------------------------------------------------------------*/
-  if (( NULL == pEventData ) || ( NULL == pEventData->pEventData ))
-  {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Invalid parameters in Exclude Unencrypted ind",__func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-  pWDIExcUnencIndParams = (WDI_ExcludeUnencryptIndType *)pEventData->pEventData;
-
-  /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
-                         WDI_EXCLUDE_UNENCRYPTED_IND,
-                     sizeof(tHalWlanExcludeUnEncryptedIndParam),
-                     &pSendBuffer, &usDataOffset, &usSendSize))||
-        (usSendSize < (usDataOffset + sizeof(tHalWlanExcludeUnEncryptedIndParam))))
-  {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_FATAL,
-                  "Unable to get send buffer in Exclude Unencrypted Ind ");
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-  pHalExcUnencIndParams = (tHalWlanExcludeUnEncryptedIndParam*)(pSendBuffer+usDataOffset);
-
-  pHalExcUnencIndParams->bDot11ExcludeUnencrypted = pWDIExcUnencIndParams->bExcludeUnencrypt;
-
-  wpalMemoryCopy(pHalExcUnencIndParams->bssId,
-                 pWDIExcUnencIndParams->bssid, WDI_MAC_ADDR_LEN);
-
-  /*-------------------------------------------------------------------------
-    Send Suspend Request to HAL
-  -------------------------------------------------------------------------*/
-  pWDICtx->wdiReqStatusCB     = pWDIExcUnencIndParams->wdiReqStatusCB;
-  pWDICtx->pReqStatusUserData = pWDIExcUnencIndParams->pUserData;
-
-  wdiStatus = WDI_SendIndication( pWDICtx, pSendBuffer, usSendSize);
-  return  ( wdiStatus != WDI_STATUS_SUCCESS )?wdiStatus:WDI_STATUS_SUCCESS_SYNC;
-}/*WDI_ProcessExcludeUnencryptInd*/
-#endif
-
-/**
- @brief Process Add Periodic Tx Pattern Indication function (called when
-           Main FSM allows it)
-
- @param pWDICtx:         pointer to the WLAN DAL context
-        pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessAddPeriodicTxPtrnInd
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-  WDI_AddPeriodicTxPtrnParamsType   *pAddPeriodicTxPtrnParams;
-  wpt_uint8*                     pSendBuffer         = NULL;
-  wpt_uint16                     usDataOffset        = 0;
-  wpt_uint16                     usSendSize          = 0;
-  WDI_Status                     wdiStatus;
-  tHalAddPeriodicTxPtrn          *halAddPeriodicTxPtrn;
-  wpt_uint8                      selfStaIdx          = 0;
-
-  /*-------------------------------------------------------------------------
-     Sanity check
-  -------------------------------------------------------------------------*/
-  if ((NULL == pEventData) || (NULL == pEventData->pEventData))
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Invalid parameters in AddPeriodicTxPtrnInd!", __func__);
-    WDI_ASSERT(0);
-    return WDI_STATUS_E_FAILURE;
-  }
-
-  pAddPeriodicTxPtrnParams =
-    (WDI_AddPeriodicTxPtrnParamsType *)pEventData->pEventData;
-
-   /*------------------------------------------------------------------------
-     Get message buffer
-   ------------------------------------------------------------------------*/
-  if ((WDI_STATUS_SUCCESS != WDI_GetMessageBuffer(pWDICtx,
-       WDI_ADD_PERIODIC_TX_PATTERN_IND, sizeof(tHalAddPeriodicTxPtrn),
-       &pSendBuffer, &usDataOffset, &usSendSize))||
-       (usSendSize < (usDataOffset + sizeof(tHalAddPeriodicTxPtrn))))
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Unable to get send buffer in AddPeriodicTxPtrnInd!",
-               __func__);
-    WDI_ASSERT(0);
-    return WDI_STATUS_E_FAILURE;
-  }
-
-  halAddPeriodicTxPtrn = (tHalAddPeriodicTxPtrn *)(pSendBuffer + usDataOffset);
-
-  if (WDI_STATUS_SUCCESS != WDI_STATableFindStaidByAddr(pWDICtx,
-      pAddPeriodicTxPtrnParams->wdiAddPeriodicTxPtrnParams.macAddr,
-      &selfStaIdx))
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "%s: Failed to get selfStaIdx!", __func__);
-
-    return WDI_STATUS_E_FAILURE;
-  }
-
-  halAddPeriodicTxPtrn->selfStaIdx = selfStaIdx;
-  halAddPeriodicTxPtrn->ucPtrnId =
-    pAddPeriodicTxPtrnParams->wdiAddPeriodicTxPtrnParams.ucPtrnId;
-  halAddPeriodicTxPtrn->usPtrnSize =
-    pAddPeriodicTxPtrnParams->wdiAddPeriodicTxPtrnParams.ucPtrnSize;
-  halAddPeriodicTxPtrn->uPtrnIntervalMs =
-    pAddPeriodicTxPtrnParams->wdiAddPeriodicTxPtrnParams.usPtrnIntervalMs;
-
-  wpalMemoryCopy(halAddPeriodicTxPtrn->ucPattern,
-    pAddPeriodicTxPtrnParams->wdiAddPeriodicTxPtrnParams.ucPattern,
-    pAddPeriodicTxPtrnParams->wdiAddPeriodicTxPtrnParams.ucPtrnSize);
-
-  /*-------------------------------------------------------------------------
-    Send Indication to HAL
-  -------------------------------------------------------------------------*/
-  pWDICtx->wdiReqStatusCB     = pAddPeriodicTxPtrnParams->wdiReqStatusCB;
-  pWDICtx->pReqStatusUserData = pAddPeriodicTxPtrnParams->pUserData;
-
-  wdiStatus = WDI_SendIndication(pWDICtx, pSendBuffer, usSendSize);
-
-  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s: Sent WLAN_HAL_ADD_PERIODIC_TX_PTRN_IND to HAL.", __func__);
-
-  return (wdiStatus != WDI_STATUS_SUCCESS) ? wdiStatus : WDI_STATUS_SUCCESS_SYNC;
-} /* WDI_ProcessAddPeriodicTxPtrnInd */
-
-/**
- @brief Process Delete Periodic Tx Pattern Indication function (called when
-           Main FSM allows it)
-
- @param pWDICtx:         pointer to the WLAN DAL context
-        pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessDelPeriodicTxPtrnInd
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-  WDI_DelPeriodicTxPtrnParamsType   *pDelPeriodicTxPtrnParams;
-  wpt_uint8*                     pSendBuffer         = NULL;
-  wpt_uint16                     usDataOffset        = 0;
-  wpt_uint16                     usSendSize          = 0;
-  WDI_Status                     wdiStatus;
-  tHalDelPeriodicTxPtrn          *halDelPeriodicTxPtrn;
-  wpt_uint8                      selfStaIdx          = 0;
-
-  /*-------------------------------------------------------------------------
-     Sanity check
-  -------------------------------------------------------------------------*/
-  if ((NULL == pEventData) || (NULL == pEventData->pEventData))
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Invalid parameters in DelPeriodicTxPtrnInd!", __func__);
-    WDI_ASSERT(0);
-    return WDI_STATUS_E_FAILURE;
-  }
-
-  pDelPeriodicTxPtrnParams =
-    (WDI_DelPeriodicTxPtrnParamsType *)pEventData->pEventData;
-
-   /*------------------------------------------------------------------------
-     Get message buffer
-   ------------------------------------------------------------------------*/
-  if ((WDI_STATUS_SUCCESS != WDI_GetMessageBuffer(pWDICtx,
-       WDI_DEL_PERIODIC_TX_PATTERN_IND, sizeof(tHalDelPeriodicTxPtrn),
-       &pSendBuffer, &usDataOffset, &usSendSize))||
-       (usSendSize < (usDataOffset + sizeof(tHalDelPeriodicTxPtrn))))
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Unable to get send buffer in DelPeriodicTxPtrnInd!",
-               __func__);
-    WDI_ASSERT(0);
-    return WDI_STATUS_E_FAILURE;
-  }
-
-  halDelPeriodicTxPtrn = (tHalDelPeriodicTxPtrn *)(pSendBuffer + usDataOffset);
-
-  if (WDI_STATUS_SUCCESS != WDI_STATableFindStaidByAddr(pWDICtx,
-      pDelPeriodicTxPtrnParams->wdiDelPeriodicTxPtrnParams.macAddr,
-      &selfStaIdx))
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "%s: Failed to get selfStaIdx!", __func__);
-
-    return WDI_STATUS_E_FAILURE;
-  }
-
-  halDelPeriodicTxPtrn->selfStaIdx = selfStaIdx;
-  halDelPeriodicTxPtrn->uPatternIdBitmap =
-    pDelPeriodicTxPtrnParams->wdiDelPeriodicTxPtrnParams.ucPatternIdBitmap;
-
-  /*-------------------------------------------------------------------------
-    Send Indication to HAL
-  -------------------------------------------------------------------------*/
-  pWDICtx->wdiReqStatusCB     = pDelPeriodicTxPtrnParams->wdiReqStatusCB;
-  pWDICtx->pReqStatusUserData = pDelPeriodicTxPtrnParams->pUserData;
-
-  wdiStatus = WDI_SendIndication(pWDICtx, pSendBuffer, usSendSize);
-
-  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s: Sent WLAN_HAL_DEL_PERIODIC_TX_PTRN_IND to HAL.", __func__);
-
-  return (wdiStatus != WDI_STATUS_SUCCESS) ? wdiStatus : WDI_STATUS_SUCCESS_SYNC;
-} /* WDI_ProcessDelPeriodicTxPtrnInd */
-
-/*==========================================================================
-                  MISC CONTROL PROCESSING REQUEST API
-==========================================================================*/
-/**
- @brief Process Channel Switch Request function (called when
-        Main FSM allows it)
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessChannelSwitchReq
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-  WDI_SwitchChReqParamsType*   pwdiSwitchChParams;
-  WDI_SwitchChRspCb            wdiSwitchChRspCb;
-  wpt_uint8*                   pSendBuffer         = NULL;
-  wpt_uint16                   usDataOffset        = 0;
-  wpt_uint16                   usSendSize          = 0;
-  tSwitchChannelReqMsg         halSwitchChannelReq = {{0}};
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -12047,7 +12482,7 @@ WDI_ProcessChannelSwitchReq
       ( NULL == pEventData->pCBfnc ))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "%s: Invalid parameters", __func__);
+                 "%s: Invalid parameters", __FUNCTION__);
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -12142,10 +12577,14 @@ WDI_ProcessConfigStaReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -12168,12 +12607,17 @@ WDI_ProcessConfigStaReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
           "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
           "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+          "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
           __func__, MAC_ADDR_ARRAY(pwdiConfigSTAParams->wdiReqInfo.macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -12188,10 +12632,14 @@ WDI_ProcessConfigStaReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(pwdiConfigSTAParams->wdiReqInfo.macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -12200,6 +12648,7 @@ WDI_ProcessConfigStaReq
   }
 
   wpalMutexRelease(&pWDICtx->wptMutex);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   /* Allocation of StaReqMsg Memory Based on Firmware Capabilities */
@@ -12211,14 +12660,21 @@ WDI_ProcessConfigStaReq
 	  uMsgSize = sizeof(halConfigStaReqMsg.uStaParams.configStaParams); // Version-0 Default
 =======
   
+=======
+
+>>>>>>> 657b0e9... prima update
   /* Allocation of StaReqMsg Memory Based on Firmware Capabilities */
 #ifdef WLAN_FEATURE_11AC
   if (WDI_getFwWlanFeatCaps(DOT11AC))
-     uMsgSize = sizeof(halConfigStaReqMsg.uStaParams.configStaParams_V1); // Version-1 For 11AC
+	  uMsgSize = sizeof(halConfigStaReqMsg.uStaParams.configStaParams_V1); // Version-1 For 11AC
   else
 #endif
+<<<<<<< HEAD
      uMsgSize = sizeof(halConfigStaReqMsg.uStaParams.configStaParams); // Version-0 Default
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  uMsgSize = sizeof(halConfigStaReqMsg.uStaParams.configStaParams); // Version-0 Default
+>>>>>>> 657b0e9... prima update
 
   /*-----------------------------------------------------------------------
     Get message buffer
@@ -12251,9 +12707,12 @@ WDI_ProcessConfigStaReq
                "This station does not exist in the WDI Station Table %d");
       wpalMutexRelease(&pWDICtx->wptMutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       wpalMemoryFree(pSendBuffer);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
       return WDI_STATUS_E_FAILURE;
     }
   }
@@ -12262,10 +12721,14 @@ WDI_ProcessConfigStaReq
   /* Need to fill in the STA Index to invalid, since at this point we have not
      yet received it from HAL */
 <<<<<<< HEAD
+<<<<<<< HEAD
     halConfigStaReqMsg.uStaParams.configStaParams.staIdx = WDI_STA_INVALID_IDX;
 =======
     halConfigStaReqMsg.uStaParams.configStaParams.staIdx = pwdiConfigSTAParams->wdiReqInfo.staIdx;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    halConfigStaReqMsg.uStaParams.configStaParams.staIdx = WDI_STA_INVALID_IDX;
+>>>>>>> 657b0e9... prima update
   }
 
   /* Need to fill in the BSS index */
@@ -12326,10 +12789,14 @@ WDI_ProcessSetLinkStateReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -12365,10 +12832,14 @@ WDI_ProcessSetLinkStateReq
     {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
                 "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
                 __func__, MAC_ADDR_ARRAY(pwdiSetLinkParams->wdiLinkInfo.macBSSID));
 
       wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -12461,10 +12932,14 @@ WDI_ProcessGetStatsReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -12495,12 +12970,17 @@ WDI_ProcessGetStatsReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
         "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
         "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+        "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
         __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -12515,10 +12995,14 @@ WDI_ProcessGetStatsReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -12563,6 +13047,7 @@ WDI_ProcessGetStatsReq
 }/*WDI_ProcessGetStatsReq*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  @brief Process Update Cfg Request function (called when Main
         FSM allows it)
@@ -12572,6 +13057,11 @@ WDI_ProcessGetStatsReq
  @brief Process Get Roam Rssi Request function (called when Main FSM
         allows it)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/**
+ @brief Process Update Cfg Request function (called when Main
+        FSM allows it)
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -12581,15 +13071,20 @@ WDI_ProcessGetStatsReq
 */
 WDI_Status
 <<<<<<< HEAD
+<<<<<<< HEAD
 WDI_ProcessUpdateCfgReq
 =======
 WDI_ProcessGetRoamRssiReq
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WDI_ProcessUpdateCfgReq
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
   WDI_UpdateCfgReqParamsType*  pwdiUpdateCfgParams = NULL;
   WDI_UpdateCfgRspCb           wdiUpdateCfgRspCb = NULL;
@@ -12610,28 +13105,34 @@ WDI_ProcessGetRoamRssiReq
 =======
   WDI_GetRoamRssiReqParamsType*   pwdiGetRoamRssiParams;
   WDI_GetStatsRspCb            wdiGetStatsRspCb;
+=======
+  WDI_UpdateCfgReqParamsType*  pwdiUpdateCfgParams = NULL;
+  WDI_UpdateCfgRspCb           wdiUpdateCfgRspCb = NULL;
+
+>>>>>>> 657b0e9... prima update
   wpt_uint8*                   pSendBuffer         = NULL;
-  wpt_uint16                   usDataOffset        = 0;
+  wpt_uint16                   usDataOffset         = 0;
   wpt_uint16                   usSendSize          = 0;
-  wpt_uint8                    ucCurrentBSSSesIdx  = 0;
-  WDI_BSSSessionType*          pBSSSes             = NULL;
-  wpt_macAddr                  macBSSID;
-  WDI_Status                   wdiStatus           = WDI_STATUS_SUCCESS;
-  tHalGetRoamRssiReqMsg        halRssiRoamReqMsg;
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
   /*-------------------------------------------------------------------------
     Sanity check
   -------------------------------------------------------------------------*/
-  if (( NULL == pEventData ) || ( NULL == pEventData->pEventData) ||
-      ( NULL == pEventData->pCBfnc ) )
+  if (( NULL == pEventData ) || ( NULL == pEventData->pEventData ) ||
+      ( NULL == pEventData->pCBfnc))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   pwdiUpdateCfgParams = (WDI_UpdateCfgReqParamsType*)pEventData->pEventData;
   wdiUpdateCfgRspCb   = (WDI_UpdateCfgRspCb)pEventData->pCBfnc;
@@ -12645,13 +13146,17 @@ WDI_ProcessGetRoamRssiReq
 =======
   pwdiGetRoamRssiParams = (WDI_GetRoamRssiReqParamsType*)pEventData->pEventData;
   wdiGetStatsRspCb   = (WDI_GetStatsRspCb)pEventData->pCBfnc;
+=======
+  pwdiUpdateCfgParams = (WDI_UpdateCfgReqParamsType*)pEventData->pEventData;
+  wdiUpdateCfgRspCb   = (WDI_UpdateCfgRspCb)pEventData->pCBfnc;
+>>>>>>> 657b0e9... prima update
 
-  /*-------------------------------------------------------------------------
-    Check to see if we are in the middle of an association, if so queue, if
-    not it means it is free to process request
-  -------------------------------------------------------------------------*/
-  wpalMutexAcquire(&pWDICtx->wptMutex);
+  /*-----------------------------------------------------------------------
+    Get message buffer
+    ! TO DO : proper conversion into the HAL Message Request Format
+  -----------------------------------------------------------------------*/
 
+<<<<<<< HEAD
   /*------------------------------------------------------------------------
     Find the BSS for which the request is made
   ------------------------------------------------------------------------*/
@@ -12772,6 +13277,9 @@ WDI_ProcessUpdateCfgReq
 
   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_UPDATE_CFG_REQ,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_UPDATE_CFG_REQ,
+>>>>>>> 657b0e9... prima update
                         pwdiUpdateCfgParams->uConfigBufferLen + sizeof(wpt_uint32),
                         &pSendBuffer, &usDataOffset, &usSendSize))||
       ( usSendSize < (usDataOffset +  pwdiUpdateCfgParams->uConfigBufferLen)))
@@ -12842,10 +13350,14 @@ WDI_ProcessAddBAReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -12876,12 +13388,17 @@ WDI_ProcessAddBAReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
             "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
             "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+            "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
             __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -12896,10 +13413,14 @@ WDI_ProcessAddBAReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -12992,10 +13513,14 @@ WDI_ProcessTriggerBAReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -13025,12 +13550,17 @@ WDI_ProcessTriggerBAReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
         "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
         "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+        "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
         __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -13045,10 +13575,14 @@ WDI_ProcessTriggerBAReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
 =======
               "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+              "%s: Association sequence for this BSS exists but currently queued. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
               __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wdiStatus = WDI_QueueAssocRequest( pWDICtx, pBSSSes, pEventData);
@@ -13149,10 +13683,14 @@ WDI_ProcessUpdateBeaconParamsReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -13255,10 +13793,14 @@ WDI_ProcessSendBeaconParamsReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -13289,6 +13831,7 @@ WDI_ProcessSendBeaconParamsReq
                   pwdiSendBeaconParams->wdiSendBeaconParamsInfo.beacon,
                   pwdiSendBeaconParams->wdiSendBeaconParamsInfo.beaconLength);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   halSendBeaconReq.sendBeaconParam.timIeOffset =
                   pwdiSendBeaconParams->wdiSendBeaconParamsInfo.timIeOffset;
@@ -13298,23 +13841,20 @@ WDI_ProcessSendBeaconParamsReq
                   pwdiSendBeaconParams->wdiSendBeaconParamsInfo.usP2PIeOffset;
 #endif
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   halSendBeaconReq.sendBeaconParam.timIeOffset =
                   pwdiSendBeaconParams->wdiSendBeaconParamsInfo.timIeOffset;
-  /* usP2PIeOffset should be atleast greater than timIeOffset */
-  if ((pwdiSendBeaconParams->wdiSendBeaconParamsInfo.usP2PIeOffset != 0 ) &&
-          (pwdiSendBeaconParams->wdiSendBeaconParamsInfo.usP2PIeOffset <
-           pwdiSendBeaconParams->wdiSendBeaconParamsInfo.timIeOffset))
-  {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-              "Invalid usP2PIeOffset %hu",
-              pwdiSendBeaconParams->wdiSendBeaconParamsInfo.usP2PIeOffset);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
+#endif
+#ifdef WLAN_FEATURE_P2P
   halSendBeaconReq.sendBeaconParam.p2pIeOffset =
                   pwdiSendBeaconParams->wdiSendBeaconParamsInfo.usP2PIeOffset;
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
   wpalMemoryCopy( pSendBuffer+usDataOffset,
                   &halSendBeaconReq.sendBeaconParam,
@@ -13364,10 +13904,14 @@ WDI_ProcessUpdateProbeRspTemplateReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -13454,10 +13998,14 @@ WDI_ProcessNvDownloadReq
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_E_FAILURE;
   }
@@ -13473,10 +14021,14 @@ WDI_ProcessNvDownloadReq
     wpalMemoryCopy(&pWDICtx->wdiCachedNvDownloadReq,
                  pwdiNvDownloadReqParams,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  sizeof(pWDICtx->wdiCachedNvDownloadReq));
 =======
                  sizeof(pWDICtx->wdiCachedNvDownloadReq)); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 sizeof(pWDICtx->wdiCachedNvDownloadReq));
+>>>>>>> 657b0e9... prima update
 
     pWDICtx->pfncRspCB = pEventData->pCBfnc;
     pWDICtx->pRspCBUserData = pEventData->pUserData;
@@ -13518,10 +14070,14 @@ WDI_Status WDI_ProcessSetMaxTxPowerReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -13572,6 +14128,7 @@ if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_SET_MAX_TX_POWER_
 
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
@@ -13648,6 +14205,9 @@ WDI_Status WDI_ProcessSetTxPowerReq
                        WDI_SET_TX_POWER_RESP);
 }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 
 /**
  @brief Process P2P Notice Of Absence Request function (called when Main FSM
@@ -13683,10 +14243,14 @@ WDI_ProcessP2PGONOAReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -13740,6 +14304,7 @@ WDI_ProcessP2PGONOAReq
                        WDI_P2P_GO_NOTICE_OF_ABSENCE_RESP);
 }/*WDI_ProcessP2PGONOAReq*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -13846,6 +14411,11 @@ WDI_ProcessTdlsLinkEstablishReq
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+
+
+>>>>>>> 657b0e9... prima update
 /**
  @brief    Function to handle the ack from DXE once the power
            state is set.
@@ -13913,10 +14483,14 @@ WDI_ProcessEnterImpsReq
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpt_status               wptStatus;
 =======
    wpt_status               wptStatus; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpt_status               wptStatus;
+>>>>>>> 657b0e9... prima update
    WDI_EnterImpsRspCb       wdiEnterImpsRspCb = NULL;
    wpt_uint8*               pSendBuffer         = NULL;
    wpt_uint16               usDataOffset        = 0;
@@ -13931,6 +14505,7 @@ WDI_ProcessEnterImpsReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
@@ -13939,6 +14514,11 @@ WDI_ProcessEnterImpsReq
       WDI_ASSERT(0);
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-----------------------------------------------------------------------
@@ -13955,24 +14535,33 @@ WDI_ProcessEnterImpsReq
                  pEventData, wdiEnterImpsRspCb);
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /* Reset the event to be not signalled */
    wptStatus = wpalEventReset(&pWDICtx->setPowerStateEvent);
 <<<<<<< HEAD
+<<<<<<< HEAD
    if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus )
 =======
    if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus ) 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus )
+>>>>>>> 657b0e9... prima update
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                 "WDI Init failed to reset an event");
 
       WDI_ASSERT(0);
+<<<<<<< HEAD
 <<<<<<< HEAD
       return VOS_STATUS_E_FAILURE;
    }
@@ -13992,10 +14581,18 @@ WDI_ProcessEnterImpsReq
         goto fail;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return VOS_STATUS_E_FAILURE;
+   }
+
+   // notify DTS that we are entering IMPS
+   WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_IMPS, WDI_SetPowerStateCb);
+>>>>>>> 657b0e9... prima update
 
    /*
     * Wait for the event to be set once the ACK comes back from DXE
     */
+<<<<<<< HEAD
 <<<<<<< HEAD
    wptStatus = wpalEventWait(&pWDICtx->setPowerStateEvent,
                              WDI_SET_POWER_STATE_TIMEOUT);
@@ -14005,16 +14602,25 @@ WDI_ProcessEnterImpsReq
                              WDI_SET_POWER_STATE_TIMEOUT);
    if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus ) 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wptStatus = wpalEventWait(&pWDICtx->setPowerStateEvent,
+                             WDI_SET_POWER_STATE_TIMEOUT);
+   if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus )
+>>>>>>> 657b0e9... prima update
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                 "WDI Init failed to wait on an event");
 
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return VOS_STATUS_E_FAILURE;
 =======
       goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-------------------------------------------------------------------------
@@ -14022,6 +14628,7 @@ WDI_ProcessEnterImpsReq
    -------------------------------------------------------------------------*/
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiEnterImpsRspCb, pEventData->pUserData, WDI_ENTER_IMPS_RESP);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -14033,6 +14640,8 @@ failRequest:
    //WDA should have failure check to avoid the memory leak
    return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessEnterImpsReq*/
 
 /**
@@ -14066,10 +14675,14 @@ WDI_ProcessExitImpsReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14121,10 +14734,14 @@ WDI_ProcessEnterBmpsReq
    wpt_uint16               usSendSize          = 0;
    tHalEnterBmpsReqParams   enterBmpsReq;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpt_status               wptStatus;
 =======
    wpt_status               wptStatus; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpt_status               wptStatus;
+>>>>>>> 657b0e9... prima update
 
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -14137,6 +14754,7 @@ WDI_ProcessEnterBmpsReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
@@ -14145,6 +14763,11 @@ WDI_ProcessEnterBmpsReq
       WDI_ASSERT(0);
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-----------------------------------------------------------------------
@@ -14161,10 +14784,14 @@ WDI_ProcessEnterBmpsReq
                  pEventData, pwdiEnterBmpsReqParams, wdiEnterBmpsRspCb);
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /* Reset the event to be not signalled */
@@ -14175,6 +14802,7 @@ WDI_ProcessEnterBmpsReq
                 "WDI Init failed to reset an event");
 
       WDI_ASSERT(0);
+<<<<<<< HEAD
 <<<<<<< HEAD
       return VOS_STATUS_E_FAILURE;
    }
@@ -14195,15 +14823,26 @@ WDI_ProcessEnterBmpsReq
         goto fail;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return VOS_STATUS_E_FAILURE;
+   }
+
+   // notify DTS that we are entering BMPS
+   WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_BMPS, WDI_SetPowerStateCb);
+>>>>>>> 657b0e9... prima update
 
 /*
     * Wait for the event to be set once the ACK comes back from DXE
     */
 <<<<<<< HEAD
+<<<<<<< HEAD
    wptStatus = wpalEventWait(&pWDICtx->setPowerStateEvent,
 =======
    wptStatus = wpalEventWait(&pWDICtx->setPowerStateEvent, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wptStatus = wpalEventWait(&pWDICtx->setPowerStateEvent,
+>>>>>>> 657b0e9... prima update
                              WDI_SET_POWER_STATE_TIMEOUT);
    if ( eWLAN_PAL_STATUS_SUCCESS != wptStatus )
    {
@@ -14212,10 +14851,14 @@ WDI_ProcessEnterBmpsReq
 
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return VOS_STATUS_E_FAILURE;
 =======
       goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return VOS_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    pWDICtx->bInBmps = eWLAN_PAL_TRUE;
@@ -14231,6 +14874,7 @@ WDI_ProcessEnterBmpsReq
    enterBmpsReq.bRssiFilterEnable = pwdiEnterBmpsReqParams->wdiEnterBmpsInfo.bRssiFilterEnable;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpalMemoryCopy( pSendBuffer+usDataOffset,
                    &enterBmpsReq,
                    sizeof(enterBmpsReq));
@@ -14239,6 +14883,11 @@ WDI_ProcessEnterBmpsReq
                    &enterBmpsReq, 
                    sizeof(enterBmpsReq)); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &enterBmpsReq,
+                   sizeof(enterBmpsReq));
+>>>>>>> 657b0e9... prima update
 
    pWDICtx->wdiReqStatusCB     = pwdiEnterBmpsReqParams->wdiReqStatusCB;
    pWDICtx->pReqStatusUserData = pwdiEnterBmpsReqParams->pUserData;
@@ -14248,6 +14897,7 @@ WDI_ProcessEnterBmpsReq
    -------------------------------------------------------------------------*/
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiEnterBmpsRspCb, pEventData->pUserData, WDI_ENTER_BMPS_RESP);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -14259,6 +14909,8 @@ failRequest:
    //WDA should have failure check to avoid the memory leak
    return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessEnterBmpsReq*/
 
 /**
@@ -14295,10 +14947,14 @@ WDI_ProcessExitBmpsReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14323,6 +14979,7 @@ WDI_ProcessExitBmpsReq
    exitBmpsReq.bssIdx = pwdiExitBmpsReqParams->wdiExitBmpsInfo.bssIdx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpalMemoryCopy( pSendBuffer+usDataOffset,
                    &exitBmpsReq,
                    sizeof(exitBmpsReq));
@@ -14331,6 +14988,11 @@ WDI_ProcessExitBmpsReq
                    &exitBmpsReq, 
                    sizeof(exitBmpsReq)); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &exitBmpsReq,
+                   sizeof(exitBmpsReq));
+>>>>>>> 657b0e9... prima update
 
    pWDICtx->wdiReqStatusCB     = pwdiExitBmpsReqParams->wdiReqStatusCB;
    pWDICtx->pReqStatusUserData = pwdiExitBmpsReqParams->pUserData;
@@ -14376,10 +15038,14 @@ WDI_ProcessEnterUapsdReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14446,17 +15112,21 @@ WDI_ProcessExitUapsdReq
    wpt_uint16               usDataOffset        = 0;
    wpt_uint16               usSendSize          = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    WDI_ExitUapsdReqParamsType *pExitUapsdparams;
    wpt_uint8                bssIdx = 0;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
    if (( NULL == pEventData ) ||
+<<<<<<< HEAD
 <<<<<<< HEAD
        ( NULL == (wdiExitUapsdRspCb   = (WDI_ExitUapsdRspCb)pEventData->pCBfnc)))
    {
@@ -14469,6 +15139,12 @@ WDI_ProcessExitUapsdReq
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       ( NULL == (wdiExitUapsdRspCb   = (WDI_ExitUapsdRspCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14479,6 +15155,7 @@ WDI_ProcessExitUapsdReq
    -----------------------------------------------------------------------*/
    if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_EXIT_UAPSD_REQ,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                      0,
                                                      &pSendBuffer, &usDataOffset, &usSendSize))||
        ( usSendSize < (usDataOffset )))
@@ -14487,6 +15164,11 @@ WDI_ProcessExitUapsdReq
                                                      &pSendBuffer, &usDataOffset, &usSendSize))||
        ( usSendSize < (usDataOffset + sizeof(wpt_uint8))))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                                     0,
+                                                     &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset )))
+>>>>>>> 657b0e9... prima update
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
                "Unable to get send buffer in Exit UAPSD req %x %x",
@@ -14495,6 +15177,7 @@ WDI_ProcessExitUapsdReq
       return WDI_STATUS_E_FAILURE;
    }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    bssIdx = pExitUapsdparams->wdiExitUapsdInfo.bssIdx;
@@ -14507,6 +15190,8 @@ WDI_ProcessExitUapsdReq
    pWDICtx->pReqStatusUserData = pExitUapsdparams->pUserData;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*-------------------------------------------------------------------------
      Send Get STA Request to HAL
    -------------------------------------------------------------------------*/
@@ -14548,10 +15233,14 @@ WDI_ProcessSetUapsdAcParamsReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -14626,10 +15315,14 @@ WDI_ProcessUpdateUapsdParamsReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14699,10 +15392,14 @@ WDI_ProcessConfigureRxpFilterReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -14774,10 +15471,14 @@ WDI_ProcessSetBeaconFilterReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14848,10 +15549,14 @@ WDI_ProcessRemBeaconFilterReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14921,10 +15626,14 @@ WDI_ProcessSetRSSIThresholdsReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -14975,6 +15684,7 @@ WDI_ProcessSetRSSIThresholdsReq
 
    /*-------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
      Send Set threshold req to HAL
    -------------------------------------------------------------------------*/
    if ((ret_status = WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
@@ -14983,10 +15693,16 @@ WDI_ProcessSetRSSIThresholdsReq
    -------------------------------------------------------------------------*/
    if ((ret_status = WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     Send Set threshold req to HAL
+   -------------------------------------------------------------------------*/
+   if ((ret_status = WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+>>>>>>> 657b0e9... prima update
                         wdiRSSIThresholdsCb, pEventData->pUserData, WDI_SET_RSSI_THRESHOLDS_RESP)) == WDI_STATUS_SUCCESS)
    {
       // When we are in idle state WDI_STARTED_ST and we receive indication for threshold
       // req. Then as a result of processing the threshold cross ind, we trigger
+<<<<<<< HEAD
 <<<<<<< HEAD
       // a Set threshold req, then we need to indicate to WDI that it needs to
       // go to busy state as a result of the indication as we sent a req in the
@@ -14994,6 +15710,10 @@ WDI_ProcessSetRSSIThresholdsReq
       // a Set threshold req, then we need to indicate to WDI that it needs to 
       // go to busy state as a result of the indication as we sent a req in the 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      // a Set threshold req, then we need to indicate to WDI that it needs to
+      // go to busy state as a result of the indication as we sent a req in the
+>>>>>>> 657b0e9... prima update
       // same WDI context.
       // Hence expected state transition is to busy.
       pWDICtx->ucExpectedStateTransition =  WDI_BUSY_ST;
@@ -15027,10 +15747,13 @@ WDI_ProcessHostOffloadReq
    tHalHostOffloadReq       hostOffloadParams;
    tHalNSOffloadParams      nsOffloadParams;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpt_uint8                ucCurrentBSSSesIdx  = 0;
    WDI_BSSSessionType*      pBSSSes = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -15043,6 +15766,7 @@ WDI_ProcessHostOffloadReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
@@ -15051,6 +15775,11 @@ WDI_ProcessHostOffloadReq
       WDI_ASSERT(0);
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-----------------------------------------------------------------------
@@ -15067,6 +15796,7 @@ WDI_ProcessHostOffloadReq
                   pEventData, pwdiHostOffloadParams, wdiHostOffloadCb);
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
@@ -15082,6 +15812,9 @@ WDI_ProcessHostOffloadReq
                  __func__, MAC_ADDR_ARRAY(pwdiHostOffloadParams->wdiHostOffloadInfo.bssId));
        goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    hostOffloadParams.offloadType = pwdiHostOffloadParams->wdiHostOffloadInfo.ucOffloadType;
@@ -15119,6 +15852,7 @@ WDI_ProcessHostOffloadReq
                         pwdiHostOffloadParams->wdiNsOffloadParams.selfMacAddr,
                         6);
 <<<<<<< HEAD
+<<<<<<< HEAD
         nsOffloadParams.srcIPv6AddrValid = pwdiHostOffloadParams->wdiNsOffloadParams.srcIPv6AddrValid;
         nsOffloadParams.targetIPv6Addr1Valid = pwdiHostOffloadParams->wdiNsOffloadParams.targetIPv6Addr1Valid;
         nsOffloadParams.targetIPv6Addr2Valid = pwdiHostOffloadParams->wdiNsOffloadParams.targetIPv6Addr2Valid;
@@ -15137,10 +15871,18 @@ WDI_ProcessHostOffloadReq
         nsOffloadParams.slotIndex =
             pwdiHostOffloadParams->wdiNsOffloadParams.slotIdx;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        nsOffloadParams.srcIPv6AddrValid = pwdiHostOffloadParams->wdiNsOffloadParams.srcIPv6AddrValid;
+        nsOffloadParams.targetIPv6Addr1Valid = pwdiHostOffloadParams->wdiNsOffloadParams.targetIPv6Addr1Valid;
+        nsOffloadParams.targetIPv6Addr2Valid = pwdiHostOffloadParams->wdiNsOffloadParams.targetIPv6Addr2Valid;
+
+        nsOffloadParams.bssIdx = pwdiHostOffloadParams->wdiNsOffloadParams.bssIdx;
+>>>>>>> 657b0e9... prima update
 
 #endif // WLAN_NS_OFFLOAD
    }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    // copy hostOffloadParams into pSendBuffer
    wpalMemoryCopy( pSendBuffer+usDataOffset,
@@ -15159,21 +15901,15 @@ WDI_ProcessHostOffloadReq
 =======
    nsOffloadParams.bssIdx = pBSSSes->ucBSSIdx;
 
+=======
+>>>>>>> 657b0e9... prima update
    // copy hostOffloadParams into pSendBuffer
-   wpalMemoryCopy( pSendBuffer+usDataOffset, 
-                   &hostOffloadParams, 
-                   sizeof(hostOffloadParams)); 
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &hostOffloadParams,
+                   sizeof(hostOffloadParams));
 
-   if(WDI_getFwWlanFeatCaps(SLM_SESSIONIZATION) )
-   {
-        // copy nsOffloadParams into pSendBuffer
-        wpalMemoryCopy( pSendBuffer+usDataOffset+sizeof(hostOffloadParams), 
-                       &nsOffloadParams, 
-                       sizeof(nsOffloadParams)); 
-    }
-    else
-    {
 #ifdef WLAN_NS_OFFLOAD
+<<<<<<< HEAD
         if( HAL_IPV6_NS_OFFLOAD == hostOffloadParams.offloadType )
         {
             // copy nsOffloadParams into pSendBuffer
@@ -15184,6 +15920,16 @@ WDI_ProcessHostOffloadReq
 #endif
      }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if( HAL_IPV6_NS_OFFLOAD == hostOffloadParams.offloadType )
+   {
+       // copy nsOffloadParams into pSendBuffer
+       wpalMemoryCopy( pSendBuffer+usDataOffset+sizeof(hostOffloadParams),
+                       &nsOffloadParams,
+                       sizeof(nsOffloadParams));
+   }
+#endif // WLAN_NS_OFFLOAD
+>>>>>>> 657b0e9... prima update
 
    pWDICtx->wdiReqStatusCB     = pwdiHostOffloadParams->wdiReqStatusCB;
    pWDICtx->pReqStatusUserData = pwdiHostOffloadParams->pUserData;
@@ -15193,6 +15939,7 @@ WDI_ProcessHostOffloadReq
    -------------------------------------------------------------------------*/
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiHostOffloadCb, pEventData->pUserData, WDI_HOST_OFFLOAD_RESP);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -15204,6 +15951,8 @@ failRequest:
    //WDA should have failure check to avoid the memory leak
    return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessHostOffloadReq*/
 
 /**
@@ -15230,11 +15979,14 @@ WDI_ProcessKeepAliveReq
    wpt_uint16               usSendSize          = 0;
    tHalKeepAliveReq         keepAliveReq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpt_uint8                ucCurrentBSSSesIdx  = 0;
    WDI_BSSSessionType*      pBSSSes = NULL;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -15248,10 +16000,14 @@ WDI_ProcessKeepAliveReq
                "Invalid parameters in Keep Alive req");
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-----------------------------------------------------------------------
@@ -15268,6 +16024,7 @@ WDI_ProcessKeepAliveReq
                   pEventData, pwdiKeepAliveParams, wdiKeepAliveCb);
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
@@ -15282,16 +16039,23 @@ WDI_ProcessKeepAliveReq
                  " %s : Association for this BSSID does not exist",__func__);
        goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    keepAliveReq.packetType = pwdiKeepAliveParams->wdiKeepAliveInfo.ucPacketType;
    keepAliveReq.timePeriod = pwdiKeepAliveParams->wdiKeepAliveInfo.ucTimePeriod;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    keepAliveReq.bssIdx = pwdiKeepAliveParams->wdiKeepAliveInfo.bssIdx;
 =======
    keepAliveReq.bssIdx = pBSSSes->ucBSSIdx;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   keepAliveReq.bssIdx = pwdiKeepAliveParams->wdiKeepAliveInfo.bssIdx;
+>>>>>>> 657b0e9... prima update
 
    if(pwdiKeepAliveParams->wdiKeepAliveInfo.ucPacketType == 2)
    {
@@ -15328,6 +16092,7 @@ WDI_ProcessKeepAliveReq
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiKeepAliveCb, pEventData->pUserData, WDI_KEEP_ALIVE_RESP);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 fail:
@@ -15338,6 +16103,8 @@ failRequest:
    //WDA should have failure check to avoid the memory leak
    return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessKeepAliveReq*/
 
 
@@ -15365,11 +16132,14 @@ WDI_ProcessWowlAddBcPtrnReq
    wpt_uint16               usSendSize          = 0;
    tHalWowlAddBcastPtrn     wowlAddBcPtrnReq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpt_uint8                ucCurrentBSSSesIdx  = 0;
    WDI_BSSSessionType*        pBSSSes = NULL;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -15381,6 +16151,7 @@ WDI_ProcessWowlAddBcPtrnReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
@@ -15389,6 +16160,11 @@ WDI_ProcessWowlAddBcPtrnReq
       WDI_ASSERT(0);
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-----------------------------------------------------------------------
@@ -15405,6 +16181,7 @@ WDI_ProcessWowlAddBcPtrnReq
                   pEventData, pwdiWowlAddBcPtrnParams, wdiWowlAddBcPtrnCb);
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
@@ -15419,6 +16196,9 @@ WDI_ProcessWowlAddBcPtrnReq
                  " %s : Association for this BSSID does not exist",__func__);
        goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    wowlAddBcPtrnReq.ucPatternId =
@@ -15457,6 +16237,7 @@ WDI_ProcessWowlAddBcPtrnReq
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpalMemoryCopy( pSendBuffer+usDataOffset,
                    &wowlAddBcPtrnReq,
                    sizeof(wowlAddBcPtrnReq));
@@ -15467,6 +16248,11 @@ WDI_ProcessWowlAddBcPtrnReq
                    &wowlAddBcPtrnReq, 
                    sizeof(wowlAddBcPtrnReq)); 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &wowlAddBcPtrnReq,
+                   sizeof(wowlAddBcPtrnReq));
+>>>>>>> 657b0e9... prima update
 
    pWDICtx->wdiReqStatusCB     = pwdiWowlAddBcPtrnParams->wdiReqStatusCB;
    pWDICtx->pReqStatusUserData = pwdiWowlAddBcPtrnParams->pUserData;
@@ -15477,6 +16263,7 @@ WDI_ProcessWowlAddBcPtrnReq
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiWowlAddBcPtrnCb, pEventData->pUserData, WDI_WOWL_ADD_BC_PTRN_RESP);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 fail:
    // Release the message buffer so we don't leak
@@ -15486,6 +16273,8 @@ failRequest:
    //WDA should have failure check to avoid the memory leak
    return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessWowlAddBcPtrnReq*/
 
 /**
@@ -15512,10 +16301,13 @@ WDI_ProcessWowlDelBcPtrnReq
    wpt_uint16               usSendSize          = 0;
    tHalWowlDelBcastPtrn     wowlDelBcPtrnReq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpt_uint8                ucCurrentBSSSesIdx  = 0;
    WDI_BSSSessionType*        pBSSSes = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -15527,6 +16319,7 @@ WDI_ProcessWowlDelBcPtrnReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
@@ -15535,6 +16328,11 @@ WDI_ProcessWowlDelBcPtrnReq
       WDI_ASSERT(0);
       goto failRequest;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    /*-----------------------------------------------------------------------
@@ -15551,6 +16349,7 @@ WDI_ProcessWowlDelBcPtrnReq
                   pEventData, pwdiWowlDelBcPtrnParams, wdiWowlDelBcPtrnCb);
       WDI_ASSERT(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
 =======
       goto failRequest;
@@ -15565,16 +16364,22 @@ WDI_ProcessWowlDelBcPtrnReq
                     " %s : Association for this BSSID does not exist",__func__);
        goto fail;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
    }
 
    wowlDelBcPtrnReq.ucPatternId =
       pwdiWowlDelBcPtrnParams->wdiWowlDelBcPtrnInfo.ucPatternId;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
    wowlDelBcPtrnReq.bssIdx = pBSSSes->ucBSSIdx;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wpalMemoryCopy( pSendBuffer+usDataOffset,
                    &wowlDelBcPtrnReq,
                    sizeof(wowlDelBcPtrnReq));
@@ -15588,6 +16393,7 @@ WDI_ProcessWowlDelBcPtrnReq
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
                         wdiWowlDelBcPtrnCb, pEventData->pUserData, WDI_WOWL_DEL_BC_PTRN_RESP);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 fail:
@@ -15598,6 +16404,8 @@ failRequest:
    //WDA should have failure check to avoid the memory leak
    return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessWowlDelBcPtrnReq*/
 
 /**
@@ -15634,10 +16442,14 @@ WDI_ProcessWowlEnterReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -15659,10 +16471,13 @@ WDI_ProcessWowlEnterReq
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wpalMemoryZero(&wowlEnterReq, sizeof(tHalWowlEnterParams));
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wowlEnterReq.ucMagicPktEnable =
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucMagicPktEnable;
    wowlEnterReq.ucPatternFilteringEnable =
@@ -15682,15 +16497,20 @@ WDI_ProcessWowlEnterReq
 
 #ifdef WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
+<<<<<<< HEAD
    wowlEnterReq.ucWoWEAPIDRequestEnable =
 =======
    wowlEnterReq.ucWoWEAPIDRequestEnable = 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wowlEnterReq.ucWoWEAPIDRequestEnable =
+>>>>>>> 657b0e9... prima update
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucWoWEAPIDRequestEnable;
 
    wowlEnterReq.ucWoWEAPOL4WayEnable =
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucWoWEAPOL4WayEnable;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    wowlEnterReq.ucWowNetScanOffloadMatch =
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucWowNetScanOffloadMatch;
@@ -15704,18 +16524,24 @@ WDI_ProcessWowlEnterReq
 
 =======
    wowlEnterReq.ucWowNetScanOffloadMatch = 
+=======
+   wowlEnterReq.ucWowNetScanOffloadMatch =
+>>>>>>> 657b0e9... prima update
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucWowNetScanOffloadMatch;
 
-   wowlEnterReq.ucWowGTKRekeyError = 
+   wowlEnterReq.ucWowGTKRekeyError =
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucWowGTKRekeyError;
 
-   wowlEnterReq.ucWoWBSSConnLoss = 
+   wowlEnterReq.ucWoWBSSConnLoss =
       pwdiWowlEnterParams->wdiWowlEnterInfo.ucWoWBSSConnLoss;
 #endif // WLAN_WAKEUP_EVENTS
 
+<<<<<<< HEAD
    wowlEnterReq.bssIdx = pwdiWowlEnterParams->wdiWowlEnterInfo.bssIdx;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    wpalMemoryCopy(wowlEnterReq.magicPtrn,
                   pwdiWowlEnterParams->wdiWowlEnterInfo.magicPtrn,
                   sizeof(tSirMacAddr));
@@ -15753,6 +16579,7 @@ WDI_ProcessWowlExitReq
 {
    WDI_WowlExitReqCb           wdiWowlExitCb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
    wpt_uint8*               pSendBuffer         = NULL;
    wpt_uint16               usDataOffset        = 0;
    wpt_uint16               usSendSize          = 0;
@@ -15763,12 +16590,18 @@ WDI_ProcessWowlExitReq
    wpt_uint16               usSendSize          = 0;
    tHalWowlExitParams       wowlExitparams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpt_uint8*               pSendBuffer         = NULL;
+   wpt_uint16               usDataOffset        = 0;
+   wpt_uint16               usSendSize          = 0;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
    if (( NULL == pEventData ) ||
+<<<<<<< HEAD
 <<<<<<< HEAD
        ( NULL == (wdiWowlExitCb   = (WDI_WowlExitReqCb)pEventData->pCBfnc)))
    {
@@ -15781,6 +16614,12 @@ WDI_ProcessWowlExitReq
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+       ( NULL == (wdiWowlExitCb   = (WDI_WowlExitReqCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -15791,6 +16630,7 @@ WDI_ProcessWowlExitReq
    -----------------------------------------------------------------------*/
    if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_WOWL_EXIT_REQ,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                      0,
                                                      &pSendBuffer, &usDataOffset, &usSendSize))||
        ( usSendSize < (usDataOffset )))
@@ -15799,6 +16639,11 @@ WDI_ProcessWowlExitReq
                                                      &pSendBuffer, &usDataOffset, &usSendSize))||
        ( usSendSize < (usDataOffset + sizeof(wowlExitparams))))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                                                     0,
+                                                     &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset )))
+>>>>>>> 657b0e9... prima update
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
                "Unable to get send buffer in Wowl Exit req %x %x",
@@ -15808,6 +16653,7 @@ WDI_ProcessWowlExitReq
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    wowlExitparams.bssIdx = pwdiWowlExitParams->wdiWowlExitInfo.bssIdx;
 
@@ -15815,6 +16661,8 @@ WDI_ProcessWowlExitReq
                    &wowlExitparams,
                    sizeof(wowlExitparams));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    /*-------------------------------------------------------------------------
      Send Get STA Request to HAL
    -------------------------------------------------------------------------*/
@@ -15856,10 +16704,14 @@ WDI_ProcessConfigureAppsCpuWakeupStateReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -15936,10 +16788,14 @@ WDI_ProcessAggrAddTSpecReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -15969,12 +16825,17 @@ WDI_ProcessAggrAddTSpecReq
   if ( NULL == pBSSSes )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
         "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
 =======
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
         "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+        "%s: Association sequence for this BSS does not yet exist. macBSSID " MAC_ADDRESS_STR,
+>>>>>>> 657b0e9... prima update
         __func__, MAC_ADDR_ARRAY(macBSSID));
 
     wpalMutexRelease(&pWDICtx->wptMutex);
@@ -16131,10 +16992,14 @@ WDI_ProcessShutdownReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "%s: Invalid parameters", __FUNCTION__);
 =======
             "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -16226,10 +17091,14 @@ WDI_ProcessStartRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16276,11 +17145,14 @@ WDI_ProcessStartRsp
   wdiRspParams.wdiStatus     = WDI_HAL_2_WDI_STATUS(startRspParams->status);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /*Save the HAL Version*/
   pWDICtx->wlanVersion = wdiRspParams.wlanReportedVersion; 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   wpalMutexAcquire(&pWDICtx->wptMutex);
   if ( WDI_STATUS_SUCCESS == wdiRspParams.wdiStatus  )
   {
@@ -16352,10 +17224,14 @@ WDI_ProcessStartRsp
   wdiAddSTAParam.bcastDpuIndex = wdiRspParams.usSelfStaDpuId;
   wdiAddSTAParam.bcastMgmtDpuIndex = wdiRspParams.usSelfStaDpuId;
 <<<<<<< HEAD
+<<<<<<< HEAD
   wdiAddSTAParam.dpuIndex = wdiRspParams.usSelfStaDpuId;;
 =======
   wdiAddSTAParam.dpuIndex = wdiRspParams.usSelfStaDpuId;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiAddSTAParam.dpuIndex = wdiRspParams.usSelfStaDpuId;;
+>>>>>>> 657b0e9... prima update
   wpalMemoryCopy(wdiAddSTAParam.staMacAddr, wdiRspParams.macSelfSta,
                  WDI_MAC_ADDR_LEN);
   wdiAddSTAParam.ucStaType = WDI_STA_ENTRY_SELF; /* 0 - self */
@@ -16408,10 +17284,14 @@ WDI_ProcessStopRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16521,9 +17401,12 @@ WDI_ProcessInitScanRsp
   WDI_InitScanRspCb     wdiInitScanRspCb;
   tHalInitScanRspMsg    halInitScanRspMsg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   wpt_status            wptStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -16534,10 +17417,14 @@ WDI_ProcessInitScanRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16547,10 +17434,14 @@ WDI_ProcessInitScanRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: call back function is NULL", __FUNCTION__);
 =======
                  "%s: call back function is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: call back function is NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16569,6 +17460,7 @@ WDI_ProcessInitScanRsp
   {
      // notify DTS that we are entering Full power
 <<<<<<< HEAD
+<<<<<<< HEAD
      WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
 =======
      wptStatus = WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
@@ -16578,6 +17470,9 @@ WDI_ProcessInitScanRsp
         WDI_ASSERT(0);
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
+>>>>>>> 657b0e9... prima update
   }
 
   /*Notify UMAC*/
@@ -16618,10 +17513,14 @@ WDI_ProcessStartScanRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16631,10 +17530,14 @@ WDI_ProcessStartScanRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: call back function is NULL", __FUNCTION__);
 =======
                  "%s: call back function is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: call back function is NULL", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16703,10 +17606,14 @@ WDI_ProcessEndScanRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16769,10 +17676,14 @@ WDI_ProcessFinishScanRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16842,10 +17753,14 @@ WDI_ProcessJoinRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -16965,10 +17880,14 @@ WDI_ProcessConfigBSSRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17097,10 +18016,14 @@ WDI_ProcessConfigBSSRsp
       -------------------------------------------------------------------------*/
     if( pWDICtx->wdiCachedConfigBssReq.wdiReqInfo.ucOperMode ==
 <<<<<<< HEAD
+<<<<<<< HEAD
         WDI_BSS_OPERATIONAL_MODE_AP )
 =======
         WDI_BSS_OPERATIONAL_MODE_AP || pBSSSes->wdiBssType == WDI_IBSS_MODE)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        WDI_BSS_OPERATIONAL_MODE_AP )
+>>>>>>> 657b0e9... prima update
     {
        WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
                   "Add BCAST STA to table for index: %d",
@@ -17174,10 +18097,14 @@ WDI_ProcessDelBSSRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17281,10 +18208,14 @@ WDI_ProcessPostAssocRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17454,10 +18385,14 @@ WDI_ProcessDelSTARsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17548,10 +18483,14 @@ WDI_ProcessSetBssKeyRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17609,10 +18548,14 @@ WDI_ProcessRemoveBssKeyRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17671,10 +18614,14 @@ WDI_ProcessSetStaKeyRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17732,10 +18679,14 @@ WDI_ProcessRemoveStaKeyRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17793,10 +18744,14 @@ WDI_ProcessSetStaBcastKeyRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17857,10 +18812,14 @@ WDI_ProcessRemoveStaBcastKeyRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17926,10 +18885,14 @@ WDI_ProcessAddTSpecRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -17979,10 +18942,14 @@ WDI_ProcessDelTSpecRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18031,10 +18998,14 @@ WDI_ProcessUpdateEDCAParamsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18087,10 +19058,14 @@ WDI_ProcessAddBASessionRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18154,10 +19129,14 @@ WDI_ProcessDelBARsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18186,50 +19165,69 @@ WDI_ProcessDelBARsp
  @brief Process TSM Stats Rsp function (called when a response
         is being received over the bus from HAL)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
 
+<<<<<<< HEAD
 =======
  
  @param  pWDICtx:         pointer to the WLAN DAL context 
          pEventData:      pointer to the event information structure 
   
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  @see
  @return Result of the function call
 */
 WDI_Status
 WDI_ProcessTsmStatsRsp
 <<<<<<< HEAD
+<<<<<<< HEAD
 (
 =======
 ( 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+(
+>>>>>>> 657b0e9... prima update
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
   WDI_TsmRspCb          wdiTsmStatsRspCb;
 <<<<<<< HEAD
+<<<<<<< HEAD
   tTsmStatsRspMsg       halTsmStatsRspMsg;
 =======
   tTsmStatsRspMsg       halTsmStatsRspMsg; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  tTsmStatsRspMsg       halTsmStatsRspMsg;
+>>>>>>> 657b0e9... prima update
   WDI_TSMStatsRspParamsType  wdiTsmStatsRspParams;
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
     Sanity check
 =======
     Sanity check 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    Sanity check
+>>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------*/
   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
       ( NULL == pEventData->pEventData))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
 <<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
      WDI_ASSERT(0);
@@ -18239,12 +19237,18 @@ WDI_ProcessTsmStatsRsp
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
+>>>>>>> 657b0e9... prima update
   }
 
   wdiTsmStatsRspCb = (WDI_TsmRspCb)pWDICtx->pfncRspCB;
 
   /*-------------------------------------------------------------------------
     Unpack HAL Response Message - the header was already extracted by the
+<<<<<<< HEAD
 <<<<<<< HEAD
     main Response Handling procedure
   -------------------------------------------------------------------------*/
@@ -18256,6 +19260,12 @@ WDI_ProcessTsmStatsRsp
   wpalMemoryCopy( &halTsmStatsRspMsg.tsmStatsRspParams, 
                   pEventData->pEventData, 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    main Response Handling procedure
+  -------------------------------------------------------------------------*/
+  wpalMemoryCopy( &halTsmStatsRspMsg.tsmStatsRspParams,
+                  pEventData->pEventData,
+>>>>>>> 657b0e9... prima update
                   sizeof(halTsmStatsRspMsg.tsmStatsRspParams));
 
   wdiTsmStatsRspParams.UplinkPktQueueDly = halTsmStatsRspMsg.tsmStatsRspParams.UplinkPktQueueDly;
@@ -18275,10 +19285,14 @@ WDI_ProcessTsmStatsRsp
   wdiTsmStatsRspCb( &wdiTsmStatsRspParams, pWDICtx->pRspCBUserData);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   return WDI_STATUS_SUCCESS;
 =======
   return WDI_STATUS_SUCCESS; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  return WDI_STATUS_SUCCESS;
+>>>>>>> 657b0e9... prima update
 }/*WDI_ProcessTsmStatsRsp*/
 
 #endif
@@ -18315,10 +19329,14 @@ WDI_ProcessFlushAcRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18370,10 +19388,14 @@ WDI_ProcessBtAmpEventRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -18427,10 +19449,14 @@ WDI_ProcessAddSTASelfRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18532,10 +19558,14 @@ WDI_ProcessDelSTASelfRsp
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_E_FAILURE;
   }
@@ -18565,10 +19595,14 @@ WDI_ProcessDelSTASelfRsp
     {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Unable to extract the STA Idx ", __FUNCTION__);
 =======
                  "%s: Unable to extract the STA Idx ", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Unable to extract the STA Idx ", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
     }
@@ -18584,10 +19618,14 @@ WDI_ProcessDelSTASelfRsp
 #ifdef FEATURE_OEM_DATA_SUPPORT
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  @brief Start Oem Data Rsp function (called when a
 =======
  @brief Start Oem Data Rsp function (called when a 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Start Oem Data Rsp function (called when a
+>>>>>>> 657b0e9... prima update
         response is being received over the bus from HAL)
 
  @param  pWDICtx:         pointer to the WLAN DAL context
@@ -18617,10 +19655,14 @@ WDI_ProcessStartOemDataRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18695,10 +19737,14 @@ WDI_ProcessChannelSwitchRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18762,10 +19808,14 @@ WDI_ProcessConfigStaRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -18816,10 +19866,13 @@ WDI_ProcessConfigStaRsp
       wdiAddSTAParam.ucStaType    =
         pWDICtx->wdiCachedConfigStaReq.wdiReqInfo.wdiSTAType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       wdiAddSTAParam.ucRmfEnabled =
         pWDICtx->wdiCachedConfigStaReq.wdiReqInfo.ucRMFEnabled;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
       /* MAC Address of STA */
       wpalMemoryCopy(wdiAddSTAParam.staMacAddr,
@@ -18853,9 +19906,13 @@ WDI_ProcessConfigStaRsp
       wdiAddSTAParam.bcastDpuSignature =
          halConfigStaRsp.configStaRspParams.ucBcastSig;
 <<<<<<< HEAD
+<<<<<<< HEAD
       wdiAddSTAParam.ucRmfEnabled          = pBSSSes->ucRmfEnabled;
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      wdiAddSTAParam.ucRmfEnabled          = pBSSSes->ucRmfEnabled;
+>>>>>>> 657b0e9... prima update
       wdiAddSTAParam.ucBSSIdx              = ucCurrentBSSSesIdx;
 
       WDI_STATableAddSta(pWDICtx,&wdiAddSTAParam);
@@ -18921,10 +19978,14 @@ WDI_ProcessSetLinkStateRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19039,10 +20100,14 @@ WDI_ProcessGetStatsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19088,6 +20153,7 @@ WDI_ProcessGetStatsRsp
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessGetStatsRsp*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
@@ -19153,6 +20219,8 @@ WDI_ProcessGetRoamRssiRsp
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /**
  @brief Process Update Cfg Rsp function (called when a response is
@@ -19184,10 +20252,14 @@ WDI_ProcessUpdateCfgRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19240,10 +20312,14 @@ WDI_ProcessAddBARsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19296,10 +20372,14 @@ WDI_ProcessTriggerBARsp
   wpt_uint16                     index;
   wpt_uint16                     TidIndex;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   WDI_Status                     halTriggerBARspStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -19310,10 +20390,14 @@ WDI_ProcessTriggerBARsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19325,6 +20409,7 @@ WDI_ProcessTriggerBARsp
   -------------------------------------------------------------------------*/
   halTriggerBARsp = (tTriggerBARspParams *)pEventData->pEventData;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   wdiTriggerBARsp = wpalMemoryAllocate(sizeof(WDI_TriggerBARspParamsType) +
                       halTriggerBARsp->baCandidateCnt *
@@ -19349,21 +20434,29 @@ WDI_ProcessTriggerBARsp
   if ( WDI_STATUS_SUCCESS == halTriggerBARspStatus)
   {
     wdiTriggerBARsp = wpalMemoryAllocate(sizeof(WDI_TriggerBARspParamsType) +
+=======
+  wdiTriggerBARsp = wpalMemoryAllocate(sizeof(WDI_TriggerBARspParamsType) +
+>>>>>>> 657b0e9... prima update
                       halTriggerBARsp->baCandidateCnt *
                       sizeof(WDI_TriggerBARspCandidateType));
+  if(NULL == wdiTriggerBARsp)
+  {
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                "Failed to allocate memory in Trigger BA Response %x %x %x ",
+                 pWDICtx, pEventData, pEventData->pEventData);
+    wpalMemoryFree(halTriggerBARsp);
+    WDI_ASSERT(0);
+    return WDI_STATUS_E_FAILURE;
+  }
 
-    if(NULL == wdiTriggerBARsp)
-    {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Failed to allocate memory in Trigger BA Response %x %x %x ",
-                   pWDICtx, pEventData, pEventData->pEventData);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-    }
+  wdiTriggerBARsp->wdiStatus = WDI_HAL_2_WDI_STATUS(halTriggerBARsp->status);
 
-    wdiTriggerBARsp->wdiStatus = halTriggerBARspStatus;
-
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if ( WDI_STATUS_SUCCESS == wdiTriggerBARsp->wdiStatus)
+  {
+>>>>>>> 657b0e9... prima update
     wdiTriggerBARsp->usBaCandidateCnt = halTriggerBARsp->baCandidateCnt;
     wpalMemoryCopy(wdiTriggerBARsp->macBSSID,
                                  halTriggerBARsp->bssId , WDI_MAC_ADDR_LEN);
@@ -19387,6 +20480,7 @@ WDI_ProcessTriggerBARsp
     }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   else
   {
@@ -19405,6 +20499,8 @@ WDI_ProcessTriggerBARsp
 
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   /*Notify UMAC*/
   wdiTriggerBARspCb( wdiTriggerBARsp, pWDICtx->pRspCBUserData);
@@ -19443,10 +20539,14 @@ WDI_ProcessUpdateBeaconParamsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19498,10 +20598,14 @@ WDI_ProcessSendBeaconParamsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19554,10 +20658,14 @@ WDI_ProcessUpdateProbeRspTemplateRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19611,10 +20719,14 @@ WDI_ProcessSetMaxTxPowerRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19647,134 +20759,18 @@ WDI_ProcessSetMaxTxPowerRsp
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
   /**
  @brief Process Set Tx Power Rsp function (called when a response
         is being received over the bus from HAL)
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessSetTxPowerRsp
-(
-  WDI_ControlBlockType*          pWDICtx,
-  WDI_EventInfoType*             pEventData
-)
-{
-  tSetTxPwrRspMsg             halTxpowerrsp;
-  WDI_SetTxPowerRspMsg        wdiSetTxPowerRspMsg;
-  WDA_SetTxPowerRspCb         wdiReqStatusCb;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-  /*-------------------------------------------------------------------------
-    Sanity check
-  -------------------------------------------------------------------------*/
-  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
-      ( NULL == pEventData->pEventData))
-  {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "%s: Invalid parameters", __func__);
-     WDI_ASSERT(0);
-     return WDI_STATUS_E_FAILURE;
-  }
-
-  wdiReqStatusCb = (WDA_SetTxPowerRspCb)pWDICtx->pfncRspCB;
-
-  /*-------------------------------------------------------------------------
-    Extract response and send it to UMAC
-  -------------------------------------------------------------------------*/
-  wpalMemoryCopy(&halTxpowerrsp.setTxPwrRspParams,
-                 pEventData->pEventData,
-                 sizeof(halTxpowerrsp.setTxPwrRspParams));
-
-  if (eHAL_STATUS_SUCCESS != halTxpowerrsp.setTxPwrRspParams.status)
-  {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 "Error status returned in Set Tx Power Response ");
-     WDI_DetectedDeviceError(pWDICtx, WDI_ERR_BASIC_OP_FAILURE);
-     return WDI_STATUS_E_FAILURE;
-  }
-
-  wdiSetTxPowerRspMsg.wdiStatus =
-         WDI_HAL_2_WDI_STATUS(halTxpowerrsp.setTxPwrRspParams.status);
-
-  /*Notify UMAC*/
-  wdiReqStatusCb(&wdiSetTxPowerRspMsg, pWDICtx->pRspCBUserData);
-
-  return WDI_STATUS_SUCCESS;
-}
-#ifdef FEATURE_WLAN_TDLS
-/**
- @brief Process TDLS Link Establish Rsp function (called
-        when a response is being received over the bus from HAL)
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessLinkEstablishReqRsp
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-  eHalStatus       halStatus;
-  WDI_SetTDLSLinkEstablishReqParamsRspCb   wdiTDLSLinkEstablishReqParamsRspCb;
-  tTDLSLinkEstablishedRespMsg  halTdlsLinkEstablishedRespMsg;
-  WDI_SetTdlsLinkEstablishReqResp    wdiSetTdlsLinkEstablishReqResp;
-
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-  /*-------------------------------------------------------------------------
-    Sanity check
-  -------------------------------------------------------------------------*/
-  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
-      ( NULL == pEventData->pEventData))
-  {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "%s: Invalid parameters", __func__);
-     WDI_ASSERT(0);
-     return WDI_STATUS_E_FAILURE;
-  }
-
-  /*-------------------------------------------------------------------------
-  Extract indication and send it to UMAC
- -------------------------------------------------------------------------*/
-  wpalMemoryCopy( &halTdlsLinkEstablishedRespMsg.TDLSLinkEstablishedRespParams,
-                  pEventData->pEventData,
-                  sizeof(halTdlsLinkEstablishedRespMsg.TDLSLinkEstablishedRespParams) );
-
-  wdiTDLSLinkEstablishReqParamsRspCb = (WDI_SetTDLSLinkEstablishReqParamsRspCb)pWDICtx->pfncRspCB;
-
-  /*-------------------------------------------------------------------------
-    Extract response and send it to UMAC
-  -------------------------------------------------------------------------*/
-  wpalMemoryCopy( &halStatus,
-                  pEventData->pEventData,
-                  sizeof(halStatus));
-
-  wdiSetTdlsLinkEstablishReqResp.wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
-  wdiSetTdlsLinkEstablishReqResp.uStaIdx   =   halTdlsLinkEstablishedRespMsg.TDLSLinkEstablishedRespParams.staIdx;
-
-  /*Notify UMAC*/
-  wdiTDLSLinkEstablishReqParamsRspCb( &wdiSetTdlsLinkEstablishReqResp, pWDICtx->pRspCBUserData);
-
-  return WDI_STATUS_SUCCESS;
-}/*WDI_ProcessLinkEstablishReqRsp*/
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
 /**
  @brief Process P2P Group Owner Notice Of Absense Rsp function (called
         when a response is being received over the bus from HAL)
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -19801,11 +20797,7 @@ WDI_ProcessP2PGONOARsp
       ( NULL == pEventData->pEventData))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
-=======
-                 "%s: Invalid parameters", __func__);
->>>>>>> d97af3b... add prima wlan driver
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19826,10 +20818,7 @@ WDI_ProcessP2PGONOARsp
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessP2PGONOARsp*/
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 /**
  @brief Process Enter IMPS Rsp function (called when a response
         is being received over the bus from HAL)
@@ -19850,10 +20839,6 @@ WDI_ProcessEnterImpsRsp
   WDI_Status           wdiStatus;
   eHalStatus           halStatus;
   WDI_EnterImpsRspCb   wdiEnterImpsRspCb;
-<<<<<<< HEAD
-=======
-  wpt_status wptStatus;
->>>>>>> d97af3b... add prima wlan driver
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -19863,11 +20848,7 @@ WDI_ProcessEnterImpsRsp
       ( NULL == pEventData->pEventData))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
-=======
-                 "%s: Invalid parameters", __func__);
->>>>>>> d97af3b... add prima wlan driver
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -19881,16 +20862,173 @@ WDI_ProcessEnterImpsRsp
 
   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
-<<<<<<< HEAD
   /* If IMPS req failed, riva is not power collapsed Put the DXE in FULL state.
-=======
-  /* If IMPS req failed, riva is not power collapsed Put the DXE in FULL state. 
->>>>>>> d97af3b... add prima wlan driver
    * Other module states are taken care by PMC.
    * TODO: How do we take care of the case where IMPS is success, but riva power collapse fails??
    */
   if (wdiStatus != WDI_STATUS_SUCCESS) {
 
+	  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
+		 "WDI PRocess Enter IMPS RSP failed With HAL Status Code: %d",halStatus);
+	  /* Call Back is not required as we are putting the DXE in FULL
+	   * and riva is already in full (IMPS RSP Failed)*/
+	  WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
+  }
+  /*Notify UMAC*/
+  wdiEnterImpsRspCb( wdiStatus, pWDICtx->pRspCBUserData);
+
+  return WDI_STATUS_SUCCESS;
+}/*WDI_ProcessEnterImpsRsp*/
+
+>>>>>>> d97af3b... add prima wlan driver
+/**
+ @brief Process Exit IMPS Rsp function (called when a response
+        is being received over the bus from HAL)
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessExitImpsRsp
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+  WDI_Status           wdiStatus;
+  eHalStatus           halStatus;
+  WDI_ExitImpsRspCb    wdiExitImpsRspCb;
+  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+  /*-------------------------------------------------------------------------
+    Sanity check
+  -------------------------------------------------------------------------*/
+  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+      ( NULL == pEventData->pEventData))
+  {
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+                 "%s: Invalid parameters", __FUNCTION__);
+=======
+                 "%s: Invalid parameters", __func__);
+>>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
+  }
+
+  wdiExitImpsRspCb = (WDI_ExitImpsRspCb)pWDICtx->pfncRspCB;
+
+  /*-------------------------------------------------------------------------
+    Extract response and send it to UMAC
+  -------------------------------------------------------------------------*/
+  halStatus = *((eHalStatus*)pEventData->pEventData);
+  wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+  // notify DTS that we are entering Full power
+  WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
+
+  /*Notify UMAC*/
+  wdiExitImpsRspCb( wdiStatus, pWDICtx->pRspCBUserData);
+
+  return WDI_STATUS_SUCCESS;
+<<<<<<< HEAD
+}/*WDI_ProcessP2PGONOARsp*/
+<<<<<<< HEAD
+#endif
+=======
+>>>>>>> d97af3b... add prima wlan driver
+=======
+}/*WDI_ProcessExitImpsRsp*/
+
+>>>>>>> 657b0e9... prima update
+/**
+ @brief Process Enter BMPS Rsp function (called when a response
+        is being received over the bus from HAL)
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessEnterBmpsRsp
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+  WDI_Status           wdiStatus;
+  eHalStatus           halStatus;
+<<<<<<< HEAD
+  WDI_EnterImpsRspCb   wdiEnterImpsRspCb;
+<<<<<<< HEAD
+=======
+  wpt_status wptStatus;
+>>>>>>> d97af3b... add prima wlan driver
+=======
+  WDI_EnterBmpsRspCb   wdiEnterBmpsRspCb;
+>>>>>>> 657b0e9... prima update
+  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+  /*-------------------------------------------------------------------------
+    Sanity check
+  -------------------------------------------------------------------------*/
+  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+      ( NULL == pEventData->pEventData))
+  {
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+                 "%s: Invalid parameters", __FUNCTION__);
+=======
+                 "%s: Invalid parameters", __func__);
+>>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
+  }
+
+  wdiEnterBmpsRspCb = (WDI_EnterBmpsRspCb)pWDICtx->pfncRspCB;
+
+  /*-------------------------------------------------------------------------
+    Extract response and send it to UMAC
+  -------------------------------------------------------------------------*/
+  halStatus = *((eHalStatus*)pEventData->pEventData);
+  wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+  /* If IMPS req failed, riva is not power collapsed Put the DXE in FULL state.
+=======
+  /* If IMPS req failed, riva is not power collapsed Put the DXE in FULL state. 
+>>>>>>> d97af3b... add prima wlan driver
+=======
+  /* If BMPS req failed, riva is not power collapsed put the DXE in FULL state.
+>>>>>>> 657b0e9... prima update
+   * Other module states are taken care by PMC.
+   * TODO: How do we take care of the case where BMPS is success, but riva power collapse fails??
+   */
+   if (wdiStatus != WDI_STATUS_SUCCESS) {
+
+	  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
+		 "WDI PRocess Enter BMPS RSP failed With HAL Status Code: %d",halStatus);
+	  /* Call Back is not required as we are putting the DXE in FULL
+	   * and riva is already in FULL (BMPS RSP Failed)*/
+	  WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
+	  pWDICtx->bInBmps = eWLAN_PAL_FALSE;
+   }
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 	  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
 		 "WDI PRocess Enter IMPS RSP failed With HAL Status Code: %d",halStatus);
@@ -19912,14 +21050,16 @@ WDI_ProcessEnterImpsRsp
      }
 >>>>>>> d97af3b... add prima wlan driver
   }
+=======
+>>>>>>> 657b0e9... prima update
   /*Notify UMAC*/
-  wdiEnterImpsRspCb( wdiStatus, pWDICtx->pRspCBUserData);
+  wdiEnterBmpsRspCb( wdiStatus, pWDICtx->pRspCBUserData);
 
   return WDI_STATUS_SUCCESS;
-}/*WDI_ProcessEnterImpsRsp*/
+}/*WDI_ProcessEnterBmpsRsp*/
 
 /**
- @brief Process Exit IMPS Rsp function (called when a response
+ @brief Process Exit BMPS Rsp function (called when a response
         is being received over the bus from HAL)
 
  @param  pWDICtx:         pointer to the WLAN DAL context
@@ -19929,7 +21069,7 @@ WDI_ProcessEnterImpsRsp
  @return Result of the function call
 */
 WDI_Status
-WDI_ProcessExitImpsRsp
+WDI_ProcessExitBmpsRsp
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
@@ -19937,11 +21077,15 @@ WDI_ProcessExitImpsRsp
 {
   WDI_Status           wdiStatus;
   eHalStatus           halStatus;
+<<<<<<< HEAD
   WDI_ExitImpsRspCb    wdiExitImpsRspCb;
 <<<<<<< HEAD
 =======
   wpt_status           wptStatus;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WDI_ExitBmpsRspCb   wdiExitBmpsRspCb;
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -19952,15 +21096,19 @@ WDI_ProcessExitImpsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
 
-  wdiExitImpsRspCb = (WDI_ExitImpsRspCb)pWDICtx->pfncRspCB;
+  wdiExitBmpsRspCb = (WDI_ExitBmpsRspCb)pWDICtx->pfncRspCB;
 
   /*-------------------------------------------------------------------------
     Extract response and send it to UMAC
@@ -19968,6 +21116,7 @@ WDI_ProcessExitImpsRsp
   halStatus = *((eHalStatus*)pEventData->pEventData);
   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   // notify DTS that we are entering Full power
   WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
@@ -20207,6 +21356,15 @@ WDI_ProcessExitBmpsRsp
   /*Notify UMAC*/
   wdiExitBmpsRspCb( &wdiExitBmpsRspParams, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  // notify DTS that we are entering Full power
+  WDTS_SetPowerState(pWDICtx, WDTS_POWER_STATE_FULL, NULL);
+
+  pWDICtx->bInBmps = eWLAN_PAL_FALSE;
+
+  /*Notify UMAC*/
+  wdiExitBmpsRspCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessExitBmpsRsp*/
@@ -20229,16 +21387,22 @@ WDI_ProcessEnterUapsdRsp
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   WDI_Status           wdiStatus;
   eHalStatus           halStatus;
   WDI_EnterUapsdRspCb   wdiEnterUapsdRspCb;
 =======
+=======
+  WDI_Status           wdiStatus;
+>>>>>>> 657b0e9... prima update
   eHalStatus           halStatus;
-  tUapsdRspParams halEnterUapsdRsp;
   WDI_EnterUapsdRspCb   wdiEnterUapsdRspCb;
+<<<<<<< HEAD
   WDI_EnterUapsdRspParamsType wdiEnterUapsdRspParams;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -20249,10 +21413,14 @@ WDI_ProcessEnterUapsdRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -20262,6 +21430,7 @@ WDI_ProcessEnterUapsdRsp
   /*-------------------------------------------------------------------------
     Extract response and send it to UMAC
   -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
   halStatus = *((eHalStatus*)pEventData->pEventData);
   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
@@ -20285,6 +21454,12 @@ WDI_ProcessEnterUapsdRsp
 
   if(WDI_STATUS_SUCCESS == wdiEnterUapsdRspParams.wdiStatus)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  halStatus = *((eHalStatus*)pEventData->pEventData);
+  wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+  if(WDI_STATUS_SUCCESS == wdiStatus)
+>>>>>>> 657b0e9... prima update
   {
    // Set the DPU routing flag to the FW WQ, all the TX frames would be now pushed
    // from DPU to the FW-WQ (5) in UAPSD. FW would be in data path, monitoring
@@ -20300,10 +21475,14 @@ WDI_ProcessEnterUapsdRsp
 
   /*Notify UMAC*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   wdiEnterUapsdRspCb( wdiStatus, pWDICtx->pRspCBUserData);
 =======
   wdiEnterUapsdRspCb( &wdiEnterUapsdRspParams, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiEnterUapsdRspCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessEnterUapsdRsp*/
@@ -20326,6 +21505,7 @@ WDI_ProcessExitUapsdRsp
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   WDI_Status           wdiStatus;
   eHalStatus           halStatus;
   WDI_ExitUapsdRspCb   wdiExitUapsdRspCb;
@@ -20335,6 +21515,11 @@ WDI_ProcessExitUapsdRsp
   tHalExitUapsdRspParams halExitUapsdRsp;
   WDI_ExitUapsdRspParamsType wdiExitUapsdRspParams; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WDI_Status           wdiStatus;
+  eHalStatus           halStatus;
+  WDI_ExitUapsdRspCb   wdiExitUapsdRspCb;
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -20345,10 +21530,14 @@ WDI_ProcessExitUapsdRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -20358,6 +21547,7 @@ WDI_ProcessExitUapsdRsp
   /*-------------------------------------------------------------------------
     Extract response and send it to UMAC
   -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
   halStatus = *((eHalStatus*)pEventData->pEventData);
   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
@@ -20378,6 +21568,11 @@ WDI_ProcessExitUapsdRsp
       wdiExitUapsdRspParams.wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  halStatus = *((eHalStatus*)pEventData->pEventData);
+  wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+>>>>>>> 657b0e9... prima update
    // Restore back the DPU routing flag in the TxBD, for DPU to push the TxBDs to BTQM
    // directly instead of the FW WQ.
    pWDICtx->ucDpuRF = BMUWQ_BTQM_TX_MGMT;
@@ -20389,10 +21584,14 @@ WDI_ProcessExitUapsdRsp
 
   /*Notify UMAC*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   wdiExitUapsdRspCb( wdiStatus, pWDICtx->pRspCBUserData);
 =======
   wdiExitUapsdRspCb( &wdiExitUapsdRspParams, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiExitUapsdRspCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessExitUapsdRsp*/
@@ -20427,10 +21626,14 @@ WDI_ProcessSetUapsdAcParamsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -20479,10 +21682,14 @@ WDI_ProcessUpdateUapsdParamsRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -20531,10 +21738,14 @@ WDI_ProcessConfigureRxpFilterRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -20583,10 +21794,14 @@ WDI_ProcessSetBeaconFilterRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20635,10 +21850,14 @@ WDI_ProcessRemBeaconFilterRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20687,10 +21906,14 @@ WDI_ProcessSetRSSIThresoldsRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20739,10 +21962,14 @@ WDI_ProcessHostOffloadRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20794,10 +22021,14 @@ WDI_ProcessKeepAliveRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20834,6 +22065,7 @@ WDI_ProcessWowlAddBcPtrnRsp
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_WowlAddBcPtrnCb    wdiWowlAddBcPtrnCb;
@@ -20844,6 +22076,11 @@ WDI_ProcessWowlAddBcPtrnRsp
    WDI_WowlAddBcPtrnRspParamsType wdiWowlAddBcPtrRsp;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_WowlAddBcPtrnCb    wdiWowlAddBcPtrnCb;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -20854,10 +22091,14 @@ WDI_ProcessWowlAddBcPtrnRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20867,6 +22108,7 @@ WDI_ProcessWowlAddBcPtrnRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    halStatus = *((eHalStatus*)pEventData->pEventData);
    wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
@@ -20893,6 +22135,13 @@ WDI_ProcessWowlAddBcPtrnRsp
    /*Notify UMAC*/
    wdiWowlAddBcPtrnCb( &wdiWowlAddBcPtrRsp, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+   /*Notify UMAC*/
+   wdiWowlAddBcPtrnCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
    return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessWowlAddBcPtrnRsp*/
@@ -20915,6 +22164,7 @@ WDI_ProcessWowlDelBcPtrnRsp
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_WowlDelBcPtrnCb    wdiWowlDelBcPtrnCb;
@@ -20924,6 +22174,11 @@ WDI_ProcessWowlDelBcPtrnRsp
    tHalDelWowlBcastPtrnRspParams halDelWowlBcastPtrRsp;
    WDI_WowlDelBcPtrnRspParamsType wdiWowlDelBcstPtrRsp;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_WowlDelBcPtrnCb    wdiWowlDelBcPtrnCb;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -20934,10 +22189,14 @@ WDI_ProcessWowlDelBcPtrnRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -20947,6 +22206,7 @@ WDI_ProcessWowlDelBcPtrnRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    halStatus = *((eHalStatus*)pEventData->pEventData);
    wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
@@ -20959,18 +22219,18 @@ WDI_ProcessWowlDelBcPtrnRsp
         wpalMemoryCopy( &halDelWowlBcastPtrRsp,
                     pEventData->pEventData,
                     sizeof(halDelWowlBcastPtrRsp));
+=======
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+>>>>>>> 657b0e9... prima update
 
-        wdiWowlDelBcstPtrRsp.wdiStatus = 
-                       WDI_HAL_2_WDI_STATUS(halDelWowlBcastPtrRsp.status);
-   }
-   else
-   {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiWowlDelBcstPtrRsp.wdiStatus  =   WDI_HAL_2_WDI_STATUS(halStatus);
-   }
    /*Notify UMAC*/
+<<<<<<< HEAD
    wdiWowlDelBcPtrnCb( &wdiWowlDelBcstPtrRsp, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiWowlDelBcPtrnCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
    return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessWowlDelBcPtrnRsp*/
@@ -20993,6 +22253,7 @@ WDI_ProcessWowlEnterRsp
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_WowlEnterReqCb   wdiWowlEnterCb;
@@ -21002,6 +22263,11 @@ WDI_ProcessWowlEnterRsp
    WDI_WowlEnterRspParamsType  wdiwowlEnterRsp;
    tHalEnterWowlRspParams  halEnterWowlRspParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_WowlEnterReqCb   wdiWowlEnterCb;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -21012,10 +22278,14 @@ WDI_ProcessWowlEnterRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -21025,6 +22295,7 @@ WDI_ProcessWowlEnterRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    halStatus = *((eHalStatus*)pEventData->pEventData);
    wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
@@ -21037,19 +22308,18 @@ WDI_ProcessWowlEnterRsp
       wpalMemoryCopy( &halEnterWowlRspParams,
                    (wpt_uint8*)pEventData->pEventData,
                    sizeof(halEnterWowlRspParams));
+=======
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+>>>>>>> 657b0e9... prima update
 
-       wdiwowlEnterRsp.bssIdx = halEnterWowlRspParams.bssIdx;
-       wdiwowlEnterRsp.status =
-                WDI_HAL_2_WDI_STATUS(halEnterWowlRspParams.status);
-   }
-   else
-   {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiwowlEnterRsp.status   =   WDI_HAL_2_WDI_STATUS(halStatus);
-   }
    /*Notify UMAC*/
+<<<<<<< HEAD
    wdiWowlEnterCb( &wdiwowlEnterRsp, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiWowlEnterCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
    return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessWowlEnterRsp*/
@@ -21072,6 +22342,7 @@ WDI_ProcessWowlExitRsp
 )
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_WowlExitReqCb   wdiWowlExitCb;
@@ -21082,6 +22353,11 @@ WDI_ProcessWowlExitRsp
    WDI_WowlExitRspParamsType wdiWowlExitRsp;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_WowlExitReqCb   wdiWowlExitCb;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
@@ -21092,10 +22368,14 @@ WDI_ProcessWowlExitRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -21105,6 +22385,7 @@ WDI_ProcessWowlExitRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    halStatus = *((eHalStatus*)pEventData->pEventData);
    wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
@@ -21120,16 +22401,18 @@ WDI_ProcessWowlExitRsp
 
         wdiWowlExitRsp.status = WDI_HAL_2_WDI_STATUS(halExitWowlRspParams.status);
         wdiWowlExitRsp.bssIdx = halExitWowlRspParams.bssIdx;
+=======
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+>>>>>>> 657b0e9... prima update
 
-   }
-   else
-   {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiWowlExitRsp.status  =   WDI_HAL_2_WDI_STATUS(halStatus);
-   }
    /*Notify UMAC*/
+<<<<<<< HEAD
    wdiWowlExitCb( &wdiWowlExitRsp, pWDICtx->pRspCBUserData);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiWowlExitCb( wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
    return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessWowlExitRsp*/
@@ -21165,10 +22448,14 @@ WDI_ProcessConfigureAppsCpuWakeupStateRsp
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -21218,10 +22505,14 @@ WDI_ProcessNvDownloadRsp
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_E_FAILURE;
   }
@@ -21286,10 +22577,14 @@ WDI_ProcessAggrAddTSpecRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21343,10 +22638,14 @@ WDI_ProcessHostResumeRsp
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_E_FAILURE;
   }
@@ -21400,10 +22699,14 @@ WDI_ProcessSetTxPerTrackingRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21455,10 +22758,14 @@ WDI_ProcessLowRSSIInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21472,10 +22779,14 @@ WDI_ProcessLowRSSIInd
 
   /*Fill in the indication parameters*/
 <<<<<<< HEAD
+<<<<<<< HEAD
   wdiInd.wdiIndicationType = WDI_RSSI_NOTIFICATION_IND;
 =======
   wdiInd.wdiIndicationType = WDI_RSSI_NOTIFICATION_IND; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  wdiInd.wdiIndicationType = WDI_RSSI_NOTIFICATION_IND;
+>>>>>>> 657b0e9... prima update
   wdiInd.wdiIndicationData.wdiLowRSSIInfo.bRssiThres1PosCross =
      halRSSINotificationIndMsg.rssiNotificationParams.bRssiThres1PosCross;
   wdiInd.wdiIndicationData.wdiLowRSSIInfo.bRssiThres1NegCross =
@@ -21488,6 +22799,7 @@ WDI_ProcessLowRSSIInd
      halRSSINotificationIndMsg.rssiNotificationParams.bRssiThres3PosCross;
   wdiInd.wdiIndicationData.wdiLowRSSIInfo.bRssiThres3NegCross =
      halRSSINotificationIndMsg.rssiNotificationParams.bRssiThres3NegCross;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   /*Notify UMAC*/
@@ -21502,6 +22814,11 @@ WDI_ProcessLowRSSIInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessLowRSSIInd*/
@@ -21529,9 +22846,12 @@ WDI_ProcessMissedBeaconInd
   eHalStatus           halStatus;
   WDI_LowLevelIndType  wdiInd;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   tpHalMissedBeaconIndParams halMissedBeaconIndParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
@@ -21541,6 +22861,7 @@ WDI_ProcessMissedBeaconInd
       ( NULL == pEventData->pEventData))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
 <<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
      WDI_ASSERT(0);
@@ -21554,6 +22875,13 @@ WDI_ProcessMissedBeaconInd
   }
   halMissedBeaconIndParams = (tpHalMissedBeaconIndParams)pEventData->pEventData;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
+  }
+
+>>>>>>> 657b0e9... prima update
   /*-------------------------------------------------------------------------
     Extract indication and send it to UMAC
   -------------------------------------------------------------------------*/
@@ -21563,6 +22891,7 @@ WDI_ProcessMissedBeaconInd
 
   /*Fill in the indication parameters*/
   wdiInd.wdiIndicationType = WDI_MISSED_BEACON_IND;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   /*Notify UMAC*/
@@ -21576,6 +22905,11 @@ WDI_ProcessMissedBeaconInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessMissedBeaconInd*/
@@ -21612,10 +22946,14 @@ WDI_ProcessUnkAddrFrameInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21633,6 +22971,7 @@ WDI_ProcessUnkAddrFrameInd
     wdiInd.wdiIndicationData.wdiUnkAddr2FrmInfo*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*Notify UMAC*/
   pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
 =======
@@ -21642,6 +22981,10 @@ WDI_ProcessUnkAddrFrameInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessUnkAddrFrameInd*/
@@ -21678,10 +23021,14 @@ WDI_ProcessMicFailureInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21712,6 +23059,7 @@ WDI_ProcessMicFailureInd
   wpalMemoryCopy(wdiInd.wdiIndicationData.wdiMICFailureInfo.macRxAddr,
                  pHalMicFailureInd->info.rxMacAddr, WDI_MAC_ADDR_LEN);
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*Notify UMAC*/
   pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
 =======
@@ -21722,6 +23070,10 @@ WDI_ProcessMicFailureInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessMicFailureInd*/
@@ -21758,10 +23110,14 @@ WDI_ProcessFatalErrorInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21782,6 +23138,7 @@ WDI_ProcessFatalErrorInd
   wdiInd.wdiIndicationData.usErrorCode = WDI_ERR_DEV_INTERNAL_FAILURE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*Notify UMAC*/
   pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
 =======
@@ -21791,6 +23148,10 @@ WDI_ProcessFatalErrorInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessFatalErrorInd*/
@@ -21825,10 +23186,14 @@ WDI_ProcessDelSTAInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -21858,6 +23223,7 @@ WDI_ProcessDelSTAInd
     halDelSTACtx.reasonCode;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*Notify UMAC*/
   pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
 =======
@@ -21867,6 +23233,10 @@ WDI_ProcessDelSTAInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessDelSTAInd*/
@@ -21902,10 +23272,14 @@ WDI_ProcessCoexInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT( 0 );
      return WDI_STATUS_E_FAILURE;
   }
@@ -21935,6 +23309,7 @@ WDI_ProcessCoexInd
               wdiInd.wdiIndicationData.wdiCoexInfo.coexIndData[3] );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*Notify UMAC*/
   pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
 =======
@@ -21944,6 +23319,10 @@ WDI_ProcessCoexInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessCoexInd*/
@@ -21978,10 +23357,14 @@ WDI_ProcessTxCompleteInd
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT( 0 );
      return WDI_STATUS_E_FAILURE;
   }
@@ -21999,18 +23382,24 @@ WDI_ProcessTxCompleteInd
                                = halTxComplIndMsg.txComplParams.status;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   if ( pWDICtx->wdiLowLevelIndCB )
   {
     /*Notify UMAC*/
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessTxCompleteInd*/
-#ifdef FEATURE_WLAN_TDLS
+
+#ifdef WLAN_FEATURE_P2P
 /**
-*@brief Process TDLS Indication function (called when
+*@brief Process Noa Attr Indication function (called when
         an indication of this kind is being received over the
         bus from HAL)
 
@@ -22021,46 +23410,65 @@ WDI_ProcessTxCompleteInd
  @return Result of the function call
 */
 WDI_Status
-WDI_ProcessTdlsInd
+WDI_ProcessP2pNoaAttrInd
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
   WDI_LowLevelIndType  wdiInd;
-  tTdlsIndMsg       halTdlsIndMsg;
+  tNoaAttrIndMsg       halNoaAttrIndMsg;
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
   /*-------------------------------------------------------------------------
-  Sanity check
- -------------------------------------------------------------------------*/
+    Sanity check
+  -------------------------------------------------------------------------*/
   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
       ( NULL == pEventData->pEventData ))
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "%s: Invalid parameters", __func__);
+                 "%s: Invalid parameters", __FUNCTION__);
      WDI_ASSERT( 0 );
      return WDI_STATUS_E_FAILURE;
   }
 
   /*-------------------------------------------------------------------------
-  Extract indication and send it to UMAC
- -------------------------------------------------------------------------*/
-  wpalMemoryCopy( &halTdlsIndMsg.tdlsIndParams,
+    Extract indication and send it to UMAC
+  -------------------------------------------------------------------------*/
+  wpalMemoryCopy( &halNoaAttrIndMsg.noaAttrIndParams,
                   pEventData->pEventData,
-                  sizeof(halTdlsIndMsg.tdlsIndParams) );
+                  sizeof(halNoaAttrIndMsg.noaAttrIndParams) );
 
   /*Fill in the indication parameters*/
-  wdiInd.wdiIndicationType = WDI_TDLS_IND;
+  wdiInd.wdiIndicationType = WDI_P2P_NOA_ATTR_IND;
 
-  wdiInd.wdiIndicationData.wdiTdlsIndInfo.status
-                          = halTdlsIndMsg.tdlsIndParams.status;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.status
+                          = halNoaAttrIndMsg.noaAttrIndParams.status;
 
-  wdiInd.wdiIndicationData.wdiTdlsIndInfo.staIdx
-                          = halTdlsIndMsg.tdlsIndParams.staIdx;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.ucIndex
+                          = halNoaAttrIndMsg.noaAttrIndParams.index;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.ucOppPsFlag
+                          = halNoaAttrIndMsg.noaAttrIndParams.oppPsFlag;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.usCtWin
+                          = halNoaAttrIndMsg.noaAttrIndParams.ctWin;
 
-  wdiInd.wdiIndicationData.wdiTdlsIndInfo.reasonCode
-                          = halTdlsIndMsg.tdlsIndParams.reasonCode;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.usNoa1IntervalCnt
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa1IntervalCnt;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.uslNoa1Duration
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa1Duration;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.uslNoa1Interval
+                             = halNoaAttrIndMsg.noaAttrIndParams.uNoa1Interval;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.uslNoa1StartTime
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa1StartTime;
+
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.usNoa2IntervalCnt
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa2IntervalCnt;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.uslNoa2Duration
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa2Duration;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.uslNoa2Interval
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa2Interval;
+  wdiInd.wdiIndicationData.wdiP2pNoaAttrInfo.uslNoa2StartTime
+                          = halNoaAttrIndMsg.noaAttrIndParams.uNoa2StartTime;
 
 >>>>>>> d97af3b... add prima wlan driver
   /*Notify UMAC*/
@@ -22068,14 +23476,19 @@ WDI_ProcessTdlsInd
 
   return WDI_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }/*WDI_ProcessTxCompleteInd*/
 
 #ifdef WLAN_FEATURE_P2P
 =======
 }/*WDI_ProcessTdlsInd*/
+=======
+}/*WDI_ProcessNoaAttrInd*/
+>>>>>>> 657b0e9... prima update
 #endif
+
 /**
-*@brief Process Noa Start Indication function (called when
+ @brief Process Tx PER Hit Indication function (called when
         an indication of this kind is being received over the
         bus from HAL)
 
@@ -22086,6 +23499,7 @@ WDI_ProcessTdlsInd
  @return Result of the function call
 */
 WDI_Status
+<<<<<<< HEAD
 WDI_ProcessP2pNoaStartInd
 (
   WDI_ControlBlockType*  pWDICtx,
@@ -22237,6 +23651,8 @@ WDI_ProcessP2pNoaAttrInd
  @return Result of the function call
 */
 WDI_Status
+=======
+>>>>>>> 657b0e9... prima update
 WDI_ProcessTxPerHitInd
 (
   WDI_ControlBlockType*  pWDICtx,
@@ -22253,6 +23669,7 @@ WDI_ProcessTxPerHitInd
   wdiInd.wdiIndicationType = WDI_TX_PER_HIT_IND;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /*Notify UMAC*/
   pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
 =======
@@ -22262,10 +23679,15 @@ WDI_ProcessTxPerHitInd
     pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
   }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+>>>>>>> 657b0e9... prima update
 
   return WDI_STATUS_SUCCESS;
 }/*WDI_ProcessTxPerHitInd*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
@@ -22316,6 +23738,9 @@ WDI_ProcessPeriodicTxPtrnFwInd
 }
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_ProcessFTMCommandReq
         Process FTM Command, simply route to HAL
@@ -22346,10 +23771,14 @@ WDI_ProcessFTMCommandReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -22406,10 +23835,14 @@ WDI_ProcessFTMCommandRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -22428,9 +23861,13 @@ WDI_ProcessFTMCommandRsp
   return WDI_STATUS_SUCCESS;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_ProcessHalDumpCmdReq
         Process hal dump Command, simply route to HAL
@@ -22464,10 +23901,14 @@ WDI_ProcessHALDumpCmdReq
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -22537,10 +23978,14 @@ WDI_ProcessHALDumpCmdRsp
 {
   WDI_HALDumpCmdRspCb     wdiHALDumpCmdRspCb;
 <<<<<<< HEAD
+<<<<<<< HEAD
   tpHalDumpCmdRspParams   halDumpCmdRspParams;
 =======
   tHalDumpCmdRspParams   halDumpCmdRspParams;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  tpHalDumpCmdRspParams   halDumpCmdRspParams;
+>>>>>>> 657b0e9... prima update
   WDI_HALDumpCmdRspParamsType wdiHALDumpCmdRsp;
 
   /*-------------------------------------------------------------------------
@@ -22551,10 +23996,14 @@ WDI_ProcessHALDumpCmdRsp
   {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                  "%s: Invalid parameters", __FUNCTION__);
 =======
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
@@ -22565,6 +24014,7 @@ WDI_ProcessHALDumpCmdRsp
   wdiHALDumpCmdRsp.usBufferLen = 0;
   wdiHALDumpCmdRsp.pBuffer = NULL;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   halDumpCmdRspParams = (tHalDumpCmdRspParams *)pEventData->pEventData;
 
@@ -22584,14 +24034,18 @@ WDI_ProcessHALDumpCmdRsp
   wpalMemoryCopy( &halDumpCmdRspParams, 
                  pEventData->pEventData, 
                  sizeof(tHalDumpCmdRspParams));
+=======
+  halDumpCmdRspParams = (tHalDumpCmdRspParams *)pEventData->pEventData;
+>>>>>>> 657b0e9... prima update
 
   wdiHALDumpCmdRsp.wdiStatus   =
-              WDI_HAL_2_WDI_STATUS(halDumpCmdRspParams.status);
+              WDI_HAL_2_WDI_STATUS(halDumpCmdRspParams->status);
 
   if (( wdiHALDumpCmdRsp.wdiStatus  ==  WDI_STATUS_SUCCESS) &&
-      (halDumpCmdRspParams.rspLength != 0))
+      (halDumpCmdRspParams->rspLength != 0))
   {
       /* Copy the response data */
+<<<<<<< HEAD
       wdiHALDumpCmdRsp.usBufferLen = halDumpCmdRspParams.rspLength;
       wdiHALDumpCmdRsp.pBuffer = wpalMemoryAllocate(halDumpCmdRspParams.rspLength);
 
@@ -22599,6 +24053,13 @@ WDI_ProcessHALDumpCmdRsp
                   &halDumpCmdRspParams.rspBuffer, 
                   halDumpCmdRspParams.rspLength);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      wdiHALDumpCmdRsp.usBufferLen = halDumpCmdRspParams->rspLength;
+      wdiHALDumpCmdRsp.pBuffer = wpalMemoryAllocate(halDumpCmdRspParams->rspLength);
+      wpalMemoryCopy( &halDumpCmdRspParams->rspBuffer,
+                  wdiHALDumpCmdRsp.pBuffer,
+                  sizeof(wdiHALDumpCmdRsp.usBufferLen));
+>>>>>>> 657b0e9... prima update
   }
 
   /*Notify UMAC*/
@@ -22648,10 +24109,14 @@ WDI_NotifyMsgCTSCB
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return;
   }
@@ -22661,10 +24126,14 @@ WDI_NotifyMsgCTSCB
     /* callback presumably occurred after close */
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid control block", __FUNCTION__);
 =======
                 "%s: Invalid control block", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid control block", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return;
   }
 
@@ -22736,10 +24205,14 @@ WDI_RXMsgCTSCB
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return;
   }
@@ -22749,10 +24222,14 @@ WDI_RXMsgCTSCB
     /* callback presumably occurred after close */
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid control block", __FUNCTION__);
 =======
                 "%s: Invalid control block", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid control block", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     return;
   }
 
@@ -22796,9 +24273,12 @@ WDI_RXMsgCTSCB
                pWDICtx->wdiExpectedResponse);
     /* WDI_DetectedDeviceError( pWDICtx, WDI_ERR_INVALID_RSP_FMT); */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     VOS_BUG(0);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     return;
   }
 
@@ -22942,6 +24422,7 @@ WDI_GetMessageBuffer
 #ifdef WLAN_FEATURE_11AC
   if (WDI_getFwWlanFeatCaps(DOT11AC))
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  halMsgHeader.msgVersion = WLAN_HAL_MSG_VERSION1;
   else
 #endif
@@ -22952,6 +24433,12 @@ WDI_GetMessageBuffer
 #endif
      halMsgHeader.msgVersion = WLAN_HAL_MSG_VERSION0;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  halMsgHeader.msgVersion = WLAN_HAL_MSG_VERSION1;
+  else
+#endif
+	  halMsgHeader.msgVersion = WLAN_HAL_MSG_VERSION0;
+>>>>>>> 657b0e9... prima update
 
   halMsgHeader.msgLen  = sizeof(halMsgHeader) + usBufferLen;
   *pusDataOffset       = sizeof(halMsgHeader);
@@ -22993,9 +24480,12 @@ WDI_SendMsg
 {
   WDI_Status wdiStatus = WDI_STATUS_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   wpt_uint32 ret;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
   /*------------------------------------------------------------------------
@@ -23011,18 +24501,23 @@ WDI_SendMsg
      Note: CTS is reponsible for freeing the message buffer.
    -----------------------------------------------------------------------*/
 <<<<<<< HEAD
+<<<<<<< HEAD
    if ( 0 != WCTS_SendMessage( pWDICtx->wctsHandle, (void*)pSendBuffer, usSendSize ))
 =======
    ret = WCTS_SendMessage(pWDICtx->wctsHandle, (void*)pSendBuffer, usSendSize);
    if ((eWLAN_PAL_STATUS_SUCCESS != ret) &&
        (eWLAN_PAL_STATUS_E_RESOURCES != ret))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if ( 0 != WCTS_SendMessage( pWDICtx->wctsHandle, (void*)pSendBuffer, usSendSize ))
+>>>>>>> 657b0e9... prima update
    {
      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                 "Failed to send message over the bus - catastrophic failure");
 
      wdiStatus = WDI_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   /*Check if originator provided a request status callback*/
@@ -23051,18 +24546,24 @@ WDI_SendMsg
        WDI_ASSERT(0);
      }
    }
+=======
+>>>>>>> 657b0e9... prima update
 
   /*Check if originator provided a request status callback*/
    if ( NULL != pWDICtx->wdiReqStatusCB )
    {
      /*Inform originator whether request went through or not*/
-     WDI_ReqStatusCb callback = pWDICtx->wdiReqStatusCB; 
-     void *callbackContext = pWDICtx->pReqStatusUserData; 
+     WDI_ReqStatusCb callback = pWDICtx->wdiReqStatusCB;
+     void *callbackContext = pWDICtx->pReqStatusUserData;
      pWDICtx->wdiReqStatusCB = NULL;
      pWDICtx->pReqStatusUserData = NULL;
      callback(wdiStatus, callbackContext);
+<<<<<<< HEAD
      
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
      /*For WDI requests which have registered a request callback,
      inform the WDA caller of the same via setting the return value
      (wdiStatus) to WDI_STATUS_PENDING. This makes sure that WDA doesnt
@@ -23077,6 +24578,7 @@ WDI_SendMsg
    /*Start timer for the expected response */
    wpalTimerStart(&pWDICtx->wptResponseTimer, WDI_RESPONSE_TIMEOUT);
 <<<<<<< HEAD
+<<<<<<< HEAD
   }
   else
   {
@@ -23090,6 +24592,12 @@ WDI_SendMsg
   {
      /*Inform upper stack layers that a transport fatal error occurred*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  }
+  else
+  {
+     /*Inform upper stack layers that a transport fatal error occured*/
+>>>>>>> 657b0e9... prima update
      WDI_DetectedDeviceError(pWDICtx, WDI_ERR_TRANSPORT_FAILURE);
   }
 
@@ -23136,6 +24644,7 @@ WDI_SendIndication
                 "Send indication status : %d", uStatus);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       pWDICtx->wdiReqStatusCB( (uStatus != 0 ) ? WDI_STATUS_E_FAILURE:
                                                  WDI_STATUS_SUCCESS,
 =======
@@ -23144,11 +24653,16 @@ WDI_SendIndication
        */
       pWDICtx->wdiReqStatusCB( ((uStatus != eWLAN_PAL_STATUS_SUCCESS) && (uStatus != eWLAN_PAL_STATUS_E_RESOURCES)) ? WDI_STATUS_E_FAILURE: WDI_STATUS_SUCCESS,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      pWDICtx->wdiReqStatusCB( (uStatus != 0 ) ? WDI_STATUS_E_FAILURE:
+                                                 WDI_STATUS_SUCCESS,
+>>>>>>> 657b0e9... prima update
                                pWDICtx->pReqStatusUserData);
    }
 
    /*If sending of the message failed - it is considered catastrophic and
      indicates an error with the device*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    if ( 0 != uStatus)
 =======
@@ -23156,6 +24670,9 @@ WDI_SendIndication
        ( eWLAN_PAL_STATUS_E_RESOURCES != uStatus))
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if ( 0 != uStatus)
+>>>>>>> 657b0e9... prima update
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                 "Failed to send indication over the bus - catastrophic failure");
@@ -23246,6 +24763,7 @@ WDI_ResponseTimerCB
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (NULL == pWDICtx )
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
@@ -23256,10 +24774,17 @@ WDI_ResponseTimerCB
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if (NULL == pWDICtx )
+  {
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   if ( WDI_MAX_RESP != pWDICtx->wdiExpectedResponse )
   {
@@ -23301,48 +24826,34 @@ WDI_ResponseTimerCB
   }
 
   if (WDI_MAX_RESP != pWDICtx->wdiExpectedResponse)
+=======
+  if ( WDI_MAX_RESP != pWDICtx->wdiExpectedResponse )
+>>>>>>> 657b0e9... prima update
   {
 
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
+  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
             "Timeout occurred while waiting for %s (%d) message from device "
-            " - catastrophic failure, timeStampTmrStart: %ld, timeStampTmrExp: %ld",
+            " - catastrophic failure",
             WDI_getRespMsgString(pWDICtx->wdiExpectedResponse),
-            pWDICtx->wdiExpectedResponse, pWDICtx->uTimeStampRspTmrStart,
-            pWDICtx->uTimeStampRspTmrExp);
-
-    /* WDI timeout means Riva is not responding or SMD communication to Riva
-     * is not happening. The only possible way to recover from this error
-     * is to initiate SSR from APPS.
-     * There is also an option to re-enable wifi, which will eventually
-     * trigger SSR
-     */
-    if (gWDICb.bEnableSSR == false)
-    {
-       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
-            "SSR is not enabled on WDI timeout");
-       WDI_DetectedDeviceError(pWDICtx, WDI_ERR_BASIC_OP_FAILURE);
-       return;
-    }
-#ifndef WDI_RE_ENABLE_WIFI_ON_WDI_TIMEOUT
-    wpalWcnssResetIntr();
-    /* if this timer fires, it means Riva did not receive the FIQ */
-    wpalTimerStart(&pWDICtx->ssrTimer, WDI_SSR_TIMEOUT);
-#else
-    WDI_DetectedDeviceError(pWDICtx, WDI_ERR_BASIC_OP_FAILURE);
-    wpalWlanReload();
-#endif
+            pWDICtx->wdiExpectedResponse);
+  /* WDI timeout means Riva is not responding or SMD communication to Riva
+   * is not happening. The only possible way to recover from this error
+   * is to initiate SSR from APPS */
+  wpalRivaSubystemRestart();
   }
   else
   {
-     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 "Timeout occurred but not waiting for any response %d "
-                 "timeStampTmrStart: %ld, timeStampTmrExp: %ld",
-                 pWDICtx->wdiExpectedResponse, pWDICtx->uTimeStampRspTmrStart,
-                 pWDICtx->uTimeStampRspTmrExp);
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+                 "Timeout occurred but not waiting for any response %d",
+                 pWDICtx->wdiExpectedResponse);
   }
 
+<<<<<<< HEAD
   return; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  return;
+>>>>>>> 657b0e9... prima update
 
 }/*WDI_ResponseTimerCB*/
 
@@ -23504,16 +25015,21 @@ WDI_PALCtrlMsgCB
   {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   case WDI_STOP_REQ:
 =======
   case WDI_STOP_REQ:      
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  case WDI_STOP_REQ:
+>>>>>>> 657b0e9... prima update
       wdiStatus = WDI_PostMainEvent(&gWDICb, WDI_STOP_EVENT, pEventData);
       break;
 
   case WDI_NV_DOWNLOAD_REQ:
       // When WDI State is WDI_STARTED_ST, send WDI request message with event type WDI_REQUEST_EVENT.
       // In this case, because this request is called from response process, we could call WDI_ProcessRequest() directly.
+<<<<<<< HEAD
 <<<<<<< HEAD
       if (pWDICtx->uGlobalState == WDI_STARTED_ST)
       {
@@ -23525,12 +25041,19 @@ WDI_PALCtrlMsgCB
         WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
                  "%s: WDI_NV_DOWNLOAD_REQ called in WDI_STARTED_ST - send with WDI_REQUEST_EVENT", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      if (pWDICtx->uGlobalState == WDI_STARTED_ST)
+      {
+        WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+                 "%s: WDI_NV_DOWNLOAD_REQ called in WDI_STARTED_ST - send with WDI_REQUEST_EVENT", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
         wdiStatus = WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, pEventData);
       }
       else
       {
         wdiStatus = WDI_PostMainEvent(&gWDICb, WDI_START_EVENT, pEventData);
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
       break;
@@ -23542,6 +25065,12 @@ WDI_PALCtrlMsgCB
 
   default: 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+      break;
+
+  default:
+>>>>>>> 657b0e9... prima update
     wdiStatus = WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, pEventData);
     break;
   }/*switch ( pEventData->wdiRequest )*/
@@ -23701,10 +25230,14 @@ WDI_QueueNewAssocRequest
   {
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: Cannot allocate memory for queue node", __FUNCTION__);
 =======
                "%s: Cannot allocate memory for queue node", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: Cannot allocate memory for queue node", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_MEM_FAILURE;
   }
@@ -23714,10 +25247,14 @@ WDI_QueueNewAssocRequest
   {
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: Cannot allocate memory for session ID", __FUNCTION__);
 =======
                "%s: Cannot allocate memory for session ID", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: Cannot allocate memory for session ID", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     wpalMemoryFree(pEventDataQueue);
     return WDI_STATUS_MEM_FAILURE;
@@ -23728,10 +25265,14 @@ WDI_QueueNewAssocRequest
   {
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: Cannot allocate memory for event data info", __FUNCTION__);
 =======
                "%s: Cannot allocate memory for event data info", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: Cannot allocate memory for event data info", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     wpalMemoryFree(pSessionIdElement);
     wpalMemoryFree(pEventDataQueue);
@@ -23804,10 +25345,14 @@ WDI_QueueAssocRequest
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     return WDI_STATUS_E_FAILURE;
   }
@@ -23820,10 +25365,14 @@ WDI_QueueAssocRequest
   {
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                "%s: Cannot allocate memory for queueing", __FUNCTION__);
 =======
                "%s: Cannot allocate memory for queueing", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               "%s: Cannot allocate memory for queueing", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     return WDI_STATUS_MEM_FAILURE;
   }
@@ -23834,10 +25383,14 @@ WDI_QueueAssocRequest
     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                "%s: Cannot allocate memory for queueing event data info",
 <<<<<<< HEAD
+<<<<<<< HEAD
                __FUNCTION__);
 =======
                __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               __FUNCTION__);
+>>>>>>> 657b0e9... prima update
     WDI_ASSERT(0);
     wpalMemoryFree(pEventDataQueue);
     return WDI_STATUS_MEM_FAILURE;
@@ -23896,10 +25449,14 @@ WDI_DequeueAssocRequest
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     return WDI_STATUS_E_FAILURE;
   }
@@ -24074,10 +25631,14 @@ WDI_FindAssocSession
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return WDI_MAX_BSS_SESSIONS;
   }
 
@@ -24089,6 +25650,7 @@ WDI_FindAssocSession
   for ( i = 0; i < WDI_MAX_BSS_SESSIONS; i++ )
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
      if ( eWLAN_PAL_TRUE ==
           wpalMemoryCompare(pWDICtx->aBSSSessions[i].macBSSID, macBSSID, WDI_MAC_ADDR_LEN) )
 =======
@@ -24097,6 +25659,10 @@ WDI_FindAssocSession
                 wpalMemoryCompare(pWDICtx->aBSSSessions[i].macBSSID, macBSSID,
                 WDI_MAC_ADDR_LEN)) )
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     if ( eWLAN_PAL_TRUE ==
+          wpalMemoryCompare(pWDICtx->aBSSSessions[i].macBSSID, macBSSID, WDI_MAC_ADDR_LEN) )
+>>>>>>> 657b0e9... prima update
      {
        /*Found the session*/
        *ppSession = &pWDICtx->aBSSSessions[i];
@@ -24136,10 +25702,14 @@ WDI_FindAssocSessionByBSSIdx
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return WDI_MAX_BSS_SESSIONS;
   }
 
@@ -24189,10 +25759,14 @@ WDI_FindAssocSessionByIdx
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return WDI_MAX_BSS_SESSIONS;
   }
 
@@ -24230,10 +25804,14 @@ WDI_FindEmptySession
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return WDI_MAX_BSS_SESSIONS;
   }
 
@@ -24263,6 +25841,7 @@ WDI_FindEmptySession
 
  @param  pWDICtx:       pointer to the WLAN DAL context
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
          macBSSID:      pointer to BSSID. If NULL, get all the session.
@@ -24270,6 +25849,9 @@ WDI_FindEmptySession
          skipBSSID:     if TRUE, get all the sessions except matching to macBSSID. If FALSE, get all session.
                         This argument is ignored if macBSSID is NULL.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
  @see
  @return Number of sessions in use
 */
@@ -24277,12 +25859,16 @@ wpt_uint8
 WDI_GetActiveSessionsCount
 (
 <<<<<<< HEAD
+<<<<<<< HEAD
   WDI_ControlBlockType*   pWDICtx
 =======
   WDI_ControlBlockType*   pWDICtx,
   wpt_macAddr             macBSSID,
   wpt_boolean             skipBSSID
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  WDI_ControlBlockType*   pWDICtx
+>>>>>>> 657b0e9... prima update
 )
 {
   wpt_uint8 i, ucCount = 0;
@@ -24293,6 +25879,7 @@ WDI_GetActiveSessionsCount
     ------------------------------------------------------------------------*/
   for ( i = 0; i < WDI_MAX_BSS_SESSIONS; i++ )
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
      if ( pWDICtx->aBSSSessions[i].bInUse )
      {
@@ -24311,6 +25898,12 @@ WDI_GetActiveSessionsCount
        ucCount++;
     }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+     if ( pWDICtx->aBSSSessions[i].bInUse )
+     {
+       ucCount++;
+     }
+>>>>>>> 657b0e9... prima update
   }
 
   return ucCount;
@@ -24341,10 +25934,14 @@ WDI_DeleteSession
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      return ;
   }
 
@@ -24390,10 +25987,14 @@ WDI_AddBcastSTAtoSTATable
   {
     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "%s: Invalid parameters", __FUNCTION__);
 =======
                 "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
     return;
   }
@@ -24675,6 +26276,7 @@ WDI_2_HAL_REQ_TYPE
     return WLAN_HAL_ADD_BA_REQ;
   case WDI_DEL_BA_REQ:
 <<<<<<< HEAD
+<<<<<<< HEAD
     return WLAN_HAL_DEL_BA_REQ;
 #ifdef FEATURE_WLAN_CCX
   case WDI_TSM_STATS_REQ:
@@ -24685,6 +26287,12 @@ WDI_2_HAL_REQ_TYPE
   case WDI_TSM_STATS_REQ:
     return WLAN_HAL_TSM_STATS_REQ; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return WLAN_HAL_DEL_BA_REQ;
+#ifdef FEATURE_WLAN_CCX
+  case WDI_TSM_STATS_REQ:
+    return WLAN_HAL_TSM_STATS_REQ;
+>>>>>>> 657b0e9... prima update
 #endif
   case WDI_CH_SWITCH_REQ:
     return WLAN_HAL_CH_SWITCH_REQ;
@@ -24709,6 +26317,7 @@ WDI_2_HAL_REQ_TYPE
    case WDI_SET_MAX_TX_POWER_REQ:
     return WLAN_HAL_SET_MAX_TX_POWER_REQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   case WDI_P2P_GO_NOTICE_OF_ABSENCE_REQ:
     return WLAN_HAL_SET_P2P_GONOA_REQ;
@@ -24721,6 +26330,11 @@ WDI_2_HAL_REQ_TYPE
   case WDI_TDLS_LINK_ESTABLISH_REQ:
     return WLAN_HAL_TDLS_LINK_ESTABLISHED_REQ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+  case WDI_P2P_GO_NOTICE_OF_ABSENCE_REQ:
+    return WLAN_HAL_SET_P2P_GONOA_REQ;
+>>>>>>> 657b0e9... prima update
 #endif
   case WDI_ENTER_IMPS_REQ:
     return WLAN_HAL_ENTER_IMPS_REQ;
@@ -24769,6 +26383,7 @@ WDI_2_HAL_REQ_TYPE
      return WLAN_HAL_AGGR_ADD_TS_REQ;
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
   case WDI_FTM_CMD_REQ:
     return WLAN_HAL_PROCESS_PTT_REQ;
@@ -24777,6 +26392,12 @@ WDI_2_HAL_REQ_TYPE
   case WDI_FTM_CMD_REQ:
     return WLAN_HAL_PROCESS_PTT_REQ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+  case WDI_FTM_CMD_REQ:
+    return WLAN_HAL_PROCESS_PTT_REQ;
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
   case WDI_ADD_STA_SELF_REQ:
     return WLAN_HAL_ADD_STA_SELF_REQ;
   case WDI_DEL_STA_SELF_REQ:
@@ -24789,6 +26410,7 @@ WDI_2_HAL_REQ_TYPE
     return WLAN_HAL_HOST_RESUME_REQ;
   case WDI_HOST_SUSPEND_IND:
     return WLAN_HAL_HOST_SUSPEND_IND;
+<<<<<<< HEAD
 <<<<<<< HEAD
   case WDI_KEEP_ALIVE_REQ:
     return WLAN_HAL_KEEP_ALIVE_REQ;
@@ -24807,6 +26429,11 @@ WDI_2_HAL_REQ_TYPE
     return WLAN_ROAM_SCAN_OFFLOAD_REQ;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  case WDI_KEEP_ALIVE_REQ:
+    return WLAN_HAL_KEEP_ALIVE_REQ;
+
+>>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_SCAN_PNO
   case WDI_SET_PREF_NETWORK_REQ:
     return WLAN_HAL_SET_PREF_NETWORK_REQ;
@@ -24838,6 +26465,7 @@ WDI_2_HAL_REQ_TYPE
 
   case WDI_INIT_SCAN_CON_REQ:
 <<<<<<< HEAD
+<<<<<<< HEAD
     return WLAN_HAL_INIT_SCAN_CON_REQ;
   case WDI_SET_POWER_PARAMS_REQ:
     return WLAN_HAL_SET_POWER_PARAMS_REQ;
@@ -24847,12 +26475,16 @@ WDI_2_HAL_REQ_TYPE
     return WLAN_HAL_FEATURE_CAPS_EXCHANGE_REQ;
 =======
     return WLAN_HAL_INIT_SCAN_CON_REQ; 
+=======
+    return WLAN_HAL_INIT_SCAN_CON_REQ;
+>>>>>>> 657b0e9... prima update
   case WDI_SET_POWER_PARAMS_REQ:
-    return WLAN_HAL_SET_POWER_PARAMS_REQ; 
+    return WLAN_HAL_SET_POWER_PARAMS_REQ;
   case WDI_SET_TM_LEVEL_REQ:
-    return WLAN_HAL_SET_THERMAL_MITIGATION_REQ; 
+    return WLAN_HAL_SET_THERMAL_MITIGATION_REQ;
   case WDI_FEATURE_CAPS_EXCHANGE_REQ:
     return WLAN_HAL_FEATURE_CAPS_EXCHANGE_REQ;
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
   case WDI_UPDATE_VHT_OP_MODE_REQ:
     return WLAN_HAL_UPDATE_VHT_OP_MODE_REQ;
@@ -24873,6 +26505,8 @@ WDI_2_HAL_REQ_TYPE
     return WLAN_HAL_DEL_PERIODIC_TX_PTRN_IND;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   default:
     return WLAN_HAL_MSG_MAX;
   }
@@ -24976,6 +26610,7 @@ HAL_2_WDI_RSP_TYPE
   case WLAN_HAL_OTA_TX_COMPL_IND:
     return WDI_HAL_TX_COMPLETE_IND;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   case WLAN_HAL_P2P_NOA_ATTR_IND:
     return WDI_HAL_P2P_NOA_ATTR_IND;
@@ -24986,10 +26621,17 @@ HAL_2_WDI_RSP_TYPE
   case WLAN_HAL_P2P_NOA_START_IND:
     return WDI_HAL_P2P_NOA_START_IND;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+  case WLAN_HAL_P2P_NOA_ATTR_IND:
+    return WDI_HAL_P2P_NOA_ATTR_IND;
+#endif
+>>>>>>> 657b0e9... prima update
   case WLAN_HAL_TX_PER_HIT_IND:
     return WDI_HAL_TX_PER_HIT_IND;
   case WLAN_HAL_SET_MAX_TX_POWER_RSP:
     return WDI_SET_MAX_TX_POWER_RESP;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   case WLAN_HAL_SET_P2P_GONOA_RSP:
@@ -25005,6 +26647,11 @@ HAL_2_WDI_RSP_TYPE
   case WLAN_HAL_TDLS_IND:
     return WDI_HAL_TDLS_IND;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+  case WLAN_HAL_SET_P2P_GONOA_RSP:
+    return WDI_P2P_GO_NOTICE_OF_ABSENCE_RESP;
+>>>>>>> 657b0e9... prima update
 #endif
   case WLAN_HAL_ENTER_IMPS_RSP:
     return WDI_ENTER_IMPS_RESP;
@@ -25049,14 +26696,20 @@ HAL_2_WDI_RSP_TYPE
   case WLAN_HAL_SIGNAL_BTAMP_EVENT_RSP:
     return WDI_BTAMP_EVENT_RESP;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef ANI_MANF_DIAG
   case WLAN_HAL_PROCESS_PTT_RSP:
     return  WDI_FTM_CMD_RESP;
 #endif /* ANI_MANF_DIAG */
+<<<<<<< HEAD
 =======
   case WLAN_HAL_PROCESS_PTT_RSP:
     return  WDI_FTM_CMD_RESP;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   case WLAN_HAL_ADD_STA_SELF_RSP:
     return WDI_ADD_STA_SELF_RESP;
 case WLAN_HAL_DEL_STA_SELF_RSP:
@@ -25080,12 +26733,15 @@ case WLAN_HAL_DEL_STA_SELF_RSP:
     return WDI_HAL_PREF_NETWORK_FOUND_IND;
 #endif // FEATURE_WLAN_SCAN_PNO
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
   case WLAN_ROAM_SCAN_OFFLOAD_RSP:
     return WDI_ROAM_SCAN_OFFLOAD_RESP;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   case WLAN_HAL_SET_TX_PER_TRACKING_RSP:
     return WDI_SET_TX_PER_TRACKING_RESP;
 #ifdef WLAN_FEATURE_PACKET_FILTERING
@@ -25124,6 +26780,7 @@ case WLAN_HAL_DEL_STA_SELF_RSP:
   case WLAN_HAL_FEATURE_CAPS_EXCHANGE_RSP:
       return WDI_FEATURE_CAPS_EXCHANGE_RESP;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
   case WLAN_HAL_UPDATE_VHT_OP_MODE_RSP:
@@ -25147,6 +26804,8 @@ case WLAN_HAL_DEL_STA_SELF_RSP:
     return WDI_HAL_PERIODIC_TX_PTRN_FW_IND;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   default:
     return eDRIVER_TYPE_MAX;
   }
@@ -25191,12 +26850,17 @@ WDI_2_HAL_STOP_REASON
   case WDI_STOP_TYPE_SYS_RESET:
     return HAL_STOP_TYPE_SYS_RESET;
 <<<<<<< HEAD
+<<<<<<< HEAD
   case WDI_DRIVER_TYPE_MFG:
     return WDI_STOP_TYPE_SYS_DEEP_SLEEP;
 =======
   case WDI_STOP_TYPE_SYS_DEEP_SLEEP:
     return HAL_STOP_TYPE_SYS_DEEP_SLEEP;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  case WDI_DRIVER_TYPE_MFG:
+    return WDI_STOP_TYPE_SYS_DEEP_SLEEP;
+>>>>>>> 657b0e9... prima update
   case WDI_STOP_TYPE_RF_KILL:
     return HAL_STOP_TYPE_RF_KILL;
   }
@@ -25224,10 +26888,14 @@ WDI_2_HAL_SCAN_MODE
     return eHAL_SYS_MODE_SCAN;
   case WDI_SCAN_MODE_PROMISC:
 <<<<<<< HEAD
+<<<<<<< HEAD
     return eHAL_SYS_MODE_PROMISC;
 =======
     return eHAL_SYS_MODE_PROMISC; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    return eHAL_SYS_MODE_PROMISC;
+>>>>>>> 657b0e9... prima update
   case WDI_SCAN_MODE_SUSPEND_LINK:
     return eHAL_SYS_MODE_SUSPEND_LINK;
   case WDI_SCAN_MODE_ROAM_SCAN:
@@ -25277,10 +26945,14 @@ WDI_2_HAL_SEC_CH_OFFSET
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   return PHY_CHANNEL_BONDING_STATE_MAX;
 =======
   return PHY_CHANNEL_BONDING_STATE_MAX; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  return PHY_CHANNEL_BONDING_STATE_MAX;
+>>>>>>> 657b0e9... prima update
 }/*WDI_2_HAL_SEC_CH_OFFSET*/
 
 /*Convert WDI BSS type into HAL BSS type*/
@@ -25538,6 +27210,7 @@ WDI_2_HAL_LINK_STATE
     return eSIR_LINK_FINISH_CAL_STATE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
   case WDI_LINK_LISTEN_STATE:
     return eSIR_LINK_LISTEN_STATE;
@@ -25549,6 +27222,12 @@ WDI_2_HAL_LINK_STATE
   case WDI_LINK_SEND_ACTION_STATE:
     return eSIR_LINK_SEND_ACTION_STATE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+  case WDI_LINK_LISTEN_STATE:
+    return eSIR_LINK_LISTEN_STATE;
+#endif
+>>>>>>> 657b0e9... prima update
 
   default:
     return eSIR_LINK_MAX;
@@ -25571,10 +27250,14 @@ WDI_CopyWDIStaCtxToHALStaCtx
    if (WDI_getFwWlanFeatCaps(DOT11AC))
    {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	   phalConfigSta_V1 = (tConfigStaParams_V1*)phalConfigSta;
 =======
       phalConfigSta_V1 = (tConfigStaParams_V1*)phalConfigSta;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	   phalConfigSta_V1 = (tConfigStaParams_V1*)phalConfigSta;
+>>>>>>> 657b0e9... prima update
    }
 #endif
    /*Lightweight function - no sanity checks and no unecessary code to increase
@@ -25643,10 +27326,14 @@ WDI_CopyWDIStaCtxToHALStaCtx
   if(phalConfigSta_V1 != NULL)
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 	  phalConfigSta_V1->supportedRates.vhtRxMCSMap = pwdiConfigSta->wdiSupportedRates.vhtRxMCSMap;
 	  phalConfigSta_V1->supportedRates.vhtRxHighestDataRate = pwdiConfigSta->wdiSupportedRates.vhtRxHighestDataRate;
 	  phalConfigSta_V1->supportedRates.vhtTxMCSMap = pwdiConfigSta->wdiSupportedRates.vhtTxMCSMap;
 	  phalConfigSta_V1->supportedRates.vhtTxHighestDataRate = pwdiConfigSta->wdiSupportedRates.vhtTxHighestDataRate;
+<<<<<<< HEAD
   }
 #endif
 
@@ -25658,15 +27345,23 @@ WDI_CopyWDIStaCtxToHALStaCtx
      phalConfigSta_V1->supportedRates.vhtRxHighestDataRate = pwdiConfigSta->wdiSupportedRates.vhtRxHighestDataRate;
      phalConfigSta_V1->supportedRates.vhtTxMCSMap = pwdiConfigSta->wdiSupportedRates.vhtTxMCSMap;
      phalConfigSta_V1->supportedRates.vhtTxHighestDataRate = pwdiConfigSta->wdiSupportedRates.vhtTxHighestDataRate;
+=======
+>>>>>>> 657b0e9... prima update
   }
 #endif
 
+#ifdef WLAN_FEATURE_P2P
   phalConfigSta->p2pCapableSta = pwdiConfigSta->ucP2pCapableSta ;
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_11AC
   if(phalConfigSta_V1 != NULL)
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	  phalConfigSta_V1->vhtCapable = pwdiConfigSta->ucVhtCapableSta;
 	  phalConfigSta_V1->vhtTxChannelWidthSet = pwdiConfigSta->ucVhtTxChannelWidthSet;
@@ -25678,6 +27373,10 @@ WDI_CopyWDIStaCtxToHALStaCtx
      phalConfigSta_V1->vhtLdpcEnabled = pwdiConfigSta->ucVhtLdpcEnabled;
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  phalConfigSta_V1->vhtCapable = pwdiConfigSta->ucVhtCapableSta;
+	  phalConfigSta_V1->vhtTxChannelWidthSet = pwdiConfigSta->ucVhtTxChannelWidthSet;
+>>>>>>> 657b0e9... prima update
   }
 #endif
 }/*WDI_CopyWDIStaCtxToHALStaCtx*/;
@@ -25778,10 +27477,14 @@ WDI_CopyWDIConfigBSSToHALConfigBSS
   tConfigBssParams_V1* phalConfigBSS_V1 = NULL;
   if (WDI_getFwWlanFeatCaps(DOT11AC))
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  phalConfigBSS_V1 = (tConfigBssParams_V1*)phalConfigBSS;
 =======
      phalConfigBSS_V1 = (tConfigBssParams_V1*)phalConfigBSS;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+	  phalConfigBSS_V1 = (tConfigBssParams_V1*)phalConfigBSS;
+>>>>>>> 657b0e9... prima update
 #endif
 
   wpalMemoryCopy( phalConfigBSS->bssId,
@@ -25887,9 +27590,13 @@ WDI_CopyWDIConfigBSSToHALConfigBSS
      phalConfigBSS->extSetStaKeyParam.singleTidRc = pwdiConfigBSS->wdiExtSetKeyParam.ucSingleTidRc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
      for(keyIndex = 0; keyIndex < pwdiConfigBSS->wdiExtSetKeyParam.ucNumKeys ;
           keyIndex++)
      {
@@ -25911,6 +27618,9 @@ WDI_CopyWDIConfigBSSToHALConfigBSS
                        WDI_MAX_KEY_LENGTH);
      }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
      phalConfigBSS->extSetStaKeyParam.key.keyId =
         pwdiConfigBSS->wdiExtSetKeyParam.wdiKey[0].keyId;
@@ -25929,8 +27639,11 @@ WDI_CopyWDIConfigBSSToHALConfigBSS
                     pwdiConfigBSS->wdiExtSetKeyParam.wdiKey[0].key,
                     WDI_MAX_KEY_LENGTH);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   }
   else/* phalConfigBSS->extSetStaKeyParamValid is not set */
   {
@@ -26072,6 +27785,7 @@ WDI_ExtractRequestCBFromEvent
     *ppUserData  =  ((WDI_GetStatsReqParamsType*)pEvent->pEventData)->pUserData;
     break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
   case WDI_GET_ROAM_RSSI_REQ:
@@ -26080,6 +27794,8 @@ WDI_ExtractRequestCBFromEvent
     break;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   case WDI_UPDATE_CFG_REQ:
     *ppfnReqCB   =  ((WDI_UpdateCfgReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
     *ppUserData  =  ((WDI_UpdateCfgReqParamsType*)pEvent->pEventData)->pUserData;
@@ -26113,6 +27829,7 @@ WDI_ExtractRequestCBFromEvent
     *ppUserData  =  ((WDI_EnterUapsdReqParamsType*)pEvent->pEventData)->pUserData;
      break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   case  WDI_EXIT_UAPSD_REQ:
     *ppfnReqCB   =  ((WDI_ExitUapsdReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
@@ -26123,6 +27840,8 @@ WDI_ExtractRequestCBFromEvent
     *ppUserData  =  ((WDI_SetUapsdAcParamsReqParamsType*)pEvent->pEventData)->pUserData;
      break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   case  WDI_UPDATE_UAPSD_PARAM_REQ:
     *ppfnReqCB   =  ((WDI_UpdateUapsdReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
     *ppUserData  =  ((WDI_UpdateUapsdReqParamsType*)pEvent->pEventData)->pUserData;
@@ -26160,12 +27879,15 @@ WDI_ExtractRequestCBFromEvent
     *ppUserData  =  ((WDI_WowlEnterReqParamsType*)pEvent->pEventData)->pUserData;
      break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   case  WDI_WOWL_EXIT_REQ:
     *ppfnReqCB   =  ((WDI_WowlExitReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
     *ppUserData  =  ((WDI_WowlExitReqParamsType*)pEvent->pEventData)->pUserData;
      break;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   case  WDI_CONFIGURE_APPS_CPU_WAKEUP_STATE_REQ:
     *ppfnReqCB   =  ((WDI_ConfigureAppsCpuWakeupStateReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
     *ppUserData  =  ((WDI_ConfigureAppsCpuWakeupStateReqParamsType*)pEvent->pEventData)->pUserData;
@@ -26182,6 +27904,7 @@ WDI_ExtractRequestCBFromEvent
     *ppfnReqCB   =  ((WDI_KeepAliveReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
     *ppUserData  =  ((WDI_KeepAliveReqParamsType*)pEvent->pEventData)->pUserData;
     break;
+<<<<<<< HEAD
 <<<<<<< HEAD
   case WDI_SET_TX_PER_TRACKING_REQ:
     *ppfnReqCB   =  ((WDI_SetTxPerTrackingReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
@@ -26239,6 +27962,11 @@ WDI_ExtractRequestCBFromEvent
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  case WDI_SET_TX_PER_TRACKING_REQ:
+    *ppfnReqCB   =  ((WDI_SetTxPerTrackingReqParamsType*)pEvent->pEventData)->wdiReqStatusCB;
+    *ppUserData  =  ((WDI_SetTxPerTrackingReqParamsType*)pEvent->pEventData)->pUserData;
+>>>>>>> 657b0e9... prima update
   default:
     *ppfnReqCB   =  NULL;
     *ppUserData  =  NULL;
@@ -26278,6 +28006,7 @@ WDI_IsHwFrameTxTranslationCapable
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
   if (IS_VSTA_IDX(uSTAIdx))
@@ -26289,6 +28018,8 @@ WDI_IsHwFrameTxTranslationCapable
   }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   return gWDICb.bFrameTransEnabled;
 }/*WDI_IsHwFrameTxTranslationCapable*/
@@ -26779,10 +28510,14 @@ WDI_ProcessSetPreferredNetworkReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -26794,10 +28529,14 @@ WDI_ProcessSetPreferredNetworkReq
    {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: PNO new version %d ", __FUNCTION__,
 =======
                   "%s: PNO new version %d ", __func__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: PNO new version %d ", __FUNCTION__,
+>>>>>>> 657b0e9... prima update
                   pWDICtx->wdiPNOVersion);
 
      wdiStatus = WDI_PackPreferredNetworkListNew( pWDICtx, pwdiPNOScanReqParams,
@@ -26807,10 +28546,14 @@ WDI_ProcessSetPreferredNetworkReq
    {
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: PNO old version %d ", __FUNCTION__,
 =======
                   "%s: PNO old version %d ", __func__,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: PNO old version %d ", __FUNCTION__,
+>>>>>>> 657b0e9... prima update
                   pWDICtx->wdiPNOVersion);
 
      wdiStatus = WDI_PackPreferredNetworkList( pWDICtx, pwdiPNOScanReqParams,
@@ -26822,10 +28565,14 @@ WDI_ProcessSetPreferredNetworkReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: failed to pack request parameters", __FUNCTION__);
 =======
                   "%s: failed to pack request parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: failed to pack request parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return wdiStatus;
    }
@@ -26872,10 +28619,14 @@ WDI_ProcessSetRssiFilterReq
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -26911,6 +28662,7 @@ WDI_ProcessSetRssiFilterReq
                         wdiRssiFilterCb, pEventData->pUserData, WDI_SET_RSSI_FILTER_RESP);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 /**
@@ -26919,232 +28671,183 @@ WDI_ProcessSetRssiFilterReq
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 /**
  @brief WDI_RoamScanOffloadReq
+=======
+>>>>>>> 657b0e9... prima update
 
- @param pwdiRoamScanOffloadReqParams: the  LookupReq as specified
-                      by the Device Interface
-
-        wdiRoamOffloadScancb: callback for passing back the response
-        of the Roam Candidate Lookup Req operation received from the
-        device
-
-        pUserData: user data will be passed back with the
-        callback
- @return Result of the function call
-*/
-WDI_Status
-WDI_RoamScanOffloadReq
-(
-  WDI_RoamScanOffloadReqParamsType* pwdiRoamScanOffloadReqParams,
-  WDI_RoamOffloadScanCb                 wdiRoamOffloadScancb,
-  void*                                 pUserData
-)
-{
-   WDI_EventInfoType      wdiEventData = {{0}};
-   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-   /*------------------------------------------------------------------------
-     Sanity Check
-   ------------------------------------------------------------------------*/
-   if ( eWLAN_PAL_FALSE == gWDIInitialized )
-   {
-     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "WDI API call before module is initialized - Fail request");
-
-     return WDI_STATUS_E_NOT_ALLOWED;
-   }
-
-   /*------------------------------------------------------------------------
-     Fill in Event data and post to the Main FSM
-   ------------------------------------------------------------------------*/
-   wdiEventData.wdiRequest      = WDI_ROAM_SCAN_OFFLOAD_REQ;
-   wdiEventData.pEventData      = pwdiRoamScanOffloadReqParams;
-   wdiEventData.uEventDataSize  = sizeof(*pwdiRoamScanOffloadReqParams);
-   wdiEventData.pCBfnc          = wdiRoamOffloadScancb;
-   wdiEventData.pUserData       = pUserData;
-
-   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-}
-
-void
-WDI_wdiEdTypeEncToEdTypeEnc(tEdType *EdType, WDI_EdType wdiEdType)
-{
-  switch (wdiEdType)
-  {
-    case WDI_ED_NONE:
-         *EdType = eED_NONE;
-          break;
-    case WDI_ED_WEP40:
-    case WDI_ED_WEP104:
-         *EdType = eED_WEP;
-          break;
-    case WDI_ED_TKIP:
-         *EdType = eED_TKIP;
-          break;
-    case WDI_ED_CCMP:
-#ifdef WLAN_FEATURE_11W
-    case WDI_ED_AES_128_CMAC:
-#endif
-         *EdType = eED_CCMP;
-          break;
-#ifdef FEATURE_WLAN_WAPI
-    case WDI_ED_WPI:
-         *EdType = eED_WPI;
-          break;
-#endif
-    case WDI_ED_ANY:
-         *EdType = eED_ANY;
-          break;
-
-    default:
-         WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                     "%s: Unknown Encryption Type", __func__);
-         break;
-     }
-}
 
 /**
- @brief Helper function to pack Start Roam Candidate Lookup
-        Request parameters
-
- @param  pWDICtx:                               pointer to the WLAN DAL context
-         pwdiRoamScanOffloadReqParams:      pointer to the info received
-         from upper layers
-         ppSendBuffer, pSize - out pointers of the packed buffer
-         and its size
-
- @return Result of the function call
-*/
-
-WDI_Status
-WDI_PackRoamScanOffloadParams
-(
-  WDI_ControlBlockType*                 pWDICtx,
-  WDI_RoamScanOffloadReqParamsType*     pwdiRoamScanOffloadReqParams,
-  wpt_uint8**                           ppSendBuffer,
-  wpt_uint16*                           pSize
-)
-{
-   wpt_uint8*                 pSendBuffer                = NULL;
-   wpt_uint16                 usDataOffset               = 0;
-   wpt_uint16                 usSendSize                 = 0;
-   tpRoamCandidateListParams  pRoamCandidateListParams   = NULL;
-   wpt_uint8 i;
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_ROAM_SCAN_OFFLOAD_REQ,
-                         sizeof(tRoamCandidateListParams),
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-       ( usSendSize < (usDataOffset + sizeof(tRoamCandidateListParams) )))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Unable to get send buffer in Start Roam Candidate Lookup Req %x ",
-                   pwdiRoamScanOffloadReqParams);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-   pRoamCandidateListParams = (tpRoamCandidateListParams)(pSendBuffer + usDataOffset);
-   wpalMemoryZero(pRoamCandidateListParams, sizeof(tRoamCandidateListParams));
-   pRoamCandidateListParams->RoamScanOffloadEnabled = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.RoamScanOffloadEnabled;
-   wpalMemoryCopy(pRoamCandidateListParams->ConnectedNetwork.currAPbssid,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.currAPbssid,
-                  HAL_MAC_ADDR_LEN);
-   pRoamCandidateListParams->ConnectedNetwork.authentication = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.authentication;
-   WDI_wdiEdTypeEncToEdTypeEnc(&pRoamCandidateListParams->ConnectedNetwork.encryption,
-                               pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.encryption);
-   WDI_wdiEdTypeEncToEdTypeEnc(&pRoamCandidateListParams->ConnectedNetwork.mcencryption,
-                               pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.mcencryption);
-
-   pRoamCandidateListParams->ConnectedNetwork.ssId.length
-                = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.ssId.ucLength;
-   wpalMemoryCopy( pRoamCandidateListParams->ConnectedNetwork.ssId.ssId,
-                   pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.ssId.sSSID,
-                   pRoamCandidateListParams->ConnectedNetwork.ssId.length);
-   wpalMemoryCopy(pRoamCandidateListParams->ConnectedNetwork.ChannelCache,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.ChannelCache,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.ChannelCount );
-   pRoamCandidateListParams->ConnectedNetwork.ChannelCount = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ConnectedNetwork.ChannelCount;
-   pRoamCandidateListParams->ChannelCacheType = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ChannelCacheType ;
-   pRoamCandidateListParams->LookupThreshold = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.LookupThreshold;
-   pRoamCandidateListParams->RoamRssiDiff = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.RoamRssiDiff ;
-   pRoamCandidateListParams->Command = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.Command ;
-   pRoamCandidateListParams->StartScanReason = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.StartScanReason ;
-   pRoamCandidateListParams->NeighborScanTimerPeriod = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.NeighborScanTimerPeriod ;
-   pRoamCandidateListParams->NeighborRoamScanRefreshPeriod = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.NeighborRoamScanRefreshPeriod ;
-   pRoamCandidateListParams->NeighborScanChannelMinTime = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.NeighborScanChannelMinTime ;
-   pRoamCandidateListParams->NeighborScanChannelMaxTime = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.NeighborScanChannelMaxTime ;
-   pRoamCandidateListParams->EmptyRefreshScanPeriod = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.EmptyRefreshScanPeriod ;
-   pRoamCandidateListParams->IsCCXEnabled = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.IsCCXEnabled ;
-   wpalMemoryCopy(pRoamCandidateListParams->ValidChannelList,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ValidChannelList,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ValidChannelCount);
-   pRoamCandidateListParams->ValidChannelCount = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.ValidChannelCount;
-
-   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO_HIGH,
-              "Values are ssid = %s, RoamOffloadScan=%d,Command=%d,"
-              "StartScanReason=%d,NeighborScanTimerPeriod=%d,"
-              "NeighborRoamScanRefreshPeriod=%d,NeighborScanChannelMinTime=%d,"
-              "NeighborScanChannelMaxTime = %d,EmptyRefreshScanPeriod=%d,"
-              "mdiePresent=%d,MDID=%d, auth=%d, uce=%d, mce=%d, nProbes=%d,"
-              "HomeAwayTime=%d\n",
-              pRoamCandidateListParams->ConnectedNetwork.ssId.ssId,
-              pRoamCandidateListParams->RoamScanOffloadEnabled,
-              pRoamCandidateListParams->Command,
-              pRoamCandidateListParams->StartScanReason,
-              pRoamCandidateListParams->NeighborScanTimerPeriod,
-              pRoamCandidateListParams->NeighborRoamScanRefreshPeriod,
-              pRoamCandidateListParams->NeighborScanChannelMinTime,
-              pRoamCandidateListParams->NeighborScanChannelMaxTime,
-              pRoamCandidateListParams->EmptyRefreshScanPeriod,
-              pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.MDID.mdiePresent,
-                   pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.MDID.mobilityDomain,
-              pRoamCandidateListParams->ConnectedNetwork.authentication,
-              pRoamCandidateListParams->ConnectedNetwork.encryption,
-                   pRoamCandidateListParams->ConnectedNetwork.mcencryption,
-                   pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.nProbes,
-                   pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.HomeAwayTime);
-   pRoamCandidateListParams->us24GProbeSize =
-           (pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.us24GProbeSize<
-            WLAN_HAL_ROAM_SCAN_MAX_PROBE_SIZE)?
-            pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.us24GProbeSize:
-           WLAN_HAL_ROAM_SCAN_MAX_PROBE_SIZE;
-   wpalMemoryCopy(pRoamCandidateListParams->a24GProbeTemplate,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.a24GProbeTemplate,
-                  pRoamCandidateListParams->us24GProbeSize);
-   pRoamCandidateListParams->us5GProbeSize =
-           (pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.us5GProbeSize<
-            WLAN_HAL_ROAM_SCAN_MAX_PROBE_SIZE)?
-           pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.us5GProbeSize:
-           WLAN_HAL_ROAM_SCAN_MAX_PROBE_SIZE;
-   wpalMemoryCopy(pRoamCandidateListParams->a5GProbeTemplate,
-                  pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.a5GProbeTemplate,
-                  pRoamCandidateListParams->us5GProbeSize);
-   pRoamCandidateListParams->MDID.mdiePresent = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.MDID.mdiePresent;
-   pRoamCandidateListParams->MDID.mobilityDomain = pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.MDID.mobilityDomain;
-   pRoamCandidateListParams->nProbes =
-           pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.nProbes;
-   pRoamCandidateListParams->HomeAwayTime =
-           pwdiRoamScanOffloadReqParams->wdiRoamOffloadScanInfo.HomeAwayTime;
-   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO_HIGH,"Valid Channel List");
-   for (i=0; i<pRoamCandidateListParams->ValidChannelCount ; i++)
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO_HIGH,"%d", pRoamCandidateListParams->ValidChannelList[i]);
-   }
-
-
-   /*Set the output values*/
-   *ppSendBuffer = pSendBuffer;
-   *pSize        = usSendSize;
-   return WDI_STATUS_SUCCESS;
-}/*WDI_PackRoamScanOffloadParams*/
-
-/**
- @brief Process Start Roam Candidate Lookup Request function
->>>>>>> d97af3b... add prima wlan driver
+ @brief Process Update Scan Params function
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
 
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessUpdateScanParamsReq
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_UpdateScanParamsInfoType* pwdiUpdateScanParams  = NULL;
+   WDI_UpdateScanParamsCb        wdiUpdateScanParamsCb = NULL;
+   wpt_uint8*                    pSendBuffer           = NULL;
+   wpt_uint16                    usDataOffset          = 0;
+   wpt_uint16                    usSendSize            = 0;
+   tUpdateScanParams             updateScanParams = {0};
+
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiUpdateScanParams = (WDI_UpdateScanParamsInfoType*)pEventData->pEventData)) ||
+       ( NULL == (wdiUpdateScanParamsCb   = (WDI_UpdateScanParamsCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
+               "Begin WDI Update Scan Parameters");
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_UPDATE_SCAN_PARAMS_REQ,
+                         sizeof(updateScanParams),
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + sizeof(updateScanParams) )))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in Update Scan Params req %x %x %x",
+                  pEventData, pwdiUpdateScanParams, wdiUpdateScanParamsCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   //
+   // Fill updateScanParams from pwdiUpdateScanParams->wdiUpdateScanParamsInfo
+   //
+
+   updateScanParams.b11dEnabled    = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.b11dEnabled;
+   updateScanParams.b11dResolved   = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.b11dResolved;
+   updateScanParams.ucChannelCount =
+     (pwdiUpdateScanParams->wdiUpdateScanParamsInfo.ucChannelCount <
+     WLAN_HAL_PNO_MAX_NETW_CHANNELS)?
+     pwdiUpdateScanParams->wdiUpdateScanParamsInfo.ucChannelCount :
+     WLAN_HAL_PNO_MAX_NETW_CHANNELS;
+
+   wpalMemoryCopy( updateScanParams.aChannels,
+                   pwdiUpdateScanParams->wdiUpdateScanParamsInfo.aChannels,
+                   updateScanParams.ucChannelCount);
+
+   updateScanParams.usActiveMinChTime  = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usActiveMinChTime;
+   updateScanParams.usActiveMaxChTime  = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usActiveMaxChTime;
+   updateScanParams.usPassiveMinChTime = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usPassiveMinChTime;
+   updateScanParams.usPassiveMaxChTime = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usPassiveMaxChTime;
+   updateScanParams.cbState            = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.cbState;
+
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &updateScanParams,
+                   sizeof(updateScanParams));
+
+   pWDICtx->wdiReqStatusCB     = pwdiUpdateScanParams->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiUpdateScanParams->pUserData;
+
+   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
+               "End Update Scan Parameters");
+   /*-------------------------------------------------------------------------
+     Send Get STA Request to HAL
+   -------------------------------------------------------------------------*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiUpdateScanParamsCb, pEventData->pUserData, WDI_UPDATE_SCAN_PARAMS_RESP);
+}
+
+/**
+ @brief Process Preferred Network Found Indication function
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessPrefNetworkFoundInd
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+  WDI_LowLevelIndType  wdiInd;
+  tPrefNetwFoundInd    prefNetwFoundInd = {{0}};
+
+
+  /*-------------------------------------------------------------------------
+    Sanity check
+  -------------------------------------------------------------------------*/
+  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+      ( NULL == pEventData->pEventData ))
+  {
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                 "%s: Invalid parameters", __FUNCTION__);
+     WDI_ASSERT( 0 );
+     return WDI_STATUS_E_FAILURE;
+  }
+
+  /*-------------------------------------------------------------------------
+    Extract indication and send it to UMAC
+  -------------------------------------------------------------------------*/
+  wpalMemoryCopy( (void *)&prefNetwFoundInd.prefNetwFoundParams,
+                  pEventData->pEventData,
+                  sizeof(tPrefNetwFoundParams));
+
+  /*Fill in the indication parameters*/
+  wdiInd.wdiIndicationType = WDI_PREF_NETWORK_FOUND_IND;
+
+  wpalMemoryZero(wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.sSSID,32);
+
+  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.ucLength =
+     (prefNetwFoundInd.prefNetwFoundParams.ssId.length < 31 )?
+      prefNetwFoundInd.prefNetwFoundParams.ssId.length : 31;
+
+  wpalMemoryCopy( wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.sSSID,
+                  prefNetwFoundInd.prefNetwFoundParams.ssId.ssId,
+                  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.ucLength);
+
+  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.rssi =
+     prefNetwFoundInd.prefNetwFoundParams.rssi;
+
+  // DEBUG
+  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_FATAL,
+              "[PNO WDI] PREF_NETWORK_FOUND_IND Type (%x) data (SSID=%s, RSSI=%d)",
+              wdiInd.wdiIndicationType,
+              wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.sSSID,
+              wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.rssi );
+
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
+
+  return WDI_STATUS_SUCCESS;
+}
+
+/**
+<<<<<<< HEAD
+ @brief Process Start Roam Candidate Lookup Request function
+>>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Process PNO Rsp function (called when a
+        response is being received over the bus from HAL)
+>>>>>>> 657b0e9... prima update
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+<<<<<<< HEAD
 <<<<<<< HEAD
  @see
  @return Result of the function call
@@ -27157,11 +28860,19 @@ WDI_ProcessUpdateScanParamsReq
 WDI_Status
 WDI_ProcessRoamScanOffloadReq
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessSetPreferredNetworkRsp
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    WDI_UpdateScanParamsInfoType* pwdiUpdateScanParams  = NULL;
    WDI_UpdateScanParamsCb        wdiUpdateScanParamsCb = NULL;
@@ -27213,10 +28924,26 @@ WDI_ProcessRoamScanOffloadReq
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
                   "Unable to get send buffer in Update Scan Params req %x %x %x",
                   pEventData, pwdiUpdateScanParams, wdiUpdateScanParamsCb);
+=======
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_PNOScanCb       wdiPNOScanCb   = NULL;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+       ( NULL == pEventData->pEventData ))
+   {
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
+<<<<<<< HEAD
    //
    // Fill updateScanParams from pwdiUpdateScanParams->wdiUpdateScanParamsInfo
    //
@@ -27275,19 +29002,25 @@ WDI_ProcessRoamScanOffloadReq
       WDI_ASSERT(0);
       return wdiStatus;
    }
+=======
+>>>>>>> 657b0e9... prima update
 
-   pWDICtx->wdiReqStatusCB     = pwdiRoamScanOffloadReqParams->wdiReqStatusCB;
-   pWDICtx->pReqStatusUserData = pwdiRoamScanOffloadReqParams->pUserData;
+   wdiPNOScanCb = (WDI_PNOScanCb)pWDICtx->pfncRspCB;
 
    /*-------------------------------------------------------------------------
-     Send WDI_ROAM_SCAN_OFFLOAD_REQ to HAL
+     Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
-   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
-               wdiRoamOffloadScancb, pEventData->pUserData, WDI_ROAM_SCAN_OFFLOAD_RESP);
-}
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+   /*Notify UMAC*/
+   wdiPNOScanCb(wdiStatus, pWDICtx->pRspCBUserData);
+
+   return WDI_STATUS_SUCCESS;
+}/*WDI_ProcessSetPreferredNetworkRsp*/
 
 /**
- @brief Process Start Roam Candidate Lookup Rsp function (called when a
+ @brief Process RSSI Filter Rsp function (called when a
         response is being received over the bus from HAL)
 >>>>>>> d97af3b... add prima wlan driver
 
@@ -27298,6 +29031,7 @@ WDI_ProcessRoamScanOffloadReq
  @return Result of the function call
 */
 WDI_Status
+<<<<<<< HEAD
 <<<<<<< HEAD
 WDI_ProcessPrefNetworkFoundInd
 =======
@@ -27373,6 +29107,9 @@ WDI_ProcessRoamScanOffloadRsp
 */
 WDI_Status
 WDI_ProcessSetPreferredNetworkRsp
+=======
+WDI_ProcessSetRssiFilterRsp
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
@@ -27380,6 +29117,7 @@ WDI_ProcessSetPreferredNetworkRsp
 {
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
+<<<<<<< HEAD
    WDI_PNOScanCb       wdiPNOScanCb   = NULL;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 =======
@@ -27387,6 +29125,9 @@ WDI_ProcessSetPreferredNetworkRsp
    eHalStatus                   halStatus;
    WDI_RoamOffloadScanCb        wdiRoamOffloadScancb = NULL;
 
+=======
+   WDI_RssiFilterCb     wdiRssiFilterCb;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 >>>>>>> d97af3b... add prima wlan driver
 
@@ -27398,20 +29139,28 @@ WDI_ProcessSetPreferredNetworkRsp
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "%s: Invalid parameters", __FUNCTION__);
 =======
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
    wdiPNOScanCb = (WDI_PNOScanCb)pWDICtx->pfncRspCB;
 =======
    wdiRoamOffloadScancb = (WDI_RoamOffloadScanCb)pWDICtx->pfncRspCB;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wdiRssiFilterCb = (WDI_RssiFilterCb)pWDICtx->pfncRspCB;
+>>>>>>> 657b0e9... prima update
 
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
@@ -27420,6 +29169,7 @@ WDI_ProcessSetPreferredNetworkRsp
    wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
    /*Notify UMAC*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    wdiPNOScanCb(wdiStatus, pWDICtx->pRspCBUserData);
 
@@ -27431,14 +29181,21 @@ WDI_ProcessSetPreferredNetworkRsp
         response is being received over the bus from HAL)
 =======
    wdiRoamOffloadScancb(wdiStatus, pWDICtx->pRspCBUserData);
+=======
+   wdiRssiFilterCb(wdiStatus, pWDICtx->pRspCBUserData);
+>>>>>>> 657b0e9... prima update
 
    return WDI_STATUS_SUCCESS;
-}/* WDI_ProcessRoamScanOffloadRsp  */
-#endif
+}/*WDI_ProcessSetRssiFilterRsp*/
 
 /**
+<<<<<<< HEAD
  @brief Process Update Scan Params function
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Process Update Scan Params Rsp function (called when a
+        response is being received over the bus from HAL)
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -27447,6 +29204,7 @@ WDI_ProcessSetPreferredNetworkRsp
  @return Result of the function call
 */
 WDI_Status
+<<<<<<< HEAD
 <<<<<<< HEAD
 WDI_ProcessSetRssiFilterRsp
 (
@@ -27469,37 +29227,40 @@ WDI_ProcessSetRssiFilterRsp
                   "%s: Invalid parameters", __FUNCTION__);
 =======
 WDI_PackUpdateScanParamsReq
+=======
+WDI_ProcessUpdateScanParamsRsp
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
-  WDI_UpdateScanParamsInfoType* pwdiUpdateScanParams,
-  wpt_uint8**                   ppSendBuffer,
-  wpt_uint16*                   pSize
+  WDI_EventInfoType*     pEventData
 )
 {
-   wpt_uint8*                    pSendBuffer           = NULL;
-   wpt_uint16                    usDataOffset          = 0;
-   wpt_uint16                    usSendSize            = 0;
-   tUpdateScanParams             updateScanParams = {0};
+   WDI_Status             wdiStatus;
+   tUpdateScanParamsResp  halUpdScanParams;
+   WDI_UpdateScanParamsCb wdiUpdateScanParamsCb   = NULL;
+   wpt_uint32             uStatus;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
-               "Begin WDI Update Scan Parameters Old Style Params");
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_UPDATE_SCAN_PARAMS_REQ,
-                         sizeof(updateScanParams),
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-       ( usSendSize < (usDataOffset + sizeof(updateScanParams) )))
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+       ( NULL == pEventData->pEventData ))
    {
+<<<<<<< HEAD
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                   "Unable to get send buffer in Update Scan Params req %x",
                    pwdiUpdateScanParams);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
    wdiRssiFilterCb = (WDI_RssiFilterCb)pWDICtx->pfncRspCB;
 
@@ -27522,55 +29283,127 @@ WDI_PackUpdateScanParamsReq
    //
    // Fill updateScanParams from pwdiUpdateScanParams->wdiUpdateScanParamsInfo
    //
+=======
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+                  "Process UPD scan params ptr : %x", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
-   updateScanParams.b11dEnabled    = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.b11dEnabled;
-   updateScanParams.b11dResolved   = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.b11dResolved;
+  wdiUpdateScanParamsCb = (WDI_UpdateScanParamsCb)pWDICtx->pfncRspCB;
 
-   updateScanParams.ucChannelCount =
-     (pwdiUpdateScanParams->wdiUpdateScanParamsInfo.ucChannelCount <
-     WLAN_HAL_PNO_MAX_NETW_CHANNELS)?
-     pwdiUpdateScanParams->wdiUpdateScanParamsInfo.ucChannelCount :
-     WLAN_HAL_PNO_MAX_NETW_CHANNELS;
+  /*-------------------------------------------------------------------------
+     Extract response and send it to UMAC
+   -------------------------------------------------------------------------*/
+  wpalMemoryCopy( (void *)&halUpdScanParams.status,
+                  pEventData->pEventData,
+                  sizeof(halUpdScanParams.status));
 
-   wpalMemoryCopy( updateScanParams.aChannels,
-                   pwdiUpdateScanParams->wdiUpdateScanParamsInfo.aChannels,
-                   updateScanParams.ucChannelCount);
+  uStatus  = halUpdScanParams.status;
 
+  /*Extract PNO version - 1st bit of the status */
+  pWDICtx->wdiPNOVersion = (uStatus & WDI_PNO_VERSION_MASK)? 1:0;
 
-   updateScanParams.usActiveMinChTime  = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usActiveMinChTime;
-   updateScanParams.usActiveMaxChTime  = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usActiveMaxChTime;
-   updateScanParams.usPassiveMinChTime = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usPassiveMinChTime;
-   updateScanParams.usPassiveMaxChTime = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.usPassiveMaxChTime;
-   updateScanParams.cbState            = pwdiUpdateScanParams->wdiUpdateScanParamsInfo.cbState;
+  /*Remove version bit*/
+  uStatus = uStatus & ( ~(WDI_PNO_VERSION_MASK));
 
-   wpalMemoryCopy( pSendBuffer+usDataOffset,
-                   &updateScanParams,
-                   sizeof(updateScanParams));
+  wdiStatus   =   WDI_HAL_2_WDI_STATUS(uStatus);
 
-   pWDICtx->wdiReqStatusCB     = pwdiUpdateScanParams->wdiReqStatusCB;
-   pWDICtx->pReqStatusUserData = pwdiUpdateScanParams->pUserData;
+  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
+              "UPD Scan Parameters rsp with status: %d",
+              halUpdScanParams.status);
 
-   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
-               "End Update Scan Parameters Old Style");
+  /*Notify UMAC*/
+  wdiUpdateScanParamsCb(wdiStatus, pWDICtx->pRspCBUserData);
 
-   /*Set the output values*/
-   *ppSendBuffer = pSendBuffer;
-   *pSize        = usSendSize;
+  return WDI_STATUS_SUCCESS;
+}
+#endif // FEATURE_WLAN_SCAN_PNO
 
-   return WDI_STATUS_SUCCESS;
+#ifdef WLAN_FEATURE_PACKET_FILTERING
+WDI_Status
+WDI_8023MulticastListReq
+(
+  WDI_RcvFltPktSetMcListReqParamsType*  pwdiRcvFltPktSetMcListReqInfo,
+  WDI_8023MulticastListCb               wdi8023MulticastListCallback,
+  void*                                 pUserData
+)
+{
+   WDI_EventInfoType      wdiEventData;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s", __FUNCTION__);
+
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
+   {
+     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+     return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /*------------------------------------------------------------------------
+     Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   wdiEventData.wdiRequest      = WDI_8023_MULTICAST_LIST_REQ;
+   wdiEventData.pEventData      = pwdiRcvFltPktSetMcListReqInfo;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiRcvFltPktSetMcListReqInfo);
+   wdiEventData.pCBfnc          = wdi8023MulticastListCallback;
+   wdiEventData.pUserData       = pUserData;
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
 }
 
+<<<<<<< HEAD
 /**
  @brief Process Update Scan Params function
 >>>>>>> d97af3b... add prima wlan driver
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
+=======
 WDI_Status
+WDI_ReceiveFilterSetFilterReq
+(
+  WDI_SetRcvPktFilterReqParamsType* pwdiSetRcvPktFilterReqInfo,
+  WDI_ReceiveFilterSetFilterCb      wdiReceiveFilterSetFilterCallback,
+  void*                             pUserData
+)
+{
+   WDI_EventInfoType      wdiEventData;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+>>>>>>> 657b0e9... prima update
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
+
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
+   {
+     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+     return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /*------------------------------------------------------------------------
+     Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   wdiEventData.wdiRequest      = WDI_RECEIVE_FILTER_SET_FILTER_REQ;
+   wdiEventData.pEventData      = pwdiSetRcvPktFilterReqInfo;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiSetRcvPktFilterReqInfo) +
+                                  (pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams
+                                  * sizeof(WDI_RcvPktFilterFieldParams) - 1);
+   wdiEventData.pCBfnc          = wdiReceiveFilterSetFilterCallback;
+   wdiEventData.pUserData       = pUserData;
+
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
+}
+
+WDI_Status
+<<<<<<< HEAD
 <<<<<<< HEAD
 WDI_ProcessUpdateScanParamsRsp
 (
@@ -27594,27 +29427,27 @@ WDI_ProcessUpdateScanParamsRsp
                   "%s: Invalid parameters", __FUNCTION__);
 =======
 WDI_PackUpdateScanParamsReqEx
+=======
+WDI_FilterMatchCountReq
+>>>>>>> 657b0e9... prima update
 (
-  WDI_ControlBlockType*         pWDICtx,
-  WDI_UpdateScanParamsInfoType* pwdiUpdateScanParams,
-  wpt_uint8**                   ppSendBuffer,
-  wpt_uint16*                   pSize
+  WDI_RcvFltPktMatchCntReqParamsType* pwdiRcvFltPktMatchCntReqInfo,
+  WDI_FilterMatchCountCb              wdiFilterMatchCountCallback,
+  void*                               pUserData
 )
 {
-   wpt_uint8*                    pSendBuffer           = NULL;
-   wpt_uint16                    usDataOffset          = 0;
-   wpt_uint16                    usSendSize            = 0;
-   tUpdateScanParamsEx           updateScanParams = {0};
+   WDI_EventInfoType      wdiEventData;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
 
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_UPDATE_SCAN_PARAMS_REQ,
-                         sizeof(updateScanParams),
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-       ( usSendSize < (usDataOffset + sizeof(updateScanParams) )))
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
    {
+<<<<<<< HEAD
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
                   "Unable to get send buffer in Update Scan Params Ex req %x",
                   pwdiUpdateScanParams);
@@ -27654,9 +29487,67 @@ WDI_PackUpdateScanParamsReqEx
   wdiUpdateScanParamsCb(wdiStatus, pWDICtx->pRspCBUserData);
 
   return WDI_STATUS_SUCCESS;
+=======
+     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+     return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /*------------------------------------------------------------------------
+     Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   wdiEventData.wdiRequest      = WDI_PACKET_COALESCING_FILTER_MATCH_COUNT_REQ;
+   wdiEventData.pEventData      = pwdiRcvFltPktMatchCntReqInfo;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiRcvFltPktMatchCntReqInfo);
+   wdiEventData.pCBfnc          = wdiFilterMatchCountCallback;
+   wdiEventData.pUserData       = pUserData;
+
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
+}
+
+WDI_Status
+WDI_ReceiveFilterClearFilterReq
+(
+  WDI_RcvFltPktClearReqParamsType*  pwdiRcvFltPktClearReqInfo,
+  WDI_ReceiveFilterClearFilterCb    wdiReceiveFilterClearFilterCallback,
+  void*                             pUserData
+)
+{
+   WDI_EventInfoType      wdiEventData;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
+
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
+   {
+     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+     return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /*------------------------------------------------------------------------
+     Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   wdiEventData.wdiRequest      = WDI_RECEIVE_FILTER_CLEAR_FILTER_REQ;
+   wdiEventData.pEventData      = pwdiRcvFltPktClearReqInfo;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiRcvFltPktClearReqInfo);
+   wdiEventData.pCBfnc          = wdiReceiveFilterClearFilterCallback;
+   wdiEventData.pUserData       = pUserData;
+
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
+>>>>>>> 657b0e9... prima update
 }
 #endif // FEATURE_WLAN_SCAN_PNO
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 WDI_Status
 WDI_8023MulticastListReq
@@ -27854,6 +29745,10 @@ WDI_ReceiveFilterClearFilterReq
 
 /**
  @brief Process Update Scan Params function
+=======
+/**
+ @brief Process 8023 Multicast List Request function
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -27862,64 +29757,107 @@ WDI_ReceiveFilterClearFilterReq
  @return Result of the function call
 */
 WDI_Status
-WDI_ProcessUpdateScanParamsReq
+WDI_Process8023MulticastListReq
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
-   WDI_UpdateScanParamsInfoType* pwdiUpdateScanParams  = NULL;
-   WDI_UpdateScanParamsCb        wdiUpdateScanParamsCb = NULL;
-   wpt_uint8*                    pSendBuffer           = NULL;
-   wpt_uint16                    usSendSize            = 0;
-   WDI_Status                    wdiStatus;
+   WDI_RcvFltPktSetMcListReqParamsType* pwdiFltPktSetMcListReqParamsType  = NULL;
+   WDI_8023MulticastListCb    wdi8023MulticastListCb = NULL;
+   wpt_uint8*                 pSendBuffer           = NULL;
+   wpt_uint16                 usDataOffset          = 0;
+   wpt_uint16                 usSendSize            = 0;
+   tpHalRcvFltMcAddrListType  pRcvFltMcAddrListType;
+   wpt_uint8                  i;
+   wpt_uint8                  ucCurrentBSSSesIdx = 0;
+   WDI_BSSSessionType*        pBSSSes = NULL;
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
+
+   pRcvFltMcAddrListType = wpalMemoryAllocate(sizeof(tHalRcvFltMcAddrListType)) ;
+   if( NULL == pRcvFltMcAddrListType )
+   {
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                 "Failed to alloc in WDI_Process8023MulticastListReq");
+     return WDI_STATUS_E_FAILURE; 
+   }
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
    if (( NULL == pEventData ) ||
-       ( NULL == (pwdiUpdateScanParams = (WDI_UpdateScanParamsInfoType*)pEventData->pEventData)) ||
-       ( NULL == (wdiUpdateScanParamsCb   = (WDI_UpdateScanParamsCb)pEventData->pCBfnc)))
+       ( NULL == (pwdiFltPktSetMcListReqParamsType =
+       (WDI_RcvFltPktSetMcListReqParamsType*)pEventData->pEventData)) ||
+       ( NULL == (wdi8023MulticastListCb =
+       (WDI_8023MulticastListCb)pEventData->pCBfnc)))
    {
       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
+                  "%s: Invalid parameters", __FUNCTION__);
+      wpalMemoryFree(pRcvFltMcAddrListType);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
-   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
-               "Begin WDI Update Scan Parameters");
-
-   //
-   // Fill updateScanParams from pwdiUpdateScanParams->wdiUpdateScanParamsInfo
-   //
-   if ( pWDICtx->wlanVersion.revision < 1 ) 
+   ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx,
+                            pwdiFltPktSetMcListReqParamsType->mcAddrList.bssId,
+                            &pBSSSes);
+   if ( NULL == pBSSSes )
    {
-     wdiStatus = WDI_PackUpdateScanParamsReq( pWDICtx, pwdiUpdateScanParams,
-                                  &pSendBuffer, &usSendSize);
-   }
-   else
-   {
-     wdiStatus = WDI_PackUpdateScanParamsReqEx( pWDICtx, pwdiUpdateScanParams,
-                                  &pSendBuffer, &usSendSize);
-   }
-   
-   if(WDI_STATUS_SUCCESS != wdiStatus)
-   {
-        //memory allocation failed
-        return WDI_STATUS_E_FAILURE;
+       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+                 " %s : Association for this BSSID does not exist",__FUNCTION__);
+       wpalMemoryFree(pRcvFltMcAddrListType);   
+       return WDI_STATUS_E_FAILURE; 
    }
 
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
+                         WDI_8023_MULTICAST_LIST_REQ,
+                         sizeof(tHalRcvFltMcAddrListType),
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + sizeof(tHalRcvFltMcAddrListType))))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in "
+                  "WDI_Process8023MulticastListReq() %x %x %x",
+                  pEventData, pwdiFltPktSetMcListReqParamsType,
+                  wdi8023MulticastListCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   pRcvFltMcAddrListType->cMulticastAddr = 
+       pwdiFltPktSetMcListReqParamsType->mcAddrList.ulMulticastAddrCnt;
+   for( i = 0; i < pRcvFltMcAddrListType->cMulticastAddr; i++ )
+   {
+      wpalMemoryCopy(pRcvFltMcAddrListType->multicastAddr[i],
+                 pwdiFltPktSetMcListReqParamsType->mcAddrList.multicastAddr[i],
+                 sizeof(tSirMacAddr));
+   }
+
+   pRcvFltMcAddrListType->bssIdx = pBSSSes->ucBSSIdx;
+   wpalMemoryCopy( pSendBuffer+usDataOffset, 
+                   pRcvFltMcAddrListType, 
+                   sizeof(tHalRcvFltMcAddrListType)); 
+
+   pWDICtx->wdiReqStatusCB     = pwdiFltPktSetMcListReqParamsType->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiFltPktSetMcListReqParamsType->pUserData;
+
+
+   wpalMemoryFree(pRcvFltMcAddrListType);
    /*-------------------------------------------------------------------------
      Send Get STA Request to HAL
    -------------------------------------------------------------------------*/
    return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
-                        wdiUpdateScanParamsCb, pEventData->pUserData, 
-                        WDI_UPDATE_SCAN_PARAMS_RESP);
+                        wdi8023MulticastListCb, pEventData->pUserData,
+                        WDI_8023_MULTICAST_LIST_RESP);
 }
 
 /**
- @brief Process Preferred Network Found Indication function
+ @brief Process Receive Filter Set Filter Request function
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -27928,83 +29866,182 @@ WDI_ProcessUpdateScanParamsReq
  @return Result of the function call
 */
 WDI_Status
-WDI_ProcessPrefNetworkFoundInd
+WDI_ProcessReceiveFilterSetFilterReq
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
-  WDI_LowLevelIndType   wdiInd;
-  tpPrefNetwFoundParams pNetwFoundParams;
-  wpt_uint32 msgsize;
+   WDI_SetRcvPktFilterReqParamsType* pwdiSetRcvPktFilterReqInfo  = NULL;
+   WDI_ReceiveFilterSetFilterCb      wdiReceiveFilterSetFilterCb = NULL;
+   wpt_uint8*                 pSendBuffer           = NULL;
+   wpt_uint16                 usDataOffset          = 0;
+   wpt_uint16                 usSendSize            = 0;
+   wpt_uint32                 usRcvPktFilterCfgSize;
+   tHalRcvPktFilterCfgType    *pRcvPktFilterCfg;
+   wpt_uint8                  i;
+   wpt_uint8                  ucCurrentBSSSesIdx = 0;
+   WDI_BSSSessionType*        pBSSSes = NULL;
 
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
 
-  /*-------------------------------------------------------------------------
-    Sanity check
-  -------------------------------------------------------------------------*/
-  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
-      ( NULL == pEventData->pEventData ))
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiSetRcvPktFilterReqInfo =
+       (WDI_SetRcvPktFilterReqParamsType*)pEventData->pEventData)) ||
+       ( NULL == (wdiReceiveFilterSetFilterCb =
+       (WDI_ReceiveFilterSetFilterCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx,
+                            pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.bssId,
+                            &pBSSSes);
+   if ( NULL == pBSSSes )
+   {
+       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+                 " %s : Association for this BSSID does not exist",__FUNCTION__);
+       return WDI_STATUS_E_FAILURE;
+   }
+
+   usRcvPktFilterCfgSize = sizeof(tHalRcvPktFilterCfgType) +
+       ((pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams - 1)
+        * sizeof(tHalRcvPktFilterParams));
+
+  pRcvPktFilterCfg = (tHalRcvPktFilterCfgType *)wpalMemoryAllocate(
+                                              usRcvPktFilterCfgSize);
+
+  if(NULL == pRcvPktFilterCfg)
   {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "%s: Invalid parameters", __func__);
-     WDI_ASSERT( 0 );
-     return WDI_STATUS_E_FAILURE;
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+            "%s: Failed to allocate memory for "
+            "tHalRcvPktFilterCfgType: %x %x %x ",
+            __FUNCTION__, pWDICtx, pEventData, pEventData->pEventData);
+    WDI_ASSERT(0);
+    return WDI_STATUS_E_FAILURE;
   }
 
-  /*-------------------------------------------------------------------------
-    Extract indication and send it to UMAC
-  -------------------------------------------------------------------------*/
-  pNetwFoundParams = (tpPrefNetwFoundParams)(pEventData->pEventData);
+  wpalMemoryZero(pRcvPktFilterCfg, usRcvPktFilterCfgSize);
 
-  msgsize = sizeof(tPrefNetwFoundParams) + pNetwFoundParams->frameLength;
-  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.pData =
-      (wpt_uint8 *)wpalMemoryAllocate(msgsize);
+   /*-----------------------------------------------------------------------
+     Get message buffer
 
-  if (NULL == wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.pData)
-  {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 "%s: fail to allocate memory", __func__);
-     return WDI_STATUS_MEM_FAILURE;
-  }
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_RECEIVE_FILTER_SET_FILTER_REQ,
+                         usRcvPktFilterCfgSize,
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + usRcvPktFilterCfgSize)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in "
+                  "WDI_ProcessReceiveFilterSetFilterReq() %x %x %x",
+                  pEventData, pwdiSetRcvPktFilterReqInfo,
+                  wdiReceiveFilterSetFilterCb);
+      WDI_ASSERT(0);
+      wpalMemoryFree(pRcvPktFilterCfg);
+      return WDI_STATUS_E_FAILURE;
+   }
 
-  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.ucLength =
-     (pNetwFoundParams->ssId.length < 32 )?
-      pNetwFoundParams->ssId.length : 32;
-  wpalMemoryCopy( wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.sSSID,
-      pNetwFoundParams->ssId.ssId,
-      wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.ucLength);
-  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.rssi = pNetwFoundParams->rssi;
-  wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.frameLength =
-      pNetwFoundParams->frameLength;
-  wpalMemoryCopy( wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.pData,
-      (wpt_uint8 *)pEventData->pEventData + sizeof(tPrefNetwFoundParams),
-      pNetwFoundParams->frameLength);
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+              "UsData Off %d UsSend %d cfg %d",usDataOffset,
+              usSendSize,usRcvPktFilterCfgSize);
 
-  /*Fill in the indication parameters*/
-  wdiInd.wdiIndicationType = WDI_PREF_NETWORK_FOUND_IND;
+   pRcvPktFilterCfg->filterId = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.filterId;
+   pRcvPktFilterCfg->filterType = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.filterType;
+   pRcvPktFilterCfg->numParams = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams;
+   pRcvPktFilterCfg->coalesceTime = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.coalesceTime;
 
-  // DEBUG
-  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_FATAL,
-              "[PNO WDI] PREF_NETWORK_FOUND_IND Type (%x) data (SSID=%.*s, LENGTH=%u,  RSSI=%u)",
-              wdiInd.wdiIndicationType,
-              wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.ucLength,
-              wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.sSSID,
-              wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.ssId.ucLength,
-              wdiInd.wdiIndicationData.wdiPrefNetworkFoundInd.rssi );
+   //pRcvPktFilterCfg->bssIdx = pBSSSes->ucBSSIdx;
 
-  if ( pWDICtx->wdiLowLevelIndCB )
-  {
-    /*Notify UMAC*/
-    pWDICtx->wdiLowLevelIndCB( &wdiInd, pWDICtx->pIndUserData );
-  }
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+              "Out: FID %d FT %d",pRcvPktFilterCfg->filterId,
+              pRcvPktFilterCfg->filterType);
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+              "NParams %d CT %d",pRcvPktFilterCfg->numParams,
+              pRcvPktFilterCfg->coalesceTime);
 
-  return WDI_STATUS_SUCCESS;
+   for ( i = 0; i < pRcvPktFilterCfg->numParams; i++ )
+   {
+       pRcvPktFilterCfg->paramsData[i].protocolLayer =
+           pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].protocolLayer;
+       pRcvPktFilterCfg->paramsData[i].cmpFlag =
+           pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].cmpFlag;
+       pRcvPktFilterCfg->paramsData[i].dataOffset =
+           pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataOffset;
+        pRcvPktFilterCfg->paramsData[i].dataLength =
+            pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataLength;
+
+       wpalMemoryCopy(&pRcvPktFilterCfg->paramsData[i].compareData,
+                    &pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].compareData,
+                    8);
+       wpalMemoryCopy(&pRcvPktFilterCfg->paramsData[i].dataMask,
+                    &pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataMask,
+                    8);
+
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+           "Out:Proto %d Comp Flag %d \n",
+           pRcvPktFilterCfg->paramsData[i].protocolLayer,
+           pRcvPktFilterCfg->paramsData[i].cmpFlag);
+
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+           "Data Offset %d Data Len %d\n",
+           pRcvPktFilterCfg->paramsData[i].dataOffset,
+           pRcvPktFilterCfg->paramsData[i].dataLength);
+
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+           "CData: %d:%d:%d:%d:%d:%d\n",
+           pRcvPktFilterCfg->paramsData[i].compareData[0],
+           pRcvPktFilterCfg->paramsData[i].compareData[1],
+           pRcvPktFilterCfg->paramsData[i].compareData[2],
+           pRcvPktFilterCfg->paramsData[i].compareData[3],
+           pRcvPktFilterCfg->paramsData[i].compareData[4],
+           pRcvPktFilterCfg->paramsData[i].compareData[5]);
+
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+           "MData: %d:%d:%d:%d:%d:%d\n",
+           pRcvPktFilterCfg->paramsData[i].dataMask[0],
+           pRcvPktFilterCfg->paramsData[i].dataMask[1],
+           pRcvPktFilterCfg->paramsData[i].dataMask[2],
+           pRcvPktFilterCfg->paramsData[i].dataMask[3],
+           pRcvPktFilterCfg->paramsData[i].dataMask[4],
+           pRcvPktFilterCfg->paramsData[i].dataMask[5]);
+   }
+
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   pRcvPktFilterCfg,
+                   usRcvPktFilterCfgSize);
+
+
+   pWDICtx->wdiReqStatusCB     = pwdiSetRcvPktFilterReqInfo->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiSetRcvPktFilterReqInfo->pUserData;
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
+   wpalMemoryFree(pRcvPktFilterCfg);
+
+   /*-------------------------------------------------------------------------
+     Send Get STA Request to HAL
+   -------------------------------------------------------------------------*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiReceiveFilterSetFilterCb, pEventData->pUserData,
+                        WDI_RECEIVE_FILTER_SET_FILTER_RESP);
 }
 
 /**
+<<<<<<< HEAD
  @brief Process PNO Rsp function (called when a
         response is being received over the bus from HAL)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Process Packet Filter Match Count Request function
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -28014,15 +30051,20 @@ WDI_ProcessPrefNetworkFoundInd
 */
 WDI_Status
 <<<<<<< HEAD
+<<<<<<< HEAD
 WDI_Process8023MulticastListReq
 =======
 WDI_ProcessSetPreferredNetworkRsp
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WDI_ProcessFilterMatchCountReq
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    WDI_RcvFltPktSetMcListReqParamsType* pwdiFltPktSetMcListReqParamsType  = NULL;
    WDI_8023MulticastListCb    wdi8023MulticastListCb = NULL;
@@ -28050,10 +30092,23 @@ WDI_ProcessSetPreferredNetworkRsp
    WDI_PNOScanCb       wdiPNOScanCb   = NULL;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDI_RcvFltPktMatchCntReqParamsType*    pwdiRcvFltPktMatchCntReqParamsType =
+                                                                         NULL;
+   WDI_FilterMatchCountCb                 wdiFilterMatchCountCb              =
+                                                                         NULL;
+   wpt_uint8*                             pSendBuffer           = NULL;
+   wpt_uint16                             usDataOffset          = 0;
+   wpt_uint16                             usSendSize            = 0;
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    if (( NULL == pEventData ) ||
        ( NULL == (pwdiFltPktSetMcListReqParamsType =
@@ -28100,10 +30155,39 @@ WDI_ProcessSetPreferredNetworkRsp
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiRcvFltPktMatchCntReqParamsType =
+       (WDI_RcvFltPktMatchCntReqParamsType*)pEventData->pEventData)) ||
+       ( NULL == (wdiFilterMatchCountCb =
+       (WDI_FilterMatchCountCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
+                         WDI_PACKET_COALESCING_FILTER_MATCH_COUNT_REQ,
+                         0,
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < usDataOffset))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in "
+                  "WDI_ProcessFilterMatchCountReq() %x %x %x",
+                  pEventData, pwdiRcvFltPktMatchCntReqParamsType,
+                  wdiFilterMatchCountCb);
+>>>>>>> 657b0e9... prima update
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+<<<<<<< HEAD
 <<<<<<< HEAD
    pRcvFltMcAddrListType->cMulticastAddr = 
        pwdiFltPktSetMcListReqParamsType->mcAddrList.ulMulticastAddrCnt;
@@ -28137,23 +30221,32 @@ WDI_ProcessSetPreferredNetworkRsp
 =======
 
    wdiPNOScanCb = (WDI_PNOScanCb)pWDICtx->pfncRspCB;
+=======
+   //
+   // Don't need to fill send buffer other than header
+   //
+   pWDICtx->wdiReqStatusCB     = pwdiRcvFltPktMatchCntReqParamsType->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiRcvFltPktMatchCntReqParamsType->pUserData;
+
+>>>>>>> 657b0e9... prima update
 
    /*-------------------------------------------------------------------------
-     Extract response and send it to UMAC
+     Send Get STA Request to HAL
    -------------------------------------------------------------------------*/
-   halStatus = *((eHalStatus*)pEventData->pEventData);
-   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
-
-   /*Notify UMAC*/
-   wdiPNOScanCb(wdiStatus, pWDICtx->pRspCBUserData);
-
-   return WDI_STATUS_SUCCESS;
-}/*WDI_ProcessSetPreferredNetworkRsp*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiFilterMatchCountCb,
+                        pEventData->pUserData,
+                        WDI_PACKET_COALESCING_FILTER_MATCH_COUNT_RESP);
+}
 
 /**
+<<<<<<< HEAD
  @brief Process RSSI Filter Rsp function (called when a
         response is being received over the bus from HAL)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Process Receive Filter Clear Filter Request function
+>>>>>>> 657b0e9... prima update
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -28163,15 +30256,20 @@ WDI_ProcessSetPreferredNetworkRsp
 */
 WDI_Status
 <<<<<<< HEAD
+<<<<<<< HEAD
 WDI_ProcessReceiveFilterSetFilterReq
 =======
 WDI_ProcessSetRssiFilterRsp
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WDI_ProcessReceiveFilterClearFilterReq
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    WDI_SetRcvPktFilterReqParamsType* pwdiSetRcvPktFilterReqInfo  = NULL;
    WDI_ReceiveFilterSetFilterCb      wdiReceiveFilterSetFilterCb = NULL;
@@ -28203,23 +30301,52 @@ WDI_ProcessSetRssiFilterRsp
    eHalStatus           halStatus;
    WDI_RssiFilterCb     wdiRssiFilterCb;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+=======
+   WDI_RcvFltPktClearReqParamsType* pwdiRcvFltPktClearReqParamsType = NULL;
+   WDI_ReceiveFilterClearFilterCb   wdiRcvFltPktClearFilterCb       = NULL;
+   wpt_uint8*                       pSendBuffer           = NULL;
+   wpt_uint16                       usDataOffset          = 0;
+   wpt_uint16                       usSendSize            = 0;
+   tHalRcvFltPktClearParam          rcvFltPktClearParam;
+   wpt_uint8                        ucCurrentBSSSesIdx = 0;
+   WDI_BSSSessionType*              pBSSSes = NULL;
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
+<<<<<<< HEAD
    if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
        ( NULL == pEventData->pEventData ))
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiRcvFltPktClearReqParamsType =
+       (WDI_RcvFltPktClearReqParamsType*)pEventData->pEventData)) ||
+       ( NULL == (wdiRcvFltPktClearFilterCb =
+       (WDI_ReceiveFilterClearFilterCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx,
                             pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.bssId,
+=======
+   ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx,
+                            pwdiRcvFltPktClearReqParamsType->filterClearParam.bssId,
+>>>>>>> 657b0e9... prima update
                             &pBSSSes);
    if ( NULL == pBSSSes )
    {
@@ -28227,6 +30354,7 @@ WDI_ProcessSetRssiFilterRsp
                  " %s : Association for this BSSID does not exist",__FUNCTION__);
        return WDI_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
 
    usRcvPktFilterCfgSize = sizeof(tHalRcvPktFilterCfgType) +
        ((pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams - 1)
@@ -28265,22 +30393,52 @@ WDI_ProcessSetRssiFilterRsp
       wpalMemoryFree(pRcvPktFilterCfg);
 =======
    wdiRssiFilterCb = (WDI_RssiFilterCb)pWDICtx->pfncRspCB;
+=======
+>>>>>>> 657b0e9... prima update
+
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
+                         WDI_RECEIVE_FILTER_CLEAR_FILTER_REQ,
+                         sizeof(tHalRcvFltPktClearParam),
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + sizeof(tHalRcvFltPktClearParam))))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in "
+                  "WDI_ProcessReceiveFilterClearFilterReq() %x %x %x",
+                  pEventData, pwdiRcvFltPktClearReqParamsType,
+                  wdiRcvFltPktClearFilterCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+
+   rcvFltPktClearParam.status = pwdiRcvFltPktClearReqParamsType->
+                                                    filterClearParam.status;
+   rcvFltPktClearParam.filterId = pwdiRcvFltPktClearReqParamsType->
+                                                    filterClearParam.filterId;
+
+   rcvFltPktClearParam.bssIdx = pBSSSes->ucBSSIdx;
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &rcvFltPktClearParam,
+                   sizeof(rcvFltPktClearParam));
+
+   pWDICtx->wdiReqStatusCB     = pwdiRcvFltPktClearReqParamsType->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiRcvFltPktClearReqParamsType->pUserData;
+
 
    /*-------------------------------------------------------------------------
-     Extract response and send it to UMAC
+     Send Get STA Request to HAL
    -------------------------------------------------------------------------*/
-   halStatus = *((eHalStatus*)pEventData->pEventData);
-   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
-
-   /*Notify UMAC*/
-   wdiRssiFilterCb(wdiStatus, pWDICtx->pRspCBUserData);
-
-   return WDI_STATUS_SUCCESS;
-}/*WDI_ProcessSetRssiFilterRsp*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiRcvFltPktClearFilterCb, pEventData->pUserData,
+                        WDI_RECEIVE_FILTER_CLEAR_FILTER_RESP);
+}
 
 /**
- @brief Process Update Scan Params Rsp function (called when a
-        response is being received over the bus from HAL)
+ @brief Process 8023 Multicast List Response function
 
  @param  pWDICtx:         pointer to the WLAN DAL context
          pEventData:      pointer to the event information structure
@@ -28289,17 +30447,19 @@ WDI_ProcessSetRssiFilterRsp
  @return Result of the function call
 */
 WDI_Status
-WDI_ProcessUpdateScanParamsRsp
+WDI_Process8023MulticastListRsp
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
-   WDI_Status             wdiStatus;
-   tUpdateScanParamsResp  halUpdScanParams;
-   WDI_UpdateScanParamsCb wdiUpdateScanParamsCb   = NULL;
-   wpt_uint32             uStatus;
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_8023MulticastListCb wdi8023MulticastListCb;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+             "%s",__FUNCTION__);
 
    /*-------------------------------------------------------------------------
      Sanity check
@@ -28308,12 +30468,13 @@ WDI_ProcessUpdateScanParamsRsp
        ( NULL == pEventData->pEventData ))
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
+                  "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
 >>>>>>> d97af3b... add prima wlan driver
       return WDI_STATUS_E_FAILURE;
    }
 
+<<<<<<< HEAD
    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
               "UsData Off %d UsSend %d cfg %d",usDataOffset,
@@ -28410,845 +30571,18 @@ WDI_ProcessUpdateScanParamsRsp
                   "Process UPD scan params ptr : %x", __func__);
 
   wdiUpdateScanParamsCb = (WDI_UpdateScanParamsCb)pWDICtx->pfncRspCB;
-
-  /*-------------------------------------------------------------------------
-     Extract response and send it to UMAC
-   -------------------------------------------------------------------------*/
-  wpalMemoryCopy( (void *)&halUpdScanParams.status,
-                  pEventData->pEventData,
-                  sizeof(halUpdScanParams.status));
-
-  uStatus  = halUpdScanParams.status;
-
-  /*Extract PNO version - 1st bit of the status */
-  pWDICtx->wdiPNOVersion = (uStatus & WDI_PNO_VERSION_MASK)? 1:0;
-
-  /*Remove version bit*/
-  uStatus = uStatus & ( ~(WDI_PNO_VERSION_MASK));
-
-  wdiStatus   =   WDI_HAL_2_WDI_STATUS(uStatus);
-
-  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
-              "UPD Scan Parameters rsp with status: %d",
-              halUpdScanParams.status);
-
-  /*Notify UMAC*/
-  wdiUpdateScanParamsCb(wdiStatus, pWDICtx->pRspCBUserData);
-
-  return WDI_STATUS_SUCCESS;
-}
-#endif // FEATURE_WLAN_SCAN_PNO
-
-#ifdef WLAN_FEATURE_PACKET_FILTERING
-WDI_Status
-WDI_8023MulticastListReq
-(
-  WDI_RcvFltPktSetMcListReqParamsType*  pwdiRcvFltPktSetMcListReqInfo,
-  WDI_8023MulticastListCb               wdi8023MulticastListCallback,
-  void*                                 pUserData
-)
-{
-   WDI_EventInfoType      wdiEventData;
-   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s", __func__);
-
-   /*------------------------------------------------------------------------
-     Sanity Check
-   ------------------------------------------------------------------------*/
-   if ( eWLAN_PAL_FALSE == gWDIInitialized )
-   {
-     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "WDI API call before module is initialized - Fail request");
-
-     return WDI_STATUS_E_NOT_ALLOWED;
-   }
-
-   /*------------------------------------------------------------------------
-     Fill in Event data and post to the Main FSM
-   ------------------------------------------------------------------------*/
-   wdiEventData.wdiRequest      = WDI_8023_MULTICAST_LIST_REQ;
-   wdiEventData.pEventData      = pwdiRcvFltPktSetMcListReqInfo;
-   wdiEventData.uEventDataSize  = sizeof(*pwdiRcvFltPktSetMcListReqInfo);
-   wdiEventData.pCBfnc          = wdi8023MulticastListCallback;
-   wdiEventData.pUserData       = pUserData;
-
-   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-}
-
-WDI_Status
-WDI_ReceiveFilterSetFilterReq
-(
-  WDI_SetRcvPktFilterReqParamsType* pwdiSetRcvPktFilterReqInfo,
-  WDI_ReceiveFilterSetFilterCb      wdiReceiveFilterSetFilterCallback,
-  void*                             pUserData
-)
-{
-   WDI_EventInfoType      wdiEventData;
-   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*------------------------------------------------------------------------
-     Sanity Check
-   ------------------------------------------------------------------------*/
-   if ( eWLAN_PAL_FALSE == gWDIInitialized )
-   {
-     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "WDI API call before module is initialized - Fail request");
-
-     return WDI_STATUS_E_NOT_ALLOWED;
-   }
-
-   /*------------------------------------------------------------------------
-     Fill in Event data and post to the Main FSM
-   ------------------------------------------------------------------------*/
-   wdiEventData.wdiRequest      = WDI_RECEIVE_FILTER_SET_FILTER_REQ;
-   wdiEventData.pEventData      = pwdiSetRcvPktFilterReqInfo;
-   wdiEventData.uEventDataSize  = sizeof(*pwdiSetRcvPktFilterReqInfo) +
-                                  (pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams - 1)
-                                  * sizeof(WDI_RcvPktFilterFieldParams);
-   wdiEventData.pCBfnc          = wdiReceiveFilterSetFilterCallback;
-   wdiEventData.pUserData       = pUserData;
-
-
-   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-}
-
-WDI_Status
-WDI_FilterMatchCountReq
-(
-  WDI_RcvFltPktMatchCntReqParamsType* pwdiRcvFltPktMatchCntReqInfo,
-  WDI_FilterMatchCountCb              wdiFilterMatchCountCallback,
-  void*                               pUserData
-)
-{
-   WDI_EventInfoType      wdiEventData;
-   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*------------------------------------------------------------------------
-     Sanity Check
-   ------------------------------------------------------------------------*/
-   if ( eWLAN_PAL_FALSE == gWDIInitialized )
-   {
-     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "WDI API call before module is initialized - Fail request");
-
-     return WDI_STATUS_E_NOT_ALLOWED;
-   }
-
-   /*------------------------------------------------------------------------
-     Fill in Event data and post to the Main FSM
-   ------------------------------------------------------------------------*/
-   wdiEventData.wdiRequest      = WDI_PACKET_COALESCING_FILTER_MATCH_COUNT_REQ;
-   wdiEventData.pEventData      = pwdiRcvFltPktMatchCntReqInfo;
-   wdiEventData.uEventDataSize  = sizeof(*pwdiRcvFltPktMatchCntReqInfo);
-   wdiEventData.pCBfnc          = wdiFilterMatchCountCallback;
-   wdiEventData.pUserData       = pUserData;
-
-
-   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-}
-
-WDI_Status
-WDI_ReceiveFilterClearFilterReq
-(
-  WDI_RcvFltPktClearReqParamsType*  pwdiRcvFltPktClearReqInfo,
-  WDI_ReceiveFilterClearFilterCb    wdiReceiveFilterClearFilterCallback,
-  void*                             pUserData
-)
-{
-   WDI_EventInfoType      wdiEventData;
-   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*------------------------------------------------------------------------
-     Sanity Check
-   ------------------------------------------------------------------------*/
-   if ( eWLAN_PAL_FALSE == gWDIInitialized )
-   {
-     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "WDI API call before module is initialized - Fail request");
-
-     return WDI_STATUS_E_NOT_ALLOWED;
-   }
-
-   /*------------------------------------------------------------------------
-     Fill in Event data and post to the Main FSM
-   ------------------------------------------------------------------------*/
-   wdiEventData.wdiRequest      = WDI_RECEIVE_FILTER_CLEAR_FILTER_REQ;
-   wdiEventData.pEventData      = pwdiRcvFltPktClearReqInfo;
-   wdiEventData.uEventDataSize  = sizeof(*pwdiRcvFltPktClearReqInfo);
-   wdiEventData.pCBfnc          = wdiReceiveFilterClearFilterCallback;
-   wdiEventData.pUserData       = pUserData;
-
-
-   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-}
-
-/**
- @brief Process 8023 Multicast List Request function
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_Process8023MulticastListReq
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-   WDI_RcvFltPktSetMcListReqParamsType* pwdiFltPktSetMcListReqParamsType  = NULL;
-   WDI_8023MulticastListCb    wdi8023MulticastListCb = NULL;
-   wpt_uint8*                 pSendBuffer           = NULL;
-   wpt_uint16                 usDataOffset          = 0;
-   wpt_uint16                 usSendSize            = 0;
-   tpHalRcvFltMcAddrListType  pRcvFltMcAddrListType;
-   wpt_uint8                  i;
-   wpt_uint8                  ucCurrentBSSSesIdx = 0;
-   WDI_BSSSessionType*        pBSSSes = NULL;
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   pRcvFltMcAddrListType = wpalMemoryAllocate(sizeof(tHalRcvFltMcAddrListType)) ;
-   if( NULL == pRcvFltMcAddrListType )
-   {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "Failed to alloc in WDI_Process8023MulticastListReq");
-     return WDI_STATUS_E_FAILURE; 
-   }
-
-   /*-------------------------------------------------------------------------
-     Sanity check
-   -------------------------------------------------------------------------*/
-   if (( NULL == pEventData ) ||
-       ( NULL == (pwdiFltPktSetMcListReqParamsType =
-       (WDI_RcvFltPktSetMcListReqParamsType*)pEventData->pEventData)) ||
-       ( NULL == (wdi8023MulticastListCb =
-       (WDI_8023MulticastListCb)pEventData->pCBfnc)))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
-      wpalMemoryFree(pRcvFltMcAddrListType);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-   ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx, 
-                            pwdiFltPktSetMcListReqParamsType->mcAddrList.bssId, 
-                            &pBSSSes);  
-   if ( NULL == pBSSSes )
-   {
-       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 " %s : Association for this BSSID does not exist",__func__);
-       wpalMemoryFree(pRcvFltMcAddrListType);   
-       return WDI_STATUS_E_FAILURE; 
-   }
-
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
-                         WDI_8023_MULTICAST_LIST_REQ,
-                         sizeof(tHalRcvFltMcAddrListType),
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-       ( usSendSize < (usDataOffset + sizeof(tHalRcvFltMcAddrListType))))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Unable to get send buffer in "
-                  "WDI_Process8023MulticastListReq() %x %x %x",
-                  pEventData, pwdiFltPktSetMcListReqParamsType,
-                  wdi8023MulticastListCb);
-      wpalMemoryFree(pRcvFltMcAddrListType);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-   pRcvFltMcAddrListType->cMulticastAddr = 
-       pwdiFltPktSetMcListReqParamsType->mcAddrList.ulMulticastAddrCnt;
-   for( i = 0; i < pRcvFltMcAddrListType->cMulticastAddr; i++ )
-   {
-      wpalMemoryCopy(pRcvFltMcAddrListType->multicastAddr[i],
-                 pwdiFltPktSetMcListReqParamsType->mcAddrList.multicastAddr[i],
-                 sizeof(tSirMacAddr));
-   }
-
-   pRcvFltMcAddrListType->bssIdx = pBSSSes->ucBSSIdx;
-   wpalMemoryCopy( pSendBuffer+usDataOffset, 
-                   pRcvFltMcAddrListType, 
-                   sizeof(tHalRcvFltMcAddrListType)); 
-
-   pWDICtx->wdiReqStatusCB     = pwdiFltPktSetMcListReqParamsType->wdiReqStatusCB;
-   pWDICtx->pReqStatusUserData = pwdiFltPktSetMcListReqParamsType->pUserData;
-
-
-   wpalMemoryFree(pRcvFltMcAddrListType);
-   /*-------------------------------------------------------------------------
-     Send Get STA Request to HAL
-   -------------------------------------------------------------------------*/
-   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
-                        wdi8023MulticastListCb, pEventData->pUserData,
-                        WDI_8023_MULTICAST_LIST_RESP);
-}
-
-/**
- @brief Process Receive Filter Set Filter Request function
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessReceiveFilterSetFilterReq
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-   WDI_SetRcvPktFilterReqParamsType* pwdiSetRcvPktFilterReqInfo  = NULL;
-   WDI_ReceiveFilterSetFilterCb      wdiReceiveFilterSetFilterCb = NULL;
-   wpt_uint8*                 pSendBuffer           = NULL;
-   wpt_uint16                 usDataOffset          = 0;
-   wpt_uint16                 usSendSize            = 0;
-   wpt_uint32                 usRcvPktFilterCfgSize;
-   tHalRcvPktFilterCfgType    *pRcvPktFilterCfg = NULL;
-   wpt_uint8                  i;
-   wpt_uint8                  ucCurrentBSSSesIdx = 0;
-   WDI_BSSSessionType*        pBSSSes = NULL;
-   tHalSessionizedRcvPktFilterCfgType *pSessRcvPktFilterCfg = NULL;
-   wpt_uint32                 usSessRcvPktFilterCfgSize;
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*-------------------------------------------------------------------------
-     Sanity check
-   -------------------------------------------------------------------------*/
-   if (( NULL == pEventData ) ||
-       ( NULL == (pwdiSetRcvPktFilterReqInfo =
-       (WDI_SetRcvPktFilterReqParamsType*)pEventData->pEventData)) ||
-       ( NULL == (wdiReceiveFilterSetFilterCb =
-       (WDI_ReceiveFilterSetFilterCb)pEventData->pCBfnc)))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-   ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx, 
-                            pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.bssId, 
-                            &pBSSSes);  
-   if ( NULL == pBSSSes )
-   {
-       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 " %s : Association for this BSSID does not exist",__func__);
-       return WDI_STATUS_E_FAILURE; 
-   }
-
-   if( WDI_getFwWlanFeatCaps(SLM_SESSIONIZATION) )
-   {
-
-        usSessRcvPktFilterCfgSize = sizeof(tHalSessionizedRcvPktFilterCfgType) + 
-            ((pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams - 1)
-             * sizeof(tHalSessionizedRcvPktFilterCfgType));
-
-       pSessRcvPktFilterCfg = (tHalSessionizedRcvPktFilterCfgType *)wpalMemoryAllocate(
-                                                   usSessRcvPktFilterCfgSize);
-
-       if(NULL == pSessRcvPktFilterCfg)
-       {
-         WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                 "%s: Failed to allocate memory for "
-                 "tHalRcvPktFilterCfgType: %x %x %x ",
-                 __func__, pWDICtx, pEventData, pEventData->pEventData);
-         WDI_ASSERT(0);
-         return WDI_STATUS_E_FAILURE;
-       }
-
-       wpalMemoryZero(pSessRcvPktFilterCfg, usSessRcvPktFilterCfgSize);
-       
-        /*-----------------------------------------------------------------------
-          Get message buffer
-        -----------------------------------------------------------------------*/
-
-       if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_RECEIVE_FILTER_SET_FILTER_REQ,
-                              usSessRcvPktFilterCfgSize,
-                              &pSendBuffer, &usDataOffset, &usSendSize))||
-            ( usSendSize < (usDataOffset + usSessRcvPktFilterCfgSize)))
-        {
-           WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                       "Unable to get send buffer in "
-                       "WDI_ProcessReceiveFilterSetFilterReq() %x %x %x",
-                       pEventData, pwdiSetRcvPktFilterReqInfo,
-                       wdiReceiveFilterSetFilterCb);
-           WDI_ASSERT(0);
-           wpalMemoryFree(pSessRcvPktFilterCfg);
-           return WDI_STATUS_E_FAILURE;
-        }
-
-        WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                   "UsData Off %d UsSend %d cfg %d",usDataOffset,
-                   usSendSize,pSessRcvPktFilterCfg);
-       
-        pSessRcvPktFilterCfg->filterId = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.filterId;
-        pSessRcvPktFilterCfg->filterType = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.filterType;
-        pSessRcvPktFilterCfg->numParams = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams;
-        pSessRcvPktFilterCfg->coleasceTime = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.coalesceTime;
-
-        pSessRcvPktFilterCfg->bssIdx = pBSSSes->ucBSSIdx;
-
-        WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                   "Out: FID %d FT %d",pSessRcvPktFilterCfg->filterId,
-                   pSessRcvPktFilterCfg->filterType);
-        WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                   "NParams %d CT %d",pSessRcvPktFilterCfg->numParams, 
-                   pSessRcvPktFilterCfg->coleasceTime);
-       
-        for ( i = 0; i < pSessRcvPktFilterCfg->numParams; i++ )
-        {
-            pSessRcvPktFilterCfg->paramsData[i].protocolLayer =
-                pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].protocolLayer;
-            pSessRcvPktFilterCfg->paramsData[i].cmpFlag =
-                pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].cmpFlag;
-            pSessRcvPktFilterCfg->paramsData[i].dataOffset =
-                pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataOffset;
-             pSessRcvPktFilterCfg->paramsData[i].dataLength =
-                 pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataLength;
-       
-            wpalMemoryCopy(&pSessRcvPktFilterCfg->paramsData[i].compareData,
-                         &pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].compareData,
-                         8);
-            wpalMemoryCopy(&pSessRcvPktFilterCfg->paramsData[i].dataMask,
-                         &pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataMask,
-                         8);
-       
-           WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                "Out:Proto %d Comp Flag %d \n",
-                pSessRcvPktFilterCfg->paramsData[i].protocolLayer,
-                pSessRcvPktFilterCfg->paramsData[i].cmpFlag);
-
-           WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                "Data Offset %d Data Len %d\n",
-                pSessRcvPktFilterCfg->paramsData[i].dataOffset,
-                pSessRcvPktFilterCfg->paramsData[i].dataLength);
-       
-           WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                "CData: %d:%d:%d:%d:%d:%d\n",
-                pSessRcvPktFilterCfg->paramsData[i].compareData[0],
-                pSessRcvPktFilterCfg->paramsData[i].compareData[1],
-                pSessRcvPktFilterCfg->paramsData[i].compareData[2],
-                pSessRcvPktFilterCfg->paramsData[i].compareData[3],
-                pSessRcvPktFilterCfg->paramsData[i].compareData[4],
-                pSessRcvPktFilterCfg->paramsData[i].compareData[5]);
-       
-           WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                "MData: %d:%d:%d:%d:%d:%d\n",
-                pSessRcvPktFilterCfg->paramsData[i].dataMask[0],
-                pSessRcvPktFilterCfg->paramsData[i].dataMask[1],
-                pSessRcvPktFilterCfg->paramsData[i].dataMask[2],
-                pSessRcvPktFilterCfg->paramsData[i].dataMask[3],
-                pSessRcvPktFilterCfg->paramsData[i].dataMask[4],
-                pSessRcvPktFilterCfg->paramsData[i].dataMask[5]);
-        }
-       
-        wpalMemoryCopy( pSendBuffer+usDataOffset,
-                        pSessRcvPktFilterCfg,
-                        usSessRcvPktFilterCfgSize);
-       
-       
-        pWDICtx->wdiReqStatusCB     = pwdiSetRcvPktFilterReqInfo->wdiReqStatusCB;
-        pWDICtx->pReqStatusUserData = pwdiSetRcvPktFilterReqInfo->pUserData;
-
-        wpalMemoryFree(pSessRcvPktFilterCfg);
-
-   }
-   /*If SLM_SESSIONIZATION is not supported then do this */
-   else
-   {
-       usRcvPktFilterCfgSize = sizeof(tHalRcvPktFilterCfgType) + 
-            ((pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams - 1)
-            * sizeof(tHalRcvPktFilterParams));
-
-      pRcvPktFilterCfg = (tHalRcvPktFilterCfgType *)wpalMemoryAllocate(
-                                              usRcvPktFilterCfgSize);
-
-      if(NULL == pRcvPktFilterCfg)
-      {
-            WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                "%s: Failed to allocate memory for "
-                "tHalRcvPktFilterCfgType: %x %x %x ",
-                __func__, pWDICtx, pEventData, pEventData->pEventData);
-            WDI_ASSERT(0);
-            return WDI_STATUS_E_FAILURE;
-      }
-
-      wpalMemoryZero(pRcvPktFilterCfg, usRcvPktFilterCfgSize);
-
-       /*-----------------------------------------------------------------------
-         Get message buffer
-       -----------------------------------------------------------------------*/
-        if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_RECEIVE_FILTER_SET_FILTER_REQ,
-                         usRcvPktFilterCfgSize,
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-            ( usSendSize < (usDataOffset + usRcvPktFilterCfgSize)))
-        {
-              WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Unable to get send buffer in "
-                  "WDI_ProcessReceiveFilterSetFilterReq() %x %x %x",
-                  pEventData, pwdiSetRcvPktFilterReqInfo,
-                  wdiReceiveFilterSetFilterCb);
-              WDI_ASSERT(0);
-              wpalMemoryFree(pRcvPktFilterCfg);
-              return WDI_STATUS_E_FAILURE;
-        }
-
-       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-              "UsData Off %d UsSend %d cfg %d",usDataOffset,
-              usSendSize,usRcvPktFilterCfgSize);
-
-       pRcvPktFilterCfg->filterId = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.filterId;
-       pRcvPktFilterCfg->filterType = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.filterType;
-       pRcvPktFilterCfg->numParams = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.numFieldParams;
-       pRcvPktFilterCfg->coalesceTime = pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.coalesceTime;
-
-       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-              "Out: FID %d FT %d",pRcvPktFilterCfg->filterId,
-              pRcvPktFilterCfg->filterType);
-       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-              "NParams %d CT %d",pRcvPktFilterCfg->numParams, 
-              pRcvPktFilterCfg->coalesceTime);
-
-       for ( i = 0; i < pRcvPktFilterCfg->numParams; i++ )
-       {
-           pRcvPktFilterCfg->paramsData[i].protocolLayer =
-               pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].protocolLayer;
-           pRcvPktFilterCfg->paramsData[i].cmpFlag =
-               pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].cmpFlag;
-           pRcvPktFilterCfg->paramsData[i].dataOffset =
-               pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataOffset;
-           pRcvPktFilterCfg->paramsData[i].dataLength =
-               pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataLength;
-
-           wpalMemoryCopy(&pRcvPktFilterCfg->paramsData[i].compareData,
-                    &pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].compareData,
-                    8);
-           wpalMemoryCopy(&pRcvPktFilterCfg->paramsData[i].dataMask,
-                    &pwdiSetRcvPktFilterReqInfo->wdiPktFilterCfg.paramsData[i].dataMask,
-                    8);
-
-          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-           "Out:Proto %d Comp Flag %d \n",
-           pRcvPktFilterCfg->paramsData[i].protocolLayer,
-           pRcvPktFilterCfg->paramsData[i].cmpFlag);
-
-          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-               "Data Offset %d Data Len %d\n",
-               pRcvPktFilterCfg->paramsData[i].dataOffset,
-               pRcvPktFilterCfg->paramsData[i].dataLength);
-
-          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-               "CData: %d:%d:%d:%d:%d:%d\n",
-               pRcvPktFilterCfg->paramsData[i].compareData[0],
-               pRcvPktFilterCfg->paramsData[i].compareData[1],
-               pRcvPktFilterCfg->paramsData[i].compareData[2],
-               pRcvPktFilterCfg->paramsData[i].compareData[3],
-               pRcvPktFilterCfg->paramsData[i].compareData[4],
-               pRcvPktFilterCfg->paramsData[i].compareData[5]);
-
-          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-               "MData: %d:%d:%d:%d:%d:%d\n",
-               pRcvPktFilterCfg->paramsData[i].dataMask[0],
-               pRcvPktFilterCfg->paramsData[i].dataMask[1],
-               pRcvPktFilterCfg->paramsData[i].dataMask[2],
-               pRcvPktFilterCfg->paramsData[i].dataMask[3],
-               pRcvPktFilterCfg->paramsData[i].dataMask[4],
-               pRcvPktFilterCfg->paramsData[i].dataMask[5]);
-        }
-
-       wpalMemoryCopy( pSendBuffer+usDataOffset,
-                   pRcvPktFilterCfg,
-                   usRcvPktFilterCfgSize);
-
-
-       pWDICtx->wdiReqStatusCB     = pwdiSetRcvPktFilterReqInfo->wdiReqStatusCB;
-       pWDICtx->pReqStatusUserData = pwdiSetRcvPktFilterReqInfo->pUserData;
-
-       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-                 "%s",__func__);
-       wpalMemoryFree(pRcvPktFilterCfg);
-  }
-   /*-------------------------------------------------------------------------
-     Send Get STA Request to HAL
-   -------------------------------------------------------------------------*/
-   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
-                        wdiReceiveFilterSetFilterCb, pEventData->pUserData,
-                        WDI_RECEIVE_FILTER_SET_FILTER_RESP);
-}
-
-/**
- @brief Process Packet Filter Match Count Request function
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessFilterMatchCountReq
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-   WDI_RcvFltPktMatchCntReqParamsType*    pwdiRcvFltPktMatchCntReqParamsType =
-                                                                         NULL;
-   WDI_FilterMatchCountCb                 wdiFilterMatchCountCb              =
-                                                                         NULL;
-   wpt_uint8*                             pSendBuffer           = NULL;
-   wpt_uint16                             usDataOffset          = 0;
-   wpt_uint16                             usSendSize            = 0;
-   tHalRcvFltPktMatchCntReqParams         rcvFltPktMatchCntReqParam = {0};
-   wpt_uint8                ucCurrentBSSSesIdx  = 0;
-   WDI_BSSSessionType*        pBSSSes = NULL;
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*-------------------------------------------------------------------------
-     Sanity check
-   -------------------------------------------------------------------------*/
-   if (( NULL == pEventData ) ||
-       ( NULL == (pwdiRcvFltPktMatchCntReqParamsType =
-       (WDI_RcvFltPktMatchCntReqParamsType*)pEventData->pEventData)) ||
-       ( NULL == (wdiFilterMatchCountCb =
-       (WDI_FilterMatchCountCb)pEventData->pCBfnc)))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-   ucCurrentBSSSesIdx = WDI_FindAssocSession( pWDICtx, 
-                               pwdiRcvFltPktMatchCntReqParamsType->bssId, 
-                               &pBSSSes);
-   if ( NULL == pBSSSes )
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                    " %s : Association for this BSSID does not exist",__func__);
-          return WDI_STATUS_E_FAILURE; 
-   }
-
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
-                         WDI_PACKET_COALESCING_FILTER_MATCH_COUNT_REQ,
-                         sizeof(tHalRcvFltPktMatchCntReqParams),
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-       ( usSendSize < (usDataOffset + sizeof(tHalRcvFltPktMatchCntReqParams))))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Unable to get send buffer in "
-                  "WDI_ProcessFilterMatchCountReq() %x %x %x",
-                  pEventData, pwdiRcvFltPktMatchCntReqParamsType,
-                  wdiFilterMatchCountCb);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-   rcvFltPktMatchCntReqParam.bssIdx = pBSSSes->ucBSSIdx;
-   wpalMemoryCopy( pSendBuffer+usDataOffset,
-                   &rcvFltPktMatchCntReqParam,
-                   sizeof(rcvFltPktMatchCntReqParam));
-
-   //
-   // Don't need to fill send buffer other than header
-   //
-   pWDICtx->wdiReqStatusCB     = pwdiRcvFltPktMatchCntReqParamsType->wdiReqStatusCB;
-   pWDICtx->pReqStatusUserData = pwdiRcvFltPktMatchCntReqParamsType->pUserData;
-
-
-   /*-------------------------------------------------------------------------
-     Send Get STA Request to HAL
-   -------------------------------------------------------------------------*/
-   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
-                        wdiFilterMatchCountCb,
-                        pEventData->pUserData,
-                        WDI_PACKET_COALESCING_FILTER_MATCH_COUNT_RESP);
-}
-
-/**
- @brief Process Receive Filter Clear Filter Request function
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessReceiveFilterClearFilterReq
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-   WDI_RcvFltPktClearReqParamsType* pwdiRcvFltPktClearReqParamsType = NULL;
-   WDI_ReceiveFilterClearFilterCb   wdiRcvFltPktClearFilterCb       = NULL;
-   wpt_uint8*                       pSendBuffer           = NULL;
-   wpt_uint16                       usDataOffset          = 0;
-   wpt_uint16                       usSendSize            = 0;
-   tHalRcvFltPktClearParam          rcvFltPktClearParam;
-   wpt_uint8                        ucCurrentSessionId = 0;
-   WDI_BSSSessionType*              pBSSSes = NULL;
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*-------------------------------------------------------------------------
-     Sanity check
-   -------------------------------------------------------------------------*/
-   if (( NULL == pEventData ) ||
-       ( NULL == (pwdiRcvFltPktClearReqParamsType =
-       (WDI_RcvFltPktClearReqParamsType*)pEventData->pEventData)) ||
-       ( NULL == (wdiRcvFltPktClearFilterCb =
-       (WDI_ReceiveFilterClearFilterCb)pEventData->pCBfnc)))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-   ucCurrentSessionId = WDI_FindAssocSession( pWDICtx, 
-                            pwdiRcvFltPktClearReqParamsType->filterClearParam.bssId, 
-                            &pBSSSes);  
-   if ( NULL == pBSSSes )
-   {
-       WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 " %s : Association for this BSSID does not exist",__func__);
-       return WDI_STATUS_E_FAILURE; 
-   }
-
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
-                         WDI_RECEIVE_FILTER_CLEAR_FILTER_REQ,
-                         sizeof(tHalRcvFltPktClearParam),
-                         &pSendBuffer, &usDataOffset, &usSendSize))||
-       ( usSendSize < (usDataOffset + sizeof(tHalRcvFltPktClearParam))))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Unable to get send buffer in "
-                  "WDI_ProcessReceiveFilterClearFilterReq() %x %x %x",
-                  pEventData, pwdiRcvFltPktClearReqParamsType,
-                  wdiRcvFltPktClearFilterCb);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
-
-   rcvFltPktClearParam.status = pwdiRcvFltPktClearReqParamsType->
-                                                    filterClearParam.status;
-   rcvFltPktClearParam.filterId = pwdiRcvFltPktClearReqParamsType->
-                                                    filterClearParam.filterId;
-
-   rcvFltPktClearParam.bssIdx = pBSSSes->ucBSSIdx;
-   wpalMemoryCopy( pSendBuffer+usDataOffset,
-                   &rcvFltPktClearParam,
-                   sizeof(rcvFltPktClearParam));
-
-   pWDICtx->wdiReqStatusCB     = pwdiRcvFltPktClearReqParamsType->wdiReqStatusCB;
-   pWDICtx->pReqStatusUserData = pwdiRcvFltPktClearReqParamsType->pUserData;
-
-
-   /*-------------------------------------------------------------------------
-     Send Get STA Request to HAL
-   -------------------------------------------------------------------------*/
-   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
-                        wdiRcvFltPktClearFilterCb, pEventData->pUserData,
-                        WDI_RECEIVE_FILTER_CLEAR_FILTER_RESP);
-}
-
-/**
- @brief Process 8023 Multicast List Response function
-
- @param  pWDICtx:         pointer to the WLAN DAL context
-         pEventData:      pointer to the event information structure
-
- @see
- @return Result of the function call
-*/
-WDI_Status
-WDI_Process8023MulticastListRsp
-(
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
-)
-{
-   eHalStatus           halStatus;
-   WDI_8023MulticastListCb wdi8023MulticastListCb;
-   tHalRcvFltPktSetMcListRspType halRcvFltPktSetMcListRsp;
-   WDI_RcvFltPktSetMcListRspParamsType  wdiRcvFltPktSetMcListRspInfo;
-   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
-
-   /*-------------------------------------------------------------------------
-     Sanity check
-   -------------------------------------------------------------------------*/
-   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
-       ( NULL == pEventData->pEventData ))
-   {
-      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-
+=======
    wdi8023MulticastListCb = (WDI_8023MulticastListCb)pWDICtx->pfncRspCB;
+>>>>>>> 657b0e9... prima update
 
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
-   if(WDI_getFwWlanFeatCaps(SLM_SESSIONIZATION))
-   {
-        wpalMemoryCopy( &halRcvFltPktSetMcListRsp,
-                   pEventData->pEventData,
-                   sizeof(halRcvFltPktSetMcListRsp));
-
-       wdiRcvFltPktSetMcListRspInfo.wdiStatus =   
-                       WDI_HAL_2_WDI_STATUS(halRcvFltPktSetMcListRsp.status);
-       wdiRcvFltPktSetMcListRspInfo.bssIdx =   
-                       halRcvFltPktSetMcListRsp.bssIdx;
-   }
-   else
-   {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiRcvFltPktSetMcListRspInfo.wdiStatus = WDI_HAL_2_WDI_STATUS(halStatus);
-   }
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
    /*Notify UMAC*/
-   wdi8023MulticastListCb(&wdiRcvFltPktSetMcListRspInfo, pWDICtx->pRspCBUserData);
+   wdi8023MulticastListCb(wdiStatus, pWDICtx->pRspCBUserData);
 
    return WDI_STATUS_SUCCESS;
 }
@@ -29270,14 +30604,13 @@ WDI_ProcessReceiveFilterSetFilterRsp
   WDI_EventInfoType*     pEventData
 )
 {
+   WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_ReceiveFilterSetFilterCb wdiReceiveFilterSetFilterCb;
-   tHalSetPktFilterRspParams    halSetPktFilterRspParams;
-   WDI_SetRcvPktFilterRspParamsType wdiSetRcvPktFilterRspInfo;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-          "%s",__func__);
+          "%s",__FUNCTION__);
 
    /*-------------------------------------------------------------------------
      Sanity check
@@ -29286,7 +30619,7 @@ WDI_ProcessReceiveFilterSetFilterRsp
        ( NULL == pEventData->pEventData ))
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
+                  "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -29297,22 +30630,11 @@ WDI_ProcessReceiveFilterSetFilterRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
-   if(WDI_getFwWlanFeatCaps(SLM_SESSIONIZATION))
-   {
-        wpalMemoryCopy( &halSetPktFilterRspParams,
-                    pEventData->pEventData,
-                    sizeof(halSetPktFilterRspParams));
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
-       wdiSetRcvPktFilterRspInfo.bssIdx = halSetPktFilterRspParams.bssIdx;
-       wdiSetRcvPktFilterRspInfo.wdiStatus = WDI_HAL_2_WDI_STATUS(halSetPktFilterRspParams.status);
-    }
-   else
-    {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiSetRcvPktFilterRspInfo.wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
-    }
    /*Notify UMAC*/
-   wdiReceiveFilterSetFilterCb(&wdiSetRcvPktFilterRspInfo, pWDICtx->pRspCBUserData);
+   wdiReceiveFilterSetFilterCb(wdiStatus, pWDICtx->pRspCBUserData);
 
    return WDI_STATUS_SUCCESS;
 }
@@ -29333,15 +30655,15 @@ WDI_ProcessFilterMatchCountRsp
   WDI_EventInfoType*     pEventData
 )
 {
+   WDI_Status           wdiStatus;
    eHalStatus           halStatus;
+
    WDI_FilterMatchCountCb   wdiFilterMatchCountCb;
-   tHalRcvFltPktMatchRspParams  halRcvFltrPktMatachRsp;
-   WDI_RcvFltPktMatchCntRspParamsType wdiRcvFltPktMatchRspParams;
 
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
+             "%s",__FUNCTION__);
 
    /*-------------------------------------------------------------------------
      Sanity check
@@ -29350,7 +30672,7 @@ WDI_ProcessFilterMatchCountRsp
        ( NULL == pEventData->pEventData ))
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
+                  "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -29360,23 +30682,11 @@ WDI_ProcessFilterMatchCountRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
-   if(WDI_getFwWlanFeatCaps(SLM_SESSIONIZATION))
-   {
-        wpalMemoryCopy( &halRcvFltrPktMatachRsp,
-                   pEventData->pEventData,
-                   sizeof(halRcvFltrPktMatachRsp));
-            
-       wdiRcvFltPktMatchRspParams.wdiStatus = WDI_HAL_2_WDI_STATUS(halRcvFltrPktMatachRsp.status);
-       wdiRcvFltPktMatchRspParams.bssIdx = halRcvFltrPktMatachRsp.bssIdx;
-   }
-   else
-   {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiRcvFltPktMatchRspParams.wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
-   }
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
    /*Notify UMAC*/
-   wdiFilterMatchCountCb(&wdiRcvFltPktMatchRspParams, pWDICtx->pRspCBUserData);
+   wdiFilterMatchCountCb(wdiStatus, pWDICtx->pRspCBUserData);
 
    return WDI_STATUS_SUCCESS;
 }
@@ -29397,14 +30707,13 @@ WDI_ProcessReceiveFilterClearFilterRsp
   WDI_EventInfoType*     pEventData
 )
 {
+   WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_ReceiveFilterClearFilterCb wdiReceiveFilterClearFilterCb;
-   tHalRcvFltPktClearParam  halRcvFltPktClearRspMsg;
-   WDI_RcvFltPktClearRspParamsType wdiRcvFltPktClearRspParamsType;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-             "%s",__func__);
+             "%s",__FUNCTION__);
 
    /*-------------------------------------------------------------------------
      Sanity check
@@ -29413,7 +30722,7 @@ WDI_ProcessReceiveFilterClearFilterRsp
        ( NULL == pEventData->pEventData ))
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
+                  "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
@@ -29424,25 +30733,11 @@ WDI_ProcessReceiveFilterClearFilterRsp
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
-   if(WDI_getFwWlanFeatCaps(SLM_SESSIONIZATION))
-   {
-       wpalMemoryCopy( &halRcvFltPktClearRspMsg,
-                   pEventData->pEventData,
-                   sizeof(halRcvFltPktClearRspMsg));
-
-       wdiRcvFltPktClearRspParamsType.wdiStatus =   
-                       WDI_HAL_2_WDI_STATUS(halRcvFltPktClearRspMsg.status);
-       wdiRcvFltPktClearRspParamsType.bssIdx =   
-                       halRcvFltPktClearRspMsg.bssIdx;
-   }
-   else
-   {
-       halStatus = *((eHalStatus*)pEventData->pEventData);
-       wdiRcvFltPktClearRspParamsType.wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
-    }
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
    /*Notify UMAC*/
-   wdiReceiveFilterClearFilterCb(&wdiRcvFltPktClearRspParamsType, pWDICtx->pRspCBUserData);
+   wdiReceiveFilterClearFilterCb(wdiStatus, pWDICtx->pRspCBUserData);
 
    return WDI_STATUS_SUCCESS;
 }
@@ -29530,6 +30825,592 @@ WDI_SetPowerParamsReq
  @see
  @return Result of the function call
 */
+WDI_Status
+WDI_ProcessSetPowerParamsReq
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_SetPowerParamsReqParamsType* pwdiPowerParamsReqParams = NULL;
+   WDI_SetPowerParamsCb             wdiPowerParamsCb         = NULL;
+   wpt_uint8*                       pSendBuffer              = NULL;
+   wpt_uint16                       usDataOffset             = 0;
+   wpt_uint16                       usSendSize               = 0;
+   tSetPowerParamsType              powerParams;
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiPowerParamsReqParams = (WDI_SetPowerParamsReqParamsType*)pEventData->pEventData)) ||
+       ( NULL == (wdiPowerParamsCb   = (WDI_SetPowerParamsCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_SET_POWER_PARAMS_REQ,
+                         sizeof(powerParams),
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + sizeof(powerParams) )))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in Set PNO req %x %x %x",
+                  pEventData, pwdiPowerParamsReqParams, wdiPowerParamsCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+  /*  Ignore DTIM */
+  powerParams.uIgnoreDTIM =
+    pwdiPowerParamsReqParams->wdiSetPowerParamsInfo.uIgnoreDTIM;
+
+  /*DTIM Period*/
+  powerParams.uDTIMPeriod =
+    pwdiPowerParamsReqParams->wdiSetPowerParamsInfo.uDTIMPeriod;
+
+  /* Listen Interval */
+  powerParams.uListenInterval=
+    pwdiPowerParamsReqParams->wdiSetPowerParamsInfo.uListenInterval;
+
+  /* Broadcast Multicas Filter  */
+  powerParams.uBcastMcastFilter =
+    pwdiPowerParamsReqParams->wdiSetPowerParamsInfo.uBcastMcastFilter;
+
+  /* Beacon Early Termination */
+  powerParams.uEnableBET =
+    pwdiPowerParamsReqParams->wdiSetPowerParamsInfo.uEnableBET;
+
+  /* Beacon Early Termination Interval */
+  powerParams.uBETInterval =
+    pwdiPowerParamsReqParams->wdiSetPowerParamsInfo.uBETInterval;
+
+
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &powerParams,
+                   sizeof(powerParams));
+
+   pWDICtx->wdiReqStatusCB     = pwdiPowerParamsReqParams->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiPowerParamsReqParams->pUserData;
+
+   /*-------------------------------------------------------------------------
+     Send Get STA Request to HAL
+   -------------------------------------------------------------------------*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiPowerParamsCb, pEventData->pUserData, WDI_SET_POWER_PARAMS_RESP);
+}
+
+/**
+ @brief Process Power Params Rsp function (called when a
+        response is being received over the bus from HAL)
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessSetPowerParamsRsp
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_SetPowerParamsCb             wdiPowerParamsCb;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+       ( NULL == pEventData->pEventData ))
+   {
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   wdiPowerParamsCb = (WDI_SetPowerParamsCb)pWDICtx->pfncRspCB;
+
+   /*-------------------------------------------------------------------------
+     Extract response and send it to UMAC
+   -------------------------------------------------------------------------*/
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+   /*Notify UMAC*/
+   wdiPowerParamsCb(wdiStatus, pWDICtx->pRspCBUserData);
+
+   return WDI_STATUS_SUCCESS;
+}/*WDI_ProcessSetPowerParamsRsp*/
+
+#ifdef WLAN_FEATURE_GTK_OFFLOAD
+/**
+ @brief WDI_GTKOffloadReq will be called when the upper MAC
+        wants to set GTK Rekey Counter while in power save. Upon
+        the call of this API the WLAN DAL will pack and send a
+        HAL GTK offload request message to the lower RIVA
+        sub-system if DAL is in state STARTED.
+
+        In state BUSY this request will be queued. Request won't
+        be allowed in any other state.
+
+ WDI_PostAssocReq must have been called.
+
+ @param pwdiGtkOffloadParams: the GTK offload as specified
+                      by the Device Interface
+
+        wdiGtkOffloadCb: callback for passing back the response
+        of the GTK offload operation received from the device
+
+        pUserData: user data will be passed back with the
+        callback
+
+ @see WDI_PostAssocReq
+ @return Result of the function call
+*/
+WDI_Status
+WDI_GTKOffloadReq
+(
+  WDI_GtkOffloadReqMsg*      pwdiGtkOffloadReqMsg,
+  WDI_GtkOffloadCb           wdiGtkOffloadCb,
+  void*                      pUserData
+)
+{
+   WDI_EventInfoType      wdiEventData = {0};
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
+   {
+     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+     return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /*------------------------------------------------------------------------
+     Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   wdiEventData.wdiRequest      = WDI_GTK_OFFLOAD_REQ;
+   wdiEventData.pEventData      = pwdiGtkOffloadReqMsg;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiGtkOffloadReqMsg);;
+   wdiEventData.pCBfnc          = wdiGtkOffloadCb;
+   wdiEventData.pUserData       = pUserData;
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
+}
+
+
+/**
+ @brief WDI_GTKOffloadGetInfoReq will be called when the upper
+          MAC wants to get GTK Rekey Counter while in power save.
+          Upon the call of this API the WLAN DAL will pack and
+          send a HAL GTK offload request message to the lower RIVA
+        sub-system if DAL is in state STARTED.
+
+        In state BUSY this request will be queued. Request won't
+        be allowed in any other state.
+
+ WDI_PostAssocReq must have been called.
+
+ @param pwdiGtkOffloadGetInfoReqMsg: the GTK Offload
+                        Information Message as specified by the
+                        Device Interface
+
+          wdiGtkOffloadGetInfoCb: callback for passing back the
+          response of the GTK offload operation received from the
+          device
+
+        pUserData: user data will be passed back with the
+        callback
+
+ @see WDI_PostAssocReq
+ @return Result of the function call
+*/
+WDI_Status
+WDI_GTKOffloadGetInfoReq
+(
+  WDI_GtkOffloadGetInfoReqMsg*  pwdiGtkOffloadGetInfoReqMsg,
+  WDI_GtkOffloadGetInfoCb       wdiGtkOffloadGetInfoCb,
+  void*                          pUserData
+)
+{
+   WDI_EventInfoType      wdiEventData = {0};
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
+   {
+     WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+     return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /*------------------------------------------------------------------------
+     Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   wdiEventData.wdiRequest      = WDI_GTK_OFFLOAD_GETINFO_REQ;
+   wdiEventData.pEventData      = pwdiGtkOffloadGetInfoReqMsg;
+   wdiEventData.uEventDataSize  = sizeof(*pwdiGtkOffloadGetInfoReqMsg);
+   wdiEventData.pCBfnc          = wdiGtkOffloadGetInfoCb;
+   wdiEventData.pUserData       = pUserData;
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
+}
+
+
+/**
+ @brief Process set GTK Offload Request function
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessGTKOffloadReq
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_GtkOffloadReqMsg*    pwdiGtkOffloadReqMsg = NULL;
+   WDI_GtkOffloadCb         wdiGtkOffloadCb      = NULL;
+   wpt_uint8*               pSendBuffer          = NULL;
+   wpt_uint16               usDataOffset         = 0;
+   wpt_uint16               usSendSize           = 0;
+   tHalGtkOffloadReqParams  gtkOffloadReqParams = {0};
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiGtkOffloadReqMsg = (WDI_GtkOffloadReqMsg*)pEventData->pEventData)) ||
+       ( NULL == (wdiGtkOffloadCb   = (WDI_GtkOffloadCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_GTK_OFFLOAD_REQ,
+                         sizeof(gtkOffloadReqParams),
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + sizeof(gtkOffloadReqParams) )))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in GTK offload req %x %x %x",
+                  pEventData, pwdiGtkOffloadReqMsg, wdiGtkOffloadCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   //
+   // Fill gtkOffloadReqParams from pwdiGtkOffloadReqMsg->gtkOffloadReqParams
+   //
+   gtkOffloadReqParams.ulFlags = pwdiGtkOffloadReqMsg->gtkOffloadReqParams.ulFlags;
+   // Copy KCK
+   wpalMemoryCopy(&(gtkOffloadReqParams.aKCK[0]), &(pwdiGtkOffloadReqMsg->gtkOffloadReqParams.aKCK[0]), 16);
+   // Copy KEK
+   wpalMemoryCopy(&(gtkOffloadReqParams.aKEK[0]), &(pwdiGtkOffloadReqMsg->gtkOffloadReqParams.aKEK[0]), 16);
+   // Copy KeyReplayCounter
+   wpalMemoryCopy(&(gtkOffloadReqParams.ullKeyReplayCounter), &(pwdiGtkOffloadReqMsg->gtkOffloadReqParams.ullKeyReplayCounter), sizeof(v_U64_t));
+
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &gtkOffloadReqParams,
+                   sizeof(gtkOffloadReqParams));
+
+   pWDICtx->wdiReqStatusCB     = pwdiGtkOffloadReqMsg->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiGtkOffloadReqMsg->pUserData;
+
+   /*-------------------------------------------------------------------------
+     Send Get STA Request to HAL
+   -------------------------------------------------------------------------*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiGtkOffloadCb, pEventData->pUserData, WDI_GTK_OFFLOAD_RESP);
+}
+
+
+/**
+ @brief Process GTK Offload Get Information Request function
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessGTKOffloadGetInfoReq
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_GtkOffloadGetInfoReqMsg*     pwdiGtkOffloadGetInfoReqMsg = NULL;
+   WDI_GtkOffloadGetInfoCb          wdiGtkOffloadGetInfoCb      = NULL;
+   wpt_uint8*                       pSendBuffer           = NULL;
+   wpt_uint16                       usDataOffset          = 0;
+   wpt_uint16                       usSendSize            = 0;
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiGtkOffloadGetInfoReqMsg = (WDI_GtkOffloadGetInfoReqMsg*)pEventData->pEventData)) ||
+       ( NULL == (wdiGtkOffloadGetInfoCb = (WDI_GtkOffloadGetInfoCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_GTK_OFFLOAD_GETINFO_REQ,
+                         0,
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < usDataOffset))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in WDI_ProcessGTKOffloadGetInfoReq() %x %x %x",
+                  pEventData, pwdiGtkOffloadGetInfoReqMsg, wdiGtkOffloadGetInfoCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   //
+   // Don't need to fill send buffer other than header
+   //
+
+   pWDICtx->wdiReqStatusCB     = pwdiGtkOffloadGetInfoReqMsg->wdiReqStatusCB;
+   pWDICtx->pReqStatusUserData = pwdiGtkOffloadGetInfoReqMsg->pUserData;
+
+   /*-------------------------------------------------------------------------
+     Send Get STA Request to HAL
+   -------------------------------------------------------------------------*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiGtkOffloadGetInfoCb, pEventData->pUserData, WDI_GTK_OFFLOAD_GETINFO_RESP);
+}
+
+/**
+ @brief Process host offload Rsp function (called when a
+        response is being received over the bus from HAL)
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessGtkOffloadRsp
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_GtkOffloadCb    wdiGtkOffloadCb   = NULL;
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   wdiGtkOffloadCb = (WDI_GtkOffloadCb)pWDICtx->pfncRspCB;
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+       ( NULL == pEventData->pEventData))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   /*-------------------------------------------------------------------------
+     Extract response and send it to UMAC
+   -------------------------------------------------------------------------*/
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+   /*Notify UMAC*/
+   wdiGtkOffloadCb( wdiStatus, pWDICtx->pRspCBUserData);
+
+   return WDI_STATUS_SUCCESS;
+}
+
+/**
+ @brief Process GTK Offload Get Information Response function
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_ProcessGTKOffloadGetInfoRsp
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+
+   WDI_GtkOffloadGetInfoCb   wdiGtkOffloadGetInfoCb = NULL;
+
+   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   wdiGtkOffloadGetInfoCb = (WDI_GtkOffloadGetInfoCb)pWDICtx->pfncRspCB;
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+       ( NULL == pEventData->pEventData ))
+   {
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   /*-------------------------------------------------------------------------
+     Extract response and send it to UMAC
+   -------------------------------------------------------------------------*/
+   halStatus = *((eHalStatus*)pEventData->pEventData);
+   wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
+
+   /*Notify UMAC*/
+   //wdiUpdateScanParamsCb(wdiStatus, pWDICtx->pRspCBUserData);
+   //wdiReceiveFilterClearFilterCb(wdiStatus, pWDICtx->pRspCBUserData);
+   wdiGtkOffloadGetInfoCb(wdiStatus, pWDICtx->pRspCBUserData);
+
+   return WDI_STATUS_SUCCESS;
+}
+#endif // WLAN_FEATURE_GTK_OFFLOAD
+
+#ifdef WLAN_WAKEUP_EVENTS
+WDI_Status
+WDI_ProcessWakeReasonInd
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+  WDI_LowLevelIndType *pWdiInd;
+  tpWakeReasonParams pWakeReasonParams;
+  wpt_uint32 allocSize = 0;
+
+  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+            "+%s", __FUNCTION__);
+
+  /*-------------------------------------------------------------------------
+    Sanity check
+  -------------------------------------------------------------------------*/
+  if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+      ( NULL == pEventData->pEventData ))
+  {
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                 "%s: Invalid parameters", __FUNCTION__);
+     WDI_ASSERT( 0 );
+     return WDI_STATUS_E_FAILURE;
+  }
+
+  /*-------------------------------------------------------------------------
+    Extract indication and send it to UMAC
+  -------------------------------------------------------------------------*/
+  pWakeReasonParams = (tpWakeReasonParams)(pEventData->pEventData);
+
+  allocSize = sizeof(WDI_LowLevelIndType) + (pWakeReasonParams->ulStoredDataLen - 1);
+
+  //Allocate memory for WDI_WakeReasonIndType structure
+  pWdiInd = wpalMemoryAllocate(allocSize) ;
+
+  if(NULL == pWdiInd)
+  {
+    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+            "%s: Failed to allocate memory for WDI_WakeReasonIndType: %x %x %x ",
+                __FUNCTION__, pWDICtx, pEventData, pEventData->pEventData);
+    WDI_ASSERT(0);
+    return WDI_STATUS_E_FAILURE;
+  }
+
+  wpalMemoryZero(pWdiInd, allocSize);
+
+  /* Fill in the indication parameters*/
+  // Fill wdiInd.wdiIndicationData.wakeReasonInd structure from wakeReasonInd.wakeReasonParams
+  pWdiInd->wdiIndicationType = WDI_WAKE_REASON_IND;
+  pWdiInd->wdiIndicationData.wdiWakeReasonInd.ulReason = pWakeReasonParams->ulReason;
+  pWdiInd->wdiIndicationData.wdiWakeReasonInd.ulReasonArg = pWakeReasonParams->ulReasonArg;
+  pWdiInd->wdiIndicationData.wdiWakeReasonInd.ulStoredDataLen = pWakeReasonParams->ulStoredDataLen;
+  pWdiInd->wdiIndicationData.wdiWakeReasonInd.ulActualDataLen = pWakeReasonParams->ulActualDataLen;
+  wpalMemoryCopy( (void *)&(pWdiInd->wdiIndicationData.wdiWakeReasonInd.aDataStart[0]),
+                  &(pWakeReasonParams->aDataStart[0]),
+                  pWakeReasonParams->ulStoredDataLen);
+
+  /*Notify UMAC*/
+  pWDICtx->wdiLowLevelIndCB( pWdiInd, pWDICtx->pIndUserData );
+
+  //Free memory allocated for WDI_WakeReasonIndType structure
+  wpalMemoryFree(pWdiInd);
+
+  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+            "-%s", __FUNCTION__);
+
+  return WDI_STATUS_SUCCESS;
+}
+#endif // WLAN_WAKEUP_EVENTS
+
+void WDI_GetWcnssCompiledApiVersion
+(
+  WDI_WlanVersionType     *pWcnssApiVersion
+)
+{
+    pWcnssApiVersion->major    = WLAN_HAL_VER_MAJOR;
+    pWcnssApiVersion->minor    = WLAN_HAL_VER_MINOR;
+    pWcnssApiVersion->version  = WLAN_HAL_VER_VERSION;
+    pWcnssApiVersion->revision = WLAN_HAL_VER_REVISION;
+}
+
+/**
+ @brief Process Set TM Level Rsp function (called when a
+        response is being received over the bus from HAL)
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+ @see
+ @return Result of the function call
+*/
+<<<<<<< HEAD
 WDI_Status
 WDI_ProcessSetPowerParamsReq
 (
@@ -31811,10 +33692,16 @@ WDI_Status
 WDI_ProcessUpdateVHTOpModeRsp
 ( 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WDI_Status
+WDI_ProcessSetTmLevelRsp
+(
+>>>>>>> 657b0e9... prima update
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
@@ -31825,12 +33712,18 @@ WDI_ProcessUpdateVHTOpModeRsp
    eHalStatus           halStatus;
    
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDI_Status           wdiStatus;
+   eHalStatus           halStatus;
+   WDI_SetTmLevelCb     wdiSetTmLevelCb;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
    if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+<<<<<<< HEAD
 <<<<<<< HEAD
        ( NULL == pEventData->pEventData ))
    {
@@ -31843,14 +33736,22 @@ WDI_ProcessUpdateVHTOpModeRsp
    wdiSetTmLevelCb = (WDI_SetPowerParamsCb)pWDICtx->pfncRspCB;
 =======
        ( NULL == pEventData->pEventData))
+=======
+       ( NULL == pEventData->pEventData ))
+>>>>>>> 657b0e9... prima update
    {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
    wdiVHTOpModeCb = (WDI_UpdateVHTOpModeCb)pEventData->pCBfnc;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+   wdiSetTmLevelCb = (WDI_SetPowerParamsCb)pWDICtx->pfncRspCB;
+>>>>>>> 657b0e9... prima update
 
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
@@ -31859,6 +33760,7 @@ WDI_ProcessUpdateVHTOpModeRsp
    wdiStatus   =   WDI_HAL_2_WDI_STATUS(halStatus);
 
    /*Notify UMAC*/
+<<<<<<< HEAD
 <<<<<<< HEAD
    wdiSetTmLevelCb(wdiStatus, pWDICtx->pRspCBUserData);
 
@@ -32112,169 +34014,184 @@ WDI_featureCapsExchangeReq
 
   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
          "%s", __func__);
+=======
+   wdiSetTmLevelCb(wdiStatus, pWDICtx->pRspCBUserData);
 
-  /*-------------------------------------------------------------------------
-    Sanity check 
-  -------------------------------------------------------------------------*/
-   if (( NULL == pEventData ) ||
-       ( NULL == (pwdiVHTOpModeParams = (WDI_UpdateVHTOpMode*)pEventData->pEventData)) ||
-       ( NULL == (wdiVHTOpModeCb   = (WDI_UpdateVHTOpModeCb)pEventData->pCBfnc)))
-   {
-      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "%s: Invalid parameters", __func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-   }
-  
-  /*-----------------------------------------------------------------------
-    Get message buffer
-  -----------------------------------------------------------------------*/
-  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_UPDATE_VHT_OP_MODE_REQ,
-                        sizeof(WDI_UpdateVHTOpMode),
-                        &pSendBuffer, &usDataOffset, &usSendSize))||
-      ( usSendSize < (usDataOffset + sizeof(WDI_UpdateVHTOpMode) )))
-  {
-     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-              "Unable to get send buffer in update vht opMode req");
-     WDI_ASSERT(0);
-     return WDI_STATUS_E_FAILURE;
-  }
-
-  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-            "pwdiVHTOpModeParams->opMode=%d, pwdiVHTOpModeParams->staId=%d\n", pwdiVHTOpModeParams->opMode, pwdiVHTOpModeParams->staId);
-
-  wpalMemoryCopy( pSendBuffer+usDataOffset, pwdiVHTOpModeParams,
-                  sizeof(WDI_UpdateVHTOpMode));
-
-  /*-------------------------------------------------------------------------
-    Send Start Request to HAL 
-  -------------------------------------------------------------------------*/
-  return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize, 
-                       wdiVHTOpModeCb,
-                       pEventData->pUserData, WDI_UPDATE_VHT_OP_MODE_RESP);
-
-}
-
-WDI_Status
-WDI_UpdateVHTOpModeReq
-(
-  WDI_UpdateVHTOpMode    *pData,
-  WDI_UpdateVHTOpModeCb  wdiUpdateVHTOpModeCb,
-  void*                  pUserData
-)
-{
-  WDI_EventInfoType      wdiEventData;
-
-  /*------------------------------------------------------------------------
-    Sanity Check
-  ------------------------------------------------------------------------*/
-  if ( eWLAN_PAL_FALSE == gWDIInitialized )
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-              "WDI API call before module is initialized - Fail request");
-
-    return WDI_STATUS_E_NOT_ALLOWED;
-  }
-
-  /*------------------------------------------------------------------------
-    Fill in Event data and post to the Main FSM
-  ------------------------------------------------------------------------*/
-  wdiEventData.wdiRequest      = WDI_UPDATE_VHT_OP_MODE_REQ;
-  wdiEventData.pEventData      = pData;
-  wdiEventData.uEventDataSize  = sizeof(WDI_UpdateVHTOpMode); 
-  wdiEventData.pCBfnc          = wdiUpdateVHTOpModeCb;
-  wdiEventData.pUserData       = pUserData;
-  
-  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-            "pData->opMode=%d, pData->staId=%d\n", pData->opMode, pData->staId);
-
-  return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-
-} 
-#endif
+   return WDI_STATUS_SUCCESS;
+}/*WDI_ProcessSetTmLevelRsp*/
 
 /**
- @brief WDI_TransportChannelDebug -
-    Display DXE Channel debugging information
-    User may request to display DXE channel snapshot
-    Or if host driver detects any abnormal stcuk may display
-        
- @param  displaySnapshot : Display DXE snapshot option
- @param  enableStallDetect : Enable stall detect feature
-                        This feature will take effect to data performance
-                        Not integrate till fully verification
- @see
- @return none
-*/
-void WDI_TransportChannelDebug
-(
-   wpt_boolean  displaySnapshot,
-   wpt_boolean  toggleStallDetect
-)
-{
-   WDTS_ChannelDebug(displaySnapshot, toggleStallDetect);
-   return;
-}
-/**
- @brief WDI_SsrTimerCB
-    Callback function for SSR timer, if this is called then the graceful
-    shutdown for Riva did not happen.
+ @brief Process Set Thermal Mitigation level Changed request
 
- @param  pUserData : user data to timer
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
 
- @see
- @return none
-*/
-void
-WDI_SsrTimerCB
-(
-  void *pUserData
-)
-{
-  WDI_ControlBlockType*  pWDICtx = (WDI_ControlBlockType*)pUserData;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-  if (NULL == pWDICtx )
-  {
-    WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
-                "%s: Invalid parameters", __func__);
-    WDI_ASSERT(0);
-    return;
-  }
-  wpalRivaSubystemRestart();
-
-  return;
-
-}/*WDI_SsrTimerCB*/
-
-/**
- @brief WDI_SetEnableSSR -
-    This API is called to enable/disable SSR on WDI timeout.
-
- @param  enableSSR : enable/disable SSR
-
- @see
- @return none
-*/
-void WDI_SetEnableSSR(wpt_boolean  enableSSR)
-{
-   gWDICb.bEnableSSR = enableSSR;
-}
-
-
-#ifdef FEATURE_WLAN_LPHB
-/**
- @brief WDI_ProcessLphbInd -
-    This function will be invoked when FW detects low power
-    heart beat failure
-
- @param  pWDICtx : wdi context
-         pEventData : indication data
->>>>>>> d97af3b... add prima wlan driver
  @see
  @return Result of the function call
 */
 WDI_Status
+WDI_ProcessSetTmLevelReq
+(
+  WDI_ControlBlockType*  pWDICtx,
+  WDI_EventInfoType*     pEventData
+)
+{
+   WDI_SetTmLevelReqType           *pwdiSetTmLevelReq = NULL;
+   WDI_SetTmLevelCb                 wdiSetTmLevelCb   = NULL;
+   wpt_uint8*                       pSendBuffer       = NULL;
+   wpt_uint16                       usDataOffset      = 0;
+   wpt_uint16                       usSendSize        = 0;
+   tSetThermalMitgationType         halTmMsg;
+>>>>>>> 657b0e9... prima update
+
+   /*-------------------------------------------------------------------------
+     Sanity check
+   -------------------------------------------------------------------------*/
+   if (( NULL == pEventData ) ||
+       ( NULL == (pwdiSetTmLevelReq = (WDI_SetTmLevelReqType*)pEventData->pEventData)) ||
+       ( NULL == (wdiSetTmLevelCb   = (WDI_SetTmLevelCb)pEventData->pCBfnc)))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "%s: Invalid parameters", __FUNCTION__);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   /*-----------------------------------------------------------------------
+     Get message buffer
+   -----------------------------------------------------------------------*/
+   if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx, WDI_SET_TM_LEVEL_REQ,
+                         sizeof(halTmMsg),
+                         &pSendBuffer, &usDataOffset, &usSendSize))||
+       ( usSendSize < (usDataOffset + sizeof(halTmMsg) )))
+   {
+      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
+                  "Unable to get send buffer in Set PNO req %x %x %x",
+                  pEventData, pwdiSetTmLevelReq, wdiSetTmLevelCb);
+      WDI_ASSERT(0);
+      return WDI_STATUS_E_FAILURE;
+   }
+
+   halTmMsg.thermalMitMode = pwdiSetTmLevelReq->tmMode;
+   halTmMsg.thermalMitLevel = pwdiSetTmLevelReq->tmLevel;
+
+   wpalMemoryCopy( pSendBuffer+usDataOffset,
+                   &halTmMsg,
+                   sizeof(halTmMsg));
+
+   pWDICtx->pReqStatusUserData = pwdiSetTmLevelReq->pUserData;
+   pWDICtx->pfncRspCB = NULL;
+   /*-------------------------------------------------------------------------
+     Send Get STA Request to HAL
+   -------------------------------------------------------------------------*/
+   return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                        wdiSetTmLevelCb, pEventData->pUserData, WDI_SET_TM_LEVEL_RESP);
+}
+
+/* Fill the value from the global features enabled array to the global capabilities
+ * bitmap struct
+ */
+static void
+FillAllFeatureCaps(tWlanFeatCaps *fCaps, placeHolderInCapBitmap *enabledFeat, wpt_int8 len)
+{
+   wpt_int8 i;
+   for (i=0; i<len; i++)
+   {
+      setFeatCaps(fCaps, enabledFeat[i]);
+   }
+}
+
+/**
+ @brief WDI_featureCapsExchangeReq
+        Post feature capability bitmap exchange event.
+        Host will send its own capability to FW in this req and
+        expect FW to send its capability back as a bitmap in Response
+
+ @param
+
+        wdiFeatureCapsExchangeCb: callback called on getting the response.
+        It is kept to mantain similarity between WDI reqs and if needed, can
+        be used in future. Currently, It is set to NULL
+
+        pUserData: user data will be passed back with the
+        callback
+
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+WDI_featureCapsExchangeReq
+(
+  WDI_featureCapsExchangeCb     wdiFeatureCapsExchangeCb,
+  void*                         pUserData
+)
+{
+   WDI_EventInfoType   wdiEventData;
+   wpt_int32           fCapsStructSize;
+
+   /*------------------------------------------------------------------------
+     Sanity Check
+   ------------------------------------------------------------------------*/
+   if ( eWLAN_PAL_FALSE == gWDIInitialized )
+   {
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "WDI API call before module is initialized - Fail request");
+
+      return WDI_STATUS_E_NOT_ALLOWED;
+   }
+
+   /* Allocate memory separately for global variable carrying FW caps */
+   fCapsStructSize = sizeof(tWlanFeatCaps);
+   gpHostWlanFeatCaps = wpalMemoryAllocate(fCapsStructSize);
+   if ( NULL ==  gpHostWlanFeatCaps )
+   {
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+               "Cannot allocate memory for host capability info\n");
+      WDI_ASSERT(0);
+      return WDI_STATUS_MEM_FAILURE;
+   }
+
+   wpalMemoryZero(gpHostWlanFeatCaps, fCapsStructSize);
+
+   /*------------------------------------------------------------------------
+   Fill in Event data and post to the Main FSM
+   ------------------------------------------------------------------------*/
+   FillAllFeatureCaps(gpHostWlanFeatCaps, supportEnabledFeatures,
+      (sizeof(supportEnabledFeatures)/sizeof(supportEnabledFeatures[0])));
+   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
+      "Host caps %x %x %x %x\n",
+      gpHostWlanFeatCaps->featCaps[0],
+      gpHostWlanFeatCaps->featCaps[1],
+      gpHostWlanFeatCaps->featCaps[2],
+      gpHostWlanFeatCaps->featCaps[3]
+   );
+
+   wdiEventData.wdiRequest      = WDI_FEATURE_CAPS_EXCHANGE_REQ;
+   wdiEventData.pEventData      = gpHostWlanFeatCaps;
+   wdiEventData.uEventDataSize  = fCapsStructSize;
+   wdiEventData.pCBfnc          = wdiFeatureCapsExchangeCb;
+   wdiEventData.pUserData       = pUserData;
+
+   return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
+}
+
+/**
+ @brief Process Host-FW Capability Exchange Request function
+
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+
+<<<<<<< HEAD
+ @param  pWDICtx : wdi context
+         pEventData : indication data
+>>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
+ @see
+ @return Result of the function call
+*/
+WDI_Status
+<<<<<<< HEAD
 <<<<<<< HEAD
 WDI_ProcessFeatureCapsExchangeReq
 (
@@ -32303,21 +34220,32 @@ WDI_ProcessFeatureCapsExchangeReq
                  "%s: Invalid parameters", __FUNCTION__);
 =======
 WDI_ProcessLphbInd
+=======
+WDI_ProcessFeatureCapsExchangeReq
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
-  WDI_LowLevelIndType  wdiInd;
-  tHalLowPowerHeartBeatIndParam lphbIndicationParam;
+  wpt_uint8*              pSendBuffer        = NULL;
+  wpt_uint16              usDataOffset       = 0;
+  wpt_uint16              usSendSize         = 0;
+  wpt_uint16              usLen              = 0;
+
   /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+  WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+         "%s", __FUNCTION__);
+
   /*-------------------------------------------------------------------------
-  Sanity check
- -------------------------------------------------------------------------*/
-  if ((NULL == pWDICtx) || (NULL == pEventData) ||
-      (NULL == pEventData->pEventData))
+    Sanity check
+  -------------------------------------------------------------------------*/
+  /* Call back function is NULL since not required for cap exchange req */
+  if (( NULL == pEventData ) ||
+      ( NULL == (tWlanFeatCaps *)pEventData->pEventData))
   {
+<<<<<<< HEAD
      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
                  "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
@@ -32340,10 +34268,15 @@ WDI_ProcessLphbInd
      WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_FATAL,
               "Unable to get send buffer in feat caps exchange req %x %x",
                 pEventData, (tWlanFeatCaps *)pEventData->pEventData);
+=======
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_FATAL,
+                 "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
      WDI_ASSERT(0);
      return WDI_STATUS_E_FAILURE;
   }
 
+<<<<<<< HEAD
   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
        "Host Caps - %x %x %x %x\n",
       ((tWlanFeatCaps *)pEventData->pEventData)->featCaps[0],
@@ -32390,35 +34323,80 @@ WDI_ProcessLphbInd
                lphbIndicationParam.eventReason;
   /*Notify UMAC*/
   if (pWDICtx->wdiLowLevelIndCB)
+=======
+  /*-----------------------------------------------------------------------
+    Get message buffer
+  -----------------------------------------------------------------------*/
+  usLen = sizeof(tWlanFeatCaps);
+
+  if (( WDI_STATUS_SUCCESS != WDI_GetMessageBuffer( pWDICtx,
+                        WDI_FEATURE_CAPS_EXCHANGE_REQ,
+                        usLen,
+                        &pSendBuffer, &usDataOffset, &usSendSize))||
+      ( usSendSize < (usDataOffset + usLen )))
+>>>>>>> 657b0e9... prima update
   {
-    pWDICtx->wdiLowLevelIndCB(&wdiInd, pWDICtx->pIndUserData);
+     WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_FATAL,
+              "Unable to get send buffer in feat caps exchange req %x %x",
+                pEventData, (tWlanFeatCaps *)pEventData->pEventData);
+     WDI_ASSERT(0);
+     return WDI_STATUS_E_FAILURE;
   }
 
-  return WDI_STATUS_SUCCESS;
-}
+  WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
+       "Host Caps - %x %x %x %x\n",
+      ((tWlanFeatCaps *)pEventData->pEventData)->featCaps[0],
+      ((tWlanFeatCaps *)pEventData->pEventData)->featCaps[1],
+      ((tWlanFeatCaps *)pEventData->pEventData)->featCaps[2],
+      ((tWlanFeatCaps *)pEventData->pEventData)->featCaps[3]
+    );
+
+  /* Copy host caps after the offset in the send buffer */
+  wpalMemoryCopy( pSendBuffer+usDataOffset,
+                  (tWlanFeatCaps *)pEventData->pEventData,
+                  usLen);
+
+  /*-------------------------------------------------------------------------
+    Send Start Request to HAL
+  -------------------------------------------------------------------------*/
+  return  WDI_SendMsg( pWDICtx, pSendBuffer, usSendSize,
+                       (WDI_StartRspCb)pEventData->pCBfnc,
+                       pEventData->pUserData, WDI_FEATURE_CAPS_EXCHANGE_RESP);
+
+}/*WDI_ProcessFeatureCapsExchangeReq*/
 
 /**
- @brief WDI_ProcessLphbCfgRsp -
-    LPHB configuration response from FW
+ @brief Process Host-FW Capability Exchange Response function
 
+<<<<<<< HEAD
  @param  pWDICtx : wdi context
          pEventData : indication data
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @param  pWDICtx:         pointer to the WLAN DAL context
+         pEventData:      pointer to the event information structure
+>>>>>>> 657b0e9... prima update
 
  @see
  @return Result of the function call
 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 WDI_Status
 WDI_ProcessFeatureCapsExchangeRsp
 =======
 WDI_Status WDI_ProcessLphbCfgRsp
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WDI_Status
+WDI_ProcessFeatureCapsExchangeRsp
+>>>>>>> 657b0e9... prima update
 (
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 )
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
    WDI_featureCapsExchangeCb    wdiFeatureCapsExchangeCb;
    wpt_int32                   fCapsStructSize;
@@ -32440,22 +34418,37 @@ WDI_Status WDI_ProcessLphbCfgRsp
    WDI_Status           wdiStatus;
    eHalStatus           halStatus;
    WDI_LphbCfgCb        wdiLphbCfgCb;
+=======
+   WDI_featureCapsExchangeCb    wdiFeatureCapsExchangeCb;
+   wpt_int32                   fCapsStructSize;
+>>>>>>> 657b0e9... prima update
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+   WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+          "%s", __FUNCTION__);
 
    /*-------------------------------------------------------------------------
      Sanity check
    -------------------------------------------------------------------------*/
-   if ((NULL == pWDICtx) || (NULL == pEventData) ||
-       (NULL == pEventData->pEventData))
+   if (( NULL == pWDICtx ) || ( NULL == pEventData ) ||
+       ( NULL == pEventData->pEventData ))
    {
+      /* It will go here when riva is old (doesn't understand this msg) and host is new */
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                   "%s: Invalid parameters", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                  "%s: Invalid parameters", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
       WDI_ASSERT(0);
       return WDI_STATUS_E_FAILURE;
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    /* Allocate memory separately for global variable carrying FW caps */
    fCapsStructSize = sizeof(tWlanFeatCaps);
    gpFwWlanFeatCaps = wpalMemoryAllocate(fCapsStructSize);
@@ -32466,6 +34459,7 @@ WDI_Status WDI_ProcessLphbCfgRsp
       WDI_ASSERT(0);
       return WDI_STATUS_MEM_FAILURE;
    }
+<<<<<<< HEAD
 
    /*-------------------------------------------------------------------------
      Unpack HAL Response Message - the header was already extracted by the
@@ -32492,13 +34486,18 @@ WDI_Status WDI_ProcessLphbCfgRsp
       wdiFeatureCapsExchangeCb(NULL, NULL);
 =======
    wdiLphbCfgCb = (WDI_LphbCfgCb)pWDICtx->pfncRspCB;
+=======
+>>>>>>> 657b0e9... prima update
 
+   /*-------------------------------------------------------------------------
+     Unpack HAL Response Message - the header was already extracted by the
+     main Response Handling procedure
+   -------------------------------------------------------------------------*/
    /*-------------------------------------------------------------------------
      Extract response and send it to UMAC
    -------------------------------------------------------------------------*/
-   halStatus = *((eHalStatus*)pEventData->pEventData);
-   wdiStatus = WDI_HAL_2_WDI_STATUS(halStatus);
 
+<<<<<<< HEAD
    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
               "LPHB Cfg Rsp Return status %d", wdiStatus);
    /*Notify UMAC*/
@@ -32507,12 +34506,32 @@ WDI_Status WDI_ProcessLphbCfgRsp
       wdiLphbCfgCb(wdiStatus, pWDICtx->pRspCBUserData);
    }
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   wpalMemoryCopy(gpFwWlanFeatCaps,(tWlanFeatCaps *) pEventData -> pEventData,
+                    fCapsStructSize);
+   WPAL_TRACE( eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_INFO,
+      "FW caps %x %x %x %x\n",
+      gpFwWlanFeatCaps->featCaps[0],
+      gpFwWlanFeatCaps->featCaps[1],
+      gpFwWlanFeatCaps->featCaps[2],
+      gpFwWlanFeatCaps->featCaps[3]
+     );
+
+   wdiFeatureCapsExchangeCb = (WDI_featureCapsExchangeCb) pWDICtx -> pfncRspCB;
+
+   /*Notify UMAC - there is no callback right now but can be used in future if reqd */
+   if (wdiFeatureCapsExchangeCb != NULL)
+      wdiFeatureCapsExchangeCb(NULL, NULL);
+>>>>>>> 657b0e9... prima update
 
    return WDI_STATUS_SUCCESS;
 }
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  @brief WDI_getHostWlanFeatCaps
         WDI API that returns whether the feature passed to it as enum value in
         "placeHolderInCapBitmap" is supported by Host or not. It uses WDI global
@@ -32521,6 +34540,7 @@ WDI_Status WDI_ProcessLphbCfgRsp
         whether a particular feature is supported.
 
  @param
+<<<<<<< HEAD
 
         feat_enum_value: enum value for the feature as in placeHolderInCapBitmap in wlan_hal_msg.h.
 
@@ -32602,223 +34622,84 @@ void WDI_TransportChannelDebug
 =======
  @brief WDI_ProcessLPHBConfReq -
     LPHB configuration request to FW
+=======
+>>>>>>> 657b0e9... prima update
 
- @param  pWDICtx : wdi context
-         pEventData : indication data
+        feat_enum_value: enum value for the feature as in placeHolderInCapBitmap in wlan_hal_msg.h.
 
+ @see
+ @return
+        0 - if the feature is NOT supported in host
+        any non-zero value - if the feature is SUPPORTED in host.
+*/
+wpt_uint8 WDI_getHostWlanFeatCaps(wpt_uint8 feat_enum_value)
+{
+   wpt_uint8 featSupported = 0;
+   if (gpHostWlanFeatCaps != NULL)
+   {
+      getFeatCaps(gpHostWlanFeatCaps, feat_enum_value, featSupported);
+   }
+   else
+   {
+      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+        "Caps exchange feature NOT supported. Return NOT SUPPORTED for %u feature", feat_enum_value);
+   }
+   return featSupported;
+}
+
+/**
+ @brief WDI_getFwWlanFeatCaps
+        WDI API that returns whether the feature passed to it as enum value in
+        "placeHolderInCapBitmap" is supported by FW or not. It uses WDI global
+        variable storing host capability bitmap to find this. This can be used by
+        other moduels to decide certain things like call different APIs based on
+        whether a particular feature is supported.
+
+ @param
+
+        feat_enum_value: enum value for the feature as in placeHolderInCapBitmap
+                                    in wlan_hal_msg.h.
+
+ @see
+ @return
+        0 - if the feature is NOT supported in FW
+        any non-zero value - if the feature is SUPPORTED in FW.
+*/
+wpt_uint8 WDI_getFwWlanFeatCaps(wpt_uint8 feat_enum_value)
+{
+    wpt_uint8 featSupported = 0;
+    if (gpFwWlanFeatCaps != NULL)
+    {
+      getFeatCaps(gpFwWlanFeatCaps, feat_enum_value, featSupported);
+    }
+    else
+    {
+       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+         "Caps exchange feature NOT supported. Return NOT SUPPORTED for %u feature", feat_enum_value);
+    }
+    return featSupported;
+}
+
+/**
+ @brief WDI_TransportChannelDebug -
+    Display DXE Channel debugging information
+    User may request to display DXE channel snapshot
+    Or if host driver detects any abnormal stcuk may display
+
+ @param  displaySnapshot : Dispaly DXE snapshot option
+ @param  enableStallDetect : Enable stall detect feature
+                        This feature will take effect to data performance
+                        Not integrate till fully verification
  @see
  @return none
 */
-WDI_Status WDI_ProcessLPHBConfReq
+void WDI_TransportChannelDebug
 (
-  WDI_ControlBlockType*  pWDICtx,
-  WDI_EventInfoType*     pEventData
+   wpt_boolean  displaySnapshot,
+   wpt_boolean  toggleStallDetect
 )
 {
-  WDI_LPHBReq                   *pLphbReqParams;
-  WDI_Status                     wdiStatus;
-  wpt_uint8*                     pSendBuffer        = NULL;
-  wpt_uint16                     usDataOffset       = 0;
-  wpt_uint16                     usSendSize         = 0;
-  tHalLowPowerHeartBeatReq      *halLphbReqRarams;
-  /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-  /*-------------------------------------------------------------------------
-     Sanity check
-  -------------------------------------------------------------------------*/
-  if ((NULL == pEventData) || (NULL == pEventData->pEventData))
-  {
-      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-               "%s: Invalid parameters in Suspend ind",__func__);
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-  pLphbReqParams = (WDI_LPHBReq *)pEventData->pEventData;
-
-   /*-----------------------------------------------------------------------
-     Get message buffer
-   -----------------------------------------------------------------------*/
-  if ((WDI_STATUS_SUCCESS != WDI_GetMessageBuffer(pWDICtx,
-                              WDI_LPHB_CFG_REQ,
-                              sizeof(tHalLowPowerHeartBeatReqMsg),
-                              &pSendBuffer, &usDataOffset, &usSendSize))||
-      (usSendSize < (usDataOffset + sizeof(tHalLowPowerHeartBeatReqMsg))))
-  {
-      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL,  eWLAN_PAL_TRACE_LEVEL_WARN,
-                  "Unable to get send buffer in LPHB Ind ");
-      WDI_ASSERT(0);
-      return WDI_STATUS_E_FAILURE;
-  }
-
-  halLphbReqRarams = (tHalLowPowerHeartBeatReq *)(pSendBuffer + usDataOffset);
-  wpalMemoryZero(halLphbReqRarams, sizeof(tHalLowPowerHeartBeatReq));
-
-  halLphbReqRarams->lowPowerHeartBeatCmdType =
-                     (tANI_U16)(++pLphbReqParams->cmd);
-  switch ((tANI_U16)pLphbReqParams->cmd)
-  {
-    case WDI_LPHB_SET_EN_PARAMS_INDID:
-      halLphbReqRarams->sessionIdx =
-                                pLphbReqParams->params.lphbEnableReq.session;
-      halLphbReqRarams->options.control.heartBeatEnable =
-                                pLphbReqParams->params.lphbEnableReq.enable;
-      halLphbReqRarams->options.control.heartBeatType =
-                                pLphbReqParams->params.lphbEnableReq.item;
-      break;
-
-    case WDI_LPHB_SET_TCP_PARAMS_INDID:
-      halLphbReqRarams->sessionIdx =
-                                pLphbReqParams->params.lphbTcpParamReq.session;
-      halLphbReqRarams->options.tcpParams.timeOutSec =
-                                pLphbReqParams->params.lphbTcpParamReq.timeout;
-      wpalMemoryCopy(&halLphbReqRarams->options.tcpParams.hostIpv4Addr,
-                     &pLphbReqParams->params.lphbTcpParamReq.dev_ip,
-                     sizeof(v_U32_t));
-      wpalMemoryCopy(&halLphbReqRarams->options.tcpParams.destIpv4Addr,
-                     &pLphbReqParams->params.lphbTcpParamReq.srv_ip,
-                     sizeof(v_U32_t));
-
-      wpalMemoryCopy(halLphbReqRarams->options.tcpParams.gatewayMacAddr,
-                     pLphbReqParams->params.lphbTcpParamReq.gateway_mac,
-                     WDI_MAC_ADDR_LEN);
-
-      halLphbReqRarams->options.tcpParams.hostPort =
-                                pLphbReqParams->params.lphbTcpParamReq.src_port;
-      halLphbReqRarams->options.tcpParams.destPort =
-                                pLphbReqParams->params.lphbTcpParamReq.dst_port;
-      halLphbReqRarams->options.tcpParams.timePeriodSec =
-                                pLphbReqParams->params.lphbTcpParamReq.timePeriodSec;
-      halLphbReqRarams->options.tcpParams.tcpSn =
-                                pLphbReqParams->params.lphbTcpParamReq.tcpSn;
-      break;
-
-    case WDI_LPHB_SET_TCP_PKT_FILTER_INDID:
-      halLphbReqRarams->sessionIdx =
-                               pLphbReqParams->params.lphbTcpFilterReq.session;
-      halLphbReqRarams->options.tcpUdpFilter.offset =
-                               pLphbReqParams->params.lphbTcpFilterReq.offset;
-      halLphbReqRarams->options.tcpUdpFilter.filterLength =
-                               pLphbReqParams->params.lphbTcpFilterReq.length;
-      wpalMemoryCopy(halLphbReqRarams->options.tcpUdpFilter.filter,
-                     pLphbReqParams->params.lphbTcpFilterReq.filter,
-                     WDI_LPHB_FILTER_LEN);
-      break;
-
-    case WDI_LPHB_SET_UDP_PARAMS_INDID:
-      halLphbReqRarams->sessionIdx =
-                                pLphbReqParams->params.lphbUdpParamReq.session;
-      halLphbReqRarams->options.udpParams.timeOutSec =
-                                pLphbReqParams->params.lphbUdpParamReq.timeout;
-      halLphbReqRarams->options.udpParams.timePeriodSec =
-                                pLphbReqParams->params.lphbUdpParamReq.interval;
-      wpalMemoryCopy(&halLphbReqRarams->options.udpParams.hostIpv4Addr,
-                     &pLphbReqParams->params.lphbUdpParamReq.dev_ip,
-                     sizeof(v_U32_t));
-      wpalMemoryCopy(&halLphbReqRarams->options.udpParams.destIpv4Addr,
-                     &pLphbReqParams->params.lphbUdpParamReq.srv_ip,
-                     sizeof(v_U32_t));
-
-      wpalMemoryCopy(halLphbReqRarams->options.udpParams.gatewayMacAddr,
-                     pLphbReqParams->params.lphbUdpParamReq.gateway_mac,
-                     WDI_MAC_ADDR_LEN);
-
-      halLphbReqRarams->options.udpParams.hostPort =
-                                pLphbReqParams->params.lphbUdpParamReq.src_port;
-      halLphbReqRarams->options.udpParams.destPort =
-                                pLphbReqParams->params.lphbUdpParamReq.dst_port;
-      break;
-
-    case WDI_LPHB_SET_UDP_PKT_FILTER_INDID:
-      halLphbReqRarams->sessionIdx =
-                                pLphbReqParams->params.lphbUdpFilterReq.session;
-      halLphbReqRarams->options.tcpUdpFilter.offset =
-                                pLphbReqParams->params.lphbUdpFilterReq.offset;
-      halLphbReqRarams->options.tcpUdpFilter.filterLength =
-                                pLphbReqParams->params.lphbUdpFilterReq.length;
-      wpalMemoryCopy(halLphbReqRarams->options.tcpUdpFilter.filter,
-                     pLphbReqParams->params.lphbUdpFilterReq.filter,
-                     WDI_LPHB_FILTER_LEN);
-      break;
-
-    case WDI_LPHB_SET_NETWORK_INFO_INDID:
-      /* NA */
-      break;
-
-    default:
-      break;
-  }
-
-  /*-------------------------------------------------------------------------
-    Send Suspend Request to HAL
-  -------------------------------------------------------------------------*/
-  pWDICtx->pfncRspCB          = pEventData->pCBfnc;
-  pWDICtx->pReqStatusUserData = pEventData->pUserData;
-
-  wdiStatus = WDI_SendMsg(pWDICtx, pSendBuffer,
-                          usSendSize, pWDICtx->pfncRspCB,
-                          pWDICtx->pReqStatusUserData,
-                          WDI_LPHB_CFG_RESP);
-
-  return wdiStatus;
-}
-
-/**
- @brief WDI_LPHBConfReq -
-    LPHB configuration request API
-
- @param  lphbconfParam : configuration parameter
-         usrData : client context
-         lphbCfgCb : callback function pointer
-
- @see
- @return Success or fail status code
-*/
-WDI_Status WDI_LPHBConfReq(void *lphbconfParam,
-                           void *usrData, WDI_LphbCfgCb lphbCfgCb)
-{
-  WDI_EventInfoType      wdiEventData;
-
-  /*------------------------------------------------------------------------
-    Sanity Check
-  ------------------------------------------------------------------------*/
-  if (eWLAN_PAL_FALSE == gWDIInitialized)
-  {
-    WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
-              "WDI API call before module is initialized - Fail request");
-
-    return WDI_STATUS_E_NOT_ALLOWED;
-  }
-
-  /*------------------------------------------------------------------------
-    Fill in Event data and post to the Main FSM
-  ------------------------------------------------------------------------*/
-  wdiEventData.wdiRequest      = WDI_LPHB_CFG_REQ;
-  wdiEventData.pEventData      = lphbconfParam;
-  wdiEventData.uEventDataSize  = sizeof(WDI_LPHBReq);
-  wdiEventData.pCBfnc          = lphbCfgCb;
-  wdiEventData.pUserData       = usrData;
-
-  return WDI_PostMainEvent(&gWDICb, WDI_REQUEST_EVENT, &wdiEventData);
-}
-#endif /* FEATURE_WLAN_LPHB */
-
-/**
-  @brief WDI_ProcessIbssPeerInactivityInd
-  Process peer inactivity indication coming from HAL
-
-  @param pWDICtx: pointer to the WLAN DAL context
-         pEventData: pointer to the event information structure
-  @see
-  @return Result of the function call
-*/
-WDI_Status
-WDI_ProcessIbssPeerInactivityInd
-(
-   WDI_ControlBlockType* pWDICtx,
-   WDI_EventInfoType* pEventData
-)
-{
+<<<<<<< HEAD
    WDI_LowLevelIndType  wdiInd;
    tIbssPeerInactivityIndMsg halIbssIndMsg;
 
@@ -32863,3 +34744,8 @@ WDI_ProcessIbssPeerInactivityInd
 
 } /*WDI_ProcessIbssPeerInactivityInd*/
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   WDTS_ChannelDebug(displaySnapshot, toggleStallDetect);
+   return;
+}
+>>>>>>> 657b0e9... prima update

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -88,10 +91,14 @@ typedef struct
    /*Time Stamp hi*/
     v_U32_t ts_hi;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }__attribute__((packed)) log_hdr_type;
 =======
 }__packed log_hdr_type;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+}__attribute__((packed)) log_hdr_type;
+>>>>>>> 657b0e9... prima update
 
 
 #ifdef __cplusplus

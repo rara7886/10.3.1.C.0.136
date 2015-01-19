@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -66,12 +69,17 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static pnfTxCompleteHandler bapRsnFsmTxCmpHandler = NULL;
 static pnfRxFrameHandler bapRsnFsmRxFrameHandler = NULL;
 =======
 static pnfTxCompleteHandler bapRsnFsmTxCmpHandler;
 static pnfRxFrameHandler bapRsnFsmRxFrameHandler;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+static pnfTxCompleteHandler bapRsnFsmTxCmpHandler = NULL;
+static pnfRxFrameHandler bapRsnFsmRxFrameHandler = NULL;
+>>>>>>> 657b0e9... prima update
 
 extern int gReadToSetKey;
 
@@ -140,10 +148,14 @@ static VOS_STATUS bapRsnTxCompleteCallback( v_PVOID_t pvosGCtx, vos_pkt_t *pPack
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "pvosGCtx is NULL in %s", __FUNCTION__);
 =======
                      "pvosGCtx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "pvosGCtx is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_FAULT;
     }
@@ -153,10 +165,14 @@ static VOS_STATUS bapRsnTxCompleteCallback( v_PVOID_t pvosGCtx, vos_pkt_t *pPack
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "btampContext is NULL in %s", __FUNCTION__);
 =======
                      "btampContext is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "btampContext is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_FAULT;
     }
@@ -166,10 +182,14 @@ static VOS_STATUS bapRsnTxCompleteCallback( v_PVOID_t pvosGCtx, vos_pkt_t *pPack
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
+<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                     "fsm is NULL in %s", __FUNCTION__);
+>>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_FAULT;
     }
@@ -244,10 +264,14 @@ VOS_STATUS bapRsnSendEapolFrame( v_PVOID_t pvosGCtx, tAniPacket *pAniPkt )
 {
     VOS_STATUS status;
 <<<<<<< HEAD
+<<<<<<< HEAD
     vos_pkt_t *pPacket;
 =======
     vos_pkt_t *pPacket = NULL;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    vos_pkt_t *pPacket;
+>>>>>>> 657b0e9... prima update
     v_U8_t *pData, *pSrc;
     int pktLen = aniAsfPacketGetBytes( pAniPkt, &pSrc );
 
@@ -257,10 +281,14 @@ VOS_STATUS bapRsnSendEapolFrame( v_PVOID_t pvosGCtx, tAniPacket *pAniPkt )
     }
     status = bapRsnAcquirePacket( &pPacket, &pData, pktLen );
 <<<<<<< HEAD
+<<<<<<< HEAD
     if( VOS_IS_STATUS_SUCCESS( status ) )
 =======
     if( VOS_IS_STATUS_SUCCESS( status ) && ( NULL != pPacket ))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    if( VOS_IS_STATUS_SUCCESS( status ) )
+>>>>>>> 657b0e9... prima update
     {
         vos_mem_copy( pData, pSrc, pktLen );
         //Send the packet, need to check whether we have an outstanding packet first.

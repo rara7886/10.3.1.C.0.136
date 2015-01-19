@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -62,12 +65,15 @@
 #define __RRM_API_H__
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define RRM_MIN_TX_PWR_CAP    13
 #define RRM_MAX_TX_PWR_CAP    19
 
 tANI_U8 rrmGetMinOfMaxTxPower(tPowerdBm regMax, tPowerdBm apTxPower);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 extern tSirRetStatus rrmInitialize(tpAniSirGlobal pMac);
 

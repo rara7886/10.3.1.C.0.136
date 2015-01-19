@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -115,12 +118,17 @@
 #elif defined _MSC_VER
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   #define VOS_PACK_START  __pragma (pack(push,1))
   #define VOS_PACK_END  __pragma (pack(pop))
 =======
 #define VOS_PACK_START  __pragma(pack(push,1))
 #define VOS_PACK_END  __pragma(pack(pop))
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  #define VOS_PACK_START  __pragma (pack(push,1))
+  #define VOS_PACK_END  __pragma (pack(pop))
+>>>>>>> 657b0e9... prima update
 
   #define VOS_PACK_PRE 
   #define VOS_PACK_POST

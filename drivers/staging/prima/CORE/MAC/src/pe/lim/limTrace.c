@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,12 +47,16 @@
 
 /**=========================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 * Copyright (c) 2013 Qualcomm Atheros, Inc.
 * All Rights Reserved.
 * Qualcomm Atheros Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+
+>>>>>>> 657b0e9... prima update
   \file  limTrace.c
 
   \brief implementation for trace related APIs
@@ -68,12 +75,18 @@
   ------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "aniGlobal.h" //for tpAniSirGlobal
 #endif
 =======
 #include "aniGlobal.h" //for tpAniSirGlobal
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include "aniGlobal.h" //for tpAniSirGlobal
+#endif
+>>>>>>> 657b0e9... prima update
 
 #include "limTrace.h"
 #include "limTimerUtils.h"
@@ -83,9 +96,12 @@
 tANI_U32 gMgmtFrameStats[14];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define LIM_TRACE_MAX_SUBTYPES 14
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 
 static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
@@ -103,11 +119,17 @@ static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
         CASE_RETURN_STRING(eLIM_HEART_BEAT_TIMER);
         CASE_RETURN_STRING(eLIM_BACKGROUND_SCAN_TIMER);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
         CASE_RETURN_STRING(eLIM_LEARN_INTERVAL_TIMER);
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+        CASE_RETURN_STRING(eLIM_LEARN_INTERVAL_TIMER);
+#endif
+>>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(eLIM_KEEPALIVE_TIMER);
         CASE_RETURN_STRING(eLIM_CNF_WAIT_TIMER);
         CASE_RETURN_STRING(eLIM_AUTH_RSP_TIMER);
@@ -118,6 +140,7 @@ static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
         CASE_RETURN_STRING(eLIM_LEARN_DURATION_TIMER);
         CASE_RETURN_STRING(eLIM_QUIET_TIMER);
         CASE_RETURN_STRING(eLIM_QUIET_BSS_TIMER);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         CASE_RETURN_STRING(eLIM_WPS_OVERLAP_TIMER);
@@ -135,6 +158,8 @@ static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
         CASE_RETURN_STRING(eLIM_INSERT_SINGLESHOT_NOA_TIMER);
         CASE_RETURN_STRING(eLIM_CONVERT_ACTIVE_CHANNEL_TO_PASSIVE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
         default:
             return( "UNKNOWN" );
             break;
@@ -174,10 +199,14 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
 {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     static char *frameSubtypeStr[14] =
 =======
     static char *frameSubtypeStr[LIM_TRACE_MAX_SUBTYPES] =
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    static char *frameSubtypeStr[14] =
+>>>>>>> 657b0e9... prima update
     {
         "Association request",
         "Association response",
@@ -196,6 +225,7 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     switch (pRecord->code) {
         case TRACE_CODE_MLM_STATE:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
@@ -209,22 +239,29 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
 =======
 
+=======
+>>>>>>> 657b0e9... prima update
     switch (pRecord->code) {
         case TRACE_CODE_MLM_STATE:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                            "MLM State:", limTraceGetMlmStateString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_SME_STATE:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                             "SME State:", limTraceGetSmeStateString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_TX_MGMT:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             "TX Mgmt:", frameSubtypeStr[pRecord->data], pRecord->data );
             break;
 
         case TRACE_CODE_RX_MGMT:
+<<<<<<< HEAD
 <<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)    SN: %d \n", recIndex, pRecord->time, pRecord->session,
                                             "RX Mgmt:", frameSubtypeStr[LIM_TRACE_GET_SUBTYPE(pRecord->data)],
@@ -247,33 +284,44 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
             else
             {
                 limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)    SN: %d ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)    SN: %d \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             "RX Mgmt:", frameSubtypeStr[LIM_TRACE_GET_SUBTYPE(pRecord->data)],
                                             LIM_TRACE_GET_SUBTYPE(pRecord->data),
                                             LIM_TRACE_GET_SSN(pRecord->data) );
-            }
             break;
         case TRACE_CODE_RX_MGMT_DROP:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)  ", recIndex, pRecord->time, pRecord->session,
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)  \n", recIndex, pRecord->time, pRecord->session,
                                             "Drop RX Mgmt:", __limTraceGetMgmtDropReasonString((tANI_U16)pRecord->data), pRecord->data);
             break;
 
-
+            
         case TRACE_CODE_RX_MGMT_TSF:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s0x%x(%d) ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s0x%x(%d) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             "RX Mgmt TSF:", " ", pRecord->data, pRecord->data );
             break;
 
         case TRACE_CODE_TX_COMPLETE:
 <<<<<<< HEAD
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  \n", recIndex, pRecord->time, pRecord->session,
 =======
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             "TX Complete" );
             break;
 
         case TRACE_CODE_TX_SME_MSG:
+<<<<<<< HEAD
 <<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                             "TX SME Msg:", macTraceGetSmeMsgString((tANI_U16)pRecord->data), pRecord->data );
@@ -287,10 +335,18 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
         case TRACE_CODE_RX_SME_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX SME Msg:", macTraceGetSmeMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_RX_SME_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX Sme Msg:",
                                             macTraceGetSmeMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         case TRACE_CODE_TX_HAL_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
@@ -313,25 +369,35 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
         case TRACE_CODE_TX_WDA_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
                                             "TX WDA Msg:", macTraceGetWdaMsgString((tANI_U16)pRecord->data), pRecord->data );
+=======
+        case TRACE_CODE_TX_HAL_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX HAL Msg:", macTraceGetHalMsgString((tANI_U16)pRecord->data), pRecord->data );
+>>>>>>> 657b0e9... prima update
             break;
 
-        case TRACE_CODE_RX_WDA_MSG:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
-                                            LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX WDA Msg:",
-                                            macTraceGetWdaMsgString((tANI_U16)pRecord->data), pRecord->data );
+        case TRACE_CODE_RX_HAL_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX HAL Msg:",
+                                            macTraceGetHalMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
 
         case TRACE_CODE_TX_LIM_MSG:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                             "TX LIM Msg:", macTraceGetLimMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_RX_LIM_MSG:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX LIM Msg",
                                             macTraceGetLimMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_TX_CFG_MSG:
+<<<<<<< HEAD
 <<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                             "TX CFG Msg:", macTraceGetCfgMsgString((tANI_U16)pRecord->data), pRecord->data );
@@ -345,12 +411,20 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
         case TRACE_CODE_RX_CFG_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX CFG Msg:", macTraceGetCfgMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_RX_CFG_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX CFG Msg:",
                                             macTraceGetCfgMsgString((tANI_U16)MAC_TRACE_GET_MSG_ID(pRecord->data)),
                                             pRecord->data );
             break;
 
         case TRACE_CODE_TIMER_ACTIVATE:
+<<<<<<< HEAD
 <<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                             "Timer Actvtd", __limTraceGetTimerString((tANI_U16)pRecord->data), pRecord->data );
@@ -364,20 +438,23 @@ void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s(%d) (0x%x) \n", recIndex, pRecord->time, pRecord->session,
 =======
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                             "Timer Actvtd", __limTraceGetTimerString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_TIMER_DEACTIVATE:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
                                             "Timer DeActvtd", __limTraceGetTimerString((tANI_U16)pRecord->data), pRecord->data );
             break;
 
-        case TRACE_CODE_INFO_LOG:
-            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
-                                            "INFORMATION_LOG", macTraceGetInfoLogString((tANI_U16)pRecord->data), pRecord->data );
-            break;
         default :
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s(%d) (0x%x) ", recIndex, pRecord->time, pRecord->session,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s(%d) (0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 657b0e9... prima update
                                              "Unknown Code", pRecord->code, pRecord->data );
             break;
     }
@@ -400,10 +477,14 @@ void macTraceMsgTx(tpAniSirGlobal pMac, tANI_U8 session, tANI_U32 data)
             break;
         case SIR_WDA_MODULE_ID:
 <<<<<<< HEAD
+<<<<<<< HEAD
             macTrace(pMac, TRACE_CODE_TX_HAL_MSG, session, data);
 =======
             macTrace(pMac, TRACE_CODE_TX_WDA_MSG, session, data);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            macTrace(pMac, TRACE_CODE_TX_HAL_MSG, session, data);
+>>>>>>> 657b0e9... prima update
             break;
         case SIR_CFG_MODULE_ID:
             macTrace(pMac, TRACE_CODE_TX_CFG_MSG, session, data);
@@ -427,10 +508,14 @@ void macTraceMsgTxNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 session, tANI
             break;
         case SIR_WDA_MODULE_ID:
 <<<<<<< HEAD
+<<<<<<< HEAD
             macTraceNew(pMac, module, TRACE_CODE_TX_HAL_MSG, session, data);
 =======
             macTraceNew(pMac, module, TRACE_CODE_TX_WDA_MSG, session, data);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            macTraceNew(pMac, module, TRACE_CODE_TX_HAL_MSG, session, data);
+>>>>>>> 657b0e9... prima update
             break;
         case SIR_CFG_MODULE_ID:
             macTraceNew(pMac, module, TRACE_CODE_TX_CFG_MSG, session, data);
@@ -458,10 +543,14 @@ void macTraceMsgRx(tpAniSirGlobal pMac, tANI_U8 session, tANI_U32 data)
             break;
         case SIR_WDA_MODULE_ID:
 <<<<<<< HEAD
+<<<<<<< HEAD
             macTrace(pMac, TRACE_CODE_RX_HAL_MSG, session, data);
 =======
             macTrace(pMac, TRACE_CODE_RX_WDA_MSG, session, data);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            macTrace(pMac, TRACE_CODE_RX_HAL_MSG, session, data);
+>>>>>>> 657b0e9... prima update
             break;
         case SIR_CFG_MODULE_ID:
             macTrace(pMac, TRACE_CODE_RX_CFG_MSG, session, data);
@@ -491,10 +580,14 @@ void macTraceMsgRxNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 session, tANI
             break;
         case SIR_WDA_MODULE_ID:
 <<<<<<< HEAD
+<<<<<<< HEAD
             macTraceNew(pMac, module, TRACE_CODE_RX_HAL_MSG, session, data);
 =======
             macTraceNew(pMac, module, TRACE_CODE_RX_WDA_MSG, session, data);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            macTraceNew(pMac, module, TRACE_CODE_RX_HAL_MSG, session, data);
+>>>>>>> 657b0e9... prima update
             break;
         case SIR_CFG_MODULE_ID:
             macTraceNew(pMac, module, TRACE_CODE_RX_CFG_MSG, session, data);
@@ -531,10 +624,14 @@ tANI_U8* limTraceGetMlmStateString( tANI_U32 mlmState )
         CASE_RETURN_STRING( eLIM_MLM_WT_DEL_BSS_RSP_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_ASSOC_STATE);
 <<<<<<< HEAD
+<<<<<<< HEAD
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE);        
 =======
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE);        
+>>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_REASSOC_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_STA_RSP_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_DEL_STA_RSP_STATE);

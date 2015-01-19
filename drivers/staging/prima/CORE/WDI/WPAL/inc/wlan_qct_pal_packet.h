@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,9 +46,12 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #if !defined( __WLAN_QCT_PAL_PACKET_H )
 #define __WLAN_QCT_PAL_PACKET_H
 
@@ -58,16 +64,23 @@
    Definitions for platform independent.
   
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
    Copyright 2010 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
   
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 #include "wlan_qct_pal_type.h"
 #include "wlan_qct_pal_status.h"
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #include "vos_types.h"
@@ -75,6 +88,8 @@
 #include "vos_diag_core_log.h"
 #endif /* FEATURE_WLAN_DIAG_SUPPORT */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 // The size of the data buffer in vos/pal packets
 // Explanation:
@@ -105,6 +120,7 @@
 // in BD/PDUs that means 30 (one BD = 128 bytes) 
 // we must add the size of the 802.11 header to that 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define VPKT_SIZE_BUFFER  (30 * 128) + 32
 =======
 #define VPKT_SIZE_BUFFER  ((30 * 128) + 32)
@@ -114,6 +130,9 @@
 /* Transport channel name string size */
 #define WPT_TRPT_CHANNEL_NAME     4
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define VPKT_SIZE_BUFFER  (30 * 128) + 32
+>>>>>>> 657b0e9... prima update
 
 typedef enum
 {
@@ -158,6 +177,7 @@ typedef struct swpt_iterator
 } wpt_iterator;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* Each specific channel dedicated information should be logged */
 typedef struct
@@ -182,6 +202,8 @@ typedef struct
    wpt_log_data_stall_channel_type  dxeChannelInfo[WPT_NUM_TRPT_CHANNEL];
 } wpt_log_data_stall_type;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 //pPkt is a pointer to wpt_packet
 #define WPAL_PACKET_SET_BD_POINTER(pPkt, pBd)   ( (pPkt)->pBD = (pBd) )
@@ -381,6 +403,7 @@ wpt_int32 wpalPacketGetFragCount(wpt_packet *pPkt);
 wpt_status wpalIsPacketLocked( wpt_packet *pPacket);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
    wpalGetNumRxRawPacket   Query available RX RAW total buffer count
@@ -433,4 +456,6 @@ void wpalPacketStallDumpLog
 #endif /* FEATURE_WLAN_DIAG_SUPPORT */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif // __WLAN_QCT_PAL_PACKET_H

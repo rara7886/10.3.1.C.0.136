@@ -1,16 +1,21 @@
 comment "Qualcomm Atheros Prima WLAN module"
 <<<<<<< HEAD
+<<<<<<< HEAD
 config PRIMA_WLAN
 =======
 
 config PRIMA_WLAN
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+config PRIMA_WLAN
+>>>>>>> 657b0e9... prima update
 	tristate "Qualcomm Atheros Prima WLAN module"
 	default n
 	help
 	Add support for the Qualcomm Atheros Prima WLAN module
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 config PRONTO_WLAN
@@ -22,15 +27,21 @@ config PRONTO_WLAN
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #	depends on WLAN
 #	depends on CFG80211
 #        depends on WCNSS_CORE
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 if PRIMA_WLAN != n
 =======
 if PRIMA_WLAN != n || PRONTO_WLAN != n
 >>>>>>> d97af3b... add prima wlan driver
+=======
+if PRIMA_WLAN != n
+>>>>>>> 657b0e9... prima update
 
 config PRIMA_WLAN_BTAMP
 	bool "Enable the Prima WLAN BT-AMP feature"
@@ -44,6 +55,7 @@ config PRIMA_WLAN_OKC
 	bool "Enable the Prima WLAN Opportunistic Key Caching feature"
 	default n
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 endif # PRIMA_WLAN
 =======
@@ -65,3 +77,6 @@ config CONFIG_ENABLE_LINUX_REG
 
 endif # PRIMA_WLAN || PRONTO_WLAN
 >>>>>>> d97af3b... add prima wlan driver
+=======
+endif # PRIMA_WLAN
+>>>>>>> 657b0e9... prima update

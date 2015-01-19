@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,9 +46,12 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef WLAN_QCT_WDI_I_H
 #define WLAN_QCT_WDI_I_H
 
@@ -62,12 +68,17 @@ DESCRIPTION
   
       
 <<<<<<< HEAD
+<<<<<<< HEAD
   Copyright (c) 2010 QUALCOMM Incorporated. All Rights Reserved.
   Qualcomm Confidential and Proprietary
 =======
   Copyright (c) 2010 Qualcomm Technologies, Inc. All Rights Reserved.
   Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  Copyright (c) 2010 QUALCOMM Incorporated. All Rights Reserved.
+  Qualcomm Confidential and Proprietary
+>>>>>>> 657b0e9... prima update
 ===========================================================================*/
 
 
@@ -121,6 +132,7 @@ when        who    what, where, why
  and SELF STA(staId 1) so total ASSOC stations which can connect to Prima
  SoftAP = 12 - 1(Self STa) - 1(Bcast Sta) = 10 Stations. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WDI_MAX_SUPPORTED_STAS    12 
 =======
  
@@ -130,6 +142,9 @@ when        who    what, where, why
 #define WDI_MAX_SUPPORTED_STAS   12
 #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#define WDI_MAX_SUPPORTED_STAS    12 
+>>>>>>> 657b0e9... prima update
 #define WDI_MAX_SUPPORTED_BSS     5 
 
 /* Control transport channel size*/
@@ -139,12 +154,18 @@ when        who    what, where, why
 #define WDI_BSS_INVALID_IDX 0xFF
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 #define WDI_FTM_MAX_RECEIVE_BUFFER   6500
 #endif /* ANI_MANF_DIAG */
 =======
 #define WDI_FTM_MAX_RECEIVE_BUFFER   6500
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+#define WDI_FTM_MAX_RECEIVE_BUFFER   6500
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   DAL Control Path Main States
@@ -457,6 +478,7 @@ typedef enum
   WDI_FEATURE_CAPS_EXCHANGE_REQ                 = 79,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
   /* Send a capability exchange message to HAL */
@@ -476,11 +498,14 @@ typedef enum
   WDI_LPHB_CFG_REQ                              = 85,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   WDI_MAX_REQ,
 
   /*Send a suspend Indication down to HAL*/
   WDI_HOST_SUSPEND_IND          = WDI_MAX_REQ ,
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   /* Send a traffic stats indication to HAL */
@@ -502,6 +527,8 @@ typedef enum
   WDI_DEL_PERIODIC_TX_PATTERN_IND,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*Keep adding the indications to the max request
     such that we keep them sepparate */
 
@@ -749,6 +776,7 @@ typedef enum
   WDI_FEATURE_CAPS_EXCHANGE_RESP                = 78,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
   WDI_UPDATE_VHT_OP_MODE_RESP                   = 79,
@@ -766,6 +794,8 @@ typedef enum
   WDI_LPHB_CFG_RESP                             = 84,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /*-------------------------------------------------------------------------
     Indications
      !! Keep these last in the enum if possible
@@ -810,6 +840,7 @@ typedef enum
   /* Tx PER Hit Indication */
   WDI_HAL_TX_PER_HIT_IND              = WDI_HAL_IND_MIN + 11,
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 
@@ -829,6 +860,9 @@ typedef enum
   WDI_HAL_PERIODIC_TX_PTRN_FW_IND     = WDI_HAL_IND_MIN + 16,
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  
+>>>>>>> 657b0e9... prima update
   WDI_MAX_RESP
 }WDI_ResponseEnumType; 
 
@@ -1140,6 +1174,7 @@ typedef struct
   tDriverType                 driverMode;  
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
   /* Statically allocated FTM Response Buffer */
   wpt_uint8                   ucFTMCommandRspBuffer[WDI_FTM_MAX_RECEIVE_BUFFER];
@@ -1148,12 +1183,19 @@ typedef struct
   /* Statically allocated FTM Response Buffer */
   wpt_uint8                   ucFTMCommandRspBuffer[WDI_FTM_MAX_RECEIVE_BUFFER];
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+  /* Statically allocated FTM Response Buffer */
+  wpt_uint8                   ucFTMCommandRspBuffer[WDI_FTM_MAX_RECEIVE_BUFFER];
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 
   /*Driver in BMPS state*/
   wpt_boolean                 bInBmps;
 
   /*version of the PNO implementation in RIVA*/
   wpt_uint8                   wdiPNOVersion;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -1172,6 +1214,8 @@ typedef struct
   /* enable/disable SSR on WDI timeout */
   wpt_boolean                 bEnableSSR;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }WDI_ControlBlockType; 
 
 
@@ -2095,6 +2139,7 @@ WDI_ProcessGetStatsReq
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 /**
@@ -2136,6 +2181,8 @@ WDI_ProcessGetRoamRssiRsp
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**
  @brief Process Update Cfg Request function (called when Main 
         FSM allows it)
@@ -2271,6 +2318,7 @@ WDI_Status WDI_ProcessSetMaxTxPowerReq
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 /**
@@ -2290,6 +2338,9 @@ WDI_Status WDI_ProcessSetTxPowerReq
 );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 /**
  @brief Process P2P Notice Of Absence Request function (called when Main FSM
         allows it)
@@ -2306,6 +2357,7 @@ WDI_ProcessP2PGONOAReq
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 =======
@@ -2327,6 +2379,9 @@ WDI_ProcessTdlsLinkEstablishReq
   WDI_EventInfoType*     pEventData
 );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /**
  @brief Process Enter IMPS Request function (called when 
@@ -2806,6 +2861,7 @@ WDI_ProcessSetTmLevelReq
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_LPHB
 /**
@@ -2826,6 +2882,8 @@ WDI_Status WDI_ProcessLPHBConfReq
 #endif /* FEATURE_WLAN_LPHB */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*=========================================================================
                              Indications
 =========================================================================*/
@@ -2846,6 +2904,7 @@ WDI_ProcessHostSuspendInd
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /**
@@ -2950,6 +3009,8 @@ WDI_ProcessDelPeriodicTxPtrnInd
   WDI_EventInfoType*     pEventData
 );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*========================================================================
           Main DAL Control Path Response Processing API 
@@ -3589,6 +3650,7 @@ WDI_ProcessSetMaxTxPowerRsp
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /**
  @brief Process Set Tx Power Rsp function (called when a response
@@ -3625,6 +3687,8 @@ WDI_ProcessLinkEstablishReqRsp
 );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**
  @brief Process Nv download(called when a response
         is being received over the bus from HAL)
@@ -3643,9 +3707,13 @@ WDI_ProcessNvDownloadRsp
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 /**
  @brief Process P2P Group Owner Notice Of Absense Rsp function (called 
         when a response is being received over the bus from HAL)
@@ -3663,9 +3731,13 @@ WDI_ProcessP2PGONOARsp
   WDI_EventInfoType*     pEventData
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /**
  @brief Process Enter IMPS Rsp function (called when a response 
@@ -4296,6 +4368,7 @@ WDI_ProcessTxCompleteInd
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 /**
@@ -4335,6 +4408,9 @@ WDI_ProcessP2pNoaStartInd
 );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 657b0e9... prima update
 /**
 *@brief Process Noa Attr Indication function (called when
         an indication of this kind is being received over the
@@ -4353,9 +4429,13 @@ WDI_ProcessP2pNoaAttrInd
   WDI_EventInfoType*     pEventData
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /**
 *@brief Process Tx Per Hit Indication function (called when
@@ -4375,6 +4455,7 @@ WDI_ProcessTxPerHitInd
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_LPHB
@@ -4414,6 +4495,8 @@ WDI_ProcessPeriodicTxPtrnFwInd
 );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
 /**
  @brief Process Aggrgated Add TSpec Request function (called when Main FSM
@@ -4452,9 +4535,13 @@ WDI_ProcessAggrAddTSpecRsp
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_MANF_DIAG
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_ProcessFTMCommandReq
         Process FTM Command, simply route to HAL
@@ -4489,9 +4576,13 @@ WDI_ProcessFTMCommandRsp
   WDI_EventInfoType*     pEventData
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 657b0e9... prima update
 /**
  @brief WDI_ProcessHALDumpCmdReq
         Process Hal Dump Command, simply route to HAL
@@ -4526,6 +4617,7 @@ WDI_ProcessHALDumpCmdRsp
   WDI_EventInfoType*     pEventData
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 /**
@@ -4548,6 +4640,8 @@ WDI_ProcessIbssPeerInactivityInd
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /*========================================================================
          Internal Helper Routines 
 ========================================================================*/
@@ -4561,10 +4655,14 @@ WDI_ProcessIbssPeerInactivityInd
  @return Result of the function call
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 WPT_INLINE WDI_Status
 =======
 WDI_Status
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WPT_INLINE WDI_Status
+>>>>>>> 657b0e9... prima update
 WDI_CleanCB
 (
   WDI_ControlBlockType*  pWDICtx
@@ -4581,10 +4679,14 @@ WDI_CleanCB
  @return Result of the function call
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 WPT_INLINE WDI_Status
 =======
 WDI_Status
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WPT_INLINE WDI_Status
+>>>>>>> 657b0e9... prima update
 WDI_ProcessRequest
 (
   WDI_ControlBlockType*  pWDICtx,
@@ -4931,6 +5033,7 @@ WDI_FindEmptySession
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  @brief Helper routine used to get the total count of active 
         sessions
   
@@ -4948,11 +5051,20 @@ WDI_FindEmptySession
          skipBSSID:     if TRUE, get all the sessions except matching to macBSSID. If FALSE, get all session.
                         This argument is ignored if macBSSID is NULL.
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief Helper routine used to get the total count of active 
+        sessions
+  
+ 
+ @param  pWDICtx:       pointer to the WLAN DAL context 
+  
+>>>>>>> 657b0e9... prima update
  @see
  @return Number of sessions in use
 */
 wpt_uint8
 WDI_GetActiveSessionsCount
+<<<<<<< HEAD
 <<<<<<< HEAD
 ( 
   WDI_ControlBlockType*   pWDICtx
@@ -4962,6 +5074,10 @@ WDI_GetActiveSessionsCount
   wpt_macAddr             macBSSID,
   wpt_boolean             skipBSSID
 >>>>>>> d97af3b... add prima wlan driver
+=======
+( 
+  WDI_ControlBlockType*   pWDICtx
+>>>>>>> 657b0e9... prima update
 );
 
 /**
@@ -5049,10 +5165,14 @@ WDI_FindAssocSessionByIdx
  @return 
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 WPT_INLINE void 
 =======
 void
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WPT_INLINE void 
+>>>>>>> 657b0e9... prima update
 WDI_DS_AssignDatapathContext 
 (
   void *pContext, 
@@ -5069,10 +5189,14 @@ WDI_DS_AssignDatapathContext
  @return pointer to Datapath context
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 WPT_INLINE void * 
 =======
 void *
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WPT_INLINE void * 
+>>>>>>> 657b0e9... prima update
 WDI_DS_GetDatapathContext 
 (
   void *pContext
@@ -5089,10 +5213,14 @@ WDI_DS_GetDatapathContext
  @return void
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 WPT_INLINE void  
 =======
 void
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WPT_INLINE void  
+>>>>>>> 657b0e9... prima update
 WDT_AssignTransportDriverContext 
 (
   void *pContext, 
@@ -5109,10 +5237,14 @@ WDT_AssignTransportDriverContext
  @return pointer to datapath context 
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 WPT_INLINE void * 
 =======
 void *
 >>>>>>> d97af3b... add prima wlan driver
+=======
+WPT_INLINE void * 
+>>>>>>> 657b0e9... prima update
 WDT_GetTransportDriverContext 
 (
   void *pContext
@@ -5236,6 +5368,7 @@ WDI_ProcessUpdateScanParamsRsp
 #endif // FEATURE_WLAN_SCAN_PNO
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -5274,6 +5407,8 @@ WDI_ProcessRoamScanOffloadRsp
 
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 /**
  @brief Process 8023 Multicast List Request function
@@ -5513,6 +5648,7 @@ WDI_ProcessFeatureCapsExchangeRsp
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
 WDI_Status
@@ -5567,5 +5703,7 @@ WDI_Status WDI_ProcessLphbCfgRsp
 #endif /* FEATURE_WLAN_LPHB */
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif /*WLAN_QCT_WDI_I_H*/
 

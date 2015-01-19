@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -217,9 +220,12 @@ WPT_STATIC WPT_INLINE int find_leading_zero_and_setbit(wpt_uint32 *bitmap, wpt_u
 {
   wpt_uint32 i,j, word;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   int ret_val = -1;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
   for(i=0; i < (maxNumPool/32 + 1); i++){
     j = 0;
@@ -233,10 +239,14 @@ WPT_STATIC WPT_INLINE int find_leading_zero_and_setbit(wpt_uint32 *bitmap, wpt_u
     }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   return -1;
 =======
   return ret_val;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  return -1;
+>>>>>>> 657b0e9... prima update
 }
 
 void *WDI_DS_MemPoolAlloc(WDI_DS_BdMemPoolType *memPool, void **pPhysAddress,
@@ -264,10 +274,14 @@ void *WDI_DS_MemPoolAlloc(WDI_DS_BdMemPoolType *memPool, void **pPhysAddress,
   //Find the leading 0 in the allocation bitmap
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if((index = find_leading_zero_and_setbit(memPool->AllocationBitmap, maxNumPool)) == -1)
 =======
   if((index = find_leading_zero_and_setbit(memPool->AllocationBitmap, maxNumPool)) == -EPERM)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+  if((index = find_leading_zero_and_setbit(memPool->AllocationBitmap, maxNumPool)) == -1)
+>>>>>>> 657b0e9... prima update
   {
      //DbgBreakPoint();
      DTI_TRACE(  DTI_TRACE_LEVEL_INFO, "WDI_DS_MemPoolAlloc: index:%d(NULL), numChunks:%d",

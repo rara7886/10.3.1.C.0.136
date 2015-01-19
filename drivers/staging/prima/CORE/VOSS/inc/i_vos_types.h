@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -172,14 +175,20 @@
 #define VOS_INLINE_FN  static inline
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define VOS_PACK_STRUCT_1  __attribute__ ((aligned(1), packed))
 #define VOS_PACK_STRUCT_2  __attribute__ ((aligned(2), packed))
 #define VOS_PACK_STRUCT_4  __attribute__ ((aligned(4), packed))
 #define VOS_PACK_STRUCT_8  __attribute__ ((aligned(8), packed))
 #define VOS_PACK_STRUCT_16 __attribute__ ((aligned(16), packed))
 
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #else
 #error "Compiling with an unknown compiler!!"
 #endif

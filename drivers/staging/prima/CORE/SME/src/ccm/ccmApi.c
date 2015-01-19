@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,11 +49,17 @@
 #include "wniApi.h"     /* WNI_CFG_SET_REQ */
 #include "sirParams.h"  /* tSirMbMsg */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halHddApis.h" /* palAllocateMemory */
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halHddApis.h" /* palAllocateMemory */
+#endif
+>>>>>>> 657b0e9... prima update
 #include "smsDebug.h"   /* smsLog */
 #include "cfgApi.h"
 #include "ccmApi.h"
@@ -151,10 +160,14 @@ static eHalStatus sendCfg(tpAniSirGlobal pMac, tHddHandle hHdd, tCfgReq *req, tA
         if (status != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, FL("palSendMBMessage() failed\n"));
 =======
             smsLog( pMac, LOGW, FL("palSendMBMessage() failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, FL("palSendMBMessage() failed\n"));
+>>>>>>> 657b0e9... prima update
             //No need to free msg. palSendMBMessage frees it.
             status = eHAL_STATUS_FAILURE ;
         }
@@ -162,10 +175,14 @@ static eHalStatus sendCfg(tpAniSirGlobal pMac, tHddHandle hHdd, tCfgReq *req, tA
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog( pMac, LOGW, FL("palAllocateMemory(len=%d)\n"), msgLen );
 =======
         smsLog( pMac, LOGW, FL("palAllocateMemory(len=%d)"), msgLen );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog( pMac, LOGW, FL("palAllocateMemory(len=%d)\n"), msgLen );
+>>>>>>> 657b0e9... prima update
     }
 
     return status ;
@@ -229,10 +246,14 @@ static void purgeReqQ(tHalHandle hHal)
     {
         /* loop thru reqQ and invoke callback to return failure */
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("deleting cfgReq, cfgid=%d\n"), (int)req->cfgId);
 =======
         smsLog(pMac, LOGW, FL("deleting cfgReq, cfgid=%d"), (int)req->cfgId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("deleting cfgReq, cfgid=%d\n"), (int)req->cfgId);
+>>>>>>> 657b0e9... prima update
 
         tmp = req->next ;
 
@@ -263,10 +284,14 @@ static void sendQueuedReqToMacSw(tpAniSirGlobal pMac, tHddHandle hHdd)
             if (sendCfg(pMac, hHdd, req, eANI_BOOLEAN_TRUE) != eHAL_STATUS_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, FL("sendCfg() failed\n"));
 =======
                 smsLog( pMac, LOGW, FL("sendCfg() failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, FL("sendCfg() failed\n"));
+>>>>>>> 657b0e9... prima update
                 palSpinLockTake(hHdd, pMac->ccm.lock);
                 del_req(req, &pMac->ccm.reqQ) ;
                 palSpinLockGive(hHdd, pMac->ccm.lock);
@@ -277,10 +302,14 @@ static void sendQueuedReqToMacSw(tpAniSirGlobal pMac, tHddHandle hHdd)
 
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL("ccmComplete(%p)\n"), req->done);
 =======
                 smsLog(pMac, LOGW, FL("ccmComplete(%p)"), req->done);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, FL("ccmComplete(%p)\n"), req->done);
+>>>>>>> 657b0e9... prima update
 #endif
                 ccmComplete(hHdd, req->done);
 
@@ -290,10 +319,14 @@ static void sendQueuedReqToMacSw(tpAniSirGlobal pMac, tHddHandle hHdd)
         else
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog( pMac, LOGW, FL("reqState is not eCCM_REQ_QUEUED, is %d\n"), req->state );
 =======
             smsLog( pMac, LOGW, FL("reqState is not eCCM_REQ_QUEUED, is %d"), req->state );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog( pMac, LOGW, FL("reqState is not eCCM_REQ_QUEUED, is %d\n"), req->state );
+>>>>>>> 657b0e9... prima update
         }
     }
 
@@ -354,10 +387,14 @@ static eHalStatus cfgSetSub(tpAniSirGlobal pMac, tHddHandle hHdd, tANI_U32 cfgId
             if (status != eHAL_STATUS_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog( pMac, LOGW, FL("sendCfg() failed\n"));
 =======
                 smsLog( pMac, LOGW, FL("sendCfg() failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, FL("sendCfg() failed\n"));
+>>>>>>> 657b0e9... prima update
                 palSpinLockTake(hHdd, pMac->ccm.lock);
                 del_req(req, &pMac->ccm.reqQ);
                 palSpinLockGive(hHdd, pMac->ccm.lock);
@@ -413,10 +450,14 @@ static eHalStatus cfgSet(tHalHandle hHal, tANI_U32 cfgId, tANI_U32 type, tANI_S3
         if (status != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("mutex alloc failed\n"));
 =======
             smsLog(pMac, LOGE, FL("mutex alloc failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGE, FL("mutex alloc failed\n"));
+>>>>>>> 657b0e9... prima update
             sem = NULL;
         }
         else
@@ -526,10 +567,14 @@ void ccmCfgCnfMsgHandler(tHalHandle hHal, void *m)
             /* Wake up the sleeping process */
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("ccmComplete(%p)\n"), pMac->ccm.replay.done);
 =======
             smsLog(pMac, LOGW, FL("ccmComplete(%p)"), pMac->ccm.replay.done);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("ccmComplete(%p)\n"), pMac->ccm.replay.done);
+>>>>>>> 657b0e9... prima update
 #endif
             ccmComplete(hHdd, pMac->ccm.replay.done);
             //Let go with the rest of the set CFGs waiting.
@@ -558,10 +603,14 @@ void ccmCfgCnfMsgHandler(tHalHandle hHal, void *m)
                 {
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
                     smsLog(pMac, LOGW, FL("need restart/reload, cfgId=%d\n"), req->cfgId) ;
 =======
                     smsLog(pMac, LOGW, FL("need restart/reload, cfgId=%d"), req->cfgId) ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    smsLog(pMac, LOGW, FL("need restart/reload, cfgId=%d\n"), req->cfgId) ;
+>>>>>>> 657b0e9... prima update
 #endif
                     //purgeReqQ(hHal);
                 }
@@ -579,16 +628,21 @@ void ccmCfgCnfMsgHandler(tHalHandle hHal, void *m)
                 /* Wake up the sleeping process */
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL("cfgId=%ld, calling ccmComplete(%p)\n"), cfgId, req->done);
 =======
                 smsLog(pMac, LOGW, FL("cfgId=%ld, calling ccmComplete(%p)"), cfgId, req->done);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGW, FL("cfgId=%ld, calling ccmComplete(%p)\n"), cfgId, req->done);
+>>>>>>> 657b0e9... prima update
 #endif
                 ccmComplete(hHdd, req->done);
 
                 /* move the completed req from reqQ to comp[] */
                 if (req->toBeSaved && (CCM_IS_RESULT_SUCCESS(result)))
                 {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     if ((old = pMac->ccm.comp[cfgId]) != NULL)
                     {
@@ -597,14 +651,17 @@ void ccmCfgCnfMsgHandler(tHalHandle hHal, void *m)
                     pMac->ccm.comp[cfgId] = req ;
 =======
                     if (cfgId < CFG_PARAM_MAX_NUM)
+=======
+                    if ((old = pMac->ccm.comp[cfgId]) != NULL)
+>>>>>>> 657b0e9... prima update
                     {
-                        if ((old = pMac->ccm.comp[cfgId]) != NULL)
-                        {
-                            freeCfgReq(hHdd, old) ;
-                        }
-                        pMac->ccm.comp[cfgId] = req ;
+                        freeCfgReq(hHdd, old) ;
                     }
+<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                    pMac->ccm.comp[cfgId] = req ;
+>>>>>>> 657b0e9... prima update
                 }
                 else
                 {
@@ -614,6 +671,7 @@ void ccmCfgCnfMsgHandler(tHalHandle hHal, void *m)
             }
             else
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 smsLog( pMac, LOGW, FL("can not match RSP with REQ, rspcfgid=%d result=%d reqcfgid=%d reqstate=%d\n"),
                         (int)cfgId, (int)result, req->cfgId, req->state);
@@ -627,6 +685,13 @@ void ccmCfgCnfMsgHandler(tHalHandle hHal, void *m)
 #ifdef CCM_DEBUG
                 smsLog(pMac, LOGW, FL("ccmComplete(%p)"), req->done);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog( pMac, LOGW, FL("can not match RSP with REQ, rspcfgid=%d result=%d reqcfgid=%d reqstate=%d\n"),
+                        (int)cfgId, (int)result, req->cfgId, req->state);
+
+#ifdef CCM_DEBUG
+                smsLog(pMac, LOGW, FL("ccmComplete(%p)\n"), req->done);
+>>>>>>> 657b0e9... prima update
 #endif
             }
 
@@ -739,6 +804,7 @@ eHalStatus ccmCfgGetStr(tHalHandle hHal, tANI_U32 cfgId, tANI_U8 *pBuf, tANI_U32
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
 <<<<<<< HEAD
+<<<<<<< HEAD
     tHddHandle hHdd = halHandle2HddHandle(hHal);
     eHalStatus status = eHAL_STATUS_SUCCESS ;
     tCfgReq *req = pMac->ccm.comp[cfgId] ;
@@ -753,6 +819,11 @@ eHalStatus ccmCfgGetStr(tHalHandle hHal, tANI_U32 cfgId, tANI_U8 *pBuf, tANI_U32
     hHdd = halHandle2HddHandle(hHal);
     req = pMac->ccm.comp[cfgId] ;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+    tHddHandle hHdd = halHandle2HddHandle(hHal);
+    eHalStatus status = eHAL_STATUS_SUCCESS ;
+    tCfgReq *req = pMac->ccm.comp[cfgId] ;
+>>>>>>> 657b0e9... prima update
 
     if (req && req->state == eCCM_REQ_DONE && (tANI_U32)req->length <= *pLength)
     {
@@ -807,10 +878,14 @@ static eHalStatus cfgUpdate(tpAniSirGlobal pMac, tHddHandle hHdd, tCcmCfgSetCall
             pMac->ccm.replay.nr_param += 1 ;
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("cfgId=%d\n"), req->cfgId);
 =======
             smsLog(pMac, LOGW, FL("cfgId=%d"), req->cfgId);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+            smsLog(pMac, LOGW, FL("cfgId=%d\n"), req->cfgId);
+>>>>>>> 657b0e9... prima update
 #endif
         }
     }
@@ -856,10 +931,14 @@ static eHalStatus cfgUpdate(tpAniSirGlobal pMac, tHddHandle hHdd, tCcmCfgSetCall
     if (status != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("palSendMBMessage() failed. status=%d\n"), status);
 =======
         smsLog(pMac, LOGW, FL("palSendMBMessage() failed. status=%d"), status);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("palSendMBMessage() failed. status=%d\n"), status);
+>>>>>>> 657b0e9... prima update
         pMac->ccm.replay.started = 0 ;
         //No need to free msg. palSendMBMessage frees it.
         goto end ;
@@ -894,10 +973,14 @@ eHalStatus ccmCfgUpdate(tHalHandle hHal, tCcmCfgSetCallback callback)
             if (status != eHAL_STATUS_SUCCESS)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL("mutex alloc failed\n"));
 =======
                 smsLog(pMac, LOGE, FL("mutex alloc failed"));
 >>>>>>> d97af3b... add prima wlan driver
+=======
+                smsLog(pMac, LOGE, FL("mutex alloc failed\n"));
+>>>>>>> 657b0e9... prima update
                 pMac->ccm.replay.started = 0 ;
             }
             else
@@ -914,19 +997,27 @@ eHalStatus ccmCfgUpdate(tHalHandle hHal, tCcmCfgSetCallback callback)
     {
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("ccmWaitForCompletion(%p)\n"), pMac->ccm.replay.done);
 =======
         smsLog(pMac, LOGW, FL("ccmWaitForCompletion(%p)"), pMac->ccm.replay.done);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("ccmWaitForCompletion(%p)\n"), pMac->ccm.replay.done);
+>>>>>>> 657b0e9... prima update
 #endif
         ccmWaitForCompletion(hHdd, pMac->ccm.replay.done);
 
 #ifdef CCM_DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("free(%p)\n"), pMac->ccm.replay.done);
 =======
         smsLog(pMac, LOGW, FL("free(%p)"), pMac->ccm.replay.done);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+        smsLog(pMac, LOGW, FL("free(%p)\n"), pMac->ccm.replay.done);
+>>>>>>> 657b0e9... prima update
 #endif
         palSemaphoreFree( hHdd, pMac->ccm.replay.done) ;
     }
@@ -935,6 +1026,9 @@ eHalStatus ccmCfgUpdate(tHalHandle hHal, tCcmCfgSetCallback callback)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if 0
 ///////////////////////////////////////////////////////////////////
 #include <linux/netdevice.h>
@@ -1244,5 +1338,8 @@ void ccm_test(void)
     smsLog(pMac, LOGW, "ccmCfgUpdate(): status=%d\n", status);
 }
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update

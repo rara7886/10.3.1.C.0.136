@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -67,11 +70,14 @@
 #define HIGHEST_24GHZ_CHANNEL_NUM  ( 14 )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define IS_24G_CH(__chNum) ((__chNum > 0) && (__chNum < 14))
 #define IS_5G_CH(__chNum) ((__chNum >= 36) && (__chNum <= 165))
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 typedef struct sSirCountryInformation
 {
     tANI_U8 countryString[COUNTRY_STRING_LENGTH];
@@ -117,12 +123,18 @@ typedef struct sSirProbeRespBeacon
     tDot11fIEHTCaps           HTCaps;
     tDot11fIEHTInfo           HTInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tDot11fIEP2PProbeRes      P2PProbeRes;
 #endif
 =======
     tDot11fIEP2PProbeRes      P2PProbeRes;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+    tDot11fIEP2PProbeRes      P2PProbeRes;
+#endif
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
     tANI_U8                   mdie[SIR_MDIE_SIZE];
 #endif
@@ -162,11 +174,14 @@ typedef struct sSirProbeRespBeacon
     tDot11fIEVHTOperation     VHTOperation;
     tDot11fIEVHTExtBssLoad    VHTExtBssLoad;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     tDot11fIEOperatingMode    OperatingMode;
     tANI_U8                   WiderBWChanSwitchAnnPresent;
     tDot11fIEWiderBWChanSwitchAnn WiderBWChanSwitchAnn;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif
 
 } tSirProbeRespBeacon, *tpSirProbeRespBeacon;
@@ -215,12 +230,18 @@ typedef struct sSirAssocReq
     tSirMacSupportedChannelIE supportedChannels;
     tDot11fIEHTCaps   HTCaps;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tDot11fIEWMMInfoStation   WMMInfoStation;
 #endif
 =======
     tDot11fIEWMMInfoStation   WMMInfoStation;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tDot11fIEWMMInfoStation   WMMInfoStation;
+#endif
+>>>>>>> 657b0e9... prima update
     /// This is set if the frame is a reassoc request:
     tANI_U8                   reassocRequest;
     tANI_U8                   ssidPresent;
@@ -239,13 +260,18 @@ typedef struct sSirAssocReq
     tANI_U8                   powerCapabilityPresent;
     tANI_U8                   supportedChannelsPresent;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
     // keeing copy of assoction request received, this is 
     // required for indicating the frame to upper layers
     tANI_U32                  assocReqFrameLength;
     tANI_U8*                  assocReqFrame;
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 #ifdef WLAN_FEATURE_11AC
@@ -255,6 +281,11 @@ typedef struct sSirAssocReq
     tDot11fIEVHTCaps          VHTCaps;
     tDot11fIEOperatingMode    operMode;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+#ifdef WLAN_FEATURE_11AC
+    tDot11fIEVHTCaps          VHTCaps;
+>>>>>>> 657b0e9... prima update
 #endif
 } tSirAssocReq, *tpSirAssocReq;
 
@@ -318,6 +349,9 @@ sirGetCfgPropCaps(struct sAniSirGlobal *, tANI_U16 *);
 void dot11fLog(tpAniSirGlobal pMac, int nSev, const char *lpszFormat, ...);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #define CFG_GET_INT(nStatus, pMac, nItem, cfg )                 \
     (nStatus) = wlan_cfgGetInt( (pMac), (nItem), & (cfg) );          \
     if ( eSIR_SUCCESS != (nStatus) )                            \
@@ -360,6 +394,7 @@ void dot11fLog(tpAniSirGlobal pMac, int nSev, const char *lpszFormat, ...);
                 (nStatus) );                                    \
         return;                                                 \
     }
+<<<<<<< HEAD
 =======
 #define CFG_GET_INT(nStatus, pMac, nItem, cfg )  do {                \
         (nStatus) = wlan_cfgGetInt( (pMac), (nItem), & (cfg) );      \
@@ -408,6 +443,8 @@ void dot11fLog(tpAniSirGlobal pMac, int nSev, const char *lpszFormat, ...);
         }                                                               \
     } while (0)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 void swapBitField16(tANI_U16 in, tANI_U16 *out);
 
@@ -569,6 +606,7 @@ PopulateDot11fEDCAParamSet(tpAniSirGlobal         pMac,
                            tpPESession psessionEntry);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 tSirRetStatus
 PopulateDot11fERPInfo(tpAniSirGlobal    pMac,
@@ -583,6 +621,17 @@ tSirRetStatus
 PopulateDot11fERPInfo(tpAniSirGlobal    pMac,
                       tDot11fIEERPInfo *pDot11f, tpPESession psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+tSirRetStatus
+PopulateDot11fERPInfo(tpAniSirGlobal    pMac,
+                      tDot11fIEERPInfo *pDot11f, tpPESession psessionEntry);
+#else
+tSirRetStatus
+PopulateDot11fERPInfo(tpAniSirGlobal    pMac,
+                      tDot11fIEERPInfo *pDot11f);
+#endif
+>>>>>>> 657b0e9... prima update
 
 tSirRetStatus
 PopulateDot11fExtSuppRates(tpAniSirGlobal      pMac,
@@ -628,21 +677,31 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
                            tDot11fIEHTCaps *pDot11f);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 tSirRetStatus
 PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
                      tDot11fIEHTInfo *pDot11f,
                      tpPESession      psessionEntry);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #else
 tSirRetStatus
 PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
                      tDot11fIEHTInfo *pDot11f);
 #endif
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 void PopulateDot11fIBSSParams(tpAniSirGlobal  pMac,
        tDot11fIEIBSSParams *pDot11f, tpPESession psessionEntry);
@@ -824,6 +883,9 @@ void PopulateDot11fWMMInfoStation(tpAniSirGlobal           pMac,
                                   tDot11fIEWMMInfoStation *pInfo);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
                              tDot11fIEWMMParams *pParams,
@@ -832,11 +894,14 @@ void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
 void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
                              tDot11fIEWMMParams *pParams);
 #endif
+<<<<<<< HEAD
 =======
 void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
                              tDot11fIEWMMParams *pParams,
                              tpPESession        psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /**
  * \brief Populate a tDot11fIEWMMSchedule
@@ -884,6 +949,9 @@ PopulateDot11fWMMTCLAS(tpAniSirGlobal     pMac,
                        tDot11fIEWMMTCLAS *pDot11f);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #if ( WNI_POLARIS_FW_PRODUCT == AP )
 
 tSirRetStatus
@@ -920,8 +988,11 @@ PopulateDot11fWDS(tpAniSirGlobal  pMac,
 #endif // WNI_POLARIS_FW_PACKAGE == ADVANCED
 
 #endif // WNI_POLARIS_FW_PRODUCT == AP
+<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 tSirRetStatus PopulateDot11fWsc(tpAniSirGlobal pMac,
                                 tDot11fIEWscBeacon *pDot11f);
@@ -933,16 +1004,22 @@ tSirRetStatus DePopulateDot11fWscRegistrarInfo(tpAniSirGlobal pMac,
                                                tDot11fIEWscBeacon *pDot11f);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProbeRes *pDot11f, tpPESession psessionEntry);
 tSirRetStatus PopulateDot11fAssocResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscAssocRes *pDot11f, tpPESession psessionEntry);
 tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon *pDot11f, tpPESession psessionEntry);
 #endif
+<<<<<<< HEAD
 =======
 tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProbeRes *pDot11f, tpPESession psessionEntry);
 tSirRetStatus PopulateDot11fAssocResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscAssocRes *pDot11f, tpPESession psessionEntry);
 tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon *pDot11f, tpPESession psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 tSirRetStatus PopulateDot11fWscInProbeRes(tpAniSirGlobal pMac,
                                           tDot11fIEWscProbeRes *pDot11f);
@@ -959,6 +1036,7 @@ tSirRetStatus PopulateDot11fAssocResWscIE(tpAniSirGlobal pMac,
                                           tpSirAssocReq pRcvdAssocReq);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 tSirRetStatus PopulateDot11AssocResP2PIE(tpAniSirGlobal pMac, 
                                        tDot11fIEP2PAssocRes *pDot11f, 
@@ -969,6 +1047,13 @@ tSirRetStatus PopulateDot11AssocResP2PIE(tpAniSirGlobal pMac,
                                        tDot11fIEP2PAssocRes *pDot11f, 
                                        tpSirAssocReq pRcvdAssocReq);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+tSirRetStatus PopulateDot11AssocResP2PIE(tpAniSirGlobal pMac, 
+                                       tDot11fIEP2PAssocRes *pDot11f, 
+                                       tpSirAssocReq pRcvdAssocReq);
+#endif
+>>>>>>> 657b0e9... prima update
 
 tSirRetStatus PopulateDot11fWscInAssocRes(tpAniSirGlobal pMac,
                                           tDot11fIEWscAssocRes *pDot11f);
@@ -1009,6 +1094,7 @@ tSirRetStatus
 PopulateDot11fVHTExtBssLoad(tpAniSirGlobal  pMac, tDot11fIEVHTExtBssLoad   *pDot11f);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 tSirRetStatus
 PopulateDot11fExtCap(tpAniSirGlobal pMac, tDot11fIEExtCap * pDot11f);
@@ -1021,4 +1107,6 @@ PopulateDot11fWiderBWChanSwitchAnn(tpAniSirGlobal pMac,
                                    tDot11fIEWiderBWChanSwitchAnn *pDot11f,
                                    tpPESession psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif

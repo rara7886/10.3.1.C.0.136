@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -260,10 +263,14 @@ WCTS_SendMessage
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  @brief    This helper function is used to clean up the pending 
 =======
  @brief    This helper function is used to clean up the pending
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ @brief    This helper function is used to clean up the pending 
+>>>>>>> 657b0e9... prima update
            messages in the transport queue
 
  @param wctsHandlehandle:  transport handle

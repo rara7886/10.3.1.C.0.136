@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -22,6 +25,7 @@
 
 /*
  * */
+<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -43,6 +47,8 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #ifndef _WLAN_HDD_WMM_H
 #define _WLAN_HDD_WMM_H
 /*============================================================================
@@ -68,6 +74,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                Copyright (c) 2008-9 QUALCOMM Incorporated.
                All Rights Reserved.
                Qualcomm Confidential and Proprietary
@@ -76,6 +83,11 @@
                All Rights Reserved.
                Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
+=======
+               Copyright (c) 2008-9 QUALCOMM Incorporated.
+               All Rights Reserved.
+               Qualcomm Confidential and Proprietary
+>>>>>>> 657b0e9... prima update
 ============================================================================*/
 /* $Header$ */
 
@@ -149,6 +161,7 @@ typedef enum
 } hdd_wmm_user_mode_t;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // UAPSD Mask bits
 // (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored)
@@ -157,6 +170,8 @@ typedef enum
 #define HDD_AC_BK 0x4
 #define HDD_AC_BE 0x8
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /*! @brief WMM Qos instance control block
 */
@@ -207,9 +222,12 @@ typedef struct
 
    // current U-APSD parameters
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    v_BOOL_t                     wmmAcIsUapsdEnabled;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
    v_U32_t                      wmmAcUapsdServiceInterval;
    v_U32_t                      wmmAcUapsdSuspensionInterval;
    sme_QosWmmDirType            wmmAcUapsdDirection;
@@ -426,6 +444,7 @@ hdd_wlan_wmm_status_e hdd_wmm_delts( hdd_adapter_t* pAdapter,
 hdd_wlan_wmm_status_e hdd_wmm_checkts( hdd_adapter_t* pAdapter,
                                        v_U32_t handle );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /**============================================================================
   @brief hdd_wmm_adapter_clear() - Function which will clear the WMM status
@@ -437,5 +456,7 @@ hdd_wlan_wmm_status_e hdd_wmm_checkts( hdd_adapter_t* pAdapter,
   ===========================================================================*/
 VOS_STATUS hdd_wmm_adapter_clear( hdd_adapter_t *pAdapter );
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #endif /* #ifndef _WLAN_HDD_WMM_H */

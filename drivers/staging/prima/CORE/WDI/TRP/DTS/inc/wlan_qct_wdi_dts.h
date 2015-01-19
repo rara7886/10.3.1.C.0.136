@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -45,11 +48,14 @@
 #ifndef __WLAN_QCT_DTS_H
 #define __WLAN_QCT_DTS_H
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #include "wlan_qct_wdi.h"
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /**=========================================================================
  *     
  *       \file  wlan_qct_wdi_dts.h
@@ -146,6 +152,7 @@ typedef struct {
 } WDTS_SetPowerStateCbInfoType;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* Tx/Rx stats function
  * This function should be invoked to fetch the current stats
@@ -178,6 +185,8 @@ void WDTS_ActivateTrafficStats(void);
 void WDTS_ClearTrafficStats(void);
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 /* DTS open  function. 
  * On open the transport device should initialize itself.
  * Parameters:
@@ -248,10 +257,14 @@ wpt_status WDTS_SetPowerState(void *pContext, WDTS_PowerStateType powerState,
  * Or if host driver detects any abnormal stcuk may display
  * Parameters:
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  displaySnapshot : Dispaly DXE snapshot option
 =======
  *  displaySnapshot : Display DXE snapshot option
 >>>>>>> d97af3b... add prima wlan driver
+=======
+ *  displaySnapshot : Dispaly DXE snapshot option
+>>>>>>> 657b0e9... prima update
  *  enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification
@@ -259,10 +272,14 @@ wpt_status WDTS_SetPowerState(void *pContext, WDTS_PowerStateType powerState,
  *
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void WDTS_ChannelDebug(wpt_boolean dispalySnapshot, wpt_boolean toggleStallDetect);
 =======
 void WDTS_ChannelDebug(wpt_boolean displaySnapshot, wpt_boolean toggleStallDetect);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+void WDTS_ChannelDebug(wpt_boolean dispalySnapshot, wpt_boolean toggleStallDetect);
+>>>>>>> 657b0e9... prima update
 
 /* DTS Stop function. 
  * Stop Transport driver, ie DXE, SDIO
@@ -293,6 +310,7 @@ wpt_status WDTS_Close(void *pContext);
 wpt_uint32 WDTS_GetFreeTxDataResNumber(void *pContext);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* API to fill Rate Info based on the mac efficiency passed to it
  * macEff si used to caclulate mac throughput based on each rate index/PHY rate.
@@ -302,4 +320,6 @@ wpt_uint32 WDTS_GetFreeTxDataResNumber(void *pContext);
  */
 void WDTS_FillRateInfo(wpt_uint8 macEff, wpt_int16 startRateIndex, wpt_int16 endRateIndex);
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif

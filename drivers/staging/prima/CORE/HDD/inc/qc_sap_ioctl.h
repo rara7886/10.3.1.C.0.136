@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -22,6 +23,8 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,9 +60,12 @@
 #define QCSAP_MAX_OPT_IE        256
 #define QCSAP_MAX_WSC_IE        256
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #define QCSAP_MAX_GET_STA_INFO  512
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 typedef struct sSSID
 {
@@ -253,6 +259,7 @@ typedef struct
 #define QCSAP_IOCTL_SET_CHANNEL_RANGE (SIOCIWFIRSTPRIV+17)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 #define WE_P2P_NOA_CMD  2
 #endif
@@ -262,16 +269,24 @@ typedef struct
 #define WE_MCC_CONFIG_CREDENTIAL 3
 #define WE_MCC_CONFIG_PARAMS  4
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_FEATURE_P2P
+#define WE_P2P_NOA_CMD  2
+#endif
+>>>>>>> 657b0e9... prima update
 
 #define QCSAP_IOCTL_MODIFY_ACL          (SIOCIWFIRSTPRIV+18)
 #define QCSAP_IOCTL_GET_CHANNEL_LIST    (SIOCIWFIRSTPRIV+19)
 #define QCSAP_IOCTL_SET_TX_POWER        (SIOCIWFIRSTPRIV+20) 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #define QCSAP_IOCTL_GET_STA_INFO        (SIOCIWFIRSTPRIV+21)
 #define QCSAP_IOCTL_SET_MAX_TX_POWER    (SIOCIWFIRSTPRIV+22)
 #define QCSAP_IOCTL_DATAPATH_SNAP_SHOT        (SIOCIWFIRSTPRIV+23)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 #define MAX_VAR_ARGS         7
 #define QCSAP_IOCTL_PRIV_GET_SOFTAP_LINK_SPEED (SIOCIWFIRSTPRIV + 31)
@@ -285,9 +300,12 @@ enum {
     QCSAP_PARAM_HIDE_SSID = 8,
     QCSAP_PARAM_AUTO_CHANNEL = 9,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     QCSAP_PARAM_SET_MC_RATE = 10,
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 };
 
 int iw_softap_get_channel_list(struct net_device *dev, 

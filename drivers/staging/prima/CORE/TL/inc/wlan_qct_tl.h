@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
@@ -28,6 +29,8 @@
  * */
 =======
 /*
+=======
+>>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -49,11 +52,15 @@
  */
 >>>>>>> d97af3b... add prima wlan driver
 
+/*
+ * */
+
 #ifndef WLAN_QCT_WLANTL_H
 #define WLAN_QCT_WLANTL_H
 
 /*===========================================================================
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                W L A N   T R A N S P O R T   L A Y E R 
                        E X T E R N A L  A P I
@@ -64,18 +71,25 @@ DESCRIPTION
   module.
 =======
                W L A N   T R A N S P O R T   L A Y E R
+=======
+               W L A N   T R A N S P O R T   L A Y E R 
+>>>>>>> 657b0e9... prima update
                        E X T E R N A L  A P I
-
-
+                
+                   
 DESCRIPTION
-  This file contains the external API exposed by the wlan transport layer
+  This file contains the external API exposed by the wlan transport layer 
   module.
+<<<<<<< HEAD
 <<<<<<< HEAD:CORE/TL/inc/wlan_qct_tl.h
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   
       
   Copyright (c) 2008 QUALCOMM Incorporated. All Rights Reserved.
   Qualcomm Confidential and Proprietary
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -85,6 +99,8 @@ DESCRIPTION
   Qualcomm Technologies Confidential and Proprietary
 >>>>>>> 326d6cf... wlan: remove obsolete ANI_CHIPSET_VOLANS featurization:prima/CORE/TL/inc/wlan_qct_tl.h
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 ===========================================================================*/
 
 
@@ -129,6 +145,7 @@ when        who    what, where, why
 #include "vos_packet.h" 
 #include "sirApi.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #include "csrApi.h"
 #include "sapApi.h"
@@ -138,6 +155,13 @@ when        who    what, where, why
 #include "csrApi.h"
 #include "sapApi.h"
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include "csrApi.h"
+#include "sapApi.h"
+#endif
+
+>>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -165,11 +189,15 @@ when        who    what, where, why
 #define WLANTL_MAX_AC                         4
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 
 /* Bit Mask to represent All Stations */
 #define WLAN_ALL_STA                         0xFF
 
+<<<<<<< HEAD
 /* Maximum number of station supported by TL, including BC. */
 #define WLAN_MAX_STA_COUNT  (HAL_NUM_STA)
 
@@ -178,6 +206,11 @@ when        who    what, where, why
 #define WLAN_MAX_STA_COUNT  (HAL_NUM_STA)
 #define WLAN_NON32_STA_COUNT   14
 >>>>>>> d97af3b... add prima wlan driver
+=======
+/* Maximum number of station supported by TL, including BC. */
+#define WLAN_MAX_STA_COUNT  (HAL_NUM_STA)
+
+>>>>>>> 657b0e9... prima update
 /* The symbolic station ID return to HDD to specify the packet is bc/mc */
 #define WLAN_RX_BCMC_STA_ID (WLAN_MAX_STA_COUNT + 1)
 
@@ -193,14 +226,20 @@ when        who    what, where, why
 //#define WLANTL_BC_STA_ID  0x00
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 #ifdef ANI_CHIPSET_VOLANS
 #define WLANTL_MAX_TID                        15
 #endif
 =======
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
+#ifdef ANI_CHIPSET_VOLANS
 #define WLANTL_MAX_TID                        15
+<<<<<<< HEAD
 /* Default RSSI average Alpha */
 #define WLANTL_HO_DEFAULT_ALPHA               5
 #define WLANTL_HO_TDLS_ALPHA                  7
@@ -209,6 +248,9 @@ when        who    what, where, why
 // variable.
 #define SNR_HACK_BMPS                         (127)
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 /*--------------------------------------------------------------------------
   Access category enum used by TL
   - order must be kept as these values are used to setup the AC mask
@@ -236,22 +278,25 @@ typedef enum
   WLAN_STA_BT_AMP,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   /* SoftAP station */
   WLAN_STA_SOFTAP,
 #endif
 
 =======
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
   /* SoftAP station */
   WLAN_STA_SOFTAP,
-
-#ifdef FEATURE_WLAN_TDLS
-  /* TDLS direct link */
-  WLAN_STA_TDLS,    /* 4 */
 #endif
 
+<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   /* Invalid link*/
   WLAN_STA_MAX
 
@@ -283,9 +328,13 @@ typedef enum
 } WLANTL_BAPFrameEnumType;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /* Type used to specify LWM threshold unit */
 typedef enum  {
     WLAN_LWM_THRESHOLD_BYTE = 0,
@@ -293,9 +342,13 @@ typedef enum  {
     WLAN_LWM_THRESHOLD_PACKET
 } WLAN_LWM_Threshold_Type;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   TL States
@@ -370,16 +423,22 @@ typedef struct
   /*Initial state at which the STA should be brought up to*/
   WLANTL_STAStateType ucInitState;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef ANI_CHIPSET_VOLANS
  /* 1 means replay check is needed for the station,
     0 means replay check is not needed for the station*/ 
   v_BOOL_t      ucIsReplayCheckValid; 
 #endif
+<<<<<<< HEAD
 =======
  /* 1 means replay check is needed for the station,
     0 means replay check is not needed for the station*/ 
   v_BOOL_t      ucIsReplayCheckValid; 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }WLAN_STADescType;
 
 /*---------------------------------------------------------------------------
@@ -395,14 +454,20 @@ typedef struct
   v_U32_t  uDelayedTriggerFrmInt;  
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
   /* Min Threshold for Processing Frames in TL */
   v_U8_t   uMinFramesProcThres;
 #endif
+<<<<<<< HEAD
 =======
   /* Min Threshold for Processing Frames in TL */
   v_U8_t   uMinFramesProcThres;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }WLANTL_ConfigInfoType;
 
 /*---------------------------------------------------------------------------
@@ -520,6 +585,7 @@ typedef struct
   /* Address 3 Index of the received packet */
   v_U16_t   ucDesSTAId;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  /*Rssi based on the received packet */
   v_S7_t    rssiAvg;
@@ -528,6 +594,8 @@ typedef struct
   v_U8_t    isStaTdls;
  #endif
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 }WLANTL_RxMetaInfoType;
 
 
@@ -584,6 +652,9 @@ typedef struct
 } WLANTL_HO_TRAFFIC_STATUS_TYPE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 typedef tSap_SoftapStats WLANTL_TRANSFER_STA_TYPE;
 #else
@@ -606,9 +677,12 @@ typedef struct
    v_U32_t rxRate;
 }WLANTL_TRANSFER_STA_TYPE;
 #endif
+<<<<<<< HEAD
 =======
 typedef tSap_SoftapStats WLANTL_TRANSFER_STA_TYPE;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 
 /* Under here not public items, just use for internal */
 /* 3 SME 1 HDD */
@@ -885,11 +959,15 @@ typedef VOS_STATUS (*WLANTL_RSSICrossThresholdCBType)
    v_PVOID_t                       pAdapter,
    v_U8_t                          rssiNotification,
 <<<<<<< HEAD
+<<<<<<< HEAD
    v_PVOID_t                       pUserCtxt
 =======
    v_PVOID_t                       pUserCtxt,
    v_S7_t                          avgRssi
 >>>>>>> d97af3b... add prima wlan driver
+=======
+   v_PVOID_t                       pUserCtxt
+>>>>>>> 657b0e9... prima update
 );
 
 typedef struct
@@ -900,9 +978,12 @@ typedef struct
     v_U8_t                          sessionId; //sme Session Id
     v_U8_t                          rssiNotification;    
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     v_U8_t                          avgRssi;
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
     v_PVOID_t                       tlCallback;
     v_PVOID_t                       pAdapter;
     v_PVOID_t                       pUserCtxt;
@@ -1227,6 +1308,7 @@ WLANTL_ChangeSTAState
 /*===========================================================================
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   FUNCTION    WLANTL_STAPtkInstalled
 
@@ -1267,6 +1349,8 @@ WLANTL_STAPtkInstalled
 /*===========================================================================
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   FUNCTION    WLANTL_GetSTAState
 
   DESCRIPTION
@@ -1554,6 +1638,7 @@ WLANTL_GetRssi
 /*==========================================================================
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   FUNCTION    WLANTL_GetSnr
 
@@ -1601,6 +1686,8 @@ WLANTL_GetSnr
 /*==========================================================================
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
   FUNCTION    WLANTL_GetLinkQuality
 
   DESCRIPTION 
@@ -2498,9 +2585,13 @@ VOS_STATUS WLANTL_ResetSpecStatistic
    v_U8_t                       STAid
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 657b0e9... prima update
 /*===============================================================================
   FUNCTION      WLANTL_IsReplayPacket
    
@@ -2543,9 +2634,13 @@ WLANTL_GetReplayCounterFromRxBD
    v_U8_t *pucRxBDHeader
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /*End of #ifdef ANI_CHIPSET_VOLANS*/
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif /*End of #ifdef ANI_CHIPSET_VOLANS*/
+>>>>>>> 657b0e9... prima update
 
 
 
@@ -2588,9 +2683,13 @@ WLANTL_SetACWeights
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION      WLANTL_GetSoftAPStatistics
 
@@ -2609,9 +2708,13 @@ WLANTL_SetACWeights
 ============================================================================*/
 VOS_STATUS WLANTL_GetSoftAPStatistics(v_PVOID_t pAdapter, WLANTL_TRANSFER_STA_TYPE *statsSum, v_BOOL_t bReset);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
+=======
+#endif
+>>>>>>> 657b0e9... prima update
 
 #ifdef __cplusplus
  }
@@ -2722,6 +2825,7 @@ VOS_STATUS WLANTL_Finish_ULA( void (*callbackRoutine) (void *callbackContext),
 
 void WLANTL_UpdateRssiBmps(v_PVOID_t pvosGCtx, v_U8_t staId, v_S7_t rssi);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*===============================================================================
@@ -2999,4 +3103,6 @@ WLANTL_TLDebugMessage
 );
 
 >>>>>>> d97af3b... add prima wlan driver
+=======
+>>>>>>> 657b0e9... prima update
 #endif /* #ifndef WLAN_QCT_WLANTL_H */
