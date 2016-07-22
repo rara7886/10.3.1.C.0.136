@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -58,10 +35,6 @@
 #define CSR_NEIGHBOR_ROAM_H
 
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
-<<<<<<< HEAD
-=======
-#include "sme_Api.h"
->>>>>>> d97af3b... add prima wlan driver
 
 /* Enumeration of various states in neighbor roam algorithm */
 typedef enum
@@ -91,10 +64,6 @@ typedef struct sCsrNeighborRoamCfgParams
     tANI_U32        minChannelScanTime;
     tANI_U32        maxChannelScanTime;
     tANI_U16        neighborResultsRefreshPeriod;
-<<<<<<< HEAD
-=======
-    tANI_U16        emptyScanRefreshPeriod;
->>>>>>> d97af3b... add prima wlan driver
 } tCsrNeighborRoamCfgParams, *tpCsrNeighborRoamCfgParams;
 
 #define CSR_NEIGHBOR_ROAM_INVALID_CHANNEL_INDEX    255
@@ -140,11 +109,8 @@ typedef struct sCsr11rAssocNeighborInfo
     tANI_BOOLEAN                preauthRspPending;
     tANI_BOOLEAN                neighborRptPending;
     tANI_U8                     currentNeighborRptRetryNum;
-<<<<<<< HEAD
     tPalTimerHandle             preAuthRspWaitTimer; //This timer is used for preauth response
     tCsrTimerInfo               preAuthRspWaitTimerInfo;
-=======
->>>>>>> d97af3b... add prima wlan driver
     tCsrPreauthFailListInfo     preAuthFailList;
     tANI_U32                    neighborReportTimeout;
     tANI_U32                    PEPreauthRespTimeout;
@@ -161,7 +127,6 @@ typedef struct sCsr11rAssocNeighborInfo
  * NEIGHBOR_LOOKUP_THRESHOLD_INCREMENT_CONSTANT) */
 #define NEIGHBOR_LOOKUP_THRESHOLD_INCREMENT_CONSTANT    5
 #define LOOKUP_THRESHOLD_INCREMENT_MULTIPLIER_MAX       4
-<<<<<<< HEAD
 /* 
  * For every scan that results in no candidates, double the scan periodicity 
  * (initialized to NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MIN) until we hit 
@@ -171,32 +136,6 @@ typedef struct sCsr11rAssocNeighborInfo
  */
 #define NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MIN (1000)
 #define NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MAX (60000)
-=======
-/*
- * Set lookup UP threshold 5 dB higher than the configured
- * lookup DOWN threshold to minimize thrashing between
- * DOWN and UP events.
- */
-#define NEIGHBOR_ROAM_LOOKUP_UP_THRESHOLD \
-    (pNeighborRoamInfo->cfgParams.neighborLookupThreshold-5)
-#ifdef FEATURE_WLAN_LFR
-typedef enum
-{
-    eFirstEmptyScan=1,
-    eSecondEmptyScan,
-    eThirdEmptyScan,
-    eFourthEmptyScan,
-    eFifthEmptyScan,
-    eMaxEmptyScan=eFifthEmptyScan,
-} eNeighborRoamEmptyScanCount;
-
-typedef enum
-{
-    DEFAULT_SCAN=0,
-    SPLIT_SCAN_OCCUPIED_LIST=1,
-} eNeighborRoamScanMode;
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 /* Complete control information for neighbor roam algorithm */
 typedef struct sCsrNeighborRoamControlInfo
@@ -206,14 +145,8 @@ typedef struct sCsrNeighborRoamControlInfo
     tCsrNeighborRoamCfgParams   cfgParams;
     tCsrBssid                   currAPbssid; // current assoc AP
     tANI_U8                     currAPoperationChannel; // current assoc AP
-<<<<<<< HEAD
     tPalTimerHandle             neighborScanTimer;
     tPalTimerHandle             neighborResultsRefreshTimer;
-=======
-    vos_timer_t                 neighborScanTimer;
-    vos_timer_t                 neighborResultsRefreshTimer;
-    vos_timer_t                 emptyScanRefreshTimer;
->>>>>>> d97af3b... add prima wlan driver
     tCsrTimerInfo               neighborScanTimerInfo;
     tCsrNeighborRoamChannelInfo roamChannelInfo;
     tANI_U8                     currentNeighborLookupThreshold;
@@ -231,28 +164,7 @@ typedef struct sCsrNeighborRoamControlInfo
     tANI_BOOLEAN                isVOAdmitted;
     tANI_U32                    MinQBssLoadRequired;
 #endif
-<<<<<<< HEAD
     tANI_U16                    currentScanResultsRefreshPeriod;
-=======
-#ifdef FEATURE_WLAN_LFR
-    tANI_U8                     uEmptyScanCount; /* Consecutive number of times scan
-                                                    yielded no results. */
-    tCsrRoamConnectedProfile    prevConnProfile; /* Previous connected profile. If the
-                                                    new profile does not match previous
-                                                    we re-initialize occupied channel list */
-    tANI_S8                     lookupDOWNRssi;
-    tANI_U8                     uScanMode;
-    tANI_U8                     uOsRequestedHandoff; /* upper layer requested
-                                                        a reassoc */
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-    tCsrHandoffRequest          handoffReqInfo; /* handoff related info came
-                                                   with upper layer's req for
-                                                   reassoc */
-#endif
-#endif
-    tSmeFastRoamTrigger         cfgRoamEn;
-    tSirMacAddr                 cfgRoambssId;
->>>>>>> d97af3b... add prima wlan driver
 } tCsrNeighborRoamControlInfo, *tpCsrNeighborRoamControlInfo;
 
 
@@ -268,67 +180,14 @@ VOS_STATUS csrNeighborRoamTransitToCFGChanScan(tpAniSirGlobal pMac);
 VOS_STATUS csrNeighborRoamTransitionToPreauthDone(tpAniSirGlobal pMac);
 eHalStatus csrNeighborRoamPrepareScanProfileFilter(tpAniSirGlobal pMac, tCsrScanResultFilter *pScanFilter);
 void csrNeighborRoamGetHandoffAPInfo(tpAniSirGlobal pMac, tpCsrNeighborRoamBSSInfo pHandoffNode);
-<<<<<<< HEAD
 eHalStatus csrNeighborRoamPreauthRspHandler(tpAniSirGlobal pMac, VOS_STATUS vosStatus);
-=======
-eHalStatus csrNeighborRoamPreauthRspHandler(tpAniSirGlobal pMac, tSirRetStatus limStatus);
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_FEATURE_VOWIFI_11R
 tANI_BOOLEAN csrNeighborRoamIs11rAssoc(tpAniSirGlobal pMac);
 #endif
 VOS_STATUS csrNeighborRoamCreateChanListFromNeighborReport(tpAniSirGlobal pMac);
 void csrNeighborRoamTranistionPreauthDoneToDisconnected(tpAniSirGlobal pMac);
 tANI_BOOLEAN csrNeighborRoamStatePreauthDone(tpAniSirGlobal pMac);
-<<<<<<< HEAD
 
-=======
-tANI_BOOLEAN csrNeighborRoamScanRspPending(tHalHandle hHal);
-tANI_BOOLEAN csrNeighborMiddleOfRoaming(tHalHandle hHal);
-VOS_STATUS csrNeighborRoamSetLookupRssiThreshold(tpAniSirGlobal pMac, v_U8_t neighborLookupRssiThreshold);
-VOS_STATUS csrNeighborRoamUpdateFastRoamingEnabled(tpAniSirGlobal pMac, const v_BOOL_t fastRoamEnabled);
-VOS_STATUS csrNeighborRoamUpdateCcxModeEnabled(tpAniSirGlobal pMac, const v_BOOL_t ccxMode);
-VOS_STATUS csrNeighborRoamChannelsFilterByCurrentBand(
-                      tpAniSirGlobal pMac,
-                      tANI_U8*  pInputChannelList,
-                      int       inputNumOfChannels,
-                      tANI_U8*  pOutputChannelList,
-                      int*      pMergedOutputNumOfChannels
-                      );
-VOS_STATUS csrNeighborRoamReassocIndCallback(v_PVOID_t pAdapter,
-                                             v_U8_t trafficStatus,
-                                             v_PVOID_t pUserCtxt,
-                                             v_S7_t   avgRssi);
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-#define ROAM_SCAN_OFFLOAD_START                     1
-#define ROAM_SCAN_OFFLOAD_STOP                      2
-#define ROAM_SCAN_OFFLOAD_RESTART                   3
-#define ROAM_SCAN_OFFLOAD_UPDATE_CFG                4
-
-#define REASON_CONNECT                              1
-#define REASON_CHANNEL_LIST_CHANGED                 2
-#define REASON_LOOKUP_THRESH_CHANGED                3
-#define REASON_DISCONNECTED                         4
-#define REASON_RSSI_DIFF_CHANGED                    5
-#define REASON_CCX_INI_CFG_CHANGED                  6
-#define REASON_NEIGHBOR_SCAN_REFRESH_PERIOD_CHANGED 7
-#define REASON_VALID_CHANNEL_LIST_CHANGED           8
-#define REASON_FLUSH_CHANNEL_LIST                   9
-#define REASON_EMPTY_SCAN_REF_PERIOD_CHANGED        10
-#define REASON_PREAUTH_FAILED_FOR_ALL               11
-#define REASON_NO_CAND_FOUND_OR_NOT_ROAMING_NOW     12
-#define REASON_NPROBES_CHANGED                      13
-#define REASON_HOME_AWAY_TIME_CHANGED               14
-#define REASON_OS_REQUESTED_ROAMING_NOW             15
-#define REASON_SCAN_CH_TIME_CHANGED                 16
-#define REASON_SCAN_HOME_TIME_CHANGED               17
-eHalStatus csrRoamOffloadScan(tpAniSirGlobal pMac, tANI_U8 command, tANI_U8 reason);
-eHalStatus csrNeighborRoamCandidateFoundIndHdlr(tpAniSirGlobal pMac, void* pMsg);
-eHalStatus csrNeighborRoamHandoffReqHdlr(tpAniSirGlobal pMac, void* pMsg);
-eHalStatus csrNeighborRoamProceedWithHandoffReq(tpAniSirGlobal pMac);
-eHalStatus csrNeighborRoamSssidScanDone(tpAniSirGlobal pMac, eHalStatus status);
-eHalStatus csrNeighborRoamStartLfrScan(tpAniSirGlobal pMac);
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 
 #endif /* WLAN_FEATURE_NEIGHBOR_ROAMING */

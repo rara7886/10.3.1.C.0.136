@@ -1,9 +1,5 @@
 /*
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
->>>>>>> d97af3b... add prima wlan driver
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -24,15 +20,9 @@
  */
 
 /*============================================================================
-<<<<<<< HEAD
 Copyright (c) 2007 QUALCOMM Incorporated.
 All Rights Reserved.
 Qualcomm Confidential and Proprietary
-=======
-Copyright (c) 2007 Qualcomm Technologies, Inc.
-All Rights Reserved.
-Qualcomm Technologies Confidential and Proprietary
->>>>>>> d97af3b... add prima wlan driver
 
 logDump.h
 
@@ -72,7 +62,6 @@ typedef struct sRegList {
 int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ... );
 
 char *
-<<<<<<< HEAD
 dump_thread_info( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 char *
@@ -84,27 +73,13 @@ dump_cfg_set( tpAniSirGlobal pMac, tANI_U32 arg1,
 
 char *
 dump_cfg_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, 
-=======
-dump_log_level_set( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
-
-char *
-dump_cfg_set( tpAniSirGlobal pMac, tANI_U32 arg1,
-              tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4, char *p);
-
-char *
-dump_cfg_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2,
->>>>>>> d97af3b... add prima wlan driver
               tANI_U32 arg3, tANI_U32 arg4, char *p);
 
 char *
 dump_cfg_group_get( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2,
                     tANI_U32 arg3, tANI_U32 arg4, char *p);
 
-<<<<<<< HEAD
 void logDumpRegisterTable( tpAniSirGlobal pMac, tDumpFuncEntry *pEntry, 
-=======
-void logDumpRegisterTable( tpAniSirGlobal pMac, tDumpFuncEntry *pEntry,
->>>>>>> d97af3b... add prima wlan driver
                            tANI_U32   nItems );
 
 

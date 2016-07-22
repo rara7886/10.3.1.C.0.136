@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -55,7 +32,6 @@
  *
  */
 
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -69,16 +45,6 @@
 
 
 #if (WNI_POLARIS_FW_PRODUCT == WLAN_STA) || defined(ANI_AP_CLIENT_SDK)
-=======
-#include "wniCfgSta.h"
-#include "cfgApi.h"
-#include "limTypes.h"
-#include "limTimerUtils.h"
-#include "limTrace.h"
-
-
-
->>>>>>> d97af3b... add prima wlan driver
 /** ----------------------------------------------------------------------
 \fn      limSelectsBackgroundScanMode() 
 \brief   This function is called by limIsBackgroundScanAllowed(). 
@@ -98,11 +64,7 @@ tSirBackgroundScanMode limSelectsBackgroundScanMode(tpAniSirGlobal pMac)
 
     if (wlan_cfgGetInt(pMac, WNI_CFG_MAX_CONSECUTIVE_BACKGROUND_SCAN_FAILURE, &cfgVal) != eSIR_SUCCESS)
     {
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Fail to get WNI_CFG_MAX_CONSECUTIVE_BACKGROUND_SCAN_FAILURE value\n"));
-=======
-        limLog(pMac, LOGP, FL("Fail to get WNI_CFG_MAX_CONSECUTIVE_BACKGROUND_SCAN_FAILURE value"));
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_NORMAL_BACKGROUND_SCAN;
     }
   
@@ -117,11 +79,7 @@ tSirBackgroundScanMode limSelectsBackgroundScanMode(tpAniSirGlobal pMac)
     {
         pMac->lim.gLimNumOfForcedBkgndScan += 1;
         limLog(pMac, LOGE,
-<<<<<<< HEAD
                FL("Had %d consec scan fail(when expect < %d). Trigger AGGRESSIVE bkgnd scan.\n"),
-=======
-               FL("Had %d consec scan fail(when expect < %d). Trigger AGGRESSIVE bkgnd scan."),
->>>>>>> d97af3b... add prima wlan driver
                pMac->lim.gLimNumOfConsecutiveBkgndScanFailure, cfgVal);
         return eSIR_AGGRESSIVE_BACKGROUND_SCAN;
     }
@@ -194,20 +152,12 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     tSirMacAddr      bcAddr = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
     tSirBackgroundScanMode   backgroundScan;
 
-<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Background Scan: %d success, %d consec fail \n"),
-=======
-    PELOG1(limLog(pMac, LOG1, FL("Background Scan: %d success, %d consec fail "),
->>>>>>> d97af3b... add prima wlan driver
         pMac->lim.gLimNumOfBackgroundScanSuccess,  pMac->lim.gLimNumOfConsecutiveBkgndScanFailure);)
 
     if (! limIsBackgroundScanAllowed(pMac))
     {
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Skipping Background Scan \n"));)
-=======
-        PELOG1(limLog(pMac, LOG1, FL("Skipping Background Scan "));)
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
@@ -220,11 +170,7 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
          * Could not get Valid channel list from CFG.
          * Log error.
          */
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve valid channel list\n"));)
-=======
-        PELOGE(limLog(pMac, LOGE, FL("could not retrieve valid channel list"));)
->>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -234,11 +180,7 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     smeScanReq.messageType = eWNI_SME_SCAN_REQ;
     smeScanReq.length      = sizeof(tSirSmeScanReq);
     smeScanReq.bssType     = eSIR_INFRASTRUCTURE_MODE;
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) smeScanReq.bssId,
-=======
-    vos_mem_copy( (tANI_U8 *) smeScanReq.bssId,
->>>>>>> d97af3b... add prima wlan driver
                   (tANI_U8 *) &bcAddr, sizeof(tSirMacAddr));
  
     if (wlan_cfgGetStr(pMac, WNI_CFG_SSID,
@@ -246,11 +188,7 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
                     (tANI_U32 *) &ssidLen) != eSIR_SUCCESS)
     {
         /// Could not get SSID from CFG. Log error.
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve SSID\n"));
-=======
-        limLog(pMac, LOGP, FL("could not retrieve SSID"));
->>>>>>> d97af3b... add prima wlan driver
     }
     smeScanReq.ssId[0].length = (tANI_U8) ssidLen;
     smeScanReq.numSsid = 1;
@@ -262,11 +200,7 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
                   &smeScanReq.minChannelTime) != eSIR_SUCCESS)
     {
         /// Could not get minChlTime value from CFG. Log error.
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve minChlTime value\n"));)
-=======
-        PELOGE(limLog(pMac, LOGE, FL("could not retrieve minChlTime value"));)
->>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -275,11 +209,7 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
                   &smeScanReq.maxChannelTime) != eSIR_SUCCESS)
     {
         /// Could not get maxChlTime value from CFG. Log error.
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve maxChlTime value\n"));)
-=======
-        PELOGE(limLog(pMac, LOGE, FL("could not retrieve maxChlTime value"));)
->>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -303,44 +233,27 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     {
         pMac->lim.gLimBackgroundScanChannelId = 0;
 
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Skipping Background Scan since the channel list is exhausted.\n"));)
         PELOGE(limLog(pMac, LOGE, FL("SME should send WNI_CFG_BACKGROUND_SCAN_PERIOD indication to start the background scan again.\n"));)
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Skipping Background Scan since the channel list is exhausted."));)
-        PELOGE(limLog(pMac, LOGE, FL("SME should send WNI_CFG_BACKGROUND_SCAN_PERIOD indication to start the background scan again."));)
->>>>>>> d97af3b... add prima wlan driver
 
         /* Stop the BG scan timer here. SME should send WNI_CFG_BACKGROUND_SCAN_PERIOD 
          * indication to start the background scan again.
          */
         if (TX_TIMER_VALID(pMac->lim.limTimers.gLimBackgroundScanTimer))
         {
-<<<<<<< HEAD
-=======
-            MTRACE(macTrace(pMac, TRACE_CODE_TIMER_DEACTIVATE, NO_SESSION, eLIM_BACKGROUND_SCAN_TIMER));
->>>>>>> d97af3b... add prima wlan driver
             if (tx_timer_deactivate(&pMac->lim.limTimers.gLimBackgroundScanTimer)
                             != TX_SUCCESS)
             {
                 // Could not deactivate BackgroundScanTimer timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to deactivate BackgroundScanTimer timer\n"));
-=======
-                   FL("unable to deactivate BackgroundScanTimer timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
         }
 
         pMac->lim.gLimBackgroundScanTerminate = TRUE;
 
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Send dummy scan with returnFreshResults as 0 to report BG scan results to SME.\n"));)
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Send dummy scan with returnFreshResults as 0 to report BG scan results to SME."));)
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
     smeScanReq.channelList.channelNumber[0] =
@@ -350,11 +263,7 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     smeScanReq.uIEFieldOffset = sizeof(tSirSmeScanReq);
     
     backgroundScan = limSelectsBackgroundScanMode(pMac);
-<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Performing (mode %d) Background Scan \n"), backgroundScan);)
-=======
-    PELOG1(limLog(pMac, LOG1, FL("Performing (mode %d) Background Scan "), backgroundScan);)
->>>>>>> d97af3b... add prima wlan driver
     smeScanReq.backgroundScanMode = backgroundScan;
     
     //determine whether to send the results or not, If so, notify the BG scan results to SME
@@ -382,11 +291,7 @@ void limAbortBackgroundScan(tpAniSirGlobal pMac)
 
     if(pMac->lim.gLimBackgroundScanTerminate == FALSE) 
     {
-<<<<<<< HEAD
         limLog(pMac, LOGE, FL("Abort Background Scan \n"));
-=======
-        limLog(pMac, LOGE, FL("Abort Background Scan "));
->>>>>>> d97af3b... add prima wlan driver
         if (TX_TIMER_VALID(pMac->lim.limTimers.gLimBackgroundScanTimer))
         {
             limDeactivateAndChangeTimer(pMac, eLIM_BACKGROUND_SCAN_TIMER); 
@@ -411,7 +316,4 @@ void limAbortBackgroundScan(tpAniSirGlobal pMac)
     return;
 }
 
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver

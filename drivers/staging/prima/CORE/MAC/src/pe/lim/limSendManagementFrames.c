@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -41,10 +18,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 /**
  * \file limSendManagementFrames.c
  *
@@ -57,31 +31,18 @@
 #include "sirApi.h"
 #include "aniGlobal.h"
 #include "sirMacProtDef.h"
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halDataStruct.h"
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #include "cfgApi.h"
 #include "utilsApi.h"
 #include "limTypes.h"
 #include "limUtils.h"
 #include "limSecurityUtils.h"
-<<<<<<< HEAD
-=======
-#include "limPropExtsUtils.h"
->>>>>>> d97af3b... add prima wlan driver
 #include "dot11f.h"
 #include "limStaHashApi.h"
 #include "schApi.h"
 #include "limSendMessages.h"
-<<<<<<< HEAD
-=======
-#include "limAssocUtils.h"
-#include "limFT.h"
-
->>>>>>> d97af3b... add prima wlan driver
 #if defined WLAN_FEATURE_VOWIFI
 #include "rrmApi.h"
 #endif
@@ -97,7 +58,6 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-<<<<<<< HEAD
 /// Get an integral configuration item & check return status; if it
 /// fails, return.
 #define CFG_LIM_GET_INT_NO_STATUS(nStatus, pMac, nItem, cfg )      \
@@ -123,8 +83,6 @@
                 (nStatus) );                                       \
         return;                                                    \
     }
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 /**
  *
@@ -155,11 +113,7 @@ tSirRetStatus limPopulateMacHeader( tpAniSirGlobal pMac,
                              tANI_U8* pBD,
                              tANI_U8 type,
                              tANI_U8 subType,
-<<<<<<< HEAD
                              tSirMacAddr peerAddr ,tSirMacAddr selfMacAddr)
-=======
-                             tSirMacAddr peerAddr, tSirMacAddr selfMacAddr)
->>>>>>> d97af3b... add prima wlan driver
 {
     tSirRetStatus   statusCode = eSIR_SUCCESS;
     tpSirMacMgmtHdr pMacHdr;
@@ -173,17 +127,12 @@ tSirRetStatus limPopulateMacHeader( tpAniSirGlobal pMac,
     pMacHdr->fc.subType = subType;
 
     // Prepare Address 1
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd,
                    (tANI_U8 *) pMacHdr->da,
-=======
-    vos_mem_copy(  (tANI_U8 *) pMacHdr->da,
->>>>>>> d97af3b... add prima wlan driver
                    (tANI_U8 *) peerAddr,
                    sizeof( tSirMacAddr ));
 
     // Prepare Address 2
-<<<<<<< HEAD
     #if 0
     if ((statusCode = wlan_cfgGetStr(pMac, WNI_CFG_STA_ID, (tANI_U8 *) pMacHdr->sa,
                                 &cfgLen)) != eSIR_SUCCESS)
@@ -199,62 +148,11 @@ tSirRetStatus limPopulateMacHeader( tpAniSirGlobal pMac,
     // Prepare Address 3
     palCopyMemory( pMac->hHdd,
                    (tANI_U8 *) pMacHdr->bssId,
-=======
-    sirCopyMacAddr(pMacHdr->sa,selfMacAddr);
-
-    // Prepare Address 3
-    vos_mem_copy(  (tANI_U8 *) pMacHdr->bssId,
->>>>>>> d97af3b... add prima wlan driver
                    (tANI_U8 *) peerAddr,
                    sizeof( tSirMacAddr ));
     return statusCode;
 } /*** end limPopulateMacHeader() ***/
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-/**
- *
- * \brief This function is called by various LIM modules to correctly set
- * the Protected bit in the Frame Control Field of the 802.11 frame MAC header
- *
- *
- * \param  pMac Pointer to Global MAC structure
- *
- * \param psessionEntry Pointer to session corresponding to the connection
- *
- * \param peer Peer address of the STA to which the frame is to be sent
- *
- * \param pMacHdr Pointer to the frame MAC header
- *
- * \return nothing
- *
- *
- */
-void
-limSetProtectedBit(tpAniSirGlobal  pMac,
-                   tpPESession     psessionEntry,
-                   tSirMacAddr     peer,
-                   tpSirMacMgmtHdr pMacHdr)
-{
-    tANI_U16 aid;
-    tpDphHashNode pStaDs;
-
-    if( (psessionEntry->limSystemRole == eLIM_AP_ROLE) ||
-         (psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE) )
-    {
-
-        pStaDs = dphLookupHashEntry( pMac, peer, &aid, &psessionEntry->dph.dphHashTable );
-        if( pStaDs != NULL )
-            if( pStaDs->rmfEnabled )
-                pMacHdr->fc.wep = 1;
-    }
-    else if ( psessionEntry->limRmfEnabled )
-        pMacHdr->fc.wep = 1;
-} /*** end limSetProtectedBit() ***/
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
 /**
  * \brief limSendProbeReqMgmtFrame
  *
@@ -303,13 +201,9 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     eHalStatus          halstatus;
     tpPESession         psessionEntry;
     tANI_U8             sessionId;
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tANI_U8             *p2pIe = NULL;
 #endif
-=======
-    tANI_U8             *p2pIe = NULL;
->>>>>>> d97af3b... add prima wlan driver
     tANI_U8             txFlag = 0;
 
 #ifndef GEN4_SCAN
@@ -336,19 +230,12 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     // The scheme here is to fill out a 'tDot11fProbeRequest' structure
     // and then hand it off to 'dot11fPackProbeRequest' (for
     // serialization).  We start by zero-initializing the structure:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&pr, sizeof( pr ) );
-=======
-    vos_mem_set(( tANI_U8* )&pr, sizeof( pr ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
     // & delegating to assorted helpers:
     PopulateDot11fSSID( pMac, pSsid, &pr.SSID );
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
-=======
->>>>>>> d97af3b... add prima wlan driver
     if( nAdditionalIELen && pAdditionalIE )
     {
         p2pIe = limGetP2pIEPtr(pMac, pAdditionalIE, nAdditionalIELen);
@@ -370,10 +257,7 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     }
     else
     {
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
         PopulateDot11fSuppRates( pMac, nChannelNum, 
                                                &pr.SuppRates,psessionEntry);
 
@@ -381,13 +265,9 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
         {
             PopulateDot11fExtSuppRates1( pMac, nChannelNum, &pr.ExtSuppRates );
         }
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     }
 #endif
-=======
-    }
->>>>>>> d97af3b... add prima wlan driver
 
 #if defined WLAN_FEATURE_VOWIFI
     //Table 7-14 in IEEE Std. 802.11k-2008 says
@@ -415,17 +295,6 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
                PopulateDot11fHTCaps( pMac, psessionEntry, &pr.HTCaps );
            }
     }
-<<<<<<< HEAD
-=======
-
-    /* Set channelbonding information as "disabled" when tunned to a 2.4 GHz channel */
-    if( nChannelNum <= SIR_11B_CHANNEL_END)
-    {
-        pr.HTCaps.supportedChannelWidthSet = eHT_CHANNEL_WIDTH_20MHZ;
-        pr.HTCaps.shortGI40MHz = 0;
-    }
-
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_FEATURE_11AC
     if (psessionEntry != NULL ) {
        psessionEntry->vhtCapability = IS_DOT11_MODE_VHT(dot11mode);
@@ -449,11 +318,7 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                "or a Probe Request (0x%08x).\n"), nStatus );
-=======
-                               "or a Probe Request (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fProbeRequest );
     }
@@ -461,11 +326,7 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                                "the packed size for a Probe Request ("
-<<<<<<< HEAD
                                "0x%08x).\n"), nStatus );
-=======
-                               "0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr ) + nAdditionalIELen;
@@ -477,16 +338,11 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Pro"
-<<<<<<< HEAD
                                "be Request.\n"), nBytes );
-=======
-                               "be Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_MEM_ALLOC_FAILED;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
 
     // Next, we fill out the buffer descriptor:
@@ -496,17 +352,6 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
                                "tor for a Probe Request (%d).\n"),
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
-
-    // Next, we fill out the buffer descriptor:
-    nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                SIR_MAC_MGMT_PROBE_REQ, bssid, SelfMacAddr);
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a Probe Request (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
@@ -519,11 +364,7 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
                                       nPayload, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to pack a Probe Request (0x%08x).\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to pack a Probe Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // allocated!
@@ -531,21 +372,13 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a P"
-<<<<<<< HEAD
                                "robe Request (0x%08x).\n") );
-=======
-                               "robe Request (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     // Append any AddIE if present.
     if( nAdditionalIELen )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pFrame+sizeof(tSirMacMgmtHdr)+nPayload, 
-=======
-        vos_mem_copy( pFrame+sizeof(tSirMacMgmtHdr)+nPayload,
->>>>>>> d97af3b... add prima wlan driver
                                                     pAdditionalIE, nAdditionalIELen );
         nPayload += nAdditionalIELen;
     }
@@ -554,20 +387,10 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
      * to send it at OFDM rate. 
      */
     if( ( SIR_BAND_5_GHZ == limGetRFBand(nChannelNum))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
       || (( pMac->lim.gpLimMlmScanReq != NULL) &&
           pMac->lim.gpLimMlmScanReq->p2pSearch )
 #endif
-=======
-      || (( pMac->lim.gpLimMlmScanReq != NULL) &&
-          pMac->lim.gpLimMlmScanReq->p2pSearch )
-      /* For unicast probe req mgmt from Join function
-         we don't set above variables. So we need to add
-         one more check whether it is pePersona is P2P_CLIENT or not */
-      || ( ( psessionEntry != NULL ) &&
-           ( VOS_P2P_CLIENT_MODE == psessionEntry->pePersona ) )
->>>>>>> d97af3b... add prima wlan driver
       ) 
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME; 
@@ -581,11 +404,7 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
                             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("could not send Probe Request frame!\n" ));
-=======
-        limLog( pMac, LOGE, FL("could not send Probe Request frame!" ));
->>>>>>> d97af3b... add prima wlan driver
         //Pkt will be freed up by the callback
         return eSIR_FAILURE;
     }
@@ -593,10 +412,7 @@ limSendProbeReqMgmtFrame(tpAniSirGlobal pMac,
     return eSIR_SUCCESS;
 } // End limSendProbeReqMgmtFrame.
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
-=======
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus limGetAddnIeForProbeResp(tpAniSirGlobal pMac,
                               tANI_U8* addIE, tANI_U16 *addnIELen,
                               tANI_U8 probeReqP2pIe)
@@ -618,13 +434,8 @@ tSirRetStatus limGetAddnIeForProbeResp(tpAniSirGlobal pMac,
             return eSIR_FAILURE;
         }
 
-<<<<<<< HEAD
         if( (palAllocateMemory(pMac->hHdd, (void**)&tempbuf,
              left)) != eHAL_STATUS_SUCCESS)
-=======
-        tempbuf = vos_mem_malloc(left);
-        if ( NULL == tempbuf )
->>>>>>> d97af3b... add prima wlan driver
         {
             PELOGE(limLog(pMac, LOGE,
                  FL("Unable to allocate memory to store addn IE"));)
@@ -639,31 +450,20 @@ tSirRetStatus limGetAddnIeForProbeResp(tpAniSirGlobal pMac,
             if(elem_len > left)
             {
                 limLog( pMac, LOGE,
-<<<<<<< HEAD
                    FL("****Invalid IEs eid = %d elem_len=%d left=%d*****\n"),
                                                    elem_id,elem_len,left);
                 palFreeMemory(pMac->hHdd, tempbuf);
-=======
-                   FL("****Invalid IEs eid = %d elem_len=%d left=%d*****"),
-                                                   elem_id,elem_len,left);
-                vos_mem_free(tempbuf);
->>>>>>> d97af3b... add prima wlan driver
                 return eSIR_FAILURE;
             }
             if ( !( (SIR_MAC_EID_VENDOR == elem_id) &&
                    (memcmp(&ptr[2], SIR_MAC_P2P_OUI, SIR_MAC_P2P_OUI_SIZE)==0) ) )
             {
-<<<<<<< HEAD
                 palCopyMemory ( pMac->hHdd, tempbuf + tempLen, &ptr[0], elem_len + 2);
-=======
-                vos_mem_copy (tempbuf + tempLen, &ptr[0], elem_len + 2);
->>>>>>> d97af3b... add prima wlan driver
                 tempLen += (elem_len + 2);
             }
             left -= elem_len;
             ptr += (elem_len + 2);
        }
-<<<<<<< HEAD
        palCopyMemory ( pMac->hHdd, addIE, tempbuf, tempLen);
        *addnIELen = tempLen;
        palFreeMemory(pMac->hHdd, tempbuf);
@@ -671,14 +471,6 @@ tSirRetStatus limGetAddnIeForProbeResp(tpAniSirGlobal pMac,
     return eSIR_SUCCESS;
 }
 #endif
-=======
-       vos_mem_copy (addIE, tempbuf, tempLen);
-       *addnIELen = tempLen;
-       vos_mem_free(tempbuf);
-    }
-    return eSIR_SUCCESS;
-}
->>>>>>> d97af3b... add prima wlan driver
 
 void
 limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
@@ -704,20 +496,14 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     tANI_U32             wpsApEnable=0, tmp;
     tANI_U8              txFlag = 0;
     tANI_U8              *addIE = NULL;
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
-=======
->>>>>>> d97af3b... add prima wlan driver
     tANI_U8             *pP2pIe = NULL;
     tANI_U8              noaLen = 0;
     tANI_U8              total_noaLen = 0;
     tANI_U8              noaStream[SIR_MAX_NOA_ATTR_LEN 
                                            + SIR_P2P_IE_HEADER_LEN];
     tANI_U8              noaIe[SIR_MAX_NOA_ATTR_LEN + SIR_P2P_IE_HEADER_LEN];
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
   
     if(pMac->gDriverType == eDRIVER_TYPE_MFG)         // We don't answer requests
     {
@@ -728,44 +514,28 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     {
         return;
     }
-<<<<<<< HEAD
     
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
                                                 (void **)&pFrm, sizeof(tDot11fProbeResponse)))
     {
         limLog(pMac, LOGE, FL("Unable to PAL allocate memory in limSendProbeRspMgmtFrame\n") );
-=======
-
-    pFrm = vos_mem_malloc(sizeof(tDot11fProbeResponse));
-    if ( NULL == pFrm )
-    {
-        limLog(pMac, LOGE, FL("Unable to allocate memory in limSendProbeRspMgmtFrame") );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Fill out 'frm', after which we'll just hand the struct off to
     // 'dot11fPackProbeResponse'.
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pFrm, sizeof( tDot11fProbeResponse ) );
-=======
-    vos_mem_set(( tANI_U8* )pFrm, sizeof( tDot11fProbeResponse ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
     // Timestamp to be updated by TFP, below.
 
     // Beacon Interval:
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
     if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
     {
         pFrm->BeaconInterval.interval = pMac->sch.schObject.gSchBeaconInterval;        
     }
     else
     {
-<<<<<<< HEAD
 #endif
     CFG_LIM_GET_INT_NO_STATUS( nSirStatus, pMac,
                                WNI_CFG_BEACON_INTERVAL, cfg );
@@ -774,18 +544,6 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     }
 #endif
 
-=======
-        nSirStatus = wlan_cfgGetInt( pMac, WNI_CFG_BEACON_INTERVAL, &cfg);
-        if (eSIR_SUCCESS != nSirStatus)
-        {
-            limLog( pMac, LOGP, FL("Failed to retrieve WNI_CFG_BEACON_INTERVAL from CFG (%d)."),
-                    nSirStatus );
-            vos_mem_free(pFrm);
-            return;
-        }
-        pFrm->BeaconInterval.interval = ( tANI_U16 ) cfg;
-    }
->>>>>>> d97af3b... add prima wlan driver
 
     PopulateDot11fCapabilities( pMac, &pFrm->Capabilities, psessionEntry );
     PopulateDot11fSSID( pMac, ( tSirMacSSid* )pSsid, &pFrm->SSID );
@@ -795,15 +553,11 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     PopulateDot11fDSParams( pMac, &pFrm->DSParams, psessionEntry->currentOperChannel,psessionEntry);
     PopulateDot11fIBSSParams( pMac, &pFrm->IBSSParams, psessionEntry );
 
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
     PopulateDot11fCFParams( pMac, &pFrm->Capabilities, &pFrm->CFParams );
 #endif // AP Image
 
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-
->>>>>>> d97af3b... add prima wlan driver
     if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
     {
         if(psessionEntry->wps_state != SAP_WPS_DISABLED)
@@ -813,7 +567,6 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     }
     else
     {
-<<<<<<< HEAD
 #endif
     if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
         limLog(pMac, LOGP,"Failed to cfg get id %d\n", WNI_CFG_WPS_ENABLE );
@@ -863,34 +616,6 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
         }
     }
 #endif
-=======
-        if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
-            limLog(pMac, LOGP,"Failed to cfg get id %d", WNI_CFG_WPS_ENABLE );
-
-        wpsApEnable = tmp & WNI_CFG_WPS_ENABLE_AP;
-
-        if (wpsApEnable)
-        {
-            PopulateDot11fWscInProbeRes(pMac, &pFrm->WscProbeRes);
-        }
-
-        if (pMac->lim.wscIeInfo.probeRespWscEnrollmentState == eLIM_WSC_ENROLL_BEGIN)
-        {
-            PopulateDot11fWscRegistrarInfoInProbeRes(pMac, &pFrm->WscProbeRes);
-            pMac->lim.wscIeInfo.probeRespWscEnrollmentState = eLIM_WSC_ENROLL_IN_PROGRESS;
-        }
-
-        if (pMac->lim.wscIeInfo.wscEnrollmentState == eLIM_WSC_ENROLL_END)
-        {
-            DePopulateDot11fWscRegistrarInfoInProbeRes(pMac, &pFrm->WscProbeRes);
-            pMac->lim.wscIeInfo.probeRespWscEnrollmentState = eLIM_WSC_ENROLL_NOOP;
-        }
-    }
-
-    PopulateDot11fCountry( pMac, &pFrm->Country, psessionEntry);
-    PopulateDot11fEDCAParamSet( pMac, &pFrm->EDCAParamSet, psessionEntry);
-
->>>>>>> d97af3b... add prima wlan driver
 
     if (psessionEntry->dot11mode != WNI_CFG_DOT11_MODE_11B)
         PopulateDot11fERPInfo( pMac, &pFrm->ERPInfo, psessionEntry);
@@ -905,32 +630,20 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     if ( psessionEntry->htCapability )
     {
         PopulateDot11fHTCaps( pMac, psessionEntry, &pFrm->HTCaps );
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         PopulateDot11fHTInfo( pMac, &pFrm->HTInfo, psessionEntry );
 #else
         PopulateDot11fHTInfo( pMac, &pFrm->HTInfo );
 #endif
-=======
-        PopulateDot11fHTInfo( pMac, &pFrm->HTInfo, psessionEntry );
->>>>>>> d97af3b... add prima wlan driver
     }
 #ifdef WLAN_FEATURE_11AC
     if(psessionEntry->vhtCapability)
     {
-<<<<<<< HEAD
         limLog( pMac, LOGW, FL("Populate VHT IE in Probe Response\n"));
-=======
-        limLog( pMac, LOGW, FL("Populate VHT IE in Probe Response"));
->>>>>>> d97af3b... add prima wlan driver
         PopulateDot11fVHTCaps( pMac, &pFrm->VHTCaps );
         PopulateDot11fVHTOperation( pMac, &pFrm->VHTOperation );
         // we do not support multi users yet
         //PopulateDot11fVHTExtBssLoad( pMac, &frm.VHTExtBssLoad );
-<<<<<<< HEAD
-=======
-        PopulateDot11fExtCap( pMac, &pFrm->ExtCap);
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -938,13 +651,8 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     {
       PopulateDot11fWPA( pMac, &( psessionEntry->pLimStartBssReq->rsnIE ),
           &pFrm->WPA );
-<<<<<<< HEAD
       PopulateDot11fRSN( pMac, &( psessionEntry->pLimStartBssReq->rsnIE ),
           &pFrm->RSN );
-=======
-      PopulateDot11fRSNOpaque( pMac, &( psessionEntry->pLimStartBssReq->rsnIE ),
-          &pFrm->RSNOpaque );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     PopulateDot11fWMM( pMac, &pFrm->WMMInfoAp, &pFrm->WMMParams, &pFrm->WMMCaps, psessionEntry );
@@ -963,11 +671,7 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                "or a Probe Response (0x%08x).\n"),
-=======
-                               "or a Probe Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fProbeResponse );
@@ -976,21 +680,14 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                                "the packed size for a Probe Response "
-<<<<<<< HEAD
                                "(0x%08x).\n"), nStatus );
-=======
-                               "(0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
 
     addnIEPresent = false;
     
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
-=======
->>>>>>> d97af3b... add prima wlan driver
     if( pMac->lim.gpLimRemainOnChanReq )
     {
         nBytes += (pMac->lim.gpLimRemainOnChanReq->length - sizeof( tSirRemainOnChnReq ) );
@@ -998,43 +695,26 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     //Only use CFG for non-listen mode. This CFG is not working for concurrency
     //In listening mode, probe rsp IEs is passed in the message from SME to PE
     else
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
     {
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_PROBE_RSP_ADDNIE_FLAG,
                            &addnIEPresent) != eSIR_SUCCESS)
         {
             limLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_FLAG"));
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
     }
 
     if (addnIEPresent)
     {
-<<<<<<< HEAD
         if( (palAllocateMemory(pMac->hHdd, (void**)&addIE, 
              WNI_CFG_PROBE_RSP_ADDNIE_DATA1_LEN*3 )) != eHAL_STATUS_SUCCESS)
         {
             PELOGE(limLog(pMac, LOGE,
                  FL("Unable to allocate memory to store addn IE"));)
             palFreeMemory(pMac->hHdd, pFrm);
-=======
-
-        addIE = vos_mem_malloc(WNI_CFG_PROBE_RSP_ADDNIE_DATA1_LEN*3);
-        if ( NULL == addIE )
-        {
-            PELOGE(limLog(pMac, LOGE,
-                 FL("Unable to allocate memory to store addn IE"));)
-            vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
         
@@ -1043,13 +723,8 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
                                   WNI_CFG_PROBE_RSP_ADDNIE_DATA1, &addnIE1Len) )
         {
             limLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA1 length"));
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, addIE);
             palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(addIE);
-            vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
         if (addnIE1Len <= WNI_CFG_PROBE_RSP_ADDNIE_DATA1_LEN && addnIE1Len &&
@@ -1061,13 +736,8 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
             {
                 limLog(pMac, LOGP,
                      FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA1 String"));
-<<<<<<< HEAD
                 palFreeMemory(pMac->hHdd, addIE);
                 palFreeMemory(pMac->hHdd, pFrm);
-=======
-                vos_mem_free(addIE);
-                vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
                 return;
             }
         }
@@ -1077,13 +747,8 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
                                   WNI_CFG_PROBE_RSP_ADDNIE_DATA2, &addnIE2Len) )
         {
             limLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA2 length"));
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, addIE);
             palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(addIE);
-            vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
         if (addnIE2Len <= WNI_CFG_PROBE_RSP_ADDNIE_DATA2_LEN && addnIE2Len &&
@@ -1095,13 +760,8 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
             {
                 limLog(pMac, LOGP,
                      FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA2 String"));
-<<<<<<< HEAD
                 palFreeMemory(pMac->hHdd, addIE);
                 palFreeMemory(pMac->hHdd, pFrm);
-=======
-                vos_mem_free(addIE);
-                vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
                 return;
             }
         }
@@ -1111,13 +771,8 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
                                   WNI_CFG_PROBE_RSP_ADDNIE_DATA3, &addnIE3Len) )
         {
             limLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA3 length"));
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, addIE);
             palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(addIE);
-            vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
         if (addnIE3Len <= WNI_CFG_PROBE_RSP_ADDNIE_DATA3_LEN && addnIE3Len &&
@@ -1130,33 +785,20 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
             {
                 limLog(pMac, LOGP,
                      FL("Unable to get WNI_CFG_PROBE_RSP_ADDNIE_DATA3 String"));
-<<<<<<< HEAD
                 palFreeMemory(pMac->hHdd, addIE);
                 palFreeMemory(pMac->hHdd, pFrm);
-=======
-                vos_mem_free(addIE);
-                vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
                 return;
             }
         }
         totalAddnIeLen = addnIE1Len + addnIE2Len + addnIE3Len;
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
-=======
->>>>>>> d97af3b... add prima wlan driver
         if(eSIR_SUCCESS != limGetAddnIeForProbeResp(pMac, addIE, &totalAddnIeLen, probeReqP2pIe))
         {
             limLog(pMac, LOGP,
                  FL("Unable to get final Additional IE for Probe Req"));
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, addIE);
                 palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(addIE);
-            vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
         nBytes = nBytes + totalAddnIeLen;
@@ -1176,10 +818,7 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
                 }
             }
         }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
     }
 
     halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
@@ -1188,30 +827,17 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Pro"
-<<<<<<< HEAD
                                "be Response.\n"), nBytes );
         if ( addIE != NULL )
         {
             palFreeMemory(pMac->hHdd, addIE);
         }
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-                               "be Response."), nBytes );
-        if ( addIE != NULL )
-        {
-            vos_mem_free(addIE);
-        }
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -1219,25 +845,15 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                                "tor for a Probe Response (%d).\n"),
-=======
-                               "tor for a Probe Response (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
         if ( addIE != NULL )
         {
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, addIE);
         }
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(addIE);
-        }
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
@@ -1250,34 +866,20 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
                                        nPayload, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to pack a Probe Response (0x%08x).\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to pack a Probe Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         if ( addIE != NULL )
         {
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, addIE);
         }
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-            vos_mem_free(addIE);
-        }
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;                 // allocated!
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a P"
-<<<<<<< HEAD
                                "robe Response (0x%08x).\n") );
-=======
-                               "robe Response (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     PELOG3(limLog( pMac, LOG3, FL("Sending Probe Response frame to ") );
@@ -1285,7 +887,6 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
 
     pMac->sys.probeRespond++;
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     if( pMac->lim.gpLimRemainOnChanReq )
     {
@@ -1327,40 +928,6 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-    if( pMac->lim.gpLimRemainOnChanReq )
-    {
-        vos_mem_copy ( pFrame+sizeof(tSirMacMgmtHdr)+nPayload,
-          pMac->lim.gpLimRemainOnChanReq->probeRspIe, (pMac->lim.gpLimRemainOnChanReq->length - sizeof( tSirRemainOnChnReq )) );
-    }
-
-    if ( addnIEPresent )
-    {
-        vos_mem_copy(pFrame+sizeof(tSirMacMgmtHdr)+nPayload, &addIE[0], totalAddnIeLen);
-    }
-    if (noaLen != 0)
-    {
-        if (total_noaLen > (SIR_MAX_NOA_ATTR_LEN + SIR_P2P_IE_HEADER_LEN))
-        {
-            limLog(pMac, LOGE,
-                  FL("Not able to insert NoA because of length constraint"));
-            vos_mem_free(addIE);
-            vos_mem_free(pFrm);
-            palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
-                       ( void* ) pFrame, ( void* ) pPacket );
-            return;
-        }
-        else
-        {
-            vos_mem_copy( &pFrame[nBytes - (total_noaLen)],
-                            &noaIe[0], total_noaLen);
-        }
-    }
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -1375,27 +942,16 @@ limSendProbeRspMgmtFrame(tpAniSirGlobal pMac,
                             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Could not send Probe Response.\n") );
-=======
-        limLog( pMac, LOGE, FL("Could not send Probe Response.") );
->>>>>>> d97af3b... add prima wlan driver
         //Pkt will be freed up by the callback
     }
 
     if ( addIE != NULL )
     {
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, addIE);
     }
 
     palFreeMemory(pMac->hHdd, pFrm);
-=======
-        vos_mem_free(addIE);
-    }
-
-    vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
     return;
 
 
@@ -1428,11 +984,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
 
     if ( ! pAddTS->wmeTspecPresent )
     {
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&AddTSReq, sizeof( AddTSReq ) );
-=======
-        vos_mem_set(( tANI_U8* )&AddTSReq, sizeof( AddTSReq ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
         AddTSReq.Action.action     = SIR_MAC_QOS_ADD_TS_REQ;
         AddTSReq.DialogToken.token = pAddTS->dialogToken;
@@ -1486,11 +1038,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                    "or an Add TS Request (0x%08x).\n"),
-=======
-                                   "or an Add TS Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             // We'll fall back on the worst case scenario:
             nPayload = sizeof( tDot11fAddTSRequest );
@@ -1499,20 +1047,12 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         {
             limLog( pMac, LOGW, FL("There were warnings while calculating"
                                    "the packed size for an Add TS Request"
-<<<<<<< HEAD
                                    " (0x%08x).\n"), nStatus );
-=======
-                                   " (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
     else
     {
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&WMMAddTSReq, sizeof( WMMAddTSReq ) );
-=======
-        vos_mem_set(( tANI_U8* )&WMMAddTSReq, sizeof( WMMAddTSReq ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
         WMMAddTSReq.Action.action     = SIR_MAC_QOS_ADD_TS_REQ;
         WMMAddTSReq.DialogToken.token = pAddTS->dialogToken;
@@ -1541,11 +1081,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                    "or a WMM Add TS Request (0x%08x).\n"),
-=======
-                                   "or a WMM Add TS Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             // We'll fall back on the worst case scenario:
             nPayload = sizeof( tDot11fAddTSRequest );
@@ -1554,11 +1090,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         {
             limLog( pMac, LOGW, FL("There were warnings while calculating"
                                    "the packed size for a WMM Add TS Requ"
-<<<<<<< HEAD
                                    "est (0x%08x).\n"), nStatus );
-=======
-                                   "est (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -1570,20 +1102,12 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for an Ad"
-<<<<<<< HEAD
                                "d TS Request.\n"), nBytes );
-=======
-                               "d TS Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -1591,11 +1115,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                                "tor for an Add TS Request (%d).\n"),
-=======
-                               "tor for an Add TS Request (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
@@ -1610,11 +1130,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
                                     ( tANI_U8* )pMacHdr->bssId, &cfgLen ) )
     {
         limLog( pMac, LOGP, FL("Failed to retrieve WNI_CFG_BSSID whil"
-<<<<<<< HEAD
                                "e sending an Add TS Request.\n") );
-=======
-                               "e sending an Add TS Request.") );
->>>>>>> d97af3b... add prima wlan driver
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
         return;
@@ -1623,13 +1139,6 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
     
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peerMacAddr, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     // That done, pack the struct:
     if ( ! pAddTS->wmeTspecPresent )
     {
@@ -1639,11 +1148,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGE, FL("Failed to pack an Add TS Request "
-<<<<<<< HEAD
                                    "(0x%08x).\n"),
-=======
-                                   "(0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
             return;             // allocated!
@@ -1651,11 +1156,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         else if ( DOT11F_WARNED( nStatus ) )
         {
             limLog( pMac, LOGW, FL("There were warnings while packing"
-<<<<<<< HEAD
                                    "an Add TS Request (0x%08x).\n") );
-=======
-                                   "an Add TS Request (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
     else
@@ -1666,11 +1167,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGE, FL("Failed to pack a WMM Add TS Reque"
-<<<<<<< HEAD
                                    "st (0x%08x).\n"),
-=======
-                                   "st (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
             return;            // allocated!
@@ -1678,11 +1175,7 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
         else if ( DOT11F_WARNED( nStatus ) )
         {
             limLog( pMac, LOGW, FL("There were warnings while packing"
-<<<<<<< HEAD
                                    "a WMM Add TS Request (0x%08x).\n") );
-=======
-                                   "a WMM Add TS Request (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -1690,15 +1183,10 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
     limPrintMacAddr( pMac, peerMacAddr, LOG3 );)
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -1713,22 +1201,14 @@ limSendAddtsReqActionFrame(tpAniSirGlobal    pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGE, FL( "*** Could not send an Add TS Request"
-<<<<<<< HEAD
                                 " (%X) ***\n" ), halstatus );
-=======
-                                " (%X) ***" ), halstatus );
->>>>>>> d97af3b... add prima wlan driver
         //Pkt will be freed up by the callback
     }
 
 } // End limSendAddtsReqActionFrame.
 
-<<<<<<< HEAD
 /* Added ANI_PRODUCT_TYPE_CLIENT for BT-AMP Support */
 #ifdef ANI_PRODUCT_TYPE_AP
-=======
-
->>>>>>> d97af3b... add prima wlan driver
 
 void
 limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
@@ -1736,22 +1216,15 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
                          tANI_U16       aid,
                          tSirMacAddr    peerMacAddr,
                          tANI_U8        subType,
-<<<<<<< HEAD
                          tpDphHashNode  pSta,
                          tpPESession psessionEntry)
 {
     tDot11fAssocResponse frm;
-=======
-                         tpDphHashNode  pSta,tpPESession psessionEntry)
-{
-    static tDot11fAssocResponse frm;
->>>>>>> d97af3b... add prima wlan driver
     tANI_U8             *pFrame, *macAddr;
     tpSirMacMgmtHdr      pMacHdr;
     tSirRetStatus        nSirStatus;
     tANI_U8              lleMode = 0, fAddTS, edcaInclude = 0;
     tHalBitVal           qosMode, wmeMode;
-<<<<<<< HEAD
     tANI_U32             nPayload, nBytes, nStatus, cfgLen;
     void                *pPacket;
     eHalStatus           halstatus;
@@ -1763,43 +1236,17 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
 
     limGetQosMode(pMac, &qosMode);
     limGetWmeMode(pMac, &wmeMode);
-=======
-    tANI_U32             nPayload, nBytes, nStatus;
-    void                *pPacket;
-    eHalStatus           halstatus;
-    tUpdateBeaconParams beaconParams;
-    tANI_U8              txFlag = 0;
-    tANI_U32             addnIEPresent = false;
-    tANI_U32             addnIELen=0;
-    tANI_U8              addIE[WNI_CFG_ASSOC_RSP_ADDNIE_DATA_LEN];
-    tpSirAssocReq        pAssocReq = NULL; 
-
-    if(NULL == psessionEntry)
-    {
-        return;
-    }
-
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-
-    limGetQosMode(psessionEntry, &qosMode);
-    limGetWmeMode(psessionEntry, &wmeMode);
->>>>>>> d97af3b... add prima wlan driver
 
     // An Add TS IE is added only if the AP supports it and the requesting
     // STA sent a traffic spec.
     fAddTS = ( qosMode && pSta && pSta->qos.addtsPresent ) ? 1 : 0;
 
-<<<<<<< HEAD
     PopulateDot11fCapabilities( pMac, &frm.Capabilities, psessionEntry);
-=======
-    PopulateDot11fCapabilities( pMac, &frm.Capabilities, psessionEntry );
->>>>>>> d97af3b... add prima wlan driver
 
     frm.Status.status = statusCode;
 
     frm.AID.associd = aid | LIM_AID_MASK;
 
-<<<<<<< HEAD
     PopulateDot11fSuppRates( pMac, POPULATE_DOT11F_RATES_OPERATIONAL, &frm.SuppRates );
 
     if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
@@ -1814,31 +1261,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
 
     PopulateDot11fExtSuppRates( pMac, POPULATE_DOT11F_RATES_OPERATIONAL,
                                 &frm.ExtSuppRates, psessionEntry );
-=======
-    if ( NULL == pSta )
-    {
-       PopulateDot11fSuppRates( pMac, POPULATE_DOT11F_RATES_OPERATIONAL, &frm.SuppRates,psessionEntry);
-       PopulateDot11fExtSuppRates( pMac, POPULATE_DOT11F_RATES_OPERATIONAL, &frm.ExtSuppRates, psessionEntry );
-    }
-    else
-    {
-       PopulateDot11fAssocRspRates( pMac, &frm.SuppRates, &frm.ExtSuppRates,
-                      pSta->supportedRates.llbRates, pSta->supportedRates.llaRates );
-    }
-
-    if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
-    {
-        if( pSta != NULL && eSIR_SUCCESS == statusCode )
-        {
-            pAssocReq = 
-                (tpSirAssocReq) psessionEntry->parsedAssocReq[pSta->assocId];
-            /* populate P2P IE in AssocRsp when assocReq from the peer includes P2P IE */
-            if( pAssocReq != NULL && pAssocReq->addIEPresent ) {
-                PopulateDot11AssocResP2PIE(pMac, &frm.P2PAssocRes, pAssocReq);
-            }
-        }
-    }
->>>>>>> d97af3b... add prima wlan driver
 
     if ( NULL != pSta )
     {
@@ -1868,12 +1290,7 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
         {
             if ( ( ! pSta->aniPeer ) || ( ! PROP_CAPABILITY_GET( WME, pSta->propCapability ) ) )
             {
-<<<<<<< HEAD
                 PopulateDot11fWMMParams( pMac, &frm.WMMParams );
-=======
-
-                PopulateDot11fWMMParams( pMac, &frm.WMMParams, psessionEntry);
->>>>>>> d97af3b... add prima wlan driver
 
                 if ( pSta->wsmEnabled )
                 {
@@ -1896,7 +1313,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
              psessionEntry->htCapability )
         {
             PopulateDot11fHTCaps( pMac, psessionEntry, &frm.HTCaps );
-<<<<<<< HEAD
             PopulateDot11fHTInfo( pMac, &frm.HTInfo, psessionEntry);
         }
     } // End if on non-NULL 'pSta'.
@@ -1906,36 +1322,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
         limDecideApProtection(pMac, peerMacAddr, &beaconParams);
     limUpdateShortPreamble(pMac, peerMacAddr, &beaconParams);
     limUpdateShortSlotTime(pMac, peerMacAddr, &beaconParams);
-=======
-            PopulateDot11fHTInfo( pMac, &frm.HTInfo, psessionEntry );
-        }
-
-#ifdef WLAN_FEATURE_11AC
-        if( pSta->mlmStaContext.vhtCapability && 
-            psessionEntry->vhtCapability )
-        {
-            limLog( pMac, LOGW, FL("Populate VHT IEs in Assoc Response"));
-            PopulateDot11fVHTCaps( pMac, &frm.VHTCaps );
-            PopulateDot11fVHTOperation( pMac, &frm.VHTOperation);
-            PopulateDot11fExtCap( pMac, &frm.ExtCap);
-        }
-#endif
-
-    } // End if on non-NULL 'pSta'.
-
-
-   vos_mem_set(( tANI_U8* )&beaconParams, sizeof( tUpdateBeaconParams), 0);
-
-    if( psessionEntry->limSystemRole == eLIM_AP_ROLE ){
-        if(psessionEntry->gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE)
-        limDecideApProtection(pMac, peerMacAddr, &beaconParams,psessionEntry);
-    }
-
-    limUpdateShortPreamble(pMac, peerMacAddr, &beaconParams, psessionEntry);
-    limUpdateShortSlotTime(pMac, peerMacAddr, &beaconParams, psessionEntry);
-
-    beaconParams.bssIdx = psessionEntry->bssIdx;
->>>>>>> d97af3b... add prima wlan driver
 
     //Send message to HAL about beacon parameter change.
     if(beaconParams.paramChangeBitmap)
@@ -1949,11 +1335,7 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                "or an Association Response (0x%08x).\n"),
-=======
-                               "or an Association Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         return;
     }
@@ -1961,68 +1343,22 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                                "the packed size for an Association Re"
-<<<<<<< HEAD
                                "sponse (0x%08x).\n"), nStatus );
-=======
-                               "sponse (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = sizeof( tSirMacMgmtHdr ) + nPayload;
 
-<<<<<<< HEAD
-=======
-    if ( pAssocReq != NULL ) 
-    {
-        if (wlan_cfgGetInt(pMac, WNI_CFG_ASSOC_RSP_ADDNIE_FLAG, 
-                    &addnIEPresent) != eSIR_SUCCESS)
-        {
-            limLog(pMac, LOGP, FL("Unable to get WNI_CFG_ASSOC_RSP_ADDNIE_FLAG"));
-            return;
-        }
-
-        if (addnIEPresent)
-        {
-            //Assoc rsp IE available
-            if (wlan_cfgGetStrLen(pMac, WNI_CFG_ASSOC_RSP_ADDNIE_DATA,
-                        &addnIELen) != eSIR_SUCCESS)
-            {
-                limLog(pMac, LOGP, FL("Unable to get WNI_CFG_ASSOC_RSP_ADDNIE_DATA length"));
-                return;
-            }
-
-            if (addnIELen <= WNI_CFG_ASSOC_RSP_ADDNIE_DATA_LEN && addnIELen &&
-                    (nBytes + addnIELen) <= SIR_MAX_PACKET_SIZE)
-            {
-                if (wlan_cfgGetStr(pMac, WNI_CFG_ASSOC_RSP_ADDNIE_DATA,
-                            &addIE[0], &addnIELen) == eSIR_SUCCESS)
-                {
-                    nBytes = nBytes + addnIELen;
-                }
-            }
-        }
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                              ( tANI_U16 )nBytes, ( void** ) &pFrame,
                              ( void** ) &pPacket );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Call to bufAlloc failed for RE/ASSOC RSP.\n"));
-=======
-        limLog(pMac, LOGP, FL("Call to bufAlloc failed for RE/ASSOC RSP."));
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac,
@@ -2031,19 +1367,11 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
                                 ( LIM_ASSOC == subType ) ?
                                     SIR_MAC_MGMT_ASSOC_RSP :
                                     SIR_MAC_MGMT_REASSOC_RSP,
-<<<<<<< HEAD
                                     peerMacAddr);
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
                                "tor for an Association Response (%d).\n"),
-=======
-                                peerMacAddr,psessionEntry->selfMacAddr);
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for an Association Response (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
@@ -2052,7 +1380,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
 
     pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
 
-<<<<<<< HEAD
    
     cfgLen = SIR_MAC_ADDR_LENGTH;
     if ( eSIR_SUCCESS != wlan_cfgGetStr( pMac, WNI_CFG_BSSID,
@@ -2064,20 +1391,12 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
         return;                 // allocated!
     }
   
-=======
-    sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
-
->>>>>>> d97af3b... add prima wlan driver
     nStatus = dot11fPackAssocResponse( pMac, &frm,
                                        pFrame + sizeof( tSirMacMgmtHdr ),
                                        nPayload, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to pack an Association Response (0x%08x).\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to pack an Association Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
@@ -2086,17 +1405,12 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing an "
-<<<<<<< HEAD
                                "Association Response (0x%08x).\n") );
-=======
-                               "Association Response (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     macAddr = pMacHdr->da;
 
     if (subType == LIM_ASSOC)
-<<<<<<< HEAD
         limLog(pMac, LOG1,
                FL("*** Sending Assoc Resp status %d aid %d to "),
                statusCode, aid);
@@ -2111,28 +1425,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-    {
-        PELOG1(limLog(pMac, LOG1,
-               FL("*** Sending Assoc Resp status %d aid %d to "),
-               statusCode, aid);)
-    }    
-    else{
-        PELOG1(limLog(pMac, LOG1,
-               FL("*** Sending ReAssoc Resp status %d aid %d to "),
-               statusCode, aid);)
-    }
-    PELOG1(limPrintMacAddr(pMac, pMacHdr->da, LOG1);)
-
-    if ( addnIEPresent )
-    {
-        vos_mem_copy (  pFrame+sizeof(tSirMacMgmtHdr)+nPayload, &addIE[0], addnIELen ) ;
-    }
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -2147,18 +1439,11 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog(pMac, LOGE,
-<<<<<<< HEAD
                FL("*** Could not Send Re/AssocRsp, retCode=%X ***\n"),
                nSirStatus);
 
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                   (void *) pFrame, (void *) pPacket );
-=======
-               FL("*** Could not Send Re/AssocRsp, retCode=%X ***"),
-               nSirStatus);
-
-        //Pkt will be freed up by the callback
->>>>>>> d97af3b... add prima wlan driver
     }
 
     // update the ANI peer station count
@@ -2169,7 +1454,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
 } // End limSendAssocRspMgmtFrame.
 
 
-<<<<<<< HEAD
 #endif  // ANI_PRODUCT_TYPE_AP
 
 
@@ -2514,9 +1798,6 @@ limSendAssocRspMgmtFrame(tpAniSirGlobal pMac,
 
 
  
-=======
- 
->>>>>>> d97af3b... add prima wlan driver
 void
 limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
                            tSirMacAddr        peer,
@@ -2542,11 +1823,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
 
     if ( ! pAddTS->wmeTspecPresent )
     {
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&AddTSRsp, sizeof( AddTSRsp ) );
-=======
-        vos_mem_set( ( tANI_U8* )&AddTSRsp, sizeof( AddTSRsp ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
         AddTSRsp.Category.category = SIR_MAC_ACTION_QOS_MGMT;
         AddTSRsp.Action.action     = SIR_MAC_QOS_ADD_TS_RSP;
@@ -2639,11 +1916,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGP, FL("Failed to calculate the packed si"
-<<<<<<< HEAD
                                    "ze for an Add TS Response (0x%08x).\n"),
-=======
-                                   "ze for an Add TS Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             // We'll fall back on the worst case scenario:
             nPayload = sizeof( tDot11fAddTSResponse );
@@ -2652,20 +1925,12 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         {
             limLog( pMac, LOGW, FL("There were warnings while calcula"
                                    "tingthe packed size for an Add TS"
-<<<<<<< HEAD
                                    " Response (0x%08x).\n"), nStatus );
-=======
-                                   " Response (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
     else
     {
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&WMMAddTSRsp, sizeof( WMMAddTSRsp ) );
-=======
-        vos_mem_set( ( tANI_U8* )&WMMAddTSRsp, sizeof( WMMAddTSRsp ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
         WMMAddTSRsp.Category.category = SIR_MAC_ACTION_WME;
         WMMAddTSRsp.Action.action     = SIR_MAC_QOS_ADD_TS_RSP;
@@ -2678,11 +1943,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGP, FL("Failed to calculate the packed si"
-<<<<<<< HEAD
                                    "ze for a WMM Add TS Response (0x%08x).\n"),
-=======
-                                   "ze for a WMM Add TS Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             // We'll fall back on the worst case scenario:
             nPayload = sizeof( tDot11fWMMAddTSResponse );
@@ -2691,11 +1952,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         {
             limLog( pMac, LOGW, FL("There were warnings while calcula"
                                    "tingthe packed size for a WMM Add"
-<<<<<<< HEAD
                                    "TS Response (0x%08x).\n"), nStatus );
-=======
-                                   "TS Response (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -2705,20 +1962,12 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for an Ad"
-<<<<<<< HEAD
                                "d TS Response.\n"), nBytes );
-=======
-                               "d TS Response."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set(  pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -2726,11 +1975,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                                "tor for an Add TS Response (%d).\n"),
-=======
-                               "tor for an Add TS Response (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return;                 // allocated!
@@ -2744,24 +1989,13 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
                                     ( tANI_U8* )pMacHdr->bssId, &cfgLen ) )
     {
         limLog( pMac, LOGP, FL("Failed to retrieve WNI_CFG_BSSID whil"
-<<<<<<< HEAD
                                "e sending an Add TS Response.\n") );
-=======
-                               "e sending an Add TS Response.") );
->>>>>>> d97af3b... add prima wlan driver
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return;                 // allocated!
     }
     #endif //TO SUPPORT BT-AMP
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     // That done, pack the struct:
     if ( ! pAddTS->wmeTspecPresent )
     {
@@ -2771,11 +2005,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGE, FL("Failed to pack an Add TS Response "
-<<<<<<< HEAD
                                    "(0x%08x).\n"),
-=======
-                                   "(0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
             return;
@@ -2783,11 +2013,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         else if ( DOT11F_WARNED( nStatus ) )
         {
             limLog( pMac, LOGW, FL("There were warnings while packing"
-<<<<<<< HEAD
                                    "an Add TS Response (0x%08x).\n") );
-=======
-                                   "an Add TS Response (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
     else
@@ -2798,11 +2024,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGE, FL("Failed to pack a WMM Add TS Response "
-<<<<<<< HEAD
                                    "(0x%08x).\n"),
-=======
-                                   "(0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
             return;
@@ -2810,11 +2032,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
         else if ( DOT11F_WARNED( nStatus ) )
         {
             limLog( pMac, LOGW, FL("There were warnings while packing"
-<<<<<<< HEAD
                                    "a WMM Add TS Response (0x%08x).\n") );
-=======
-                                   "a WMM Add TS Response (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -2823,15 +2041,10 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
     limPrintMacAddr( pMac, pMacHdr->da, LOG1 );)
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -2845,11 +2058,7 @@ limSendAddtsRspActionFrame(tpAniSirGlobal     pMac,
                             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to send Add TS Response (%X)!\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to send Add TS Response (%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
     }
@@ -2881,11 +2090,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
 
     if ( ! wmmTspecPresent )
     {
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&DelTS, sizeof( DelTS ) );
-=======
-        vos_mem_set( ( tANI_U8* )&DelTS, sizeof( DelTS ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
         DelTS.Category.category = SIR_MAC_ACTION_QOS_MGMT;
         DelTS.Action.action     = SIR_MAC_QOS_DEL_TS_REQ;
@@ -2895,11 +2100,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGP, FL("Failed to calculate the packed si"
-<<<<<<< HEAD
                                    "ze for a Del TS (0x%08x).\n"),
-=======
-                                   "ze for a Del TS (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             // We'll fall back on the worst case scenario:
             nPayload = sizeof( tDot11fDelTS );
@@ -2908,20 +2109,12 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
         {
             limLog( pMac, LOGW, FL("There were warnings while calcula"
                                    "ting the packed size for a Del TS"
-<<<<<<< HEAD
                                    " (0x%08x).\n"), nStatus );
-=======
-                                   " (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
     else
     {
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&WMMDelTS, sizeof( WMMDelTS ) );
-=======
-        vos_mem_set( ( tANI_U8* )&WMMDelTS, sizeof( WMMDelTS ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
         WMMDelTS.Category.category = SIR_MAC_ACTION_WME;
         WMMDelTS.Action.action     = SIR_MAC_QOS_DEL_TS_REQ;
@@ -2932,11 +2125,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
         if ( DOT11F_FAILED( nStatus ) )
         {
             limLog( pMac, LOGP, FL("Failed to calculate the packed si"
-<<<<<<< HEAD
                                    "ze for a WMM Del TS (0x%08x).\n"),
-=======
-                                   "ze for a WMM Del TS (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             // We'll fall back on the worst case scenario:
             nPayload = sizeof( tDot11fDelTS );
@@ -2945,11 +2134,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
         {
             limLog( pMac, LOGW, FL("There were warnings while calcula"
                                    "ting the packed size for a WMM De"
-<<<<<<< HEAD
                                    "l TS (0x%08x).\n"), nStatus );
-=======
-                                   "l TS (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -2959,20 +2144,12 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for an Ad"
-<<<<<<< HEAD
                                "d TS Response.\n"), nBytes );
-=======
-                               "d TS Response."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -2981,11 +2158,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                                "tor for an Add TS Response (%d).\n"),
-=======
-                               "tor for an Add TS Response (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return;                 // allocated!
@@ -3000,24 +2173,13 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
                                     ( tANI_U8* )pMacHdr->bssId, &cfgLen ) )
     {
         limLog( pMac, LOGP, FL("Failed to retrieve WNI_CFG_BSSID whil"
-<<<<<<< HEAD
                                "e sending an Add TS Response.\n") );
-=======
-                               "e sending an Add TS Response.") );
->>>>>>> d97af3b... add prima wlan driver
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return;                 // allocated!
     }
     #endif //TO SUPPORT BT-AMP
     sirCopyMacAddr(pMacHdr->bssId, psessionEntry->bssId);
     
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     // That done, pack the struct:
     if ( !wmmTspecPresent )
     {
@@ -3026,11 +2188,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
                                    nPayload, &nPayload );
         if ( DOT11F_FAILED( nStatus ) )
         {
-<<<<<<< HEAD
             limLog( pMac, LOGE, FL("Failed to pack a Del TS frame (0x%08x).\n"),
-=======
-            limLog( pMac, LOGE, FL("Failed to pack a Del TS frame (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
             return;             // allocated!
@@ -3038,11 +2196,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
         else if ( DOT11F_WARNED( nStatus ) )
         {
             limLog( pMac, LOGW, FL("There were warnings while packing"
-<<<<<<< HEAD
                                    "a Del TS frame (0x%08x).\n") );
-=======
-                                   "a Del TS frame (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
     else
@@ -3052,11 +2206,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
                                       nPayload, &nPayload );
         if ( DOT11F_FAILED( nStatus ) )
         {
-<<<<<<< HEAD
             limLog( pMac, LOGE, FL("Failed to pack a WMM Del TS frame (0x%08x).\n"),
-=======
-            limLog( pMac, LOGE, FL("Failed to pack a WMM Del TS frame (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                     nStatus );
             palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
             return;             // allocated!
@@ -3064,11 +2214,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
         else if ( DOT11F_WARNED( nStatus ) )
         {
             limLog( pMac, LOGW, FL("There were warnings while packing"
-<<<<<<< HEAD
                                    "a WMM Del TS frame (0x%08x).\n") );
-=======
-                                   "a WMM Del TS frame (0x%08x).") );
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -3076,15 +2222,10 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
     limPrintMacAddr(pMac, pMacHdr->da, LOG1);)
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -3097,11 +2238,7 @@ limSendDeltsReqActionFrame(tpAniSirGlobal  pMac,
                             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to send Del TS (%X)!\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to send Del TS (%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
     }
@@ -3148,26 +2285,15 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     nAddIELen = psessionEntry->pLimJoinReq->addIEAssoc.length; 
     pAddIE = psessionEntry->pLimJoinReq->addIEAssoc.addIEdata;
 
-<<<<<<< HEAD
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
                                                 (void **)&pFrm, sizeof(tDot11fAssocRequest)))
     {
         limLog(pMac, LOGE, FL("Unable to PAL allocate memory in limSendAssocReqMgmtFrame\n") );
-=======
-    pFrm = vos_mem_malloc(sizeof(tDot11fAssocRequest));
-    if ( NULL == pFrm )
-    {
-        limLog(pMac, LOGE, FL("Unable to allocate memory in limSendAssocReqMgmtFrame") );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pFrm, sizeof( tDot11fAssocRequest ) );
-=======
-    vos_mem_set( ( tANI_U8* )pFrm, sizeof( tDot11fAssocRequest ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     caps = pMlmAssocReq->capabilityInfo;
     if ( PROP_CAPABILITY_GET( 11EQOS, psessionEntry->limCurrentBssPropCap ) )
@@ -3315,18 +2441,10 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     }
 #ifdef WLAN_FEATURE_11AC
     if ( psessionEntry->vhtCapability &&
-<<<<<<< HEAD
         pMac->lim.vhtCapabilityPresentInBeacon)
     {
         limLog( pMac, LOG1, FL("Populate VHT IEs in Assoc Request"));
         PopulateDot11fVHTCaps( pMac, &pFrm->VHTCaps );
-=======
-        psessionEntry->vhtCapabilityPresentInBeacon)
-    {
-        limLog( pMac, LOG1, FL("Populate VHT IEs in Assoc Request"));
-        PopulateDot11fVHTCaps( pMac, &pFrm->VHTCaps );
-        PopulateDot11fExtCap( pMac, &pFrm->ExtCap);
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -3335,69 +2453,34 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     if (psessionEntry->pLimJoinReq->is11Rconnection)
     {
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
-<<<<<<< HEAD
         limLog( pMac, LOG1, FL("mdie = %02x %02x %02x"), 
-=======
-        limLog( pMac, LOG1, FL("mdie = %02x %02x %02x"),
->>>>>>> d97af3b... add prima wlan driver
                 (unsigned int)psessionEntry->pLimJoinReq->bssDescription.mdie[0],
                 (unsigned int)psessionEntry->pLimJoinReq->bssDescription.mdie[1],
                 (unsigned int)psessionEntry->pLimJoinReq->bssDescription.mdie[2]);
 #endif
-<<<<<<< HEAD
         PopulateMDIE( pMac, &pFrm->MobilityDomain, psessionEntry->pLimJoinReq->bssDescription.mdie); 
     }
     else 
     {
         // No 11r IEs dont send any MDIE
         limLog( pMac, LOG1, FL("mdie not present")); 
-=======
-        PopulateMDIE( pMac, &pFrm->MobilityDomain,
-                                 psessionEntry->pLimJoinReq->bssDescription.mdie);
-    }
-    else
-    {
-        // No 11r IEs dont send any MDIE
-        limLog( pMac, LOG1, FL("MDIE not present"));
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
 #ifdef FEATURE_WLAN_CCX
-<<<<<<< HEAD
     // For CCX Associations fill the CCX IEs
     if (psessionEntry->isCCXconnection)
     {
         PopulateDot11fCCXRadMgmtCap(&pFrm->CCXRadMgmtCap);
         PopulateDot11fCCXVersion(&pFrm->CCXVersion);
     }
-=======
-    /* CCX Version IE will be included in association request
-       when CCX is enabled on DUT through ini */
-    if (psessionEntry->pLimJoinReq->isCCXFeatureIniEnabled)
-    {
-        PopulateDot11fCCXVersion(&pFrm->CCXVersion);
-    }
-    /* For CCX Associations fill the CCX IEs */
-    if (psessionEntry->isCCXconnection &&
-        psessionEntry->pLimJoinReq->isCCXFeatureIniEnabled)
-    {
-#ifndef FEATURE_DISABLE_RM
-        PopulateDot11fCCXRadMgmtCap(&pFrm->CCXRadMgmtCap);
-#endif
-    }
->>>>>>> d97af3b... add prima wlan driver
 #endif
 
     nStatus = dot11fGetPackedAssocRequestSize( pMac, pFrm, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                     "or an Association Request (0x%08x).\n"),
-=======
-                    "or an Association Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fAssocRequest );
@@ -3406,11 +2489,7 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                     "the packed size for an Association Re "
-<<<<<<< HEAD
                     "quest(0x%08x).\n"), nStatus );
-=======
-                    "quest(0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr ) + nAddIELen;
@@ -3421,11 +2500,7 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for an As"
-<<<<<<< HEAD
                     "sociation Request.\n"), nBytes );
-=======
-                    "sociation Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
 
         psessionEntry->limMlmState = psessionEntry->limPrevMlmState;
         MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, psessionEntry->limMlmState));
@@ -3442,20 +2517,12 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
         limPostSmeMessage( pMac, LIM_MLM_ASSOC_CNF,
                 ( tANI_U32* ) &mlmAssocCnf);
 
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -3463,17 +2530,10 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                     "tor for an Association Request (%d).\n"),
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-                    "tor for an Association Request (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
@@ -3485,53 +2545,32 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to pack a Probe Response (0x%0"
-<<<<<<< HEAD
                     "8x).\n"),
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                 ( void* ) pFrame, ( void* ) pPacket );
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-                    "8x)."),
-                nStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
-                ( void* ) pFrame, ( void* ) pPacket );
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a P"
-<<<<<<< HEAD
                     "robe Response (0x%08x).\n") );
     }
 
     PELOG1(limLog( pMac, LOG1, FL("*** Sending Association Request length %d"
                     "to \n"),
-=======
-                    "robe Response (0x%08x).") );
-    }
-
-    PELOG1(limLog( pMac, LOG1, FL("*** Sending Association Request length %d"
-                    "to "),
->>>>>>> d97af3b... add prima wlan driver
                 nBytes );)
         //   limPrintMacAddr( pMac, bssid, LOG1 );
 
         if( psessionEntry->assocReq != NULL )
         {
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, psessionEntry->assocReq);
-=======
-            vos_mem_free(psessionEntry->assocReq);
->>>>>>> d97af3b... add prima wlan driver
             psessionEntry->assocReq = NULL;
         }
 
     if( nAddIELen )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pFrame + sizeof(tSirMacMgmtHdr) + nPayload, 
                 pAddIE, 
                 nAddIELen );
@@ -3540,53 +2579,26 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
 
     if( (palAllocateMemory(pMac->hHdd, (void**)&psessionEntry->assocReq,
                            nPayload)) != eHAL_STATUS_SUCCESS)
-=======
-        vos_mem_copy( pFrame + sizeof(tSirMacMgmtHdr) + nPayload,
-                      pAddIE,
-                      nAddIELen );
-        nPayload += nAddIELen;
-    }
-
-    psessionEntry->assocReq = vos_mem_malloc(nPayload);
-    if ( NULL == psessionEntry->assocReq )
->>>>>>> d97af3b... add prima wlan driver
     {
         PELOGE(limLog(pMac, LOGE, FL("Unable to allocate memory to store assoc request"));)
     }
     else
     {
         //Store the Assoc request. This is sent to csr/hdd in join cnf response. 
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, psessionEntry->assocReq, pFrame + sizeof(tSirMacMgmtHdr), nPayload);
-=======
-        vos_mem_copy( psessionEntry->assocReq, pFrame + sizeof(tSirMacMgmtHdr), nPayload);
->>>>>>> d97af3b... add prima wlan driver
         psessionEntry->assocReqLen = nPayload;
     }
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
     }
 
-<<<<<<< HEAD
-=======
-    if(psessionEntry->pePersona == VOS_P2P_CLIENT_MODE)
-    {
-        txFlag |= HAL_USE_PEER_STA_REQUESTED_MASK;
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) (sizeof(tSirMacMgmtHdr) + nPayload),
             HAL_TXRX_FRM_802_11_MGMT,
             ANI_TXDIR_TODS,
@@ -3594,28 +2606,16 @@ limSendAssocReqMgmtFrame(tpAniSirGlobal   pMac,
             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to send Association Request (%X)!\n"),
                 halstatus );
         //Pkt will be freed up by the callback
         palFreeMemory(pMac->hHdd, pFrm);
-=======
-        limLog( pMac, LOGE, FL("Failed to send Association Request (%X)!"),
-                halstatus );
-        //Pkt will be freed up by the callback
-        vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Free up buffer allocated for mlmAssocReq
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, ( tANI_U8* ) pMlmAssocReq );
     palFreeMemory(pMac->hHdd, pFrm);
-=======
-    vos_mem_free(pMlmAssocReq);
-    vos_mem_free(pFrm);
->>>>>>> d97af3b... add prima wlan driver
     return;
 } // End limSendAssocReqMgmtFrame
 
@@ -3656,7 +2656,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
         return;
     }
 
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_VOWIFI_11R
     if (psessionEntry->is11Rconnection)
     {
@@ -3667,8 +2666,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     }
 #endif
 
-=======
->>>>>>> d97af3b... add prima wlan driver
     /* check this early to avoid unncessary operation */
     if(NULL == psessionEntry->pLimReAssocReq)
     {
@@ -3676,17 +2673,10 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     }
     nAddIELen = psessionEntry->pLimReAssocReq->addIEAssoc.length; 
     pAddIE = psessionEntry->pLimReAssocReq->addIEAssoc.addIEdata;
-<<<<<<< HEAD
     limLog( pMac, LOGE, FL("limSendReassocReqWithFTIEsMgmtFrame received in " 
                            "state (%d).\n"), psessionEntry->limMlmState);
 
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&frm, sizeof( frm ) );
-=======
-    limLog( pMac, LOG1, FL("limSendReassocReqWithFTIEsMgmtFrame received in "
-                           "state (%d)."), psessionEntry->limMlmState);
-
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     caps = pMlmReassocReq->capabilityInfo;
     if (PROP_CAPABILITY_GET(11EQOS, psessionEntry->limReassocBssPropCap))
@@ -3706,11 +2696,7 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     frm.ListenInterval.interval = pMlmReassocReq->listenInterval;
 
     // Get the old bssid of the older AP.
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )frm.CurrentAPAddress.mac,
-=======
-    vos_mem_copy( ( tANI_U8* )frm.CurrentAPAddress.mac,
->>>>>>> d97af3b... add prima wlan driver
             pMac->ft.ftPEContext.pFTPreAuthReq->currbssId, 6); 
 
     PopulateDot11fSSID2( pMac, &frm.SSID );
@@ -3808,11 +2794,7 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
         }
 
 #ifdef FEATURE_WLAN_CCX
-<<<<<<< HEAD
         if(psessionEntry->pLimReAssocReq->cckmIE.length)
-=======
-        if (psessionEntry->pLimReAssocReq->cckmIE.length)
->>>>>>> d97af3b... add prima wlan driver
         {
             PopulateDot11fCCXCckmOpaque( pMac, &( psessionEntry->pLimReAssocReq->cckmIE ),
                     &frm.CCXCckmOpaque );
@@ -3821,7 +2803,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     }
 
 #ifdef FEATURE_WLAN_CCX
-<<<<<<< HEAD
     // For CCX Associations fill the CCX IEs
     if (psessionEntry->isCCXconnection)
     {
@@ -3829,23 +2810,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
         PopulateDot11fCCXVersion(&frm.CCXVersion);
     }
 #endif //FEATURE_WLAN_CCX 
-=======
-    /* CCX Version IE will be included in reassociation request
-       when CCX is enabled on DUT through ini */
-    if (psessionEntry->pLimReAssocReq->isCCXFeatureIniEnabled)
-    {
-        PopulateDot11fCCXVersion(&frm.CCXVersion);
-    }
-    // For CCX Associations fill the CCX IEs
-    if (psessionEntry->isCCXconnection &&
-        psessionEntry->pLimReAssocReq->isCCXFeatureIniEnabled)
-    {
-#ifndef FEATURE_DISABLE_RM
-        PopulateDot11fCCXRadMgmtCap(&frm.CCXRadMgmtCap);
-#endif
-    }
-#endif //FEATURE_WLAN_CCX
->>>>>>> d97af3b... add prima wlan driver
 #endif //FEATURE_WLAN_CCX || FEATURE_WLAN_LFR
 
     // include WME EDCA IE as well
@@ -3878,22 +2842,14 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
                 {
                     tsrsIE.rates[0] = TSRS_11AG_RATE_6MBPS;
                 }
-<<<<<<< HEAD
                 else 
-=======
-                else
->>>>>>> d97af3b... add prima wlan driver
                 {
                     tsrsIE.rates[0] = TSRS_11B_RATE_5_5MBPS;
                 }
                 PopulateDot11TSRSIE(pMac,&tsrsIE, &frm.CCXTrafStrmRateSet, sizeof(tANI_U8));
             }
         }
-<<<<<<< HEAD
 #endif    
-=======
-#endif
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( psessionEntry->htCapability &&
@@ -3902,29 +2858,11 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
         PopulateDot11fHTCaps( pMac, psessionEntry, &frm.HTCaps );
     }
 
-<<<<<<< HEAD
-=======
-#if defined WLAN_FEATURE_VOWIFI_11R
-    if ( psessionEntry->pLimReAssocReq->bssDescription.mdiePresent && (0 == pMac->ft.ftSmeContext.reassoc_ft_ies_length)
-#if defined FEATURE_WLAN_CCX
-           && !psessionEntry->isCCXconnection
-#endif
-       )
-    {
-        PopulateMDIE( pMac, &frm.MobilityDomain, psessionEntry->pLimReAssocReq->bssDescription.mdie);
-    }
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     nStatus = dot11fGetPackedReAssocRequestSize( pMac, &frm, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                     "or a Re-Association Request (0x%08x).\n"),
-=======
-                    "or a Re-Association Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fReAssocRequest );
@@ -3933,7 +2871,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                     "the packed size for a Re-Association Re "
-<<<<<<< HEAD
                     "quest(0x%08x).\n"), nStatus );
     }
 
@@ -3941,15 +2878,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
 
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
     limLog( pMac, LOGE, FL("FT IE Reassoc Req (%d).\n"), 
-=======
-                    "quest(0x%08x)."), nStatus );
-    }
-
-    nBytes = nPayload + sizeof( tSirMacMgmtHdr ) + nAddIELen;
-
-#ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
-    limLog( pMac, LOG1, FL("FT IE Reassoc Req (%d)."),
->>>>>>> d97af3b... add prima wlan driver
             pMac->ft.ftSmeContext.reassoc_ft_ies_length);
 #endif
 
@@ -3968,26 +2896,15 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
         psessionEntry->limMlmState = psessionEntry->limPrevMlmState;
         MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, psessionEntry->limMlmState));
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Re-As"
-<<<<<<< HEAD
                     "sociation Request.\n"), nBytes );
-=======
-                    "sociation Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         goto end;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes + ft_ies_length);
 
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
     limPrintMacAddr(pMac, psessionEntry->limReAssocbssId, LOGE);
-=======
-    vos_mem_set( pFrame, nBytes + ft_ies_length, 0);
-
-#if defined WLAN_FEATURE_VOWIFI_11R_DEBUG || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
-    limPrintMacAddr(pMac, psessionEntry->limReAssocbssId, LOG1);
->>>>>>> d97af3b... add prima wlan driver
 #endif
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -3996,11 +2913,7 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                     "tor for an Association Request (%d).\n"),
-=======
-                    "tor for an Association Request (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         goto end;
@@ -4014,11 +2927,7 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to pack a Re-Association Reque"
-<<<<<<< HEAD
                     "st (0x%08x).\n"),
-=======
-                    "st (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         goto end;
@@ -4026,7 +2935,6 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a R"
-<<<<<<< HEAD
                     "e-Association Request (0x%08x).\n") );
     }
 
@@ -4036,23 +2944,11 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     if( psessionEntry->assocReq != NULL )
     {
         palFreeMemory(pMac->hHdd, psessionEntry->assocReq);
-=======
-                    "e-Association Request (0x%08x).") );
-    }
-
-    PELOG3(limLog( pMac, LOG3, 
-            FL("*** Sending Re-Association Request length %d %d to "),
-            nBytes, nPayload );)
-    if( psessionEntry->assocReq != NULL )
-    {
-        vos_mem_free(psessionEntry->assocReq);
->>>>>>> d97af3b... add prima wlan driver
         psessionEntry->assocReq = NULL;
     }
 
     if( nAddIELen )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pFrame + sizeof(tSirMacMgmtHdr) + nPayload, 
                        pAddIE, 
                        nAddIELen );
@@ -4061,27 +2957,13 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
 
     if( (palAllocateMemory(pMac->hHdd, (void**)&psessionEntry->assocReq,
                            nPayload)) != eHAL_STATUS_SUCCESS)
-=======
-        vos_mem_copy( pFrame + sizeof(tSirMacMgmtHdr) + nPayload,
-                      pAddIE,
-                      nAddIELen );
-        nPayload += nAddIELen;
-    }
-
-    psessionEntry->assocReq = vos_mem_malloc(nPayload);
-    if ( NULL == psessionEntry->assocReq )
->>>>>>> d97af3b... add prima wlan driver
     {
         PELOGE(limLog(pMac, LOGE, FL("Unable to allocate memory to store assoc request"));)
     }
     else
     {
         //Store the Assoc request. This is sent to csr/hdd in join cnf response. 
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, psessionEntry->assocReq, pFrame + sizeof(tSirMacMgmtHdr), nPayload);
-=======
-        vos_mem_copy( psessionEntry->assocReq, pFrame + sizeof(tSirMacMgmtHdr), nPayload);
->>>>>>> d97af3b... add prima wlan driver
         psessionEntry->assocReqLen = nPayload;
     }
 
@@ -4100,57 +2982,23 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     }
 
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
-<<<<<<< HEAD
     PELOGE(limLog(pMac, LOGE, FL("Re-assoc Req Frame is: "));
             sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOGE,
-=======
-    PELOGE(limLog(pMac, LOG1, FL("Re-assoc Req Frame is: "));
-            sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG1,
->>>>>>> d97af3b... add prima wlan driver
                 (tANI_U8 *)pFrame,
                 (nBytes + ft_ies_length));)
 #endif
 
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
     }
  
-<<<<<<< HEAD
-=======
-    if( NULL != psessionEntry->assocReq )
-    {
-        vos_mem_free(psessionEntry->assocReq);
-        psessionEntry->assocReq = NULL;
-    }
-
-    psessionEntry->assocReq = vos_mem_malloc(ft_ies_length);
-    if ( NULL == psessionEntry->assocReq )
-    {
-        PELOGE(limLog(pMac, LOGE, FL("Unable to allocate memory to store assoc request"));)
-        psessionEntry->assocReqLen = 0;
-    }
-    else
-    {
-       //Store the Assoc request. This is sent to csr/hdd in join cnf response. 
-       vos_mem_copy( psessionEntry->assocReq, pMac->ft.ftSmeContext.reassoc_ft_ies,
-                    (ft_ies_length));
-       psessionEntry->assocReqLen = (ft_ies_length);
-    }
-
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) (nBytes + ft_ies_length),
             HAL_TXRX_FRM_802_11_MGMT,
             ANI_TXDIR_TODS,
@@ -4159,11 +3007,7 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to send Re-Association Request"
-<<<<<<< HEAD
                     "(%X)!\n"),
-=======
-                    "(%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
         goto end;
@@ -4171,74 +3015,10 @@ limSendReassocReqWithFTIEsMgmtFrame(tpAniSirGlobal     pMac,
 
 end:
     // Free up buffer allocated for mlmAssocReq
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, ( tANI_U8* ) pMlmReassocReq );
     psessionEntry->pLimMlmReassocReq = NULL;
 
 }
-=======
-    vos_mem_free( pMlmReassocReq );
-    psessionEntry->pLimMlmReassocReq = NULL;
-
-}
-
-void limSendRetryReassocReqFrame(tpAniSirGlobal     pMac,
-                                 tLimMlmReassocReq *pMlmReassocReq,
-                                 tpPESession psessionEntry)
-{
-    tLimMlmReassocCnf       mlmReassocCnf; // keep sme
-    tLimMlmReassocReq       *pTmpMlmReassocReq = NULL;
-    if(NULL == pTmpMlmReassocReq)
-    {
-        pTmpMlmReassocReq = vos_mem_malloc(sizeof(tLimMlmReassocReq));
-        if ( NULL == pTmpMlmReassocReq ) goto end;
-        vos_mem_set( pTmpMlmReassocReq, sizeof(tLimMlmReassocReq), 0);
-        vos_mem_copy( pTmpMlmReassocReq, pMlmReassocReq, sizeof(tLimMlmReassocReq));
-    }
-
-    // Prepare and send Reassociation request frame
-    // start reassoc timer.
-    pMac->lim.limTimers.gLimReassocFailureTimer.sessionId = psessionEntry->peSessionId;
-    // Start reassociation failure timer
-    MTRACE(macTrace(pMac, TRACE_CODE_TIMER_ACTIVATE, psessionEntry->peSessionId, eLIM_REASSOC_FAIL_TIMER));
-    if (tx_timer_activate(&pMac->lim.limTimers.gLimReassocFailureTimer)
-                                               != TX_SUCCESS)
-    {
-        // Could not start reassoc failure timer.
-        // Log error
-        limLog(pMac, LOGP,
-           FL("could not start Reassociation failure timer"));
-        // Return Reassoc confirm with
-        // Resources Unavailable
-        mlmReassocCnf.resultCode = eSIR_SME_RESOURCES_UNAVAILABLE;
-        mlmReassocCnf.protStatusCode = eSIR_MAC_UNSPEC_FAILURE_STATUS;
-        goto end;
-    }
-
-    limSendReassocReqWithFTIEsMgmtFrame(pMac, pTmpMlmReassocReq, psessionEntry);
-    return;
-
-end:
-    // Free up buffer allocated for reassocReq
-    if (pMlmReassocReq != NULL)
-    {
-        vos_mem_free(pMlmReassocReq);
-        pMlmReassocReq = NULL;
-    }
-    if (pTmpMlmReassocReq != NULL)
-    {
-        vos_mem_free(pTmpMlmReassocReq);
-        pTmpMlmReassocReq = NULL;
-    }
-    mlmReassocCnf.resultCode = eSIR_SME_FT_REASSOC_FAILURE;
-    mlmReassocCnf.protStatusCode = eSIR_MAC_UNSPEC_FAILURE_STATUS;
-    /* Update PE sessio Id*/
-    mlmReassocCnf.sessionId = psessionEntry->peSessionId;
-
-    limPostSmeMessage(pMac, LIM_MLM_REASSOC_CNF, (tANI_U32 *) &mlmReassocCnf);
-}
-
->>>>>>> d97af3b... add prima wlan driver
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
 
@@ -4275,11 +3055,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     nAddIELen = psessionEntry->pLimReAssocReq->addIEAssoc.length; 
     pAddIE = psessionEntry->pLimReAssocReq->addIEAssoc.addIEdata;
     
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&frm, sizeof( frm ) );
-=======
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     caps = pMlmReassocReq->capabilityInfo;
     if (PROP_CAPABILITY_GET(11EQOS, psessionEntry->limReassocBssPropCap))
@@ -4298,13 +3074,8 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
 
     frm.ListenInterval.interval = pMlmReassocReq->listenInterval;
 
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )frm.CurrentAPAddress.mac,
                    ( tANI_U8* )psessionEntry->bssId, 6 );
-=======
-    vos_mem_copy(( tANI_U8* )frm.CurrentAPAddress.mac,
-                 ( tANI_U8* )psessionEntry->bssId, 6 );
->>>>>>> d97af3b... add prima wlan driver
 
     PopulateDot11fSSID2( pMac, &frm.SSID );
     PopulateDot11fSuppRates( pMac, POPULATE_DOT11F_RATES_OPERATIONAL,
@@ -4416,18 +3187,10 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     }
 #ifdef WLAN_FEATURE_11AC
     if ( psessionEntry->vhtCapability &&
-<<<<<<< HEAD
              pMac->lim.vhtCapabilityPresentInBeacon)
     {
         limLog( pMac, LOGW, FL("Populate VHT IEs in Re-Assoc Request\n"));
         PopulateDot11fVHTCaps( pMac, &frm.VHTCaps );
-=======
-             psessionEntry->vhtCapabilityPresentInBeacon)
-    {
-        limLog( pMac, LOGW, FL("Populate VHT IEs in Re-Assoc Request"));
-        PopulateDot11fVHTCaps( pMac, &frm.VHTCaps );
-        PopulateDot11fExtCap( pMac, &frm.ExtCap);
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -4435,11 +3198,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                "or a Re-Association Request (0x%08x).\n"),
-=======
-                               "or a Re-Association Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fReAssocRequest );
@@ -4448,11 +3207,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                                "the packed size for a Re-Association Re "
-<<<<<<< HEAD
                                "quest(0x%08x).\n"), nStatus );
-=======
-                               "quest(0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr ) + nAddIELen;
@@ -4465,20 +3220,12 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
         psessionEntry->limMlmState = psessionEntry->limPrevMlmState;
         MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, psessionEntry->limMlmState));
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Re-As"
-<<<<<<< HEAD
                                "sociation Request.\n"), nBytes );
-=======
-                               "sociation Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         goto end;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -4487,11 +3234,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                                "tor for an Association Request (%d).\n"),
-=======
-                               "tor for an Association Request (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         goto end;
@@ -4505,11 +3248,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to pack a Re-Association Reque"
-<<<<<<< HEAD
                                "st (0x%08x).\n"),
-=======
-                               "st (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         goto end;
@@ -4517,34 +3256,21 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a R"
-<<<<<<< HEAD
                                "e-Association Request (0x%08x).\n") );
     }
 
     PELOG1(limLog( pMac, LOG1, FL("*** Sending Re-Association Request length %d"
                            "to \n"),
-=======
-                               "e-Association Request (0x%08x).") );
-    }
-
-    PELOG1(limLog( pMac, LOG1, FL("*** Sending Re-Association Request length %d"
-                           "to "),
->>>>>>> d97af3b... add prima wlan driver
             nBytes );)
 
     if( psessionEntry->assocReq != NULL )
     {
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, psessionEntry->assocReq);
-=======
-        vos_mem_free(psessionEntry->assocReq);
->>>>>>> d97af3b... add prima wlan driver
         psessionEntry->assocReq = NULL;
     }
 
     if( nAddIELen )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pFrame + sizeof(tSirMacMgmtHdr) + nPayload, 
                        pAddIE, 
                        nAddIELen );
@@ -4553,53 +3279,26 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
 
     if( (palAllocateMemory(pMac->hHdd, (void**)&psessionEntry->assocReq,
                            nPayload)) != eHAL_STATUS_SUCCESS)
-=======
-        vos_mem_copy( pFrame + sizeof(tSirMacMgmtHdr) + nPayload,
-                      pAddIE,
-                      nAddIELen );
-        nPayload += nAddIELen;
-    }
-
-    psessionEntry->assocReq = vos_mem_malloc(nPayload);
-    if ( NULL == psessionEntry->assocReq )
->>>>>>> d97af3b... add prima wlan driver
     {
         PELOGE(limLog(pMac, LOGE, FL("Unable to allocate memory to store assoc request"));)
     }
     else
     {
         //Store the Assoc request. This is sent to csr/hdd in join cnf response. 
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, psessionEntry->assocReq, pFrame + sizeof(tSirMacMgmtHdr), nPayload);
-=======
-        vos_mem_copy(psessionEntry->assocReq, pFrame + sizeof(tSirMacMgmtHdr), nPayload);
->>>>>>> d97af3b... add prima wlan driver
         psessionEntry->assocReqLen = nPayload;
     }
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
     }
 
-<<<<<<< HEAD
-=======
-    if(psessionEntry->pePersona == VOS_P2P_CLIENT_MODE)
-    {
-        txFlag |= HAL_USE_PEER_STA_REQUESTED_MASK;
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) (sizeof(tSirMacMgmtHdr) + nPayload),
                             HAL_TXRX_FRM_802_11_MGMT,
                             ANI_TXDIR_TODS,
@@ -4608,11 +3307,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to send Re-Association Request"
-<<<<<<< HEAD
                                "(%X)!\n"),
-=======
-                               "(%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
         goto end;
@@ -4620,11 +3315,7 @@ limSendReassocReqMgmtFrame(tpAniSirGlobal     pMac,
 
 end:
     // Free up buffer allocated for mlmAssocReq
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, ( tANI_U8* ) pMlmReassocReq );
-=======
-    vos_mem_free( pMlmReassocReq );
->>>>>>> d97af3b... add prima wlan driver
     psessionEntry->pLimMlmReassocReq = NULL;
 
 } // limSendReassocReqMgmtFrame
@@ -4704,7 +3395,6 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
                 bodyLen  = SIR_MAC_AUTH_CHALLENGE_OFFSET;
 
 #if defined WLAN_FEATURE_VOWIFI_11R
-<<<<<<< HEAD
                 if (pAuthFrameBody->authAlgoNumber == eSIR_FT_AUTH)
                 {
                     if (pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies) 
@@ -4716,22 +3406,6 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
                     else 
                         limLog(pMac, LOG3, FL("Auth frame, Does not contain FTIES!!!\n"));
                 }
-=======
-            if (pAuthFrameBody->authAlgoNumber == eSIR_FT_AUTH)
-            {
-                if (0 != pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length) 
-                {
-                    frameLen += pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length;
-                    limLog(pMac, LOG3, FL("Auth frame, FTIES length added=%d"),
-                    pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length);
-                }
-                else
-                {
-                    limLog(pMac, LOG3, FL("Auth frame, Does not contain FTIES!!!"));
-                    frameLen += (2+SIR_MDIE_SIZE);
-                }
-            }
->>>>>>> d97af3b... add prima wlan driver
 #endif
                 break;
 
@@ -4807,11 +3481,7 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         // Log error
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("call to bufAlloc failed for AUTH frame\n"));
-=======
-        limLog(pMac, LOGP, FL("call to bufAlloc failed for AUTH frame"));
->>>>>>> d97af3b... add prima wlan driver
 
         return;
     }
@@ -4833,15 +3503,9 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
     // Prepare BSSId
     if(  (psessionEntry->limSystemRole == eLIM_AP_ROLE)|| (psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE) )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd,(tANI_U8 *) pMacHdr->bssId,
                        (tANI_U8 *) psessionEntry->bssId,
                        sizeof( tSirMacAddr ));
-=======
-        vos_mem_copy( (tANI_U8 *) pMacHdr->bssId,
-                      (tANI_U8 *) psessionEntry->bssId,
-                      sizeof( tSirMacAddr ));
->>>>>>> d97af3b... add prima wlan driver
     }
 
     /// Prepare Authentication frame body
@@ -4849,17 +3513,10 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
 
     if (wepBit == LIM_WEP_IN_FC)
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pBody, (tANI_U8 *) pAuthFrameBody, bodyLen);
 
         PELOG1(limLog(pMac, LOG1,
            FL("*** Sending Auth seq# 3 status %d (%d) to\n"),
-=======
-        vos_mem_copy(pBody, (tANI_U8 *) pAuthFrameBody, bodyLen);
-
-        PELOG1(limLog(pMac, LOG1,
-           FL("*** Sending Auth seq# 3 status %d (%d) to"),
->>>>>>> d97af3b... add prima wlan driver
            pAuthFrameBody->authStatusCode,
            (pAuthFrameBody->authStatusCode == eSIR_MAC_SUCCESS_STATUS));
 
@@ -4878,15 +3535,8 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
         *((tANI_U16 *)(pBody)) = sirSwapU16ifNeeded(pAuthFrameBody->authStatusCode);
         pBody   += sizeof(tANI_U16);
         bodyLen -= sizeof(tANI_U16);
-<<<<<<< HEAD
 
         palCopyMemory( pMac->hHdd, pBody, (tANI_U8 *) &pAuthFrameBody->type, bodyLen);
-=======
-        if ( bodyLen <= (sizeof (pAuthFrameBody->type) +
-                         sizeof (pAuthFrameBody->length) +
-                         sizeof (pAuthFrameBody->challengeText)))
-            vos_mem_copy(pBody, (tANI_U8 *) &pAuthFrameBody->type, bodyLen);
->>>>>>> d97af3b... add prima wlan driver
 
 #if defined WLAN_FEATURE_VOWIFI_11R
         if ((pAuthFrameBody->authAlgoNumber == eSIR_FT_AUTH) && 
@@ -4895,47 +3545,19 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
 
             {
                 int i = 0;
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
                 if (pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length) 
                 {
-=======
-                if (pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length) 
-                {
-#if defined WLAN_FEATURE_VOWIFI_11R_DEBUG
->>>>>>> d97af3b... add prima wlan driver
                     PELOGE(limLog(pMac, LOGE, FL("Auth1 Frame FTIE is: "));
                         sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOGE,
                             (tANI_U8 *)pBody,
                             (pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length));)
-<<<<<<< HEAD
                 }
 #endif
                 for (i=0; i<pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length; i++)
                 {
                     *pBody = pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies[i];
                     pBody++;
-=======
-#endif
-                    for (i=0; i<pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies_length; i++)
-                    {
-                        *pBody = pMac->ft.ftPEContext.pFTPreAuthReq->ft_ies[i];
-                        pBody++;
-                    }
-                }
-                else
-                { 
-                    /* MDID attr is 54*/
-                    *pBody = 54;
-                    pBody++;
-                    *pBody = SIR_MDIE_SIZE;
-                    pBody++;
-                    for(i=0;i<SIR_MDIE_SIZE;i++)
-                    {
-                      *pBody = pMac->ft.ftPEContext.pFTPreAuthReq->pbssDescription->mdie[i];
-                       pBody++;
-                    }
->>>>>>> d97af3b... add prima wlan driver
                 }
             }
         }
@@ -4949,7 +3571,6 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
 
         limPrintMacAddr(pMac, pMacHdr->da, LOG1);)
     }
-<<<<<<< HEAD
     PELOG2(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG2, pFrame, frameLen);)
 
     if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
@@ -4961,348 +3582,11 @@ limSendAuthMgmtFrame(tpAniSirGlobal pMac,
        || ((NULL != pMac->ft.ftPEContext.pFTPreAuthReq) 
            && ( SIR_BAND_5_GHZ == limGetRFBand(pMac->ft.ftPEContext.pFTPreAuthReq->preAuthchannelNum)))
 #endif
-=======
-    PELOG2(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG2, pFrame, frameLen);)
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
-#if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
-       || ((NULL != pMac->ft.ftPEContext.pFTPreAuthReq)
-           && ( SIR_BAND_5_GHZ == limGetRFBand(pMac->ft.ftPEContext.pFTPreAuthReq->preAuthchannelNum)))
-#endif
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
     }
 
-    if(psessionEntry->pePersona == VOS_P2P_CLIENT_MODE)
-    {
-        txFlag |= HAL_USE_PEER_STA_REQUESTED_MASK;
-    }
-
-    /// Queue Authentication frame in high priority WQ
-    halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) frameLen,
-                            HAL_TXRX_FRM_802_11_MGMT,
-                            ANI_TXDIR_TODS,
-                            7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                            limTxComplete, pFrame, txFlag );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog(pMac, LOGE,
-               FL("*** Could not send Auth frame, retCode=%X ***"),
-               halstatus);
-
-        //Pkt will be freed up by the callback
-    }
-
-    return;
-} /*** end limSendAuthMgmtFrame() ***/
-
-eHalStatus limSendDeauthCnf(tpAniSirGlobal pMac)
-{
-    tANI_U16                aid;
-    tpDphHashNode           pStaDs;
-    tLimMlmDeauthReq        *pMlmDeauthReq;
-    tLimMlmDeauthCnf        mlmDeauthCnf;
-    tpPESession             psessionEntry;
-
-    pMlmDeauthReq = pMac->lim.limDisassocDeauthCnfReq.pMlmDeauthReq;
-    if (pMlmDeauthReq)
-    {
-        if (tx_timer_running(&pMac->lim.limTimers.gLimDeauthAckTimer))
-        {
-            limDeactivateAndChangeTimer(pMac, eLIM_DEAUTH_ACK_TIMER);
-        }
-
-        if((psessionEntry = peFindSessionBySessionId(pMac, pMlmDeauthReq->sessionId))== NULL)
-        {
-
-            PELOGE(limLog(pMac, LOGE,
-                        FL("session does not exist for given sessionId"));)
-                mlmDeauthCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
-            goto end;
-        }
-
-        pStaDs = dphLookupHashEntry(pMac, pMlmDeauthReq->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
-        if (pStaDs == NULL)
-        {
-            mlmDeauthCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
-            goto end;
-        }
-
-
-        /// Receive path cleanup with dummy packet
-        limCleanupRxPath(pMac, pStaDs,psessionEntry);
-        /// Free up buffer allocated for mlmDeauthReq
-        vos_mem_free(pMlmDeauthReq);
-        pMac->lim.limDisassocDeauthCnfReq.pMlmDeauthReq = NULL;
-    }
-    return eHAL_STATUS_SUCCESS;
-end:
-    vos_mem_copy( (tANI_U8 *) &mlmDeauthCnf.peerMacAddr,
-            (tANI_U8 *) pMlmDeauthReq->peerMacAddr,
-            sizeof(tSirMacAddr));
-    mlmDeauthCnf.deauthTrigger = pMlmDeauthReq->deauthTrigger;
-    mlmDeauthCnf.aid           = pMlmDeauthReq->aid;
-    mlmDeauthCnf.sessionId = pMlmDeauthReq->sessionId;
-
-    // Free up buffer allocated
-    // for mlmDeauthReq
-    vos_mem_free(pMlmDeauthReq);
-
-    limPostSmeMessage(pMac,
-            LIM_MLM_DEAUTH_CNF,
-            (tANI_U32 *) &mlmDeauthCnf);
-    return eHAL_STATUS_SUCCESS;
-}
-
-eHalStatus limSendDisassocCnf(tpAniSirGlobal pMac)
-{
-    tANI_U16                 aid;
-    tpDphHashNode            pStaDs;
-    tLimMlmDisassocCnf       mlmDisassocCnf;
-    tpPESession              psessionEntry;
-    tLimMlmDisassocReq       *pMlmDisassocReq;
-
-    pMlmDisassocReq = pMac->lim.limDisassocDeauthCnfReq.pMlmDisassocReq;
-    if (pMlmDisassocReq)
-    {
-        if (tx_timer_running(&pMac->lim.limTimers.gLimDisassocAckTimer))
-        {
-            limDeactivateAndChangeTimer(pMac, eLIM_DISASSOC_ACK_TIMER);
-        }
-
-        if((psessionEntry = peFindSessionBySessionId(pMac, pMlmDisassocReq->sessionId))== NULL)
-        {
-
-            PELOGE(limLog(pMac, LOGE,
-                        FL("session does not exist for given sessionId"));)
-                mlmDisassocCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
-            goto end;
-        }
-
-        pStaDs = dphLookupHashEntry(pMac, pMlmDisassocReq->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
-        if (pStaDs == NULL)
-        {
-            mlmDisassocCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
-            goto end;
-        }
-
-        /// Receive path cleanup with dummy packet
-        if(eSIR_SUCCESS != limCleanupRxPath(pMac, pStaDs, psessionEntry))
-        {
-            mlmDisassocCnf.resultCode = eSIR_SME_RESOURCES_UNAVAILABLE;
-            goto end;
-        }
-
-#ifdef WLAN_FEATURE_VOWIFI_11R
-        if  ( (psessionEntry->limSystemRole == eLIM_STA_ROLE ) && 
-                (
-#ifdef FEATURE_WLAN_CCX
-                 (psessionEntry->isCCXconnection ) ||
-#endif
-#ifdef FEATURE_WLAN_LFR
-                 (psessionEntry->isFastRoamIniFeatureEnabled ) ||
-#endif
-                 (psessionEntry->is11Rconnection )) &&
-                (pMlmDisassocReq->reasonCode !=
-                 eSIR_MAC_DISASSOC_DUE_TO_FTHANDOFF_REASON))
-        {
-            PELOGE(limLog(pMac, LOGE,
-                   FL("FT Preauth Session (%p,%d) Cleanup"),
-                   psessionEntry, psessionEntry->peSessionId););
-            limFTCleanup(pMac);
-        }
-        else 
-        {
-            PELOGE(limLog(pMac, LOGE, 
-                   FL("No FT Preauth Session Cleanup in role %d"
-#ifdef FEATURE_WLAN_CCX
-                   " isCCX %d"
-#endif
-#ifdef FEATURE_WLAN_LFR
-                   " isLFR %d"
-#endif
-                   " is11r %d reason %d"),
-                   psessionEntry->limSystemRole, 
-#ifdef FEATURE_WLAN_CCX
-                   psessionEntry->isCCXconnection,
-#endif
-#ifdef FEATURE_WLAN_LFR
-                   psessionEntry->isFastRoamIniFeatureEnabled,
-#endif
-                   psessionEntry->is11Rconnection,
-                   pMlmDisassocReq->reasonCode););
-        }
-#endif
-
-        /// Free up buffer allocated for mlmDisassocReq
-        vos_mem_free(pMlmDisassocReq);
-        pMac->lim.limDisassocDeauthCnfReq.pMlmDisassocReq = NULL;
-        return eHAL_STATUS_SUCCESS;
-    }
-    else
-    {
-        return eHAL_STATUS_SUCCESS;
-    }
-end:
-    vos_mem_copy( (tANI_U8 *) &mlmDisassocCnf.peerMacAddr,
-            (tANI_U8 *) pMlmDisassocReq->peerMacAddr,
-            sizeof(tSirMacAddr));
-    mlmDisassocCnf.aid = pMlmDisassocReq->aid;
-    mlmDisassocCnf.disassocTrigger = pMlmDisassocReq->disassocTrigger;
-
-    /* Update PE session ID*/
-    mlmDisassocCnf.sessionId = pMlmDisassocReq->sessionId;
-
-    if(pMlmDisassocReq != NULL)
-    {
-        /// Free up buffer allocated for mlmDisassocReq
-        vos_mem_free(pMlmDisassocReq);
-        pMac->lim.limDisassocDeauthCnfReq.pMlmDisassocReq = NULL;
-    }
-
-    limPostSmeMessage(pMac,
-            LIM_MLM_DISASSOC_CNF,
-            (tANI_U32 *) &mlmDisassocCnf);
-    return eHAL_STATUS_SUCCESS;
-}
-
-eHalStatus limDisassocTxCompleteCnf(tpAniSirGlobal pMac, tANI_U32 txCompleteSuccess)
-{
-    return limSendDisassocCnf(pMac);
-}
-
-eHalStatus limDeauthTxCompleteCnf(tpAniSirGlobal pMac, tANI_U32 txCompleteSuccess)
-{
-    return limSendDeauthCnf(pMac);
-}
-
-/**
- * \brief This function is called to send Disassociate frame.
- *
- *
- * \param pMac Pointer to Global MAC structure
- *
- * \param nReason Indicates the reason that need to be sent in
- * Disassociation frame
- *
- * \param peerMacAddr MAC address of the STA to which Disassociation frame is
- * sent
- *
- *
- */
-
-void
-limSendDisassocMgmtFrame(tpAniSirGlobal pMac,
-                         tANI_U16       nReason,
-                         tSirMacAddr    peer,
-                         tpPESession psessionEntry,
-                         tANI_BOOLEAN waitForAck)
-{
-    tDot11fDisassociation frm;
-    tANI_U8              *pFrame;
-    tSirRetStatus         nSirStatus;
-    tpSirMacMgmtHdr       pMacHdr;
-    tANI_U32              nBytes, nPayload, nStatus;
-    void                 *pPacket;
-    eHalStatus            halstatus;
-    tANI_U8               txFlag = 0;
-    tANI_U32              val = 0;
-    if(NULL == psessionEntry)
-    {
-        return;
-    }
-    
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0);
-
-    frm.Reason.code = nReason;
-
-    nStatus = dot11fGetPackedDisassociationSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a Disassociation (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fDisassociation );
-    }
-    else if ( DOT11F_WARNED( nStatus ) )
-    {
-        limLog( pMac, LOGW, FL("There were warnings while calculating"
-                               "the packed size for a Disassociation "
-                               "(0x%08x)."), nStatus );
-    }
-
-    nBytes = nPayload + sizeof( tSirMacMgmtHdr );
-
-    halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
-                             ( tANI_U16 )nBytes, ( void** ) &pFrame,
-                             ( void** ) &pPacket );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Dis"
-                               "association."), nBytes );
-        return;
-    }
-
-    // Paranoia:
-    vos_mem_set( pFrame, nBytes, 0 );
-
-    // Next, we fill out the buffer descriptor:
-    nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                SIR_MAC_MGMT_DISASSOC, peer,psessionEntry->selfMacAddr);
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a Disassociation (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
-                    ( void* ) pFrame, ( void* ) pPacket );
-        return;                 // just allocated...
-    }
-
-    pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
-
-    // Prepare the BSSID
-    sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
-    
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
-    nStatus = dot11fPackDisassociation( pMac, &frm, pFrame +
-                                        sizeof(tSirMacMgmtHdr),
-                                        nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a Disassociation (0x%08x)."),
-                nStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
-                    ( void* ) pFrame, ( void* ) pPacket );
-        return;                 // allocated!
-    }
-    else if ( DOT11F_WARNED( nStatus ) )
-    {
-        limLog( pMac, LOGW, FL("There were warnings while packing a D"
-                               "isassociation (0x%08x).") );
-    }
-
-    PELOG1(limLog( pMac, LOG1, FL("*** Sending Disassociation frame with rea"
-                           "son %d to"), nReason );
-    limPrintMacAddr( pMac, pMacHdr->da, LOG1 );)
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
-         )
-    {
-        txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
-    }
-
-<<<<<<< HEAD
     /// Queue Authentication frame in high priority WQ
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) frameLen,
                             HAL_TXRX_FRM_802_11_MGMT,
@@ -5332,78 +3616,11 @@ limSendDisassocMgmtFrame(tpAniSirGlobal pMac,
  *
  * \param peerMacAddr MAC address of the STA to which Disassociation frame is
  * sent
-=======
-    if((psessionEntry->pePersona == VOS_P2P_CLIENT_MODE) ||
-       (psessionEntry->pePersona == VOS_P2P_GO_MODE))
-    {
-        txFlag |= HAL_USE_PEER_STA_REQUESTED_MASK;
-    }
-
-    if (waitForAck)
-    {
-        // Queue Disassociation frame in high priority WQ
-        /* get the duration from the request */
-        halstatus = halTxFrameWithTxComplete( pMac, pPacket, ( tANI_U16 ) nBytes,
-                HAL_TXRX_FRM_802_11_MGMT,
-                ANI_TXDIR_TODS,
-                7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                limTxComplete, pFrame, limDisassocTxCompleteCnf,
-                txFlag );
-        val = SYS_MS_TO_TICKS(LIM_DISASSOC_DEAUTH_ACK_TIMEOUT);
-
-        if (tx_timer_change(
-                    &pMac->lim.limTimers.gLimDisassocAckTimer, val, 0)
-                != TX_SUCCESS)
-        {
-            limLog(pMac, LOGP,
-                    FL("Unable to change Disassoc ack Timer val"));
-            return;
-        }
-        else if(TX_SUCCESS != tx_timer_activate(
-                    &pMac->lim.limTimers.gLimDisassocAckTimer))
-        {
-            limLog(pMac, LOGP,
-                    FL("Unable to activate Disassoc ack Timer"));
-            limDeactivateAndChangeTimer(pMac, eLIM_DISASSOC_ACK_TIMER);
-            return;
-        }
-    }
-    else 
-    {
-        // Queue Disassociation frame in high priority WQ
-        halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
-                HAL_TXRX_FRM_802_11_MGMT,
-                ANI_TXDIR_TODS,
-                7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                limTxComplete, pFrame, txFlag );
-        if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-        {
-            limLog( pMac, LOGE, FL("Failed to send Disassociation "
-                        "(%X)!"),
-                    nSirStatus );
-            //Pkt will be freed up by the callback
-            return;
-        }
-    }
-} // End limSendDisassocMgmtFrame.
-
-/**
- * \brief This function is called to send a Deauthenticate frame
- *
- *
- * \param pMac Pointer to global MAC structure
- *
- * \param nReason Indicates the reason that need to be sent in the
- * Deauthenticate frame
- *
- * \param peeer address of the STA to which the frame is to be sent
->>>>>>> d97af3b... add prima wlan driver
  *
  *
  */
 
 void
-<<<<<<< HEAD
 limSendDisassocMgmtFrame(tpAniSirGlobal pMac,
                          tANI_U16       nReason,
                          tSirMacAddr    peer,tpPESession psessionEntry)
@@ -5416,34 +3633,12 @@ limSendDisassocMgmtFrame(tpAniSirGlobal pMac,
     void                 *pPacket;
     eHalStatus            halstatus;
     tANI_U8               txFlag = 0;
-=======
-limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
-                       tANI_U16       nReason,
-                       tSirMacAddr    peer,
-                       tpPESession psessionEntry,
-                       tANI_BOOLEAN waitForAck)
-{
-    tDot11fDeAuth    frm;
-    tANI_U8         *pFrame;
-    tSirRetStatus    nSirStatus;
-    tpSirMacMgmtHdr  pMacHdr;
-    tANI_U32         nBytes, nPayload, nStatus;
-    void            *pPacket;
-    eHalStatus       halstatus;
-    tANI_U8          txFlag = 0;
-    tANI_U32         val = 0;
-#ifdef FEATURE_WLAN_TDLS
-    tANI_U16          aid;
-    tpDphHashNode     pStaDs;
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
     if(NULL == psessionEntry)
     {
         return;
     }
     
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&frm, sizeof( frm ) );
 
     frm.Reason.code = nReason;
@@ -5456,31 +3651,12 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fDisassociation );
-=======
-    vos_mem_set( ( tANI_U8* ) &frm, sizeof( frm ), 0 );
-
-    frm.Reason.code = nReason;
-
-    nStatus = dot11fGetPackedDeAuthSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a De-Authentication (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fDeAuth );
->>>>>>> d97af3b... add prima wlan driver
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
-<<<<<<< HEAD
                                "the packed size for a Disassociation "
                                "(0x%08x).\n"), nStatus );
-=======
-                               "the packed size for a De-Authentication "
-                               "(0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -5490,18 +3666,12 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
                              ( void** ) &pPacket );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Dis"
                                "association.\n"), nBytes );
-=======
-        limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a De-"
-                               "Authentication."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
 
     // Next, we fill out the buffer descriptor:
@@ -5511,17 +3681,6 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
                                "tor for a Disassociation (%d).\n"),
-=======
-    vos_mem_set(  pFrame, nBytes, 0 );
-
-    // Next, we fill out the buffer descriptor:
-    nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                SIR_MAC_MGMT_DEAUTH, peer,psessionEntry->selfMacAddr);
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a De-Authentication (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
@@ -5532,7 +3691,6 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
 
     // Prepare the BSSID
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
-<<<<<<< HEAD
     
     nStatus = dot11fPackDisassociation( pMac, &frm, pFrame +
                                         sizeof(tSirMacMgmtHdr),
@@ -5544,28 +3702,10 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
         return;                 // allocated!
-=======
-
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
-    nStatus = dot11fPackDeAuth( pMac, &frm, pFrame +
-                                sizeof(tSirMacMgmtHdr),
-                                nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a DeAuthentication (0x%08x)."),
-                nStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
-                    ( void* ) pFrame, ( void* ) pPacket );
-        return;
->>>>>>> d97af3b... add prima wlan driver
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a D"
-<<<<<<< HEAD
                                "isassociation (0x%08x).\n") );
     }
 
@@ -5584,249 +3724,10 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
     }
 
     // Queue Disassociation frame in high priority WQ
-=======
-                               "e-Authentication (0x%08x).") );
-    }
-
-    PELOG1(limLog( pMac, LOG1, FL("*** Sending De-Authentication frame with rea"
-                           "son %d to"), nReason );
-    limPrintMacAddr( pMac, pMacHdr->da, LOG1 );)
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
-         )
-    {
-        txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
-    }
-
-    if((psessionEntry->pePersona == VOS_P2P_CLIENT_MODE) ||
-       (psessionEntry->pePersona == VOS_P2P_GO_MODE))
-    {
-        txFlag |= HAL_USE_PEER_STA_REQUESTED_MASK;
-    }
-
-#ifdef FEATURE_WLAN_TDLS
-    pStaDs = dphLookupHashEntry(pMac, peer, &aid, &psessionEntry->dph.dphHashTable);
-#endif
-
-    if (waitForAck)
-    {
-        // Queue Disassociation frame in high priority WQ
-        halstatus = halTxFrameWithTxComplete( pMac, pPacket, ( tANI_U16 ) nBytes,
-                HAL_TXRX_FRM_802_11_MGMT,
-                ANI_TXDIR_TODS,
-                7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                limTxComplete, pFrame, limDeauthTxCompleteCnf, txFlag );
-        if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-        {
-            limLog( pMac, LOGE, FL("Failed to send De-Authentication "
-                        "(%X)!"),
-                    nSirStatus );
-            //Pkt will be freed up by the callback limTxComplete
-
-            /*Call limProcessDeauthAckTimeout which will send
-            * DeauthCnf for this frame
-            */
-            limProcessDeauthAckTimeout(pMac);
-            return;
-        }
-
-        val = SYS_MS_TO_TICKS(LIM_DISASSOC_DEAUTH_ACK_TIMEOUT);
-
-        if (tx_timer_change(
-                    &pMac->lim.limTimers.gLimDeauthAckTimer, val, 0)
-                != TX_SUCCESS)
-        {
-            limLog(pMac, LOGP,
-                    FL("Unable to change Deauth ack Timer val"));
-            return;
-        }
-        else if(TX_SUCCESS != tx_timer_activate(
-                    &pMac->lim.limTimers.gLimDeauthAckTimer))
-        {
-            limLog(pMac, LOGP,
-                    FL("Unable to activate Deauth ack Timer"));
-            limDeactivateAndChangeTimer(pMac, eLIM_DEAUTH_ACK_TIMER);
-            return;
-        }
-    }
-    else
-    {
-#ifdef FEATURE_WLAN_TDLS
-        if ((NULL != pStaDs) && (STA_ENTRY_TDLS_PEER == pStaDs->staType))
-        {
-            // Queue Disassociation frame in high priority WQ
-            halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
-                HAL_TXRX_FRM_802_11_MGMT,
-                ANI_TXDIR_IBSS,
-                7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                limTxComplete, pFrame, txFlag );
-        }
-        else
-        {
-#endif
-            // Queue Disassociation frame in high priority WQ
-            halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
-                    HAL_TXRX_FRM_802_11_MGMT,
-                    ANI_TXDIR_TODS,
-                    7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                    limTxComplete, pFrame, txFlag );
-#ifdef FEATURE_WLAN_TDLS
-        }
-#endif
-        if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-        {
-            limLog( pMac, LOGE, FL("Failed to send De-Authentication "
-                        "(%X)!"),
-                    nSirStatus );
-            //Pkt will be freed up by the callback
-            return;
-        }
-    }
-
-} // End limSendDeauthMgmtFrame.
-
-
-#ifdef ANI_SUPPORT_11H
-/**
- * \brief Send a Measurement Report Action frame
- *
- *
- * \param pMac Pointer to the global MAC structure
- *
- * \param pMeasReqFrame Address of a tSirMacMeasReqActionFrame
- *
- * \return eSIR_SUCCESS on success, eSIR_FAILURE else
- *
- *
- */
-
-tSirRetStatus
-limSendMeasReportFrame(tpAniSirGlobal             pMac,
-                       tpSirMacMeasReqActionFrame pMeasReqFrame,
-                       tSirMacAddr                peer)
-{
-    tDot11fMeasurementReport frm;
-    tANI_U8                      *pFrame;
-    tSirRetStatus            nSirStatus;
-    tpSirMacMgmtHdr          pMacHdr;
-    tANI_U32                      nBytes, nPayload, nStatus, nCfg;
-    void               *pPacket;
-    eHalStatus          halstatus;
-   
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-
-    frm.Category.category = SIR_MAC_ACTION_SPECTRUM_MGMT;
-    frm.Action.action     = SIR_MAC_ACTION_MEASURE_REPORT_ID;
-    frm.DialogToken.token = pMeasReqFrame->actionHeader.dialogToken;
-
-    switch ( pMeasReqFrame->measReqIE.measType )
-    {
-    case SIR_MAC_BASIC_MEASUREMENT_TYPE:
-        nSirStatus =
-            PopulateDot11fMeasurementReport0( pMac, pMeasReqFrame,
-                                               &frm.MeasurementReport );
-        break;
-    case SIR_MAC_CCA_MEASUREMENT_TYPE:
-        nSirStatus =
-            PopulateDot11fMeasurementReport1( pMac, pMeasReqFrame,
-                                               &frm.MeasurementReport );
-        break;
-    case SIR_MAC_RPI_MEASUREMENT_TYPE:
-        nSirStatus =
-            PopulateDot11fMeasurementReport2( pMac, pMeasReqFrame,
-                                               &frm.MeasurementReport );
-        break;
-    default:
-        limLog( pMac, LOGE, FL("Unknown measurement type %d in limSen"
-                               "dMeasReportFrame."),
-                pMeasReqFrame->measReqIE.measType );
-        return eSIR_FAILURE;
-    }
-
-    if ( eSIR_SUCCESS != nSirStatus ) return eSIR_FAILURE;
-
-    nStatus = dot11fGetPackedMeasurementReportSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a Measurement Report (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fMeasurementReport );
-    }
-    else if ( DOT11F_WARNED( nStatus ) )
-    {
-        limLog( pMac, LOGW, FL("There were warnings while calculating"
-                               "the packed size for a Measurement Rep"
-                               "ort (0x%08x)."), nStatus );
-    }
-
-    nBytes = nPayload + sizeof( tSirMacMgmtHdr );
-
-    halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( tANI_U16 )nBytes, ( void** ) &pFrame, ( void** ) &pPacket );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a De-"
-                               "Authentication."), nBytes );
-        return eSIR_FAILURE;
-    }
-
-    // Paranoia:
-    vos_mem_set( pFrame, nBytes, 0 );
-
-    // Next, we fill out the buffer descriptor:
-    nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                SIR_MAC_MGMT_ACTION, peer);
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a Measurement Report (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return eSIR_FAILURE;    // just allocated...
-    }
-
-    pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
-
-    nCfg = 6;
-    nSirStatus = wlan_cfgGetStr( pMac, WNI_CFG_BSSID, pMacHdr->bssId, &nCfg );
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to retrieve WNI_CFG_BSSID from"
-                               " CFG (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return eSIR_FAILURE;    // just allocated...
-    }
-
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
-    nStatus = dot11fPackMeasurementReport( pMac, &frm, pFrame +
-                                           sizeof(tSirMacMgmtHdr),
-                                           nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a Measurement Report (0x%08x)."),
-                nStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return eSIR_FAILURE;    // allocated!
-    }
-    else if ( DOT11F_WARNED( nStatus ) )
-    {
-        limLog( pMac, LOGW, FL("There were warnings while packing a M"
-                               "easurement Report (0x%08x).") );
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
                             HAL_TXRX_FRM_802_11_MGMT,
                             ANI_TXDIR_TODS,
                             7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-<<<<<<< HEAD
                             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
@@ -5849,36 +3750,11 @@ limSendMeasReportFrame(tpAniSirGlobal             pMac,
  * Deauthenticate frame
  *
  * \param peeer address of the STA to which the frame is to be sent
-=======
-                            limTxComplete, pFrame, 0 );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to send a Measurement Report  "
-                               "(%X)!"),
-                nSirStatus );
-        //Pkt will be freed up by the callback
-        return eSIR_FAILURE;    // just allocated...
-    }
-
-    return eSIR_SUCCESS;
-
-} // End limSendMeasReportFrame.
-
-
-/**
- * \brief Send a TPC Request Action frame
- *
- *
- * \param pMac Pointer to the global MAC datastructure
- *
- * \param peer MAC address to which the frame should be sent
->>>>>>> d97af3b... add prima wlan driver
  *
  *
  */
 
 void
-<<<<<<< HEAD
 limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
                        tANI_U16       nReason,
                        tSirMacAddr    peer,tpPESession psessionEntry)
@@ -5909,50 +3785,16 @@ limSendDeauthMgmtFrame(tpAniSirGlobal pMac,
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fDeAuth );
-=======
-limSendTpcRequestFrame(tpAniSirGlobal pMac,
-                       tSirMacAddr    peer)
-{
-    tDot11fTPCRequest  frm;
-    tANI_U8                *pFrame;
-    tSirRetStatus      nSirStatus;
-    tpSirMacMgmtHdr    pMacHdr;
-    tANI_U32                nBytes, nPayload, nStatus, nCfg;
-    void               *pPacket;
-    eHalStatus          halstatus;
-   
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-
-    frm.Category.category  = SIR_MAC_ACTION_SPECTRUM_MGMT;
-    frm.Action.action      = SIR_MAC_ACTION_TPC_REQUEST_ID;
-    frm.DialogToken.token  = 1;
-    frm.TPCRequest.present = 1;
-
-    nStatus = dot11fGetPackedTPCRequestSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a TPC Request (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fTPCRequest );
->>>>>>> d97af3b... add prima wlan driver
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
-<<<<<<< HEAD
                                "the packed size for a De-Authentication "
                                "(0x%08x).\n"), nStatus );
-=======
-                               "the packed size for a TPC Request (0x"
-                               "%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
 
-<<<<<<< HEAD
     halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                              ( tANI_U16 )nBytes, ( void** ) &pFrame,
                              ( void** ) &pPacket );
@@ -5960,18 +3802,10 @@ limSendTpcRequestFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a De-"
                                "Authentication.\n"), nBytes );
-=======
-    halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( tANI_U16 )nBytes, ( void** ) &pFrame, ( void** ) &pPacket );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a TPC"
-                               " Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
 
     // Next, we fill out the buffer descriptor:
@@ -5984,25 +3818,11 @@ limSendTpcRequestFrame(tpAniSirGlobal pMac,
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,
                     ( void* ) pFrame, ( void* ) pPacket );
-=======
-    vos_mem_set(pFrame, nBytes,0);
-
-    // Next, we fill out the buffer descriptor:
-    nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                SIR_MAC_MGMT_ACTION, peer);
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a TPC Request (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
->>>>>>> d97af3b... add prima wlan driver
         return;                 // just allocated...
     }
 
     pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
 
-<<<<<<< HEAD
     // Prepare the BSSID
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
@@ -6038,62 +3858,20 @@ limSendTpcRequestFrame(tpAniSirGlobal pMac,
     }
 
     // Queue Disassociation frame in high priority WQ
-=======
-    nCfg = 6;
-    nSirStatus = wlan_cfgGetStr( pMac, WNI_CFG_BSSID, pMacHdr->bssId, &nCfg );
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to retrieve WNI_CFG_BSSID from"
-                               " CFG (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return;                 // just allocated...
-    }
-
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
-    nStatus = dot11fPackTPCRequest( pMac, &frm, pFrame +
-                                    sizeof(tSirMacMgmtHdr),
-                                    nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a TPC Request (0x%08x)."),
-                nStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return;                 // allocated!
-    }
-    else if ( DOT11F_WARNED( nStatus ) )
-    {
-        limLog( pMac, LOGW, FL("There were warnings while packing a T"
-                               "PC Request (0x%08x).") );
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
                             HAL_TXRX_FRM_802_11_MGMT,
                             ANI_TXDIR_TODS,
                             7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-<<<<<<< HEAD
                             limTxComplete, pFrame, txFlag );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to send De-Authentication "
                                "(%X)!\n"),
-=======
-                            limTxComplete, pFrame, 0 );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to send a TPC Request "
-                               "(%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
         return;
     }
 
-<<<<<<< HEAD
 } // End limSendDeauthMgmtFrame.
 
 
@@ -6105,18 +3883,6 @@ limSendTpcRequestFrame(tpAniSirGlobal pMac,
  * \param pMac Pointer to the global MAC structure
  *
  * \param pMeasReqFrame Address of a tSirMacMeasReqActionFrame
-=======
-} // End limSendTpcRequestFrame.
-
-
-/**
- * \brief Send a TPC Report Action frame
- *
- *
- * \param pMac Pointer to the global MAC datastructure
- *
- * \param pTpcReqFrame Pointer to the received TPC Request
->>>>>>> d97af3b... add prima wlan driver
  *
  * \return eSIR_SUCCESS on success, eSIR_FAILURE else
  *
@@ -6124,7 +3890,6 @@ limSendTpcRequestFrame(tpAniSirGlobal pMac,
  */
 
 tSirRetStatus
-<<<<<<< HEAD
 limSendMeasReportFrame(tpAniSirGlobal             pMac,
                        tpSirMacMeasReqActionFrame pMeasReqFrame,
                        tSirMacAddr                peer)
@@ -6177,53 +3942,12 @@ limSendMeasReportFrame(tpAniSirGlobal             pMac,
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fMeasurementReport );
-=======
-limSendTpcReportFrame(tpAniSirGlobal            pMac,
-                      tpSirMacTpcReqActionFrame pTpcReqFrame,
-                      tSirMacAddr               peer)
-{
-    tDot11fTPCReport frm;
-    tANI_U8              *pFrame;
-    tSirRetStatus    nSirStatus;
-    tpSirMacMgmtHdr  pMacHdr;
-    tANI_U32              nBytes, nPayload, nStatus, nCfg;
-    void               *pPacket;
-    eHalStatus          halstatus;
-   
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-
-    frm.Category.category  = SIR_MAC_ACTION_SPECTRUM_MGMT;
-    frm.Action.action      = SIR_MAC_ACTION_TPC_REPORT_ID;
-    frm.DialogToken.token  = pTpcReqFrame->actionHeader.dialogToken;
-
-    // FramesToDo: On the Gen4_TVM branch, there was a comment:
-    // "misplaced this function, need to replace:
-    // txPower = halGetRateToPwrValue(pMac, staid,
-    //     pMac->lim.gLimCurrentChannelId, 0);
-    frm.TPCReport.tx_power    = 0;
-    frm.TPCReport.link_margin = 0;
-    frm.TPCReport.present     = 1;
-
-    nStatus = dot11fGetPackedTPCReportSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a TPC Report (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fTPCReport );
->>>>>>> d97af3b... add prima wlan driver
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
-<<<<<<< HEAD
                                "the packed size for a Measurement Rep"
                                "ort (0x%08x).\n"), nStatus );
-=======
-                               "the packed size for a TPC Report (0x"
-                               "%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -6231,22 +3955,13 @@ limSendTpcReportFrame(tpAniSirGlobal            pMac,
     halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( tANI_U16 )nBytes, ( void** ) &pFrame, ( void** ) &pPacket );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a De-"
                                "Authentication.\n"), nBytes );
-=======
-        limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a TPC"
-                               " Report."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
@@ -6254,11 +3969,7 @@ limSendTpcReportFrame(tpAniSirGlobal            pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-<<<<<<< HEAD
                                "tor for a Measurement Report (%d).\n"),
-=======
-                               "tor for a TPC Report (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // just allocated...
@@ -6271,53 +3982,28 @@ limSendTpcReportFrame(tpAniSirGlobal            pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to retrieve WNI_CFG_BSSID from"
-<<<<<<< HEAD
                                " CFG (%d).\n"),
-=======
-                               " CFG (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // just allocated...
     }
 
-<<<<<<< HEAD
     nStatus = dot11fPackMeasurementReport( pMac, &frm, pFrame +
                                            sizeof(tSirMacMgmtHdr),
                                            nPayload, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to pack a Measurement Report (0x%08x).\n"),
-=======
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
-    nStatus = dot11fPackTPCReport( pMac, &frm, pFrame +
-                                   sizeof(tSirMacMgmtHdr),
-                                   nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a TPC Report (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // allocated!
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGW, FL("There were warnings while packing a M"
                                "easurement Report (0x%08x).\n") );
     }
 
-=======
-        limLog( pMac, LOGW, FL("There were warnings while packing a T"
-                               "PC Report (0x%08x).") );
-    }
-
-
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
                             HAL_TXRX_FRM_802_11_MGMT,
                             ANI_TXDIR_TODS,
@@ -6325,13 +4011,8 @@ limSendTpcReportFrame(tpAniSirGlobal            pMac,
                             limTxComplete, pFrame, 0 );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to send a Measurement Report  "
                                "(%X)!\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to send a TPC Report "
-                               "(%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
         return eSIR_FAILURE;    // just allocated...
@@ -6339,42 +4020,20 @@ limSendTpcReportFrame(tpAniSirGlobal            pMac,
 
     return eSIR_SUCCESS;
 
-<<<<<<< HEAD
 } // End limSendMeasReportFrame.
 
 
 /**
  * \brief Send a TPC Request Action frame
-=======
-} // End limSendTpcReportFrame.
-#endif  //ANI_SUPPORT_11H
-
-
-/**
- * \brief Send a Channel Switch Announcement
->>>>>>> d97af3b... add prima wlan driver
  *
  *
  * \param pMac Pointer to the global MAC datastructure
  *
-<<<<<<< HEAD
  * \param peer MAC address to which the frame should be sent
-=======
- * \param peer MAC address to which this frame will be sent
- *
- * \param nMode
- *
- * \param nNewChannel
- *
- * \param nCount
- *
- * \return eSIR_SUCCESS on success, eSIR_FAILURE else
->>>>>>> d97af3b... add prima wlan driver
  *
  *
  */
 
-<<<<<<< HEAD
 void
 limSendTpcRequestFrame(tpAniSirGlobal pMac,
                        tSirMacAddr    peer)
@@ -6402,53 +4061,12 @@ limSendTpcRequestFrame(tpAniSirGlobal pMac,
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fTPCRequest );
-=======
-tSirRetStatus
-limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
-                              tSirMacAddr    peer,
-                              tANI_U8        nMode,
-                              tANI_U8        nNewChannel,
-                              tANI_U8        nCount,
-                              tpPESession    psessionEntry )
-{
-    tDot11fChannelSwitch frm;
-    tANI_U8                  *pFrame;
-    tSirRetStatus        nSirStatus;
-    tpSirMacMgmtHdr      pMacHdr;
-    tANI_U32                  nBytes, nPayload, nStatus;//, nCfg;
-    void               *pPacket;
-    eHalStatus          halstatus;
-    tANI_U8 txFlag = 0;
-    
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-
-    frm.Category.category     = SIR_MAC_ACTION_SPECTRUM_MGMT;
-    frm.Action.action         = SIR_MAC_ACTION_CHANNEL_SWITCH_ID;
-    frm.ChanSwitchAnn.switchMode    = nMode;
-    frm.ChanSwitchAnn.newChannel    = nNewChannel;
-    frm.ChanSwitchAnn.switchCount   = nCount;
-    frm.ChanSwitchAnn.present = 1;
-
-    nStatus = dot11fGetPackedChannelSwitchSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a Channel Switch (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fChannelSwitch );
->>>>>>> d97af3b... add prima wlan driver
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
-<<<<<<< HEAD
                                "the packed size for a TPC Request (0x"
                                "%08x).\n"), nStatus );
-=======
-                               "the packed size for a Channel Switch (0x"
-                               "%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -6457,7 +4075,6 @@ limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a TPC"
-<<<<<<< HEAD
                                " Request.\n"), nBytes );
         return;
     }
@@ -6477,32 +4094,6 @@ limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
         return;                 // just allocated...
     }
 
-=======
-                               " Report."), nBytes );
-        return eSIR_FAILURE;
-    }
-
-    // Paranoia:
-    vos_mem_set( pFrame, nBytes, 0 );
-
-    // Next, we fill out the buffer descriptor:
-    nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                SIR_MAC_MGMT_ACTION, peer, psessionEntry->selfMacAddr);
-    pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
-    vos_mem_copy( (tANI_U8 *) pMacHdr->bssId,
-                  (tANI_U8 *) psessionEntry->bssId,
-                  sizeof( tSirMacAddr ));
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a Channel Switch (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return eSIR_FAILURE;    // just allocated...
-    }
-
-#if 0
->>>>>>> d97af3b... add prima wlan driver
     pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
 
     nCfg = 6;
@@ -6510,7 +4101,6 @@ limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     if ( eSIR_SUCCESS != nSirStatus )
     {
         limLog( pMac, LOGE, FL("Failed to retrieve WNI_CFG_BSSID from"
-<<<<<<< HEAD
                                " CFG (%d).\n"),
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
@@ -6533,47 +4123,10 @@ limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
                                "PC Request (0x%08x).\n") );
     }
 
-=======
-                               " CFG (%d)."),
-                nSirStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return eSIR_FAILURE;    // just allocated...
-    }
-#endif
-
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
-    nStatus = dot11fPackChannelSwitch( pMac, &frm, pFrame +
-                                       sizeof(tSirMacMgmtHdr),
-                                       nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a Channel Switch (0x%08x)."),
-                nStatus );
-        palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-        return eSIR_FAILURE;    // allocated!
-    }
-    else if ( DOT11F_WARNED( nStatus ) )
-    {
-        limLog( pMac, LOGW, FL("There were warnings while packing a C"
-                               "hannel Switch (0x%08x).") );
-    }
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
-         )
-    {
-        txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
-    }
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
                             HAL_TXRX_FRM_802_11_MGMT,
                             ANI_TXDIR_TODS,
                             7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-<<<<<<< HEAD
                             limTxComplete, pFrame, 0 );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
@@ -6635,67 +4188,12 @@ limSendTpcReportFrame(tpAniSirGlobal            pMac,
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fTPCReport );
-=======
-                            limTxComplete, pFrame, txFlag );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to send a Channel Switch "
-                               "(%X)!"),
-                nSirStatus );
-        //Pkt will be freed up by the callback
-        return eSIR_FAILURE;
-    }
-
-    return eSIR_SUCCESS;
-
-} // End limSendChannelSwitchMgmtFrame.
-
-
-
-#ifdef WLAN_FEATURE_11AC    
-tSirRetStatus
-limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,
-                              tSirMacAddr    peer,
-                              tANI_U8        nMode,
-                              tpPESession    psessionEntry )
-{
-    tDot11fOperatingMode  frm;
-    tANI_U8                  *pFrame;
-    tSirRetStatus        nSirStatus;
-    tpSirMacMgmtHdr      pMacHdr;
-    tANI_U32                  nBytes, nPayload = 0, nStatus;//, nCfg;
-    void               *pPacket;
-    eHalStatus          halstatus;
-    tANI_U8 txFlag = 0;
-    
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-
-    frm.Category.category     = SIR_MAC_ACTION_VHT;
-    frm.Action.action         = SIR_MAC_VHT_OPMODE_NOTIFICATION;
-    frm.OperatingMode.chanWidth    = nMode;
-    frm.OperatingMode.rxNSS   = 0;
-    frm.OperatingMode.rxNSSType    = 0;
-
-    nStatus = dot11fGetPackedOperatingModeSize( pMac, &frm, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-                               "or a Operating Mode (0x%08x)."),
-                nStatus );
-        // We'll fall back on the worst case scenario:
-        nPayload = sizeof( tDot11fOperatingMode);
->>>>>>> d97af3b... add prima wlan driver
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
-<<<<<<< HEAD
                                "the packed size for a TPC Report (0x"
                                "%08x).\n"), nStatus );
-=======
-                               "the packed size for a Operating Mode (0x"
-                               "%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -6703,18 +4201,12 @@ limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,
     halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( tANI_U16 )nBytes, ( void** ) &pFrame, ( void** ) &pPacket );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a TPC"
                                " Report.\n"), nBytes );
-=======
-        limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Operating Mode"
-                               " Report."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
 
     // Paranoia:
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
 
     // Next, we fill out the buffer descriptor:
@@ -6737,31 +4229,10 @@ limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGE, FL("Failed to retrieve WNI_CFG_BSSID from"
                                " CFG (%d).\n"),
-=======
-    vos_mem_set( pFrame, nBytes, 0 );
-
-
-    // Next, we fill out the buffer descriptor:
-    if(psessionEntry->pePersona == VOS_STA_SAP_MODE) {
-        nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                           SIR_MAC_MGMT_ACTION, peer, psessionEntry->selfMacAddr);
-    } else
-        nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
-                                           SIR_MAC_MGMT_ACTION, psessionEntry->bssId, psessionEntry->selfMacAddr);
-    pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
-    vos_mem_copy( (tANI_U8 *) pMacHdr->bssId,
-                  (tANI_U8 *) psessionEntry->bssId,
-                  sizeof( tSirMacAddr ));
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a Operating Mode (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // just allocated...
     }
-<<<<<<< HEAD
 
     nStatus = dot11fPackTPCReport( pMac, &frm, pFrame +
                                    sizeof(tSirMacMgmtHdr),
@@ -6769,43 +4240,21 @@ limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to pack a TPC Report (0x%08x).\n"),
-=======
-    nStatus = dot11fPackOperatingMode( pMac, &frm, pFrame +
-                                       sizeof(tSirMacMgmtHdr),
-                                       nPayload, &nPayload );
-    if ( DOT11F_FAILED( nStatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to pack a Operating Mode (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // allocated!
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGW, FL("There were warnings while packing a T"
                                "PC Report (0x%08x).\n") );
     }
 
 
-=======
-        limLog( pMac, LOGW, FL("There were warnings while packing a Operating Mode"
-                               " (0x%08x).") );
-    }
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
-         )
-    {
-        txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
-    }
->>>>>>> d97af3b... add prima wlan driver
     halstatus = halTxFrame( pMac, pPacket, ( tANI_U16 ) nBytes,
                             HAL_TXRX_FRM_802_11_MGMT,
                             ANI_TXDIR_TODS,
                             7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-<<<<<<< HEAD
                             limTxComplete, pFrame, 0 );
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
@@ -6825,41 +4274,17 @@ limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,
 #if 1//def ANI_PRODUCT_TYPE_AP
 /**
  * \brief Send a Channel Switch Announcement
-=======
-                            limTxComplete, pFrame, txFlag );
-    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
-    {
-        limLog( pMac, LOGE, FL("Failed to send a Channel Switch "
-                               "(%X)!"),
-                nSirStatus );
-        //Pkt will be freed up by the callback
-        return eSIR_FAILURE;
-    }
-
-    return eSIR_SUCCESS;
-}
-
-/**
- * \brief Send a VHT Channel Switch Announcement
->>>>>>> d97af3b... add prima wlan driver
  *
  *
  * \param pMac Pointer to the global MAC datastructure
  *
  * \param peer MAC address to which this frame will be sent
  *
-<<<<<<< HEAD
  * \param nMode
  *
  * \param nNewChannel
  *
  * \param nCount
-=======
- * \param nChanWidth
- *
- * \param nNewChannel
- *
->>>>>>> d97af3b... add prima wlan driver
  *
  * \return eSIR_SUCCESS on success, eSIR_FAILURE else
  *
@@ -6867,7 +4292,6 @@ limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,
  */
 
 tSirRetStatus
-<<<<<<< HEAD
 limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
                               tSirMacAddr    peer,
                               tANI_U8        nMode,
@@ -6876,16 +4300,6 @@ limSendChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
                               tpPESession    psessionEntry )
 {
     tDot11fChannelSwitch frm;
-=======
-limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
-                              tSirMacAddr    peer,
-                              tANI_U8        nChanWidth,
-                              tANI_U8        nNewChannel,
-                              tANI_U8        ncbMode,
-                              tpPESession    psessionEntry )
-{
-    tDot11fChannelSwitch  frm;
->>>>>>> d97af3b... add prima wlan driver
     tANI_U8                  *pFrame;
     tSirRetStatus        nSirStatus;
     tpSirMacMgmtHdr      pMacHdr;
@@ -6894,7 +4308,6 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     eHalStatus          halstatus;
     tANI_U8 txFlag = 0;
     
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&frm, sizeof( frm ) );
 
     frm.Category.category     = SIR_MAC_ACTION_SPECTRUM_MGMT;
@@ -6903,33 +4316,12 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     frm.ChanSwitchAnn.newChannel    = nNewChannel;
     frm.ChanSwitchAnn.switchCount   = nCount;
     frm.ChanSwitchAnn.present = 1;
-=======
-    vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-                
-
-    frm.Category.category     = SIR_MAC_ACTION_SPECTRUM_MGMT;
-    frm.Action.action         = SIR_MAC_ACTION_CHANNEL_SWITCH_ID;
-    frm.ChanSwitchAnn.switchMode    = 1;
-    frm.ChanSwitchAnn.newChannel    = nNewChannel;
-    frm.ChanSwitchAnn.switchCount   = 1;
-    frm.ExtChanSwitchAnn.secondaryChannelOffset =  limGetHTCBState(ncbMode); 
-    frm.ExtChanSwitchAnn.present = 1; 
-    frm.WiderBWChanSwitchAnn.newChanWidth = nChanWidth;
-    frm.WiderBWChanSwitchAnn.newCenterChanFreq0 = limGetCenterChannel(pMac,nNewChannel,ncbMode,nChanWidth);
-    frm.WiderBWChanSwitchAnn.newCenterChanFreq1 = 0;
-    frm.ChanSwitchAnn.present = 1;
-    frm.WiderBWChanSwitchAnn.present = 1;
->>>>>>> d97af3b... add prima wlan driver
 
     nStatus = dot11fGetPackedChannelSwitchSize( pMac, &frm, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                                "or a Channel Switch (0x%08x).\n"),
-=======
-                               "or a Channel Switch (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         // We'll fall back on the worst case scenario:
         nPayload = sizeof( tDot11fChannelSwitch );
@@ -6938,11 +4330,7 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGW, FL("There were warnings while calculating"
                                "the packed size for a Channel Switch (0x"
-<<<<<<< HEAD
                                "%08x).\n"), nStatus );
-=======
-                               "%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -6951,26 +4339,17 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a TPC"
-<<<<<<< HEAD
                                " Report.\n"), nBytes );
         return eSIR_FAILURE;
     }
 
     // Paranoia:
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-                               " Report."), nBytes );
-        return eSIR_FAILURE;
-    }
-   // Paranoia:
-    vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Next, we fill out the buffer descriptor:
     nSirStatus = limPopulateMacHeader( pMac, pFrame, SIR_MAC_MGMT_FRAME,
                                 SIR_MAC_MGMT_ACTION, peer, psessionEntry->selfMacAddr);
     pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd,
                    (tANI_U8 *) pMacHdr->bssId,
                    (tANI_U8 *) psessionEntry->bssId,
@@ -6993,33 +4372,17 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGE, FL("Failed to retrieve WNI_CFG_BSSID from"
                                " CFG (%d).\n"),
-=======
-    vos_mem_copy( (tANI_U8 *) pMacHdr->bssId,
-                  (tANI_U8 *) psessionEntry->bssId,
-                  sizeof( tSirMacAddr ));
-    if ( eSIR_SUCCESS != nSirStatus )
-    {
-        limLog( pMac, LOGE, FL("Failed to populate the buffer descrip"
-                               "tor for a Channel Switch (%d)."),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // just allocated...
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
     nStatus = dot11fPackChannelSwitch( pMac, &frm, pFrame +
                                        sizeof(tSirMacMgmtHdr),
                                        nPayload, &nPayload );
     if ( DOT11F_FAILED( nStatus ) )
     {
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Failed to pack a Channel Switch (0x%08x).\n"),
-=======
-        limLog( pMac, LOGE, FL("Failed to pack a Channel Switch (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
                 nStatus );
         palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
         return eSIR_FAILURE;    // allocated!
@@ -7027,7 +4390,6 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     else if ( DOT11F_WARNED( nStatus ) )
     {
         limLog( pMac, LOGW, FL("There were warnings while packing a C"
-<<<<<<< HEAD
                                "hannel Switch (0x%08x).\n") );
     }
 
@@ -7036,14 +4398,6 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-                               "hannel Switch (0x%08x).") );
-    }
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -7056,11 +4410,7 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
     if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
     {
         limLog( pMac, LOGE, FL("Failed to send a Channel Switch "
-<<<<<<< HEAD
                                "(%X)!\n"),
-=======
-                               "(%X)!"),
->>>>>>> d97af3b... add prima wlan driver
                 nSirStatus );
         //Pkt will be freed up by the callback
         return eSIR_FAILURE;
@@ -7068,18 +4418,10 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
 
     return eSIR_SUCCESS;
 
-<<<<<<< HEAD
 } // End limSendChannelSwitchMgmtFrame.
 
 #endif // (ANI_PRODUCT_TYPE_AP)
 
-=======
-} // End limSendVHTChannelSwitchMgmtFrame.
-    
-    
-
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 /**
  * \brief Send an ADDBA Req Action Frame to peer
@@ -7096,11 +4438,7 @@ limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,
  *         eSIR_FAILURE is some problem is encountered
  */
 tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
-<<<<<<< HEAD
     tpLimMlmAddBAReq pMlmAddBAReq ,tpPESession psessionEntry)
-=======
-    tpLimMlmAddBAReq pMlmAddBAReq, tpPESession psessionEntry)
->>>>>>> d97af3b... add prima wlan driver
 {
     tDot11fAddBAReq frmAddBAReq;
     tANI_U8 *pAddBAReqBuffer = NULL;
@@ -7116,11 +4454,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
         return eSIR_FAILURE;
     }
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (void *) &frmAddBAReq, sizeof( frmAddBAReq ));
-=======
-    vos_mem_set( (void *) &frmAddBAReq, sizeof( frmAddBAReq ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
     // Category - 3 (BA)
     frmAddBAReq.Category.category = SIR_MAC_ACTION_BLKACK;
@@ -7155,11 +4489,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGW,
         FL( "Failed to calculate the packed size for "
-<<<<<<< HEAD
           "an ADDBA Request (0x%08x).\n"),
-=======
-          "an ADDBA Request (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
         nStatus );
 
         // We'll fall back on the worst case scenario:
@@ -7169,11 +4499,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGW,
         FL( "There were warnings while calculating"
-<<<<<<< HEAD
           "the packed size for an ADDBA Req (0x%08x).\n"),
-=======
-          "the packed size for an ADDBA Req (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
         nStatus );
     }
 
@@ -7190,11 +4516,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     {
         // Log error
         limLog( pMac, LOGP,
-<<<<<<< HEAD
         FL("palPktAlloc FAILED! Length [%d], Status [%d]\n"),
-=======
-        FL("palPktAlloc FAILED! Length [%d], Status [%d]"),
->>>>>>> d97af3b... add prima wlan driver
         frameLen,
         halStatus );
 
@@ -7202,11 +4524,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
         goto returnAfterError;
     }
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (void *) pAddBAReqBuffer, frameLen );
-=======
-    vos_mem_set( (void *) pAddBAReqBuffer, frameLen, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // Copy necessary info to BD
     if( eSIR_SUCCESS !=
@@ -7229,11 +4547,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     {
         limLog( pMac, LOGP,
         FL( "Failed to retrieve WNI_CFG_BSSID while"
-<<<<<<< HEAD
           "sending an ACTION Frame\n" ));
-=======
-          "sending an ACTION Frame" ));
->>>>>>> d97af3b... add prima wlan driver
 
         // FIXME - Need to convert to tSirRetStatus
         statusCode = eSIR_FAILURE;
@@ -7242,13 +4556,6 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     #endif//TO SUPPORT BT-AMP
     sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-    limSetProtectedBit(pMac, psessionEntry, pMlmAddBAReq->peerMacAddr, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     // Now, we're ready to "pack" the frames
     nStatus = dot11fPackAddBAReq( pMac,
       &frmAddBAReq,
@@ -7259,11 +4566,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     if( DOT11F_FAILED( nStatus ))
     {
         limLog( pMac, LOGE,
-<<<<<<< HEAD
         FL( "Failed to pack an ADDBA Req (0x%08x).\n" ),
-=======
-        FL( "Failed to pack an ADDBA Req (0x%08x)." ),
->>>>>>> d97af3b... add prima wlan driver
         nStatus );
 
         // FIXME - Need to convert to tSirRetStatus
@@ -7273,7 +4576,6 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
     else if( DOT11F_WARNED( nStatus ))
     {
         limLog( pMac, LOGW,
-<<<<<<< HEAD
         FL( "There were warnings while packing an ADDBA Req (0x%08x).\n" ));
     }
 
@@ -7286,18 +4588,6 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-        FL( "There were warnings while packing an ADDBA Req (0x%08x)." ));
-    }
-
-    limLog( pMac, LOGW,
-      FL( "Sending an ADDBA REQ to " ));
-    limPrintMacAddr( pMac, pMlmAddBAReq->peerMacAddr, LOGW );
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -7314,11 +4604,7 @@ tSirRetStatus limSendAddBAReq( tpAniSirGlobal pMac,
                                pAddBAReqBuffer, txFlag )))
     {
         limLog( pMac, LOGE,
-<<<<<<< HEAD
         FL( "halTxFrame FAILED! Status [%d]\n"),
-=======
-        FL( "halTxFrame FAILED! Status [%d]"),
->>>>>>> d97af3b... add prima wlan driver
         halStatus );
 
     // FIXME - Need to convert eHalStatus to tSirRetStatus
@@ -7370,19 +4656,11 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
 
      if(NULL == psessionEntry)
     {
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Session entry is NULL!!!\n"));)
         return eSIR_FAILURE;
     }
 
       palZeroMemory( pMac->hHdd, (void *) &frmAddBARsp, sizeof( frmAddBARsp ));
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Session entry is NULL!!!"));)
-        return eSIR_FAILURE;
-    }
-
-      vos_mem_set( (void *) &frmAddBARsp, sizeof( frmAddBARsp ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
       // Category - 3 (BA)
       frmAddBARsp.Category.category = SIR_MAC_ACTION_BLKACK;
@@ -7400,19 +4678,6 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       frmAddBARsp.AddBAParameterSet.policy = pMlmAddBARsp->baPolicy;
       frmAddBARsp.AddBAParameterSet.bufferSize = pMlmAddBARsp->baBufferSize;
 
-<<<<<<< HEAD
-=======
-      if(psessionEntry->isAmsduSupportInAMPDU)
-      {
-         frmAddBARsp.AddBAParameterSet.amsduSupported =
-                                          psessionEntry->amsduSupportedInBA;
-      }
-      else
-      {
-         frmAddBARsp.AddBAParameterSet.amsduSupported = 0;
-      }
-
->>>>>>> d97af3b... add prima wlan driver
       // BA timeout
       // 0 - indicates no BA timeout
       frmAddBARsp.BATimeout.timeout = pMlmAddBARsp->baTimeout;
@@ -7423,11 +4688,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       {
         limLog( pMac, LOGW,
             FL( "Failed to calculate the packed size for "
-<<<<<<< HEAD
               "an ADDBA Response (0x%08x).\n"),
-=======
-              "an ADDBA Response (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
         // We'll fall back on the worst case scenario:
@@ -7437,11 +4698,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       {
         limLog( pMac, LOGW,
             FL( "There were warnings while calculating"
-<<<<<<< HEAD
               "the packed size for an ADDBA Rsp (0x%08x).\n"),
-=======
-              "the packed size for an ADDBA Rsp (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
       }
 
@@ -7458,11 +4715,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       {
         // Log error
         limLog( pMac, LOGP,
-<<<<<<< HEAD
             FL("palPktAlloc FAILED! Length [%d], Status [%d]\n"),
-=======
-            FL("palPktAlloc FAILED! Length [%d], Status [%d]"),
->>>>>>> d97af3b... add prima wlan driver
             frameLen,
             halStatus );
 
@@ -7470,11 +4723,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
         goto returnAfterError;
       }
 
-<<<<<<< HEAD
       palZeroMemory( pMac->hHdd, (void *) pAddBARspBuffer, frameLen );
-=======
-      vos_mem_set( (void *) pAddBARspBuffer, frameLen, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
       // Copy necessary info to BD
       if( eSIR_SUCCESS !=
@@ -7498,11 +4747,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       {
         limLog( pMac, LOGP,
             FL( "Failed to retrieve WNI_CFG_BSSID while"
-<<<<<<< HEAD
               "sending an ACTION Frame\n" ));
-=======
-              "sending an ACTION Frame" ));
->>>>>>> d97af3b... add prima wlan driver
 
         // FIXME - Need to convert to tSirRetStatus
         statusCode = eSIR_FAILURE;
@@ -7511,13 +4756,6 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       #endif // TO SUPPORT BT-AMP
       sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-      limSetProtectedBit(pMac, psessionEntry, pMlmAddBARsp->peerMacAddr, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
       // Now, we're ready to "pack" the frames
       nStatus = dot11fPackAddBARsp( pMac,
           &frmAddBARsp,
@@ -7528,11 +4766,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       if( DOT11F_FAILED( nStatus ))
       {
         limLog( pMac, LOGE,
-<<<<<<< HEAD
             FL( "Failed to pack an ADDBA Rsp (0x%08x).\n" ),
-=======
-            FL( "Failed to pack an ADDBA Rsp (0x%08x)." ),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
         // FIXME - Need to convert to tSirRetStatus
@@ -7542,7 +4776,6 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
       else if( DOT11F_WARNED( nStatus ))
       {
         limLog( pMac, LOGW,
-<<<<<<< HEAD
             FL( "There were warnings while packing an ADDBA Rsp (0x%08x).\n" ));
       }
 
@@ -7555,18 +4788,6 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-            FL( "There were warnings while packing an ADDBA Rsp (0x%08x)." ));
-      }
-
-      limLog( pMac, LOGW,
-          FL( "Sending an ADDBA RSP to " ));
-      limPrintMacAddr( pMac, pMlmAddBARsp->peerMacAddr, LOGW );
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -7583,11 +4804,7 @@ tSirRetStatus limSendAddBARsp( tpAniSirGlobal pMac,
                                pAddBARspBuffer, txFlag )))
   {
     limLog( pMac, LOGE,
-<<<<<<< HEAD
         FL( "halTxFrame FAILED! Status [%d]\n" ),
-=======
-        FL( "halTxFrame FAILED! Status [%d]" ),
->>>>>>> d97af3b... add prima wlan driver
         halStatus );
 
     // FIXME - HAL error codes are different from PE error
@@ -7647,11 +4864,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
         return eSIR_FAILURE;
     }
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (void *) &frmDelBAInd, sizeof( frmDelBAInd ));
-=======
-    vos_mem_set( (void *) &frmDelBAInd, sizeof( frmDelBAInd ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
       // Category - 3 (BA)
       frmDelBAInd.Category.category = SIR_MAC_ACTION_BLKACK;
@@ -7672,11 +4885,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       {
         limLog( pMac, LOGW,
             FL( "Failed to calculate the packed size for "
-<<<<<<< HEAD
               "an DELBA Indication (0x%08x).\n"),
-=======
-              "an DELBA Indication (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
         // We'll fall back on the worst case scenario:
@@ -7686,11 +4895,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       {
         limLog( pMac, LOGW,
             FL( "There were warnings while calculating"
-<<<<<<< HEAD
               "the packed size for an DELBA Ind (0x%08x).\n"),
-=======
-              "the packed size for an DELBA Ind (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
       }
 
@@ -7707,11 +4912,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       {
         // Log error
         limLog( pMac, LOGP,
-<<<<<<< HEAD
             FL("palPktAlloc FAILED! Length [%d], Status [%d]\n"),
-=======
-            FL("palPktAlloc FAILED! Length [%d], Status [%d]"),
->>>>>>> d97af3b... add prima wlan driver
             frameLen,
             halStatus );
 
@@ -7719,11 +4920,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
         goto returnAfterError;
       }
 
-<<<<<<< HEAD
       palZeroMemory( pMac->hHdd, (void *) pDelBAIndBuffer, frameLen );
-=======
-      vos_mem_set( (void *) pDelBAIndBuffer, frameLen, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
       // Copy necessary info to BD
       if( eSIR_SUCCESS !=
@@ -7746,11 +4943,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       {
         limLog( pMac, LOGP,
             FL( "Failed to retrieve WNI_CFG_BSSID while"
-<<<<<<< HEAD
               "sending an ACTION Frame\n" ));
-=======
-              "sending an ACTION Frame" ));
->>>>>>> d97af3b... add prima wlan driver
 
         // FIXME - Need to convert to tSirRetStatus
         statusCode = eSIR_FAILURE;
@@ -7759,13 +4952,6 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       #endif //TO SUPPORT BT-AMP
       sirCopyMacAddr(pMacHdr->bssId,psessionEntry->bssId);
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-      limSetProtectedBit(pMac, psessionEntry, pMlmDelBAReq->peerMacAddr, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
       // Now, we're ready to "pack" the frames
       nStatus = dot11fPackDelBAInd( pMac,
           &frmDelBAInd,
@@ -7776,11 +4962,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       if( DOT11F_FAILED( nStatus ))
       {
         limLog( pMac, LOGE,
-<<<<<<< HEAD
             FL( "Failed to pack an DELBA Ind (0x%08x).\n" ),
-=======
-            FL( "Failed to pack an DELBA Ind (0x%08x)." ),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
         // FIXME - Need to convert to tSirRetStatus
@@ -7790,7 +4972,6 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
       else if( DOT11F_WARNED( nStatus ))
       {
         limLog( pMac, LOGW,
-<<<<<<< HEAD
             FL( "There were warnings while packing an DELBA Ind (0x%08x).\n" ));
       }
 
@@ -7803,18 +4984,6 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-            FL( "There were warnings while packing an DELBA Ind (0x%08x)." ));
-      }
-
-      limLog( pMac, LOGW,
-          FL( "Sending a DELBA IND to " ));
-      limPrintMacAddr( pMac, pMlmDelBAReq->peerMacAddr, LOGW );
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -7830,11 +4999,7 @@ tSirRetStatus limSendDelBAInd( tpAniSirGlobal pMac,
                                limTxComplete,
                                pDelBAIndBuffer, txFlag )))
   {
-<<<<<<< HEAD
     PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]\n" ), halStatus );)
-=======
-    PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]" ), halStatus );)
->>>>>>> d97af3b... add prima wlan driver
     statusCode = eSIR_FAILURE;
     //Pkt will be freed up by the callback
     return statusCode;
@@ -7891,17 +5056,10 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
 
    if ( psessionEntry == NULL )
    {
-<<<<<<< HEAD
       limLog( pMac, LOGE, FL("(psession == NULL) in Request to send Neighbor Report request action frame\n") );
       return eSIR_FAILURE;
    }
    palZeroMemory( pMac->hHdd, ( tANI_U8* )&frm, sizeof( frm ) );
-=======
-      limLog( pMac, LOGE, FL("(psession == NULL) in Request to send Neighbor Report request action frame") );
-      return eSIR_FAILURE;
-   }
-   vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
    frm.Category.category = SIR_MAC_ACTION_RRM;
    frm.Action.action     = SIR_MAC_RRM_NEIGHBOR_REQ;
@@ -7917,11 +5075,7 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
    if ( DOT11F_FAILED( nStatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                "or a Neighbor Report Request(0x%08x).\n"),
-=======
-               "or a Neighbor Report Request(0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
       // We'll fall back on the worst case scenario:
       nPayload = sizeof( tDot11fNeighborReportRequest );
@@ -7930,11 +5084,7 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
    {
       limLog( pMac, LOGW, FL("There were warnings while calculating"
                "the packed size for a Neighbor Rep"
-<<<<<<< HEAD
                "ort Request(0x%08x).\n"), nStatus );
-=======
-               "ort Request(0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
    }
 
    nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -7943,20 +5093,12 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Neighbor "
-<<<<<<< HEAD
                "Report Request.\n"), nBytes );
-=======
-               "Report Request."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
       return eSIR_FAILURE;
    }
 
    // Paranoia:
-<<<<<<< HEAD
    palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-   vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
    // Copy necessary info to BD
    if( eSIR_SUCCESS !=
@@ -7972,13 +5114,6 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
 
    sirCopyMacAddr( pMacHdr->bssId, psessionEntry->bssId );
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-   limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
    // Now, we're ready to "pack" the frames
    nStatus = dot11fPackNeighborReportRequest( pMac,
          &frm,
@@ -7989,11 +5124,7 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
    if( DOT11F_FAILED( nStatus ))
    {
       limLog( pMac, LOGE,
-<<<<<<< HEAD
             FL( "Failed to pack an Neighbor Report Request (0x%08x).\n" ),
-=======
-            FL( "Failed to pack an Neighbor Report Request (0x%08x)." ),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
       // FIXME - Need to convert to tSirRetStatus
@@ -8003,7 +5134,6 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
    else if( DOT11F_WARNED( nStatus ))
    {
       limLog( pMac, LOGW,
-<<<<<<< HEAD
             FL( "There were warnings while packing Neighbor Report Request (0x%08x).\n" ));
    }
 
@@ -8016,18 +5146,6 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-            FL( "There were warnings while packing Neighbor Report Request (0x%08x)." ));
-   }
-
-   limLog( pMac, LOGW,
-         FL( "Sending a Neighbor Report Request to " ));
-   limPrintMacAddr( pMac, peer, LOGW );
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -8043,11 +5161,7 @@ limSendNeighborReportRequestFrame(tpAniSirGlobal        pMac,
                                   limTxComplete,
                                   pFrame, txFlag )))
    {
-<<<<<<< HEAD
       PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]\n" ), halstatus );)
-=======
-      PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]" ), halstatus );)
->>>>>>> d97af3b... add prima wlan driver
          statusCode = eSIR_FAILURE;
       //Pkt will be freed up by the callback
       return statusCode;
@@ -8097,19 +5211,11 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
 
    if ( psessionEntry == NULL )
    {
-<<<<<<< HEAD
       limLog( pMac, LOGE, FL("(psession == NULL) in Request to send Link Report action frame\n") );
       return eSIR_FAILURE;
    }
 
    palZeroMemory( pMac->hHdd, ( tANI_U8* )&frm, sizeof( frm ) );
-=======
-      limLog( pMac, LOGE, FL("(psession == NULL) in Request to send Link Report action frame") );
-      return eSIR_FAILURE;
-   }
-
-   vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
    frm.Category.category = SIR_MAC_ACTION_RRM;
    frm.Action.action     = SIR_MAC_RRM_LINK_MEASUREMENT_RPT;
@@ -8135,11 +5241,7 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
    if ( DOT11F_FAILED( nStatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                "or a Link Report (0x%08x).\n"),
-=======
-               "or a Link Report (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
       // We'll fall back on the worst case scenario:
       nPayload = sizeof( tDot11fLinkMeasurementReport );
@@ -8148,11 +5250,7 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
    {
       limLog( pMac, LOGW, FL("There were warnings while calculating"
                "the packed size for a Link Rep"
-<<<<<<< HEAD
                "ort (0x%08x).\n"), nStatus );
-=======
-               "ort (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
    }
 
    nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -8161,20 +5259,12 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Link "
-<<<<<<< HEAD
                "Report.\n"), nBytes );
-=======
-               "Report."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
       return eSIR_FAILURE;
    }
 
    // Paranoia:
-<<<<<<< HEAD
    palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-   vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
    // Copy necessary info to BD
    if( eSIR_SUCCESS !=
@@ -8190,13 +5280,6 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
 
    sirCopyMacAddr( pMacHdr->bssId, psessionEntry->bssId );
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-   limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
    // Now, we're ready to "pack" the frames
    nStatus = dot11fPackLinkMeasurementReport( pMac,
          &frm,
@@ -8207,11 +5290,7 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
    if( DOT11F_FAILED( nStatus ))
    {
       limLog( pMac, LOGE,
-<<<<<<< HEAD
             FL( "Failed to pack an Link Report (0x%08x).\n" ),
-=======
-            FL( "Failed to pack an Link Report (0x%08x)." ),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
       // FIXME - Need to convert to tSirRetStatus
@@ -8221,7 +5300,6 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
    else if( DOT11F_WARNED( nStatus ))
    {
       limLog( pMac, LOGW,
-<<<<<<< HEAD
             FL( "There were warnings while packing Link Report (0x%08x).\n" ));
    }
 
@@ -8234,18 +5312,6 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-            FL( "There were warnings while packing Link Report (0x%08x)." ));
-   }
-
-   limLog( pMac, LOGW,
-         FL( "Sending a Link Report to " ));
-   limPrintMacAddr( pMac, peer, LOGW );
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -8261,11 +5327,7 @@ limSendLinkReportActionFrame(tpAniSirGlobal        pMac,
                                   limTxComplete,
                                   pFrame, txFlag )))
    {
-<<<<<<< HEAD
       PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]\n" ), halstatus );)
-=======
-      PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]" ), halstatus );)
->>>>>>> d97af3b... add prima wlan driver
          statusCode = eSIR_FAILURE;
       //Pkt will be freed up by the callback
       return statusCode;
@@ -8321,29 +5383,17 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
    tDot11fRadioMeasurementReport *frm =
          vos_mem_malloc(sizeof(tDot11fRadioMeasurementReport));
    if (!frm) {
-<<<<<<< HEAD
       limLog( pMac, LOGE, FL("Not enough memory to allocate tDot11fRadioMeasurementReport\n") );
-=======
-      limLog( pMac, LOGE, FL("Not enough memory to allocate tDot11fRadioMeasurementReport") );
->>>>>>> d97af3b... add prima wlan driver
       return eSIR_FAILURE;
    }
 
    if ( psessionEntry == NULL )
    {
-<<<<<<< HEAD
       limLog( pMac, LOGE, FL("(psession == NULL) in Request to send Beacon Report action frame\n") );
       vos_mem_free(frm);
       return eSIR_FAILURE;
    }
    palZeroMemory( pMac->hHdd, ( tANI_U8* )frm, sizeof( *frm ) );
-=======
-      limLog( pMac, LOGE, FL("(psession == NULL) in Request to send Beacon Report action frame") );
-      vos_mem_free(frm);
-      return eSIR_FAILURE;
-   }
-   vos_mem_set( ( tANI_U8* )frm, sizeof( *frm ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
    frm->Category.category = SIR_MAC_ACTION_RRM;
    frm->Action.action     = SIR_MAC_RRM_RADIO_MEASURE_RPT;
@@ -8365,11 +5415,6 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
             frm->MeasurementReport[i].present = 1;
             break;
          default:
-<<<<<<< HEAD
-=======
-            frm->MeasurementReport[i].incapable = pRRMReport[i].incapable;
-            frm->MeasurementReport[i].refused = pRRMReport[i].refused;
->>>>>>> d97af3b... add prima wlan driver
             frm->MeasurementReport[i].present = 1;
             break;
       }
@@ -8379,11 +5424,7 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
    if ( DOT11F_FAILED( nStatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-<<<<<<< HEAD
                "or a Radio Measure Report (0x%08x).\n"),
-=======
-               "or a Radio Measure Report (0x%08x)."),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
       // We'll fall back on the worst case scenario:
       nPayload = sizeof( tDot11fLinkMeasurementReport );
@@ -8394,11 +5435,7 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
    {
       limLog( pMac, LOGW, FL("There were warnings while calculating"
                "the packed size for a Radio Measure Rep"
-<<<<<<< HEAD
                "ort (0x%08x).\n"), nStatus );
-=======
-               "ort (0x%08x)."), nStatus );
->>>>>>> d97af3b... add prima wlan driver
    }
 
    nBytes = nPayload + sizeof( tSirMacMgmtHdr );
@@ -8407,21 +5444,13 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a Radio Measure "
-<<<<<<< HEAD
                "Report.\n"), nBytes );
-=======
-               "Report."), nBytes );
->>>>>>> d97af3b... add prima wlan driver
       vos_mem_free(frm);
       return eSIR_FAILURE;
    }
 
    // Paranoia:
-<<<<<<< HEAD
    palZeroMemory( pMac->hHdd, pFrame, nBytes );
-=======
-   vos_mem_set( pFrame, nBytes, 0 );
->>>>>>> d97af3b... add prima wlan driver
 
    // Copy necessary info to BD
    if( eSIR_SUCCESS !=
@@ -8437,13 +5466,6 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
 
    sirCopyMacAddr( pMacHdr->bssId, psessionEntry->bssId );
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11W
-   limSetProtectedBit(pMac, psessionEntry, peer, pMacHdr);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
    // Now, we're ready to "pack" the frames
    nStatus = dot11fPackRadioMeasurementReport( pMac,
          frm,
@@ -8454,11 +5476,7 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
    if( DOT11F_FAILED( nStatus ))
    {
       limLog( pMac, LOGE,
-<<<<<<< HEAD
             FL( "Failed to pack an Radio Measure Report (0x%08x).\n" ),
-=======
-            FL( "Failed to pack an Radio Measure Report (0x%08x)." ),
->>>>>>> d97af3b... add prima wlan driver
             nStatus );
 
       // FIXME - Need to convert to tSirRetStatus
@@ -8468,7 +5486,6 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
    else if( DOT11F_WARNED( nStatus ))
    {
       limLog( pMac, LOGW,
-<<<<<<< HEAD
             FL( "There were warnings while packing Radio Measure Report (0x%08x).\n" ));
    }
 
@@ -8481,18 +5498,6 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
          ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
 #endif
-=======
-            FL( "There were warnings while packing Radio Measure Report (0x%08x)." ));
-   }
-
-   limLog( pMac, LOGW,
-         FL( "Sending a Radio Measure Report to " ));
-   limPrintMacAddr( pMac, peer, LOGW );
-
-    if( ( SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel))
-       || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-         ( psessionEntry->pePersona == VOS_P2P_GO_MODE)
->>>>>>> d97af3b... add prima wlan driver
          )
     {
         txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
@@ -8508,11 +5513,7 @@ limSendRadioMeasureReportActionFrame(tpAniSirGlobal        pMac,
                                   limTxComplete,
                                   pFrame, txFlag )))
    {
-<<<<<<< HEAD
       PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]\n" ), halstatus );)
-=======
-      PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]" ), halstatus );)
->>>>>>> d97af3b... add prima wlan driver
          statusCode = eSIR_FAILURE;
       //Pkt will be freed up by the callback
       vos_mem_free(frm);
@@ -8540,25 +5541,16 @@ returnAfterError:
  *
  * \param pMac    The global tpAniSirGlobal object
  *
-<<<<<<< HEAD
  * \param peer    The Mac address of the AP to which this action frame is 
 addressed
  *
  * \param transId Transaction identifier received in SA query request action 
 frame 
-=======
- * \param transId Transaction identifier received in SA query request action frame
- *
- * \param peer    The Mac address of the AP to which this action frame is addressed
- *
- * \param psessionEntry The PE session entry
->>>>>>> d97af3b... add prima wlan driver
  * 
  * \return eSIR_SUCCESS if setup completes successfully
  *         eSIR_FAILURE is some problem is encountered
  */
 
-<<<<<<< HEAD
 tSirRetStatus limSendSaQueryResponseFrame( tpAniSirGlobal pMac, tANI_U16 transId,
 tSirMacAddr peer,tpPESession psessionEntry)
 {
@@ -8587,62 +5579,16 @@ tSirMacAddr peer,tpPESession psessionEntry)
    frm.transId   = transId;
 
    nPayload = sizeof(tDot11wSaQueryRsp);
-=======
-tSirRetStatus limSendSaQueryResponseFrame( tpAniSirGlobal pMac, tANI_U8 *transId,
-tSirMacAddr peer,tpPESession psessionEntry)
-{
-
-   tDot11fSaQueryRsp  frm; // SA query reponse action frame
-   tANI_U8            *pFrame;
-   tSirRetStatus      nSirStatus;
-   tpSirMacMgmtHdr    pMacHdr;
-   tANI_U32           nBytes, nPayload, nStatus;
-   void               *pPacket;
-   eHalStatus         halstatus;
-   tANI_U8            txFlag = 0;
-   
-   vos_mem_set( ( tANI_U8* )&frm, sizeof( frm ), 0 );
-   frm.Category.category  = SIR_MAC_ACTION_SA_QUERY;
-   /*11w action  field is :
-    action: 0 --> SA query request action frame
-    action: 1 --> SA query response action frame */ 
-   frm.Action.action    = SIR_MAC_SA_QUERY_RSP;
-   /*11w SA query response transId is same as
-     SA query request transId*/
-   vos_mem_copy( &frm.TransactionId.transId[0], &transId[0], 2 );
-
-   nStatus = dot11fGetPackedSaQueryRspSize(pMac, &frm, &nPayload);
-   if ( DOT11F_FAILED( nStatus ) )
-   {
-      limLog( pMac, LOGP, FL("Failed to calculate the packed size f"
-               "or a SA Query Response (0x%08x)."),
-            nStatus );
-      // We'll fall back on the worst case scenario:
-      nPayload = sizeof( tDot11fSaQueryRsp );
-   }
-   else if ( DOT11F_WARNED( nStatus ) )
-   {
-      limLog( pMac, LOGW, FL("There were warnings while calculating"
-               "the packed size for an SA Query Response"
-               " (0x%08x)."), nStatus );
-   }
-
->>>>>>> d97af3b... add prima wlan driver
    nBytes = nPayload + sizeof( tSirMacMgmtHdr );
    halstatus = palPktAlloc( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT,  nBytes, ( void** ) &pFrame, ( void** ) &pPacket );
    if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
    {
       limLog( pMac, LOGP, FL("Failed to allocate %d bytes for a SA query response"
-<<<<<<< HEAD
                                " action frame\n"), nBytes );
-=======
-                               " action frame"), nBytes );
->>>>>>> d97af3b... add prima wlan driver
       return eSIR_FAILURE;
    }
 
    // Paranoia:
-<<<<<<< HEAD
    palZeroMemory( pMac->hHdd, pFrame, nBytes );
 
    // Next, we fill out the buffer descriptor:
@@ -8678,89 +5624,4 @@ tSirMacAddr peer,tpPESession psessionEntry)
 
    return eSIR_SUCCESS;
 }
-=======
-   vos_mem_set( pFrame, nBytes, 0 );
-
-   // Copy necessary info to BD
-   nSirStatus = limPopulateMacHeader( pMac,
-                                      pFrame,
-                                      SIR_MAC_MGMT_FRAME,
-                                      SIR_MAC_MGMT_ACTION,
-                                      peer, psessionEntry->selfMacAddr );
-   if ( eSIR_SUCCESS != nSirStatus )
-      goto returnAfterError;
-
-   // Update A3 with the BSSID
-   pMacHdr = ( tpSirMacMgmtHdr ) pFrame;
-
-   sirCopyMacAddr( pMacHdr->bssId, psessionEntry->bssId );
-
-   // Since this is a SA Query Response, set the "protect" (aka WEP) bit
-   // in the FC
-   if ( psessionEntry->limRmfEnabled )
-   {
-       pMacHdr->fc.wep = 1;
-   }
-
-   // Pack 11w SA query response frame
-   nStatus = dot11fPackSaQueryRsp( pMac,
-         &frm,
-         pFrame + sizeof( tSirMacMgmtHdr ),
-         nPayload,
-         &nPayload );
-
-   if ( DOT11F_FAILED( nStatus ))
-   {
-      limLog( pMac, LOGE,
-            FL( "Failed to pack an SA Query Response (0x%08x)." ),
-            nStatus );
-      // FIXME - Need to convert to tSirRetStatus
-      nSirStatus = eSIR_FAILURE;
-      goto returnAfterError;
-   }
-   else if ( DOT11F_WARNED( nStatus ))
-   {
-      limLog( pMac, LOGW,
-            FL( "There were warnings while packing SA Query Response (0x%08x)." ),
-            nStatus);
-   }
-
-   limLog( pMac, LOG1,
-         FL( "Sending a SA Query Response to " ));
-   limPrintMacAddr( pMac, peer, LOGW );
-
-   if ( ( SIR_BAND_5_GHZ == limGetRFBand( psessionEntry->currentOperChannel ) )
-#ifdef WLAN_FEATURE_P2P
-        || ( psessionEntry->pePersona == VOS_P2P_CLIENT_MODE ) ||
-        ( psessionEntry->pePersona == VOS_P2P_GO_MODE )
-#endif
-      )
-   {
-      txFlag |= HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME;
-   }
-
-   halstatus = halTxFrame( pMac,
-                           pPacket,
-                           (tANI_U16) nBytes,
-                           HAL_TXRX_FRM_802_11_MGMT,
-                           ANI_TXDIR_TODS,
-                           7,//SMAC_SWBD_TX_TID_MGMT_HIGH,
-                           limTxComplete,
-                           pFrame, txFlag );
-   if ( eHAL_STATUS_SUCCESS != halstatus )
-   {
-      PELOGE(limLog( pMac, LOGE, FL( "halTxFrame FAILED! Status [%d]" ), halstatus );)
-      nSirStatus = eSIR_FAILURE;
-      //Pkt will be freed up by the callback
-      return nSirStatus;
-   }
-   else {
-      return eSIR_SUCCESS;
-   }
-
-returnAfterError:
-   palPktFree( pMac->hHdd, HAL_TXRX_FRM_802_11_MGMT, ( void* ) pFrame, ( void* ) pPacket );
-   return nSirStatus;
-} // End limSendSaQueryResponseFrame
->>>>>>> d97af3b... add prima wlan driver
 #endif

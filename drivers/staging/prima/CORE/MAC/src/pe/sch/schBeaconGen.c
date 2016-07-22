@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -42,11 +19,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> d97af3b... add prima wlan driver
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file schBeaconGen.cc contains beacon generation related
@@ -61,24 +33,17 @@
  */
  
 #include "palTypes.h"
-<<<<<<< HEAD
 #include "wniCfgAp.h"
-=======
-#include "wniCfgSta.h"
->>>>>>> d97af3b... add prima wlan driver
 #include "aniGlobal.h"
 #include "sirMacProtDef.h"
 
 #include "limUtils.h"
 #include "limApi.h"
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halCommonApi.h"
 #include "halDataStruct.h"
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #include "halMsgApi.h"
 #include "cfgApi.h"
@@ -96,7 +61,6 @@
 
 const tANI_U8 P2pOui[] = {0x50, 0x6F, 0x9A, 0x9};
 
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
 
 static void
@@ -104,9 +68,6 @@ specialBeaconProcessing(tpAniSirGlobal pMac, tANI_U32 beaconSize);
 #endif
 
 #if defined(WLAN_SOFTAP_FEATURE) && defined(WLAN_FEATURE_P2P)
-=======
-
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus schGetP2pIeOffset(tANI_U8 *pExtraIe, tANI_U32 extraIeLen, tANI_U16 *pP2pIeOffset)
 {
     tSirRetStatus status = eSIR_FAILURE;   
@@ -123,14 +84,9 @@ tSirRetStatus schGetP2pIeOffset(tANI_U8 *pExtraIe, tANI_U32 extraIeLen, tANI_U16
     {
         if(*pExtraIe == 0xDD)
         {
-<<<<<<< HEAD
             if(palEqualMemory(NULL, (void *)(pExtraIe+2), &P2pOui, sizeof(P2pOui)))
             {
                 (*pP2pIeOffset)++;
-=======
-            if ( vos_mem_compare ( (void *)(pExtraIe+2), &P2pOui, sizeof(P2pOui) ) )
-            {
->>>>>>> d97af3b... add prima wlan driver
                 status = eSIR_SUCCESS;
                 break;
             }
@@ -142,10 +98,7 @@ tSirRetStatus schGetP2pIeOffset(tANI_U8 *pExtraIe, tANI_U32 extraIeLen, tANI_U16
 
      return status;
 }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 tSirRetStatus schAppendAddnIE(tpAniSirGlobal pMac, tpPESession psessionEntry,
                                      tANI_U8 *pFrame, tANI_U32 maxBeaconSize,
@@ -158,11 +111,7 @@ tSirRetStatus schAppendAddnIE(tpAniSirGlobal pMac, tpPESession psessionEntry,
      if((status = wlan_cfgGetInt(pMac, WNI_CFG_PROBE_RSP_BCN_ADDNIE_FLAG,
                                  &present)) != eSIR_SUCCESS)
     {
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_FLAG"));
-=======
-        schLog(pMac, LOGP, FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_FLAG"));
->>>>>>> d97af3b... add prima wlan driver
         return status;
     }
 
@@ -171,11 +120,7 @@ tSirRetStatus schAppendAddnIE(tpAniSirGlobal pMac, tpPESession psessionEntry,
         if((status = wlan_cfgGetStrLen(pMac, WNI_CFG_PROBE_RSP_BCN_ADDNIE_DATA,
                                        &len)) != eSIR_SUCCESS)
         {
-<<<<<<< HEAD
             limLog(pMac, LOGP,
-=======
-            schLog(pMac, LOGP,
->>>>>>> d97af3b... add prima wlan driver
                 FL("Unable to get WNI_CFG_PROBE_RSP_BCN_ADDNIE_DATA length"));
             return status;
         }
@@ -187,10 +132,7 @@ tSirRetStatus schAppendAddnIE(tpAniSirGlobal pMac, tpPESession psessionEntry,
                           WNI_CFG_PROBE_RSP_BCN_ADDNIE_DATA, &addIE[0], &len))
                           == eSIR_SUCCESS)
             {
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
-=======
->>>>>>> d97af3b... add prima wlan driver
                 tANI_U8* pP2pIe = limGetP2pIEPtr(pMac, &addIE[0], len);
                 if(pP2pIe != NULL)
                 {
@@ -209,19 +151,12 @@ tSirRetStatus schAppendAddnIE(tpAniSirGlobal pMac, tpPESession psessionEntry,
                         }
                         else
                         {
-<<<<<<< HEAD
                             limLog(pMac, LOGE,
-=======
-                            schLog(pMac, LOGE,
->>>>>>> d97af3b... add prima wlan driver
                                FL("Not able to insert NoA because of length constraint"));
                         }
                     }
                 }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
                 vos_mem_copy(pFrame, &addIE[0], len);
                 *nBytes = *nBytes + len;
             }
@@ -258,19 +193,14 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     tDot11fBeacon2 *pBcn2;
     tANI_U32        i, nStatus, nBytes;
     tANI_U32        wpsApEnable=0, tmp;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     tDot11fIEWscProbeRes      *pWscProbeRes;
 #ifdef WLAN_FEATURE_P2P
-=======
-    tDot11fIEWscProbeRes      *pWscProbeRes;
->>>>>>> d97af3b... add prima wlan driver
     tANI_U8  *pExtraIe = NULL;
     tANI_U32 extraIeLen =0;
     tANI_U16 extraIeOffset = 0;
     tANI_U16 p2pIeOffset = 0;
     tSirRetStatus status = eSIR_SUCCESS;
-<<<<<<< HEAD
 #endif
 #endif
 
@@ -301,34 +231,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
 #endif
 
     PELOG1(schLog(pMac, LOG1, FL("Setting fixed beacon fields\n"));)
-=======
-
-    pBcn1 = vos_mem_malloc(sizeof(tDot11fBeacon1));
-    if ( NULL == pBcn1 )
-    {
-        schLog(pMac, LOGE, FL("Failed to allocate memory") );
-        return eSIR_FAILURE;
-    }
-
-    pBcn2 = vos_mem_malloc(sizeof(tDot11fBeacon2));
-    if ( NULL == pBcn2 )
-    {
-        schLog(pMac, LOGE, FL("Failed to allocate memory") );
-        vos_mem_free(pBcn1);
-        return eSIR_FAILURE;
-    }
-
-    pWscProbeRes = vos_mem_malloc(sizeof(tDot11fIEWscProbeRes));
-    if ( NULL == pWscProbeRes )
-    {
-        schLog(pMac, LOGE, FL("Failed to allocate memory") );
-        vos_mem_free(pBcn1);
-        vos_mem_free(pBcn2);
-        return eSIR_FAILURE;
-    }
-
-    PELOG1(schLog(pMac, LOG1, FL("Setting fixed beacon fields"));)
->>>>>>> d97af3b... add prima wlan driver
 
     /*
      * First set the fixed fields
@@ -337,11 +239,7 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     // set the TFP headers
 
     // set the mac header
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8*) &pBeacon->macHdr, sizeof( tSirMacMgmtHdr ) );
-=======
-    vos_mem_set(( tANI_U8*) &pBeacon->macHdr, sizeof( tSirMacMgmtHdr ),0);
->>>>>>> d97af3b... add prima wlan driver
     mac = (tpSirMacMgmtHdr) &pBeacon->macHdr;
     mac->fc.type = SIR_MAC_MGMT_FRAME;
     mac->fc.subType = SIR_MAC_MGMT_BEACON;
@@ -353,13 +251,8 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     /* limGetMyMacAddr(pMac, mac->sa); */
     /* limGetBssid(pMac, mac->bssId); */
 
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd, mac->sa, psessionEntry->selfMacAddr, sizeof(psessionEntry->selfMacAddr));
     palCopyMemory(pMac->hHdd, mac->bssId, psessionEntry->bssId, sizeof (psessionEntry->bssId));
-=======
-    vos_mem_copy(mac->sa, psessionEntry->selfMacAddr, sizeof(psessionEntry->selfMacAddr));
-    vos_mem_copy(mac->bssId, psessionEntry->bssId, sizeof (psessionEntry->bssId));
->>>>>>> d97af3b... add prima wlan driver
 
     mac->fc.fromDS = 0;
     mac->fc.toDS = 0;
@@ -368,11 +261,7 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
      * Now set the beacon body
      */
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8*) pBcn1, sizeof( tDot11fBeacon1 ) );
-=======
-    vos_mem_set(( tANI_U8*) pBcn1, sizeof( tDot11fBeacon1 ), 0);
->>>>>>> d97af3b... add prima wlan driver
 
     // Skip over the timestamp (it'll be updated later).
 
@@ -395,35 +284,21 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     offset = sizeof( tAniBeaconStruct );
     ptr    = pMac->sch.schObject.gSchBeaconFrameBegin + offset;
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
     if((psessionEntry->limSystemRole == eLIM_AP_ROLE) 
         && (psessionEntry->proxyProbeRspEn))
     {
         /* Initialize the default IE bitmap to zero */
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&(psessionEntry->DefProbeRspIeBitmap), (sizeof( tANI_U32 ) * 8));
 
         /* Initialize the default IE bitmap to zero */
         palZeroMemory( pMac->hHdd, ( tANI_U8* )&(psessionEntry->probeRespFrame), sizeof(psessionEntry->probeRespFrame));
-=======
-        vos_mem_set(( tANI_U8* )&(psessionEntry->DefProbeRspIeBitmap), (sizeof( tANI_U32 ) * 8), 0);
-
-        /* Initialize the default IE bitmap to zero */
-        vos_mem_set(( tANI_U8* )&(psessionEntry->probeRespFrame),
-                    sizeof(psessionEntry->probeRespFrame), 0);
->>>>>>> d97af3b... add prima wlan driver
 
         /* Can be efficiently updated whenever new IE added  in Probe response in future */
         limUpdateProbeRspTemplateIeBitmapBeacon1(pMac,pBcn1,&psessionEntry->DefProbeRspIeBitmap[0],
                                                 &psessionEntry->probeRespFrame);
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     nStatus = dot11fPackBeacon1( pMac, pBcn1, ptr,
                                  SCH_MAX_BEACON_SIZE - offset,
@@ -431,39 +306,23 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     if ( DOT11F_FAILED( nStatus ) )
     {
       schLog( pMac, LOGE, FL("Failed to packed a tDot11fBeacon1 (0x%0"
-<<<<<<< HEAD
                              "8x.).\n"), nStatus );
       palFreeMemory(pMac->hHdd, pBcn1);
       palFreeMemory(pMac->hHdd, pBcn2);
 #ifdef WLAN_SOFTAP_FEATURE
       palFreeMemory(pMac->hHdd, pWscProbeRes);
 #endif
-=======
-                             "8x.)."), nStatus );
-      vos_mem_free(pBcn1);
-      vos_mem_free(pBcn2);
-      vos_mem_free(pWscProbeRes);
->>>>>>> d97af3b... add prima wlan driver
       return eSIR_FAILURE;
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
       schLog( pMac, LOGE, FL("There were warnings while packing a tDo"
-<<<<<<< HEAD
                              "t11fBeacon1 (0x%08x.).\n"), nStatus );
     }
     /*changed  to correct beacon corruption */
     palZeroMemory( pMac->hHdd, ( tANI_U8*) pBcn2, sizeof( tDot11fBeacon2 ) );
     pMac->sch.schObject.gSchBeaconOffsetBegin = offset + ( tANI_U16 )nBytes;
     schLog( pMac, LOG1, FL("Initialized beacon begin, offset %d\n"), offset );
-=======
-                             "t11fBeacon1 (0x%08x.)."), nStatus );
-    }
-    /*changed  to correct beacon corruption */
-    vos_mem_set(( tANI_U8*) pBcn2, sizeof( tDot11fBeacon2 ), 0);
-    pMac->sch.schObject.gSchBeaconOffsetBegin = offset + ( tANI_U16 )nBytes;
-    schLog( pMac, LOG1, FL("Initialized beacon begin, offset %d"), offset );
->>>>>>> d97af3b... add prima wlan driver
 
     /*
      * Initialize the 'new' fields at the end of the beacon
@@ -482,7 +341,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
       PopulateDot11fTPCReport( pMac, &pBcn2->TPCReport, psessionEntry);
     }
 
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
     if( psessionEntry->lim11hEnable && (eLIM_QUIET_RUNNING == psessionEntry->gLimSpecMgmt.quietState))
     {
@@ -504,8 +362,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
       PopulateDot11fExtChanSwitchAnn(pMac, &pBcn2->ExtChanSwitchAnn,psessionEntry);
     }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     if (psessionEntry->dot11mode != WNI_CFG_DOT11_MODE_11B)
         PopulateDot11fERPInfo( pMac, &pBcn2->ERPInfo, psessionEntry );
@@ -513,34 +369,20 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     if(psessionEntry->htCapability)
     {
         PopulateDot11fHTCaps( pMac,psessionEntry, &pBcn2->HTCaps );
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         PopulateDot11fHTInfo( pMac, &pBcn2->HTInfo, psessionEntry );
 #else
         PopulateDot11fHTInfo( pMac, &pBcn2->HTInfo );
 #endif
-=======
-        PopulateDot11fHTInfo( pMac, &pBcn2->HTInfo, psessionEntry );
->>>>>>> d97af3b... add prima wlan driver
     }
 #ifdef WLAN_FEATURE_11AC
     if(psessionEntry->vhtCapability)
     {        
-<<<<<<< HEAD
         limLog( pMac, LOGW, FL("Populate VHT IEs in Beacon\n"));
-=======
-        schLog( pMac, LOGW, FL("Populate VHT IEs in Beacon"));
->>>>>>> d97af3b... add prima wlan driver
         PopulateDot11fVHTCaps( pMac, &pBcn2->VHTCaps );
         PopulateDot11fVHTOperation( pMac, &pBcn2->VHTOperation);
         // we do not support multi users yet
         //PopulateDot11fVHTExtBssLoad( pMac, &bcn2.VHTExtBssLoad);
-<<<<<<< HEAD
-=======
-        PopulateDot11fExtCap( pMac, &pBcn2->ExtCap);
-        if(psessionEntry->gLimOperatingMode.present)
-            PopulateDot11fOperatingMode( pMac, &pBcn2->OperatingMode, psessionEntry );
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -551,23 +393,15 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     {
           PopulateDot11fWPA( pMac, &psessionEntry->pLimStartBssReq->rsnIE,
                        &pBcn2->WPA );
-<<<<<<< HEAD
           PopulateDot11fRSN( pMac, &psessionEntry->pLimStartBssReq->rsnIE,
                        &pBcn2->RSN );
-=======
-          PopulateDot11fRSNOpaque( pMac, &psessionEntry->pLimStartBssReq->rsnIE,
-                       &pBcn2->RSNOpaque );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if(psessionEntry->limWmeEnabled)
     {
         PopulateDot11fWMM( pMac, &pBcn2->WMMInfoAp, &pBcn2->WMMParams, &pBcn2->WMMCaps, psessionEntry);
     }
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
     if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
     {
         if(psessionEntry->wps_state != SAP_WPS_DISABLED)
@@ -577,7 +411,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     }
     else
     {
-<<<<<<< HEAD
 #endif
     if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
         limLog(pMac, LOGP,"Failed to cfg get id %d\n", WNI_CFG_WPS_ENABLE );
@@ -605,31 +438,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-        if (wlan_cfgGetInt(pMac, (tANI_U16) WNI_CFG_WPS_ENABLE, &tmp) != eSIR_SUCCESS)
-            schLog(pMac, LOGP,"Failed to cfg get id %d", WNI_CFG_WPS_ENABLE );
-
-        wpsApEnable = tmp & WNI_CFG_WPS_ENABLE_AP;
-
-        if (wpsApEnable)
-        {
-            PopulateDot11fWsc(pMac, &pBcn2->WscBeacon);
-        }
-
-        if (pMac->lim.wscIeInfo.wscEnrollmentState == eLIM_WSC_ENROLL_BEGIN)
-        {
-            PopulateDot11fWscRegistrarInfo(pMac, &pBcn2->WscBeacon);
-            pMac->lim.wscIeInfo.wscEnrollmentState = eLIM_WSC_ENROLL_IN_PROGRESS;
-        }
-
-        if (pMac->lim.wscIeInfo.wscEnrollmentState == eLIM_WSC_ENROLL_END)
-        {
-            DePopulateDot11fWscRegistrarInfo(pMac, &pBcn2->WscBeacon);
-            pMac->lim.wscIeInfo.wscEnrollmentState = eLIM_WSC_ENROLL_NOOP;
-        }
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     if((psessionEntry->limSystemRole == eLIM_AP_ROLE) 
         && (psessionEntry->proxyProbeRspEn))
     {
@@ -652,24 +460,15 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
             if(pWscProbeRes->present)
             {
                 SetProbeRspIeBitmap(&psessionEntry->DefProbeRspIeBitmap[0],SIR_MAC_WPA_EID);
-<<<<<<< HEAD
                 palCopyMemory(pMac->hHdd,
                             (void *)&psessionEntry->probeRespFrame.WscProbeRes,
                             (void *)pWscProbeRes,
                             sizeof(tDot11fIEWscProbeRes));
-=======
-                vos_mem_copy((void *)&psessionEntry->probeRespFrame.WscProbeRes,
-                             (void *)pWscProbeRes,
-                             sizeof(tDot11fIEWscProbeRes));
->>>>>>> d97af3b... add prima wlan driver
             }
         }
 
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     nStatus = dot11fPackBeacon2( pMac, pBcn2,
                                  pMac->sch.schObject.gSchBeaconFrameEnd,
@@ -677,25 +476,17 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     if ( DOT11F_FAILED( nStatus ) )
     {
       schLog( pMac, LOGE, FL("Failed to packed a tDot11fBeacon2 (0x%0"
-<<<<<<< HEAD
                              "8x.).\n"), nStatus );
       palFreeMemory(pMac->hHdd, pBcn1);
       palFreeMemory(pMac->hHdd, pBcn2);
 #ifdef WLAN_SOFTAP_FEATURE
       palFreeMemory(pMac->hHdd, pWscProbeRes);
 #endif
-=======
-                             "8x.)."), nStatus );
-      vos_mem_free(pBcn1);
-      vos_mem_free(pBcn2);
-      vos_mem_free(pWscProbeRes);
->>>>>>> d97af3b... add prima wlan driver
       return eSIR_FAILURE;
     }
     else if ( DOT11F_WARNED( nStatus ) )
     {
       schLog( pMac, LOGE, FL("There were warnings while packing a tDo"
-<<<<<<< HEAD
                              "t11fBeacon2 (0x%08x.).\n"), nStatus );
     }
 
@@ -703,13 +494,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     pExtraIe = pMac->sch.schObject.gSchBeaconFrameEnd + nBytes;
     extraIeOffset = nBytes;
 #endif
-=======
-                             "t11fBeacon2 (0x%08x.)."), nStatus );
-    }
-
-    pExtraIe = pMac->sch.schObject.gSchBeaconFrameEnd + nBytes;
-    extraIeOffset = nBytes;
->>>>>>> d97af3b... add prima wlan driver
 
     //TODO: Append additional IE here.
     schAppendAddnIE(pMac, psessionEntry, 
@@ -718,10 +502,7 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
 
     pMac->sch.schObject.gSchBeaconOffsetEnd = ( tANI_U16 )nBytes;
 
-<<<<<<< HEAD
 #if defined(WLAN_SOFTAP_FEATURE) && defined(WLAN_FEATURE_P2P)
-=======
->>>>>>> d97af3b... add prima wlan driver
     extraIeLen = nBytes - extraIeOffset;
 
     //Get the p2p Ie Offset
@@ -738,7 +519,6 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
     {
        pMac->sch.schObject.p2pIeOffset = 0;
     }
-<<<<<<< HEAD
 #endif
 
     schLog( pMac, LOG1, FL("Initialized beacon end, offset %d\n"),
@@ -754,71 +534,39 @@ tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEn
 }
 
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-
-    schLog( pMac, LOG1, FL("Initialized beacon end, offset %d"),
-            pMac->sch.schObject.gSchBeaconOffsetEnd );
-
-    pMac->sch.schObject.fBeaconChanged = 1;
-    vos_mem_free(pBcn1);
-    vos_mem_free(pBcn2);
-    vos_mem_free(pWscProbeRes);
-    return eSIR_SUCCESS;
-}
-
->>>>>>> d97af3b... add prima wlan driver
 void limUpdateProbeRspTemplateIeBitmapBeacon1(tpAniSirGlobal pMac,
                                               tDot11fBeacon1* beacon1,
                                               tANI_U32* DefProbeRspIeBitmap,
                                               tDot11fProbeResponse* prb_rsp)
 {
     prb_rsp->BeaconInterval = beacon1->BeaconInterval;
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd,(void *)&prb_rsp->Capabilities,
                             (void *)&beacon1->Capabilities,
                             sizeof(beacon1->Capabilities));
-=======
-    vos_mem_copy((void *)&prb_rsp->Capabilities, (void *)&beacon1->Capabilities,
-                 sizeof(beacon1->Capabilities));
->>>>>>> d97af3b... add prima wlan driver
 
     /* SSID */
     if(beacon1->SSID.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_SSID_EID);
-<<<<<<< HEAD
         /* populating it , because probe response has to go with SSID even in hidden case */
-=======
-        /* populating it, because probe response has to go with SSID even in hidden case */
->>>>>>> d97af3b... add prima wlan driver
         PopulateDot11fSSID2( pMac, &prb_rsp->SSID );
     }
     /* supported rates */
     if(beacon1->SuppRates.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_RATESET_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->SuppRates,
                             (void *)&beacon1->SuppRates,
                             sizeof(beacon1->SuppRates));
-=======
-        vos_mem_copy((void *)&prb_rsp->SuppRates, (void *)&beacon1->SuppRates,
-                     sizeof(beacon1->SuppRates));
->>>>>>> d97af3b... add prima wlan driver
 
     }
     /* DS Parameter set */
     if(beacon1->DSParams.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_DS_PARAM_SET_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->DSParams,
                             (void *)&beacon1->DSParams,
                             sizeof(beacon1->DSParams));
-=======
-        vos_mem_copy((void *)&prb_rsp->DSParams, (void *)&beacon1->DSParams,
-                      sizeof(beacon1->DSParams));
->>>>>>> d97af3b... add prima wlan driver
 
     }
 
@@ -835,70 +583,45 @@ void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal pMac,
     if(beacon2->Country.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_COUNTRY_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->Country,
                             (void *)&beacon2->Country,
                             sizeof(beacon2->Country));
-=======
-        vos_mem_copy((void *)&prb_rsp->Country, (void *)&beacon2->Country,
-                     sizeof(beacon2->Country));
->>>>>>> d97af3b... add prima wlan driver
 
     }
     /* Power constraint */
     if(beacon2->PowerConstraints.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_PWR_CONSTRAINT_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->PowerConstraints,
                             (void *)&beacon2->PowerConstraints,
                             sizeof(beacon2->PowerConstraints));
-=======
-        vos_mem_copy((void *)&prb_rsp->PowerConstraints, (void *)&beacon2->PowerConstraints,
-                     sizeof(beacon2->PowerConstraints));
->>>>>>> d97af3b... add prima wlan driver
 
     }
     /* Channel Switch Annoouncement SIR_MAC_CHNL_SWITCH_ANN_EID */
     if(beacon2->ChanSwitchAnn.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_CHNL_SWITCH_ANN_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->ChanSwitchAnn,
                             (void *)&beacon2->ChanSwitchAnn,
                             sizeof(beacon2->ChanSwitchAnn));
-=======
-        vos_mem_copy((void *)&prb_rsp->ChanSwitchAnn, (void *)&beacon2->ChanSwitchAnn,
-                     sizeof(beacon2->ChanSwitchAnn));
->>>>>>> d97af3b... add prima wlan driver
 
     }
     /* ERP information */
     if(beacon2->ERPInfo.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_ERP_INFO_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->ERPInfo,
                             (void *)&beacon2->ERPInfo,
                             sizeof(beacon2->ERPInfo));
-=======
-        vos_mem_copy((void *)&prb_rsp->ERPInfo, (void *)&beacon2->ERPInfo,
-                     sizeof(beacon2->ERPInfo));
->>>>>>> d97af3b... add prima wlan driver
 
     }
     /* Extended supported rates */
     if(beacon2->ExtSuppRates.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_EXTENDED_RATE_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->ExtSuppRates,
                             (void *)&beacon2->ExtSuppRates,
                             sizeof(beacon2->ExtSuppRates));
-=======
-        vos_mem_copy((void *)&prb_rsp->ExtSuppRates, (void *)&beacon2->ExtSuppRates,
-                     sizeof(beacon2->ExtSuppRates));
->>>>>>> d97af3b... add prima wlan driver
 
     }
 
@@ -906,19 +629,13 @@ void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal pMac,
     if(beacon2->WPA.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_WPA_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->WPA,
                             (void *)&beacon2->WPA,
                             sizeof(beacon2->WPA));
-=======
-        vos_mem_copy((void *)&prb_rsp->WPA, (void *)&beacon2->WPA,
-                     sizeof(beacon2->WPA));
->>>>>>> d97af3b... add prima wlan driver
 
     }
 
     /* RSN */
-<<<<<<< HEAD
     if(beacon2->RSN.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_RSN_EID);
@@ -926,13 +643,6 @@ void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal pMac,
                             (void *)&beacon2->RSN,
                             sizeof(beacon2->RSN));
 
-=======
-    if(beacon2->RSNOpaque.present)
-    {
-        SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_RSN_EID);
-        vos_mem_copy((void *)&prb_rsp->RSNOpaque, (void *)&beacon2->RSNOpaque,
-                     sizeof(beacon2->RSNOpaque));
->>>>>>> d97af3b... add prima wlan driver
     }
 /*
     // BSS load
@@ -945,14 +655,9 @@ void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal pMac,
     if(beacon2->EDCAParamSet.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_EDCA_PARAM_SET_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->EDCAParamSet,
                             (void *)&beacon2->EDCAParamSet,
                             sizeof(beacon2->EDCAParamSet));
-=======
-        vos_mem_copy((void *)&prb_rsp->EDCAParamSet, (void *)&beacon2->EDCAParamSet,
-                     sizeof(beacon2->EDCAParamSet));
->>>>>>> d97af3b... add prima wlan driver
 
     }
     /* Vendor specific - currently no vendor specific IEs added */
@@ -961,65 +666,40 @@ void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal pMac,
     if(beacon2->HTCaps.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_HT_CAPABILITIES_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->HTCaps,
                             (void *)&beacon2->HTCaps,
                             sizeof(beacon2->HTCaps));
-=======
-        vos_mem_copy((void *)&prb_rsp->HTCaps, (void *)&beacon2->HTCaps,
-                     sizeof(beacon2->HTCaps));
->>>>>>> d97af3b... add prima wlan driver
     }
     // HT Info IE
     if(beacon2->HTInfo.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_HT_INFO_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->HTInfo,
                             (void *)&beacon2->HTInfo,
                             sizeof(beacon2->HTInfo));
-=======
-        vos_mem_copy((void *)&prb_rsp->HTInfo, (void *)&beacon2->HTInfo,
-                     sizeof(beacon2->HTInfo));
->>>>>>> d97af3b... add prima wlan driver
     }
 
 #ifdef WLAN_FEATURE_11AC
     if(beacon2->VHTCaps.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_VHT_CAPABILITIES_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->VHTCaps,
                             (void *)&beacon2->VHTCaps,
                             sizeof(beacon2->VHTCaps));
-=======
-        vos_mem_copy((void *)&prb_rsp->VHTCaps, (void *)&beacon2->VHTCaps,
-                     sizeof(beacon2->VHTCaps));
->>>>>>> d97af3b... add prima wlan driver
     }
     if(beacon2->VHTOperation.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_VHT_OPERATION_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->VHTOperation,
                             (void *)&beacon2->VHTOperation,
                             sizeof(beacon2->VHTOperation));
-=======
-        vos_mem_copy((void *)&prb_rsp->VHTOperation, (void *)&beacon2->VHTOperation,
-                     sizeof(beacon2->VHTOperation));
->>>>>>> d97af3b... add prima wlan driver
     }
     if(beacon2->VHTExtBssLoad.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_VHT_EXT_BSS_LOAD_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->VHTExtBssLoad,
                             (void *)&beacon2->VHTExtBssLoad,
                             sizeof(beacon2->VHTExtBssLoad));
-=======
-        vos_mem_copy((void *)&prb_rsp->VHTExtBssLoad, (void *)&beacon2->VHTExtBssLoad,
-                     sizeof(beacon2->VHTExtBssLoad));
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -1027,27 +707,17 @@ void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal pMac,
     if(beacon2->WMMParams.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_WPA_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->WMMParams,
                             (void *)&beacon2->WMMParams,
                             sizeof(beacon2->WMMParams));
-=======
-        vos_mem_copy((void *)&prb_rsp->WMMParams, (void *)&beacon2->WMMParams,
-                     sizeof(beacon2->WMMParams));
->>>>>>> d97af3b... add prima wlan driver
     }
     //WMM capability - most of the case won't be present
     if(beacon2->WMMCaps.present)
     {
         SetProbeRspIeBitmap(DefProbeRspIeBitmap,SIR_MAC_WPA_EID);
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(void *)&prb_rsp->WMMCaps,
                             (void *)&beacon2->WMMCaps,
                             sizeof(beacon2->WMMCaps));
-=======
-        vos_mem_copy((void *)&prb_rsp->WMMCaps, (void *)&beacon2->WMMCaps,
-                     sizeof(beacon2->WMMCaps));
->>>>>>> d97af3b... add prima wlan driver
     }
 
 }
@@ -1068,7 +738,6 @@ void SetProbeRspIeBitmap(tANI_U32* IeBitmap,tANI_U32 pos)
     IeBitmap[index] = temp;
 }
 
-<<<<<<< HEAD
 #endif
 
 #ifdef ANI_PRODUCT_TYPE_AP
@@ -1121,9 +790,6 @@ __schUpdateCfpParam(tpAniSirGlobal pMac, tANI_U8 *ptr, tANI_U32 *pbeaconSize)
 }
 
 #endif
-=======
-
->>>>>>> d97af3b... add prima wlan driver
 
 // --------------------------------------------------------------------
 /**
@@ -1168,11 +834,7 @@ void writeBeaconToMemory(tpAniSirGlobal pMac, tANI_U16 size, tANI_U16 length, tp
         pBeacon->beaconLength = (tANI_U32) size - sizeof( tANI_U32 );
 
     // write size bytes from gSchBeaconFrameBegin
-<<<<<<< HEAD
     PELOG2(schLog(pMac, LOG2, FL("Beacon size - %d bytes\n"), size);)
-=======
-    PELOG2(schLog(pMac, LOG2, FL("Beacon size - %d bytes"), size);)
->>>>>>> d97af3b... add prima wlan driver
     PELOG2(sirDumpBuf(pMac, SIR_SCH_MODULE_ID, LOG2, pMac->sch.schObject.gSchBeaconFrameBegin, size);)
 
     if (! pMac->sch.schObject.fBeaconChanged)
@@ -1189,14 +851,8 @@ void writeBeaconToMemory(tpAniSirGlobal pMac, tANI_U16 size, tANI_U16 length, tp
         //
 
         size = (size + 3) & (~3);
-<<<<<<< HEAD
         if( eSIR_SUCCESS != schSendBeaconReq( pMac, pMac->sch.schObject.gSchBeaconFrameBegin, size , psessionEntry))
             PELOGE(schLog(pMac, LOGE, FL("schSendBeaconReq() returned an error (zsize %d)\n"), size);)
-=======
-        if( eSIR_SUCCESS != schSendBeaconReq( pMac, pMac->sch.schObject.gSchBeaconFrameBegin,
-                                              size, psessionEntry))
-            PELOGE(schLog(pMac, LOGE, FL("schSendBeaconReq() returned an error (zsize %d)"), size);)
->>>>>>> d97af3b... add prima wlan driver
         else
         {
             pMac->sch.gSchBeaconsWritten++;
@@ -1230,11 +886,7 @@ schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
 
     if((psessionEntry = peFindSessionByBssid(pMac,pMsg->bssId, &sessionId))== NULL)
     {
-<<<<<<< HEAD
         PELOGE(schLog(pMac, LOGE, FL("session lookup fails\n"));)
-=======
-        PELOGE(schLog(pMac, LOGE, FL("session lookup fails"));)
->>>>>>> d97af3b... add prima wlan driver
         goto end;
     } 
            
@@ -1243,11 +895,7 @@ schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     // If SME is not in normal mode, no need to generate beacon
     if (psessionEntry->limSmeState  != eLIM_SME_NORMAL_STATE)
     {
-<<<<<<< HEAD
         PELOGE(schLog(pMac, LOG1, FL("PreBeaconInd received in invalid state: %d\n"), psessionEntry->limSmeState);)
-=======
-        PELOGE(schLog(pMac, LOG1, FL("PreBeaconInd received in invalid state: %d"), psessionEntry->limSmeState);)
->>>>>>> d97af3b... add prima wlan driver
         goto end;
     }
 
@@ -1260,16 +908,10 @@ schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
         if(psessionEntry->statypeForBss == STA_ENTRY_SELF)
             writeBeaconToMemory(pMac, (tANI_U16) beaconSize, (tANI_U16)beaconSize, psessionEntry);
     else
-<<<<<<< HEAD
         PELOGE(schLog(pMac, LOGE, FL("can not send beacon for PEER session entry\n"));)
         break;
 
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-        PELOGE(schLog(pMac, LOGE, FL("can not send beacon for PEER session entry"));)
-        break;
-
->>>>>>> d97af3b... add prima wlan driver
     case eLIM_AP_ROLE:{
          tANI_U8 *ptr = &pMac->sch.schObject.gSchBeaconFrameBegin[pMac->sch.schObject.gSchBeaconOffsetBegin];
          tANI_U16 timLength = 0;
@@ -1279,7 +921,6 @@ schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
          writeBeaconToMemory(pMac, (tANI_U16) beaconSize, (tANI_U16)beaconSize, psessionEntry);
      }
      else
-<<<<<<< HEAD
          PELOGE(schLog(pMac, LOGE, FL("can not send beacon for PEER session entry\n"));)
          }
      break;
@@ -1310,12 +951,6 @@ schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     }
     break;
 #endif
-=======
-         PELOGE(schLog(pMac, LOGE, FL("can not send beacon for PEER session entry"));)
-         }
-     break;
-
->>>>>>> d97af3b... add prima wlan driver
 
     default:
         PELOGE(schLog(pMac, LOGE, FL("Error-PE has Receive PreBeconGenIndication when System is in %d role"),
@@ -1323,7 +958,6 @@ schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     }
 
 end:
-<<<<<<< HEAD
     palFreeMemory(pMac->hHdd, (void*)pMsg);
 
 }
@@ -1442,8 +1076,3 @@ specialBeaconProcessing( tpAniSirGlobal pMac, tANI_U32 beaconSize)
 #endif
 
 
-=======
-      vos_mem_free(pMsg);
-
-}
->>>>>>> d97af3b... add prima wlan driver

@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -86,11 +63,6 @@ VOS_STATUS btcOpen (tHalHandle hHal)
 {
    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
    VOS_STATUS vosStatus;
-<<<<<<< HEAD
-=======
-   int i;
-
->>>>>>> d97af3b... add prima wlan driver
    /* Initialize BTC configuartion. */
    pMac->btc.btcConfig.btcExecutionMode = BTC_SMART_COEXISTENCE;
    pMac->btc.btcConfig.btcConsBtSlotsToBlockDuringDhcp = 0;
@@ -116,26 +88,6 @@ VOS_STATUS btcOpen (tHalHandle hHal)
    pMac->btc.btcReady = VOS_FALSE;
    pMac->btc.btcEventState = 0;
    pMac->btc.btcHBActive = VOS_TRUE;
-<<<<<<< HEAD
-=======
-   pMac->btc.btcScanCompromise = VOS_FALSE;
-
-   for (i = 0; i < MWS_COEX_MAX_VICTIM_TABLE; i++)
-   {
-      pMac->btc.btcConfig.mwsCoexVictimWANFreq[i] = 0;
-      pMac->btc.btcConfig.mwsCoexVictimWLANFreq[i] = 0;
-      pMac->btc.btcConfig.mwsCoexVictimConfig[i] = 0;
-      pMac->btc.btcConfig.mwsCoexVictimConfig2[i] = 0;
-   }
-
-   for (i = 0; i < MWS_COEX_MAX_CONFIG; i++)
-   {
-      pMac->btc.btcConfig.mwsCoexConfig[i] = 0;
-   }
-
-   pMac->btc.btcConfig.mwsCoexModemBackoff = 0;
-   pMac->btc.btcConfig.SARPowerBackoff = 0;
->>>>>>> d97af3b... add prima wlan driver
 
    vosStatus = vos_timer_init( &pMac->btc.restoreHBTimer,
                       VOS_TIMER_TYPE_SW,
@@ -147,11 +99,7 @@ VOS_STATUS btcOpen (tHalHandle hHal)
    }
    if( !HAL_STATUS_SUCCESS(pmcRegisterDeviceStateUpdateInd( pMac, btcPowerStateCB, pMac )) )
    {
-<<<<<<< HEAD
        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "btcOpen: Fail to register PMC callback\n");
-=======
-       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "btcOpen: Fail to register PMC callback");
->>>>>>> d97af3b... add prima wlan driver
        return VOS_STATUS_E_FAILURE;
    }
    return VOS_STATUS_SUCCESS;
@@ -181,11 +129,7 @@ VOS_STATUS btcClose (tHalHandle hHal)
    {
        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,
          "%s: %d: cannot deregister with pmcDeregisterDeviceStateUpdateInd()",
-<<<<<<< HEAD
                 __FUNCTION__, __LINE__);
-=======
-                __func__, __LINE__);
->>>>>>> d97af3b... add prima wlan driver
    }
 
    return VOS_STATUS_SUCCESS;
@@ -236,11 +180,7 @@ static VOS_STATUS btcSendBTEvent(tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent)
          {
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
                "Invalid link type %d for Sync Connection. BT event will be dropped ",
-<<<<<<< HEAD
                __FUNCTION__, pBtEvent->uEventParam.btSyncConnection.linkType);
-=======
-               __func__, pBtEvent->uEventParam.btSyncConnection.linkType);
->>>>>>> d97af3b... add prima wlan driver
             return VOS_STATUS_E_FAILURE;
          }
          break;
@@ -251,11 +191,7 @@ static VOS_STATUS btcSendBTEvent(tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent)
          {
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
                "Invalid connection handle %d or link type %d for Sync Connection. BT event will be dropped ",
-<<<<<<< HEAD
                __FUNCTION__,
-=======
-               __func__,
->>>>>>> d97af3b... add prima wlan driver
                pBtEvent->uEventParam.btSyncConnection.connectionHandle,
                pBtEvent->uEventParam.btSyncConnection.linkType);
             return VOS_STATUS_E_FAILURE;
@@ -266,11 +202,7 @@ static VOS_STATUS btcSendBTEvent(tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent)
          {
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
                "Invalid mode %d for ACL Connection. BT event will be dropped ",
-<<<<<<< HEAD
                __FUNCTION__,
-=======
-               __func__,
->>>>>>> d97af3b... add prima wlan driver
                pBtEvent->uEventParam.btAclModeChange.mode);
             return VOS_STATUS_E_FAILURE;
          }
@@ -285,11 +217,7 @@ static VOS_STATUS btcSendBTEvent(tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent)
    if (NULL == ptrSmeBtEvent)
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
-<<<<<<< HEAD
          "Not able to allocate memory for BT event", __FUNCTION__);
-=======
-         "Not able to allocate memory for BT event", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_STATUS_E_FAILURE;
    }
    btcLogEvent(pMac, pBtEvent);
@@ -303,11 +231,7 @@ static VOS_STATUS btcSendBTEvent(tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent)
    if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MODULE_ID_WDA, &msg))
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
-<<<<<<< HEAD
          "Not able to post WDA_SIGNAL_BT_EVENT message to WDA", __FUNCTION__);
-=======
-         "Not able to post WDA_SIGNAL_BT_EVENT message to WDA", __func__);
->>>>>>> d97af3b... add prima wlan driver
       vos_mem_free( ptrSmeBtEvent );
       return VOS_STATUS_E_FAILURE;
    }
@@ -342,33 +266,21 @@ VOS_STATUS btcSignalBTEvent (tHalHandle hHal, tpSmeBtEvent pBtEvent)
    if( NULL == pBtEvent )
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
-<<<<<<< HEAD
          "Null pointer for SME BT Event", __FUNCTION__);
-=======
-         "Null pointer for SME BT Event", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_STATUS_E_FAILURE;
    }
    if(( BTC_WLAN_ONLY == pMac->btc.btcConfig.btcExecutionMode ) ||
       ( BTC_PTA_ONLY == pMac->btc.btcConfig.btcExecutionMode ))
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
-<<<<<<< HEAD
          "BTC execution mode not set to BTC_SMART_COEXISTENCE. BT event will be dropped", __FUNCTION__);
-=======
-         "BTC execution mode not set to BTC_SMART_COEXISTENCE. BT event will be dropped", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_STATUS_E_FAILURE;
    }
    if( pBtEvent->btEventType < 0 || pBtEvent->btEventType >= BT_EVENT_TYPE_MAX )
    {
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
          "Invalid BT event %d being passed. BT event will be dropped",
-<<<<<<< HEAD
           __FUNCTION__, pBtEvent->btEventType);
-=======
-          __func__, pBtEvent->btEventType);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_STATUS_E_FAILURE;
    }
    //Check PMC state to make sure whether we need to defer
@@ -858,11 +770,7 @@ static VOS_STATUS btcDeferAclCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
 {
     VOS_STATUS status = VOS_STATUS_SUCCESS;
     tpSmeBtAclEventHist pAclEventHist;
-<<<<<<< HEAD
     tSmeBtAclConnectionParam *pAclEvent;
-=======
-    tSmeBtAclConnectionParam *pAclEvent = NULL;
->>>>>>> d97af3b... add prima wlan driver
     do
     {
         //Find a match
@@ -882,11 +790,7 @@ static VOS_STATUS btcDeferAclCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" failed to find ACL event slot\n"));
-=======
-                smsLog(pMac, LOGE, FL(" failed to find ACL event slot"));
->>>>>>> d97af3b... add prima wlan driver
                 status = VOS_STATUS_E_RESOURCES;
             }
             //done
@@ -895,33 +799,14 @@ static VOS_STATUS btcDeferAclCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
         else
         {
             //There is history on this BD address
-<<<<<<< HEAD
             VOS_ASSERT(pAclEventHist->bNextEventIdx > 0);
-=======
-            if ((pAclEventHist->bNextEventIdx <= 0) ||
-                (pAclEventHist->bNextEventIdx > BT_MAX_NUM_EVENT_ACL_DEFERRED))
-            {
-                VOS_ASSERT(0);
-                status = VOS_STATUS_E_FAILURE;
-                break;
-            }
->>>>>>> d97af3b... add prima wlan driver
             pAclEvent = &pAclEventHist->btAclConnection[pAclEventHist->bNextEventIdx - 1];
             if(BT_EVENT_CREATE_ACL_CONNECTION == pAclEventHist->btEventType[pAclEventHist->bNextEventIdx - 1])
             {
                 //The last cached event is creation, replace it with the new one
-<<<<<<< HEAD
                 vos_mem_copy(pAclEvent, 
                                 &pEvent->uEventParam.btAclConnection, 
                                 sizeof(tSmeBtAclConnectionParam));
-=======
-                if (pAclEvent)
-                {
-                    vos_mem_copy(pAclEvent,
-                                 &pEvent->uEventParam.btAclConnection,
-                                 sizeof(tSmeBtAclConnectionParam));
-                }
->>>>>>> d97af3b... add prima wlan driver
                 //done
                 break;
             }
@@ -934,11 +819,7 @@ static VOS_STATUS btcDeferAclCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
                     tSmeBtEvent btEvent;
                     //The last event we have is success completion event. 
                     //Should not get a creation event before creation.
-<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL("  Missing disconnect event on handle %d\n"), pAclEvent->connectionHandle);
-=======
-                    smsLog(pMac, LOGE, FL("  Missing disconnect event on handle %d"), pAclEvent->connectionHandle);
->>>>>>> d97af3b... add prima wlan driver
                     //Fake a disconnect event
                     btEvent.btEventType = BT_EVENT_DISCONNECTION_COMPLETE;
                     btEvent.uEventParam.btDisconnect.connectionHandle = pAclEvent->connectionHandle;
@@ -956,11 +837,7 @@ static VOS_STATUS btcDeferAclCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" ACL event overflow\n"));
-=======
-                smsLog(pMac, LOGE, FL(" ACL event overflow"));
->>>>>>> d97af3b... add prima wlan driver
                 VOS_ASSERT(0);
             }
         }
@@ -999,11 +876,7 @@ static VOS_STATUS btcDeferAclComplete( tpAniSirGlobal pMac, tpSmeBtEvent pEvent 
                 }
                 else
                 {
-<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL(" ACL completion fail but last event(%d) not creation\n"),
-=======
-                    smsLog(pMac, LOGE, FL(" ACL completion fail but last event(%d) not creation"),
->>>>>>> d97af3b... add prima wlan driver
                         pAclEventHist->btEventType[pAclEventHist->bNextEventIdx-1]);
                 }
             }
@@ -1025,21 +898,13 @@ static VOS_STATUS btcDeferAclComplete( tpAniSirGlobal pMac, tpSmeBtEvent pEvent 
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" ACL event overflow\n"));
-=======
-                smsLog(pMac, LOGE, FL(" ACL event overflow"));
->>>>>>> d97af3b... add prima wlan driver
                 VOS_ASSERT(0);
             }
         }
         else
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" cannot find match for failed BT_EVENT_ACL_CONNECTION_COMPLETE of bdAddr (%02X-%02X-%02X-%02X-%02X-%02X)\n"),
-=======
-            smsLog( pMac, LOGE, FL(" cannot find match for failed BT_EVENT_ACL_CONNECTION_COMPLETE of bdAddr (%02X-%02X-%02X-%02X-%02X-%02X)"),
->>>>>>> d97af3b... add prima wlan driver
                 pEvent->uEventParam.btAclConnection.bdAddr[0],
                 pEvent->uEventParam.btAclConnection.bdAddr[1],
                 pEvent->uEventParam.btAclConnection.bdAddr[2],
@@ -1063,11 +928,7 @@ static VOS_STATUS btcDeferSyncCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
 {
     VOS_STATUS status = VOS_STATUS_SUCCESS;
     tpSmeBtSyncEventHist pSyncEventHist;
-<<<<<<< HEAD
     tSmeBtSyncConnectionParam *pSyncEvent;
-=======
-    tSmeBtSyncConnectionParam *pSyncEvent = NULL;
->>>>>>> d97af3b... add prima wlan driver
     do
     {
         //Find a match
@@ -1087,11 +948,7 @@ static VOS_STATUS btcDeferSyncCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" failed to find SYNC event slot\n"));
-=======
-                smsLog(pMac, LOGE, FL(" failed to find SYNC event slot"));
->>>>>>> d97af3b... add prima wlan driver
                 status = VOS_STATUS_E_RESOURCES;
             }
             //done
@@ -1100,34 +957,15 @@ static VOS_STATUS btcDeferSyncCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
         else
         {
             //There is history on this BD address
-<<<<<<< HEAD
             VOS_ASSERT(pSyncEventHist->bNextEventIdx > 0);
-=======
-            if ((pSyncEventHist->bNextEventIdx <= 0) ||
-                (pSyncEventHist->bNextEventIdx > BT_MAX_NUM_EVENT_SCO_DEFERRED))
-            {
-                VOS_ASSERT(0);
-                status = VOS_STATUS_E_FAILURE;
-                return status;
-            }
->>>>>>> d97af3b... add prima wlan driver
             pSyncEvent = &pSyncEventHist->btSyncConnection[pSyncEventHist->bNextEventIdx - 1];
             if(BT_EVENT_CREATE_SYNC_CONNECTION == 
                 pSyncEventHist->btEventType[pSyncEventHist->bNextEventIdx - 1])
             {
                 //The last cached event is creation, replace it with the new one
-<<<<<<< HEAD
                 vos_mem_copy(pSyncEvent, 
                                 &pEvent->uEventParam.btSyncConnection, 
                                 sizeof(tSmeBtSyncConnectionParam));
-=======
-                if(pSyncEvent)
-                {
-                    vos_mem_copy(pSyncEvent,
-                                 &pEvent->uEventParam.btSyncConnection,
-                                 sizeof(tSmeBtSyncConnectionParam));
-                }
->>>>>>> d97af3b... add prima wlan driver
                 //done
                 break;
             }
@@ -1140,11 +978,7 @@ static VOS_STATUS btcDeferSyncCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
                     tSmeBtEvent btEvent;
                     //The last event we have is success completion event. 
                     //Should not get a creation event before creation.
-<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL("  Missing disconnect event on handle %d\n"), pSyncEvent->connectionHandle);
-=======
-                    smsLog(pMac, LOGE, FL("  Missing disconnect event on handle %d"), pSyncEvent->connectionHandle);
->>>>>>> d97af3b... add prima wlan driver
                     //Fake a disconnect event
                     btEvent.btEventType = BT_EVENT_DISCONNECTION_COMPLETE;
                     btEvent.uEventParam.btDisconnect.connectionHandle = pSyncEvent->connectionHandle;
@@ -1162,11 +996,7 @@ static VOS_STATUS btcDeferSyncCreate( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" SYNC event overflow\n"));
-=======
-                smsLog(pMac, LOGE, FL(" SYNC event overflow"));
->>>>>>> d97af3b... add prima wlan driver
             }
         }
     }while(0);
@@ -1205,11 +1035,7 @@ static VOS_STATUS btcDeferSyncComplete( tpAniSirGlobal pMac, tpSmeBtEvent pEvent
                 }
                 else
                 {
-<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL(" SYNC completion fail but last event(%d) not creation\n"),
-=======
-                    smsLog(pMac, LOGE, FL(" SYNC completion fail but last event(%d) not creation"),
->>>>>>> d97af3b... add prima wlan driver
                         pSyncEventHist->btEventType[pSyncEventHist->bNextEventIdx-1]);
                 }
             }
@@ -1232,20 +1058,12 @@ static VOS_STATUS btcDeferSyncComplete( tpAniSirGlobal pMac, tpSmeBtEvent pEvent
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" SYNC event overflow\n"));
-=======
-                smsLog(pMac, LOGE, FL(" SYNC event overflow"));
->>>>>>> d97af3b... add prima wlan driver
             }
         }
         else
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_SYNC_CONNECTION_COMPLETE of bdAddr (%02X-%02X-%02X-%02X-%02X-%02X)\n"),
-=======
-            smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_SYNC_CONNECTION_COMPLETE of bdAddr (%02X-%02X-%02X-%02X-%02X-%02X)"),
->>>>>>> d97af3b... add prima wlan driver
                 pEvent->uEventParam.btSyncConnection.bdAddr[0],
                 pEvent->uEventParam.btSyncConnection.bdAddr[1],
                 pEvent->uEventParam.btSyncConnection.bdAddr[2],
@@ -1283,11 +1101,7 @@ static VOS_STATUS btcDeferDisconnectEventForACL( tpAniSirGlobal pMac, tpSmeBtEve
     {
         if( pAclEventHist->bNextEventIdx > BT_MAX_NUM_EVENT_ACL_DEFERRED)
         {
-<<<<<<< HEAD
             smsLog(pMac, LOGE, FL(" ACL event history index:%d overflow, resetting to BT_MAX_NUM_EVENT_ACL_DEFERRED\n"), pAclEventHist->bNextEventIdx);
-=======
-            smsLog(pMac, LOGE, FL(" ACL event history index:%d overflow, resetting to BT_MAX_NUM_EVENT_ACL_DEFERRED"), pAclEventHist->bNextEventIdx);
->>>>>>> d97af3b... add prima wlan driver
             pAclEventHist->bNextEventIdx = BT_MAX_NUM_EVENT_ACL_DEFERRED;
         }
         //Looking backwords
@@ -1326,11 +1140,7 @@ static VOS_STATUS btcDeferDisconnectEventForACL( tpAniSirGlobal pMac, tpSmeBtEve
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" ACL event overflow\n"));
-=======
-                smsLog(pMac, LOGE, FL(" ACL event overflow"));
->>>>>>> d97af3b... add prima wlan driver
                 status = VOS_STATUS_E_FAILURE;
             }
         }
@@ -1375,11 +1185,7 @@ static VOS_STATUS btcDeferDisconnectEventForSync( tpAniSirGlobal pMac, tpSmeBtEv
     {
         if( pSyncEventHist->bNextEventIdx > BT_MAX_NUM_EVENT_SCO_DEFERRED)
         {
-<<<<<<< HEAD
             smsLog(pMac, LOGE, FL(" SYNC event history index:%d overflow, resetting to BT_MAX_NUM_EVENT_SCO_DEFERRED\n"), pSyncEventHist->bNextEventIdx);
-=======
-            smsLog(pMac, LOGE, FL(" SYNC event history index:%d overflow, resetting to BT_MAX_NUM_EVENT_SCO_DEFERRED"), pSyncEventHist->bNextEventIdx);
->>>>>>> d97af3b... add prima wlan driver
             pSyncEventHist->bNextEventIdx = BT_MAX_NUM_EVENT_SCO_DEFERRED;
         }
         //Looking backwords
@@ -1419,11 +1225,7 @@ static VOS_STATUS btcDeferDisconnectEventForSync( tpAniSirGlobal pMac, tpSmeBtEv
             }
             else
             {
-<<<<<<< HEAD
                 smsLog(pMac, LOGE, FL(" SYNC event overflow\n"));
-=======
-                smsLog(pMac, LOGE, FL(" SYNC event overflow"));
->>>>>>> d97af3b... add prima wlan driver
                 status = VOS_STATUS_E_FAILURE;
             }
         }
@@ -1454,11 +1256,7 @@ static VOS_STATUS btcDeferDisconnEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent
     tpSmeBtDisconnectEventHist pDisconnEventHist;
     if( BT_INVALID_CONN_HANDLE == pEvent->uEventParam.btDisconnect.connectionHandle )
     {
-<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" invalid handle\n") );
-=======
-        smsLog( pMac, LOGE, FL(" invalid handle") );
->>>>>>> d97af3b... add prima wlan driver
         return (VOS_STATUS_E_INVAL);
     }
     //Check ACL first
@@ -1481,11 +1279,7 @@ static VOS_STATUS btcDeferDisconnEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent
         }
         else
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_DISCONNECTION_COMPLETE of handle (%d)\n"),
-=======
-            smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_DISCONNECTION_COMPLETE of handle (%d)"),
->>>>>>> d97af3b... add prima wlan driver
                 pEvent->uEventParam.btDisconnect.connectionHandle);
             status = VOS_STATUS_E_EMPTY;
         }
@@ -1544,11 +1338,7 @@ static VOS_STATUS btcDeferEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
     case BT_EVENT_SYNC_CONNECTION_UPDATED:
         if( BT_INVALID_CONN_HANDLE == pEvent->uEventParam.btDisconnect.connectionHandle )
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" invalid handle\n") );
-=======
-            smsLog( pMac, LOGE, FL(" invalid handle") );
->>>>>>> d97af3b... add prima wlan driver
             status = VOS_STATUS_E_INVAL;
             break;
         }
@@ -1563,11 +1353,7 @@ static VOS_STATUS btcDeferEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
         }
         else
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_SYNC_CONNECTION_UPDATED of handle (%d)\n"),
-=======
-            smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_SYNC_CONNECTION_UPDATED of handle (%d)"),
->>>>>>> d97af3b... add prima wlan driver
                 pEvent->uEventParam.btSyncConnection.connectionHandle );
             status = VOS_STATUS_E_EMPTY;
         }
@@ -1578,11 +1364,7 @@ static VOS_STATUS btcDeferEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
     case BT_EVENT_MODE_CHANGED:
         if( BT_INVALID_CONN_HANDLE == pEvent->uEventParam.btDisconnect.connectionHandle )
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" invalid handle\n") );
-=======
-            smsLog( pMac, LOGE, FL(" invalid handle") );
->>>>>>> d97af3b... add prima wlan driver
             status = VOS_STATUS_E_INVAL;
             break;
         }
@@ -1597,11 +1379,7 @@ static VOS_STATUS btcDeferEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
         }
         else
         {
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_MODE_CHANGED of handle (%d)\n"),
-=======
-            smsLog( pMac, LOGE, FL(" cannot find match for BT_EVENT_MODE_CHANGED of handle (%d)"),
->>>>>>> d97af3b... add prima wlan driver
                 pEvent->uEventParam.btAclModeChange.connectionHandle);
             status = VOS_STATUS_E_EMPTY;
         }
@@ -1615,11 +1393,7 @@ static VOS_STATUS btcDeferEvent( tpAniSirGlobal pMac, tpSmeBtEvent pEvent )
         pReplay->btcEventHist.fA2DPStarted = VOS_FALSE;
         break;
     default:
-<<<<<<< HEAD
         smsLog( pMac, LOGE, FL(" event (%d) is not deferred\n"), pEvent->btEventType );
-=======
-        smsLog( pMac, LOGE, FL(" event (%d) is not deferred"), pEvent->btEventType );
->>>>>>> d97af3b... add prima wlan driver
         status = VOS_STATUS_E_NOSUPPORT;
         break;
     }
@@ -1848,11 +1622,7 @@ static void btcPowerStateCB( v_PVOID_t pContext, tPmcState pmcState )
 static void btcLogEvent (tHalHandle hHal, tpSmeBtEvent pBtEvent)
 {
    VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
-<<<<<<< HEAD
                "Bluetooth Event %d received", __FUNCTION__, pBtEvent->btEventType);
-=======
-               "Bluetooth Event %d received", __func__, pBtEvent->btEventType);
->>>>>>> d97af3b... add prima wlan driver
    switch(pBtEvent->btEventType)
    {
       case BT_EVENT_CREATE_SYNC_CONNECTION:
@@ -1953,21 +1723,13 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
            {
                //All SCO is disconnected
                pMac->btc.btcUapsdOk = VOS_TRUE;
-<<<<<<< HEAD
                smsLog( pMac, LOGE, "BT event (DISCONNECTION) happens, UAPSD-allowed flag (%d) change to TRUE \n", 
-=======
-               smsLog( pMac, LOGE, "BT event (DISCONNECTION) happens, UAPSD-allowed flag (%d) change to TRUE",
->>>>>>> d97af3b... add prima wlan driver
                         pBtEvent->btEventType, pMac->btc.btcUapsdOk );
            }
        }
        break;
    case BT_EVENT_DEVICE_SWITCHED_OFF:
-<<<<<<< HEAD
        smsLog( pMac, LOGE, "BT event (DEVICE_OFF) happens, UAPSD-allowed flag (%d) change to TRUE \n", 
-=======
-       smsLog( pMac, LOGE, "BT event (DEVICE_OFF) happens, UAPSD-allowed flag (%d) change to TRUE",
->>>>>>> d97af3b... add prima wlan driver
                         pBtEvent->btEventType, pMac->btc.btcUapsdOk );
        //Clean up SCO
        for(i=0; i < BT_MAX_SCO_SUPPORT; i++)
@@ -1978,11 +1740,7 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
        pMac->btc.btcUapsdOk = VOS_TRUE;
        break;
    case BT_EVENT_A2DP_STREAM_STOP:
-<<<<<<< HEAD
        smsLog( pMac, LOGE, "BT event  (A2DP_STREAM_STOP) happens, UAPSD-allowed flag (%d) \n", 
-=======
-       smsLog( pMac, LOGE, "BT event  (A2DP_STREAM_STOP) happens, UAPSD-allowed flag (%d)",
->>>>>>> d97af3b... add prima wlan driver
             pMac->btc.btcUapsdOk );
        pMac->btc.fA2DPUp = VOS_FALSE;
        //Check whether SCO is on
@@ -1996,21 +1754,13 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
        if( BT_MAX_SCO_SUPPORT == i )
        {
             pMac->btc.fA2DPTrafStop = VOS_TRUE;
-<<<<<<< HEAD
            smsLog( pMac, LOGE, "BT_EVENT_A2DP_STREAM_STOP: UAPSD-allowed flag is now %d\n",
-=======
-           smsLog( pMac, LOGE, "BT_EVENT_A2DP_STREAM_STOP: UAPSD-allowed flag is now %d",
->>>>>>> d97af3b... add prima wlan driver
                    pMac->btc.btcUapsdOk );
        }
        break;
 
    case BT_EVENT_MODE_CHANGED:
-<<<<<<< HEAD
        smsLog( pMac, LOGE, "BT event (BT_EVENT_MODE_CHANGED) happens, Mode (%d) UAPSD-allowed flag (%d)\n",
-=======
-       smsLog( pMac, LOGE, "BT event (BT_EVENT_MODE_CHANGED) happens, Mode (%d) UAPSD-allowed flag (%d)",
->>>>>>> d97af3b... add prima wlan driver
                pBtEvent->uEventParam.btAclModeChange.mode, pMac->btc.btcUapsdOk );
        if(pBtEvent->uEventParam.btAclModeChange.mode == BT_ACL_SNIFF)
        {
@@ -2029,11 +1779,7 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
                    pMac->btc.btcUapsdOk = VOS_TRUE;
                    pMac->btc.fA2DPTrafStop = VOS_FALSE;
                }
-<<<<<<< HEAD
                smsLog( pMac, LOGE, "BT_EVENT_MODE_CHANGED with Mode:%d UAPSD-allowed flag is now %d\n",
-=======
-               smsLog( pMac, LOGE, "BT_EVENT_MODE_CHANGED with Mode:%d UAPSD-allowed flag is now %d",
->>>>>>> d97af3b... add prima wlan driver
                        pBtEvent->uEventParam.btAclModeChange.mode,pMac->btc.btcUapsdOk );
            }
        }
@@ -2041,11 +1787,7 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
    case BT_EVENT_CREATE_SYNC_CONNECTION:
        {
            pMac->btc.btcUapsdOk = VOS_FALSE;
-<<<<<<< HEAD
            smsLog( pMac, LOGE, "BT_EVENT_CREATE_SYNC_CONNECTION (%d) happens, UAPSD-allowed flag (%d) change to FALSE \n", 
-=======
-           smsLog( pMac, LOGE, "BT_EVENT_CREATE_SYNC_CONNECTION (%d) happens, UAPSD-allowed flag (%d) change to FALSE",
->>>>>>> d97af3b... add prima wlan driver
                    pBtEvent->btEventType, pMac->btc.btcUapsdOk );
        }
        break;
@@ -2067,11 +1809,7 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
 
            if( i >= BT_MAX_SCO_SUPPORT )
            {
-<<<<<<< HEAD
                smsLog(pMac, LOGE, FL("Too many SCO, ignore this one\n"));
-=======
-               smsLog(pMac, LOGE, FL("Too many SCO, ignore this one"));
->>>>>>> d97af3b... add prima wlan driver
            }
        }
        else
@@ -2089,19 +1827,11 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
            {
                pMac->btc.btcUapsdOk = VOS_TRUE;
            }
-<<<<<<< HEAD
            smsLog(pMac, LOGE, FL("TSYNC complete failed\n"));
        }
        break;
    case BT_EVENT_A2DP_STREAM_START:
        smsLog( pMac, LOGE, "BT_EVENT_A2DP_STREAM_START (%d) happens, UAPSD-allowed flag (%d) change to FALSE \n", 
-=======
-           smsLog(pMac, LOGE, FL("TSYNC complete failed"));
-       }
-       break;
-   case BT_EVENT_A2DP_STREAM_START:
-       smsLog( pMac, LOGE, "BT_EVENT_A2DP_STREAM_START (%d) happens, UAPSD-allowed flag (%d) change to FALSE",
->>>>>>> d97af3b... add prima wlan driver
                 pBtEvent->btEventType, pMac->btc.btcUapsdOk );
        pMac->btc.fA2DPTrafStop = VOS_FALSE;
        pMac->btc.btcUapsdOk = VOS_FALSE;
@@ -2109,11 +1839,7 @@ void btcUapsdCheck( tpAniSirGlobal pMac, tpSmeBtEvent pBtEvent )
        break;
    default:
        //No change for these events
-<<<<<<< HEAD
        smsLog( pMac, LOGE, "BT event (%d) happens, UAPSD-allowed flag (%d) no change \n", 
-=======
-       smsLog( pMac, LOGE, "BT event (%d) happens, UAPSD-allowed flag (%d) no change",
->>>>>>> d97af3b... add prima wlan driver
                     pBtEvent->btEventType, pMac->btc.btcUapsdOk );
        break;
    }
@@ -2139,22 +1865,14 @@ eHalStatus btcHandleCoexInd(tHalHandle hHal, void* pMsg)
 
    if (NULL == pMsg)
    {
-<<<<<<< HEAD
       smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
-=======
-      smsLog(pMac, LOGE, "in %s msg ptr is NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
       status = eHAL_STATUS_FAILURE;
    }
    else
    {
       // DEBUG
       smsLog(pMac, LOG1, "Coex indication in %s(), type %d",
-<<<<<<< HEAD
              __FUNCTION__, pSmeCoexInd->coexIndType);
-=======
-             __func__, pSmeCoexInd->coexIndType);
->>>>>>> d97af3b... add prima wlan driver
 
      // suspend heartbeat monitoring
      if (pSmeCoexInd->coexIndType == SIR_COEX_IND_TYPE_DISABLE_HB_MONITOR)
@@ -2173,52 +1891,11 @@ eHalStatus btcHandleCoexInd(tHalHandle hHal, void* pMsg)
            pMac->btc.btcHBActive = VOS_TRUE;
         }
      }
-<<<<<<< HEAD
 
      // unknown indication type
      else
      {
         smsLog(pMac, LOGE, "unknown Coex indication type in %s()", __FUNCTION__);
-=======
-     else if (pSmeCoexInd->coexIndType == SIR_COEX_IND_TYPE_SCAN_COMPROMISED)
-     {
-         pMac->btc.btcScanCompromise = VOS_TRUE;
-         smsLog(pMac, LOGW, "Coex indication in %s(), type - SIR_COEX_IND_TYPE_SCAN_COMPROMISED",
-             __func__);
-     }
-     else if (pSmeCoexInd->coexIndType == SIR_COEX_IND_TYPE_SCAN_NOT_COMPROMISED)
-     {
-         pMac->btc.btcScanCompromise = VOS_FALSE;
-         smsLog(pMac, LOGW, "Coex indication in %s(), type - SIR_COEX_IND_TYPE_SCAN_NOT_COMPROMISED",
-             __func__);
-     }
-     else if (pSmeCoexInd->coexIndType == SIR_COEX_IND_TYPE_DISABLE_AGGREGATION_IN_2p4)
-     {
-         if (pMac->roam.configParam.disableAggWithBtc)
-         {
-             ccmCfgSetInt(pMac, WNI_CFG_DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC, 1,
-                             NULL, eANI_BOOLEAN_FALSE);
-             smsLog(pMac, LOGW,
-             "Coex indication in %s(), type - SIR_COEX_IND_TYPE_DISABLE_AGGREGATION_IN_2p4",
-                 __func__);
-         }
-     }
-     else if (pSmeCoexInd->coexIndType == SIR_COEX_IND_TYPE_ENABLE_AGGREGATION_IN_2p4)
-     {
-         if (pMac->roam.configParam.disableAggWithBtc)
-         {
-             ccmCfgSetInt(pMac, WNI_CFG_DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC, 0,
-                             NULL, eANI_BOOLEAN_FALSE);
-             smsLog(pMac, LOGW,
-             "Coex indication in %s(), type - SIR_COEX_IND_TYPE_ENABLE_AGGREGATION_IN_2p4",
-                 __func__);
-         }
-     }
-     // unknown indication type
-     else
-     {
-        smsLog(pMac, LOGE, "unknown Coex indication type in %s()", __func__);
->>>>>>> d97af3b... add prima wlan driver
      }
    }
 

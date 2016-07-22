@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -41,10 +18,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file parserApi.cc contains the code for parsing
@@ -74,11 +48,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
 void dot11fLog(tpAniSirGlobal pMac, int loglevel, const char *pString,...)
-=======
-void dot11fLog(tpAniSirGlobal pMac, int loglevel, const char *pString,...) 
->>>>>>> d97af3b... add prima wlan driver
 {
 #ifdef WLAN_DEBUG
     if( (tANI_U32)loglevel > pMac->utils.gLogDbgLevel[LOG_INDEX_FOR_MODULE( SIR_DBG_MODULE_ID )] )
@@ -193,10 +163,6 @@ int FindIELocation( tpAniSirGlobal pMac,
                            tANI_U8 EID)
 {
     int idx, ieLen, bytesLeft;
-<<<<<<< HEAD
-=======
-    int ret_val = -1;
->>>>>>> d97af3b... add prima wlan driver
 
     // Here's what's going on: 'rsnIe' looks like this:
 
@@ -216,11 +182,7 @@ int FindIELocation( tpAniSirGlobal pMac,
     // The if/then/else statements that follow are here to figure out
     // whether we have the WPA IE, and where it is if we *do* have it.
 
-<<<<<<< HEAD
     //Save the first IE length
-=======
-    //Save the first IE length 
->>>>>>> d97af3b... add prima wlan driver
     ieLen = pRsnIe->rsnIEdata[ 1 ] + 2;
     idx = 0;
     bytesLeft = pRsnIe->length;
@@ -233,30 +195,18 @@ int FindIELocation( tpAniSirGlobal pMac,
             return (idx);
         }
         else if ( EID != pRsnIe->rsnIEdata[ idx ] &&
-<<<<<<< HEAD
              // & if no more IE,
              bytesLeft <= (tANI_U16)( ieLen ) )
         {
             dot11fLog( pMac, LOG3, FL("No IE (%d) in FindIELocation.\n"), EID );
             return (-1);
-=======
-             // & if no more IE, 
-             bytesLeft <= (tANI_U16)( ieLen ) )
-        {
-            dot11fLog( pMac, LOG3, FL("No IE (%d) in FindIELocation.\n"), EID );
-            return ret_val;
->>>>>>> d97af3b... add prima wlan driver
         }
         bytesLeft -= ieLen;
         ieLen = pRsnIe->rsnIEdata[ idx + 1 ] + 2;
         idx += ieLen;
     }
 
-<<<<<<< HEAD
     return (-1);
-=======
-    return ret_val;
->>>>>>> d97af3b... add prima wlan driver
 }
 
 
@@ -290,11 +240,7 @@ PopulateDot11fCapabilities(tpAniSirGlobal         pMac,
 tSirRetStatus
 PopulateDot11fCapabilities2(tpAniSirGlobal         pMac,
                             tDot11fFfCapabilities *pDot11f,
-<<<<<<< HEAD
                             tpDphHashNode          pSta,
-=======
-                            tpDphHashNode          pSta, 
->>>>>>> d97af3b... add prima wlan driver
                             tpPESession            psessionEntry)
 {
     tANI_U16           cfg;
@@ -337,32 +283,12 @@ PopulateDot11fExtChanSwitchAnn(tpAniSirGlobal pMac,
                                tpPESession psessionEntry)
 {
     //Has to be updated on the cb state basis
-<<<<<<< HEAD
     pDot11f->secondaryChannelOffset =
-=======
-    pDot11f->secondaryChannelOffset = 
->>>>>>> d97af3b... add prima wlan driver
              psessionEntry->gLimChannelSwitch.secondarySubBand;
 
     pDot11f->present = 1;
 }
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11AC
-void
-PopulateDot11fWiderBWChanSwitchAnn(tpAniSirGlobal pMac,
-                                   tDot11fIEWiderBWChanSwitchAnn *pDot11f,
-                                   tpPESession psessionEntry)
-{
-    pDot11f->present = 1;
-    pDot11f->newChanWidth = psessionEntry->gLimWiderBWChannelSwitch.newChanWidth;
-    pDot11f->newCenterChanFreq0 = psessionEntry->gLimWiderBWChannelSwitch.newCenterChanFreq0;
-    pDot11f->newCenterChanFreq1 = psessionEntry->gLimWiderBWChannelSwitch.newCenterChanFreq1;
-}
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus
 PopulateDot11fCountry(tpAniSirGlobal    pMac,
                       tDot11fIECountry *pDot11f,
@@ -400,11 +326,7 @@ PopulateDot11fCountry(tpAniSirGlobal    pMac,
         CFG_GET_STR( nSirStatus, pMac, WNI_CFG_COUNTRY_CODE,
                      code, codelen, 3 );
 
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pDot11f->country, code, codelen );
-=======
-        vos_mem_copy( pDot11f->country, code, codelen );
->>>>>>> d97af3b... add prima wlan driver
 
         if(len > MAX_SIZE_OF_TRIPLETS_IN_COUNTRY_IE)
         {
@@ -413,11 +335,7 @@ PopulateDot11fCountry(tpAniSirGlobal    pMac,
         }
 
         pDot11f->num_triplets = ( tANI_U8 ) ( len / 3 );
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, ( tANI_U8* )pDot11f->triplets, temp, len );
-=======
-        vos_mem_copy( ( tANI_U8* )pDot11f->triplets, temp, len );
->>>>>>> d97af3b... add prima wlan driver
 
         pDot11f->present = 1;
     }
@@ -430,7 +348,6 @@ PopulateDot11fDSParams(tpAniSirGlobal     pMac,
                        tDot11fIEDSParams *pDot11f, tANI_U8 channel,
                        tpPESession psessionEntry)
 {
-<<<<<<< HEAD
 //    tSirRetStatus       nSirStatus;
     tANI_U32            nPhyMode;
 
@@ -443,11 +360,6 @@ PopulateDot11fDSParams(tpAniSirGlobal     pMac,
         #if 0
         CFG_GET_INT( nSirStatus, pMac, WNI_CFG_CURRENT_CHANNEL, cfg );
         #endif //TO SUPPORT BT-AMP
-=======
-    if ((IS_24G_CH(channel)) || pMac->rrm.rrmPEContext.rrmEnable)
-    {
-        // .11b/g mode PHY => Include the DS Parameter Set IE:
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->curr_channel = channel;
         pDot11f->present = 1;
     }
@@ -460,11 +372,7 @@ PopulateDot11fDSParams(tpAniSirGlobal     pMac,
 
 void
 PopulateDot11fEDCAParamSet(tpAniSirGlobal         pMac,
-<<<<<<< HEAD
                            tDot11fIEEDCAParamSet *pDot11f,
-=======
-                           tDot11fIEEDCAParamSet *pDot11f, 
->>>>>>> d97af3b... add prima wlan driver
                            tpPESession psessionEntry)
 {
 
@@ -541,17 +449,10 @@ PopulateDot11fERPInfo(tpAniSirGlobal    pMac,
         }
 
 
-<<<<<<< HEAD
         if((psessionEntry->gLimNoShortParams.numNonShortPreambleSta)
                  || !psessionEntry->beaconParams.fShortPreamble){
                 pDot11f->barker_preamble = 1;
 
-=======
-        if((psessionEntry->gLimNoShortParams.numNonShortPreambleSta) 
-                 || !psessionEntry->beaconParams.fShortPreamble){ 
-                pDot11f->barker_preamble = 1;
-         
->>>>>>> d97af3b... add prima wlan driver
         }
         // if protection always flag is set, advertise protection enabled
         // regardless of legacy stations presence
@@ -568,11 +469,7 @@ PopulateDot11fERPInfo(tpAniSirGlobal    pMac,
 
 tSirRetStatus
 PopulateDot11fExtSuppRates(tpAniSirGlobal pMac, tANI_U8 nChannelNum,
-<<<<<<< HEAD
                            tDot11fIEExtSuppRates *pDot11f,
-=======
-                           tDot11fIEExtSuppRates *pDot11f, 
->>>>>>> d97af3b... add prima wlan driver
                            tpPESession psessionEntry)
 {
     tSirRetStatus nSirStatus;
@@ -588,11 +485,7 @@ PopulateDot11fExtSuppRates(tpAniSirGlobal pMac, tANI_U8 nChannelNum,
         if(psessionEntry != NULL)
         {
             nRates = psessionEntry->extRateSet.numRates;
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, rates, psessionEntry->extRateSet.rate,
-=======
-            vos_mem_copy( rates, psessionEntry->extRateSet.rate,
->>>>>>> d97af3b... add prima wlan driver
                           nRates);
         }
         else
@@ -610,11 +503,7 @@ PopulateDot11fExtSuppRates(tpAniSirGlobal pMac, tANI_U8 nChannelNum,
     if ( 0 != nRates )
     {
         pDot11f->num_rates = ( tANI_U8 )nRates;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pDot11f->rates, rates, nRates );
-=======
-        vos_mem_copy( pDot11f->rates, rates, nRates );
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->present   = 1;
     }
 
@@ -646,11 +535,7 @@ PopulateDot11fExtSuppRates1(tpAniSirGlobal         pMac,
     if ( 0 != nRates )
     {
         pDot11f->num_rates = ( tANI_U8 ) nRates;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pDot11f->rates, rates, nRates );
-=======
-        vos_mem_copy( pDot11f->rates, rates, nRates );
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->present   = 1;
     }
 
@@ -666,30 +551,23 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
     tANI_U8                          nCfgValue8;
     tSirRetStatus                    nSirStatus;
     tSirMacHTParametersInfo         *pHTParametersInfo;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
->>>>>>> d97af3b... add prima wlan driver
     union {
         tANI_U16                        nCfgValue16;
         tSirMacHTCapabilityInfo         htCapInfo;
         tSirMacExtendedHTCapabilityInfo extHtCapInfo;
     } uHTCapabilityInfo;
-<<<<<<< HEAD
 #else
     tANI_U16                         nCfgValue16;
     tSirMacHTCapabilityInfo         *pHTCapabilityInfo;
     tSirMacExtendedHTCapabilityInfo *pExtendedHTCapabilityInfo;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     tSirMacTxBFCapabilityInfo       *pTxBFCapabilityInfo;
     tSirMacASCapabilityInfo         *pASCapabilityInfo;
 
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_HT_CAP_INFO, nCfgValue );
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
     uHTCapabilityInfo.nCfgValue16 = nCfgValue & 0xFFFF;
 #else
@@ -698,10 +576,6 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
-    uHTCapabilityInfo.nCfgValue16 = nCfgValue & 0xFFFF;
-
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->advCodingCap             = uHTCapabilityInfo.htCapInfo.advCodingCap;
     pDot11f->mimoPowerSave            = uHTCapabilityInfo.htCapInfo.mimoPowerSave;
     pDot11f->greenField               = uHTCapabilityInfo.htCapInfo.greenField;
@@ -715,7 +589,6 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
     pDot11f->psmp                     = uHTCapabilityInfo.htCapInfo.psmp;
     pDot11f->stbcControlFrame         = uHTCapabilityInfo.htCapInfo.stbcControlFrame;
     pDot11f->lsigTXOPProtection       = uHTCapabilityInfo.htCapInfo.lsigTXOPProtection;
-<<<<<<< HEAD
 #else
     pDot11f->advCodingCap             = pHTCapabilityInfo->advCodingCap;
     pDot11f->mimoPowerSave            = pHTCapabilityInfo->mimoPowerSave;
@@ -731,8 +604,6 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
     pDot11f->stbcControlFrame         = pHTCapabilityInfo->stbcControlFrame;
     pDot11f->lsigTXOPProtection       = pHTCapabilityInfo->lsigTXOPProtection;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     // All sessionized entries will need the check below
     if (psessionEntry == NULL) // Only in case of NO session
@@ -775,17 +646,13 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
 
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_EXT_HT_CAP_INFO, nCfgValue );
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
->>>>>>> d97af3b... add prima wlan driver
     uHTCapabilityInfo.nCfgValue16 = nCfgValue & 0xFFFF;
 
     pDot11f->pco            = uHTCapabilityInfo.extHtCapInfo.pco;
     pDot11f->transitionTime = uHTCapabilityInfo.extHtCapInfo.transitionTime;
     pDot11f->mcsFeedback    = uHTCapabilityInfo.extHtCapInfo.mcsFeedback;
 
-<<<<<<< HEAD
 #else
     nCfgValue16 = ( tANI_U16 ) nCfgValue ;
     pExtendedHTCapabilityInfo = ( tSirMacExtendedHTCapabilityInfo* ) &nCfgValue16;
@@ -793,8 +660,6 @@ PopulateDot11fHTCaps(tpAniSirGlobal           pMac,
     pDot11f->transitionTime = pExtendedHTCapabilityInfo->transitionTime;
     pDot11f->mcsFeedback    = pExtendedHTCapabilityInfo->mcsFeedback;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_TX_BF_CAP, nCfgValue );
 
@@ -891,22 +756,6 @@ void limLogVHTExtBssLoad(tpAniSirGlobal pMac,
 #endif /* DUMP_MGMT_CNTNTS */
 }
 
-<<<<<<< HEAD
-=======
-
-void limLogOperatingMode( tpAniSirGlobal pMac, 
-                               tDot11fIEOperatingMode *pDot11f)
-{
-#ifdef DUMP_MGMT_CNTNTS
-    limLog(pMac, LOG1, FL("ChanWidth : %d\n"), pDot11f->chanWidth);
-    limLog(pMac, LOG1, FL("reserved: %d\n"), pDot11f->reserved);
-    limLog(pMac, LOG1, FL("rxNSS: %d\n"), pDot11f->rxNSS);
-    limLog(pMac, LOG1, FL("rxNSS Type: %d\n"), pDot11f->rxNSSType);
-#endif /* DUMP_MGMT_CNTNTS */
-}
-
-
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus
 PopulateDot11fVHTCaps(tpAniSirGlobal           pMac,
                            tDot11fIEVHTCaps *pDot11f)
@@ -1091,49 +940,18 @@ PopulateDot11fVHTExtBssLoad(tpAniSirGlobal      pMac,
     return eSIR_SUCCESS;
 }
 
-<<<<<<< HEAD
 
 #endif
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-tSirRetStatus
-PopulateDot11fExtCap(tpAniSirGlobal      pMac,
-                           tDot11fIEExtCap  *pDot11f)
-{
-    pDot11f->present = 1;
-    pDot11f->operModeNotification = 1;
-    
-    return eSIR_SUCCESS;
-}
-
-tSirRetStatus
-PopulateDot11fOperatingMode(tpAniSirGlobal      pMac,
-                           tDot11fIEOperatingMode  *pDot11f,
-                           tpPESession   psessionEntry)
-{
-    pDot11f->present = 1;
-    
-    pDot11f->chanWidth = psessionEntry->gLimOperatingMode.chanWidth;
-    pDot11f->rxNSS = psessionEntry->gLimOperatingMode.rxNSS;
-    pDot11f->rxNSSType = psessionEntry->gLimOperatingMode.rxNSSType;
-    
-    return eSIR_SUCCESS;
-}
-
-#endif
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus
 PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
                      tDot11fIEHTInfo *pDot11f,
                      tpPESession      psessionEntry )
-<<<<<<< HEAD
 #else
 tSirRetStatus
 PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
                      tDot11fIEHTInfo *pDot11f)
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 {
     tANI_U32             nCfgValue, nCfgLen;
     tANI_U8              htInfoField1;
@@ -1141,10 +959,7 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     tSirRetStatus        nSirStatus;
     tSirMacHTInfoField1 *pHTInfoField1;
     tSirMacHTInfoField2 *pHTInfoField2;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
->>>>>>> d97af3b... add prima wlan driver
     union {
         tANI_U16         nCfgValue16;
         tSirMacHTInfoField3 infoField3;
@@ -1153,7 +968,6 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
         tANI_U16         nCfgValue16;
         tSirMacHTInfoField2 infoField2;
     }uHTInfoField2={0};
-<<<<<<< HEAD
 #else
     tANI_U16            htInfoField3;
     tSirMacHTInfoField3 *pHTInfoField3;
@@ -1162,24 +976,11 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
 #ifndef WLAN_SOFTAP_FEATURE
     tpPESession         psessionEntry = &pMac->lim.gpSession[0];  //TBD-RAJESH HOW TO GET sessionEntry?????
 #endif
-=======
-
->>>>>>> d97af3b... add prima wlan driver
 
     #if 0
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_CURRENT_CHANNEL, nCfgValue );
     #endif // TO SUPPORT BT-AMP
 
-<<<<<<< HEAD
-=======
-    if (NULL == psessionEntry)
-    {
-        PELOGE(limLog(pMac, LOG1,
-                FL("Invalid session entry in PopulateDot11fHTInfo()\n"));)
-        return eSIR_FAILURE;
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->primaryChannel = psessionEntry->currentOperChannel;
 
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_HT_INFO_FIELD1, nCfgValue );
@@ -1201,12 +1002,8 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
         pHTInfoField1->recommendedTxWidthSet      = psessionEntry->htRecommendedTxWidthSet;
     }
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(psessionEntry->limSystemRole == eLIM_AP_ROLE ){
-=======
-    if((psessionEntry) && (psessionEntry->limSystemRole == eLIM_AP_ROLE)){
->>>>>>> d97af3b... add prima wlan driver
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_HT_INFO_FIELD2, nCfgValue );
 
     uHTInfoField2.nCfgValue16 = nCfgValue & 0xFFFF; // this is added for fixing CRs on MDM9K platform - 257951, 259577
@@ -1218,10 +1015,7 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     uHTInfoField2.infoField2.reserved = 0;
 
    }else{
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
         CFG_GET_INT( nSirStatus, pMac, WNI_CFG_HT_INFO_FIELD2, nCfgValue );
 
         htInfoField2 = ( tANI_U16 ) nCfgValue;
@@ -1232,21 +1026,14 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
         pHTInfoField2->obssNonHTStaPresent = pMac->lim.gHTObssMode;   /*added for Obss  */
 
         pHTInfoField2->reserved = 0;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     }
 #endif
-=======
-    }
->>>>>>> d97af3b... add prima wlan driver
 
     CFG_GET_INT( nSirStatus, pMac, WNI_CFG_HT_INFO_FIELD3, nCfgValue );
 
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
->>>>>>> d97af3b... add prima wlan driver
     uHTInfoField.nCfgValue16 = nCfgValue & 0xFFFF;
 
 
@@ -1258,7 +1045,6 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     uHTInfoField.infoField3.pcoPhase                      = pMac->lim.gHTPCOPhase;
     uHTInfoField.infoField3.reserved                      = 0;
 
-<<<<<<< HEAD
 #else
     htInfoField3 = (tANI_U16) nCfgValue;
 
@@ -1271,8 +1057,6 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     pHTInfoField3->pcoPhase                      = pMac->lim.gHTPCOPhase;
     pHTInfoField3->reserved                      = 0;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     pDot11f->secondaryChannelOffset        = pHTInfoField1->secondaryChannelOffset;
     pDot11f->recommendedTxWidthSet         = pHTInfoField1->recommendedTxWidthSet;
@@ -1280,16 +1064,12 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     pDot11f->controlledAccessOnly          = pHTInfoField1->controlledAccessOnly;
     pDot11f->serviceIntervalGranularity    = pHTInfoField1->serviceIntervalGranularity;
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->opMode                        = uHTInfoField2.infoField2.opMode;
     pDot11f->nonGFDevicesPresent           = uHTInfoField2.infoField2.nonGFDevicesPresent;
     pDot11f->obssNonHTStaPresent           = uHTInfoField2.infoField2.obssNonHTStaPresent;
     pDot11f->reserved                      = uHTInfoField2.infoField2.reserved;
 
-<<<<<<< HEAD
 #else
     pDot11f->opMode                        = pHTInfoField2->opMode;
     pDot11f->nonGFDevicesPresent           = pHTInfoField2->nonGFDevicesPresent;
@@ -1298,9 +1078,6 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE  // this is added for fixing CRs on MDM9K platform - 257951, 259577
-=======
-
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->basicSTBCMCS                  = uHTInfoField.infoField3.basicSTBCMCS;
     pDot11f->dualCTSProtection             = uHTInfoField.infoField3.dualCTSProtection;
     pDot11f->secondaryBeacon               = uHTInfoField.infoField3.secondaryBeacon;
@@ -1308,7 +1085,6 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     pDot11f->pcoActive                     = uHTInfoField.infoField3.pcoActive;
     pDot11f->pcoPhase                      = uHTInfoField.infoField3.pcoPhase;
     pDot11f->reserved2                     = uHTInfoField.infoField3.reserved;
-<<<<<<< HEAD
 #else
     pDot11f->basicSTBCMCS                  = pHTInfoField3->basicSTBCMCS;
     pDot11f->dualCTSProtection             = pHTInfoField3->dualCTSProtection;
@@ -1318,8 +1094,6 @@ PopulateDot11fHTInfo(tpAniSirGlobal   pMac,
     pDot11f->pcoPhase                      = pHTInfoField3->pcoPhase;
     pDot11f->reserved2                     = pHTInfoField3->reserved;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
     CFG_GET_STR( nSirStatus, pMac, WNI_CFG_BASIC_MCS_SET,
                  pDot11f->basicMCSSet, nCfgLen,
                  SIZE_OF_BASIC_MCS_SET );
@@ -1413,11 +1187,7 @@ PopulateDot11fPowerCaps(tpAniSirGlobal      pMac,
         pCaps->maxTxPower = psessionEntry->pLimJoinReq->powerCap.maxTxPower;
 
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     pCaps->present    = 1;
 } // End PopulateDot11fPowerCaps.
 
@@ -1454,15 +1224,9 @@ PopulateDot11fQOSCapsStation(tpAniSirGlobal    pMac,
 {
     tANI_U32  val = 0;
 
-<<<<<<< HEAD
     if(wlan_cfgGetInt(pMac, WNI_CFG_MAX_SP_LENGTH, &val) != eSIR_SUCCESS)
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve Max SP Length \n"));)
 
-=======
-    if(wlan_cfgGetInt(pMac, WNI_CFG_MAX_SP_LENGTH, &val) != eSIR_SUCCESS) 
-        PELOGE(limLog(pMac, LOGE, FL("could not retrieve Max SP Length \n"));)
-   
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->more_data_ack = 0;
     pDot11f->max_sp_length = (tANI_U8)val;
     pDot11f->qack    = 0;
@@ -1473,11 +1237,7 @@ PopulateDot11fQOSCapsStation(tpAniSirGlobal    pMac,
         pDot11f->acbk_uapsd = LIM_UAPSD_GET(ACBK, pMac->lim.gUapsdPerAcBitmask);
         pDot11f->acvi_uapsd = LIM_UAPSD_GET(ACVI, pMac->lim.gUapsdPerAcBitmask);
         pDot11f->acvo_uapsd = LIM_UAPSD_GET(ACVO, pMac->lim.gUapsdPerAcBitmask);
-<<<<<<< HEAD
     }
-=======
-    }   
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->present = 1;
 } // End PopulatedDot11fQOSCaps.
 
@@ -1525,11 +1285,7 @@ tSirRetStatus PopulateDot11fRSNOpaque( tpAniSirGlobal      pMac,
         {
             pDot11f->present  = 1;
             pDot11f->num_data = pRsnIe->rsnIEdata[ idx + 1 ];
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, pDot11f->data,
-=======
-            vos_mem_copy(  pDot11f->data,
->>>>>>> d97af3b... add prima wlan driver
                            pRsnIe->rsnIEdata + idx + 2,    // EID, len
                            pRsnIe->rsnIEdata[ idx + 1 ] );
         }
@@ -1585,11 +1341,7 @@ tSirRetStatus PopulateDot11fWAPIOpaque( tpAniSirGlobal      pMac,
         {
         pDot11f->present  = 1;
         pDot11f->num_data = pRsnIe->rsnIEdata[ idx + 1 ];
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pDot11f->data,
-=======
-        vos_mem_copy ( pDot11f->data,
->>>>>>> d97af3b... add prima wlan driver
                        pRsnIe->rsnIEdata + idx + 2,    // EID, len
                        pRsnIe->rsnIEdata[ idx + 1 ] );
     }
@@ -1611,11 +1363,7 @@ PopulateDot11fSSID(tpAniSirGlobal pMac,
     pDot11f->num_ssid = pInternal->length;
     if ( pInternal->length )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, ( tANI_U8* )pDot11f->ssid, ( tANI_U8* )&pInternal->ssId,
-=======
-        vos_mem_copy( ( tANI_U8* )pDot11f->ssid, ( tANI_U8* )&pInternal->ssId,
->>>>>>> d97af3b... add prima wlan driver
                        pInternal->length );
     }
 } // End PopulateDot11fSSID.
@@ -1699,11 +1447,7 @@ PopulateDot11fSuppRates(tpAniSirGlobal      pMac,
         if(psessionEntry != NULL)
         {
             nRates = psessionEntry->rateSet.numRates;
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, rates, psessionEntry->rateSet.rate,
-=======
-            vos_mem_copy( rates, psessionEntry->rateSet.rate,
->>>>>>> d97af3b... add prima wlan driver
                           nRates);
         }
         else
@@ -1726,11 +1470,7 @@ PopulateDot11fSuppRates(tpAniSirGlobal      pMac,
     if ( 0 != nRates )
     {
         pDot11f->num_rates = ( tANI_U8 )nRates;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pDot11f->rates, rates, nRates );
-=======
-        vos_mem_copy( pDot11f->rates, rates, nRates );
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->present   = 1;
     }
 
@@ -1836,15 +1576,9 @@ void PopulateDot11fReAssocTspec(tpAniSirGlobal pMac, tDot11fReAssocRequest *pRea
         }
     }
 }
-<<<<<<< HEAD
 #endif
 
 void PopulateDot11fWMMInfoAp(tpAniSirGlobal pMac, tDot11fIEWMMInfoAp *pInfo,
-=======
-#endif 
-
-void PopulateDot11fWMMInfoAp(tpAniSirGlobal pMac, tDot11fIEWMMInfoAp *pInfo, 
->>>>>>> d97af3b... add prima wlan driver
                              tpPESession psessionEntry)
 {
     pInfo->version = SIR_MAC_OUI_VERSION_1;
@@ -1860,18 +1594,12 @@ void PopulateDot11fWMMInfoAp(tpAniSirGlobal pMac, tDot11fIEWMMInfoAp *pInfo,
     else
     {
         pInfo->param_set_count = ( 0xf & psessionEntry->gLimEdcaParamSetCount );
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
         if(psessionEntry->limSystemRole == eLIM_AP_ROLE ){
             pInfo->uapsd = ( 0x1 & psessionEntry->apUapsdEnable );
         }
         else
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
             pInfo->uapsd = ( 0x1 & pMac->lim.gUapsdEnable );
     }
     pInfo->present = 1;
@@ -1887,18 +1615,13 @@ void PopulateDot11fWMMInfoStation(tpAniSirGlobal pMac, tDot11fIEWMMInfoStation *
     pInfo->acbk_uapsd = LIM_UAPSD_GET(ACBK, pMac->lim.gUapsdPerAcBitmask);
     pInfo->acbe_uapsd = LIM_UAPSD_GET(ACBE, pMac->lim.gUapsdPerAcBitmask);
 
-<<<<<<< HEAD
     if(wlan_cfgGetInt(pMac, WNI_CFG_MAX_SP_LENGTH, &val) != eSIR_SUCCESS)
-=======
-    if(wlan_cfgGetInt(pMac, WNI_CFG_MAX_SP_LENGTH, &val) != eSIR_SUCCESS) 
->>>>>>> d97af3b... add prima wlan driver
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve Max SP Length \n"));)
 
     pInfo->max_sp_length = (tANI_U8)val;
     pInfo->present = 1;
 }
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
                              tDot11fIEWMMParams *pParams,
@@ -1916,18 +1639,6 @@ void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
            (psessionEntry->apUapsdEnable << 7) | ((tANI_U8)(0x0f & psessionEntry->gLimEdcaParamSetCount));
     else
 #endif
-=======
-void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
-                             tDot11fIEWMMParams *pParams,
-                             tpPESession        psessionEntry)
-{
-    pParams->version = SIR_MAC_OUI_VERSION_1;
-
-    if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
-       pParams->qosInfo =
-           (psessionEntry->apUapsdEnable << 7) | ((tANI_U8)(0x0f & psessionEntry->gLimEdcaParamSetCount));
-    else 
->>>>>>> d97af3b... add prima wlan driver
        pParams->qosInfo =
            (pMac->lim.gUapsdEnable << 7) | ((tANI_U8)(0x0f & psessionEntry->gLimEdcaParamSetCount));
 
@@ -1946,17 +1657,11 @@ void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
     pParams->acbk_acwmax    = ( 0xf & psessionEntry->gLimEdcaParamsBC[1].cw.max );
     pParams->acbk_txoplimit = psessionEntry->gLimEdcaParamsBC[1].txoplimit;
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(psessionEntry->limSystemRole == eLIM_AP_ROLE )
         pParams->acvi_aifsn     = ( 0xf & psessionEntry->gLimEdcaParamsBC[2].aci.aifsn );
     else
 #endif
-=======
-    if(psessionEntry->limSystemRole == eLIM_AP_ROLE )
-        pParams->acvi_aifsn     = ( 0xf & psessionEntry->gLimEdcaParamsBC[2].aci.aifsn );
-    else
->>>>>>> d97af3b... add prima wlan driver
         pParams->acvi_aifsn     = ( 0xf & SET_AIFSN(psessionEntry->gLimEdcaParamsBC[2].aci.aifsn) );
 
 
@@ -1967,17 +1672,11 @@ void PopulateDot11fWMMParams(tpAniSirGlobal      pMac,
     pParams->acvi_acwmax    = ( 0xf & psessionEntry->gLimEdcaParamsBC[2].cw.max );
     pParams->acvi_txoplimit = psessionEntry->gLimEdcaParamsBC[2].txoplimit;
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(psessionEntry->limSystemRole == eLIM_AP_ROLE )
         pParams->acvo_aifsn     = ( 0xf & psessionEntry->gLimEdcaParamsBC[3].aci.aifsn );
     else
 #endif
-=======
-    if(psessionEntry->limSystemRole == eLIM_AP_ROLE )
-        pParams->acvo_aifsn     = ( 0xf & psessionEntry->gLimEdcaParamsBC[3].aci.aifsn );
-    else
->>>>>>> d97af3b... add prima wlan driver
         pParams->acvo_aifsn     = ( 0xf & SET_AIFSN(psessionEntry->gLimEdcaParamsBC[3].aci.aifsn) );
 
     pParams->acvo_acm       = ( 0x1 & psessionEntry->gLimEdcaParamsBC[3].aci.acm );
@@ -2049,11 +1748,7 @@ tSirRetStatus PopulateDot11fWPAOpaque( tpAniSirGlobal      pMac,
         {
         pDot11f->present  = 1;
         pDot11f->num_data = pRsnIe->rsnIEdata[ idx + 1 ] - 4;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pDot11f->data,
-=======
-        vos_mem_copy(  pDot11f->data,
->>>>>>> d97af3b... add prima wlan driver
                        pRsnIe->rsnIEdata + idx + 2 + 4,    // EID, len, OUI
                        pRsnIe->rsnIEdata[ idx + 1 ] - 4 ); // OUI
     }
@@ -2099,11 +1794,7 @@ sirConvertProbeReqFrame2Struct(tpAniSirGlobal  pMac,
     tDot11fProbeRequest pr;
 
     // Ok, zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (tANI_U8*)pProbeReq, sizeof(tSirProbeReq));
-=======
-    vos_mem_set( (tANI_U8*)pProbeReq, sizeof(tSirProbeReq), 0);
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackProbeRequest(pMac, pFrame, nFrame, &pr);
@@ -2151,11 +1842,7 @@ sirConvertProbeReqFrame2Struct(tpAniSirGlobal  pMac,
 
     if ( pr.HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeReq->HTCaps, &pr.HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pProbeReq->HTCaps, &pr.HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pr.WscProbeReq.present )
@@ -2166,11 +1853,7 @@ sirConvertProbeReqFrame2Struct(tpAniSirGlobal  pMac,
 #ifdef WLAN_FEATURE_11AC
     if ( pr.VHTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeReq->VHTCaps, &pr.VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-=======
-        vos_mem_copy( &pProbeReq->VHTCaps, &pr.VHTCaps, sizeof( tDot11fIEVHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -2193,31 +1876,16 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
     tDot11fProbeResponse *pr;
 
     // Ok, zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pProbeResp, sizeof(tSirProbeRespBeacon) );
 
     status = palAllocateMemory(pMac->hHdd, (void **)&pr, sizeof(tDot11fProbeResponse));
     if(!HAL_STATUS_SUCCESS(status))
-=======
-    vos_mem_set( ( tANI_U8* )pProbeResp, sizeof(tSirProbeRespBeacon), 0 );
-
-    pr = vos_mem_malloc(sizeof(tDot11fProbeResponse));
-    if ( NULL == pr )
-        status = eHAL_STATUS_FAILURE;
-    else
-        status = eHAL_STATUS_SUCCESS;
-    if (!HAL_STATUS_SUCCESS(status))
->>>>>>> d97af3b... add prima wlan driver
     {
         limLog(pMac, LOGE, FL("Failed to allocate memory\n") );
         return eSIR_FAILURE;
     }
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pr, sizeof(tDot11fProbeResponse) );
-=======
-    vos_mem_set( ( tANI_U8* )pr, sizeof(tDot11fProbeResponse), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackProbeResponse( pMac, pFrame, nFrame, pr );
@@ -2226,11 +1894,7 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
         limLog(pMac, LOGE, FL("Failed to parse a Probe Response (0x%08x, %d bytes):\n"),
                   status, nFrame);
         PELOG2(sirDumpBuf(pMac, SIR_DBG_MODULE_ID, LOG2, pFrame, nFrame);)
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pr);
-=======
-        vos_mem_free(pr);
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
     else if ( DOT11F_WARNED( status ) )
@@ -2243,12 +1907,7 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
     // & "transliterate" from a 'tDot11fProbeResponse' to a 'tSirProbeRespBeacon'...
 
     // Timestamp
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )pProbeResp->timeStamp, ( tANI_U8* )&pr->TimeStamp, sizeof(tSirMacTimeStamp) );
-=======
-    vos_mem_copy( ( tANI_U8* )pProbeResp->timeStamp, ( tANI_U8* )&pr->TimeStamp,
-                  sizeof(tSirMacTimeStamp) );
->>>>>>> d97af3b... add prima wlan driver
 
     // Beacon Interval
     pProbeResp->beaconInterval = pr->BeaconInterval.interval;
@@ -2319,72 +1978,43 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
     if ( pr->ChanSwitchAnn.present )
     {
         pProbeResp->channelSwitchPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeResp->channelSwitchIE, &pr->ChanSwitchAnn,
-=======
-        vos_mem_copy( &pProbeResp->channelSwitchIE, &pr->ChanSwitchAnn,
->>>>>>> d97af3b... add prima wlan driver
                        sizeof(tDot11fIEExtChanSwitchAnn) );
     }
 
        if ( pr->ExtChanSwitchAnn.present )
     {
         pProbeResp->extChannelSwitchPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeResp->extChannelSwitchIE, &pr->ExtChanSwitchAnn,
-=======
-        vos_mem_copy ( &pProbeResp->extChannelSwitchIE, &pr->ExtChanSwitchAnn,
->>>>>>> d97af3b... add prima wlan driver
                        sizeof(tDot11fIEExtChanSwitchAnn) );
     }
 
     if( pr->TPCReport.present)
     {
         pProbeResp->tpcReportPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pProbeResp->tpcReport, &pr->TPCReport, sizeof(tDot11fIETPCReport));
-=======
-        vos_mem_copy( &pProbeResp->tpcReport, &pr->TPCReport, sizeof(tDot11fIETPCReport));
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if( pr->PowerConstraints.present)
     {
         pProbeResp->powerConstraintPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pProbeResp->localPowerConstraint, &pr->PowerConstraints, sizeof(tDot11fIEPowerConstraints));
-=======
-        vos_mem_copy( &pProbeResp->localPowerConstraint, &pr->PowerConstraints,
-                      sizeof(tDot11fIEPowerConstraints));
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pr->Quiet.present )
     {
         pProbeResp->quietIEPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeResp->quietIE, &pr->Quiet, sizeof(tDot11fIEQuiet) );
-=======
-        vos_mem_copy( &pProbeResp->quietIE, &pr->Quiet, sizeof(tDot11fIEQuiet) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pr->HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeResp->HTCaps, &pr->HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pProbeResp->HTCaps, &pr->HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pr->HTInfo.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pProbeResp->HTInfo, &pr->HTInfo, sizeof( tDot11fIEHTInfo ) );
-=======
-        vos_mem_copy( &pProbeResp->HTInfo, &pr->HTInfo, sizeof( tDot11fIEHTInfo ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pr->DSParams.present )
@@ -2397,17 +2027,10 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
         pProbeResp->channelNumber = pr->HTInfo.primaryChannel;
     }
 
-<<<<<<< HEAD
     if ( pr->RSN.present )
     {
         pProbeResp->rsnPresent = 1;
         ConvertRSN( pMac, &pProbeResp->rsn, &pr->RSN );
-=======
-    if ( pr->RSNOpaque.present )
-    {
-        pProbeResp->rsnPresent = 1;
-        ConvertRSNOpaque( pMac, &pProbeResp->rsn, &pr->RSNOpaque );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pr->WPA.present )
@@ -2447,12 +2070,7 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
     {
         // MobilityDomain
         pProbeResp->mdiePresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (tANI_U8 *)&(pProbeResp->mdie[0]), (tANI_U8 *)&(pr->MobilityDomain.MDID), sizeof(tANI_U16) );
-=======
-        vos_mem_copy( (tANI_U8 *)&(pProbeResp->mdie[0]), (tANI_U8 *)&(pr->MobilityDomain.MDID),
-                       sizeof(tANI_U16) );
->>>>>>> d97af3b... add prima wlan driver
         pProbeResp->mdie[2] = ((pr->MobilityDomain.overDSCap << 0) | (pr->MobilityDomain.resourceReqCap << 1));
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
         limLog(pMac, LOG2, FL("mdie=%02x%02x%02x\n"), (unsigned int)pProbeResp->mdie[0],
@@ -2464,7 +2082,6 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
 #if defined FEATURE_WLAN_CCX
     if (pr->QBSSLoad.present)
     {
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pProbeResp->QBSSLoad, &pr->QBSSLoad, sizeof(tDot11fIEQBSSLoad));
     }
 #endif
@@ -2490,31 +2107,6 @@ tSirRetStatus sirConvertProbeFrame2Struct(tpAniSirGlobal       pMac,
     }
 #endif
     palFreeMemory(pMac->hHdd, pr);
-=======
-        vos_mem_copy(&pProbeResp->QBSSLoad, &pr->QBSSLoad, sizeof(tDot11fIEQBSSLoad));
-    }
-#endif
-    if (pr->P2PProbeRes.present)
-    {
-       vos_mem_copy( &pProbeResp->P2PProbeRes, &pr->P2PProbeRes,
-                                                sizeof(tDot11fIEP2PProbeRes) );
-    }
-#ifdef WLAN_FEATURE_11AC
-    if ( pr->VHTCaps.present )
-    {
-       vos_mem_copy( &pProbeResp->VHTCaps, &pr->VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-    }
-    if ( pr->VHTOperation.present )
-    {
-        vos_mem_copy( &pProbeResp->VHTOperation, &pr->VHTOperation, sizeof( tDot11fIEVHTOperation) );
-    }
-    if ( pr->VHTExtBssLoad.present )
-    {
-        vos_mem_copy( &pProbeResp->VHTExtBssLoad, &pr->VHTExtBssLoad, sizeof( tDot11fIEVHTExtBssLoad) );
-    }
-#endif
-    vos_mem_free(pr);
->>>>>>> d97af3b... add prima wlan driver
     return eSIR_SUCCESS;
 
 } // End sirConvertProbeFrame2Struct.
@@ -2528,29 +2120,15 @@ sirConvertAssocReqFrame2Struct(tpAniSirGlobal pMac,
     tDot11fAssocRequest *ar;
     tANI_U32                 status;
 
-<<<<<<< HEAD
     status = palAllocateMemory(pMac->hHdd, (void **)&ar, sizeof(tDot11fAssocRequest));
     if(!HAL_STATUS_SUCCESS(status))
-=======
-    ar = vos_mem_malloc(sizeof(tDot11fAssocRequest));
-    if ( NULL == ar )
-        status = eHAL_STATUS_FAILURE;
-    else
-        status = eHAL_STATUS_SUCCESS;
-    if (!HAL_STATUS_SUCCESS(status))
->>>>>>> d97af3b... add prima wlan driver
     {
         limLog(pMac, LOGE, FL("Failed to allocate memory\n") );
         return eSIR_FAILURE;
     }
         // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pAssocReq, sizeof(tSirAssocReq) );
     palZeroMemory( pMac->hHdd, ( tANI_U8* )ar, sizeof( tDot11fAssocRequest ) );
-=======
-    vos_mem_set( ( tANI_U8* )pAssocReq, sizeof(tSirAssocReq), 0 );
-    vos_mem_set( ( tANI_U8* )ar, sizeof( tDot11fAssocRequest ), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackAssocRequest( pMac, pFrame, nFrame, ar );
@@ -2559,11 +2137,7 @@ sirConvertAssocReqFrame2Struct(tpAniSirGlobal pMac,
         limLog(pMac, LOGE, FL("Failed to parse an Association Request (0x%08x, %d bytes):\n"),
                   status, nFrame);
         PELOG2(sirDumpBuf(pMac, SIR_DBG_MODULE_ID, LOG2, pFrame, nFrame);)
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, ar);
-=======
-        vos_mem_free(ar);
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
     else if ( DOT11F_WARNED( status ) )
@@ -2647,23 +2221,15 @@ sirConvertAssocReqFrame2Struct(tpAniSirGlobal pMac,
         pAssocReq->addIEPresent = 1;
         ConvertWscOpaque(pMac, &pAssocReq->addIE, &ar->WscIEOpaque);
     }
-<<<<<<< HEAD
 
 
 #ifdef WLAN_FEATURE_P2P
-=======
-    
-
->>>>>>> d97af3b... add prima wlan driver
     if(ar->P2PIEOpaque.present)
     {
         pAssocReq->addIEPresent = 1;
         ConvertP2POpaque( pMac, &pAssocReq->addIE, &ar->P2PIEOpaque);
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_FEATURE_WFD
     if(ar->WFDIEOpaque.present)
     {
@@ -2688,24 +2254,15 @@ sirConvertAssocReqFrame2Struct(tpAniSirGlobal pMac,
 
     if ( ar->HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocReq->HTCaps, &ar->HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pAssocReq->HTCaps, &ar->HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( ar->WMMInfoStation.present )
     {
         pAssocReq->wmeInfoPresent = 1;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         palCopyMemory( pMac, &pAssocReq->WMMInfoStation, &ar->WMMInfoStation, sizeof( tDot11fIEWMMInfoStation ) );
 #endif
-=======
-        vos_mem_copy( &pAssocReq->WMMInfoStation, &ar->WMMInfoStation,
-                      sizeof( tDot11fIEWMMInfoStation ) );
->>>>>>> d97af3b... add prima wlan driver
 
     }
 
@@ -2715,49 +2272,26 @@ sirConvertAssocReqFrame2Struct(tpAniSirGlobal pMac,
     if ( ! pAssocReq->ssidPresent )
     {
         PELOG2(limLog(pMac, LOG2, FL("Received Assoc without SSID IE.\n"));)
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, ar);
-=======
-        vos_mem_free(ar);
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
 
     if ( !pAssocReq->suppRatesPresent && !pAssocReq->extendedRatesPresent )
     {
         PELOG2(limLog(pMac, LOG2, FL("Received Assoc without supp rate IE.\n"));)
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, ar);
-=======
-        vos_mem_free(ar);
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
 
 #ifdef WLAN_FEATURE_11AC
     if ( ar->VHTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocReq->VHTCaps, &ar->VHTCaps, sizeof( tDot11fIEVHTCaps ) );
         limLog( pMac, LOGW, FL("Received Assoc Req with VHT Cap\n"));
         limLogVHTCap( pMac, &pAssocReq->VHTCaps);
     }
 #endif
     palFreeMemory(pMac->hHdd, ar);
-=======
-        vos_mem_copy( &pAssocReq->VHTCaps, &ar->VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-        limLog( pMac, LOGW, FL("Received Assoc Req with VHT Cap\n"));
-        limLogVHTCap( pMac, &pAssocReq->VHTCaps);
-    }
-    if ( ar->OperatingMode.present )
-    {
-        vos_mem_copy( &pAssocReq->operMode, &ar->OperatingMode, sizeof (tDot11fIEOperatingMode));
-        limLog( pMac, LOGW, FL("Received Assoc Req with Operating Mode IE\n"));
-        limLogOperatingMode( pMac, &pAssocReq->operMode);
-    }
-#endif
-    vos_mem_free(ar);
->>>>>>> d97af3b... add prima wlan driver
     return eSIR_SUCCESS;
 
 } // End sirConvertAssocReqFrame2Struct.
@@ -2773,11 +2307,7 @@ sirConvertAssocRespFrame2Struct(tpAniSirGlobal pMac,
     tANI_U8  cnt =0;
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pAssocRsp, sizeof(tSirAssocRsp) );
-=======
-    vos_mem_set( ( tANI_U8* )pAssocRsp, sizeof(tSirAssocRsp), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackAssocResponse( pMac, pFrame, nFrame, &ar);
@@ -2852,20 +2382,12 @@ sirConvertAssocRespFrame2Struct(tpAniSirGlobal pMac,
 
     if ( ar.HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocRsp->HTCaps, &ar.HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pAssocRsp->HTCaps, &ar.HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( ar.HTInfo.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocRsp->HTInfo, &ar.HTInfo, sizeof( tDot11fIEHTInfo ) );
-=======
-        vos_mem_copy( &pAssocRsp->HTInfo, &ar.HTInfo, sizeof( tDot11fIEHTInfo ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -2873,12 +2395,7 @@ sirConvertAssocRespFrame2Struct(tpAniSirGlobal pMac,
     {
         // MobilityDomain
         pAssocRsp->mdiePresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (tANI_U8 *)&(pAssocRsp->mdie[0]), (tANI_U8 *)&(ar.MobilityDomain.MDID), sizeof(tANI_U16) );
-=======
-        vos_mem_copy( (tANI_U8 *)&(pAssocRsp->mdie[0]), (tANI_U8 *)&(ar.MobilityDomain.MDID),
-                       sizeof(tANI_U16) );
->>>>>>> d97af3b... add prima wlan driver
         pAssocRsp->mdie[2] = ((ar.MobilityDomain.overDSCap << 0) | (ar.MobilityDomain.resourceReqCap << 1));
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
         limLog(pMac, LOG1, FL("new mdie=%02x%02x%02x"), (unsigned int)pAssocRsp->mdie[0],
@@ -2894,11 +2411,7 @@ sirConvertAssocRespFrame2Struct(tpAniSirGlobal pMac,
                 ar.FTInfo.R1KH_ID.present);
 #endif
         pAssocRsp->ftinfoPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocRsp->FTInfo, &ar.FTInfo, sizeof(tDot11fIEFTInfo) );
-=======
-        vos_mem_copy( &pAssocRsp->FTInfo, &ar.FTInfo, sizeof(tDot11fIEFTInfo) );
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -2906,28 +2419,18 @@ sirConvertAssocRespFrame2Struct(tpAniSirGlobal pMac,
     if (ar.num_RICDataDesc) {
         for (cnt=0; cnt < ar.num_RICDataDesc; cnt++) {
             if (ar.RICDataDesc[cnt].present) {
-<<<<<<< HEAD
                 palCopyMemory(pMac, &pAssocRsp->RICData[cnt], &ar.RICDataDesc[cnt], sizeof(tDot11fIERICDataDesc));
-=======
-                vos_mem_copy( &pAssocRsp->RICData[cnt], &ar.RICDataDesc[cnt],
-                              sizeof(tDot11fIERICDataDesc));
->>>>>>> d97af3b... add prima wlan driver
             }
         }
         pAssocRsp->num_RICData = ar.num_RICDataDesc;
         pAssocRsp->ricPresent = TRUE;
     }
-<<<<<<< HEAD
 #endif
-=======
-#endif    
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef FEATURE_WLAN_CCX
     if (ar.num_WMMTSPEC) {
         pAssocRsp->num_tspecs = ar.num_WMMTSPEC;
         for (cnt=0; cnt < ar.num_WMMTSPEC; cnt++) {
-<<<<<<< HEAD
             palCopyMemory(pMac, &pAssocRsp->TSPECInfo[cnt], &ar.WMMTSPEC[cnt], (sizeof(tDot11fIEWMMTSPEC)*ar.num_WMMTSPEC));
         }
         pAssocRsp->tspecPresent = TRUE;
@@ -2939,40 +2442,18 @@ sirConvertAssocRespFrame2Struct(tpAniSirGlobal pMac,
         palCopyMemory(pMac->hHdd,&pAssocRsp->tsmIE.tsid,
                 &ar.CCXTrafStrmMet.tsid,sizeof(tSirMacCCXTSMIE));
     }
-=======
-            vos_mem_copy( &pAssocRsp->TSPECInfo[cnt], &ar.WMMTSPEC[cnt],
-                          (sizeof(tDot11fIEWMMTSPEC)*ar.num_WMMTSPEC));
-        }
-        pAssocRsp->tspecPresent = TRUE;
-    }
-   
-    if(ar.CCXTrafStrmMet.present)
-    {
-        pAssocRsp->tsmPresent = 1;
-        vos_mem_copy(&pAssocRsp->tsmIE.tsid,
-                &ar.CCXTrafStrmMet.tsid,sizeof(tSirMacCCXTSMIE));
-    }    
->>>>>>> d97af3b... add prima wlan driver
 #endif
 
 #ifdef WLAN_FEATURE_11AC
     if ( ar.VHTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocRsp->VHTCaps, &ar.VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-=======
-        vos_mem_copy( &pAssocRsp->VHTCaps, &ar.VHTCaps, sizeof( tDot11fIEVHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
         limLog( pMac, LOG1, FL("Received Assoc Response with VHT Cap"));
         limLogVHTCap(pMac, &pAssocRsp->VHTCaps);
     }
     if ( ar.VHTOperation.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocRsp->VHTOperation, &ar.VHTOperation, sizeof( tDot11fIEVHTOperation) );
-=======
-        vos_mem_copy( &pAssocRsp->VHTOperation, &ar.VHTOperation, sizeof( tDot11fIEVHTOperation) );
->>>>>>> d97af3b... add prima wlan driver
         limLog( pMac, LOG1, FL("Received Assoc Response with VHT Operation"));
         limLogVHTOperation(pMac, &pAssocRsp->VHTOperation);
     }
@@ -2992,11 +2473,7 @@ sirConvertReassocReqFrame2Struct(tpAniSirGlobal pMac,
     tANI_U32                   status;
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pAssocReq, sizeof(tSirAssocReq) );
-=======
-    vos_mem_set( ( tANI_U8* )pAssocReq, sizeof(tSirAssocReq), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackReAssocRequest( pMac, pFrame, nFrame, &ar );
@@ -3100,24 +2577,15 @@ sirConvertReassocReqFrame2Struct(tpAniSirGlobal pMac,
 
     if ( ar.HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocReq->HTCaps, &ar.HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pAssocReq->HTCaps, &ar.HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( ar.WMMInfoStation.present )
     {
         pAssocReq->wmeInfoPresent = 1;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         palCopyMemory( pMac, &pAssocReq->WMMInfoStation, &ar.WMMInfoStation, sizeof( tDot11fIEWMMInfoStation ) );
 #endif
-=======
-        vos_mem_copy( &pAssocReq->WMMInfoStation, &ar.WMMInfoStation,
-                      sizeof( tDot11fIEWMMInfoStation ) );
->>>>>>> d97af3b... add prima wlan driver
 
     }
 
@@ -3139,30 +2607,19 @@ sirConvertReassocReqFrame2Struct(tpAniSirGlobal pMac,
     // there is in 'sirConvertAssocReqFrame2Struct'?
 
     // WSC IE
-<<<<<<< HEAD
     if (ar.WscIEOpaque.present)
-=======
-    if (ar.WscIEOpaque.present) 
->>>>>>> d97af3b... add prima wlan driver
     {
         pAssocReq->addIEPresent = 1;
         ConvertWscOpaque(pMac, &pAssocReq->addIE, &ar.WscIEOpaque);
     }
-<<<<<<< HEAD
 
 #ifdef WLAN_FEATURE_P2P
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     if(ar.P2PIEOpaque.present)
     {
         pAssocReq->addIEPresent = 1;
         ConvertP2POpaque( pMac, &pAssocReq->addIE, &ar.P2PIEOpaque);
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WLAN_FEATURE_WFD
     if(ar.WFDIEOpaque.present)
@@ -3175,17 +2632,7 @@ sirConvertReassocReqFrame2Struct(tpAniSirGlobal pMac,
 #ifdef WLAN_FEATURE_11AC
     if ( ar.VHTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pAssocReq->VHTCaps, &ar.VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-=======
-        vos_mem_copy( &pAssocReq->VHTCaps, &ar.VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-    }
-    if ( ar.OperatingMode.present )
-    {
-        vos_mem_copy( &pAssocReq->operMode, &ar.OperatingMode, sizeof( tDot11fIEOperatingMode  ) );
-        limLog( pMac, LOGW, FL("Received Assoc Req with Operating Mode IE\n"));
-        limLogOperatingMode( pMac, &pAssocReq->operMode);
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
     return eSIR_SUCCESS;
@@ -3202,21 +2649,10 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
     tANI_U32              status;
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pBeaconStruct, sizeof(tSirProbeRespBeacon) );
 
     status = palAllocateMemory(pMac->hHdd, (void **)&pBies, sizeof(tDot11fBeaconIEs));
     if(!HAL_STATUS_SUCCESS(status))
-=======
-    vos_mem_set( ( tANI_U8* )pBeaconStruct, sizeof(tSirProbeRespBeacon), 0 );
-
-    pBies = vos_mem_malloc(sizeof(tDot11fBeaconIEs));
-    if ( NULL == pBies )
-        status = eHAL_STATUS_FAILURE;
-    else
-        status = eHAL_STATUS_SUCCESS;
-    if (!HAL_STATUS_SUCCESS(status))
->>>>>>> d97af3b... add prima wlan driver
     {
         limLog(pMac, LOGE, FL("Failed to allocate memory\n") );
         return eSIR_FAILURE;
@@ -3229,11 +2665,7 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
         limLog(pMac, LOGE, FL("Failed to parse Beacon IEs (0x%08x, %d bytes):\n"),
                   status, nPayload);
         PELOG2(sirDumpBuf(pMac, SIR_DBG_MODULE_ID, LOG2, pPayload, nPayload);)
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pBies);
-=======
-        vos_mem_free(pBies);
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
     else if ( DOT11F_WARNED( status ) )
@@ -3292,12 +2724,8 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
     if(pBies->TPCReport.present)
     {
         pBeaconStruct->tpcReportPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac,
                       &pBeaconStruct->tpcReport,
-=======
-        vos_mem_copy( &pBeaconStruct->tpcReport,
->>>>>>> d97af3b... add prima wlan driver
                       &pBies->TPCReport,
                       sizeof( tDot11fIETPCReport));
     }
@@ -3305,12 +2733,8 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
     if(pBies->PowerConstraints.present)
     {
         pBeaconStruct->powerConstraintPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac,
                       &pBeaconStruct->localPowerConstraint,
-=======
-        vos_mem_copy( &pBeaconStruct->localPowerConstraint,
->>>>>>> d97af3b... add prima wlan driver
                       &pBies->PowerConstraints,
                       sizeof(tDot11fIEPowerConstraints));
     }
@@ -3322,11 +2746,7 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
     }
     if (pBies->QBSSLoad.present)
     {
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pBeaconStruct->QBSSLoad, &pBies->QBSSLoad, sizeof(tDot11fIEQBSSLoad));
-=======
-        vos_mem_copy( &pBeaconStruct->QBSSLoad, &pBies->QBSSLoad, sizeof(tDot11fIEQBSSLoad));
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -3348,51 +2768,31 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
     if ( pBies->ChanSwitchAnn.present )
     {
         pBeaconStruct->channelSwitchPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pBeaconStruct->channelSwitchIE, &pBies->ChanSwitchAnn,
-=======
-        vos_mem_copy( &pBeaconStruct->channelSwitchIE, &pBies->ChanSwitchAnn,
->>>>>>> d97af3b... add prima wlan driver
                       sizeof(tDot11fIEChanSwitchAnn));
     }
 
     if ( pBies->ExtChanSwitchAnn.present)
     {
         pBeaconStruct->extChannelSwitchPresent= 1;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pBeaconStruct->extChannelSwitchIE, &pBies->ExtChanSwitchAnn,
-=======
-        vos_mem_copy( &pBeaconStruct->extChannelSwitchIE, &pBies->ExtChanSwitchAnn,
->>>>>>> d97af3b... add prima wlan driver
                       sizeof(tDot11fIEExtChanSwitchAnn));
     }
 
     if ( pBies->Quiet.present )
     {
         pBeaconStruct->quietIEPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->quietIE, &pBies->Quiet, sizeof(tDot11fIEQuiet) );
-=======
-        vos_mem_copy( &pBeaconStruct->quietIE, &pBies->Quiet, sizeof(tDot11fIEQuiet) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pBies->HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->HTCaps, &pBies->HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pBeaconStruct->HTCaps, &pBies->HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pBies->HTInfo.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->HTInfo, &pBies->HTInfo, sizeof( tDot11fIEHTInfo ) );
-=======
-        vos_mem_copy( &pBeaconStruct->HTInfo, &pBies->HTInfo, sizeof( tDot11fIEHTInfo ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pBies->DSParams.present )
@@ -3404,11 +2804,7 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
     {
         pBeaconStruct->channelNumber = pBies->HTInfo.primaryChannel;
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     if ( pBies->RSN.present )
     {
         pBeaconStruct->rsnPresent = 1;
@@ -3447,46 +2843,21 @@ sirParseBeaconIE(tpAniSirGlobal        pMac,
 #ifdef WLAN_FEATURE_11AC
     if ( pBies->VHTCaps.present )
     {
-<<<<<<< HEAD
         pBeaconStruct->VHTCaps.present = 1;
         palCopyMemory( pMac, &pBeaconStruct->VHTCaps, &pBies->VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-=======
-         pBeaconStruct->VHTCaps.present = 1;
-         vos_mem_copy( &pBeaconStruct->VHTCaps, &pBies->VHTCaps, sizeof( tDot11fIEVHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
     if ( pBies->VHTOperation.present )
     {
          pBeaconStruct->VHTOperation.present = 1;
-<<<<<<< HEAD
          palCopyMemory( pMac, &pBeaconStruct->VHTOperation, &pBies->VHTOperation, sizeof( tDot11fIEVHTOperation) );
-=======
-         vos_mem_copy( &pBeaconStruct->VHTOperation, &pBies->VHTOperation,
-                       sizeof( tDot11fIEVHTOperation) );
->>>>>>> d97af3b... add prima wlan driver
     }
     if ( pBies->VHTExtBssLoad.present )
     {
          pBeaconStruct->VHTExtBssLoad.present = 1;
-<<<<<<< HEAD
          palCopyMemory( pMac, &pBeaconStruct->VHTExtBssLoad, &pBies->VHTExtBssLoad, sizeof( tDot11fIEVHTExtBssLoad) );
     }
 #endif
     palFreeMemory(pMac->hHdd, pBies);
-=======
-         vos_mem_copy( &pBeaconStruct->VHTExtBssLoad, &pBies->VHTExtBssLoad,
-                       sizeof( tDot11fIEVHTExtBssLoad) );
-    }
-    if( pBies->OperatingMode.present)
-    {
-        pBeaconStruct->OperatingMode.present = 1;
-        vos_mem_copy( &pBeaconStruct->OperatingMode, &pBies->OperatingMode,
-                      sizeof( tDot11fIEOperatingMode) );
-    }
-
-#endif
-    vos_mem_free(pBies);
->>>>>>> d97af3b... add prima wlan driver
 
 
     return eSIR_SUCCESS;
@@ -3503,51 +2874,26 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
     tANI_U8        *pPayload;
     tpSirMacMgmtHdr pHdr;
     tANI_U8         mappedRXCh;
-<<<<<<< HEAD
-=======
-    tANI_U8         rfBand;
->>>>>>> d97af3b... add prima wlan driver
 
     pPayload = WDA_GET_RX_MPDU_DATA( pFrame );
     nPayload = WDA_GET_RX_PAYLOAD_LEN( pFrame );
     pHdr     = WDA_GET_RX_MAC_HEADER( pFrame );
     mappedRXCh = WDA_GET_RX_CH( pFrame );
-<<<<<<< HEAD
 
     // Zero-init our [out] parameter,
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pBeaconStruct, sizeof(tSirProbeRespBeacon) );
 
     status = palAllocateMemory(pMac->hHdd, (void **)&pBeacon, sizeof(tDot11fBeacon));
     if(!HAL_STATUS_SUCCESS(status))
-=======
-    rfBand = WDA_GET_RX_RFBAND( pFrame );
-    
-    // Zero-init our [out] parameter,
-    vos_mem_set( ( tANI_U8* )pBeaconStruct, sizeof(tSirProbeRespBeacon), 0 );
-
-    pBeacon = vos_mem_malloc(sizeof(tDot11fBeacon));
-    if ( NULL == pBeacon )
-        status = eHAL_STATUS_FAILURE;
-    else
-        status = eHAL_STATUS_SUCCESS;
-    if (!HAL_STATUS_SUCCESS(status))
->>>>>>> d97af3b... add prima wlan driver
     {
         limLog(pMac, LOGE, FL("Failed to allocate memory\n") );
         return eSIR_FAILURE;
     }
 
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pBeacon, sizeof(tDot11fBeacon) );
 
     // get the MAC address out of the BD,
     palCopyMemory( pMac->hHdd, pBeaconStruct->bssid, pHdr->sa, 6 );
-=======
-    vos_mem_set( ( tANI_U8* )pBeacon, sizeof(tDot11fBeacon), 0 );
-
-    // get the MAC address out of the BD,
-    vos_mem_copy( pBeaconStruct->bssid, pHdr->sa, 6 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackBeacon( pMac, pPayload, nPayload, pBeacon );
@@ -3556,11 +2902,7 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
         limLog(pMac, LOGE, FL("Failed to parse Beacon IEs (0x%08x, %d bytes):\n"),
                   status, nPayload);
         PELOG2(sirDumpBuf(pMac, SIR_DBG_MODULE_ID, LOG2, pPayload, nPayload);)
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pBeacon);
-=======
-        vos_mem_free(pBeacon);
->>>>>>> d97af3b... add prima wlan driver
         return eSIR_FAILURE;
     }
     else if ( DOT11F_WARNED( status ) )
@@ -3572,12 +2914,7 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
 
     // & "transliterate" from a 'tDot11fBeacon' to a 'tSirProbeRespBeacon'...
     // Timestamp
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )pBeaconStruct->timeStamp, ( tANI_U8* )&pBeacon->TimeStamp, sizeof(tSirMacTimeStamp) );
-=======
-    vos_mem_copy( ( tANI_U8* )pBeaconStruct->timeStamp, ( tANI_U8* )&pBeacon->TimeStamp,
-                   sizeof(tSirMacTimeStamp) );
->>>>>>> d97af3b... add prima wlan driver
 
     // Beacon Interval
     pBeaconStruct->beaconInterval = pBeacon->BeaconInterval.interval;
@@ -3599,11 +2936,7 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
     pBeaconStruct->capabilityInfo.dsssOfdm      = pBeacon->Capabilities.dsssOfdm;
     pBeaconStruct->capabilityInfo.delayedBA     = pBeacon->Capabilities.delayedBA;
     pBeaconStruct->capabilityInfo.immediateBA    = pBeacon->Capabilities.immediateBA;
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> d97af3b... add prima wlan driver
     if ( ! pBeacon->SSID.present )
     {
         PELOGW(limLog(pMac, LOGW, FL("Mandatory IE SSID not present!\n"));)
@@ -3665,73 +2998,45 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
     if ( pBeacon->ChanSwitchAnn.present )
     {
         pBeaconStruct->channelSwitchPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->channelSwitchIE, &pBeacon->ChanSwitchAnn,
-=======
-        vos_mem_copy( &pBeaconStruct->channelSwitchIE, &pBeacon->ChanSwitchAnn,
->>>>>>> d97af3b... add prima wlan driver
                                                        sizeof(tDot11fIEChanSwitchAnn) );
     }
 
     if ( pBeacon->ExtChanSwitchAnn.present )
     {
         pBeaconStruct->extChannelSwitchPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->extChannelSwitchIE, &pBeacon->ExtChanSwitchAnn,
-=======
-        vos_mem_copy( &pBeaconStruct->extChannelSwitchIE, &pBeacon->ExtChanSwitchAnn,
->>>>>>> d97af3b... add prima wlan driver
                                                        sizeof(tDot11fIEExtChanSwitchAnn) );
     }
 
     if( pBeacon->TPCReport.present)
     {
         pBeaconStruct->tpcReportPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pBeaconStruct->tpcReport, &pBeacon->TPCReport,
-=======
-        vos_mem_copy( &pBeaconStruct->tpcReport, &pBeacon->TPCReport,
->>>>>>> d97af3b... add prima wlan driver
                                                      sizeof(tDot11fIETPCReport));
     }
 
     if( pBeacon->PowerConstraints.present)
     {
         pBeaconStruct->powerConstraintPresent = 1;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, &pBeaconStruct->localPowerConstraint, &pBeacon->PowerConstraints,
-=======
-        vos_mem_copy( &pBeaconStruct->localPowerConstraint, &pBeacon->PowerConstraints,
->>>>>>> d97af3b... add prima wlan driver
                                                                sizeof(tDot11fIEPowerConstraints));
     }
 
     if ( pBeacon->Quiet.present )
     {
         pBeaconStruct->quietIEPresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->quietIE, &pBeacon->Quiet, sizeof(tDot11fIEQuiet));
-=======
-        vos_mem_copy( &pBeaconStruct->quietIE, &pBeacon->Quiet, sizeof(tDot11fIEQuiet));
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pBeacon->HTCaps.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->HTCaps, &pBeacon->HTCaps, sizeof( tDot11fIEHTCaps ) );
-=======
-        vos_mem_copy( &pBeaconStruct->HTCaps, &pBeacon->HTCaps, sizeof( tDot11fIEHTCaps ) );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pBeacon->HTInfo.present )
     {
-<<<<<<< HEAD
         palCopyMemory( pMac, &pBeaconStruct->HTInfo, &pBeacon->HTInfo, sizeof( tDot11fIEHTInfo) );
-=======
-        vos_mem_copy( &pBeaconStruct->HTInfo, &pBeacon->HTInfo, sizeof( tDot11fIEHTInfo) );
->>>>>>> d97af3b... add prima wlan driver
 
     }
 
@@ -3746,25 +3051,7 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
     }
     else
     {
-<<<<<<< HEAD
         pBeaconStruct->channelNumber = limUnmapChannel(mappedRXCh);
-=======
-       if ((!rfBand) || IS_5G_BAND(rfBand))
-           pBeaconStruct->channelNumber = limUnmapChannel(mappedRXCh);
-       else if (IS_24G_BAND(rfBand))
-           pBeaconStruct->channelNumber = mappedRXCh;
-       else
-       {
-           /*Only 0, 1, 2 are expected values for RF band from FW
-            * if FW fixes are not present then rf band value will
-            * be 0, else either 1 or 2 are expected from FW, 3 is
-            * not expected from FW */
-           PELOGE(limLog(pMac, LOGE,
-           FL("Channel info is not present in Beacon and"
-                   " mapping is not done correctly"));)
-           pBeaconStruct->channelNumber = mappedRXCh;
-       }
->>>>>>> d97af3b... add prima wlan driver
     }
 
     if ( pBeacon->RSN.present )
@@ -3809,18 +3096,12 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
     {
         // MobilityDomain
         pBeaconStruct->mdiePresent = 1;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (tANI_U8 *)&(pBeaconStruct->mdie[0]), (tANI_U8 *)&(pBeacon->MobilityDomain.MDID), sizeof(tANI_U16) );
-=======
-        vos_mem_copy( (tANI_U8 *)&(pBeaconStruct->mdie[0]),
-                      (tANI_U8 *)&(pBeacon->MobilityDomain.MDID), sizeof(tANI_U16) );
->>>>>>> d97af3b... add prima wlan driver
         pBeaconStruct->mdie[2] = ((pBeacon->MobilityDomain.overDSCap << 0) | (pBeacon->MobilityDomain.resourceReqCap << 1));
 
     }
 #endif
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
     if ( pBeacon->VHTCaps.present )
     {
@@ -3837,48 +3118,6 @@ sirConvertBeaconFrame2Struct(tpAniSirGlobal       pMac,
 #endif
 
     palFreeMemory(pMac->hHdd, pBeacon);
-=======
-#ifdef FEATURE_WLAN_CCX
-    if (pBeacon->CCXTxmitPower.present)
-    {
-        //CCX Tx Power
-        pBeaconStruct->ccxTxPwr.present = 1;
-        palCopyMemory( pMac->hHdd, &pBeaconStruct->ccxTxPwr,
-                                   &pBeacon->CCXTxmitPower,
-                                   sizeof(tDot11fIECCXTxmitPower));
-    }
-#endif
-
-#ifdef WLAN_FEATURE_11AC
-    if ( pBeacon->VHTCaps.present )
-    {
-        vos_mem_copy( &pBeaconStruct->VHTCaps, &pBeacon->VHTCaps, sizeof( tDot11fIEVHTCaps ) );
-    }
-    if ( pBeacon->VHTOperation.present )
-    {
-        vos_mem_copy( &pBeaconStruct->VHTOperation, &pBeacon->VHTOperation,
-                      sizeof( tDot11fIEVHTOperation) );
-    }
-    if ( pBeacon->VHTExtBssLoad.present )
-    {
-        vos_mem_copy( &pBeaconStruct->VHTExtBssLoad, &pBeacon->VHTExtBssLoad,
-                      sizeof( tDot11fIEVHTExtBssLoad) );
-    }
-    if(pBeacon->OperatingMode.present)
-    {
-        vos_mem_copy( &pBeaconStruct->OperatingMode, &pBeacon->OperatingMode,
-                      sizeof( tDot11fIEOperatingMode) );
-    }
-    if(pBeacon->WiderBWChanSwitchAnn.present)
-    {
-        pBeaconStruct->WiderBWChanSwitchAnnPresent = 1;
-        vos_mem_copy( &pBeaconStruct->WiderBWChanSwitchAnn, &pBeacon->WiderBWChanSwitchAnn,
-                      sizeof( tDot11fIEWiderBWChanSwitchAnn));
-    }      
-#endif
-
-    vos_mem_free(pBeacon);
->>>>>>> d97af3b... add prima wlan driver
     return eSIR_SUCCESS;
 
 } // End sirConvertBeaconFrame2Struct.
@@ -3893,11 +3132,7 @@ sirConvertAuthFrame2Struct(tpAniSirGlobal        pMac,
     tANI_U32                   status;
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pAuth, sizeof(tSirMacAuthFrameBody) );
-=======
-    vos_mem_set( ( tANI_U8* )pAuth, sizeof(tSirMacAuthFrameBody), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackAuthentication( pMac, pFrame, nFrame, &auth );
@@ -3924,11 +3159,7 @@ sirConvertAuthFrame2Struct(tpAniSirGlobal        pMac,
     {
         pAuth->type   = SIR_MAC_CHALLENGE_TEXT_EID;
         pAuth->length = auth.ChallengeText.num_text;
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pAuth->challengeText, auth.ChallengeText.text, auth.ChallengeText.num_text );
-=======
-        vos_mem_copy( pAuth->challengeText, auth.ChallengeText.text, auth.ChallengeText.num_text );
->>>>>>> d97af3b... add prima wlan driver
     }
 
     return eSIR_SUCCESS;
@@ -3957,11 +3188,7 @@ sirConvertAddtsReq2Struct(tpAniSirGlobal    pMac,
     }
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pAddTs, sizeof(tSirAddtsReqInfo) );
-=======
-    vos_mem_set( ( tANI_U8* )pAddTs, sizeof(tSirAddtsReqInfo), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     switch ( *pFrame )
@@ -4109,15 +3336,9 @@ sirConvertAddtsRsp2Struct(tpAniSirGlobal    pMac,
     }
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pAddTs, sizeof(tSirAddtsRspInfo) );
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&addts, sizeof(tDot11fAddTSResponse) );
     palZeroMemory( pMac->hHdd, ( tANI_U8* )&wmmaddts, sizeof(tDot11fWMMAddTSResponse) );
-=======
-    vos_mem_set( ( tANI_U8* )pAddTs, sizeof(tSirAddtsRspInfo), 0 );
-    vos_mem_set( ( tANI_U8* )&addts, sizeof(tDot11fAddTSResponse), 0 );
-    vos_mem_set( ( tANI_U8* )&wmmaddts, sizeof(tDot11fWMMAddTSResponse), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
 
     // delegate to the framesc-generated code,
@@ -4205,11 +3426,7 @@ sirConvertAddtsRsp2Struct(tpAniSirGlobal    pMac,
         if(addts.CCXTrafStrmMet.present)
         {
             pAddTs->tsmPresent = 1;
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd,&pAddTs->tsmIE.tsid,
-=======
-            vos_mem_copy(&pAddTs->tsmIE.tsid,
->>>>>>> d97af3b... add prima wlan driver
                       &addts.CCXTrafStrmMet.tsid,sizeof(tSirMacCCXTSMIE));
         }
 #endif
@@ -4279,11 +3496,7 @@ sirConvertAddtsRsp2Struct(tpAniSirGlobal    pMac,
         if(wmmaddts.CCXTrafStrmMet.present)
         {
             pAddTs->tsmPresent = 1;
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd,&pAddTs->tsmIE.tsid,
-=======
-            vos_mem_copy(&pAddTs->tsmIE.tsid,
->>>>>>> d97af3b... add prima wlan driver
                          &wmmaddts.CCXTrafStrmMet.tsid,sizeof(tSirMacCCXTSMIE));
         }
 #endif
@@ -4314,11 +3527,7 @@ sirConvertDeltsReq2Struct(tpAniSirGlobal    pMac,
     }
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pDelTs, sizeof(tSirDeltsReqInfo) );
-=======
-    vos_mem_set( ( tANI_U8* )pDelTs, sizeof(tSirDeltsReqInfo), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     switch ( *pFrame )
@@ -4399,11 +3608,7 @@ sirConvertTpcReqFrame2Struct(tpAniSirGlobal            pMac,
     tANI_U32                   status;
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pTpcReqFrame, sizeof(tSirMacTpcReqActionFrame) );
-=======
-    vos_mem_set( ( tANI_U8* )pTpcReqFrame, sizeof(tSirMacTpcReqActionFrame), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackTPCRequest( pMac, pFrame, nFrame, &req );
@@ -4452,11 +3657,7 @@ sirConvertMeasReqFrame2Struct(tpAniSirGlobal             pMac,
     tANI_U32                       status;
 
     // Zero-init our [out] parameter,
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, ( tANI_U8* )pMeasReqFrame, sizeof(tpSirMacMeasReqActionFrame) );
-=======
-    vos_mem_set( ( tANI_U8* )pMeasReqFrame, sizeof(tpSirMacMeasReqActionFrame), 0 );
->>>>>>> d97af3b... add prima wlan driver
 
     // delegate to the framesc-generated code,
     status = dot11fUnpackMeasurementRequest( pMac, pFrame, nFrame, &mr );
@@ -4501,11 +3702,7 @@ sirConvertMeasReqFrame2Struct(tpAniSirGlobal             pMac,
 
     pMeasReqFrame->measReqIE.measReqField.channelNumber = mr.MeasurementRequest[0].channel_no;
 
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pMeasReqFrame->measReqIE.measReqField.measStartTime,
-=======
-    vos_mem_copy(  pMeasReqFrame->measReqIE.measReqField.measStartTime,
->>>>>>> d97af3b... add prima wlan driver
                    mr.MeasurementRequest[0].meas_start_time, 8 );
 
     pMeasReqFrame->measReqIE.measReqField.measDuration = mr.MeasurementRequest[0].meas_duration;
@@ -4598,11 +3795,7 @@ void PopulateDot11TSRSIE(tpAniSirGlobal  pMac,
                                tANI_U8 rate_length)
 {
     pDot11f->tsid = pOld->tsid;
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd,pDot11f->tsrates, pOld->rates,rate_length);
-=======
-    vos_mem_copy(pDot11f->tsrates, pOld->rates,rate_length);
->>>>>>> d97af3b... add prima wlan driver
     pDot11f->num_tsrates = rate_length;
     pDot11f->present = 1;
 }
@@ -4621,38 +3814,22 @@ PopulateDot11fTCLAS(tpAniSirGlobal  pMac,
     switch ( pDot11f->classifier_type )
     {
     case SIR_MAC_TCLASTYPE_ETHERNET:
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.EthParams.source,
                        ( tANI_U8* )&pOld->tclasParams.eth.srcAddr, 6 );
         palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.EthParams.dest,
                        ( tANI_U8* )&pOld->tclasParams.eth.dstAddr, 6 );
-=======
-        vos_mem_copy( ( tANI_U8* )&pDot11f->info.EthParams.source,
-                      ( tANI_U8* )&pOld->tclasParams.eth.srcAddr, 6 );
-        vos_mem_copy( ( tANI_U8* )&pDot11f->info.EthParams.dest,
-                      ( tANI_U8* )&pOld->tclasParams.eth.dstAddr, 6 );
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->info.EthParams.type = pOld->tclasParams.eth.type;
         break;
     case SIR_MAC_TCLASTYPE_TCPUDPIP:
         pDot11f->info.IpParams.version = pOld->version;
         if ( SIR_MAC_TCLAS_IPV4 == pDot11f->info.IpParams.version )
         {
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
                            IpV4Params.source,
                            ( tANI_U8* )pOld->tclasParams.ipv4.srcIpAddr, 4 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
                            IpV4Params.dest,
                            ( tANI_U8* )pOld->tclasParams.ipv4.dstIpAddr, 4 );
-=======
-            vos_mem_copy( ( tANI_U8* )&pDot11f->info.IpParams.params.
-                          IpV4Params.source,
-                          ( tANI_U8* )pOld->tclasParams.ipv4.srcIpAddr, 4 );
-            vos_mem_copy( ( tANI_U8* )&pDot11f->info.IpParams.params.
-                          IpV4Params.dest,
-                          ( tANI_U8* )pOld->tclasParams.ipv4.dstIpAddr, 4 );
->>>>>>> d97af3b... add prima wlan driver
             pDot11f->info.IpParams.params.IpV4Params.src_port  =
               pOld->tclasParams.ipv4.srcPort;
             pDot11f->info.IpParams.params.IpV4Params.dest_port =
@@ -4666,28 +3843,17 @@ PopulateDot11fTCLAS(tpAniSirGlobal  pMac,
         }
         else
         {
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
                            IpV6Params.source,
                            ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, 16 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
-=======
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
-                           IpV6Params.source,
-                           ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, 16 );
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
->>>>>>> d97af3b... add prima wlan driver
                            IpV6Params.dest,
                            ( tANI_U8* )pOld->tclasParams.ipv6.dstIpAddr, 16 );
             pDot11f->info.IpParams.params.IpV6Params.src_port  =
               pOld->tclasParams.ipv6.srcPort;
             pDot11f->info.IpParams.params.IpV6Params.dest_port =
               pOld->tclasParams.ipv6.dstPort;
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
-=======
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
->>>>>>> d97af3b... add prima wlan driver
                            IpV6Params.flow_label,
                            ( tANI_U8* )pOld->tclasParams.ipv6.flowLabel, 3 );
         }
@@ -4720,15 +3886,9 @@ PopulateDot11fWMMTCLAS(tpAniSirGlobal     pMac,
     switch ( pDot11f->classifier_type )
     {
     case SIR_MAC_TCLASTYPE_ETHERNET:
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.EthParams.source,
                        ( tANI_U8* )&pOld->tclasParams.eth.srcAddr, 6 );
         palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.EthParams.dest,
-=======
-        vos_mem_copy(  ( tANI_U8* )&pDot11f->info.EthParams.source,
-                       ( tANI_U8* )&pOld->tclasParams.eth.srcAddr, 6 );
-        vos_mem_copy(  ( tANI_U8* )&pDot11f->info.EthParams.dest,
->>>>>>> d97af3b... add prima wlan driver
                        ( tANI_U8* )&pOld->tclasParams.eth.dstAddr, 6 );
         pDot11f->info.EthParams.type = pOld->tclasParams.eth.type;
         break;
@@ -4736,17 +3896,10 @@ PopulateDot11fWMMTCLAS(tpAniSirGlobal     pMac,
         pDot11f->info.IpParams.version = pOld->version;
         if ( SIR_MAC_TCLAS_IPV4 == pDot11f->info.IpParams.version )
         {
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
                            IpV4Params.source,
                            ( tANI_U8* )pOld->tclasParams.ipv4.srcIpAddr, 4 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
-=======
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
-                           IpV4Params.source,
-                           ( tANI_U8* )pOld->tclasParams.ipv4.srcIpAddr, 4 );
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
->>>>>>> d97af3b... add prima wlan driver
                            IpV4Params.dest,
                            ( tANI_U8* )pOld->tclasParams.ipv4.dstIpAddr, 4 );
             pDot11f->info.IpParams.params.IpV4Params.src_port  =
@@ -4762,28 +3915,17 @@ PopulateDot11fWMMTCLAS(tpAniSirGlobal     pMac,
         }
         else
         {
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
                            IpV6Params.source,
                            ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, 16 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
-=======
-            vos_mem_copy( ( tANI_U8* )&pDot11f->info.IpParams.params.
-                           IpV6Params.source,
-                           ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, 16 );
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
->>>>>>> d97af3b... add prima wlan driver
                            IpV6Params.dest,
                            ( tANI_U8* )pOld->tclasParams.ipv6.dstIpAddr, 16 );
             pDot11f->info.IpParams.params.IpV6Params.src_port  =
               pOld->tclasParams.ipv6.srcPort;
             pDot11f->info.IpParams.params.IpV6Params.dest_port =
               pOld->tclasParams.ipv6.dstPort;
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pDot11f->info.IpParams.params.
-=======
-            vos_mem_copy(  ( tANI_U8* )&pDot11f->info.IpParams.params.
->>>>>>> d97af3b... add prima wlan driver
                            IpV6Params.flow_label,
                            ( tANI_U8* )pOld->tclasParams.ipv6.flowLabel, 3 );
         }
@@ -4803,7 +3945,6 @@ PopulateDot11fWMMTCLAS(tpAniSirGlobal     pMac,
 
 } // End PopulateDot11fWMMTCLAS.
 
-<<<<<<< HEAD
 #if ( WNI_POLARIS_FW_PRODUCT == AP )
 
 tSirRetStatus
@@ -4940,8 +4081,6 @@ PopulateDot11fWDS(tpAniSirGlobal  pMac,
 #endif // WNI_POLARIS_FW_PACKAGE == ADVANCED
 
 #endif // WNI_POLARIS_FW_PRODUCT == AP
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 tSirRetStatus PopulateDot11fWsc(tpAniSirGlobal pMac,
                                 tDot11fIEWscBeacon *pDot11f)
@@ -5012,7 +4151,6 @@ tSirRetStatus DePopulateDot11fWscRegistrarInfo(tpAniSirGlobal pMac,
 
     return eSIR_SUCCESS;
 }
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProbeRes *pDot11f, tpPESession psessionEntry)
 {
@@ -5022,16 +4160,6 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
    pSirWPSProbeRspIE = &psessionEntry->APWPSIEs.SirWPSProbeRspIE;
 
 
-=======
-tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProbeRes *pDot11f, tpPESession psessionEntry)
-{
- 
-   tSirWPSProbeRspIE *pSirWPSProbeRspIE;
-
-   pSirWPSProbeRspIE = &psessionEntry->APWPSIEs.SirWPSProbeRspIE;
-   
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_VER_PRESENT)
     {
         pDot11f->present = 1;
@@ -5047,21 +4175,13 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
 
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_STATE_PRESENT)
     {
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->WPSState.present = 1;
         pDot11f->WPSState.state = (tANI_U8)pSirWPSProbeRspIE->wpsState;
     }
     else
         pDot11f->WPSState.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_APSETUPLOCK_PRESENT)
     {
         pDot11f->APSetupLocked.present = 1;
@@ -5069,11 +4189,7 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     }
     else
         pDot11f->APSetupLocked.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_SELECTEDREGISTRA_PRESENT)
     {
         pDot11f->SelectedRegistrar.present = 1;
@@ -5081,11 +4197,7 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     }
     else
          pDot11f->SelectedRegistrar.present = 0;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_DEVICEPASSWORDID_PRESENT)
     {
         pDot11f->DevicePasswordID.present = 1;
@@ -5093,11 +4205,7 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     }
     else
         pDot11f->DevicePasswordID.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_SELECTEDREGISTRACFGMETHOD_PRESENT)
     {
         pDot11f->SelectedRegistrarConfigMethods.present = 1;
@@ -5105,11 +4213,7 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     }
     else
         pDot11f->SelectedRegistrarConfigMethods.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_RESPONSETYPE_PRESENT)
     {
         pDot11f->ResponseType.present = 1;
@@ -5117,7 +4221,6 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     }
     else
         pDot11f->ResponseType.present = 0;
-<<<<<<< HEAD
 
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_UUIDE_PRESENT)
     {
@@ -5127,76 +4230,37 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     else
         pDot11f->UUID_E.present = 0;
 
-=======
-        
-    if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_UUIDE_PRESENT)
-    {
-        pDot11f->UUID_E.present = 1;
-        vos_mem_copy(pDot11f->UUID_E.uuid, pSirWPSProbeRspIE->UUID_E, WNI_CFG_WPS_UUID_LEN);
-    }
-    else
-        pDot11f->UUID_E.present = 0;
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_MANUFACTURE_PRESENT)
     {
         pDot11f->Manufacturer.present = 1;
         pDot11f->Manufacturer.num_name = pSirWPSProbeRspIE->Manufacture.num_name;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, pDot11f->Manufacturer.name, pSirWPSProbeRspIE->Manufacture.name, pSirWPSProbeRspIE->Manufacture.num_name);
     }
     else
         pDot11f->Manufacturer.present = 0;
 
-=======
-        vos_mem_copy(pDot11f->Manufacturer.name, pSirWPSProbeRspIE->Manufacture.name,
-                     pSirWPSProbeRspIE->Manufacture.num_name);
-    } 
-    else
-        pDot11f->Manufacturer.present = 0;
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_MODELNUMBER_PRESENT)
     {
         pDot11f->ModelName.present = 1;
         pDot11f->ModelName.num_text = pSirWPSProbeRspIE->ModelName.num_text;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, pDot11f->ModelName.text, pSirWPSProbeRspIE->ModelName.text, pDot11f->ModelName.num_text);
     }
     else
       pDot11f->ModelName.present = 0;
 
-=======
-        vos_mem_copy(pDot11f->ModelName.text, pSirWPSProbeRspIE->ModelName.text,
-                     pDot11f->ModelName.num_text);
-    }
-    else
-      pDot11f->ModelName.present = 0;
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_MODELNUMBER_PRESENT)
     {
         pDot11f->ModelNumber.present = 1;
         pDot11f->ModelNumber.num_text = pSirWPSProbeRspIE->ModelNumber.num_text;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, pDot11f->ModelNumber.text, pSirWPSProbeRspIE->ModelNumber.text, pDot11f->ModelNumber.num_text);
     }
     else
         pDot11f->ModelNumber.present = 0;
 
-=======
-        vos_mem_copy(pDot11f->ModelNumber.text, pSirWPSProbeRspIE->ModelNumber.text,
-                     pDot11f->ModelNumber.num_text);
-    }
-    else
-        pDot11f->ModelNumber.present = 0;
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_SERIALNUMBER_PRESENT)
     {
         pDot11f->SerialNumber.present = 1;
         pDot11f->SerialNumber.num_text = pSirWPSProbeRspIE->SerialNumber.num_text;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, pDot11f->SerialNumber.text, pSirWPSProbeRspIE->SerialNumber.text, pDot11f->SerialNumber.num_text);
     }
     else
@@ -5206,47 +4270,21 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     {
         pDot11f->PrimaryDeviceType.present = 1;
         palCopyMemory(pMac->hHdd, pDot11f->PrimaryDeviceType.oui, pSirWPSProbeRspIE->PrimaryDeviceOUI, sizeof(pSirWPSProbeRspIE->PrimaryDeviceOUI));
-=======
-        vos_mem_copy(pDot11f->SerialNumber.text, pSirWPSProbeRspIE->SerialNumber.text,
-                     pDot11f->SerialNumber.num_text);
-    }
-    else
-        pDot11f->SerialNumber.present = 0;
-    
-    if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_PRIMARYDEVICETYPE_PRESENT)
-    {
-        pDot11f->PrimaryDeviceType.present = 1;
-        vos_mem_copy(pDot11f->PrimaryDeviceType.oui, pSirWPSProbeRspIE->PrimaryDeviceOUI,
-                     sizeof(pSirWPSProbeRspIE->PrimaryDeviceOUI));
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->PrimaryDeviceType.primary_category = (tANI_U16)pSirWPSProbeRspIE->PrimaryDeviceCategory;
         pDot11f->PrimaryDeviceType.sub_category = (tANI_U16)pSirWPSProbeRspIE->DeviceSubCategory;
     }
     else
         pDot11f->PrimaryDeviceType.present = 0;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_DEVICENAME_PRESENT)
     {
         pDot11f->DeviceName.present = 1;
         pDot11f->DeviceName.num_text = pSirWPSProbeRspIE->DeviceName.num_text;
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, pDot11f->DeviceName.text, pSirWPSProbeRspIE->DeviceName.text, pDot11f->DeviceName.num_text);
     }
     else
         pDot11f->DeviceName.present = 0;
 
-=======
-        vos_mem_copy(pDot11f->DeviceName.text, pSirWPSProbeRspIE->DeviceName.text,
-                     pDot11f->DeviceName.num_text);
-    }
-    else
-        pDot11f->DeviceName.present = 0;
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_CONFIGMETHODS_PRESENT)
     {
         pDot11f->ConfigMethods.present = 1;
@@ -5254,26 +4292,16 @@ tSirRetStatus PopulateDot11fProbeResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscProb
     }
     else
         pDot11f->ConfigMethods.present = 0;
-<<<<<<< HEAD
 
 
-=======
-    
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_RF_BANDS_PRESENT)
     {
         pDot11f->RFBands.present = 1;
         pDot11f->RFBands.bands = pSirWPSProbeRspIE->RFBand;
     }
     else
-<<<<<<< HEAD
        pDot11f->RFBands.present = 0;
 
-=======
-       pDot11f->RFBands.present = 0;      
-       
->>>>>>> d97af3b... add prima wlan driver
     return eSIR_SUCCESS;
 }
 tSirRetStatus PopulateDot11fAssocResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscAssocRes *pDot11f, tpPESession psessionEntry)
@@ -5281,11 +4309,7 @@ tSirRetStatus PopulateDot11fAssocResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscAsso
    tSirWPSProbeRspIE *pSirWPSProbeRspIE;
 
    pSirWPSProbeRspIE = &psessionEntry->APWPSIEs.SirWPSProbeRspIE;
-<<<<<<< HEAD
 
-=======
-   
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_VER_PRESENT)
     {
         pDot11f->present = 1;
@@ -5298,43 +4322,26 @@ tSirRetStatus PopulateDot11fAssocResWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscAsso
         pDot11f->present = 0;
         pDot11f->Version.present = 0;
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSProbeRspIE->FieldPresent & SIR_WPS_PROBRSP_RESPONSETYPE_PRESENT)
     {
         pDot11f->ResponseType.present = 1;
         pDot11f->ResponseType.resType = pSirWPSProbeRspIE->ResponseType;
     }
     else
-<<<<<<< HEAD
         pDot11f->ResponseType.present = 0;
-=======
-        pDot11f->ResponseType.present = 0;    
->>>>>>> d97af3b... add prima wlan driver
 
     return eSIR_SUCCESS;
 }
 
 tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon *pDot11f, tpPESession psessionEntry)
 {
-<<<<<<< HEAD
 
    tSirWPSBeaconIE *pSirWPSBeaconIE;
 
    pSirWPSBeaconIE = &psessionEntry->APWPSIEs.SirWPSBeaconIE;
 
 
-=======
- 
-   tSirWPSBeaconIE *pSirWPSBeaconIE;
-
-   pSirWPSBeaconIE = &psessionEntry->APWPSIEs.SirWPSBeaconIE;
-   
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_PROBRSP_VER_PRESENT)
     {
         pDot11f->present = 1;
@@ -5347,27 +4354,16 @@ tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon
         pDot11f->present = 0;
         pDot11f->Version.present = 0;
     }
-<<<<<<< HEAD
 
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_STATE_PRESENT)
     {
 
-=======
-    
-    if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_STATE_PRESENT)
-    {
-        
->>>>>>> d97af3b... add prima wlan driver
         pDot11f->WPSState.present = 1;
         pDot11f->WPSState.state = (tANI_U8)pSirWPSBeaconIE->wpsState;
     }
     else
         pDot11f->WPSState.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_APSETUPLOCK_PRESENT)
     {
         pDot11f->APSetupLocked.present = 1;
@@ -5375,11 +4371,7 @@ tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon
     }
     else
         pDot11f->APSetupLocked.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_SELECTEDREGISTRA_PRESENT)
     {
         pDot11f->SelectedRegistrar.present = 1;
@@ -5387,11 +4379,7 @@ tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon
     }
     else
          pDot11f->SelectedRegistrar.present = 0;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_DEVICEPASSWORDID_PRESENT)
     {
         pDot11f->DevicePasswordID.present = 1;
@@ -5399,11 +4387,7 @@ tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon
     }
     else
         pDot11f->DevicePasswordID.present = 0;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_SELECTEDREGISTRACFGMETHOD_PRESENT)
     {
         pDot11f->SelectedRegistrarConfigMethods.present = 1;
@@ -5411,7 +4395,6 @@ tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon
     }
     else
         pDot11f->SelectedRegistrarConfigMethods.present = 0;
-<<<<<<< HEAD
 
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_UUIDE_PRESENT)
     {
@@ -5422,36 +4405,17 @@ tSirRetStatus PopulateDot11fBeaconWPSIEs(tpAniSirGlobal pMac, tDot11fIEWscBeacon
         pDot11f->UUID_E.present = 0;
 
 
-=======
-        
-    if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_UUIDE_PRESENT)
-    {
-        pDot11f->UUID_E.present = 1;
-        vos_mem_copy(pDot11f->UUID_E.uuid, pSirWPSBeaconIE->UUID_E, WNI_CFG_WPS_UUID_LEN);
-    }
-    else
-        pDot11f->UUID_E.present = 0;
-    
-       
->>>>>>> d97af3b... add prima wlan driver
     if(pSirWPSBeaconIE->FieldPresent & SIR_WPS_BEACON_RF_BANDS_PRESENT)
     {
         pDot11f->RFBands.present = 1;
         pDot11f->RFBands.bands = pSirWPSBeaconIE->RFBand;
     }
     else
-<<<<<<< HEAD
        pDot11f->RFBands.present = 0;
 
     return eSIR_SUCCESS;
 }
 #endif
-=======
-       pDot11f->RFBands.present = 0;      
-       
-    return eSIR_SUCCESS;
-}
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus PopulateDot11fWscInProbeRes(tpAniSirGlobal pMac,
                                           tDot11fIEWscProbeRes *pDot11f)
 {
@@ -5666,31 +4630,18 @@ tSirRetStatus DePopulateDot11fWscRegistrarInfoInProbeRes(tpAniSirGlobal pMac,
     return eSIR_SUCCESS;
 }
 
-<<<<<<< HEAD
 tSirRetStatus PopulateDot11fAssocResWscIE(tpAniSirGlobal pMac,
                                           tDot11fIEWscAssocRes *pDot11f,
-=======
-tSirRetStatus PopulateDot11fAssocResWscIE(tpAniSirGlobal pMac, 
-                                          tDot11fIEWscAssocRes *pDot11f, 
->>>>>>> d97af3b... add prima wlan driver
                                           tpSirAssocReq pRcvdAssocReq)
 {
     tDot11fIEWscAssocReq parsedWscAssocReq = { 0, };
     tANI_U8         *wscIe;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d97af3b... add prima wlan driver
 
     wscIe = limGetWscIEPtr(pMac, pRcvdAssocReq->addIE.addIEdata, pRcvdAssocReq->addIE.length);
     if(wscIe != NULL)
     {
-<<<<<<< HEAD
         // retreive WSC IE from given AssocReq
-=======
-        // retreive WSC IE from given AssocReq 
->>>>>>> d97af3b... add prima wlan driver
         dot11fUnpackIeWscAssocReq( pMac,
                                     wscIe + 2 + 4,  // EID, length, OUI
                                     wscIe[ 1 ] - 4, // length without OUI
@@ -5702,11 +4653,7 @@ tSirRetStatus PopulateDot11fAssocResWscIE(tpAniSirGlobal pMac,
         pDot11f->Version.minor = 0x0;
 
         pDot11f->ResponseType.present = 1;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d97af3b... add prima wlan driver
         if ((parsedWscAssocReq.RequestType.reqType == REQ_TYPE_REGISTRAR) ||
             (parsedWscAssocReq.RequestType.reqType == REQ_TYPE_WLAN_MANAGER_REGISTRAR))
         {
@@ -5720,11 +4667,7 @@ tSirRetStatus PopulateDot11fAssocResWscIE(tpAniSirGlobal pMac,
         // TODO: currently it takes from peers only
         if(parsedWscAssocReq.VendorExtension.present &&
            parsedWscAssocReq.VendorExtension.Version2.present)
-<<<<<<< HEAD
         {
-=======
-        {   
->>>>>>> d97af3b... add prima wlan driver
             pDot11f->VendorExtension.present = 1;
             pDot11f->VendorExtension.vendorId[0] = 0x00;
             pDot11f->VendorExtension.vendorId[1] = 0x37;
@@ -5737,14 +4680,9 @@ tSirRetStatus PopulateDot11fAssocResWscIE(tpAniSirGlobal pMac,
     return eSIR_SUCCESS;
 }
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 tSirRetStatus PopulateDot11AssocResP2PIE(tpAniSirGlobal pMac,
                                        tDot11fIEP2PAssocRes *pDot11f,
-=======
-tSirRetStatus PopulateDot11AssocResP2PIE(tpAniSirGlobal pMac, 
-                                       tDot11fIEP2PAssocRes *pDot11f, 
->>>>>>> d97af3b... add prima wlan driver
                                        tpSirAssocReq pRcvdAssocReq)
 {
     tANI_U8         *p2pIe;
@@ -5759,10 +4697,7 @@ tSirRetStatus PopulateDot11AssocResP2PIE(tpAniSirGlobal pMac,
     }
     return eSIR_SUCCESS;
 }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #if defined WLAN_FEATURE_VOWIFI
 
@@ -5781,34 +4716,20 @@ tSirRetStatus PopulateDot11fBeaconReport( tpAniSirGlobal pMac, tDot11fIEMeasurem
 
      pDot11f->report.Beacon.regClass = pBeaconReport->regClass;
      pDot11f->report.Beacon.channel = pBeaconReport->channel;
-<<<<<<< HEAD
      palCopyMemory( pMac->hHdd, pDot11f->report.Beacon.meas_start_time, pBeaconReport->measStartTime, sizeof(pDot11f->report.Beacon.meas_start_time) );
-=======
-     vos_mem_copy( pDot11f->report.Beacon.meas_start_time, pBeaconReport->measStartTime,
-                   sizeof(pDot11f->report.Beacon.meas_start_time) );
->>>>>>> d97af3b... add prima wlan driver
      pDot11f->report.Beacon.meas_duration = pBeaconReport->measDuration;
      pDot11f->report.Beacon.condensed_PHY = pBeaconReport->phyType;
      pDot11f->report.Beacon.reported_frame_type = !pBeaconReport->bcnProbeRsp;
      pDot11f->report.Beacon.RCPI = pBeaconReport->rcpi;
      pDot11f->report.Beacon.RSNI = pBeaconReport->rsni;
-<<<<<<< HEAD
      palCopyMemory( pMac->hHdd, pDot11f->report.Beacon.BSSID, pBeaconReport->bssid, sizeof(tSirMacAddr));
-=======
-     vos_mem_copy( pDot11f->report.Beacon.BSSID, pBeaconReport->bssid, sizeof(tSirMacAddr));
->>>>>>> d97af3b... add prima wlan driver
      pDot11f->report.Beacon.antenna_id = pBeaconReport->antennaId;
      pDot11f->report.Beacon.parent_TSF = pBeaconReport->parentTSF;
 
      if( pBeaconReport->numIes )
      {
           pDot11f->report.Beacon.BeaconReportFrmBody.present = 1;
-<<<<<<< HEAD
           palCopyMemory( pMac->hHdd, pDot11f->report.Beacon.BeaconReportFrmBody.reportedFields, pBeaconReport->Ies, pBeaconReport->numIes );
-=======
-          vos_mem_copy( pDot11f->report.Beacon.BeaconReportFrmBody.reportedFields,
-                        pBeaconReport->Ies, pBeaconReport->numIes );
->>>>>>> d97af3b... add prima wlan driver
           pDot11f->report.Beacon.BeaconReportFrmBody.num_reportedFields = pBeaconReport->numIes;
      }
 
@@ -5817,11 +4738,7 @@ tSirRetStatus PopulateDot11fBeaconReport( tpAniSirGlobal pMac, tDot11fIEMeasurem
 }
 
 tSirRetStatus PopulateDot11fRRMIe( tpAniSirGlobal pMac, tDot11fIERRMEnabledCap *pDot11f, tpPESession    psessionEntry )
-<<<<<<< HEAD
 {
-=======
-{  
->>>>>>> d97af3b... add prima wlan driver
    tpRRMCaps pRrmCaps;
 
    pRrmCaps = rrmGetCapabilities( pMac, psessionEntry );
@@ -5870,11 +4787,7 @@ void PopulateMDIE( tpAniSirGlobal        pMac,
    // Plugfest fix
    pDot11f->overDSCap =   (mdie[2] & 0x01);
    pDot11f->resourceReqCap = ((mdie[2] >> 1) & 0x01);
-<<<<<<< HEAD
 
-=======
-   
->>>>>>> d97af3b... add prima wlan driver
 }
 
 void PopulateFTInfo( tpAniSirGlobal      pMac,
@@ -5887,11 +4800,7 @@ void PopulateFTInfo( tpAniSirGlobal      pMac,
 }
 #endif
 
-<<<<<<< HEAD
 void PopulateDot11fAssocRspRates ( tpAniSirGlobal pMac, tDot11fIESuppRates *pSupp,
-=======
-void PopulateDot11fAssocRspRates ( tpAniSirGlobal pMac, tDot11fIESuppRates *pSupp, 
->>>>>>> d97af3b... add prima wlan driver
       tDot11fIEExtSuppRates *pExt, tANI_U16 *_11bRates, tANI_U16 *_11aRates )
 {
   tANI_U8 num_supp = 0, num_ext = 0;
@@ -5900,23 +4809,14 @@ void PopulateDot11fAssocRspRates ( tpAniSirGlobal pMac, tDot11fIESuppRates *pSup
   for( i = 0 ; (i < SIR_NUM_11B_RATES && _11bRates[i]) ; i++, num_supp++ )
   {
       pSupp->rates[num_supp] = (tANI_U8)_11bRates[i];
-<<<<<<< HEAD
   }
-=======
-  }  
->>>>>>> d97af3b... add prima wlan driver
   for( j = 0 ; (j < SIR_NUM_11A_RATES && _11aRates[j]) ; j++ )
   {
      if( num_supp < 8 )
          pSupp->rates[num_supp++] = (tANI_U8)_11aRates[j];
      else
-<<<<<<< HEAD
          pExt->rates[num_ext++] =  (tANI_U8)_11aRates[j];
   }
-=======
-         pExt->rates[num_ext++] =  (tANI_U8)_11aRates[j]; 
-  }  
->>>>>>> d97af3b... add prima wlan driver
 
   if( num_supp )
   {
@@ -5928,9 +4828,5 @@ void PopulateDot11fAssocRspRates ( tpAniSirGlobal pMac, tDot11fIESuppRates *pSup
      pExt->num_rates = num_ext;
      pExt->present = 1;
   }
-<<<<<<< HEAD
 }
-=======
-} 
->>>>>>> d97af3b... add prima wlan driver
 // parserApi.c ends here.

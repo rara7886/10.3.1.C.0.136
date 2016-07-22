@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -146,11 +123,7 @@ typedef enum
        RX Frame Ready indication CB
 
   @  Parameters
-<<<<<<< HEAD
          pVoid         pAdaptor : Driver global control block pointer
-=======
-         pVoid         pAdapter : Driver global control block pointer
->>>>>>> d97af3b... add prima wlan driver
          palPacket     pRXFramePtr : Received Frame Pointer
          pVoid         userCtxt : DTS user contect pointer
 
@@ -167,11 +140,7 @@ typedef WDTS_RxFrameReadyCbType WLANDXE_RxFrameReadyCbType;
       TX complete indication CB
 
   @  Parameters
-<<<<<<< HEAD
          pVoid      pAdaptor : Driver global control block pointer
-=======
-         pVoid      pAdapter : Driver global control block pointer
->>>>>>> d97af3b... add prima wlan driver
          void       pTXFramePtr : Completed TX Frame Pointer
          pVoid      userCtxt : DTS user contect pointer
 
@@ -188,11 +157,7 @@ typedef WDTS_TxCompleteCbType WLANDXE_TxCompleteCbType;
        DXE Low resource indication CB
 
   @  Parameters
-<<<<<<< HEAD
       pVoid      pAdaptor : Driver global control block pointer
-=======
-      pVoid      pAdapter : Driver global control block pointer
->>>>>>> d97af3b... add prima wlan driver
       BOOL      lowResourceCondition : DXE low resource or not
       pVoid      userCtxt : DTS user contect pointer
 
@@ -231,11 +196,7 @@ typedef WDTS_SetPSCbType  WLANDXE_SetPowerStateCbType;
       Allocate, DXE local control block, DXE descriptor pool, DXE descriptor control block pool
 
   @  Parameters
-<<<<<<< HEAD
       pVoid      pAdaptor : Driver global control block pointer
-=======
-      pVoid      pAdapter : Driver global control block pointer
->>>>>>> d97af3b... add prima wlan driver
 
   @  Return
       pVoid DXE local module control block pointer
@@ -432,27 +393,16 @@ wpt_uint32 WLANDXE_GetFreeTxDataResNumber
 );
 
 /*==========================================================================
-<<<<<<< HEAD
   @  Function Name 
     WLANDXE_ChannelDebug
 
   @  Description 
-=======
-  @  Function Name
-    WLANDXE_ChannelDebug
-
-  @  Description
->>>>>>> d97af3b... add prima wlan driver
     Display DXE Channel debugging information
     User may request to display DXE channel snapshot
     Or if host driver detects any abnormal stcuk may display
 
   @  Parameters
-<<<<<<< HEAD
     displaySnapshot : Dispaly DXE snapshot option
-=======
-    displaySnapshot : Display DXE snapshot option
->>>>>>> d97af3b... add prima wlan driver
     enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification

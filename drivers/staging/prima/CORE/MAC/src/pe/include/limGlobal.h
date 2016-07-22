@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -41,10 +18,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 /*
  *
  * Airgo Networks, Inc proprietary. All rights reserved.
@@ -66,18 +40,11 @@
 #include "sirMacPropExts.h"
 #include "sirCommon.h"
 #include "sirDebug.h"
-<<<<<<< HEAD
 #include "wniCfgAp.h"
 #ifdef WLAN_SOFTAP_FEATURE
 #include "csrApi.h"
 #include "sapApi.h"
 #endif
-=======
-#include "wniCfgSta.h"
-#include "csrApi.h"
-#include "sapApi.h"
-#include "dot11f.h"
->>>>>>> d97af3b... add prima wlan driver
 
 /// Maximum number of scan hash table entries
 #define LIM_MAX_NUM_OF_SCAN_RESULTS 256
@@ -114,11 +81,6 @@
 
 #define GET_TIM_WAIT_COUNT(LIntrvl)        ((LIntrvl * LIM_TIM_WAIT_COUNT_FACTOR) > LIM_MIN_TIM_WAIT_COUNT ? \
                                                                     (LIntrvl * LIM_TIM_WAIT_COUNT_FACTOR) : LIM_MIN_TIM_WAIT_COUNT)
-<<<<<<< HEAD
-=======
-#define IS_5G_BAND(__rfBand)     ((__rfBand & 0x3) == 0x2)
-#define IS_24G_BAND(__rfBand)    ((__rfBand & 0x3) == 0x1)
->>>>>>> d97af3b... add prima wlan driver
 
 // enums exported by LIM are as follows
 
@@ -130,19 +92,12 @@ typedef enum eLimSystemRole
     eLIM_STA_IN_IBSS_ROLE,
     eLIM_STA_ROLE,
     eLIM_BT_AMP_STA_ROLE,
-<<<<<<< HEAD
     eLIM_BT_AMP_AP_ROLE
 #ifdef WLAN_FEATURE_P2P
     ,eLIM_P2P_DEVICE_ROLE
     ,eLIM_P2P_DEVICE_GO
     ,eLIM_P2P_DEVICE_CLINET
 #endif
-=======
-    eLIM_BT_AMP_AP_ROLE,
-    eLIM_P2P_DEVICE_ROLE,
-    eLIM_P2P_DEVICE_GO,
-    eLIM_P2P_DEVICE_CLIENT
->>>>>>> d97af3b... add prima wlan driver
 } tLimSystemRole;
 
 /**
@@ -228,13 +183,9 @@ typedef enum eLimMlmStates
     eLIM_MLM_WT_ADD_BSS_RSP_FT_REASSOC_STATE,
     eLIM_MLM_WT_FT_REASSOC_RSP_STATE,
 #endif
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     eLIM_MLM_P2P_LISTEN_STATE,
 #endif
-=======
-    eLIM_MLM_P2P_LISTEN_STATE,
->>>>>>> d97af3b... add prima wlan driver
 } tLimMlmStates;
 
 // 11h channel quiet states
@@ -304,7 +255,6 @@ typedef enum eLimBAState
   eLIM_BA_STATE_WT_DEL_RSP //  We are waiting for Del response from HAL.
 } tLimBAState;
 
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
 typedef struct sLimMeasParams
 {
@@ -380,11 +330,6 @@ typedef struct sLimAIDtbr
     tANI_U8 seen:1;
 } tLimAIDtbr;
 #endif
-=======
-
-
-
->>>>>>> d97af3b... add prima wlan driver
 
 // MLM Req/Cnf structure definitions
 typedef struct sLimMlmAuthReq
@@ -411,24 +356,15 @@ typedef struct sLimMlmScanReq
     tSirScanType       scanType;
     tANI_U32           minChannelTime;
     tANI_U32           maxChannelTime;
-<<<<<<< HEAD
-=======
-    tANI_U32           minChannelTimeBtc;
-    tANI_U32           maxChannelTimeBtc;
->>>>>>> d97af3b... add prima wlan driver
     tSirBackgroundScanMode  backgroundScanMode;
     tANI_U32 dot11mode;
     /* Number of SSIDs to scan(send Probe request) */
     tANI_U8            numSsid;
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tANI_BOOLEAN   p2pSearch;
     tANI_BOOLEAN   skipDfsChnlInP2pSearch;
 #endif
-=======
-    tANI_BOOLEAN   p2pSearch;
->>>>>>> d97af3b... add prima wlan driver
     tANI_U16           uIEFieldLen;
     tANI_U16           uIEFieldOffset;
 
@@ -463,17 +399,10 @@ struct tLimScanResultNode
 #ifdef FEATURE_OEM_DATA_SUPPORT
 
 #ifndef OEM_DATA_REQ_SIZE 
-<<<<<<< HEAD
 #define OEM_DATA_REQ_SIZE 70
 #endif
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 968
-=======
-#define OEM_DATA_REQ_SIZE 134
-#endif
-#ifndef OEM_DATA_RSP_SIZE
-#define OEM_DATA_RSP_SIZE 1968
->>>>>>> d97af3b... add prima wlan driver
 #endif
 
 // OEM Data related structure definitions
@@ -597,7 +526,6 @@ typedef struct sCacheParams
     
 } tCacheParams, *tpCacheParams;
 
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
 #define LIM_PROT_STA_OVERLAP_CACHE_SIZE     10
 #define LIM_PROT_STA_CACHE_SIZE 256
@@ -610,10 +538,6 @@ typedef struct sCacheParams
 #define LIM_PROT_STA_CACHE_SIZE            5
 #endif
 #endif
-=======
-#define LIM_PROT_STA_OVERLAP_CACHE_SIZE    HAL_NUM_ASSOC_STA
-#define LIM_PROT_STA_CACHE_SIZE            HAL_NUM_ASSOC_STA
->>>>>>> d97af3b... add prima wlan driver
 
 typedef struct sLimProtStaParams
 {
@@ -646,13 +570,7 @@ struct tLimIbssPeerNode
     tANI_U8                       wmeEdcaPresent:1;
     tANI_U8                       wmeInfoPresent:1;
     tANI_U8                       htCapable:1;
-<<<<<<< HEAD
     tANI_U8                       rsvd:2;
-=======
-    tANI_U8                       vhtCapable:1;
-    tANI_U8                       rsvd:1;
-    tANI_U8                       htSecondaryChannelOffset;
->>>>>>> d97af3b... add prima wlan driver
     tSirMacCapabilityInfo    capabilityInfo;
     tSirMacRateSet           supportedRates;
     tSirMacRateSet           extendedRates;
@@ -704,16 +622,7 @@ struct tLimIbssPeerNode
 
     tANI_U8 *beacon; //Hold beacon to be sent to HDD/CSR
     tANI_U16 beaconLen;
-<<<<<<< HEAD
     
-=======
-
-#ifdef WLAN_FEATURE_11AC
-    tDot11fIEVHTCaps VHTCaps;
-    tANI_U8 vhtSupportedChannelWidthSet;
-    tANI_U8 vhtBeamFormerCapable;
-#endif
->>>>>>> d97af3b... add prima wlan driver
 };
 
 // Enums used for channel switching.
@@ -737,26 +646,6 @@ typedef struct sLimChannelSwitchInfo
     tANI_U8                  switchMode;
 } tLimChannelSwitchInfo, *tpLimChannelSwitchInfo;
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11AC
-typedef struct sLimOperatingModeInfo
-{
-    tANI_U8        present;
-    tANI_U8        chanWidth: 2;
-    tANI_U8         reserved: 2;
-    tANI_U8            rxNSS: 3;
-    tANI_U8        rxNSSType: 1;
-}tLimOperatingModeInfo, *tpLimOperatingModeInfo;
-
-typedef struct sLimWiderBWChannelSwitch
-{
-    tANI_U8      newChanWidth;
-    tANI_U8      newCenterChanFreq0;
-    tANI_U8      newCenterChanFreq1;
-}tLimWiderBWChannelSwitchInfo, *tpLimWiderBWChannelSwitchInfo;
-#endif
->>>>>>> d97af3b... add prima wlan driver
 // Enums used when stopping the Tx.
 typedef enum eLimQuietTxMode
 {
@@ -775,7 +664,6 @@ typedef enum eLimControlTx
     eLIM_STOP_TX
 } tLimControlTx;
 
-<<<<<<< HEAD
 #ifdef ANI_AP_SDK
 typedef struct sLimScanDurationConvert
 {
@@ -785,8 +673,6 @@ typedef struct sLimScanDurationConvert
     tANI_U32 longChannelScanDuration_TU; /* Used by quietBSS duration.  Converted to TU once */
 } tLimScanDurationConvert, *tpLimScanDurationConvert;
 #endif /* ANI_AP_SDK */
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 // --------------------------------------------------------------------
 
@@ -852,62 +738,4 @@ typedef struct sLimSpecMgmtInfo
     tANI_BOOLEAN       fRadarDetCurOperChan; /* Radar detected in cur oper chan on AP */
     tANI_BOOLEAN       fRadarIntrConfigured; /* Whether radar interrupt has been configured */
 }tLimSpecMgmtInfo, *tpLimSpecMgmtInfo;
-<<<<<<< HEAD
-=======
-
-#ifdef FEATURE_WLAN_TDLS_INTERNAL
-typedef struct sLimDisResultList
-{
-    struct sLimDisResultList *next ;
-    tSirTdlsPeerInfo tdlsDisPeerInfo ;
-}tLimDisResultList ;
-#endif
-
-#ifdef FEATURE_WLAN_TDLS
-/*
- * Peer info needed for TDLS setup..
- */
-typedef struct tLimTDLSPeerSta
-{
-    struct tLimTDLSPeerSta   *next;
-    tANI_U8                  dialog ;
-    tSirMacAddr              peerMac;
-    tSirMacCapabilityInfo    capabilityInfo;
-    tSirMacRateSet           supportedRates;
-    tSirMacRateSet           extendedRates;
-    tSirMacQosCapabilityStaIE qosCaps;
-    tSirMacEdcaParamSetIE    edcaParams;
-    tANI_U8                  mcsSet[SIZE_OF_SUPPORTED_MCS_SET];    
-    tANI_U8                  tdls_bIsResponder ;
-    /* HT Capabilties */
-    tDot11fIEHTCaps tdlsPeerHTCaps ;
-    tDot11fIEExtCap tdlsPeerExtCaps;
-    tANI_U8 tdls_flags ;
-    tANI_U8 tdls_link_state ;
-    tANI_U8 tdls_prev_link_state ;
-    tANI_U8 tdls_sessionId;
-    tANI_U8 ExtRatesPresent ;
-    TX_TIMER gLimTdlsLinkSetupRspTimeoutTimer ;
-    TX_TIMER gLimTdlsLinkSetupCnfTimeoutTimer ;
-}tLimTdlsLinkSetupPeer, *tpLimTdlsLinkSetupPeer ;
-
-typedef struct tLimTdlsLinkSetupInfo
-{
-    tLimTdlsLinkSetupPeer *tdlsLinkSetupList ;
-    tANI_U8 num_tdls_peers ;
-    tANI_U8 tdls_flags ;
-    tANI_U8 tdls_state ;
-    tANI_U8 tdls_prev_state ; 
-}tLimTdlsLinkSetupInfo, *tpLimTdlsLinkSetupInfo ;
-
-typedef enum tdlsLinkMode
-{
-    TDLS_LINK_MODE_BG,
-    TDLS_LINK_MODE_N,
-    TDLS_LINK_MODE_AC,
-    TDLS_LINK_MODE_NONE
-} eLimTdlsLinkMode ;
-#endif  /* FEATURE_WLAN_TDLS */
-
->>>>>>> d97af3b... add prima wlan driver
 #endif

@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -69,12 +46,6 @@
 #include "wlan_hal_msg.h"       // it is needed to build qwptt static lib
 #endif
 
-<<<<<<< HEAD
-=======
-// Max NV fragment size
-#define MAX_NV_BIN_SIZE 2000
-
->>>>>>> d97af3b... add prima wlan driver
 enum
 {
    PTT_STATUS_SUCCESS = 0,
@@ -147,23 +118,6 @@ typedef PACKED_PRE struct PACKED_POST {
    tTxChainPower txChains[PHY_MAX_TX_CHAINS];   //output power for Tx chains
 } tTxPowerReport;
 
-<<<<<<< HEAD
-=======
-#define RXP_MAX_FILTER_IDX                64
-
-typedef PACKED_PRE struct PACKED_POST
-{
-   uint32 rxpFilterForFTMPER[RXP_MAX_FILTER_IDX];
-   uint32 max_pktlen;
-   uint32 flt_disable0;
-   uint32 flt_disable1;
-   uint32 config2;
-   uint32 push_wq_ctrl;
-   uint32 push_wq_ctrl2;
-   uint32 extra_frame_flt;
-} sMACConfig;
-
->>>>>>> d97af3b... add prima wlan driver
 
 typedef PACKED_PRE struct PACKED_POST {
    /*
@@ -191,11 +145,7 @@ typedef PACKED_PRE struct PACKED_POST {
    // for FTM PER feature
    tANI_U8 tx_mode;
    
-<<<<<<< HEAD
    tANI_U8 reserved[1];
-=======
-   tANI_BOOLEAN ftm_per_settings_saved;
->>>>>>> d97af3b... add prima wlan driver
 
    //Rx Gain Service
    sRxChainsAgcEnable agcEnables;
@@ -207,11 +157,4 @@ typedef PACKED_PRE struct PACKED_POST {
    sRxChainsRssi rssi;
 } tPttModuleVariables;
 
-<<<<<<< HEAD
-=======
-#ifdef WCN_PRONTO
-extern sMACConfig macConfig;
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
 #endif /* PTTMODULE_H */

@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -64,11 +41,7 @@
 
 #define WOWL_PTRN_MAX_SIZE          128
 #define WOWL_PTRN_MASK_MAX_SIZE      16
-<<<<<<< HEAD
 #define WOWL_MAX_PTRNS_ALLOWED        8
-=======
-#define WOWL_MAX_PTRNS_ALLOWED       16
->>>>>>> d97af3b... add prima wlan driver
 #define WOWL_INTER_PTRN_TOKENIZER   ';'
 #define WOWL_INTRA_PTRN_TOKENIZER   ':'
 
@@ -76,19 +49,11 @@
  * Type Declarations
  * -------------------------------------------------------------------------*/
 
-<<<<<<< HEAD
 static struct hdd_context_s *pAdapterHandle = NULL;
 
 char *g_hdd_wowl_ptrns[WOWL_MAX_PTRNS_ALLOWED]; //Patterns 0-7 
 
 static int parse_hex(unsigned char c)
-=======
-static char *g_hdd_wowl_ptrns[WOWL_MAX_PTRNS_ALLOWED]; //Patterns 0-15
-static v_BOOL_t g_hdd_wowl_ptrns_debugfs[WOWL_MAX_PTRNS_ALLOWED] = {0};
-static v_U8_t g_hdd_wowl_ptrns_count = 0;
-
-int hdd_parse_hex(unsigned char c)
->>>>>>> d97af3b... add prima wlan driver
 {
   if (c >= '0' && c <= '9')
     return c-'0';
@@ -112,25 +77,9 @@ static inline int find_ptrn_len(const char* ptrn)
 
 static void hdd_wowl_callback( void *pContext, eHalStatus halStatus )
 {
-<<<<<<< HEAD
   VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
     "%s: Return code = (%ld)\n", __FUNCTION__, halStatus );
 }
-=======
-  VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
-      "%s: Return code = (%ld)\n", __func__, halStatus );
-}
-
-#ifdef WLAN_WAKEUP_EVENTS
-static void hdd_wowl_wakeIndication_callback( void *pContext,
-    tpSirWakeReasonInd pWakeReasonInd )
-{
-  VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "%s: Wake Reason %d",
-      __func__, pWakeReasonInd->ulReason );
-  hdd_exit_wowl((hdd_adapter_t *)pContext);
-}
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 static void dump_hdd_wowl_ptrn(tSirWowlAddBcastPtrn *ptrn)
 {
@@ -162,21 +111,12 @@ static void dump_hdd_wowl_ptrn(tSirWowlAddBcastPtrn *ptrn)
   @return     : FALSE if any errors encountered
               : TRUE otherwise
   ===========================================================================*/
-<<<<<<< HEAD
 v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn) 
-=======
-v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn) 
->>>>>>> d97af3b... add prima wlan driver
 {
   tSirWowlAddBcastPtrn localPattern;
   int i, first_empty_slot, len, offset;
   eHalStatus halStatus;
   const char *temp;
-<<<<<<< HEAD
-=======
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
-  v_U8_t sessionId = pAdapter->sessionId;
->>>>>>> d97af3b... add prima wlan driver
 
   len = find_ptrn_len(ptrn);
 
@@ -199,11 +139,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(first_empty_slot == -1)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
           "%s: Cannot add anymore patterns. No free slot!", __FUNCTION__);
-=======
-          "%s: Cannot add anymore patterns. No free slot!", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_FALSE;
     }
 
@@ -227,40 +163,24 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
        ptrn[5] != WOWL_INTRA_PTRN_TOKENIZER)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
           "%s: Malformed pattern string. Skip!\n", __FUNCTION__);
-=======
-          "%s: Malformed pattern string. Skip!\n", __func__);
->>>>>>> d97af3b... add prima wlan driver
       ptrn += len; 
       goto next_ptrn;
     }
 
     // Extract the pattern size
     localPattern.ucPatternSize = 
-<<<<<<< HEAD
       ( parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
 
     // Extract the pattern mask size
     localPattern.ucPatternMaskSize = 
       ( parse_hex( ptrn[3] ) * 0x10 ) + parse_hex( ptrn[4] );
-=======
-      ( hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
-
-    // Extract the pattern mask size
-    localPattern.ucPatternMaskSize = 
-      ( hdd_parse_hex( ptrn[3] ) * 0x10 ) + hdd_parse_hex( ptrn[4] );
->>>>>>> d97af3b... add prima wlan driver
 
     if(localPattern.ucPatternSize > WOWL_PTRN_MAX_SIZE ||
        localPattern.ucPatternMaskSize > WOWL_PTRN_MASK_MAX_SIZE)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
           "%s: Invalid length specified. Skip!\n", __FUNCTION__);
-=======
-          "%s: Invalid length specified. Skip!\n", __func__);
->>>>>>> d97af3b... add prima wlan driver
       ptrn += len; 
       goto next_ptrn;
     }
@@ -270,11 +190,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(offset >= len || ptrn[offset] != WOWL_INTRA_PTRN_TOKENIZER) 
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
           "%s: Malformed pattern string..skip!\n", __FUNCTION__);
-=======
-          "%s: Malformed pattern string..skip!\n", __func__);
->>>>>>> d97af3b... add prima wlan driver
       ptrn += len; 
       goto next_ptrn;
     }
@@ -284,11 +200,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(offset+1 != len) //offset begins with 0
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
           "%s: Malformed pattern string...skip!\n", __FUNCTION__);
-=======
-          "%s: Malformed pattern string...skip!\n", __func__);
->>>>>>> d97af3b... add prima wlan driver
       ptrn += len; 
       goto next_ptrn;
     }
@@ -302,11 +214,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     for(i=0; i < localPattern.ucPatternSize; i++)
     {
       localPattern.ucPattern[i] = 
-<<<<<<< HEAD
         (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
-=======
-        (hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
->>>>>>> d97af3b... add prima wlan driver
       ptrn += 2; //skip to next byte
     }
 
@@ -316,11 +224,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     for(i=0; i < localPattern.ucPatternMaskSize; i++)
     {
       localPattern.ucPatternMask[i] = 
-<<<<<<< HEAD
         (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
-=======
-        (hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
->>>>>>> d97af3b... add prima wlan driver
       ptrn += 2; //skip to next byte
     }
 
@@ -329,11 +233,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(g_hdd_wowl_ptrns[first_empty_slot] == NULL) 
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
           "%s: kmalloc failure", __FUNCTION__);
-=======
-          "%s: kmalloc failure", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_FALSE;
     }
 
@@ -343,11 +243,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     localPattern.ucPatternByteOffset = 0;
 
     // Register the pattern downstream
-<<<<<<< HEAD
     halStatus = sme_WowlAddBcastPattern( pAdapterHandle->hHal, &localPattern );
-=======
-    halStatus = sme_WowlAddBcastPattern( hHal, &localPattern, sessionId );
->>>>>>> d97af3b... add prima wlan driver
     if ( !HAL_STATUS_SUCCESS( halStatus ) )
     {
       // Add failed, so invalidate the local storage
@@ -381,23 +277,12 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
   @return     : FALSE if any errors encountered
               : TRUE otherwise
   ===========================================================================*/
-<<<<<<< HEAD
 v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn) 
 {
   tSirWowlDelBcastPtrn delPattern;
   unsigned char id;
   v_BOOL_t patternFound = VOS_FALSE;
   eHalStatus halStatus;
-=======
-v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn) 
-{
-  tSirWowlDelBcastPtrn delPattern;
-  unsigned char id;
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
-  v_BOOL_t patternFound = VOS_FALSE;
-  eHalStatus halStatus;
-  v_U8_t sessionId = pAdapter->sessionId;
->>>>>>> d97af3b... add prima wlan driver
 
   // Detect pattern
   for (id=0; id<WOWL_MAX_PTRNS_ALLOWED && g_hdd_wowl_ptrns[id] != NULL; id++)
@@ -413,11 +298,7 @@ v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
   if(patternFound)
   {
     delPattern.ucPatternId = id;
-<<<<<<< HEAD
     halStatus = sme_WowlDelBcastPattern( pAdapterHandle->hHal, &delPattern );
-=======
-    halStatus = sme_WowlDelBcastPattern( hHal, &delPattern, sessionId );
->>>>>>> d97af3b... add prima wlan driver
     if ( HAL_STATUS_SUCCESS( halStatus ) )
     {
       // Remove from local storage as well
@@ -433,184 +314,6 @@ v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
 }
 
 /**============================================================================
-<<<<<<< HEAD
-=======
-  @brief hdd_add_wowl_ptrn_debugfs() - Function which will add a WoW pattern
-  to be used when PBM filtering is enabled and MP filtering is disabled
-
-  @param pAdapter       : [in] pointer to the adapter
-         pattern_idx    : [in] index of the pattern to be added
-         pattern_offset : [in] offset of the pattern in the frame payload
-         pattern_buf    : [in] pointer to the pattern hex string to be added
-
-  @return               : FALSE if any errors encountered
-                        : TRUE otherwise
-  ===========================================================================*/
-v_BOOL_t hdd_add_wowl_ptrn_debugfs(hdd_adapter_t *pAdapter, v_U8_t pattern_idx,
-                                   v_U8_t pattern_offset, char *pattern_buf)
-{
-  tSirWowlAddBcastPtrn localPattern;
-  eHalStatus halStatus;
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
-  v_U8_t sessionId = pAdapter->sessionId;
-  v_U16_t pattern_len, i;
-
-  if (pattern_idx > (WOWL_MAX_PTRNS_ALLOWED - 1))
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: WoW pattern index %d is out of range (0 ~ %d).",
-               __func__, pattern_idx, WOWL_MAX_PTRNS_ALLOWED - 1);
-
-    return VOS_FALSE;
-  }
-
-  pattern_len = strlen(pattern_buf);
-
-  /* Since the pattern is a hex string, 2 characters represent 1 byte. */
-  if (pattern_len % 2)
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: Malformed WoW pattern!", __func__);
-
-    return VOS_FALSE;
-  }
-  else
-    pattern_len >>= 1;
-
-  if (!pattern_len || pattern_len > WOWL_PTRN_MAX_SIZE)
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: WoW pattern length %d is out of range (1 ~ %d).",
-               __func__, pattern_len, WOWL_PTRN_MAX_SIZE);
-
-    return VOS_FALSE;
-  }
-
-  localPattern.ucPatternId = pattern_idx;
-  localPattern.ucPatternByteOffset = pattern_offset;
-  localPattern.ucPatternSize = pattern_len;
-
-  /* Extract the pattern */
-  for (i = 0; i < localPattern.ucPatternSize; i++)
-  {
-    localPattern.ucPattern[i] =
-      (hdd_parse_hex(pattern_buf[0]) << 4) + hdd_parse_hex(pattern_buf[1]);
-
-    /* Skip to next byte */
-    pattern_buf += 2;
-  }
-
-  /* Generate bytemask by pattern length */
-  for (i = 0; i < (pattern_len >> 3); i++)
-    localPattern.ucPatternMask[i] = 0xFF;
-
-  localPattern.ucPatternMaskSize = i;
-
-  if (pattern_len % 8)
-  {
-    localPattern.ucPatternMask[i] = (1 << (pattern_len % 8)) - 1;
-    localPattern.ucPatternMaskSize += 1;
-  }
-
-  /* Register the pattern downstream */
-  halStatus = sme_WowlAddBcastPattern(hHal, &localPattern, sessionId);
-
-  if (!HAL_STATUS_SUCCESS(halStatus))
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: sme_WowlAddBcastPattern failed with error code (%ld).",
-               __func__, halStatus);
-
-    return VOS_FALSE;
-  }
-
-  /* Enable WoW immediately after add a pattern. By default,
-   * disable magic packet mode and enable pattern byte matching mode. */
-  if (!hdd_enter_wowl(pAdapter, 0, 1))
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: hdd_enter_wowl failed!", __func__);
-
-    return VOS_FALSE;
-  }
-
-  /* All is good. */
-  if (!g_hdd_wowl_ptrns_debugfs[pattern_idx])
-  {
-    g_hdd_wowl_ptrns_debugfs[pattern_idx] = 1;
-    g_hdd_wowl_ptrns_count++;
-  }
-
-  dump_hdd_wowl_ptrn(&localPattern);
-
-  return VOS_TRUE;
-}
-
-/**============================================================================
-  @brief hdd_del_wowl_ptrn_debugfs() - Function which will remove a WoW pattern
-
-  @param pAdapter    : [in] pointer to the adapter
-         pattern_idx : [in] index of the pattern to be removed
-
-  @return            : FALSE if any errors encountered
-                     : TRUE otherwise
-  ===========================================================================*/
-v_BOOL_t hdd_del_wowl_ptrn_debugfs(hdd_adapter_t *pAdapter, v_U8_t pattern_idx)
-{
-  tSirWowlDelBcastPtrn delPattern;
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
-  eHalStatus halStatus;
-  v_U8_t sessionId = pAdapter->sessionId;
-
-  if (pattern_idx > (WOWL_MAX_PTRNS_ALLOWED - 1))
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: WoW pattern index %d is not in the range (0 ~ %d).",
-               __func__, pattern_idx, WOWL_MAX_PTRNS_ALLOWED - 1);
-
-    return VOS_FALSE;
-  }
-
-  if (!g_hdd_wowl_ptrns_debugfs[pattern_idx])
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: WoW pattern %d is not in the table.",
-               __func__, pattern_idx);
-
-    return VOS_FALSE;
-  }
-
-  delPattern.ucPatternId = pattern_idx;
-  halStatus = sme_WowlDelBcastPattern(hHal, &delPattern, sessionId);
-
-  if (!HAL_STATUS_SUCCESS(halStatus))
-  {
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: sme_WowlDelBcastPattern failed with error code (%ld).",
-               __func__, halStatus);
-
-    return VOS_FALSE;
-  }
-
-  g_hdd_wowl_ptrns_debugfs[pattern_idx] = 0;
-  g_hdd_wowl_ptrns_count--;
-
-  if (g_hdd_wowl_ptrns_count == 0)
-  {
-    if (!hdd_exit_wowl(pAdapter))
-    {
-      VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-                 "%s: hdd_exit_wowl failed!", __func__);
-
-      return VOS_FALSE;
-    }
-  }
-
-  return VOS_TRUE;
-}
-
-/**============================================================================
->>>>>>> d97af3b... add prima wlan driver
   @brief hdd_enter_wowl() - Function which will enable WoWL. Atleast one
   of MP and PBM must be enabled
 
@@ -624,10 +327,6 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
 {
   tSirSmeWowlEnterParams wowParams;
   eHalStatus halStatus;
-<<<<<<< HEAD
-=======
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
->>>>>>> d97af3b... add prima wlan driver
 
   wowParams.ucPatternFilteringEnable = enable_pbm;
   wowParams.ucMagicPktEnable = enable_mp;
@@ -638,18 +337,8 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
   }
 
   // Request to put Libra into WoWL
-<<<<<<< HEAD
   halStatus = sme_EnterWowl( pAdapterHandle->hHal, hdd_wowl_callback, 
       pAdapterHandle, &wowParams );
-=======
-  halStatus = sme_EnterWowl( hHal, hdd_wowl_callback, 
-                             pAdapter,
-#ifdef WLAN_WAKEUP_EVENTS
-                             hdd_wowl_wakeIndication_callback,
-                             pAdapter,
-#endif // WLAN_WAKEUP_EVENTS
-                             &wowParams, pAdapter->sessionId);
->>>>>>> d97af3b... add prima wlan driver
 
   if ( !HAL_STATUS_SUCCESS( halStatus ) )
   {
@@ -670,20 +359,11 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
   @return           : FALSE if any errors encountered
                     : TRUE otherwise
   ===========================================================================*/
-<<<<<<< HEAD
 v_BOOL_t hdd_exit_wowl (void) 
 {
   eHalStatus halStatus;
 
   halStatus = sme_ExitWowl( pAdapterHandle->hHal );
-=======
-v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter) 
-{
-  tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
-  eHalStatus halStatus;
-
-  halStatus = sme_ExitWowl( hHal );
->>>>>>> d97af3b... add prima wlan driver
   if ( !HAL_STATUS_SUCCESS( halStatus ) )
   {
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
@@ -701,25 +381,14 @@ v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter)
   @return           : FALSE if any errors encountered
                     : TRUE otherwise
   ===========================================================================*/
-<<<<<<< HEAD
 v_BOOL_t hdd_init_wowl (void *pAdapter) 
 {
   pAdapterHandle = (struct hdd_context_s*)pAdapter;
-=======
-v_BOOL_t hdd_init_wowl (hdd_adapter_t*pAdapter) 
-{
-  hdd_context_t *pHddCtx = NULL;
-  pHddCtx = pAdapter->pHddCtx;
->>>>>>> d97af3b... add prima wlan driver
 
   memset(g_hdd_wowl_ptrns, 0, sizeof(g_hdd_wowl_ptrns));
 
   //Add any statically configured patterns 
-<<<<<<< HEAD
   hdd_add_wowl_ptrn(pAdapterHandle->cfg_ini->wowlPattern); 
-=======
-  hdd_add_wowl_ptrn(pAdapter, pHddCtx->cfg_ini->wowlPattern); 
->>>>>>> d97af3b... add prima wlan driver
 
   return VOS_TRUE;
 }

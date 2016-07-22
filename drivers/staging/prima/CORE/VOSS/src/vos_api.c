@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,7 +20,6 @@
  */
 
 /**=========================================================================
-<<<<<<< HEAD
   
   \file  vos_api.c
 
@@ -52,12 +28,6 @@
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
-=======
-
-  \file  vos_api.c
-
-  \brief Stub file for all virtual Operating System Services (vOSS) APIs
->>>>>>> d97af3b... add prima wlan driver
   
   ========================================================================*/
  /*=========================================================================== 
@@ -80,15 +50,12 @@
 /*--------------------------------------------------------------------------
   Include Files
   ------------------------------------------------------------------------*/
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "aniGlobal.h"
 #include "halTypes.h"
 #include "wlan_qct_sal.h"
 #include "wlan_qct_bal.h"
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #include <vos_mq.h>
 #include "vos_sched.h"
 #include <vos_api.h>
@@ -105,17 +72,11 @@
 #include "wlan_qct_wda.h"
 #include "wlan_hdd_main.h"
 #include <linux/vmalloc.h>
-<<<<<<< HEAD
 
 
 #ifdef WLAN_SOFTAP_FEATURE
 #include "sapApi.h"
 #endif
-=======
-#include "wlan_hdd_cfg80211.h"
-
-#include "sapApi.h"
->>>>>>> d97af3b... add prima wlan driver
 
 
 
@@ -138,12 +99,6 @@
 /* Approximate amount of time to wait for WDA to stop WDI */
 #define VOS_WDA_STOP_TIMEOUT WDA_STOP_TIMEOUT 
 
-<<<<<<< HEAD
-=======
-/* Approximate amount of time to wait for WDA to issue a DUMP req */
-#define VOS_WDA_RESP_TIMEOUT WDA_STOP_TIMEOUT
-
->>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
  * Data definitions
  * ------------------------------------------------------------------------*/
@@ -155,22 +110,16 @@ static pVosContextType gpVosContext;
  * ------------------------------------------------------------------------*/
 v_VOID_t vos_sys_probe_thread_cback ( v_VOID_t *pUserData );
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 v_VOID_t vos_sys_start_complete_cback  ( v_VOID_t *pUserData );
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 v_VOID_t vos_core_return_msg(v_PVOID_t pVContext, pVosMsgWrapper pMsgWrapper);
 
 v_VOID_t vos_fetch_tl_cfg_parms ( WLANTL_ConfigInfoType *pTLConfig, 
     hdd_config_t * pConfig );
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 VOS_STATUS vos_get_fwbinary( v_VOID_t **ppBinary, v_SIZE_t *pNumBytes );
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 
 /*---------------------------------------------------------------------------
@@ -324,10 +273,7 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
    if (vos_event_init( &(gpVosContext->wdaCompleteEvent) ) != VOS_STATUS_SUCCESS )
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
@@ -337,7 +283,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       goto err_probe_event;
    }
 
-<<<<<<< HEAD
    /* Saving the HDD context */
    /* This is saved in hdd_wlan_start_up before calling vos_open
       gpVosContext->pHDDContext = pHddContext;*/
@@ -347,8 +292,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
    
 #endif
 
-=======
->>>>>>> d97af3b... add prima wlan driver
    /* Initialize the free message queue */
    vStatus = vos_mq_init(&gpVosContext->freeVosMq);
    if (! VOS_IS_STATUS_SUCCESS(vStatus))
@@ -358,15 +301,11 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Failed to initialize VOS free message queue", __func__);
       VOS_ASSERT(0);
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
       goto err_probe_event;
 #else
       goto err_wda_complete_event;
 #endif
-=======
-      goto err_wda_complete_event;
->>>>>>> d97af3b... add prima wlan driver
    }
 
    for (iter = 0; iter < VOS_CORE_MAX_MESSAGES; iter++)
@@ -376,7 +315,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       INIT_LIST_HEAD(&gpVosContext->aMsgWrappers[iter].msgNode);
       vos_mq_put(&gpVosContext->freeVosMq, &(gpVosContext->aMsgWrappers[iter]));
    }
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
    /* Initialize here the VOS Packet sub module */
    vStatus = vos_packet_open( gpVosContext, &gpVosContext->vosPacket,
@@ -391,8 +329,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       goto err_msg_queue;
    }
 #endif   
-=======
->>>>>>> d97af3b... add prima wlan driver
 
    /* Now Open the VOS Scheduler */
    vStatus= vos_sched_open(gpVosContext, &gpVosContext->vosSched,
@@ -404,7 +340,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Failed to open VOS Scheduler", __func__);
       VOS_ASSERT(0);
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
       goto err_packet_close;
 #else
@@ -413,11 +348,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
    }
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
-      goto err_msg_queue;
-   }
-
->>>>>>> d97af3b... add prima wlan driver
    /*
    ** Need to open WDA first because it calls WDI_Init, which calls wpalOpen
    ** The reason that is needed becasue vos_packet_open need to use PAL APIs
@@ -453,10 +383,7 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_ASSERT(0);
       goto err_wda_close;
    }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
    /* Open the SYS module */
    vStatus = sysOpen(gpVosContext);
@@ -467,15 +394,11 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Failed to open SYS module", __func__);
       VOS_ASSERT(0);
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
       goto err_sched_close;
 #else
       goto err_packet_close;
 #endif
-=======
-      goto err_packet_close;
->>>>>>> d97af3b... add prima wlan driver
    }
 
 
@@ -488,7 +411,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
                 "%s: Failed to initialize the NV module", __func__);
      goto err_sys_close;
    }
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
    /* Probe the MC thread */
    sysMcThreadProbe(gpVosContext, 
@@ -516,8 +438,6 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       goto err_nv_close;
    }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
    /* If we arrive here, both threads dispacthing messages correctly */
    
@@ -583,43 +503,29 @@ err_nv_close:
 err_sys_close:   
    sysClose(gpVosContext);
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
 err_packet_close:
    vos_packet_close( gpVosContext );
 
 err_wda_close:
    WDA_close(gpVosContext);
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 err_sched_close:   
    vos_sched_close(gpVosContext);
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 err_packet_close:
    vos_packet_close( gpVosContext );
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 err_msg_queue:
    vos_mq_deinit(&gpVosContext->freeVosMq);
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 err_wda_complete_event:
    vos_event_destroy( &gpVosContext->wdaCompleteEvent );
 #endif
-=======
-err_wda_complete_event:
-   vos_event_destroy( &gpVosContext->wdaCompleteEvent );
->>>>>>> d97af3b... add prima wlan driver
 
 err_probe_event:
    vos_event_destroy(&gpVosContext->ProbeEvent);
@@ -628,10 +534,7 @@ err_probe_event:
 
 } /* vos_open() */
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
 
   \brief vos_preStart() -
@@ -715,13 +618,6 @@ VOS_STATUS vos_preStart( v_CONTEXT_t vosContext )
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
            "%s: WDA_preStart reporting other error", __func__);
       }
-<<<<<<< HEAD
-=======
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-           "%s: Test MC thread by posting a probe message to SYS", __func__);
-      wlan_sys_probe();
-
->>>>>>> d97af3b... add prima wlan driver
       macStop(gpVosContext->pMACContext, HAL_STOP_TYPE_SYS_DEEP_SLEEP);
       ccmStop(gpVosContext->pMACContext);
       VOS_ASSERT( 0 );
@@ -730,10 +626,7 @@ VOS_STATUS vos_preStart( v_CONTEXT_t vosContext )
 
    return VOS_STATUS_SUCCESS;
 }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 /*---------------------------------------------------------------------------
   
@@ -774,13 +667,10 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   tSirRetStatus sirStatus     = eSIR_SUCCESS;
   pVosContextType pVosContext = (pVosContextType)vosContext;
   tHalMacStartParameters halStartParams;
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   v_VOID_t *pFwBinary = NULL;
   v_SIZE_t  numFwBytes = 0;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "%s: Starting Libra SW", __func__);
@@ -789,7 +679,6 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   if (gpVosContext != pVosContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
            "%s: mismatch in context", __FUNCTION__);
      return VOS_STATUS_E_FAILURE;
   }
@@ -811,18 +700,11 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
      return VOS_STATUS_E_FAILURE;
   }
 #else
-=======
-           "%s: mismatch in context", __func__);
-     return VOS_STATUS_E_FAILURE;
-  }
-
->>>>>>> d97af3b... add prima wlan driver
   if (( pVosContext->pWDAContext == NULL) || ( pVosContext->pMACContext == NULL)
      || ( pVosContext->pTLContext == NULL))
   {
      if (pVosContext->pWDAContext == NULL)
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
             "%s: WDA NULL context", __FUNCTION__);
      else if (pVosContext->pMACContext == NULL)
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
@@ -830,15 +712,6 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
      else
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
             "%s: TL NULL context", __FUNCTION__);
-=======
-            "%s: WDA NULL context", __func__);
-     else if (pVosContext->pMACContext == NULL)
-        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-            "%s: MAC NULL context", __func__);
-     else
-        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-            "%s: TL NULL context", __func__);
->>>>>>> d97af3b... add prima wlan driver
      
      return VOS_STATUS_E_FAILURE;
   }
@@ -875,17 +748,7 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
          "%s: WDA_NVDownload_start reporting other error", __func__);
      }
      VOS_ASSERT(0);
-<<<<<<< HEAD
      goto err_wda_stop;   
-=======
-     vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
-     if (vos_is_logp_in_progress(VOS_MODULE_ID_VOSS, NULL))
-     {
-         VOS_BUG(0);
-     }
-     WDA_setNeedShutdown(vosContext);
-     return VOS_STATUS_E_FAILURE;
->>>>>>> d97af3b... add prima wlan driver
   }
 
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
@@ -902,7 +765,6 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "%s: WDA correctly started", __func__);
 
-<<<<<<< HEAD
 #endif
   /* Start the MAC */
   vos_mem_zero((v_PVOID_t)&halStartParams, sizeof(tHalMacStartParameters));
@@ -948,27 +810,15 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   halStartParams.FW.pImage = NULL;
   halStartParams.FW.cbImage = 0;
 #endif 
-=======
-  /* Start the MAC */
-  vos_mem_zero((v_PVOID_t)&halStartParams, sizeof(tHalMacStartParameters));
-
-  /* Start the MAC */
-  sirStatus = macStart(pVosContext->pMACContext,(v_PVOID_t)&halStartParams);
-
->>>>>>> d97af3b... add prima wlan driver
   if (eSIR_SUCCESS != sirStatus)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
               "%s: Failed to start MAC", __func__);
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     return VOS_STATUS_E_FAILURE;
 #else
     goto err_wda_stop;
 #endif
-=======
-    goto err_wda_stop;
->>>>>>> d97af3b... add prima wlan driver
   }
    
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
@@ -998,7 +848,6 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
 
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "TL correctly started");
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC  
   /* START SYS. This will trigger the CFG download */
   sysMcStart(pVosContext, vos_sys_start_complete_cback, pVosContext);
@@ -1036,20 +885,15 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   }
 
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "%s: VOSS Start is successful!!", __func__);
 
   return VOS_STATUS_SUCCESS;
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 err_tl_stop:
   WLANTL_Stop(pVosContext);
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 err_sme_stop:
   sme_Stop(pVosContext->pMACContext, TRUE);
@@ -1057,7 +901,6 @@ err_sme_stop:
 err_mac_stop:
   macStop( pVosContext->pMACContext, HAL_STOP_TYPE_SYS_RESET );
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 err_wda_stop:   
   vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
@@ -1080,39 +923,6 @@ err_wda_stop:
      VOS_ASSERT( 0 );
   }
 #endif
-=======
-err_wda_stop:   
-  vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
-  vStatus = WDA_stop( pVosContext, HAL_STOP_TYPE_RF_KILL);
-  if (!VOS_IS_STATUS_SUCCESS(vStatus))
-  {
-     VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-         "%s: Failed to stop WDA", __func__);
-     VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vStatus ) );
-     WDA_setNeedShutdown(vosContext);
-  }
-  else
-  {
-    vStatus = vos_wait_single_event( &(gpVosContext->wdaCompleteEvent),
-                                     VOS_WDA_TIMEOUT );
-    if( vStatus != VOS_STATUS_SUCCESS )
-    {
-       if( vStatus == VOS_STATUS_E_TIMEOUT )
-       {
-          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
-           "%s: Timeout occurred before WDA_stop complete", __func__);
-
-       }
-       else
-       {
-          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
-           "%s: WDA_stop reporting other error", __func__);
-       }
-       VOS_ASSERT( 0 );
-       WDA_setNeedShutdown(vosContext);
-    }
-  }
->>>>>>> d97af3b... add prima wlan driver
 
   return VOS_STATUS_E_FAILURE;
    
@@ -1124,10 +934,7 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
 {
   VOS_STATUS vosStatus;
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
   /* WDA_Stop is called before the SYS so that the processing of Riva 
   pending responces will not be handled during uninitialization of WLAN driver */
   vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
@@ -1139,7 +946,6 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
          "%s: Failed to stop WDA", __func__);
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
-<<<<<<< HEAD
   }
 
   vosStatus = vos_wait_single_event( &(gpVosContext->wdaCompleteEvent),
@@ -1160,33 +966,6 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
      WDA_stopFailed(vosContext);
   }
 #endif
-=======
-     WDA_setNeedShutdown(vosContext);
-  }
-  else
-  {
-    vosStatus = vos_wait_single_event( &(gpVosContext->wdaCompleteEvent),
-                                       VOS_WDA_STOP_TIMEOUT );
-
-    if ( vosStatus != VOS_STATUS_SUCCESS )
-    {
-       if ( vosStatus == VOS_STATUS_E_TIMEOUT )
-       {
-          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-           "%s: Timeout occurred before WDA complete", __func__);
-       }
-       else
-       {
-          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-           "%s: WDA_stop reporting other error", __func__ );
-       }
-       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-           "%s: Test MC thread by posting a probe message to SYS", __func__);
-       wlan_sys_probe();
-       WDA_setNeedShutdown(vosContext);
-    }
-  }
->>>>>>> d97af3b... add prima wlan driver
 
   /* SYS STOP will stop SME and MAC */
   vosStatus = sysStop( vosContext);
@@ -1205,7 +984,6 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
    /**
    EVM issue is observed with 1.6Mhz freq for 1.3V supply in wlan standalone case.
@@ -1218,8 +996,6 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                "%s: Failed to set the freq to 1.6Mhz for 1.3V Supply", __func__ );
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
   return VOS_STATUS_SUCCESS;
 }
@@ -1284,21 +1060,14 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
   if ( TRUE == WDA_needShutdown(vosContext ))
   {
      /* if WDA stop failed, call WDA shutdown to cleanup WDA/WDI */
      vosStatus = WDA_shutdown( vosContext, VOS_TRUE );
      if (VOS_IS_STATUS_SUCCESS( vosStatus ) )
      {
-<<<<<<< HEAD
         hdd_set_ssr_required( VOS_TRUE );
-=======
-        hdd_set_ssr_required( HDD_SSR_REQUIRED );
->>>>>>> d97af3b... add prima wlan driver
      }
      else
      {
@@ -1326,7 +1095,6 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
          "%s: Failed to close VOSS Packet", __func__);
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
-<<<<<<< HEAD
 #endif
 
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
@@ -1342,12 +1110,6 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
   vos_mq_deinit(&((pVosContextType)vosContext)->freeVosMq);
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
-
-
-  vos_mq_deinit(&((pVosContextType)vosContext)->freeVosMq);
-
->>>>>>> d97af3b... add prima wlan driver
   vosStatus = vos_event_destroy(&gpVosContext->wdaCompleteEvent);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
   {
@@ -1355,10 +1117,7 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
          "%s: failed to destroy wdaCompleteEvent", __func__);
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
   vosStatus = vos_event_destroy(&gpVosContext->ProbeEvent);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -1398,22 +1157,14 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
   if (pVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
         "%s: vos context pointer is null", __FUNCTION__);
-=======
-        "%s: vos context pointer is null", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return NULL;
   }
 
   if (gpVosContext != pVosContext)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: pVosContext != gpVosContext", __FUNCTION__);
-=======
-        "%s: pVosContext != gpVosContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return NULL;
   }
 
@@ -1425,7 +1176,6 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       break;
     }
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     case VOS_MODULE_ID_BAL:
     {
@@ -1445,8 +1195,6 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       break;
     }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_BTAMP_FEATURE
     case VOS_MODULE_ID_BAP:
     {
@@ -1455,10 +1203,7 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
     }    
 #endif //WLAN_BTAMP_FEATURE
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
     case VOS_MODULE_ID_SAP:
     {
       pModContext = gpVosContext->pSAPContext;
@@ -1470,10 +1215,7 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       pModContext = gpVosContext->pHDDSoftAPContext;
       break;
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     case VOS_MODULE_ID_HDD:
     {
@@ -1482,15 +1224,10 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
     }
 
     case VOS_MODULE_ID_SME:
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     case VOS_MODULE_ID_HAL:
 #endif
     case VOS_MODULE_ID_PE:
-=======
-    case VOS_MODULE_ID_PE:
-    case VOS_MODULE_ID_PMC:
->>>>>>> d97af3b... add prima wlan driver
     {
       /* 
       ** In all these cases, we just return the MAC Context
@@ -1499,20 +1236,14 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       break;
     }
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
     case VOS_MODULE_ID_WDA:
     {
       /* For WDA module */
       pModContext = gpVosContext->pWDAContext;
       break;
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     case VOS_MODULE_ID_VOSS:
     {
@@ -1564,11 +1295,7 @@ v_CONTEXT_t vos_get_global_context( VOS_MODULE_ID moduleId,
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: global voss context is NULL", __FUNCTION__);
-=======
-        "%s: global voss context is NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
   }
 
   return gpVosContext;
@@ -1581,11 +1308,7 @@ v_U8_t vos_is_logp_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext)
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: global voss context is NULL", __FUNCTION__);
-=======
-        "%s: global voss context is NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return 1;
   }
 
@@ -1597,11 +1320,7 @@ void vos_set_logp_in_progress(VOS_MODULE_ID moduleId, v_U8_t value)
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: global voss context is NULL", __FUNCTION__);
-=======
-        "%s: global voss context is NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return;
   }
 
@@ -1613,11 +1332,7 @@ v_U8_t vos_is_load_unload_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleCo
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: global voss context is NULL", __FUNCTION__);
-=======
-        "%s: global voss context is NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return 0; 
   }
 
@@ -1629,11 +1344,7 @@ void vos_set_load_unload_in_progress(VOS_MODULE_ID moduleId, v_U8_t value)
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: global voss context is NULL", __FUNCTION__);
-=======
-        "%s: global voss context is NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return;
   }
 
@@ -1685,21 +1396,13 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
 
   if ( pVosContext == NULL) {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: vos context is null", __FUNCTION__);
-=======
-        "%s: vos context is null", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return VOS_STATUS_E_FAILURE;
   }
 
   if (( gpVosContext != pVosContext) || ( ppModuleContext == NULL)) {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: context mismatch or null param passed", __FUNCTION__);
-=======
-        "%s: context mismatch or null param passed", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return VOS_STATUS_E_FAILURE;
   }
 
@@ -1711,7 +1414,6 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
       break;
     }
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     case VOS_MODULE_ID_BAL:
     {
@@ -1731,8 +1433,6 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
       break;
     }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_BTAMP_FEATURE
     case VOS_MODULE_ID_BAP:
     {
@@ -1741,28 +1441,20 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
     }    
 #endif //WLAN_BTAMP_FEATURE
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
     case VOS_MODULE_ID_SAP:
     {
       pGpModContext = &(gpVosContext->pSAPContext);
       break;
     }
-<<<<<<< HEAD
 #endif
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
-
->>>>>>> d97af3b... add prima wlan driver
     case VOS_MODULE_ID_WDA:
     {
       pGpModContext = &(gpVosContext->pWDAContext);
       break;
     }
-<<<<<<< HEAD
 #endif
     case VOS_MODULE_ID_SME:
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
@@ -1773,13 +1465,6 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
 #ifdef WLAN_SOFTAP_FEATURE
     case VOS_MODULE_ID_HDD_SOFTAP:
 #endif
-=======
-    case VOS_MODULE_ID_SME:
-    case VOS_MODULE_ID_PE:
-    case VOS_MODULE_ID_PMC:
-    case VOS_MODULE_ID_HDD:
-    case VOS_MODULE_ID_HDD_SOFTAP:
->>>>>>> d97af3b... add prima wlan driver
     default:
     {     
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Module ID %i "
@@ -1881,7 +1566,6 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
       break;
     }
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     case VOS_MODULE_ID_BAL:
     {
@@ -1901,8 +1585,6 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
       break;
     }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_BTAMP_FEATURE
     case VOS_MODULE_ID_BAP:
     {
@@ -1911,28 +1593,20 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
     }
 #endif //WLAN_BTAMP_FEATURE
  
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
     case VOS_MODULE_ID_SAP:
     {
       pGpModContext = &(gpVosContext->pSAPContext); 
       break;
     }
-<<<<<<< HEAD
 #endif
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
-
->>>>>>> d97af3b... add prima wlan driver
     case VOS_MODULE_ID_WDA:
     {
       pGpModContext = &(gpVosContext->pWDAContext);
       break;
     }
-<<<<<<< HEAD
 #endif
     case VOS_MODULE_ID_HDD:
     case VOS_MODULE_ID_SME:
@@ -1943,13 +1617,6 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
 #ifdef WLAN_SOFTAP_FEATURE
     case VOS_MODULE_ID_HDD_SOFTAP:
 #endif
-=======
-    case VOS_MODULE_ID_HDD:
-    case VOS_MODULE_ID_SME:
-    case VOS_MODULE_ID_PE:
-    case VOS_MODULE_ID_PMC:
-    case VOS_MODULE_ID_HDD_SOFTAP:
->>>>>>> d97af3b... add prima wlan driver
     default:
     {     
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Module ID %i "
@@ -1972,11 +1639,7 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
   if (*pGpModContext != pModuleContext)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
         "%s: pGpModContext != pModuleContext", __FUNCTION__);
-=======
-        "%s: pGpModContext != pModuleContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
     return VOS_STATUS_E_FAILURE;
   } 
   
@@ -2056,7 +1719,6 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        break;
     }
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     /// Message Queue ID for messages bound for HAL
     case VOS_MQ_ID_HAL: 
@@ -2065,8 +1727,6 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        break;
     }
 #else
-=======
->>>>>>> d97af3b... add prima wlan driver
     /// Message Queue ID for messages bound for WDA
     case VOS_MQ_ID_WDA: 
     {
@@ -2080,10 +1740,7 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        pTargetMq = &(gpVosContext->vosSched.wdiMcMq);
        break;
     }
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     /// Message Queue ID for messages bound for TL
     case VOS_MQ_ID_TL: 
@@ -2112,11 +1769,7 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
   if (pTargetMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
          "%s: pTargetMq == NULL", __FUNCTION__);
-=======
-         "%s: pTargetMq == NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return VOS_STATUS_E_FAILURE;
   } 
 
@@ -2207,7 +1860,6 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        break;
     }
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     /// Message Queue ID for messages bound for SSC
     case VOS_MQ_ID_SSC:  
@@ -2216,18 +1868,13 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        break;
     }
 #else
-=======
->>>>>>> d97af3b... add prima wlan driver
     /// Message Queue ID for messages bound for SSC
     case VOS_MQ_ID_WDI:  
     {
        pTargetMq = &(gpVosContext->vosSched.wdiTxMq);
        break;
     }
-<<<<<<< HEAD
 #endif 
-=======
->>>>>>> d97af3b... add prima wlan driver
     
     /// Message Queue ID for messages bound for the SYS module
     case VOS_MQ_ID_SYS:
@@ -2239,11 +1886,7 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
     default:
 
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
               "Trying to queue msg into unknown Tx Msg queue ID %d",
-=======
-              "%s: Trying to queue msg into unknown Tx Msg queue ID %d",
->>>>>>> d97af3b... add prima wlan driver
                __func__, msgQueueId);
 
     return VOS_STATUS_E_FAILURE;
@@ -2252,11 +1895,7 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
   if (pTargetMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
          "%s: pTargetMq == NULL", __FUNCTION__);
-=======
-         "%s: pTargetMq == NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return VOS_STATUS_E_FAILURE;
   } 
     
@@ -2289,10 +1928,7 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
 
 } /* vos_tx_mq_serialize()*/
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
 /**---------------------------------------------------------------------------
 
   \brief vos_rx_mq_serialize() - serialize a message to the Rx execution flow
@@ -2361,11 +1997,7 @@ VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
     default:
 
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
               "Trying to queue msg into unknown Rx Msg queue ID %d",
-=======
-              "%s: Trying to queue msg into unknown Rx Msg queue ID %d",
->>>>>>> d97af3b... add prima wlan driver
                __func__, msgQueueId);
 
     return VOS_STATUS_E_FAILURE;
@@ -2374,11 +2006,7 @@ VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
   if (pTargetMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
          "%s: pTargetMq == NULL", __FUNCTION__);
-=======
-         "%s: pTargetMq == NULL", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return VOS_STATUS_E_FAILURE;
   }
 
@@ -2411,10 +2039,7 @@ VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
 
 } /* vos_rx_mq_serialize()*/
 
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 v_VOID_t 
 vos_sys_probe_thread_cback 
 ( 
@@ -2424,28 +2049,19 @@ vos_sys_probe_thread_cback
   if (gpVosContext != pUserData)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
          "%s: gpVosContext != pUserData", __FUNCTION__);
-=======
-         "%s: gpVosContext != pUserData", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return;
   } 
 
   if (vos_event_set(&gpVosContext->ProbeEvent)!= VOS_STATUS_SUCCESS)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
          "%s: vos_event_set failed", __FUNCTION__);
-=======
-         "%s: vos_event_set failed", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
 } /* vos_sys_probe_thread_cback() */
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 v_VOID_t vos_sys_start_complete_cback
 ( 
@@ -2469,8 +2085,6 @@ v_VOID_t vos_sys_start_complete_cback
 
 } /* vos_sys_start_complete_cback() */
 #else
-=======
->>>>>>> d97af3b... add prima wlan driver
 v_VOID_t vos_WDAComplete_cback
 (
   v_VOID_t *pUserData
@@ -2480,30 +2094,19 @@ v_VOID_t vos_WDAComplete_cback
   if (gpVosContext != pUserData)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
          "%s: gpVosContext != pUserData", __FUNCTION__);
-=======
-         "%s: gpVosContext != pUserData", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
   if (vos_event_set(&gpVosContext->wdaCompleteEvent)!= VOS_STATUS_SUCCESS)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
          "%s: vos_event_set failed", __FUNCTION__);
-=======
-         "%s: vos_event_set failed", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return;
   }
 
 } /* vos_WDAComplete_cback() */
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 v_VOID_t vos_core_return_msg
 (
@@ -2518,11 +2121,7 @@ v_VOID_t vos_core_return_msg
   if (gpVosContext != pVosContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
          "%s: gpVosContext != pVosContext", __FUNCTION__);
-=======
-         "%s: gpVosContext != pVosContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return;
   } 
 
@@ -2531,11 +2130,7 @@ v_VOID_t vos_core_return_msg
   if (pMsgWrapper == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-<<<<<<< HEAD
          "%s: pMsgWrapper == NULL in function", __FUNCTION__);
-=======
-         "%s: pMsgWrapper == NULL in function", __func__);
->>>>>>> d97af3b... add prima wlan driver
      return;
   } 
   
@@ -2567,11 +2162,7 @@ vos_fetch_tl_cfg_parms
 {
   if (pTLConfig == NULL)
   {
-<<<<<<< HEAD
    VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s NULL ptr passed in!", __FUNCTION__);
-=======
-   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s NULL ptr passed in!", __func__);
->>>>>>> d97af3b... add prima wlan driver
    return;
   }
 
@@ -2580,13 +2171,9 @@ vos_fetch_tl_cfg_parms
   pTLConfig->ucAcWeights[2] = pConfig->WfqViWeight;
   pTLConfig->ucAcWeights[3] = pConfig->WfqVoWeight;
   pTLConfig->uDelayedTriggerFrmInt = pConfig->DelayedTriggerFrmInt;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
   pTLConfig->uMinFramesProcThres = pConfig->MinFramesProcThres;
 #endif
-=======
-  pTLConfig->uMinFramesProcThres = pConfig->MinFramesProcThres;
->>>>>>> d97af3b... add prima wlan driver
 
 }
 
@@ -2595,11 +2182,7 @@ v_BOOL_t vos_is_apps_power_collapse_allowed(void* pHddCtx)
   return hdd_is_apps_power_collapse_allowed((hdd_context_t*) pHddCtx);
 }
 
-<<<<<<< HEAD
 void vos_abort_mac_scan(void)
-=======
-void vos_abort_mac_scan(v_U8_t sessionId)
->>>>>>> d97af3b... add prima wlan driver
 {
     hdd_context_t *pHddCtx = NULL;
     v_CONTEXT_t pVosContext        = NULL;
@@ -2618,16 +2201,10 @@ void vos_abort_mac_scan(v_U8_t sessionId)
        return;
     }
 
-<<<<<<< HEAD
     hdd_abort_mac_scan(pHddCtx);
     return;
 }
 
-=======
-    hdd_abort_mac_scan(pHddCtx, sessionId);
-    return;
-}
->>>>>>> d97af3b... add prima wlan driver
 /*---------------------------------------------------------------------------
 
   \brief vos_shutdown() - shutdown VOS
@@ -2855,53 +2432,3 @@ VOS_STATUS vos_wlanRestart(void)
    vstatus = wlan_hdd_restart_driver(pHddCtx);
    return vstatus;
 }
-<<<<<<< HEAD
-=======
-
-
-/**
-  @brief vos_fwDumpReq()
-
-  This function is called to issue dump commands to Firmware
-
-  @param
-       cmd - Command No. to execute
-       arg1 - argument 1 to cmd
-       arg2 - argument 2 to cmd
-       arg3 - argument 3 to cmd
-       arg4 - argument 4 to cmd
-  @return
-       NONE
-*/
-v_VOID_t vos_fwDumpReq(tANI_U32 cmd, tANI_U32 arg1, tANI_U32 arg2,
-                        tANI_U32 arg3, tANI_U32 arg4)
-{
-   VOS_STATUS vStatus          = VOS_STATUS_SUCCESS;
-
-   /* Reset wda wait event */
-   vos_event_reset(&gpVosContext->wdaCompleteEvent);
-
-   WDA_HALDumpCmdReq(NULL, cmd, arg1, arg2, arg3, arg4, NULL);
-
-   /* Need to update time out of complete */
-   vStatus = vos_wait_single_event(&gpVosContext->wdaCompleteEvent,
-                                   VOS_WDA_RESP_TIMEOUT );
-
-   if (vStatus != VOS_STATUS_SUCCESS)
-   {
-      if (vStatus == VOS_STATUS_E_TIMEOUT)
-      {
-         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-          "%s: Timeout occurred before WDA HAL DUMP complete\n", __func__);
-      }
-      else
-      {
-         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-           "%s: reporting other error", __func__);
-      }
-   }
-
-   return;
-
-}
->>>>>>> d97af3b... add prima wlan driver

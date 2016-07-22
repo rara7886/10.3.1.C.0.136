@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,14 +42,9 @@
 #include <i_vos_packet.h>
 #include <vos_timer.h>
 #include <vos_trace.h>
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #include <wlan_hdd_main.h>   
 #endif
-=======
-#include <wlan_hdd_main.h>   
-#include <linux/wcnss_wlan.h>
->>>>>>> d97af3b... add prima wlan driver
 
 /*--------------------------------------------------------------------------
   Preprocessor definitions and constants
@@ -85,11 +57,7 @@
 /*---------------------------------------------------------------------------
   Data definitions
   ------------------------------------------------------------------------*/
-<<<<<<< HEAD
 static vos_pkt_context_t *gpVosPacketContext = NULL;
-=======
-static vos_pkt_context_t *gpVosPacketContext;
->>>>>>> d97af3b... add prima wlan driver
 
 /*-------------------------------------------------------------------------
   Function declarations and documentation
@@ -112,11 +80,7 @@ static VOS_STATUS vos_pkti_packet_init( struct vos_pkt_t *pPkt,
       // these need an attached skb.
       // we preallocate a fixed-size skb and reserve the entire buffer
       // as headroom since that is what other components expect
-<<<<<<< HEAD
       pPkt->pSkb = alloc_skb(VPKT_SIZE_BUFFER, GFP_ATOMIC);
-=======
-      pPkt->pSkb = alloc_skb(VPKT_SIZE_BUFFER , in_interrupt()? GFP_ATOMIC : GFP_KERNEL);
->>>>>>> d97af3b... add prima wlan driver
       if (likely(pPkt->pSkb))
       {
          skb_reserve(pPkt->pSkb, VPKT_SIZE_BUFFER);
@@ -126,19 +90,13 @@ static VOS_STATUS vos_pkti_packet_init( struct vos_pkt_t *pPkt,
          vosStatus = VOS_STATUS_E_NOMEM;
       }
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
       /* Init PAL Packet */
       WPAL_PACKET_SET_BD_POINTER(&(pPkt->palPacket), NULL);
       WPAL_PACKET_SET_BD_PHYS(&(pPkt->palPacket), NULL);
       WPAL_PACKET_SET_BD_LENGTH(&(pPkt->palPacket), 0);
       WPAL_PACKET_SET_OS_STRUCT_POINTER(&(pPkt->palPacket), NULL);
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
       break;
    default:
@@ -220,15 +178,9 @@ static void vos_pkti_replenish_raw_pool(void)
    mutex_lock(&gpVosPacketContext->mlock);
 
 
-<<<<<<< HEAD
    if ((gpVosPacketContext->rxReplenishListCount < VPKT_RX_REPLENISH_THRESHOLD)
        &&
        (!list_empty(&gpVosPacketContext->rxRawFreeList)))
-=======
-   if ((gpVosPacketContext->rxReplenishListCount <
-        gpVosPacketContext->numOfRxRawPackets/4) &&
-         (!list_empty(&gpVosPacketContext->rxRawFreeList)))
->>>>>>> d97af3b... add prima wlan driver
    {
       mutex_unlock(&gpVosPacketContext->mlock);
       return;
@@ -261,10 +213,6 @@ static void vos_pkti_replenish_raw_pool(void)
 
       // add it to the Rx Raw Free Pool
       list_add_tail(&pVosPacket->node, &gpVosPacketContext->rxRawFreeList);
-<<<<<<< HEAD
-=======
-      gpVosPacketContext->rxRawFreeListCount++;
->>>>>>> d97af3b... add prima wlan driver
 
       didOne = VOS_TRUE;
 
@@ -283,10 +231,6 @@ static void vos_pkti_replenish_raw_pool(void)
       pVosPacket = list_first_entry(&gpVosPacketContext->rxRawFreeList,
                                     struct vos_pkt_t, node);
       list_del(&pVosPacket->node);
-<<<<<<< HEAD
-=======
-      gpVosPacketContext->rxRawFreeListCount--;
->>>>>>> d97af3b... add prima wlan driver
 
       // clear out the User Data pointers in the voss packet..
       memset(&pVosPacket->pvUserData, 0, sizeof(pVosPacket->pvUserData));
@@ -384,11 +328,7 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
    struct vos_pkt_t *pPkt;
    struct list_head *pFreeList;
 
-<<<<<<< HEAD
    VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO, "Enter:%s",__FUNCTION__);
-=======
-   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO, "Enter:%s",__func__);
->>>>>>> d97af3b... add prima wlan driver
 
    do
    {
@@ -437,36 +377,20 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
 
       // initialize the rxRaw free list pool
       pFreeList = &pVosPacketContext->rxRawFreeList;
-<<<<<<< HEAD
       INIT_LIST_HEAD(pFreeList);
 
       // fill the rxRaw free list
       for (idx = 0; idx < VPKT_NUM_RX_RAW_PACKETS; idx++)
-=======
-      pVosPacketContext->rxRawFreeListCount = 0;
-      INIT_LIST_HEAD(pFreeList);
-
-      pVosPacketContext->numOfRxRawPackets = vos_pkt_get_num_of_rx_raw_pkts();
-
-      // fill the rxRaw free list
-      for (idx = 0; idx < pVosPacketContext->numOfRxRawPackets; idx++)
->>>>>>> d97af3b... add prima wlan driver
       {
          pPkt = &pVosPacketContext->vosPktBuffers[freePacketIndex++];
          vosStatus = vos_pkti_packet_init(pPkt, VOS_PKT_TYPE_RX_RAW);
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
          WPAL_PACKET_SET_METAINFO_POINTER(&(pPkt->palPacket),
                   (void*)&pVosPacketContext->rxMetaInfo[idx]);
          WPAL_PACKET_SET_TYPE(&(pPkt->palPacket), 
                               eWLAN_PAL_PKT_TYPE_RX_RAW);
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
          if (VOS_STATUS_SUCCESS != vosStatus)
          {
@@ -475,10 +399,6 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
             break;
          }
          list_add_tail(&pPkt->node, pFreeList);
-<<<<<<< HEAD
-=======
-         pVosPacketContext->rxRawFreeListCount++;
->>>>>>> d97af3b... add prima wlan driver
       }
 
       // exit if any problems so far
@@ -496,18 +416,12 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
       {
          pPkt = &pVosPacketContext->vosPktBuffers[freePacketIndex++];
          vosStatus = vos_pkti_packet_init(pPkt, VOS_PKT_TYPE_TX_802_3_DATA);
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
          WPAL_PACKET_SET_METAINFO_POINTER(&(pPkt->palPacket),
                (void*)&pVosPacketContext->txDataMetaInfo[idx]);
          WPAL_PACKET_SET_TYPE(&(pPkt->palPacket), 
                               eWLAN_PAL_PKT_TYPE_TX_802_3_DATA);
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
          if (VOS_STATUS_SUCCESS != vosStatus)
          {
             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
@@ -515,13 +429,9 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
             break;
          }
          list_add_tail(&pPkt->node, pFreeList);
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
          pVosPacketContext->uctxDataFreeListCount++;
 #endif
-=======
-         pVosPacketContext->uctxDataFreeListCount++;
->>>>>>> d97af3b... add prima wlan driver
       }
 
       // exit if any problems so far
@@ -542,18 +452,12 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
 
          vosStatus = vos_pkti_packet_init(pPkt, VOS_PKT_TYPE_TX_802_11_MGMT);
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
          WPAL_PACKET_SET_METAINFO_POINTER(&(pPkt->palPacket),
                (void*)&pVosPacketContext->txMgmtMetaInfo[idx]);
          WPAL_PACKET_SET_TYPE(&(pPkt->palPacket), 
                               eWLAN_PAL_PKT_TYPE_TX_802_11_MGMT);
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
          if (VOS_STATUS_SUCCESS != vosStatus)
          {
@@ -600,11 +504,7 @@ VOS_STATUS vos_packet_open( v_VOID_t *pVosContext,
 VOS_STATUS vos_packet_close( v_PVOID_t pVosContext )
 {
 
-<<<<<<< HEAD
    VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO, "Enter:%s",__FUNCTION__);
-=======
-   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO, "Enter:%s",__func__);
->>>>>>> d97af3b... add prima wlan driver
 
    if (unlikely(NULL == pVosContext))
    {
@@ -625,22 +525,11 @@ VOS_STATUS vos_packet_close( v_PVOID_t pVosContext )
    (void) vos_pkti_list_destroy(&gpVosPacketContext->txDataFreeList);
    (void) vos_pkti_list_destroy(&gpVosPacketContext->rxRawFreeList);
    (void) vos_pkti_list_destroy(&gpVosPacketContext->rxReplenishList);
-<<<<<<< HEAD
    mutex_unlock(&gpVosPacketContext->mlock);
 
 #ifdef WLAN_SOFTAP_FEATURE
    gpVosPacketContext->uctxDataFreeListCount = 0;
 #endif
-=======
-
-   gpVosPacketContext->rxRawFreeListCount    = 0;
-   gpVosPacketContext->rxReplenishListCount  = 0;
-   gpVosPacketContext->uctxDataFreeListCount = 0;
-
-   mutex_unlock(&gpVosPacketContext->mlock);
-
-   gpVosPacketContext->uctxDataFreeListCount = 0;
->>>>>>> d97af3b... add prima wlan driver
 
    return VOS_STATUS_SUCCESS;
 }
@@ -734,10 +623,6 @@ VOS_STATUS vos_pkt_get_packet( vos_pkt_t **ppPacket,
    struct list_head *pPktFreeList;
    vos_pkt_low_resource_info *pLowResourceInfo;
    struct vos_pkt_t *pVosPacket;
-<<<<<<< HEAD
-=======
-   v_SIZE_t *pCount = NULL;
->>>>>>> d97af3b... add prima wlan driver
    // Validate the return parameter pointer
    if (unlikely(NULL == ppPacket))
    {
@@ -774,10 +659,6 @@ VOS_STATUS vos_pkt_get_packet( vos_pkt_t **ppPacket,
 
       // see if we need to replenish the Rx Raw pool
       vos_pkti_replenish_raw_pool();
-<<<<<<< HEAD
-=======
-      pCount = &gpVosPacketContext->rxRawFreeListCount;
->>>>>>> d97af3b... add prima wlan driver
 
       break;
 
@@ -798,11 +679,7 @@ VOS_STATUS vos_pkt_get_packet( vos_pkt_t **ppPacket,
    // then we know we are already in a low-resource condition
    if (unlikely(pLowResourceInfo->callback))
    {
-<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-=======
-      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
->>>>>>> d97af3b... add prima wlan driver
                 "VPKT [%d]: Low resource handler already registered",
                 __LINE__);
       return VOS_STATUS_E_ALREADY;
@@ -839,13 +716,6 @@ VOS_STATUS vos_pkt_get_packet( vos_pkt_t **ppPacket,
    // remove the first record from the free pool
    pVosPacket = list_first_entry(pPktFreeList, struct vos_pkt_t, node);
    list_del(&pVosPacket->node);
-<<<<<<< HEAD
-=======
-   if (NULL != pCount)
-   {
-      (*pCount)--;
-   }
->>>>>>> d97af3b... add prima wlan driver
    mutex_unlock(&gpVosPacketContext->mlock);
 
    // clear out the User Data pointers in the voss packet..
@@ -982,11 +852,7 @@ VOS_STATUS vos_pkt_wrap_data_packet( vos_pkt_t **ppPacket,
    if (unlikely(VOS_PKT_TYPE_TX_802_3_DATA != pktType))
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                 "VPKT [%d]: invalid pktType", __LINE__, pktType);
-=======
-                "VPKT [%d]: invalid pktType %d", __LINE__, pktType);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_STATUS_E_INVAL;
    }
 
@@ -999,11 +865,7 @@ VOS_STATUS vos_pkt_wrap_data_packet( vos_pkt_t **ppPacket,
    // then we know we are already in a low-resource condition
    if (unlikely(pLowResourceInfo->callback))
    {
-<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-=======
-      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
->>>>>>> d97af3b... add prima wlan driver
                 "VPKT [%d]: Low resource handler already registered",
                 __LINE__);
       return VOS_STATUS_E_ALREADY;
@@ -1035,13 +897,9 @@ VOS_STATUS vos_pkt_wrap_data_packet( vos_pkt_t **ppPacket,
    // remove the first record from the free pool
    pVosPacket = list_first_entry(pPktFreeList, struct vos_pkt_t, node);
    list_del(&pVosPacket->node);
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    gpVosPacketContext->uctxDataFreeListCount --;
 #endif
-=======
-   gpVosPacketContext->uctxDataFreeListCount --;
->>>>>>> d97af3b... add prima wlan driver
 
    // clear out the User Data pointers in the voss packet..
    memset(&pVosPacket->pvUserData, 0, sizeof(pVosPacket->pvUserData));
@@ -1394,10 +1252,6 @@ VOS_STATUS vos_pkt_return_packet( vos_pkt_t *pPacket )
    vos_pkt_get_packet_callback callback;
    v_SIZE_t *pCount;
    VOS_PKT_TYPE packetType = VOS_PKT_TYPE_TX_802_3_DATA;
-<<<<<<< HEAD
-=======
-   v_BOOL_t lowResource = VOS_FALSE;
->>>>>>> d97af3b... add prima wlan driver
 
    // Validate the input parameter pointer
    if (unlikely(NULL == pPacket))
@@ -1441,10 +1295,6 @@ VOS_STATUS vos_pkt_return_packet( vos_pkt_t *pPacket )
          {
             pPktFreeList = &gpVosPacketContext->rxRawFreeList;
             pLowResourceInfo = &gpVosPacketContext->rxRawLowResourceInfo;
-<<<<<<< HEAD
-=======
-            pCount = &gpVosPacketContext->rxRawFreeListCount;
->>>>>>> d97af3b... add prima wlan driver
          }
          else
          {
@@ -1465,13 +1315,9 @@ VOS_STATUS vos_pkt_return_packet( vos_pkt_t *pPacket )
       case VOS_PKT_TYPE_TX_802_3_DATA:
          pPktFreeList = &gpVosPacketContext->txDataFreeList;
          pLowResourceInfo = &gpVosPacketContext->txDataLowResourceInfo;
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
          gpVosPacketContext->uctxDataFreeListCount ++;
 #endif
-=======
-         gpVosPacketContext->uctxDataFreeListCount ++;
->>>>>>> d97af3b... add prima wlan driver
          break;
 
       default:
@@ -1487,7 +1333,6 @@ VOS_STATUS vos_pkt_return_packet( vos_pkt_t *pPacket )
       // is there a low resource condition pending for this packet type?
       if (pLowResourceInfo && pLowResourceInfo->callback)
       {
-<<<<<<< HEAD
          // [DEBUG]
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,"VPKT [%d]: recycle %p",  __LINE__, pPacket);
 
@@ -1512,47 +1357,6 @@ VOS_STATUS vos_pkt_return_packet( vos_pkt_t *pPacket )
          callback(pPacket, pLowResourceInfo->userData);
       }
       else
-=======
-         // pLowResourceInfo->callback is modified from threads (different CPU's). 
-         // So a mutex is enough to protect is against a race condition.
-         // mutex is SMP safe
-         mutex_lock(&gpVosPacketContext->mlock);
-         callback = pLowResourceInfo->callback;
-         pLowResourceInfo->callback = NULL;
-         mutex_unlock(&gpVosPacketContext->mlock);
-
-         // only one context can get a valid callback
-         if(callback)
-         {
-             // [DEBUG]
-             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,"VPKT [%d]: recycle %p",  __LINE__, pPacket);
-
-             // yes, so rather than placing the packet back in the free pool
-             // we will invoke the low resource callback
-             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
-                       "VPKT [%d]: [%p] Packet recycled, type %d[%s]",
-                       __LINE__, pPacket, pPacket->packetType,
-                       vos_pkti_packet_type_str(pPacket->packetType));
-
-             // clear out the User Data pointers in the voss packet..
-             memset(&pPacket->pvUserData, 0, sizeof(pPacket->pvUserData));
-
-             // initialize the 'chain' pointer to NULL.
-             pPacket->pNext = NULL;
-
-             // timestamp the vos packet.
-             pPacket->timestamp = vos_timer_get_system_ticks();
-
-             callback(pPacket, pLowResourceInfo->userData);
-
-             // We did process low resource condition
-             lowResource = VOS_TRUE;
-         }
-      }
-      
-
-      if(!lowResource)
->>>>>>> d97af3b... add prima wlan driver
       {
          // this packet does not satisfy a low resource condition
          // so put it back in the appropriate free pool
@@ -3078,20 +2882,14 @@ VOS_STATUS vos_pkt_get_available_buffer_pool (VOS_PKT_TYPE  pktType,
 
    case VOS_PKT_TYPE_TX_802_11_DATA:
    case VOS_PKT_TYPE_TX_802_3_DATA:
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
       if (VOS_STA_SAP_MODE == hdd_get_conparam())
       {
          *vosFreeBuffer = gpVosPacketContext->uctxDataFreeListCount;  
           return VOS_STATUS_SUCCESS;
       }
       else
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
       pList = &gpVosPacketContext->txDataFreeList;
       break;
 
@@ -3100,13 +2898,7 @@ VOS_STATUS vos_pkt_get_available_buffer_pool (VOS_PKT_TYPE  pktType,
       // then he probably wants as many packets to be available as
       // possible so replenish the raw pool
       vos_pkti_replenish_raw_pool();
-<<<<<<< HEAD
       pList = &gpVosPacketContext->rxRawFreeList;
-=======
-      // Return the pre-calculated count 'rxRawFreeListCount'
-      *vosFreeBuffer = gpVosPacketContext->rxRawFreeListCount;
-      return VOS_STATUS_SUCCESS;
->>>>>>> d97af3b... add prima wlan driver
       break;
 
    default:
@@ -3124,35 +2916,6 @@ VOS_STATUS vos_pkt_get_available_buffer_pool (VOS_PKT_TYPE  pktType,
    return VOS_STATUS_SUCCESS;
 }
 
-<<<<<<< HEAD
-=======
-/**
-  @brief vos_pkt_get_num_of_rx_raw_pkts() - Get the number of RX packets
-                                       that should be allocated.
-
-  This function is called by VOS packet module to know how many RX raw
-  packets it should allocate/reserve. This value can be configured thru
-  Kernel device tree to save memory usage.
-
-  @param
-       NONE
-  @return
-       v_SIZE_t the number of packets to allocate
-
-*/
-v_SIZE_t vos_pkt_get_num_of_rx_raw_pkts(void)
-{
-#ifdef HAVE_WCNSS_RX_BUFF_COUNT
-    v_SIZE_t buffCount;
-
-    buffCount = wcnss_get_wlan_rx_buff_count();
-    return (buffCount > VPKT_NUM_RX_RAW_PACKETS ?
-               VPKT_NUM_RX_RAW_PACKETS : buffCount);
-#else
-    return VPKT_NUM_RX_RAW_PACKETS;
-#endif
-}
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef VOS_PACKET_UNIT_TEST
 #include "vos_packet_test.c"

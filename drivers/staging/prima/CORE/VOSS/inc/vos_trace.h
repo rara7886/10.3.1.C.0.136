@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -42,10 +19,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d97af3b... add prima wlan driver
 #if !defined( __VOS_TRACE_H )
 #define __VOS_TRACE_H
 
@@ -57,13 +30,10 @@
                
    Trace, logging, and debugging definitions and APIs
   
-<<<<<<< HEAD
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
   
-=======
->>>>>>> d97af3b... add prima wlan driver
   ========================================================================*/
 
 /* $Header$ */
@@ -94,10 +64,6 @@ typedef enum
    VOS_TRACE_LEVEL_INFO_HIGH,
    VOS_TRACE_LEVEL_INFO_MED,
    VOS_TRACE_LEVEL_INFO_LOW,
-<<<<<<< HEAD
-=======
-   VOS_TRACE_LEVEL_DEBUG,
->>>>>>> d97af3b... add prima wlan driver
 
    // ALL means all trace levels will be active.  This value is in place for the 
    // vos_trace_setlevel() to allow the user to turn ON all traces.
@@ -118,10 +84,6 @@ typedef enum
 // below definition is obsolete and is no longer being used in BMP and WM
 // TODO: remove this once this is not used on Android
 #define VOS_ENABLE_TRACING 
-<<<<<<< HEAD
-=======
-#define WCONN_TRACE_KMSG_LOG_BUFF
->>>>>>> d97af3b... add prima wlan driver
 
 #include  <i_vos_trace.h>   
 
@@ -170,25 +132,4 @@ void vos_trace_setLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level );
   --------------------------------------------------------------------------*/
 v_BOOL_t vos_trace_getLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level );
 
-<<<<<<< HEAD
-=======
-#ifdef WCONN_TRACE_KMSG_LOG_BUFF
-/*--------------------------------------------------------------------------
- \brief vos_wconn_trace_init(); - Initializing the spinlock,
-  Initialization would be called at the time of hdd_driver_init()
-
- \return - returns None
- --------------------------------------------------------------------------*/
-void vos_wconn_trace_init(void);
-
-/*--------------------------------------------------------------------------
- \brief vos_wconn_trace_exit(); - De-Initializing the spinlock,
-  De-Initialization would be called at the time of hdd_driver_exit()
-
- \return - returns None
- --------------------------------------------------------------------------*/
-void vos_wconn_trace_exit(void);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
 #endif

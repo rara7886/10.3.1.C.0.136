@@ -1,9 +1,5 @@
 /*
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
->>>>>>> d97af3b... add prima wlan driver
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -30,12 +26,9 @@ typedef struct sAniSirSys
 {
     tANI_U32 abort; /* system is aborting and will be unloaded, only MMH thread is running */
 
-<<<<<<< HEAD
     // Radio ID
     tANI_U32 gSirRadioId;
 
-=======
->>>>>>> d97af3b... add prima wlan driver
     tANI_U32 gSysFrameCount[4][16];
     tANI_U32 gSysBbtReceived;
     tANI_U32 gSysBbtPostedToLim;
@@ -50,7 +43,6 @@ typedef struct sAniSirSys
     tANI_U32 gSysReleaseCount;
     tANI_U32 probeError, probeBadSsid, probeIgnore, probeRespond;
 
-<<<<<<< HEAD
     tANI_U32 gSysFramesSent[4][16];
 
     tANI_U32 gSysEnableLearnMode;
@@ -91,11 +83,6 @@ typedef struct sAniSirSys
     tANI_U32  radarDetectCount;
     tANI_U8   radarDetected;
     tANI_U8   gSysdropLimPkts;
-=======
-    tANI_U32 gSysEnableLearnMode;
-    tANI_U32 gSysEnableScanMode;
-    tANI_U32 gSysEnableLinkMonitorMode;
->>>>>>> d97af3b... add prima wlan driver
 } tAniSirSys, *tpAniSirSys;
 
 #endif

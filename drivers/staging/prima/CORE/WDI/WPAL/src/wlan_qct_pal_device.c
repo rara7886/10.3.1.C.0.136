@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -108,11 +85,7 @@
  * Static Variable Definitions
  * -------------------------------------------------------------------------*/
 
-<<<<<<< HEAD
 static struct wcnss_env {
-=======
-typedef struct {
->>>>>>> d97af3b... add prima wlan driver
    struct resource *wcnss_memory;
    void __iomem    *mmio;
    int              tx_irq;
@@ -123,14 +96,7 @@ typedef struct {
    void            *rx_context;
    int              rx_registered;
    int              tx_registered;
-<<<<<<< HEAD
 } *gpEnv = NULL;
-=======
-} wcnss_env;
-
-static wcnss_env  gEnv;
-static wcnss_env *gpEnv = NULL;
->>>>>>> d97af3b... add prima wlan driver
 
 /*----------------------------------------------------------------------------
  * Static Function Declarations and Definitions
@@ -225,22 +191,14 @@ wpt_status wpalRegisterInterrupt
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
    if (NULL == callbackFunction) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked with NULL callback",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -251,11 +209,7 @@ wpt_status wpalRegisterInterrupt
          /* TX complete handler already registered */
          WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_WARN,
                  "%s: TX interrupt handler already registered",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
          /* fall though and accept the new values */
       }
       gpEnv->tx_isr = callbackFunction;
@@ -267,11 +221,7 @@ wpt_status wpalRegisterInterrupt
          /* RX complete handler already registered */
          WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_WARN,
                  "%s: RX interrupt handler already registered",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
          /* fall though and accept the new values */
       }
       gpEnv->rx_isr = callbackFunction;
@@ -281,11 +231,7 @@ wpt_status wpalRegisterInterrupt
    default:
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Unknown interrupt type [%u]",
-<<<<<<< HEAD
                  __FUNCTION__, intType);
-=======
-                 __func__, intType);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -311,11 +257,7 @@ void wpalUnRegisterInterrupt
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return;
    }
 
@@ -346,11 +288,7 @@ void wpalUnRegisterInterrupt
    default:
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Unknown interrupt type [%u]",
-<<<<<<< HEAD
                  __FUNCTION__, intType);
-=======
-                 __func__, intType);
->>>>>>> d97af3b... add prima wlan driver
       return;
    }
 
@@ -390,11 +328,7 @@ wpt_status wpalEnableInterrupt
          if (ret) {
             WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                        "%s: RX IRQ request failure",
-<<<<<<< HEAD
                        __FUNCTION__);
-=======
-                       __func__);
->>>>>>> d97af3b... add prima wlan driver
            break;
          }
       
@@ -403,11 +337,7 @@ wpt_status wpalEnableInterrupt
          if (ret) {
             WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                        "%s: enable_irq_wake failed for RX IRQ",
-<<<<<<< HEAD
                        __FUNCTION__);
-=======
-                       __func__);
->>>>>>> d97af3b... add prima wlan driver
             /* not fatal -- keep on going */
          }
       }
@@ -425,11 +355,7 @@ wpt_status wpalEnableInterrupt
          if (ret) {
             WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                        "%s: TX IRQ request failure",
-<<<<<<< HEAD
                        __FUNCTION__);
-=======
-                       __func__);
->>>>>>> d97af3b... add prima wlan driver
             break;
          }
    
@@ -438,11 +364,7 @@ wpt_status wpalEnableInterrupt
          if (ret) {
             WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                        "%s: enable_irq_wake failed for TX IRQ",
-<<<<<<< HEAD
                        __FUNCTION__);
-=======
-                       __func__);
->>>>>>> d97af3b... add prima wlan driver
             /* not fatal -- keep on going */
          }
       }
@@ -454,11 +376,7 @@ wpt_status wpalEnableInterrupt
    default:
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                     "%s: unknown interrupt: %d",
-<<<<<<< HEAD
                     __FUNCTION__, (int)intType);
-=======
-                    __func__, (int)intType);
->>>>>>> d97af3b... add prima wlan driver
       break;
    }
    /* on the integrated platform there is no platform-specific
@@ -497,11 +415,7 @@ wpt_status wpalDisableInterrupt
    default:
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                     "%s: unknown interrupt: %d",
-<<<<<<< HEAD
                     __FUNCTION__, (int)intType);
-=======
-                    __func__, (int)intType);
->>>>>>> d97af3b... add prima wlan driver
       break;
    }
 
@@ -528,11 +442,7 @@ wpt_status wpalWriteRegister
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -540,11 +450,7 @@ wpt_status wpalWriteRegister
        (address > gpEnv->wcnss_memory->end)) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Register address 0x%0x out of range 0x%0x - 0x%0x",
-<<<<<<< HEAD
                  __FUNCTION__, address,
-=======
-                 __func__, address,
->>>>>>> d97af3b... add prima wlan driver
                  gpEnv->wcnss_memory->start, gpEnv->wcnss_memory->end);
       return eWLAN_PAL_STATUS_E_INVAL;
    }
@@ -552,11 +458,7 @@ wpt_status wpalWriteRegister
    if (0 != (address & 0x3)) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Register address 0x%0x is not word aligned",
-<<<<<<< HEAD
                  __FUNCTION__, address);
-=======
-                 __func__, address);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -584,11 +486,7 @@ wpt_status wpalReadRegister
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -596,11 +494,7 @@ wpt_status wpalReadRegister
        (address > gpEnv->wcnss_memory->end)) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Register address 0x%0x out of range 0x%0x - 0x%0x",
-<<<<<<< HEAD
                  __FUNCTION__, address,
-=======
-                 __func__, address,
->>>>>>> d97af3b... add prima wlan driver
                  gpEnv->wcnss_memory->start, gpEnv->wcnss_memory->end);
       return eWLAN_PAL_STATUS_E_INVAL;
    }
@@ -608,11 +502,7 @@ wpt_status wpalReadRegister
    if (0 != (address & 0x3)) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Register address 0x%0x is not word aligned",
-<<<<<<< HEAD
                  __FUNCTION__, address);
-=======
-                 __func__, address);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -643,11 +533,7 @@ wpt_status wpalWriteDeviceMemory
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -655,11 +541,7 @@ wpt_status wpalWriteDeviceMemory
        ((address + len) > gpEnv->wcnss_memory->end)) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Memory address 0x%0x len %d out of range 0x%0x - 0x%0x",
-<<<<<<< HEAD
                  __FUNCTION__, address, len,
-=======
-                 __func__, address, len,
->>>>>>> d97af3b... add prima wlan driver
                  gpEnv->wcnss_memory->start, gpEnv->wcnss_memory->end);
       return eWLAN_PAL_STATUS_E_INVAL;
    }
@@ -691,11 +573,7 @@ wpt_status wpalReadDeviceMemory
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -703,11 +581,7 @@ wpt_status wpalReadDeviceMemory
        ((address + len) > gpEnv->wcnss_memory->end)) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Memory address 0x%0x len %d out of range 0x%0x - 0x%0x",
-<<<<<<< HEAD
                  __FUNCTION__, address, len,
-=======
-                 __func__, address, len,
->>>>>>> d97af3b... add prima wlan driver
                  gpEnv->wcnss_memory->start, gpEnv->wcnss_memory->end);
       return eWLAN_PAL_STATUS_E_INVAL;
    }
@@ -742,22 +616,14 @@ wpt_status wpalDeviceInit
    if (NULL != gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked  after subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
    if (NULL == wcnss_device) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invalid device",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -765,11 +631,7 @@ wpt_status wpalDeviceInit
    if (NULL == wcnss_memory) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: WCNSS memory map unavailable",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_FAILURE;
    }
 
@@ -777,11 +639,7 @@ wpt_status wpalDeviceInit
    if (0 > tx_irq) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: WCNSS TX IRQ unavailable",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_FAILURE;
    }
 
@@ -789,7 +647,6 @@ wpt_status wpalDeviceInit
    if (0 > rx_irq) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: WCNSS RX IRQ unavailable",
-<<<<<<< HEAD
                  __FUNCTION__);
       return eWLAN_PAL_STATUS_E_FAILURE;
    }
@@ -799,17 +656,6 @@ wpt_status wpalDeviceInit
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: memory allocation failure",
                  __FUNCTION__);
-=======
-                 __func__);
-      return eWLAN_PAL_STATUS_E_FAILURE;
-   }
-
-   gpEnv = &gEnv;
-   if (NULL == gpEnv) {
-      WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
-                 "%s: memory allocation failure",
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_NOMEM;
    }
 
@@ -828,11 +674,7 @@ wpt_status wpalDeviceInit
    if (NULL == gpEnv->mmio) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: memory remap failure",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       goto err_ioremap;
    }
 
@@ -843,10 +685,7 @@ wpt_status wpalDeviceInit
    return eWLAN_PAL_STATUS_SUCCESS;
 
  err_ioremap:
-<<<<<<< HEAD
    wpalMemoryFree(gpEnv);
-=======
->>>>>>> d97af3b... add prima wlan driver
    gpEnv = NULL;
 
    return eWLAN_PAL_STATUS_E_FAILURE;
@@ -872,11 +711,7 @@ wpt_status wpalDeviceClose
    if (NULL == gpEnv) {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: invoked before subsystem initialized",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -889,10 +724,7 @@ wpt_status wpalDeviceClose
       free_irq(gpEnv->tx_irq, gpEnv);
    }
    iounmap(gpEnv->mmio);
-<<<<<<< HEAD
    wpalMemoryFree(gpEnv);
-=======
->>>>>>> d97af3b... add prima wlan driver
    gpEnv = NULL;
 
    return eWLAN_PAL_STATUS_SUCCESS;
@@ -920,11 +752,7 @@ wpt_status wpalNotifySmsm
    {
       WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: smsm_change_state failed",
-<<<<<<< HEAD
                  __FUNCTION__);
-=======
-                 __func__);
->>>>>>> d97af3b... add prima wlan driver
       return eWLAN_PAL_STATUS_E_FAILURE;
    }
    return eWLAN_PAL_STATUS_SUCCESS;

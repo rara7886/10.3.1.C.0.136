@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -78,15 +55,7 @@
 #define SCH_DIAG_RR_TIMEOUT_DELETE    0x1
 #define SCH_DIAG_RR_LOWER_RATE        0x2
 
-<<<<<<< HEAD
 #define TIM_IE_SIZE 0x6
-=======
-#ifdef WLAN_SOFTAP_VSTA_FEATURE
-#define TIM_IE_SIZE 0xB
-#else
-#define TIM_IE_SIZE 0x7
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 // ----------------------- Beacon processing ------------------------
 
@@ -99,15 +68,11 @@
 //****************** MISC defs *********************************
 
 /// Maximum allowable size of a beacon frame
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #define SCH_MAX_BEACON_SIZE    2048
 #else
 #define SCH_MAX_BEACON_SIZE    512
 #endif
-=======
-#define SCH_MAX_BEACON_SIZE    512
->>>>>>> d97af3b... add prima wlan driver
 
 #define SCH_MAX_PROBE_RESP_SIZE 512
 
@@ -120,11 +85,7 @@ struct schMisc {
 
     /// Trailing portion of the beacon frame to be written to TFP
     tANI_U8 *gSchBeaconFrameEnd;
-<<<<<<< HEAD
     
-=======
-
->>>>>>> d97af3b... add prima wlan driver
     /// Size of the beginning portion
     tANI_U16 gSchBeaconOffsetBegin;
     /// Size of the trailing portion
@@ -171,13 +132,9 @@ struct schMisc {
     /// flag to indicate that beacon template has been updated
     tANI_U8   fBeaconChanged;
 
-<<<<<<< HEAD
 #if defined(WLAN_SOFTAP_FEATURE) && defined(WLAN_FEATURE_P2P) 
     tANI_U16 p2pIeOffset;
 #endif
-=======
-    tANI_U16 p2pIeOffset;
->>>>>>> d97af3b... add prima wlan driver
 
 };
 
@@ -207,12 +164,9 @@ typedef struct sAniSirSch
     /// Whether scan request is received by SCH or not
     tANI_U8 gSchScanReqRcvd;
 
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     tANI_U8 gSchRRRecd;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
     /// Debug flag to disable beacon generation
     tANI_U32 gSchGenBeacon;

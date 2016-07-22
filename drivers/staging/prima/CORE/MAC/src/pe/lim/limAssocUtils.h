@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -51,11 +28,7 @@
  * Date           Modified by    Modification Information
  * --------------------------------------------------------------------
  * 05/26/10       js             WPA handling in (Re)Assoc frames
-<<<<<<< HEAD
  * 
-=======
- *
->>>>>>> d97af3b... add prima wlan driver
  */
 #ifndef __LIM_ASSOC_UTILS_H
 #define __LIM_ASSOC_UTILS_H
@@ -72,15 +45,10 @@ tANI_U8         limCompareCapabilities(tpAniSirGlobal,
                                        tSirAssocReq *,
                                        tSirMacCapabilityInfo *,tpPESession);
 tANI_U8         limCheckRxBasicRates(tpAniSirGlobal, tSirMacRateSet,tpPESession);
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 tANI_U8         limCheckRxRSNIeMatch(tpAniSirGlobal, tDot11fIERSN, tpPESession, tANI_U8);
 tANI_U8         limCheckRxWPAIeMatch(tpAniSirGlobal, tDot11fIEWPA, tpPESession, tANI_U8);
 #endif
-=======
-tANI_U8         limCheckRxRSNIeMatch(tpAniSirGlobal, tDot11fIERSN, tpPESession, tANI_U8, tANI_BOOLEAN *);
-tANI_U8         limCheckRxWPAIeMatch(tpAniSirGlobal, tDot11fIEWPA, tpPESession, tANI_U8);
->>>>>>> d97af3b... add prima wlan driver
 tANI_U8         limCheckMCSSet(tpAniSirGlobal pMac, tANI_U8* supportedMCSSet);
 void            limPostDummyToTmRing(tpAniSirGlobal, tpDphHashNode);
 void            limPostPacketToTdRing(tpAniSirGlobal,
@@ -92,24 +60,6 @@ void            limRejectAssociation(tpAniSirGlobal , tSirMacAddr, tANI_U8,
                                      tANI_U16, tANI_U8, tSirResultCodes, tpPESession);
 
 #ifdef WLAN_FEATURE_11AC
-<<<<<<< HEAD
-=======
-tSirRetStatus limPopulatePeerRateSet(tpAniSirGlobal pMac,
-                                         tpSirSupportedRates pRates,
-                                         tANI_U8* pSupportedMCSSet,
-                                         tANI_U8 basicOnly,
-                                         tpPESession psessionEntry,
-                                         tDot11fIEVHTCaps *pVHTCaps);
-#else
-tSirRetStatus limPopulatePeerRateSet(tpAniSirGlobal pMac,
-                                                                tpSirSupportedRates pRates,
-                                                                tANI_U8* pSupportedMCSSet,
-                                                                tANI_U8 basicOnly,
-                                                                tpPESession psessionEntry);
-#endif
-
-#ifdef WLAN_FEATURE_11AC
->>>>>>> d97af3b... add prima wlan driver
 tSirRetStatus limPopulateOwnRateSet(tpAniSirGlobal pMac,
                                          tpSirSupportedRates pRates,
                                          tANI_U8* pSupportedMCSSet,
@@ -145,19 +95,11 @@ tSirRetStatus   limPopulateMatchingRateSet(tpAniSirGlobal,
 
 
 #endif
-<<<<<<< HEAD
 tSirRetStatus   limAddSta(tpAniSirGlobal, tpDphHashNode,tpPESession);
 tSirRetStatus   limDelBss(tpAniSirGlobal, tpDphHashNode, tANI_U16, tpPESession);
 tSirRetStatus   limDelSta(tpAniSirGlobal, tpDphHashNode, tANI_BOOLEAN, tpPESession);
 #ifdef WLAN_FEATURE_VOWIFI_11R
 tSirRetStatus   limAddFTStaSelf(tpAniSirGlobal pMac, tANI_U16 assocId, 
-=======
-tSirRetStatus   limAddSta(tpAniSirGlobal, tpDphHashNode, tANI_U8, tpPESession);
-tSirRetStatus   limDelBss(tpAniSirGlobal, tpDphHashNode, tANI_U16, tpPESession);
-tSirRetStatus   limDelSta(tpAniSirGlobal, tpDphHashNode, tANI_BOOLEAN, tpPESession);
-#ifdef WLAN_FEATURE_VOWIFI_11R
-tSirRetStatus   limAddFTStaSelf(tpAniSirGlobal pMac, tANI_U16 assocId,
->>>>>>> d97af3b... add prima wlan driver
                     tpPESession psessionEntry);
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 tSirRetStatus   limAddStaSelf(tpAniSirGlobal, tANI_U16, tANI_U8, tpPESession);
@@ -193,7 +135,6 @@ limFillSupportedRatesInfo(
     tpSirSupportedRates   pRates,
     tpPESession           psessionEntry);
 
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_CLIENT
 //make non-conditional until the caller is #ifdefed
 tSirRetStatus limStaSendAddBss(tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp, 
@@ -208,12 +149,6 @@ tSirRetStatus limStaSendAddBss(tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
                                     tpPESession psessionEntry);
 #endif
 
-=======
-tSirRetStatus limStaSendAddBss(tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
-                                    tpSchBeaconStruct pBeaconStruct, tpSirBssDescription bssDescription, tANI_U8 updateEntry, tpPESession psessionEntry);
-tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry, tpPESession psessionEntry);
-
->>>>>>> d97af3b... add prima wlan driver
 void limPrepareAndSendDelStaCnf(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tSirResultCodes statusCode,tpPESession);
 tSirRetStatus limExtractApCapabilities(tpAniSirGlobal pMac, tANI_U8 * pIE, tANI_U16 ieLen, tpSirProbeRespBeacon beaconStruct);
 void limInitPreAuthTimerTable(tpAniSirGlobal pMac, tpLimPreAuthTable pPreAuthTimerTable);
@@ -231,16 +166,6 @@ void limHandleAddBssInReAssocContext(tpAniSirGlobal pMac, tpDphHashNode pStaDs, 
 
 /* API to fill in RX Highest Supported data Rate */
 void limFillRxHighestSupportedRate(tpAniSirGlobal pMac, tANI_U16 *rxHighestRate, tANI_U8* pSupportedMCSSet);
-<<<<<<< HEAD
-=======
-#if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
-void limSendRetryReassocReqFrame(tpAniSirGlobal pMac, tLimMlmReassocReq *pMlmReassocReq, tpPESession psessionEntry);
-#endif
-#ifdef WLAN_FEATURE_11W
-void limSendSmeUnprotectedMgmtFrameInd(tpAniSirGlobal pMac, tANI_U8 frameType,
-                                       tANI_U8  *frame, tANI_U32 frameLen, tANI_U16 sessionId, tpPESession psessionEntry);
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 
 #endif /* __LIM_ASSOC_UTILS_H */

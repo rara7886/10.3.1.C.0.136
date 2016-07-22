@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -42,10 +19,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 /*===========================================================================
 
                        wlan_qct_wda_legacy.c
@@ -132,7 +106,6 @@ wdaPostCfgMsg(tpAniSirGlobal pMac, tSirMsgQ *pMsg)
 
    do
    {
-<<<<<<< HEAD
 #ifdef ANI_OS_TYPE_RTAI_LINUX
 
       // Posts message to the queue
@@ -147,23 +120,17 @@ wdaPostCfgMsg(tpAniSirGlobal pMac, tSirMsgQ *pMsg)
       }
 
 #else
-=======
->>>>>>> d97af3b... add prima wlan driver
       // For Windows based MAC, instead of posting message to different
       // queues we will call the handler routines directly
 
       cfgProcessMbMsg(pMac, (tSirMbMsg*)pMsg->bodyptr);
       rc = eSIR_SUCCESS;
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
    } while (0);
 
    return rc;
 } // halMntPostMsg()
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 #if defined(ANI_MANF_DIAG) || defined(ANI_PHY_DEBUG)
 #include "pttModuleApi.h"
@@ -227,8 +194,6 @@ halNimPTTPostMsgApi(tpAniSirGlobal pMac, tSirMsgQ *pMsg)
 
 #endif  //ANI_MANF_DIAG
 #endif  //FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 // -------------------------------------------------------------
 /**
@@ -259,7 +224,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb)
    tSirMsgQ msg;
    tpAniSirGlobal pMac = (tpAniSirGlobal)pSirGlobal;
 
-<<<<<<< HEAD
 #ifdef ANI_OS_TYPE_RTAI_LINUX
 
    msg.type = pMb->type;
@@ -268,8 +232,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb)
    WDALOG3( wdaLog(pMac, LOG3, FL("msgType %d, msgLen %d\n" ),
         pMb->type, pMb->msgLen));
 #else
-=======
->>>>>>> d97af3b... add prima wlan driver
 
    tSirMbMsg* pMbLocal;
    msg.type = pMb->type;
@@ -284,25 +246,15 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb)
    // host buffer
 
    // second parameter, 'wait option', to palAllocateMemory is ignored on Windows
-<<<<<<< HEAD
    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pMbLocal, pMb->msgLen))
-=======
-   pMbLocal = vos_mem_malloc(pMb->msgLen);
-   if ( NULL == pMbLocal )
->>>>>>> d97af3b... add prima wlan driver
    {
       WDALOGE( wdaLog(pMac, LOGE, FL("Buffer Allocation failed!\n")));
       return eSIR_FAILURE;
    }
 
-<<<<<<< HEAD
    palCopyMemory(pMac, (void *)pMbLocal, (void *)pMb, pMb->msgLen);
    msg.bodyptr = pMbLocal;
 #endif
-=======
-   vos_mem_copy((void *)pMbLocal, (void *)pMb, pMb->msgLen);
-   msg.bodyptr = pMbLocal;
->>>>>>> d97af3b... add prima wlan driver
 
    switch (msg.type & HAL_MMH_MB_MSG_TYPE_MASK)
    {
@@ -322,7 +274,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb)
       pmmPostMessage(pMac, &msg);
       break;
 
-<<<<<<< HEAD
 #if defined(ANI_MANF_DIAG) || defined(ANI_PHY_DEBUG)
    case SIR_PTT_MSG_TYPES_BEGIN:
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
@@ -331,11 +282,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb)
       break;
 
 #endif
-=======
-   case SIR_PTT_MSG_TYPES_BEGIN:
-      break;
-
->>>>>>> d97af3b... add prima wlan driver
 
    default:
       WDALOGW( wdaLog(pMac, LOGW, FL("Unknown message type = "
@@ -343,16 +289,12 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb)
              msg.type));
 
       // Release the memory.
-<<<<<<< HEAD
       if (palFreeMemory( pMac->hHdd, (void*)(msg.bodyptr))
             != eHAL_STATUS_SUCCESS)
       {
          WDALOGE( wdaLog(pMac, LOGE, FL("Buffer Allocation failed!\n")));
          return eSIR_FAILURE;
       }
-=======
-      vos_mem_free(msg.bodyptr);
->>>>>>> d97af3b... add prima wlan driver
       break;
    }
 
@@ -375,11 +317,7 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac)
    if(NULL == wdaContext)
    {
       VOS_TRACE( VOS_MODULE_ID_WDA, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                            "%s:WDA context is NULL", __FUNCTION__); 
-=======
-                           "%s:WDA context is NULL", __func__); 
->>>>>>> d97af3b... add prima wlan driver
       VOS_ASSERT(0);
       return eSYSTEM_UNKNOWN_ROLE;
    }

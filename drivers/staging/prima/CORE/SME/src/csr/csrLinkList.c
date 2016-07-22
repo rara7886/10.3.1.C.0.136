@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -135,11 +112,7 @@ void csrListInsertEntry(tListElem *pEntry, tListElem *pNewEntry)
     tListElem *pLast;
     if( !pEntry) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pEntry is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pEntry is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return; 
     }
        
@@ -157,11 +130,7 @@ tANI_U32 csrLLCount( tDblLinkList *pList )
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return c; 
     }
 
@@ -180,11 +149,7 @@ void csrLLLock( tDblLinkList *pList )
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return ; 
     }
 
@@ -200,11 +165,7 @@ void csrLLUnlock( tDblLinkList *pList )
     
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return ; 
     }
 
@@ -222,11 +183,7 @@ tANI_BOOLEAN csrLLIsListEmpty( tDblLinkList *pList, tANI_BOOLEAN fInterlocked )
     
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return fEmpty ; 
     }
 
@@ -257,11 +214,7 @@ tANI_BOOLEAN csrLLFindEntry( tDblLinkList *pList, tListElem *pEntryToFind )
     
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return fFound ; 
     }
 
@@ -294,11 +247,7 @@ eHalStatus csrLLOpen( tHddHandle hHdd, tDblLinkList *pList )
     
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return eHAL_STATUS_FAILURE ; 
     }
     
@@ -326,11 +275,7 @@ void csrLLClose( tDblLinkList *pList )
 {
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return ; 
     }
 
@@ -347,11 +292,7 @@ void csrLLInsertTail( tDblLinkList *pList, tListElem *pEntry, tANI_BOOLEAN fInte
 {    
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return; 
     }
 
@@ -377,11 +318,7 @@ void csrLLInsertHead( tDblLinkList *pList, tListElem *pEntry, tANI_BOOLEAN fInte
     
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return; 
     }
 
@@ -405,11 +342,7 @@ void csrLLInsertEntry( tDblLinkList *pList, tListElem *pEntry, tListElem *pNewEn
 {    
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return ; 
     }
 
@@ -436,11 +369,7 @@ tListElem *csrLLRemoveTail( tDblLinkList *pList, tANI_BOOLEAN fInterlocked )
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return pEntry ; 
     }
 
@@ -474,11 +403,7 @@ tListElem *csrLLPeekTail( tDblLinkList *pList, tANI_BOOLEAN fInterlocked )
     
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return pEntry ; 
     }
 
@@ -511,11 +436,7 @@ tListElem *csrLLRemoveHead( tDblLinkList *pList, tANI_BOOLEAN fInterlocked )
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return pEntry ; 
     }
 
@@ -548,11 +469,7 @@ tListElem *csrLLPeekHead( tDblLinkList *pList, tANI_BOOLEAN fInterlocked )
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return pEntry ; 
     }
      
@@ -584,11 +501,7 @@ void csrLLPurge( tDblLinkList *pList, tANI_BOOLEAN fInterlocked )
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return ; 
     }
 
@@ -618,11 +531,7 @@ tANI_BOOLEAN csrLLRemoveEntry( tDblLinkList *pList, tListElem *pEntryToRemove, t
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return fFound; 
     }
 
@@ -667,11 +576,7 @@ tListElem *csrLLNext( tDblLinkList *pList, tListElem *pEntry, tANI_BOOLEAN fInte
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return pNextEntry ; 
     }
 
@@ -708,11 +613,7 @@ tListElem *csrLLPrevious( tDblLinkList *pList, tListElem *pEntry, tANI_BOOLEAN f
 
     if( !pList) 
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __FUNCTION__);
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_FATAL,"%s: Error!! pList is Null", __func__);
->>>>>>> d97af3b... add prima wlan driver
         return pNextEntry ; 
     }
 

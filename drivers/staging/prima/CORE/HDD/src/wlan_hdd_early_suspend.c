@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -58,7 +35,6 @@
 /**-----------------------------------------------------------------------------
 *   Include files
 * ----------------------------------------------------------------------------*/
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
 
 #include <linux/pm.h>
@@ -68,14 +44,6 @@
 #include <wlan_qct_driver.h>
 #include <linux/wakelock.h>
 #endif
-=======
-
-#include <linux/pm.h>
-#include <linux/wait.h>
-#include <wlan_hdd_includes.h>
-#include <wlan_qct_driver.h>
-#include <linux/wakelock.h>
->>>>>>> d97af3b... add prima wlan driver
 
 #include "halTypes.h"
 #include "sme_Api.h"
@@ -83,20 +51,16 @@
 #include "vos_power.h"
 #include <vos_sched.h>
 #include <macInitApi.h>
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
 #include <wlan_qct_sal.h>
 #include <wlan_qct_bal.h>
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #include <wlan_qct_sys.h>
 #include <wlan_btc_svc.h>
 #include <wlan_nlink_common.h>
 #include <wlan_hdd_main.h>
 #include <wlan_hdd_assoc.h>
 #include <wlan_hdd_dev_pwr.h>
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
 #include <wlan_sal_misc.h>
 #include <libra_sdioif.h>
@@ -108,13 +72,6 @@
 #include <linux/semaphore.h>
 #include <wlan_hdd_hostapd.h>
 #endif
-=======
-#include <wlan_nlink_srv.h>
-#include <wlan_hdd_misc.h>
-
-#include <linux/semaphore.h>
-#include <wlan_hdd_hostapd.h>
->>>>>>> d97af3b... add prima wlan driver
 #include "cfgApi.h"
 
 #ifdef WLAN_BTAMP_FEATURE
@@ -126,11 +83,6 @@
 #include <linux/wcnss_wlan.h>
 #include <linux/inetdevice.h>
 #include <wlan_hdd_cfg.h>
-<<<<<<< HEAD
-=======
-#include <wlan_hdd_cfg80211.h>
-#include <net/addrconf.h>
->>>>>>> d97af3b... add prima wlan driver
 /**-----------------------------------------------------------------------------
 *   Preprocessor definitions and constants
 * ----------------------------------------------------------------------------*/
@@ -145,13 +97,9 @@
 #include "wlan_hdd_power.h"
 #include "wlan_hdd_packet_filtering.h"
 
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
 static struct early_suspend wlan_early_suspend;
 #endif
-=======
-#define HDD_SSR_BRING_UP_TIME 180000
->>>>>>> d97af3b... add prima wlan driver
 
 static eHalStatus g_full_pwr_status;
 static eHalStatus g_standby_status;
@@ -162,7 +110,6 @@ extern VOS_STATUS vos_chipExitDeepSleepVREGHandler(
    vos_power_cb_type callback,
    v_PVOID_t user_data);
 extern void hdd_wlan_initial_scan(hdd_context_t *pHddCtx);
-<<<<<<< HEAD
 void unregister_wlan_suspend(void);
 
 extern struct notifier_block hdd_netdev_notifier;
@@ -173,14 +120,6 @@ extern tVOS_CON_MODE hdd_get_conparam ( void );
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 extern void wlan_hdd_set_mc_addr_list(hdd_context_t *pHddCtx, v_U8_t set, v_U8_t sessionId);
 #endif
-=======
-
-extern struct notifier_block hdd_netdev_notifier;
-extern tVOS_CON_MODE hdd_get_conparam ( void );
-
-static struct timer_list ssr_timer;
-static bool ssr_timer_started;
->>>>>>> d97af3b... add prima wlan driver
 
 //Callback invoked by PMC to report status of standby request
 void hdd_suspend_standby_cbk (void *callbackContext, eHalStatus status)
@@ -363,14 +302,10 @@ VOS_STATUS hdd_enter_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    eHalStatus halStatus;
    VOS_STATUS vosStatus = VOS_STATUS_SUCCESS;
    vos_call_status_type callType;
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    struct sdio_func *sdio_func_dev_current = NULL;
    int attempts = 0;
 #endif
-=======
-
->>>>>>> d97af3b... add prima wlan driver
    //Stop the Interface TX queue.
    netif_tx_disable(pAdapter->dev);
    netif_carrier_off(pAdapter->dev);
@@ -420,7 +355,6 @@ VOS_STATUS hdd_enter_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    vosStatus = vos_stop( pHddCtx->pvosContext );
    VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    vosStatus = WLANBAL_Stop( pHddCtx->pvosContext );
    VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
@@ -432,15 +366,12 @@ VOS_STATUS hdd_enter_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
 #endif
 
-=======
->>>>>>> d97af3b... add prima wlan driver
    vosStatus = vos_chipAssertDeepSleep( &callType, NULL, NULL );
    VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
 
    //Vote off any PMIC voltage supplies
    vosStatus = vos_chipPowerDown(NULL, NULL, NULL);
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
     //Get the Current SDIO Func
    sdio_func_dev_current = libra_getsdio_funcdev();
@@ -467,8 +398,6 @@ VOS_STATUS hdd_enter_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    }
 #endif
 
-=======
->>>>>>> d97af3b... add prima wlan driver
    pHddCtx->hdd_ps_state = eHDD_SUSPEND_DEEP_SLEEP;
 
    //Restore IMPS config
@@ -479,12 +408,9 @@ VOS_STATUS hdd_enter_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    if(pHddCtx->cfg_ini->fIsBmpsEnabled)
       sme_EnablePowerSave(pHddCtx->hHal, ePMC_BEACON_MODE_POWER_SAVE);
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
 err_fail:
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
    return vosStatus;
 }
 
@@ -492,13 +418,10 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
 {
    VOS_STATUS vosStatus;
    eHalStatus halStatus;
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    int attempts = 0;
    struct sdio_func *sdio_func_dev = NULL;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
    //Power Up Libra WLAN card first if not already powered up
    vosStatus = vos_chipPowerUp(NULL,NULL,NULL);
@@ -509,7 +432,6 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
       goto err_deep_sleep;
    }
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    libra_detect_card_change();
 
@@ -612,8 +534,6 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    }
 #endif
 
-=======
->>>>>>> d97af3b... add prima wlan driver
    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
       "%s: calling hdd_set_sme_config",__func__);
    vosStatus = hdd_set_sme_config( pHddCtx );
@@ -622,15 +542,11 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    {
       VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
          "%s: Failed in hdd_set_sme_config",__func__);
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
       goto err_bal_stop;
 #else
       goto err_deep_sleep;
 #endif
-=======
-      goto err_deep_sleep;
->>>>>>> d97af3b... add prima wlan driver
    }
 
    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
@@ -641,15 +557,11 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
    {
       VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
          "%s: Failed in vos_start",__func__);
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
       goto err_bal_stop;
 #else
       goto err_deep_sleep;
 #endif
-=======
-      goto err_deep_sleep;
->>>>>>> d97af3b... add prima wlan driver
    }
 
    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
@@ -666,12 +578,7 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
 
    //Open a SME session for future operation
    halStatus = sme_OpenSession( pHddCtx->hHal, hdd_smeRoamCallback, pHddCtx,
-<<<<<<< HEAD
                                 (tANI_U8 *)&pAdapter->macAddressCurrent, &pAdapter->sessionId );
-=======
-                                (tANI_U8 *)&pAdapter->macAddressCurrent,
-                                &pAdapter->sessionId);
->>>>>>> d97af3b... add prima wlan driver
    if ( !HAL_STATUS_SUCCESS( halStatus ) )
    {
       hddLog(VOS_TRACE_LEVEL_FATAL,"sme_OpenSession() failed with status code %08d [x%08lx]",
@@ -689,289 +596,23 @@ VOS_STATUS hdd_exit_deep_sleep(hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter)
 
 err_voss_stop:
    vos_stop(pHddCtx->pvosContext);
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
 err_bal_stop:
    WLANBAL_Stop(pHddCtx->pvosContext);
 err_sal_stop:
    WLANSAL_Stop(pHddCtx->pvosContext);
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 err_deep_sleep:
    return VOS_STATUS_E_FAILURE;
 
 }
 
-<<<<<<< HEAD
 VOS_STATUS hdd_conf_hostarpoffload(hdd_context_t* pHddCtx, v_BOOL_t fenable)
-=======
-/*
- * Function: hdd_conf_hostoffload
- *           Central function to configure the supported offloads,
- *           either enable or disable them.
- */
-void hdd_conf_hostoffload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
-{
-    hdd_context_t *pHddCtx = NULL;
-    v_CONTEXT_t *pVosContext = NULL;
-    VOS_STATUS vstatus = VOS_STATUS_E_FAILURE;
-
-    hddLog(VOS_TRACE_LEVEL_INFO, FL("Configuring offloads with flag: %d"),
-            fenable);
-
-    pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
-
-    if (NULL == pVosContext)
-    {
-        hddLog(VOS_TRACE_LEVEL_ERROR, FL(" Global VOS context is Null"));
-        return;
-    }
-
-    //Get the HDD context.
-    pHddCtx = (hdd_context_t *)vos_get_context(VOS_MODULE_ID_HDD, pVosContext );
-
-    if (NULL == pHddCtx)
-    {
-        hddLog(VOS_TRACE_LEVEL_ERROR, "%s: HDD context is Null", __func__);
-        return;
-    }
-
-    if ((WLAN_HDD_INFRA_STATION == pAdapter->device_mode) ||
-           (WLAN_HDD_P2P_CLIENT == pAdapter->device_mode))
-    {
-        if (fenable)
-        {
-            if (eConnectionState_Associated ==
-                    (WLAN_HDD_GET_STATION_CTX_PTR(pAdapter))->conn_info.connState)
-            {
-                if ((pHddCtx->cfg_ini->fhostArpOffload))
-                {
-                    /*
-                     * Configure the ARP Offload.
-                     * Even if it fails we have to reconfigure the MC/BC
-                     * filter flag as we want RIVA not to drop BroadCast
-                     * Packets
-                     */
-                    hddLog(VOS_TRACE_LEVEL_INFO,
-                            FL("Calling ARP Offload with flag: %d"), fenable);
-                    vstatus = hdd_conf_arp_offload(pAdapter, fenable);
-                    pHddCtx->configuredMcastBcastFilter &=
-                            ~(HDD_MCASTBCASTFILTER_FILTER_ALL_BROADCAST);
-
-                    if (!VOS_IS_STATUS_SUCCESS(vstatus))
-                    {
-                        hddLog(VOS_TRACE_LEVEL_ERROR,
-                                "Failed to enable ARPOFfloadFeature %d",
-                                vstatus);
-                    }
-                }
-                //Configure GTK_OFFLOAD
-#ifdef WLAN_FEATURE_GTK_OFFLOAD
-                hdd_conf_gtk_offload(pAdapter, fenable);
-#endif
-
-#ifdef WLAN_NS_OFFLOAD
-                if (pHddCtx->cfg_ini->fhostNSOffload)
-                {
-                    /*
-                     * Configure the NS Offload.
-                     * Even if it fails we have to reconfigure the MC/BC filter flag
-                     * as we want RIVA not to drop Multicast Packets
-                     */
-
-                    hddLog(VOS_TRACE_LEVEL_INFO,
-                            FL("Calling NS Offload with flag: %d"), fenable);
-                    hdd_conf_ns_offload(pAdapter, fenable);
-                    pHddCtx->configuredMcastBcastFilter &=
-                            ~(HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST);
-                }
-#endif
-            }
-        }
-        else
-        {
-            //Disable ARPOFFLOAD
-            if (pHddCtx->cfg_ini->fhostArpOffload)
-            {
-                vstatus = hdd_conf_arp_offload(pAdapter, fenable);
-                if (!VOS_IS_STATUS_SUCCESS(vstatus))
-                {
-                    hddLog(VOS_TRACE_LEVEL_ERROR,
-                          "Failed to disable ARPOffload Feature %d", vstatus);
-                }
-            }
-            //Disable GTK_OFFLOAD
-#ifdef WLAN_FEATURE_GTK_OFFLOAD
-            hdd_conf_gtk_offload(pAdapter, fenable);
-#endif
-
-#ifdef WLAN_NS_OFFLOAD
-            //Disable NSOFFLOAD
-            if (pHddCtx->cfg_ini->fhostNSOffload)
-            {
-                hdd_conf_ns_offload(pAdapter, fenable);
-            }
-#endif
-        }
-    }
-    return;
-}
-
-#ifdef WLAN_NS_OFFLOAD
-void hdd_conf_ns_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
-{
-    struct inet6_dev *in6_dev;
-    struct inet6_ifaddr *ifp;
-    struct list_head *p;
-    tANI_U8 selfIPv6Addr[SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA][SIR_MAC_IPV6_ADDR_LEN] = {{0,}};
-    tANI_BOOLEAN selfIPv6AddrValid[SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA] = {0};
-    tSirHostOffloadReq offLoadRequest;
-    hdd_context_t *pHddCtx;
-
-    int i =0;
-    eHalStatus returnStatus;
-
-    pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
-
-    ENTER();
-    if (fenable)
-    {
-        in6_dev = __in6_dev_get(pAdapter->dev);
-        if (NULL != in6_dev)
-        {
-            //read_lock_bh(&in6_dev->lock);
-            list_for_each(p, &in6_dev->addr_list)
-            {
-                ifp = list_entry(p, struct inet6_ifaddr, if_list);
-                switch(ipv6_addr_src_scope(&ifp->addr))
-                {
-                    case IPV6_ADDR_SCOPE_LINKLOCAL:
-                        vos_mem_copy(&selfIPv6Addr[0], &ifp->addr.s6_addr,
-                                sizeof(ifp->addr.s6_addr));
-                        selfIPv6AddrValid[0] = SIR_IPV6_ADDR_VALID;
-                        hddLog (VOS_TRACE_LEVEL_INFO,
-                               "Found IPV6_ADDR_SCOPE_LINKLOCAL Address : %pI6",
-                               selfIPv6Addr[0]);
-                        break;
-                    case IPV6_ADDR_SCOPE_GLOBAL:
-                        vos_mem_copy(&selfIPv6Addr[1], &ifp->addr.s6_addr,
-                                sizeof(ifp->addr.s6_addr));
-                        selfIPv6AddrValid[1] = SIR_IPV6_ADDR_VALID;
-                        hddLog (VOS_TRACE_LEVEL_INFO,
-                               "Found IPV6_ADDR_SCOPE_GLOBAL Address : %pI6",
-                               selfIPv6Addr[1]);
-                        break;
-                    default:
-                        hddLog(LOGE, "The Scope %d is not supported",
-                                ipv6_addr_src_scope(&ifp->addr));
-                }
-
-            }
-            //read_unlock_bh(&in6_dev->lock);
-            vos_mem_zero(&offLoadRequest, sizeof(offLoadRequest));
-            for (i =0; i<SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA; i++)
-            {
-                if (selfIPv6AddrValid[i])
-                {
-                    //Filling up the request structure
-                    /* Filling the selfIPv6Addr with solicited address
-                     * A Solicited-Node multicast address is created by
-                     * taking the last 24 bits of a unicast or anycast
-                     * address and appending them to the prefix
-                     *
-                     * FF02:0000:0000:0000:0000:0001:FFXX:XX
-                     *
-                     * here XX is the unicast/anycast bits
-                     */
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[0] = 0xFF;
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[1] = 0x02;
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[11] = 0x01;
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[12] = 0xFF;
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[13] = selfIPv6Addr[i][13];
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[14] = selfIPv6Addr[i][14];
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr[15] = selfIPv6Addr[i][15];
-                    offLoadRequest.nsOffloadInfo.slotIdx = i;
-
-                    vos_mem_copy(&offLoadRequest.nsOffloadInfo.targetIPv6Addr[0],
-                                &selfIPv6Addr[i][0], sizeof(tANI_U8)*SIR_MAC_IPV6_ADDR_LEN);
-                    vos_mem_copy(&offLoadRequest.nsOffloadInfo.selfMacAddr,
-                                &pAdapter->macAddressCurrent.bytes,
-                                sizeof(tANI_U8)*SIR_MAC_ADDR_LEN);
-
-                    offLoadRequest.nsOffloadInfo.targetIPv6AddrValid[0] = SIR_IPV6_ADDR_VALID;
-                    offLoadRequest.offloadType =  SIR_IPV6_NS_OFFLOAD;
-                    offLoadRequest.enableOrDisable = SIR_OFFLOAD_ENABLE;
-
-                    hddLog (VOS_TRACE_LEVEL_INFO,
-                    "configuredMcastBcastFilter: %d",pHddCtx->configuredMcastBcastFilter);
-
-                    if((HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST ==
-                              pHddCtx->configuredMcastBcastFilter) ||
-                        (HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST_BROADCAST ==
-                        pHddCtx->configuredMcastBcastFilter))
-                    {
-                        hddLog (VOS_TRACE_LEVEL_INFO,
-                        "Set offLoadRequest with SIR_OFFLOAD_NS_AND_MCAST_FILTER_ENABLE \n", __func__);
-                        offLoadRequest.enableOrDisable =
-                         SIR_OFFLOAD_NS_AND_MCAST_FILTER_ENABLE;
-                    }
-
-                    vos_mem_copy(&offLoadRequest.params.hostIpv6Addr,
-                                &offLoadRequest.nsOffloadInfo.targetIPv6Addr[0],
-                                sizeof(tANI_U8)*SIR_MAC_IPV6_ADDR_LEN);
-
-                    hddLog (VOS_TRACE_LEVEL_INFO,
-                    "Setting NSOffload with solicitedIp: %pI6, targetIp: %pI6",
-                    offLoadRequest.nsOffloadInfo.selfIPv6Addr,
-                    offLoadRequest.nsOffloadInfo.targetIPv6Addr[0]);
-
-                    //Configure the Firmware with this
-                    returnStatus = sme_SetHostOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                                    pAdapter->sessionId, &offLoadRequest);
-                    if(eHAL_STATUS_SUCCESS != returnStatus)
-                    {
-                        hddLog(VOS_TRACE_LEVEL_ERROR,
-                        FL("Failed to enable HostOffload feature with status: %d"),
-                        returnStatus);
-                    }
-                    vos_mem_zero(&offLoadRequest, sizeof(offLoadRequest));
-                }
-            }
-        }
-        else
-        {
-            hddLog(VOS_TRACE_LEVEL_ERROR,
-                    FL("IPv6 dev does not exist. Failed to request NSOffload"));
-            return;
-        }
-    }
-    else
-    {
-        //Disable NSOffload
-        vos_mem_zero((void *)&offLoadRequest, sizeof(tSirHostOffloadReq));
-        offLoadRequest.enableOrDisable = SIR_OFFLOAD_DISABLE;
-        offLoadRequest.offloadType =  SIR_IPV6_NS_OFFLOAD;
-
-        if (eHAL_STATUS_SUCCESS !=
-                 sme_SetHostOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                 pAdapter->sessionId, &offLoadRequest))
-        {
-            hddLog(VOS_TRACE_LEVEL_ERROR, FL("Failure to disable"
-                             "NSOffload feature"));
-        }
-    }
-    return;
-}
-#endif
-VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
->>>>>>> d97af3b... add prima wlan driver
 {
    struct in_ifaddr **ifap = NULL;
    struct in_ifaddr *ifa = NULL;
    struct in_device *in_dev;
    int i = 0;
-<<<<<<< HEAD
    hdd_adapter_t *pAdapter = NULL;   
    tSirHostOffloadReq  offLoadRequest;
 
@@ -1013,22 +654,11 @@ VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
 #ifdef WLAN_FEATURE_PACKET_FILTERING
    }
 #endif
-=======
-   tSirHostOffloadReq  offLoadRequest;
-   hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
-
-   hddLog(VOS_TRACE_LEVEL_ERROR, "%s: \n", __func__);
-
->>>>>>> d97af3b... add prima wlan driver
    if(fenable)
    {
        if ((in_dev = __in_dev_get_rtnl(pAdapter->dev)) != NULL)
        {
-<<<<<<< HEAD
            for (ifap = &in_dev->ifa_list; (ifa = *ifap) != NULL; 
-=======
-           for (ifap = &in_dev->ifa_list; (ifa = *ifap) != NULL;
->>>>>>> d97af3b... add prima wlan driver
                    ifap = &ifa->ifa_next)
            {
                if (!strcmp(pAdapter->dev->name, ifa->ifa_label))
@@ -1037,16 +667,12 @@ VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
                }
            }
        }
-<<<<<<< HEAD
        
-=======
->>>>>>> d97af3b... add prima wlan driver
        if(ifa && ifa->ifa_local)
        {
            offLoadRequest.offloadType =  SIR_IPV4_ARP_REPLY_OFFLOAD;
            offLoadRequest.enableOrDisable = SIR_OFFLOAD_ENABLE;
 
-<<<<<<< HEAD
            hddLog(VOS_TRACE_LEVEL_ERROR, "%s: Enabled \n", __func__);
 
            if(pHddCtx->dynamic_mcbc_filter.enableCfg)
@@ -1076,46 +702,14 @@ VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
                       (ifa->ifa_local >> (i*8) ) & 0xFF ;
            }
            hddLog(VOS_TRACE_LEVEL_WARN, " Enable SME HostOffload: %d.%d.%d.%d",
-=======
-           hddLog(VOS_TRACE_LEVEL_INFO, "%s: Enabled \n", __func__);
-
-           if (((HDD_MCASTBCASTFILTER_FILTER_ALL_BROADCAST ==
-                pHddCtx->sus_res_mcastbcast_filter) ||
-               (HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST_BROADCAST ==
-                pHddCtx->sus_res_mcastbcast_filter)) &&
-               (VOS_TRUE == pHddCtx->sus_res_mcastbcast_filter_valid))
-           {
-               offLoadRequest.enableOrDisable =
-                   SIR_OFFLOAD_ARP_AND_BCAST_FILTER_ENABLE;
-               hddLog(VOS_TRACE_LEVEL_INFO,
-                      "offload: inside arp offload conditional check");
-           }
-
-           hddLog(VOS_TRACE_LEVEL_INFO, "offload: arp filter programmed = %d",
-                  offLoadRequest.enableOrDisable);
-
-           //converting u32 to IPV4 address
-           for(i = 0 ; i < 4; i++)
-           {
-              offLoadRequest.params.hostIpv4Addr[i] =
-                      (ifa->ifa_local >> (i*8) ) & 0xFF ;
-           }
-           hddLog(VOS_TRACE_LEVEL_INFO, " Enable SME HostOffload: %d.%d.%d.%d",
->>>>>>> d97af3b... add prima wlan driver
                   offLoadRequest.params.hostIpv4Addr[0],
                   offLoadRequest.params.hostIpv4Addr[1],
                   offLoadRequest.params.hostIpv4Addr[2],
                   offLoadRequest.params.hostIpv4Addr[3]);
 
-<<<<<<< HEAD
           if (eHAL_STATUS_SUCCESS != 
                     sme_SetHostOffload(WLAN_HDD_GET_HAL_CTX(pAdapter), 
                                        pAdapter->sessionId, &offLoadRequest))
-=======
-          if (eHAL_STATUS_SUCCESS !=
-                    sme_SetHostOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                    pAdapter->sessionId, &offLoadRequest))
->>>>>>> d97af3b... add prima wlan driver
           {
               hddLog(VOS_TRACE_LEVEL_ERROR, "%s: Failed to enable HostOffload "
                       "feature\n", __func__);
@@ -1135,14 +729,8 @@ VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
        offLoadRequest.enableOrDisable = SIR_OFFLOAD_DISABLE;
        offLoadRequest.offloadType =  SIR_IPV4_ARP_REPLY_OFFLOAD;
 
-<<<<<<< HEAD
        if (eHAL_STATUS_SUCCESS != sme_SetHostOffload(WLAN_HDD_GET_HAL_CTX(pAdapter), pAdapter->sessionId, 
                                                      &offLoadRequest))
-=======
-       if (eHAL_STATUS_SUCCESS !=
-                 sme_SetHostOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                 pAdapter->sessionId, &offLoadRequest))
->>>>>>> d97af3b... add prima wlan driver
        {
             hddLog(VOS_TRACE_LEVEL_ERROR, "%s: Failure to disable host "
                              "offload feature\n", __func__);
@@ -1152,57 +740,12 @@ VOS_STATUS hdd_conf_arp_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
    }
 }
 
-<<<<<<< HEAD
 void hdd_conf_mcastbcast_filter(hdd_context_t* pHddCtx, v_BOOL_t setfilter)
 {
     eHalStatus halStatus = eHAL_STATUS_FAILURE;
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     tpAniSirGlobal pMac = (tpAniSirGlobal) vos_get_context(VOS_MODULE_ID_SME, pHddCtx->pvosContext);
 #else
-=======
-/*
- * This function is called before setting mcbc filters
- * to modify filter value considering Different Offloads
-*/
-void hdd_mcbc_filter_modification(hdd_context_t* pHddCtx,
-                                  tANI_U8 *pMcBcFilter)
-{
-    if (NULL == pHddCtx)
-    {
-        hddLog(VOS_TRACE_LEVEL_ERROR, FL("NULL HDD context passed"));
-        return;
-    }
-
-    *pMcBcFilter = pHddCtx->configuredMcastBcastFilter;
-    if (pHddCtx->cfg_ini->fhostArpOffload)
-    {
-        /* ARP offload is enabled, do not block bcast packets at RXP
-         * Will be using Bitmasking to reset the filter. As we have
-         * disable Broadcast filtering, Anding with the negation
-         * of Broadcast BIT
-         */
-        *pMcBcFilter &= ~(HDD_MCASTBCASTFILTER_FILTER_ALL_BROADCAST);
-    }
-
-#ifdef WLAN_NS_OFFLOAD
-    if (pHddCtx->cfg_ini->fhostNSOffload)
-    {
-        /* NS offload is enabled, do not block mcast packets at RXP
-         * Will be using Bitmasking to reset the filter. As we have
-         * disable Multicast filtering, Anding with the negation
-         * of Multicast BIT
-         */
-        *pMcBcFilter &= ~(HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST);
-    }
-#endif
-
-    pHddCtx->configuredMcastBcastFilter = *pMcBcFilter;
-}
-
-void hdd_conf_mcastbcast_filter(hdd_context_t* pHddCtx, v_BOOL_t setfilter)
-{
-    eHalStatus halStatus = eHAL_STATUS_FAILURE;
->>>>>>> d97af3b... add prima wlan driver
     tpSirWlanSetRxpFilters wlanRxpFilterParam =
                      vos_mem_malloc(sizeof(tSirWlanSetRxpFilters));
     if(NULL == wlanRxpFilterParam)
@@ -1211,7 +754,6 @@ void hdd_conf_mcastbcast_filter(hdd_context_t* pHddCtx, v_BOOL_t setfilter)
            "%s: vos_mem_alloc failed ", __func__);
         return;
     }
-<<<<<<< HEAD
 #endif
     hddLog(VOS_TRACE_LEVEL_INFO,
         "%s: Configuring Mcast/Bcast Filter Setting. setfilter %d", __func__, setfilter);
@@ -1230,60 +772,20 @@ void hdd_conf_mcastbcast_filter(hdd_context_t* pHddCtx, v_BOOL_t setfilter)
                       pHddCtx->cfg_ini->mcastBcastFilterSetting;
     halStatus = sme_ConfigureRxpFilter(pHddCtx->hHal, wlanRxpFilterParam);
 #endif
-=======
-    hddLog(VOS_TRACE_LEVEL_INFO,
-        "%s: Configuring Mcast/Bcast Filter Setting. setfilter %d", __func__, setfilter);
-    if (TRUE == setfilter)
-    {
-            hdd_mcbc_filter_modification(pHddCtx,
-                  &wlanRxpFilterParam->configuredMcstBcstFilterSetting);
-    }
-    else
-    {
-        /*Use the current configured value to clear*/
-        wlanRxpFilterParam->configuredMcstBcstFilterSetting =
-                              pHddCtx->configuredMcastBcastFilter;
-    }
-
-    wlanRxpFilterParam->setMcstBcstFilter = setfilter;
-    halStatus = sme_ConfigureRxpFilter(pHddCtx->hHal, wlanRxpFilterParam);
-    if (eHAL_STATUS_SUCCESS != halStatus)
-        vos_mem_free(wlanRxpFilterParam);
->>>>>>> d97af3b... add prima wlan driver
     if(setfilter && (eHAL_STATUS_SUCCESS == halStatus))
        pHddCtx->hdd_mcastbcast_filter_set = TRUE;
 }
 
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-=======
->>>>>>> d97af3b... add prima wlan driver
 static void hdd_conf_suspend_ind(hdd_context_t* pHddCtx,
                                  hdd_adapter_t *pAdapter)
 {
     eHalStatus halStatus = eHAL_STATUS_FAILURE;
-<<<<<<< HEAD
     VOS_STATUS vstatus = VOS_STATUS_E_FAILURE;
     tpSirWlanSuspendParam wlanSuspendParam =
       vos_mem_malloc(sizeof(tSirWlanSuspendParam));
 
-=======
-    tpSirWlanSuspendParam wlanSuspendParam =
-      vos_mem_malloc(sizeof(tSirWlanSuspendParam));
-
-    if (VOS_FALSE == pHddCtx->sus_res_mcastbcast_filter_valid) {
-        pHddCtx->sus_res_mcastbcast_filter =
-            pHddCtx->configuredMcastBcastFilter;
-        pHddCtx->sus_res_mcastbcast_filter_valid = VOS_TRUE;
-        hddLog(VOS_TRACE_LEVEL_INFO, "offload: hdd_conf_suspend_ind");
-        hddLog(VOS_TRACE_LEVEL_INFO, "configuredMCastBcastFilter saved = %d",
-               pHddCtx->configuredMcastBcastFilter);
-
-    }
-
-
->>>>>>> d97af3b... add prima wlan driver
     if(NULL == wlanSuspendParam)
     {
         hddLog(VOS_TRACE_LEVEL_FATAL,
@@ -1291,16 +793,11 @@ static void hdd_conf_suspend_ind(hdd_context_t* pHddCtx,
         return;
     }
 
-<<<<<<< HEAD
     hddLog(VOS_TRACE_LEVEL_INFO, 
-=======
-    hddLog(VOS_TRACE_LEVEL_INFO,
->>>>>>> d97af3b... add prima wlan driver
       "%s: send wlan suspend indication", __func__);
 
     if((pHddCtx->cfg_ini->nEnableSuspend == WLAN_MAP_SUSPEND_TO_MCAST_BCAST_FILTER))
     {
-<<<<<<< HEAD
         if((pHddCtx->cfg_ini->fhostArpOffload) && 
            (eConnectionState_Associated == 
             (WLAN_HDD_GET_STATION_CTX_PTR(pAdapter))->conn_info.connState)) 
@@ -1405,18 +902,6 @@ static void hdd_conf_suspend_ind(hdd_context_t* pHddCtx,
               wlan_hdd_set_mc_addr_list(pHddCtx, TRUE, pAdapter->sessionId);
            }
         }
-=======
-        //Configure supported OffLoads
-        hdd_conf_hostoffload(pAdapter, TRUE);
-        wlanSuspendParam->configuredMcstBcstFilterSetting = pHddCtx->configuredMcastBcastFilter;
-
-#ifdef WLAN_FEATURE_PACKET_FILTERING
-        /* During suspend, configure MC Addr list filter to the firmware
-         * function takes care of checking necessary conditions before
-         * configuring.
-         */
-        wlan_hdd_set_mc_addr_list(pAdapter, TRUE);
->>>>>>> d97af3b... add prima wlan driver
 #endif
     }
 
@@ -1424,7 +909,6 @@ static void hdd_conf_suspend_ind(hdd_context_t* pHddCtx,
     if(eHAL_STATUS_SUCCESS == halStatus)
     {
         pHddCtx->hdd_mcastbcast_filter_set = TRUE;
-<<<<<<< HEAD
     }
 }
 
@@ -1482,82 +966,16 @@ static void hdd_conf_resume_ind(hdd_context_t* pHddCtx, v_U8_t sessionId)
 
 //Suspend routine registered with Android OS
 void hdd_suspend_wlan(struct early_suspend *wlan_suspend)
-=======
-    } else {
-        vos_mem_free(wlanSuspendParam);
-    }
-}
-
-static void hdd_conf_resume_ind(hdd_adapter_t *pAdapter)
-{
-    eHalStatus halStatus = eHAL_STATUS_FAILURE;
-    hdd_context_t* pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
-    tpSirWlanResumeParam wlanResumeParam;
-
-    hddLog(VOS_TRACE_LEVEL_INFO,
-      "%s: send wlan resume indication", __func__);
-
-    wlanResumeParam = vos_mem_malloc(sizeof(tSirWlanResumeParam));
-
-    if (NULL == wlanResumeParam)
-    {
-        hddLog(VOS_TRACE_LEVEL_FATAL,
-             "%s: memory allocation failed for wlanResumeParam ", __func__);
-        return;
-    }
-
-    //Disable supported OffLoads
-    hdd_conf_hostoffload(pAdapter, FALSE);
-
-    wlanResumeParam->configuredMcstBcstFilterSetting =
-                               pHddCtx->configuredMcastBcastFilter;
-    halStatus = sme_ConfigureResumeReq(pHddCtx->hHal, wlanResumeParam);
-    if (eHAL_STATUS_SUCCESS != halStatus)
-    {
-        vos_mem_free(wlanResumeParam);
-    }
-
-    pHddCtx->hdd_mcastbcast_filter_set = FALSE;
-
-    pHddCtx->configuredMcastBcastFilter =
-      pHddCtx->sus_res_mcastbcast_filter;
-    pHddCtx->sus_res_mcastbcast_filter_valid = VOS_FALSE;
-
-    hddLog(VOS_TRACE_LEVEL_INFO,
-           "offload: in hdd_conf_resume_ind, restoring configuredMcastBcastFilter");
-    hddLog(VOS_TRACE_LEVEL_INFO, "configuredMcastBcastFilter = %d",
-                  pHddCtx->configuredMcastBcastFilter);
-
-
-#ifdef WLAN_FEATURE_PACKET_FILTERING
-    /* Filer was applied during suspend inditication
-     * clear it when we resume.
-     */
-    wlan_hdd_set_mc_addr_list(pAdapter, FALSE);
-#endif
-}
-
-//Suspend routine registered with Android OS
-void hdd_suspend_wlan(void)
->>>>>>> d97af3b... add prima wlan driver
 {
    hdd_context_t *pHddCtx = NULL;
    v_CONTEXT_t pVosContext = NULL;
 
-<<<<<<< HEAD
    hdd_adapter_t *pAdapter = NULL; 
    hdd_adapter_list_node_t *pAdapterNode = NULL, *pNext = NULL;
    VOS_STATUS status;
 #ifdef ANI_BUS_TYPE_SDIO
    struct sdio_func *sdio_func_dev = NULL;
 #endif
-=======
-   VOS_STATUS status;
-   hdd_adapter_t *pAdapter = NULL;
-   hdd_adapter_list_node_t *pAdapterNode = NULL, *pNext = NULL;
-   bool hdd_enter_bmps = FALSE;
-
->>>>>>> d97af3b... add prima wlan driver
    hddLog(VOS_TRACE_LEVEL_INFO, "%s: WLAN being suspended by Android OS",__func__);
 
    //Get the global VOSS context.
@@ -1581,7 +999,6 @@ void hdd_suspend_wlan(void)
       return;
    }
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    sdio_func_dev = libra_getsdio_funcdev();
 
@@ -1612,48 +1029,19 @@ void hdd_suspend_wlan(void)
 #endif
 
    /*loop through all adapters. TBD fix for Concurrency */
-=======
-   hdd_set_pwrparams(pHddCtx);
->>>>>>> d97af3b... add prima wlan driver
    status =  hdd_get_front_adapter ( pHddCtx, &pAdapterNode );
    while ( NULL != pAdapterNode && VOS_STATUS_SUCCESS == status )
    {
        pAdapter = pAdapterNode->pAdapter;
        if ( (WLAN_HDD_INFRA_STATION != pAdapter->device_mode)
-<<<<<<< HEAD
          && (WLAN_HDD_P2P_CLIENT != pAdapter->device_mode) )
 
        {  //just do for station interface
-=======
-         && (WLAN_HDD_SOFTAP != pAdapter->device_mode)
-         && (WLAN_HDD_P2P_CLIENT != pAdapter->device_mode) )
-
-       {  // we skip this registration for modes other than STA, SAP and P2P client modes.
->>>>>>> d97af3b... add prima wlan driver
            status = hdd_get_next_adapter ( pHddCtx, pAdapterNode, &pNext );
            pAdapterNode = pNext;
            continue;
        }
-<<<<<<< HEAD
 
-=======
-       /* Avoid multiple enter/exit BMPS in this while loop using
-        * hdd_enter_bmps flag
-        */
-       if (FALSE == hdd_enter_bmps && (BMPS == pmcGetPmcState(pHddCtx->hHal)))
-       {
-            hdd_enter_bmps = TRUE;
-
-           /* If device was already in BMPS, and dynamic DTIM is set,
-            * exit(set the device to full power) and enter BMPS again
-            * to reflect new DTIM value */
-           wlan_hdd_enter_bmps(pAdapter, DRIVER_POWER_MODE_ACTIVE);
-
-           wlan_hdd_enter_bmps(pAdapter, DRIVER_POWER_MODE_AUTO);
-
-           pHddCtx->hdd_ignore_dtim_enabled = TRUE;
-       }
->>>>>>> d97af3b... add prima wlan driver
 #ifdef SUPPORT_EARLY_SUSPEND_STANDBY_DEEPSLEEP
        if (pHddCtx->cfg_ini->nEnableSuspend == WLAN_MAP_SUSPEND_TO_STANDBY)
        {
@@ -1661,11 +1049,7 @@ void hdd_suspend_wlan(void)
           netif_tx_disable(pAdapter->dev);
           netif_carrier_off(pAdapter->dev);
        }
-<<<<<<< HEAD
        else if (pHddCtx->cfg_ini->nEnableSuspend == 
-=======
-       else if (pHddCtx->cfg_ini->nEnableSuspend ==
->>>>>>> d97af3b... add prima wlan driver
                WLAN_MAP_SUSPEND_TO_DEEP_SLEEP)
        {
           //Execute deep sleep procedure
@@ -1673,7 +1057,6 @@ void hdd_suspend_wlan(void)
        }
 #endif
 
-<<<<<<< HEAD
    //Apply Dynamic Dtim For P2P
    //Only if ignoreDynamicDtimInP2pMode is not set in ini
    if((pHddCtx->cfg_ini->enableDynamicDTIM ||
@@ -1747,15 +1130,6 @@ void hdd_suspend_wlan(void)
    pAdapterNode = pNext;
   }
   pHddCtx->hdd_wlan_suspended = TRUE;
-=======
-       /*Suspend notification sent down to driver*/
-       hdd_conf_suspend_ind(pHddCtx, pAdapter);
-
-       status = hdd_get_next_adapter ( pHddCtx, pAdapterNode, &pNext );
-       pAdapterNode = pNext;
-   }
-   pHddCtx->hdd_wlan_suspended = TRUE;
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef SUPPORT_EARLY_SUSPEND_STANDBY_DEEPSLEEP
   if(pHddCtx->cfg_ini->nEnableSuspend == WLAN_MAP_SUSPEND_TO_STANDBY)
@@ -1763,12 +1137,9 @@ void hdd_suspend_wlan(void)
       hdd_enter_standby(pHddCtx);
   }
 #endif
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    sd_release_host(sdio_func_dev);
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
    return;
 }
@@ -1780,10 +1151,7 @@ static void hdd_PowerStateChangedCB
 )
 {
    hdd_context_t *pHddCtx = callbackContext;
-<<<<<<< HEAD
    
-=======
->>>>>>> d97af3b... add prima wlan driver
    /* if the driver was not in BMPS during early suspend,
     * the dynamic DTIM is now updated at Riva */
    if ((newState == BMPS) && pHddCtx->hdd_wlan_suspended
@@ -1793,7 +1161,6 @@ static void hdd_PowerStateChangedCB
        pHddCtx->hdd_ignore_dtim_enabled = TRUE;
    }
    spin_lock(&pHddCtx->filter_lock);
-<<<<<<< HEAD
    if((newState == BMPS) &&  pHddCtx->hdd_wlan_suspended
           && (pHddCtx->hdd_mcastbcast_filter_set != TRUE)) {
       spin_unlock(&pHddCtx->filter_lock);
@@ -1805,28 +1172,6 @@ static void hdd_PowerStateChangedCB
          hddLog(VOS_TRACE_LEVEL_ERROR, "%s: Not able to set mcast/bcast filter ", __func__);
    }
    else 
-=======
-   if((newState == BMPS) &&  pHddCtx->hdd_wlan_suspended) {
-      spin_unlock(&pHddCtx->filter_lock);
-      if (VOS_FALSE == pHddCtx->sus_res_mcastbcast_filter_valid) {
-          pHddCtx->sus_res_mcastbcast_filter =
-              pHddCtx->configuredMcastBcastFilter;
-          pHddCtx->sus_res_mcastbcast_filter_valid = VOS_TRUE;
-
-          hddLog(VOS_TRACE_LEVEL_INFO, "offload: callback to associated");
-          hddLog(VOS_TRACE_LEVEL_INFO, "saving configuredMcastBcastFilter = %d",
-                 pHddCtx->configuredMcastBcastFilter);
-          hddLog(VOS_TRACE_LEVEL_INFO,
-                 "offload: calling hdd_conf_mcastbcast_filter");
-
-      }
-
-      hdd_conf_mcastbcast_filter(pHddCtx, TRUE);
-      if(pHddCtx->hdd_mcastbcast_filter_set != TRUE)
-         hddLog(VOS_TRACE_LEVEL_ERROR, "%s: Not able to set mcast/bcast filter ", __func__);
-   }
-   else
->>>>>>> d97af3b... add prima wlan driver
       spin_unlock(&pHddCtx->filter_lock);
 }
 
@@ -1840,21 +1185,13 @@ void hdd_register_mcast_bcast_filter(hdd_context_t *pHddCtx)
    pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
    if (NULL == pVosContext)
    {
-<<<<<<< HEAD
       hddLog(LOGE, "%s: Invalid pContext", __FUNCTION__);
-=======
-      hddLog(LOGE, "%s: Invalid pContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return;
    }
    smeContext = vos_get_context(VOS_MODULE_ID_SME, pVosContext);
    if (NULL == smeContext)
    {
-<<<<<<< HEAD
       hddLog(LOGE, "%s: Invalid smeContext", __FUNCTION__);
-=======
-      hddLog(LOGE, "%s: Invalid smeContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return;
    }
 
@@ -1875,21 +1212,13 @@ void hdd_unregister_mcast_bcast_filter(hdd_context_t *pHddCtx)
    pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
    if (NULL == pVosContext)
    {
-<<<<<<< HEAD
       hddLog(LOGE, "%s: Invalid pContext", __FUNCTION__);
-=======
-      hddLog(LOGE, "%s: Invalid pContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return;
    }
    smeContext = vos_get_context(VOS_MODULE_ID_SME, pVosContext);
    if (NULL == smeContext)
    {
-<<<<<<< HEAD
       hddLog(LOGE, "%s: Invalid smeContext", __FUNCTION__);
-=======
-      hddLog(LOGE, "%s: Invalid smeContext", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return;
    }
 
@@ -1900,104 +1229,16 @@ void hdd_unregister_mcast_bcast_filter(hdd_context_t *pHddCtx)
    }
 }
 
-<<<<<<< HEAD
 void hdd_resume_wlan(struct early_suspend *wlan_suspend)
-=======
-#ifdef WLAN_FEATURE_GTK_OFFLOAD
-void hdd_conf_gtk_offload(hdd_adapter_t *pAdapter, v_BOOL_t fenable)
-{
-    eHalStatus ret;
-    tSirGtkOffloadParams hddGtkOffloadReqParams;
-    hdd_station_ctx_t *pHddStaCtx = WLAN_HDD_GET_STATION_CTX_PTR(pAdapter);
-
-    if(fenable)
-    {
-        if ((eConnectionState_Associated == pHddStaCtx->conn_info.connState) &&
-           (GTK_OFFLOAD_ENABLE == pHddStaCtx->gtkOffloadReqParams.ulFlags ))
-        {
-            vos_mem_copy(&hddGtkOffloadReqParams,
-                 &pHddStaCtx->gtkOffloadReqParams,
-                 sizeof (tSirGtkOffloadParams));
-
-            ret = sme_SetGTKOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                          &hddGtkOffloadReqParams, pAdapter->sessionId);
-            if (eHAL_STATUS_SUCCESS != ret)
-            {
-                VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-                       "%s: sme_SetGTKOffload failed, returned %d",
-                       __func__, ret);
-                return;
-            }
-
-            VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
-                   "%s: sme_SetGTKOffload successfull", __func__);
-        }
-
-    }
-    else
-    {
-        if ((eConnectionState_Associated == pHddStaCtx->conn_info.connState) &&
-            (0 ==  memcmp(&pHddStaCtx->gtkOffloadReqParams.bssId,
-                     &pHddStaCtx->conn_info.bssId, WNI_CFG_BSSID_LEN)) &&
-            (GTK_OFFLOAD_ENABLE == pHddStaCtx->gtkOffloadReqParams.ulFlags))
-        {
-
-            /* Host driver has previously  offloaded GTK rekey  */
-            ret = sme_GetGTKOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                                wlan_hdd_cfg80211_update_replayCounterCallback,
-                                pAdapter, pAdapter->sessionId);
-            if (eHAL_STATUS_SUCCESS != ret)
-
-            {
-                VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-                       "%s: sme_GetGTKOffload failed, returned %d",
-                       __func__, ret);
-                return;
-            }
-            else
-            {
-                VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
-                       "%s: sme_GetGTKOffload successful",
-                       __func__);
-
-                /* Sending GTK offload dissable */
-                memcpy(&hddGtkOffloadReqParams, &pHddStaCtx->gtkOffloadReqParams,
-                      sizeof (tSirGtkOffloadParams));
-                hddGtkOffloadReqParams.ulFlags = GTK_OFFLOAD_DISABLE;
-                ret = sme_SetGTKOffload(WLAN_HDD_GET_HAL_CTX(pAdapter),
-                                &hddGtkOffloadReqParams, pAdapter->sessionId);
-                if (eHAL_STATUS_SUCCESS != ret)
-                {
-                    VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-                            "%s: failed to dissable GTK offload, returned %d",
-                            __func__, ret);
-                    return;
-                }
-                VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
-                        "%s: successfully dissabled GTK offload request to HAL",
-                        __func__);
-            }
-        }
-    }
-    return;
-}
-#endif /*WLAN_FEATURE_GTK_OFFLOAD*/
-
-void hdd_resume_wlan(void)
->>>>>>> d97af3b... add prima wlan driver
 {
    hdd_context_t *pHddCtx = NULL;
    hdd_adapter_t *pAdapter = NULL;
    hdd_adapter_list_node_t *pAdapterNode = NULL, *pNext = NULL;
    VOS_STATUS status;
    v_CONTEXT_t pVosContext = NULL;
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    struct sdio_func *sdio_func_dev = NULL;
 #endif
-=======
-
->>>>>>> d97af3b... add prima wlan driver
    hddLog(VOS_TRACE_LEVEL_INFO, "%s: WLAN being resumed by Android OS",__func__);
 
    //Get the global VOSS context.
@@ -2021,7 +1262,6 @@ void hdd_resume_wlan(void)
       return;
    }
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    sdio_func_dev = libra_getsdio_funcdev();
 
@@ -2049,8 +1289,6 @@ void hdd_resume_wlan(void)
       return;
    }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
    pHddCtx->hdd_wlan_suspended = FALSE;
    /*loop through all adapters. Concurrency */
    status = hdd_get_front_adapter ( pHddCtx, &pAdapterNode );
@@ -2059,23 +1297,12 @@ void hdd_resume_wlan(void)
    {
        pAdapter = pAdapterNode->pAdapter;
        if ( (WLAN_HDD_INFRA_STATION != pAdapter->device_mode)
-<<<<<<< HEAD
          && (WLAN_HDD_P2P_CLIENT != pAdapter->device_mode) )
        {  //just do for station interface
-=======
-         && (WLAN_HDD_SOFTAP != pAdapter->device_mode)
-         && (WLAN_HDD_P2P_CLIENT != pAdapter->device_mode) )
-       {  // we skip this registration for modes other than STA, SAP and P2P client modes.
->>>>>>> d97af3b... add prima wlan driver
             status = hdd_get_next_adapter ( pHddCtx, pAdapterNode, &pNext );
             pAdapterNode = pNext;
             continue;
        }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> d97af3b... add prima wlan driver
 #ifdef SUPPORT_EARLY_SUSPEND_STANDBY_DEEPSLEEP   
        if(pHddCtx->hdd_ps_state == eHDD_SUSPEND_DEEP_SLEEP) 
        {
@@ -2091,10 +1318,6 @@ void hdd_resume_wlan(void)
 
          powerRequest.uIgnoreDTIM = pHddCtx->hdd_actual_ignore_DTIM_value;
          powerRequest.uListenInterval = pHddCtx->hdd_actual_LI_value;
-<<<<<<< HEAD
-=======
-         powerRequest.uMaxLIModulatedDTIM = pHddCtx->cfg_ini->fMaxLIModulatedDTIM;
->>>>>>> d97af3b... add prima wlan driver
 
          /*Disabled ModulatedDTIM if enabled on suspend*/
          if(pHddCtx->cfg_ini->enableModulatedDTIM)
@@ -2108,7 +1331,6 @@ void hdd_resume_wlan(void)
 
          VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
                         "Switch to DTIM%d \n",powerRequest.uListenInterval);
-<<<<<<< HEAD
          sme_SetPowerParams( WLAN_HDD_GET_HAL_CTX(pAdapter), &powerRequest);    
 
          /* put the device into full power */
@@ -2131,23 +1353,6 @@ void hdd_resume_wlan(void)
 #endif
            pHddCtx->hdd_mcastbcast_filter_set = FALSE;
       }
-=======
-         sme_SetPowerParams( WLAN_HDD_GET_HAL_CTX(pAdapter), &powerRequest, FALSE);
-
-         if (BMPS == pmcGetPmcState(pHddCtx->hHal))
-         {
-             /* put the device into full power */
-             wlan_hdd_enter_bmps(pAdapter, DRIVER_POWER_MODE_ACTIVE);
-
-             /* put the device back into BMPS */
-             wlan_hdd_enter_bmps(pAdapter, DRIVER_POWER_MODE_AUTO);
-
-             pHddCtx->hdd_ignore_dtim_enabled = FALSE;
-         }
-      }
-
-      hdd_conf_resume_ind(pAdapter);
->>>>>>> d97af3b... add prima wlan driver
       status = hdd_get_next_adapter ( pHddCtx, pAdapterNode, &pNext );
       pAdapterNode = pNext;
    }
@@ -2159,7 +1364,6 @@ void hdd_resume_wlan(void)
    }    
 #endif
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    sd_release_host(sdio_func_dev);
 #endif
@@ -2633,13 +1837,6 @@ VOS_STATUS hdd_wlan_reset_initialization(void)
    v_U8_t  regValue = 0;
    int  err_ret = 0;
 #endif
-=======
-   return;
-}
-
-VOS_STATUS hdd_wlan_reset_initialization(void) 
-{
->>>>>>> d97af3b... add prima wlan driver
    v_CONTEXT_t pVosContext = NULL;
 
    hddLog(VOS_TRACE_LEVEL_FATAL, "%s: WLAN being reset",__func__);  
@@ -2657,7 +1854,6 @@ VOS_STATUS hdd_wlan_reset_initialization(void)
    // Prevent the phone from going to sleep
    hdd_prevent_suspend();
 
-<<<<<<< HEAD
 #ifdef ANI_BUS_TYPE_SDIO
    /* Clear pending interrupt and  disable Interrupts. Use only CMD52 */
    VOS_TRACE( VOS_MODULE_ID_SAL, VOS_TRACE_LEVEL_FATAL, 
@@ -2724,60 +1920,6 @@ void unregister_wlan_suspend(void)
    unregister_early_suspend(&wlan_early_suspend);
 }
 #endif
-=======
-   return VOS_STATUS_SUCCESS;
-}
-
-
-/*
- * Based on the ioctl command recieved by HDD, put WLAN driver
- * into the quiet mode. This is the same as the early suspend
- * notification that driver used to listen
- */
-void hdd_set_wlan_suspend_mode(bool suspend)
-{
-    if (suspend)
-        hdd_suspend_wlan();
-    else
-        hdd_resume_wlan();
-}
-
-static void hdd_ssr_timer_init(void)
-{
-    init_timer(&ssr_timer);
-}
-
-static void hdd_ssr_timer_del(void)
-{
-    del_timer(&ssr_timer);
-    ssr_timer_started = false;
-}
-
-static void hdd_ssr_timer_cb(unsigned long data)
-{
-    hddLog(VOS_TRACE_LEVEL_FATAL, "%s: HDD SSR timer expired", __func__);
-
-#ifdef WCN_PRONTO
-    if (wcnss_hardware_type() == WCNSS_PRONTO_HW)
-        wcnss_pronto_log_debug_regs();
-#endif
-
-    VOS_BUG(0);
-}
-
-static void hdd_ssr_timer_start(int msec)
-{
-    if(ssr_timer_started)
-    {
-        hddLog(VOS_TRACE_LEVEL_FATAL, "%s: trying to start SSR timer when it's running"
-                ,__func__);
-    }
-    ssr_timer.expires = jiffies + msecs_to_jiffies(msec);
-    ssr_timer.function = hdd_ssr_timer_cb;
-    add_timer(&ssr_timer);
-    ssr_timer_started = true;
-}
->>>>>>> d97af3b... add prima wlan driver
 
 /* the HDD interface to WLAN driver shutdown,
  * the primary shutdown function in SSR
@@ -2791,13 +1933,6 @@ VOS_STATUS hdd_wlan_shutdown(void)
 
    hddLog(VOS_TRACE_LEVEL_FATAL, "%s: WLAN driver shutting down! ",__func__);
 
-<<<<<<< HEAD
-=======
-   /* if re-init never happens, then do SSR1 */
-   hdd_ssr_timer_init();
-   hdd_ssr_timer_start(HDD_SSR_BRING_UP_TIME);
-
->>>>>>> d97af3b... add prima wlan driver
    /* Get the global VOSS context. */
    pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
    if(!pVosContext) {
@@ -2811,7 +1946,6 @@ VOS_STATUS hdd_wlan_shutdown(void)
       return VOS_STATUS_E_FAILURE;
    }
    hdd_reset_all_adapters(pHddCtx);
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
     /* unregister suspend/resume callbacks */
     if(pHddCtx->cfg_ini->nEnableSuspend)
@@ -2819,8 +1953,6 @@ VOS_STATUS hdd_wlan_shutdown(void)
         unregister_wlan_suspend();
     }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
    /* DeRegister with platform driver as client for Suspend/Resume */
    vosStatus = hddDeregisterPmOps(pHddCtx);
    if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
@@ -2912,13 +2044,9 @@ VOS_STATUS hdd_wlan_shutdown(void)
    vosStatus = WLANTL_Stop(pVosContext);
    VOS_ASSERT(VOS_IS_STATUS_SUCCESS(vosStatus));
 
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
    hdd_unregister_mcast_bcast_filter(pHddCtx);
 #endif
-=======
-   hdd_unregister_mcast_bcast_filter(pHddCtx);
->>>>>>> d97af3b... add prima wlan driver
    hddLog(VOS_TRACE_LEVEL_INFO, "%s: Flush Queues",__func__);
    /* Clean up message queues of TX and MC thread */
    vos_sched_flush_mc_mqs(vosSchedContext);
@@ -2931,14 +2059,6 @@ VOS_STATUS hdd_wlan_shutdown(void)
 
    /* shutdown VOSS */
    vos_shutdown(pVosContext);
-<<<<<<< HEAD
-=======
-
-   /*mac context has already been released in mac_close call
-     so setting it to NULL in hdd context*/
-   pHddCtx->hHal = (tHalHandle)NULL;
-
->>>>>>> d97af3b... add prima wlan driver
    if (free_riva_power_on_lock("wlan"))
    {
       hddLog(VOS_TRACE_LEVEL_ERROR, "%s: failed to free power on lock",
@@ -2960,38 +2080,12 @@ VOS_STATUS hdd_wlan_re_init(void)
    v_CONTEXT_t      pVosContext = NULL;
    hdd_context_t    *pHddCtx = NULL;
    eHalStatus       halStatus;
-<<<<<<< HEAD
-=======
-#ifdef HAVE_WCNSS_CAL_DOWNLOAD
-   int              max_retries = 0;
-#endif
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_BTAMP_FEATURE
    hdd_config_t     *pConfig = NULL;
    WLANBAP_ConfigType btAmpConfig;
 #endif
 
-<<<<<<< HEAD
    hdd_prevent_suspend();
-=======
-   hdd_ssr_timer_del();
-   hdd_prevent_suspend();
-
-#ifdef HAVE_WCNSS_CAL_DOWNLOAD
-   /* wait until WCNSS driver downloads NV */
-   while (!wcnss_device_ready() && 5 >= ++max_retries) {
-       msleep(1000);
-   }
-   if (max_retries >= 5) {
-      hddLog(VOS_TRACE_LEVEL_FATAL,"%s: WCNSS driver not ready", __func__);
-      goto err_re_init;
-   }
-#endif
-
-   /* The driver should always be initialized in STA mode after SSR */
-   hdd_set_conparam(0);
-
->>>>>>> d97af3b... add prima wlan driver
    /* Re-open VOSS, it is a re-open b'se control transport was never closed. */
    vosStatus = vos_open(&pVosContext, 0);
    if (!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -3028,11 +2122,7 @@ VOS_STATUS hdd_wlan_re_init(void)
    vosStatus = hdd_wmm_init(pHddCtx);
    if ( !VOS_IS_STATUS_SUCCESS( vosStatus ))
    {
-<<<<<<< HEAD
       hddLog(VOS_TRACE_LEVEL_FATAL, "%s: hdd_wmm_init failed", __FUNCTION__);
-=======
-      hddLog(VOS_TRACE_LEVEL_FATAL, "%s: hdd_wmm_init failed", __func__);
->>>>>>> d97af3b... add prima wlan driver
       goto err_vosclose;
    }
 
@@ -3115,16 +2205,10 @@ VOS_STATUS hdd_wlan_re_init(void)
     /* Restart all adapters */
    hdd_start_all_adapters(pHddCtx);
    pHddCtx->isLogpInProgress = FALSE;
-<<<<<<< HEAD
    pHddCtx->hdd_mcastbcast_filter_set = FALSE;
 #ifdef CONFIG_HAS_EARLYSUSPEND
    hdd_register_mcast_bcast_filter(pHddCtx);
 #endif
-=======
-   vos_set_logp_in_progress(VOS_MODULE_ID_VOSS, FALSE);
-   pHddCtx->hdd_mcastbcast_filter_set = FALSE;
-   hdd_register_mcast_bcast_filter(pHddCtx);
->>>>>>> d97af3b... add prima wlan driver
 
    /* Register with platform driver as client for Suspend/Resume */
    vosStatus = hddRegisterPmOps(pHddCtx);
@@ -3133,7 +2217,6 @@ VOS_STATUS hdd_wlan_re_init(void)
       hddLog(VOS_TRACE_LEVEL_FATAL,"%s: hddRegisterPmOps failed",__func__);
       goto err_bap_stop;
    }
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
    // Register suspend/resume callbacks
    if(pHddCtx->cfg_ini->nEnableSuspend)
@@ -3141,8 +2224,6 @@ VOS_STATUS hdd_wlan_re_init(void)
       register_wlan_suspend();
    }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
    /* Allow the phone to go to sleep */
    hdd_allow_suspend();
    /* register for riva power on lock */
@@ -3155,14 +2236,11 @@ VOS_STATUS hdd_wlan_re_init(void)
    goto success;
 
 err_unregister_pmops:
-<<<<<<< HEAD
 #ifdef CONFIG_HAS_EARLYSUSPEND
    /* unregister suspend/resume callbacks */
    if (pHddCtx->cfg_ini->nEnableSuspend)
       unregister_wlan_suspend();
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
    hddDeregisterPmOps(pHddCtx);
 
 err_bap_stop:
@@ -3191,30 +2269,17 @@ err_vosclose:
        unregister_netdevice_notifier(&hdd_netdev_notifier);
        /* Clean up HDD Nlink Service */
        send_btc_nlink_msg(WLAN_MODULE_DOWN_IND, 0);
-<<<<<<< HEAD
        nl_srv_exit();
-=======
-#ifdef WLAN_KD_READY_NOTIFIER
-       nl_srv_exit(pHddCtx->ptt_pid);
-#else
-       nl_srv_exit();
-#endif /* WLAN_KD_READY_NOTIFIER */
->>>>>>> d97af3b... add prima wlan driver
        /* Free up dynamically allocated members inside HDD Adapter */
        kfree(pHddCtx->cfg_ini);
        pHddCtx->cfg_ini= NULL;
 
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
        wiphy_unregister(pHddCtx->wiphy);
        wiphy_free(pHddCtx->wiphy);
 #else
        vos_mem_free(pHddCtx);
 #endif
-=======
-       wiphy_unregister(pHddCtx->wiphy);
-       wiphy_free(pHddCtx->wiphy);
->>>>>>> d97af3b... add prima wlan driver
    }
    vos_preClose(&pVosContext);
 
@@ -3225,12 +2290,7 @@ err_vosclose:
 err_re_init:
    /* Allow the phone to go to sleep */
    hdd_allow_suspend();
-<<<<<<< HEAD
    return -1;
-=======
-   VOS_BUG(0);
-   return -EPERM;
->>>>>>> d97af3b... add prima wlan driver
 
 success:
    /* Trigger replay of BTC events */

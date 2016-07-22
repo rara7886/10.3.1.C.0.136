@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -41,10 +18,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limTimerUtils.cc contains the utility functions
@@ -69,7 +43,6 @@
 #define LIM_CHANNEL_SWITCH_TIMER_TICKS           1
 // Lim Quite timer in ticks
 #define LIM_QUIET_TIMER_TICKS                    100
-<<<<<<< HEAD
 // Lim Quite BSS timer inteval in ticks
 #define LIM_QUIET_BSS_TIMER_TICK                 100
 // Lim KeepAlive timer default (3000)ms
@@ -77,22 +50,6 @@
 
 //default beacon interval value used in HB timer interval calculation
 #define LIM_HB_TIMER_BEACON_INTERVAL             100
-=======
-// Lim Quite BSS timer interval in ticks
-#define LIM_QUIET_BSS_TIMER_TICK                 100
-// Lim KeepAlive timer default (3000)ms
-#define LIM_KEEPALIVE_TIMER_MS                   3000
-// Lim JoinProbeRequest Retry  timer default (200)ms
-#define LIM_JOIN_PROBE_REQ_TIMER_MS              200
-
-//default beacon interval value used in HB timer interval calculation
-#define LIM_HB_TIMER_BEACON_INTERVAL             100
-
-/* This timer is a periodic timer which expires at every 1 sec to
-   convert  ACTIVE DFS channel to DFS channels */
-#define ACTIVE_TO_PASSIVE_CONVERISON_TIMEOUT     1000
-
->>>>>>> d97af3b... add prima wlan driver
 /**
  * limCreateTimers()
  *
@@ -114,21 +71,12 @@
  * @return None
  */
 
-<<<<<<< HEAD
 void
 limCreateTimers(tpAniSirGlobal pMac)
 {
     tANI_U32 cfgValue, i;
 
     PELOG1(limLog(pMac, LOG1, FL("Creating Timers used by LIM module in Role %d\n"), pMac->lim.gLimSystemRole);)
-=======
-v_UINT_t
-limCreateTimers(tpAniSirGlobal pMac)
-{
-    tANI_U32 cfgValue, i=0;
-
-    PELOG1(limLog(pMac, LOG1, FL("Creating Timers used by LIM module in Role %d"), pMac->lim.gLimSystemRole);)
->>>>>>> d97af3b... add prima wlan driver
 
     if (wlan_cfgGetInt(pMac, WNI_CFG_ACTIVE_MINIMUM_CHANNEL_TIME,
                   &cfgValue) != eSIR_SUCCESS)
@@ -137,11 +85,7 @@ limCreateTimers(tpAniSirGlobal pMac)
          * Could not get MinChannelTimeout value
          * from CFG. Log error.
          */
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve MinChannelTimeout value\n"));
-=======
-        limLog(pMac, LOGP, FL("could not retrieve MinChannelTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
     }
     cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -154,7 +98,6 @@ limCreateTimers(tpAniSirGlobal pMac)
     {
         /// Could not start min channel timer.
         // Log error
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not create MIN channel timer\n"));
 
         return;
@@ -165,12 +108,6 @@ limCreateTimers(tpAniSirGlobal pMac)
 #endif
 
     PELOG2(limLog(pMac, LOG2, FL("Created MinChannelTimer\n"));)
-=======
-        limLog(pMac, LOGP, FL("could not create MIN channel timer"));
-        return TX_TIMER_ERROR;
-    }
-    PELOG2(limLog(pMac, LOG2, FL("Created MinChannelTimer"));)
->>>>>>> d97af3b... add prima wlan driver
 
     /* Periodic probe request timer value is half of the Min channel
      * timer. Probe request sends periodically till min/max channel
@@ -189,13 +126,8 @@ limCreateTimers(tpAniSirGlobal pMac)
         {
            /// Could not start Periodic Probe Req timer.
            // Log error
-<<<<<<< HEAD
            limLog(pMac, LOGP, FL("could not create periodic probe timer\n"));
            return;
-=======
-           limLog(pMac, LOGP, FL("could not create periodic probe timer"));
-           goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
      }
 
@@ -208,11 +140,7 @@ limCreateTimers(tpAniSirGlobal pMac)
          * from CFG. Log error.
          */
         limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve MAXChannelTimeout value\n"));
-=======
-               FL("could not retrieve MAXChannelTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
     }
     cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -224,7 +152,6 @@ limCreateTimers(tpAniSirGlobal pMac)
     {
         /// Could not start max channel timer.
         // Log error
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not create MAX channel timer\n"));
 
         return;
@@ -236,13 +163,6 @@ limCreateTimers(tpAniSirGlobal pMac)
 #endif
 
     PELOG2(limLog(pMac, LOG2, FL("Created MaxChannelTimer\n"));)
-=======
-        limLog(pMac, LOGP, FL("could not create MAX channel timer"));
-
-        goto err_timer;
-    }
-    PELOG2(limLog(pMac, LOG2, FL("Created MaxChannelTimer"));)
->>>>>>> d97af3b... add prima wlan driver
 
     if (pMac->lim.gLimSystemRole != eLIM_AP_ROLE)
     {
@@ -255,13 +175,8 @@ limCreateTimers(tpAniSirGlobal pMac)
                             0,                         // reschedule_ticks
                             TX_NO_ACTIVATE) != TX_SUCCESS)
         {
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("failed to create Channel Switch timer\n"));
             return;
-=======
-            limLog(pMac, LOGP, FL("failed to create Channel Switch timer"));
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
 
         //
@@ -277,13 +192,8 @@ limCreateTimers(tpAniSirGlobal pMac)
                             0,                         // reschedule_ticks
                             TX_NO_ACTIVATE) != TX_SUCCESS)
         {
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("failed to create Quiet Begin Timer\n"));
             return;
-=======
-            limLog(pMac, LOGP, FL("failed to create Quiet Begin Timer"));
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
 
         //
@@ -301,13 +211,8 @@ limCreateTimers(tpAniSirGlobal pMac)
                             0,                         // reschedule_ticks
                             TX_NO_ACTIVATE) != TX_SUCCESS)
         {
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("failed to create Quiet Begin Timer\n"));
             return;
-=======
-            limLog(pMac, LOGP, FL("failed to create Quiet Begin Timer"));
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_JOIN_FAILURE_TIMEOUT,
@@ -318,11 +223,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve JoinFailureTimeout value\n"));
-=======
-               FL("could not retrieve JoinFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
         }
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -335,7 +236,6 @@ limCreateTimers(tpAniSirGlobal pMac)
         {
             /// Could not create Join failure timer.
             // Log error
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not create Join failure timer\n"));
 
             return;
@@ -344,25 +244,6 @@ limCreateTimers(tpAniSirGlobal pMac)
         tx_timer_set_expiry_list(&pMac->lim.limTimers.gLimJoinFailureTimer,
                                  LIM_TIMER_EXPIRY_LIST);
 #endif
-=======
-            limLog(pMac, LOGP, FL("could not create Join failure timer"));
-
-            goto err_timer;
-        }
-
-        //Send unicast probe req frame every 200 ms
-        if ((tx_timer_create(&pMac->lim.limTimers.gLimPeriodicJoinProbeReqTimer,
-                        "Periodic Join Probe Request Timer",
-                        limTimerHandler, SIR_LIM_PERIODIC_JOIN_PROBE_REQ_TIMEOUT,
-                        SYS_MS_TO_TICKS(LIM_JOIN_PROBE_REQ_TIMER_MS), 0,
-                        TX_NO_ACTIVATE)) != TX_SUCCESS)
-        {
-            /// Could not create Periodic Join Probe Request timer.
-            // Log error
-            limLog(pMac, LOGP, FL("could not create Periodic Join Probe Request timer"));
-            goto err_timer;
-        }
->>>>>>> d97af3b... add prima wlan driver
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_ASSOCIATION_FAILURE_TIMEOUT,
                       &cfgValue) != eSIR_SUCCESS)
@@ -372,11 +253,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve AssocFailureTimeout value\n"));
-=======
-               FL("could not retrieve AssocFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
         }
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -390,15 +267,9 @@ limCreateTimers(tpAniSirGlobal pMac)
             /// Could not create Assoc failure timer.
             // Log error
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not create Association failure timer\n"));
 
             return;
-=======
-               FL("could not create Association failure timer"));
-
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
         if (wlan_cfgGetInt(pMac, WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT,
                       &cfgValue) != eSIR_SUCCESS)
@@ -408,11 +279,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve ReassocFailureTimeout value\n"));
-=======
-               FL("could not retrieve ReassocFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
         }
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -426,7 +293,6 @@ limCreateTimers(tpAniSirGlobal pMac)
             /// Could not create Reassoc failure timer.
             // Log error
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not create Reassociation failure timer\n"));
 
             return;
@@ -434,15 +300,6 @@ limCreateTimers(tpAniSirGlobal pMac)
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_ADDTS_RSP_TIMEOUT, &cfgValue) != eSIR_SUCCESS)
             limLog(pMac, LOGP, FL("Fail to get WNI_CFG_ADDTS_RSP_TIMEOUT \n"));
-=======
-               FL("could not create Reassociation failure timer"));
-
-            goto err_timer;
-        }
-
-        if (wlan_cfgGetInt(pMac, WNI_CFG_ADDTS_RSP_TIMEOUT, &cfgValue) != eSIR_SUCCESS)
-            limLog(pMac, LOGP, FL("Fail to get WNI_CFG_ADDTS_RSP_TIMEOUT "));
->>>>>>> d97af3b... add prima wlan driver
 
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -456,15 +313,9 @@ limCreateTimers(tpAniSirGlobal pMac)
         {
             /// Could not create Auth failure timer.
             // Log error
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not create Addts response timer\n"));
 
             return;
-=======
-            limLog(pMac, LOGP, FL("could not create Addts response timer"));
-
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_AUTHENTICATE_FAILURE_TIMEOUT,
@@ -475,11 +326,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve AuthFailureTimeout value\n"));
-=======
-               FL("could not retrieve AuthFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
         }
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -493,7 +340,6 @@ limCreateTimers(tpAniSirGlobal pMac)
         {
             /// Could not create Auth failure timer.
             // Log error
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not create Auth failure timer\n"));
 
             return;
@@ -502,13 +348,6 @@ limCreateTimers(tpAniSirGlobal pMac)
         tx_timer_set_expiry_list(&pMac->lim.limTimers.gLimAuthFailureTimer,
                                  LIM_TIMER_EXPIRY_LIST);
 #endif
-=======
-            limLog(pMac, LOGP, FL("could not create Auth failure timer"));
-
-            goto err_timer;
-        }
-
->>>>>>> d97af3b... add prima wlan driver
         if (wlan_cfgGetInt(pMac, WNI_CFG_BEACON_INTERVAL,
                       &cfgValue) != eSIR_SUCCESS)
         {
@@ -517,11 +356,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve BEACON_INTERVAL value\n"));
-=======
-               FL("could not retrieve BEACON_INTERVAL value"));
->>>>>>> d97af3b... add prima wlan driver
         }
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -536,12 +371,7 @@ limCreateTimers(tpAniSirGlobal pMac)
             /// Could not start Heartbeat timer.
             // Log error
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("call to create heartbeat timer failed\n"));
-=======
-               FL("call to create heartbeat timer failed"));
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_PROBE_AFTER_HB_FAIL_TIMEOUT,
@@ -552,11 +382,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * value from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve PROBE_AFTER_HB_FAIL_TIMEOUT value\n"));
-=======
-               FL("could not retrieve PROBE_AFTER_HB_FAIL_TIMEOUT value"));
->>>>>>> d97af3b... add prima wlan driver
         }
 
         // Change timer to reactivate it in future
@@ -573,7 +399,6 @@ limCreateTimers(tpAniSirGlobal pMac)
             // Could not creat wt-probe-after-HeartBeat-failure timer.
             // Log error
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to create ProbeAfterHBTimer\n"));
         }
 
@@ -583,12 +408,6 @@ limCreateTimers(tpAniSirGlobal pMac)
 #endif
 
 #if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
-=======
-                   FL("unable to create ProbeAfterHBTimer"));
-            goto err_timer;
-        }
-
->>>>>>> d97af3b... add prima wlan driver
         if (wlan_cfgGetInt(pMac, WNI_CFG_BACKGROUND_SCAN_PERIOD,
                       &cfgValue) != eSIR_SUCCESS)
         {
@@ -597,11 +416,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve Background scan period value\n"));
-=======
-               FL("could not retrieve Background scan period value"));
->>>>>>> d97af3b... add prima wlan driver
         }
 
         /*
@@ -631,44 +446,7 @@ limCreateTimers(tpAniSirGlobal pMac)
             /// Could not start background scan timer.
             // Log error
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("call to create background scan timer failed\n"));
-=======
-               FL("call to create background scan timer failed"));
-            goto err_timer;
-        }
-#ifdef FEATURE_WLAN_TDLS_INTERNAL
-        /*
-         * create TDLS timers..
-         * a) TDLS discovery response timer.
-         */
-
-        if (wlan_cfgGetInt(pMac, WNI_CFG_ASSOCIATION_FAILURE_TIMEOUT,
-                                            &cfgValue) != eSIR_SUCCESS)
-        {
-            /*
-             * Could not get discovery response Timeout value
-             * from CFG. Log error.
-             */
-            limLog(pMac, LOGP,
-               FL("could not retrieve ReassocFailureTimeout value"));
-        }
-        cfgValue = SYS_MS_TO_TICKS(cfgValue);
-
-        /*
-         * create TDLS discovery response wait timer and activate it later
-         */
-        if (tx_timer_create(&pMac->lim.limTimers.gLimTdlsDisRspWaitTimer,
-                            "TDLS discovery response WAIT",
-                            limTimerHandler,
-                            SIR_LIM_TDLS_DISCOVERY_RSP_WAIT,
-                            cfgValue, 0,
-                            TX_NO_ACTIVATE) != TX_SUCCESS)
-        {
-            limLog(pMac, LOGP,
-               FL("could not create TDLS discovery response wait timer"));
-        goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
 #endif
     }
@@ -688,7 +466,6 @@ limCreateTimers(tpAniSirGlobal pMac)
         /// Could not start Send Disassociate Frame Threshold timer.
         // Log error
         limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("create Disassociate throttle timer failed\n"));
     }
 #if defined(ANI_OS_TYPE_RTAI_LINUX)
@@ -698,13 +475,6 @@ limCreateTimers(tpAniSirGlobal pMac)
 #endif
     PELOG1(limLog(pMac, LOG1,
            FL("Created Disassociate throttle timer \n"));)
-=======
-               FL("create Disassociate throttle timer failed"));
-        goto err_timer;
-    }
-    PELOG1(limLog(pMac, LOG1,
-           FL("Created Disassociate throttle timer "));)
->>>>>>> d97af3b... add prima wlan driver
 
     /**
      * Create keepalive timer and  activate it right away for AP role
@@ -718,11 +488,7 @@ limCreateTimers(tpAniSirGlobal pMac)
          * from CFG. Log error.
          */
         limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve keepalive timeout value\n"));
-=======
-               FL("could not retrieve keepalive timeout value"));
->>>>>>> d97af3b... add prima wlan driver
     }
 
     // A value of zero implies keep alive should be disabled
@@ -747,12 +513,7 @@ limCreateTimers(tpAniSirGlobal pMac)
                   != TX_SUCCESS)
     {
         // Cannot create keepalive timer.  Log error.
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Cannot create keepalive timer.\n"));
-=======
-        limLog(pMac, LOGP, FL("Cannot create keepalive timer."));
-        goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
     }
 
     /**
@@ -767,11 +528,7 @@ limCreateTimers(tpAniSirGlobal pMac)
          * from CFG. Log error.
          */
         limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve CNF timeout value\n"));
-=======
-               FL("could not retrieve CNF timeout value"));
->>>>>>> d97af3b... add prima wlan driver
     }
     cfgValue = SYS_MS_TO_TICKS(cfgValue);
 
@@ -786,12 +543,7 @@ limCreateTimers(tpAniSirGlobal pMac)
                             TX_NO_ACTIVATE) != TX_SUCCESS)
         {
             // Cannot create timer.  Log error.
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Cannot create CNF wait timer.\n"));
-=======
-            limLog(pMac, LOGP, FL("Cannot create CNF wait timer."));
-            goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
         }
     }
 
@@ -809,7 +561,6 @@ limCreateTimers(tpAniSirGlobal pMac)
         ** from CFG. Log error.
         **/
         limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve mac preauth value\n"));
     }
 #ifdef ANI_AP_SDK_OPT
@@ -829,22 +580,6 @@ limCreateTimers(tpAniSirGlobal pMac)
 
 
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-               FL("could not retrieve mac preauth value"));
-    }
-    pMac->lim.gLimPreAuthTimerTable.numEntry = cfgValue;
-    pMac->lim.gLimPreAuthTimerTable.pTable = vos_mem_malloc(cfgValue*sizeof(tLimPreAuthNode));
-    if(pMac->lim.gLimPreAuthTimerTable.pTable == NULL)
-    {
-        limLog(pMac, LOGP, FL("AllocateMemory failed!"));
-        goto err_timer;
-    }
-
-    limInitPreAuthTimerTable(pMac, &pMac->lim.gLimPreAuthTimerTable);
-    PELOG1(limLog(pMac, LOG1, FL("alloc and init table for preAuth timers"));)
-
-
->>>>>>> d97af3b... add prima wlan driver
     {
         /**
          * Create OLBC cache aging timer
@@ -857,11 +592,7 @@ limCreateTimers(tpAniSirGlobal pMac)
              * from CFG. Log error.
              */
             limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not retrieve OLBD detect timeout value\n"));
-=======
-               FL("could not retrieve OLBD detect timeout value"));
->>>>>>> d97af3b... add prima wlan driver
         }
 
         cfgValue = SYS_MS_TO_TICKS(cfgValue);
@@ -877,17 +608,10 @@ limCreateTimers(tpAniSirGlobal pMac)
         {
             // Cannot create update OLBC cache timer
             // Log error
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Cannot create update OLBC cache timer\n"));
         }
     }
 #endif
-=======
-            limLog(pMac, LOGP, FL("Cannot create update OLBC cache timer"));
-            goto err_timer;
-        }
-    }
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_FEATURE_VOWIFI_11R
     // In future we need to use the auth timer, cause
     // the pre auth session will be introduced before sending
@@ -904,13 +628,8 @@ limCreateTimers(tpAniSirGlobal pMac)
     {
         // Could not create Join failure timer.
         // Log error
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not create Join failure timer\n"));
         return;
-=======
-        limLog(pMac, LOGP, FL("could not create Join failure timer"));
-        goto err_timer;
->>>>>>> d97af3b... add prima wlan driver
     }
 #endif
 
@@ -926,20 +645,12 @@ limCreateTimers(tpAniSirGlobal pMac)
     {
         // Could not create Join failure timer.
         // Log error
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not create Join failure timer\n"));
         return;
     }
 #endif
 
 #ifdef WLAN_FEATURE_P2P
-=======
-        limLog(pMac, LOGP, FL("could not create Join failure timer"));
-        goto err_timer;
-    }
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     cfgValue = 1000;
     cfgValue = SYS_MS_TO_TICKS(cfgValue);
     if (tx_timer_create(&pMac->lim.limTimers.gLimRemainOnChannelTimer,
@@ -950,108 +661,12 @@ limCreateTimers(tpAniSirGlobal pMac)
     {
         // Could not create Join failure timer.
         // Log error
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not create Join failure timer\n"));
         return;
     }
 
 #endif
     pMac->lim.gLimTimersCreated = 1;
-=======
-        limLog(pMac, LOGP, FL("could not create Join failure timer"));
-        goto err_timer;
-    }
-
-
-    cfgValue = 1000;
-    cfgValue = SYS_MS_TO_TICKS(cfgValue);
-    if (tx_timer_create(&pMac->lim.limTimers.gLimDisassocAckTimer,
-                                    "DISASSOC ACK TIMEOUT",
-                                    limTimerHandler, SIR_LIM_DISASSOC_ACK_TIMEOUT,
-                                    cfgValue, 0,
-                                    TX_NO_ACTIVATE) != TX_SUCCESS)
-    {
-        limLog(pMac, LOGP, FL("could not DISASSOC ACK TIMEOUT timer"));
-        goto err_timer;
-    }
-
-    cfgValue = 1000;
-    cfgValue = SYS_MS_TO_TICKS(cfgValue);
-    if (tx_timer_create(&pMac->lim.limTimers.gLimDeauthAckTimer,
-                                    "DISASSOC ACK TIMEOUT",
-                                    limTimerHandler, SIR_LIM_DEAUTH_ACK_TIMEOUT,
-                                    cfgValue, 0,
-                                    TX_NO_ACTIVATE) != TX_SUCCESS)
-    {
-        limLog(pMac, LOGP, FL("could not create DEAUTH ACK TIMEOUT timer"));
-        goto err_timer;
-    }
-
-    cfgValue = LIM_INSERT_SINGLESHOTNOA_TIMEOUT_VALUE; // (> no of BI* no of TUs per BI * 1TU in msec + p2p start time offset*1 TU in msec = 2*100*1.024 + 5*1.024 = 204.8 + 5.12 = 209.20)
-    cfgValue = SYS_MS_TO_TICKS(cfgValue);
-    if (tx_timer_create(&pMac->lim.limTimers.gLimP2pSingleShotNoaInsertTimer,
-                                    "Single Shot NOA Insert timeout",
-                                    limTimerHandler, SIR_LIM_INSERT_SINGLESHOT_NOA_TIMEOUT,
-                                    cfgValue, 0,
-                                    TX_NO_ACTIVATE) != TX_SUCCESS)
-    {
-        limLog(pMac, LOGP, FL("could not create Single Shot NOA Insert Timeout timer"));
-        goto err_timer;
-    }
-
-    cfgValue = ACTIVE_TO_PASSIVE_CONVERISON_TIMEOUT;
-    cfgValue = SYS_MS_TO_TICKS(cfgValue);
-    if (tx_timer_create(&pMac->lim.limTimers.gLimActiveToPassiveChannelTimer,
-                                  "ACTIVE TO PASSIVE CHANNEL", limTimerHandler,
-                 SIR_LIM_CONVERT_ACTIVE_CHANNEL_TO_PASSIVE, cfgValue, 0,
-                 TX_NO_ACTIVATE) != TX_SUCCESS)
-    {
-        limLog(pMac, LOGW,FL("could not create timer for passive channel to active channel"));
-        goto err_timer;
-    }
-
-
-    return TX_SUCCESS;
-
-    err_timer:
-        tx_timer_delete(&pMac->lim.limTimers.gLimDeauthAckTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimDisassocAckTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimRemainOnChannelTimer);
-    #ifdef FEATURE_WLAN_CCX
-        tx_timer_delete(&pMac->lim.limTimers.gLimCcxTsmTimer);
-    #endif
-        tx_timer_delete(&pMac->lim.limTimers.gLimFTPreAuthRspTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimUpdateOlbcCacheTimer);
-        while(((tANI_S32)--i) >= 0)
-        {
-            tx_timer_delete(&pMac->lim.limTimers.gpLimCnfWaitTimer[i]);
-        }
-        tx_timer_delete(&pMac->lim.limTimers.gLimKeepaliveTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimSendDisassocFrameThresholdTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimBackgroundScanTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimProbeAfterHBTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimHeartBeatTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimAuthFailureTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimAddtsRspTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimReassocFailureTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimAssocFailureTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimJoinFailureTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimPeriodicJoinProbeReqTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimQuietBssTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimQuietTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimChannelSwitchTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimMaxChannelTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimPeriodicProbeReqTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimMinChannelTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimP2pSingleShotNoaInsertTimer);
-        tx_timer_delete(&pMac->lim.limTimers.gLimActiveToPassiveChannelTimer);
-
-        if(NULL != pMac->lim.gLimPreAuthTimerTable.pTable)
-            vos_mem_free(pMac->lim.gLimPreAuthTimerTable.pTable);
-
-        return TX_TIMER_ERROR;
-
->>>>>>> d97af3b... add prima wlan driver
 } /****** end limCreateTimers() ******/
 
 
@@ -1097,11 +712,7 @@ limTimerHandler(void *pMacGlobal, tANI_U32 param)
 
     if ((statusCode = limPostMsgApi(pMac, &msg)) != eSIR_SUCCESS)
         limLog(pMac, LOGE,
-<<<<<<< HEAD
                FL("posting message %X to LIM failed, reason=%d\n"),
-=======
-               FL("posting message %X to LIM failed, reason=%d"),
->>>>>>> d97af3b... add prima wlan driver
                msg.type, statusCode);
 } /****** end limTimerHandler() ******/
 
@@ -1209,32 +820,6 @@ limAssocFailureTimerHandler(void *pMacGlobal, tANI_U32 param)
     tSirMsgQ    msg;
     tpAniSirGlobal pMac = (tpAniSirGlobal)pMacGlobal;
 
-<<<<<<< HEAD
-=======
-#if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
-    if((LIM_REASSOC == param) &&
-       (NULL != pMac->lim.pSessionEntry))
-    {
-        limLog(pMac, LOGE, FL("Reassoc timeout happened"));
-        if(pMac->lim.reAssocRetryAttempt < LIM_MAX_REASSOC_RETRY_LIMIT)
-        {
-            limSendRetryReassocReqFrame(pMac, pMac->lim.pSessionEntry->pLimMlmReassocRetryReq, pMac->lim.pSessionEntry);
-            pMac->lim.reAssocRetryAttempt++;
-            limLog(pMac, LOGW, FL("Reassoc request retry is sent %d times"), pMac->lim.reAssocRetryAttempt);
-            return;
-        }
-        else
-        {
-            limLog(pMac, LOGW, FL("Reassoc request retry MAX(%d) reached"), LIM_MAX_REASSOC_RETRY_LIMIT);
-            if(NULL != pMac->lim.pSessionEntry->pLimMlmReassocRetryReq)
-            {
-                vos_mem_free( pMac->lim.pSessionEntry->pLimMlmReassocRetryReq);
-                pMac->lim.pSessionEntry->pLimMlmReassocRetryReq = NULL;
-            }
-        }
-    }
-#endif
->>>>>>> d97af3b... add prima wlan driver
     // Prepare and post message to LIM Message Queue
 
     msg.type = SIR_LIM_ASSOC_FAIL_TIMEOUT;
@@ -1266,10 +851,7 @@ limAssocFailureTimerHandler(void *pMacGlobal, tANI_U32 param)
  *
  * @return None
  */
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
 void
 limUpdateOlbcCacheTimerHandler(void *pMacGlobal, tANI_U32 param)
 {
@@ -1284,10 +866,7 @@ limUpdateOlbcCacheTimerHandler(void *pMacGlobal, tANI_U32 param)
 
     limPostMsgApi(pMac, &msg);
 } /****** end limUpdateOlbcCacheTimerHandler() ******/
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 /**
  * limDeactivateAndChangeTimer()
@@ -1327,11 +906,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate AddtsRsp Timer
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to deactivate AddtsRsp timer\n"));
-=======
-                       FL("Unable to deactivate AddtsRsp timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
             break;
 
@@ -1342,11 +917,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate min channel timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to deactivate min channel timer\n"));
-=======
-                       FL("Unable to deactivate min channel timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
 #if 0
@@ -1367,21 +938,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 if(pMac->lim.gpLimMlmScanReq)
                 {
                     val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->minChannelTime);
-<<<<<<< HEAD
-=======
-                    if (pMac->btc.btcScanCompromise)
-                    {
-                        if (pMac->lim.gpLimMlmScanReq->minChannelTimeBtc)
-                        {
-                            val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->minChannelTimeBtc);
-                            limLog(pMac, LOG1, FL("Using BTC Min Active Scan time"));
-                        }
-                        else
-                        {
-                            limLog(pMac, LOGE, FL("BTC Active Scan Min Time is Not Set"));
-                        }
-                    }
->>>>>>> d97af3b... add prima wlan driver
                 }
                 else
                 {
@@ -1398,11 +954,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
             {
                 // Could not change min channel timer.
                 // Log error
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Unable to change min channel timer\n"));
-=======
-                limLog(pMac, LOGP, FL("Unable to change min channel timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1414,38 +966,16 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate min channel timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to deactivate periodic timer\n"));
             }
 
             val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->minChannelTime)/2;
-=======
-                       FL("Unable to deactivate periodic timer"));
-            }
-
-            val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->minChannelTime)/2;
-            if (pMac->btc.btcScanCompromise)
-            {
-               if (pMac->lim.gpLimMlmScanReq->minChannelTimeBtc)
-               {
-                   val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->minChannelTimeBtc)/2;
-               }
-               else
-               {
-                   limLog(pMac, LOGE, FL("BTC Active Scan Min Time is Not Set"));
-               }
-            }
->>>>>>> d97af3b... add prima wlan driver
             if (tx_timer_change(&pMac->lim.limTimers.gLimPeriodicProbeReqTimer,
                                 val, 0) != TX_SUCCESS)
             {
                 // Could not change min channel timer.
                 // Log error
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Unable to change periodic timer\n"));
-=======
-                limLog(pMac, LOGP, FL("Unable to change periodic timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1457,16 +987,10 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate max channel timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to deactivate max channel timer\n"));
             }
 
 #if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
-=======
-                       FL("Unable to deactivate max channel timer"));
-            }
-
->>>>>>> d97af3b... add prima wlan driver
             // If a background was triggered via Quiet BSS,
             // then we need to adjust the MIN and MAX channel
             // timer's accordingly to the Quiet duration that
@@ -1488,21 +1012,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                     if(pMac->lim.gpLimMlmScanReq)
                     {
                         val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->maxChannelTime);
-<<<<<<< HEAD
-=======
-                        if (pMac->btc.btcScanCompromise)
-                        {
-                            if (pMac->lim.gpLimMlmScanReq->maxChannelTimeBtc)
-                            {
-                                val = SYS_MS_TO_TICKS(pMac->lim.gpLimMlmScanReq->maxChannelTimeBtc);
-                                limLog(pMac, LOG1, FL("Using BTC Max Active Scan time"));
-                            }
-                            else
-                            {
-                                limLog(pMac, LOGE, FL("BTC Active Scan Max Time is Not Set"));
-                            }
-                        }
->>>>>>> d97af3b... add prima wlan driver
                     }
                     else
                     {
@@ -1514,7 +1023,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 }
 #endif
             }
-<<<<<<< HEAD
 #endif
 #if defined(ANI_PRODUCT_TYPE_AP)
             if (pMac->lim.gLimSystemRole == eLIM_AP_ROLE)
@@ -1532,8 +1040,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 val = SYS_MS_TO_TICKS(val);
             }
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
             if (tx_timer_change(&pMac->lim.limTimers.gLimMaxChannelTimer,
                                 val, 0) != TX_SUCCESS)
@@ -1541,11 +1047,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change max channel timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to change max channel timer\n"));
-=======
-                       FL("Unable to change max channel timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1559,11 +1061,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * timer. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to deactivate Join Failure timer\n"));
-=======
-                       FL("Unable to deactivate Join Failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             if (wlan_cfgGetInt(pMac, WNI_CFG_JOIN_FAILURE_TIMEOUT,
@@ -1574,11 +1072,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve JoinFailureTimeout value\n"));
-=======
-                   FL("could not retrieve JoinFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             val = SYS_MS_TO_TICKS(val);
 
@@ -1590,31 +1084,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * timer. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to change Join Failure timer\n"));
-=======
-                       FL("Unable to change Join Failure timer"));
-            }
-
-            break;
-
-        case eLIM_PERIODIC_JOIN_PROBE_REQ_TIMER:
-            if (tx_timer_deactivate(&pMac->lim.limTimers.gLimPeriodicJoinProbeReqTimer)
-                                         != TX_SUCCESS)
-            {
-                // Could not deactivate periodic join req Times.
-                limLog(pMac, LOGP,
-                       FL("Unable to deactivate periodic join request timer"));
-            }
-
-            val = SYS_MS_TO_TICKS(LIM_JOIN_PROBE_REQ_TIMER_MS);
-            if (tx_timer_change(&pMac->lim.limTimers.gLimPeriodicJoinProbeReqTimer,
-                                val, 0) != TX_SUCCESS)
-            {
-                // Could not change periodic join req times.
-                // Log error
-                limLog(pMac, LOGP, FL("Unable to change periodic join request timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1626,11 +1096,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate Auth failure timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("Unable to deactivate auth failure timer\n"));
-=======
-                       FL("Unable to deactivate auth failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -1642,11 +1108,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve AuthFailureTimeout value\n"));
-=======
-                   FL("could not retrieve AuthFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             val = SYS_MS_TO_TICKS(val);
 
@@ -1656,11 +1118,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change Authentication failure timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("unable to change Auth failure timer\n"));
-=======
-                       FL("unable to change Auth failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1672,11 +1130,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate Association failure timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to deactivate Association failure timer\n"));
-=======
-                   FL("unable to deactivate Association failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -1688,11 +1142,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve AssocFailureTimeout value\n"));
-=======
-                   FL("could not retrieve AssocFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             val = SYS_MS_TO_TICKS(val);
 
@@ -1702,11 +1152,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change Association failure timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("unable to change Assoc failure timer\n"));
-=======
-                       FL("unable to change Assoc failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1718,11 +1164,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate Reassociation failure timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to deactivate Reassoc failure timer\n"));
-=======
-                   FL("unable to deactivate Reassoc failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -1734,11 +1176,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve ReassocFailureTimeout value\n"));
-=======
-                   FL("could not retrieve ReassocFailureTimeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             val = SYS_MS_TO_TICKS(val);
 
@@ -1748,11 +1186,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change Reassociation failure timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to change Reassociation failure timer\n"));
-=======
-                   FL("unable to change Reassociation failure timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1764,15 +1198,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate Heartbeat timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("unable to deactivate Heartbeat timer\n"));
-=======
-                       FL("unable to deactivate Heartbeat timer"));
-            }
-            else
-            {
-                limLog(pMac, LOGW, FL("Deactivated heartbeat link monitoring"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             if (wlan_cfgGetInt(pMac, WNI_CFG_BEACON_INTERVAL,
@@ -1783,21 +1209,13 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("could not retrieve BEACON_INTERVAL value\n"));
-=======
-                       FL("could not retrieve BEACON_INTERVAL value"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             if (wlan_cfgGetInt(pMac, WNI_CFG_HEART_BEAT_THRESHOLD, &val1) !=
                                                           eSIR_SUCCESS)
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve heartbeat failure value\n"));
-=======
-                   FL("could not retrieve heartbeat failure value"));
->>>>>>> d97af3b... add prima wlan driver
 
             // Change timer to reactivate it in future
             val = SYS_MS_TO_TICKS(val * val1);
@@ -1808,18 +1226,9 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change HeartBeat timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("unable to change HeartBeat timer\n"));
             }
 
-=======
-                       FL("unable to change HeartBeat timer"));
-            }
-            else
-            {
-                limLog(pMac, LOGW, FL("HeartBeat timer value is changed = %lu"), val);
-            }
->>>>>>> d97af3b... add prima wlan driver
             break;
 
         case eLIM_PROBE_AFTER_HB_TIMER:
@@ -1829,15 +1238,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate Heartbeat timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to deactivate probeAfterHBTimer\n"));
-=======
-                   FL("unable to deactivate probeAfterHBTimer"));
-            }
-            else
-            {
-                limLog(pMac, LOGE, FL("Deactivated probe after hb timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             if (wlan_cfgGetInt(pMac, WNI_CFG_PROBE_AFTER_HB_FAIL_TIMEOUT,
@@ -1848,11 +1249,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * value from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve PROBE_AFTER_HB_FAIL_TIMEOUT value\n"));
-=======
-                   FL("could not retrieve PROBE_AFTER_HB_FAIL_TIMEOUT value"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -1864,15 +1261,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change HeartBeat timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("unable to change ProbeAfterHBTimer\n"));
-=======
-                       FL("unable to change ProbeAfterHBTimer"));
-            }
-            else
-            {
-                limLog(pMac, LOGW, FL("Probe after HB timer value is changed = %lu"), val);
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -1884,11 +1273,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate Keepalive timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to deactivate KeepaliveTimer timer\n"));
-=======
-                   FL("unable to deactivate KeepaliveTimer timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -1901,11 +1286,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve keepalive timeout value\n"));
-=======
-                   FL("could not retrieve keepalive timeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             if (val == 0)
             {
@@ -1924,19 +1305,12 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change KeepaliveTimer timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to change KeepaliveTimer timer\n"));
-=======
-                   FL("unable to change KeepaliveTimer timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
 
-<<<<<<< HEAD
 #if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
-=======
->>>>>>> d97af3b... add prima wlan driver
         case eLIM_BACKGROUND_SCAN_TIMER:
             if (tx_timer_deactivate(&pMac->lim.limTimers.gLimBackgroundScanTimer)
                             != TX_SUCCESS)
@@ -1944,11 +1318,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not deactivate BackgroundScanTimer timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to deactivate BackgroundScanTimer timer\n"));
-=======
-                   FL("unable to deactivate BackgroundScanTimer timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -1960,11 +1330,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve Background scan period value\n"));
-=======
-                   FL("could not retrieve Background scan period value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             if (val == 0)
             {
@@ -1982,7 +1348,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Could not change BackgroundScanTimer timer.
                 // Log error
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("unable to change BackgroundScanTimer timer\n"));
             }
 
@@ -2020,14 +1385,10 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 // Log error
                 limLog(pMac, LOGP,
                    FL("unable to change pre-auth cleanup timer\n"));
-=======
-                   FL("unable to change BackgroundScanTimer timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
 
-<<<<<<< HEAD
         case eLIM_LEARN_INTERVAL_TIMER:
             {
             // Restart Learn Interval timer
@@ -2062,17 +1423,11 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
             break;
 
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 #if 0
         case eLIM_CHANNEL_SWITCH_TIMER:
             if (tx_timer_deactivate(&pMac->lim.limTimers.gLimChannelSwitchTimer) != eSIR_SUCCESS)
             {
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("tx_timer_deactivate failed!\n"));
-=======
-                limLog(pMac, LOGP, FL("tx_timer_deactivate failed!"));
->>>>>>> d97af3b... add prima wlan driver
                 return;
             }
 
@@ -2080,18 +1435,13 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                         pMac->lim.gLimChannelSwitch.switchTimeoutValue,
                                     0) != TX_SUCCESS)
             {
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("tx_timer_change failed \n"));
-=======
-                limLog(pMac, LOGP, FL("tx_timer_change failed "));
->>>>>>> d97af3b... add prima wlan driver
                 return;
             }
             break;
 #endif
 
         case eLIM_LEARN_DURATION_TIMER:
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_AP
             if (tx_timer_deactivate(&pMac->lim.gLimMeasParams.learnDurationTimer) != TX_SUCCESS)
             {
@@ -2142,8 +1492,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
             }
             pMac->lim.gpLimMeasData->duration = val * SYS_TICK_DUR_MS;
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
             break;
 
 #if 0
@@ -2152,11 +1500,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
             tx_timer_deactivate(&pMac->lim.limTimers.gLimQuietBssTimer))
             {
                 limLog( pMac, LOGE,
-<<<<<<< HEAD
                   FL("Unable to de-activate gLimQuietBssTimer! Will attempt to activate anyway...\n"));
-=======
-                  FL("Unable to de-activate gLimQuietBssTimer! Will attempt to activate anyway..."));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // gLimQuietDuration appears to be in units of ticks
@@ -2167,11 +1511,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                   0))
             {
                 limLog( pMac, LOGE,
-<<<<<<< HEAD
                   FL("Unable to change gLimQuietBssTimer! Will still attempt to activate anyway...\n"));
-=======
-                  FL("Unable to change gLimQuietBssTimer! Will still attempt to activate anyway..."));
->>>>>>> d97af3b... add prima wlan driver
             }
             break;
 
@@ -2179,11 +1519,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
             if( TX_SUCCESS != tx_timer_deactivate(&pMac->lim.limTimers.gLimQuietTimer))
             {
                 limLog( pMac, LOGE,
-<<<<<<< HEAD
                     FL( "Unable to deactivate gLimQuietTimer! Will still attempt to re-activate anyway...\n" ));
-=======
-                    FL( "Unable to deactivate gLimQuietTimer! Will still attempt to re-activate anyway..." ));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Set the NEW timeout value, in ticks
@@ -2191,19 +1527,12 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                               SYS_MS_TO_TICKS(pMac->lim.gLimSpecMgmt.quietTimeoutValue), 0))
             {
                 limLog( pMac, LOGE,
-<<<<<<< HEAD
                     FL( "Unable to change gLimQuietTimer! Will still attempt to re-activate anyway...\n" ));
-=======
-                    FL( "Unable to change gLimQuietTimer! Will still attempt to re-activate anyway..." ));
->>>>>>> d97af3b... add prima wlan driver
             }
             break;
 #endif
 
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
-=======
->>>>>>> d97af3b... add prima wlan driver
 #if 0
         case eLIM_WPS_OVERLAP_TIMER:
             {
@@ -2217,11 +1546,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                   // Could not deactivate Learn Interval timer.
                   // Log error
                   limLog(pMac, LOGP,
-<<<<<<< HEAD
                          FL("Unable to deactivate WPS overlap timer\n"));
-=======
-                         FL("Unable to deactivate WPS overlap timer"));
->>>>>>> d97af3b... add prima wlan driver
               }
 
               if (tx_timer_change(
@@ -2230,29 +1555,18 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
               {
                   // Could not change Learn Interval timer.
                   // Log error
-<<<<<<< HEAD
                   limLog(pMac, LOGP, FL("Unable to change WPS overlap timer\n"));
-=======
-                  limLog(pMac, LOGP, FL("Unable to change WPS overlap timer"));
->>>>>>> d97af3b... add prima wlan driver
 
                   return;
               }
 
               limLog( pMac, LOGE,
-<<<<<<< HEAD
                   FL("Setting WPS overlap TIMER to %d ticks\n"),
-=======
-                  FL("Setting WPS overlap TIMER to %d ticks"),
->>>>>>> d97af3b... add prima wlan driver
                   WPSOverlapTimer);
             }
             break;
 #endif
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
         case eLIM_FT_PREAUTH_RSP_TIMER:
@@ -2262,12 +1576,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 ** Could not deactivate Join Failure
                 ** timer. Log error.
                 **/
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Unable to deactivate Preauth response Failure timer\n"));
-=======
-                limLog(pMac, LOGP, FL("Unable to deactivate Preauth response Failure timer"));
-                return;
->>>>>>> d97af3b... add prima wlan driver
             }
             val = 1000;
             val = SYS_MS_TO_TICKS(val);
@@ -2278,12 +1587,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 * Could not change Join Failure
                 * timer. Log error.
                 */
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Unable to change Join Failure timer\n"));
-=======
-                limLog(pMac, LOGP, FL("Unable to change Join Failure timer"));
-                return;
->>>>>>> d97af3b... add prima wlan driver
             }
             break;
 #endif
@@ -2292,18 +1596,11 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
              if (tx_timer_deactivate(&pMac->lim.limTimers.gLimCcxTsmTimer)
                                                                 != TX_SUCCESS)
              {
-<<<<<<< HEAD
                  limLog(pMac, LOGE, FL("Unable to deactivate TSM timer\n"));
              }
              break;
 #endif
 #ifdef WLAN_FEATURE_P2P
-=======
-                 limLog(pMac, LOGE, FL("Unable to deactivate TSM timer"));
-             }
-             break;
-#endif
->>>>>>> d97af3b... add prima wlan driver
         case eLIM_REMAIN_CHN_TIMER:
             if (tx_timer_deactivate(&pMac->lim.limTimers.gLimRemainOnChannelTimer) != TX_SUCCESS)
             {
@@ -2311,12 +1608,7 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 ** Could not deactivate Join Failure
                 ** timer. Log error.
                 **/
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Unable to deactivate Remain on Chn timer\n"));
-=======
-                limLog(pMac, LOGP, FL("Unable to deactivate Remain on Chn timer"));
-                return;
->>>>>>> d97af3b... add prima wlan driver
             }
             val = 1000;
             val = SYS_MS_TO_TICKS(val);
@@ -2327,114 +1619,10 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
                 * Could not change Join Failure
                 * timer. Log error.
                 */
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Unable to change timer\n"));
             }
             break;
 #endif
-=======
-                limLog(pMac, LOGP, FL("Unable to change timer"));
-                return;
-            }
-            break;
-
-    case eLIM_CONVERT_ACTIVE_CHANNEL_TO_PASSIVE:
-            if (tx_timer_deactivate(&pMac->lim.limTimers.gLimActiveToPassiveChannelTimer) != TX_SUCCESS)
-            {
-                /**
-                ** Could not deactivate Active to passive channel timer.
-                ** Log error.
-                **/
-                limLog(pMac, LOGP, FL("Unable to Deactivate "
-                                      "Active to passive channel timer"));
-                return;
-            }
-            val = ACTIVE_TO_PASSIVE_CONVERISON_TIMEOUT;
-            val = SYS_MS_TO_TICKS(val);
-            if (tx_timer_change(&pMac->lim.limTimers.gLimActiveToPassiveChannelTimer,
-                                                val, 0) != TX_SUCCESS)
-            {
-                /**
-                * Could not change timer to check scan type for passive channel.
-                * timer. Log error.
-                */
-                limLog(pMac, LOGP, FL("Unable to change timer"));
-                return;
-            }
-            break;
-
-    case eLIM_DISASSOC_ACK_TIMER:
-            if (tx_timer_deactivate(&pMac->lim.limTimers.gLimDisassocAckTimer) != TX_SUCCESS)
-            {
-                /**
-                ** Could not deactivate Join Failure
-                ** timer. Log error.
-                **/
-                limLog(pMac, LOGP, FL("Unable to deactivate Disassoc ack timer"));
-                return;
-            }
-            val = 1000;
-            val = SYS_MS_TO_TICKS(val);
-            if (tx_timer_change(&pMac->lim.limTimers.gLimDisassocAckTimer,
-                                                val, 0) != TX_SUCCESS)
-            {
-                /**
-                * Could not change Join Failure
-                * timer. Log error.
-                */
-                limLog(pMac, LOGP, FL("Unable to change timer"));
-                return;
-            }
-            break;
-
-    case eLIM_DEAUTH_ACK_TIMER:
-            if (tx_timer_deactivate(&pMac->lim.limTimers.gLimDeauthAckTimer) != TX_SUCCESS)
-            {
-                /**
-                ** Could not deactivate Join Failure
-                ** timer. Log error.
-                **/
-                limLog(pMac, LOGP, FL("Unable to deactivate Deauth ack timer"));
-                return;
-            }
-            val = 1000;
-            val = SYS_MS_TO_TICKS(val);
-            if (tx_timer_change(&pMac->lim.limTimers.gLimDeauthAckTimer,
-                                                val, 0) != TX_SUCCESS)
-            {
-                /**
-                * Could not change Join Failure
-                * timer. Log error.
-                */
-                limLog(pMac, LOGP, FL("Unable to change timer"));
-                return;
-            }
-            break;
-
-    case eLIM_INSERT_SINGLESHOT_NOA_TIMER:
-        if (tx_timer_deactivate(&pMac->lim.limTimers.gLimP2pSingleShotNoaInsertTimer) != TX_SUCCESS)
-        {
-            /**
-       ** Could not deactivate SingleShot NOA Insert
-       ** timer. Log error.
-       **/
-            limLog(pMac, LOGP, FL("Unable to deactivate SingleShot NOA Insert timer"));
-            return;
-        }
-        val = LIM_INSERT_SINGLESHOTNOA_TIMEOUT_VALUE;
-        val = SYS_MS_TO_TICKS(val);
-        if (tx_timer_change(&pMac->lim.limTimers.gLimP2pSingleShotNoaInsertTimer,
-                                            val, 0) != TX_SUCCESS)
-        {
-            /**
-       * Could not change Single Shot NOA Insert
-       * timer. Log error.
-       */
-            limLog(pMac, LOGP, FL("Unable to change timer"));
-            return;
-        }
-        break;
->>>>>>> d97af3b... add prima wlan driver
 
         default:
             // Invalid timerId. Log error
@@ -2456,7 +1644,6 @@ limDeactivateAndChangeTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
 void
 limHeartBeatDeactivateAndChangeTimer(tpAniSirGlobal pMac, tpPESession psessionEntry)
 {
-<<<<<<< HEAD
     tANI_U32    val, val1;
 
     MTRACE(macTrace(pMac, TRACE_CODE_TIMER_DEACTIVATE, psessionEntry->peSessionId, eLIM_HEART_BEAT_TIMER));
@@ -2484,50 +1671,6 @@ limHeartBeatDeactivateAndChangeTimer(tpAniSirGlobal pMac, tpPESession psessionEn
 
     if (tx_timer_change(&pMac->lim.limTimers.gLimHeartBeatTimer, val, 0) != TX_SUCCESS)
         limLog(pMac, LOGP, FL("Fail to change HeartBeatTimer\n"));
-=======
-   tANI_U32    val, val1;
-
-   MTRACE(macTrace(pMac, TRACE_CODE_TIMER_DEACTIVATE, psessionEntry->peSessionId, eLIM_HEART_BEAT_TIMER));
-#ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
-   if(IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE)
-      return;
-#endif
-
-   if (tx_timer_deactivate(&pMac->lim.limTimers.gLimHeartBeatTimer) != TX_SUCCESS)
-      limLog(pMac, LOGP, FL("Fail to deactivate HeartBeatTimer "));
-
-   /* HB Timer sessionisation: In case of 2 or more sessions, the HB interval keeps
-      changing. to avoid this problem, HeartBeat interval is made constant, by
-      fixing beacon interval to 100ms immaterial of the beacon interval of the session */
-
-   //val = psessionEntry->beaconParams.beaconInterval;
-   val = LIM_HB_TIMER_BEACON_INTERVAL;
-
-   if (wlan_cfgGetInt(pMac, WNI_CFG_HEART_BEAT_THRESHOLD, &val1) != eSIR_SUCCESS)
-      limLog(pMac, LOGP, FL("Fail to get WNI_CFG_HEART_BEAT_THRESHOLD "));
-
-   PELOGW(limLog(pMac,LOGW,
-            FL("HB Timer Int.=100ms * %d, Beacon Int.=%dms,Session Id=%d "),
-            val1, psessionEntry->beaconParams.beaconInterval,
-            psessionEntry->peSessionId);)
-
-   /* The HB timer timeout value of 4 seconds (40 beacon intervals) is not
-    * enough to judge the peer device inactivity when 32 peers are connected.
-    * Hence increasing the HB timer timeout to
-    * HBtimeout = (TBTT * num_beacons * num_peers)
-    */
-   if (eSIR_IBSS_MODE == psessionEntry->bssType &&
-         pMac->lim.gLimNumIbssPeers > 0)
-   {
-      val1 = val1 * pMac->lim.gLimNumIbssPeers;
-   }
-
-   // Change timer to reactivate it in future
-   val = SYS_MS_TO_TICKS(val * val1);
-
-   if (tx_timer_change(&pMac->lim.limTimers.gLimHeartBeatTimer, val, 0) != TX_SUCCESS)
-      limLog(pMac, LOGP, FL("Fail to change HeartBeatTimer"));
->>>>>>> d97af3b... add prima wlan driver
 
 } /****** end limHeartBeatDeactivateAndChangeTimer() ******/
 
@@ -2544,70 +1687,22 @@ limHeartBeatDeactivateAndChangeTimer(tpAniSirGlobal pMac, tpPESession psessionEn
 void
 limReactivateHeartBeatTimer(tpAniSirGlobal pMac, tpPESession psessionEntry)
 {
-<<<<<<< HEAD
     PELOG3(limLog(pMac, LOG3, FL("Rxed Heartbeat. Count=%d\n"), psessionEntry->LimRxedBeaconCntDuringHB);)
-=======
-    PELOG3(limLog(pMac, LOG3, FL("Rxed Heartbeat. Count=%d"), psessionEntry->LimRxedBeaconCntDuringHB);)
-
-#ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
-    if(IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE)
-    {
-       limLog(pMac, LOGW, FL("Active offload feature is enabled, FW takes care of HB monitoring"));
-       return;
-    }
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
     limHeartBeatDeactivateAndChangeTimer(pMac, psessionEntry);
     MTRACE(macTrace(pMac, TRACE_CODE_TIMER_ACTIVATE, psessionEntry->peSessionId, eLIM_HEART_BEAT_TIMER));
 
     //only start the hearbeat-timer if the timeout value is non-zero
-<<<<<<< HEAD
     if(pMac->lim.limTimers.gLimHeartBeatTimer.initScheduleTimeInMsecs > 0) {
         if (tx_timer_activate(&pMac->lim.limTimers.gLimHeartBeatTimer)!= TX_SUCCESS)
         {
             limLog(pMac, LOGP,FL("could not activate Heartbeat timer\n"));
         }
         limResetHBPktCount(psessionEntry);
-=======
-    if(pMac->lim.limTimers.gLimHeartBeatTimer.initScheduleTimeInMsecs > 0)
-    {
-       /*
-        * There is increasing need to limit the apps wakeup due to WLAN
-        * activity. During HB monitoring, the beacons from peer are sent to
-        * the host causing the host to wakeup. Hence, offloading the HB
-        * monitoring to LMAC
-        */
-       if (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE &&
-             IS_IBSS_HEARTBEAT_OFFLOAD_FEATURE_ENABLE)
-       {
-          if (tx_timer_deactivate(&pMac->lim.limTimers.gLimHeartBeatTimer)!= TX_SUCCESS)
-          {
-             limLog(pMac, LOGP,FL("IBSS HeartBeat Offloaded, Could not deactivate Heartbeat timer"));
-          }
-          else
-          {
-             limLog(pMac, LOGE, FL("IBSS HeartBeat Offloaded, Deactivated heartbeat link monitoring"));
-          }
-       }
-       else
-       {
-          if (tx_timer_activate(&pMac->lim.limTimers.gLimHeartBeatTimer)!= TX_SUCCESS)
-          {
-             limLog(pMac, LOGP,FL("could not activate Heartbeat timer"));
-          }
-          else
-          {
-             limLog(pMac, LOGW, FL("Reactivated heartbeat link monitoring"));
-          }
-       }
-       limResetHBPktCount(psessionEntry);
->>>>>>> d97af3b... add prima wlan driver
     }
 
 } /****** end limReactivateHeartBeatTimer() ******/
 
-<<<<<<< HEAD
 #if 0
 /******
  * Note: Use this code once you have converted all
@@ -2694,8 +1789,6 @@ limReactivateTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
 } /****** end limReactivateTimer() ******/
 #endif
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 /**
  * limActivateHearBeatTimer()
@@ -2711,77 +1804,25 @@ limReactivateTimer(tpAniSirGlobal pMac, tANI_U32 timerId)
  * @note   staId for eLIM_AUTH_RSP_TIMER is auth Node Index.
  *
  * @param  pMac    - Pointer to Global MAC structure
-<<<<<<< HEAD
-=======
- * @param  psessionEntry - Session Entry
->>>>>>> d97af3b... add prima wlan driver
  *
  * @return TX_SUCCESS - timer is activated
  *         errors - fail to start the timer
  */
-<<<<<<< HEAD
 v_UINT_t limActivateHearBeatTimer(tpAniSirGlobal pMac)
 {
     v_UINT_t status = TX_TIMER_ERROR;
 
-=======
-v_UINT_t limActivateHearBeatTimer(tpAniSirGlobal pMac, tpPESession psessionEntry)
-{
-    v_UINT_t status = TX_TIMER_ERROR;
-
-#ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
-    if(IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE)
-       return (TX_SUCCESS);
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
     if(TX_AIRGO_TMR_SIGNATURE == pMac->lim.limTimers.gLimHeartBeatTimer.tmrSignature)
     {
         //consider 0 interval a ok case
         if( pMac->lim.limTimers.gLimHeartBeatTimer.initScheduleTimeInMsecs )
         {
-<<<<<<< HEAD
             status = tx_timer_activate(&pMac->lim.limTimers.gLimHeartBeatTimer);
             if( TX_SUCCESS != status )
             {
                 PELOGE(limLog(pMac, LOGE,
                    FL("could not activate Heartbeat timer status(%d)\n"), status);)
             }
-=======
-           if (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE &&
-               IS_IBSS_HEARTBEAT_OFFLOAD_FEATURE_ENABLE)
-           {
-              /* HB offload in IBSS mode */
-              status = tx_timer_deactivate(&pMac->lim.limTimers.gLimHeartBeatTimer);
-              if (TX_SUCCESS != status)
-              {
-                 PELOGE(limLog(pMac, LOGE,
-                 FL("IBSS HB Offload, Could not deactivate HB timer status(%d)"),
-                 status);)
-              }
-              else
-              {
-                 PELOGE(limLog(pMac, LOGE,
-                 FL("%s] IBSS HB Offloaded, Heartbeat timer deactivated"),
-                 __func__);)
-              }
-
-           }
-           else
-           {
-              status = tx_timer_activate(&pMac->lim.limTimers.gLimHeartBeatTimer);
-              if ( TX_SUCCESS != status )
-              {
-                 PELOGE(limLog(pMac, LOGE,
-                 FL("could not activate Heartbeat timer status(%d)"), status);)
-              }
-              else
-              {
-                 PELOGE(limLog(pMac, LOGW,
-                 FL("%s] Activated Heartbeat timer status(%d)"), __func__, status);)
-              }
-           }
->>>>>>> d97af3b... add prima wlan driver
         }
         else
         {
@@ -2830,11 +1871,7 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
                             != TX_SUCCESS)
             {
                  limLog(pMac, LOGP,
-<<<<<<< HEAD
                        FL("unable to deactivate CNF wait timer\n"));
-=======
-                       FL("unable to deactivate CNF wait timer"));
->>>>>>> d97af3b... add prima wlan driver
 
             }
 
@@ -2848,11 +1885,7 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve cnf timeout value\n"));
-=======
-                   FL("could not retrieve cnf timeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
             val = SYS_MS_TO_TICKS(val);
 
@@ -2861,11 +1894,7 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
             {
                 // Could not change cnf timer.
                 // Log error
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("unable to change cnf wait timer\n"));
-=======
-                limLog(pMac, LOGP, FL("unable to change cnf wait timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             break;
@@ -2878,11 +1907,7 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
 
             if (pAuthNode == NULL)
             {
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("Invalid Pre Auth Index passed :%d\n"), staId);
-=======
-                limLog(pMac, LOGP, FL("Invalid Pre Auth Index passed :%d"), staId);
->>>>>>> d97af3b... add prima wlan driver
                 break;
             }
 
@@ -2890,11 +1915,7 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
             {
                 // Could not deactivate auth response timer.
                 // Log error
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("unable to deactivate auth response timer\n"));
-=======
-                limLog(pMac, LOGP, FL("unable to deactivate auth response timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             // Change timer to reactivate it in future
@@ -2906,11 +1927,7 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
                  * from CFG. Log error.
                  */
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not retrieve auth response timeout value\n"));
-=======
-                   FL("could not retrieve auth response timeout value"));
->>>>>>> d97af3b... add prima wlan driver
             }
 
             val = SYS_MS_TO_TICKS(val);
@@ -2919,16 +1936,11 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
             {
                 // Could not change auth rsp timer.
                 // Log error
-<<<<<<< HEAD
                 limLog(pMac, LOGP, FL("unable to change auth rsp timer\n"));
-=======
-                limLog(pMac, LOGP, FL("unable to change auth rsp timer"));
->>>>>>> d97af3b... add prima wlan driver
             }
         }
             break;
 
-<<<<<<< HEAD
 #if (defined(ANI_PRODUCT_TYPE_AP) ||defined(ANI_PRODUCT_TYPE_AP_SDK))
         case eLIM_LEARN_INTERVAL_TIMER:
             {
@@ -2963,8 +1975,6 @@ limDeactivateAndChangePerStaIdTimer(tpAniSirGlobal pMac, tANI_U32 timerId, tANI_
             }
             break;
 #endif //#if (defined(ANI_PRODUCT_TYPE_AP) ||defined(ANI_PRODUCT_TYPE_AP_SDK))
-=======
->>>>>>> d97af3b... add prima wlan driver
 
         default:
             // Invalid timerId. Log error
@@ -3002,11 +2012,7 @@ void limActivateCnfTimer(tpAniSirGlobal pMac, tANI_U16 staId, tpPESession psessi
                 != TX_SUCCESS)
     {
                 limLog(pMac, LOGP,
-<<<<<<< HEAD
                    FL("could not activate cnf wait timer\n"));
-=======
-                   FL("could not activate cnf wait timer"));
->>>>>>> d97af3b... add prima wlan driver
     }
 }
 
@@ -3038,11 +2044,7 @@ void limActivateAuthRspTimer(tpAniSirGlobal pMac, tLimPreAuthNode *pAuthNode)
         /// Could not activate auth rsp timer.
         // Log error
         limLog(pMac, LOGP,
-<<<<<<< HEAD
                FL("could not activate auth rsp timer\n"));
-=======
-               FL("could not activate auth rsp timer"));
->>>>>>> d97af3b... add prima wlan driver
     }
 }
 
@@ -3078,11 +2080,7 @@ limSendDisassocFrameThresholdHandler(void *pMacGlobal, tANI_U32 param)
 
     if ((statusCode = limPostMsgApi(pMac, &msg)) != eSIR_SUCCESS)
             limLog(pMac, LOGE,
-<<<<<<< HEAD
         FL("posting to LIM failed, reason=%d\n"), statusCode);
-=======
-        FL("posting to LIM failed, reason=%d"), statusCode);
->>>>>>> d97af3b... add prima wlan driver
 
 }
 
@@ -3117,11 +2115,7 @@ limCnfWaitTmerHandler(void *pMacGlobal, tANI_U32 param)
 
     if ((statusCode = limPostMsgApi(pMac, &msg)) != eSIR_SUCCESS)
             limLog(pMac, LOGE,
-<<<<<<< HEAD
         FL("posting to LIM failed, reason=%d\n"), statusCode);
-=======
-        FL("posting to LIM failed, reason=%d"), statusCode);
->>>>>>> d97af3b... add prima wlan driver
 
 }
 
@@ -3156,11 +2150,7 @@ limKeepaliveTmerHandler(void *pMacGlobal, tANI_U32 param)
 
     if ((statusCode = limPostMsgApi(pMac, &msg)) != eSIR_SUCCESS)
         limLog(pMac, LOGE,
-<<<<<<< HEAD
                FL("posting to LIM failed, reason=%d\n"), statusCode);
-=======
-               FL("posting to LIM failed, reason=%d"), statusCode);
->>>>>>> d97af3b... add prima wlan driver
 
 }
 
@@ -3171,11 +2161,7 @@ limChannelSwitchTimerHandler(void *pMacGlobal, tANI_U32 param)
     tpAniSirGlobal pMac = (tpAniSirGlobal)pMacGlobal;
 
     PELOG1(limLog(pMac, LOG1,
-<<<<<<< HEAD
         FL("ChannelSwitch Timer expired.  Posting msg to LIM \n"));)
-=======
-        FL("ChannelSwitch Timer expired.  Posting msg to LIM "));)
->>>>>>> d97af3b... add prima wlan driver
 
     msg.type = SIR_LIM_CHANNEL_SWITCH_TIMEOUT;
     msg.bodyval = (tANI_U32)param;
@@ -3195,11 +2181,7 @@ limQuietTimerHandler(void *pMacGlobal, tANI_U32 param)
     msg.bodyptr = NULL;
 
     PELOG1(limLog(pMac, LOG1,
-<<<<<<< HEAD
         FL("Post SIR_LIM_QUIET_TIMEOUT msg. \n"));)
-=======
-        FL("Post SIR_LIM_QUIET_TIMEOUT msg. "));)
->>>>>>> d97af3b... add prima wlan driver
     limPostMsgApi(pMac, &msg);
 }
 
@@ -3213,16 +2195,10 @@ limQuietBssTimerHandler(void *pMacGlobal, tANI_U32 param)
     msg.bodyval = (tANI_U32)param;
     msg.bodyptr = NULL;
     PELOG1(limLog(pMac, LOG1,
-<<<<<<< HEAD
         FL("Post SIR_LIM_QUIET_BSS_TIMEOUT msg. \n"));)
     limPostMsgApi(pMac, &msg);
 }
 #ifdef WLAN_SOFTAP_FEATURE
-=======
-        FL("Post SIR_LIM_QUIET_BSS_TIMEOUT msg. "));)
-    limPostMsgApi(pMac, &msg);
-}
->>>>>>> d97af3b... add prima wlan driver
 #if 0
 void
 limWPSOverlapTimerHandler(void *pMacGlobal, tANI_U32 param)
@@ -3234,58 +2210,8 @@ limWPSOverlapTimerHandler(void *pMacGlobal, tANI_U32 param)
     msg.bodyval = (tANI_U32)param;
     msg.bodyptr = NULL;
     PELOG1(limLog(pMac, LOG1,
-<<<<<<< HEAD
         FL("Post SIR_LIM_WPS_OVERLAP_TIMEOUT msg. \n"));)
     limPostMsgApi(pMac, &msg);
 }
 #endif
-=======
-        FL("Post SIR_LIM_WPS_OVERLAP_TIMEOUT msg. "));)
-    limPostMsgApi(pMac, &msg);
-}
-#endif
-
-#ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
-/* ACTIVE_MODE_HB_OFFLOAD */
-/**
- * limMissedBeaconInActiveMode()
- *
- *FUNCTION:
- * This function handle beacon miss indication from FW
- * in Active mode.
- *
- *LOGIC:
- *
- *ASSUMPTIONS:
- * NA
- *
- *NOTE:
- * NA
- *
- * @param  param - Msg Type
- *
- * @return None
- */
-void
-limMissedBeaconInActiveMode(void *pMacGlobal, tpPESession psessionEntry)
-{
-    tANI_U32         statusCode;
-    tSirMsgQ    msg;
-    tpAniSirGlobal pMac = (tpAniSirGlobal)pMacGlobal;
-
-    // Prepare and post message to LIM Message Queue
-    if(IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE)
-    {
-       msg.type = (tANI_U16) SIR_LIM_HEART_BEAT_TIMEOUT;
-       msg.bodyptr = psessionEntry;
-       msg.bodyval = 0;
-       limLog(pMac, LOGE,
-                 FL("Heartbeat failure from Riva"));
-       if ((statusCode = limPostMsgApi(pMac, &msg)) != eSIR_SUCCESS)
-          limLog(pMac, LOGE,
-                 FL("posting message %X to LIM failed, reason=%d"),
-                 msg.type, statusCode);
-    }
-}
->>>>>>> d97af3b... add prima wlan driver
 #endif

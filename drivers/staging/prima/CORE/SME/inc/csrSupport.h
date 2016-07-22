@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,7 +20,6 @@
  */
 
 /** ------------------------------------------------------------------------- * 
-<<<<<<< HEAD
     ------------------------------------------------------------------------- *  
 
   
@@ -53,15 +29,6 @@
   
    Copyright (C) 2006 Airgo Networks, Incorporated
  
-=======
-
-    \file csrSupport.h
-
-    Exports and types for the Common Scan and Roaming supporting interfaces.
-  
-   Copyright (C) 2006 Airgo Networks, Incorporated
-
->>>>>>> d97af3b... add prima wlan driver
    ========================================================================== */
 #ifndef CSR_SUPPORT_H__
 #define CSR_SUPPORT_H__
@@ -81,11 +48,7 @@
 
 #define CSR_RSN_OUI_SIZE              ( 4 )
 #define CSR_RSN_VERSION_SUPPORTED     ( 1 )
-<<<<<<< HEAD
 #define CSR_RSN_MAX_AUTH_SUITES       ( 2 )
-=======
-#define CSR_RSN_MAX_AUTH_SUITES       ( 4 )
->>>>>>> d97af3b... add prima wlan driver
 #define CSR_RSN_MAX_CYPHERS           ( 5 )
 #define CSR_RSN_MAX_UNICAST_CYPHERS   ( 5 )
 #define CSR_RSN_MAX_MULTICAST_CYPHERS ( 1 )
@@ -610,13 +573,7 @@ typedef __ani_attr_pre_packed struct tagCsrRSNCapabilities
     tANI_U16 NoPairwise:1;
     tANI_U16 PTKSAReplayCounter:2;
     tANI_U16 GTKSAReplayCounter:2;
-<<<<<<< HEAD
     tANI_U16 Reserved:10;
-=======
-    tANI_U16 MFPRequired:1;
-    tANI_U16 MFPCapable:1;
-    tANI_U16 Reserved:8;
->>>>>>> d97af3b... add prima wlan driver
 } __ani_attr_packed tCsrRSNCapabilities;
 
 typedef __ani_attr_pre_packed struct tagCsrRSNPMKIe 
@@ -846,26 +803,14 @@ eHalStatus
 csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                                  tVOS_CON_MODE currBssPersona);
 
-<<<<<<< HEAD
 //BeaconInterval valiadation for MCC support
 eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId, 
-=======
-//Update beaconInterval for P2P-GO case if it is different 
-eHalStatus csrUpdatep2pBeaconInterval(tpAniSirGlobal pMac);
-
-//BeaconInterval validation for MCC support
-eHalStatus csrValidateMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
->>>>>>> d97af3b... add prima wlan driver
                                      tANI_U16 *beaconInterval, tANI_U32 cursessionId,
                                      tVOS_CON_MODE currBssPersona);
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 tANI_BOOLEAN csrIsProfile11r( tCsrRoamProfile *pProfile );
-<<<<<<< HEAD
 tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType );
-=======
-tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType, tANI_U8 mdiePresent);
->>>>>>> d97af3b... add prima wlan driver
 #endif
 
 #ifdef FEATURE_WLAN_CCX

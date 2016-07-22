@@ -1,5 +1,4 @@
 /*
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -21,31 +20,6 @@
  */
 
 /*
-=======
-  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
-  *
-  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
-  *
-  *
-  * Permission to use, copy, modify, and/or distribute this software for
-  * any purpose with or without fee is hereby granted, provided that the
-  * above copyright notice and this permission notice appear in all
-  * copies.
-  *
-  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
-  * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
-  * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
-  * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
-  * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
-  * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
-  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-  * PERFORMANCE OF THIS SOFTWARE.
-*/
-/*
- * Copyright (c) 2011-2013 Qualcomm Atheros, Inc.
- * All Rights Reserved.
- * Qualcomm Atheros Confidential and Proprietary.
->>>>>>> d97af3b... add prima wlan driver
  *
  * Airgo Networks, Inc proprietary. All rights reserved.
  * limSendMessages.c: Provides functions to send messages or Indications to HAL.
@@ -80,23 +54,13 @@ static tBeaconFilterIe beaconFilterTable[] = {
    {SIR_MAC_EDCA_PARAM_SET_EID,  0, {0, 0, EDCA_FILTER_MASK,      0}},
    {SIR_MAC_QOS_CAPABILITY_EID,  0, {0, 0, QOS_FILTER_MASK,       0}},
    {SIR_MAC_CHNL_SWITCH_ANN_EID, 1, {0, 0, 0,                     0}},
-<<<<<<< HEAD
    {SIR_MAC_QUIET_EID,           1, {0, 0, 0,                     0}},
-=======
->>>>>>> d97af3b... add prima wlan driver
    {SIR_MAC_HT_INFO_EID,         0, {0, 0, HT_BYTE0_FILTER_MASK,  0}},  
    {SIR_MAC_HT_INFO_EID,         0, {2, 0, HT_BYTE2_FILTER_MASK,  0}}, 
    {SIR_MAC_HT_INFO_EID,         0, {5, 0, HT_BYTE5_FILTER_MASK,  0}}
 #if defined WLAN_FEATURE_VOWIFI
    ,{SIR_MAC_PWR_CONSTRAINT_EID,  0, {0, 0, 0, 0}}
 #endif
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_11AC
-   ,{SIR_MAC_VHT_OPMODE_EID,     0,  {0, 0, 0, 0}}
-   ,{SIR_MAC_VHT_OPERATION_EID,  0,  {0, 0, VHTOP_CHWIDTH_MASK, 0}}
-#endif
->>>>>>> d97af3b... add prima wlan driver
 };
 
 /**
@@ -126,7 +90,6 @@ tSirRetStatus limSendCFParams(tpAniSirGlobal pMac, tANI_U8 bssIdx, tANI_U8 cfpCo
     tSirRetStatus   retCode = eSIR_SUCCESS;
     tSirMsgQ msgQ;
 
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pCFParams,
           sizeof( tUpdateCFParams )))
@@ -137,17 +100,6 @@ tSirRetStatus limSendCFParams(tpAniSirGlobal pMac, tANI_U8 bssIdx, tANI_U8 cfpCo
         goto returnFailure;
       }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pCFParams, sizeof(tUpdateCFParams));
-=======
-    pCFParams = vos_mem_malloc(sizeof( tUpdateCFParams ));
-    if ( NULL == pCFParams )
-      {
-        limLog( pMac, LOGP,
-            FL( "Unable to allocate memory during Update CF Params" ));
-        retCode = eSIR_MEM_ALLOC_FAILED;
-        goto returnFailure;
-      }
-    vos_mem_set( (tANI_U8 *) pCFParams, sizeof(tUpdateCFParams), 0);
->>>>>>> d97af3b... add prima wlan driver
     pCFParams->cfpCount = cfpCount;
     pCFParams->cfpPeriod = cfpPeriod;
     pCFParams->bssIdx     = bssIdx;
@@ -161,15 +113,9 @@ tSirRetStatus limSendCFParams(tpAniSirGlobal pMac, tANI_U8 bssIdx, tANI_U8 cfpCo
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pCFParams);
         limLog( pMac, LOGP,
                     FL("Posting  WDA_UPDATE_CF_IND to WDA failed, reason=%X\n"),
-=======
-        vos_mem_free(pCFParams);
-        limLog( pMac, LOGP,
-                    FL("Posting  WDA_UPDATE_CF_IND to WDA failed, reason=%X"),
->>>>>>> d97af3b... add prima wlan driver
                     retCode );
     }
 returnFailure:
@@ -205,7 +151,6 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
     tSirRetStatus   retCode = eSIR_SUCCESS;
     tSirMsgQ msgQ;
 
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pBcnParams, sizeof(*pBcnParams)))
     {
@@ -214,16 +159,6 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
         return eSIR_MEM_ALLOC_FAILED;
     }
     palCopyMemory( pMac->hHdd, (tANI_U8 *) pBcnParams,  pUpdatedBcnParams, sizeof(*pBcnParams));
-=======
-    pBcnParams = vos_mem_malloc(sizeof(*pBcnParams));
-    if ( NULL == pBcnParams )
-    {
-        limLog( pMac, LOGP,
-            FL( "Unable to allocate memory during Update Beacon Params" ));
-        return eSIR_MEM_ALLOC_FAILED;
-    }
-    vos_mem_copy((tANI_U8 *) pBcnParams,  pUpdatedBcnParams, sizeof(*pBcnParams));
->>>>>>> d97af3b... add prima wlan driver
     msgQ.type = WDA_UPDATE_BEACON_IND;
     msgQ.reserved = 0;
     msgQ.bodyptr = pBcnParams;
@@ -231,7 +166,6 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
     PELOG3(limLog( pMac, LOG3,
                 FL( "Sending WDA_UPDATE_BEACON_IND, paramChangeBitmap in hex = %x" ),
                     pUpdatedBcnParams->paramChangeBitmap);)
-<<<<<<< HEAD
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
@@ -243,24 +177,6 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
 #ifdef WLAN_SOFTAP_FEATURE
     limSendBeaconInd(pMac, psessionEntry);
 #endif
-=======
-    if(NULL == psessionEntry)
-    {
-        MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
-    }
-    else
-    {
-        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
-    }
-    if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
-    {
-        vos_mem_free(pBcnParams);
-        limLog( pMac, LOGP,
-                    FL("Posting  WDA_UPDATE_BEACON_IND to WDA failed, reason=%X"),
-                    retCode );
-    }
-    limSendBeaconInd(pMac, psessionEntry);
->>>>>>> d97af3b... add prima wlan driver
     return retCode;
 }
 
@@ -301,7 +217,6 @@ tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac,
     tSirRetStatus   retCode = eSIR_SUCCESS;
     tSirMsgQ msgQ;
     tpPESession pSessionEntry;
-<<<<<<< HEAD
     if((pSessionEntry = peFindSessionBySessionId(pMac , peSessionId)) == NULL)
     {
        limLog( pMac, LOGP,
@@ -318,40 +233,15 @@ tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac,
         goto returnFailure;
       }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pChnlParams, sizeof(tSwitchChannelParams));
-=======
-    if((pSessionEntry = peFindSessionBySessionId(pMac, peSessionId)) == NULL)
-    {
-       limLog( pMac, LOGP,
-             FL( "Unable to get Session for session Id %d" ), peSessionId);
-       return eSIR_FAILURE;
-    }
-    pChnlParams = vos_mem_malloc(sizeof( tSwitchChannelParams ));
-    if ( NULL == pChnlParams )
-    {
-        limLog( pMac, LOGP,
-            FL( "Unable to allocate memory during Switch Channel Params" ));
-        retCode = eSIR_MEM_ALLOC_FAILED;
-        goto returnFailure;
-    }
-    vos_mem_set((tANI_U8 *) pChnlParams, sizeof(tSwitchChannelParams), 0);
->>>>>>> d97af3b... add prima wlan driver
     pChnlParams->secondaryChannelOffset = secondaryChnlOffset;
     pChnlParams->channelNumber= chnlNumber;
 #if defined WLAN_FEATURE_VOWIFI  
     pChnlParams->maxTxPower = maxTxPower;
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pChnlParams->selfStaMacAddr, pSessionEntry->selfMacAddr, sizeof(tSirMacAddr) );
 #else
     pChnlParams->localPowerConstraint = localPwrConstraint;
 #endif
     palCopyMemory( pMac->hHdd, pChnlParams->bssId, pSessionEntry->bssId, sizeof(tSirMacAddr) );
-=======
-    vos_mem_copy( pChnlParams->selfStaMacAddr, pSessionEntry->selfMacAddr, sizeof(tSirMacAddr) );
-#else
-    pChnlParams->localPowerConstraint = localPwrConstraint;
-#endif
-    vos_mem_copy(  pChnlParams->bssId, pSessionEntry->bssId, sizeof(tSirMacAddr) );
->>>>>>> d97af3b... add prima wlan driver
     pChnlParams->peSessionId = peSessionId;
     
     //we need to defer the message until we get the response back from WDA.
@@ -372,15 +262,9 @@ tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac,
     MTRACE(macTraceMsgTx(pMac, peSessionId, msgQ.type));
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pChnlParams);
         limLog( pMac, LOGP,
                     FL("Posting  WDA_CHNL_SWITCH_REQ to WDA failed, reason=%X\n"),
-=======
-        vos_mem_free(pChnlParams);
-        limLog( pMac, LOGP,
-                    FL("Posting  WDA_CHNL_SWITCH_REQ to WDA failed, reason=%X"),
->>>>>>> d97af3b... add prima wlan driver
                     retCode );
     }
 returnFailure:
@@ -413,21 +297,12 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
     tEdcaParams *pEdcaParams = NULL;
     tSirRetStatus   retCode = eSIR_SUCCESS;
     tSirMsgQ msgQ;
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pEdcaParams,
           sizeof(tEdcaParams)))
     {
         limLog( pMac, LOGP,
             FL( "Unable to PAL allocate memory during Update EDCA Params\n" ));
-=======
-
-    pEdcaParams = vos_mem_malloc(sizeof(tEdcaParams));
-    if ( NULL == pEdcaParams )
-    {
-        limLog( pMac, LOGP,
-            FL( "Unable to allocate memory during Update EDCA Params" ));
->>>>>>> d97af3b... add prima wlan driver
         retCode = eSIR_MEM_ALLOC_FAILED;
         return retCode;
     }
@@ -446,11 +321,7 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
         PELOG1(limLog( pMac, LOG1,FL("Sending WDA_UPDATE_EDCA_PROFILE_IND with EDCA Parameters:" ));)
         for(i=0; i<MAX_NUM_AC; i++)
         {
-<<<<<<< HEAD
             PELOG1(limLog(pMac, LOG1, FL("AC[%d]:  AIFSN %d, ACM %d, CWmin %d, CWmax %d, TxOp %d \n"),  
-=======
-            PELOG1(limLog(pMac, LOG1, FL("AC[%d]:  AIFSN %d, ACM %d, CWmin %d, CWmax %d, TxOp %d "),
->>>>>>> d97af3b... add prima wlan driver
                    i, pUpdatedEdcaParams[i].aci.aifsn, pUpdatedEdcaParams[i].aci.acm, 
                    pUpdatedEdcaParams[i].cw.min, pUpdatedEdcaParams[i].cw.max, pUpdatedEdcaParams[i].txoplimit);)
         }
@@ -458,15 +329,9 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
     MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pEdcaParams);
         limLog( pMac, LOGP,
                     FL("Posting  WDA_UPDATE_EDCA_PROFILE_IND to WDA failed, reason=%X\n"),
-=======
-        vos_mem_free(pEdcaParams);
-        limLog( pMac, LOGP,
-                    FL("Posting  WDA_UPDATE_EDCA_PROFILE_IND to WDA failed, reason=%X"),
->>>>>>> d97af3b... add prima wlan driver
                     retCode );
     }
     return retCode;
@@ -514,21 +379,12 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
      *   such that: BE_ACM=1, BK_ACM=1, VI_ACM=1, VO_ACM=0
      *   then all AC will be downgraded to AC_BE.
      */
-<<<<<<< HEAD
     limLog(pMac, LOG1, FL("adAdmitMask[UPLINK] = 0x%x \n"),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] );
     limLog(pMac, LOG1, FL("adAdmitMask[DOWNLINK] = 0x%x \n"),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_DNLINK] );
     for (ac = EDCA_AC_BK; ac <= EDCA_AC_VO; ac++)
     {
         acAdmitted = ( (pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] & (1 << ac)) >> ac );
         limLog(pMac, LOG1, FL("For AC[%d]: acm=%d,  acAdmit=%d \n"), ac, plocalEdcaParams[ac].aci.acm, acAdmitted);
-=======
-    limLog(pMac, LOG1, FL("adAdmitMask[UPLINK] = 0x%x "),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] );
-    limLog(pMac, LOG1, FL("adAdmitMask[DOWNLINK] = 0x%x "),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_DNLINK] );
-    for (ac = EDCA_AC_BK; ac <= EDCA_AC_VO; ac++)
-    {
-        acAdmitted = ( (pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] & (1 << ac)) >> ac );
-        limLog(pMac, LOG1, FL("For AC[%d]: acm=%d,  acAdmit=%d "), ac, plocalEdcaParams[ac].aci.acm, acAdmitted);
->>>>>>> d97af3b... add prima wlan driver
         if ( (plocalEdcaParams[ac].aci.acm == 1) && (acAdmitted == 0) )
         {
             limLog(pMac, LOG1, FL("We need to downgrade AC %d!! "), ac);
@@ -592,11 +448,7 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
     MTRACE(macTraceMsgTx(pMac, 0, msg.type));
     retCode = wdaPostCtrlMsg(pMac, &msg);
     if (retCode != eSIR_SUCCESS)
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x \n"), retCode);
-=======
-        limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x "), retCode);
->>>>>>> d97af3b... add prima wlan driver
     return retCode;
 }
 #endif //0
@@ -608,7 +460,6 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
     tSirRetStatus retCode;
     tpLinkStateParams pLinkStateParams = NULL;
     // Allocate memory.
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pLinkStateParams,
           sizeof(tLinkStateParams)))
@@ -619,17 +470,6 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
         return retCode;
     }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pLinkStateParams, sizeof(tLinkStateParams));
-=======
-    pLinkStateParams = vos_mem_malloc(sizeof(tLinkStateParams));
-    if ( NULL == pLinkStateParams )
-    {
-        limLog( pMac, LOGP,
-        FL( "Unable to allocate memory while sending Set Link State" ));
-        retCode = eSIR_SME_RESOURCES_UNAVAILABLE;
-        return retCode;
-    }
-    vos_mem_set((tANI_U8 *) pLinkStateParams, sizeof(tLinkStateParams), 0);
->>>>>>> d97af3b... add prima wlan driver
     pLinkStateParams->state        = state;
     pLinkStateParams->callback     = callback;
     pLinkStateParams->callbackArg  = callbackArg;
@@ -648,13 +488,8 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
     retCode = (tANI_U32)wdaPostCtrlMsg(pMac, &msgQ);
     if (retCode != eSIR_SUCCESS)
     {
-<<<<<<< HEAD
         palFreeMemory(pMac, (void*)pLinkStateParams);
         limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x \n"), retCode);
-=======
-        vos_mem_free(pLinkStateParams);
-        limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x "), retCode);
->>>>>>> d97af3b... add prima wlan driver
     }
     return retCode;
 }
@@ -666,7 +501,6 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
     tSirRetStatus retCode;
     tpLinkStateParams pLinkStateParams = NULL;
     // Allocate memory.
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pLinkStateParams,
           sizeof(tLinkStateParams)))
@@ -677,17 +511,6 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
         return retCode;
     }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pLinkStateParams, sizeof(tLinkStateParams));
-=======
-    pLinkStateParams = vos_mem_malloc(sizeof(tLinkStateParams));
-    if ( NULL == pLinkStateParams )
-    {
-        limLog( pMac, LOGP,
-        FL( "Unable to allocate memory while sending Set Link State" ));
-        retCode = eSIR_SME_RESOURCES_UNAVAILABLE;
-        return retCode;
-    }
-    vos_mem_set((tANI_U8 *) pLinkStateParams, sizeof(tLinkStateParams), 0);
->>>>>>> d97af3b... add prima wlan driver
     pLinkStateParams->state = state;
     /* Copy Mac address */
     sirCopyMacAddr(pLinkStateParams->bssid,bssId);
@@ -699,30 +522,14 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
     msgQ.reserved = 0;
     msgQ.bodyptr = pLinkStateParams;
     msgQ.bodyval = 0;
-<<<<<<< HEAD
     
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
-=======
-    if(NULL == psessionEntry)
-    {
-        MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
-    }
-    else
-    {
-        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
-    }
->>>>>>> d97af3b... add prima wlan driver
 
     retCode = (tANI_U32)wdaPostCtrlMsg(pMac, &msgQ);
     if (retCode != eSIR_SUCCESS)
     {
-<<<<<<< HEAD
         palFreeMemory(pMac, (void*)pLinkStateParams);
         limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x \n"), retCode);
-=======
-        vos_mem_free(pLinkStateParams);
-        limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x "), retCode);
->>>>>>> d97af3b... add prima wlan driver
     }
     return retCode;
 }
@@ -735,7 +542,6 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
 \param   tpSirSetTxPowerReq  request message
 \return  None
   -----------------------------------------------------------*/
-<<<<<<< HEAD
 tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac,  tpSirSetTxPowerReq pTxPowerReq)
 {
     tSirRetStatus  retCode = eSIR_SUCCESS;
@@ -757,52 +563,6 @@ tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac,  tpSirSetTxPowerReq pTxP
         }
         return retCode;
     }
-=======
-tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac,  tANI_U32 *pMsgBuf)
-{
-    tSirSetTxPowerReq   *txPowerReq;
-    tSirRetStatus        retCode = eSIR_SUCCESS;
-    tSirMsgQ             msgQ;
-    tpPESession          psessionEntry;
-    tANI_U8              sessionId = 0;
-
-    if (NULL == pMsgBuf)
-        return eSIR_FAILURE;
-
-    txPowerReq = vos_mem_malloc(sizeof(tSirSetTxPowerReq));
-    if ( NULL == txPowerReq )
-    {
-        return eSIR_FAILURE;
-    }
-    vos_mem_copy(txPowerReq, (tSirSetTxPowerReq *)pMsgBuf, sizeof(tSirSetTxPowerReq));
-
-    /* Found corresponding seesion to find BSS IDX */
-    psessionEntry = peFindSessionByBssid(pMac, txPowerReq->bssId, &sessionId);
-    if (NULL == psessionEntry)
-    {
-        vos_mem_free(txPowerReq);
-        limLog(pMac, LOGE, FL("Session does not exist for given BSSID"));
-        return eSIR_FAILURE;
-    }
-
-    /* FW API requests BSS IDX */
-    txPowerReq->bssIdx = psessionEntry->bssIdx;
-
-    msgQ.type = WDA_SET_TX_POWER_REQ;
-    msgQ.reserved = 0;
-    msgQ.bodyptr = txPowerReq;
-    msgQ.bodyval = 0;
-    PELOGW(limLog(pMac, LOGW, FL("Sending WDA_SET_TX_POWER_REQ to WDA"));)
-    MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
-    retCode = wdaPostCtrlMsg(pMac, &msgQ);
-    if (eSIR_SUCCESS != retCode)
-    {
-        limLog(pMac, LOGP, FL("Posting WDA_SET_TX_POWER_REQ to WDA failed, reason=%X"), retCode);
-        vos_mem_free(txPowerReq);
-        return retCode;
-    }
-
->>>>>>> d97af3b... add prima wlan driver
     return retCode;
 }
 /** ---------------------------------------------------------
@@ -829,11 +589,7 @@ tSirRetStatus limSendGetTxPowerReq(tpAniSirGlobal pMac,  tpSirGetTxPowerReq pTxP
         limLog( pMac, LOGP, FL("Posting WDA_GET_TX_POWER_REQ to WDA failed, reason=%X"), retCode );
         if (NULL != pTxPowerReq)
         {
-<<<<<<< HEAD
             palFreeMemory( pMac->hHdd, (tANI_U8 *) pTxPowerReq);
-=======
-            vos_mem_free(pTxPowerReq);
->>>>>>> d97af3b... add prima wlan driver
         }
         return retCode;
     }
@@ -845,11 +601,7 @@ tSirRetStatus limSendGetTxPowerReq(tpAniSirGlobal pMac,  tpSirGetTxPowerReq pTxP
 \param   tpAniSirGlobal  pMac
 \return  None
   -----------------------------------------------------------*/
-<<<<<<< HEAD
 tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac)
-=======
-tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEntry)
->>>>>>> d97af3b... add prima wlan driver
 {
     tpBeaconFilterMsg  pBeaconFilterMsg = NULL;
     tSirRetStatus      retCode = eSIR_SUCCESS;
@@ -858,7 +610,6 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
     tANI_U32           i;
     tANI_U32           msgSize;
     tpBeaconFilterIe   pIe;
-<<<<<<< HEAD
     tpPESession psessionEntry = &pMac->lim.gpSession[0];  //TBD-RAJESH get the sessionEntry from the caller
 
     msgSize = sizeof(tBeaconFilterMsg) + sizeof(beaconFilterTable);
@@ -870,24 +621,6 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
         return retCode;
     }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pBeaconFilterMsg, msgSize);
-=======
-
-    if( psessionEntry == NULL )
-    {
-        limLog( pMac, LOGE, FL("Fail to find the right session "));
-        retCode = eSIR_FAILURE;
-        return retCode;
-    }
-    msgSize = sizeof(tBeaconFilterMsg) + sizeof(beaconFilterTable);
-    pBeaconFilterMsg = vos_mem_malloc(msgSize);
-    if ( NULL == pBeaconFilterMsg )
-    {
-        limLog( pMac, LOGP, FL("Fail to allocate memory for beaconFiilterMsg "));
-        retCode = eSIR_MEM_ALLOC_FAILED;
-        return retCode;
-    }
-    vos_mem_set((tANI_U8 *) pBeaconFilterMsg, msgSize, 0);
->>>>>>> d97af3b... add prima wlan driver
     // Fill in capability Info and mask
     //TBD-RAJESH get the BSS capability from session.
     //Don't send this message if no active Infra session is found.
@@ -896,12 +629,6 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
     pBeaconFilterMsg->beaconInterval = (tANI_U16) psessionEntry->beaconParams.beaconInterval;
     // Fill in number of IEs in beaconFilterTable
     pBeaconFilterMsg->ieNum = (tANI_U16) (sizeof(beaconFilterTable) / sizeof(tBeaconFilterIe));
-<<<<<<< HEAD
-=======
-    //Fill the BSSIDX
-    pBeaconFilterMsg->bssIdx = psessionEntry->bssIdx;
-
->>>>>>> d97af3b... add prima wlan driver
     //Fill message with info contained in the beaconFilterTable
     ptr = (tANI_U8 *)pBeaconFilterMsg + sizeof(tBeaconFilterMsg);
     for(i=0; i < (pBeaconFilterMsg->ieNum); i++)
@@ -923,215 +650,11 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pBeaconFilterMsg);
         limLog( pMac, LOGP,
             FL("Posting  WDA_BEACON_FILTER_IND to WDA failed, reason=%X\n"),
-=======
-        vos_mem_free(pBeaconFilterMsg);
-        limLog( pMac, LOGP,
-            FL("Posting  WDA_BEACON_FILTER_IND to WDA failed, reason=%X"),
->>>>>>> d97af3b... add prima wlan driver
             retCode );
         return retCode;
     }
     return retCode;
 }
-<<<<<<< HEAD
-=======
-
-#ifdef WLAN_FEATURE_11AC
-tSirRetStatus limSendModeUpdate(tpAniSirGlobal pMac, 
-                                tUpdateVHTOpMode *pTempParam,
-                                tpPESession  psessionEntry )
-{
-    tUpdateVHTOpMode *pVhtOpMode = NULL;
-    tSirRetStatus   retCode = eSIR_SUCCESS;
-    tSirMsgQ msgQ;
-
-    pVhtOpMode = vos_mem_malloc(sizeof(tUpdateVHTOpMode));
-    if ( NULL == pVhtOpMode )
-    {
-        limLog( pMac, LOGP,
-            FL( "Unable to allocate memory during Update Op Mode" ));
-        return eSIR_MEM_ALLOC_FAILED;
-    }
-    vos_mem_copy((tANI_U8 *)pVhtOpMode, pTempParam, sizeof(tUpdateVHTOpMode));
-    msgQ.type =  WDA_UPDATE_OP_MODE;
-    msgQ.reserved = 0;
-    msgQ.bodyptr = pVhtOpMode;
-    msgQ.bodyval = 0;
-    PELOG3(limLog( pMac, LOG3,
-                FL( "Sending WDA_UPDATE_OP_MODE" ));)
-    if(NULL == psessionEntry)
-    {
-        MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
-    }
-    else
-    {
-        MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
-    }
-    if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
-    {
-        vos_mem_free(pVhtOpMode);
-        limLog( pMac, LOGP,
-                    FL("Posting  WDA_UPDATE_OP_MODE to WDA failed, reason=%X"),
-                    retCode );
-    }
-
-    return retCode;
-}
-#endif 
-
-#ifdef FEATURE_WLAN_TDLS_INTERNAL
-/** ---------------------------------------------------------
-\fn      limSendTdlsLinkEstablish
-\brief   LIM sends a message to HAL to set tdls direct link
-\param   tpAniSirGlobal  pMac
-\param   
-\return  None
-  -----------------------------------------------------------*/
-tSirRetStatus limSendTdlsLinkEstablish(tpAniSirGlobal pMac, tANI_U8 bIsPeerResponder, tANI_U8 linkIdenOffset, 
-                tANI_U8 ptiBufStatusOffset, tANI_U8 ptiFrameLen, tANI_U8 *ptiFrame, tANI_U8 *extCapability)
-{
-    tSirMsgQ msgQ;
-    tSirRetStatus retCode;
-    tpSirTdlsLinkEstablishInd pTdlsLinkEstablish = NULL;
-
-    // Allocate memory.
-    pTdlsLinkEstablish = vos_mem_malloc(sizeof(tSirTdlsLinkEstablishInd));
-    if ( NULL == pTdlsLinkEstablish )
-    {
-        limLog( pMac, LOGP,
-        FL( "Unable to allocate memory while sending Tdls Link Establish " ));
-
-        retCode = eSIR_SME_RESOURCES_UNAVAILABLE;
-        return retCode;
-    }
-
-    vos_mem_set((tANI_U8 *) pTdlsLinkEstablish, sizeof(tSirTdlsLinkEstablishInd), 0);
-
-    pTdlsLinkEstablish->bIsResponder = !!bIsPeerResponder; 
-    pTdlsLinkEstablish->linkIdenOffset = linkIdenOffset;
-    pTdlsLinkEstablish->ptiBufStatusOffset = ptiBufStatusOffset;
-    pTdlsLinkEstablish->ptiTemplateLen = ptiFrameLen;
-    /* Copy ptiFrame template */
-    vos_mem_copy(pTdlsLinkEstablish->ptiTemplateBuf, ptiFrame, ptiFrameLen);
-    /* Copy extended capabilities */
-    vos_mem_copy((tANI_U8 *) pTdlsLinkEstablish->extCapability,  extCapability, sizeof(pTdlsLinkEstablish->extCapability));
-
-    msgQ.type = SIR_HAL_TDLS_LINK_ESTABLISH;
-    msgQ.reserved = 0;
-    msgQ.bodyptr = pTdlsLinkEstablish;
-    msgQ.bodyval = 0;
-    
-    MTRACE(macTraceMsgTx(pMac, 0, msgQ.type));
-
-    retCode = (tANI_U32)wdaPostCtrlMsg(pMac, &msgQ);
-    if (retCode != eSIR_SUCCESS)
-    {
-        vos_mem_free(pTdlsLinkEstablish);
-        limLog(pMac, LOGP, FL("Posting tdls link establish %d failed, reason = %x "), retCode);
-    }
-
-    return retCode;
-}
-
-/** ---------------------------------------------------------
-\fn      limSendTdlsLinkTeardown
-\brief   LIM sends a message to HAL to indicate tdls direct link is teardowned
-\param   tpAniSirGlobal  pMac
-\param   
-\return  None
-  -----------------------------------------------------------*/
-tSirRetStatus limSendTdlsLinkTeardown(tpAniSirGlobal pMac, tANI_U16 staId)
-{
-    tSirMsgQ msgQ;
-    tSirRetStatus retCode;
-    tpSirTdlsLinkTeardownInd pTdlsLinkTeardown = NULL;
-
-    // Allocate memory.
-    pTdlsLinkTeardown = vos_mem_malloc(sizeof(tSirTdlsLinkTeardownInd));
-    if ( NULL == pTdlsLinkTeardown )
-    {
-        limLog( pMac, LOGP,
-        FL( "Unable to allocate memory while sending Tdls Link Teardown " ));
-
-        retCode = eSIR_SME_RESOURCES_UNAVAILABLE;
-        return retCode;
-    }
-
-    vos_mem_set((tANI_U8 *) pTdlsLinkTeardown, sizeof(tSirTdlsLinkTeardownInd), 0);
-
-    pTdlsLinkTeardown->staId = staId;
-
-    msgQ.type = SIR_HAL_TDLS_LINK_TEARDOWN;
-    msgQ.reserved = 0;
-    msgQ.bodyptr = pTdlsLinkTeardown;
-    msgQ.bodyval = 0;
-    
-    MTRACE(macTraceMsgTx(pMac, 0, msgQ.type));
-
-    retCode = (tANI_U32)wdaPostCtrlMsg(pMac, &msgQ);
-    if (retCode != eSIR_SUCCESS)
-    {
-        vos_mem_free(pTdlsLinkTeardown);
-        limLog(pMac, LOGP, FL("Posting tdls link teardown %d failed, reason = %x "), retCode);
-    }
-
-    return retCode;
-}
-
-#endif
-
-#ifdef WLAN_FEATURE_11W
-/** ---------------------------------------------------------
-\fn      limSendExcludeUnencryptInd
-\brief   LIM sends a message to HAL to indicate whether to
-         ignore or indicate the unprotected packet error
-\param   tpAniSirGlobal  pMac
-\param   tANI_BOOLEAN excludeUnenc - true: ignore, false:
-         indicate
-\param   tpPESession  psessionEntry - session context
-\return  status
-  -----------------------------------------------------------*/
-tSirRetStatus limSendExcludeUnencryptInd(tpAniSirGlobal pMac,
-                                         tANI_BOOLEAN excludeUnenc,
-                                         tpPESession  psessionEntry)
-{
-    tSirRetStatus   retCode = eSIR_SUCCESS;
-    tSirMsgQ msgQ;
-    tSirWlanExcludeUnencryptParam * pExcludeUnencryptParam;
-
-    pExcludeUnencryptParam = vos_mem_malloc(sizeof(tSirWlanExcludeUnencryptParam));
-    if ( NULL == pExcludeUnencryptParam )
-    {
-        limLog(pMac, LOGP,
-            FL( "Unable to allocate memory during limSendExcludeUnencryptInd"));
-        return eSIR_MEM_ALLOC_FAILED;
-    }
-
-    pExcludeUnencryptParam->excludeUnencrypt = excludeUnenc;
-    sirCopyMacAddr(pExcludeUnencryptParam->bssId, psessionEntry->bssId);
-
-    msgQ.type =  WDA_EXCLUDE_UNENCRYPTED_IND;
-    msgQ.reserved = 0;
-    msgQ.bodyptr = pExcludeUnencryptParam;
-    msgQ.bodyval = 0;
-    PELOG3(limLog(pMac, LOG3,
-                FL("Sending WDA_EXCLUDE_UNENCRYPTED_IND"));)
-    MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
-    retCode = wdaPostCtrlMsg(pMac, &msgQ);
-    if (eSIR_SUCCESS != retCode)
-    {
-        vos_mem_free(pExcludeUnencryptParam);
-        limLog(pMac, LOGP,
-               FL("Posting  WDA_EXCLUDE_UNENCRYPTED_IND to WDA failed, reason=%X"),
-               retCode);
-    }
-
-    return retCode;
-}
-#endif
-
->>>>>>> d97af3b... add prima wlan driver

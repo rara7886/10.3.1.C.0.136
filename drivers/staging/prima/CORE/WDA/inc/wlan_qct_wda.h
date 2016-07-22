@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,34 +24,21 @@
 
 /*===========================================================================
 
-<<<<<<< HEAD
                W L A N   DEVICE ADAPTATION   L A Y E R 
                        E X T E R N A L  A P I
                 
                    
-=======
-               W L A N   DEVICE ADAPTATION   L A Y E R
-                       E X T E R N A L  A P I
-
-
->>>>>>> d97af3b... add prima wlan driver
 DESCRIPTION
   This file contains the external API exposed by the wlan adaptation layer for Prima
   and Volans.
 
   For Volans this layer is actually a thin layer that maps all WDA messages and
   functions to equivalent HAL messages and functions. The reason this layer was introduced
-<<<<<<< HEAD
   was to keep the UMAC identical across Prima and Volans. This layer provides the glue 
   between SME, PE , TL and HAL.
   
   Copyright (c) 2008 QUALCOMM Incorporated. All Rights Reserved.
   Qualcomm Confidential and Proprietary
-=======
-  was to keep the UMAC identical across Prima and Volans. This layer provides the glue
-  between SME, PE , TL and HAL.
-  
->>>>>>> d97af3b... add prima wlan driver
 ===========================================================================*/
 
 
@@ -96,16 +60,11 @@ when        who          what, where, why
 01/27/2011  rnair       Adding WDA support for Volans.
 12/08/2010  seokyoun    Move down HAL interfaces from TL to WDA
                         for UMAC convergence btween Volans/Libra and Prima
-<<<<<<< HEAD
 08/25/2010  adwivedi    WDA Context and exposed API's 
-=======
-08/25/2010  adwivedi    WDA Context and exposed API's
->>>>>>> d97af3b... add prima wlan driver
 =========================================================================== */
 
 #include "aniGlobal.h"
 
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 
 #  include "wlan_qct_wdi_ds.h"
@@ -121,11 +80,6 @@ when        who          what, where, why
 #  include "halCommonApi.h"
 
 #endif
-=======
-
-#  include "wlan_qct_wdi_ds.h"
-
->>>>>>> d97af3b... add prima wlan driver
 
 /* Add Include */
 
@@ -158,40 +112,12 @@ typedef enum
    WDA_INVALID_STA_INDEX,
    WDA_VALID_STA_INDEX
 }WDA_ValidStaIndex;
-<<<<<<< HEAD
 
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
 #if !defined( VOS_MQ_ID_WDA )
 #define VOS_MQ_ID_WDA VOS_MQ_ID_HAL
 #endif
 #endif
-=======
-typedef enum
-{
-  eWDA_AUTH_TYPE_NONE,    //never used
-  // MAC layer authentication types
-  eWDA_AUTH_TYPE_OPEN_SYSTEM,
-  // Upper layer authentication types
-  eWDA_AUTH_TYPE_WPA,
-  eWDA_AUTH_TYPE_WPA_PSK,
-
-  eWDA_AUTH_TYPE_RSN,
-  eWDA_AUTH_TYPE_RSN_PSK,
-  eWDA_AUTH_TYPE_FT_RSN,
-  eWDA_AUTH_TYPE_FT_RSN_PSK,
-  eWDA_AUTH_TYPE_WAPI_WAI_CERTIFICATE,
-  eWDA_AUTH_TYPE_WAPI_WAI_PSK,
-  eWDA_AUTH_TYPE_CCKM_WPA,
-  eWDA_AUTH_TYPE_CCKM_RSN,
-  eWDA_AUTH_TYPE_WPA_NONE,
-  eWDA_AUTH_TYPE_AUTOSWITCH,
-  eWDA_AUTH_TYPE_SHARED_KEY,
-  eWDA_NUM_OF_SUPPORT_AUTH_TYPE,
-  eWDA_AUTH_TYPE_FAILED = 0xff,
-  eWDA_AUTH_TYPE_UNKNOWN = eCSR_AUTH_TYPE_FAILED,
-}WDA_AuthType;
-
->>>>>>> d97af3b... add prima wlan driver
 /*--------------------------------------------------------------------------
   Utilities
  --------------------------------------------------------------------------*/
@@ -202,34 +128,9 @@ typedef enum
  * Check the version number and find if MCC feature is supported or not
  */
 #define IS_MCC_SUPPORTED (WDA_IsWcnssWlanReportedVersionGreaterThanOrEqual( 0, 1, 1, 0))
-<<<<<<< HEAD
 #define IS_SLM_SESSIONIZATION_SUPPORTED_BY_FW (WDA_getFwWlanFeatCaps(SLM_SESSIONIZATION))
 
 
-=======
-#define IS_FEATURE_SUPPORTED_BY_FW(featEnumValue) (!!WDA_getFwWlanFeatCaps(featEnumValue))
-
-#ifdef WLAN_ACTIVEMODE_OFFLOAD_FEATURE
-#define IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE ((WDA_getFwWlanFeatCaps(WLANACTIVE_OFFLOAD)) & (WDI_getHostWlanFeatCaps(WLANACTIVE_OFFLOAD)))
-#else
-#define IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE 0
-#endif
-
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-#define IS_ROAM_SCAN_OFFLOAD_FEATURE_ENABLE ((WDI_getHostWlanFeatCaps(WLAN_ROAM_SCAN_OFFLOAD)) & (WDA_getFwWlanFeatCaps(WLAN_ROAM_SCAN_OFFLOAD)))
-#else
-#define IS_ROAM_SCAN_OFFLOAD_FEATURE_ENABLE 0
-#endif
-
-/* Check if heartbeat offload is enabled */
-#define IS_IBSS_HEARTBEAT_OFFLOAD_FEATURE_ENABLE ((WDI_getHostWlanFeatCaps(IBSS_HEARTBEAT_OFFLOAD)) & (WDA_getFwWlanFeatCaps(IBSS_HEARTBEAT_OFFLOAD)))
-
-#ifdef FEATURE_WLAN_TDLS
-#define IS_ADVANCE_TDLS_ENABLE ((WDI_getHostWlanFeatCaps(ADVANCE_TDLS)) & (WDA_getFwWlanFeatCaps(ADVANCE_TDLS)))
-#else
-#define IS_ADVANCE_TDLS_ENABLE 0
-#endif
->>>>>>> d97af3b... add prima wlan driver
 /*--------------------------------------------------------------------------
   Definitions for Data path APIs
  --------------------------------------------------------------------------*/
@@ -275,16 +176,12 @@ typedef enum
 
    TODO Consider refactoring it and put it into two separate headers, 
    one for Prima and one for Volans 
-<<<<<<< HEAD
 
    feturized with FEATURE_WLAN_INTEGRATED_SOC for Prima
-=======
->>>>>>> d97af3b... add prima wlan driver
  ----------------------------------------------------------------------*/
 
 /* For backward compatability with SDIO. It's BAL header size for SDIO
    interface. It's nothing for integrated SOC */
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #define WDA_DXE_HEADER_SIZE   0
 #else /* FEATURE_WLAN_INTEGRATED_SOC */
@@ -296,15 +193,10 @@ typedef enum
 /*Libra PDU size*/
 #define WDA_TLI_PDU_RES_SIZE                 124
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-=======
-#define WDA_DXE_HEADER_SIZE   0
-
->>>>>>> d97af3b... add prima wlan driver
 
 /*Minimum resources needed - arbitrary*/
 
 /*DXE + SD*/
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #define WDA_WLAN_LIBRA_HEADER_LEN              20+8
 #else /* FEATURE_WLAN_INTEGRATED_SOC */
@@ -334,18 +226,6 @@ typedef enum
 #else
 #  define WDA_NUM_STA HAL_NUM_STA
 #endif
-=======
-#define WDA_WLAN_LIBRA_HEADER_LEN              (20 + 8)
-
-#define WDA_TLI_BD_PDU_RESERVE_THRESHOLD    10
-
-
-#  define WDA_TLI_MIN_RES_MF   1
-#  define WDA_TLI_MIN_RES_BAP  2
-#  define WDA_TLI_MIN_RES_DATA 3
-
-#  define WDA_NUM_STA 8
->>>>>>> d97af3b... add prima wlan driver
 
 /* For backward compatability with SDIO.
  
@@ -360,10 +240,7 @@ typedef enum
    For integrated SOC, _usPktLen and _uTotalPktLen is VOS pakcet length
    which does include BD header length. _uResLen is hardcoded 2.
  */
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WINDOWS_DT
 #define WDA_TLI_PROCESS_FRAME_LEN( _vosBuff, _usPktLen,              \
@@ -387,7 +264,6 @@ typedef enum
   while ( 0 )
 #endif /* WINDOWS_DT */
 
-<<<<<<< HEAD
 #else /* FEATURE_WLAN_INTEGRATED_SOC */
 
 #define WLANTL_PDU_RES_SIZE                 124 /*Libra PDU size*/
@@ -411,8 +287,6 @@ typedef enum
   }                                                                  \
   while ( 0 )
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 
 /*--------------------------------------------------------------------------
@@ -425,10 +299,6 @@ typedef enum
 #define WDA_DS_TX_START_XMIT  WLANTL_TX_START_XMIT
 #define WDA_DS_FINISH_ULA     WLANTL_FINISH_ULA
 
-<<<<<<< HEAD
-=======
-#define VOS_TO_WPAL_PKT(_vos_pkt) ((wpt_packet*)_vos_pkt)
->>>>>>> d97af3b... add prima wlan driver
 
 #define WDA_TX_PACKET_FREED      0X0
 
@@ -444,21 +314,14 @@ typedef VOS_STATUS (*WDA_DS_RxPacketCallback)   ( v_PVOID_t pContext, vos_pkt_t 
 typedef v_U32_t   (*WDA_DS_TxPacketCallback)   ( v_PVOID_t pContext, 
                                                   vos_pkt_t **ppFrameDataBuff, 
                                                   v_U32_t uSize, 
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
                                                   v_U8_t uFlowMask, 
 #endif
-=======
-                                                  v_U8_t uFlowMask, 
->>>>>>> d97af3b... add prima wlan driver
                                                   v_BOOL_t *pbUrgent );
 typedef VOS_STATUS (*WDA_DS_ResourceCB)      ( v_PVOID_t pContext, v_U32_t uCount );
 
 
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-=======
->>>>>>> d97af3b... add prima wlan driver
 /* For management client */
 typedef VOS_STATUS (*WDA_DS_TxCompleteCb)( v_PVOID_t     pContext, wpt_packet *pFrame );
 typedef VOS_STATUS (*WDA_DS_RxCompleteCb)( v_PVOID_t pContext, wpt_packet *pFrame );
@@ -490,32 +353,17 @@ typedef struct
 
    /* Tx Complete Timeout timer */
    TX_TIMER TxCompleteTimer ;
-<<<<<<< HEAD
 }tWdaTimers ;
 
 #define WDA_MAX_STA    (16)
 
-=======
-
-   /* Traffic Stats timer */
-   TX_TIMER trafficStatsTimer ;
-}tWdaTimers ;
-#ifdef WLAN_SOFTAP_VSTA_FEATURE
-#define WDA_MAX_STA    (41)
-#else
-#define WDA_MAX_STA    (16)
-#endif
->>>>>>> d97af3b... add prima wlan driver
 typedef struct
 {
    v_PVOID_t            pVosContext;             /* global VOSS context*/
    v_PVOID_t            pWdiContext;             /* WDI context */
    WDA_state            wdaState ;               /* WDA state tracking */ 
-<<<<<<< HEAD
    v_PVOID_t            wdaMsgParam ;            /* PE parameter tracking */
    v_PVOID_t            wdaWdiApiMsgParam ;      /* WDI API paramter tracking */
-=======
->>>>>>> d97af3b... add prima wlan driver
    v_PVOID_t            wdaWdiCfgApiMsgParam ;   /* WDI API paramter tracking */
    vos_event_t          wdaWdiEvent;             /* WDI API sync event */
 
@@ -548,15 +396,10 @@ typedef struct
    /* driver mode, PRODUCTION or FTM */
    tDriverType          driverMode;
 
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
    /* FTM Command Request tracking */
    v_PVOID_t            wdaFTMCmdReq;
 #endif /* ANI_MANF_DIAG */
-=======
-   /* FTM Command Request tracking */
-   v_PVOID_t            wdaFTMCmdReq;
->>>>>>> d97af3b... add prima wlan driver
 
    /* Event to wait for suspend data tx*/
    vos_event_t          suspendDataTxEvent;
@@ -579,14 +422,6 @@ typedef struct
    v_BOOL_t             wdaAmpSessionOn;
    v_U32_t              VosPacketToFree;
    v_BOOL_t             needShutdown;
-<<<<<<< HEAD
-=======
-   v_BOOL_t             wdiFailed;
-   v_BOOL_t             wdaTimersCreated;
-
-   /* Event to wait for WDA stop on FTM mode */
-   vos_event_t          ftmStopDoneEvent;
->>>>>>> d97af3b... add prima wlan driver
 } tWDA_CbContext ; 
 
 typedef struct
@@ -635,17 +470,10 @@ VOS_STATUS WDA_close(v_PVOID_t pVosContext);
 VOS_STATUS WDA_shutdown(v_PVOID_t pVosContext, wpt_boolean closeTransport);
 
 /*
-<<<<<<< HEAD
  * FUNCTION: WDA_stopFailed
  * WDA stop is failed
  */
 void WDA_stopFailed(v_PVOID_t pVosContext);
-=======
- * FUNCTION: WDA_setNeedShutdown
- * WDA stop failed or WDA NV Download failed
- */
-void WDA_setNeedShutdown(v_PVOID_t pVosContext);
->>>>>>> d97af3b... add prima wlan driver
 /*
  * FUNCTION: WDA_needShutdown
  * WDA requires a shutdown rather than a close
@@ -718,7 +546,6 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 // FIXME Temporary value for R33D integaration
 //#define WDA_TL_TX_FRAME_TIMEOUT  20000 /* in msec a very high upper limit */
 
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
@@ -726,10 +553,6 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 #define wdaGetGlobalSystemRole halGetGlobalSystemRole
 #endif
 #endif
-=======
-#define DPU_FEEDBACK_UNPROTECTED_ERROR 0x0F
-
->>>>>>> d97af3b... add prima wlan driver
 
 /* ---------------------------------------------------------------------------
  
@@ -741,7 +564,6 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
   ---------------------------------------------------------------------------*/
 
 /* WDA_GET_RX_MAC_HEADER *****************************************************/
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #  define WDA_GET_RX_MAC_HEADER(pRxMeta)  \
       (tpSirMacMgmtHdr)( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->mpduHeaderPtr )
@@ -796,53 +618,20 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 #else
 #  define WDA_GET_RX_MPDU_DATA(bdHd) SIR_MAC_BD_TO_MPDUDATA(bdHd)
 #endif
-=======
-#  define WDA_GET_RX_MAC_HEADER(pRxMeta)  \
-      (tpSirMacMgmtHdr)( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->mpduHeaderPtr )
-
-/* WDA_GET_RX_MPDUHEADER3A ****************************************************/
-#  define WDA_GET_RX_MPDUHEADER3A(pRxMeta) \
-   (tpSirMacDataHdr3a)( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->mpduHeaderPtr )
-
-/* WDA_GET_RX_MPDU_HEADER_LEN *************************************************/
-#  define WDA_GET_RX_MPDU_HEADER_LEN(pRxMeta)   \
-                    ( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->mpduHeaderLength )
-
-/* WDA_GET_RX_MPDU_LEN ********************************************************/
-#  define WDA_GET_RX_MPDU_LEN(pRxMeta)  \
-               ( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->mpduLength )
-
-/* WDA_GET_RX_PAYLOAD_LEN ****************************************************/
-#  define WDA_GET_RX_PAYLOAD_LEN(pRxMeta)   \
-       ( WDA_GET_RX_MPDU_LEN(pRxMeta) - WDA_GET_RX_MPDU_HEADER_LEN(pRxMeta) )
-
-/* WDA_GET_RX_MAC_RATE_IDX ***************************************************/
-#  define WDA_GET_RX_MAC_RATE_IDX(pRxMeta)  \
-                          ( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->rateIndex )
-
-/* WDA_GET_RX_MPDU_DATA ******************************************************/
-#  define WDA_GET_RX_MPDU_DATA(pRxMeta)  \
-                   ( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->mpduDataPtr )
->>>>>>> d97af3b... add prima wlan driver
 
 /* WDA_GET_RX_MPDU_DATA_OFFSET ***********************************************/
 // For Integrated SOC: When UMAC receive the packet. BD is already stripped off.
 //                     Data offset is the MPDU header length
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #  define WDA_GET_RX_MPDU_DATA_OFFSET(pRxMeta)  WDA_GET_RX_MPDU_HEADER_LEN(pRxMeta)
 #else
 #  define WDA_GET_RX_MPDU_DATA_OFFSET(bdHd) \
                 WLANHAL_RX_BD_GET_MPDU_D_OFFSET(bdHd)
 #endif
-=======
-#  define WDA_GET_RX_MPDU_DATA_OFFSET(pRxMeta)  WDA_GET_RX_MPDU_HEADER_LEN(pRxMeta)
->>>>>>> d97af3b... add prima wlan driver
 
 /* WDA_GET_RX_MPDU_HEADER_OFFSET *********************************************/
 // For Integrated SOC: We UMAC receive the frame, 
 //                     BD is gone and MAC header at offset 0
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #  define WDA_GET_RX_MPDU_HEADER_OFFSET(pRxMeta)   0
 #else
@@ -1014,94 +803,11 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 #  define WDA_IS_RX_LLC_PRESENT(bdHd)       \
            ( (0 == (v_U8_t)WLANHAL_RX_BD_GET_LLC(bdHd) ) ? VOS_TRUE : VOS_FALSE )
 #endif
-=======
-#  define WDA_GET_RX_MPDU_HEADER_OFFSET(pRxMeta)   0
-
-/* WDA_GET_RX_UNKNOWN_UCAST **************************************************/
-#  define WDA_GET_RX_UNKNOWN_UCAST(pRxMeta)   \
-                     ( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->unknownUcastPkt )
-
-/* WDA_GET_RX_TID ************************************************************/
-#  define WDA_GET_RX_TID(pRxMeta) ( ((WDI_DS_RxMetaInfoType *)(pRxMeta))->tid )
-
-/* WDA_GET_RX_STAID **********************************************************/
-#  define WDA_GET_RX_STAID(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->staId)
-
-/* WDA_GET_RX_ADDR3_IDX ******************************************************/
-#  define WDA_GET_RX_ADDR3_IDX(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->addr3Idx)
-
-/* WDA_GET_RX_CH *************************************************************/
-#  define WDA_GET_RX_CH(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->rxChannel)
-
-/* WDA_GET_RX_RFBAND *********************************************************/
-#  define WDA_GET_RX_RFBAND(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->rfBand)
-
-/* WDA_GET_RX_DPUSIG *********************************************************/
-#  define WDA_GET_RX_DPUSIG(pRxMeta)  (((WDI_DS_RxMetaInfoType*)(pRxMeta))->dpuSig)
-
-/* WDA_IS_RX_BCAST ***********************************************************/
-#  define WDA_IS_RX_BCAST(pRxMeta)   \
-      ( (1 == ((WDI_DS_RxMetaInfoType*)(pRxMeta))->bcast) ? VOS_TRUE : VOS_FALSE )
-    
-/* WDA_GET_RX_FT_DONE ********************************************************/
-#  define WDA_GET_RX_FT_DONE(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->ft)
-
-/* WDA_GET_RX_DPU_FEEDBACK **************************************************/
-#  define WDA_GET_RX_DPU_FEEDBACK(pRxMeta) \
-                      (((WDI_DS_RxMetaInfoType*)(pRxMeta))->dpuFeedback)
-
-/* WDA_GET_RX_ASF ************************************************************/
-#  define WDA_GET_RX_ASF(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->amsdu_asf)
-
-/* WDA_GET_RX_AEF ************************************************************/
-#  define WDA_GET_RX_AEF(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->amsdu_aef)
-
-/* WDA_GET_RX_ESF ************************************************************/
-#  define WDA_GET_RX_ESF(pRxMeta)  (((WDI_DS_RxMetaInfoType*)(pRxMeta))->amsdu_esf)
-
-/* WDA_GET_RX_BEACON_SENT ****************************************************/
-#  define WDA_GET_RX_BEACON_SENT(pRxMeta) \
-                     (((WDI_DS_RxMetaInfoType*)(pRxMeta))->bsf)
-
-/* WDA_GET_RX_TSF_LATER *****************************************************/
-#  define WDA_GET_RX_TSF_LATER(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->rtsf)
-
-/* WDA_GET_RX_TYPE ***********************************************************/
-#  define WDA_GET_RX_TYPE(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->type)
-
-/* WDA_GET_RX_SUBTYPE ********************************************************/
-#  define WDA_GET_RX_SUBTYPE(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->subtype)
-
-/* WDA_GET_RX_TYPE_SUBTYPE ****************************************************/
-#  define WDA_GET_RX_TYPE_SUBTYPE(pRxMeta)  \
-                 ((WDA_GET_RX_TYPE(pRxMeta)<<4)|WDA_GET_RX_SUBTYPE(pRxMeta))
-
-/* WDA_GET_RX_REORDER_OPCODE : For MSDU reorder *******************************/
-#  define WDA_GET_RX_REORDER_OPCODE(pRxMeta) \
-           (((WDI_DS_RxMetaInfoType*)(pRxMeta))->ampdu_reorderOpcode)
-
-/* WDA_GET_RX_REORDER_SLOT_IDX : For MSDU reorder ****************************/
-#  define WDA_GET_RX_REORDER_SLOT_IDX(pRxMeta) \
-                (((WDI_DS_RxMetaInfoType*)(pRxMeta))->ampdu_reorderSlotIdx)
-
-/* WDA_GET_RX_REORDER_FWD_IDX : For MSDU reorder *****************************/
-#  define WDA_GET_RX_REORDER_FWD_IDX(pRxMeta)  \
-         (((WDI_DS_RxMetaInfoType*)(pRxMeta))->ampdu_reorderFwdIdx)
-
-/* WDA_GET_RX_REORDER_CUR_PKT_SEQ_NO : Fro MSDU reorder **********************/
-#  define WDA_GET_RX_REORDER_CUR_PKT_SEQ_NO(pRxMeta)  \
-         (((WDI_DS_RxMetaInfoType*)(pRxMeta))->currentPktSeqNo)
-
-/* WDA_IS_RX_LLC_PRESENT *****************************************************/
-#  define WDA_IS_RX_LLC_PRESENT(pRxMeta)    \
-      ( (0 == ((WDI_DS_RxMetaInfoType*)(pRxMeta))->llcr) ? VOS_TRUE : VOS_FALSE )
->>>>>>> d97af3b... add prima wlan driver
 
 #define WLANWDA_HO_IS_AN_AMPDU                    0x4000
 #define WLANWDA_HO_LAST_MPDU_OF_AMPDU             0x400
 
 /* WDA_IS_RX_AN_AMPDU ********************************************************/
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #  define WDA_IS_RX_AN_AMPDU(pRxMeta)       \
    ( ((WDI_DS_RxMetaInfoType*)(pRxMeta))->rxpFlags & WLANWDA_HO_IS_AN_AMPDU )
@@ -1133,27 +839,6 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 
 /* WDA_GET_RX_RSSI_DB ********************************************************/
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-=======
-#  define WDA_IS_RX_AN_AMPDU(pRxMeta)       \
-   ( ((WDI_DS_RxMetaInfoType*)(pRxMeta))->rxpFlags & WLANWDA_HO_IS_AN_AMPDU )
-
-/* WDA_IS_RX_LAST_MPDU *******************************************************/
-#  define WDA_IS_RX_LAST_MPDU(pRxMeta)      \
-   ( ((WDI_DS_RxMetaInfoType*)(pRxMeta))->rxpFlags & WLANWDA_HO_LAST_MPDU_OF_AMPDU ) 
-
-/* WDA_GET_RX_TIMESTAMP *****************************************************/
-#  define WDA_GET_RX_TIMESTAMP(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->mclkRxTimestamp)
-
-/* WDA_IS_RX_IN_SCAN *********************************************************/
-#  define WDA_IS_RX_IN_SCAN(pRxMeta)  (((WDI_DS_RxMetaInfoType*)(pRxMeta))->scan)
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-/* WDA_GET_OFFLOADSCANLEARN **************************************************/
-#  define WDA_GET_OFFLOADSCANLEARN(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->offloadScanLearn)
-/* WDA_GET_ROAMCANDIDATEIND **************************************************/
-#  define WDA_GET_ROAMCANDIDATEIND(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->roamCandidateInd)
-#endif
-/* WDA_GET_RX_RSSI_DB ********************************************************/
->>>>>>> d97af3b... add prima wlan driver
 // Volans RF
 #  define WDA_RSSI_OFFSET             100
 #  define WDA_GET_RSSI0_DB(rssi0)     (rssi0 - WDA_RSSI_OFFSET)
@@ -1163,7 +848,6 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
                 WDA_MAX_OF_TWO(WDA_GET_RSSI0_DB(rssi0), WDA_GET_RSSI1_DB(rssi0))
 #  define WDA_GET_RX_RSSI_DB(pRxMeta) \
                        WDA_GET_RSSI_DB((((WDI_DS_RxMetaInfoType*)(pRxMeta))->rssi0))
-<<<<<<< HEAD
 #else
 #  define WDA_GET_RX_RSSI_DB(bdHd)     SIR_MAC_BD_TO_RSSI_DB(bdHd)
 #endif
@@ -1211,36 +895,12 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 #  define WDA_GET_RX_FC_STA_THRD_IND_MASK(bdHd) \
                                     WLANHAL_RX_BD_GET_STA_TH_IND(bdHd)
 #endif
-=======
-
-/* WDA_GET_RX_SNR ************************************************************/
-#  define WDA_GET_RX_SNR(pRxMeta)  (((WDI_DS_RxMetaInfoType*)(pRxMeta))->snr)
-
-/* WDA_IS_RX_FC **************************************************************/
-// Flow control frames
-/* FIXME WDA should provide the meta info which indicates FC frame 
-          In the meantime, use hardcoded FALSE, since we don't support FC yet */
-#  define WDA_IS_RX_FC(pRxMeta)    (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fc)
-
-/* WDA_GET_RX_FC_VALID_STA_MASK **********************************************/
-#  define WDA_GET_RX_FC_VALID_STA_MASK(pRxMeta) \
-                       (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcSTAValidMask)
-
-/* WDA_GET_RX_FC_PWRSAVE_STA_MASK ********************************************/
-#  define WDA_GET_RX_FC_PWRSAVE_STA_MASK(pRxMeta) \
-                 (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcSTAPwrSaveStateMask)
-
-/* WDA_GET_RX_FC_STA_THRD_IND_MASK ********************************************/
-#  define WDA_GET_RX_FC_STA_THRD_IND_MASK(pRxMeta) \
-                     (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcSTAThreshIndMask)
->>>>>>> d97af3b... add prima wlan driver
 
 /* WDA_GET_RX_FC_FORCED_STA_TX_DISABLED_BITMAP ********************************************/
 #  define WDA_GET_RX_FC_STA_TX_DISABLED_BITMAP(pRxMeta) \
                      (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcStaTxDisabledBitmap)
 
 /* WDA_GET_RX_FC_STA_TXQ_LEN *************************************************/
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 #  define WDA_GET_RX_FC_STA_TXQ_LEN(pRxMeta, staId) \
                   (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcSTATxQLen[(staId)])
@@ -1283,32 +943,6 @@ tBssSystemRole wdaGetGlobalSystemRole(tpAniSirGlobal pMac);
 /* --------------------------------------------------------------------*/
 
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-=======
-#  define WDA_GET_RX_FC_STA_TXQ_LEN(pRxMeta, staId) \
-                  (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcSTATxQLen[(staId)])
-
-/* WDA_GET_RX_FC_STA_CUR_TXRATE **********************************************/
-#  define WDA_GET_RX_FC_STA_CUR_TXRATE(pRxMeta, staId) \
-                (((WDI_DS_RxMetaInfoType*)(pRxMeta))->fcSTACurTxRate[(staId)])
-
-/* WDA_GET_RX_REPLAY_COUNT ***************************************************/
-#  define WDA_GET_RX_REPLAY_COUNT(pRxMeta) \
-                            (((WDI_DS_RxMetaInfoType*)(pRxMeta))->replayCount)
-
-/* WDA_GETRSSI0 ***************************************************************/
-#  define WDA_GETRSSI0(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->rssi0)
-
-/* WDA_GETRSSI1 ***************************************************************/
-#  define WDA_GETRSSI1(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->rssi1)
-
-/* WDA_GET_RX_RMF *****************************************************/
-#ifdef WLAN_FEATURE_11W
-#  define WDA_GET_RX_RMF(pRxMeta) (((WDI_DS_RxMetaInfoType*)(pRxMeta))->rmf)
-#endif
-
-/* --------------------------------------------------------------------*/
-
->>>>>>> d97af3b... add prima wlan driver
 uint8 WDA_IsWcnssWlanCompiledVersionGreaterThanOrEqual(uint8 major, uint8 minor, uint8 version, uint8 revision);
 uint8 WDA_IsWcnssWlanReportedVersionGreaterThanOrEqual(uint8 major, uint8 minor, uint8 version, uint8 revision);
 
@@ -1330,17 +964,12 @@ VOS_STATUS WDA_SetRSSIThresholdsReq(tpAniSirGlobal , tSirRSSIThresholds *);
 // Just declare the function extern here and save some time.
 extern tSirRetStatus halMmhForwardMBmsg(void*, tSirMbMsg*);
 tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
-<<<<<<< HEAD
 #else
 #  define uMacPostCtrlMsg(hal, msg)  halMmhForwardMBmsg(hal, msg)
 #endif
 
 
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC) || defined(FEATURE_WLAN_INTEGRATED_SOC)
-=======
-
-
->>>>>>> d97af3b... add prima wlan driver
 #define WDA_MAX_TXPOWER_INVALID HAL_MAX_TXPOWER_INVALID
 
 //WDA Messages to HAL messages Mapping
@@ -1357,11 +986,7 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #define WDA_RADIO_ON_OFF_IND SIR_HAL_RADIO_ON_OFF_IND
 #define WDA_RESET_CNF SIR_HAL_RESET_CNF
 #define WDA_SetRegDomain \
-<<<<<<< HEAD
         eHalStatus halPhySetRegDomain(tHalHandle hHal, eRegDomainId regDomain);
-=======
-    (eHalStatus halPhySetRegDomain(tHalHandle hHal, eRegDomainId regDomain))
->>>>>>> d97af3b... add prima wlan driver
 #endif
 
 #define WDA_APP_SETUP_NTF  SIR_HAL_APP_SETUP_NTF 
@@ -1455,10 +1080,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 
 #define WDA_SWITCH_CHANNEL_RSP         SIR_HAL_SWITCH_CHANNEL_RSP
 #define WDA_P2P_NOA_ATTR_IND           SIR_HAL_P2P_NOA_ATTR_IND
-<<<<<<< HEAD
-=======
-#define WDA_P2P_NOA_START_IND          SIR_HAL_P2P_NOA_START_IND
->>>>>>> d97af3b... add prima wlan driver
 #define WDA_PWR_SAVE_CFG               SIR_HAL_PWR_SAVE_CFG
 
 #define WDA_REGISTER_PE_CALLBACK       SIR_HAL_REGISTER_PE_CALLBACK
@@ -1510,28 +1131,15 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #define WDA_TIMER_CHIP_MONITOR_TIMEOUT SIR_HAL_TIMER_CHIP_MONITOR_TIMEOUT
 #define WDA_TIMER_TRAFFIC_ACTIVITY_REQ SIR_HAL_TIMER_TRAFFIC_ACTIVITY_REQ
 #define WDA_TIMER_ADC_RSSI_STATS       SIR_HAL_TIMER_ADC_RSSI_STATS
-<<<<<<< HEAD
-=======
-#define WDA_TIMER_TRAFFIC_STATS_IND    SIR_HAL_TRAFFIC_STATS_IND
-
-#ifdef WLAN_FEATURE_11W
-#define WDA_EXCLUDE_UNENCRYPTED_IND    SIR_HAL_EXCLUDE_UNENCRYPTED_IND
-#endif
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef FEATURE_WLAN_CCX
 #define WDA_TSM_STATS_REQ              SIR_HAL_TSM_STATS_REQ
 #define WDA_TSM_STATS_RSP              SIR_HAL_TSM_STATS_RSP
 #endif
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #define WDA_UPDATE_PROBE_RSP_IE_BITMAP_IND SIR_HAL_UPDATE_PROBE_RSP_IE_BITMAP_IND
 #define WDA_UPDATE_UAPSD_IND           SIR_HAL_UPDATE_UAPSD_IND
 #endif
-=======
-#define WDA_UPDATE_PROBE_RSP_IE_BITMAP_IND SIR_HAL_UPDATE_PROBE_RSP_IE_BITMAP_IND
-#define WDA_UPDATE_UAPSD_IND           SIR_HAL_UPDATE_UAPSD_IND
->>>>>>> d97af3b... add prima wlan driver
 
 #define WDA_SET_MIMOPS_REQ                      SIR_HAL_SET_MIMOPS_REQ 
 #define WDA_SET_MIMOPS_RSP                      SIR_HAL_SET_MIMOPS_RSP
@@ -1579,20 +1187,14 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #define WDA_UPDATE_PROBE_RSP_TEMPLATE_IND     SIR_HAL_UPDATE_PROBE_RSP_TEMPLATE_IND
 #define WDA_SIGNAL_BTAMP_EVENT         SIR_HAL_SIGNAL_BTAMP_EVENT
 
-<<<<<<< HEAD
 #ifdef ANI_CHIPSET_VOLANS
-=======
->>>>>>> d97af3b... add prima wlan driver
 #ifdef FEATURE_OEM_DATA_SUPPORT
 /* PE <-> HAL OEM_DATA RELATED MESSAGES */
 #define WDA_START_OEM_DATA_REQ         SIR_HAL_START_OEM_DATA_REQ 
 #define WDA_START_OEM_DATA_RSP         SIR_HAL_START_OEM_DATA_RSP
 #define WDA_FINISH_OEM_DATA_REQ        SIR_HAL_FINISH_OEM_DATA_REQ
 #endif
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #define WDA_SET_MAX_TX_POWER_REQ       SIR_HAL_SET_MAX_TX_POWER_REQ
 #define WDA_SET_MAX_TX_POWER_RSP       SIR_HAL_SET_MAX_TX_POWER_RSP
@@ -1611,19 +1213,11 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #define WDA_ADD_STA_SELF_REQ           SIR_HAL_ADD_STA_SELF_REQ
 #define WDA_DEL_STA_SELF_REQ           SIR_HAL_DEL_STA_SELF_REQ
 
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 #define WDA_SET_P2P_GO_NOA_REQ         SIR_HAL_SET_P2P_GO_NOA_REQ
 #endif
 
 #define WDA_TX_COMPLETE_TIMEOUT_IND  WDA_MSG_TYPES_END - 1
-=======
-#define WDA_SET_P2P_GO_NOA_REQ         SIR_HAL_SET_P2P_GO_NOA_REQ
-#define WDA_SET_TDLS_LINK_ESTABLISH_REQ SIR_HAL_TDLS_LINK_ESTABLISH_REQ
-#define WDA_SET_TDLS_LINK_ESTABLISH_REQ_RSP SIR_HAL_TDLS_LINK_ESTABLISH_REQ_RSP
-
-#define WDA_TX_COMPLETE_TIMEOUT_IND  (WDA_MSG_TYPES_END - 1)
->>>>>>> d97af3b... add prima wlan driver
 #define WDA_WLAN_SUSPEND_IND           SIR_HAL_WLAN_SUSPEND_IND
 #define WDA_WLAN_RESUME_REQ           SIR_HAL_WLAN_RESUME_REQ
 #define WDA_MSG_TYPES_END    SIR_HAL_MSG_TYPES_END
@@ -1631,27 +1225,18 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #define WDA_MMH_TXMB_READY_EVT SIR_HAL_MMH_TXMB_READY_EVT     
 #define WDA_MMH_RXMB_DONE_EVT  SIR_HAL_MMH_RXMB_DONE_EVT    
 #define WDA_MMH_MSGQ_NE_EVT    SIR_HAL_MMH_MSGQ_NE_EVT
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 #define WDA_AGGR_QOS_REQ               SIR_HAL_AGGR_QOS_REQ
 #define WDA_AGGR_QOS_RSP               SIR_HAL_AGGR_QOS_RSP
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 /* FTM CMD MSG */
 #define WDA_FTM_CMD_REQ        SIR_PTT_MSG_TYPES_BEGIN
 #define WDA_FTM_CMD_RSP        SIR_PTT_MSG_TYPES_END
 #endif /* ANI_MANF_DIAG */
-=======
-/* FTM CMD MSG */
-#define WDA_FTM_CMD_REQ        SIR_PTT_MSG_TYPES_BEGIN
-#define WDA_FTM_CMD_RSP        SIR_PTT_MSG_TYPES_END
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef FEATURE_WLAN_SCAN_PNO
 /*Requests sent to lower driver*/
@@ -1663,14 +1248,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #define WDA_SET_PNO_CHANGED_IND     SIR_HAL_SET_PNO_CHANGED_IND
 #endif // FEATURE_WLAN_SCAN_PNO
 
-<<<<<<< HEAD
-=======
-#ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
-#define WDA_ROAM_SCAN_OFFLOAD_REQ   SIR_HAL_ROAM_SCAN_OFFLOAD_REQ
-#define WDA_ROAM_SCAN_OFFLOAD_RSP   SIR_HAL_ROAM_SCAN_OFFLOAD_RSP
-#endif
-
->>>>>>> d97af3b... add prima wlan driver
 #ifdef WLAN_WAKEUP_EVENTS
 #define WDA_WAKE_REASON_IND    SIR_HAL_WAKE_REASON_IND  
 #endif // WLAN_WAKEUP_EVENTS
@@ -1684,12 +1261,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 #define WDA_SET_POWER_PARAMS_REQ   SIR_HAL_SET_POWER_PARAMS_REQ
-<<<<<<< HEAD
-=======
-#define WDA_DHCP_START_IND              SIR_HAL_DHCP_START_IND
-#define WDA_DHCP_STOP_IND               SIR_HAL_DHCP_STOP_IND
-
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
 #define WDA_GTK_OFFLOAD_REQ             SIR_HAL_GTK_OFFLOAD_REQ
@@ -1699,7 +1270,6 @@ tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 
 #define WDA_SET_TM_LEVEL_REQ       SIR_HAL_SET_TM_LEVEL_REQ
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 tSirRetStatus wdaPostCtrlMsg(tpAniSirGlobal pMac, tSirMsgQ *pMsg);
 #endif
@@ -1720,38 +1290,6 @@ eHalStatus WDA_SetRegDomain(void * clientCtxt, v_REGDOMAIN_t regId);
 #define HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME 0x40 // Bit 6 will be used to control BD rate for Management frames
 
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-=======
-#ifdef WLAN_FEATURE_11AC
-#define WDA_UPDATE_OP_MODE         SIR_HAL_UPDATE_OP_MODE
-#endif
-
-#define WDA_GET_ROAM_RSSI_REQ      SIR_HAL_GET_ROAM_RSSI_REQ
-#define WDA_GET_ROAM_RSSI_RSP      SIR_HAL_GET_ROAM_RSSI_RSP
-
-#define WDA_START_SCAN_OFFLOAD_REQ  SIR_HAL_START_SCAN_OFFLOAD_REQ
-#define WDA_START_SCAN_OFFLOAD_RSP  SIR_HAL_START_SCAN_OFFLOAD_RSP
-#define WDA_STOP_SCAN_OFFLOAD_REQ  SIR_HAL_STOP_SCAN_OFFLOAD_REQ
-#define WDA_STOP_SCAN_OFFLOAD_RSP  SIR_HAL_STOP_SCAN_OFFLOAD_RSP
-#define WDA_UPDATE_CHAN_LIST_REQ    SIR_HAL_UPDATE_CHAN_LIST_REQ
-#define WDA_UPDATE_CHAN_LIST_RSP    SIR_HAL_UPDATE_CHAN_LIST_RSP
-#define WDA_RX_SCAN_EVENT           SIR_HAL_RX_SCAN_EVENT
-#define WDA_IBSS_PEER_INACTIVITY_IND SIR_HAL_IBSS_PEER_INACTIVITY_IND
-
-#ifdef FEATURE_WLAN_LPHB
-#define WDA_LPHB_CONF_REQ          SIR_HAL_LPHB_CONF_IND
-#define WDA_LPHB_WAIT_EXPIRE_IND   SIR_HAL_LPHB_WAIT_EXPIRE_IND
-#endif /* FEATURE_WLAN_LPHB */
-
-#define WDA_ADD_PERIODIC_TX_PTRN_IND    SIR_HAL_ADD_PERIODIC_TX_PTRN_IND
-#define WDA_DEL_PERIODIC_TX_PTRN_IND    SIR_HAL_DEL_PERIODIC_TX_PTRN_IND
-
-tSirRetStatus wdaPostCtrlMsg(tpAniSirGlobal pMac, tSirMsgQ *pMsg);
-
-eHalStatus WDA_SetRegDomain(void * clientCtxt, v_REGDOMAIN_t regId);
-
-#define HAL_USE_BD_RATE2_FOR_MANAGEMENT_FRAME 0x40 // Bit 6 will be used to control BD rate for Management frames
-
->>>>>>> d97af3b... add prima wlan driver
 #define halTxFrame(hHal, pFrmBuf, frmLen, frmType, txDir, tid, pCompFunc, pData, txFlag) \
    (eHalStatus)( WDA_TxPacket(\
          vos_get_context(VOS_MODULE_ID_WDA, vos_get_global_context(VOS_MODULE_ID_WDA, (hHal))),\
@@ -1777,16 +1315,12 @@ eHalStatus WDA_SetRegDomain(void * clientCtxt, v_REGDOMAIN_t regId);
          (pData),\
          (pCBackFnTxComp), \
          (txFlag)) )
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 /* -----------------------------------------------------------------
   WDA data path API's for TL
  -------------------------------------------------------------------*/
 
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 v_BOOL_t WDA_IsHwFrameTxTranslationCapable(v_PVOID_t pVosGCtx, 
                                                       tANI_U8 staIdx);
@@ -1823,31 +1357,6 @@ v_BOOL_t WDA_IsHwFrameTxTranslationCapable(v_PVOID_t pVosGCtx,
 #define WDA_UpdateRssiBmps(pvosGCtx,  staId, rssi) \
         WLANTL_UpdateRssiBmps (pvosGCtx, staId, rssi)
 #endif
-=======
-v_BOOL_t WDA_IsHwFrameTxTranslationCapable(v_PVOID_t pVosGCtx, 
-                                                      tANI_U8 staIdx);
-
-#  define WDA_EnableUapsdAcParams(vosGCtx, staId, uapsdInfo) \
-         WDA_SetUapsdAcParamsReq(vosGCtx, staId, uapsdInfo)
-
-#  define WDA_DisableUapsdAcParams(vosGCtx, staId, ac) \
-          WDA_ClearUapsdAcParamsReq(vosGCtx, staId, ac)
-
-#  define WDA_SetRSSIThresholds(pMac, pThresholds) \
-         WDA_SetRSSIThresholdsReq(pMac, pThresholds)
-
-#define WDA_UpdateRssiBmps(pvosGCtx,  staId, rssi) \
-        WLANTL_UpdateRssiBmps(pvosGCtx, staId, rssi)
-
-#define WDA_UpdateSnrBmps(pvosGCtx,  staId, rssi) \
-        WLANTL_UpdateSnrBmps(pvosGCtx, staId, snr)
-
-#define WDA_GetSnr(staId, snr) \
-        WLANTL_GetSnr(staId, snr)
-
-#define WDA_UpdateLinkCapacity(pvosGCtx,  staId, linkCapacity) \
-        WLANTL_UpdateLinkCapacity(pvosGCtx, staId, linkCapacity)
->>>>>>> d97af3b... add prima wlan driver
 
 #ifdef WLAN_PERF 
 /*==========================================================================
@@ -2329,10 +1838,7 @@ WDA_DS_SetRSSIThresholds
   tpSirRSSIThresholds pThresholds
 );
 
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-=======
->>>>>>> d97af3b... add prima wlan driver
 /*==========================================================================
    FUNCTION    WDA_DS_TxFrames
 
@@ -2366,10 +1872,7 @@ WDA_DS_TxFrames
 ( 
   v_PVOID_t pvosGCtx 
 );
-<<<<<<< HEAD
 #endif
-=======
->>>>>>> d97af3b... add prima wlan driver
 
 /*==========================================================================
    FUNCTION    WDA_DS_TxFlowControlCallback
@@ -2486,10 +1989,6 @@ VOS_STATUS WDA_HALDumpCmdReq(tpAniSirGlobal   pMac,tANI_U32 cmd,
 ============================================================================*/
 void WDA_featureCapsExchange(v_PVOID_t pVosContext);
 
-<<<<<<< HEAD
-=======
-void WDA_disableCapablityFeature(tANI_U8 feature_index);
->>>>>>> d97af3b... add prima wlan driver
 /*==========================================================================
    FUNCTION    WDA_getHostWlanFeatCaps
 
@@ -2543,22 +2042,13 @@ tANI_U8 WDA_getFwWlanFeatCaps(tANI_U8 featEnumValue);
 /*==========================================================================
   FUNCTION   WDA_TransportChannelDebug
 
-<<<<<<< HEAD
   DESCRIPTION 
-=======
-  DESCRIPTION
->>>>>>> d97af3b... add prima wlan driver
     Display Transport Channel debugging information
     User may request to display DXE channel snapshot
     Or if host driver detects any abnormal stcuk may display
 
   PARAMETERS
-<<<<<<< HEAD
     displaySnapshot : Dispaly DXE snapshot option
-=======
-    pMac : upper MAC context pointer
-    displaySnapshot : Display DXE snapshot option
->>>>>>> d97af3b... add prima wlan driver
     enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification
@@ -2569,44 +2059,7 @@ tANI_U8 WDA_getFwWlanFeatCaps(tANI_U8 featEnumValue);
 ===========================================================================*/
 void WDA_TransportChannelDebug
 (
-<<<<<<< HEAD
    v_BOOL_t   displaySnapshot,
    v_BOOL_t   toggleStallDetect
 );
-=======
-  tpAniSirGlobal pMac,
-  v_BOOL_t       displaySnapshot,
-  v_BOOL_t       toggleStallDetect
-);
-
-/*==========================================================================
-  FUNCTION   WDA_TrafficStatsTimerActivate
-
-  DESCRIPTION
-    API to activate/deactivate Traffic Stats timer. Traffic stats timer is only needed during MCC
-  PARAMETERS
-    activate : Activate or not
-
-  RETURN VALUE
-    NONE
-
-===========================================================================*/
-void WDA_TrafficStatsTimerActivate(wpt_boolean activate);
-
-/*==========================================================================
-  FUNCTION   WDA_SetEnableSSR
-
-  DESCRIPTION
-    API to enable/disable SSR on WDI timeout
-
-  PARAMETERS
-    enableSSR : enable/disable SSR
-
-  RETURN VALUE
-    NONE
-
-===========================================================================*/
-void WDA_SetEnableSSR(v_BOOL_t enableSSR);
-
->>>>>>> d97af3b... add prima wlan driver
 #endif

@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -206,20 +183,12 @@ bapSetKey( v_PVOID_t pvosGCtx, tCsrRoamSetKey *pSetKeyInfo )
     if (NULL == hHal) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "hHal is NULL in %s", __FUNCTION__);
-=======
-                     "hHal is NULL in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
 
         return VOS_STATUS_E_FAULT;
     }
 
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %x", __FUNCTION__,  btampContext); 
-=======
-    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %p", __func__,  btampContext);
->>>>>>> d97af3b... add prima wlan driver
 
     /* Fill in the event structure */ 
     bapEvent.event = eWLAN_BAP_RSN_SUCCESS;
@@ -243,11 +212,7 @@ bapSetKey( v_PVOID_t pvosGCtx, tCsrRoamSetKey *pSetKeyInfo )
     }
                          
     /* Set the Group Key */ 
-<<<<<<< HEAD
     vos_mem_copy( pSetKeyInfo->peerMac, groupMac, sizeof( tAniMacAddr ) );;
-=======
-    vos_mem_copy( pSetKeyInfo->peerMac, groupMac, sizeof( tAniMacAddr ) );
->>>>>>> d97af3b... add prima wlan driver
     halStatus = sme_RoamSetKey( 
             hHal, 
             btampContext->sessionId, 
@@ -271,7 +236,6 @@ bapSetKey( v_PVOID_t pvosGCtx, tCsrRoamSetKey *pSetKeyInfo )
  */
 #define DUMPLOG_ON
 #if defined DUMPLOG_ON
-<<<<<<< HEAD
 #define DUMPLOG(n, name1, name2, aStr, size) \
     if (1) \
 {\
@@ -281,15 +245,6 @@ bapSetKey( v_PVOID_t pvosGCtx, tCsrRoamSetKey *pSetKeyInfo )
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "\n"); \
 }
-=======
-#define DUMPLOG(n, name1, name2, aStr, size) do {                       \
-        int i;                                                          \
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%d. %s: %s = \n", n, name1, name2); \
-        for (i = 0; i < size; i++)                                      \
-            VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "\n"); \
-    } while (0)
->>>>>>> d97af3b... add prima wlan driver
 #else
 #define DUMPLOG(n, name1, name2, aStr, size)
 #endif
@@ -491,11 +446,7 @@ convertToCsrProfile
     if (NULL == btampContext) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "btampContext is NULL in %s", __FUNCTION__);
-=======
-                     "btampContext is NULL in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
 
         return VOS_STATUS_E_FAULT;
     }
@@ -504,11 +455,7 @@ convertToCsrProfile
     if (NULL == hHal) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "hHal is NULL in %s", __FUNCTION__);
-=======
-                     "hHal is NULL in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
 
         return VOS_STATUS_E_FAULT;
     }
@@ -527,11 +474,7 @@ convertToCsrProfile
     {
         pProfile->SSIDs.numOfSSIDs = 2;
 
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: bssType = %s, SSID specified = %s\n", __FUNCTION__, "eCSR_BSS_TYPE_WDS_STA", convertBSSIDToSSID(btampContext->btamp_Remote_AMP_Assoc.HC_mac_addr));
-=======
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: bssType = %s, SSID specified = %s\n", __func__, "eCSR_BSS_TYPE_WDS_STA", convertBSSIDToSSID(btampContext->btamp_Remote_AMP_Assoc.HC_mac_addr));
->>>>>>> d97af3b... add prima wlan driver
     
         vos_mem_zero(pProfile->SSIDs.SSIDList[0].SSID.ssId, 
                 sizeof(pProfile->SSIDs.SSIDList[0].SSID.ssId));
@@ -558,11 +501,7 @@ convertToCsrProfile
     {
         pProfile->SSIDs.numOfSSIDs = 1;
 
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: bssType = %s, SSID specified = %s\n", __FUNCTION__, "eCSR_BSS_TYPE_WDS_AP", convertBSSIDToSSID(btampContext->self_mac_addr));
-=======
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: bssType = %s, SSID specified = %s\n", __func__, "eCSR_BSS_TYPE_WDS_AP", convertBSSIDToSSID(btampContext->self_mac_addr));
->>>>>>> d97af3b... add prima wlan driver
     
         vos_mem_zero(pProfile->SSIDs.SSIDList[0].SSID.ssId, 
                 sizeof(pProfile->SSIDs.SSIDList[0].SSID.ssId));
@@ -588,11 +527,7 @@ convertToCsrProfile
     {
         pProfile->SSIDs.numOfSSIDs = 1;
     
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: bssType = %s, SSID specified = %s\n", __FUNCTION__, "eCSR_BSS_TYPE_WDS_STA", convertBSSIDToSSID(btampContext->btamp_Remote_AMP_Assoc.HC_mac_addr));
-=======
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: bssType = %s, SSID specified = %s\n", __func__, "eCSR_BSS_TYPE_WDS_STA", convertBSSIDToSSID(btampContext->btamp_Remote_AMP_Assoc.HC_mac_addr));
->>>>>>> d97af3b... add prima wlan driver
 
         vos_mem_zero(pProfile->SSIDs.SSIDList[0].SSID.ssId, 
                 sizeof(pProfile->SSIDs.SSIDList[0].SSID.ssId));
@@ -831,11 +766,7 @@ gotoStarting
     if (NULL == btampContext) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "btampContext is NULL in %s", __FUNCTION__);
-=======
-                     "btampContext is NULL in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
 
         return VOS_STATUS_E_FAULT;
     }
@@ -844,11 +775,7 @@ gotoStarting
     if (NULL == hHal) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "hHal is NULL in %s", __FUNCTION__);
-=======
-                     "hHal is NULL in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
 
         return VOS_STATUS_E_FAULT;
     }
@@ -879,17 +806,10 @@ gotoStarting
     //fail the HCI Create Physical Link 
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, 
-<<<<<<< HEAD
             "In %s, amp_assoc_remaining_length = %d", __FUNCTION__, 
             pBapHCIWriteRemoteAMPAssoc->amp_assoc_remaining_length); 
 #if 0
     DUMPLOG(1, __FUNCTION__, "amp_assoc_fragment",  
-=======
-            "In %s, amp_assoc_remaining_length = %d", __func__, 
-            pBapHCIWriteRemoteAMPAssoc->amp_assoc_remaining_length); 
-#if 0
-    DUMPLOG(1, __func__, "amp_assoc_fragment",  
->>>>>>> d97af3b... add prima wlan driver
             pBapHCIWriteRemoteAMPAssoc->amp_assoc_fragment, 
             64);
 #endif //0
@@ -904,11 +824,7 @@ gotoStarting
     /* Unknown or Reserved TLVs are allowed in the write AMP assoc fragment */
     if ((BTAMP_PARSE_SUCCESS != parseStatus ) && (BTAMP_UNKNOWN_TLVS != parseStatus))  
     {
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, parseStatus = %d", __FUNCTION__, parseStatus);
-=======
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, parseStatus = %d", __func__, parseStatus);
->>>>>>> d97af3b... add prima wlan driver
         *status = WLANBAP_ERROR_INVALID_HCI_CMND_PARAM;
         return VOS_STATUS_E_BADMSG;
     }
@@ -1029,11 +945,7 @@ gotoStarting
         else
         {
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                          "sme_OpenSession failed in %s", __FUNCTION__);
-=======
-                         "sme_OpenSession failed in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
             *status = WLANBAP_ERROR_NO_CNCT;
             return VOS_STATUS_E_FAILURE;
         }
@@ -1050,11 +962,7 @@ gotoStarting
     if(VOS_STATUS_E_INVAL == vosStatus)
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "Incorrect channel to create AMP link %s", __FUNCTION__);
-=======
-                     "Incorrect channel to create AMP link %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
         *status = WLANBAP_ERROR_NO_SUITABLE_CHANNEL;
         return VOS_STATUS_E_INVAL;
     }
@@ -1226,7 +1134,6 @@ regStaWithTl
     // translation for WinMob 6.1
     //*** Not to enabled UMA.
     /* Enable UMA for TX translation only when there is no concurrent session active */
-<<<<<<< HEAD
 #if defined (FEATURE_WLAN_INTEGRATED_SOC)
     staDesc.ucSwFrameTXXlation = 1;
 #else
@@ -1239,9 +1146,6 @@ regStaWithTl
        staDesc.ucSwFrameTXXlation = 0;
     }
 #endif
-=======
-    staDesc.ucSwFrameTXXlation = 1;
->>>>>>> d97af3b... add prima wlan driver
     staDesc.ucSwFrameRXXlation = 1; 
     staDesc.ucAddRmvLLC = 0;
 
@@ -1276,11 +1180,7 @@ regStaWithTl
     {
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, 
                   "%s: WLANTL_RegisterSTAClient() failed to register.  Status= %d [0x%08lX]",
-<<<<<<< HEAD
                   __FUNCTION__, vosStatus, vosStatus );
-=======
-                  __func__, vosStatus, vosStatus );
->>>>>>> d97af3b... add prima wlan driver
     }                                            
      
     if ( !  btampContext->ucSecEnabled )
@@ -1508,11 +1408,7 @@ signalHCIPhysLinkDiscEvent
 #ifdef BAP_DEBUG
   /* Trace the tBtampCtx being passed in. */
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
-<<<<<<< HEAD
             "WLAN BAP Context Monitor: btampContext value = %x in %s:%d", btampContext, __FUNCTION__, __LINE__ );
-=======
-            "WLAN BAP Context Monitor: btampContext value = %p in %s:%d", btampContext, __func__, __LINE__ );
->>>>>>> d97af3b... add prima wlan driver
 #endif //BAP_DEBUG
 
     /* Loop disconnecting all Logical Links on this Physical Link */
@@ -1524,11 +1420,7 @@ signalHCIPhysLinkDiscEvent
         { 
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, 
                     "WLAN BAP: Deleting logical link entry %d in %s", i,
-<<<<<<< HEAD
                     __FUNCTION__); 
-=======
-                    __func__); 
->>>>>>> d97af3b... add prima wlan driver
 
             /* Mark this Logical Link index value as free */
             pLogLinkContext->present = VOS_FALSE; 
@@ -1715,11 +1607,7 @@ validAssocInd
             ieLen, 
             &dot11BeaconIEs);
 
-<<<<<<< HEAD
     //DUMPLOG(9,  __FUNCTION__, "dot11BeaconIEs", &dot11BeaconIEs, 64);
-=======
-    //DUMPLOG(9,  __func__, "dot11BeaconIEs", &dot11BeaconIEs, 64);
->>>>>>> d97af3b... add prima wlan driver
 
     pDot11SSID = &dot11BeaconIEs.SSID; 
 
@@ -1729,11 +1617,7 @@ validAssocInd
         if (pDot11SSID->present )
         {
 
-<<<<<<< HEAD
         //DUMPLOG(10,  __FUNCTION__, "pDot11SSID present", pDot11SSID, 64);
-=======
-        //DUMPLOG(10,  __func__, "pDot11SSID present", pDot11SSID, 64);
->>>>>>> d97af3b... add prima wlan driver
 
         btampContext->assocSsidLen = pDot11SSID->num_ssid;  
         vos_mem_copy(btampContext->assocSsid, 
@@ -1760,11 +1644,7 @@ validAssocInd
         if (pDot11RSN->present )
         {
 
-<<<<<<< HEAD
         //DUMPLOG(10,  __FUNCTION__, "pDot11RSN present", pDot11RSN, 64);
-=======
-        //DUMPLOG(10,  __func__, "pDot11RSN present", pDot11RSN, 64);
->>>>>>> d97af3b... add prima wlan driver
 
         //The 802.11 BT-AMP PAL only supports WPA2-PSK  
         if (!vos_mem_compare(pRSNOui02, //  RSN-PSK
@@ -1837,11 +1717,7 @@ btampFsm
     if (NULL == hHal) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-<<<<<<< HEAD
                      "hHal is NULL in %s", __FUNCTION__);
-=======
-                     "hHal is NULL in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
 
         return VOS_STATUS_E_FAULT;
     }
@@ -1860,11 +1736,7 @@ btampFsm
         if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_CREATE))
         {
           /*Transition from DISCONNECTED to S1 (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "DISCONNECTED", "S1");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "DISCONNECTED", "S1");
->>>>>>> d97af3b... add prima wlan driver
  
 #if 0
          /* This will have issues in multisession. Need not close the session */
@@ -1880,22 +1752,14 @@ btampFsm
 
           /* Set BAP device role */
           vosStatus = gotoS1( btampContext, bapEvent, BT_INITIATOR, status); 
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, cmd status is %d", __FUNCTION__, *status);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, cmd status is %d", __func__, *status);
->>>>>>> d97af3b... add prima wlan driver
            /*Advance outer statevar */
           btampfsmChangeToState(instanceVar,S1);
         }
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_ACCEPT))
         {
           /*Transition from DISCONNECTED to S1 (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "DISCONNECTED", "S1");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "DISCONNECTED", "S1");
->>>>>>> d97af3b... add prima wlan driver
           
 #if 0
           if(btampContext->isBapSessionOpen == TRUE)
@@ -1915,11 +1779,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "DISCONNECTED", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "DISCONNECTED", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -1929,11 +1789,7 @@ btampFsm
            ) && (btampContext->BAPDeviceRole == BT_INITIATOR && !(CHANNEL_NOT_SELECTED)))
         {
           /*Transition from S1 to STARTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "S1", "STARTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "S1", "STARTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           vosStatus = determineChan(btampContext, BT_INITIATOR, &channel, status);
@@ -1949,11 +1805,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from S1 to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "S1", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "S1", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           /* Set everything back as dis-connected */    
@@ -1966,11 +1818,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from S1 to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "S1", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "S1", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           gotoDisconnected(btampContext);
@@ -1988,11 +1836,7 @@ btampFsm
                 ) && (btampContext->BAPDeviceRole == BT_RESPONDER))
         {
           /*Transition from S1 to STARTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "S1", "STARTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "S1", "STARTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //determineChan(BT_RESPONDER);
@@ -2011,11 +1855,7 @@ btampFsm
                 ) && (btampContext->BAPDeviceRole == BT_INITIATOR && CHANNEL_NOT_SELECTED))
         {
           /*Transition from S1 to SCANNING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "S1", "SCANNING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "S1", "SCANNING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           gotoScanning(btampContext, BT_RESPONDER, status);
@@ -2024,11 +1864,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "S1", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "S1", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2038,11 +1874,7 @@ btampFsm
            ) && (btampContext->BAPDeviceRole == BT_INITIATOR))
         {
           /*Transition from STARTING to CONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "STARTING", "CONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "STARTING", "CONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           btampfsmChangeToState(instanceVar,CONNECTING);//Moved to debug
 
@@ -2057,11 +1889,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from STARTING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "STARTING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "STARTING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2091,11 +1919,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_CHANNEL_SELECTION_FAILED))
         {
           /*Transition from STARTING to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "STARTING", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "STARTING", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           gotoDisconnected(btampContext);
           /*Advance outer statevar */
@@ -2107,11 +1931,7 @@ btampFsm
                 ) && (btampContext->BAPDeviceRole == BT_RESPONDER))
         {
           /*Transition from STARTING to CONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "STARTING", "CONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "STARTING", "CONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /* Set the selected channel */
           /*should have been already set */
@@ -2126,11 +1946,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from STARTING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "STARTING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "STARTING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2150,11 +1966,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_MAC_START_FAILS))
         {
           /*Transition from STARTING to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "STARTING", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "STARTING", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           gotoDisconnected(btampContext);
@@ -2164,11 +1976,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "STARTING", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "STARTING", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2178,13 +1986,8 @@ btampFsm
            ) && (btampContext->BAPDeviceRole == BT_RESPONDER))
         {
           /*Transition from CONNECTING to AUTHENTICATING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "AUTHENTICATING");
           //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "CONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "AUTHENTICATING");
-          //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "CONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
             gotoAuthenticating(btampContext);
           /*Action code for transition */
@@ -2209,11 +2012,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from CONNECTING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2242,11 +2041,7 @@ btampFsm
                 ) && !validAssocInd(btampContext, (tCsrRoamInfo *)bapEvent->params))
         {
           /*Transition from CONNECTING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
           /*Action code for transition */
           //csrRoamDisconnect(DEAUTH);
           //JEZ081120: Danlin points out that I could just ignore this
@@ -2273,15 +2068,9 @@ btampFsm
                 ) && validAssocInd(btampContext, (tCsrRoamInfo *)bapEvent->params))
         {
           /*Transition from CONNECTING to VALIDATED (both without substates)*/
-<<<<<<< HEAD
           //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "VALIDATED");
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "AUTHENTICATING");
           //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "CONNECTED");
-=======
-          //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "VALIDATED");
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "AUTHENTICATING");
-          //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "CONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           // JEZ081027: This one is a pain.  Since we are responding in the
@@ -2323,11 +2112,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_MAC_CONNECT_FAILED))
         {
           /*Transition from CONNECTING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
             sme_RoamDisconnect(hHal,
@@ -2349,11 +2134,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from CONNECTING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2372,11 +2153,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "CONNECTING", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "CONNECTING", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2386,11 +2163,7 @@ btampFsm
            ) && (btampContext->BAPDeviceRole == BT_RESPONDER))
         {
           /*Transition from AUTHENTICATING to KEYING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "AUTHENTICATING", "KEYING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "AUTHENTICATING", "KEYING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //sme_RoamSetContext(); 
@@ -2412,11 +2185,7 @@ btampFsm
                 ) && (btampContext->BAPDeviceRole == BT_INITIATOR))
         {
           /*Transition from AUTHENTICATING to KEYING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "AUTHENTICATING", "KEYING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "AUTHENTICATING", "KEYING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //sme_RoamSetContext(); 
@@ -2437,11 +2206,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from AUTHENTICATING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s ConnectAcceptTimeout", __FUNCTION__, "AUTHENTICATING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s ConnectAcceptTimeout", __func__, "AUTHENTICATING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           gotoDisconnecting(
                   btampContext,
@@ -2461,11 +2226,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from AUTHENTICATING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s Physicallink Disconnect", __FUNCTION__, "AUTHENTICATING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s Physicallink Disconnect", __func__, "AUTHENTICATING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2492,11 +2253,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_RSN_FAILURE))
         {
           /*Transition from AUTHENTICATING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s RSN Failure", __FUNCTION__, "AUTHENTICATING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s RSN Failure", __func__, "AUTHENTICATING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect(DEAUTH);
@@ -2516,11 +2273,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "AUTHENTICATING", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "AUTHENTICATING", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2529,11 +2282,7 @@ btampFsm
         if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from CONNECTED to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTED", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTED", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
             gotoDisconnecting(
                   btampContext,
@@ -2556,11 +2305,7 @@ btampFsm
         {
 
           /*Transition from CONNECTED to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "CONNECTED", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "CONNECTED", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
           WLANBAP_DeInitLinkSupervision(( ptBtampHandle)btampContext);
 
           gotoDisconnecting(
@@ -2578,11 +2323,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "CONNECTED", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "CONNECTED", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2595,20 +2336,12 @@ btampFsm
  * Naw! Not necessary.
  */
       case DISCONNECTING:
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Entered DISCONNECTING:", __FUNCTION__);//Debug statement
-=======
-         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Entered DISCONNECTING:", __func__);//Debug statement
->>>>>>> d97af3b... add prima wlan driver
         if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_MAC_READY_FOR_CONNECTIONS
            ) && (btampContext->gDiscRequested == VOS_TRUE))
         {
           /*Transition from DISCONNECTING to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "DISCONNECTING", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "DISCONNECTING", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
     //Clear gDiscRequested;
     btampContext->gDiscRequested = VOS_FALSE;
@@ -2639,22 +2372,14 @@ btampFsm
           if ( VOS_STATUS_SUCCESS != vosStatus ) 
           {
               VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
-<<<<<<< HEAD
                           "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __FUNCTION__);
-=======
-                          "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
               return VOS_STATUS_E_FAULT;
           }
           WLANTL_ClearSTAClient(btampContext->pvosGCtx, ucSTAId);
 
     //      gotoDisconnected(btampContext);
 
-<<<<<<< HEAD
       //    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:In DISCONNECTING-changing outer state var to DISCONNECTED", __FUNCTION__);
-=======
-      //    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:In DISCONNECTING-changing outer state var to DISCONNECTED", __func__);
->>>>>>> d97af3b... add prima wlan driver
           /*Advance outer statevar */
         //  btampfsmChangeToState(instanceVar,DISCONNECTED);
 
@@ -2667,11 +2392,7 @@ btampFsm
           /*Action code for transition */
           gotoDisconnected(btampContext);
 
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:In DISCONNECTING-changing outer state var to DISCONNECTED", __FUNCTION__);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:In DISCONNECTING-changing outer state var to DISCONNECTED", __func__);
->>>>>>> d97af3b... add prima wlan driver
           /*Advance outer statevar */
           btampfsmChangeToState(instanceVar,DISCONNECTED);
         }
@@ -2679,11 +2400,7 @@ btampFsm
                 ) && (btampContext->gNeedPhysLinkCompEvent == VOS_TRUE))
         {
           /*Transition from DISCONNECTING to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s gNeedPhysLinkComp TRUE", __FUNCTION__, "DISCONNECTING", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s gNeedPhysLinkComp TRUE", __func__, "DISCONNECTING", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
           if(btampContext->BAPDeviceRole == BT_INITIATOR) 
           {
               if(!VOS_IS_STATUS_SUCCESS(vos_lock_acquire(&btampContext->bapLock)))
@@ -2710,11 +2427,7 @@ btampFsm
           if ( VOS_STATUS_SUCCESS != vosStatus ) 
           {
               VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
-<<<<<<< HEAD
                           "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __FUNCTION__);
-=======
-                          "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __func__);
->>>>>>> d97af3b... add prima wlan driver
               return VOS_STATUS_E_FAULT;
           }
           WLANTL_ClearSTAClient(btampContext->pvosGCtx, ucSTAId);
@@ -2732,11 +2445,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "DISCONNECTING", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "DISCONNECTING", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2745,11 +2454,7 @@ btampFsm
         if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from KEYING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "KEYING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "KEYING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2769,11 +2474,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from KEYING to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "KEYING", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "KEYING", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2802,11 +2503,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_MAC_KEY_SET_SUCCESS))
         {
           /*Transition from KEYING to CONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "KEYING", "CONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "KEYING", "CONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           gotoConnected(btampContext);
@@ -2816,11 +2513,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "KEYING", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "KEYING", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2829,11 +2522,7 @@ btampFsm
         if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_MAC_SCAN_COMPLETE))
         {
           /*Transition from SCANNING to STARTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "SCANNING", "STARTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "SCANNING", "STARTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           vosStatus = determineChan(btampContext, BT_INITIATOR, &channel, status);
@@ -2849,11 +2538,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from SCANNING to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "SCANNING", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "SCANNING", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           gotoDisconnected(btampContext);
@@ -2865,11 +2550,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from SCANNING to DISCONNECTED (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "SCANNING", "DISCONNECTED");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "SCANNING", "DISCONNECTED");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           gotoDisconnected(btampContext);
@@ -2883,11 +2564,7 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "SCANNING", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "SCANNING", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
@@ -2897,11 +2574,7 @@ btampFsm
            ) && (btampContext->BAPDeviceRole == BT_INITIATOR))
         {
           /*Transition from VALIDATED to AUTHENTICATING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "VALIDATED", "AUTHENTICATING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "VALIDATED", "AUTHENTICATING");
->>>>>>> d97af3b... add prima wlan driver
 
             gotoAuthenticating(btampContext);
           /*Action code for transition */
@@ -2912,11 +2585,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_TIMER_CONNECT_ACCEPT_TIMEOUT))
         {
           /*Transition from VALIDATED to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "VALIDATED", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "VALIDATED", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2936,11 +2605,7 @@ btampFsm
         else if((msg==(BTAMPFSM_EVENT_T)eWLAN_BAP_HCI_PHYSICAL_LINK_DISCONNECT))
         {
           /*Transition from VALIDATED to DISCONNECTING (both without substates)*/
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __FUNCTION__, "VALIDATED", "DISCONNECTING");
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s", __func__, "VALIDATED", "DISCONNECTING");
->>>>>>> d97af3b... add prima wlan driver
 
           /*Action code for transition */
           //csrRoamDisconnect();
@@ -2968,21 +2633,13 @@ btampFsm
         }
         else
         {
-<<<<<<< HEAD
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __FUNCTION__, "VALIDATED", msg);
-=======
-          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, in state %s, invalid event msg %d", __func__, "VALIDATED", msg);
->>>>>>> d97af3b... add prima wlan driver
           /* Intentionally left blank */
         }
       break;
 
       default:
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, invalid state %d", __FUNCTION__, instanceVar->stateVar);
-=======
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, invalid state %d", __func__, instanceVar->stateVar);
->>>>>>> d97af3b... add prima wlan driver
         /*Intentionally left blank*/
       break;
   }
@@ -3000,11 +2657,7 @@ VOS_STATUS btampEstablishLogLink(ptBtampContext btampContext)
    pMsg = vos_mem_malloc(sizeof(tAniBtAmpLogLinkReq));
    if ( NULL == pMsg ) 
    {
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, failed to allocate mem for req", __FUNCTION__);
-=======
-      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, failed to allocate mem for req", __func__);
->>>>>>> d97af3b... add prima wlan driver
       return VOS_STATUS_E_NOMEM;
    }
 
@@ -3019,11 +2672,7 @@ VOS_STATUS btampEstablishLogLink(ptBtampContext btampContext)
 
    if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MQ_ID_SME, &msg))
    {
-<<<<<<< HEAD
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, failed to post msg to self", __FUNCTION__);
-=======
-       VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, failed to post msg to self", __func__);
->>>>>>> d97af3b... add prima wlan driver
        vos_mem_free(pMsg);
        vosStatus = VOS_STATUS_E_FAILURE;
    }
@@ -3045,22 +2694,14 @@ void btampEstablishLogLinkHdlr(void* pMsg)
         }
         else
         {
-<<<<<<< HEAD
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, btampContext is NULL", __FUNCTION__);                  
-=======
-            VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, btampContext is NULL", __func__);                  
->>>>>>> d97af3b... add prima wlan driver
             return;
         }
             
     }
     else
     {
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, pBtAmpLogLinkReq is NULL", __FUNCTION__);    
-=======
-        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "In %s, pBtAmpLogLinkReq is NULL", __func__);    
->>>>>>> d97af3b... add prima wlan driver
     }
     return;
 }

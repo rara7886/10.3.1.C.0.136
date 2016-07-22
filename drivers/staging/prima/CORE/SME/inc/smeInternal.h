@@ -1,27 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
- * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
-/*
->>>>>>> d97af3b... add prima wlan driver
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -88,24 +65,6 @@ typedef enum eSmeCommandType
     eSmeCommandRemoveKey,
     eSmeCommandAddStaSession,
     eSmeCommandDelStaSession,
-<<<<<<< HEAD
-=======
-#ifdef FEATURE_WLAN_TDLS
-    //eSmeTdlsCommandMask = 0x80000,  //To identify TDLS commands <TODO>
-    //These can be considered as csr commands. 
-    eSmeCommandTdlsSendMgmt, 
-    eSmeCommandTdlsAddPeer, 
-    eSmeCommandTdlsDelPeer, 
-    eSmeCommandTdlsLinkEstablish,
-#ifdef FEATURE_WLAN_TDLS_INTERNAL
-    eSmeCommandTdlsDiscovery,
-    eSmeCommandTdlsLinkSetup,
-    eSmeCommandTdlsLinkTear,
-    eSmeCommandTdlsEnterUapsd,
-    eSmeCommandTdlsExitUapsd,
-#endif
-#endif
->>>>>>> d97af3b... add prima wlan driver
     //PMC
     eSmePmcCommandMask = 0x20000, //To identify PMC commands
     eSmeCommandEnterImps,
@@ -124,15 +83,10 @@ typedef enum eSmeCommandType
 #ifdef FEATURE_OEM_DATA_SUPPORT
     eSmeCommandOemDataReq = 0x80000, //To identify the oem data commands
 #endif
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     eSmeCommandRemainOnChannel,
     eSmeCommandNoAUpdate,
 #endif
-=======
-    eSmeCommandRemainOnChannel,
-    eSmeCommandNoAUpdate,
->>>>>>> d97af3b... add prima wlan driver
 } eSmeCommandType;
 
 
@@ -143,10 +97,7 @@ typedef enum eSmeState
     SME_STATE_READY,
 } eSmeState;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d97af3b... add prima wlan driver
 #define SME_IS_START(pMac)  (SME_STATE_STOP != (pMac)->sme.state)
 #define SME_IS_READY(pMac)  (SME_STATE_READY == (pMac)->sme.state)
 
@@ -162,17 +113,6 @@ typedef struct tagSmeStruct
     tDblLinkList smeCmdFreeList;   //preallocated roam cmd list
     void (*pTxPerHitCallback) (void *pCallbackContext); /* callback for Tx PER hit to HDD */ 
     void *pTxPerHitCbContext;
-<<<<<<< HEAD
-=======
-    tVOS_CON_MODE currDeviceMode;
-#ifdef FEATURE_WLAN_LPHB
-    void (*pLphbIndCb) (void *pAdapter, void *indParam);
-#endif /* FEATURE_WLAN_LPHB */
-    //pending scan command list
-    tDblLinkList smeScanCmdPendingList;
-    //active scan command list
-    tDblLinkList smeScanCmdActiveList;
->>>>>>> d97af3b... add prima wlan driver
 } tSmeStruct, *tpSmeStruct;
 
 
