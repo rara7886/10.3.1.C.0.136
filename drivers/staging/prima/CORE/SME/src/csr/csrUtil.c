@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,14 +43,11 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /** ------------------------------------------------------------------------- *
     ------------------------------------------------------------------------- *
 
@@ -67,9 +61,6 @@
    ========================================================================== */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halInternal.h" //Check if the below include of aniGobal.h is sufficient for Volans too.
 #endif
@@ -77,13 +68,10 @@
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "aniGlobal.h"
 #endif
-<<<<<<< HEAD
 =======
 
 #include "aniGlobal.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #include "palApi.h"
 #include "csrSupport.h"
@@ -117,9 +105,6 @@ tANI_U8 csrRSNOui[][ CSR_RSN_OUI_SIZE ] = {
     { 0x00, 0x0F, 0xAC, 0x04 }, // AES-CCMP
     { 0x00, 0x0F, 0xAC, 0x05 }, // WEP-104
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_11W
     { 0x00, 0x0F, 0xAC, 0x06 },  // BIP(encryption type) or (RSN-PSK-SHA256(authentication type)
 #endif
@@ -127,13 +112,10 @@ tANI_U8 csrRSNOui[][ CSR_RSN_OUI_SIZE ] = {
     { 0x00, 0x40, 0x96, 0x00 } // CCKM
 #endif /* FEATURE_WLAN_CCX */
     
-<<<<<<< HEAD
 =======
     { 0x00, 0x40, 0x96, 0x00 }, // CCKM
     { 0x00, 0x0F, 0xAC, 0x06 }  // BIP (encryption type) or RSN-PSK-SHA256 (authentication type)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 };
 
 #ifdef FEATURE_WLAN_WAPI
@@ -1414,26 +1396,18 @@ tANI_BOOLEAN csrIsConnStateConnectedWds( tpAniSirGlobal pMac, tANI_U32 sessionId
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 tANI_BOOLEAN csrIsConnStateConnectedInfraAp( tpAniSirGlobal pMac, tANI_U32 sessionId )
 {
     return( (eCSR_ASSOC_STATE_TYPE_INFRA_CONNECTED == pMac->roam.roamSession[sessionId].connectState) ||
         (eCSR_ASSOC_STATE_TYPE_INFRA_DISCONNECTED == pMac->roam.roamSession[sessionId].connectState ) );
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 tANI_BOOLEAN csrIsConnStateDisconnectedWds( tpAniSirGlobal pMac, tANI_U32 sessionId )
 {
@@ -1562,7 +1536,6 @@ tANI_BOOLEAN csrIsAllSessionDisconnected( tpAniSirGlobal pMac )
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 tANI_BOOLEAN csrIsStaSessionConnected( tpAniSirGlobal pMac )
 {
@@ -1655,8 +1628,6 @@ tANI_BOOLEAN csrIsAnySessionConnected( tpAniSirGlobal pMac )
     return( fRc );
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 tANI_BOOLEAN csrIsInfraConnected( tpAniSirGlobal pMac )
 {
@@ -1797,21 +1768,15 @@ tANI_BOOLEAN csrIsValidMcConcurrentSession(tpAniSirGlobal pMac, tANI_U32 session
 {
     tCsrRoamSession *pSession = NULL;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tANI_U8 Index = 0, ConnId = 0;
     eAniBoolean status = eANI_BOOLEAN_FALSE;
 
     tVOS_CON_MODE Mode[CSR_ROAM_SESSION_MAX];
 
-<<<<<<< HEAD
 =======
     eAniBoolean status = eANI_BOOLEAN_FALSE;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     //Check for MCC support
     if (!pMac->roam.configParam.fenableMCCMode)
     {
@@ -1819,9 +1784,6 @@ tANI_BOOLEAN csrIsValidMcConcurrentSession(tpAniSirGlobal pMac, tANI_U32 session
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     for( Index = 0; Index < CSR_ROAM_SESSION_MAX; Index++ )
     {
         Mode[Index] = VOS_MAX_NO_OF_MODE;
@@ -1864,18 +1826,14 @@ tANI_BOOLEAN csrIsValidMcConcurrentSession(tpAniSirGlobal pMac, tANI_U32 session
          }
     }
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     //Validate BeaconInterval
     if( CSR_IS_SESSION_VALID( pMac, sessionId ) )
     {
         pSession = CSR_GET_SESSION( pMac, sessionId );
         if (NULL != pSession->pCurRoamProfile)
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
             if(csrIsconcurrentsessionValid (pMac, sessionId, 
                                        pSession->pCurRoamProfile->csrPersona) 
@@ -1893,15 +1851,6 @@ tANI_BOOLEAN csrIsValidMcConcurrentSession(tpAniSirGlobal pMac, tANI_U32 session
                                &pBssDesc->beaconInterval, sessionId,
                                pSession->pCurRoamProfile->csrPersona)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if(csrIsconcurrentsessionValid (pMac, sessionId, 
-                                       pSession->pCurRoamProfile->csrPersona) 
-                                       == eHAL_STATUS_SUCCESS )
-            {
-                if(csrValidateBeaconInterval( pMac, pBssDesc->channelId, 
-                               &pBssDesc->beaconInterval, sessionId, 
-                               pSession->pCurRoamProfile->csrPersona) 
->>>>>>> 657b0e9... prima update
                                != eHAL_STATUS_SUCCESS)
                 {
                     status = eANI_BOOLEAN_FALSE;
@@ -2013,14 +1962,10 @@ tANI_BOOLEAN csrIsSsidEqual( tHalHandle hHal, tSirBssDescription *pSirBssDesc1,
         if( !pIesLocal && !HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs(pMac, pSirBssDesc2, &pIesLocal)) )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("  fail to parse IEs\n"));
 =======
             smsLog(pMac, LOGE, FL("  fail to parse IEs"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, FL("  fail to parse IEs\n"));
->>>>>>> 657b0e9... prima update
             break;
         }
         if(!HAL_STATUS_SUCCESS(csrGetParsedBssDescriptionIEs(pMac, pSirBssDesc1, &pIes1)))
@@ -2120,18 +2065,12 @@ eCsrMediaAccessType csrGetQoSFromBssDesc( tHalHandle hHal, tSirBssDescription *p
     eCsrMediaAccessType qosType = eCSR_MEDIUM_ACCESS_DCF;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(VOSS_ENABLED)
     VOS_ASSERT( pIes != NULL );
 #endif
 =======
     VOS_ASSERT( pIes != NULL );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(VOSS_ENABLED)
-    VOS_ASSERT( pIes != NULL );
-#endif
->>>>>>> 657b0e9... prima update
 
     do
    {
@@ -2217,14 +2156,10 @@ eHalStatus csrGetParsedBssDescriptionIEs(tHalHandle hHal, tSirBssDescription *pB
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog( pMac, LOGE, FL(" failed to allocate memory\n") );
 =======
             smsLog( pMac, LOGE, FL(" failed to allocate memory") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog( pMac, LOGE, FL(" failed to allocate memory\n") );
->>>>>>> 657b0e9... prima update
             VOS_ASSERT( 0 );
     }
     }
@@ -2338,14 +2273,10 @@ tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csr
     {
     case eCSR_CFG_DOT11_MODE_AUTO:
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("  Warning: sees eCSR_CFG_DOT11_MODE_AUTO \n"));
 =======
         smsLog(pMac, LOGW, FL("  Warning: sees eCSR_CFG_DOT11_MODE_AUTO "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOGW, FL("  Warning: sees eCSR_CFG_DOT11_MODE_AUTO \n"));
->>>>>>> 657b0e9... prima update
         //We cannot decide until now.
         if(pMac->roam.configParam.ProprietaryRatesEnabled)
         {
@@ -2354,14 +2285,10 @@ tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csr
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             ret = WNI_CFG_DOT11_MODE_11N;
 =======
             ret = WNI_CFG_DOT11_MODE_11AC;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            ret = WNI_CFG_DOT11_MODE_11N;
->>>>>>> 657b0e9... prima update
         }
         break;
     case eCSR_CFG_DOT11_MODE_TAURUS:
@@ -2386,13 +2313,9 @@ tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csr
         ret = WNI_CFG_DOT11_MODE_TITAN;
         break;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     case eCSR_CFG_DOT11_MODE_11G_ONLY:
        ret = WNI_CFG_DOT11_MODE_11G_ONLY;
        break;
@@ -2400,13 +2323,9 @@ tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csr
        ret = WNI_CFG_DOT11_MODE_11N_ONLY;
        break;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_11AC
      case eCSR_CFG_DOT11_MODE_11AC_ONLY:
@@ -2418,14 +2337,10 @@ tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csr
 #endif
     default:
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOGW, FL("doesn't expect %d as csrDo11Mode\n"), csrDot11Mode);
 =======
         smsLog(pMac, LOGW, FL("doesn't expect %d as csrDo11Mode"), csrDot11Mode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOGW, FL("doesn't expect %d as csrDo11Mode\n"), csrDot11Mode);
->>>>>>> 657b0e9... prima update
         if(eCSR_BAND_24 == pMac->roam.configParam.eBand)
         {
             ret = WNI_CFG_DOT11_MODE_11G;
@@ -2674,14 +2589,10 @@ tANI_BOOLEAN csrGetPhyModeInUse( eCsrPhyMode phyModeIn, eCsrPhyMode bssPhyMode, 
     {
 #ifdef WLAN_FEATURE_11AC
 <<<<<<< HEAD
-<<<<<<< HEAD
         if(cfgDot11Mode == eCSR_CFG_DOT11_MODE_11AC && !WDA_getFwWlanFeatCaps(DOT11AC))
 =======
         if(cfgDot11Mode == eCSR_CFG_DOT11_MODE_11AC && (!IS_FEATURE_SUPPORTED_BY_FW(DOT11AC)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if(cfgDot11Mode == eCSR_CFG_DOT11_MODE_11AC && !WDA_getFwWlanFeatCaps(DOT11AC))
->>>>>>> 657b0e9... prima update
         {
             *pCfgDot11ModeToUse = eCSR_CFG_DOT11_MODE_11N;
         }
@@ -2816,7 +2727,6 @@ eCsrCfgDot11Mode csrFindBestPhyMode( tpAniSirGlobal pMac, tANI_U32 phyMode )
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
     if ( (0 == phyMode) || (eCSR_DOT11_MODE_AUTO & phyMode) || (eCSR_DOT11_MODE_TAURUS & phyMode)
        ||(eCSR_DOT11_MODE_11ac & phyMode))
@@ -2831,17 +2741,18 @@ eCsrCfgDot11Mode csrFindBestPhyMode( tpAniSirGlobal pMac, tANI_U32 phyMode )
         cfgDot11ModeToUse = eCSR_CFG_DOT11_MODE_11N;
 =======
     if ((0 == phyMode) ||
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_11AC
-    if ( (0 == phyMode) || (eCSR_DOT11_MODE_AUTO & phyMode) || (eCSR_DOT11_MODE_TAURUS & phyMode)
-       ||(eCSR_DOT11_MODE_11ac & phyMode))
-    {
-        cfgDot11ModeToUse = eCSR_CFG_DOT11_MODE_11AC;
-    }
-    else
+        (eCSR_DOT11_MODE_11ac & phyMode) ||
 #endif
-<<<<<<< HEAD
+        (eCSR_DOT11_MODE_AUTO & phyMode))
+    {
+#ifdef WLAN_FEATURE_11AC
+        if (IS_FEATURE_SUPPORTED_BY_FW(DOT11AC))
+        {
+           cfgDot11ModeToUse = eCSR_CFG_DOT11_MODE_11AC;
+        }
+        else
+#endif
         {
            /* Default to 11N mode if user has configured 11ac mode
             * and FW doesn't supports 11ac mode .
@@ -2849,12 +2760,6 @@ eCsrCfgDot11Mode csrFindBestPhyMode( tpAniSirGlobal pMac, tANI_U32 phyMode )
            cfgDot11ModeToUse = eCSR_CFG_DOT11_MODE_11N;
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    if ( (0 == phyMode) || (eCSR_DOT11_MODE_AUTO & phyMode) || (eCSR_DOT11_MODE_TAURUS & phyMode))
-    {
-        cfgDot11ModeToUse = eCSR_CFG_DOT11_MODE_11N;
->>>>>>> 657b0e9... prima update
     }
     else
     {
@@ -2963,14 +2868,11 @@ tANI_BOOLEAN csrIsProfileRSN( tCsrRoamProfile *pProfile )
         case eCSR_AUTH_TYPE_CCKM_RSN:
 #endif 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
         case eCSR_AUTH_TYPE_RSN_PSK_SHA256:
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             fRSNProfile = TRUE;
             break;
 
@@ -3021,7 +2923,6 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                 case VOS_STA_MODE:
                     if(pMac->roam.roamSession[sessionId].pCurRoamProfile &&
 <<<<<<< HEAD
-<<<<<<< HEAD
                       (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
                                       == VOS_STA_MODE)) //check for P2P client mode
                     {
@@ -3032,18 +2933,11 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                     {
                         smsLog(pMac, LOGE, FL(" ****STA mode already exists ****"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
-                                      == VOS_STA_MODE)) //check for P2P client mode
-                    {
-                        smsLog(pMac, LOGE, FL(" ****STA mode already exists ****\n"));
->>>>>>> 657b0e9... prima update
                         return eHAL_STATUS_FAILURE;
                     }
                     break;
 
                 case VOS_STA_SAP_MODE:
-<<<<<<< HEAD
 <<<<<<< HEAD
                     if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
                                       == VOS_STA_SAP_MODE)
@@ -3061,31 +2955,27 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                                       == VOS_STA_SAP_MODE)&&
                        (pMac->roam.roamSession[sessionId].connectState
                                       != eCSR_ASSOC_STATE_TYPE_NOT_CONNECTED))
-=======
-                    if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
-                                      == VOS_STA_SAP_MODE)
->>>>>>> 657b0e9... prima update
                     {
-                        smsLog(pMac, LOGE, FL(" ****SoftAP mode already exists ****\n"));
+                        smsLog(pMac, LOGE, FL(" ****SoftAP mode already exists ****"));
                         return eHAL_STATUS_FAILURE;
                     }
-                    
-                    else if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
-                                      == VOS_P2P_GO_MODE)
+                    else if( (pMac->roam.roamSession[sessionId].bssParams.bssPersona
+                                      == VOS_P2P_GO_MODE &&
+                              pMac->roam.roamSession[sessionId].connectState
+                                      != eCSR_ASSOC_STATE_TYPE_NOT_CONNECTED) ||
+                             (pMac->roam.roamSession[sessionId].bssParams.bssPersona
+                                      == VOS_IBSS_MODE &&
+                              pMac->roam.roamSession[sessionId].connectState
+                                      != eCSR_ASSOC_STATE_TYPE_IBSS_DISCONNECTED))
                     {
-<<<<<<< HEAD
                         smsLog(pMac, LOGE, FL(" ****Cannot start Multiple Beaconing Role ****"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        smsLog(pMac, LOGE, FL(" ****Cannot start Multiple Beaconing Role ****\n"));
->>>>>>> 657b0e9... prima update
                         return eHAL_STATUS_FAILURE;
                     }
                     break;
 
                 case VOS_P2P_CLIENT_MODE:
                     if(pMac->roam.roamSession[sessionId].pCurRoamProfile &&
-<<<<<<< HEAD
 <<<<<<< HEAD
                       (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
                                                   == VOS_P2P_CLIENT_MODE)) //check for P2P client mode
@@ -3097,18 +2987,11 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                     {
                         smsLog(pMac, LOGE, FL(" ****CLIENT mode already exists ****"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
-                                                  == VOS_P2P_CLIENT_MODE)) //check for P2P client mode
-                    {
-                        smsLog(pMac, LOGE, FL(" ****CLIENT mode already exists ****\n"));
->>>>>>> 657b0e9... prima update
                         return eHAL_STATUS_FAILURE;
                     }
                     break;
 
                 case VOS_P2P_GO_MODE:
-<<<<<<< HEAD
 <<<<<<< HEAD
                     if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
                                       == VOS_P2P_GO_MODE)
@@ -3153,29 +3036,24 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                                       == VOS_IBSS_MODE) &&
                        (pMac->roam.roamSession[sessionId].connectState
                                       != eCSR_ASSOC_STATE_TYPE_IBSS_CONNECTED))
-=======
-                    if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
-                                      == VOS_P2P_GO_MODE)
->>>>>>> 657b0e9... prima update
                     {
-                        smsLog(pMac, LOGE, FL(" ****P2P GO mode already exists ****\n"));
+                        smsLog(pMac, LOGE, FL(" ****IBSS mode already exists ****"));
                         return eHAL_STATUS_FAILURE;
                     }
-                    else if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
-                                      == VOS_STA_SAP_MODE)
+                    else if( (pMac->roam.roamSession[sessionId].bssParams.bssPersona
+                                      == VOS_P2P_GO_MODE ||
+                              pMac->roam.roamSession[sessionId].bssParams.bssPersona
+                                      == VOS_STA_SAP_MODE) &&
+                              pMac->roam.roamSession[sessionId].connectState
+                                     != eCSR_ASSOC_STATE_TYPE_NOT_CONNECTED)
                     {
-                        smsLog(pMac, LOGE, FL(" ****Cannot start Multiple Beaconing Role ****\n"));
+                        smsLog(pMac, LOGE, FL(" ****Cannot start Multiple Beaconing Role ****"));
                         return eHAL_STATUS_FAILURE;
                     }
                     break;
-
                 default :
-<<<<<<< HEAD
                     smsLog(pMac, LOGE, FL("***Persona not handled = %d*****"),currBssPersona);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog(pMac, LOGE, FL("***Persona not handled = %d*****\n"),currBssPersona);
->>>>>>> 657b0e9... prima update
                     break;
             }
         }
@@ -3184,7 +3062,6 @@ csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
 
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId, 
                                      tANI_U16 *beaconInterval, tANI_U32 cursessionId,
@@ -3279,24 +3156,15 @@ tANI_U16 csrCalculateMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U16 sta_bi, tAN
 }
 
 eHalStatus csrValidateMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
-=======
-eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId, 
->>>>>>> 657b0e9... prima update
                                      tANI_U16 *beaconInterval, tANI_U32 cursessionId,
                                      tVOS_CON_MODE currBssPersona)
 {
     tANI_U32 sessionId = 0;
-<<<<<<< HEAD
     tANI_U16 new_beaconInterval = 0;
   
     //If MCC is not supported just break
     if (!pMac->roam.configParam.fenableMCCMode){
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    //If MCC is not supported just break and return SUCCESS
-    if ( !IS_MCC_SUPPORTED && !pMac->roam.configParam.fenableMCCMode){
->>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -3313,7 +3181,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
             {
                 case VOS_STA_MODE:
 <<<<<<< HEAD
-<<<<<<< HEAD
                     if(pMac->roam.roamSession[sessionId].pCurRoamProfile &&
                       (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
                                       == VOS_P2P_CLIENT_MODE)) //check for P2P client mode
@@ -3326,13 +3193,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                     {
                         smsLog(pMac, LOG1, FL(" Beacon Interval Validation not required for STA/CLIENT"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    if(pMac->roam.roamSession[sessionId].pCurRoamProfile &&
-                      (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
-                                      == VOS_P2P_CLIENT_MODE)) //check for P2P client mode
-                    {
-                        smsLog(pMac, LOG1, FL(" Beacon Interval Validation not required for STA/CLIENT\n"));
->>>>>>> 657b0e9... prima update
                     }
                     //IF SAP has started and STA wants to connect on different channel MCC should
                     //MCC should not be enabled so making it false to enforce on same channel
@@ -3342,7 +3202,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                         if (pMac->roam.roamSession[sessionId].bssParams.operationChn 
                                                         != channelId )
                         {
-<<<<<<< HEAD
 <<<<<<< HEAD
                             smsLog(pMac, LOGE, FL("***MCC is not enabled for SAP +STA****\n"));
                             return eHAL_STATUS_FAILURE;
@@ -3364,24 +3223,18 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                             return eHAL_STATUS_FAILURE;
 =======
                             smsLog(pMac, LOGE, FL("***MCC is not enabled for SAP +STA****"));
-=======
-                            smsLog(pMac, LOGE, FL("***MCC is not enabled for SAP +STA****\n"));
->>>>>>> 657b0e9... prima update
                             return eHAL_STATUS_FAILURE;
                         }
                     }
-                    else if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
+                    else if (pMac->roam.roamSession[sessionId].bssParams.bssPersona
                                       == VOS_P2P_GO_MODE) //Check for P2P go scenario
                     {
-                        /* if GO in MCC support different beacon interval, return success */
-                        if ( pMac->roam.configParam.fAllowMCCGODiffBI == TRUE)
-                            return eHAL_STATUS_SUCCESS;
-                        
-                        if ((pMac->roam.roamSession[sessionId].bssParams.operationChn 
+                        /* if GO in MCC support different beacon interval, 
+                         * change the BI of the P2P-GO */
+                       if ((pMac->roam.roamSession[sessionId].bssParams.operationChn 
                                 != channelId ) &&
-                            (pMac->roam.roamSession[sessionId].bssParams.beaconInterval 
+                           (pMac->roam.roamSession[sessionId].bssParams.beaconInterval 
                                 != *beaconInterval))
-<<<<<<< HEAD
                        {
                            /* if GO in MCC support different beacon interval, return success */
                            if ( pMac->roam.configParam.fAllowMCCGODiffBI == 0x01)
@@ -3423,17 +3276,11 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                                return eHAL_STATUS_FAILURE;
                            }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        {
-                            smsLog(pMac, LOGE, FL("BeaconInteval is different cannot connect to prefered AP...\n"));
-                            return eHAL_STATUS_FAILURE;
->>>>>>> 657b0e9... prima update
                         }
                     }
                     break;
 
                 case VOS_P2P_CLIENT_MODE:
-<<<<<<< HEAD
 <<<<<<< HEAD
                     if(pMac->roam.roamSession[sessionId].pCurRoamProfile &&
                       (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
@@ -3447,13 +3294,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                     {
                         smsLog(pMac, LOG1, FL(" Ignore Beacon Interval Validation..."));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    if(pMac->roam.roamSession[sessionId].pCurRoamProfile &&
-                      (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
-                                                                == VOS_STA_MODE)) //check for P2P client mode
-                    {
-                        smsLog(pMac, LOG1, FL(" Ignore Beacon Interval Validation...\n"));
->>>>>>> 657b0e9... prima update
                     }
                     //IF SAP has started and STA wants to connect on different channel MCC should
                     //MCC should not be enabled so making it false to enforce on same channel
@@ -3463,7 +3303,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                         if (pMac->roam.roamSession[sessionId].bssParams.operationChn 
                                                         != channelId )
                         {
-<<<<<<< HEAD
 <<<<<<< HEAD
                             smsLog(pMac, LOGE, FL("***MCC is not enabled for SAP + CLIENT****\n"));
                             return eHAL_STATUS_FAILURE;
@@ -3477,13 +3316,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                     }
                     else if (pMac->roam.roamSession[sessionId].bssParams.bssPersona
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            smsLog(pMac, LOGE, FL("***MCC is not enabled for SAP + CLIENT****\n"));
-                            return eHAL_STATUS_FAILURE;
-                        }
-                    }
-                    else if(pMac->roam.roamSession[sessionId].bssParams.bssPersona
->>>>>>> 657b0e9... prima update
                                     == VOS_P2P_GO_MODE) //Check for P2P go scenario
                     {
                         if ((pMac->roam.roamSession[sessionId].bssParams.operationChn 
@@ -3492,14 +3324,10 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                                 != *beaconInterval))
                         {
 <<<<<<< HEAD
-<<<<<<< HEAD
                             smsLog(pMac, LOGE, FL("BeaconInteval is different cannot connect to P2P_GO network ...\n"));
 =======
                             smsLog(pMac, LOGE, FL("BeaconInterval is different cannot connect to P2P_GO network ..."));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            smsLog(pMac, LOGE, FL("BeaconInteval is different cannot connect to P2P_GO network ...\n"));
->>>>>>> 657b0e9... prima update
                             return eHAL_STATUS_FAILURE;
                         }
                     }
@@ -3507,14 +3335,10 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
 
                 case VOS_P2P_GO_MODE :
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
                     if(pMac->roam.roamSession[sessionId].pCurRoamProfile  && 
                       ((pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
                             == VOS_P2P_CLIENT_MODE)
                      || (pMac->roam.roamSession[sessionId].pCurRoamProfile->csrPersona 
-<<<<<<< HEAD
                             == VOS_STA_MODE))) //check for P2P_client scenario
                     {
                         if ((pMac->roam.roamSession[sessionId].connectedProfile.operationChannel 
@@ -3528,11 +3352,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                     {
                         if ((pMac->roam.roamSession[sessionId].connectedProfile.operationChannel
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            == VOS_STA_MODE))) //check for P2P_client scenario
-                    {
-                        if ((pMac->roam.roamSession[sessionId].connectedProfile.operationChannel 
->>>>>>> 657b0e9... prima update
                                == 0 )&&
                            (pMac->roam.roamSession[sessionId].connectedProfile.beaconInterval
                                == 0))
@@ -3543,7 +3362,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                             
                         if (csrIsConnStateConnectedInfra(pMac, sessionId) &&
 <<<<<<< HEAD
-<<<<<<< HEAD
                            (pMac->roam.roamSession[sessionId].connectedProfile.operationChannel 
                                 != channelId ) &&
                            (pMac->roam.roamSession[sessionId].connectedProfile.beaconInterval 
@@ -3552,18 +3370,12 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                                 != channelId ) &&
                            (pMac->roam.roamSession[sessionId].connectedProfile.beaconInterval
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           (pMac->roam.roamSession[sessionId].connectedProfile.operationChannel 
-                                != channelId ) &&
-                           (pMac->roam.roamSession[sessionId].connectedProfile.beaconInterval 
->>>>>>> 657b0e9... prima update
                                 != *beaconInterval))
                         {
                             /*
                              * Updated beaconInterval should be used only when we are starting a new BSS 
                              * not incase of client or STA case
                              */
-<<<<<<< HEAD
 <<<<<<< HEAD
                             *beaconInterval = 
                                 pMac->roam.roamSession[sessionId].connectedProfile.beaconInterval;
@@ -3581,22 +3393,15 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
                                                 *beaconInterval );
                             if(*beaconInterval != new_beaconInterval)
                                 *beaconInterval = new_beaconInterval;
-=======
-                            *beaconInterval = 
-                                pMac->roam.roamSession[sessionId].connectedProfile.beaconInterval;
->>>>>>> 657b0e9... prima update
                             return eHAL_STATUS_SUCCESS;
                          }
                     }
-                    break;
+                }
+                break;
 
                 default :
-<<<<<<< HEAD
                     smsLog(pMac, LOG1, FL(" Persona not supported : %d"),currBssPersona);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog(pMac, LOG1, FL(" Persona not supported : %d\n"),currBssPersona);
->>>>>>> 657b0e9... prima update
                     return eHAL_STATUS_FAILURE;
             }
         }
@@ -3607,7 +3412,6 @@ eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 /* Function to return TRUE if the authtype is 11r */
-<<<<<<< HEAD
 <<<<<<< HEAD
 tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType )
 {
@@ -3623,12 +3427,6 @@ tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType, tANI_U8 mdiePresent)
                 return TRUE;
             break; 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType )
-{
-    switch ( AuthType )
-    {
->>>>>>> 657b0e9... prima update
         case eCSR_AUTH_TYPE_FT_RSN_PSK:
         case eCSR_AUTH_TYPE_FT_RSN:
             return TRUE;
@@ -3643,14 +3441,10 @@ tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType )
 tANI_BOOLEAN csrIsProfile11r( tCsrRoamProfile *pProfile )
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     return csrIsAuthType11r( pProfile->negotiatedAuthType );
 =======
     return csrIsAuthType11r( pProfile->negotiatedAuthType, pProfile->MDID.mdiePresent );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    return csrIsAuthType11r( pProfile->negotiatedAuthType );
->>>>>>> 657b0e9... prima update
 }
 
 #endif
@@ -3927,28 +3721,21 @@ static tANI_BOOLEAN csrIsAuthRSN( tpAniSirGlobal pMac, tANI_U8 AllSuites[][CSR_R
                                   tANI_U8 Oui[] )
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_11W
     return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[01], Oui ) ||
             csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[05], Oui ));
 #else
     return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[01], Oui ) );
 #endif
-<<<<<<< HEAD
 =======
     return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[01], Oui ) );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }
 static tANI_BOOLEAN csrIsAuthRSNPsk( tpAniSirGlobal pMac, tANI_U8 AllSuites[][CSR_RSN_OUI_SIZE],
                                       tANI_U8 cAllSuites,
                                       tANI_U8 Oui[] )
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11W
     return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[02], Oui ) ||
             csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[06], Oui ) );
@@ -3961,15 +3748,14 @@ static tANI_BOOLEAN csrIsAuthRSNPsk( tpAniSirGlobal pMac, tANI_U8 AllSuites[][CS
     return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[02], Oui ) );
 }
 
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_11W
-    return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[02], Oui ) ||
-            csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[06], Oui ) );
-#else
-    return( csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[02], Oui ) );
-#endif
+static tANI_BOOLEAN csrIsAuthRSNPskSha256( tpAniSirGlobal pMac, tANI_U8 AllSuites[][CSR_RSN_OUI_SIZE],
+                                      tANI_U8 cAllSuites,
+                                      tANI_U8 Oui[] )
+{
+    return csrIsOuiMatch( pMac, AllSuites, cAllSuites, csrRSNOui[07], Oui );
 }
+#endif
 
 >>>>>>> d97af3b... add prima wlan driver
 static tANI_BOOLEAN csrIsAuthWpa( tpAniSirGlobal pMac, tANI_U8 AllSuites[][CSR_WPA_OUI_SIZE],
@@ -4182,7 +3968,6 @@ tANI_BOOLEAN csrGetRSNInformation( tHalHandle hHal, tCsrAuthList *pAuthType, eCs
                         negAuthType = eCSR_AUTH_TYPE_RSN_PSK;
                 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
                 if ((negAuthType == eCSR_AUTH_TYPE_UNKNOWN) && csrIsAuthRSNPskSha256( pMac, AuthSuites, cAuthSuites, Authentication ) )
@@ -4192,8 +3977,6 @@ tANI_BOOLEAN csrGetRSNInformation( tHalHandle hHal, tCsrAuthList *pAuthType, eCs
                 }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
                 // The 1st auth type in the APs RSN IE, to match stations connecting
                 // profiles auth type will cause us to exit this loop
@@ -4232,15 +4015,11 @@ tANI_BOOLEAN csrGetRSNInformation( tHalHandle hHal, tCsrAuthList *pAuthType, eCs
         if ( Capabilities )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
             Capabilities->PreAuthSupported = pRSNIe->preauth;
             Capabilities->NoPairwise = pRSNIe->no_pwise;
             Capabilities->PTKSAReplayCounter = pRSNIe->PTKSA_replay_counter;
             Capabilities->GTKSAReplayCounter = pRSNIe->GTKSA_replay_counter;
             Capabilities->Reserved = pRSNIe->reserved;
-<<<<<<< HEAD
 =======
             Capabilities->PreAuthSupported = (pRSNIe->RSN_Cap[0] >> 0) & 0x1 ; // Bit 0 PreAuthentication
             Capabilities->NoPairwise = (pRSNIe->RSN_Cap[0] >> 1) & 0x1 ; // Bit 1 No Pairwise
@@ -4252,8 +4031,6 @@ tANI_BOOLEAN csrGetRSNInformation( tHalHandle hHal, tCsrAuthList *pAuthType, eCs
 #endif
             Capabilities->Reserved = pRSNIe->RSN_Cap[1]  & 0xff ; // remaining reserved
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         }
     }
     return( fAcceptableCyphers );
@@ -4285,7 +4062,6 @@ tANI_BOOLEAN csrLookupPMKID( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U8 *p
         return FALSE;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
    /* to force the AP initiate fresh 802.1x authentication after re-association should not 
@@ -4299,22 +4075,15 @@ tANI_BOOLEAN csrLookupPMKID( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U8 *p
     }
     
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     do
     {
         for( Index=0; Index < pSession->NumPmkidCache; Index++ )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGW, "match PMKID %02X-%02X-%02X-%02X-%02X-%02X to \n",
 =======
             smsLog(pMac, LOGW, "match PMKID %02X-%02X-%02X-%02X-%02X-%02X to ",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGW, "match PMKID %02X-%02X-%02X-%02X-%02X-%02X to \n",
->>>>>>> 657b0e9... prima update
                 pBSSId[0], pBSSId[1], pBSSId[2], pBSSId[3], pBSSId[4], pBSSId[5]);
             if( palEqualMemory( pMac->hHdd, pBSSId, pSession->PmkidCacheInfo[Index].BSSID, sizeof(tCsrBssid) ) )
             {
@@ -4332,14 +4101,10 @@ tANI_BOOLEAN csrLookupPMKID( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U8 *p
     }
     while( 0 );
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOGW, "csrLookupPMKID called return match = %d pMac->roam.NumPmkidCache = %d", 
 =======
     smsLog(pMac, LOGW, "csrLookupPMKID called return match = %d pMac->roam.NumPmkidCache = %d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOGW, "csrLookupPMKID called return match = %d pMac->roam.NumPmkidCache = %d", 
->>>>>>> 657b0e9... prima update
         fRC, pSession->NumPmkidCache);
 
     return fRC;
@@ -4360,7 +4125,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
     tCsrRSNPMKIe        *pPMK;
     tANI_U8 PMKId[CSR_RSN_PMKID_SIZE];
 <<<<<<< HEAD
-<<<<<<< HEAD
     tDot11fBeaconIEs *pIesLocal = pIes;
 
     smsLog(pMac, LOGW, "%s called...", __FUNCTION__);
@@ -4372,11 +4136,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
 
     smsLog(pMac, LOGW, "%s called...", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tDot11fBeaconIEs *pIesLocal = pIes;
-
-    smsLog(pMac, LOGW, "%s called...", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     do
     {
@@ -4413,7 +4172,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
         // just putting back APs capabilities
         // For one, we shouldn't EVER be sending out "pre-auth supported".  It is an AP only capability
 <<<<<<< HEAD
-<<<<<<< HEAD
         RSNCapabilities.PreAuthSupported = 0;
 =======
         // For another, we should use the Management Frame Protection values given by the supplicant
@@ -4423,9 +4181,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
         RSNCapabilities.MFPCapable = pProfile->MFPCapable;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        RSNCapabilities.PreAuthSupported = 0;
->>>>>>> 657b0e9... prima update
         *(tANI_U16 *)( &pAuthSuite->AuthOui[ 1 ] ) = *((tANI_U16 *)(&RSNCapabilities));
 
         pPMK = (tCsrRSNPMKIe *)( ((tANI_U8 *)(&pAuthSuite->AuthOui[ 1 ])) + sizeof(tANI_U16) );
@@ -4442,7 +4197,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
         if ( pProfile->MFPEnabled )
@@ -4454,19 +4208,14 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         // Add in the fixed fields plus 1 Unicast cypher, less the IE Header length
         // Add in the size of the Auth suite (count plus a single OUI)
         // Add in the RSN caps field.
         // Add PMKID count and PMKID (if any)
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
         // Add group management cipher suite
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         pRSNIe->IeHeader.Length = (tANI_U8) (sizeof( *pRSNIe ) - sizeof ( pRSNIe->IeHeader ) +
                                   sizeof( *pAuthSuite ) +
                                   sizeof( tCsrRSNCapabilities ));
@@ -4475,7 +4224,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
             pRSNIe->IeHeader.Length += (tANI_U8)(sizeof( tANI_U16 ) +
                                         (pPMK->cPMKIDs * CSR_RSN_PMKID_SIZE));
         }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
@@ -4488,8 +4236,6 @@ tANI_U8 csrConstructRSNIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile 
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         // return the size of the IE header (total) constructed...
         cbRSNIe = pRSNIe->IeHeader.Length + sizeof( pRSNIe->IeHeader );
 
@@ -4646,14 +4392,10 @@ tANI_BOOLEAN csrLookupBKID( tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U8 *pB
         for( Index=0; Index < pSession->NumBkidCache; Index++ )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGW, "match BKID %02X-%02X-%02X-%02X-%02X-%02X to \n",
 =======
             smsLog(pMac, LOGW, "match BKID %02X-%02X-%02X-%02X-%02X-%02X to ",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGW, "match BKID %02X-%02X-%02X-%02X-%02X-%02X to \n",
->>>>>>> 657b0e9... prima update
                 pBSSId[0], pBSSId[1], pBSSId[2], pBSSId[3], pBSSId[4], pBSSId[5]);
             if( palEqualMemory( pMac->hHdd, pBSSId, pSession->BkidCacheInfo[Index].BSSID, sizeof(tCsrBssid) ) )
             {
@@ -5103,14 +4845,10 @@ tANI_U8 csrRetrieveWpaIe( tHalHandle hHal, tCsrRoamProfile *pProfile, tSirBssDes
             else
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog(pMac, LOGW, "  csrRetrieveWpaIe detect invalid WPA IE length (%d) \n", pProfile->nWPAReqIELength);
 =======
                 smsLog(pMac, LOGW, "  csrRetrieveWpaIe detect invalid WPA IE length (%d) ", pProfile->nWPAReqIELength);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGW, "  csrRetrieveWpaIe detect invalid WPA IE length (%d) \n", pProfile->nWPAReqIELength);
->>>>>>> 657b0e9... prima update
             }
         }
         else
@@ -5136,14 +4874,10 @@ tANI_U8 csrRetrieveRsnIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile *
         if ( !csrIsProfileRSN( pProfile ) ) break;
 #ifdef FEATURE_WLAN_LFR
 <<<<<<< HEAD
-<<<<<<< HEAD
         if (csrRoamIsFastRoamEnabled(pMac))
 =======
         if (csrRoamIsFastRoamEnabled(pMac, sessionId))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (csrRoamIsFastRoamEnabled(pMac))
->>>>>>> 657b0e9... prima update
         {
             // If "Legacy Fast Roaming" is enabled ALWAYS rebuild the RSN IE from 
             // scratch. So it contains the current PMK-IDs
@@ -5162,14 +4896,10 @@ tANI_U8 csrRetrieveRsnIe( tHalHandle hHal, tANI_U32 sessionId, tCsrRoamProfile *
             else
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog(pMac, LOGW, "  csrRetrieveRsnIe detect invalid RSN IE length (%d) \n", pProfile->nRSNReqIELength);
 =======
                 smsLog(pMac, LOGW, "  csrRetrieveRsnIe detect invalid RSN IE length (%d) ", pProfile->nRSNReqIELength);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGW, "  csrRetrieveRsnIe detect invalid RSN IE length (%d) \n", pProfile->nRSNReqIELength);
->>>>>>> 657b0e9... prima update
             }
         }
         else
@@ -5205,14 +4935,10 @@ tANI_U8 csrRetrieveWapiIe( tHalHandle hHal, tANI_U32 sessionId,
             else
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog(pMac, LOGW, "  csrRetrieveWapiIe detect invalid WAPI IE length (%d) \n", pProfile->nWAPIReqIELength);
 =======
                 smsLog(pMac, LOGW, "  csrRetrieveWapiIe detect invalid WAPI IE length (%d) ", pProfile->nWAPIReqIELength);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGW, "  csrRetrieveWapiIe detect invalid WAPI IE length (%d) \n", pProfile->nWAPIReqIELength);
->>>>>>> 657b0e9... prima update
             }
         }
         else
@@ -5343,12 +5069,9 @@ tAniEdType csrTranslateEncryptTypeToEdType( eCsrEncryptionType EncryptType )
         case eCSR_ENCRYPT_TYPE_WPI:
             edType = eSIR_ED_WPI;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
             break ;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 #ifdef WLAN_FEATURE_11W
         //11w BIP
@@ -6488,18 +6211,12 @@ void csrReleaseProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pProfile)
             pProfile->pAddIEAssoc = NULL;
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
         {
             palFreeMemory(pMac->hHdd, pProfile->pAddIEAssoc);
             pProfile->pAddIEAssoc = NULL;
         }
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
         if(pProfile->ChannelInfo.ChannelList)
         {
@@ -6508,13 +6225,9 @@ void csrReleaseProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pProfile)
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
         palZeroMemory(pMac->hHdd, pProfile, sizeof(tCsrRoamProfile));
     }
 }
@@ -6661,22 +6374,16 @@ tSirBssType csrTranslateBsstypeToMacType(eCsrRoamBssType csrtype)
         ret = eSIR_BTAMP_STA_MODE;
         break;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
     case eCSR_BSS_TYPE_INFRA_AP:
         ret = eSIR_INFRA_AP_MODE;
         break;
 #endif
-<<<<<<< HEAD
 =======
     case eCSR_BSS_TYPE_INFRA_AP:
         ret = eSIR_INFRA_AP_MODE;
         break;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     case eCSR_BSS_TYPE_ANY:
     default:
         ret = eSIR_AUTO_MODE;
@@ -6691,7 +6398,6 @@ tSirBssType csrTranslateBsstypeToMacType(eCsrRoamBssType csrtype)
 //CSR never sets WNI_CFG_DOT11_MODE_ALL to the CFG
 //So PE should not see WNI_CFG_DOT11_MODE_ALL when it gets the CFG value
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(tCsrRoamProfile *pProfile, eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary)
 #else
@@ -6700,13 +6406,6 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
 =======
 eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(tCsrRoamProfile *pProfile, eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(tCsrRoamProfile *pProfile, eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary)
-#else
-eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary)
-#endif
->>>>>>> 657b0e9... prima update
 {
     tANI_U32 cfgDot11Mode = eCSR_CFG_DOT11_MODE_ABG;
 
@@ -6723,7 +6422,6 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
     case eCSR_DOT11_MODE_11g:
     case eCSR_DOT11_MODE_11g_ONLY:
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         if(pProfile && (CSR_IS_INFRA_AP(pProfile)) && (phyMode == eCSR_DOT11_MODE_11g_ONLY))
             cfgDot11Mode = eCSR_CFG_DOT11_MODE_11G_ONLY;
@@ -6734,13 +6432,6 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
             cfgDot11Mode = eCSR_CFG_DOT11_MODE_11G_ONLY;
         else
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-        if(pProfile && (CSR_IS_INFRA_AP(pProfile)) && (phyMode == eCSR_DOT11_MODE_11g_ONLY))
-            cfgDot11Mode = eCSR_CFG_DOT11_MODE_11G_ONLY;
-        else
-#endif
->>>>>>> 657b0e9... prima update
         cfgDot11Mode = eCSR_CFG_DOT11_MODE_11G;
         break;
     case eCSR_DOT11_MODE_11n:
@@ -6755,22 +6446,16 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
         break;
     case eCSR_DOT11_MODE_11n_ONLY:
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
        if(pProfile && CSR_IS_INFRA_AP(pProfile))
            cfgDot11Mode = eCSR_CFG_DOT11_MODE_11N_ONLY;
        else
 #endif
-<<<<<<< HEAD
 =======
        if(pProfile && CSR_IS_INFRA_AP(pProfile))
            cfgDot11Mode = eCSR_CFG_DOT11_MODE_11N_ONLY;
        else
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
        cfgDot11Mode = eCSR_CFG_DOT11_MODE_11N;
        break;
     case eCSR_DOT11_MODE_TAURUS:
@@ -6786,9 +6471,6 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
 #ifdef WLAN_FEATURE_11AC
     case eCSR_DOT11_MODE_11ac:
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 	if (!WDA_getFwWlanFeatCaps(DOT11AC))
 	{
 		cfgDot11Mode = eCSR_CFG_DOT11_MODE_11N;
@@ -6797,7 +6479,6 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
 	{
 		cfgDot11Mode = eCSR_CFG_DOT11_MODE_11AC;
 	}
-<<<<<<< HEAD
         break;
     case eCSR_DOT11_MODE_11ac_ONLY:
         cfgDot11Mode = eCSR_CFG_DOT11_MODE_11AC_ONLY;
@@ -6821,11 +6502,6 @@ eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOL
             cfgDot11Mode = eCSR_CFG_DOT11_MODE_11N;
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        break;
-    case eCSR_DOT11_MODE_11ac_ONLY:
-        cfgDot11Mode = eCSR_CFG_DOT11_MODE_11AC_ONLY;
->>>>>>> 657b0e9... prima update
         break;
 #endif
     default:
@@ -6896,14 +6572,10 @@ eHalStatus csrGetRegulatoryDomainForCountry(tpAniSirGlobal pMac, tANI_U8 *pCount
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGW, FL("  doesn't match country %c%c\n"), pCountry[0], pCountry[1]);
 =======
             smsLog(pMac, LOGW, FL("  doesn't match country %c%c"), pCountry[0], pCountry[1]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGW, FL("  doesn't match country %c%c\n"), pCountry[0], pCountry[1]);
->>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_INVALID_PARAMETER;
         }
     }
@@ -6932,14 +6604,10 @@ tANI_BOOLEAN csrMatchCountryCode( tpAniSirGlobal pMac, tANI_U8 *pCountry, tDot11
         if( !pIes )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGE, FL("  No IEs\n"));
 =======
             smsLog(pMac, LOGE, FL("  No IEs"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, FL("  No IEs\n"));
->>>>>>> 657b0e9... prima update
             break;
         }
         if( pMac->roam.configParam.fEnforceDefaultDomain ||
@@ -6952,7 +6620,6 @@ tANI_BOOLEAN csrMatchCountryCode( tpAniSirGlobal pMac, tANI_U8 *pCountry, tDot11
                 if( !HAL_STATUS_SUCCESS( status ) )
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                     fRet = eANI_BOOLEAN_FALSE;
                     break;
 =======
@@ -6963,10 +6630,6 @@ tANI_BOOLEAN csrMatchCountryCode( tpAniSirGlobal pMac, tANI_U8 *pCountry, tDot11
                            break;
                      }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    fRet = eANI_BOOLEAN_FALSE;
-                    break;
->>>>>>> 657b0e9... prima update
                 }
             }
             //check whether it is needed to enforce to the default regulatory domain first
@@ -7246,14 +6909,10 @@ eHalStatus csrScanGetBaseChannels( tpAniSirGlobal pMac, tCsrChannelInfo * pChann
        if( !HAL_STATUS_SUCCESS( status ) )
        {
 <<<<<<< HEAD
-<<<<<<< HEAD
           smsLog( pMac, LOGE, FL("csrScanGetBaseChannels: fail to allocate memory\n") );
 =======
           smsLog( pMac, LOGE, FL("csrScanGetBaseChannels: fail to allocate memory") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          smsLog( pMac, LOGE, FL("csrScanGetBaseChannels: fail to allocate memory\n") );
->>>>>>> 657b0e9... prima update
           break;
        }
        status = palCopyMemory( pMac->hHdd, pChannelInfo->ChannelList, pMac->scan.baseChannels.channelList, 
@@ -7274,13 +6933,9 @@ tANI_BOOLEAN csrIsSetKeyAllowed(tpAniSirGlobal pMac, tANI_U32 sessionId)
 {
     tANI_BOOLEAN fRet = eANI_BOOLEAN_TRUE;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession;
 
     pSession =CSR_GET_SESSION(pMac, sessionId);
@@ -7293,14 +6948,10 @@ tANI_BOOLEAN csrIsSetKeyAllowed(tpAniSirGlobal pMac, tANI_U32 sessionId)
     * state is.
     */
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog( pMac, LOG2, FL(" is not what it intends to. Must be revisit or removed\n") );
 =======
     smsLog( pMac, LOG2, FL(" is not what it intends to. Must be revisit or removed") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog( pMac, LOG2, FL(" is not what it intends to. Must be revisit or removed\n") );
->>>>>>> 657b0e9... prima update
     if( (NULL == pSession) || 
         ( csrIsConnStateDisconnected( pMac, sessionId ) && 
         (pSession->pCurRoamProfile != NULL) &&
@@ -7310,17 +6961,11 @@ tANI_BOOLEAN csrIsSetKeyAllowed(tpAniSirGlobal pMac, tANI_U32 sessionId)
         fRet = eANI_BOOLEAN_FALSE;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #else
     fRet = !( csrIsConnStateDisconnected( pMac, sessionId ) );
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#else
-    fRet = !( csrIsConnStateDisconnected( pMac, sessionId ) );
-#endif
->>>>>>> 657b0e9... prima update
 
     return ( fRet );
 }
@@ -7348,14 +6993,11 @@ tANI_U16 sme_ChnToFreq(tANI_U8 chanNum)
  * disconnect and auto connect back and enter BMPS this giving the same effect as resuming BMPS
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  
 //Remove this code once SLM_Sessionization is supported 
 //BMPS_WORKAROUND_NOT_NEEDED
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 void csrDisconnectAllActiveSessions(tpAniSirGlobal pMac)
 {
     tANI_U8 i;
@@ -7372,7 +7014,6 @@ void csrDisconnectAllActiveSessions(tpAniSirGlobal pMac)
 
 #ifdef FEATURE_WLAN_LFR
 <<<<<<< HEAD
-<<<<<<< HEAD
 tANI_BOOLEAN csrIsChannelPresentInList( 
         tANI_U8 *pChannelList,
         int  numChannels,
@@ -7383,18 +7024,11 @@ tANI_BOOLEAN csrIsChannelPresentInList(
         int  numChannels,
         tANI_U8   channel
 >>>>>>> d97af3b... add prima wlan driver
-=======
-tANI_BOOLEAN csrIsChannelPresentInList( 
-        tANI_U8 *pChannelList,
-        int  numChannels,
-        tANI_U8   channel 
->>>>>>> 657b0e9... prima update
         )
 {
     int i = 0;
 
     // Check for NULL pointer
-<<<<<<< HEAD
 <<<<<<< HEAD
     if (!pChannelList) return FALSE;
 =======
@@ -7403,29 +7037,21 @@ tANI_BOOLEAN csrIsChannelPresentInList(
        return FALSE;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (!pChannelList) return FALSE;
->>>>>>> 657b0e9... prima update
 
     // Look for the channel in the list
     for (i = 0; i < numChannels; i++)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         if (pChannelList[i] == channel) 
 =======
         if (pChannelList[i] == channel)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (pChannelList[i] == channel) 
->>>>>>> 657b0e9... prima update
             return TRUE;
     }
 
     return FALSE;
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 VOS_STATUS csrAddToChannelListFront( 
         tANI_U8 *pChannelList,
@@ -7437,12 +7063,6 @@ VOS_STATUS csrAddToChannelListFront(
         int  numChannels,
         tANI_U8   channel
 >>>>>>> d97af3b... add prima wlan driver
-=======
-VOS_STATUS csrAddToChannelListFront( 
-        tANI_U8 *pChannelList,
-        int  numChannels,
-        tANI_U8   channel 
->>>>>>> 657b0e9... prima update
         )
 {
     int i = 0;
@@ -7453,7 +7073,6 @@ VOS_STATUS csrAddToChannelListFront(
     // Make room for the addition.  (Start moving from the back.)
     for (i = numChannels; i > 0; i--)
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
         pChannelList[i] = pChannelList[i-1]; 
     }
@@ -7467,22 +7086,11 @@ VOS_STATUS csrAddToChannelListFront(
     // Now add the NEW channel...at the front
     pChannelList[0] = channel;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pChannelList[i] = pChannelList[i-1]; 
-    }
-
-    // Now add the NEW channel...at the front
-    pChannelList[0] = channel; 
->>>>>>> 657b0e9... prima update
 
     return eHAL_STATUS_SUCCESS;
 }
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update

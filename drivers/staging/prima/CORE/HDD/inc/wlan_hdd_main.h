@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,18 +62,12 @@
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
 #include <net/cfg80211.h>
 #endif
 =======
 #include <net/cfg80211.h>
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef CONFIG_CFG80211
-#include <net/cfg80211.h>
-#endif
->>>>>>> 657b0e9... prima update
 #include <vos_list.h>
 #include <vos_types.h>
 #include "sirMacProtDef.h"
@@ -87,7 +78,6 @@
 #include <wlan_hdd_cfg.h>
 #include <linux/spinlock.h>
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
 #include <linux/wakelock.h>
 #endif
@@ -95,19 +85,12 @@
 #include <wlan_hdd_ftm.h>
 =======
 #ifdef WLAN_OPEN_SOURCE
-=======
-#ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
->>>>>>> 657b0e9... prima update
 #include <linux/wakelock.h>
 #endif
-#ifdef ANI_MANF_DIAG
 #include <wlan_hdd_ftm.h>
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
 #include "wlan_hdd_tdls.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 /*--------------------------------------------------------------------------- 
   Preprocessor definitions and constants
@@ -136,7 +119,6 @@
 /** Hdd Default MTU */
 #define HDD_DEFAULT_MTU         (1500)
 <<<<<<< HEAD
-<<<<<<< HEAD
 /**event flags registered net device*/
 #define NET_DEVICE_REGISTERED  1<<0
 #define SME_SESSION_OPENED     1<<1
@@ -155,34 +137,21 @@
 #define DEVICE_IFACE_OPENED    (5)
 #define TDLS_INIT_DONE         (6)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/**event flags registered net device*/
-#define NET_DEVICE_REGISTERED  1<<0
-#define SME_SESSION_OPENED     1<<1
-#define INIT_TX_RX_SUCCESS     1<<2
-#define WMM_INIT_DONE          1<<3
-#define SOFTAP_BSS_STARTED     1<<4
-#define DEVICE_IFACE_OPENED    1<<5
->>>>>>> 657b0e9... prima update
 
 /** Maximum time(ms)to wait for disconnect to complete **/
 #define WLAN_WAIT_TIME_DISCONNECT  500
 #define WLAN_WAIT_TIME_STATS       800
 #define WLAN_WAIT_TIME_POWER       800
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define WLAN_WAIT_TIME_COUNTRY     1000
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /* Amount of time to wait for sme close session callback.
    This value should be larger than the timeout used by WDI to wait for
    a response from WCNSS */
 #define WLAN_WAIT_TIME_SESSIONOPENCLOSE  15000
 #define WLAN_WAIT_TIME_ABORTSCAN  2000
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /** Maximum time(ms) to wait for tdls add sta to complete **/
@@ -204,8 +173,6 @@
 #define LINUX_REG_WAIT_TIME 300
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /* Scan Req Timeout */
 #define WLAN_WAIT_TIME_SCAN_REQ 100
 
@@ -219,7 +186,6 @@
 #define MAX_GENIE_LEN 255
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(QC_WLAN_CHIPSET_PRIMA)
 #define WLAN_CHIP_VERSION   "WCNSS"
 #elif defined(ANI_CHIPSET_LIBRA)
@@ -234,27 +200,12 @@
 #define ENTER() VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "Enter:%s", __FUNCTION__)
 #define EXIT()  VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "Exit:%s", __FUNCTION__)
 =======
-=======
-#if defined(QC_WLAN_CHIPSET_PRIMA)
->>>>>>> 657b0e9... prima update
 #define WLAN_CHIP_VERSION   "WCNSS"
-#elif defined(ANI_CHIPSET_LIBRA)
-#define WLAN_CHIP_VERSION   "WCN1312"
-#elif defined(ANI_CHIPSET_VOLANS)
-#define WLAN_CHIP_VERSION   "WCN1314"
-#else
-#define WLAN_CHIP_VERSION   "UNKNOWN"
-#endif
 
 #define hddLog(level, args...) VOS_TRACE( VOS_MODULE_ID_HDD, level, ## args)
-<<<<<<< HEAD
 #define ENTER() VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "Enter:%s", __func__)
 #define EXIT()  VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "Exit:%s", __func__)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define ENTER() VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "Enter:%s", __FUNCTION__)
-#define EXIT()  VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "Exit:%s", __FUNCTION__)
->>>>>>> 657b0e9... prima update
 
 #define WLAN_HDD_GET_PRIV_PTR(__dev__) (hdd_adapter_t*)(netdev_priv((__dev__)))
 
@@ -266,7 +217,6 @@
 #define WLAN_HDD_PUBLIC_ACTION_FRAME_OFFSET 24
 #define WLAN_HDD_PUBLIC_ACTION_FRAME_TYPE_OFFSET 30
 #define WLAN_HDD_P2P_SOCIAL_CHANNELS 3
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
@@ -282,21 +232,40 @@
 #define WLAN_HDD_CHANNEL_IN_UNII_1_BAND(center_freq) \
 (((center_freq) == 5180 ) || ((center_freq) == 5200) \
 || ((center_freq) == 5220) || ((center_freq) == 5240))
-=======
->>>>>>> 657b0e9... prima update
 
-#ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
-#define HDD_WAKE_LOCK_DURATION 50
+#ifdef WLAN_FEATURE_11W
+#define WLAN_HDD_SA_QUERY_ACTION_FRAME 8
 #endif
 
-<<<<<<< HEAD
+#define WLAN_HDD_PUBLIC_ACTION_TDLS_DISC_RESP 14
+#define WLAN_HDD_TDLS_ACTION_FRAME 12
+#ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
+#define HDD_WAKE_LOCK_DURATION 50 //in msecs
+#endif
+
+#define HDD_SAP_WAKE_LOCK_DURATION 10000 //in msecs
+
+#define HDD_MOD_EXIT_SSR_MAX_RETRIES 30
+
+/* Maximum number of interfaces allowed(STA, P2P Device, P2P Interface) */
+#define WLAN_MAX_INTERFACES 3
+
+#ifdef WLAN_FEATURE_GTK_OFFLOAD
+#define GTK_OFFLOAD_ENABLE  0
+#define GTK_OFFLOAD_DISABLE 1
+#endif
+
+#ifdef FEATURE_WLAN_SCAN_PNO
+#define HDD_PNO_SCAN_TIMERS_SET_ONE      1
+/* value should not be greater than PNO_MAX_SCAN_TIMERS */
+#define HDD_PNO_SCAN_TIMERS_SET_MULTIPLE 6
+#endif
+
 #define HDD_MAC_ADDR_LEN    6
 #define HDD_ROAM_SCAN_CHANNEL_SWITCH_TIME 3
 typedef v_U8_t tWlanHddMacAddr[HDD_MAC_ADDR_LEN];
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef struct hdd_tx_rx_stats_s
 {
    // start_xmit stats
@@ -330,13 +299,10 @@ typedef struct hdd_tx_rx_stats_s
    __u32    rxDelivered;
    __u32    rxRefused;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    __u32    pkt_tx_count; //TX pkt Counter used for dynamic splitscan
    __u32    pkt_rx_count; //RX pkt Counter used for dynamic splitscan
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } hdd_tx_rx_stats_t;
 
 typedef struct hdd_chip_reset_stats_s
@@ -350,7 +316,6 @@ typedef struct hdd_chip_reset_stats_s
 } hdd_chip_reset_stats_t;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
 typedef struct hdd_pmf_stats_s
@@ -361,8 +326,6 @@ typedef struct hdd_pmf_stats_s
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef struct hdd_stats_s
 {
    tCsrSummaryStatsInfo       summary_stat;
@@ -374,14 +337,11 @@ typedef struct hdd_stats_s
    hdd_tx_rx_stats_t          hddTxRxStats;
    hdd_chip_reset_stats_t     hddChipResetStats;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
    hdd_pmf_stats_t            hddPmfStats;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } hdd_stats_t;
 
 typedef enum
@@ -409,7 +369,6 @@ typedef struct roaming_info_s
    HDD_ROAM_STATE roamingState;
    vos_event_t roamingEvent;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
    tWlanHddMacAddr bssid;
@@ -418,8 +377,6 @@ typedef struct roaming_info_s
    eRoamCmdStatus roamStatus;
    v_BOOL_t deferKeyComplete;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    
 } roaming_info_t;
 
@@ -433,15 +390,10 @@ typedef struct roaming_info_s
 #define MAX_NUM_UNI_SUITES    16
 #define MAX_NUM_BKIDS         16
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define HDD_PAIRWISE_WAPI_KEY 0
 #define HDD_GROUP_WAPI_KEY    1
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define HDD_PAIRWISE_WAPI_KEY 0
-#define HDD_GROUP_WAPI_KEY    1
->>>>>>> 657b0e9... prima update
 
 /** WAPI AUTH mode definition */
 enum _WAPIAuthMode
@@ -450,14 +402,10 @@ enum _WAPIAuthMode
    WAPI_AUTH_MODE_PSK = 1,
    WAPI_AUTH_MODE_CERT
 <<<<<<< HEAD
-<<<<<<< HEAD
 } __attribute__((packed));
 =======
 } __packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} __attribute__((packed));
->>>>>>> 657b0e9... prima update
 typedef enum _WAPIAuthMode WAPIAuthMode;
 
 /** WAPI Work mode structure definition */
@@ -468,14 +416,10 @@ struct _WAPI_FUNCTION_MODE
 {
    unsigned char wapiMode;
 <<<<<<< HEAD
-<<<<<<< HEAD
 }__attribute__((packed));
 =======
 }__packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}__attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 typedef struct _WAPI_FUNCTION_MODE WAPI_FUNCTION_MODE;
 
@@ -499,14 +443,10 @@ struct _WAPI_AssocInfo
    v_U16_t     bkidCount;
    WAPI_BKID   bkidList[MAX_NUM_BKIDS];
 <<<<<<< HEAD
-<<<<<<< HEAD
 } __attribute__((packed));
 =======
 } __packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} __attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 typedef struct _WAPI_AssocInfo WAPI_AssocInfo;
 typedef struct _WAPI_AssocInfo *pWAPI_IEAssocInfo;
@@ -517,14 +457,10 @@ enum _WAPIKeyType
    PAIRWISE_KEY, //0
    GROUP_KEY     //1
 <<<<<<< HEAD
-<<<<<<< HEAD
 }__attribute__((packed));
 =======
 }__packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}__attribute__((packed));
->>>>>>> 657b0e9... prima update
 typedef enum _WAPIKeyType WAPIKeyType;
 
 /** WAPI KEY Direction definition */
@@ -535,14 +471,10 @@ enum _KEY_DIRECTION
    Tx,
    Rx_Tx
 <<<<<<< HEAD
-<<<<<<< HEAD
 }__attribute__((packed));
 =======
 }__packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}__attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 typedef enum _KEY_DIRECTION WAPI_KEY_DIRECTION;
 
@@ -559,14 +491,10 @@ struct WLAN_WAPI_KEY
    v_U8_t          wpick[MAX_WPI_KEY_LENGTH];
    v_U8_t          pn[MAX_NUM_PN];        /*reserved for future use*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 }__attribute__((packed));
 =======
 }__packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}__attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 typedef struct WLAN_WAPI_KEY WLAN_WAPI_KEY;
 typedef struct WLAN_WAPI_KEY *pWLAN_WAPI_KEY;
@@ -583,14 +511,10 @@ struct _WLAN_BKID_LIST
    v_U32_t          BKIDCount;
    WAPI_BKID        BKID[1];
 <<<<<<< HEAD
-<<<<<<< HEAD
 }__attribute__((packed));
 =======
 }__packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}__attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 typedef struct _WLAN_BKID_LIST WLAN_BKID_LIST;
 typedef struct _WLAN_BKID_LIST *pWLAN_BKID_LIST;
@@ -604,7 +528,6 @@ struct hdd_wapi_info_s
    v_MACADDR_t cachedMacAddr;
    v_UCHAR_t   wapiAuthMode;
 <<<<<<< HEAD
-<<<<<<< HEAD
 }__attribute__((packed));
 typedef struct hdd_wapi_info_s hdd_wapi_info_t;
 #endif /* FEATURE_WLAN_WAPI */
@@ -616,26 +539,15 @@ typedef struct hdd_wapi_info_s hdd_wapi_info_t;
 #endif /* FEATURE_WLAN_WAPI */
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}__attribute__((packed));
-typedef struct hdd_wapi_info_s hdd_wapi_info_t;
-#endif /* FEATURE_WLAN_WAPI */
-
-#ifdef CONFIG_CFG80211
->>>>>>> 657b0e9... prima update
 typedef struct beacon_data_s {
     u8 *head, *tail;
     int head_len, tail_len;
     int dtim_period;
 } beacon_data_t;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 typedef enum device_mode
 {  /* MAINTAIN 1 - 1 CORRESPONDENCE WITH tVOS_CON_MODE*/
@@ -644,21 +556,15 @@ typedef enum device_mode
    WLAN_HDD_P2P_CLIENT,
    WLAN_HDD_P2P_GO,
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
    WLAN_HDD_MONITOR
 #ifdef ANI_MANF_DIAG
    ,WLAN_HDD_FTM,
 #endif
-<<<<<<< HEAD
 =======
    WLAN_HDD_MONITOR,
    WLAN_HDD_FTM,
    WLAN_HDD_IBSS,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    WLAN_HDD_P2P_DEVICE
 }device_mode_t;
 
@@ -702,7 +608,6 @@ typedef struct
    v_TIME_t             lastOpenTs;
    struct netdev_queue *blockedQueue;
 <<<<<<< HEAD
-<<<<<<< HEAD
 } hdd_thermal_mitigation_info_t;
 
 #if defined CONFIG_CFG80211
@@ -711,11 +616,6 @@ typedef struct
 } hdd_thermal_mitigation_info_t;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} hdd_thermal_mitigation_info_t;
-
-#if defined CONFIG_CFG80211
->>>>>>> 657b0e9... prima update
 typedef struct hdd_remain_on_chan_ctx
 {
   struct net_device *dev;
@@ -757,7 +657,6 @@ typedef struct hdd_cfg80211_state_s
 }hdd_cfg80211_state_t;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 
@@ -768,15 +667,11 @@ typedef enum{
 }e_hdd_ssr_required;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 struct hdd_station_ctx
 {
   /** Handle to the Wireless Extension State */
    hdd_wext_state_t WextState;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -785,14 +680,11 @@ struct hdd_station_ctx
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    /**Connection information*/
    connection_info_t conn_info;
 
    roaming_info_t roam_info;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
    v_BOOL_t bSendDisconnect;
 
@@ -815,13 +707,6 @@ struct hdd_station_ctx
 
    v_BOOL_t hdd_ReassocScenario;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   v_BOOL_t bSendDisconnect;
-
-#if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
-   int     ft_carrier_on;
-#endif
->>>>>>> 657b0e9... prima update
 };
 
 #define BSS_STOP    0 
@@ -867,13 +752,10 @@ typedef struct {
    v_BOOL_t isQosEnabled;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    /** The station entry for which Deauth is in progress  */
    v_BOOL_t isDeauthInProgress;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } hdd_station_info_t;
 
 struct hdd_ap_ctx_s
@@ -894,7 +776,6 @@ struct hdd_ap_ctx_s
 
    v_U8_t uPrivacy;  // The privacy bits of configuration
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 #ifdef WLAN_SOFTAP_FEATURE   
    tSirWPSPBCProbeReq WPSPBCProbeReq;
@@ -904,20 +785,11 @@ struct hdd_ap_ctx_s
    
 =======
 
-=======
-   
-#ifdef WLAN_SOFTAP_FEATURE   
->>>>>>> 657b0e9... prima update
    tSirWPSPBCProbeReq WPSPBCProbeReq;
-   
+
    tsap_Config_t sapConfig;
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-   
->>>>>>> 657b0e9... prima update
    struct semaphore semWpsPBCOverlapInd;
    
    v_BOOL_t apDisableIntraBssFwd;
@@ -931,20 +803,15 @@ struct hdd_ap_ctx_s
    eCsrEncryptionType ucEncryptType;
    
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211   
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef CONFIG_CFG80211   
->>>>>>> 657b0e9... prima update
    //This will point to group key data, if it is received before start bss. 
    tCsrRoamSetKey groupKey; 
    // This will have WEP key data, if it is received before start bss
    tCsrRoamSetKey wepKey[CSR_MAX_NUM_KEY];
 
    beacon_data_t *beacon;
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 };
@@ -961,24 +828,14 @@ struct hdd_ap_ctx_s
 };
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-};
-
-#ifdef CONFIG_CFG80211   
->>>>>>> 657b0e9... prima update
 struct hdd_mon_ctx_s
 {
    hdd_adapter_t *pAdapterForTx;
 };
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 typedef struct hdd_scaninfo_s
 {
@@ -992,18 +849,12 @@ typedef struct hdd_scaninfo_s
    v_U32_t waitScanResult;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P
   v_BOOL_t flushP2pScanResults;
 #endif
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    /* Additional IE for scan */
    tSirAddie scanAddIE; 
 
@@ -1014,21 +865,17 @@ typedef struct hdd_scaninfo_s
    struct completion scan_req_completion_event;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    /* completion variable for abortscan */
    struct completion abortscan_event_var;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    vos_event_t scan_finished_event;
 
    hdd_scan_pending_option_e scan_pending_option;
 
 }hdd_scaninfo_t;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #define WLAN_HDD_MAX_MC_ADDR_LIST 10
@@ -1043,8 +890,6 @@ typedef struct multicast_addr_list
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define WLAN_HDD_ADAPTER_MAGIC 0x574c414e //ASCII "WLAN"
 struct hdd_adapter_s
 {
@@ -1057,7 +902,6 @@ struct hdd_adapter_s
     
    //TODO Move this to sta Ctx
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
    struct wireless_dev wdev ;
    struct cfg80211_scan_request *request ; 
@@ -1065,18 +909,10 @@ struct hdd_adapter_s
 
 #ifdef WLAN_FEATURE_P2P
 =======
-=======
-#ifdef CONFIG_CFG80211
->>>>>>> 657b0e9... prima update
    struct wireless_dev wdev ;
    struct cfg80211_scan_request *request ; 
-#endif
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
    /** ops checks if Opportunistic Power Save is Enable or Not
     * ctw stores ctWindow value once we receive Opps command from 
     * wpa_supplicant then using ctWindow value we need to Enable 
@@ -1085,13 +921,9 @@ struct hdd_adapter_s
     tANI_U8  ops;
     tANI_U32 ctw;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
    /** Current MAC Address for the adapter  */       
    v_MACADDR_t macAddressCurrent;    
@@ -1125,18 +957,12 @@ struct hdd_adapter_s
    struct completion linkup_event_var;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
    /* completion variable for abortscan */
    struct completion abortscan_event_var;
 #ifdef CONFIG_CFG80211
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    /* completion variable for cancel remain on channel Event */
    struct completion cancel_rem_on_chan_var;
 
@@ -1148,7 +974,6 @@ struct hdd_adapter_s
    struct completion tx_action_cnf_event;
    /* Completion variable for remain on channel ready */
    struct completion rem_on_chan_ready_event;
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -1166,20 +991,14 @@ struct hdd_adapter_s
    struct completion tdls_mgmt_comp;
    struct completion tdls_link_establish_req_comp;
    eHalStatus tdlsAddStaStatus;
-=======
->>>>>>> 657b0e9... prima update
 #endif
-
    /* Track whether the linkup handling is needed  */
    v_BOOL_t isLinkUpSvcNeeded;
 
-<<<<<<< HEAD
    /* Mgmt Frames TX completion status code */
    tANI_U32 mgmtTxCompletionStatus;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*************************************************************
  *  Tx Queues
  */
@@ -1214,7 +1033,6 @@ struct hdd_adapter_s
    
    v_S7_t rssi;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
    struct work_struct  monTxWorkQueue;
    struct sk_buff *skb_to_tx;
@@ -1226,18 +1044,11 @@ struct hdd_adapter_s
    struct work_struct  monTxWorkQueue;
    struct sk_buff *skb_to_tx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef CONFIG_CFG80211
-   struct work_struct  monTxWorkQueue;
-   struct sk_buff *skb_to_tx;
-#endif
->>>>>>> 657b0e9... prima update
 
    union {
       hdd_station_ctx_t station;
       hdd_ap_ctx_t  ap;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211   
       hdd_mon_ctx_t monitor;
 #endif
@@ -1247,29 +1058,19 @@ struct hdd_adapter_s
 #ifdef CONFIG_CFG80211
    hdd_cfg80211_state_t cfg80211State;
 =======
-=======
-#ifdef CONFIG_CFG80211   
->>>>>>> 657b0e9... prima update
       hdd_mon_ctx_t monitor;
-#endif
    }sessionCtx;
 
-   hdd_scaninfo_t scan_info;
-#ifdef CONFIG_CFG80211
    hdd_cfg80211_state_t cfg80211State;
-<<<<<<< HEAD
 
 #ifdef WLAN_FEATURE_PACKET_FILTERING
    t_multicast_add_list mc_addr_list;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 
    //Magic cookie for adapter sanity verification
    v_U32_t magic;
    v_BOOL_t higherDtimTransition;
-<<<<<<< HEAD
 <<<<<<< HEAD
 };
 
@@ -1309,26 +1110,6 @@ typedef struct hdd_dynamic_mcbcfilter_s
         (tdlsCtx_t*)(pAdapter)->sessionCtx.station.pHddTdlsCtx : NULL)
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-};
-
-typedef struct hdd_dynamic_mcbcfilter_s
-{
-    v_BOOL_t     enableCfg;
-    v_U8_t       mcastBcastFilterSetting;
-    v_BOOL_t     enableSuspend;
-    v_U8_t       mcBcFilterSuspend;
-}hdd_dynamic_mcbcfilter_t;
-
-#define WLAN_HDD_GET_STATION_CTX_PTR(pAdapter) &(pAdapter)->sessionCtx.station
-#define WLAN_HDD_GET_AP_CTX_PTR(pAdapter) &(pAdapter)->sessionCtx.ap
-#define WLAN_HDD_GET_WEXT_STATE_PTR(pAdapter)  &(pAdapter)->sessionCtx.station.WextState
-#define WLAN_HDD_GET_CTX(pAdapter) (hdd_context_t*)pAdapter->pHddCtx
-#define WLAN_HDD_GET_HAL_CTX(pAdapter)  ((hdd_context_t*)(pAdapter->pHddCtx))->hHal
-#define WLAN_HDD_GET_HOSTAP_STATE_PTR(pAdapter) &(pAdapter)->sessionCtx.ap.HostapdState
-#define WLAN_HDD_GET_CFG_STATE_PTR(pAdapter)  &(pAdapter)->cfg80211State
-#define WLAN_HDD_MAX_MC_ADDR_LIST 10
->>>>>>> 657b0e9... prima update
 
 typedef struct hdd_adapter_list_node
 {
@@ -1343,7 +1124,6 @@ typedef struct hdd_priv_data_s
    int total_len;
 }hdd_priv_data_t;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 typedef struct multicast_addr_list
@@ -1363,16 +1143,6 @@ typedef struct
    v_TIME_t    lastFrameTs;
 }hdd_traffic_monitor_t;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_PACKET_FILTERING
-typedef struct multicast_addr_list
-{
-   v_U8_t isFilterApplied;
-   v_U8_t mc_cnt;
-   v_U8_t addr[WLAN_HDD_MAX_MC_ADDR_LIST][ETH_ALEN];
-} t_multicast_add_list;
-#endif
->>>>>>> 657b0e9... prima update
 
 /** Adapter stucture definition */
 
@@ -1385,18 +1155,12 @@ struct hdd_context_s
    tHalHandle hHal;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
    struct wiphy *wiphy ;
 #endif
 =======
    struct wiphy *wiphy ;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef CONFIG_CFG80211
-   struct wiphy *wiphy ;
-#endif
->>>>>>> 657b0e9... prima update
    //TODO Remove this from here.
 
    hdd_list_t hddAdapters; //List of adapters
@@ -1421,18 +1185,12 @@ struct hdd_context_s
    /** Config values read from qcom_cfg.ini file */ 
    hdd_config_t *cfg_ini;
 <<<<<<< HEAD
-<<<<<<< HEAD
   #ifdef ANI_MANF_DIAG
    wlan_hdd_ftm_status_t ftm; 
   #endif
 =======
    wlan_hdd_ftm_status_t ftm; 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  #ifdef ANI_MANF_DIAG
-   wlan_hdd_ftm_status_t ftm; 
-  #endif
->>>>>>> 657b0e9... prima update
    /** completion variable for full power callback */
    struct completion full_pwr_comp_var;
    /** completion variable for Request BMPS callback */
@@ -1442,20 +1200,14 @@ struct hdd_context_s
    struct completion standby_comp_var;
    
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    /* Completion  variable to indicate Rx Thread Suspended */
    struct completion rx_sus_event_var;
 #endif // FEATURE_WLAN_INTEGRATED_SOC
-<<<<<<< HEAD
 =======
    /* Completion  variable to indicate Rx Thread Suspended */
    struct completion rx_sus_event_var;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    /* Completion  variable to indicate Tx Thread Suspended */
    struct completion tx_sus_event_var;
@@ -1464,13 +1216,10 @@ struct hdd_context_s
    struct completion mc_sus_event_var;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    /* Completion variable for regulatory hint  */
    struct completion linux_reg_req;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    v_BOOL_t isWlanSuspended;
 
@@ -1479,18 +1228,12 @@ struct hdd_context_s
    v_BOOL_t isMcThreadSuspended;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    v_BOOL_t isRxThreadSuspended;
 #endif
 =======
    v_BOOL_t isRxThreadSuspended;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-   v_BOOL_t isRxThreadSuspended;
-#endif
->>>>>>> 657b0e9... prima update
 
    volatile v_BOOL_t isLogpInProgress;
 
@@ -1518,37 +1261,28 @@ struct hdd_context_s
    /** ptt Process ID*/
    v_SINT_t ptt_pid;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #ifdef WLAN_KD_READY_NOTIFIER
    v_BOOL_t kd_nl_init;
 #endif /* WLAN_KD_READY_NOTIFIER */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
    v_U8_t change_iface;
 
    /** Concurrency Parameters*/
    tVOS_CONCURRENCY_MODE concurrency_mode;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    v_U16_t no_of_sessions[VOS_MAX_NO_OF_MODE];
 =======
    v_U16_t no_of_sessions[VOS_MAX_NO_OF_MODE + 1];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   v_U16_t no_of_sessions[VOS_MAX_NO_OF_MODE];
->>>>>>> 657b0e9... prima update
 
    hdd_chip_reset_stats_t hddChipResetStats;
    /* Number of times riva restarted */
    v_U32_t  hddRivaResetStats;
    
 <<<<<<< HEAD
-<<<<<<< HEAD
    hdd_dynamic_mcbcfilter_t dynamic_mcbc_filter;
    
    /* Can we allow AMP connection right now*/
@@ -1569,32 +1303,21 @@ struct hdd_context_s
    struct wake_lock rx_wake_lock;
 #endif
 =======
-=======
-   hdd_dynamic_mcbcfilter_t dynamic_mcbc_filter;
-   
->>>>>>> 657b0e9... prima update
    /* Can we allow AMP connection right now*/
    v_BOOL_t isAmpAllowed;
    
-#ifdef WLAN_FEATURE_P2P
    /** P2P Device MAC Address for the adapter  */
    v_MACADDR_t p2pDeviceAddress;
-#endif
 
    /* Thermal mitigation information */
    hdd_thermal_mitigation_info_t tmInfo;
-#ifdef WLAN_FEATURE_PACKET_FILTERING
-   t_multicast_add_list mc_addr_list;
-#endif
 
+#ifdef WLAN_OPEN_SOURCE
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
    struct wake_lock rx_wake_lock;
 #endif
-<<<<<<< HEAD
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    /* 
     * Framework initiated driver restarting 
@@ -1607,7 +1330,6 @@ struct hdd_context_s
    atomic_t isRestartInProgress;
    u_int8_t hdd_restart_retries;
    
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    hdd_scaninfo_t scan_info;
@@ -1661,8 +1383,6 @@ struct hdd_context_s
     v_U8_t         drvr_miracast;
     v_U8_t         issplitscan_enabled;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 };
 
 
@@ -1691,15 +1411,11 @@ VOS_STATUS hdd_add_adapter_front( hdd_context_t *pHddCtx,
 
 hdd_adapter_t* hdd_open_adapter( hdd_context_t *pHddCtx, tANI_U8 session_type,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                  char* name, tSirMacAddr macAddr, tANI_U8 rtnl_held );
 =======
                                  const char* name, tSirMacAddr macAddr,
                                  tANI_U8 rtnl_held );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                 char* name, tSirMacAddr macAddr, tANI_U8 rtnl_held );
->>>>>>> 657b0e9... prima update
 VOS_STATUS hdd_close_adapter( hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter, tANI_U8 rtnl_held );
 VOS_STATUS hdd_close_all_adapters( hdd_context_t *pHddCtx );
 VOS_STATUS hdd_stop_all_adapters( hdd_context_t *pHddCtx );
@@ -1707,12 +1423,9 @@ VOS_STATUS hdd_reset_all_adapters( hdd_context_t *pHddCtx );
 VOS_STATUS hdd_start_all_adapters( hdd_context_t *pHddCtx );
 VOS_STATUS hdd_reconnect_all_adapters( hdd_context_t *pHddCtx );
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 void hdd_dump_concurrency_info(hdd_context_t *pHddCtx);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 hdd_adapter_t * hdd_get_adapter_by_name( hdd_context_t *pHddCtx, tANI_U8 *name );
 hdd_adapter_t * hdd_get_adapter_by_macaddr( hdd_context_t *pHddCtx, tSirMacAddr macAddr );
 hdd_adapter_t * hdd_get_mon_adapter( hdd_context_t *pHddCtx );
@@ -1726,7 +1439,6 @@ void wlan_hdd_release_intf_addr(hdd_context_t* pHddCtx, tANI_U8* releaseAddr);
 v_U8_t hdd_get_operating_channel( hdd_context_t *pHddCtx, device_mode_t mode );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 #if defined(WLAN_SOFTAP_FEATURE) || defined(ANI_MANF_DIAG)
 void hdd_set_conparam ( v_UINT_t newParam );
@@ -1741,33 +1453,23 @@ void wlan_hdd_set_monitor_tx_adapter( hdd_context_t *pHddCtx, hdd_adapter_t *pAd
 void hdd_cleanup_actionframe( hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter );
 #endif
 =======
-=======
-
-#if defined(WLAN_SOFTAP_FEATURE) || defined(ANI_MANF_DIAG)
->>>>>>> 657b0e9... prima update
 void hdd_set_conparam ( v_UINT_t newParam );
 tVOS_CON_MODE hdd_get_conparam( void );
-#endif
 
 void wlan_hdd_enable_deepsleep(v_VOID_t * pVosContext);
 v_BOOL_t hdd_is_apps_power_collapse_allowed(hdd_context_t* pHddCtx);
-void hdd_abort_mac_scan(hdd_context_t *pHddCtx);
-#ifdef CONFIG_CFG80211
+v_BOOL_t hdd_is_suspend_notify_allowed(hdd_context_t* pHddCtx);
+void hdd_abort_mac_scan(hdd_context_t *pHddCtx, tANI_U8 sessionId);
 void wlan_hdd_set_monitor_tx_adapter( hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter );
 void hdd_cleanup_actionframe( hdd_context_t *pHddCtx, hdd_adapter_t *pAdapter );
-<<<<<<< HEAD
 
 void crda_regulatory_entry_default(v_U8_t *countryCode, int domain_id);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 void wlan_hdd_set_concurrency_mode(hdd_context_t *pHddCtx, tVOS_CON_MODE mode);
 void wlan_hdd_clear_concurrency_mode(hdd_context_t *pHddCtx, tVOS_CON_MODE mode);
 void wlan_hdd_reset_prob_rspies(hdd_adapter_t* pHostapdAdapter);
 void hdd_prevent_suspend(void);
 void hdd_allow_suspend(void);
-<<<<<<< HEAD
 <<<<<<< HEAD
 v_U8_t hdd_is_ssr_required(void);
 void hdd_set_ssr_required(v_U8_t value);
@@ -1776,15 +1478,10 @@ void hdd_allow_suspend_timeout(v_U32_t timeout);
 bool hdd_is_ssr_required(void);
 void hdd_set_ssr_required(e_hdd_ssr_required value);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_U8_t hdd_is_ssr_required(void);
-void hdd_set_ssr_required(v_U8_t value);
->>>>>>> 657b0e9... prima update
 
 VOS_STATUS hdd_enable_bmps_imps(hdd_context_t *pHddCtx);
 VOS_STATUS hdd_disable_bmps_imps(hdd_context_t *pHddCtx, tANI_U8 session_type);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus hdd_smeCloseSessionCallback(void *pContext);
 VOS_STATUS wlan_hdd_restart_driver(hdd_context_t *pHddCtx);
@@ -1801,9 +1498,4 @@ VOS_STATUS hdd_issta_p2p_clientconnected(hdd_context_t *pHddCtx);
 int wlan_hdd_setIPv6Filter(hdd_context_t *pHddCtx, tANI_U8 filterType, tANI_U8 sessionId);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus hdd_smeCloseSessionCallback(void *pContext);
-VOS_STATUS wlan_hdd_restart_driver(hdd_context_t *pHddCtx);
-void hdd_exchange_version_and_caps(hdd_context_t *pHddCtx);
->>>>>>> 657b0e9... prima update
 #endif    // end #if !defined( WLAN_HDD_MAIN_H )

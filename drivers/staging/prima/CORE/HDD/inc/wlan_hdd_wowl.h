@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -146,14 +143,10 @@
               : TRUE otherwise
   ===========================================================================*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn);
 =======
 v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn);
->>>>>>> 657b0e9... prima update
 
 /**============================================================================
   @brief hdd_del_wowl_ptrn() - Function which will remove a WoWL pattern
@@ -163,7 +156,6 @@ v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn);
   @return     : FALSE if any errors encountered
               : TRUE otherwise
   ===========================================================================*/
-<<<<<<< HEAD
 <<<<<<< HEAD
 v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn);
 =======
@@ -195,9 +187,6 @@ v_BOOL_t hdd_add_wowl_ptrn_debugfs(hdd_adapter_t *pAdapter, v_U8_t pattern_idx,
   ===========================================================================*/
 v_BOOL_t hdd_del_wowl_ptrn_debugfs(hdd_adapter_t *pAdapter, v_U8_t pattern_idx);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn);
->>>>>>> 657b0e9... prima update
 
 /**============================================================================
   @brief hdd_enter_wowl() - Function which will enable WoWL. Atleast one
@@ -218,14 +207,10 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
                     : TRUE otherwise
   ===========================================================================*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 v_BOOL_t hdd_exit_wowl (void);
 =======
 v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_BOOL_t hdd_exit_wowl (void);
->>>>>>> 657b0e9... prima update
 
 /**============================================================================
   @brief hdd_init_wowl() - Init function which will initialize the WoWL module
@@ -234,7 +219,6 @@ v_BOOL_t hdd_exit_wowl (void);
   @return           : FALSE if any errors encountered
                     : TRUE otherwise
   ===========================================================================*/
-<<<<<<< HEAD
 <<<<<<< HEAD
 v_BOOL_t hdd_init_wowl (void* pAdapter);
 =======
@@ -247,8 +231,5 @@ v_BOOL_t hdd_init_wowl (hdd_adapter_t* pAdapter);
   ===========================================================================*/
 int hdd_parse_hex(unsigned char c);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_BOOL_t hdd_init_wowl (void* pAdapter);
->>>>>>> 657b0e9... prima update
 
 #endif /* #ifndef _WLAN_HDD_WOWL_H */

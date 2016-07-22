@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,17 +43,12 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
 =======
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/*
- * Airgo Networks, Inc proprietary. All rights reserved.
->>>>>>> 657b0e9... prima update
  * This file limAssocUtils.cc contains the utility functions
  * LIM uses while processing (Re) Association messages.
  * Author:        Chandra Modumudi
@@ -74,7 +66,6 @@
 #include "sirCommon.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -83,13 +74,6 @@
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-#include "wniCfgAp.h"
-#else
-#include "wniCfgSta.h"
-#endif
->>>>>>> 657b0e9... prima update
 #include "pmmApi.h"
 #include "cfgApi.h"
 
@@ -154,17 +138,12 @@ limCmpSSid(tpAniSirGlobal pMac, tSirMacSSid *prxSSid,tpPESession psessionEntry)
 {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( palEqualMemory( pMac->hHdd,  (tANI_U8* ) prxSSid, (tANI_U8 *) &psessionEntry->ssId, 
                                     (tANI_U8) (psessionEntry->ssId.length + 1)))
 =======
     if (vos_mem_compare((tANI_U8* ) prxSSid, (tANI_U8 *) &psessionEntry->ssId,
                        (tANI_U8) (psessionEntry->ssId.length + 1)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( palEqualMemory( pMac->hHdd,  (tANI_U8* ) prxSSid, (tANI_U8 *) &psessionEntry->ssId, 
-                                    (tANI_U8) (psessionEntry->ssId.length + 1)))
->>>>>>> 657b0e9... prima update
         return true;
     else
         return false;
@@ -236,14 +215,10 @@ limCompareCapabilities(tpAniSirGlobal pMac,
     {
         PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
            FL("Allowing a STA requesting short preamble while AP does not support it\n"));)
 =======
            FL("Allowing a STA requesting short preamble while AP does not support it"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           FL("Allowing a STA requesting short preamble while AP does not support it\n"));)
->>>>>>> 657b0e9... prima update
 #if 0
         // AP does not support short preamable
         return false;
@@ -252,14 +227,10 @@ limCompareCapabilities(tpAniSirGlobal pMac,
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, LOGW, "QoS in AssocReq: %d, local ShortP: %d\n", 
 =======
     limLog(pMac, LOGW, "QoS in AssocReq: %d, local ShortP: %d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, LOGW, "QoS in AssocReq: %d, local ShortP: %d\n", 
->>>>>>> 657b0e9... prima update
               pAssocReq->capabilityInfo.qos,
               pLocalCapabs->qos);
 
@@ -272,14 +243,10 @@ limCompareCapabilities(tpAniSirGlobal pMac,
         if ( 0 != vos_get_skip_11e_check())
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
              limLog(pMac, LOG1, FL("Received unmatched QOS but cfg to suppress - continuing\n"));
 =======
              limLog(pMac, LOG1, FL("Received unmatched QOS but cfg to suppress - continuing"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             limLog(pMac, LOG1, FL("Received unmatched QOS but cfg to suppress - continuing\n"));
->>>>>>> 657b0e9... prima update
         }
         else
         {
@@ -301,14 +268,10 @@ limCompareCapabilities(tpAniSirGlobal pMac,
         if (wlan_cfgGetInt(pMac, WNI_CFG_ACCEPT_SHORT_SLOT_ASSOC_ONLY, &val) != eSIR_SUCCESS)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("error getting WNI_CFG_FORCE_SHORT_SLOT_ASSOC_ONLY \n"));
 =======
             limLog(pMac, LOGP, FL("error getting WNI_CFG_FORCE_SHORT_SLOT_ASSOC_ONLY "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("error getting WNI_CFG_FORCE_SHORT_SLOT_ASSOC_ONLY \n"));
->>>>>>> 657b0e9... prima update
             return false;
         }
         if(val)
@@ -352,7 +315,6 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
     tANI_U8    i, j, k, match;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pRateSet, sizeof(tSirMacRateSet)))
     {
         // Log error
@@ -364,12 +326,6 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
         // Log error
         limLog(pMac, LOGP, FL("call to AllocateMemory failed for RATESET"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pRateSet, sizeof(tSirMacRateSet)))
-    {
-        // Log error
-        limLog(pMac, LOGP, FL("call to palAllocateMemory failed for RATESET\n"));
->>>>>>> 657b0e9... prima update
 
         return false;
     }
@@ -382,7 +338,6 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
     {
         /// Could not get Operational rateset from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve Operational rateset\n"));
 
         // Free up memory allocated for rateset
@@ -393,12 +348,6 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
         // Free up memory allocated for rateset
         vos_mem_free((tANI_U8 *) pRateSet);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not retrieve Operational rateset\n"));
-
-        // Free up memory allocated for rateset
-        palFreeMemory( pMac->hHdd, (tANI_U8 *) pRateSet);
->>>>>>> 657b0e9... prima update
 
         return false;
     }
@@ -406,28 +355,20 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
 
     /* Copy operational rate set from session Entry */
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd,  pRateSet->rate,  (psessionEntry->rateSet.rate),  psessionEntry->rateSet.numRates);
 =======
     vos_mem_copy(pRateSet->rate, (psessionEntry->rateSet.rate),
                  psessionEntry->rateSet.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd,  pRateSet->rate,  (psessionEntry->rateSet.rate),  psessionEntry->rateSet.numRates);
->>>>>>> 657b0e9... prima update
     
     pRateSet->numRates = psessionEntry->rateSet.numRates;
 
     // Extract BSS basic rateset from operational rateset
 <<<<<<< HEAD
-<<<<<<< HEAD
     for (i = 0, j = 0; i < pRateSet->numRates; i++)
 =======
     for (i = 0, j = 0; ((i < pRateSet->numRates) && (i < SIR_MAC_RATESET_EID_MAX)) ; i++)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    for (i = 0, j = 0; i < pRateSet->numRates; i++)
->>>>>>> 657b0e9... prima update
     {
         if ((pRateSet->rate[i] & 0x80) == 0x80)
         {
@@ -444,14 +385,10 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
     {
         match = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
         for (i = 0; i < rxRateSet.numRates; i++)
 =======
         for (i = 0; ((i < rxRateSet.numRates) && (i < SIR_MAC_RATESET_EID_MAX)); i++)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        for (i = 0; i < rxRateSet.numRates; i++)
->>>>>>> 657b0e9... prima update
         {
             if ((rxRateSet.rate[i] | 0x80) ==    basicRate.rate[k])
                 match = 1;
@@ -461,14 +398,10 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
         {
             // Free up memory allocated for rateset
 <<<<<<< HEAD
-<<<<<<< HEAD
             palFreeMemory( pMac->hHdd, (tANI_U8 *) pRateSet);
 =======
             vos_mem_free((tANI_U8 *)pRateSet);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palFreeMemory( pMac->hHdd, (tANI_U8 *) pRateSet);
->>>>>>> 657b0e9... prima update
 
             return false;
         }
@@ -476,14 +409,10 @@ limCheckRxBasicRates(tpAniSirGlobal pMac, tSirMacRateSet rxRateSet,tpPESession p
 
     // Free up memory allocated for rateset
 <<<<<<< HEAD
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, (tANI_U8 *) pRateSet);
 =======
     vos_mem_free((tANI_U8 *)pRateSet);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palFreeMemory( pMac->hHdd, (tANI_U8 *) pRateSet);
->>>>>>> 657b0e9... prima update
 
     return true;
 } /****** end limCheckRxBasicRates() ******/
@@ -529,14 +458,10 @@ limCheckMCSSet(tpAniSirGlobal pMac, tANI_U8* supportedMCSSet)
     {
         /// Could not get Basic MCS rateset from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve Basic MCS rateset\n"));
 =======
         limLog(pMac, LOGP, FL("could not retrieve Basic MCS rateset"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not retrieve Basic MCS rateset\n"));
->>>>>>> 657b0e9... prima update
         return false;
     }
 
@@ -564,13 +489,9 @@ limCheckMCSSet(tpAniSirGlobal pMac, tANI_U8* supportedMCSSet)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 
 #define SECURITY_SUITE_TYPE_MASK 0xFF
 #define SECURITY_SUITE_TYPE_WEP40 0x1
@@ -602,7 +523,6 @@ limCheckMCSSet(tpAniSirGlobal pMac, tANI_U8* supportedMCSSet)
 
 tANI_U8
 <<<<<<< HEAD
-<<<<<<< HEAD
 limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSessionEntry, tANI_U8 staIsHT)
 {
     tDot11fIERSN    *pRSNIe;
@@ -620,12 +540,6 @@ limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSess
     tANI_BOOLEAN theyArePMFCapable;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSessionEntry, tANI_U8 staIsHT)
-{
-    tDot11fIERSN    *pRSNIe;
-    tANI_U8         i, j, match, onlyNonHtCipher = 1;
->>>>>>> 657b0e9... prima update
 
 
     //RSN IE should be received from PE
@@ -650,7 +564,6 @@ limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSess
         for(j = 0; j < pRSNIe->pwise_cipher_suite_count; j++)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             if(palEqualMemory(pMac,&rxRSNIe.pwise_cipher_suites[i],
                                   &pRSNIe->pwise_cipher_suites[j],
                                   sizeof(pRSNIe->pwise_cipher_suites[j])))
@@ -659,11 +572,6 @@ limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSess
                                 &pRSNIe->pwise_cipher_suites[j],
                                 sizeof(pRSNIe->pwise_cipher_suites[j])))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if(palEqualMemory(pMac,&rxRSNIe.pwise_cipher_suites[i],
-                                  &pRSNIe->pwise_cipher_suites[j],
-                                  sizeof(pRSNIe->pwise_cipher_suites[j])))
->>>>>>> 657b0e9... prima update
             {
                 match = 1;
                 break;
@@ -687,7 +595,6 @@ limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSess
         return eSIR_MAC_INVALID_PAIRWISE_CIPHER_STATUS;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
     /* Check RSN capabilities */
     if(rxRSNIe.preauth == true) //this is supported by AP only
 =======
@@ -696,15 +603,10 @@ limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSess
      */
     if(((rxRSNIe.RSN_Cap[0] >> 0) & 0x1) == true) //this is supported by AP only
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    /* Check RSN capabilities */
-    if(rxRSNIe.preauth == true) //this is supported by AP only
->>>>>>> 657b0e9... prima update
     {
         return eSIR_MAC_INVALID_RSN_IE_CAPABILITIES_STATUS;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     *pmfConnection = eANI_BOOLEAN_FALSE;
@@ -725,8 +627,6 @@ limCheckRxRSNIeMatch(tpAniSirGlobal pMac, tDot11fIERSN rxRSNIe,tpPESession pSess
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     return eSIR_SUCCESS;
 } /****** end limCheckRxRSNIeMatch() ******/
 
@@ -780,7 +680,6 @@ limCheckRxWPAIeMatch(tpAniSirGlobal pMac, tDot11fIEWPA rxWPAIe,tpPESession pSess
         for(j = 0; j < pWPAIe->unicast_cipher_count; j++)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             if(palEqualMemory(pMac,rxWPAIe.unicast_ciphers[i],
                                   pWPAIe->unicast_ciphers[j],
                                   4))
@@ -789,11 +688,6 @@ limCheckRxWPAIeMatch(tpAniSirGlobal pMac, tDot11fIEWPA rxWPAIe,tpPESession pSess
                                pWPAIe->unicast_ciphers[j],
                                4))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if(palEqualMemory(pMac,rxWPAIe.unicast_ciphers[i],
-                                  pWPAIe->unicast_ciphers[j],
-                                  4))
->>>>>>> 657b0e9... prima update
             {
                 match = 1;
                 break;
@@ -821,13 +715,9 @@ limCheckRxWPAIeMatch(tpAniSirGlobal pMac, tDot11fIEWPA rxWPAIe,tpPESession pSess
 } /****** end limCheckRxWPAIeMatch() ******/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* WLAN_SOFTAP_FEATURE */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* WLAN_SOFTAP_FEATURE */
->>>>>>> 657b0e9... prima update
 
 /**
  * limCleanupRxPath()
@@ -890,14 +780,10 @@ limCleanupRxPath(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession psessionE
                 (psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE))
             {    
 <<<<<<< HEAD
-<<<<<<< HEAD
                 limReleaseAID(pMac, pStaDs->assocId);
 =======
                 limReleasePeerIdx(pMac, pStaDs->assocId, psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                limReleaseAID(pMac, pStaDs->assocId);
->>>>>>> 657b0e9... prima update
             }
             limDeleteDphHashEntry(pMac, pStaDs->staAddr, pStaDs->assocId,psessionEntry);
 
@@ -909,19 +795,13 @@ limCleanupRxPath(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession psessionE
     limAdmitControlDeleteSta(pMac, pStaDs->assocId);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT==AP)
     // Reset PMM state for this STA if it exists
     if (psessionEntry->limSystemRole == eLIM_AP_ROLE)||(psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE)
         pmmUpdatePMMode(pMac, pStaDs->assocId, 0);
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     /**
      * Make STA hash entry invalid at eCPU so that DPH
@@ -936,7 +816,6 @@ limCleanupRxPath(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession psessionE
         MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, eLIM_MLM_WT_DEL_STA_RSP_STATE));
         psessionEntry->limMlmState = eLIM_MLM_WT_DEL_STA_RSP_STATE;
 <<<<<<< HEAD
-<<<<<<< HEAD
         MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, eLIM_MLM_WT_DEL_STA_RSP_STATE));
         /* Deactivating probe after heart beat timer */
         limDeactivateAndChangeTimer(pMac, eLIM_PROBE_AFTER_HB_TIMER);
@@ -945,11 +824,6 @@ limCleanupRxPath(tpAniSirGlobal pMac, tpDphHashNode pStaDs,tpPESession psessionE
         limDeactivateAndChangeTimer(pMac, eLIM_PROBE_AFTER_HB_TIMER);
         limDeactivateAndChangeTimer(pMac, eLIM_JOIN_FAIL_TIMER);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, eLIM_MLM_WT_DEL_STA_RSP_STATE));
-        /* Deactivating probe after heart beat timer */
-        limDeactivateAndChangeTimer(pMac, eLIM_PROBE_AFTER_HB_TIMER);
->>>>>>> 657b0e9... prima update
         limHeartBeatDeactivateAndChangeTimer(pMac, psessionEntry);
         limDeactivateAndChangeTimer(pMac, eLIM_KEEPALIVE_TIMER);
         pMac->lim.gLastBeaconDtimCount = 0;
@@ -1024,14 +898,10 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
         {
             /// Could not update BSSID at CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not update BSSID at CFG\n"));
 =======
             limLog(pMac, LOGP, FL("could not update BSSID at CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not update BSSID at CFG\n"));
->>>>>>> 657b0e9... prima update
 
             return;
         }
@@ -1044,14 +914,10 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
         if (psessionEntry->pLimMlmJoinReq)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             palFreeMemory( pMac->hHdd, (tANI_U8 *) psessionEntry->pLimMlmJoinReq);
 =======
             vos_mem_free(psessionEntry->pLimMlmJoinReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palFreeMemory( pMac->hHdd, (tANI_U8 *) psessionEntry->pLimMlmJoinReq);
->>>>>>> 657b0e9... prima update
             psessionEntry->pLimMlmJoinReq = NULL;
         }
 
@@ -1072,7 +938,6 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
          * Issue Disassoc Confirm to SME.
          */
 <<<<<<< HEAD
-<<<<<<< HEAD
            limLog( pMac, LOGW, FL("Lim Posting DISASSOC_CNF to Sme. Trigger: %X\n"), mlmStaContext.cleanupTrigger);
 
 
@@ -1086,23 +951,13 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
 #endif
 =======
            limLog( pMac, LOGW, FL("Lim Posting DISASSOC_CNF to Sme. Trigger: %X"), mlmStaContext.cleanupTrigger);
-=======
-           limLog( pMac, LOGW, FL("Lim Posting DISASSOC_CNF to Sme. Trigger: %X\n"), mlmStaContext.cleanupTrigger);
->>>>>>> 657b0e9... prima update
 
 
-        palCopyMemory( pMac->hHdd,
-                   (tANI_U8 *) &mlmDisassocCnf.peerMacAddr,
-                   (tANI_U8 *) staDsAddr,
-                   sizeof(tSirMacAddr));
+        vos_mem_copy((tANI_U8 *) &mlmDisassocCnf.peerMacAddr,
+                     (tANI_U8 *) staDsAddr,
+                      sizeof(tSirMacAddr));
         mlmDisassocCnf.resultCode = statusCode;
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-        mlmDisassocCnf.aid        = staDsAssocId;
-#endif
->>>>>>> 657b0e9... prima update
         mlmDisassocCnf.disassocTrigger =
                                    mlmStaContext.cleanupTrigger;
         /* Update PE session Id*/
@@ -1122,7 +977,6 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
          * Issue Deauth Confirm to SME.
          */
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog( pMac, LOGW, FL("Lim Posting DEAUTH_CNF to Sme. Trigger: %X\n"), mlmStaContext.cleanupTrigger);
         palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthCnf.peerMacAddr,
                       (tANI_U8 *) staDsAddr,
@@ -1138,16 +992,6 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
                       sizeof(tSirMacAddr));
         mlmDeauthCnf.resultCode    = statusCode;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGW, FL("Lim Posting DEAUTH_CNF to Sme. Trigger: %X\n"), mlmStaContext.cleanupTrigger);
-        palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthCnf.peerMacAddr,
-                      (tANI_U8 *) staDsAddr,
-                      sizeof(tSirMacAddr));
-        mlmDeauthCnf.resultCode    = statusCode;
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-        mlmDeauthCnf.aid           = staDsAssocId;
-#endif
->>>>>>> 657b0e9... prima update
         mlmDeauthCnf.deauthTrigger =
                                    mlmStaContext.cleanupTrigger;
         /* PE session Id */
@@ -1167,22 +1011,16 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
          * Issue Purge Ind to SME.
          */
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
         limLog( pMac, LOGW, FL("Lim Posting PURGE_STA_IND to Sme. Trigger: %X\n"), mlmStaContext.cleanupTrigger) ;
         palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmPurgeStaInd.peerMacAddr,
                       (tANI_U8 *) staDsAddr,
                       sizeof(tSirMacAddr));
-<<<<<<< HEAD
 =======
         limLog( pMac, LOGW, FL("Lim Posting PURGE_STA_IND to Sme. Trigger: %X"), mlmStaContext.cleanupTrigger) ;
         vos_mem_copy((tANI_U8 *) &mlmPurgeStaInd.peerMacAddr,
                      (tANI_U8 *) staDsAddr,
                      sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         mlmPurgeStaInd.reasonCode   = (tANI_U8) mlmStaContext.disassocReason;
         mlmPurgeStaInd.aid          = staDsAssocId;
         mlmPurgeStaInd.purgeTrigger = mlmStaContext.cleanupTrigger;
@@ -1207,15 +1045,11 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
 
         //if it is a reassoc failure to join new AP
 <<<<<<< HEAD
-<<<<<<< HEAD
         if(mlmStaContext.resultCode == eSIR_SME_FT_REASSOC_TIMEOUT_FAILURE)
 =======
         if((mlmStaContext.resultCode == eSIR_SME_FT_REASSOC_TIMEOUT_FAILURE) ||
            (mlmStaContext.resultCode == eSIR_SME_FT_REASSOC_FAILURE))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if(mlmStaContext.resultCode == eSIR_SME_FT_REASSOC_TIMEOUT_FAILURE)
->>>>>>> 657b0e9... prima update
         {
             if(mlmStaContext.resultCode != eSIR_SME_SUCCESS )
             {
@@ -1230,14 +1064,10 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, psessionEntry->pLimJoinReq);
 =======
         vos_mem_free(psessionEntry->pLimJoinReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, psessionEntry->pLimJoinReq);
->>>>>>> 657b0e9... prima update
         psessionEntry->pLimJoinReq = NULL;
 
         if(mlmStaContext.resultCode != eSIR_SME_SUCCESS)
@@ -1254,18 +1084,12 @@ limSendDelStaCnf(tpAniSirGlobal pMac, tSirMacAddr staDsAddr,
 
     if((NULL != psessionEntry)
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
         && (eLIM_AP_ROLE != psessionEntry->limSystemRole )
 #endif     
 =======
         && (eLIM_AP_ROLE != psessionEntry->limSystemRole )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-        && (eLIM_AP_ROLE != psessionEntry->limSystemRole )
-#endif     
->>>>>>> 657b0e9... prima update
     )      
             {
                 peDeleteSession(pMac,psessionEntry);
@@ -1323,14 +1147,10 @@ limRejectAssociation(tpAniSirGlobal pMac, tSirMacAddr peerAddr, tANI_U8 subType,
         if (pAuthNode)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             palCopyMemory( pMac->hHdd, (tANI_U8 *) pAuthNode->peerMacAddr,
 =======
             vos_mem_copy((tANI_U8 *) pAuthNode->peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory( pMac->hHdd, (tANI_U8 *) pAuthNode->peerMacAddr,
->>>>>>> 657b0e9... prima update
                           peerAddr,
                           sizeof(tSirMacAddr));
             pAuthNode->fTimerStarted = 0;
@@ -1348,14 +1168,10 @@ limRejectAssociation(tpAniSirGlobal pMac, tSirMacAddr peerAddr, tANI_U8 subType,
         {
             limLog(pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("No STA context, yet rejecting Association\n"));
 =======
                    FL("No STA context, yet rejecting Association"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("No STA context, yet rejecting Association\n"));
->>>>>>> 657b0e9... prima update
 
             return;
         }
@@ -1383,7 +1199,6 @@ limRejectAssociation(tpAniSirGlobal pMac, tSirMacAddr peerAddr, tANI_U8 subType,
             if ( ((tpSirAssocReq)(psessionEntry->parsedAssocReq[pStaDs->assocId]))->assocReqFrame) 
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 palFreeMemory(pMac->hHdd,((tpSirAssocReq)(psessionEntry->parsedAssocReq[pStaDs->assocId]))->assocReqFrame);
                 ((tpSirAssocReq)(psessionEntry->parsedAssocReq[pStaDs->assocId]))->assocReqFrame = NULL;
             }            
@@ -1394,12 +1209,6 @@ limRejectAssociation(tpAniSirGlobal pMac, tSirMacAddr peerAddr, tANI_U8 subType,
             }            
             vos_mem_free(psessionEntry->parsedAssocReq[pStaDs->assocId]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                palFreeMemory(pMac->hHdd,((tpSirAssocReq)(psessionEntry->parsedAssocReq[pStaDs->assocId]))->assocReqFrame);
-                ((tpSirAssocReq)(psessionEntry->parsedAssocReq[pStaDs->assocId]))->assocReqFrame = NULL;
-            }            
-            palFreeMemory(pMac->hHdd, psessionEntry->parsedAssocReq[pStaDs->assocId]);    
->>>>>>> 657b0e9... prima update
             psessionEntry->parsedAssocReq[pStaDs->assocId] = NULL;
         }
     }
@@ -1413,27 +1222,19 @@ limRejectAssociation(tpAniSirGlobal pMac, tSirMacAddr peerAddr, tANI_U8 subType,
         // Log error
         limLog(pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
            FL("received Re/Assoc req when max associated STAs reached from \n"));
 =======
            FL("received Re/Assoc req when max associated STAs reached from "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           FL("received Re/Assoc req when max associated STAs reached from \n"));
->>>>>>> 657b0e9... prima update
         limPrintMacAddr(pMac, peerAddr, LOGW);
         limSendSmeMaxAssocExceededNtf(pMac, peerAddr, psessionEntry->smeSessionId);
     }
 } /*** end limRejectAssociation() ***/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 
 /** -------------------------------------------------------------
 \fn limDecideApProtectionOnHt20Delete
@@ -1458,14 +1259,10 @@ limDecideApProtectionOnHt20Delete(tpAniSirGlobal pMac,
             if (psessionEntry->protStaCache[i].active)
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
 =======
                 if (vos_mem_compare(psessionEntry->protStaCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
->>>>>>> 657b0e9... prima update
                         pStaDs->staAddr, sizeof(tSirMacAddr)))
                 {
                     psessionEntry->gLimHt20Params.numSta--;
@@ -1524,14 +1321,10 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
                         if (psessionEntry->protStaCache[i].active)
                         {
 <<<<<<< HEAD
-<<<<<<< HEAD
                             if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
 =======
                             if (vos_mem_compare( psessionEntry->protStaCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
->>>>>>> 657b0e9... prima update
                                     pStaDs->staAddr, sizeof(tSirMacAddr)))
                             {
                                 psessionEntry->gLim11aParams.numSta--;
@@ -1570,14 +1363,10 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
                     if (psessionEntry->protStaCache[i].active)
                     {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
 =======
                         if (vos_mem_compare( psessionEntry->protStaCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
->>>>>>> 657b0e9... prima update
                                 pStaDs->staAddr, sizeof(tSirMacAddr)))
                         {
                             psessionEntry->gLim11bParams.numSta--;
@@ -1592,14 +1381,10 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
             {
                 // disable protection
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOG1(limLog(pMac, LOG1, FL("No 11B STA exists\n"));)
 =======
                 PELOG1(limLog(pMac, LOG1, FL("No 11B STA exists"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOG1(limLog(pMac, LOG1, FL("No 11B STA exists\n"));)
->>>>>>> 657b0e9... prima update
                 limEnable11gProtection(pMac, false, false, pBeaconParams,psessionEntry);
             }
         }
@@ -1620,14 +1405,10 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
                         if (psessionEntry->protStaCache[i].active)
                         {
 <<<<<<< HEAD
-<<<<<<< HEAD
                             if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
 =======
                             if (vos_mem_compare( psessionEntry->protStaCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
->>>>>>> 657b0e9... prima update
                                     pStaDs->staAddr, sizeof(tSirMacAddr)))
                             {
                                 psessionEntry->gLim11gParams.numSta--;
@@ -1664,14 +1445,10 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
                     if (psessionEntry->protStaCache[i].active)
                     {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
 =======
                         if (vos_mem_compare( psessionEntry->protStaCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
->>>>>>> 657b0e9... prima update
                                 pStaDs->staAddr, sizeof(tSirMacAddr)))
                         {
                             psessionEntry->gLimNonGfParams.numSta--;
@@ -1708,14 +1485,10 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
                     if (psessionEntry->protStaCache[i].active)
                     {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
 =======
                         if (vos_mem_compare( psessionEntry->protStaCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        if (palEqualMemory( pMac->hHdd,psessionEntry->protStaCache[i].addr,
->>>>>>> 657b0e9... prima update
                                 pStaDs->staAddr, sizeof(tSirMacAddr)))
                         {
                             psessionEntry->gLimLsigTxopParams.numSta--;
@@ -1736,13 +1509,9 @@ limDecideApProtectionOnDelete(tpAniSirGlobal pMac,
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 
 /** -------------------------------------------------------------
@@ -1770,14 +1539,10 @@ void limDecideShortPreamble(tpAniSirGlobal pMac,
              if (psessionEntry->gLimNoShortParams.staNoShortCache[i].active)
              {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 if (palEqualMemory( pMac->hHdd, psessionEntry->gLimNoShortParams.staNoShortCache[i].addr,
 =======
                 if (vos_mem_compare( psessionEntry->gLimNoShortParams.staNoShortCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if (palEqualMemory( pMac->hHdd, psessionEntry->gLimNoShortParams.staNoShortCache[i].addr,
->>>>>>> 657b0e9... prima update
                                    pStaDs->staAddr, sizeof(tSirMacAddr)))
                 {
                     psessionEntry->gLimNoShortParams.numNonShortPreambleSta--;
@@ -1792,7 +1557,6 @@ void limDecideShortPreamble(tpAniSirGlobal pMac,
       {
          // enable short preamble
 <<<<<<< HEAD
-<<<<<<< HEAD
          PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short preamble support now.\n"));)
          //reset the cache
          palZeroMemory( pMac->hHdd, (tANI_U8 *)&psessionEntry->gLimNoShortParams , sizeof(tLimNoShortParams));
@@ -1800,18 +1564,12 @@ void limDecideShortPreamble(tpAniSirGlobal pMac,
              PELOGE(limLog(pMac, LOGE, FL("Cannot enable short preamble\n"));)
 =======
          PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short preamble support now."));)
-=======
-         PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short preamble support now.\n"));)
->>>>>>> 657b0e9... prima update
          //reset the cache
-         palZeroMemory( pMac->hHdd, (tANI_U8 *)&psessionEntry->gLimNoShortParams , sizeof(tLimNoShortParams));
+         vos_mem_set((tANI_U8 *)&psessionEntry->gLimNoShortParams,
+                      sizeof(tLimNoShortParams), 0);
          if (limEnableShortPreamble(pMac, true, pBeaconParams, psessionEntry) != eSIR_SUCCESS)
-<<<<<<< HEAD
              PELOGE(limLog(pMac, LOGE, FL("Cannot enable short preamble"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             PELOGE(limLog(pMac, LOGE, FL("Cannot enable short preamble\n"));)
->>>>>>> 657b0e9... prima update
       }
    }
 }
@@ -1836,13 +1594,9 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
        limPrintMacAddr(pMac, pStaDs->staAddr, LOG1);)
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     if ((psessionEntry->limSystemRole == eLIM_AP_ROLE ) &&
        psessionEntry->gLimNoShortSlotParams.numNonShortSlotSta> 0)
        {
@@ -1851,14 +1605,10 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
              if (psessionEntry->gLimNoShortSlotParams.staNoShortSlotCache[i].active)
              {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 if (palEqualMemory( pMac->hHdd, psessionEntry->gLimNoShortSlotParams.staNoShortSlotCache[i].addr,
 =======
                 if (vos_mem_compare(psessionEntry->gLimNoShortSlotParams.staNoShortSlotCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if (palEqualMemory( pMac->hHdd, psessionEntry->gLimNoShortSlotParams.staNoShortSlotCache[i].addr,
->>>>>>> 657b0e9... prima update
                     pStaDs->staAddr, sizeof(tSirMacAddr)))
                     {
                         psessionEntry->gLimNoShortSlotParams.numNonShortSlotSta--;
@@ -1870,13 +1620,9 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
        }
        else
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
        {
            if (pMac->lim.gLimNoShortSlotParams.numNonShortSlotSta> 0)
            {
@@ -1885,14 +1631,10 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
                if (pMac->lim.gLimNoShortSlotParams.staNoShortSlotCache[i].active)
                {
 <<<<<<< HEAD
-<<<<<<< HEAD
                   if (palEqualMemory( pMac->hHdd, pMac->lim.gLimNoShortSlotParams.staNoShortSlotCache[i].addr,
 =======
                   if (vos_mem_compare(pMac->lim.gLimNoShortSlotParams.staNoShortSlotCache[i].addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  if (palEqualMemory( pMac->hHdd, pMac->lim.gLimNoShortSlotParams.staNoShortSlotCache[i].addr,
->>>>>>> 657b0e9... prima update
                       pStaDs->staAddr, sizeof(tSirMacAddr)))
                   {
                       pMac->lim.gLimNoShortSlotParams.numNonShortSlotSta--;
@@ -1907,18 +1649,13 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
       wlan_cfgGetInt(pMac, WNI_CFG_11G_SHORT_SLOT_TIME_ENABLED, &val);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
       if ( (psessionEntry->limSystemRole == eLIM_AP_ROLE ) &&
          (val && psessionEntry->gLimNoShortSlotParams.numNonShortSlotSta == 0))
       {
          // enable short slot time
-<<<<<<< HEAD
 <<<<<<< HEAD
          PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short slot time support now.\n"));)
          //reset the cache
@@ -1929,11 +1666,6 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
          vos_mem_set((tANI_U8 *)&psessionEntry->gLimNoShortSlotParams,
                      sizeof(tLimNoShortSlotParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short slot time support now.\n"));)
-         //reset the cache
-         palZeroMemory( pMac->hHdd, (tANI_U8 *)&psessionEntry->gLimNoShortSlotParams , sizeof(tLimNoShortSlotParams));
->>>>>>> 657b0e9... prima update
          // in case of AP set SHORT_SLOT_TIME to enable
          if (psessionEntry->limSystemRole == eLIM_AP_ROLE)
          {
@@ -1944,18 +1676,13 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
       }
       else 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
       {
          if (val && pMac->lim.gLimNoShortSlotParams.numNonShortSlotSta == 0)
          {
             // enable short slot time
-<<<<<<< HEAD
 <<<<<<< HEAD
             PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short slot time support now.\n"));)
             //reset the cache
@@ -1966,11 +1693,6 @@ limDecideShortSlot(tpAniSirGlobal pMac, tpDphHashNode pStaDs,
             vos_mem_set((tANI_U8 *)&pMac->lim.gLimNoShortSlotParams,
                         sizeof(tLimNoShortSlotParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOG1(limLog(pMac, LOG1, FL("All associated STAs have short slot time support now.\n"));)
-            //reset the cache
-            palZeroMemory( pMac->hHdd, (tANI_U8 *)&pMac->lim.gLimNoShortSlotParams , sizeof(tLimNoShortSlotParams));
->>>>>>> 657b0e9... prima update
             // in case of AP set SHORT_SLOT_TIME to enable
             if (psessionEntry->limSystemRole == eLIM_AP_ROLE)
             {
@@ -2049,14 +1771,10 @@ limRestorePreReassocState(tpAniSirGlobal pMac,
     {
         /// Could not update BSSID at CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not update BSSID at CFG\n"));
 =======
         limLog(pMac, LOGP, FL("could not update BSSID at CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not update BSSID at CFG\n"));
->>>>>>> 657b0e9... prima update
         return;
     }
     #endif
@@ -2104,15 +1822,12 @@ eAniBoolean
 limIsReassocInProgress(tpAniSirGlobal pMac,tpPESession psessionEntry)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     if (psessionEntry == NULL)
     {
         return eANI_BOOLEAN_FALSE;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     if(((psessionEntry->limSystemRole == eLIM_STA_ROLE) || (psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE))&&
             ((psessionEntry->limSmeState == eLIM_SME_WT_REASSOC_STATE) || 
                (psessionEntry->limSmeState == eLIM_SME_WT_REASSOC_LINK_FAIL_STATE)))
@@ -2129,7 +1844,6 @@ tSirRetStatus limPopulateVhtMcsSet(tpAniSirGlobal pMac,
 {
     tANI_U32 val;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     if(IS_DOT11_MODE_VHT(psessionEntry->dot11mode))
 =======
@@ -2139,23 +1853,15 @@ tSirRetStatus limPopulateVhtMcsSet(tpAniSirGlobal pMac,
 //    if(IS_DOT11_MODE_VHT(psessionEntry->dot11mode))
     if (IS_DOT11_MODE_VHT(selfStaDot11Mode))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    if(IS_DOT11_MODE_VHT(psessionEntry->dot11mode))
->>>>>>> 657b0e9... prima update
     {
         if ( wlan_cfgGetInt( pMac,WNI_CFG_VHT_RX_MCS_MAP,&val) != 
             eSIR_SUCCESS )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX MCS MAP\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX MCS MAP"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX MCS MAP\n"));)
->>>>>>> 657b0e9... prima update
             goto error;
         }
         pRates->vhtRxMCSMap = (tANI_U16)val;
@@ -2164,14 +1870,10 @@ tSirRetStatus limPopulateVhtMcsSet(tpAniSirGlobal pMac,
             eSIR_SUCCESS )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT TX MCS MAP\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT TX MCS MAP"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT TX MCS MAP\n"));)
->>>>>>> 657b0e9... prima update
             goto error;
         }
         pRates->vhtTxMCSMap = (tANI_U16)val;
@@ -2180,14 +1882,10 @@ tSirRetStatus limPopulateVhtMcsSet(tpAniSirGlobal pMac,
             eSIR_SUCCESS )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX Supported data rate MAP\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX Supported data rate MAP"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX Supported data rate MAP\n"));)
->>>>>>> 657b0e9... prima update
             goto error;
         }
         pRates->vhtRxHighestDataRate = (tANI_U16)val;
@@ -2196,14 +1894,10 @@ tSirRetStatus limPopulateVhtMcsSet(tpAniSirGlobal pMac,
             eSIR_SUCCESS )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX Supported data rate MAP\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX Supported data rate MAP"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not retrieve VHT RX Supported data rate MAP\n"));)
->>>>>>> 657b0e9... prima update
             goto error;
         }
         pRates->vhtTxHighestDataRate = (tANI_U16)val;
@@ -2214,14 +1908,10 @@ tSirRetStatus limPopulateVhtMcsSet(tpAniSirGlobal pMac,
             pRates->vhtRxHighestDataRate = SIR_MIN(pRates->vhtRxHighestDataRate, pPeerVHTCaps->rxHighSupDataRate);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
             // Aquire PEER MCS map if we exceed.
 =======
             // Acquire PEER MCS map if we exceed.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            // Aquire PEER MCS map if we exceed.
->>>>>>> 657b0e9... prima update
             // We compare/update only the last 2 bits of the map as we support only single BSS.
             // Firmware takes care of this comparison
             pRates->vhtRxMCSMap &= ~(0x3); // Clearing the last 2 bits in the bitmap
@@ -2284,7 +1974,6 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
     tSirMacRateSet          tempRateSet;
     tSirMacRateSet          tempRateSet2;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U32                     i,j,val,min,isArate;
     tANI_U32 phyMode = 0;
 
@@ -2333,84 +2022,59 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
 
 =======
     tANI_U32                i,j,val,min,isArate;
-=======
-    tANI_U32                     i,j,val,min,isArate;
->>>>>>> 657b0e9... prima update
     tANI_U32 phyMode = 0;
+    tANI_U32 selfStaDot11Mode=0;
 
     isArate = 0;
 
+    wlan_cfgGetInt(pMac, WNI_CFG_DOT11_MODE, &selfStaDot11Mode);
     limGetPhyMode(pMac, &phyMode, psessionEntry);
 
-    // Get own rate set
-    #if 0
-    val = WNI_CFG_OPERATIONAL_RATE_SET_LEN;
-    if (wlan_cfgGetStr(pMac, WNI_CFG_OPERATIONAL_RATE_SET,
-                  (tANI_U8 *) &tempRateSet.rate,
-                  &val) != eSIR_SUCCESS)
+    /* Include 11b rates only when the device configured in
+           auto, 11a/b/g or 11b_only */
+    if ( (selfStaDot11Mode == WNI_CFG_DOT11_MODE_ALL) ||
+         (selfStaDot11Mode == WNI_CFG_DOT11_MODE_11A) ||
+         (selfStaDot11Mode == WNI_CFG_DOT11_MODE_11AC) ||
+         (selfStaDot11Mode == WNI_CFG_DOT11_MODE_11N) ||
+         (selfStaDot11Mode == WNI_CFG_DOT11_MODE_11G) ||
+         (selfStaDot11Mode == WNI_CFG_DOT11_MODE_11B) )
     {
-        /// Could not get rateset from CFG. Log error.
-        limLog(pMac, LOGP, FL("could not retrieve rateset\n"));
-    }
-    #endif // TO SUPPORT BT-AMP
-    
-    /* copy operational rate set from psessionEntry */
-    palCopyMemory(pMac->hHdd,(tANI_U8 *)tempRateSet.rate,(tANI_U8*)(psessionEntry->rateSet.rate), psessionEntry->rateSet.numRates);
-    tempRateSet.numRates = psessionEntry->rateSet.numRates;
-
-    if (phyMode == WNI_CFG_PHY_MODE_11G)
-    {
-
-        // get own extended rate set
-        #if 0
-        val = WNI_CFG_EXTENDED_OPERATIONAL_RATE_SET_LEN;
-        if (wlan_cfgGetStr(pMac, WNI_CFG_EXTENDED_OPERATIONAL_RATE_SET,
-                      (tANI_U8 *) &tempRateSet2.rate,
-                      &val) != eSIR_SUCCESS)
-        {
-            /// Could not get extended rateset from CFG. Log error.
-            limLog(pMac, LOGP, FL("could not retrieve extended rateset\n"));
-        }
-        tempRateSet2.numRates = (tANI_U8) val;
-        #endif
-
-        palCopyMemory(pMac->hHdd,(tANI_U8 *)tempRateSet2.rate, (tANI_U8*)(psessionEntry->extRateSet.rate), psessionEntry->extRateSet.numRates);
-        tempRateSet2.numRates = psessionEntry->extRateSet.numRates;
-
+        val = WNI_CFG_SUPPORTED_RATES_11B_LEN;
+        wlan_cfgGetStr( pMac, WNI_CFG_SUPPORTED_RATES_11B,
+                       (tANI_U8 *)&tempRateSet.rate, &val );
+        tempRateSet.numRates = (tANI_U8) val;
     }
     else
-<<<<<<< HEAD
+        tempRateSet.numRates = 0;
+
+     /* Include 11a rates when the device configured in non-11b mode */
+    if (!IS_DOT11_MODE_11B(selfStaDot11Mode))
+    {
+        val = WNI_CFG_SUPPORTED_RATES_11A_LEN;
+        wlan_cfgGetStr( pMac, WNI_CFG_SUPPORTED_RATES_11A,
+                (tANI_U8 *)&tempRateSet2.rate, &val );
+        tempRateSet2.numRates = (tANI_U8) val;
+    }
+    else
          tempRateSet2.numRates = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        tempRateSet2.numRates = 0;
-
->>>>>>> 657b0e9... prima update
 
     if ((tempRateSet.numRates + tempRateSet2.numRates) > 12)
     {
         //we are in big trouble
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("more than 12 rates in CFG\n"));
 =======
         limLog(pMac, LOGP, FL("more than 12 rates in CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("more than 12 rates in CFG\n"));
->>>>>>> 657b0e9... prima update
         //panic
         goto error;
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     //copy all rates in tempRateSet, there are 12 rates max
     for (i = 0;i < tempRateSet2.numRates; i++)
       tempRateSet.rate[i + tempRateSet.numRates] = tempRateSet2.rate[i];
@@ -2425,28 +2089,20 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
         tANI_U8 bRateIndex = 0;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, (tANI_U8 *) pRates, sizeof(tSirSupportedRates));
 =======
         vos_mem_set((tANI_U8 *) pRates, sizeof(tSirSupportedRates), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palZeroMemory( pMac->hHdd, (tANI_U8 *) pRates, sizeof(tSirSupportedRates));
->>>>>>> 657b0e9... prima update
         for(i = 0;i < tempRateSet.numRates; i++)
         {
             min = 0;
             val = 0xff;
             isArate = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
             for(j = 0;j < tempRateSet.numRates; j++)
 =======
             for(j = 0; (j < tempRateSet.numRates) && (j < SIR_MAC_RATESET_EID_MAX); j++)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            for(j = 0;j < tempRateSet.numRates; j++)
->>>>>>> 657b0e9... prima update
             {
                 if ((tANI_U32) (tempRateSet.rate[j] & 0x7f) < val)
                 {
@@ -2488,15 +2144,11 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(IS_DOT11_MODE_HT(psessionEntry->dot11mode))
 =======
     //if(IS_DOT11_MODE_HT(psessionEntry->dot11mode))
     if (IS_DOT11_MODE_HT(selfStaDot11Mode))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(IS_DOT11_MODE_HT(psessionEntry->dot11mode))
->>>>>>> 657b0e9... prima update
     {
         val = SIZE_OF_SUPPORTED_MCS_SET;
         if (wlan_cfgGetStr(pMac, WNI_CFG_SUPPORTED_MCS_SET,
@@ -2505,14 +2157,10 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
         {
             /// Could not get rateset from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve supportedMCSSet\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not retrieve supportedMCSSet"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not retrieve supportedMCSSet\n"));)
->>>>>>> 657b0e9... prima update
             goto error;
         }
 
@@ -2528,14 +2176,10 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG2(limLog(pMac, LOG2, FL("MCS Rate Set Bitmap: \n"));)
 =======
         PELOG2(limLog(pMac, LOG2, FL("MCS Rate Set Bitmap: "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG2(limLog(pMac, LOG2, FL("MCS Rate Set Bitmap: \n"));)
->>>>>>> 657b0e9... prima update
         for(i=0; i<SIR_MAC_MAX_SUPPORTED_MCS_SET; i++)
             PELOGW(limLog(pMac, LOG2,FL("%x ") , pRates->supportedMCSSet[i]);)
     }
@@ -2551,7 +2195,6 @@ limPopulateOwnRateSet(tpAniSirGlobal pMac,
     return eSIR_FAILURE;
 } /*** limPopulateOwnRateSet() ***/
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
@@ -2697,8 +2340,6 @@ limPopulatePeerRateSet(tpAniSirGlobal pMac,
 } /*** limPopulatePeerRateSet() ***/
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**
  * limPopulateMatchingRateSet
  * FUNCTION:
@@ -2770,29 +2411,21 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
     {
         /// Could not get rateset from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve rateset\n"));
 =======
         limLog(pMac, LOGP, FL("could not retrieve rateset"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not retrieve rateset\n"));
->>>>>>> 657b0e9... prima update
     }
 
     #endif // TO SUPPORT BT-AMP
 
     /* copy operational rate set from psessionEntry */
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd,(tempRateSet.rate),(psessionEntry->rateSet.rate),psessionEntry->rateSet.numRates);
 =======
     vos_mem_copy((tempRateSet.rate), (psessionEntry->rateSet.rate),
                  psessionEntry->rateSet.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd,(tempRateSet.rate),(psessionEntry->rateSet.rate),psessionEntry->rateSet.numRates);
->>>>>>> 657b0e9... prima update
     tempRateSet.numRates = (tANI_U8) psessionEntry->rateSet.numRates;
 
     if (phyMode == WNI_CFG_PHY_MODE_11G)
@@ -2806,15 +2439,11 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
                       &val) != eSIR_SUCCESS)
         #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd,(tempRateSet2.rate),(psessionEntry->extRateSet.rate),psessionEntry->extRateSet.numRates);
 =======
         vos_mem_copy((tempRateSet2.rate), (psessionEntry->extRateSet.rate),
                      psessionEntry->extRateSet.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory(pMac->hHdd,(tempRateSet2.rate),(psessionEntry->extRateSet.rate),psessionEntry->extRateSet.numRates);
->>>>>>> 657b0e9... prima update
         tempRateSet2.numRates = (tANI_U8) psessionEntry->extRateSet.numRates;
     }
     else
@@ -2823,14 +2452,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
     if ((tempRateSet.numRates + tempRateSet2.numRates) > 12)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("more than 12 rates in CFG\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("more than 12 rates in CFG"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("more than 12 rates in CFG\n"));)
->>>>>>> 657b0e9... prima update
         goto error;
     }
 
@@ -2876,14 +2501,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
      * unicity of the rates so there cannot be more than 12
      */
 <<<<<<< HEAD
-<<<<<<< HEAD
     for(i = 0; i < pOperRateSet->numRates; i++)
 =======
     for(i = 0; (i < pOperRateSet->numRates && i < SIR_MAC_RATESET_EID_MAX) ; i++)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    for(i = 0; i < pOperRateSet->numRates; i++)
->>>>>>> 657b0e9... prima update
     {
         tempRateSet.rate[i] = pOperRateSet->rate[i];
     }
@@ -2904,14 +2525,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
          int tail = tempRateSet.numRates;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
           for( i = 0; i < pExtRateSet->numRates; i++ )
 =======
           for( i = 0; (i < pExtRateSet->numRates && i < SIR_MAC_RATESET_EID_MAX); i++ )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          for( i = 0; i < pExtRateSet->numRates; i++ )
->>>>>>> 657b0e9... prima update
           {
             found = 0;
             for( j = 0; j < (tANI_U32) tail; j++ )
@@ -2941,14 +2558,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
       else
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
         for(j = 0; j < pExtRateSet->numRates; j++)
 =======
         for(j = 0; ((j < pExtRateSet->numRates) && (j < SIR_MAC_RATESET_EID_MAX) && ((i+j) < SIR_MAC_RATESET_EID_MAX)); j++)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        for(j = 0; j < pExtRateSet->numRates; j++)
->>>>>>> 657b0e9... prima update
             tempRateSet.rate[i+j] = pExtRateSet->rate[j];
 
         tempRateSet.numRates += pExtRateSet->numRates;
@@ -2960,7 +2573,6 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
         tANI_U8 aRateIndex = 0;
         tANI_U8 bRateIndex = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, (tANI_U8 *) rates, sizeof(tSirSupportedRates));
         for(i = 0;i < tempRateSet2.numRates; i++)
         {
@@ -2971,20 +2583,11 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
         {
             for(j = 0;(j < tempRateSet.numRates && j < SIR_MAC_RATESET_EID_MAX); j++)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palZeroMemory( pMac->hHdd, (tANI_U8 *) rates, sizeof(tSirSupportedRates));
-        for(i = 0;i < tempRateSet2.numRates; i++)
-        {
-            for(j = 0;j < tempRateSet.numRates; j++)
->>>>>>> 657b0e9... prima update
             {
                 if ((tempRateSet2.rate[i] & 0x7F) ==
                     (tempRateSet.rate[j] & 0x7F))
                 { 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
                     if ((bRateIndex > HAL_NUM_11B_RATES) || (aRateIndex > HAL_NUM_11A_RATES))
                     {
@@ -2993,7 +2596,6 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
                             return eSIR_FAILURE;
                     }
 #endif
-<<<<<<< HEAD
                     if (sirIsArate(tempRateSet2.rate[i] & 0x7f))
                     {
                         isArate=1;
@@ -3002,23 +2604,18 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
                     else
                         rates->llbRates[bRateIndex++] = tempRateSet2.rate[i];
 =======
-=======
->>>>>>> 657b0e9... prima update
                     if (sirIsArate(tempRateSet2.rate[i] & 0x7f))
                     {
                         isArate=1;
-                        rates->llaRates[aRateIndex++] = tempRateSet2.rate[i];
+                        if (aRateIndex < SIR_NUM_11A_RATES)
+                            rates->llaRates[aRateIndex++] = tempRateSet2.rate[i];
                     }
                     else
-<<<<<<< HEAD
                     {
                         if (bRateIndex < SIR_NUM_11B_RATES)
                             rates->llbRates[bRateIndex++] = tempRateSet2.rate[i];
                     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        rates->llbRates[bRateIndex++] = tempRateSet2.rate[i];
->>>>>>> 657b0e9... prima update
                     break;
                 }
             }
@@ -3030,14 +2627,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
         if(wlan_cfgGetInt(pMac, WNI_CFG_PROPRIETARY_RATES_ENABLED, &val) != eSIR_SUCCESS)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not retrieve prop rate enabled flag from CFG\n"));
 =======
             limLog(pMac, LOGP, FL("could not retrieve prop rate enabled flag from CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not retrieve prop rate enabled flag from CFG\n"));
->>>>>>> 657b0e9... prima update
         }
         else if(val)
         {
@@ -3050,7 +2643,6 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
 
     //compute the matching MCS rate set, if peer is 11n capable and self mode is 11n
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(IS_DOT11_MODE_HT(psessionEntry->dot11mode) &&
       (pStaDs->mlmStaContext.htCapability))
 =======
@@ -3061,10 +2653,6 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
       (pStaDs->mlmStaContext.htCapability))
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(IS_DOT11_MODE_HT(psessionEntry->dot11mode) &&
-      (pStaDs->mlmStaContext.htCapability))
->>>>>>> 657b0e9... prima update
     {
         val = SIZE_OF_SUPPORTED_MCS_SET;
         if (wlan_cfgGetStr(pMac, WNI_CFG_SUPPORTED_MCS_SET,
@@ -3073,14 +2661,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
         {
             /// Could not get rateset from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not retrieve supportedMCSSet\n"));
 =======
             limLog(pMac, LOGP, FL("could not retrieve supportedMCSSet"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not retrieve supportedMCSSet\n"));
->>>>>>> 657b0e9... prima update
             goto error;
         }
 
@@ -3088,14 +2672,10 @@ limPopulateMatchingRateSet(tpAniSirGlobal pMac,
            pStaDs->supportedRates.supportedMCSSet[i] = mcsSet[i] & pSupportedMCSSet[i];
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG2(limLog(pMac, LOG2, FL("limPopulateMatchingRateSet: MCS Rate Set Bitmap from  CFG and DPH : \n"));)
 =======
         PELOG2(limLog(pMac, LOG2, FL("limPopulateMatchingRateSet: MCS Rate Set Bitmap from  CFG and DPH : "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG2(limLog(pMac, LOG2, FL("limPopulateMatchingRateSet: MCS Rate Set Bitmap from  CFG and DPH : \n"));)
->>>>>>> 657b0e9... prima update
         for(i=0; i<SIR_MAC_MAX_SUPPORTED_MCS_SET; i++)
         {
             PELOG2(limLog(pMac, LOG2,FL("%x %x "), mcsSet[i], pStaDs->supportedRates.supportedMCSSet[i]);)
@@ -3148,14 +2728,10 @@ tSirRetStatus
 limAddSta(
     tpAniSirGlobal  pMac,
 <<<<<<< HEAD
-<<<<<<< HEAD
     tpDphHashNode   pStaDs,tpPESession psessionEntry)
 =======
     tpDphHashNode   pStaDs, tANI_U8 updateEntry, tpPESession psessionEntry)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tpDphHashNode   pStaDs,tpPESession psessionEntry)
->>>>>>> 657b0e9... prima update
 {
     tpAddStaParams pAddStaParams = NULL;
     tSirMsgQ msgQ;
@@ -3163,7 +2739,6 @@ limAddSta(
     tSirMacAddr     staMac, *pStaAddr;
     tANI_U8 i;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tpSirAssocReq   pAssocReq;
     tANI_U8  *p2pIe = NULL;
@@ -3173,30 +2748,19 @@ limAddSta(
     if (retCode != eSIR_SUCCESS)
             limLog(pMac, LOGP, FL("could not retrieve STA MAC\n"));
 =======
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     tpSirAssocReq   pAssocReq;
     tANI_U8  *p2pIe = NULL;
-#endif
     #if 0
     retCode = wlan_cfgGetStr(pMac, WNI_CFG_STA_ID, staMac, &cfg);
     if (retCode != eSIR_SUCCESS)
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not retrieve STA MAC"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not retrieve STA MAC\n"));
->>>>>>> 657b0e9... prima update
     #endif //To SUPPORT BT-AMP
 
     
     sirCopyMacAddr(staMac,psessionEntry->selfMacAddr);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     if( eHAL_STATUS_SUCCESS !=
         palAllocateMemory( pMac->hHdd, (void **) &pAddStaParams, sizeof( tAddStaParams )))
       {
@@ -3204,7 +2768,6 @@ limAddSta(
         return eSIR_MEM_ALLOC_FAILED;
       }
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pAddStaParams, sizeof(tAddStaParams));
-<<<<<<< HEAD
 =======
     pAddStaParams = vos_mem_malloc(sizeof(tAddStaParams));
     if (NULL == pAddStaParams)
@@ -3214,14 +2777,11 @@ limAddSta(
     }
     vos_mem_set((tANI_U8 *) pAddStaParams, sizeof(tAddStaParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     if ((limGetSystemRole(psessionEntry) == eLIM_AP_ROLE) ||
         (limGetSystemRole(psessionEntry) == eLIM_STA_IN_IBSS_ROLE) ||
         (limGetSystemRole(psessionEntry) == eLIM_BT_AMP_AP_ROLE) )
         pStaAddr = &pStaDs->staAddr;
-<<<<<<< HEAD
 <<<<<<< HEAD
     else
         pStaAddr = &staMac;
@@ -3246,28 +2806,15 @@ limAddSta(
     vos_mem_copy((tANI_U8 *) pAddStaParams->bssId,
                   psessionEntry->bssId, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    else
-        pStaAddr = &staMac;
-
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) pAddStaParams->staMac,
-                  (tANI_U8 *) *pStaAddr, sizeof(tSirMacAddr));
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) pAddStaParams->bssId,
-                   psessionEntry->bssId, sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
 
     limFillSupportedRatesInfo(pMac, pStaDs, &pStaDs->supportedRates,psessionEntry);
 
     //Copy legacy rates
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd, (tANI_U8*)&pAddStaParams->supportedRates,
 =======
     vos_mem_copy ((tANI_U8*)&pAddStaParams->supportedRates,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd, (tANI_U8*)&pAddStaParams->supportedRates,
->>>>>>> 657b0e9... prima update
                   (tANI_U8*)&pStaDs->supportedRates, sizeof(tSirSupportedRates));
 
     pAddStaParams->assocId = pStaDs->assocId;
@@ -3276,20 +2823,15 @@ limAddSta(
     pAddStaParams->listenInterval = pStaDs->mlmStaContext.listenInterval;
     pAddStaParams->shortPreambleSupported = pStaDs->shortPreambleEnabled;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     if((limGetSystemRole(psessionEntry) == eLIM_AP_ROLE) && (pStaDs->mlmStaContext.subType == LIM_REASSOC))
     {
         /* TBD - need to remove this REASSOC check after fixinf rmmod issue */
         pAddStaParams->updateSta = pStaDs->mlmStaContext.updateContext;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
     pStaDs->valid                  = 0;
     pStaDs->mlmStaContext.mlmState = eLIM_MLM_WT_ADD_STA_RSP_STATE;
@@ -3299,22 +2841,27 @@ limAddSta(
     pAddStaParams->staType = pStaDs->staType;
 
 =======
-=======
-#endif
->>>>>>> 657b0e9... prima update
     pStaDs->valid                  = 0;
     pStaDs->mlmStaContext.mlmState = eLIM_MLM_WT_ADD_STA_RSP_STATE;
 
-  // This will indicate HAL to "allocate" a new STA index
-    pAddStaParams->staIdx = HAL_STA_INVALID_IDX;
+    // This will indicate HAL to "allocate" a new STA index
+#ifdef FEATURE_WLAN_TDLS
+    /* As there is corner case in-between add_sta and change_sta,if del_sta for other staIdx happened,
+     * firmware return wrong staIdx (recently removed staIdx). Until we get a confirmation from the
+     * firmware team it is now return correct staIdx for same sta_mac_addr for update case, we want
+     * to get around it by passing valid staIdx given by add_sta time.
+     */
+    if((STA_ENTRY_TDLS_PEER == pStaDs->staType) &&
+      (true == updateEntry))
+        pAddStaParams->staIdx = pStaDs->staIndex;
+    else
+#endif
+        pAddStaParams->staIdx = HAL_STA_INVALID_IDX;
     pAddStaParams->staType = pStaDs->staType;
 
-<<<<<<< HEAD
     pAddStaParams->updateSta = updateEntry;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     pAddStaParams->status = eHAL_STATUS_SUCCESS;
     pAddStaParams->respReqd = 1;
     //Update HT Capability
@@ -3326,7 +2873,6 @@ limAddSta(
         pAddStaParams->vhtCapable = pStaDs->mlmStaContext.vhtCapability;
 #endif
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -3340,8 +2886,6 @@ limAddSta(
     }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     else
     {
         pAddStaParams->htCapable = psessionEntry->htCapability;
@@ -3366,7 +2910,6 @@ limAddSta(
     if(pAddStaParams->vhtCapable)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         pAddStaParams->vhtTxChannelWidthSet = psessionEntry->vhtTxChannelWidthSet;
 
         /* TODO. Need to discuss this. Overwriting here.
@@ -3387,15 +2930,35 @@ limAddSta(
 #endif
     }
 #endif
-=======
-        pAddStaParams->vhtTxChannelWidthSet = psessionEntry->vhtTxChannelWidthSet;
->>>>>>> 657b0e9... prima update
 
-        /* TODO. Need to discuss this. Overwriting here.
-         * Stick to SAP's configuration for HT supported Channel width */
-        pAddStaParams->txChannelWidthSet = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
-    }
+#ifdef FEATURE_WLAN_TDLS
+    if((STA_ENTRY_PEER == pStaDs->staType) || 
+            (STA_ENTRY_TDLS_PEER == pStaDs->staType))
+#else
+    if (STA_ENTRY_PEER == pStaDs->staType)
 #endif
+    {
+        /* peer STA get the LDPC capability from pStaDs, which populated from 
+         * HT/VHT capability*/
+        if(pAddStaParams->vhtTxBFCapable && pMac->lim.disableLDPCWithTxbfAP)
+        {
+            pAddStaParams->htLdpcCapable = 0;
+            pAddStaParams->vhtLdpcCapable = 0;
+        }
+        else
+        {
+            pAddStaParams->htLdpcCapable = pStaDs->htLdpcCapable;
+            pAddStaParams->vhtLdpcCapable = pStaDs->vhtLdpcCapable;
+        }
+    }
+    else if( STA_ENTRY_SELF == pStaDs->staType)
+    {
+        /* For Self STA get the LDPC capability from config.ini*/
+        pAddStaParams->htLdpcCapable = 
+                          (psessionEntry->txLdpcIniFeatureEnabled & 0x01);
+        pAddStaParams->vhtLdpcCapable = 
+                          ((psessionEntry->txLdpcIniFeatureEnabled >> 1)& 0x01);
+    }
 
 >>>>>>> d97af3b... add prima wlan driver
     /* Update PE session ID*/
@@ -3404,13 +2967,9 @@ limAddSta(
     if (psessionEntry->parsedAssocReq != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     // Get a copy of the already parsed Assoc Request
        pAssocReq = (tpSirAssocReq) psessionEntry->parsedAssocReq[pStaDs->assocId];
        if ( pAssocReq && pAssocReq->addIEPresent && pAssocReq->addIE.length ) {
@@ -3418,13 +2977,9 @@ limAddSta(
        }
        pAddStaParams->p2pCapableSta = (p2pIe != NULL);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
     }
 
     //Disable BA. It will be set as part of ADDBA negotiation.
@@ -3434,7 +2989,6 @@ limAddSta(
           pAddStaParams->staTCParams[i].rxUseBA = eBA_DISABLE;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(pStaDs->wmeEnabled && (eLIM_AP_ROLE == psessionEntry->limSystemRole))
@@ -3446,10 +3000,6 @@ limAddSta(
     if(pStaDs->wmeEnabled && (eLIM_AP_ROLE == psessionEntry->limSystemRole))
 #endif      
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-    if(pStaDs->wmeEnabled && (eLIM_AP_ROLE == psessionEntry->limSystemRole))
->>>>>>> 657b0e9... prima update
     {
         pAddStaParams->uAPSD = 0;
         /* update UAPSD and send it to LIM to add STA */
@@ -3470,7 +3020,6 @@ limAddSta(
             pAddStaParams->uAPSD, pAddStaParams->maxSPLen);
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
   //we need to defer the message until we get the response back from HAL.
 =======
@@ -3483,10 +3032,6 @@ limAddSta(
 
     //we need to defer the message until we get the response back from HAL.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-  //we need to defer the message until we get the response back from HAL.
->>>>>>> 657b0e9... prima update
     if (pAddStaParams->respReqd)
         SET_LIM_PROCESS_DEFD_MESGS(pMac, false);
 
@@ -3497,14 +3042,10 @@ limAddSta(
     msgQ.bodyval = 0;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog( pMac, LOG1, FL( "Sending SIR_HAL_ADD_STA_REQ for assocId %d\n" ),
 =======
     limLog( pMac, LOG1, FL( "Sending SIR_HAL_ADD_STA_REQ for assocId %d" ),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog( pMac, LOG1, FL( "Sending SIR_HAL_ADD_STA_REQ for assocId %d\n" ),
->>>>>>> 657b0e9... prima update
             pStaDs->assocId);
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
 
@@ -3514,7 +3055,6 @@ limAddSta(
        if (pAddStaParams->respReqd)
           SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("ADD_STA_REQ for aId %d failed (reason %X)\n"),
                             pStaDs->assocId, retCode );
         palFreeMemory(pMac->hHdd, (void*)pAddStaParams);
@@ -3523,11 +3063,6 @@ limAddSta(
                             pStaDs->assocId, retCode );
         vos_mem_free(pAddStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGE, FL("ADD_STA_REQ for aId %d failed (reason %X)\n"),
-                            pStaDs->assocId, retCode );
-        palFreeMemory(pMac->hHdd, (void*)pAddStaParams);
->>>>>>> 657b0e9... prima update
     }
 
   return retCode;
@@ -3569,7 +3104,6 @@ limDelSta(
     tSirRetStatus     retCode = eSIR_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **) &pDelStaParams, sizeof( tDeleteStaParams )))
     {
         limLog( pMac, LOGP, FL( "Unable to PAL allocate memory during ADD_STA\n" ));
@@ -3580,20 +3114,13 @@ limDelSta(
 =======
     pDelStaParams = vos_mem_malloc(sizeof( tDeleteStaParams ));
     if (NULL == pDelStaParams)
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **) &pDelStaParams, sizeof( tDeleteStaParams )))
->>>>>>> 657b0e9... prima update
     {
-        limLog( pMac, LOGP, FL( "Unable to PAL allocate memory during ADD_STA\n" ));
+        limLog( pMac, LOGP, FL( "Unable to allocate memory during ADD_STA" ));
         return eSIR_MEM_ALLOC_FAILED;
     }
 
-<<<<<<< HEAD
     vos_mem_set((tANI_U8 *) pDelStaParams, sizeof(tDeleteStaParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd, (tANI_U8 *) pDelStaParams, sizeof(tDeleteStaParams));
->>>>>>> 657b0e9... prima update
 
   //
   // DPH contains the STA index only for "peer" STA entries.
@@ -3615,7 +3142,6 @@ limDelSta(
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( (eLIM_STA_ROLE == GET_LIM_SYSTEM_ROLE(psessionEntry)) ||(eLIM_BT_AMP_STA_ROLE == GET_LIM_SYSTEM_ROLE(psessionEntry)) )
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -3624,9 +3150,6 @@ limDelSta(
     if( (eLIM_STA_ROLE == GET_LIM_SYSTEM_ROLE(psessionEntry)) ||(eLIM_BT_AMP_STA_ROLE == GET_LIM_SYSTEM_ROLE(psessionEntry)) )
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( (eLIM_STA_ROLE == GET_LIM_SYSTEM_ROLE(psessionEntry)) ||(eLIM_BT_AMP_STA_ROLE == GET_LIM_SYSTEM_ROLE(psessionEntry)) )
->>>>>>> 657b0e9... prima update
       pDelStaParams->staIdx= psessionEntry->staId;
     
     else
@@ -3669,21 +3192,16 @@ limDelSta(
 
     limLog( pMac, LOG1, FL( "Sending SIR_HAL_DELETE_STA_REQ for STAID: %X and AssocID: %d" ),
 <<<<<<< HEAD
-<<<<<<< HEAD
     pDelStaParams->staIdx, pDelStaParams->assocId);
 =======
                     pDelStaParams->staIdx, pDelStaParams->assocId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pDelStaParams->staIdx, pDelStaParams->assocId);
->>>>>>> 657b0e9... prima update
     MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
     retCode = wdaPostCtrlMsg( pMac, &msgQ );
     if( eSIR_SUCCESS != retCode)
     {
         if(fRespReqd)
            SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
-<<<<<<< HEAD
 <<<<<<< HEAD
         limLog( pMac, LOGE, FL("Posting DELETE_STA_REQ to HAL failed, reason=%X\n"),
                         retCode );
@@ -3693,11 +3211,6 @@ limDelSta(
                         retCode );
         vos_mem_free(pDelStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGE, FL("Posting DELETE_STA_REQ to HAL failed, reason=%X\n"),
-                        retCode );
-        palFreeMemory(pMac->hHdd, (void*)pDelStaParams);
->>>>>>> 657b0e9... prima update
     }
 
     return retCode;
@@ -3739,7 +3252,6 @@ tSirRetStatus limAddFTStaSelf(tpAniSirGlobal pMac, tANI_U16 assocId, tpPESession
 
     psessionEntry->limPrevMlmState = psessionEntry->limMlmState;
 <<<<<<< HEAD
-<<<<<<< HEAD
     psessionEntry->limMlmState = eLIM_MLM_WT_ADD_STA_RSP_STATE;
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
@@ -3753,13 +3265,6 @@ tSirRetStatus limAddFTStaSelf(tpAniSirGlobal pMac, tANI_U16 assocId, tpPESession
         limLog( pMac, LOGE, FL("Posting ADD_STA_REQ to HAL failed, reason=%X"), retCode );
         vos_mem_free(pAddStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    psessionEntry->limMlmState = eLIM_MLM_WT_ADD_STA_RSP_STATE;
-    if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
-    {
-        limLog( pMac, LOGE, FL("Posting ADD_STA_REQ to HAL failed, reason=%X\n"), retCode );
-        palFreeMemory(pMac->hHdd, (void*)pAddStaParams);
->>>>>>> 657b0e9... prima update
     }
     //
     // Dont need it any more
@@ -3799,7 +3304,6 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
     tSirMacAddr staMac;
     tANI_U32 listenInterval = WNI_CFG_LISTEN_INTERVAL_STADEF;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tANI_U32 shortGi20MhzSupport;
     tANI_U32 shortGi40MhzSupport;
@@ -3817,8 +3321,6 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
     limLog( pMac, LOG1, FL("SGI 20 %d"),(int)selfTxWidth);
     limLog( pMac, LOG1, FL("Roam Channel Bonding Mode %d"),(int)pMac->roam.configParam.uCfgDot11Mode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     #if 0
     retCode =wlan_cfgGetStr(pMac, WNI_CFG_STA_ID, staMac, &cfg);
@@ -3826,20 +3328,15 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
         {
             /// Could not get BSSID from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not retrieve STA MAC\n"));
 =======
             limLog(pMac, LOGP, FL("could not retrieve STA MAC"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not retrieve STA MAC\n"));
->>>>>>> 657b0e9... prima update
         return retCode;
         }
     #endif //TO SUPPORT BT-AMP
     sirCopyMacAddr(staMac,psessionEntry->selfMacAddr);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS !=
         palAllocateMemory( pMac->hHdd, (void **) &pAddStaParams, sizeof( tAddStaParams )))
@@ -3858,28 +3355,19 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
 =======
     pAddStaParams = vos_mem_malloc(sizeof(tAddStaParams));
     if (NULL == pAddStaParams)
-=======
-    if( eHAL_STATUS_SUCCESS !=
-        palAllocateMemory( pMac->hHdd, (void **) &pAddStaParams, sizeof( tAddStaParams )))
->>>>>>> 657b0e9... prima update
     {
-        limLog( pMac, LOGP, FL( "Unable to PAL allocate memory during ADD_STA\n" ));
+        limLog( pMac, LOGP, FL( "Unable to allocate memory during ADD_STA" ));
         return eSIR_MEM_ALLOC_FAILED;
     }
-    palZeroMemory( pMac->hHdd, (tANI_U8 *) pAddStaParams, sizeof(tAddStaParams));
+    vos_mem_set((tANI_U8 *) pAddStaParams, sizeof(tAddStaParams), 0);
 
     /// Add STA context at MAC HW (BMU, RHP & TFP)
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) pAddStaParams->staMac,
-                  (tANI_U8 *) staMac, sizeof(tSirMacAddr));
+    vos_mem_copy((tANI_U8 *) pAddStaParams->staMac,
+                 (tANI_U8 *) staMac, sizeof(tSirMacAddr));
 
-<<<<<<< HEAD
     vos_mem_copy((tANI_U8 *) pAddStaParams->bssId,
                  psessionEntry->bssId, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) pAddStaParams->bssId,
-                psessionEntry->bssId, sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
 
     pAddStaParams->assocId = psessionEntry->limAID;
     pAddStaParams->staType = STA_ENTRY_SELF;
@@ -3901,7 +3389,6 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
     limPopulateOwnRateSet(pMac, &pAddStaParams->supportedRates, NULL, false,psessionEntry);
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( psessionEntry->htCapability)
     {
         pAddStaParams->htCapable = psessionEntry->htCapability;
@@ -3913,11 +3400,6 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
     {
         pAddStaParams->htCapable = TRUE ;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( psessionEntry->htCapability)
-    {
-        pAddStaParams->htCapable = psessionEntry->htCapability;
->>>>>>> 657b0e9... prima update
 #ifdef DISABLE_GF_FOR_INTEROP
         /*
          * To resolve the interop problem with Broadcom AP, 
@@ -3932,7 +3414,6 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
         }
         else
 #endif
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 #ifdef WLAN_SOFTAP_FEATURE
@@ -4013,55 +3494,60 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
                                              "CFG,setting value to default"));)
                 pAddStaParams->fShortGI20Mhz = WNI_CFG_SHORT_GI_20MHZ_STADEF;
             }
-=======
->>>>>>> 657b0e9... prima update
 
-#ifdef WLAN_SOFTAP_FEATURE
-        pAddStaParams->greenFieldCapable = limGetHTCapability( pMac, eHT_GREENFIELD, psessionEntry);
-        pAddStaParams->txChannelWidthSet = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
-        pAddStaParams->mimoPS            = limGetHTCapability( pMac, eHT_MIMO_POWER_SAVE, psessionEntry );
-        pAddStaParams->rifsMode          = limGetHTCapability( pMac, eHT_RIFS_MODE, psessionEntry );
-        pAddStaParams->lsigTxopProtection = limGetHTCapability( pMac, eHT_LSIG_TXOP_PROTECTION, psessionEntry );
-        pAddStaParams->delBASupport      = limGetHTCapability( pMac, eHT_DELAYED_BA, psessionEntry );
-        pAddStaParams->maxAmpduDensity   = limGetHTCapability( pMac, eHT_MPDU_DENSITY, psessionEntry );
-        pAddStaParams->maxAmpduSize   = limGetHTCapability(pMac, eHT_MAX_RX_AMPDU_FACTOR, psessionEntry);
-        pAddStaParams->maxAmsduSize      = limGetHTCapability( pMac, eHT_MAX_AMSDU_LENGTH, psessionEntry );
-        pAddStaParams->fDsssCckMode40Mhz = limGetHTCapability( pMac, eHT_DSSS_CCK_MODE_40MHZ, psessionEntry);
-        pAddStaParams->fShortGI20Mhz     = limGetHTCapability( pMac, eHT_SHORT_GI_20MHZ, psessionEntry);
-        pAddStaParams->fShortGI40Mhz     = limGetHTCapability( pMac, eHT_SHORT_GI_40MHZ, psessionEntry);
-#else
-        pAddStaParams->greenFieldCapable = limGetHTCapability( pMac, eHT_GREENFIELD );
-        pAddStaParams->txChannelWidthSet = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET );
-        pAddStaParams->mimoPS            = limGetHTCapability( pMac, eHT_MIMO_POWER_SAVE );
-        pAddStaParams->rifsMode          = limGetHTCapability( pMac, eHT_RIFS_MODE );
-        pAddStaParams->lsigTxopProtection = limGetHTCapability( pMac, eHT_LSIG_TXOP_PROTECTION );
-        pAddStaParams->delBASupport      = limGetHTCapability( pMac, eHT_DELAYED_BA );
-        pAddStaParams->maxAmpduDensity   = limGetHTCapability( pMac, eHT_MPDU_DENSITY );
-        pAddStaParams->maxAmpduSize   = limGetHTCapability(pMac, eHT_MAX_RX_AMPDU_FACTOR);
-        pAddStaParams->maxAmsduSize      = limGetHTCapability( pMac, eHT_MAX_AMSDU_LENGTH );
-        pAddStaParams->fDsssCckMode40Mhz = limGetHTCapability( pMac, eHT_DSSS_CCK_MODE_40MHZ);
-        pAddStaParams->fShortGI20Mhz     = limGetHTCapability( pMac, eHT_SHORT_GI_20MHZ);
-        pAddStaParams->fShortGI40Mhz     = limGetHTCapability( pMac, eHT_SHORT_GI_40MHZ);
-#endif
+            /*
+             * We will read the gShortGI40Mhz from ini file, and if it is set
+             * to 1 then we will tell Peer that we support 40Mhz short GI
+             */
+            if (HAL_STATUS_SUCCESS(ccmCfgGetInt
+                                   (pMac, WNI_CFG_SHORT_GI_40MHZ,
+                                   &shortGi40MhzSupport)))
+            {
+                if (VOS_TRUE == shortGi40MhzSupport)
+                {
+                    pAddStaParams->fShortGI40Mhz =
+                       WNI_CFG_SHORT_GI_40MHZ_STAMAX;
+                    //pAddStaParams->fShortGI40Mhz =
+                    //limGetHTCapability(pMac, eHT_SHORT_GI_40MHZ,
+                    //                    psessionEntry);
+                }
+                else
+                {
+                    pAddStaParams->fShortGI40Mhz = VOS_FALSE;
+                }
+            }
+            else
+            {
+                PELOGE(limLog(pMac, LOGE, FL("could not retrieve shortGI 40Mhz"
+                                             "CFG,setting value to default"));)
+                pAddStaParams->fShortGI40Mhz = WNI_CFG_SHORT_GI_40MHZ_STADEF;
+            }
+       }
     }
 #ifdef WLAN_FEATURE_11AC
-    pAddStaParams->vhtCapable = psessionEntry->vhtCapability;
-    pAddStaParams->vhtTxChannelWidthSet = pMac->lim.apChanWidth;
+    pAddStaParams->vhtCapable = IS_DOT11_MODE_VHT(selfStaDot11Mode);
+    if (pAddStaParams->vhtCapable){
+        pAddStaParams->vhtTxChannelWidthSet = psessionEntry->vhtTxChannelWidthSet;
+        limLog( pMac, LOG1, FL("VHT WIDTH SET %d"),pAddStaParams->vhtTxChannelWidthSet);
+    }
+    pAddStaParams->vhtTxBFCapable = psessionEntry->txBFIniFeatureEnabled;
 #endif
+
+    /* For Self STA get the LDPC capability from session i.e config.ini*/
+    pAddStaParams->htLdpcCapable = 
+                      (psessionEntry->txLdpcIniFeatureEnabled & 0x01);
+    pAddStaParams->vhtLdpcCapable = 
+                      ((psessionEntry->txLdpcIniFeatureEnabled >> 1)& 0x01);
+
     if(wlan_cfgGetInt(pMac, WNI_CFG_LISTEN_INTERVAL, &listenInterval) != eSIR_SUCCESS)
-       limLog(pMac, LOGP, FL("Couldn't get LISTEN_INTERVAL\n"));
+       limLog(pMac, LOGP, FL("Couldn't get LISTEN_INTERVAL"));
     pAddStaParams->listenInterval = (tANI_U16)listenInterval;
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     if (VOS_P2P_CLIENT_MODE == psessionEntry->pePersona)
     {
         pAddStaParams->p2pCapableSta = 1;       
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -4071,11 +3557,6 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
     //limFillSupportedRatesInfo(pMac, NULL, &pAddStaParams->supportedRates,psessionEntry);
      pAddStaParams->supportedRates.opRateMode = limGetStaRateMode((tANI_U8)selfStaDot11Mode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
-    limFillSupportedRatesInfo(pMac, NULL, &pAddStaParams->supportedRates,psessionEntry);
->>>>>>> 657b0e9... prima update
 
     msgQ.type = WDA_ADD_STA_REQ;
   //
@@ -4094,17 +3575,12 @@ limAddStaSelf(tpAniSirGlobal pMac,tANI_U16 staIdx, tANI_U8 updateSta, tpPESessio
   if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Posting ADD_STA_REQ to HAL failed, reason=%X\n"), retCode );
         palFreeMemory(pMac->hHdd, (void*)pAddStaParams);
 =======
         limLog( pMac, LOGE, FL("Posting ADD_STA_REQ to HAL failed, reason=%X"), retCode );
         vos_mem_free(pAddStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGE, FL("Posting ADD_STA_REQ to HAL failed, reason=%X\n"), retCode );
-        palFreeMemory(pMac->hHdd, (void*)pAddStaParams);
->>>>>>> 657b0e9... prima update
     }
       return retCode;
 }
@@ -4139,14 +3615,10 @@ limTeardownInfraBss(tpAniSirGlobal pMac,tpPESession psessionEntry)
         limSendDisassocMgmtFrame(pMac,
                                  eSIR_MAC_DISASSOC_LEAVING_BSS_REASON,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                  bcAddr,psessionEntry);
 =======
                                  bcAddr,psessionEntry, FALSE);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                 bcAddr,psessionEntry);
->>>>>>> 657b0e9... prima update
 } /*** end limTeardownInfraBss() ***/
 
 
@@ -4177,14 +3649,10 @@ void limHandleCnfWaitTimeout(tpAniSirGlobal pMac, tANI_U16 staId)
     if((psessionEntry = peFindSessionBySessionId(pMac, pMac->lim.limTimers.gpLimCnfWaitTimer[staId].sessionId))== NULL) 
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
 =======
         limLog(pMac, LOGP,FL("Session Does not exist for given sessionID"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
->>>>>>> 657b0e9... prima update
         return;
     }
     systemRole = limGetSystemRole(psessionEntry);
@@ -4193,28 +3661,20 @@ void limHandleCnfWaitTimeout(tpAniSirGlobal pMac, tANI_U16 staId)
     if (pStaDs == NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("No STA context in SIR_LIM_CNF_WAIT_TIMEOUT.\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("No STA context in SIR_LIM_CNF_WAIT_TIMEOUT."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("No STA context in SIR_LIM_CNF_WAIT_TIMEOUT.\n"));)
->>>>>>> 657b0e9... prima update
         return;
     }
 
     switch (pStaDs->mlmStaContext.mlmState) {
         case eLIM_MLM_WT_ASSOC_CNF_STATE:
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGW(limLog(pMac, LOGW, FL("Did not receive Assoc Cnf in eLIM_MLM_WT_ASSOC_CNF_STATE sta Assoc id %d\n"), pStaDs->assocId);)
 =======
             PELOGW(limLog(pMac, LOGW, FL("Did not receive Assoc Cnf in eLIM_MLM_WT_ASSOC_CNF_STATE sta Assoc id %d"), pStaDs->assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGW(limLog(pMac, LOGW, FL("Did not receive Assoc Cnf in eLIM_MLM_WT_ASSOC_CNF_STATE sta Assoc id %d\n"), pStaDs->assocId);)
->>>>>>> 657b0e9... prima update
             limPrintMacAddr(pMac, pStaDs->staAddr, LOGW);
 
             if ( (systemRole == eLIM_AP_ROLE)|| (systemRole == eLIM_BT_AMP_AP_ROLE) )
@@ -4234,14 +3694,10 @@ void limHandleCnfWaitTimeout(tpAniSirGlobal pMac, tANI_U16 staId)
 
         default:
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGW, FL("Received CNF_WAIT_TIMEOUT in state %d\n"),
 =======
             limLog(pMac, LOGW, FL("Received CNF_WAIT_TIMEOUT in state %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGW, FL("Received CNF_WAIT_TIMEOUT in state %d\n"),
->>>>>>> 657b0e9... prima update
                    pStaDs->mlmStaContext.mlmState);
     }
 }
@@ -4294,26 +3750,18 @@ limDeleteDphHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16 staId,t
               (eLIM_STA_IN_IBSS_ROLE == psessionEntry->limSystemRole))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
             if(psessionEntry->limSystemRole == eLIM_AP_ROLE ){
                 if(psessionEntry->gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE){
                 limDecideApProtectionOnDelete(pMac, pStaDs, &beaconParams,psessionEntry);
                 }
             }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif         
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif         
->>>>>>> 657b0e9... prima update
 
             if(eLIM_STA_IN_IBSS_ROLE == systemRole)
                 limIbssDecideProtectionOnDelete(pMac, pStaDs, &beaconParams, psessionEntry);
@@ -4323,14 +3771,10 @@ limDeleteDphHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16 staId,t
 
             //Send message to HAL about beacon parameter change.
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGW(limLog(pMac, LOGW, FL("param bitmap = %d \n"), beaconParams.paramChangeBitmap);)
 =======
             PELOGW(limLog(pMac, LOGW, FL("param bitmap = %d "), beaconParams.paramChangeBitmap);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGW(limLog(pMac, LOGW, FL("param bitmap = %d \n"), beaconParams.paramChangeBitmap);)
->>>>>>> 657b0e9... prima update
             if(beaconParams.paramChangeBitmap)
             {
                 schSetFixedBeaconFields(pMac,psessionEntry);    
@@ -4339,14 +3783,10 @@ limDeleteDphHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16 staId,t
         }
         if (dphDeleteHashEntry(pMac, staAddr, staId, &psessionEntry->dph.dphHashTable) != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
            limLog(pMac, LOGP, FL("error deleting hash entry\n"));
 =======
            limLog(pMac, LOGP, FL("error deleting hash entry"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           limLog(pMac, LOGP, FL("error deleting hash entry\n"));
->>>>>>> 657b0e9... prima update
     }
 }
 
@@ -4384,14 +3824,10 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
     tSirMacSSid          currentSSID;
     tLimMlmJoinCnf       mlmJoinCnf;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
     palCopyMemory( pMac->hHdd, currentSSID.ssId,
                        psessionEntry->ssId.ssId,
                        psessionEntry->ssId.length);
-<<<<<<< HEAD
 =======
     tANI_U32             val = 0;
     tANI_U32             *noa1DurationFromBcn = NULL;
@@ -4403,8 +3839,6 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
                  psessionEntry->ssId.ssId,
                  psessionEntry->ssId.length);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    
     currentSSID.length = (tANI_U8)psessionEntry->ssId.length ;
 
@@ -4415,14 +3849,10 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
           (SIR_MAC_MGMT_PROBE_RSP == pHdr->fc.subType) ) &&
         currentSSID.length &&
 <<<<<<< HEAD
-<<<<<<< HEAD
         (!palEqualMemory( pMac->hHdd,(tANI_U8 *) &pBPR->ssId,
 =======
         (!vos_mem_compare((tANI_U8 *) &pBPR->ssId,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        (!palEqualMemory( pMac->hHdd,(tANI_U8 *) &pBPR->ssId,
->>>>>>> 657b0e9... prima update
                    (tANI_U8 *) &currentSSID,
                    (tANI_U8) (1 + currentSSID.length)) ))
     {
@@ -4431,14 +3861,10 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
          * Ignore received Beacon frame
          */
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("SSID received in Beacon does not match\n"));)
 =======
         PELOG1(limLog(pMac, LOG1, FL("SSID received in Beacon does not match"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("SSID received in Beacon does not match\n"));)
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_DEBUG            
         pMac->lim.gLimBcnSSIDMismatchCnt++;
 #endif
@@ -4447,7 +3873,6 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
 
     if( (psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE)||(psessionEntry->limSystemRole == eLIM_STA_ROLE))
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Received Beacon/PR with matching BSSID\n"));)
 
@@ -4495,12 +3920,6 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
         psessionEntry->defaultAuthFailureTimeout = 0;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("Received Beacon/PR with matching BSSID\n"));)
-
-        // Deactivate Join Failure timer
-        limDeactivateAndChangeTimer(pMac, eLIM_JOIN_FAIL_TIMER);
->>>>>>> 657b0e9... prima update
 
         // Update Beacon Interval at CFG database
 
@@ -4512,9 +3931,6 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
         MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, eLIM_MLM_JOINED_STATE));
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
         // In case of BP, we need to adopt to all rates
         // advertised by AP. Update the operational rates at CFG
@@ -4525,11 +3941,8 @@ limCheckAndAnnounceJoinSuccess(tpAniSirGlobal pMac,
             limLog(pMac, LOGP, FL("could not update Oper.rates at CFG\n"));
        
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
         /**
          * Announce join success by sending
@@ -4573,7 +3986,6 @@ tSirRetStatus limExtractApCapabilities( tpAniSirGlobal pMac,
     tpSirProbeRespBeacon beaconStruct )
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
   palZeroMemory( pMac->hHdd, (tANI_U8 *) beaconStruct, sizeof( tSirProbeRespBeacon ));
 
   PELOG3(limLog( pMac, LOG3,
@@ -4584,12 +3996,6 @@ tSirRetStatus limExtractApCapabilities( tpAniSirGlobal pMac,
   PELOG3(limLog( pMac, LOG3,
       FL( "In limExtractApCapabilities: The IE's being received are:" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  palZeroMemory( pMac->hHdd, (tANI_U8 *) beaconStruct, sizeof( tSirProbeRespBeacon ));
-
-  PELOG3(limLog( pMac, LOG3,
-      FL( "In limExtractApCapabilities: The IE's being received are:\n" ));
->>>>>>> 657b0e9... prima update
   sirDumpBuf( pMac, SIR_LIM_MODULE_ID, LOG3, pIE, ieLen );)
 
   // Parse the Beacon IE's, Don't try to parse if we dont have anything in IE
@@ -4597,14 +4003,10 @@ tSirRetStatus limExtractApCapabilities( tpAniSirGlobal pMac,
   if( eSIR_SUCCESS != sirParseBeaconIE( pMac, beaconStruct, pIE, (tANI_U32)ieLen ))
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog( pMac, LOGE, FL("APCapExtract: Beacon parsing error!\n"));
 =======
     limLog( pMac, LOGE, FL("APCapExtract: Beacon parsing error!"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog( pMac, LOGE, FL("APCapExtract: Beacon parsing error!\n"));
->>>>>>> 657b0e9... prima update
     return eSIR_FAILURE;
   }
   }
@@ -4642,14 +4044,10 @@ limDelBss(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tANI_U16 bssIdx,tpPESession
     tSirRetStatus     retCode = eSIR_SUCCESS;
     
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
      if( eHAL_STATUS_SUCCESS !=
         palAllocateMemory( pMac->hHdd, (void **) &pDelBssParams, sizeof( tDeleteBssParams )))
      {
         limLog( pMac, LOGP, FL( "Unable to PAL allocate memory during ADD_BSS\n" ));
-<<<<<<< HEAD
         return eSIR_MEM_ALLOC_FAILED;
      }
      palZeroMemory( pMac->hHdd, (tANI_U8 *) pDelBssParams, sizeof(tDeleteBssParams));
@@ -4662,11 +4060,6 @@ limDelBss(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tANI_U16 bssIdx,tpPESession
     }
     vos_mem_set((tANI_U8 *) pDelBssParams, sizeof(tDeleteBssParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        return eSIR_MEM_ALLOC_FAILED;
-     }
-     palZeroMemory( pMac->hHdd, (tANI_U8 *) pDelBssParams, sizeof(tDeleteBssParams));
->>>>>>> 657b0e9... prima update
 
 
     pDelBssParams->sessionId = psessionEntry->peSessionId; //update PE session Id
@@ -4685,7 +4078,6 @@ limDelBss(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tANI_U16 bssIdx,tpPESession
     MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, eLIM_MLM_WT_DEL_BSS_RSP_STATE));
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     pDelBssParams->status= eHAL_STATUS_SUCCESS;
     pDelBssParams->respReqd = 1;
    PELOGW(limLog( pMac, LOGW, FL("Sending HAL_DELETE_BSS_REQ for BSSID: %X\n"),
@@ -4700,11 +4092,6 @@ limDelBss(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tANI_U16 bssIdx,tpPESession
     pDelBssParams->respReqd = 1;
    PELOGW(limLog( pMac, LOGW, FL("Sending HAL_DELETE_BSS_REQ for BSSID: %X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pDelBssParams->status= eHAL_STATUS_SUCCESS;
-    pDelBssParams->respReqd = 1;
-   PELOGW(limLog( pMac, LOGW, FL("Sending HAL_DELETE_BSS_REQ for BSSID: %X\n"),
->>>>>>> 657b0e9... prima update
           pDelBssParams->bssIdx);)
 
     //we need to defer the message until we get the response back from HAL.
@@ -4721,17 +4108,12 @@ limDelBss(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tANI_U16 bssIdx,tpPESession
     {
         SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog( pMac, LOGE, FL("Posting DELETE_BSS_REQ to HAL failed, reason=%X\n"), retCode );
         palFreeMemory(pMac->hHdd, (void*)pDelBssParams);
 =======
         limLog( pMac, LOGE, FL("Posting DELETE_BSS_REQ to HAL failed, reason=%X"), retCode );
         vos_mem_free(pDelBssParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGE, FL("Posting DELETE_BSS_REQ to HAL failed, reason=%X\n"), retCode );
-        palFreeMemory(pMac->hHdd, (void*)pDelBssParams);
->>>>>>> 657b0e9... prima update
     }
 
     return retCode;
@@ -4739,13 +4121,9 @@ limDelBss(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tANI_U16 bssIdx,tpPESession
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef ANI_PRODUCT_TYPE_CLIENT
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef ANI_PRODUCT_TYPE_CLIENT
->>>>>>> 657b0e9... prima update
 
 /**
  * limSendAddBss()
@@ -4786,7 +4164,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
     tpDphHashNode pStaDs = NULL;
     tANI_U8 chanWidthSupp = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
     // Package SIR_HAL_ADD_BSS_REQ message parameters
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
                                                   (void **) &pAddBssParams,
@@ -4797,25 +4174,17 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
 =======
     tANI_U32 shortGi20MhzSupport;
     tANI_U32 shortGi40MhzSupport;
-=======
->>>>>>> 657b0e9... prima update
     // Package SIR_HAL_ADD_BSS_REQ message parameters
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
-                                                  (void **) &pAddBssParams,
-                                                  sizeof( tAddBssParams )))
+    pAddBssParams = vos_mem_malloc(sizeof( tAddBssParams ));
+    if (NULL == pAddBssParams)
     {
         limLog( pMac, LOGP,
-<<<<<<< HEAD
                 FL( "Unable to allocate memory during ADD_BSS" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                FL( "Unable to PAL allocate memory during ADD_BSS\n" ));
->>>>>>> 657b0e9... prima update
         retCode = eSIR_MEM_ALLOC_FAILED;
         goto returnFailure;
     }
     else
-<<<<<<< HEAD
 <<<<<<< HEAD
         palZeroMemory( pMac->hHdd, (tANI_U8 *) pAddBssParams, sizeof( tAddBssParams ));
 
@@ -4827,23 +4196,14 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
                    sizeof( tSirMacAddr ));
 =======
         vos_mem_set((tANI_U8 *) pAddBssParams, sizeof( tAddBssParams ), 0);
-=======
-        palZeroMemory( pMac->hHdd, (tANI_U8 *) pAddBssParams, sizeof( tAddBssParams ));
->>>>>>> 657b0e9... prima update
 
-    palCopyMemory( pMac->hHdd,  pAddBssParams->bssId,bssDescription->bssId,
-                   sizeof( tSirMacAddr ));
+    vos_mem_copy(pAddBssParams->bssId,bssDescription->bssId,
+                 sizeof(tSirMacAddr));
     // Fill in tAddBssParams selfMacAddr
-<<<<<<< HEAD
     vos_mem_copy(pAddBssParams->selfMacAddr,
                  psessionEntry->selfMacAddr,
                  sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd,  pAddBssParams->selfMacAddr, 
-                   psessionEntry->selfMacAddr,
-                   sizeof( tSirMacAddr ));
->>>>>>> 657b0e9... prima update
     
     if(psessionEntry->bssType == eSIR_BTAMP_AP_MODE)
     {
@@ -4872,17 +4232,12 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
 
     pAddBssParams->rateSet.numRates = pAssocRsp->supportedRates.numRates;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd,  pAddBssParams->rateSet.rate,
                    pAssocRsp->supportedRates.rate, pAssocRsp->supportedRates.numRates );
 =======
     vos_mem_copy(pAddBssParams->rateSet.rate,
                  pAssocRsp->supportedRates.rate, pAssocRsp->supportedRates.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd,  pAddBssParams->rateSet.rate,
-                   pAssocRsp->supportedRates.rate, pAssocRsp->supportedRates.numRates );
->>>>>>> 657b0e9... prima update
 
     pAddBssParams->nwType = bssDescription->nwType;
     
@@ -4905,7 +4260,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
             pAddBssParams->htOperMode = (tSirMacHTOperatingMode)pAssocRsp->HTInfo.opMode;
             pAddBssParams->dualCTSProtection = ( tANI_U8 ) pAssocRsp->HTInfo.dualCTSProtection;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
             chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
 #else
@@ -4914,13 +4268,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
 =======
             chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-            chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
-#else
-            chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET);
-#endif
->>>>>>> 657b0e9... prima update
             if( (pAssocRsp->HTCaps.supportedChannelWidthSet) &&
                 (chanWidthSupp) )
             {
@@ -4947,7 +4294,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
         pAddBssParams->vhtTxChannelWidthSet = pAssocRsp->VHTOperation.chanWidth; 
         pAddBssParams->currentExtChannel = limGet11ACPhyCBState ( pMac, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                                            pAddBssParams->currentOperChannel,
                                            pAddBssParams->currentExtChannel );
 =======
@@ -4956,10 +4302,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
                                                                   psessionEntry->apCenterChan,
                                                                   psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                           pAddBssParams->currentOperChannel,
-                                           pAddBssParams->currentExtChannel );
->>>>>>> 657b0e9... prima update
     }
     else 
     {
@@ -4975,7 +4317,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
         pAddBssParams->staContext.staType = STA_ENTRY_OTHER; // Identifying AP as an STA
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd,  pAddBssParams->staContext.bssId,
                        bssDescription->bssId,
                        sizeof( tSirMacAddr ));
@@ -4984,11 +4325,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
                      bssDescription->bssId,
                      sizeof( tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd,  pAddBssParams->staContext.bssId,
-                       bssDescription->bssId,
-                       sizeof( tSirMacAddr ));
->>>>>>> 657b0e9... prima update
         pAddBssParams->staContext.listenInterval = bssDescription->beaconInterval;
 
         /* Fill Assoc id from the dph table */
@@ -5011,22 +4347,16 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
         pAddBssParams->staContext.shortPreambleSupported = (tANI_U8)pAssocRsp->capabilityInfo.shortPreamble;
         pAddBssParams->staContext.updateSta = updateEntry;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
         if (IS_DOT11_MODE_HT(psessionEntry->dot11mode) && ( pBeaconStruct->HTCaps.present ))
 =======
         if (IS_DOT11_MODE_HT(psessionEntry->dot11mode) && pBeaconStruct->HTCaps.present)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-        if (IS_DOT11_MODE_HT(psessionEntry->dot11mode) && ( pBeaconStruct->HTCaps.present ))
->>>>>>> 657b0e9... prima update
         {
             pAddBssParams->staContext.us32MaxAmpduDuration = 0;
             pAddBssParams->staContext.htCapable = 1;
             pAddBssParams->staContext.greenFieldCapable  = ( tANI_U8 )pAssocRsp->HTCaps.greenField;
             pAddBssParams->staContext.lsigTxopProtection = ( tANI_U8 )pAssocRsp->HTCaps.lsigTXOPProtection;
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
@@ -5042,31 +4372,21 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
             }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             if( (pAssocRsp->HTCaps.supportedChannelWidthSet) &&
                 (chanWidthSupp) )
             {
                 pAddBssParams->staContext.txChannelWidthSet = ( tANI_U8 )pAssocRsp->HTInfo.recommendedTxWidthSet;
 <<<<<<< HEAD
-<<<<<<< HEAD
                 
 #ifdef WLAN_FEATURE_11AC
                 if (psessionEntry->vhtCapability && ( pBeaconStruct->VHTCaps.present ))
                 {
                     pAddBssParams->staContext.vhtCapable = 1;
 =======
-=======
-                
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_11AC
-                if (psessionEntry->vhtCapability && ( pBeaconStruct->VHTCaps.present ))
+                if (pAddBssParams->staContext.vhtCapable)
                 {
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    pAddBssParams->staContext.vhtCapable = 1;
->>>>>>> 657b0e9... prima update
                     pAddBssParams->staContext.vhtTxChannelWidthSet = pAssocRsp->VHTOperation.chanWidth; //pMac->lim.apChanWidth;
                 }
 #endif
@@ -5080,7 +4400,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
             pAddBssParams->staContext.maxAmsduSize       = ( tANI_U8 )pAssocRsp->HTCaps.maximalAMSDUsize;
             pAddBssParams->staContext.maxAmpduDensity    =            pAssocRsp->HTCaps.mpduDensity;
             pAddBssParams->staContext.fDsssCckMode40Mhz = (tANI_U8)pAssocRsp->HTCaps.dsssCckMode40MHz;
-<<<<<<< HEAD
 <<<<<<< HEAD
             pAddBssParams->staContext.fShortGI20Mhz = (tANI_U8)pAssocRsp->HTCaps.shortGI20MHz;
             pAddBssParams->staContext.fShortGI40Mhz = (tANI_U8)pAssocRsp->HTCaps.shortGI40MHz;
@@ -5150,17 +4469,10 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
             }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            pAddBssParams->staContext.fShortGI20Mhz = (tANI_U8)pAssocRsp->HTCaps.shortGI20MHz;
-            pAddBssParams->staContext.fShortGI40Mhz = (tANI_U8)pAssocRsp->HTCaps.shortGI40MHz;
-            pAddBssParams->staContext.maxAmpduSize= pAssocRsp->HTCaps.maxRxAMPDUFactor;
-            
->>>>>>> 657b0e9... prima update
             if( pBeaconStruct->HTInfo.present )
                 pAddBssParams->staContext.rifsMode = pAssocRsp->HTInfo.rifsMode;
         }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
         if ((psessionEntry->limWmeEnabled && pAssocRsp->wmeEdcaPresent) ||
                 (psessionEntry->limQosEnabled && pAssocRsp->edcaPresent))
@@ -5169,10 +4481,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
         if ((psessionEntry->limWmeEnabled && (pAssocRsp->wmeEdcaPresent || pAddBssParams->htCapable)) ||
                 (psessionEntry->limQosEnabled && (pAssocRsp->edcaPresent || pAddBssParams->htCapable)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if ((psessionEntry->limWmeEnabled && pAssocRsp->wmeEdcaPresent) ||
-                (psessionEntry->limQosEnabled && pAssocRsp->edcaPresent))
->>>>>>> 657b0e9... prima update
             pAddBssParams->staContext.wmmEnabled = 1;
         else 
             pAddBssParams->staContext.wmmEnabled = 0;
@@ -5184,27 +4492,19 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
         {
             limFillSupportedRatesInfo(pMac, pStaDs, &pStaDs->supportedRates,psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, (tANI_U8*)&pAddBssParams->staContext.supportedRates,
 =======
             vos_mem_copy((tANI_U8*)&pAddBssParams->staContext.supportedRates,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory(pMac->hHdd, (tANI_U8*)&pAddBssParams->staContext.supportedRates,
->>>>>>> 657b0e9... prima update
                                                 (tANI_U8*)&pStaDs->supportedRates,
                                                 sizeof(tSirSupportedRates));
         }
         else
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not Update the supported rates.\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not Update the supported rates."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not Update the supported rates.\n"));)
->>>>>>> 657b0e9... prima update
 
     }
 
@@ -5229,18 +4529,13 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
     pAddBssParams->halPersona = (tANI_U8)psessionEntry->pePersona; //update persona
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     if (VOS_P2P_CLIENT_MODE == psessionEntry->pePersona)
     {
         pAddBssParams->staContext.p2pCapableSta = 1;       
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -5250,18 +4545,11 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
 
     pAddBssParams->bSpectrumMgtEnabled = psessionEntry->spectrumMgtEnabled;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
-    pAddBssParams->bSpectrumMgtEnabled = psessionEntry->spectrumMgtEnabled || 
-        limIsconnectedOnDFSChannel(bssDescription->channelId);
->>>>>>> 657b0e9... prima update
 
 #if defined WLAN_FEATURE_VOWIFI_11R
     pAddBssParams->extSetStaKeyParamValid = 0;
 #endif
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
@@ -5273,8 +4561,6 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // Set a new state for MLME
     if( eLIM_MLM_WT_ASSOC_RSP_STATE == psessionEntry->limMlmState )
         psessionEntry->limMlmState = eLIM_MLM_WT_ADD_BSS_RSP_ASSOC_STATE;
@@ -5299,17 +4585,12 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
     {
         SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pAddBssParams);
         limLog( pMac, LOGE, FL("Posting ADD_BSS_REQ to HAL failed, reason=%X\n"),
 =======
         vos_mem_free(pAddBssParams);
         limLog( pMac, LOGE, FL("Posting ADD_BSS_REQ to HAL failed, reason=%X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory(pMac->hHdd, pAddBssParams);
-        limLog( pMac, LOGE, FL("Posting ADD_BSS_REQ to HAL failed, reason=%X\n"),
->>>>>>> 657b0e9... prima update
                 retCode );
         goto returnFailure;
 
@@ -5334,7 +4615,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
     tSchBeaconStruct *pBeaconStruct;
     tANI_U8 chanWidthSupp = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tpSirBssDescription bssDescription = &psessionEntry->pLimJoinReq->bssDescription;
 
     if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
@@ -5344,25 +4624,18 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 =======
     tANI_U32 shortGi20MhzSupport;
     tANI_U32 shortGi40MhzSupport;
-=======
->>>>>>> 657b0e9... prima update
     tpSirBssDescription bssDescription = &psessionEntry->pLimJoinReq->bssDescription;
 
-    if(eHAL_STATUS_SUCCESS != palAllocateMemory(pMac->hHdd, 
-                                                (void **)&pBeaconStruct, sizeof(tSchBeaconStruct)))
+    pBeaconStruct = vos_mem_malloc(sizeof(tSchBeaconStruct));
+    if (NULL == pBeaconStruct)
     {
-<<<<<<< HEAD
         limLog(pMac, LOGE, FL("Unable to allocate memory during ADD_BSS") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGE, FL("Unable to PAL allocate memory during ADD_BSS\n") );
->>>>>>> 657b0e9... prima update
         return eSIR_MEM_ALLOC_FAILED;
     }
 
 
     // Package SIR_HAL_ADD_BSS_REQ message parameters
-<<<<<<< HEAD
 <<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
                                                   (void **) &pAddBssParams,
@@ -5377,27 +4650,15 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
         limLog( pMac, LOGP,
                 FL( "Unable to allocate memory during ADD_BSS" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
-                                                  (void **) &pAddBssParams,
-                                                  sizeof( tAddBssParams )))
-    {
-        limLog( pMac, LOGP,
-                FL( "Unable to PAL allocate memory during ADD_BSS\n" ));
->>>>>>> 657b0e9... prima update
         retCode = eSIR_MEM_ALLOC_FAILED;
         goto returnFailure;
     }
     
 <<<<<<< HEAD
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pAddBssParams, sizeof( tAddBssParams ));
 =======
     vos_mem_set((tANI_U8 *) pAddBssParams, sizeof( tAddBssParams ), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd, (tANI_U8 *) pAddBssParams, sizeof( tAddBssParams ));
->>>>>>> 657b0e9... prima update
 
 
     limExtractApCapabilities( pMac,
@@ -5407,7 +4668,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 
     if(pMac->lim.gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE)
         limDecideStaProtectionOnAssoc(pMac, pBeaconStruct, psessionEntry);
-<<<<<<< HEAD
 <<<<<<< HEAD
         palCopyMemory( pMac->hHdd,  pAddBssParams->bssId,bssDescription->bssId,
                    sizeof( tSirMacAddr ));
@@ -5425,15 +4685,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
                  psessionEntry->selfMacAddr,
                  sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd,  pAddBssParams->bssId,bssDescription->bssId,
-                   sizeof( tSirMacAddr ));
-
-    // Fill in tAddBssParams selfMacAddr
-    palCopyMemory( pMac->hHdd,  pAddBssParams->selfMacAddr, 
-                   psessionEntry->selfMacAddr,
-                   sizeof( tSirMacAddr ));
->>>>>>> 657b0e9... prima update
 
     /* Incorrect BSS Type which caused UMA Descriptor to be overwritten on
      * top of an already established Infra link. This lead to issues in 
@@ -5457,17 +4708,12 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 
     pAddBssParams->rateSet.numRates = pBeaconStruct->supportedRates.numRates;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd,  pAddBssParams->rateSet.rate,
                    pBeaconStruct->supportedRates.rate, pBeaconStruct->supportedRates.numRates );
 =======
     vos_mem_copy(pAddBssParams->rateSet.rate,
                  pBeaconStruct->supportedRates.rate, pBeaconStruct->supportedRates.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd,  pAddBssParams->rateSet.rate,
-                   pBeaconStruct->supportedRates.rate, pBeaconStruct->supportedRates.numRates );
->>>>>>> 657b0e9... prima update
 
     pAddBssParams->nwType = bssDescription->nwType;
     
@@ -5488,20 +4734,14 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
             pAddBssParams->dualCTSProtection = ( tANI_U8 ) pBeaconStruct->HTInfo.dualCTSProtection;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
             chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
 #else 
             chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET);
 #endif
-<<<<<<< HEAD
 =======
             chanWidthSupp = limGetHTCapability( pMac, eHT_SUPPORTED_CHANNEL_WIDTH_SET, psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             if( (pBeaconStruct->HTCaps.supportedChannelWidthSet) &&
                 (chanWidthSupp) )
             {
@@ -5527,7 +4767,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
         pAddBssParams->vhtCapable = pBeaconStruct->VHTCaps.present;
         pAddBssParams->vhtTxChannelWidthSet = pBeaconStruct->VHTOperation.chanWidth; 
 <<<<<<< HEAD
-<<<<<<< HEAD
         pAddBssParams->currentExtChannel = limGet11ACPhyCBState ( pMac, 
                                            pAddBssParams->currentOperChannel,
                                            pAddBssParams->currentExtChannel );
@@ -5538,11 +4777,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
                                                                   psessionEntry->apCenterChan,
                                                                   psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pAddBssParams->currentExtChannel = limGet11ACPhyCBState ( pMac, 
-                                           pAddBssParams->currentOperChannel,
-                                           pAddBssParams->currentExtChannel );
->>>>>>> 657b0e9... prima update
     }
     else 
     {
@@ -5556,7 +4790,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
         pAddBssParams->staContext.staType = STA_ENTRY_OTHER; // Identifying AP as an STA
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd,  pAddBssParams->staContext.bssId,
                        bssDescription->bssId,
                        sizeof( tSirMacAddr ));
@@ -5565,11 +4798,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
                      bssDescription->bssId,
                      sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd,  pAddBssParams->staContext.bssId,
-                       bssDescription->bssId,
-                       sizeof( tSirMacAddr ));
->>>>>>> 657b0e9... prima update
         pAddBssParams->staContext.listenInterval = bssDescription->beaconInterval;
 
         pAddBssParams->staContext.assocId = 0; // Is SMAC OK with this?
@@ -5585,7 +4813,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
             pAddBssParams->staContext.greenFieldCapable  = ( tANI_U8 ) pBeaconStruct->HTCaps.greenField;
             pAddBssParams->staContext.lsigTxopProtection = ( tANI_U8 ) pBeaconStruct->HTCaps.lsigTXOPProtection;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
             if (psessionEntry->vhtCapability && pBeaconStruct->VHTCaps.present)
@@ -5600,13 +4827,10 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
             }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             if( (pBeaconStruct->HTCaps.supportedChannelWidthSet) &&
                 (chanWidthSupp) )
             {
                 pAddBssParams->staContext.txChannelWidthSet = ( tANI_U8 )pBeaconStruct->HTInfo.recommendedTxWidthSet;
-<<<<<<< HEAD
 <<<<<<< HEAD
           #ifdef WLAN_FEATURE_11AC
                 if (psessionEntry->vhtCapability && ( pBeaconStruct->VHTCaps.present ))
@@ -5618,20 +4842,12 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 =======
 #ifdef WLAN_FEATURE_11AC
                 if (pAddBssParams->staContext.vhtCapable)
-=======
-          #ifdef WLAN_FEATURE_11AC
-                if (psessionEntry->vhtCapability && ( pBeaconStruct->VHTCaps.present ))
->>>>>>> 657b0e9... prima update
                 {
-                    pAddBssParams->staContext.vhtCapable = 1;
-                    pAddBssParams->staContext.vhtTxChannelWidthSet = pBeaconStruct->VHTOperation.chanWidth; 
+                    pAddBssParams->staContext.vhtTxChannelWidthSet =
+                                     pBeaconStruct->VHTOperation.chanWidth;
                 }
-<<<<<<< HEAD
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          #endif
->>>>>>> 657b0e9... prima update
             }
             else
             {
@@ -5642,7 +4858,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
             pAddBssParams->staContext.maxAmsduSize       = ( tANI_U8 ) pBeaconStruct->HTCaps.maximalAMSDUsize;
             pAddBssParams->staContext.maxAmpduDensity    =             pBeaconStruct->HTCaps.mpduDensity;
             pAddBssParams->staContext.fDsssCckMode40Mhz = (tANI_U8)pBeaconStruct->HTCaps.dsssCckMode40MHz;
-<<<<<<< HEAD
 <<<<<<< HEAD
             pAddBssParams->staContext.fShortGI20Mhz = (tANI_U8)pBeaconStruct->HTCaps.shortGI20MHz;
             pAddBssParams->staContext.fShortGI40Mhz = (tANI_U8)pBeaconStruct->HTCaps.shortGI40MHz;
@@ -5710,17 +4925,11 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
                 pAddBssParams->staContext.vhtLdpcCapable = (tANI_U8)pBeaconStruct->VHTCaps.ldpcCodingCap;
             }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            pAddBssParams->staContext.fShortGI20Mhz = (tANI_U8)pBeaconStruct->HTCaps.shortGI20MHz;
-            pAddBssParams->staContext.fShortGI40Mhz = (tANI_U8)pBeaconStruct->HTCaps.shortGI40MHz;
-            pAddBssParams->staContext.maxAmpduSize= pBeaconStruct->HTCaps.maxRxAMPDUFactor;
->>>>>>> 657b0e9... prima update
             
             if( pBeaconStruct->HTInfo.present )
                 pAddBssParams->staContext.rifsMode = pBeaconStruct->HTInfo.rifsMode;
         }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
         if ((psessionEntry->limWmeEnabled && pBeaconStruct->wmeEdcaPresent) ||
                 (psessionEntry->limQosEnabled && pBeaconStruct->edcaPresent))
@@ -5729,17 +4938,12 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
        if ((psessionEntry->limWmeEnabled && (pBeaconStruct->wmeEdcaPresent || pAddBssParams->staContext.htCapable)) ||
                 (psessionEntry->limQosEnabled && (pBeaconStruct->edcaPresent || pAddBssParams->staContext.htCapable)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if ((psessionEntry->limWmeEnabled && pBeaconStruct->wmeEdcaPresent) ||
-                (psessionEntry->limQosEnabled && pBeaconStruct->edcaPresent))
->>>>>>> 657b0e9... prima update
             pAddBssParams->staContext.wmmEnabled = 1;
         else 
             pAddBssParams->staContext.wmmEnabled = 0;
 
         //Update the rates
 #ifdef WLAN_FEATURE_11AC
-<<<<<<< HEAD
 <<<<<<< HEAD
         limPopulateOwnRateSet(pMac, &pAddBssParams->staContext.supportedRates, 
                                         pBeaconStruct->HTCaps.supportedMCSSet, false,psessionEntry,
@@ -5753,13 +4957,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 #else
         limPopulatePeerRateSet(pMac, &pAddBssParams->staContext.supportedRates,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limPopulateOwnRateSet(pMac, &pAddBssParams->staContext.supportedRates, 
-                                        pBeaconStruct->HTCaps.supportedMCSSet, false,psessionEntry,
-                                        &pBeaconStruct->VHTCaps);
-#else
-        limPopulateOwnRateSet(pMac, &pAddBssParams->staContext.supportedRates, 
->>>>>>> 657b0e9... prima update
                                         pBeaconStruct->HTCaps.supportedMCSSet, false,psessionEntry);
 #endif
         limFillSupportedRatesInfo(pMac, NULL, &pAddBssParams->staContext.supportedRates,psessionEntry);
@@ -5791,22 +4988,16 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
     pAddBssParams->halPersona = (tANI_U8)psessionEntry->pePersona; //update persona
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     pAddBssParams->bSpectrumMgtEnabled = psessionEntry->spectrumMgtEnabled || 
         limIsconnectedOnDFSChannel(bssDescription->channelId);
 =======
     pAddBssParams->bSpectrumMgtEnabled = psessionEntry->spectrumMgtEnabled;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pAddBssParams->bSpectrumMgtEnabled = psessionEntry->spectrumMgtEnabled || 
-        limIsconnectedOnDFSChannel(bssDescription->channelId);
->>>>>>> 657b0e9... prima update
 
 #if defined WLAN_FEATURE_VOWIFI_11R
     pAddBssParams->extSetStaKeyParamValid = 0;
 #endif
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
@@ -5818,8 +5009,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // Set a new state for MLME
 
     //pMac->lim.gLimMlmState = eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE;
@@ -5844,17 +5033,12 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
     {
         SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pAddBssParams);
         limLog( pMac, LOGE, FL("Posting ADD_BSS_REQ to HAL failed, reason=%X\n"),
 =======
         vos_mem_free(pAddBssParams);
         limLog( pMac, LOGE, FL("Posting ADD_BSS_REQ to HAL failed, reason=%X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory(pMac->hHdd, pAddBssParams);
-        limLog( pMac, LOGE, FL("Posting ADD_BSS_REQ to HAL failed, reason=%X\n"),
->>>>>>> 657b0e9... prima update
                 retCode );
         goto returnFailure;
 
@@ -5862,28 +5046,20 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pBeaconStruct);    
 =======
         vos_mem_free(pBeaconStruct);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory(pMac->hHdd, pBeaconStruct);    
->>>>>>> 657b0e9... prima update
         return retCode;
     }
 
  returnFailure:
     // Clean-up will be done by the caller...
 <<<<<<< HEAD
-<<<<<<< HEAD
     palFreeMemory(pMac->hHdd, pBeaconStruct);
 =======
     vos_mem_free(pBeaconStruct);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palFreeMemory(pMac->hHdd, pBeaconStruct);
->>>>>>> 657b0e9... prima update
     return retCode;
 }
 
@@ -5892,9 +5068,6 @@ tSirRetStatus limStaSendAddBssPreAssoc( tpAniSirGlobal pMac, tANI_U8 updateEntry
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #elif defined(ANI_AP_CLIENT_SDK)
 tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
                                      tpSirNeighborBssInfo neighborBssInfo, tANI_U8 updateEntry, 
@@ -6104,11 +5277,8 @@ tSirRetStatus limStaSendAddBss( tpAniSirGlobal pMac, tpSirAssocRsp pAssocRsp,
 }
 
 #endif // ANI_PRODUCT_TYPE_CLIENT
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /** -------------------------------------------------------------
 \fn limPrepareAndSendDelStaCnf
@@ -6131,7 +5301,6 @@ limPrepareAndSendDelStaCnf(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tSirResult
     if(pStaDs == NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
       PELOGW(limLog(pMac, LOGW, FL("pStaDs is NULL\n"));)
       return;
     }
@@ -6144,18 +5313,10 @@ limPrepareAndSendDelStaCnf(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tSirResult
     staDsAssocId = pStaDs->assocId;
     vos_mem_copy((tANI_U8 *)staDsAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      PELOGW(limLog(pMac, LOGW, FL("pStaDs is NULL\n"));)
-      return;
-    }
-    staDsAssocId = pStaDs->assocId;
-    palCopyMemory( pMac->hHdd, (tANI_U8 *)staDsAddr,
->>>>>>> 657b0e9... prima update
             pStaDs->staAddr,
             sizeof(tSirMacAddr));
 
     mlmStaContext = pStaDs->mlmStaContext;
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(eSIR_SME_SUCCESS == statusCode)
     {
@@ -6176,28 +5337,19 @@ limPrepareAndSendDelStaCnf(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tSirResult
 =======
     if ((psessionEntry->limSystemRole == eLIM_AP_ROLE) ||
         (psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE))
-=======
-    if(eSIR_SME_SUCCESS == statusCode)
->>>>>>> 657b0e9... prima update
     {
-        if ((psessionEntry->limSystemRole == eLIM_AP_ROLE) ||
-            (psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE))
-        {
-            limReleaseAID(pMac, pStaDs->assocId);
-        }
-
-        limDeleteDphHashEntry(pMac, pStaDs->staAddr, pStaDs->assocId,psessionEntry);
+        limReleasePeerIdx(pMac, pStaDs->assocId, psessionEntry);
     }
-    if ( (psessionEntry->limSystemRole == eLIM_STA_ROLE)||(psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE))
+    limDeleteDphHashEntry(pMac, pStaDs->staAddr, pStaDs->assocId, psessionEntry);
+
+    if ( (psessionEntry->limSystemRole == eLIM_STA_ROLE)||
+         (psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE))
     {
         psessionEntry->limMlmState = eLIM_MLM_IDLE_STATE;
-        MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, psessionEntry->peSessionId, psessionEntry->limMlmState));
+        MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE,
+                        psessionEntry->peSessionId, psessionEntry->limMlmState));
     }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     limSendDelStaCnf(pMac, staDsAddr, staDsAssocId, mlmStaContext, statusCode,psessionEntry);
 }
 
@@ -6255,14 +5407,10 @@ void limInitPreAuthTimerTable(tpAniSirGlobal pMac, tpLimPreAuthTable pPreAuthTim
         **/
         limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("could not retrieve AUTH_RSP timeout value\n"));
 =======
                FL("could not retrieve AUTH_RSP timeout value"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("could not retrieve AUTH_RSP timeout value\n"));
->>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -6279,14 +5427,10 @@ void limInitPreAuthTimerTable(tpAniSirGlobal pMac, tpLimPreAuthTable pPreAuthTim
         {
             // Cannot create timer.  Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Cannot create Auth Rsp timer of Index :%d.\n"), authNodeIdx);
 =======
             limLog(pMac, LOGP, FL("Cannot create Auth Rsp timer of Index :%d."), authNodeIdx);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("Cannot create Auth Rsp timer of Index :%d.\n"), authNodeIdx);
->>>>>>> 657b0e9... prima update
             return;
         }
         pAuthNode->authNodeIdx = (tANI_U8)authNodeIdx;
@@ -6332,14 +5476,10 @@ tLimPreAuthNode * limGetPreAuthNodeFromIndex(tpAniSirGlobal pMac,
     if ((authNodeIdx >= pAuthTable->numEntry) || (pAuthTable->pTable == NULL))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGE, FL("Invalid Auth Timer Index : %d NumEntry : %d\n"), 
 =======
         limLog(pMac, LOGE, FL("Invalid Auth Timer Index : %d NumEntry : %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGE, FL("Invalid Auth Timer Index : %d NumEntry : %d\n"), 
->>>>>>> 657b0e9... prima update
                   authNodeIdx, pAuthTable->numEntry);
         return NULL;
     }
@@ -6370,14 +5510,10 @@ tSirRetStatus limIsDot11hPowerCapabilitiesInRange(tpAniSirGlobal pMac, tSirAssoc
 
     if(wlan_cfgGetInt(pMac, WNI_CFG_LOCAL_POWER_CONSTRAINT, &localPwrConstraint) != eSIR_SUCCESS) {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog( pMac, LOGP, FL( "Unable to get Local Power Constraint from cfg\n" ));
 =======
         limLog( pMac, LOGP, FL( "Unable to get Local Power Constraint from cfg" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGP, FL( "Unable to get Local Power Constraint from cfg\n" ));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     localMaxTxPower -= (tPowerdBm)localPwrConstraint;
@@ -6389,14 +5525,10 @@ tSirRetStatus limIsDot11hPowerCapabilitiesInRange(tpAniSirGlobal pMac, tSirAssoc
     if(assoc->powerCapability.minTxPower > localMaxTxPower)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("minTxPower (STA) = %d, localMaxTxPower (AP) = %d\n"),
 =======
         limLog(pMac, LOGW, FL("minTxPower (STA) = %d, localMaxTxPower (AP) = %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("minTxPower (STA) = %d, localMaxTxPower (AP) = %d\n"),
->>>>>>> 657b0e9... prima update
                        assoc->powerCapability.minTxPower, localMaxTxPower);
         return (eSIR_FAILURE);
     }
@@ -6427,7 +5559,6 @@ void limFillRxHighestSupportedRate(tpAniSirGlobal pMac, tANI_U16 *rxHighestRate,
 
     return;
 }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -6477,5 +5608,3 @@ void limSendSmeUnprotectedMgmtFrameInd(
 }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

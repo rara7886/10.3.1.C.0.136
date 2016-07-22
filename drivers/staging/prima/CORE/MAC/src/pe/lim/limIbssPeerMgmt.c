@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -59,7 +56,6 @@
 #include "aniGlobal.h"
 #include "sirCommon.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -68,13 +64,6 @@
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-#include "wniCfgAp.h"
-#else
-#include "wniCfgSta.h"
-#endif
->>>>>>> 657b0e9... prima update
 #include "limUtils.h"
 #include "limAssocUtils.h"
 #include "limStaHashApi.h"
@@ -115,7 +104,6 @@ ibss_peer_find(
     while (pTempNode != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
                       (tANI_U8 *) &pTempNode->peerMacAddr,
                       sizeof(tSirMacAddr)) )
@@ -124,11 +112,6 @@ ibss_peer_find(
                             (tANI_U8 *) &pTempNode->peerMacAddr,
                             sizeof(tSirMacAddr)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
-                      (tANI_U8 *) &pTempNode->peerMacAddr,
-                      sizeof(tSirMacAddr)) )
->>>>>>> 657b0e9... prima update
             break;
         pTempNode = pTempNode->next;
     }
@@ -177,7 +160,6 @@ ibss_peer_add(tpAniSirGlobal pMac, tLimIbssPeerNode *pPeerNode)
         if(pTemp->beacon)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, pTemp->beacon);
         }
 
@@ -188,12 +170,6 @@ ibss_peer_add(tpAniSirGlobal pMac, tLimIbssPeerNode *pPeerNode)
 
         vos_mem_free(pTemp);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palFreeMemory(pMac->hHdd, pTemp->beacon);
-        }
-
-        palFreeMemory( pMac->hHdd, (tANI_U8 *) pTemp);
->>>>>>> 657b0e9... prima update
         pPrev->next = NULL;
     }
     else
@@ -237,14 +213,10 @@ ibss_peer_collect(
     tpPESession         psessionEntry)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pPeer->peerMacAddr, pHdr->sa, sizeof(tSirMacAddr));
 =======
     vos_mem_copy(pPeer->peerMacAddr, pHdr->sa, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pPeer->peerMacAddr, pHdr->sa, sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
 
     pPeer->capabilityInfo       = pBeacon->capabilityInfo;
     pPeer->extendedRatesPresent = pBeacon->extendedRatesPresent;
@@ -257,7 +229,6 @@ ibss_peer_collect(
     {
         pPeer->htCapable =  pBeacon->HTCaps.present;
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, (tANI_U8 *)pPeer->supportedMCSSet,
                         (tANI_U8 *)pBeacon->HTCaps.supportedMCSSet,
                         sizeof(pPeer->supportedMCSSet));
@@ -266,11 +237,6 @@ ibss_peer_collect(
                      (tANI_U8 *)pBeacon->HTCaps.supportedMCSSet,
                      sizeof(pPeer->supportedMCSSet));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory(pMac->hHdd, (tANI_U8 *)pPeer->supportedMCSSet,
-                        (tANI_U8 *)pBeacon->HTCaps.supportedMCSSet,
-                        sizeof(pPeer->supportedMCSSet));
->>>>>>> 657b0e9... prima update
         pPeer->htGreenfield = (tANI_U8)pBeacon->HTCaps.greenField;
         pPeer->htSupportedChannelWidthSet = ( tANI_U8 ) pBeacon->HTCaps.supportedChannelWidthSet;
         pPeer->htMIMOPSState =  (tSirMacHTMIMOPowerSaveState)pBeacon->HTCaps.mimoPowerSave;
@@ -280,7 +246,6 @@ ibss_peer_collect(
         pPeer->htShortGI20Mhz = (tANI_U8)pBeacon->HTCaps.shortGI20MHz;
         pPeer->htShortGI40Mhz = (tANI_U8)pBeacon->HTCaps.shortGI40MHz;
         pPeer->htMaxRxAMpduFactor = pBeacon->HTCaps.maxRxAMPDUFactor;
-<<<<<<< HEAD
 <<<<<<< HEAD
     }
 
@@ -295,26 +260,31 @@ ibss_peer_collect(
                           pBeacon->extendedRates.numRates + 1);
 =======
         pPeer->htSecondaryChannelOffset = pBeacon->HTInfo.secondaryChannelOffset;
-=======
->>>>>>> 657b0e9... prima update
     }
 
+    /* Collect peer VHT capabilities based on the received beacon from the peer */
+#ifdef WLAN_FEATURE_11AC
+    if ( pBeacon->VHTCaps.present )
+    {
+        pPeer->vhtSupportedChannelWidthSet = pBeacon->VHTOperation.chanWidth;
+        pPeer->vhtCapable = pBeacon->VHTCaps.present;
+
+        // Collect VHT capabilities from beacon
+        vos_mem_copy((tANI_U8 *) &pPeer->VHTCaps,
+                     (tANI_U8 *) &pBeacon->VHTCaps,
+                     sizeof(tDot11fIEVHTCaps));
+    }
+#endif
     pPeer->erpIePresent = pBeacon->erpPresent;
 
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &pPeer->supportedRates,
-                  (tANI_U8 *) &pBeacon->supportedRates,
-                  pBeacon->supportedRates.numRates + 1);
+    vos_mem_copy((tANI_U8 *) &pPeer->supportedRates,
+                 (tANI_U8 *) &pBeacon->supportedRates,
+                 pBeacon->supportedRates.numRates + 1);
     if (pPeer->extendedRatesPresent)
-<<<<<<< HEAD
         vos_mem_copy((tANI_U8 *) &pPeer->extendedRates,
                      (tANI_U8 *) &pBeacon->extendedRates,
                      pBeacon->extendedRates.numRates + 1);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd, (tANI_U8 *) &pPeer->extendedRates,
-                          (tANI_U8 *) &pBeacon->extendedRates,
-                          pBeacon->extendedRates.numRates + 1);
->>>>>>> 657b0e9... prima update
     else
         pPeer->extendedRates.numRates = 0;
 
@@ -332,28 +302,20 @@ ibss_sta_caps_update(
     tpPESession       psessionEntry)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16      aid;
 =======
     tANI_U16      peerIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16      aid;
->>>>>>> 657b0e9... prima update
     tpDphHashNode pStaDs;
 
     pPeerNode->beaconHBCount++; //Update beacon count.
 
     // if the peer node exists, update its qos capabilities
 <<<<<<< HEAD
-<<<<<<< HEAD
     if ((pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable)) == NULL)
 =======
     if ((pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &peerIdx, &psessionEntry->dph.dphHashTable)) == NULL)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if ((pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable)) == NULL)
->>>>>>> 657b0e9... prima update
         return;
 
 
@@ -378,7 +340,6 @@ ibss_sta_caps_update(
         }
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
     if ( IS_DOT11_MODE_VHT(psessionEntry->dot11mode) )
@@ -391,8 +352,6 @@ ibss_sta_caps_update(
     }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     if(IS_DOT11_MODE_PROPRIETARY(psessionEntry->dot11mode) &&
       pPeerNode->aniIndicator)
@@ -469,14 +428,10 @@ ibss_sta_rates_update(
     limPopulateMatchingRateSet(pMac, pStaDs, &pPeer->supportedRates,
                                &pPeer->extendedRates, pPeer->supportedMCSSet,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                &pStaDs->mlmStaContext.propRateSet,psessionEntry,NULL);
 =======
                                &pStaDs->mlmStaContext.propRateSet,psessionEntry, &pPeer->VHTCaps);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                               &pStaDs->mlmStaContext.propRateSet,psessionEntry,NULL);
->>>>>>> 657b0e9... prima update
 #else
     // Populate supported rateset
     limPopulateMatchingRateSet(pMac, pStaDs, &pPeer->supportedRates,
@@ -525,7 +480,6 @@ ibss_coalesce_free(
 {
     if (pMac->lim.ibssInfo.pHdr != NULL)
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pMac->lim.ibssInfo.pHdr);
     if (pMac->lim.ibssInfo.pBeacon != NULL)
         palFreeMemory(pMac->hHdd, pMac->lim.ibssInfo.pBeacon);
@@ -534,11 +488,6 @@ ibss_coalesce_free(
     if (pMac->lim.ibssInfo.pBeacon != NULL)
         vos_mem_free(pMac->lim.ibssInfo.pBeacon);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory(pMac->hHdd, pMac->lim.ibssInfo.pHdr);
-    if (pMac->lim.ibssInfo.pBeacon != NULL)
-        palFreeMemory(pMac->hHdd, pMac->lim.ibssInfo.pBeacon);
->>>>>>> 657b0e9... prima update
 
     pMac->lim.ibssInfo.pHdr    = NULL;
     pMac->lim.ibssInfo.pBeacon = NULL;
@@ -554,7 +503,6 @@ ibss_coalesce_save(
     tpSchBeaconStruct   pBeacon)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     eHalStatus status;
 
     // get rid of any saved info
@@ -573,35 +521,24 @@ ibss_coalesce_save(
     {
         PELOGE(limLog(pMac, LOGE, FL("ibbs-save: Failed malloc pBeacon\n"));)
 =======
-=======
-    eHalStatus status;
-
->>>>>>> 657b0e9... prima update
     // get rid of any saved info
     ibss_coalesce_free(pMac);
 
-    status = palAllocateMemory(pMac->hHdd, (void **) &pMac->lim.ibssInfo.pHdr,
-                               sizeof(*pHdr));
-    if (status != eHAL_STATUS_SUCCESS)
+    pMac->lim.ibssInfo.pHdr = vos_mem_malloc(sizeof(*pHdr));
+    if (NULL == pMac->lim.ibssInfo.pHdr)
     {
-        PELOGE(limLog(pMac, LOGE, FL("ibbs-save: Failed malloc pHdr\n"));)
+        PELOGE(limLog(pMac, LOGE, FL("ibbs-save: Failed malloc pHdr"));)
         return;
     }
-    status = palAllocateMemory(pMac->hHdd, (void **) &pMac->lim.ibssInfo.pBeacon,
-                               sizeof(*pBeacon));
-    if (status != eHAL_STATUS_SUCCESS)
+    pMac->lim.ibssInfo.pBeacon = vos_mem_malloc(sizeof(*pBeacon));
+    if (NULL == pMac->lim.ibssInfo.pBeacon)
     {
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("ibbs-save: Failed malloc pBeacon"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("ibbs-save: Failed malloc pBeacon\n"));)
->>>>>>> 657b0e9... prima update
         ibss_coalesce_free(pMac);
         return;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     palCopyMemory(pMac->hHdd, pMac->lim.ibssInfo.pHdr, pHdr, sizeof(*pHdr));
     palCopyMemory(pMac->hHdd, pMac->lim.ibssInfo.pBeacon, pBeacon, sizeof(*pBeacon));
@@ -609,10 +546,6 @@ ibss_coalesce_save(
     vos_mem_copy(pMac->lim.ibssInfo.pHdr, pHdr, sizeof(*pHdr));
     vos_mem_copy(pMac->lim.ibssInfo.pBeacon, pBeacon, sizeof(*pBeacon));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd, pMac->lim.ibssInfo.pHdr, pHdr, sizeof(*pHdr));
-    palCopyMemory(pMac->hHdd, pMac->lim.ibssInfo.pBeacon, pBeacon, sizeof(*pBeacon));
->>>>>>> 657b0e9... prima update
 }
 
 /*
@@ -627,27 +560,19 @@ ibss_dph_entry_add(
     tpPESession     psessionEntry)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16      aid;
 =======
     tANI_U16      peerIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16      aid;
->>>>>>> 657b0e9... prima update
     tpDphHashNode pStaDs;
 
     *ppSta = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     pStaDs = dphLookupHashEntry(pMac, peerAddr, &aid, &psessionEntry->dph.dphHashTable);
 =======
     pStaDs = dphLookupHashEntry(pMac, peerAddr, &peerIdx, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pStaDs = dphLookupHashEntry(pMac, peerAddr, &aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
     if (pStaDs != NULL)
     {
         /* Trying to add context for already existing STA in IBSS */
@@ -661,7 +586,6 @@ ibss_dph_entry_add(
      * AID and then add an entry to hash table maintained
      * by DPH module.
      */
-<<<<<<< HEAD
 <<<<<<< HEAD
     aid = limAssignAID(pMac);
 
@@ -679,27 +603,20 @@ ibss_dph_entry_add(
         PELOGE(limLog(pMac, LOGE, FL("could not add hash entry at DPH for aid=%d MACaddr:\n"), aid);)
 =======
     peerIdx = limAssignPeerIdx(pMac, psessionEntry);
-=======
-    aid = limAssignAID(pMac);
->>>>>>> 657b0e9... prima update
 
-    pStaDs = dphGetHashEntry(pMac, aid, &psessionEntry->dph.dphHashTable);
+    pStaDs = dphGetHashEntry(pMac, peerIdx, &psessionEntry->dph.dphHashTable);
     if (pStaDs)
     {
         (void) limDelSta(pMac, pStaDs, false /*asynchronous*/,psessionEntry);
-        limDeleteDphHashEntry(pMac, pStaDs->staAddr, aid,psessionEntry);
+        limDeleteDphHashEntry(pMac, pStaDs->staAddr, peerIdx,psessionEntry);
     }
 
-    pStaDs = dphAddHashEntry(pMac, peerAddr, aid, &psessionEntry->dph.dphHashTable);
+    pStaDs = dphAddHashEntry(pMac, peerAddr, peerIdx, &psessionEntry->dph.dphHashTable);
     if (pStaDs == NULL)
     {
         // Could not add hash table entry
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not add hash entry at DPH for peerIdx/aid=%d MACaddr:"), peerIdx);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("could not add hash entry at DPH for aid=%d MACaddr:\n"), aid);)
->>>>>>> 657b0e9... prima update
         limPrintMacAddr(pMac, peerAddr, LOGE);
         return eSIR_FAILURE;
     }
@@ -741,14 +658,10 @@ ibss_status_chg_notify(
     if(beacon != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, beacon);
 =======
         vos_mem_free(beacon);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory(pMac->hHdd, beacon);
->>>>>>> 657b0e9... prima update
     }
 }
 
@@ -767,7 +680,6 @@ ibss_bss_add(
     if ((pHdr == NULL) || (pBeacon == NULL))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Unable to add BSS (no cached BSS info)\n"));)
         return;
     }
@@ -782,27 +694,15 @@ ibss_bss_add(
     vos_mem_copy(psessionEntry->bssId, pHdr->bssId,
                  sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Unable to add BSS (no cached BSS info)\n"));)
-        return;
-    }
-
-    palCopyMemory( pMac->hHdd, psessionEntry->bssId, pHdr->bssId,
-                   sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
 
     #if 0
     if (cfgSetStr(pMac, WNI_CFG_BSSID, (tANI_U8 *) pHdr->bssId, sizeof(tSirMacAddr))
         != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not update BSSID at CFG\n"));
 =======
         limLog(pMac, LOGP, FL("could not update BSSID at CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not update BSSID at CFG\n"));
->>>>>>> 657b0e9... prima update
     #endif //TO SUPPORT BT-AMP
 
     sirCopyMacAddr(pHdr->bssId,psessionEntry->bssId);
@@ -812,14 +712,10 @@ ibss_bss_add(
 #if 0
     if (wlan_cfgGetInt(pMac, WNI_CFG_BEACON_INTERVAL, &cfg) != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Can't read beacon interval\n"));
 =======
         limLog(pMac, LOGP, FL("Can't read beacon interval"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("Can't read beacon interval\n"));
->>>>>>> 657b0e9... prima update
 #endif //TO SUPPORT BT-AMP
     /* Copy beacon interval from sessionTable */
     cfg = psessionEntry->beaconParams.beaconInterval;
@@ -828,14 +724,10 @@ ibss_bss_add(
         if (cfgSetInt(pMac, WNI_CFG_BEACON_INTERVAL, pBeacon->beaconInterval)
             != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Can't update beacon interval\n"));
 =======
             limLog(pMac, LOGP, FL("Can't update beacon interval"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("Can't update beacon interval\n"));
->>>>>>> 657b0e9... prima update
         #endif//TO SUPPORT BT-AMP
         psessionEntry->beaconParams.beaconInterval = pBeacon->beaconInterval;
 
@@ -850,21 +742,15 @@ ibss_bss_add(
         psessionEntry->shortSlotTimeSupported = pBeacon->capabilityInfo.shortSlotTime;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     palCopyMemory( pMac->hHdd,
        (tANI_U8 *) &psessionEntry->pLimStartBssReq->operationalRateSet,
        (tANI_U8 *) &pBeacon->supportedRates,
        pBeacon->supportedRates.numRates);
-<<<<<<< HEAD
 =======
     vos_mem_copy((tANI_U8 *) &psessionEntry->pLimStartBssReq->operationalRateSet,
                  (tANI_U8 *) &pBeacon->supportedRates,
                   pBeacon->supportedRates.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     #if 0
     if (cfgSetStr(pMac, WNI_CFG_OPERATIONAL_RATE_SET,
@@ -872,14 +758,10 @@ ibss_bss_add(
            pMac->lim.gpLimStartBssReq->operationalRateSet.numRates)
         != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not update OperRateset at CFG\n"));
 =======
         limLog(pMac, LOGP, FL("could not update OperRateset at CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not update OperRateset at CFG\n"));
->>>>>>> 657b0e9... prima update
     #endif //TO SUPPORT BT-AMP
 
     /**
@@ -898,14 +780,10 @@ ibss_bss_add(
            (tANI_U8 *) &pBeacon->extendedRates.rate, numExtRates) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not update ExtendedOperRateset at CFG\n"));
 =======
             limLog(pMac, LOGP, FL("could not update ExtendedOperRateset at CFG"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not update ExtendedOperRateset at CFG\n"));
->>>>>>> 657b0e9... prima update
         return;
     } 
 
@@ -918,7 +796,6 @@ ibss_bss_add(
     * so it is decided to leave the self HT capabilties intact. This may change if some issues are found in interop.
     */
 <<<<<<< HEAD
-<<<<<<< HEAD
     palZeroMemory(pMac->hHdd, (void *) &mlmStartReq, sizeof(mlmStartReq));
 
     palCopyMemory(pMac->hHdd, mlmStartReq.bssId, pHdr->bssId, sizeof(tSirMacAddr));
@@ -928,22 +805,13 @@ ibss_bss_add(
                   mlmStartReq.rateSet.numRates);
 =======
     vos_mem_set((void *) &mlmStartReq, sizeof(mlmStartReq), 0);
-=======
-    palZeroMemory(pMac->hHdd, (void *) &mlmStartReq, sizeof(mlmStartReq));
->>>>>>> 657b0e9... prima update
 
-    palCopyMemory(pMac->hHdd, mlmStartReq.bssId, pHdr->bssId, sizeof(tSirMacAddr));
+    vos_mem_copy(mlmStartReq.bssId, pHdr->bssId, sizeof(tSirMacAddr));
     mlmStartReq.rateSet.numRates = psessionEntry->pLimStartBssReq->operationalRateSet.numRates;
-<<<<<<< HEAD
     vos_mem_copy(&mlmStartReq.rateSet.rate[0],
                  &psessionEntry->pLimStartBssReq->operationalRateSet.rate[0],
                  mlmStartReq.rateSet.numRates);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd, &mlmStartReq.rateSet.rate[0],
-                  &psessionEntry->pLimStartBssReq->operationalRateSet.rate[0],
-                  mlmStartReq.rateSet.numRates);
->>>>>>> 657b0e9... prima update
     mlmStartReq.bssType             = eSIR_IBSS_MODE;
     mlmStartReq.beaconPeriod        = pBeacon->beaconInterval;
     mlmStartReq.nwType              = psessionEntry->pLimStartBssReq->nwType; //psessionEntry->nwType is also OK????
@@ -955,14 +823,10 @@ ibss_bss_add(
     #if 0
     if (wlan_cfgGetInt(pMac, WNI_CFG_CURRENT_CHANNEL, &cfg) != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("CurrentChannel CFG get fialed!\n"));
 =======
         limLog(pMac, LOGP, FL("CurrentChannel CFG get fialed!"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("CurrentChannel CFG get fialed!\n"));
->>>>>>> 657b0e9... prima update
     #endif
 
     //mlmStartReq.channelNumber       = (tSirMacChanNum) cfg;
@@ -973,7 +837,6 @@ ibss_bss_add(
     mlmStartReq.cbMode              = psessionEntry->pLimStartBssReq->cbMode;
 
     // Copy the SSID for RxP filtering based on SSID.
-<<<<<<< HEAD
 <<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmStartReq.ssId,
         (tANI_U8 *) &psessionEntry->pLimStartBssReq->ssId,
@@ -987,21 +850,12 @@ ibss_bss_add(
     vos_mem_copy((tANI_U8 *) &mlmStartReq.ssId,
                  (tANI_U8 *) &psessionEntry->pLimStartBssReq->ssId,
                   psessionEntry->pLimStartBssReq->ssId.length + 1);
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmStartReq.ssId,
-        (tANI_U8 *) &psessionEntry->pLimStartBssReq->ssId,
-        psessionEntry->pLimStartBssReq->ssId.length + 1);
->>>>>>> 657b0e9... prima update
 
-    PELOG1(limLog(pMac, LOG1, FL("invoking ADD_BSS as part of coalescing!\n"));)
+    PELOG1(limLog(pMac, LOG1, FL("invoking ADD_BSS as part of coalescing!"));)
     if (limMlmAddBss(pMac, &mlmStartReq,psessionEntry) != eSIR_SME_SUCCESS)
     {
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("AddBss failure"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("AddBss failure\n"));)
->>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -1009,14 +863,10 @@ ibss_bss_add(
     if (schSetFixedBeaconFields(pMac,psessionEntry) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("*** Unable to set fixed Beacon fields ***\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("*** Unable to set fixed Beacon fields ***"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("*** Unable to set fixed Beacon fields ***\n"));)
->>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -1032,7 +882,6 @@ ibss_bss_delete(
 {
     tSirRetStatus status;
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOGW(limLog(pMac, LOGW, FL("Initiating IBSS Delete BSS\n"));) 
     if (psessionEntry->limMlmState != eLIM_MLM_BSS_STARTED_STATE)
     {
@@ -1043,26 +892,16 @@ ibss_bss_delete(
     {
         limLog(pMac, LOGW, FL("Incorrect LIM MLM state for delBss (%d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOGW(limLog(pMac, LOGW, FL("Initiating IBSS Delete BSS\n"));) 
-    if (psessionEntry->limMlmState != eLIM_MLM_BSS_STARTED_STATE)
-    {
-        limLog(pMac, LOGW, FL("Incorrect LIM MLM state for delBss (%d)\n"),
->>>>>>> 657b0e9... prima update
                psessionEntry->limMlmState);
         return;
     }
     status = limDelBss(pMac, NULL, psessionEntry->bssIdx, psessionEntry);
     if (status != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("delBss failed for bss %d\n"), psessionEntry->bssIdx);)
 =======
         PELOGE(limLog(pMac, LOGE, FL("delBss failed for bss %d"), psessionEntry->bssIdx);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("delBss failed for bss %d\n"), psessionEntry->bssIdx);)
->>>>>>> 657b0e9... prima update
 }
 
 /**
@@ -1093,14 +932,10 @@ limIbssInit(
 
     // ibss info - params for which ibss to join while coalescing
 <<<<<<< HEAD
-<<<<<<< HEAD
     palZeroMemory(pMac->hHdd, &pMac->lim.ibssInfo, sizeof(tAniSirLimIbss));
 =======
     vos_mem_set(&pMac->lim.ibssInfo, sizeof(tAniSirLimIbss), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory(pMac->hHdd, &pMac->lim.ibssInfo, sizeof(tAniSirLimIbss));
->>>>>>> 657b0e9... prima update
 } /*** end limIbssInit() ***/
 
 /**
@@ -1124,14 +959,10 @@ void limIbssDeleteAllPeers( tpAniSirGlobal pMac ,tpPESession psessionEntry)
     tLimIbssPeerNode    *pCurrNode, *pTempNode;
     tpDphHashNode pStaDs;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16 aid;
 =======
     tANI_U16 peerIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16 aid;
->>>>>>> 657b0e9... prima update
 
     pCurrNode = pTempNode = pMac->lim.gLimIbssPeerList;
 
@@ -1148,14 +979,10 @@ void limIbssDeleteAllPeers( tpAniSirGlobal pMac ,tpPESession psessionEntry)
               * no need to do any beacon related params i.e., dont call limDeleteDphHashEntry
               */
 <<<<<<< HEAD
-<<<<<<< HEAD
         pStaDs = dphLookupHashEntry(pMac, pCurrNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
 =======
         pStaDs = dphLookupHashEntry(pMac, pCurrNode->peerMacAddr, &peerIdx, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pStaDs = dphLookupHashEntry(pMac, pCurrNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
         if( pStaDs )
         {
 
@@ -1163,15 +990,11 @@ void limIbssDeleteAllPeers( tpAniSirGlobal pMac ,tpPESession psessionEntry)
                                     pStaDs->ucUcastSig, pStaDs->ucBcastSig,
                                     eWNI_SME_IBSS_PEER_DEPARTED_IND, psessionEntry->smeSessionId );
 <<<<<<< HEAD
-<<<<<<< HEAD
             dphDeleteHashEntry(pMac, pStaDs->staAddr, aid, &psessionEntry->dph.dphHashTable);
 =======
             limReleasePeerIdx(pMac, peerIdx, psessionEntry);
             dphDeleteHashEntry(pMac, pStaDs->staAddr, peerIdx, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            dphDeleteHashEntry(pMac, pStaDs->staAddr, aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
         }
 
         pTempNode = pCurrNode->next;
@@ -1188,7 +1011,6 @@ void limIbssDeleteAllPeers( tpAniSirGlobal pMac ,tpPESession psessionEntry)
         if(pCurrNode->beacon)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, pCurrNode->beacon);
         }
         palFreeMemory( pMac->hHdd, (tANI_U8 *) pCurrNode);
@@ -1197,11 +1019,6 @@ void limIbssDeleteAllPeers( tpAniSirGlobal pMac ,tpPESession psessionEntry)
         }
         vos_mem_free(pCurrNode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palFreeMemory(pMac->hHdd, pCurrNode->beacon);
-        }
-        palFreeMemory( pMac->hHdd, (tANI_U8 *) pCurrNode);
->>>>>>> 657b0e9... prima update
         if (pMac->lim.gLimNumIbssPeers > 0) // be paranoid
             pMac->lim.gLimNumIbssPeers--;
         pCurrNode = pTempNode;
@@ -1275,7 +1092,6 @@ limIbssPeerDelete(tpAniSirGlobal pMac, tSirMacAddr macAddr)
     while (pTempNode != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
                       (tANI_U8 *) &pTempNode->peerMacAddr,
                       sizeof(tSirMacAddr)) )
@@ -1284,11 +1100,6 @@ limIbssPeerDelete(tpAniSirGlobal pMac, tSirMacAddr macAddr)
                             (tANI_U8 *) &pTempNode->peerMacAddr,
                             sizeof(tSirMacAddr)) )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
-                      (tANI_U8 *) &pTempNode->peerMacAddr,
-                      sizeof(tSirMacAddr)) )
->>>>>>> 657b0e9... prima update
         {
             // Found node to be deleted
             if (pMac->lim.gLimIbssPeerList == pTempNode) /** First Node to be deleted*/
@@ -1298,7 +1109,6 @@ limIbssPeerDelete(tpAniSirGlobal pMac, tSirMacAddr macAddr)
 
             if(pTempNode->beacon)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 palFreeMemory(pMac->hHdd, pTempNode->beacon);
                 pTempNode->beacon = NULL;
@@ -1310,12 +1120,6 @@ limIbssPeerDelete(tpAniSirGlobal pMac, tSirMacAddr macAddr)
             }
             vos_mem_free(pTempNode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                palFreeMemory(pMac->hHdd, pTempNode->beacon);
-                pTempNode->beacon = NULL;
-            }
-            palFreeMemory( pMac->hHdd, (tANI_U8 *) pTempNode);
->>>>>>> 657b0e9... prima update
             pMac->lim.gLimNumIbssPeers--;
             return;
         }
@@ -1348,14 +1152,10 @@ limIbssSetProtection(tpAniSirGlobal pMac, tANI_U8 enable, tpUpdateBeaconParams p
     if(!pMac->lim.cfgProtection.fromllb)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("protection from 11b is disabled\n"));)
 =======
         PELOG1(limLog(pMac, LOG1, FL("protection from 11b is disabled"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("protection from 11b is disabled\n"));)
->>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -1365,14 +1165,10 @@ limIbssSetProtection(tpAniSirGlobal pMac, tANI_U8 enable, tpUpdateBeaconParams p
         if(false == psessionEntry->beaconParams.llbCoexist/*pMac->lim.llbCoexist*/)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("=> IBSS: Enable Protection \n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("=> IBSS: Enable Protection "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("=> IBSS: Enable Protection \n"));)
->>>>>>> 657b0e9... prima update
             pBeaconParams->llbCoexist = psessionEntry->beaconParams.llbCoexist = true;
             pBeaconParams->paramChangeBitmap |= PARAM_llBCOEXIST_CHANGED;
         }
@@ -1381,14 +1177,10 @@ limIbssSetProtection(tpAniSirGlobal pMac, tANI_U8 enable, tpUpdateBeaconParams p
     {
         psessionEntry->gLim11bParams.protectionEnabled = false;
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("===> IBSS: Disable protection \n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("===> IBSS: Disable protection "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("===> IBSS: Disable protection \n"));)
->>>>>>> 657b0e9... prima update
         pBeaconParams->llbCoexist = psessionEntry->beaconParams.llbCoexist = false;
         pBeaconParams->paramChangeBitmap |= PARAM_llBCOEXIST_CHANGED;
     }
@@ -1424,7 +1216,6 @@ limIbssUpdateProtectionParams(tpAniSirGlobal pMac,
           PELOG1(limPrintMacAddr(pMac, pMac->lim.protStaCache[i].addr, LOG1);)
 
 <<<<<<< HEAD
-<<<<<<< HEAD
           if (palEqualMemory( pMac->hHdd,
               pMac->lim.protStaCache[i].addr,
               peerMacAddr, sizeof(tSirMacAddr)))
@@ -1436,13 +1227,6 @@ limIbssUpdateProtectionParams(tpAniSirGlobal pMac,
           {
               PELOG1(limLog(pMac, LOG1, FL("matching cache entry at %d already active."), i);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          if (palEqualMemory( pMac->hHdd,
-              pMac->lim.protStaCache[i].addr,
-              peerMacAddr, sizeof(tSirMacAddr)))
-          {
-              PELOG1(limLog(pMac, LOG1, FL("matching cache entry at %d already active.\n"), i);)
->>>>>>> 657b0e9... prima update
               return;
           }
       }
@@ -1456,7 +1240,6 @@ limIbssUpdateProtectionParams(tpAniSirGlobal pMac,
 
   if (i >= LIM_PROT_STA_CACHE_SIZE)
   {
-<<<<<<< HEAD
 <<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("No space in ProtStaCache\n"));)
       return;
@@ -1474,15 +1257,6 @@ limIbssUpdateProtectionParams(tpAniSirGlobal pMac,
                peerMacAddr,
                sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      PELOGE(limLog(pMac, LOGE, FL("No space in ProtStaCache\n"));)
-      return;
-  }
-
-  palCopyMemory( pMac->hHdd, pMac->lim.protStaCache[i].addr,
-                peerMacAddr,
-                sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
 
   pMac->lim.protStaCache[i].protStaCacheType = protStaCacheType;
   pMac->lim.protStaCache[i].active = true;
@@ -1518,14 +1292,10 @@ limIbssDecideProtection(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpUpdateBeaco
     if(NULL == pStaDs)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("pStaDs is NULL\n"));)
 =======
       PELOGE(limLog(pMac, LOGE, FL("pStaDs is NULL"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      PELOGE(limLog(pMac, LOGE, FL("pStaDs is NULL\n"));)
->>>>>>> 657b0e9... prima update
       return;
     }
 
@@ -1546,14 +1316,10 @@ limIbssDecideProtection(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpUpdateBeaco
             {
                 protStaCacheType = eLIM_PROT_STA_CACHE_TYPE_llB;
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGE(limLog(pMac, LOGE, FL("Enable protection from 11B\n"));)
 =======
                 PELOGE(limLog(pMac, LOGE, FL("Enable protection from 11B"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(limLog(pMac, LOGE, FL("Enable protection from 11B\n"));)
->>>>>>> 657b0e9... prima update
                 limIbssSetProtection(pMac, true, pBeaconParams,psessionEntry);
             }
         }
@@ -1599,7 +1365,6 @@ limIbssStaAdd(
     tUpdateBeaconParams beaconParams; 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (tANI_U8 *) &beaconParams, sizeof(tUpdateBeaconParams));
 
     if (pBody == 0)
@@ -1617,42 +1382,31 @@ limIbssStaAdd(
         retCode = ibss_dph_entry_add(pMac, *pPeerAddr, &pStaDs,psessionEntry);
 =======
     vos_mem_set((tANI_U8 *) &beaconParams, sizeof(tUpdateBeaconParams), 0);
-=======
-    palZeroMemory( pMac->hHdd, (tANI_U8 *) &beaconParams, sizeof(tUpdateBeaconParams));
->>>>>>> 657b0e9... prima update
 
     if (pBody == 0)
     {
-        PELOGE(limLog(pMac, LOGE, FL("Invalid IBSS AddSta\n"));)
+        PELOGE(limLog(pMac, LOGE, FL("Invalid IBSS AddSta"));)
         return eSIR_FAILURE;
     }
 
-    PELOGE(limLog(pMac, LOGE, FL("Rx Add-Ibss-Sta for MAC:\n"));)
+    PELOGE(limLog(pMac, LOGE, FL("Rx Add-Ibss-Sta for MAC:"));)
     limPrintMacAddr(pMac, *pPeerAddr, LOGE);
 
     pPeerNode = ibss_peer_find(pMac, *pPeerAddr);
-    if(NULL != pPeerNode)
+    if (NULL != pPeerNode)
     {
-<<<<<<< HEAD
         retCode = ibss_dph_entry_add(pMac, *pPeerAddr, &pStaDs, psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        retCode = ibss_dph_entry_add(pMac, *pPeerAddr, &pStaDs,psessionEntry);
->>>>>>> 657b0e9... prima update
         if (eSIR_SUCCESS == retCode)
         {
             prevState = pStaDs->mlmStaContext.mlmState;
             pStaDs->erpEnabled = pPeerNode->erpIePresent;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
             ibss_sta_info_update(pMac, pStaDs, pPeerNode,psessionEntry);
             PELOGW(limLog(pMac, LOGW, FL("initiating ADD STA for the IBSS peer.\n"));)
             retCode = limAddSta(pMac, pStaDs,psessionEntry);
             if(retCode != eSIR_SUCCESS)
-<<<<<<< HEAD
             {
                 PELOGE(limLog(pMac, LOGE, FL("ibss-sta-add failed (reason %x)\n"), retCode);)
                 limPrintMacAddr(pMac, *pPeerAddr, LOGE);
@@ -1666,23 +1420,14 @@ limIbssStaAdd(
             PELOGW(limLog(pMac, LOGW, FL("initiating ADD STA for the IBSS peer."));)
             retCode = limAddSta(pMac, pStaDs, false, psessionEntry);
             if (retCode != eSIR_SUCCESS)
-=======
->>>>>>> 657b0e9... prima update
             {
-                PELOGE(limLog(pMac, LOGE, FL("ibss-sta-add failed (reason %x)\n"), retCode);)
+                PELOGE(limLog(pMac, LOGE, FL("ibss-sta-add failed (reason %x)"),
+                              retCode);)
                 limPrintMacAddr(pMac, *pPeerAddr, LOGE);
-<<<<<<< HEAD
                 pStaDs->mlmStaContext.mlmState = prevState;
                 dphDeleteHashEntry(pMac, pStaDs->staAddr, pStaDs->assocId,
                                    &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if(NULL != pStaDs)
-                {
-                    pStaDs->mlmStaContext.mlmState = prevState;
-                    dphDeleteHashEntry(pMac, pStaDs->staAddr, pStaDs->assocId, &psessionEntry->dph.dphHashTable);
-                }
->>>>>>> 657b0e9... prima update
             }
             else
             {
@@ -1692,7 +1437,6 @@ limIbssStaAdd(
                 if(beaconParams.paramChangeBitmap)
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                     PELOGE(limLog(pMac, LOGE, FL("---> Update Beacon Params \n"));)
                     schSetFixedBeaconFields(pMac, psessionEntry);    
 =======
@@ -1700,10 +1444,6 @@ limIbssStaAdd(
                     schSetFixedBeaconFields(pMac, psessionEntry);
                     beaconParams.bssIdx = psessionEntry->bssIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOGE(limLog(pMac, LOGE, FL("---> Update Beacon Params \n"));)
-                    schSetFixedBeaconFields(pMac, psessionEntry);    
->>>>>>> 657b0e9... prima update
                     limSendBeaconParams(pMac, &beaconParams, psessionEntry );
                 }
             }
@@ -1711,14 +1451,10 @@ limIbssStaAdd(
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("hashTblAdd failed (reason %x)\n"), retCode);)
 =======
             PELOGE(limLog(pMac, LOGE, FL("hashTblAdd failed (reason %x)"), retCode);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("hashTblAdd failed (reason %x)\n"), retCode);)
->>>>>>> 657b0e9... prima update
             limPrintMacAddr(pMac, *pPeerAddr, LOGE);
         }
     }
@@ -1738,20 +1474,15 @@ limIbssAddStaRsp(
 {
     tpDphHashNode   pStaDs;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16        aid;
 =======
     tANI_U16        peerIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16        aid;
->>>>>>> 657b0e9... prima update
     tpAddStaParams  pAddStaParams = (tpAddStaParams) msg;
 
     SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
     if (pAddStaParams == NULL)
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("IBSS: ADD_STA_RSP with no body!\n"));)
         return eSIR_FAILURE;
@@ -1765,26 +1496,15 @@ limIbssAddStaRsp(
 
     pStaDs = dphLookupHashEntry(pMac, pAddStaParams->staMac, &peerIdx, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("IBSS: ADD_STA_RSP with no body!\n"));)
-        return eSIR_FAILURE;
-    }
-
-    pStaDs = dphLookupHashEntry(pMac, pAddStaParams->staMac, &aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
     if (pStaDs == NULL)
     {
         PELOGE(limLog(pMac, LOGE, FL("IBSS: ADD_STA_RSP for unknown MAC addr "));)
         limPrintMacAddr(pMac, pAddStaParams->staMac, LOGE);
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, (void *) pAddStaParams );
 =======
         vos_mem_free(pAddStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, (void *) pAddStaParams );
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1793,14 +1513,10 @@ limIbssAddStaRsp(
         PELOGE(limLog(pMac, LOGE, FL("IBSS: ADD_STA_RSP error (%x) "), pAddStaParams->status);)
         limPrintMacAddr(pMac, pAddStaParams->staMac, LOGE);
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, (void *) pAddStaParams );
 =======
         vos_mem_free(pAddStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, (void *) pAddStaParams );
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1812,28 +1528,20 @@ limIbssAddStaRsp(
     pStaDs->mlmStaContext.mlmState = eLIM_MLM_LINK_ESTABLISHED_STATE;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOGW(limLog(pMac, LOGW, FL("IBSS: sending IBSS_NEW_PEER msg to SME!\n"));)
 =======
     PELOGW(limLog(pMac, LOGW, FL("IBSS: sending IBSS_NEW_PEER msg to SME!"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOGW(limLog(pMac, LOGW, FL("IBSS: sending IBSS_NEW_PEER msg to SME!\n"));)
->>>>>>> 657b0e9... prima update
 
     ibss_status_chg_notify(pMac, pAddStaParams->staMac, pStaDs->staIndex, 
                            pStaDs->ucUcastSig, pStaDs->ucBcastSig,
                            eWNI_SME_IBSS_NEW_PEER_IND,
                            psessionEntry->smeSessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, (void *) pAddStaParams );
 =======
     vos_mem_free(pAddStaParams);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palFreeMemory( pMac->hHdd, (void *) pAddStaParams );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -1844,7 +1552,6 @@ void limIbssDelBssRspWhenCoalescing(tpAniSirGlobal  pMac,  void *msg,tpPESession
 {
    tpDeleteBssParams pDelBss = (tpDeleteBssParams) msg;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     PELOGW(limLog(pMac, LOGW, FL("IBSS: DEL_BSS_RSP Rcvd during coalescing!\n"));)
 
@@ -1858,13 +1565,6 @@ void limIbssDelBssRspWhenCoalescing(tpAniSirGlobal  pMac,  void *msg,tpPESession
     {
         PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP(coalesce) with no body!"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOGW(limLog(pMac, LOGW, FL("IBSS: DEL_BSS_RSP Rcvd during coalescing!\n"));)
-
-    if (pDelBss == NULL)
-    {
-        PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP(coalesce) with no body!\n"));)
->>>>>>> 657b0e9... prima update
         goto end;
     }
 
@@ -1883,14 +1583,10 @@ void limIbssDelBssRspWhenCoalescing(tpAniSirGlobal  pMac,  void *msg,tpPESession
     end:
     if(pDelBss != NULL)
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, (void *) pDelBss );
 =======
         vos_mem_free(pDelBss);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, (void *) pDelBss );
->>>>>>> 657b0e9... prima update
 }
 
 
@@ -1908,14 +1604,10 @@ void limIbssAddBssRspWhenCoalescing(tpAniSirGlobal  pMac, void *msg, tpPESession
     if ((pHdr == NULL) || (pBeacon == NULL))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Unable to handle AddBssRspWhenCoalescing (no cached BSS info)\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("Unable to handle AddBssRspWhenCoalescing (no cached BSS info)"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Unable to handle AddBssRspWhenCoalescing (no cached BSS info)\n"));)
->>>>>>> 657b0e9... prima update
         goto end;
     }
 
@@ -1923,7 +1615,6 @@ void limIbssAddBssRspWhenCoalescing(tpAniSirGlobal  pMac, void *msg, tpPESession
     infoLen = sizeof(tSirMacAddr) + sizeof(tSirMacChanNum) +
               sizeof(tANI_U8) + pBeacon->ssId.length + 1;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     palZeroMemory(pMac->hHdd, (void *) &newBssInfo, sizeof(newBssInfo));
     palCopyMemory( pMac->hHdd, newBssInfo.bssId, pHdr->bssId, sizeof(tSirMacAddr));
@@ -1935,37 +1626,24 @@ void limIbssAddBssRspWhenCoalescing(tpAniSirGlobal  pMac, void *msg, tpPESession
 =======
     vos_mem_set((void *) &newBssInfo, sizeof(newBssInfo), 0);
     vos_mem_copy(newBssInfo.bssId, pHdr->bssId, sizeof(tSirMacAddr));
-=======
-    palZeroMemory(pMac->hHdd, (void *) &newBssInfo, sizeof(newBssInfo));
-    palCopyMemory( pMac->hHdd, newBssInfo.bssId, pHdr->bssId, sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
     newBssInfo.channelNumber = (tSirMacChanNum) pAddBss->currentOperChannel;
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &newBssInfo.ssId,
-                  (tANI_U8 *) &pBeacon->ssId, pBeacon->ssId.length + 1);
+    vos_mem_copy((tANI_U8 *) &newBssInfo.ssId,
+                 (tANI_U8 *) &pBeacon->ssId, pBeacon->ssId.length + 1);
 
-<<<<<<< HEAD
     PELOGW(limLog(pMac, LOGW, FL("Sending JOINED_NEW_BSS notification to SME."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOGW(limLog(pMac, LOGW, FL("Sending JOINED_NEW_BSS notification to SME.\n"));)
->>>>>>> 657b0e9... prima update
 
     limSendSmeWmStatusChangeNtf(pMac, eSIR_SME_JOINED_NEW_BSS,
                                 (tANI_U32 *) &newBssInfo,
                                 infoLen,pSessionEntry->smeSessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     {
         //Configure beacon and send beacons to HAL
         limSendBeaconInd(pMac, pSessionEntry);
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
     
@@ -1975,12 +1653,6 @@ void limIbssAddBssRspWhenCoalescing(tpAniSirGlobal  pMac, void *msg, tpPESession
 
  end:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-    
-
-    end:
->>>>>>> 657b0e9... prima update
     ibss_coalesce_free(pMac);
 }
 
@@ -2000,14 +1672,10 @@ limIbssDelBssRsp(
     if (pDelBss == NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP with no body!\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP with no body!"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP with no body!\n"));)
->>>>>>> 657b0e9... prima update
         rc = eSIR_SME_REFUSED;
         goto end;
     }
@@ -2015,14 +1683,10 @@ limIbssDelBssRsp(
     if((psessionEntry = peFindSessionBySessionId(pMac,pDelBss->sessionId))==NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
            limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
 =======
            limLog(pMac, LOGP,FL("Session Does not exist for given sessionID"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
->>>>>>> 657b0e9... prima update
            goto end;
     }
 
@@ -2056,14 +1720,10 @@ limIbssDelBssRsp(
         psessionEntry->selfMacAddr, NULL, NULL) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP setLinkState failed\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP setLinkState failed"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("IBSS: DEL_BSS_RSP setLinkState failed\n"));)
->>>>>>> 657b0e9... prima update
         rc = eSIR_SME_REFUSED;
         goto end;
     }
@@ -2086,14 +1746,10 @@ limIbssDelBssRsp(
     end:
     if(pDelBss != NULL)
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, (void *) pDelBss );
 =======
         vos_mem_free(pDelBss);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, (void *) pDelBss );
->>>>>>> 657b0e9... prima update
     /* Delete PE session once BSS is deleted */
     if (NULL != psessionEntry) {
         limSendSmeRsp(pMac, eWNI_SME_STOP_BSS_RSP, rc,psessionEntry->smeSessionId,psessionEntry->transactionId);
@@ -2102,7 +1758,6 @@ limIbssDelBssRsp(
     }
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 static void
@@ -2170,8 +1825,6 @@ __limIbssSearchAndDeletePeer(tpAniSirGlobal    pMac,
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**
  * limIbssCoalesce()
  *
@@ -2203,20 +1856,15 @@ limIbssCoalesce(
     tpPESession         psessionEntry)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16            aid;
 =======
     tANI_U16            peerIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16            aid;
->>>>>>> 657b0e9... prima update
     tSirMacAddr         currentBssId;
     tLimIbssPeerNode    *pPeerNode;
     tpDphHashNode       pStaDs;
     tUpdateBeaconParams beaconParams; 
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     palZeroMemory( pMac->hHdd, (tANI_U8 *) &beaconParams, sizeof(tUpdateBeaconParams));
 
@@ -2239,16 +1887,15 @@ limIbssCoalesce(
         return eSIR_SUCCESS;
 =======
     vos_mem_set((tANI_U8 *)&beaconParams, sizeof(tUpdateBeaconParams), 0);
-=======
-    palZeroMemory( pMac->hHdd, (tANI_U8 *) &beaconParams, sizeof(tUpdateBeaconParams));
->>>>>>> 657b0e9... prima update
 
     sirCopyMacAddr(currentBssId,psessionEntry->bssId);
 
+    limLog(pMac, LOG1, FL("Current BSSID :" MAC_ADDRESS_STR " Received BSSID :" MAC_ADDRESS_STR ),
+                                  MAC_ADDR_ARRAY(currentBssId), MAC_ADDR_ARRAY(pHdr->bssId));
+
     /* Check for IBSS Coalescing only if Beacon is from different BSS */
-    if ( !palEqualMemory( pMac->hHdd, currentBssId, pHdr->bssId, sizeof( tSirMacAddr ) ) )
+    if ( !vos_mem_compare(currentBssId, pHdr->bssId, sizeof( tSirMacAddr )))
     {
-<<<<<<< HEAD
        /*
         * If STA entry is already available in the LIM hash table, then it is
         * possible that the peer may have left and rejoined within the heartbeat
@@ -2286,20 +1933,6 @@ limIbssCoalesce(
        ibss_bss_delete(pMac,psessionEntry);
        return eSIR_SUCCESS;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (! fTsfLater) // No Coalescing happened.
-            return eSIR_LIM_IGNORE_BEACON;
-        /*
-         * IBSS Coalescing happened.
-         * save the received beacon, and delete the current BSS. The rest of the
-         * processing will be done in the delBss response processing
-         */
-        pMac->lim.gLimIbssCoalescingHappened = true;
-        PELOGW(limLog(pMac, LOGW, FL("IBSS Coalescing happened\n"));)
-        ibss_coalesce_save(pMac, pHdr, pBeacon);
-        ibss_bss_delete(pMac,psessionEntry);
-        return eSIR_SUCCESS;
->>>>>>> 657b0e9... prima update
     }
 
     // STA in IBSS mode and SSID matches with ours
@@ -2310,7 +1943,6 @@ limIbssCoalesce(
         tANI_U32      frameLen;
         tSirRetStatus retCode;
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("IBSS Peer node does not exist, adding it***\n"));)
 
 #ifndef ANI_SIR_IBSS_PEER_CACHING
@@ -2326,27 +1958,25 @@ limIbssCoalesce(
         {
             limLog(pMac, LOGP, FL("alloc fail (%d bytes) storing IBSS peer info\n"),
 =======
-=======
-        PELOGW(limLog(pMac, LOGW, FL("IBSS Peer node does not exist, adding it***\n"));)
->>>>>>> 657b0e9... prima update
 
-#ifndef ANI_SIR_IBSS_PEER_CACHING
         /** Limit the Max number of IBSS Peers allowed as the max number of STA's allowed
          */
-        if (pMac->lim.gLimNumIbssPeers >= pMac->lim.maxStation)
+#ifndef ANI_SIR_IBSS_PEER_CACHINGT
+        if (pMac->lim.gLimNumIbssPeers >
+              (pMac->lim.gLimIbssStaLimit - IBSS_STATIONS_USED_DURING_INIT))
+        {
+            PELOGE(limLog(pMac, LOGE, FL("**** MAX STA LIMIT HAS REACHED ****"));)
             return eSIR_LIM_MAX_STA_REACHED_ERROR;
+        }
 #endif
+        PELOGW(limLog(pMac, LOGW, FL("IBSS Peer node does not exist, adding it***"));)
         frameLen = sizeof(tLimIbssPeerNode) + ieLen - sizeof(tANI_U32);
 
-        if (eHAL_STATUS_SUCCESS !=
-            palAllocateMemory(pMac->hHdd, (void **) &pPeerNode, (tANI_U16)frameLen))
+        pPeerNode = vos_mem_malloc((tANI_U16)frameLen);
+        if (NULL == pPeerNode)
         {
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("alloc fail (%d bytes) storing IBSS peer info"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("alloc fail (%d bytes) storing IBSS peer info\n"),
->>>>>>> 657b0e9... prima update
                    frameLen);
             return eSIR_MEM_ALLOC_FAILED;
         }
@@ -2356,7 +1986,6 @@ limIbssCoalesce(
 
         ibss_peer_collect(pMac, pBeacon, pHdr, pPeerNode,psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
         if(eHAL_STATUS_SUCCESS !=
                 palAllocateMemory(pMac->hHdd, (void**)&pPeerNode->beacon, ieLen))
        {
@@ -2365,29 +1994,19 @@ limIbssCoalesce(
         if (NULL == pPeerNode->beacon)
         {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if(eHAL_STATUS_SUCCESS !=
-                palAllocateMemory(pMac->hHdd, (void**)&pPeerNode->beacon, ieLen))
-       {
->>>>>>> 657b0e9... prima update
                 PELOGE(limLog(pMac, LOGE, FL("Unable to allocate memory to store beacon"));)
         }
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             palCopyMemory(pMac->hHdd, pPeerNode->beacon, pIEs, ieLen);
 =======
             vos_mem_copy(pPeerNode->beacon, pIEs, ieLen);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory(pMac->hHdd, pPeerNode->beacon, pIEs, ieLen);
->>>>>>> 657b0e9... prima update
             pPeerNode->beaconLen = (tANI_U16)ieLen;
         }
         ibss_peer_add(pMac, pPeerNode);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
         pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
         if (pStaDs != NULL)
@@ -2398,53 +2017,38 @@ limIbssCoalesce(
             ibss_sta_info_update(pMac, pStaDs, pPeerNode,psessionEntry);
 =======
         pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &peerIdx, &psessionEntry->dph.dphHashTable);
-=======
-        pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
         if (pStaDs != NULL)
         {
             /// DPH node already exists for the peer
-            PELOGW(limLog(pMac, LOGW, FL("DPH Node present for just learned peer\n"));)
+            PELOGW(limLog(pMac, LOGW, FL("DPH Node present for just learned peer"));)
             PELOG1(limPrintMacAddr(pMac, pPeerNode->peerMacAddr, LOG1);)
             ibss_sta_info_update(pMac, pStaDs, pPeerNode,psessionEntry);
-<<<<<<< HEAD
             return eSIR_SUCCESS;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         }
         retCode = limIbssStaAdd(pMac, pPeerNode->peerMacAddr,psessionEntry);
         if (retCode != eSIR_SUCCESS)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("lim-ibss-sta-add failed (reason %x)\n"), retCode);)
 =======
             PELOGE(limLog(pMac, LOGE, FL("lim-ibss-sta-add failed (reason %x)"), retCode);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("lim-ibss-sta-add failed (reason %x)\n"), retCode);)
->>>>>>> 657b0e9... prima update
             limPrintMacAddr(pMac, pPeerNode->peerMacAddr, LOGE);
             return retCode;
         }
 
         // Decide protection mode
 <<<<<<< HEAD
-<<<<<<< HEAD
         pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
 =======
         pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &peerIdx, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pStaDs = dphLookupHashEntry(pMac, pPeerNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
         if(pMac->lim.gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE)
             limIbssDecideProtection(pMac, pStaDs, &beaconParams, psessionEntry);
 
         if(beaconParams.paramChangeBitmap)
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("beaconParams.paramChangeBitmap=1 ---> Update Beacon Params \n"));)
             schSetFixedBeaconFields(pMac, psessionEntry);    
@@ -2453,10 +2057,6 @@ limIbssCoalesce(
             schSetFixedBeaconFields(pMac, psessionEntry);
             beaconParams.bssIdx = psessionEntry->bssIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("beaconParams.paramChangeBitmap=1 ---> Update Beacon Params \n"));)
-            schSetFixedBeaconFields(pMac, psessionEntry);    
->>>>>>> 657b0e9... prima update
             limSendBeaconParams(pMac, &beaconParams, psessionEntry );
         }
     }
@@ -2473,19 +2073,14 @@ limIbssCoalesce(
     {
         limResetHBPktCount(psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("Partner joined our IBSS, Sending IBSS_ACTIVE Notification to SME\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("Partner joined our IBSS, Sending IBSS_ACTIVE Notification to SME"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("Partner joined our IBSS, Sending IBSS_ACTIVE Notification to SME\n"));)
->>>>>>> 657b0e9... prima update
         psessionEntry->limIbssActive = true;
         limSendSmeWmStatusChangeNtf(pMac, eSIR_SME_IBSS_ACTIVE, NULL, 0, psessionEntry->smeSessionId);
         limHeartBeatDeactivateAndChangeTimer(pMac, psessionEntry);
         MTRACE(macTrace(pMac, TRACE_CODE_TIMER_ACTIVATE, psessionEntry->peSessionId, eLIM_HEART_BEAT_TIMER));
-<<<<<<< HEAD
 <<<<<<< HEAD
         if (limActivateHearBeatTimer(pMac) != TX_SUCCESS)
             limLog(pMac, LOGP, FL("could not activate Heartbeat timer\n"));
@@ -2493,10 +2088,6 @@ limIbssCoalesce(
         if (limActivateHearBeatTimer(pMac, psessionEntry) != TX_SUCCESS)
             limLog(pMac, LOGP, FL("could not activate Heartbeat timer"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (limActivateHearBeatTimer(pMac) != TX_SUCCESS)
-            limLog(pMac, LOGP, FL("could not activate Heartbeat timer\n"));
->>>>>>> 657b0e9... prima update
     }
 
     return eSIR_SUCCESS;
@@ -2508,16 +2099,12 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
     tLimIbssPeerNode *pTempNode, *pPrevNode;
     tLimIbssPeerNode *pTempNextNode = NULL;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tANI_U16      aid;
     tpDphHashNode pStaDs;
     tANI_U32 threshold;
     tANI_U16 staIndex;
     tANI_U8 ucUcastSig;
     tANI_U8 ucBcastSig;
-<<<<<<< HEAD
 =======
     tANI_U16      peerIdx=0;
     tpDphHashNode pStaDs=0;
@@ -2526,8 +2113,6 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
     tANI_U8 ucUcastSig=0;
     tANI_U8 ucBcastSig=0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     /** MLM BSS is started and if PE in scanmode then MLM state will be waiting for probe resp.
      *  If Heart beat timeout triggers during this corner case then we need to reactivate HeartBeat timer 
@@ -2567,14 +2152,10 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
             {
                 //Remove this entry from the list.
 <<<<<<< HEAD
-<<<<<<< HEAD
                 pStaDs = dphLookupHashEntry(pMac, pTempNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
 =======
                 pStaDs = dphLookupHashEntry(pMac, pTempNode->peerMacAddr, &peerIdx, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                pStaDs = dphLookupHashEntry(pMac, pTempNode->peerMacAddr, &aid, &psessionEntry->dph.dphHashTable);
->>>>>>> 657b0e9... prima update
                 if (pStaDs)
                 {
                     staIndex = pStaDs->staIndex;
@@ -2583,17 +2164,12 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
 
                     (void) limDelSta(pMac, pStaDs, false /*asynchronous*/,psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
                     limDeleteDphHashEntry(pMac, pStaDs->staAddr, aid,psessionEntry);
 
 =======
                     limDeleteDphHashEntry(pMac, pStaDs->staAddr, peerIdx,psessionEntry);
                     limReleasePeerIdx(pMac, peerIdx, psessionEntry);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    limDeleteDphHashEntry(pMac, pStaDs->staAddr, aid,psessionEntry);
-
->>>>>>> 657b0e9... prima update
                     //Send indication.
                     ibss_status_chg_notify( pMac, pTempNode->peerMacAddr, staIndex, 
                                             ucUcastSig, ucBcastSig,
@@ -2609,14 +2185,10 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
                     pPrevNode->next = pTempNode->next;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 palFreeMemory(pMac->hHdd,pTempNode);
 =======
                 vos_mem_free(pTempNode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                palFreeMemory(pMac->hHdd,pTempNode);
->>>>>>> 657b0e9... prima update
                 pMac->lim.gLimNumIbssPeers--;
 
                 pTempNode = pTempNextNode; //Since we deleted current node, prevNode remains same.
@@ -2646,14 +2218,10 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
     {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("Heartbeat Failure\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("Heartbeat Failure"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("Heartbeat Failure\n"));)
->>>>>>> 657b0e9... prima update
         pMac->lim.gLimHBfailureCntInLinkEstState++;
 
         if (psessionEntry->limIbssActive == true)
@@ -2662,14 +2230,10 @@ void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry)
             // other STA in IBSS. Announce IBSS inactive
             // to Roaming algorithm
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGW(limLog(pMac, LOGW, FL("Alone in IBSS\n"));)
 =======
             PELOGW(limLog(pMac, LOGW, FL("Alone in IBSS"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGW(limLog(pMac, LOGW, FL("Alone in IBSS\n"));)
->>>>>>> 657b0e9... prima update
             psessionEntry->limIbssActive = false;
 
             limSendSmeWmStatusChangeNtf(pMac, eSIR_SME_IBSS_INACTIVE,
@@ -2719,17 +2283,12 @@ limIbssDecideProtectionOnDelete(tpAniSirGlobal pMac,
                     if (pMac->lim.protStaCache[i].active)
                     {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         if (palEqualMemory( pMac->hHdd,pMac->lim.protStaCache[i].addr,
                                 pStaDs->staAddr, sizeof(tSirMacAddr)))
 =======
                         if (vos_mem_compare(pMac->lim.protStaCache[i].addr,
                                             pStaDs->staAddr, sizeof(tSirMacAddr)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        if (palEqualMemory( pMac->hHdd,pMac->lim.protStaCache[i].addr,
-                                pStaDs->staAddr, sizeof(tSirMacAddr)))
->>>>>>> 657b0e9... prima update
                         {
                             psessionEntry->gLim11bParams.numSta--;
                             pMac->lim.protStaCache[i].active = false;
@@ -2742,20 +2301,15 @@ limIbssDecideProtectionOnDelete(tpAniSirGlobal pMac,
             if (psessionEntry->gLim11bParams.numSta == 0)
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGE(limLog(pMac, LOGE, FL("No more 11B STA exists. Disable protection. \n"));)
 =======
                 PELOGE(limLog(pMac, LOGE, FL("No more 11B STA exists. Disable protection. "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(limLog(pMac, LOGE, FL("No more 11B STA exists. Disable protection. \n"));)
->>>>>>> 657b0e9... prima update
                 limIbssSetProtection(pMac, false, pBeaconParams,psessionEntry);
             }
         }
     }
 }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -2836,5 +2390,3 @@ limProcessIbssPeerInactivity(tpAniSirGlobal pMac, void *buf)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,13 +44,9 @@
 
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  *
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *
->>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file utilsParser.cc contains the code for parsing
  * 802.11 messages.
@@ -75,14 +68,10 @@ void ConvertSSID(tpAniSirGlobal pMac,
 {
     pOld->length = pNew->num_ssid;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->ssId, pNew->ssid, pNew->num_ssid );
 =======
     vos_mem_copy( pOld->ssId, pNew->ssid, pNew->num_ssid );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->ssId, pNew->ssid, pNew->num_ssid );
->>>>>>> 657b0e9... prima update
 }
 
 void ConvertSuppRates(tpAniSirGlobal   pMac,
@@ -91,14 +80,10 @@ void ConvertSuppRates(tpAniSirGlobal   pMac,
 {
     pOld->numRates = pNew->num_rates;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->rate, pNew->rates, pNew->num_rates );
 =======
     vos_mem_copy( pOld->rate, pNew->rates, pNew->num_rates );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->rate, pNew->rates, pNew->num_rates );
->>>>>>> 657b0e9... prima update
 }
 
 void ConvertExtSuppRates(tpAniSirGlobal      pMac,
@@ -107,14 +92,10 @@ void ConvertExtSuppRates(tpAniSirGlobal      pMac,
 {
     pOld->numRates = pNew->num_rates;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->rate, pNew->rates, pNew->num_rates );
 =======
     vos_mem_copy(  pOld->rate, pNew->rates, pNew->num_rates );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->rate, pNew->rates, pNew->num_rates );
->>>>>>> 657b0e9... prima update
 }
 
 
@@ -163,14 +144,10 @@ tSirRetStatus ConvertWPA(tpAniSirGlobal  pMac,
 
     pOld->length = (tANI_U8)written - 2;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->info, buffer + 2, pOld->length );
 =======
     vos_mem_copy( pOld->info, buffer + 2, pOld->length );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->info, buffer + 2, pOld->length );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -187,14 +164,10 @@ tSirRetStatus ConvertWPAOpaque( tpAniSirGlobal      pMac,
     pOld->info[ 2 ] = 0xf2;
     pOld->info[ 3 ] = 0x01;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->info + 4, pNew->data, pNew->num_data );
 =======
     vos_mem_copy( pOld->info + 4, pNew->data, pNew->num_data );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->info + 4, pNew->data, pNew->num_data );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -215,26 +188,18 @@ tSirRetStatus ConvertWscOpaque( tpAniSirGlobal      pMac,
     pOld->addIEdata[ curAddIELen++ ] = 0xf2;
     pOld->addIEdata[ curAddIELen++ ] = 0x04;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
 =======
     vos_mem_copy( pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 tSirRetStatus ConvertP2POpaque( tpAniSirGlobal      pMac,
                                 tSirAddie           *pOld,
                                 tDot11fIEP2PIEOpaque *pNew )
@@ -251,7 +216,6 @@ tSirRetStatus ConvertP2POpaque( tpAniSirGlobal      pMac,
     pOld->addIEdata[ curAddIELen++ ] = 0x9A;
     pOld->addIEdata[ curAddIELen++ ] = 0x09;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
 
     return eSIR_SUCCESS;
@@ -263,13 +227,6 @@ tSirRetStatus ConvertP2POpaque( tpAniSirGlobal      pMac,
     return eSIR_SUCCESS;
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
-
-    return eSIR_SUCCESS;
-}
-#endif
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_WFD
 tSirRetStatus ConvertWFDOpaque( tpAniSirGlobal      pMac,
@@ -288,14 +245,10 @@ tSirRetStatus ConvertWFDOpaque( tpAniSirGlobal      pMac,
     pOld->addIEdata[ curAddIELen++ ] = 0x9A;
     pOld->addIEdata[ curAddIELen++ ] = 0x0a;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
 =======
     vos_mem_copy( pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->addIEdata + curAddIELen, pNew->data, pNew->num_data );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -317,14 +270,10 @@ tSirRetStatus ConvertRSN(tpAniSirGlobal  pMac,
 
     pOld->length = (tANI_U8)written - 2;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->info, buffer + 2, pOld->length );
 =======
     vos_mem_copy( pOld->info, buffer + 2, pOld->length );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->info, buffer + 2, pOld->length );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -337,14 +286,10 @@ tSirRetStatus ConvertRSNOpaque( tpAniSirGlobal      pMac,
     // an opaque array.
     pOld->length = pNew->num_data;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->info, pNew->data, pOld->length );
 =======
     vos_mem_copy( pOld->info, pNew->data, pOld->length );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->info, pNew->data, pOld->length );
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -366,14 +311,10 @@ void ConvertSuppChannels(tpAniSirGlobal             pMac,
     pOld->type   = 36;
     pOld->length = ( pNew->num_bands * 2 );
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->supportedChannels, ( tANI_U8* )pNew->bands, pOld->length );
 =======
     vos_mem_copy( ( tANI_U8* )pOld->supportedChannels, ( tANI_U8* )pNew->bands, pOld->length );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->supportedChannels, ( tANI_U8* )pNew->bands, pOld->length );
->>>>>>> 657b0e9... prima update
 }
 
 void ConvertCFParams(tpAniSirGlobal     pMac,
@@ -396,14 +337,10 @@ void ConvertTIM(tpAniSirGlobal pMac,
     pOld->bitmapLength  = pNew->num_vbmp;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->bitmap, pNew->vbmp, pNew->num_vbmp );
 =======
     vos_mem_copy( pOld->bitmap, pNew->vbmp, pNew->num_vbmp );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->bitmap, pNew->vbmp, pNew->num_vbmp );
->>>>>>> 657b0e9... prima update
 }
 
 void ConvertCountry(tpAniSirGlobal          pMac,
@@ -413,14 +350,10 @@ void ConvertCountry(tpAniSirGlobal          pMac,
     int i;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pOld->countryString, pNew->country, COUNTRY_STRING_LENGTH );
 =======
     vos_mem_copy( pOld->countryString, pNew->country, COUNTRY_STRING_LENGTH );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pOld->countryString, pNew->country, COUNTRY_STRING_LENGTH );
->>>>>>> 657b0e9... prima update
 
     pOld->numIntervals = pNew->num_triplets;
 
@@ -440,14 +373,10 @@ void ConvertWMMParams(tpAniSirGlobal         pMac,
     pOld->length = 24;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->qosInfo, ( tANI_U8* )&pNew->qosInfo, 1 );
 =======
     vos_mem_copy( ( tANI_U8* )&pOld->qosInfo, ( tANI_U8* )&pNew->qosInfo, 1 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->qosInfo, ( tANI_U8* )&pNew->qosInfo, 1 );
->>>>>>> 657b0e9... prima update
 
     pOld->acbe.aci.aifsn  = pNew->acbe_aifsn;
     pOld->acbe.aci.acm    = pNew->acbe_acm;
@@ -495,14 +424,10 @@ void ConvertEDCAParam(tpAniSirGlobal         pMac,
     pOld->length = 20;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->qosInfo, ( tANI_U8* )&pNew->qos, 1 );
 =======
     vos_mem_copy( ( tANI_U8* )&pOld->qosInfo, ( tANI_U8* )&pNew->qos, 1 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->qosInfo, ( tANI_U8* )&pNew->qos, 1 );
->>>>>>> 657b0e9... prima update
 
     pOld->acbe.aci.aifsn  = pNew->acbe_aifsn;
     pOld->acbe.aci.acm    = pNew->acbe_acm;
@@ -571,14 +496,10 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
                                  tDot11fIETCLAS *pNew)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U32 length;
 =======
     tANI_U32 length = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32 length;
->>>>>>> 657b0e9... prima update
 
     if ( DOT11F_FAILED( dot11fGetPackedIETCLAS( pMac, pNew, &length ) ) )
     {
@@ -595,17 +516,12 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
     {
     case 0:
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.srcAddr, pNew->info.EthParams.source, 6 );
         palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.dstAddr, pNew->info.EthParams.dest, 6 );
 =======
         vos_mem_copy( pOld->tclasParams.eth.srcAddr, pNew->info.EthParams.source, 6 );
         vos_mem_copy( pOld->tclasParams.eth.dstAddr, pNew->info.EthParams.dest, 6 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.srcAddr, pNew->info.EthParams.source, 6 );
-        palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.dstAddr, pNew->info.EthParams.dest, 6 );
->>>>>>> 657b0e9... prima update
         pOld->tclasParams.eth.type = pNew->info.EthParams.type;
         break;
     case 1:
@@ -613,7 +529,6 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
         if ( 4 == pNew->info.IpParams.version )
         {
             pOld->tclasParams.ipv4.version = 4;
-<<<<<<< HEAD
 <<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.source, 4 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.dest, 4 );
@@ -623,10 +538,6 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
             vos_mem_copy( ( tANI_U8* )&pOld->tclasParams.ipv4.dstIpAddr,
                           ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.dest, 4 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.source, 4 );
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.dest, 4 );
->>>>>>> 657b0e9... prima update
             pOld->tclasParams.ipv4.srcPort  = pNew->info.IpParams.params.IpV4Params.src_port;
             pOld->tclasParams.ipv4.dstPort  = pNew->info.IpParams.params.IpV4Params.dest_port;
             pOld->tclasParams.ipv4.dscp     = pNew->info.IpParams.params.IpV4Params.DSCP;
@@ -636,7 +547,6 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
         else if ( 6 == pNew->info.IpParams.version )
         {
             pOld->tclasParams.ipv6.version = 6;
-<<<<<<< HEAD
 <<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.source, 16 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.dest, 16 );
@@ -653,13 +563,6 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
             vos_mem_copy( ( tANI_U8* )pOld->tclasParams.ipv6.flowLabel,
                           ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.flow_label, 3 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.source, 16 );
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.dest, 16 );
-            pOld->tclasParams.ipv6.srcPort  = pNew->info.IpParams.params.IpV6Params.src_port;
-            pOld->tclasParams.ipv6.dstPort  = pNew->info.IpParams.params.IpV6Params.dest_port;
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.flowLabel, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.flow_label, 3 );
->>>>>>> 657b0e9... prima update
         }
         else
         {
@@ -689,14 +592,10 @@ void ConvertWMMTSPEC(tpAniSirGlobal     pMac,
     pOld->tsinfo.traffic.userPrio     = (tANI_U16)pNew->user_priority;
     pOld->tsinfo.traffic.ackPolicy    = (tANI_U16)pNew->tsinfo_ack_pol;
 <<<<<<< HEAD
-<<<<<<< HEAD
     pOld->nomMsduSz                   = pNew->size;
 =======
     pOld->nomMsduSz                   = (pNew->fixed << 15) | pNew->size;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pOld->nomMsduSz                   = pNew->size;
->>>>>>> 657b0e9... prima update
     pOld->maxMsduSz                   = pNew->max_msdu_size;
     pOld->minSvcInterval              = pNew->min_service_int;
     pOld->maxSvcInterval              = pNew->max_service_int;
@@ -718,14 +617,10 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
                                     tDot11fIEWMMTCLAS *pNew)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U32 length;
 =======
     tANI_U32 length = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32 length;
->>>>>>> 657b0e9... prima update
 
     if ( DOT11F_FAILED( dot11fGetPackedIEWMMTCLAS( pMac, pNew, &length ) ) )
     {
@@ -742,17 +637,12 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
     {
     case 0:
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.srcAddr, pNew->info.EthParams.source, 6 );
         palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.dstAddr, pNew->info.EthParams.dest, 6 );
 =======
         vos_mem_copy(  pOld->tclasParams.eth.srcAddr, pNew->info.EthParams.source, 6 );
         vos_mem_copy( pOld->tclasParams.eth.dstAddr, pNew->info.EthParams.dest, 6 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.srcAddr, pNew->info.EthParams.source, 6 );
-        palCopyMemory( pMac->hHdd, pOld->tclasParams.eth.dstAddr, pNew->info.EthParams.dest, 6 );
->>>>>>> 657b0e9... prima update
         pOld->tclasParams.eth.type = pNew->info.EthParams.type;
         break;
     case 1:
@@ -760,7 +650,6 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
         if ( 4 == pNew->info.IpParams.version )
         {
             pOld->tclasParams.ipv4.version = 4;
-<<<<<<< HEAD
 <<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.source, 4 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.dest, 4 );
@@ -770,10 +659,6 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
             vos_mem_copy( ( tANI_U8* )&pOld->tclasParams.ipv4.dstIpAddr,
                           ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.dest, 4 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.source, 4 );
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )&pOld->tclasParams.ipv4.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV4Params.dest, 4 );
->>>>>>> 657b0e9... prima update
             pOld->tclasParams.ipv4.srcPort  = pNew->info.IpParams.params.IpV4Params.src_port;
             pOld->tclasParams.ipv4.dstPort  = pNew->info.IpParams.params.IpV4Params.dest_port;
             pOld->tclasParams.ipv4.dscp     = pNew->info.IpParams.params.IpV4Params.DSCP;
@@ -783,7 +668,6 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
         else if ( 6 == pNew->info.IpParams.version )
         {
             pOld->tclasParams.ipv6.version = 6;
-<<<<<<< HEAD
 <<<<<<< HEAD
             palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.source, 16 );
             palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.dest, 16 );
@@ -800,13 +684,6 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
             vos_mem_copy( ( tANI_U8* )pOld->tclasParams.ipv6.flowLabel,
                           ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.flow_label, 3 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.srcIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.source, 16 );
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.dstIpAddr, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.dest, 16 );
-            pOld->tclasParams.ipv6.srcPort  = pNew->info.IpParams.params.IpV6Params.src_port;
-            pOld->tclasParams.ipv6.dstPort  = pNew->info.IpParams.params.IpV6Params.dest_port;
-            palCopyMemory( pMac->hHdd, ( tANI_U8* )pOld->tclasParams.ipv6.flowLabel, ( tANI_U8* )pNew->info.IpParams.params.IpV6Params.flow_label, 3 );
->>>>>>> 657b0e9... prima update
         }
         else
         {
@@ -908,7 +785,6 @@ void CreateScanDataNullFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr,
     macMgmtHdr->seqControl.seqNumLo = 0;
     macMgmtHdr->seqControl.seqNumHi = 2;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->da,
                               (void *)bssid, sizeof(tSirMacAddr));
     palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->sa,
@@ -916,18 +792,11 @@ void CreateScanDataNullFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr,
     palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->bssId,
 =======
     vos_mem_copy( (void *)&macMgmtHdr->da,
-=======
-    palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->da,
->>>>>>> 657b0e9... prima update
                               (void *)bssid, sizeof(tSirMacAddr));
-    palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->sa,
+    vos_mem_copy( (void *)&macMgmtHdr->sa,
                               (void *)selfMacAddr, sizeof(tSirMacAddr));
-<<<<<<< HEAD
     vos_mem_copy( (void *)&macMgmtHdr->bssId,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->bssId,
->>>>>>> 657b0e9... prima update
                               (void *)bssid, sizeof(tSirMacAddr));
     
     return;
@@ -949,14 +818,10 @@ void CreateScanCtsFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tSirMac
     macMgmtHdr->durationLo = (tANI_U8) (SIR_MAC_MAX_DURATION_MICRO_SECONDS & 0xff);
     macMgmtHdr->durationHi = (tANI_U8) ((SIR_MAC_MAX_DURATION_MICRO_SECONDS & 0xff00) >> 8);
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->da, (void *)selfMac, sizeof(tSirMacAddr));
 =======
     vos_mem_copy( (void *)macMgmtHdr->da, (void *)selfMac, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->da, (void *)selfMac, sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
             
     return;
 }
@@ -997,7 +862,6 @@ void CreateInitScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tBs
         macMgmtHdr->seqControl.seqNumLo = 0;
         macMgmtHdr->seqControl.seqNumHi = 2;
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->da, (void *)pSta[0].bssId, 6);
         palCopyMemory(pMac->hHdd, &macMgmtHdr->sa, pSta[0].staAddr, 6);
         palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->bssId, (void *)pSta[0].bssId, 6);
@@ -1006,11 +870,6 @@ void CreateInitScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tBs
         vos_mem_copy( &macMgmtHdr->sa, pSta[0].staAddr, 6);
         vos_mem_copy( (void *)&macMgmtHdr->bssId, (void *)pSta[0].bssId, 6);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->da, (void *)pSta[0].bssId, 6);
-        palCopyMemory(pMac->hHdd, &macMgmtHdr->sa, pSta[0].staAddr, 6);
-        palCopyMemory(pMac->hHdd, (void *)&macMgmtHdr->bssId, (void *)pSta[0].bssId, 6);
->>>>>>> 657b0e9... prima update
     }
     else if (role == eSYSTEM_AP_ROLE || role == eSYSTEM_STA_IN_IBSS_ROLE)
     {
@@ -1027,14 +886,10 @@ void CreateInitScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, tBs
         macMgmtHdr->durationLo = (tANI_U8) (SIR_MAC_MAX_DURATION_MICRO_SECONDS & 0xff);
         macMgmtHdr->durationHi = (tANI_U8) ((SIR_MAC_MAX_DURATION_MICRO_SECONDS & 0xff00) >> 8);
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->da, (void *)pSta[0].staAddr, 6);
 =======
         vos_mem_copy( (void *)macMgmtHdr->da, (void *)pSta[0].staAddr, 6);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->da, (void *)pSta[0].staAddr, 6);
->>>>>>> 657b0e9... prima update
     }
     return;
 #endif
@@ -1071,7 +926,6 @@ void CreateFinishScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, t
         macMgmtHdr->seqControl.seqNumLo = 0;
         macMgmtHdr->seqControl.seqNumHi = 2;
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->da, (void *)pSta[0].bssId, 6);
         palCopyMemory(pMac->hHdd, macMgmtHdr->sa, pSta[0].staAddr, 6);
         palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->bssId, (void *)pSta[0].bssId, 6);
@@ -1080,11 +934,6 @@ void CreateFinishScanRawFrame(tpAniSirGlobal pMac, tSirMacMgmtHdr *macMgmtHdr, t
         vos_mem_copy( macMgmtHdr->sa, pSta[0].staAddr, 6);
         vos_mem_copy( (void *)macMgmtHdr->bssId, (void *)pSta[0].bssId, 6);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->da, (void *)pSta[0].bssId, 6);
-        palCopyMemory(pMac->hHdd, macMgmtHdr->sa, pSta[0].staAddr, 6);
-        palCopyMemory(pMac->hHdd, (void *)macMgmtHdr->bssId, (void *)pSta[0].bssId, 6);
->>>>>>> 657b0e9... prima update
 
     }
     

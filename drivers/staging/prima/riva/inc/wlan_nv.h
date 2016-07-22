@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -22,7 +19,6 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -49,8 +45,6 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /** ------------------------------------------------------------------------- *
     ------------------------------------------------------------------------- *
@@ -88,13 +82,10 @@ typedef enum
     NV_COMMON_WLAN_NV_REV_ID,           // 6
     NV_COMMON_COUPLER_TYPE,             // 7
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     NV_COMMON_NV_VERSION,               // 8
     NV_COMMON_RESERVED,                 // 9
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     NUM_NV_FIELDS,
     NV_MAX_FIELD = 0x7FFFFFFF  /* define as 4 bytes data */
@@ -114,7 +105,6 @@ typedef enum
     NUM_PRODUCT_BANDS_INVALID = 0x7FFFFFFF  /* define as 4 bytes data */
 }eNvProductBands;           //NV_COMMON_PRODUCT_BANDS
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #define EXTERNAL_PA         1
@@ -163,16 +153,11 @@ typedef PACKED_PRE struct PACKED_POST
     uint8   macAddr4[NV_FIELD_MAC_ADDR_SIZE];
 } sMacAddr;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE union PACKED_POST
 {
     //common NV fields
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tANI_U16  productId;
     tANI_U8   productBands;
     tANI_U8   wlanNvRevId;
@@ -185,7 +170,6 @@ typedef PACKED_PRE union PACKED_POST
     tANI_U8   mfgSN[NV_FIELD_MFG_SN_SIZE];
     tANI_U8   couplerType;                       /* 0 : Internal coupler, 1 : External coupler */
     tANI_U8   reserved;                          /* Make Byte alignment */
-<<<<<<< HEAD
 } uNvFields;
 
 
@@ -204,20 +188,11 @@ typedef PACKED_PRE union PACKED_POST
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} uNvFields;
-
-
-
->>>>>>> 657b0e9... prima update
 //format of common part of nv
 typedef PACKED_PRE struct PACKED_POST
 {
     //always ensure fields are aligned to 32-bit boundaries
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tANI_U16  productId;
     tANI_U8   productBands;
     tANI_U8   wlanNvRevId; //0: WCN1312, 1: WCN1314, 2: WCN3660
@@ -231,7 +206,6 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_U8   mfgSN[NV_FIELD_MFG_SN_SIZE];
     tANI_U8   couplerType;                       /* 0 : Internal coupler, 1 : External coupler */
     tANI_U8   reserved;                          /* Make Byte alignment */
-<<<<<<< HEAD
 =======
     uint16  productId;
     uint8   productBands;
@@ -247,14 +221,11 @@ typedef PACKED_PRE struct PACKED_POST
     uint8   couplerType;
     uint8   nvVersion;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } sNvFields;
 
 
 //From wlanfw/inc/halPhyTypes.h
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 typedef tANI_S8 tPowerdBm;   //power in signed 8-bit integer, no decimal places
 
@@ -270,14 +241,6 @@ typedef PACKED_PRE union PACKED_POST
     uint32 measurement;      //measured values can be passed to pttApi, but are maintained to 2 decimal places internally
     int16  reported;         //used internally only - reported values only maintain 2 decimals places
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef tANI_S8 tPowerdBm;   //power in signed 8-bit integer, no decimal places
-
-typedef PACKED_PRE union PACKED_POST
-{
-    tANI_U32 measurement;      //measured values can be passed to pttApi, but are maintained to 2 decimal places internally
-    tANI_S16 reported;         //used internally only - reported values only maintain 2 decimals places
->>>>>>> 657b0e9... prima update
 }uAbsPwrPrecision;
 
 typedef enum
@@ -285,15 +248,11 @@ typedef enum
     PHY_TX_CHAIN_0 = 0,
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PHY_MAX_TX_CHAINS = 1,
 =======
     NUM_PHY_MAX_TX_CHAINS = 1,
     PHY_MAX_TX_CHAINS = NUM_PHY_MAX_TX_CHAINS,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PHY_MAX_TX_CHAINS = 1,
->>>>>>> 657b0e9... prima update
     PHY_ALL_TX_CHAINS,
 
     //possible tx chain combinations
@@ -439,13 +398,9 @@ typedef enum
     MIN_2_4GHZ_CHANNEL = RF_CHAN_1,
     MAX_2_4GHZ_CHANNEL = RF_CHAN_14,
 <<<<<<< HEAD
-<<<<<<< HEAD
     NUM_2_4GHZ_CHANNELS = (MAX_2_4GHZ_CHANNEL - MIN_2_4GHZ_CHANNEL + 1),
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    NUM_2_4GHZ_CHANNELS = (MAX_2_4GHZ_CHANNEL - MIN_2_4GHZ_CHANNEL + 1),
->>>>>>> 657b0e9... prima update
 
     MIN_5GHZ_CHANNEL = RF_CHAN_240,
     MAX_5GHZ_CHANNEL = RF_CHAN_165,
@@ -473,7 +428,6 @@ typedef enum
 }eRfChannels;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef enum
 {
@@ -496,8 +450,6 @@ typedef enum
 }eRfChannels_2_4GHz;
 	
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 enum
 {
    NV_CHANNEL_DISABLE,
@@ -506,14 +458,10 @@ enum
    NV_CHANNEL_INVALID
 };
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef tANI_U8 eNVChannelEnabledType;
 =======
 typedef uint8 eNVChannelEnabledType;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef tANI_U8 eNVChannelEnabledType;
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -532,22 +480,16 @@ typedef PACKED_PRE struct PACKED_POST
 typedef PACKED_PRE struct PACKED_POST
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_S16 bRssiOffset[NUM_RF_CHANNELS];
     tANI_S16 gnRssiOffset[NUM_RF_CHANNELS];
 =======
     int16 bRssiOffset[NUM_RF_CHANNELS];
     int16 gnRssiOffset[NUM_RF_CHANNELS];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_S16 bRssiOffset[NUM_RF_CHANNELS];
-    tANI_S16 gnRssiOffset[NUM_RF_CHANNELS];
->>>>>>> 657b0e9... prima update
 }ALIGN_4 sRssiChannelOffsets;
 
 typedef PACKED_PRE struct PACKED_POST
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U16 targetFreq;           //number in MHz
     tANI_U16 channelNum;           //channel number as in the eRfChannels enumeration
@@ -555,10 +497,6 @@ typedef PACKED_PRE struct PACKED_POST
     uint16 targetFreq;           //number in MHz
     uint16 channelNum;           //channel number as in the eRfChannels enumeration
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16 targetFreq;           //number in MHz
-    tANI_U16 channelNum;           //channel number as in the eRfChannels enumeration
->>>>>>> 657b0e9... prima update
     eRfSubBand band;               //band that this channel belongs to
 }tRfChannelProps;
 
@@ -572,7 +510,6 @@ typedef enum
 } e80211Modes;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define HW_CAL_VALUES_VALID_BMAP_UNUSED                             0   //Value
 //Bit mask
@@ -584,16 +521,11 @@ typedef enum
 #define HW_VAL_VALUES_VALID_CUSTOM_TCXO_REG9_MASK                   0x20
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 //From wlanfw/inc/halPhyCalMemory.h
 typedef PACKED_PRE struct PACKED_POST
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tANI_U16    process_monitor;
     tANI_U8     hdet_cal_code;
     tANI_U8     rxfe_gm_2;
@@ -647,7 +579,6 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_S16    ambientCalTemp;
     tANI_U8     ambientCalTempValid;
     tANI_U8     reserved2;
-<<<<<<< HEAD
 
 =======
     uint16    psSlpTimeOvrHd2G;
@@ -671,14 +602,10 @@ typedef PACKED_PRE struct PACKED_POST
     uint32    hwParam10;
     uint32    hwParam11;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 }sCalData;
 
 typedef PACKED_PRE struct PACKED_POST
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U32 calStatus;  //use eNvCalID
     sCalData calData;
@@ -689,25 +616,17 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_U32 txFirFilterMode;
 =======
     uint32 validBmap;  //use eNvCalID
-=======
-    tANI_U32 calStatus;  //use eNvCalID
->>>>>>> 657b0e9... prima update
     sCalData calData;
-}sRFCalValues;
+}sHwCalValues;
 
 typedef PACKED_PRE struct PACKED_POST
 {
-<<<<<<< HEAD
     uint32 txFirFilterMode;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32 txFirFilterMode;
->>>>>>> 657b0e9... prima update
 }sTxBbFilterMode;
 
 typedef PACKED_PRE struct PACKED_POST
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_S16 ofdmPwrOffset;
     tANI_S16 rsvd;
@@ -722,23 +641,15 @@ typedef tANI_U8 tPowerDetect;        //7-bit power detect reading
 =======
     int16 ofdmPwrOffset;
     int16 rsvd;
-=======
-    tANI_S16 ofdmPwrOffset;
-    tANI_S16 rsvd;
->>>>>>> 657b0e9... prima update
 }sOfdmCmdPwrOffset;
 
 //From wlanfw/inc/halPhyCfg.h
-typedef tANI_U8 tTpcLutValue;
+typedef uint8 tTpcLutValue;
 
 #define MAX_TPC_CAL_POINTS      (8)
 
-<<<<<<< HEAD
 typedef uint8 tPowerDetect;        //7-bit power detect reading
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef tANI_U8 tPowerDetect;        //7-bit power detect reading
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -749,14 +660,10 @@ typedef PACKED_PRE struct PACKED_POST
 }tTpcCaldPowerPoint;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef tTpcCaldPowerPoint tTpcCaldPowerTable[PHY_MAX_TX_CHAINS][MAX_TPC_CAL_POINTS];
 =======
 typedef tTpcCaldPowerPoint tTpcCaldPowerTable[NUM_PHY_MAX_TX_CHAINS][MAX_TPC_CAL_POINTS];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef tTpcCaldPowerPoint tTpcCaldPowerTable[PHY_MAX_TX_CHAINS][MAX_TPC_CAL_POINTS];
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -769,14 +676,10 @@ typedef PACKED_PRE struct PACKED_POST
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef tTpcLutValue tTpcPowerTable[PHY_MAX_TX_CHAINS][TPC_MEM_POWER_LUT_DEPTH];
 =======
 typedef tTpcLutValue tTpcPowerTable[NUM_PHY_MAX_TX_CHAINS][TPC_MEM_POWER_LUT_DEPTH];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef tTpcLutValue tTpcPowerTable[PHY_MAX_TX_CHAINS][TPC_MEM_POWER_LUT_DEPTH];
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -873,14 +776,11 @@ typedef enum
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_NGI_65_MBPS,
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_NGI_78_MBPS,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WCN_PRONTO
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_NGI_86_5_MBPS,
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     
     /*11AC rate 20MHZ Shortl GI*/
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_SGI_7_2_MBPS,
@@ -893,14 +793,11 @@ typedef enum
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_SGI_72_2_MBPS,
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_SGI_86_6_MBPS,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WCN_PRONTO
     HAL_PHY_RATE_VHT_20MHZ_MCS_1NSS_SGI_96_1_MBPS,
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     
     /*11AC rates 40MHZ normal GI*/
     HAL_PHY_RATE_VHT_40MHZ_MCS_1NSS_CB_NGI_13_5_MBPS ,
@@ -959,7 +856,6 @@ typedef enum
 }eHalPhyRates;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 #define NUM_RATE_POWER_GROUPS           NUM_HAL_PHY_RATES  //total number of rate power groups including the CB_RATE_POWER_OFFSET
 typedef uAbsPwrPrecision tRateGroupPwr[NUM_RATE_POWER_GROUPS];
@@ -967,17 +863,11 @@ typedef uAbsPwrPrecision tRateGroupPwr[NUM_RATE_POWER_GROUPS];
 #define NUM_RATE_POWER_GROUPS           NUM_HAL_PHY_RATES  //total number of rate power groups including the CB_RATE_POWER_OFFSET
 typedef uAbsPwrPrecision tRateGroupPwr[NUM_HAL_PHY_RATES];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#define NUM_RATE_POWER_GROUPS           NUM_HAL_PHY_RATES  //total number of rate power groups including the CB_RATE_POWER_OFFSET
-typedef uAbsPwrPrecision tRateGroupPwr[NUM_RATE_POWER_GROUPS];
->>>>>>> 657b0e9... prima update
 
 //From halNvTables.h
 #define NV_FIELD_COUNTRY_CODE_SIZE  3
 typedef PACKED_PRE struct PACKED_POST
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U8 regDomain;                                  //from eRegDomainId
     tANI_U8 countryCode[NV_FIELD_COUNTRY_CODE_SIZE];    // string identifier
@@ -1022,15 +912,33 @@ typedef PACKED_PRE struct PACKED_POST
 =======
     uint8 regDomain;                                  //from eRegDomainId
     uint8 countryCode[NV_FIELD_COUNTRY_CODE_SIZE];    // string identifier
-=======
-    tANI_U8 regDomain;                                  //from eRegDomainId
-    tANI_U8 countryCode[NV_FIELD_COUNTRY_CODE_SIZE];    // string identifier
->>>>>>> 657b0e9... prima update
 }sDefaultCountry;
+
+
+#define GF_PA_BIAS_SELECT_MASK         0X7 //(3 bits)
+#define TSMC_PA_BIAS_SELECT_MASK       0x7 //(3 bits)
+
+#define GF_PA_BIAS_SELECT_1            0X0
+#define GF_PA_BIAS_SELECT_2            0X1
+
+#define TSMC_PA_BIAS_SELECT_1          0X0
+#define TSMC_PA_BIAS_SELECT_2          0X1
+#define TSMC_PA_BIAS_SELECT_3          0x2
+
+
+#define EXT_PA_CTRL_POLARITY_DEFAULT   0X0
+#define EXT_PA_CTRL_POLARITY_VALID     0X80
+
+#define EXT_PA_CTRL0_POLARITY_MASK     0X3
+#define EXT_PA_CTRL0_POLARITY_OFFSET   0X0
+#define EXT_PA_CTRL1_POLARITY_MASK     0XC
+#define EXT_PA_CTRL1_POLARITY_OFFSET   0X2
+
+#define EXT_PA_CTRL_POLARITY_ZERO      0X1
+#define EXT_PA_CTRL_POLARITY_ONE       0X2
 
 typedef PACKED_PRE struct PACKED_POST
 {
-<<<<<<< HEAD
     uint8 skuID; 
     uint8 tpcMode2G;
     uint8 tpcMode5G;
@@ -1062,42 +970,6 @@ typedef PACKED_PRE struct PACKED_POST
 }sFwConfig;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8     overall;
-    tANI_U8     fwInit;
-    tANI_U8     hdet_dco;
-    tANI_U8     rtuner;
-
-    tANI_U8     ctuner;
-    tANI_U8     insitu;
-    tANI_U8     process_monitor;
-    tANI_U8     pllVcoLinearity;
-
-    tANI_U8     txIQ;
-    tANI_U8     rxIQ;
-    tANI_U8     rxDco;
-    tANI_U8     txLo;
-
-    tANI_U8     lnaBias;
-    tANI_U8     lnaBandTuning;
-    tANI_U8     lnaGainAdjust;
-    tANI_U8     im2UsingNoisePwr;
-
-    tANI_U8     temperature;
-    tANI_U8     clpc;
-    tANI_U8     clpc_temp_adjust;
-    tANI_U8     txDpd;
-
-    tANI_U8     channelTune;
-    tANI_U8     rxGmStageLinearity;
-    tANI_U8     im2UsingToneGen;
-    tANI_U8     rxBbfTuning; // rx baseband filert tuning
-
-    tANI_U8     txBbfTuning; // tx baseband filter tuning
-    tANI_U8     paCTuning;   // PA adjustments baed on C-tuner
-    tANI_U8     unused[6];
-}sCalStatus;
->>>>>>> 657b0e9... prima update
 
 #define NUM_RF_VR_RATE   13
 typedef uAbsPwrPrecision tRateGroupPwrVR[NUM_RF_VR_RATE];
@@ -1109,7 +981,6 @@ typedef PACKED_PRE union PACKED_POST
     sDefaultCountry      defaultCountryTable;                                 // NV_TABLE_DEFAULT_COUNTRY
     tTpcPowerTable       plutCharacterized[NUM_RF_CHANNELS];                  // NV_TABLE_TPC_POWER_TABLE
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_S16             plutPdadcOffset[NUM_RF_CHANNELS];                    // NV_TABLE_TPC_PDADC_OFFSETS
     tRateGroupPwrVR      pwrOptimum_virtualRate[NUM_RF_SUBBANDS];             // NV_TABLE_VIRTUAL_RATE
     //sCalFlashMemory    calFlashMemory;                                      // NV_TABLE_CAL_MEMORY
@@ -1120,23 +991,13 @@ typedef PACKED_PRE union PACKED_POST
     tANI_S16             pktTypePwrLimits[NUM_802_11_MODES][NUM_RF_CHANNELS]; // NV_TABLE_PACKET_TYPE_POWER_LIMITS
 =======
     int16             plutPdadcOffset[NUM_RF_CHANNELS];                       // NV_TABLE_TPC_PDADC_OFFSETS
-=======
-    tANI_S16             plutPdadcOffset[NUM_RF_CHANNELS];                    // NV_TABLE_TPC_PDADC_OFFSETS
->>>>>>> 657b0e9... prima update
     tRateGroupPwrVR      pwrOptimum_virtualRate[NUM_RF_SUBBANDS];             // NV_TABLE_VIRTUAL_RATE
-    //sCalFlashMemory    calFlashMemory;                                      // NV_TABLE_CAL_MEMORY
-    sCalStatus           calStatus;                                           // NV_TABLE_CAL_STATUS
+    sFwConfig            fwConfig;                                             // NV_TABLE_FW_CONFIG
     sRssiChannelOffsets  rssiChanOffsets[2];                                  // NV_TABLE_RSSI_CHANNEL_OFFSETS
-<<<<<<< HEAD
     sHwCalValues         hwCalValues;                                         // NV_TABLE_HW_CAL_VALUES
     int16             antennaPathLoss[NUM_RF_CHANNELS];                    // NV_TABLE_ANTENNA_PATH_LOSS
     int16             pktTypePwrLimits[NUM_802_11_MODES][NUM_RF_CHANNELS]; // NV_TABLE_PACKET_TYPE_POWER_LIMITS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    sRFCalValues         rFCalValues;                                         // NV_TABLE_RF_CAL_VALUES
-    tANI_S16             antennaPathLoss[NUM_RF_CHANNELS];                    // NV_TABLE_ANTENNA_PATH_LOSS
-    tANI_S16             pktTypePwrLimits[NUM_802_11_MODES][NUM_RF_CHANNELS]; // NV_TABLE_PACKET_TYPE_POWER_LIMITS
->>>>>>> 657b0e9... prima update
     sOfdmCmdPwrOffset    ofdmCmdPwrOffset;                                    // NV_TABLE_OFDM_CMD_PWR_OFFSET
     sTxBbFilterMode      txbbFilterMode;                                      // NV_TABLE_TX_BB_FILTER_MODE
 }ALIGN_4 uNvTables;
@@ -1147,14 +1008,10 @@ typedef tPowerdBm tChannelPwrLimit;
 typedef PACKED_PRE struct PACKED_POST
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U8 chanId;
 =======
     uint8 chanId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8 chanId;
->>>>>>> 657b0e9... prima update
     tChannelPwrLimit pwr;
 } ALIGN_4 tChannelListWithPower;
 
@@ -1169,7 +1026,6 @@ typedef enum
     NV_TABLE_TPC_POWER_TABLE        = 5,
     NV_TABLE_TPC_PDADC_OFFSETS      = 6,
 <<<<<<< HEAD
-<<<<<<< HEAD
     NV_TABLE_RF_CAL_VALUES          = 7,
     NV_TABLE_RSSI_CHANNEL_OFFSETS   = 9,
     NV_TABLE_CAL_MEMORY             = 10,    //cal memory structure from halPhyCalMemory.h preceded by status
@@ -1180,12 +1036,6 @@ typedef enum
     NV_TABLE_CAL_MEMORY             = 10,    //cal memory structure from halPhyCalMemory.h preceded by status
     NV_TABLE_FW_CONFIG              = 11,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    NV_TABLE_RF_CAL_VALUES          = 7,
-    NV_TABLE_RSSI_CHANNEL_OFFSETS   = 9,
-    NV_TABLE_CAL_MEMORY             = 10,    //cal memory structure from halPhyCalMemory.h preceded by status
-    NV_TABLE_CAL_STATUS             = 11,
->>>>>>> 657b0e9... prima update
     NV_TABLE_ANTENNA_PATH_LOSS          = 12,
     NV_TABLE_PACKET_TYPE_POWER_LIMITS   = 13,
     NV_TABLE_OFDM_CMD_PWR_OFFSET        = 14,
@@ -1205,7 +1055,6 @@ typedef PACKED_PRE struct PACKED_POST
     sDefaultCountry      defaultCountryTable;                                 // NV_TABLE_DEFAULT_COUNTRY
     tTpcPowerTable       plutCharacterized[NUM_RF_CHANNELS];                  // NV_TABLE_TPC_POWER_TABLE
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_S16             plutPdadcOffset[NUM_RF_CHANNELS];                    // NV_TABLE_TPC_PDADC_OFFSETS
     tRateGroupPwrVR      pwrOptimum_virtualRate[NUM_RF_SUBBANDS];             // NV_TABLE_VIRTUAL_RATE
     //sCalFlashMemory    calFlashMemory;                                      // NV_TABLE_CAL_MEMORY
@@ -1216,23 +1065,13 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_S16             pktTypePwrLimits[NUM_802_11_MODES][NUM_RF_CHANNELS]; // NV_TABLE_PACKET_TYPE_POWER_LIMITS
 =======
     int16             plutPdadcOffset[NUM_RF_CHANNELS];                    // NV_TABLE_TPC_PDADC_OFFSETS
-=======
-    tANI_S16             plutPdadcOffset[NUM_RF_CHANNELS];                    // NV_TABLE_TPC_PDADC_OFFSETS
->>>>>>> 657b0e9... prima update
     tRateGroupPwrVR      pwrOptimum_virtualRate[NUM_RF_SUBBANDS];             // NV_TABLE_VIRTUAL_RATE
-    //sCalFlashMemory    calFlashMemory;                                      // NV_TABLE_CAL_MEMORY
-    sCalStatus           calStatus;                                           // NV_TABLE_CAL_STATUS
+    sFwConfig           fwConfig;                                              // NV_TABLE_FW_CONFIG
     sRssiChannelOffsets  rssiChanOffsets[2];                                  // NV_TABLE_RSSI_CHANNEL_OFFSETS
-<<<<<<< HEAD
     sHwCalValues         hwCalValues;                                         // NV_TABLE_HW_CAL_VALUES
     int16             antennaPathLoss[NUM_RF_CHANNELS];                    // NV_TABLE_ANTENNA_PATH_LOSS
     int16             pktTypePwrLimits[NUM_802_11_MODES][NUM_RF_CHANNELS]; // NV_TABLE_PACKET_TYPE_POWER_LIMITS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    sRFCalValues         rFCalValues;                                         // NV_TABLE_RF_CAL_VALUES
-    tANI_S16             antennaPathLoss[NUM_RF_CHANNELS];                    // NV_TABLE_ANTENNA_PATH_LOSS
-    tANI_S16             pktTypePwrLimits[NUM_802_11_MODES][NUM_RF_CHANNELS]; // NV_TABLE_PACKET_TYPE_POWER_LIMITS
->>>>>>> 657b0e9... prima update
     sOfdmCmdPwrOffset    ofdmCmdPwrOffset;                                    // NV_TABLE_OFDM_CMD_PWR_OFFSET
     sTxBbFilterMode      txbbFilterMode;                                      // NV_TABLE_TX_BB_FILTER_MODE
 }ALIGN_4 sNvTables;

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -56,13 +53,9 @@
   
   ==========================================================================*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------------- 
   Include files
@@ -80,17 +73,11 @@
 #include <aniGlobal.h>
 #include <halTypes.h>
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include <halHddApis.h>
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include <halHddApis.h>
-#endif
->>>>>>> 657b0e9... prima update
 #include <net/ieee80211_radiotap.h>
 
 
@@ -109,9 +96,6 @@
 static void hdd_softap_dump_sk_buff(struct sk_buff * skb)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: head = %p ", __FUNCTION__, skb->head);
   //VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: data = %p ", __FUNCTION__, skb->data);
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: tail = %p ", __FUNCTION__, skb->tail);
@@ -119,7 +103,6 @@ static void hdd_softap_dump_sk_buff(struct sk_buff * skb)
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: len = %d ", __FUNCTION__, skb->len);
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: data_len = %d ", __FUNCTION__, skb->data_len);
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: mac_len = %d\n", __FUNCTION__, skb->mac_len);
-<<<<<<< HEAD
 =======
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: head = %p ", __func__, skb->head);
   //VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: data = %p ", __func__, skb->data);
@@ -129,8 +112,6 @@ static void hdd_softap_dump_sk_buff(struct sk_buff * skb)
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: data_len = %d ", __func__, skb->data_len);
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: mac_len = %d\n", __func__, skb->mac_len);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x ", 
      skb->data[0], skb->data[1], skb->data[2], skb->data[3], skb->data[4], 
@@ -140,7 +121,6 @@ static void hdd_softap_dump_sk_buff(struct sk_buff * skb)
      skb->data[13], skb->data[14], skb->data[15]); 
 }
 #endif
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -183,8 +163,6 @@ void hdd_softap_traffic_monitor_timeout_handler( void *pUsrData )
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**============================================================================
   @brief hdd_softap_flush_tx_queues() - Utility function to flush the TX queues
 
@@ -275,14 +253,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
 
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: enter", __FUNCTION__);
 =======
               "%s: enter", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: enter", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    spin_lock_bh( &pAdapter->staInfo_lock );
    if (vos_is_macaddr_broadcast( pDestMacAddress ) || vos_is_macaddr_group(pDestMacAddress))
@@ -297,14 +271,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
 
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: BC/MC packet\n", __FUNCTION__);
 =======
               "%s: BC/MC packet\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: BC/MC packet\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
    }
    else
    {
@@ -312,17 +282,12 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
       if (STAId == HDD_WLAN_INVALID_STA_ID)
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
                     "%s: Failed to find right station", __FUNCTION__);
 =======
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,
                     "%s: Failed to find right station", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-                    "%s: Failed to find right station", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          ++pAdapter->stats.tx_dropped;
          ++pAdapter->hdd_stats.hddTxRxStats.txXmitDropped;
          kfree_skb(skb);
@@ -331,14 +296,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
       else if (FALSE == pAdapter->aStaInfo[STAId].isUsed )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: STA is unregistered", __FUNCTION__, STAId);
 =======
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,"%s: STA %d is unregistered", __func__, STAId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: STA is unregistered", __FUNCTION__, STAId);
->>>>>>> 657b0e9... prima update
          ++pAdapter->stats.tx_dropped;
          ++pAdapter->hdd_stats.hddTxRxStats.txXmitDropped;
          kfree_skb(skb);
@@ -349,17 +310,12 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
            (WLANTL_STA_AUTHENTICATED != pAdapter->aStaInfo[STAId].tlSTAState) )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
                     "%s: Station not connected yet", __FUNCTION__);
 =======
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,
                     "%s: Station not connected yet", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-                    "%s: Station not connected yet", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          ++pAdapter->stats.tx_dropped;
          ++pAdapter->hdd_stats.hddTxRxStats.txXmitDropped;
          kfree_skb(skb);
@@ -370,17 +326,12 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
         if(ntohs(skb->protocol) != HDD_ETHERTYPE_802_1_X)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
                        "%s: NON-EAPOL packet in non-Authenticated state", __FUNCTION__);
 =======
             VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,
                        "%s: NON-EAPOL packet in non-Authenticated state", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-                       "%s: NON-EAPOL packet in non-Authenticated state", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             ++pAdapter->stats.tx_dropped;
             ++pAdapter->hdd_stats.hddTxRxStats.txXmitDropped;
             kfree_skb(skb);
@@ -398,14 +349,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
 
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: Classified as ac %d up %d", __FUNCTION__, ac, up);
 =======
               "%s: Classified as ac %d up %d", __func__, ac, up);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: Classified as ac %d up %d", __FUNCTION__, ac, up);
->>>>>>> 657b0e9... prima update
 
    // If the memory differentiation mode is enabled, the memory limit of each queue will be 
    // checked. Over-limit packets will be dropped.
@@ -414,17 +361,12 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
     if(pktListSize >= pAdapter->aTxQueueLimit[ac])
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
             "%s: station %d ac %d queue over limit %d \n", __FUNCTION__, STAId, ac, pktListSize); 
 =======
        VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,
             "%s: station %d ac %d queue over limit %d \n", __func__, STAId, ac, pktListSize); 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-            "%s: station %d ac %d queue over limit %d \n", __FUNCTION__, STAId, ac, pktListSize); 
->>>>>>> 657b0e9... prima update
        pAdapter->aStaInfo[STAId].txSuspended[ac] = VOS_TRUE;
        netif_stop_subqueue(dev, skb_get_queue_mapping(skb));
        txSuspended = VOS_TRUE;
@@ -436,14 +378,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
        VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_WARN, 
                   "%s: TX queue full for AC=%d Disable OS TX queue", 
 <<<<<<< HEAD
-<<<<<<< HEAD
                   __FUNCTION__, ac );
 =======
                   __func__, ac );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  __FUNCTION__, ac );
->>>>>>> 657b0e9... prima update
       os_status = NETDEV_TX_BUSY;   
       goto xmit_done;
    }
@@ -466,14 +404,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
    if ( !VOS_IS_STATUS_SUCCESS( status ) )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Insert Tx queue failed. Pkt dropped", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,"%s:Insert Tx queue failed. Pkt dropped", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Insert Tx queue failed. Pkt dropped", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       ++pAdapter->hdd_stats.hddTxRxStats.txXmitDropped;
       ++pAdapter->hdd_stats.hddTxRxStats.txXmitDroppedAC[ac];
       ++pAdapter->stats.tx_dropped;
@@ -492,17 +426,12 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
       if ( !VOS_IS_STATUS_SUCCESS( status ) )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Failed to signal TL for AC=%d STAId =%d", 
                     __FUNCTION__, ac, STAId );
 =======
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN, "%s: Failed to signal TL for AC=%d STAId =%d", 
                     __func__, ac, STAId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Failed to signal TL for AC=%d STAId =%d", 
-                    __FUNCTION__, ac, STAId );
->>>>>>> 657b0e9... prima update
 
          //Remove the packet from queue. It must be at the back of the queue, as TX thread cannot preempt us in the middle
          //as we are in a soft irq context. Also it must be the same packet that we just allocated.
@@ -519,14 +448,10 @@ int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
    dev->trans_start = jiffies;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW, "%s: exit \n", __FUNCTION__);
 =======
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW, "%s: exit \n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW, "%s: exit \n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
 xmit_done:
    spin_unlock_bh( &pAdapter->staInfo_lock );
@@ -560,19 +485,14 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
 
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: enter", __FUNCTION__);
 =======
               "%s: enter", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: enter", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    spin_lock_bh( &pAdapter->staInfo_lock );
    if ( FALSE == pAdapter->aStaInfo[STAId].isUsed )
    {
-<<<<<<< HEAD
 <<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
                  "%s: STA is unregistered", __FUNCTION__, STAId );
@@ -580,10 +500,6 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,
                  "%s: STA %d is unregistered", __func__, STAId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-                 "%s: STA is unregistered", __FUNCTION__, STAId );
->>>>>>> 657b0e9... prima update
       kfree_skb(skb);
       status = VOS_STATUS_E_FAILURE;
       goto xmit_end;
@@ -597,14 +513,10 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
    ++pAdapter->hdd_stats.hddTxRxStats.txXmitClassifiedAC[ac];
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: Classified as ac %d up %d", __FUNCTION__, ac, up);
 =======
               "%s: Classified as ac %d up %d", __func__, ac, up);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: Classified as ac %d up %d", __FUNCTION__, ac, up);
->>>>>>> 657b0e9... prima update
 
    skb->queue_mapping = hddLinuxUpToAcMap[up];
 
@@ -625,17 +537,12 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
        pktListSize >= pAdapter->aTxQueueLimit[ac])
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
        VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
             "%s: station %d ac %d queue over limit %d \n", __FUNCTION__, STAId, ac, pktListSize); 
 =======
        VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,
             "%s: station %d ac %d queue over limit %d \n", __func__, STAId, ac, pktListSize); 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-            "%s: station %d ac %d queue over limit %d \n", __FUNCTION__, STAId, ac, pktListSize); 
->>>>>>> 657b0e9... prima update
        /* TODO:Rx Flowchart should be trigerred here to SUPEND SSC on RX side.
         * SUSPEND should be done based on Threshold. RESUME would be 
         * triggered in fetch cbk after recovery.
@@ -651,14 +558,10 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
    if ( !VOS_IS_STATUS_SUCCESS( status ) )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Insert Tx queue failed. Pkt dropped", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN,"%s:Insert Tx queue failed. Pkt dropped", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Insert Tx queue failed. Pkt dropped", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       ++pAdapter->hdd_stats.hddTxRxStats.txXmitDropped;
       ++pAdapter->hdd_stats.hddTxRxStats.txXmitDroppedAC[ac];
       ++pAdapter->stats.tx_dropped;
@@ -674,19 +577,14 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
    {
       //Let TL know we have a packet to send for this AC
 <<<<<<< HEAD
-<<<<<<< HEAD
       //VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Indicating Packet to TL", __FUNCTION__);
 =======
       //VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Indicating Packet to TL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      //VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s:Indicating Packet to TL", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       status = WLANTL_STAPktPending( (WLAN_HDD_GET_CTX(pAdapter))->pvosContext, STAId, ac );      
 
       if ( !VOS_IS_STATUS_SUCCESS( status ) )
       {
-<<<<<<< HEAD
 <<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Failed to signal TL for AC=%d STAId =%d", 
                     __FUNCTION__, ac, STAId );
@@ -694,10 +592,6 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_WARN, "%s: Failed to signal TL for AC=%d STAId =%d", 
                     __func__, ac, STAId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Failed to signal TL for AC=%d STAId =%d", 
-                    __FUNCTION__, ac, STAId );
->>>>>>> 657b0e9... prima update
 
          //Remove the packet from queue. It must be at the back of the queue, as TX thread cannot preempt us in the middle
          //as we are in a soft irq context. Also it must be the same packet that we just allocated.
@@ -714,14 +608,10 @@ VOS_STATUS hdd_softap_sta_2_sta_xmit(struct sk_buff *skb,
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW, "%s: exit \n", __FUNCTION__);
 =======
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW, "%s: exit \n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW, "%s: exit \n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
 xmit_end:
    spin_unlock_bh( &pAdapter->staInfo_lock );
@@ -740,14 +630,10 @@ void hdd_softap_tx_timeout(struct net_device *dev)
 {
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
       "%s: Transmission timeout occurred", __FUNCTION__);
 =======
       "%s: Transmission timeout occurred", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      "%s: Transmission timeout occurred", __FUNCTION__);
->>>>>>> 657b0e9... prima update
    //Getting here implies we disabled the TX queues for too long. Queues are 
    //disabled either because of disassociation or low resource scenarios. In
    //case of disassociation it is ok to ignore this. But if associated, we have
@@ -793,14 +679,11 @@ VOS_STATUS hdd_softap_init_tx_rx( hdd_adapter_t *pAdapter )
                            HDD_SOFTAP_VO_WEIGHT_DEFAULT
                          };
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
    hdd_context_t *pHddCtx = NULL;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    pAdapter->isVosOutOfResource = VOS_FALSE;
 
    vos_mem_zero(&pAdapter->stats, sizeof(struct net_device_stats));
@@ -827,7 +710,6 @@ VOS_STATUS hdd_softap_init_tx_rx( hdd_adapter_t *pAdapter )
       }
    }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
    /* Update the AC weights suitable for SoftAP mode of operation */
    WLANTL_SetACWeights((WLAN_HDD_GET_CTX(pAdapter))->pvosContext, pACWeights);
@@ -863,11 +745,6 @@ VOS_STATUS hdd_softap_init_tx_rx( hdd_adapter_t *pAdapter )
    }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   /* Update the AC weights suitable for SoftAP mode of operation */
-   WLANTL_SetACWeights((WLAN_HDD_GET_CTX(pAdapter))->pvosContext, pACWeights);
-
->>>>>>> 657b0e9... prima update
    return status;
 }
 
@@ -882,7 +759,6 @@ VOS_STATUS hdd_softap_init_tx_rx( hdd_adapter_t *pAdapter )
 VOS_STATUS hdd_softap_deinit_tx_rx( hdd_adapter_t *pAdapter )
 {
    VOS_STATUS status = VOS_STATUS_SUCCESS;
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    hdd_context_t *pHddCtx = NULL;
@@ -906,8 +782,6 @@ VOS_STATUS hdd_softap_deinit_tx_rx( hdd_adapter_t *pAdapter )
       pHddCtx->traffic_monitor.isInitialized = 0;
    }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    status = hdd_softap_flush_tx_queues(pAdapter);
 
@@ -981,14 +855,10 @@ VOS_STATUS hdd_softap_init_tx_rx_sta( hdd_adapter_t *pAdapter, v_U8_t STAId, v_M
    if (pAdapter->aStaInfo[STAId].isUsed)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Reinit station %d", __FUNCTION__, STAId );
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Reinit station %d", __func__, STAId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, "%s: Reinit station %d", __FUNCTION__, STAId );
->>>>>>> 657b0e9... prima update
       spin_unlock_bh( &pAdapter->staInfo_lock );
       return VOS_STATUS_E_FAILURE;
    }
@@ -1001,12 +871,9 @@ VOS_STATUS hdd_softap_init_tx_rx_sta( hdd_adapter_t *pAdapter, v_U8_t STAId, v_M
 
    pAdapter->aStaInfo[STAId].isUsed = TRUE;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    pAdapter->aStaInfo[STAId].isDeauthInProgress = FALSE;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    vos_copy_macaddr( &pAdapter->aStaInfo[STAId].macAddrSTA, pmacAddrSTA);
 
    spin_unlock_bh( &pAdapter->staInfo_lock );
@@ -1038,14 +905,10 @@ VOS_STATUS hdd_softap_deinit_tx_rx_sta ( hdd_adapter_t *pAdapter, v_U8_t STAId )
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: Deinit station not inited %d", __FUNCTION__, STAId );
 =======
                  "%s: Deinit station not inited %d", __func__, STAId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: Deinit station not inited %d", __FUNCTION__, STAId );
->>>>>>> 657b0e9... prima update
       spin_unlock_bh( &pAdapter->staInfo_lock );
       return VOS_STATUS_E_FAILURE;
    }
@@ -1054,12 +917,9 @@ VOS_STATUS hdd_softap_deinit_tx_rx_sta ( hdd_adapter_t *pAdapter, v_U8_t STAId )
 
    pAdapter->aStaInfo[STAId].isUsed = FALSE;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    pAdapter->aStaInfo[STAId].isDeauthInProgress = FALSE;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    /* if this STA had any of its WMM TX queues suspended, then the
       associated queue on the network interface was disabled.  check
@@ -1086,14 +946,10 @@ VOS_STATUS hdd_softap_deinit_tx_rx_sta ( hdd_adapter_t *pAdapter, v_U8_t STAId )
          {
             VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s: TX queue re-enabled", __FUNCTION__);
 =======
                        "%s: TX queue re-enabled", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s: TX queue re-enabled", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             netif_wake_subqueue(pAdapter->dev, ac);
          }
       }
@@ -1139,14 +995,10 @@ VOS_STATUS hdd_softap_tx_complete_cbk( v_VOID_t *vosContext,
    if( ( NULL == vosContext ) || ( NULL == pVosPacket )  )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null params being passed", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null params being passed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null params being passed", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE; 
    }
 
@@ -1156,14 +1008,10 @@ VOS_STATUS hdd_softap_tx_complete_cbk( v_VOID_t *vosContext,
    {
       //This is bad but still try to free the VOSS resources if we can
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       vos_pkt_return_packet( pVosPacket );
       return VOS_STATUS_E_FAILURE;
    }
@@ -1173,14 +1021,10 @@ VOS_STATUS hdd_softap_tx_complete_cbk( v_VOID_t *vosContext,
    if(pAdapter == NULL)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
->>>>>>> 657b0e9... prima update
    }
    else
    {
@@ -1194,14 +1038,10 @@ VOS_STATUS hdd_softap_tx_complete_cbk( v_VOID_t *vosContext,
    if(!VOS_IS_STATUS_SUCCESS( status ))
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Could not return VOS packet to the pool", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Could not return VOS packet to the pool", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Could not return VOS packet to the pool", __FUNCTION__);
->>>>>>> 657b0e9... prima update
    }
 
    return status;
@@ -1247,14 +1087,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
         ( NULL == pPktMetaInfo ) )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null Params being passed", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null Params being passed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null Params being passed", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
     
@@ -1263,14 +1099,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    if ( NULL == pHddCtx )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
 
@@ -1281,7 +1113,6 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
       return VOS_STATUS_E_FAILURE;
    }
  
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    /* Monitor traffic */
@@ -1305,8 +1136,6 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    ++pAdapter->hdd_stats.hddTxRxStats.txFetched;
 
    STAId = *pStaId;
@@ -1314,14 +1143,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: Invalid STAId %d passed by TL", __FUNCTION__, STAId);
 =======
                  "%s: Invalid STAId %d passed by TL", __func__, STAId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: Invalid STAId %d passed by TL", __FUNCTION__, STAId);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
 
@@ -1329,14 +1154,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: Unregistered STAId %d passed by TL", __FUNCTION__, STAId);
 =======
                  "%s: Unregistered STAId %d passed by TL", __func__, STAId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: Unregistered STAId %d passed by TL", __FUNCTION__, STAId);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
 
@@ -1347,14 +1168,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: Invalid AC %d passed by TL", __FUNCTION__, ac);
 =======
                  "%s: Invalid AC %d passed by TL", __func__, ac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: Invalid AC %d passed by TL", __FUNCTION__, ac);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
 
@@ -1362,14 +1179,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
 
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: AC %d passed by TL", __FUNCTION__, ac);
 =======
               "%s: AC %d passed by TL", __func__, ac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: AC %d passed by TL", __FUNCTION__, ac);
->>>>>>> 657b0e9... prima update
 
    //Get the vos packet. I don't want to dequeue and enqueue again if we are out of VOS resources 
    //This simplifies the locking and unlocking of Tx queue
@@ -1386,14 +1199,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
       ++pAdapter->hdd_stats.hddTxRxStats.txFetchLowResources;
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: VOSS in Low Resource scenario", __FUNCTION__);
 =======
                  "%s: VOSS in Low Resource scenario", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: VOSS in Low Resource scenario", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       //TL needs to handle this case. VOS_STATUS_E_EMPTY is returned when the queue is empty.
       return VOS_STATUS_E_FAILURE;
    }
@@ -1416,14 +1225,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
 
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s: AC %d has packets pending", __FUNCTION__, ac);
 =======
                        "%s: AC %d has packets pending", __func__, ac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s: AC %d has packets pending", __FUNCTION__, ac);
->>>>>>> 657b0e9... prima update
 
    if(VOS_STATUS_SUCCESS == status)
    {
@@ -1437,14 +1242,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
                  "%s: Error in de-queuing skb from Tx queue status = %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, status );
 =======
                  __func__, status );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, status );
->>>>>>> 657b0e9... prima update
       vos_pkt_return_packet(pVosPacket);
       return VOS_STATUS_E_FAILURE;
    }
@@ -1455,14 +1256,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: Error attaching skb", __FUNCTION__);
 =======
                  "%s: Error attaching skb", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: Error attaching skb", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       vos_pkt_return_packet(pVosPacket);
       ++pAdapter->stats.tx_dropped;
       ++pAdapter->hdd_stats.hddTxRxStats.txFetchDequeueError;
@@ -1475,14 +1272,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: VOS packet returned by VOSS is NULL", __FUNCTION__);
 =======
                  "%s: VOS packet returned by VOSS is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: VOS packet returned by VOSS is NULL", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       ++pAdapter->stats.tx_dropped;
       ++pAdapter->hdd_stats.hddTxRxStats.txFetchDequeueError;
       kfree_skb(skb);
@@ -1513,23 +1306,16 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
       {
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     "%s: VOS packet is EAPOL packet", __FUNCTION__);
 =======
                     "%s: VOS packet is EAPOL packet", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    "%s: VOS packet is EAPOL packet", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          pPktMetaInfo->ucIsEapol = 1;
       }
    }
  
 //xg: @@@@: temporarily disble these. will revisit later
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef WLAN_SOFTAP_FEATURE
    if(pAdapter->conn_info.uIsAuthenticated == VOS_TRUE)
       pPktMetaInfo->ucIsEapol = 0;       
@@ -1545,11 +1331,8 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    }
    else
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    {
       pPktMetaInfo->ucUP = pktNode->userPriority;
       pPktMetaInfo->ucTID = pPktMetaInfo->ucUP;
@@ -1570,14 +1353,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: TX queue re-enabled", __FUNCTION__);
 =======
                  "%s: TX queue re-enabled", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: TX queue re-enabled", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       pAdapter->aStaInfo[STAId].txSuspended[ac] = VOS_FALSE;
       netif_wake_subqueue(pAdapter->dev, skb_get_queue_mapping(skb));
    }    
@@ -1598,14 +1377,10 @@ VOS_STATUS hdd_softap_tx_fetch_packet_cbk( v_VOID_t *vosContext,
 
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "%s: Valid VOS PKT returned to TL", __FUNCTION__);
 =======
               "%s: Valid VOS PKT returned to TL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "%s: Valid VOS PKT returned to TL", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    return status;
 }
@@ -1635,14 +1410,10 @@ VOS_STATUS hdd_softap_tx_low_resource_cbk( vos_pkt_t *pVosPacket,
    if(pAdapter == NULL)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
 
@@ -1673,14 +1444,10 @@ VOS_STATUS hdd_softap_tx_low_resource_cbk( vos_pkt_t *pVosPacket,
                if( !VOS_IS_STATUS_SUCCESS( status ) )
                {
 <<<<<<< HEAD
-<<<<<<< HEAD
                   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure in indicating pkt to TL for ac=%d", __FUNCTION__,i); 
 =======
                   VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure in indicating pkt to TL for ac=%d", __func__,i); 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure in indicating pkt to TL for ac=%d", __FUNCTION__,i); 
->>>>>>> 657b0e9... prima update
                }
             }
          }
@@ -1722,14 +1489,10 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
         ( NULL == pRxMetaInfo ) )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null params being passed", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null params being passed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Null params being passed", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
    
@@ -1737,14 +1500,10 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
    if ( NULL == pHddCtx )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: HDD adapter context is Null", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_FAILURE;
    }
 
@@ -1754,7 +1513,6 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
-<<<<<<< HEAD
 <<<<<<< HEAD
    
 =======
@@ -1780,9 +1538,6 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
    ++pAdapter->hdd_stats.hddTxRxStats.rxChains;
 
    // walk the chain until all are processed
@@ -1798,14 +1553,10 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
       {
          ++pAdapter->hdd_stats.hddTxRxStats.rxDropped;
 <<<<<<< HEAD
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure walking packet chain", __FUNCTION__);
 =======
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure walking packet chain", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure walking packet chain", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAILURE;
       }
 
@@ -1816,14 +1567,10 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
       {
          ++pAdapter->hdd_stats.hddTxRxStats.rxDropped;
 <<<<<<< HEAD
-<<<<<<< HEAD
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
 =======
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAILURE;
       }
    
@@ -1860,14 +1607,10 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
          {
              VOS_TRACE(VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                       "%s: skb allocation fails", __FUNCTION__);
 =======
                       "%s: skb allocation fails", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      "%s: skb allocation fails", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          }
  
 
@@ -1878,7 +1621,6 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
       {
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
                           "%s: send one packet to kernel \n", __FUNCTION__);
 
          skb->protocol = eth_type_trans(skb, skb->dev);
@@ -1887,32 +1629,23 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
          wake_lock_timeout(&pHddCtx->rx_wake_lock, HDD_WAKE_LOCK_DURATION);
 =======
                           "%s: send one packet to kernel \n", __func__);
-=======
-                          "%s: send one packet to kernel \n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          skb->protocol = eth_type_trans(skb, skb->dev);
-         skb->ip_summed = CHECKSUM_UNNECESSARY;
+         skb->ip_summed = CHECKSUM_NONE;
+#ifdef WLAN_OPEN_SOURCE
 #ifdef WLAN_FEATURE_HOLD_RX_WAKELOCK
-<<<<<<< HEAD
          wake_lock_timeout(&pHddCtx->rx_wake_lock, msecs_to_jiffies(HDD_WAKE_LOCK_DURATION));
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         wake_lock_timeout(&pHddCtx->rx_wake_lock, HDD_WAKE_LOCK_DURATION);
->>>>>>> 657b0e9... prima update
 #endif
          rxstat = netif_rx_ni(skb);
          if (NET_RX_SUCCESS == rxstat)
          {
             ++pAdapter->hdd_stats.hddTxRxStats.rxDelivered;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
             ++pAdapter->hdd_stats.hddTxRxStats.pkt_rx_count;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
          }
          else
          {
@@ -1940,14 +1673,10 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
    if(!VOS_IS_STATUS_SUCCESS( status ))
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure returning vos pkt", __FUNCTION__);
 =======
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure returning vos pkt", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,"%s: Failure returning vos pkt", __FUNCTION__);
->>>>>>> 657b0e9... prima update
    }
    
    pAdapter->dev->last_rx = jiffies;
@@ -1958,7 +1687,6 @@ VOS_STATUS hdd_softap_rx_packet_cbk( v_VOID_t *vosContext,
 VOS_STATUS hdd_softap_DeregisterSTA( hdd_adapter_t *pAdapter, tANI_U8 staId )
 {
     VOS_STATUS vosStatus = VOS_STATUS_SUCCESS;
-<<<<<<< HEAD
 <<<<<<< HEAD
     hdd_context_t *pHddCtx = pAdapter->pHddCtx;
 
@@ -1980,18 +1708,12 @@ VOS_STATUS hdd_softap_DeregisterSTA( hdd_adapter_t *pAdapter, tANI_U8 staId )
                     "%s: Invalid pAdapter magic", __func__);
         return VOS_STATUS_E_INVAL;
     }
-=======
-    hdd_context_t *pHddCtx = pAdapter->pHddCtx;
->>>>>>> 657b0e9... prima update
 
+    pHddCtx = (hdd_context_t*)(pAdapter->pHddCtx);
     //Clear station in TL and then update HDD data structures. This helps 
     //to block RX frames from other station to this station.
-<<<<<<< HEAD
     vosStatus = WLANTL_ClearSTAClient( pHddCtx->pvosContext, staId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vosStatus = WLANTL_ClearSTAClient( (WLAN_HDD_GET_CTX(pAdapter))->pvosContext, staId );
->>>>>>> 657b0e9... prima update
     if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
     {
         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR, 
@@ -2026,14 +1748,10 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
 {
    VOS_STATUS vosStatus = VOS_STATUS_E_FAILURE;
 <<<<<<< HEAD
-<<<<<<< HEAD
    WLAN_STADescType staDesc;   
 =======
    WLAN_STADescType staDesc = {0};   
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   WLAN_STADescType staDesc;   
->>>>>>> 657b0e9... prima update
    hdd_context_t *pHddCtx = pAdapter->pHddCtx;
    hdd_adapter_t *pmonAdapter = NULL;
 
@@ -2094,7 +1812,6 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
    vosStatus = hdd_softap_init_tx_rx_sta(pAdapter, staId, &staDesc.vSTAMACAddress);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    staDesc.ucQosEnabled = fWmmEnabled;
 #else
@@ -2111,21 +1828,6 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
 =======
    staDesc.ucQosEnabled = fWmmEnabled;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-   staDesc.ucQosEnabled = fWmmEnabled;
-#else
-   // set the QoS field appropriately
-   if (hdd_wmm_is_active(pAdapter))
-   {
-      staDesc.ucQosEnabled = 1;
-   }
-   else
-   {
-      staDesc.ucQosEnabled = 0;
-   }
-#endif
->>>>>>> 657b0e9... prima update
    VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
               "HDD SOFTAP register TL QoS_enabled=%d",
               staDesc.ucQosEnabled );
@@ -2134,9 +1836,6 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
    /* Enable UMA for TX translation only when there is no concurrent session active */
    if (vos_concurrent_sessions_running())
@@ -2157,14 +1856,11 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
    staDesc.ucSwFrameTXXlation = 1;
    staDesc.ucSwFrameRXXlation = 1;
 #endif
-<<<<<<< HEAD
 =======
    // For PRIMA UMA frame translation is not enable yet.
    staDesc.ucSwFrameTXXlation = 1;
    staDesc.ucSwFrameRXXlation = 1;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    staDesc.ucAddRmvLLC = 1;
 
    // Initialize signatures and state
@@ -2174,13 +1870,10 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
       WLANTL_STA_CONNECTED : WLANTL_STA_AUTHENTICATED;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    staDesc.ucIsReplayCheckValid = VOS_FALSE;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    // Register the Station with TL...      
    vosStatus = WLANTL_RegisterSTAClient( (WLAN_HDD_GET_CTX(pAdapter))->pvosContext, 
                                          hdd_softap_rx_packet_cbk, 
@@ -2196,7 +1889,6 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    //Timer value should be in milliseconds
    if ( pHddCtx->cfg_ini->dynSplitscan &&
@@ -2208,8 +1900,6 @@ VOS_STATUS hdd_softap_RegisterSTA( hdd_adapter_t *pAdapter,
    }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    // if ( WPA ), tell TL to go to 'connected' and after keys come to the driver, 
    // then go to 'authenticated'.  For all other authentication types (those that do 
    // not require upper layer authentication) we can put TL directly into 'authenticated'
@@ -2290,14 +1980,10 @@ VOS_STATUS hdd_softap_stop_bss( hdd_adapter_t *pAdapter)
     {
         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "%s: Failed to deregister BC sta Id %d", __FUNCTION__, (WLAN_HDD_GET_AP_CTX_PTR(pAdapter))->uBCStaId);
 =======
                    "%s: Failed to deregister BC sta Id %d", __func__, (WLAN_HDD_GET_AP_CTX_PTR(pAdapter))->uBCStaId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "%s: Failed to deregister BC sta Id %d", __FUNCTION__, (WLAN_HDD_GET_AP_CTX_PTR(pAdapter))->uBCStaId);
->>>>>>> 657b0e9... prima update
     }
 
     for (staId = 0; staId < WLAN_MAX_STA_COUNT; staId++)
@@ -2309,14 +1995,10 @@ VOS_STATUS hdd_softap_stop_bss( hdd_adapter_t *pAdapter)
         {
             VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s: Failed to deregister sta Id %d", __FUNCTION__, staId);
 =======
                        "%s: Failed to deregister sta Id %d", __func__, staId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s: Failed to deregister sta Id %d", __FUNCTION__, staId);
->>>>>>> 657b0e9... prima update
         }
     }
 
@@ -2329,7 +2011,6 @@ VOS_STATUS hdd_softap_change_STA_state( hdd_adapter_t *pAdapter, v_MACADDR_t *pD
     VOS_STATUS vosStatus = eHAL_STATUS_SUCCESS;
     v_CONTEXT_t pVosContext = (WLAN_HDD_GET_CTX(pAdapter))->pvosContext;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     tHalHandle hHalHandle = (tHalHandle ) vos_get_context(VOS_MODULE_ID_HAL, pVosContext);
 #endif //FEATURE_WLAN_NON_INTEGRATED_SOC
@@ -2361,69 +2042,36 @@ VOS_STATUS hdd_softap_change_STA_state( hdd_adapter_t *pAdapter, v_MACADDR_t *pD
     }
 #endif //FEATURE_WLAN_NON_INTEGRATED_SOC
 =======
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-    tHalHandle hHalHandle = (tHalHandle ) vos_get_context(VOS_MODULE_ID_HAL, pVosContext);
-#endif //FEATURE_WLAN_NON_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 
     VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
-               "%s: enter", __FUNCTION__);
+               "%s: enter", __func__);
 
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-    if(!hHalHandle )
-    {
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_FATAL,
-                 "%s: The hHalHandle is  NULL ptr value");
-      VOS_ASSERT( 0 );
-      return VOS_STATUS_E_FAILURE;
-    }    
-
-    if (eHAL_STATUS_SUCCESS != halTable_FindStaidByAddr(hHalHandle, (tANI_U8 *)pDestMacAddress, &ucSTAId))
-    {
-        VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-                   "%s: Failed to find right station", __FUNCTION__);
-        return VOS_STATUS_E_FAILURE;
-    }
-#else
     if (VOS_STATUS_SUCCESS != hdd_softap_GetStaId(pAdapter, pDestMacAddress, &ucSTAId))
     {
         VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-                    "%s: Failed to find right station", __FUNCTION__);
+                    "%s: Failed to find right station", __func__);
         return VOS_STATUS_E_FAILURE;
     }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif //FEATURE_WLAN_NON_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 
     if (FALSE == vos_is_macaddr_equal(&pAdapter->aStaInfo[ucSTAId].macAddrSTA, pDestMacAddress))
     {
          VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     "%s: Station MAC address does not matching", __FUNCTION__);
 =======
                     "%s: Station MAC address does not matching", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    "%s: Station MAC address does not matching", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAILURE;
     }
 
     vosStatus = WLANTL_ChangeSTAState( pVosContext, ucSTAId, state );
     VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "%s: change station to state %d succeed", __FUNCTION__, state);
 =======
                    "%s: change station to state %d succeed", __func__, state);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "%s: change station to state %d succeed", __FUNCTION__, state);
->>>>>>> 657b0e9... prima update
 
     if (VOS_STATUS_SUCCESS == vosStatus)
     {
@@ -2432,14 +2080,10 @@ VOS_STATUS hdd_softap_change_STA_state( hdd_adapter_t *pAdapter, v_MACADDR_t *pD
 
     VOS_TRACE(VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                      "%s exit\n",__FUNCTION__);
 =======
                                      "%s exit\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                     "%s exit\n",__FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return vosStatus;
 }
@@ -2463,7 +2107,6 @@ VOS_STATUS hdd_softap_GetStaId(hdd_adapter_t *pAdapter, v_MACADDR_t *pMacAddress
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif //WLAN_SOFTAP_FEATURE
 =======
 VOS_STATUS hdd_softap_GetConnectedStaId(hdd_adapter_t *pAdapter, v_U8_t *staId)
@@ -2482,6 +2125,3 @@ VOS_STATUS hdd_softap_GetConnectedStaId(hdd_adapter_t *pAdapter, v_U8_t *staId)
     return VOS_STATUS_E_FAILURE;
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif //WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update

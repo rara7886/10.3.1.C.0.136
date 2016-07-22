@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,12 +43,9 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #if !defined( __VOS_TRACE_H )
 #define __VOS_TRACE_H
 
@@ -64,18 +58,12 @@
    Trace, logging, and debugging definitions and APIs
   
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
   
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 /* $Header$ */
@@ -107,12 +95,9 @@ typedef enum
    VOS_TRACE_LEVEL_INFO_MED,
    VOS_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    VOS_TRACE_LEVEL_DEBUG,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    // ALL means all trace levels will be active.  This value is in place for the 
    // vos_trace_setlevel() to allow the user to turn ON all traces.
@@ -134,12 +119,9 @@ typedef enum
 // TODO: remove this once this is not used on Android
 #define VOS_ENABLE_TRACING 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define WCONN_TRACE_KMSG_LOG_BUFF
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #include  <i_vos_trace.h>   
 
@@ -189,7 +171,6 @@ void vos_trace_setLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level );
 v_BOOL_t vos_trace_getLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WCONN_TRACE_KMSG_LOG_BUFF
 /*--------------------------------------------------------------------------
@@ -210,6 +191,4 @@ void vos_wconn_trace_exit(void);
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif

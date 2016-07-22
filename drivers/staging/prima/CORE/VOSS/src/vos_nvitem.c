@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -70,7 +67,6 @@
 #include "wlan_hdd_misc.h"
 #include "vos_sched.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
  
 =======
 #include "wlan_nv_parser.h"
@@ -91,9 +87,6 @@ static char driver_reg_cc[2] = {0, 0};
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
- 
->>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -105,12 +98,9 @@ static char driver_reg_cc[2] = {0, 0};
 
 #define DEFAULT_NV_VALIDITY_BITMAP 0xFFFFFFFF
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define MAGIC_NUMBER            0xCAFEBABE
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*----------------------------------------------------------------------------
  * Type Declarations
@@ -137,7 +127,6 @@ typedef struct
 /*----------------------------------------------------------------------------
  * Static Variable Definitions
  * -------------------------------------------------------------------------*/
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -292,8 +281,6 @@ static CountryInfoTable_t countryInfoTable =
 #else
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 // cache of country info table;
 // this is re-initialized from data on binary file
 // loaded on driver initialization if available
@@ -308,14 +295,10 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'A', 'G'}},  //ANTIGUA AND BARBUDA
         { REGDOMAIN_FCC,     {'A', 'I'}},  //ANGUILLA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'A', 'L'}},  //ALBANIA
 =======
         { REGDOMAIN_ETSI,    {'A', 'L'}},  //ALBANIA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'A', 'L'}},  //ALBANIA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_N_AMER_EXC_FCC, {'A', 'M'}},  //ARMENIA
         { REGDOMAIN_ETSI,    {'A', 'N'}},  //NETHERLANDS ANTILLES
         { REGDOMAIN_NO_5GHZ, {'A', 'O'}},  //ANGOLA
@@ -324,28 +307,20 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_FCC,     {'A', 'S'}},  //AMERICAN SOMOA
         { REGDOMAIN_ETSI,    {'A', 'T'}},  //AUSTRIA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_APAC,    {'A', 'U'}},  //AUSTRALIA
 =======
         { REGDOMAIN_WORLD,   {'A', 'U'}},  //AUSTRALIA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_APAC,    {'A', 'U'}},  //AUSTRALIA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_ETSI,    {'A', 'W'}},  //ARUBA
         { REGDOMAIN_WORLD,   {'A', 'X'}},  //ALAND ISLANDS
         { REGDOMAIN_N_AMER_EXC_FCC, {'A', 'Z'}},  //AZERBAIJAN
         { REGDOMAIN_ETSI,    {'B', 'A'}},  //BOSNIA AND HERZEGOVINA
         { REGDOMAIN_APAC,    {'B', 'B'}},  //BARBADOS
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'B', 'D'}},  //BANGLADESH
 =======
         { REGDOMAIN_HI_5GHZ, {'B', 'D'}},  //BANGLADESH
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'B', 'D'}},  //BANGLADESH
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_ETSI,    {'B', 'E'}},  //BELGIUM
         { REGDOMAIN_HI_5GHZ, {'B', 'F'}},  //BURKINA FASO
         { REGDOMAIN_ETSI,    {'B', 'G'}},  //BULGARIA
@@ -373,14 +348,10 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_APAC,    {'C', 'L'}},  //CHILE
         { REGDOMAIN_NO_5GHZ, {'C', 'M'}},  //CAMEROON
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_HI_5GHZ, {'C', 'N'}},  //CHINA
 =======
         { REGDOMAIN_APAC,    {'C', 'N'}},  //CHINA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_HI_5GHZ, {'C', 'N'}},  //CHINA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_APAC,    {'C', 'O'}},  //COLOMBIA
         { REGDOMAIN_APAC,    {'C', 'R'}},  //COSTA RICA
         { REGDOMAIN_NO_5GHZ, {'C', 'U'}},  //CUBA
@@ -394,14 +365,10 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'D', 'M'}},  //DOMINICA
         { REGDOMAIN_APAC,    {'D', 'O'}},  //DOMINICAN REPUBLIC
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'D', 'Z'}},  //ALGERIA
 =======
         { REGDOMAIN_ETSI,    {'D', 'Z'}},  //ALGERIA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'D', 'Z'}},  //ALGERIA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_APAC,    {'E', 'C'}},  //ECUADOR
         { REGDOMAIN_ETSI,    {'E', 'E'}},  //ESTONIA
         { REGDOMAIN_N_AMER_EXC_FCC, {'E', 'G'}},  //EGYPT
@@ -433,14 +400,10 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'G', 'S'}},  //SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS
         { REGDOMAIN_APAC,    {'G', 'T'}},  //GUATEMALA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_APAC,    {'G', 'U'}},  //GUAM
 =======
         { REGDOMAIN_FCC,     {'G', 'U'}},  //GUAM
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_APAC,    {'G', 'U'}},  //GUAM
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_NO_5GHZ, {'G', 'W'}},  //GUINEA-BISSAU
         { REGDOMAIN_HI_5GHZ, {'G', 'Y'}},  //GUYANA
         { REGDOMAIN_WORLD,   {'H', 'K'}},  //HONGKONG
@@ -452,14 +415,10 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_HI_5GHZ, {'I', 'D'}},  //INDONESIA
         { REGDOMAIN_ETSI,    {'I', 'E'}},  //IRELAND
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'I', 'L'}},  //ISRAEL
 =======
         { REGDOMAIN_N_AMER_EXC_FCC, {'I', 'L'}},  //ISRAEL
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'I', 'L'}},  //ISRAEL
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_WORLD,   {'I', 'M'}},  //ISLE OF MAN
         { REGDOMAIN_APAC,    {'I', 'N'}},  //INDIA
         { REGDOMAIN_WORLD,   {'I', 'O'}},  //BRITISH INDIAN OCEAN TERRITORY
@@ -475,28 +434,20 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'J', 'E'}},  //JERSEY
         { REGDOMAIN_WORLD,   {'J', 'M'}},  //JAMAICA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_WORLD,   {'J', 'O'}},  //JORDAN
 =======
         { REGDOMAIN_APAC,    {'J', 'O'}},  //JORDAN
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_WORLD,   {'J', 'O'}},  //JORDAN
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_JAPAN,   {'J', 'P'}},  //JAPAN
         { REGDOMAIN_KOREA,   {'K', '1'}},  //Korea alternate 1
         { REGDOMAIN_KOREA,   {'K', '2'}},  //Korea alternate 2
         { REGDOMAIN_KOREA,   {'K', '3'}},  //Korea alternate 3
         { REGDOMAIN_KOREA,   {'K', '4'}},  //Korea alternate 4
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_HI_5GHZ, {'K', 'E'}},  //KENYA
 =======
         { REGDOMAIN_APAC,    {'K', 'E'}},  //KENYA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_HI_5GHZ, {'K', 'E'}},  //KENYA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_NO_5GHZ, {'K', 'G'}},  //KYRGYZSTAN
         { REGDOMAIN_ETSI,    {'K', 'H'}},  //CAMBODIA
         { REGDOMAIN_WORLD,   {'K', 'I'}},  //KIRIBATI
@@ -507,7 +458,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_N_AMER_EXC_FCC, {'K', 'W'}},  //KUWAIT
         { REGDOMAIN_FCC,     {'K', 'Y'}},  //CAYMAN ISLANDS
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'K', 'Z'}},  //KAZAKHSTAN
         { REGDOMAIN_WORLD,   {'L', 'A'}},  //LAO PEOPLE'S DEMOCRATIC REPUBLIC
         { REGDOMAIN_HI_5GHZ, {'L', 'B'}},  //LEBANON
@@ -516,11 +466,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'L', 'A'}},  //LAO PEOPLE'S DEMOCRATIC REPUBLIC
         { REGDOMAIN_WORLD,   {'L', 'B'}},  //LEBANON
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'K', 'Z'}},  //KAZAKHSTAN
-        { REGDOMAIN_WORLD,   {'L', 'A'}},  //LAO PEOPLE'S DEMOCRATIC REPUBLIC
-        { REGDOMAIN_HI_5GHZ, {'L', 'B'}},  //LEBANON
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_WORLD,   {'L', 'C'}},  //SAINT LUCIA
         { REGDOMAIN_ETSI,    {'L', 'I'}},  //LIECHTENSTEIN
         { REGDOMAIN_WORLD,   {'L', 'K'}},  //SRI LANKA
@@ -531,17 +476,12 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_ETSI,    {'L', 'V'}},  //LATVIA
         { REGDOMAIN_NO_5GHZ, {'L', 'Y'}},  //LIBYAN ARAB JAMAHIRIYA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'M', 'A'}},  //MOROCCO
         { REGDOMAIN_N_AMER_EXC_FCC, {'M', 'C'}},  //MONACO
 =======
         { REGDOMAIN_APAC,    {'M', 'A'}},  //MOROCCO
         { REGDOMAIN_ETSI,    {'M', 'C'}},  //MONACO
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'M', 'A'}},  //MOROCCO
-        { REGDOMAIN_N_AMER_EXC_FCC, {'M', 'C'}},  //MONACO
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_ETSI,    {'M', 'D'}},  //MOLDOVA, REPUBLIC OF
         { REGDOMAIN_ETSI,    {'M', 'E'}},  //MONTENEGRO
         { REGDOMAIN_NO_5GHZ, {'M', 'G'}},  //MADAGASCAR
@@ -550,14 +490,10 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_NO_5GHZ, {'M', 'L'}},  //MALI
         { REGDOMAIN_WORLD,   {'M', 'M'}},  //MYANMAR
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'M', 'N'}},  //MONGOLIA
 =======
         { REGDOMAIN_WORLD,   {'M', 'N'}},  //MONGOLIA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'M', 'N'}},  //MONGOLIA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_APAC,    {'M', 'O'}},  //MACAO
         { REGDOMAIN_FCC,     {'M', 'P'}},  //NORTHERN MARIANA ISLANDS
         { REGDOMAIN_ETSI,    {'M', 'Q'}},  //MARTINIQUE
@@ -579,7 +515,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_ETSI,    {'N', 'L'}},  //NETHERLANDS
         { REGDOMAIN_ETSI,    {'N', 'O'}},  //NORWAY
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_HI_5GHZ, {'N', 'P'}},  //NEPAL
         { REGDOMAIN_NO_5GHZ, {'N', 'R'}},  //NAURU
         { REGDOMAIN_WORLD,   {'N', 'U'}},  //NIUE
@@ -592,24 +527,16 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_HI_5GHZ, {'P', 'H'}},  //PHILIPPINES
 =======
         { REGDOMAIN_APAC,    {'N', 'P'}},  //NEPAL
-=======
-        { REGDOMAIN_HI_5GHZ, {'N', 'P'}},  //NEPAL
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_NO_5GHZ, {'N', 'R'}},  //NAURU
         { REGDOMAIN_WORLD,   {'N', 'U'}},  //NIUE
         { REGDOMAIN_APAC,    {'N', 'Z'}},  //NEW ZEALAND
-        { REGDOMAIN_WORLD,   {'O', 'M'}},  //OMAN
+        { REGDOMAIN_ETSI,    {'O', 'M'}},  //OMAN
         { REGDOMAIN_APAC,    {'P', 'A'}},  //PANAMA
-        { REGDOMAIN_HI_5GHZ, {'P', 'E'}},  //PERU
+        { REGDOMAIN_WORLD,   {'P', 'E'}},  //PERU
         { REGDOMAIN_ETSI,    {'P', 'F'}},  //FRENCH POLYNESIA
-<<<<<<< HEAD
         { REGDOMAIN_WORLD,   {'P', 'G'}},  //PAPUA NEW GUINEA
         { REGDOMAIN_WORLD,   {'P', 'H'}},  //PHILIPPINES
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_APAC,    {'P', 'G'}},  //PAPUA NEW GUINEA
-        { REGDOMAIN_HI_5GHZ, {'P', 'H'}},  //PHILIPPINES
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_HI_5GHZ, {'P', 'K'}},  //PAKISTAN
         { REGDOMAIN_ETSI,    {'P', 'L'}},  //POLAND
         { REGDOMAIN_WORLD,   {'P', 'M'}},  //SAINT PIERRE AND MIQUELON
@@ -624,7 +551,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_ETSI,    {'R', 'O'}},  //ROMANIA
         { REGDOMAIN_ETSI,    {'R', 'S'}},  //SERBIA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_HI_5GHZ, {'R', 'U'}},  //RUSSIA
         { REGDOMAIN_HI_5GHZ, {'R', 'W'}},  //RWANDA
         { REGDOMAIN_APAC,    {'S', 'A'}},  //SAUDI ARABIA
@@ -633,11 +559,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'R', 'W'}},  //RWANDA
         { REGDOMAIN_WORLD,   {'S', 'A'}},  //SAUDI ARABIA
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_HI_5GHZ, {'R', 'U'}},  //RUSSIA
-        { REGDOMAIN_HI_5GHZ, {'R', 'W'}},  //RWANDA
-        { REGDOMAIN_APAC,    {'S', 'A'}},  //SAUDI ARABIA
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_NO_5GHZ, {'S', 'B'}},  //SOLOMON ISLANDS
         { REGDOMAIN_NO_5GHZ, {'S', 'C'}},  //SEYCHELLES
         { REGDOMAIN_WORLD,   {'S', 'D'}},  //SUDAN
@@ -668,7 +589,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_N_AMER_EXC_FCC, {'T', 'N'}},  //TUNISIA
         { REGDOMAIN_NO_5GHZ, {'T', 'O'}},  //TONGA
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_N_AMER_EXC_FCC, {'T', 'R'}},  //TURKEY
         { REGDOMAIN_WORLD,   {'T', 'T'}},  //TRINIDAD AND TOBAGO
         { REGDOMAIN_NO_5GHZ, {'T', 'V'}},  //TUVALU
@@ -681,37 +601,26 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_WORLD,   {'U', 'Z'}},  //UZBEKISTAN
 =======
         { REGDOMAIN_ETSI,    {'T', 'R'}},  //TURKEY
-=======
-        { REGDOMAIN_N_AMER_EXC_FCC, {'T', 'R'}},  //TURKEY
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_WORLD,   {'T', 'T'}},  //TRINIDAD AND TOBAGO
         { REGDOMAIN_NO_5GHZ, {'T', 'V'}},  //TUVALU
-        { REGDOMAIN_WORLD,   {'T', 'W'}},  //TAIWAN, PROVINCE OF CHINA
+        { REGDOMAIN_FCC,     {'T', 'W'}},  //TAIWAN, PROVINCE OF CHINA
         { REGDOMAIN_HI_5GHZ, {'T', 'Z'}},  //TANZANIA, UNITED REPUBLIC OF
-        { REGDOMAIN_NO_5GHZ, {'U', 'A'}},  //UKRAINE
-        { REGDOMAIN_WORLD,   {'U', 'G'}},  //UGANDA
+        { REGDOMAIN_WORLD,   {'U', 'A'}},  //UKRAINE
+        { REGDOMAIN_KOREA,   {'U', 'G'}},  //UGANDA
         { REGDOMAIN_FCC,     {'U', 'M'}},  //UNITED STATES MINOR OUTLYING ISLANDS
         { REGDOMAIN_WORLD,   {'U', 'Y'}},  //URUGUAY
-<<<<<<< HEAD
         { REGDOMAIN_FCC,     {'U', 'Z'}},  //UZBEKISTAN
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_WORLD,   {'U', 'Z'}},  //UZBEKISTAN
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_ETSI,    {'V', 'A'}},  //HOLY SEE (VATICAN CITY STATE)
         { REGDOMAIN_WORLD,   {'V', 'C'}},  //SAINT VINCENT AND THE GRENADINES
         { REGDOMAIN_HI_5GHZ, {'V', 'E'}},  //VENEZUELA
         { REGDOMAIN_ETSI,    {'V', 'G'}},  //VIRGIN ISLANDS, BRITISH
         { REGDOMAIN_FCC,     {'V', 'I'}},  //VIRGIN ISLANDS, US
 <<<<<<< HEAD
-<<<<<<< HEAD
         { REGDOMAIN_N_AMER_EXC_FCC, {'V', 'N'}},  //VIET NAM
 =======
         { REGDOMAIN_FCC,     {'V', 'N'}},  //VIET NAM
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_N_AMER_EXC_FCC, {'V', 'N'}},  //VIET NAM
->>>>>>> 657b0e9... prima update
         { REGDOMAIN_NO_5GHZ, {'V', 'U'}},  //VANUATU
         { REGDOMAIN_WORLD,   {'W', 'F'}},  //WALLIS AND FUTUNA
         { REGDOMAIN_N_AMER_EXC_FCC, {'W', 'S'}},  //SOMOA
@@ -719,7 +628,6 @@ static CountryInfoTable_t countryInfoTable =
         { REGDOMAIN_ETSI,    {'Y', 'T'}},  //MAYOTTE
         { REGDOMAIN_WORLD,   {'Z', 'A'}},  //SOUTH AFRICA
         { REGDOMAIN_APAC,    {'Z', 'M'}},  //ZAMBIA
-<<<<<<< HEAD
 <<<<<<< HEAD
         { REGDOMAIN_NO_5GHZ, {'Z', 'W'}},  //ZIMBABWE
     }
@@ -732,17 +640,11 @@ static CountryInfoTable_t countryInfoTable =
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { REGDOMAIN_NO_5GHZ, {'Z', 'W'}},  //ZIMBABWE
-    }
-};
->>>>>>> 657b0e9... prima update
 typedef struct nvEFSTable_s
 {
    v_U32_t    nvValidityBitmap;
    sHalNv     halnv;
 } nvEFSTable_t;
-<<<<<<< HEAD
 <<<<<<< HEAD
 nvEFSTable_t *gnvEFSTable=NULL;
 /* EFS Table  to send the NV structure to HAL*/ 
@@ -758,11 +660,6 @@ static v_SIZE_t nvReadEncodeBufSize;
 static v_SIZE_t nDictionarySize;
 static v_U32_t magicNumber;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-nvEFSTable_t *gnvEFSTable=NULL;
-/* EFS Table  to send the NV structure to HAL*/ 
-static nvEFSTable_t *pnvEFSTable =NULL;
->>>>>>> 657b0e9... prima update
 
 const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
 {
@@ -783,9 +680,6 @@ const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
     { 2472, 13 , RF_SUBBAND_2_4_GHZ},        //RF_CHAN_13,
     { 2484, 14 , RF_SUBBAND_2_4_GHZ},        //RF_CHAN_14,
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
     { 0,    240, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_240,
     { 0,    244, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_244,
@@ -794,7 +688,6 @@ const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
     { 0,    208, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_208,
     { 0,    212, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_212,
     { 0,    216, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_216,
-<<<<<<< HEAD
 =======
     { 4920, 240, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_240,
     { 4940, 244, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_244,
@@ -804,8 +697,6 @@ const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
     { 5060, 212, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_212,
     { 5080, 216, RF_SUBBAND_4_9_GHZ},        //RF_CHAN_216,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     { 5180, 36 , RF_SUBBAND_5_LOW_GHZ},      //RF_CHAN_36,
     { 5200, 40 , RF_SUBBAND_5_LOW_GHZ},      //RF_CHAN_40,
     { 5220, 44 , RF_SUBBAND_5_LOW_GHZ},      //RF_CHAN_44,
@@ -831,9 +722,6 @@ const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
     { 5805, 161, RF_SUBBAND_5_HIGH_GHZ},     //RF_CHAN_161,
     { 5825, 165, RF_SUBBAND_5_HIGH_GHZ},     //RF_CHAN_165,
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     { 0   , 0  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_3,
     { 0   , 0  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_4,
     { 0   , 0  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_5,
@@ -870,7 +758,6 @@ const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
     { 0   , 0  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_159,
     { 0   , 0  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_163,
 #endif
-<<<<<<< HEAD
 =======
     { 2422, 3  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_3,
     { 2427, 4  , NUM_RF_SUBBANDS},           //RF_CHAN_BOND_4,
@@ -908,8 +795,6 @@ const tRfChannelProps rfChannels[NUM_RF_CHANNELS] =
     { 5795, 159, NUM_RF_SUBBANDS},           //RF_CHAN_BOND_159,
     { 5815, 163, NUM_RF_SUBBANDS},           //RF_CHAN_BOND_163,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 };
 
 extern const sHalNv nvDefaults;
@@ -933,7 +818,6 @@ VOS_STATUS vos_nv_init(void)
    return VOS_STATUS_SUCCESS;
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /**------------------------------------------------------------------------
@@ -995,8 +879,6 @@ fail:
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 VOS_STATUS vos_nv_open(void)
 {
     VOS_STATUS status = VOS_STATUS_SUCCESS;
@@ -1004,7 +886,6 @@ VOS_STATUS vos_nv_open(void)
     v_SIZE_t bufSize;
     v_SIZE_t nvReadBufSize;
     v_BOOL_t itemIsValid = VOS_FALSE;
-<<<<<<< HEAD
 <<<<<<< HEAD
     
     /*Get the global context */
@@ -1026,37 +907,113 @@ VOS_STATUS vos_nv_open(void)
     v_U32_t dataOffset;
     sHalNv *pnvData = NULL;
 
-=======
-    
->>>>>>> 657b0e9... prima update
     /*Get the global context */
     pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
+
+    if (NULL == pVosContext)
+    {
+        return (eHAL_STATUS_FAILURE);
+    }
+
     bufSize = sizeof(nvEFSTable_t);
     status = hdd_request_firmware(WLAN_NV_FILE,
                                   ((VosContextType*)(pVosContext))->pHDDContext,
-                                  (v_VOID_t**)&gnvEFSTable, &nvReadBufSize);
+                                  (v_VOID_t**)&pnvEncodedBuf, &nvReadBufSize);
 
-    if ( (!VOS_IS_STATUS_SUCCESS( status )) || !gnvEFSTable)
+    if ((!VOS_IS_STATUS_SUCCESS( status )) || (!pnvEncodedBuf))
     {
-         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                    "%s: unable to download NV file %s",
-                   __FUNCTION__, WLAN_NV_FILE);
-         return VOS_STATUS_E_RESOURCES;
+                   __func__, WLAN_NV_FILE);
+       return VOS_STATUS_E_RESOURCES;
     }
 
-<<<<<<< HEAD
+    memcpy(&magicNumber, &pnvEncodedBuf[sizeof(v_U32_t)], sizeof(v_U32_t));
+
+    /// Allocate buffer with maximum length..
+    pEncodedBuf = (v_U8_t *)vos_mem_malloc(nvReadBufSize);
+
+    if (NULL == pEncodedBuf)
+    {
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                    "%s : failed to allocate memory for NV", __func__);
+        return VOS_STATUS_E_NOMEM;
+    }
+
+    gnvEFSTable = (nvEFSTable_t*)pnvEncodedBuf;
+
+    if (MAGIC_NUMBER == magicNumber)
+    {
+        pnvData = (sHalNv *)vos_mem_malloc(sizeof(sHalNv));
+
+        if (NULL == pnvData)
+        {
+            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                      "%s : failed to allocate memory for NV", __func__);
+            return VOS_STATUS_E_NOMEM;
+        }
+
+        memset(pnvData, 0, sizeof(sHalNv));
+
+        /// Data starts from offset of validity bit map + magic number..
+        dataOffset = sizeof(v_U32_t) + sizeof(v_U32_t);
+
+        status = nvParser(&pnvEncodedBuf[dataOffset],
+                     (nvReadBufSize-dataOffset), pnvData);
+
+        ///ignore validity bit map
+        nvReadEncodeBufSize = nvReadBufSize - sizeof(v_U32_t);
+
+        vos_mem_copy(pEncodedBuf, &pnvEncodedBuf[sizeof(v_U32_t)],
+            nvReadEncodeBufSize);
+
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                   "readEncodeBufSize %d",nvReadEncodeBufSize);
+
+        if (VOS_STATUS_SUCCESS == status) {
+           VOS_TRACE(VOS_MODULE_ID_VOSS,  VOS_TRACE_LEVEL_ERROR,
+                       "Embedded NV parsed success !!productId %d couple Type %d wlan RevId %d",
+                        pnvData->fields.productId,
+                        pnvData->fields.couplerType,
+                        pnvData->fields.wlanNvRevId);
+
+           vos_mem_copy(&gnvEFSTable->halnv, pnvData, sizeof(sHalNv));
+
+           nvReadBufSize = sizeof(sHalNv) + sizeof(v_U32_t);
+        }
+        else
+        {
+           VOS_TRACE(VOS_MODULE_ID_VOSS,  VOS_TRACE_LEVEL_ERROR,
+                       "nvParser failed %d",status);
+
+           nvReadBufSize = 0;
+
+           vos_mem_copy(pEncodedBuf, &nvDefaults, sizeof(sHalNv));
+
+           nvReadEncodeBufSize = sizeof(sHalNv);
+        }
+    }
+    else
+    {
+       dataOffset = sizeof(v_U32_t);
+       nvReadEncodeBufSize = sizeof(sHalNv);
+       memcpy(pEncodedBuf, &pnvEncodedBuf[dataOffset], nvReadEncodeBufSize);
+    }
+
+    if (NULL != pnvData)
+    {
+       vos_mem_free(pnvData);
+    }
+
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
            "INFO: NV binary file version=%d Driver default NV version=%d, continue...\n",
            gnvEFSTable->halnv.fields.nvVersion, WLAN_NV_VERSION);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
      /* Copying the read nv data to the globa NV EFS table */
     {
         /* Allocate memory to global NV table */
         pnvEFSTable = (nvEFSTable_t *)vos_mem_malloc(sizeof(nvEFSTable_t));
-<<<<<<< HEAD
 <<<<<<< HEAD
         if (NULL == pnvEFSTable)
         {
@@ -1068,17 +1025,10 @@ VOS_STATUS vos_nv_open(void)
             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                       "%s : failed to allocate memory for NV", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (NULL == pnvEFSTable)
-        {
-            VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                      "%s : failed to allocate memory for NV", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             return VOS_STATUS_E_NOMEM;
         }
 
         /*Copying the NV defaults */
-<<<<<<< HEAD
 <<<<<<< HEAD
         vos_mem_copy(&(pnvEFSTable->halnv),&nvDefaults,sizeof(sHalNv));
        
@@ -1087,17 +1037,12 @@ VOS_STATUS vos_nv_open(void)
 
         /* Size mismatch */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        vos_mem_copy(&(pnvEFSTable->halnv),&nvDefaults,sizeof(sHalNv));
-       
->>>>>>> 657b0e9... prima update
         if ( nvReadBufSize != bufSize)
         {
             pnvEFSTable->nvValidityBitmap = DEFAULT_NV_VALIDITY_BITMAP;
             VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                       "!!!WARNING: INVALID NV FILE, DRIVER IS USING DEFAULT CAL VALUES %d %d!!!",
                       nvReadBufSize, bufSize);
-<<<<<<< HEAD
 <<<<<<< HEAD
             return (eHAL_STATUS_SUCCESS);
         }
@@ -1107,27 +1052,38 @@ VOS_STATUS vos_nv_open(void)
         if (vos_nv_getValidity(VNV_FIELD_IMAGE, &itemIsValid) == 
 =======
             return VOS_STATUS_SUCCESS;
-=======
-            return (eHAL_STATUS_SUCCESS);
->>>>>>> 657b0e9... prima update
         }
 
+       /* Version mismatch */
+       if (gnvEFSTable->halnv.fields.nvVersion != WLAN_NV_VERSION)
+       {
+           if ((WLAN_NV_VERSION == NV_VERSION_11N_11AC_FW_CONFIG) &&
+               (gnvEFSTable->halnv.fields.nvVersion == NV_VERSION_11N_11AC_COUPER_TYPE))
+           {
+               VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                     "!!!WARNING: Using Coupler Type field instead of Fw Config table,\n"
+                     "Make sure that this is intented or may impact performance!!!\n");
+           }
+           else
+           {
+               VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                     "!!!WARNING: NV binary file version doesn't match with Driver default NV version\n"
+                     "Driver NV defaults will be used, may impact performance!!!\n");
+
+               return VOS_STATUS_SUCCESS;
+           }
+       }
+
        pnvEFSTable->nvValidityBitmap = gnvEFSTable->nvValidityBitmap;
-<<<<<<< HEAD
         /* Copy the valid fields to the NV Global structure */
         if (vos_nv_getValidity(VNV_FIELD_IMAGE, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        /* Copy the valid fields to the NV Global structure */ 
-        if (vos_nv_getValidity(VNV_FIELD_IMAGE, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
            VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE) {
 
                 if(vos_nv_read( VNV_FIELD_IMAGE, (v_VOID_t *)&pnvEFSTable->halnv.fields,
                    NULL, sizeof(sNvFields) ) != VOS_STATUS_SUCCESS)
-<<<<<<< HEAD
 <<<<<<< HEAD
                    return (eHAL_STATUS_FAILURE);
             }
@@ -1141,18 +1097,10 @@ VOS_STATUS vos_nv_open(void)
 
         if (vos_nv_getValidity(VNV_RATE_TO_POWER_TABLE, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   return (eHAL_STATUS_FAILURE);
-            }
-        }
-
-        if (vos_nv_getValidity(VNV_RATE_TO_POWER_TABLE, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
              VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 if(vos_nv_read( VNV_RATE_TO_POWER_TABLE, 
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.pwrOptimum[0],
@@ -1167,30 +1115,22 @@ VOS_STATUS vos_nv_open(void)
     
 =======
                 if(vos_nv_read( VNV_RATE_TO_POWER_TABLE,
-=======
-                if(vos_nv_read( VNV_RATE_TO_POWER_TABLE, 
->>>>>>> 657b0e9... prima update
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.pwrOptimum[0],
                   NULL, sizeof(tRateGroupPwr) * NUM_RF_SUBBANDS ) != VOS_STATUS_SUCCESS)
-               return (eHAL_STATUS_FAILURE);
+                    goto error;
             }
         }
 
-        if (vos_nv_getValidity(VNV_REGULARTORY_DOMAIN_TABLE, &itemIsValid) == 
+        if (vos_nv_getValidity(VNV_REGULARTORY_DOMAIN_TABLE, &itemIsValid) ==
                VOS_STATUS_SUCCESS)
         {
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
             if (itemIsValid == VOS_TRUE)
             {
                 if(vos_nv_read( VNV_REGULARTORY_DOMAIN_TABLE,
                 (v_VOID_t *)&pnvEFSTable->halnv.tables.regDomains[0],
                  NULL, sizeof(sRegulatoryDomains) * NUM_REG_DOMAINS ) != VOS_STATUS_SUCCESS)
-<<<<<<< HEAD
 <<<<<<< HEAD
                     return (eHAL_STATUS_FAILURE);
             }
@@ -1204,13 +1144,6 @@ VOS_STATUS vos_nv_open(void)
 
         if (vos_nv_getValidity(VNV_DEFAULT_LOCATION, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    return (eHAL_STATUS_FAILURE);
-            }
-        }
-
-        if (vos_nv_getValidity(VNV_DEFAULT_LOCATION, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
             VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
@@ -1218,7 +1151,6 @@ VOS_STATUS vos_nv_open(void)
                 if(vos_nv_read( VNV_DEFAULT_LOCATION,
                 (v_VOID_t *)&pnvEFSTable->halnv.tables.defaultCountryTable,
                 NULL, sizeof(sDefaultCountry) ) !=  VOS_STATUS_SUCCESS)
-<<<<<<< HEAD
 <<<<<<< HEAD
                      return (eHAL_STATUS_FAILURE);
             }
@@ -1232,18 +1164,10 @@ VOS_STATUS vos_nv_open(void)
 
         if (vos_nv_getValidity(VNV_TPC_POWER_TABLE, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     return (eHAL_STATUS_FAILURE);
-            }
-        }
-    
-        if (vos_nv_getValidity(VNV_TPC_POWER_TABLE, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
             VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 if(vos_nv_read( VNV_TPC_POWER_TABLE, 
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.plutCharacterized[0],
@@ -1255,22 +1179,14 @@ VOS_STATUS vos_nv_open(void)
         if (vos_nv_getValidity(VNV_TPC_PDADC_OFFSETS, &itemIsValid) == 
 =======
                 if(vos_nv_read( VNV_TPC_POWER_TABLE,
-=======
-                if(vos_nv_read( VNV_TPC_POWER_TABLE, 
->>>>>>> 657b0e9... prima update
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.plutCharacterized[0],
                   NULL, sizeof(tTpcPowerTable) * NUM_RF_CHANNELS ) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
+                    goto error;
             }
         }
-<<<<<<< HEAD
 
         if (vos_nv_getValidity(VNV_TPC_PDADC_OFFSETS, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-        if (vos_nv_getValidity(VNV_TPC_PDADC_OFFSETS, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
             VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
@@ -1278,7 +1194,6 @@ VOS_STATUS vos_nv_open(void)
                 if(vos_nv_read( VNV_TPC_PDADC_OFFSETS,
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.plutPdadcOffset[0],
                   NULL, sizeof(tANI_U16) * NUM_RF_CHANNELS ) != VOS_STATUS_SUCCESS)
-<<<<<<< HEAD
 <<<<<<< HEAD
                      return (eHAL_STATUS_FAILURE);
             }
@@ -1290,12 +1205,6 @@ VOS_STATUS vos_nv_open(void)
         }
         if (vos_nv_getValidity(VNV_RSSI_CHANNEL_OFFSETS, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     return (eHAL_STATUS_FAILURE);
-            }
-        }
-        if (vos_nv_getValidity(VNV_RSSI_CHANNEL_OFFSETS, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
            VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
@@ -1303,7 +1212,6 @@ VOS_STATUS vos_nv_open(void)
                 if(vos_nv_read( VNV_RSSI_CHANNEL_OFFSETS,
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.rssiChanOffsets[0],
                   NULL, sizeof(sRssiChannelOffsets) * 2 ) != VOS_STATUS_SUCCESS)
-<<<<<<< HEAD
 <<<<<<< HEAD
                      return (eHAL_STATUS_FAILURE);
             }
@@ -1328,18 +1236,10 @@ VOS_STATUS vos_nv_open(void)
 
         if (vos_nv_getValidity(VNV_FW_CONFIG, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     return (eHAL_STATUS_FAILURE);
-            }
-        }
-    
-        if (vos_nv_getValidity(VNV_RF_CAL_VALUES, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
          VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 if(vos_nv_read( VNV_RF_CAL_VALUES, (v_VOID_t *)&pnvEFSTable->halnv
     .tables.rFCalValues, NULL, sizeof(sRFCalValues) ) != VOS_STATUS_SUCCESS)
@@ -1357,21 +1257,11 @@ VOS_STATUS vos_nv_open(void)
 
         if (vos_nv_getValidity(VNV_ANTENNA_PATH_LOSS, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if(vos_nv_read( VNV_RF_CAL_VALUES, (v_VOID_t *)&pnvEFSTable->halnv
-    .tables.rFCalValues, NULL, sizeof(sRFCalValues) ) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
-            }
-        }
-
-        if (vos_nv_getValidity(VNV_ANTENNA_PATH_LOSS, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
          VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
                 if(vos_nv_read( VNV_ANTENNA_PATH_LOSS,
-<<<<<<< HEAD
 <<<<<<< HEAD
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.antennaPathLoss[0], NULL, 
                 sizeof(tANI_S16)*NUM_RF_CHANNELS ) != VOS_STATUS_SUCCESS)
@@ -1381,24 +1271,16 @@ VOS_STATUS vos_nv_open(void)
         if (vos_nv_getValidity(VNV_PACKET_TYPE_POWER_LIMITS, &itemIsValid) == 
 =======
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.antennaPathLoss[0], NULL,
-=======
-                  (v_VOID_t *)&pnvEFSTable->halnv.tables.antennaPathLoss[0], NULL, 
->>>>>>> 657b0e9... prima update
                 sizeof(tANI_S16)*NUM_RF_CHANNELS ) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
+                    goto error;
             }
         }
-<<<<<<< HEAD
         if (vos_nv_getValidity(VNV_PACKET_TYPE_POWER_LIMITS, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (vos_nv_getValidity(VNV_PACKET_TYPE_POWER_LIMITS, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
          VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 if(vos_nv_read( VNV_PACKET_TYPE_POWER_LIMITS, 
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.pktTypePwrLimits[0], NULL, 
@@ -1411,26 +1293,17 @@ VOS_STATUS vos_nv_open(void)
 =======
                 if(vos_nv_read( VNV_PACKET_TYPE_POWER_LIMITS,
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.pktTypePwrLimits[0], NULL,
-=======
-                if(vos_nv_read( VNV_PACKET_TYPE_POWER_LIMITS, 
-                  (v_VOID_t *)&pnvEFSTable->halnv.tables.pktTypePwrLimits[0], NULL, 
->>>>>>> 657b0e9... prima update
                 sizeof(tANI_S16)*NUM_802_11_MODES*NUM_RF_CHANNELS ) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
+                    goto error;
             }
         }
 
-<<<<<<< HEAD
         if (vos_nv_getValidity(VNV_OFDM_CMD_PWR_OFFSET, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (vos_nv_getValidity(VNV_OFDM_CMD_PWR_OFFSET, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
          VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 if(vos_nv_read( VNV_OFDM_CMD_PWR_OFFSET, 
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.ofdmCmdPwrOffset, NULL, 
@@ -1443,26 +1316,17 @@ VOS_STATUS vos_nv_open(void)
 =======
                 if(vos_nv_read( VNV_OFDM_CMD_PWR_OFFSET,
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.ofdmCmdPwrOffset, NULL,
-=======
-                if(vos_nv_read( VNV_OFDM_CMD_PWR_OFFSET, 
-                  (v_VOID_t *)&pnvEFSTable->halnv.tables.ofdmCmdPwrOffset, NULL, 
->>>>>>> 657b0e9... prima update
                                 sizeof(sOfdmCmdPwrOffset)) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
+                    goto error;
             }
         }
 
-<<<<<<< HEAD
         if (vos_nv_getValidity(VNV_TX_BB_FILTER_MODE, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (vos_nv_getValidity(VNV_TX_BB_FILTER_MODE, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
          VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                if(vos_nv_read(VNV_TX_BB_FILTER_MODE, 
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.txbbFilterMode, NULL, 
@@ -1474,25 +1338,16 @@ VOS_STATUS vos_nv_open(void)
 =======
                if(vos_nv_read(VNV_TX_BB_FILTER_MODE,
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.txbbFilterMode, NULL,
-=======
-               if(vos_nv_read(VNV_TX_BB_FILTER_MODE, 
-                  (v_VOID_t *)&pnvEFSTable->halnv.tables.txbbFilterMode, NULL, 
->>>>>>> 657b0e9... prima update
                 sizeof(sTxBbFilterMode)) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
+                   goto error;
             }
         }
-<<<<<<< HEAD
         if (vos_nv_getValidity(VNV_TABLE_VIRTUAL_RATE, &itemIsValid) ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (vos_nv_getValidity(VNV_TABLE_VIRTUAL_RATE, &itemIsValid) == 
->>>>>>> 657b0e9... prima update
          VOS_STATUS_SUCCESS)
         {
             if (itemIsValid == VOS_TRUE)
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                if(vos_nv_read(VNV_TABLE_VIRTUAL_RATE, 
                   (v_VOID_t *)&pnvEFSTable->halnv.tables.pwrOptimum_virtualRate, NULL, 
@@ -1504,18 +1359,11 @@ VOS_STATUS vos_nv_open(void)
                 sizeof(gnvEFSTable->halnv.tables.pwrOptimum_virtualRate)) != VOS_STATUS_SUCCESS)
                    goto error;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               if(vos_nv_read(VNV_TABLE_VIRTUAL_RATE, 
-                  (v_VOID_t *)&pnvEFSTable->halnv.tables.pwrOptimum_virtualRate, NULL, 
-                sizeof(gnvEFSTable->halnv.tables.pwrOptimum_virtualRate)) != VOS_STATUS_SUCCESS)
-                     return (eHAL_STATUS_FAILURE);
->>>>>>> 657b0e9... prima update
             }
         }
     }
 
     return VOS_STATUS_SUCCESS;
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 error:
@@ -1523,8 +1371,6 @@ error:
     vos_mem_free(pEncodedBuf);
     return eHAL_STATUS_FAILURE ;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }
 
 VOS_STATUS vos_nv_close(void)
@@ -1541,7 +1387,6 @@ VOS_STATUS vos_nv_close(void)
         return VOS_STATUS_E_FAILURE;
     }
     vos_mem_free(pnvEFSTable);
-<<<<<<< HEAD
 <<<<<<< HEAD
     gnvEFSTable=NULL;
     return VOS_STATUS_SUCCESS;
@@ -1612,77 +1457,11 @@ VOS_STATUS vos_nv_getRegDomainFromCountryCode( v_REGDOMAIN_t *pRegDomain,
     vos_mem_free(pEncodedBuf);
     vos_mem_free(pDictFile);
 
-=======
->>>>>>> 657b0e9... prima update
     gnvEFSTable=NULL;
     return VOS_STATUS_SUCCESS;
 }
-/**------------------------------------------------------------------------
-  \brief vos_nv_getRegDomainFromCountryCode() - get the regulatory domain of
-  a country given its country code
-  The \a vos_nv_getRegDomainFromCountryCode() returns the regulatory domain of
-  a country given its country code.  This is done from reading a cached
-  copy of the binary file.
-  \param pRegDomain  - pointer to regulatory domain
-  \param countryCode - country code
-  \return VOS_STATUS_SUCCESS - regulatory domain is found for the given country
-          VOS_STATUS_E_FAULT - invalid pointer error
-          VOS_STATUS_E_EMPTY - country code table is empty
-          VOS_STATUS_E_EXISTS - given country code does not exist in table
-  \sa
-  -------------------------------------------------------------------------*/
-VOS_STATUS vos_nv_getRegDomainFromCountryCode( v_REGDOMAIN_t *pRegDomain,
-      const v_COUNTRYCODE_t countryCode )
-{
-   int i;
-   // sanity checks
-   if (NULL == pRegDomain)
-   {
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-            ("Invalid reg domain pointer\r\n") );
-      return VOS_STATUS_E_FAULT;
-   }
-   *pRegDomain = REGDOMAIN_COUNT;
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   if (NULL == countryCode)
-   {
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-            ("Country code array is NULL\r\n") );
-      return VOS_STATUS_E_FAULT;
-   }
-   if (0 == countryInfoTable.countryCount)
-   {
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-            ("Reg domain table is empty\r\n") );
-      return VOS_STATUS_E_EMPTY;
-   }
-   // iterate the country info table until end of table or the country code
-   // is found
-   for (i = 0; i < countryInfoTable.countryCount &&
-         REGDOMAIN_COUNT == *pRegDomain; i++)
-   {
-      if (memcmp(countryCode, countryInfoTable.countryInfo[i].countryCode,
-               VOS_COUNTRY_CODE_LEN) == 0)
-      {
-         // country code is found
-         *pRegDomain = countryInfoTable.countryInfo[i].regDomain;
-      }
-   }
-   if (REGDOMAIN_COUNT != *pRegDomain)
-   {
-      return VOS_STATUS_SUCCESS;
-   }
-   else
-   {
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
-            ("country code is not found\r\n"));
-      return VOS_STATUS_E_EXISTS;
-   }
-}
->>>>>>> 657b0e9... prima update
 /**------------------------------------------------------------------------
   \brief vos_nv_getSupportedCountryCode() - get the list of supported
   country codes
@@ -1701,12 +1480,9 @@ VOS_STATUS vos_nv_getRegDomainFromCountryCode( v_REGDOMAIN_t *pRegDomain,
   \sa
   -------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 VOS_STATUS vos_nv_getSupportedCountryCode( v_BYTE_t *pBuffer, v_SIZE_t *pBufferSize,
       v_SIZE_t paddingSize )
 {
@@ -1718,14 +1494,10 @@ VOS_STATUS vos_nv_getSupportedCountryCode( v_BYTE_t *pBuffer, v_SIZE_t *pBufferS
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
             ("Insufficient memory for country code list\r\n"));
 =======
             ("Insufficient memory for country code list"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            ("Insufficient memory for country code list\r\n"));
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_NOMEM;
    }
    for (i = 0; i < countryInfoTable.countryCount; i++)
@@ -1826,14 +1598,10 @@ VOS_STATUS vos_nv_readMultiMacAddress( v_U8_t *pMacAddress,
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
           " Invalid Parameter from NV Client macCount %d, pMacAddress 0x%x",
 =======
           " Invalid Parameter from NV Client macCount %d, pMacAddress %p",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          " Invalid Parameter from NV Client macCount %d, pMacAddress 0x%x",
->>>>>>> 657b0e9... prima update
           macCount, pMacAddress);
    }
 
@@ -1872,13 +1640,9 @@ VOS_STATUS vos_nv_readMultiMacAddress( v_U8_t *pMacAddress,
   \sa
   -------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifndef WLAN_FTM_STUB
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifndef WLAN_FTM_STUB
->>>>>>> 657b0e9... prima update
 
 VOS_STATUS vos_nv_setValidity( VNV_TYPE type, v_BOOL_t itemIsValid )
 {
@@ -1891,14 +1655,10 @@ VOS_STATUS vos_nv_setValidity( VNV_TYPE type, v_BOOL_t itemIsValid )
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("%s: invalid type=%d"), __FUNCTION__, type );
 =======
                  ("%s: invalid type=%d"), __func__, type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("%s: invalid type=%d"), __FUNCTION__, type );
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
    // read the validity bitmap
@@ -1922,14 +1682,10 @@ VOS_STATUS vos_nv_setValidity( VNV_TYPE type, v_BOOL_t itemIsValid )
            status = wlan_write_to_efs((v_U8_t*)gnvEFSTable,sizeof(nvEFSTable_t));
            if (! VOS_IS_STATUS_SUCCESS(status)) {
 <<<<<<< HEAD
-<<<<<<< HEAD
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_write_to_efs failed!!!\r\n"));
 =======
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_write_to_efs failed!!!"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_write_to_efs failed!!!\r\n"));
->>>>>>> 657b0e9... prima update
                status = VOS_STATUS_E_FAULT;
            }
        }
@@ -1938,13 +1694,9 @@ VOS_STATUS vos_nv_setValidity( VNV_TYPE type, v_BOOL_t itemIsValid )
    return status;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 /**------------------------------------------------------------------------
   \brief vos_nv_getValidity() - get the validity of an NV item.
   The \a vos_nv_getValidity() indicates if an NV item is valid.  The
@@ -1967,14 +1719,10 @@ VOS_STATUS vos_nv_getValidity( VNV_TYPE type, v_BOOL_t *pItemIsValid )
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("%s: invalid type=%d"), __FUNCTION__, type );
 =======
                  ("%s: invalid type=%d"), __func__, type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("%s: invalid type=%d"), __FUNCTION__, type );
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
    *pItemIsValid = (v_BOOL_t)((nvValidityBitmap >> type) & 1);
@@ -2007,7 +1755,6 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
     v_BOOL_t itemIsValid = VOS_TRUE;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     // sanity check
     if (VNV_TYPE_COUNT <= type)
     {
@@ -2020,41 +1767,26 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                  ("%s: invalid type=%d"), __func__, type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    // sanity check
-    if (VNV_TYPE_COUNT <= type)
-    {
-       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                 ("%s: invalid type=%d"), __FUNCTION__, type );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_INVAL;
     }
     if (NULL == outputVoidBuffer)
     {
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
              ("Buffer provided is NULL\r\n") );
 =======
              ("Buffer provided is NULL") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             ("Buffer provided is NULL\r\n") );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_FAULT;
     }
     if (0 == bufferSize)
     {
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
              ("NV type=%d is invalid\r\n"), type );
 =======
              ("NV type=%d is invalid"), type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             ("NV type=%d is invalid\r\n"), type );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_INVAL;
     }
     // check if the NV item has valid data
@@ -2063,14 +1795,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
    {
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
 <<<<<<< HEAD
-<<<<<<< HEAD
             "NV type=%d does not have valid data\r\n", type );
 =======
             "NV type=%d does not have valid data", type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "NV type=%d does not have valid data\r\n", type );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_EMPTY;
    }
    switch(type)
@@ -2080,14 +1808,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2100,14 +1824,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2120,14 +1840,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2140,14 +1856,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2160,14 +1872,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2180,14 +1888,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2203,14 +1907,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
 
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2218,7 +1918,6 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
                memcpy(outputVoidBuffer,&gnvEFSTable->halnv.tables.rssiChanOffsets[0],bufferSize);
            }
            break;
-<<<<<<< HEAD
 <<<<<<< HEAD
        case VNV_RF_CAL_VALUES:
 
@@ -2243,37 +1942,24 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
 
            itemSize = sizeof(gnvEFSTable->halnv.tables.fwConfig);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       case VNV_RF_CAL_VALUES:
-
-           itemSize = sizeof(gnvEFSTable->halnv.tables.rFCalValues);
->>>>>>> 657b0e9... prima update
 
            if(bufferSize != itemSize) {
 
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
            else {
 <<<<<<< HEAD
-<<<<<<< HEAD
                memcpy(outputVoidBuffer,&gnvEFSTable->halnv.tables.rFCalValues,bufferSize);
 =======
                memcpy(outputVoidBuffer,&gnvEFSTable->halnv.tables.fwConfig,bufferSize);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               memcpy(outputVoidBuffer,&gnvEFSTable->halnv.tables.rFCalValues,bufferSize);
->>>>>>> 657b0e9... prima update
            }
            break;
        case VNV_ANTENNA_PATH_LOSS:
@@ -2281,14 +1967,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2301,27 +1983,19 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
            else {
 <<<<<<< HEAD
-<<<<<<< HEAD
                memcpy(outputVoidBuffer,&gnvEFSTable->halnv.tables.pktTypePwrLimits[0][0],bufferSize);
 =======
                memcpy(outputVoidBuffer,gnvEFSTable->halnv.tables.pktTypePwrLimits,bufferSize);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               memcpy(outputVoidBuffer,&gnvEFSTable->halnv.tables.pktTypePwrLimits[0][0],bufferSize);
->>>>>>> 657b0e9... prima update
            }
            break;
        case VNV_OFDM_CMD_PWR_OFFSET:
@@ -2329,14 +2003,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2349,14 +2019,10 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2366,9 +2032,6 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
        case VNV_FREQUENCY_FOR_1_3V_SUPPLY:
            itemSize = sizeof(gnvEFSTable->halnv.tables.freqFor1p3VSupply);
@@ -2383,25 +2046,18 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
            }
            break;
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
        case VNV_TABLE_VIRTUAL_RATE:
            itemSize = sizeof(gnvEFSTable->halnv.tables.pwrOptimum_virtualRate);
            if(bufferSize != itemSize) {
                VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                 ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                  itemSize);
                status = VOS_STATUS_E_INVAL;
            }
@@ -2416,13 +2072,9 @@ VOS_STATUS vos_nv_read( VNV_TYPE type, v_VOID_t *outputVoidBuffer,
    return status;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifndef WLAN_FTM_STUB
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifndef WLAN_FTM_STUB
->>>>>>> 657b0e9... prima update
 
 /**------------------------------------------------------------------------
   \brief vos_nv_write() - write to a NV item from an input buffer
@@ -2445,7 +2097,6 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
     v_SIZE_t itemSize;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     // sanity check
     if (VNV_TYPE_COUNT <= type)
     {
@@ -2458,41 +2109,26 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                   ("%s: invalid type=%d"), __func__, type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    // sanity check
-    if (VNV_TYPE_COUNT <= type)
-    {
-       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                  ("%s: invalid type=%d"), __FUNCTION__, type );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_INVAL;
     }
     if (NULL == inputVoidBuffer)
     {
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
              ("Buffer provided is NULL\r\n") );
 =======
              ("Buffer provided is NULL") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             ("Buffer provided is NULL\r\n") );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_FAULT;
     }
     if (0 == bufferSize)
     {
        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
              ("NV type=%d is invalid\r\n"), type );
 =======
              ("NV type=%d is invalid"), type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             ("NV type=%d is invalid\r\n"), type );
->>>>>>> 657b0e9... prima update
        return VOS_STATUS_E_INVAL;
     }
     switch(type)
@@ -2502,14 +2138,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2522,14 +2154,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2542,14 +2170,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2562,14 +2186,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2582,14 +2202,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2602,14 +2218,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"), type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2625,14 +2237,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
 
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2640,7 +2248,6 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
                 memcpy(&gnvEFSTable->halnv.tables.rssiChanOffsets[0],inputVoidBuffer,bufferSize);
             }
             break;
-<<<<<<< HEAD
 <<<<<<< HEAD
          case VNV_RF_CAL_VALUES:
 
@@ -2650,29 +2257,19 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
 
             itemSize = sizeof(gnvEFSTable->halnv.tables.hwCalValues);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         case VNV_RF_CAL_VALUES:
-
-            itemSize = sizeof(gnvEFSTable->halnv.tables.rFCalValues);
->>>>>>> 657b0e9... prima update
 
             if(bufferSize != itemSize) {
 
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
             else {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 memcpy(&gnvEFSTable->halnv.tables.rFCalValues,inputVoidBuffer,bufferSize);
             }
@@ -2697,24 +2294,15 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
            }
            break;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                memcpy(&gnvEFSTable->halnv.tables.rFCalValues,inputVoidBuffer,bufferSize);
-            }
-            break;
->>>>>>> 657b0e9... prima update
         case VNV_ANTENNA_PATH_LOSS:
             itemSize = sizeof(gnvEFSTable->halnv.tables.antennaPathLoss);
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2728,27 +2316,19 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
             else {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 memcpy(&gnvEFSTable->halnv.tables.pktTypePwrLimits[0][0],inputVoidBuffer,bufferSize);
 =======
                 memcpy(gnvEFSTable->halnv.tables.pktTypePwrLimits,inputVoidBuffer,bufferSize);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                memcpy(&gnvEFSTable->halnv.tables.pktTypePwrLimits[0][0],inputVoidBuffer,bufferSize);
->>>>>>> 657b0e9... prima update
             }
             break;
 
@@ -2757,14 +2337,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2778,14 +2354,10 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2794,9 +2366,6 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             }
             break;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
             
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
         case VNV_FREQUENCY_FOR_1_3V_SUPPLY:
@@ -2812,26 +2381,19 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
             }
             break;
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
         case VNV_TABLE_VIRTUAL_RATE:
             itemSize = sizeof(gnvEFSTable->halnv.tables.pwrOptimum_virtualRate);
             if(bufferSize != itemSize) {
                 VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
 =======
                  ("type = %d buffer size=%d is less than data size=%d"),type, bufferSize,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 ("type = %d buffer size=%d is less than data size=%d\r\n"),type, bufferSize,
->>>>>>> 657b0e9... prima update
                   itemSize);
                 status = VOS_STATUS_E_INVAL;
             }
@@ -2849,44 +2411,31 @@ VOS_STATUS vos_nv_write( VNV_TYPE type, v_VOID_t *inputVoidBuffer,
       status = vos_nv_setValidity( type, VOS_TRUE );
       if (! VOS_IS_STATUS_SUCCESS(status)) {
 <<<<<<< HEAD
-<<<<<<< HEAD
           VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_setValidity failed!!!\r\n"));
 =======
           VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_setValidity failed!!!"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_setValidity failed!!!\r\n"));
->>>>>>> 657b0e9... prima update
           status = VOS_STATUS_E_FAULT;
       }
       status = wlan_write_to_efs((v_U8_t*)gnvEFSTable,sizeof(nvEFSTable_t));
 
       if (! VOS_IS_STATUS_SUCCESS(status)) {
 <<<<<<< HEAD
-<<<<<<< HEAD
           VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_write_to_efs failed!!!\r\n"));
 =======
           VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_write_to_efs failed!!!"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, ("vos_nv_write_to_efs failed!!!\r\n"));
->>>>>>> 657b0e9... prima update
           status = VOS_STATUS_E_FAULT;
       }
    }
    return status;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
   
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-  
->>>>>>> 657b0e9... prima update
 /**------------------------------------------------------------------------
   \brief vos_nv_getChannelListWithPower() - function to return the list of
           supported channels with the power limit info too.
@@ -2907,14 +2456,10 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
     VOS_STATUS status = VOS_STATUS_SUCCESS;
     int i, count;
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
     //TODO: Dont want to use pMac here...can we instead store the curRegDomain in NV
     // or pass it as a parameter to NV from SME?
 
@@ -2930,13 +2475,9 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
             }
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
         for( i = RF_CHAN_36; i <= RF_CHAN_165; i++ )
         {
             if( regChannels[i].enabled )
@@ -2946,13 +2487,9 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
             }
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
         *num20MHzChannelsFound = (tANI_U8)count;
     }
 
@@ -2960,7 +2497,6 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
     {
         count = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
         //center channels for 2.4 Ghz 40 MHz channels
         for( i = RF_CHAN_BOND_3; i <= RF_CHAN_BOND_11; i++ )
@@ -2972,13 +2508,6 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
         {
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-        //center channels for 2.4 Ghz 40 MHz channels
-        for( i = RF_CHAN_BOND_3; i <= RF_CHAN_BOND_11; i++ )
-        {
-            
->>>>>>> 657b0e9... prima update
             if( regChannels[i].enabled )
             {
                 channels40MHz[count].chanId = rfChannels[i].channelNum;
@@ -2989,14 +2518,10 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
         for( i = RF_CHAN_BOND_38; i <= RF_CHAN_BOND_163; i++ )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            
->>>>>>> 657b0e9... prima update
             if( regChannels[i].enabled )
             {
                 channels40MHz[count].chanId = rfChannels[i].channelNum;
@@ -3004,13 +2529,9 @@ VOS_STATUS vos_nv_getChannelListWithPower(tChannelListWithPower *channels20MHz /
             }
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
         *num40MHzChannelsFound = (tANI_U8)count;
     }
     return (status);
@@ -3053,25 +2574,17 @@ VOS_STATUS vos_nv_getSupportedChannels( v_U8_t *p20MhzChannels, int *pNum20MhzCh
                 p20MhzChannels[count++] = rfChannels[i].channelNum;
             }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
             for( i = RF_CHAN_36; i <= RF_CHAN_165; i++ )
             {
                 p20MhzChannels[count++] = rfChannels[i].channelNum;
             }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
             status = VOS_STATUS_SUCCESS;
         }
         *pNum20MhzChannels = count;
@@ -3089,14 +2602,10 @@ VOS_STATUS vos_nv_getSupportedChannels( v_U8_t *p20MhzChannels, int *pNum20MhzCh
 VOS_STATUS vos_nv_readDefaultCountryTable( uNvTables *tableData )
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
    
    VOS_STATUS status;
 
    status = vos_nv_read( VNV_DEFAULT_LOCATION, tableData, NULL, sizeof(sDefaultCountry) );
-<<<<<<< HEAD
 
 =======
 
@@ -3106,22 +2615,15 @@ VOS_STATUS vos_nv_readDefaultCountryTable( uNvTables *tableData )
             tableData->defaultCountryTable.countryCode[0],
             tableData->defaultCountryTable.countryCode[1]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
    return status;
 }
 
 /**------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
   \brief vos_nv_getBuffer - 
 =======
   \brief vos_nv_getBuffer -
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  \brief vos_nv_getBuffer - 
->>>>>>> 657b0e9... prima update
   \param pBuffer  - to return the buffer address
               pSize     - buffer size.
   \return status of the NV read operation
@@ -3130,13 +2632,9 @@ VOS_STATUS vos_nv_readDefaultCountryTable( uNvTables *tableData )
 VOS_STATUS vos_nv_getNVBuffer(v_VOID_t **pNvBuffer,v_SIZE_t *pSize)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
    /* Send the NV structure and size */
    *pNvBuffer = (v_VOID_t *)(&pnvEFSTable->halnv);
    *pSize = sizeof(sHalNv);
@@ -3144,7 +2642,6 @@ VOS_STATUS vos_nv_getNVBuffer(v_VOID_t **pNvBuffer,v_SIZE_t *pSize)
    return VOS_STATUS_SUCCESS;
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 /**------------------------------------------------------------------------
@@ -3167,28 +2664,32 @@ VOS_STATUS vos_nv_setRegDomain(void * clientCtxt, v_REGDOMAIN_t regId)
    /* Set correct channel information based on REG Domain */
    regChannels = pnvEFSTable->halnv.tables.regDomains[regId].channels;
 =======
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /**------------------------------------------------------------------------
-  \brief vos_nv_setRegDomain - 
-  \param clientCtxt  - Client Context, Not used for PRIMA
-              regId  - Regulatory Domain ID
-  \return status set REG domain operation
+  \brief vos_nv_getBuffer -
+  \param pBuffer  - to return the buffer address
+              pSize     - buffer size.
+  \return status of the NV read operation
   \sa
   -------------------------------------------------------------------------*/
-VOS_STATUS vos_nv_setRegDomain(void * clientCtxt, v_REGDOMAIN_t regId)
+VOS_STATUS vos_nv_getNVEncodedBuffer(v_VOID_t **pNvBuffer,v_SIZE_t *pSize)
 {
-   /* Client Context Argumant not used for PRIMA */
-   if(regId >= REGDOMAIN_COUNT)
+   /* Send the NV structure and size */
+   VOS_STATUS status;
+
+   status = vos_nv_isEmbeddedNV();
+
+   if (VOS_STATUS_SUCCESS == status)
    {
-      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                "VOS set reg domain, invalid REG domain ID %d", regId);
-      return VOS_STATUS_E_INVAL;
+      *pNvBuffer = (v_VOID_t *)(pEncodedBuf);
+      *pSize = nvReadEncodeBufSize;
+   }
+   else
+   {
+      *pNvBuffer = (v_VOID_t *)(&pnvEFSTable->halnv);
+      *pSize = sizeof(sHalNv);
    }
 >>>>>>> d97af3b... add prima wlan driver
 
-<<<<<<< HEAD
    return VOS_STATUS_SUCCESS;
 }
 
@@ -3218,16 +2719,61 @@ VOS_STATUS vos_nv_getNVDictionary(v_VOID_t **pNvBuffer,v_SIZE_t *pSize)
     /* Send the NV structure and size */
    *pNvBuffer = (v_VOID_t *)(pDictFile);
    *pSize = nDictionarySize;
-=======
+
+   return VOS_STATUS_SUCCESS;
+}
+
+VOS_STATUS vos_nv_isEmbeddedNV(v_VOID_t)
+{
+   if (MAGIC_NUMBER == magicNumber)
+   {
+      return VOS_STATUS_SUCCESS;
+   }
+
+   return VOS_STATUS_E_FAILURE;
+}
+
+VOS_STATUS vos_nv_setNVEncodedBuffer(v_U8_t *pNvBuffer, v_SIZE_t size)
+{
+    vos_mem_copy(pEncodedBuf, &pNvBuffer[sizeof(v_U32_t)],
+            (size-sizeof(v_U32_t)));
+
+    return VOS_STATUS_SUCCESS;
+}
+
+/**------------------------------------------------------------------------
+  \brief vos_nv_setRegDomain -
+  \param clientCtxt  - Client Context, Not used for PRIMA
+              regId  - Regulatory Domain ID
+  \return status set REG domain operation
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_setRegDomain(void * clientCtxt, v_REGDOMAIN_t regId)
+{
+    v_CONTEXT_t pVosContext = NULL;
+    hdd_context_t *pHddCtx = NULL;
+
+   /* Client Context Argumant not used for PRIMA */
+   if (regId >= REGDOMAIN_COUNT)
+   {
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                "VOS set reg domain, invalid REG domain ID %d", regId);
+      return VOS_STATUS_E_INVAL;
+   }
+
+   pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
+   if (NULL != pVosContext)
+      pHddCtx = vos_get_context(VOS_MODULE_ID_HDD, pVosContext);
+   else
+      return VOS_STATUS_E_EXISTS;
    /* Set correct channel information based on REG Domain */
    regChannels = pnvEFSTable->halnv.tables.regDomains[regId].channels;
->>>>>>> 657b0e9... prima update
 
    return VOS_STATUS_SUCCESS;
 }
 
 /**------------------------------------------------------------------------
-  \brief vos_nv_getChannelEnabledState - 
+  \brief vos_nv_getChannelEnabledState -
   \param rfChannel  - input channel enum to know evabled state
   \return eNVChannelEnabledType enabled state for channel
              * enabled
@@ -3257,20 +2803,15 @@ eNVChannelEnabledType vos_nv_getChannelEnabledState
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "vos_nv_getChannelEnabledState, invalid cahnnel %d", rfChannel);
 =======
                 "vos_nv_getChannelEnabledState, invalid channel %d", rfChannel);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "vos_nv_getChannelEnabledState, invalid cahnnel %d", rfChannel);
->>>>>>> 657b0e9... prima update
       return NV_CHANNEL_INVALID;
    }
 
    return regChannels[channelEnum].enabled;
 }
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
 =======
@@ -4249,6 +3790,3 @@ VOS_STATUS vos_nv_getRegDomainFromCountryCode( v_REGDOMAIN_t *pRegDomain,
 
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update

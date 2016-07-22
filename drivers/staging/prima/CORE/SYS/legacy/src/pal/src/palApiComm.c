@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -53,9 +50,6 @@
 #include "wlan_qct_wda.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
 // its not worth the time trying to get all the includes in place to get to
 // halMmhForwardMBmsg.  if I inlude halMnt.h, I get all kids of compile errros
@@ -64,12 +58,9 @@
 //#include <halMnt.h>
 
 
-<<<<<<< HEAD
 =======
 #ifndef FEATURE_WLAN_PAL_MEM_DISABLE
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef MEMORY_DEBUG
 eHalStatus palAllocateMemory_debug( tHddHandle hHdd, void **ppMemory, tANI_U32 numBytes, char* fileName, tANI_U32 lineNum )
@@ -131,14 +122,10 @@ tANI_BOOLEAN palEqualMemory( tHddHandle hHdd, void *pMemory1, void *pMemory2, tA
    return( vos_mem_compare( pMemory1, pMemory2, numBytes ) );
 }   
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
 eHalStatus palPktAlloc(tHddHandle hHdd, eFrameType frmType, tANI_U16 size, void **data, void **ppPacket)
 {
@@ -338,14 +325,10 @@ eHalStatus palSendMBMessage(tHddHandle hHdd, void *pBuf)
    {
       VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: invalid vosContext", __FUNCTION__);
 =======
                 "%s: invalid vosContext", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: invalid vosContext", __FUNCTION__);
->>>>>>> 657b0e9... prima update
    }
    else
    {
@@ -354,14 +337,10 @@ eHalStatus palSendMBMessage(tHddHandle hHdd, void *pBuf)
       {
          VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "%s: invalid hHal", __FUNCTION__);
 =======
                    "%s: invalid hHal", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "%s: invalid hHal", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -374,14 +353,10 @@ eHalStatus palSendMBMessage(tHddHandle hHdd, void *pBuf)
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    palFreeMemory( hHdd, pBuf );
 =======
    vos_mem_free( pBuf );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   palFreeMemory( hHdd, pBuf );
->>>>>>> 657b0e9... prima update
 
    return( halStatus );
 }

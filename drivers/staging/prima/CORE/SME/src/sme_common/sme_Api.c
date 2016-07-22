@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -79,17 +76,11 @@
   ------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halInternal.h"
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halInternal.h"
-#endif
->>>>>>> 657b0e9... prima update
 
 #include "smsDebug.h"
 #include "sme_Api.h"
@@ -98,7 +89,6 @@
 #include "csrInternal.h"
 #include "wlan_qct_wda.h"
 #include "halMsgApi.h"
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 #ifdef WLAN_SOFTAP_FEATURE
@@ -114,27 +104,17 @@ extern tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 #endif
 =======
 #include "vos_trace.h"
-=======
-
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 #include "sapApi.h"
-#endif
 
 
 
-#if !defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
 extern tSirRetStatus uMacPostCtrlMsg(void* pSirGlobal, tSirMbMsg* pMb);
 
 #include <wlan_qct_pal_api.h>
-<<<<<<< HEAD
 #define LOG_SIZE 256
 #define READ_MEMORY_DUMP_CMD     9
 #define TL_INIT_STATE            0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 // TxMB Functions
 extern eHalStatus pmcPrepareCommand( tpAniSirGlobal pMac, eSmeCommandType cmdType, void *pvParam,
@@ -142,13 +122,9 @@ extern eHalStatus pmcPrepareCommand( tpAniSirGlobal pMac, eSmeCommandType cmdTyp
 extern void pmcReleaseCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand );
 extern void qosReleaseCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand );
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 extern eHalStatus p2pProcessRemainOnChannelCmd(tpAniSirGlobal pMac, tSmeCmd *p2pRemainonChn);
 extern eHalStatus sme_remainOnChnRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg);
 extern eHalStatus sme_mgmtFrmInd( tHalHandle hHal, tpSirSmeMgmtFrameInd pSmeMgmtFrm);
@@ -156,13 +132,9 @@ extern eHalStatus sme_remainOnChnReady( tHalHandle hHal, tANI_U8* pMsg);
 extern eHalStatus sme_sendActionCnf( tHalHandle hHal, tANI_U8* pMsg);
 extern eHalStatus p2pProcessNoAReq(tpAniSirGlobal pMac, tSmeCmd *pNoACmd);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 static eHalStatus initSmeCmdList(tpAniSirGlobal pMac);
 static void smeAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEAN fStopping );
@@ -180,7 +152,6 @@ tANI_BOOLEAN csrIsScanAllowed(tpAniSirGlobal pMac);
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
 eHalStatus sme_UnprotectedMgmtFrmInd( tHalHandle hHal,
@@ -188,8 +159,6 @@ eHalStatus sme_UnprotectedMgmtFrmInd( tHalHandle hHal,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 //Internal SME APIs
 eHalStatus sme_AcquireGlobalLock( tSmeStruct *psSme)
 {
@@ -229,7 +198,6 @@ static eHalStatus initSmeCmdList(tpAniSirGlobal pMac)
     eHalStatus status;
     tSmeCmd *pCmd;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     pMac->sme.totalSmeCmd = SME_TOTAL_COMMAND;
     if(HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd, &pMac->sme.smeCmdActiveList)))
@@ -256,31 +224,47 @@ static eHalStatus initSmeCmdList(tpAniSirGlobal pMac)
 
 =======
     tANI_U32 cmd_idx;
-=======
->>>>>>> 657b0e9... prima update
 
     pMac->sme.totalSmeCmd = SME_TOTAL_COMMAND;
-    if(HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd, &pMac->sme.smeCmdActiveList)))
-    {
-        if(HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd, &pMac->sme.smeCmdPendingList)))
-        {
-            if(HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd, &pMac->sme.smeCmdFreeList)))
-            {
-                status = palAllocateMemory(pMac->hHdd, (void **)&pCmd, sizeof(tSmeCmd) * pMac->sme.totalSmeCmd);
-                if(HAL_STATUS_SUCCESS(status))
-                {
-                    tANI_U32 c;
+    if (!HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd,
+                           &pMac->sme.smeCmdActiveList)))
+       goto end;
 
-                    palZeroMemory(pMac->hHdd, pCmd, sizeof(tSmeCmd) * pMac->sme.totalSmeCmd);
-                    pMac->sme.pSmeCmdBufAddr = pCmd;
-                    for(c = 0; c < pMac->sme.totalSmeCmd; c++)
-                    {
-                        csrLLInsertTail(&pMac->sme.smeCmdFreeList, &pCmd[c].Link, LL_ACCESS_LOCK);
-                    }
-                }
-            }
-        }
+    if (!HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd,
+                           &pMac->sme.smeCmdPendingList)))
+       goto end;
+
+    if (!HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd,
+                           &pMac->sme.smeScanCmdActiveList)))
+       goto end;
+
+    if (!HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd,
+                                            &pMac->sme.smeScanCmdPendingList)))
+       goto end;
+
+    if (!HAL_STATUS_SUCCESS(status = csrLLOpen(pMac->hHdd,
+                                             &pMac->sme.smeCmdFreeList)))
+       goto end;
+
+    status = palAllocateMemory(pMac->hHdd,
+                               (void **)&pCmd,
+                               sizeof(tSmeCmd) * pMac->sme.totalSmeCmd);
+    if (!HAL_STATUS_SUCCESS(status))
+       goto end;
+
+    palZeroMemory(pMac->hHdd, pCmd,
+                  sizeof(tSmeCmd) * pMac->sme.totalSmeCmd);
+    pMac->sme.pSmeCmdBufAddr = pCmd;
+    for (cmd_idx = 0; cmd_idx < pMac->sme.totalSmeCmd; cmd_idx++)
+    {
+        csrLLInsertTail(&pMac->sme.smeCmdFreeList,
+                        &pCmd[cmd_idx].Link, LL_ACCESS_LOCK);
     }
+
+end:
+    if (!HAL_STATUS_SUCCESS(status))
+       smsLog(pMac, LOGE, "failed to initialize sme command list:%d\n",
+              status);
 
 >>>>>>> d97af3b... add prima wlan driver
     return (status);
@@ -315,7 +299,6 @@ static void purgeSmeCmdList(tpAniSirGlobal pMac)
     smeReleaseCmdList(pMac, &pMac->sme.smeCmdPendingList);
     smeReleaseCmdList(pMac, &pMac->sme.smeCmdActiveList);
 <<<<<<< HEAD
-<<<<<<< HEAD
 }
 
 void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId)
@@ -327,23 +310,14 @@ void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId)
 void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId,
         tDblLinkList *pList)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}
-
-void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId)
->>>>>>> 657b0e9... prima update
 {
     //release any out standing commands back to free command list
     tListElem *pEntry, *pNext;
     tSmeCmd *pCommand;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tDblLinkList *pList = &pMac->sme.smeCmdPendingList;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tDblLinkList *pList = &pMac->sme.smeCmdPendingList;
->>>>>>> 657b0e9... prima update
     tDblLinkList localList;
 
     vos_mem_zero(&localList, sizeof(tDblLinkList));
@@ -377,13 +351,9 @@ void purgeSmeSessionCmdList(tpAniSirGlobal pMac, tANI_U32 sessionId)
     }
     csrLLClose(&localList);
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 }
 
 
@@ -394,7 +364,6 @@ static eHalStatus freeSmeCmdList(tpAniSirGlobal pMac)
     purgeSmeCmdList(pMac);
     csrLLClose(&pMac->sme.smeCmdPendingList);
     csrLLClose(&pMac->sme.smeCmdActiveList);
-<<<<<<< HEAD
 <<<<<<< HEAD
     csrLLClose(&pMac->sme.smeCmdFreeList);
 
@@ -412,17 +381,12 @@ static eHalStatus freeSmeCmdList(tpAniSirGlobal pMac)
     }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    csrLLClose(&pMac->sme.smeCmdFreeList);
-
->>>>>>> 657b0e9... prima update
     if(NULL != pMac->sme.pSmeCmdBufAddr)
     {
         status = palFreeMemory(pMac->hHdd, pMac->sme.pSmeCmdBufAddr);
         pMac->sme.pSmeCmdBufAddr = NULL;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     status = vos_lock_release(&pMac->sme.lkSmeGlobalLock);
@@ -433,8 +397,6 @@ static eHalStatus freeSmeCmdList(tpAniSirGlobal pMac)
     }
 done:
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     return (status);
 }
 
@@ -458,27 +420,19 @@ void dumpCsrCommandInfo(tpAniSirGlobal pMac, tSmeCmd *pCmd)
 
     case eSmeCommandSetKey:
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog( pMac, LOGE, " setKey command auth(%d) enc(%d)", 
 =======
         smsLog( pMac, LOGE, " setKey command auth(%d) enc(%d)",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog( pMac, LOGE, " setKey command auth(%d) enc(%d)", 
->>>>>>> 657b0e9... prima update
                         pCmd->u.setKeyCmd.authType, pCmd->u.setKeyCmd.encType );
         break;
 
     case eSmeCommandRemoveKey:
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog( pMac, LOGE, " removeKey command auth(%d) enc(%d)", 
 =======
         smsLog( pMac, LOGE, " removeKey command auth(%d) enc(%d)",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog( pMac, LOGE, " removeKey command auth(%d) enc(%d)", 
->>>>>>> 657b0e9... prima update
                         pCmd->u.removeKeyCmd.authType, pCmd->u.removeKeyCmd.encType );
         break;
 
@@ -512,14 +466,10 @@ tSmeCmd *smeGetCommandBuffer( tpAniSirGlobal pMac )
            pTempCmd = GET_BASE_ADDR( pEntry, tSmeCmd, Link );
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog( pMac, LOGE, "Out of command buffer.... command (0x%X) stuck\n", 
 =======
         smsLog( pMac, LOGE, "Out of command buffer.... command (0x%X) stuck",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog( pMac, LOGE, "Out of command buffer.... command (0x%X) stuck\n", 
->>>>>>> 657b0e9... prima update
            (pTempCmd) ? pTempCmd->command : eSmeNoCommand );
         if(pTempCmd)
         {
@@ -537,14 +487,10 @@ tSmeCmd *smeGetCommandBuffer( tpAniSirGlobal pMac )
         {
             pTempCmd = GET_BASE_ADDR( pEntry, tSmeCmd, Link );
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog( pMac, LOGE, "Out of command buffer.... SME pending command #%d (0x%X)\n",
 =======
             smsLog( pMac, LOGE, "Out of command buffer.... SME pending command #%d (0x%X)",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog( pMac, LOGE, "Out of command buffer.... SME pending command #%d (0x%X)\n",
->>>>>>> 657b0e9... prima update
                     idx++, pTempCmd->command );
             if( eSmeCsrCommandMask & pTempCmd->command )
             {
@@ -562,14 +508,10 @@ tSmeCmd *smeGetCommandBuffer( tpAniSirGlobal pMac )
         {
             pTempCmd = GET_BASE_ADDR( pEntry, tSmeCmd, Link );
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog( pMac, LOGE, "Out of command buffer.... CSR pending command #%d (0x%X)\n",
 =======
             smsLog( pMac, LOGE, "Out of command buffer.... CSR pending command #%d (0x%X)",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog( pMac, LOGE, "Out of command buffer.... CSR pending command #%d (0x%X)\n",
->>>>>>> 657b0e9... prima update
                     idx++, pTempCmd->command );
             dumpCsrCommandInfo(pMac, pTempCmd);
             pEntry = csrLLNext( &pMac->roam.roamCmdPendingList, pEntry, LL_ACCESS_NOLOCK );
@@ -626,22 +568,16 @@ static eSmeCommandType smeIsFullPowerNeeded( tpAniSirGlobal pMac, tSmeCmd *pComm
         if(fFullPowerNeeded) break;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P
         fFullPowerNeeded = (pmcState == IMPS && 
                             eSmeCommandRemainOnChannel == pCommand->command);
         if(fFullPowerNeeded) break;
 #endif
-<<<<<<< HEAD
 =======
         fFullPowerNeeded = (pmcState == IMPS && 
                             eSmeCommandRemainOnChannel == pCommand->command);
         if(fFullPowerNeeded) break;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     } while(0);
 
     if( fFullPowerNeeded )
@@ -690,13 +626,9 @@ static void smeAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEA
         switch( pCommand->command )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
             case eSmeCommandRemainOnChannel:
                 if (NULL != pCommand->u.remainChlCmd.callback)
                 {
@@ -712,13 +644,9 @@ static void smeAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEA
                 smeReleaseCommand( pMac, pCommand );
                 break;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
             default:
                 smeReleaseCommand( pMac, pCommand );
                 break;
@@ -726,7 +654,6 @@ static void smeAbortCommand( tpAniSirGlobal pMac, tSmeCmd *pCommand, tANI_BOOLEA
     }
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -844,9 +771,6 @@ end:
     return status;
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
 tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
 {
@@ -855,13 +779,10 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
     tListElem *pEntry;
     tSmeCmd *pCommand;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tListElem *pSmeEntry;
     tSmeCmd *pSmeCommand;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     eSmeCommandType pmcCommand = eSmeNoCommand;
 
     // if the ActiveList is empty, then nothing is active so we can process a
@@ -872,7 +793,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
     {
         if(!csrLLIsListEmpty(&pMac->sme.smeCmdPendingList, LL_ACCESS_LOCK))
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
             //Peek the command
             pEntry = csrLLPeekHead( &pMac->sme.smeCmdPendingList, LL_ACCESS_LOCK );
@@ -903,25 +823,20 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                 }
             }
 
-=======
->>>>>>> 657b0e9... prima update
             //Peek the command
             pEntry = csrLLPeekHead( &pMac->sme.smeCmdPendingList, LL_ACCESS_LOCK );
+sme_process_cmd:
             if( pEntry )
             {
                 pCommand = GET_BASE_ADDR( pEntry, tSmeCmd, Link );
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                 //We cannot execute any command in wait-for-key state until setKey is through.
                 if( CSR_IS_WAIT_FOR_KEY( pMac, pCommand->sessionId ) )
                 {
                     if( !CSR_IS_SET_KEY_COMMAND( pCommand ) )
                     {
                         csrLLUnlock( &pMac->sme.smeCmdActiveList );
-<<<<<<< HEAD
 <<<<<<< HEAD
                         smsLog(pMac, LOGE, "  Cannot process command(%d) while waiting for key\n", pCommand->command);
                         return ( eANI_BOOLEAN_FALSE );
@@ -930,10 +845,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                         fContinue = eANI_BOOLEAN_FALSE;
                         goto sme_process_scan_queue;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        smsLog(pMac, LOGE, "  Cannot process command(%d) while waiting for key\n", pCommand->command);
-                        return ( eANI_BOOLEAN_FALSE );
->>>>>>> 657b0e9... prima update
                     }
                 }
                 pmcCommand = smeIsFullPowerNeeded( pMac, pCommand );
@@ -947,15 +858,11 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                     csrLLUnlock( &pMac->sme.smeCmdActiveList );
                     //tell caller to continue
 <<<<<<< HEAD
-<<<<<<< HEAD
                     return (eANI_BOOLEAN_TRUE);
 =======
                     fContinue = eANI_BOOLEAN_TRUE;
                     goto sme_process_scan_queue;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    return (eANI_BOOLEAN_TRUE);
->>>>>>> 657b0e9... prima update
                 }
                 else if( eSmeNoCommand != pmcCommand )
                 {
@@ -991,7 +898,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                     {
                         csrLLUnlock( &pMac->sme.smeCmdActiveList );
 <<<<<<< HEAD
-<<<<<<< HEAD
                         smsLog( pMac, LOGE, FL(  "Cannot issue command(0x%X) to wake up the chip. Status = %d\n"), pmcCommand, status );
                         //Let it retry
                         fContinue = eANI_BOOLEAN_TRUE;
@@ -1004,13 +910,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                     }
                     goto sme_process_scan_queue;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        smsLog( pMac, LOGE, FL(  "Cannot issue command(0x%X) to wake up the chip. Status = %d\n"), pmcCommand, status );
-                        //Let it retry
-                        fContinue = eANI_BOOLEAN_TRUE;
-                    }
-                    return fContinue;
->>>>>>> 657b0e9... prima update
                 }
                 if ( csrLLRemoveEntry( &pMac->sme.smeCmdPendingList, pEntry, LL_ACCESS_LOCK ) )
                 {
@@ -1033,7 +932,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                             csrLLUnlock( &pMac->sme.smeCmdActiveList );
                             status  = csrRoamProcessCommand( pMac, pCommand );
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
                             if(!HAL_STATUS_SUCCESS(status))
                             {
@@ -1044,8 +942,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                                 }
                             }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                             break;
 
                         case eSmeCommandWmStatusChange:
@@ -1095,13 +991,9 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                             break;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
                         case eSmeCommandRemainOnChannel:
                             csrLLUnlock(&pMac->sme.smeCmdActiveList);
                             p2pProcessRemainOnChannelCmd(pMac, pCommand);
@@ -1110,13 +1002,9 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                             csrLLUnlock( &pMac->sme.smeCmdActiveList );
                             p2pProcessNoAReq(pMac,pCommand);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
                         case eSmeCommandEnterImps:
                         case eSmeCommandExitImps:
                         case eSmeCommandEnterBmps:
@@ -1201,14 +1089,10 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                                 {
                                     csrLLUnlock( &pMac->sme.smeCmdActiveList );
 <<<<<<< HEAD
-<<<<<<< HEAD
                                     smsLog( pMac, LOGE, FL(" failed to remove standby command\n") );
 =======
                                     smsLog( pMac, LOGE, FL(" failed to remove standby command") );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                    smsLog( pMac, LOGE, FL(" failed to remove standby command\n") );
->>>>>>> 657b0e9... prima update
                                     VOS_ASSERT(0);
                                 }
                             }
@@ -1233,7 +1117,6 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
 #endif
                             break;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
                         case eSmeCommandTdlsSendMgmt:     
@@ -1257,21 +1140,15 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
                             break ;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
                         default:
                             //something is wrong
                             //remove it from the active list
 <<<<<<< HEAD
-<<<<<<< HEAD
                             smsLog(pMac, LOGE, " csrProcessCommand processes an unknown command %d\n", pCommand->command);
 =======
                             smsLog(pMac, LOGE, " csrProcessCommand processes an unknown command %d", pCommand->command);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            smsLog(pMac, LOGE, " csrProcessCommand processes an unknown command %d\n", pCommand->command);
->>>>>>> 657b0e9... prima update
                             pEntry = csrLLRemoveHead( &pMac->sme.smeCmdActiveList, LL_ACCESS_NOLOCK );
                             csrLLUnlock( &pMac->sme.smeCmdActiveList );
                             pCommand = GET_BASE_ADDR( pEntry, tSmeCmd, Link );
@@ -1317,15 +1194,12 @@ tANI_BOOLEAN smeProcessCommand( tpAniSirGlobal pMac )
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 sme_process_scan_queue:
     if (pMac->fScanOffload && !(smeProcessScanQueue(pMac)))
         fContinue = eANI_BOOLEAN_FALSE;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     return ( fContinue );
 }
 
@@ -1355,14 +1229,10 @@ tANI_BOOLEAN smeCommandPending(tpAniSirGlobal pMac)
   smeOpen must be called before any other SME APIs can be involved.
   smeOpen must be called after macOpen.
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
   \param hHal - The handle returned by macOpen.
 
   \return eHAL_STATUS_SUCCESS - SME is successfully initialized.
@@ -1379,7 +1249,6 @@ eHalStatus sme_Open(tHalHandle hHal)
    do {
       pMac->sme.state = SME_STATE_STOP;
 <<<<<<< HEAD
-<<<<<<< HEAD
       if( !VOS_IS_STATUS_SUCCESS( vos_lock_init( &pMac->sme.lkSmeGlobalLock ) ) )
       {
           smsLog( pMac, LOGE, "sme_Open failed init lock\n" );
@@ -1389,11 +1258,6 @@ eHalStatus sme_Open(tHalHandle hHal)
       {
           smsLog( pMac, LOGE, "sme_Open failed init lock" );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      if( !VOS_IS_STATUS_SUCCESS( vos_lock_init( &pMac->sme.lkSmeGlobalLock ) ) )
-      {
-          smsLog( pMac, LOGE, "sme_Open failed init lock\n" );
->>>>>>> 657b0e9... prima update
           status = eHAL_STATUS_FAILURE;
           break;
       }
@@ -1420,15 +1284,12 @@ eHalStatus sme_Open(tHalHandle hHal)
       }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
       pMac->isTdlsPowerSaveProhibited = 0;
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifndef WLAN_MDM_CODE_REDUCTION_OPT
       status = sme_QosOpen(pMac);
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
@@ -1457,13 +1318,9 @@ eHalStatus sme_Open(tHalHandle hHal)
           break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
       {
          v_PVOID_t pvosGCtx = vos_get_global_context(VOS_MODULE_ID_SAP, NULL);
          if ( NULL == pvosGCtx ){
@@ -1480,13 +1337,9 @@ eHalStatus sme_Open(tHalHandle hHal)
          }
       }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 #if defined WLAN_FEATURE_VOWIFI
       status = rrmOpen(pMac);
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
@@ -1500,18 +1353,12 @@ eHalStatus sme_Open(tHalHandle hHal)
       sme_FTOpen(pMac);
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
       sme_p2pOpen(pMac);
 #endif
 =======
       sme_p2pOpen(pMac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined WLAN_FEATURE_P2P
-      sme_p2pOpen(pMac);
-#endif
->>>>>>> 657b0e9... prima update
 
    }while (0);
 
@@ -1519,13 +1366,9 @@ eHalStatus sme_Open(tHalHandle hHal)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /*--------------------------------------------------------------------------
 
   \brief sme_set11dinfo() - Set the 11d information about valid channels
@@ -1533,14 +1376,10 @@ eHalStatus sme_Open(tHalHandle hHal)
    This function is called only for AP.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
 
   \param hHal - The handle returned by macOpen.
   \Param pSmeConfigParams - a pointer to a caller allocated object of
@@ -1566,14 +1405,10 @@ eHalStatus sme_set11dinfo(tHalHandle hHal,  tpSmeConfigParams pSmeConfigParams)
    status = csrSetChannels(hHal, &pSmeConfigParams->csrConfig );
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "csrChangeDefaultConfigParam failed with status=%d\n",
 =======
       smsLog( pMac, LOGE, "csrChangeDefaultConfigParam failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "csrChangeDefaultConfigParam failed with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
    }
     return status;
@@ -1584,14 +1419,10 @@ eHalStatus sme_set11dinfo(tHalHandle hHal,  tpSmeConfigParams pSmeConfigParams)
   \brief sme_getSoftApDomain() - Get the current regulatory domain of softAp.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
 
   \param hHal - The handle returned by HostapdAdapter.
   \Param v_REGDOMAIN_t - The current Regulatory Domain requested for SoftAp.
@@ -1632,27 +1463,19 @@ eHalStatus sme_setRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode)
    status = csrSetRegInfo(hHal, apCntryCode );
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "csrSetRegInfo failed with status=%d\n",
 =======
       smsLog( pMac, LOGE, "csrSetRegInfo failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "csrSetRegInfo failed with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
    }
     return status;
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_SCAN_PNO
 /*--------------------------------------------------------------------------
 
@@ -1662,14 +1485,10 @@ eHalStatus sme_setRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode)
   configuration. 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
 
   \param hHal - The handle returned by macOpen.
   
@@ -1699,14 +1518,10 @@ eHalStatus sme_UpdateChannelConfig(tHalHandle hHal)
   Modules inside SME apply the new configuration at the next transaction.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
 
   \param hHal - The handle returned by macOpen.
   \Param pSmeConfigParams - a pointer to a caller allocated object of
@@ -1733,14 +1548,10 @@ eHalStatus sme_UpdateConfig(tHalHandle hHal, tpSmeConfigParams pSmeConfigParams)
 
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "csrChangeDefaultConfigParam failed with status=%d\n",
 =======
       smsLog( pMac, LOGE, "csrChangeDefaultConfigParam failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "csrChangeDefaultConfigParam failed with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
    }
 #if defined WLAN_FEATURE_P2P_INTERNAL
@@ -1748,14 +1559,10 @@ eHalStatus sme_UpdateConfig(tHalHandle hHal, tpSmeConfigParams pSmeConfigParams)
 
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "p2pChangeDefaultConfigParam failed with status=%d\n",
 =======
       smsLog( pMac, LOGE, "p2pChangeDefaultConfigParam failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "p2pChangeDefaultConfigParam failed with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
    }
 #endif
@@ -1764,14 +1571,10 @@ eHalStatus sme_UpdateConfig(tHalHandle hHal, tpSmeConfigParams pSmeConfigParams)
 
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "rrmChangeDefaultConfigParam failed with status=%d\n",
 =======
       smsLog( pMac, LOGE, "rrmChangeDefaultConfigParam failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "rrmChangeDefaultConfigParam failed with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
    }
 #endif
@@ -1779,25 +1582,18 @@ eHalStatus sme_UpdateConfig(tHalHandle hHal, tpSmeConfigParams pSmeConfigParams)
    //We don't want to apply global CFG in connect state because that may cause some side affect
    if(
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
       //For the new init sequence, CFGs need to apply before vos_start is call
       //No need to wait for ready state.
       SME_IS_READY(pMac) && 
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       csrIsAllSessionDisconnected( pMac) )
    {
        csrSetGlobalCfgs(pMac);
    }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
    return status;
 }
@@ -1847,11 +1643,6 @@ void sme_ProcessGetGtkInfoRsp( tHalHandle hHal,
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   return status;
-}
-
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn sme_ChangeConfigParams
     \brief The SME API exposed for HDD to provide config params to SME during
@@ -1863,14 +1654,10 @@ void sme_ProcessGetGtkInfoRsp( tHalHandle hHal,
     other params (PMC, QoS) which needs to be initialized again at reset.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
 
     \param hHal - The handle returned by macOpen.
 
@@ -1891,14 +1678,10 @@ eHalStatus sme_ChangeConfigParams(tHalHandle hHal,
    if (NULL == pUpdateConfigParam ) {
       smsLog( pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "Empty config param structure for SME, nothing to reset\n");
 =======
               "Empty config param structure for SME, nothing to reset");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "Empty config param structure for SME, nothing to reset\n");
->>>>>>> 657b0e9... prima update
       return status;
    }
 
@@ -1906,14 +1689,10 @@ eHalStatus sme_ChangeConfigParams(tHalHandle hHal,
 
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "csrUpdateConfigParam failed with status=%d\n",
 =======
       smsLog( pMac, LOGE, "csrUpdateConfigParam failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "csrUpdateConfigParam failed with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
    }
 
@@ -1930,14 +1709,10 @@ eHalStatus sme_ChangeConfigParams(tHalHandle hHal,
   enable the NIC to running state.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
   \param hHal - The handle returned by macOpen.
 
   \return eHAL_STATUS_SUCCESS - eWNI_SME_SYS_READY_IND is sent to PE
@@ -1959,17 +1734,11 @@ eHalStatus sme_HDDReadyInd(tHalHandle hHal)
    do
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
       csrSetGlobalCfgs( pMac );
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-      csrSetGlobalCfgs( pMac );
-#endif
->>>>>>> 657b0e9... prima update
 
       Msg.messageType = eWNI_SME_SYS_READY_IND;
       Msg.length      = sizeof( tSirSmeReadyReq );
@@ -1990,14 +1759,10 @@ eHalStatus sme_HDDReadyInd(tHalHandle hHal)
       if ( ! HAL_STATUS_SUCCESS( status ) )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          smsLog( pMac, LOGE, "pmcQueryPowerState failed with status=%d\n",
 =======
          smsLog( pMac, LOGE, "pmcQueryPowerState failed with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog( pMac, LOGE, "pmcQueryPowerState failed with status=%d\n",
->>>>>>> 657b0e9... prima update
                  status );
          break;
       }
@@ -2009,28 +1774,20 @@ eHalStatus sme_HDDReadyInd(tHalHandle hHal)
          if ( ! HAL_STATUS_SUCCESS( status ) )
          {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog( pMac, LOGE, "csrReady failed with status=%d\n", status );
 =======
             smsLog( pMac, LOGE, "csrReady failed with status=%d", status );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog( pMac, LOGE, "csrReady failed with status=%d\n", status );
->>>>>>> 657b0e9... prima update
             break;
          }
          status = pmcReady(hHal);
          if ( ! HAL_STATUS_SUCCESS( status ) )
          {
 <<<<<<< HEAD
-<<<<<<< HEAD
              smsLog( pMac, LOGE, "pmcReady failed with status=%d\n", status );
 =======
              smsLog( pMac, LOGE, "pmcReady failed with status=%d", status );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             smsLog( pMac, LOGE, "pmcReady failed with status=%d\n", status );
->>>>>>> 657b0e9... prima update
              break;
          }
 #ifndef WLAN_MDM_CODE_REDUCTION_OPT
@@ -2038,14 +1795,10 @@ eHalStatus sme_HDDReadyInd(tHalHandle hHal)
          {
              status = eHAL_STATUS_FAILURE;
 <<<<<<< HEAD
-<<<<<<< HEAD
              smsLog( pMac, LOGE, "btcReady failed\n");
 =======
              smsLog( pMac, LOGE, "btcReady failed");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             smsLog( pMac, LOGE, "btcReady failed\n");
->>>>>>> 657b0e9... prima update
              break;
          }
 #endif
@@ -2055,14 +1808,10 @@ eHalStatus sme_HDDReadyInd(tHalHandle hHal)
          {
              status = eHAL_STATUS_FAILURE;
 <<<<<<< HEAD
-<<<<<<< HEAD
              smsLog( pMac, LOGE, "rrmReady failed\n");
 =======
              smsLog( pMac, LOGE, "rrmReady failed");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             smsLog( pMac, LOGE, "rrmReady failed\n");
->>>>>>> 657b0e9... prima update
              break;
          }
 #endif
@@ -2080,14 +1829,10 @@ eHalStatus sme_HDDReadyInd(tHalHandle hHal)
   The function starts each module in SME, PMC, CCM, CSR, etc. . Upon
   successfully return, all modules are ready to run.
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
   \param hHal - The handle returned by macOpen.
 
   \return eHAL_STATUS_SUCCESS - SME is ready.
@@ -2104,7 +1849,6 @@ eHalStatus sme_Start(tHalHandle hHal)
    do
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC 
       ccmStart(hHal);
 #endif
@@ -2116,14 +1860,6 @@ eHalStatus sme_Start(tHalHandle hHal)
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
          smsLog( pMac, LOGE, "csrStart failed during smeStart with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC 
-      ccmStart(hHal);
-#endif
-      status = csrStart(pMac);
-      if ( ! HAL_STATUS_SUCCESS( status ) ) {
-         smsLog( pMac, LOGE, "csrStart failed during smeStart with status=%d\n",
->>>>>>> 657b0e9... prima update
                  status );
          break;
       }
@@ -2131,20 +1867,15 @@ eHalStatus sme_Start(tHalHandle hHal)
       status = pmcStart(hHal);
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
          smsLog( pMac, LOGE, "pmcStart failed during smeStart with status=%d\n",
 =======
          smsLog( pMac, LOGE, "pmcStart failed during smeStart with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog( pMac, LOGE, "pmcStart failed during smeStart with status=%d\n",
->>>>>>> 657b0e9... prima update
                  status );
          break;
       }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
       status = WLANSAP_Start(vos_get_global_context(VOS_MODULE_ID_SAP, NULL));
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
@@ -2154,20 +1885,13 @@ eHalStatus sme_Start(tHalHandle hHal)
       }
 #endif
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
       status = WLANSAP_Start(vos_get_global_context(VOS_MODULE_ID_SAP, NULL));
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
-         smsLog( pMac, LOGE, "WLANSAP_Start failed during smeStart with status=%d\n",
+         smsLog( pMac, LOGE, "WLANSAP_Start failed during smeStart with status=%d",
                  status );
          break;
       }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
       pMac->sme.state = SME_STATE_START;
    }while (0);
 
@@ -2199,28 +1923,20 @@ eHalStatus sme_PCFilterMatchCountResponseHandler(tHalHandle hHal, void* pMsg)
     if (NULL == pMsg)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
 =======
         smsLog(pMac, LOGE, "in %s msg ptr is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         status = eHAL_STATUS_FAILURE;
     }
     else
     {
         smsLog(pMac, LOG2, "SME: entering "
 <<<<<<< HEAD
-<<<<<<< HEAD
             "sme_FilterMatchCountResponseHandler\n");
 =======
             "sme_FilterMatchCountResponseHandler");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "sme_FilterMatchCountResponseHandler\n");
->>>>>>> 657b0e9... prima update
 
         /* Call Packet Coalescing Filter Match Count callback routine. */
         if (pMac->pmc.FilterMatchCountCB != NULL)
@@ -2228,14 +1944,10 @@ eHalStatus sme_PCFilterMatchCountResponseHandler(tHalHandle hHal, void* pMsg)
                                           pRcvFltPktMatchRsp);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOG1, "%s: status=0x%x", __FUNCTION__,
 =======
         smsLog(pMac, LOG1, "%s: status=0x%x", __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOG1, "%s: status=0x%x", __FUNCTION__,
->>>>>>> 657b0e9... prima update
                pRcvFltPktMatchRsp->status);
 
         pMac->pmc.FilterMatchCountCB = NULL;
@@ -2247,7 +1959,6 @@ eHalStatus sme_PCFilterMatchCountResponseHandler(tHalHandle hHal, void* pMsg)
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
@@ -2279,8 +1990,6 @@ eHalStatus sme_UnprotectedMgmtFrmInd( tHalHandle hHal,
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*--------------------------------------------------------------------------
 
   \brief sme_ProcessMsg() - The main message processor for SME.
@@ -2289,14 +1998,10 @@ eHalStatus sme_UnprotectedMgmtFrmInd( tHalHandle hHal,
   targeted for SME.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
   \param hHal - The handle returned by macOpen.
   \param pMsg - A pointer to a caller allocated object of tSirMsgQ.
 
@@ -2313,14 +2018,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
 
    if (pMsg == NULL) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "Empty message for SME, nothing to process\n");
 =======
       smsLog( pMac, LOGE, "Empty message for SME, nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "Empty message for SME, nothing to process\n");
->>>>>>> 657b0e9... prima update
       return status;
    }
 
@@ -2348,14 +2049,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 vos_mem_free( pMsg->bodyptr );
              } else {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog( pMac, LOGE, "Empty rsp message for PMC, nothing to process\n");
 =======
                 smsLog( pMac, LOGE, "Empty rsp message for PMC, nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog( pMac, LOGE, "Empty rsp message for PMC, nothing to process\n");
->>>>>>> 657b0e9... prima update
              }
              break;
 
@@ -2372,14 +2069,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 vos_mem_free( pMsg->bodyptr );
              } else {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog( pMac, LOGE, "Empty rsp message for CCM, nothing to process\n");
 =======
                 smsLog( pMac, LOGE, "Empty rsp message for CCM, nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog( pMac, LOGE, "Empty rsp message for CCM, nothing to process\n");
->>>>>>> 657b0e9... prima update
              }
              break;
 
@@ -2398,14 +2091,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
 #endif
              } else {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog( pMac, LOGE, "Empty rsp message for QoS, nothing to process\n");
 =======
                 smsLog( pMac, LOGE, "Empty rsp message for QoS, nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog( pMac, LOGE, "Empty rsp message for QoS, nothing to process\n");
->>>>>>> 657b0e9... prima update
              }
              break;
 #if defined WLAN_FEATURE_VOWIFI
@@ -2413,14 +2102,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
           case eWNI_SME_BEACON_REPORT_REQ_IND:
 #if defined WLAN_VOWIFI_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
              smsLog( pMac, LOGE, "Received RRM message. Message Id = %d\n", pMsg->type );
 =======
              smsLog( pMac, LOGE, "Received RRM message. Message Id = %d", pMsg->type );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             smsLog( pMac, LOGE, "Received RRM message. Message Id = %d\n", pMsg->type );
->>>>>>> 657b0e9... prima update
 #endif
              if ( pMsg->bodyptr )
              {
@@ -2430,14 +2115,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
              else
              {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog( pMac, LOGE, "Empty message for RRM, nothing to process\n");
 =======
                 smsLog( pMac, LOGE, "Empty message for RRM, nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog( pMac, LOGE, "Empty message for RRM, nothing to process\n");
->>>>>>> 657b0e9... prima update
              }
              break;
 #endif
@@ -2453,14 +2134,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         smsLog( pMac, LOGE, "Empty rsp message for oemData_ (eWNI_SME_OEM_DATA_RSP), nothing to process\n");
 =======
                         smsLog( pMac, LOGE, "Empty rsp message for oemData_ (eWNI_SME_OEM_DATA_RSP), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        smsLog( pMac, LOGE, "Empty rsp message for oemData_ (eWNI_SME_OEM_DATA_RSP), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 smeProcessPendingQueue( pMac );
                 break;
@@ -2475,14 +2152,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_ADD_STA_SELF_RSP), nothing to process\n");
 =======
                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_ADD_STA_SELF_RSP), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_ADD_STA_SELF_RSP), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
           case eWNI_SME_DEL_STA_SELF_RSP:
@@ -2494,7 +2167,6 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_DEL_STA_SELF_RSP), nothing to process\n");
                 }
                 break;
@@ -2504,12 +2176,6 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 }
                 break;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_DEL_STA_SELF_RSP), nothing to process\n");
-                }
-                break;
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
           case eWNI_SME_REMAIN_ON_CHN_RSP:
                 if(pMsg->bodyptr)
                 {
@@ -2519,14 +2185,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_REMAIN_ON_CHN_RSP), nothing to process\n");
 =======
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_REMAIN_ON_CHN_RSP), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_REMAIN_ON_CHN_RSP), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
           case eWNI_SME_REMAIN_ON_CHN_RDY_IND:
@@ -2538,14 +2200,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_REMAIN_ON_CHN_RDY_IND), nothing to process\n");
 =======
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_REMAIN_ON_CHN_RDY_IND), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_REMAIN_ON_CHN_RDY_IND), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
            case eWNI_SME_MGMT_FRM_IND:
@@ -2557,14 +2215,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 { 
 <<<<<<< HEAD
-<<<<<<< HEAD
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_MGMT_FRM_IND), nothing to process\n");
 =======
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_MGMT_FRM_IND), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_MGMT_FRM_IND), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
            case eWNI_SME_ACTION_FRAME_SEND_CNF:
@@ -2576,7 +2230,6 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                     smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_ACTION_FRAME_SEND_CNF), nothing to process\n");
                 }
                 break;
@@ -2586,12 +2239,6 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 }
                 break;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog( pMac, LOGE, "Empty rsp message for meas (eWNI_SME_ACTION_FRAME_SEND_CNF), nothing to process\n");
-                }
-                break;
-#endif
->>>>>>> 657b0e9... prima update
           case eWNI_SME_COEX_IND:
                 if(pMsg->bodyptr)
                 {
@@ -2601,14 +2248,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_COEX_IND), nothing to process\n");
 =======
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_COEX_IND), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_COEX_IND), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;    
 
@@ -2622,14 +2265,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_PREF_NETWORK_FOUND_IND), nothing to process\n");
 =======
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_PREF_NETWORK_FOUND_IND), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_PREF_NETWORK_FOUND_IND), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
 #endif // FEATURE_WLAN_SCAN_PNO
@@ -2650,14 +2289,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_COEX_IND), nothing to process\n");
 =======
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_COEX_IND), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_COEX_IND), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
 
@@ -2672,14 +2307,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 {
                    smsLog(pMac, LOGE, "Empty rsp message for meas "
 <<<<<<< HEAD
-<<<<<<< HEAD
                           "(PACKET_COALESCING_FILTER_MATCH_COUNT_RSP), nothing to process\n");
 =======
                           "(PACKET_COALESCING_FILTER_MATCH_COUNT_RSP), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          "(PACKET_COALESCING_FILTER_MATCH_COUNT_RSP), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
 #endif // WLAN_FEATURE_PACKET_FILTERING
@@ -2705,19 +2336,14 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_WAKE_REASON_IND), nothing to process\n");
 =======
                    smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_WAKE_REASON_IND), nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog(pMac, LOGE, "Empty rsp message for meas (eWNI_SME_WAKE_REASON_IND), nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
                 break;
 #endif // WLAN_WAKEUP_EVENTS
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -2803,8 +2429,6 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
 #endif /* FEATURE_WLAN_LPHB */
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
           default:
 
              if ( ( pMsg->type >= eWNI_SME_MSG_TYPES_BEGIN )
@@ -2819,27 +2443,19 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
                 else
                 {
 <<<<<<< HEAD
-<<<<<<< HEAD
                    smsLog( pMac, LOGE, "Empty rsp message for CSR, nothing to process\n");
 =======
                    smsLog( pMac, LOGE, "Empty rsp message for CSR, nothing to process");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   smsLog( pMac, LOGE, "Empty rsp message for CSR, nothing to process\n");
->>>>>>> 657b0e9... prima update
                 }
              }
              else
              {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog( pMac, LOGW, "Unknown message type %d, nothing to process\n",
 =======
                 smsLog( pMac, LOGW, "Unknown message type %d, nothing to process",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog( pMac, LOGW, "Unknown message type %d, nothing to process\n",
->>>>>>> 657b0e9... prima update
                         pMsg->type);
                 if (pMsg->bodyptr)
                 {
@@ -2851,14 +2467,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
       else
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          smsLog( pMac, LOGW, "message type %d in stop state ignored\n", pMsg->type);
 =======
          smsLog( pMac, LOGW, "message type %d in stop state ignored", pMsg->type);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog( pMac, LOGW, "message type %d in stop state ignored\n", pMsg->type);
->>>>>>> 657b0e9... prima update
          if (pMsg->bodyptr)
          {
             vos_mem_free( pMsg->bodyptr );
@@ -2869,14 +2481,10 @@ eHalStatus sme_ProcessMsg(tHalHandle hHal, vos_msg_t* pMsg)
    else
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGW, "Locking failed, bailing out\n");
 =======
       smsLog( pMac, LOGW, "Locking failed, bailing out");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGW, "Locking failed, bailing out\n");
->>>>>>> 657b0e9... prima update
       if (pMsg->bodyptr)
       {
           vos_mem_free( pMsg->bodyptr );
@@ -2910,14 +2518,10 @@ v_VOID_t sme_FreeMsg( tHalHandle hHal, vos_msg_t* pMsg )
   return, all modules are at idle state ready to start.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
   \param hHal - The handle returned by macOpen
 
   \return eHAL_STATUS_SUCCESS - SME is stopped.
@@ -2934,7 +2538,6 @@ eHalStatus sme_Stop(tHalHandle hHal, tANI_BOOLEAN pmcFlag)
    tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    status = WLANSAP_Stop(vos_get_global_context(VOS_MODULE_ID_SAP, NULL));
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
@@ -2944,20 +2547,13 @@ eHalStatus sme_Stop(tHalHandle hHal, tANI_BOOLEAN pmcFlag)
    }
 #endif
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
    status = WLANSAP_Stop(vos_get_global_context(VOS_MODULE_ID_SAP, NULL));
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
-      smsLog( pMac, LOGE, "WLANSAP_Stop failed during smeStop with status=%d\n",
+      smsLog( pMac, LOGE, "WLANSAP_Stop failed during smeStop with status=%d",
                           status );
       fail_status = status;
    }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
    p2pStop(hHal);
 
@@ -2966,14 +2562,10 @@ eHalStatus sme_Stop(tHalHandle hHal, tANI_BOOLEAN pmcFlag)
       status = pmcStop(hHal);
       if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
          smsLog( pMac, LOGE, "pmcStop failed during smeStop with status=%d\n",
 =======
          smsLog( pMac, LOGE, "pmcStop failed during smeStop with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog( pMac, LOGE, "pmcStop failed during smeStop with status=%d\n",
->>>>>>> 657b0e9... prima update
                  status );
          fail_status = status;
       }
@@ -2982,14 +2574,10 @@ eHalStatus sme_Stop(tHalHandle hHal, tANI_BOOLEAN pmcFlag)
    status = csrStop(pMac);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "csrStop failed during smeStop with status=%d\n",
 =======
       smsLog( pMac, LOGE, "csrStop failed during smeStop with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "csrStop failed during smeStop with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
@@ -3017,14 +2605,10 @@ eHalStatus sme_Stop(tHalHandle hHal, tANI_BOOLEAN pmcFlag)
   No SME APIs can be involved after smeClose except smeOpen.
   smeClose must be called before macClose.
 <<<<<<< HEAD
-<<<<<<< HEAD
   This is a synchronuous call
 =======
   This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  This is a synchronuous call
->>>>>>> 657b0e9... prima update
   \param hHal - The handle returned by macOpen
 
   \return eHAL_STATUS_SUCCESS - SME is successfully close.
@@ -3043,20 +2627,15 @@ eHalStatus sme_Close(tHalHandle hHal)
    status = csrClose(pMac);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "csrClose failed during sme close with status=%d\n",
 =======
       smsLog( pMac, LOGE, "csrClose failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "csrClose failed during sme close with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    status = WLANSAP_Close(vos_get_global_context(VOS_MODULE_ID_SAP, NULL));
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
@@ -3066,33 +2645,22 @@ eHalStatus sme_Close(tHalHandle hHal)
    }
 #endif
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
    status = WLANSAP_Close(vos_get_global_context(VOS_MODULE_ID_SAP, NULL));
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
-      smsLog( pMac, LOGE, "WLANSAP_close failed during sme close with status=%d\n",
+      smsLog( pMac, LOGE, "WLANSAP_close failed during sme close with status=%d",
               status );
       fail_status = status;
    }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #ifndef WLAN_MDM_CODE_REDUCTION_OPT
    status = btcClose(hHal);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "BTC close failed during sme close with status=%d\n",
 =======
       smsLog( pMac, LOGE, "BTC close failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "BTC close failed during sme close with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
@@ -3100,14 +2668,10 @@ eHalStatus sme_Close(tHalHandle hHal)
    status = sme_QosClose(pMac);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "Qos close failed during sme close with status=%d\n",
 =======
       smsLog( pMac, LOGE, "Qos close failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "Qos close failed during sme close with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
@@ -3116,14 +2680,10 @@ eHalStatus sme_Close(tHalHandle hHal)
    status = oemData_OemDataReqClose(hHal);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
        smsLog( pMac, LOGE, "OEM DATA REQ close failed during sme close with status=%d\n", 
 =======
        smsLog( pMac, LOGE, "OEM DATA REQ close failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       smsLog( pMac, LOGE, "OEM DATA REQ close failed during sme close with status=%d\n", 
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
@@ -3132,14 +2692,10 @@ eHalStatus sme_Close(tHalHandle hHal)
    status = ccmClose(hHal);
          if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "ccmClose failed during sme close with status=%d\n",
 =======
       smsLog( pMac, LOGE, "ccmClose failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "ccmClose failed during sme close with status=%d\n",
->>>>>>> 657b0e9... prima update
                  status );
              fail_status = status;
          }
@@ -3147,14 +2703,10 @@ eHalStatus sme_Close(tHalHandle hHal)
    status = pmcClose(hHal);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "pmcClose failed during sme close with status=%d\n",
 =======
       smsLog( pMac, LOGE, "pmcClose failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "pmcClose failed during sme close with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
@@ -3162,14 +2714,10 @@ eHalStatus sme_Close(tHalHandle hHal)
    status = rrmClose(hHal);
    if ( ! HAL_STATUS_SUCCESS( status ) ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog( pMac, LOGE, "RRM close failed during sme close with status=%d\n",
 =======
       smsLog( pMac, LOGE, "RRM close failed during sme close with status=%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog( pMac, LOGE, "RRM close failed during sme close with status=%d\n",
->>>>>>> 657b0e9... prima update
               status );
       fail_status = status;
    }
@@ -3179,18 +2727,12 @@ eHalStatus sme_Close(tHalHandle hHal)
    sme_FTClose(hHal);
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
    sme_p2pClose(hHal);
 #endif
 =======
    sme_p2pClose(hHal);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined WLAN_FEATURE_P2P
-   sme_p2pClose(hHal);
-#endif
->>>>>>> 657b0e9... prima update
 
    freeSmeCmdList(pMac);
 
@@ -3234,14 +2776,10 @@ tANI_BOOLEAN csrIsScanAllowed(tpAniSirGlobal pMac)
     \fn sme_ScanRequest
     \brief a wrapper function to Request a 11d or full scan from CSR.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is an asynchronuous call
 =======
     This is an asynchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is an asynchronuous call
->>>>>>> 657b0e9... prima update
     \param pScanRequestID - pointer to an object to get back the request ID
     \param callback - a callback function that scan calls upon finish, will not
                       be called if csrScanRequest returns error
@@ -3266,7 +2804,6 @@ eHalStatus sme_ScanRequest(tHalHandle hHal, tANI_U8 sessionId, tCsrScanRequest *
                 {
 #ifdef FEATURE_WLAN_LFR
 <<<<<<< HEAD
-<<<<<<< HEAD
                     if(csrIsScanAllowed(pMac)) {
 #endif
                             status = csrScanRequest( hHal, sessionId, pscanReq,
@@ -3278,14 +2815,10 @@ eHalStatus sme_ScanRequest(tHalHandle hHal, tANI_U8 sessionId, tCsrScanRequest *
 =======
                     if(csrIsScanAllowed(pMac)) 
                     {
-=======
-                    if(csrIsScanAllowed(pMac)) {
->>>>>>> 657b0e9... prima update
 #endif
-                            status = csrScanRequest( hHal, sessionId, pscanReq,
-                                                     pScanRequestID, callback, pContext );
+                        status = csrScanRequest( hHal, sessionId, pscanReq,
+                                                 pScanRequestID, callback, pContext );
 #ifdef FEATURE_WLAN_LFR
-<<<<<<< HEAD
                     } 
                     else 
                     {
@@ -3295,18 +2828,12 @@ eHalStatus sme_ScanRequest(tHalHandle hHal, tANI_U8 sessionId, tCsrScanRequest *
                         /*HandOff is in progress. So schedule this scan later*/
                         status = eHAL_STATUS_RESOURCES;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    } else {
-                            /*HandOff is in progress. So schedule this scan later*/
-                            status = eHAL_STATUS_RESOURCES;
->>>>>>> 657b0e9... prima update
                     }
 #endif
                 }
                   
                 sme_ReleaseGlobalLock( &pMac->sme );
             } //sme_AcquireGlobalLock success
-<<<<<<< HEAD
 <<<<<<< HEAD
         } //if(pMac->scan.fScanEnable)
 =======
@@ -3320,9 +2847,6 @@ eHalStatus sme_ScanRequest(tHalHandle hHal, tANI_U8 sessionId, tCsrScanRequest *
             smsLog(pMac, LOGE, FL("fScanEnable FALSE"));
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        } //if(pMac->scan.fScanEnable)
->>>>>>> 657b0e9... prima update
     } while( 0 );
 
     return (status);
@@ -3334,14 +2858,10 @@ eHalStatus sme_ScanRequest(tHalHandle hHal, tANI_U8 sessionId, tCsrScanRequest *
     \fn sme_ScanGetResult
     \brief a wrapper function to request scan results from CSR.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \param pFilter - If pFilter is NULL, all cached results are returned
     \param phResult - an object for the result.
     \return eHalStatus
@@ -3369,14 +2889,10 @@ eHalStatus sme_ScanGetResult(tHalHandle hHal, tANI_U8 sessionId, tCsrScanResultF
     \fn sme_ScanFlushResult
     \brief a wrapper function to request CSR to clear scan results.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \return eHalStatus
   ---------------------------------------------------------------------------*/
 eHalStatus sme_ScanFlushResult(tHalHandle hHal, tANI_U8 sessionId)
@@ -3403,14 +2919,10 @@ eHalStatus sme_ScanFlushP2PResult(tHalHandle hHal, tANI_U8 sessionId)
         if ( HAL_STATUS_SUCCESS( status ) )
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 status = csrScanFlushP2PResult( hHal );
 =======
                 status = csrScanFlushSelectiveResult( hHal, VOS_TRUE );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                status = csrScanFlushP2PResult( hHal );
->>>>>>> 657b0e9... prima update
                 sme_ReleaseGlobalLock( &pMac->sme );
         }
 
@@ -3422,14 +2934,10 @@ eHalStatus sme_ScanFlushP2PResult(tHalHandle hHal, tANI_U8 sessionId)
     \brief a wrapper function to request CSR to returns the first element of
            scan result.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \param hScanResult - returned from csrScanGetResult
     \return tCsrScanResultInfo * - NULL if no result
   ---------------------------------------------------------------------------*/
@@ -3457,14 +2965,10 @@ tCsrScanResultInfo *sme_ScanResultGetFirst(tHalHandle hHal,
            scan result. It can be called without calling csrScanResultGetFirst
            first
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \param hScanResult - returned from csrScanGetResult
     \return Null if no result or reach the end
   ---------------------------------------------------------------------------*/
@@ -3490,14 +2994,10 @@ tCsrScanResultInfo *sme_ScanResultGetNext(tHalHandle hHal,
     \fn sme_ScanSetBGScanparams
     \brief a wrapper function to request CSR to set BG scan params in PE
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \param pScanReq - BG scan request structure
     \return eHalStatus
   ---------------------------------------------------------------------------*/
@@ -3525,14 +3025,10 @@ eHalStatus sme_ScanSetBGScanparams(tHalHandle hHal, tANI_U8 sessionId, tCsrBGSca
     \brief a wrapper function to request CSR to remove all items(tCsrScanResult)
            in the list and free memory for each item
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \param hScanResult - returned from csrScanGetResult. hScanResult is
                          considered gone by
     calling this function and even before this function reutrns.
@@ -3557,14 +3053,10 @@ eHalStatus sme_ScanResultPurge(tHalHandle hHal, tScanResultHandle hScanResult)
     \fn sme_ScanGetPMKIDCandidateList
     \brief a wrapper function to return the PMKID candidate list
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call
 =======
     This is a synchronous call
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call
->>>>>>> 657b0e9... prima update
     \param pPmkidList - caller allocated buffer point to an array of
                         tPmkidCandidateInfo
     \param pNumItems - pointer to a variable that has the number of
@@ -3645,14 +3137,10 @@ eCsrPhyMode sme_GetPhyMode(tHalHandle hHal)
     \fn sme_RoamConnect
     \brief a wrapper function to request CSR to inititiate an association
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is an asynchronuous call.
 =======
     This is an asynchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is an asynchronuous call.
->>>>>>> 657b0e9... prima update
     \param sessionId - the sessionId returned by sme_OpenSession.
     \param pProfile - description of the network to which to connect
     \param hBssListIn - a list of BSS descriptor to roam to. It is returned
@@ -3677,17 +3165,13 @@ eHalStatus sme_RoamConnect(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
             smsLog(pMac, LOGE, FL("invalid sessionID %d"), sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_INVALID_PARAMETER;
         }
         sme_ReleaseGlobalLock( &pMac->sme );
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     else
@@ -3695,14 +3179,11 @@ eHalStatus sme_RoamConnect(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *
         smsLog(pMac, LOGE, FL("sme_AcquireGlobalLock failed"));
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     return (status);
 }
 
 /* ---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -3738,8 +3219,6 @@ eHalStatus sme_SetPhyMode(tHalHandle hHal, eCsrPhyMode phyMode)
 
 /* ---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     \fn sme_RoamReassoc
     \brief a wrapper function to request CSR to inititiate a re-association
     \param pProfile - can be NULL to join the currently connected AP. In that
@@ -3754,14 +3233,10 @@ eHalStatus sme_SetPhyMode(tHalHandle hHal, eCsrPhyMode phyMode)
 eHalStatus sme_RoamReassoc(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *pProfile,
                           tCsrRoamModifyProfileFields modProfileFields,
 <<<<<<< HEAD
-<<<<<<< HEAD
                           tANI_U32 *pRoamId)
 =======
                           tANI_U32 *pRoamId, v_BOOL_t fForce)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          tANI_U32 *pRoamId)
->>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_FAILURE;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -3772,7 +3247,6 @@ eHalStatus sme_RoamReassoc(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *
     {
         if( CSR_IS_SESSION_VALID( pMac, sessionId ) )
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
             status = csrRoamReassoc( pMac, sessionId, pProfile, modProfileFields, pRoamId );
 =======
@@ -3790,9 +3264,6 @@ eHalStatus sme_RoamReassoc(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *
                 status = csrRoamReassoc( pMac, sessionId, pProfile, modProfileFields, pRoamId );
             }        
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            status = csrRoamReassoc( pMac, sessionId, pProfile, modProfileFields, pRoamId );
->>>>>>> 657b0e9... prima update
         }
         else
         {
@@ -3809,14 +3280,10 @@ eHalStatus sme_RoamReassoc(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *
     \brief a wrapper function to request CSR to disconnect and reconnect with
            the same profile
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is an asynchronuous call.
 =======
     This is an asynchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is an asynchronuous call.
->>>>>>> 657b0e9... prima update
     \return eHalStatus. It returns fail if currently connected
   ---------------------------------------------------------------------------*/
 eHalStatus sme_RoamConnectToLastProfile(tHalHandle hHal, tANI_U8 sessionId)
@@ -3845,14 +3312,10 @@ eHalStatus sme_RoamConnectToLastProfile(tHalHandle hHal, tANI_U8 sessionId)
     \fn sme_RoamDisconnect
     \brief a wrapper function to request CSR to disconnect from a network
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is an asynchronuous call.
 =======
     This is an asynchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is an asynchronuous call.
->>>>>>> 657b0e9... prima update
     \param reason -- To indicate the reason for disconnecting. Currently, only
                      eCSR_DISCONNECT_REASON_MIC_ERROR is meanful.
     \return eHalStatus
@@ -3881,13 +3344,9 @@ eHalStatus sme_RoamDisconnect(tHalHandle hHal, tANI_U8 sessionId, eCsrRoamDiscon
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn sme_RoamStopBss
     \brief To stop BSS for Soft AP. This is an asynchronous API.
@@ -3907,14 +3366,10 @@ eHalStatus sme_RoamStopBss(tHalHandle hHal, tANI_U8 sessionId)
       if( CSR_IS_SESSION_VALID( pMac, sessionId ) )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          status = csrRoamIssueStopBssCmd( pMac, sessionId, eANI_BOOLEAN_TRUE );
 =======
          status = csrRoamIssueStopBssCmd( pMac, sessionId, eANI_BOOLEAN_FALSE );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         status = csrRoamIssueStopBssCmd( pMac, sessionId, eANI_BOOLEAN_TRUE );
->>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -3953,14 +3408,10 @@ eHalStatus sme_RoamDisconnectSta(tHalHandle hHal, tANI_U8 sessionId,
       {
          status = csrRoamIssueDisassociateStaCmd( pMac, sessionId, pPeerMacAddr, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                                                   eSIR_MAC_UNSPEC_FAILURE_REASON);
 =======
                                                   eSIR_MAC_DEAUTH_LEAVING_BSS_REASON);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                                  eSIR_MAC_UNSPEC_FAILURE_REASON);
->>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -3999,14 +3450,10 @@ eHalStatus sme_RoamDeauthSta(tHalHandle hHal, tANI_U8 sessionId,
       {
          status = csrRoamIssueDeauthStaCmd( pMac, sessionId, pPeerMacAddr, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                      eSIR_MAC_UNSPEC_FAILURE_REASON);
 =======
                      eSIR_MAC_DEAUTH_LEAVING_BSS_REASON);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     eSIR_MAC_UNSPEC_FAILURE_REASON);
->>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -4137,27 +3584,19 @@ eHalStatus sme_RoamGetWpsSessionOverlap(tHalHandle hHal, tANI_U8 sessionId,
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
     \fn sme_RoamGetConnectState
     \brief a wrapper function to request CSR to return the current connect state
            of Roaming
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \return eHalStatus
   ---------------------------------------------------------------------------*/
 eHalStatus sme_RoamGetConnectState(tHalHandle hHal, tANI_U8 sessionId, eCsrConnectState *pState)
@@ -4188,14 +3627,10 @@ eHalStatus sme_RoamGetConnectState(tHalHandle hHal, tANI_U8 sessionId, eCsrConne
            profile. Caller must call csrRoamFreeConnectProfile after it is done
            and before reuse for another csrRoamGetConnectProfile call.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pProfile - pointer to a caller allocated structure
                       tCsrRoamConnectedProfile
     \return eHalStatus. Failure if not connected
@@ -4228,14 +3663,10 @@ eHalStatus sme_RoamGetConnectProfile(tHalHandle hHal, tANI_U8 sessionId,
     \brief a wrapper function to request CSR to free and reinitialize the
            profile returned previously by csrRoamGetConnectProfile.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pProfile - pointer to a caller allocated structure
                       tCsrRoamConnectedProfile
     \return eHalStatus.
@@ -4260,14 +3691,10 @@ eHalStatus sme_RoamFreeConnectProfile(tHalHandle hHal,
     \fn sme_RoamSetPMKIDCache
     \brief a wrapper function to request CSR to return the PMKID candidate list
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pPMKIDCache - caller allocated buffer point to an array of
                          tPmkidCacheInfo
     \param numItems - a variable that has the number of tPmkidCacheInfo
@@ -4303,7 +3730,6 @@ eHalStatus sme_RoamSetPMKIDCache( tHalHandle hHal, tANI_U8 sessionId, tPmkidCach
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 eHalStatus sme_RoamDelPMKIDfromCache( tHalHandle hHal, tANI_U8 sessionId, tANI_U8 *pBSSId )
 {
@@ -4325,21 +3751,15 @@ eHalStatus sme_RoamDelPMKIDfromCache( tHalHandle hHal, tANI_U8 sessionId, tANI_U
    return (status);
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn sme_RoamGetSecurityReqIE
     \brief a wrapper function to request CSR to return the WPA or RSN or WAPI IE CSR
            passes to PE to JOIN request or START_BSS request
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pLen - caller allocated memory that has the length of pBuf as input.
                   Upon returned, *pLen has the needed or IE length in pBuf.
     \param pBuf - Caller allocated memory that contain the IE field, if any,
@@ -4376,14 +3796,10 @@ eHalStatus sme_RoamGetSecurityReqIE(tHalHandle hHal, tANI_U8 sessionId, tANI_U32
     \brief a wrapper function to request CSR to return the WPA or RSN or WAPI IE from
            the beacon or probe rsp if connected
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pLen - caller allocated memory that has the length of pBuf as input.
                   Upon returned, *pLen has the needed or IE length in pBuf.
     \param pBuf - Caller allocated memory that contain the IE field, if any,
@@ -4422,14 +3838,10 @@ eHalStatus sme_RoamGetSecurityRspIE(tHalHandle hHal, tANI_U8 sessionId, tANI_U32
     \brief a wrapper function to request CSR to return number of PMKID cache
            entries
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \return tANI_U32 - the number of PMKID cache entries
   ---------------------------------------------------------------------------*/
 tANI_U32 sme_RoamGetNumPMKIDCache(tHalHandle hHal, tANI_U8 sessionId)
@@ -4460,14 +3872,10 @@ tANI_U32 sme_RoamGetNumPMKIDCache(tHalHandle hHal, tANI_U8 sessionId)
     \fn sme_RoamGetPMKIDCache
     \brief a wrapper function to request CSR to return PMKID cache from CSR
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pNum - caller allocated memory that has the space of the number of
                   pBuf tPmkidCacheInfo as input. Upon returned, *pNum has the
                   needed or actually number in tPmkidCacheInfo.
@@ -4505,14 +3913,10 @@ eHalStatus sme_RoamGetPMKIDCache(tHalHandle hHal, tANI_U8 sessionId, tANI_U32 *p
     \brief a wrapper function that HDD calls to get the global settings
            currently maintained by CSR.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param pParam - caller allocated memory
     \return eHalStatus
   ---------------------------------------------------------------------------*/
@@ -4528,14 +3932,10 @@ eHalStatus sme_GetConfigParam(tHalHandle hHal, tSmeConfigParams *pParam)
       if (status != eHAL_STATUS_SUCCESS)
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          smsLog( pMac, LOGE, "%s csrGetConfigParam failed\n", __FUNCTION__);
 =======
          smsLog( pMac, LOGE, "%s csrGetConfigParam failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog( pMac, LOGE, "%s csrGetConfigParam failed\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          sme_ReleaseGlobalLock( &pMac->sme );
          return status;
       }
@@ -4544,14 +3944,10 @@ eHalStatus sme_GetConfigParam(tHalHandle hHal, tSmeConfigParams *pParam)
       if (status != eHAL_STATUS_SUCCESS)
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          smsLog( pMac, LOGE, "%s p2pGetConfigParam failed\n", __FUNCTION__);
 =======
          smsLog( pMac, LOGE, "%s p2pGetConfigParam failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog( pMac, LOGE, "%s p2pGetConfigParam failed\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          sme_ReleaseGlobalLock( &pMac->sme );
          return status;
       }
@@ -4566,14 +3962,10 @@ eHalStatus sme_GetConfigParam(tHalHandle hHal, tSmeConfigParams *pParam)
     \fn sme_CfgSetInt
     \brief a wrapper function that HDD calls to set parameters in CFG.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param cfgId - Configuration Parameter ID (type) for STA.
     \param ccmValue - The information related to Configuration Parameter ID
                       which needs to be saved in CFG
@@ -4593,14 +3985,10 @@ eHalStatus sme_CfgSetInt(tHalHandle hHal, tANI_U32 cfgId, tANI_U32 ccmValue,
     \fn sme_CfgSetStr
     \brief a wrapper function that HDD calls to set parameters in CFG.
 <<<<<<< HEAD
-<<<<<<< HEAD
     This is a synchronuous call.
 =======
     This is a synchronous call.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    This is a synchronuous call.
->>>>>>> 657b0e9... prima update
     \param cfgId - Configuration Parameter ID (type) for STA.
     \param pStr - Pointer to the byte array which carries the information needs
                   to be saved in CFG
@@ -4795,7 +4183,6 @@ eHalStatus sme_DisablePowerSave (tHalHandle hHal, tPmcPowerSavingMode psMode)
 
 /* ---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
     \fn sme_StartAutoBmpsTimer
     \brief  Starts a timer that periodically polls all the registered
 =======
@@ -4818,8 +4205,6 @@ eHalStatus sme_SetHostPowerSave (tHalHandle hHal, v_BOOL_t psMode)
 }
 
 /* ---------------------------------------------------------------------------
-=======
->>>>>>> 657b0e9... prima update
     \fn sme_StartAutoBmpsTimer
     \brief  Starts a timer that periodically polls all the registered
 >>>>>>> d97af3b... add prima wlan driver
@@ -5205,15 +4590,11 @@ eHalStatus sme_DeregisterDeviceStateUpdateInd (
 eHalStatus sme_WowlAddBcastPattern (
    tHalHandle hHal,
 <<<<<<< HEAD
-<<<<<<< HEAD
    tpSirWowlAddBcastPtrn pattern)
 =======
    tpSirWowlAddBcastPtrn pattern,
    tANI_U8    sessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   tpSirWowlAddBcastPtrn pattern)
->>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_FAILURE;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -5221,14 +4602,10 @@ eHalStatus sme_WowlAddBcastPattern (
     if ( HAL_STATUS_SUCCESS( status ) )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        status = pmcWowlAddBcastPattern (hHal, pattern);
 =======
        status = pmcWowlAddBcastPattern (hHal, pattern, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       status = pmcWowlAddBcastPattern (hHal, pattern);
->>>>>>> 657b0e9... prima update
        sme_ReleaseGlobalLock( &pMac->sme );
     }
 
@@ -5247,15 +4624,11 @@ eHalStatus sme_WowlAddBcastPattern (
 eHalStatus sme_WowlDelBcastPattern (
    tHalHandle hHal,
 <<<<<<< HEAD
-<<<<<<< HEAD
    tpSirWowlDelBcastPtrn pattern)
 =======
    tpSirWowlDelBcastPtrn pattern,
    tANI_U8  sessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   tpSirWowlDelBcastPtrn pattern)
->>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_FAILURE;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -5263,14 +4636,10 @@ eHalStatus sme_WowlDelBcastPattern (
     if ( HAL_STATUS_SUCCESS( status ) )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        status = pmcWowlDelBcastPattern (hHal, pattern);
 =======
        status = pmcWowlDelBcastPattern (hHal, pattern, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       status = pmcWowlDelBcastPattern (hHal, pattern);
->>>>>>> 657b0e9... prima update
        sme_ReleaseGlobalLock( &pMac->sme );
     }
 
@@ -5316,14 +4685,10 @@ eHalStatus sme_EnterWowl (
     void *wakeIndicationCBContext,
 #endif // WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
-<<<<<<< HEAD
     tpSirSmeWowlEnterParams wowlEnterParams)
 =======
     tpSirSmeWowlEnterParams wowlEnterParams, tANI_U8 sessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tpSirSmeWowlEnterParams wowlEnterParams)
->>>>>>> 657b0e9... prima update
 {
     eHalStatus status = eHAL_STATUS_FAILURE;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -5335,7 +4700,6 @@ eHalStatus sme_EnterWowl (
                               wakeIndicationCB, wakeIndicationCBContext, 
 #endif // WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
-<<<<<<< HEAD
                               wowlEnterParams);
        sme_ReleaseGlobalLock( &pMac->sme );
     }
@@ -5345,12 +4709,6 @@ eHalStatus sme_EnterWowl (
        sme_ReleaseGlobalLock( &pMac->sme );
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                              wowlEnterParams);
-       sme_ReleaseGlobalLock( &pMac->sme );
-    }
-
->>>>>>> 657b0e9... prima update
     return (status);
 }
 /* ---------------------------------------------------------------------------
@@ -5399,7 +4757,6 @@ eHalStatus sme_RoamSetKey(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamSetKey *pS
    tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
    tANI_U32 roamId;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    tANI_U32 i;
    tCsrRoamSession *pSession = NULL;
@@ -5414,12 +4771,6 @@ eHalStatus sme_RoamSetKey(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamSetKey *pS
       return eHAL_STATUS_FAILURE;
    }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-   tANI_U32 i;
-   tCsrRoamSession *pSession = NULL;
-#endif
->>>>>>> 657b0e9... prima update
 
    status = sme_AcquireGlobalLock( &pMac->sme );
    if ( HAL_STATUS_SUCCESS( status ) )
@@ -5431,7 +4782,6 @@ eHalStatus sme_RoamSetKey(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamSetKey *pS
       }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
       smsLog(pMac, LOG2, FL("keyLength\n"), pSetKey->keyLength);
 
@@ -5441,20 +4791,12 @@ eHalStatus sme_RoamSetKey(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamSetKey *pS
       smsLog(pMac, LOG2, "\n sessionId=%d roamId=%d\n", sessionId, roamId);       
 =======
       smsLog(pMac, LOG2, FL("keyLength %d"), pSetKey->keyLength);
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-      smsLog(pMac, LOG2, FL("keyLength\n"), pSetKey->keyLength);
->>>>>>> 657b0e9... prima update
 
       for(i=0; i<pSetKey->keyLength; i++)
-          smsLog(pMac, LOG2, FL("%02x"), pSetKey->Key[i]); 
+          smsLog(pMac, LOG2, FL("%02x"), pSetKey->Key[i]);
 
-<<<<<<< HEAD
       smsLog(pMac, LOG2, "\n sessionId=%d roamId=%d", sessionId, roamId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog(pMac, LOG2, "\n sessionId=%d roamId=%d\n", sessionId, roamId);       
->>>>>>> 657b0e9... prima update
 
       pSession = CSR_GET_SESSION(pMac, sessionId);
 
@@ -5462,12 +4804,9 @@ eHalStatus sme_RoamSetKey(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamSetKey *pS
       {
          smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
          sme_ReleaseGlobalLock( &pMac->sme );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
          return eHAL_STATUS_FAILURE;
       }
 
@@ -5488,13 +4827,9 @@ eHalStatus sme_RoamSetKey(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamSetKey *pS
          }
       }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
       status = csrRoamSetKey ( pMac, sessionId, pSetKey, roamId );
       sme_ReleaseGlobalLock( &pMac->sme );
@@ -5571,7 +4906,6 @@ eHalStatus sme_GetRssi(tHalHandle hHal,
 
 /* ---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     \fn sme_GetSnr
     \brief a wrapper function that client calls to register a callback to
@@ -5633,8 +4967,6 @@ eHalStatus sme_GetRoamRssi(tHalHandle hHal,
 
 /* ---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     \fn sme_GetStatistics
     \brief a wrapper function that client calls to register a callback to get
     different PHY level statistics from CSR.
@@ -5672,7 +5004,6 @@ eHalStatus sme_GetStatistics(tHalHandle hHal, eCsrStatsRequesterType requesterId
 
 /* ---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     \fn smeGetTLSTAState
     \helper function to get the TL STA State whenever the function is called.
@@ -5699,8 +5030,6 @@ tANI_U16 smeGetTLSTAState(tHalHandle hHal, tANI_U8 staId)
 
 /* ---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     \fn sme_GetCountryCode
 
@@ -5974,15 +5303,11 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
                                           tANI_U8 *pCountry,
                                           void *pContext,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                           void* pVosContext )
 =======
                                           void* pVosContext,
                                           tAniBool countryFromUserSpace )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                          void* pVosContext )
->>>>>>> 657b0e9... prima update
 {
    eHalStatus                status = eHAL_STATUS_FAILURE;
    tpAniSirGlobal            pMac = PMAC_STRUCT( hHal );
@@ -5992,7 +5317,6 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
    status = sme_AcquireGlobalLock( &pMac->sme );
    if ( HAL_STATUS_SUCCESS( status ) )
    {
-<<<<<<< HEAD
 <<<<<<< HEAD
       smsLog(pMac, LOG1, FL(" called\n"));      
       status = palAllocateMemory(pMac->hHdd, (void **)&pMsg, sizeof(tAniChangeCountryCodeReq));
@@ -6007,13 +5331,6 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
          smsLog(pMac, LOGE, " csrChangeCountryCode: failed to allocate mem for req");
          sme_ReleaseGlobalLock( &pMac->sme );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog(pMac, LOG1, FL(" called\n"));      
-      status = palAllocateMemory(pMac->hHdd, (void **)&pMsg, sizeof(tAniChangeCountryCodeReq));
-      if ( !HAL_STATUS_SUCCESS(status) ) 
-      {
-         smsLog(pMac, LOGE, " csrChangeCountryCode: failed to allocate mem for req \n");
->>>>>>> 657b0e9... prima update
          return status;
       }
 
@@ -6021,12 +5338,9 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
       pMsg->msgLen = (tANI_U16)sizeof(tAniChangeCountryCodeReq);
       palCopyMemory(pMac->hHdd, pMsg->countryCode, pCountry, 3);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
       pMsg->countryFromUserSpace = countryFromUserSpace;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       pMsg->changeCCCallback = callback;
       pMsg->pDevContext = pContext;
       pMsg->pVosContext = pVosContext;
@@ -6037,7 +5351,6 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
 
       if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MQ_ID_SME, &msg))
       {
-<<<<<<< HEAD
 <<<<<<< HEAD
           smsLog(pMac, LOGE, " sme_ChangeCountryCode failed to post msg to self \n");   
           palFreeMemory(pMac->hHdd, (void *)pMsg);
@@ -6051,19 +5364,11 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
       }
       smsLog(pMac, LOG1, FL(" returned"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          smsLog(pMac, LOGE, " sme_ChangeCountryCode failed to post msg to self \n");   
-          palFreeMemory(pMac->hHdd, (void *)pMsg);
-          status = eHAL_STATUS_FAILURE;
-      }
-      smsLog(pMac, LOG1, FL(" returned\n"));      
->>>>>>> 657b0e9... prima update
       sme_ReleaseGlobalLock( &pMac->sme );
    }
 
    return (status);
 }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /* ---------------------------------------------------------------------------
@@ -6184,8 +5489,6 @@ eHalStatus sme_DHCPStopInd( tHalHandle hHal,
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
     \fn sme_BtcSignalBtEvent
@@ -6329,17 +5632,11 @@ VOS_STATUS sme_DbgReadRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t *pRegVa
    VOS_STATUS   status = VOS_STATUS_E_FAILURE;
    tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
    tHddHandle     hHdd = pMac->hHdd;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
-   tHddHandle     hHdd = pMac->hHdd;
-#endif
->>>>>>> 657b0e9... prima update
    tPmcPowerState PowerState;
    tANI_U32  sessionId = 0;
 
@@ -6348,20 +5645,14 @@ VOS_STATUS sme_DbgReadRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t *pRegVa
    if(eDRIVER_TYPE_MFG == pMac->gDriverType)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
       if (HAL_STATUS_SUCCESS(palReadRegister(hHdd, regAddr, pRegValue)))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
       if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgReadRegister(regAddr, pRegValue))
 #endif
-<<<<<<< HEAD
 =======
       if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgReadRegister(regAddr, pRegValue))
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       {
          return VOS_STATUS_SUCCESS;
       }
@@ -6382,7 +5673,6 @@ VOS_STATUS sme_DbgReadRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t *pRegVa
       if(!csrIsConnStateDisconnected(pMac, sessionId) || (ePMC_LOW_POWER != PowerState))
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
          if (HAL_STATUS_SUCCESS(palReadRegister(hHdd, regAddr, pRegValue )))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
@@ -6391,13 +5681,6 @@ VOS_STATUS sme_DbgReadRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t *pRegVa
 =======
          if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgReadRegister(regAddr, pRegValue))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
-         if (HAL_STATUS_SUCCESS(palReadRegister(hHdd, regAddr, pRegValue )))
-#elif defined(FEATURE_WLAN_INTEGRATED_SOC)
-         if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgReadRegister(regAddr, pRegValue))
-#endif
->>>>>>> 657b0e9... prima update
          {
             status = VOS_STATUS_SUCCESS;
          }
@@ -6434,17 +5717,11 @@ VOS_STATUS sme_DbgWriteRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t regVal
    VOS_STATUS    status = VOS_STATUS_E_FAILURE;
    tpAniSirGlobal  pMac = PMAC_STRUCT(hHal);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
    tHddHandle      hHdd = pMac->hHdd;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
-   tHddHandle      hHdd = pMac->hHdd;
-#endif
->>>>>>> 657b0e9... prima update
    tPmcPowerState PowerState;
    tANI_U32   sessionId = 0;
 
@@ -6453,7 +5730,6 @@ VOS_STATUS sme_DbgWriteRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t regVal
    if(eDRIVER_TYPE_MFG == pMac->gDriverType)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
       if (HAL_STATUS_SUCCESS(palWriteRegister(hHdd, regAddr, regValue)))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
@@ -6462,13 +5738,6 @@ VOS_STATUS sme_DbgWriteRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t regVal
 =======
       if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteRegister(regAddr, regValue))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
-      if (HAL_STATUS_SUCCESS(palWriteRegister(hHdd, regAddr, regValue)))
-#elif defined(FEATURE_WLAN_INTEGRATED_SOC)
-      if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteRegister(regAddr, regValue))
-#endif
->>>>>>> 657b0e9... prima update
       {
          return VOS_STATUS_SUCCESS;
       }
@@ -6489,20 +5758,14 @@ VOS_STATUS sme_DbgWriteRegister(tHalHandle hHal, v_U32_t regAddr, v_U32_t regVal
       if(!csrIsConnStateDisconnected(pMac, sessionId) || (ePMC_LOW_POWER != PowerState))
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
          if (HAL_STATUS_SUCCESS(palWriteRegister(hHdd, regAddr, regValue)))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
          if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteRegister(regAddr, regValue))
 #endif
-<<<<<<< HEAD
 =======
          if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteRegister(regAddr, regValue))
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
          {
             status = VOS_STATUS_SUCCESS;
          }
@@ -6533,14 +5796,10 @@ VOS_STATUS sme_DbgReadMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_U
    VOS_STATUS  status  = VOS_STATUS_E_FAILURE;
    tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
    v_PVOID_t  pvosGCTx = vos_get_global_context(VOS_MODULE_ID_PE, (v_VOID_t *)hHal);
    tHddHandle     hHdd = pMac->hHdd;
 #endif
-<<<<<<< HEAD
    tPmcPowerState PowerState;
    tANI_U32 sessionId  = 0;
 
@@ -6553,30 +5812,19 @@ VOS_STATUS sme_DbgReadMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_U
    tANI_U32 arg3 = 4;
    tANI_U32 arg4 = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   tPmcPowerState PowerState;
-   tANI_U32 sessionId  = 0;
-
->>>>>>> 657b0e9... prima update
    /* 1) To make Quarky work in FTM mode **************************************/
 
    if(eDRIVER_TYPE_MFG == pMac->gDriverType)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
       if (HAL_STATUS_SUCCESS(palReadDeviceMemory(hHdd, memAddr, (void *)pBuf, nLen)))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
       if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgReadMemory(memAddr, (void *)pBuf, nLen))
 #endif
-<<<<<<< HEAD
 =======
       if (VOS_STATUS_SUCCESS == WDA_HALDumpCmdReq(pMac, cmd, arg1, arg2, arg3, arg4, (tANI_U8*)pBuf))
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       {
          return VOS_STATUS_SUCCESS;
       }
@@ -6597,20 +5845,14 @@ VOS_STATUS sme_DbgReadMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_U
       if(!csrIsConnStateDisconnected(pMac, sessionId) || (ePMC_LOW_POWER != PowerState))
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
          if (HAL_STATUS_SUCCESS(palReadDeviceMemory(pvosGCTx, memAddr, (void *)pBuf, nLen)))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
          if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgReadMemory(memAddr, (void *)pBuf, nLen)) 
 #endif
-<<<<<<< HEAD
 =======
          if (VOS_STATUS_SUCCESS == WDA_HALDumpCmdReq(pMac, cmd, arg1, arg2, arg3, arg4, (tANI_U8 *)pBuf))
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
          {
             status = VOS_STATUS_SUCCESS;
          }
@@ -6632,14 +5874,10 @@ VOS_STATUS sme_DbgReadMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_U
       vos_mem_set(pBuf, nLen, 0xCD);
       status = VOS_STATUS_SUCCESS;
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog(pMac, LOGE, FL(" filled with 0xCD because it cannot access the hardware\n"));
 =======
       smsLog(pMac, LOGE, FL(" filled with 0xCD because it cannot access the hardware"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog(pMac, LOGE, FL(" filled with 0xCD because it cannot access the hardware\n"));
->>>>>>> 657b0e9... prima update
    }
 
    /* Release SME lock */
@@ -6656,17 +5894,11 @@ VOS_STATUS sme_DbgWriteMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_
    VOS_STATUS    status = VOS_STATUS_E_FAILURE;
    tpAniSirGlobal  pMac = PMAC_STRUCT(hHal);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
    tHddHandle      hHdd = pMac->hHdd;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
-   tHddHandle      hHdd = pMac->hHdd;
-#endif
->>>>>>> 657b0e9... prima update
    tPmcPowerState PowerState;
    tANI_U32   sessionId = 0;
 
@@ -6675,19 +5907,13 @@ VOS_STATUS sme_DbgWriteMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_
    if(eDRIVER_TYPE_MFG == pMac->gDriverType)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
       if (HAL_STATUS_SUCCESS(palWriteDeviceMemory(hHdd, memAddr, (void *)pBuf, nLen)))
 #elif defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
       if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteMemory( memAddr, (void *)pBuf, nLen))
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       {
          return VOS_STATUS_SUCCESS;
       }
@@ -6708,7 +5934,6 @@ VOS_STATUS sme_DbgWriteMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_
       if(!csrIsConnStateDisconnected(pMac, sessionId) || (ePMC_LOW_POWER != PowerState))
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
          if (HAL_STATUS_SUCCESS(palWriteDeviceMemory(hHdd, memAddr, (void *)pBuf, nLen)))
 #elif defined(FEATURE_WLAN_INTEGRATED_SOC)
@@ -6717,13 +5942,6 @@ VOS_STATUS sme_DbgWriteMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_
 =======
          if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteMemory(memAddr, (void *)pBuf, nLen))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
-         if (HAL_STATUS_SUCCESS(palWriteDeviceMemory(hHdd, memAddr, (void *)pBuf, nLen)))
-#elif defined(FEATURE_WLAN_INTEGRATED_SOC)
-         if (eWLAN_PAL_STATUS_SUCCESS == wpalDbgWriteMemory(memAddr, (void *)pBuf, nLen))
-#endif
->>>>>>> 657b0e9... prima update
          {
             status = VOS_STATUS_SUCCESS;
          }
@@ -6745,7 +5963,6 @@ VOS_STATUS sme_DbgWriteMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_
 }
 
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 void smsLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) 
 =======
@@ -6769,9 +5986,6 @@ void pmcLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString, ...)
 
 void smsLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void smsLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) 
->>>>>>> 657b0e9... prima update
 {
 #ifdef WLAN_DEBUG
     // Verify against current log level
@@ -6790,9 +6004,6 @@ void smsLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...)
 #endif
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC  
 /* ---------------------------------------------------------------------------
     \fn sme_GetFwVersion
@@ -6807,7 +6018,6 @@ VOS_STATUS sme_GetFwVersion (tHalHandle hHal,FwVersionInfo *pVersion)
 {
     VOS_STATUS status = VOS_STATUS_SUCCESS;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
-<<<<<<< HEAD
 
     if ( eHAL_STATUS_SUCCESS == sme_AcquireGlobalLock( &pMac->sme ) )
     {
@@ -6828,25 +6038,6 @@ VOS_STATUS sme_GetFwVersion (tHalHandle hHal,FwVersionInfo *pVersion)
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    if ( eHAL_STATUS_SUCCESS == sme_AcquireGlobalLock( &pMac->sme ) )
-    {
-        if( pVersion != NULL ) {
-            vos_mem_copy((v_VOID_t*)pVersion,(v_VOID_t*)&pMac->hal.FwParam.fwVersion, sizeof(FwVersionInfo));
-        }
-        else {
-            status = VOS_STATUS_E_INVAL;
-        }
-        sme_ReleaseGlobalLock( &pMac->sme );
-    }
-
-    return (status);
-}
-#endif
-
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn sme_GetWcnssWlanCompiledVersion
     \brief  This API returns the version of the WCNSS WLAN API with
@@ -6986,14 +6177,10 @@ VOS_STATUS sme_GetWcnssHardwareVersion(tHalHandle hHal,
     return (status);
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_WAPI
 /* ---------------------------------------------------------------------------
@@ -7048,14 +6235,10 @@ eHalStatus sme_RoamGetBKIDCache(tHalHandle hHal, tANI_U32 *pNum,
    if ( HAL_STATUS_SUCCESS( status ) )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
        smsLog(pMac, LOGE, FL(" !!!!!!!!!!!!!!!!!!SessionId is hardcoded\n"));
 =======
        smsLog(pMac, LOGE, FL(" !!!!!!!!!!!!!!!!!!SessionId is hardcoded"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       smsLog(pMac, LOGE, FL(" !!!!!!!!!!!!!!!!!!SessionId is hardcoded\n"));
->>>>>>> 657b0e9... prima update
        status = csrRoamGetBKIDCache( pMac, 0, pNum, pBkidCache );
        sme_ReleaseGlobalLock( &pMac->sme );
    }
@@ -7199,7 +6382,6 @@ eHalStatus sme_OemDataReq(tHalHandle hHal,
             }
             else
 <<<<<<< HEAD
-<<<<<<< HEAD
                return eHAL_STATUS_FAILURE;
 =======
             {
@@ -7207,9 +6389,6 @@ eHalStatus sme_OemDataReq(tHalHandle hHal,
                 return eHAL_STATUS_FAILURE;
             }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               return eHAL_STATUS_FAILURE;
->>>>>>> 657b0e9... prima update
 
             status = oemData_OemDataReq(hHal, sessionId, pOemDataReqConfig, pOemDataReqID, callback, pContext);
 
@@ -7219,14 +6398,10 @@ eHalStatus sme_OemDataReq(tHalHandle hHal,
     } while(0);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOGW, "exiting function %s\n", __FUNCTION__);
 =======
     smsLog(pMac, LOGW, "exiting function %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOGW, "exiting function %s\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return(status);
 }
@@ -7254,7 +6429,6 @@ eHalStatus sme_OemDataReq(tHalHandle hHal,
 
   --------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus sme_OpenSession(tHalHandle hHal, csrRoamCompleteCallback callback, void *pContext,
                            tANI_U8 *pSelfMacAddr, tANI_U8 *pbSessionId)
 =======
@@ -7262,10 +6436,6 @@ eHalStatus sme_OpenSession(tHalHandle hHal, csrRoamCompleteCallback callback,
                            void *pContext, tANI_U8 *pSelfMacAddr,
                            tANI_U8 *pbSessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus sme_OpenSession(tHalHandle hHal, csrRoamCompleteCallback callback, void *pContext,
-                           tANI_U8 *pSelfMacAddr, tANI_U8 *pbSessionId)
->>>>>>> 657b0e9... prima update
 {
    eHalStatus status;
    tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -7280,15 +6450,11 @@ eHalStatus sme_OpenSession(tHalHandle hHal, csrRoamCompleteCallback callback, vo
       if ( HAL_STATUS_SUCCESS( status ) )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
          status = csrRoamOpenSession( pMac, callback, pContext, pSelfMacAddr, pbSessionId );
 =======
          status = csrRoamOpenSession(pMac, callback, pContext,
                                      pSelfMacAddr, pbSessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         status = csrRoamOpenSession( pMac, callback, pContext, pSelfMacAddr, pbSessionId );
->>>>>>> 657b0e9... prima update
 
          sme_ReleaseGlobalLock( &pMac->sme );
       }
@@ -7335,13 +6501,9 @@ eHalStatus sme_CloseSession(tHalHandle hHal, tANI_U8 sessionId,
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
 
     \fn sme_RoamUpdateAPWPSIE
@@ -7405,7 +6567,6 @@ eHalStatus sme_RoamUpdateAPWPARSNIEs(tHalHandle hHal, tANI_U8 sessionId, tSirRSN
    return (status);
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 
 =======
@@ -7439,10 +6600,6 @@ eHalStatus sme_ChangeMCCBeaconInterval(tHalHandle hHal, tANI_U8 sessionId)
    return (status);
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
->>>>>>> 657b0e9... prima update
 
 /*-------------------------------------------------------------------------------*
 
@@ -7454,14 +6611,10 @@ eHalStatus sme_ChangeMCCBeaconInterval(tHalHandle hHal, tANI_U8 sessionId)
   \param btAmpEvent - btAmpEvent
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   \return eHalStatus: SUCESS : BTAmp event successfully sent to HAL
 =======
   \return eHalStatus: SUCCESS : BTAmp event successfully sent to HAL
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  \return eHalStatus: SUCESS : BTAmp event successfully sent to HAL
->>>>>>> 657b0e9... prima update
 
                       FAILURE: API failed
 
@@ -7478,14 +6631,10 @@ eHalStatus sme_sendBTAmpEvent(tHalHandle hHal, tSmeBtAmpEvent btAmpEvent)
      {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
 <<<<<<< HEAD
-<<<<<<< HEAD
            "Not able to allocate memory for BTAmp event", __FUNCTION__);
 =======
            "Not able to allocate memory for BTAmp event", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           "Not able to allocate memory for BTAmp event", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return status;
    }
 
@@ -7500,14 +6649,10 @@ eHalStatus sme_sendBTAmpEvent(tHalHandle hHal, tSmeBtAmpEvent btAmpEvent)
   {
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
 <<<<<<< HEAD
-<<<<<<< HEAD
            "Not able to post SIR_HAL_SIGNAL_BTAMP_EVENT message to HAL", __FUNCTION__);
 =======
            "Not able to post SIR_HAL_SIGNAL_BTAMP_EVENT message to HAL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           "Not able to post SIR_HAL_SIGNAL_BTAMP_EVENT message to HAL", __FUNCTION__);
->>>>>>> 657b0e9... prima update
     vos_mem_free(ptrSmeBtAmpEvent);
     return status;
   }
@@ -7517,7 +6662,6 @@ eHalStatus sme_sendBTAmpEvent(tHalHandle hHal, tSmeBtAmpEvent btAmpEvent)
 }
 
 /* ---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     \fn     smeIssueFastRoamNeighborAPEvent
@@ -7590,8 +6734,6 @@ eHalStatus smeIssueFastRoamNeighborAPEvent (tHalHandle hHal,
 }
 /* ---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     \fn sme_SetHostOffload
     \brief  API to set the host offload feature.
     \param  hHal - The handle returned by macOpen.
@@ -7604,9 +6746,6 @@ eHalStatus sme_SetHostOffload (tHalHandle hHal, tANI_U8 sessionId,
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     eHalStatus status = eHAL_STATUS_FAILURE;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 
     if(pSession == NULL )
@@ -7615,11 +6754,8 @@ eHalStatus sme_SetHostOffload (tHalHandle hHal, tANI_U8 sessionId,
            "Unable to find the csrSession", __FUNCTION__);
         return status;
     }
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
     {
@@ -7627,27 +6763,19 @@ eHalStatus sme_SetHostOffload (tHalHandle hHal, tANI_U8 sessionId,
         if(SIR_IPV6_NS_OFFLOAD == pRequest->offloadType)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             status = pmcSetNSOffload( hHal, pRequest ,pSession->connectedProfile.bssid);
 =======
             status = pmcSetNSOffload( hHal, pRequest, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            status = pmcSetNSOffload( hHal, pRequest ,pSession->connectedProfile.bssid);
->>>>>>> 657b0e9... prima update
         }
         else
 #endif //WLAN_NS_OFFLOAD
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             status = pmcSetHostOffload (hHal, pRequest, pSession->connectedProfile.bssid);
 =======
             status = pmcSetHostOffload (hHal, pRequest, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            status = pmcSetHostOffload (hHal, pRequest, pSession->connectedProfile.bssid);
->>>>>>> 657b0e9... prima update
         }
         sme_ReleaseGlobalLock( &pMac->sme );
     }
@@ -7664,15 +6792,11 @@ eHalStatus sme_SetHostOffload (tHalHandle hHal, tANI_U8 sessionId,
     \return eHalStatus
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest)
 =======
 eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest, 
                                     tANI_U8 sessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest)
->>>>>>> 657b0e9... prima update
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     eHalStatus status;
@@ -7680,14 +6804,10 @@ eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest)
     if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         status = pmcSetGTKOffload( hHal, pRequest );
 =======
         status = pmcSetGTKOffload( hHal, pRequest, sessionId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        status = pmcSetGTKOffload( hHal, pRequest );
->>>>>>> 657b0e9... prima update
         sme_ReleaseGlobalLock( &pMac->sme );
     }
 
@@ -7702,15 +6822,11 @@ eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest)
     \return eHalStatus
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus sme_GetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext )
 =======
 eHalStatus sme_GetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, 
                                     void *callbackContext, tANI_U8 sessionId )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus sme_GetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext )
->>>>>>> 657b0e9... prima update
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     eHalStatus status;
@@ -7718,14 +6834,10 @@ eHalStatus sme_GetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbac
     if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         pmcGetGTKOffload(hHal, callbackRoutine, callbackContext);
 =======
         pmcGetGTKOffload(hHal, callbackRoutine, callbackContext, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pmcGetGTKOffload(hHal, callbackRoutine, callbackContext);
->>>>>>> 657b0e9... prima update
         sme_ReleaseGlobalLock( &pMac->sme );
     }
 
@@ -7746,9 +6858,6 @@ eHalStatus sme_SetKeepAlive (tHalHandle hHal, tANI_U8 sessionId,
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     eHalStatus status;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, sessionId );
 
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: "
@@ -7761,7 +6870,6 @@ eHalStatus sme_SetKeepAlive (tHalHandle hHal, tANI_U8 sessionId,
         return eHAL_STATUS_FAILURE;
     }
 
-<<<<<<< HEAD
     if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
     {
         status = pmcSetKeepAlive (hHal, pRequest, pSession->connectedProfile.bssid);
@@ -7770,11 +6878,6 @@ eHalStatus sme_SetKeepAlive (tHalHandle hHal, tANI_U8 sessionId,
     {
         status = pmcSetKeepAlive (hHal, pRequest, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
-    {
-        status = pmcSetKeepAlive (hHal, pRequest, pSession->connectedProfile.bssid);
->>>>>>> 657b0e9... prima update
         sme_ReleaseGlobalLock( &pMac->sme );
     }
 
@@ -7820,14 +6923,10 @@ eHalStatus sme_SetRSSIFilter(tHalHandle hHal, v_U8_t rssiThreshold)
 #endif // FEATURE_WLAN_SCAN_PNO
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams)
 =======
 eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams, tANI_BOOLEAN forced)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams)
->>>>>>> 657b0e9... prima update
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     eHalStatus status;
@@ -7835,14 +6934,10 @@ eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams)
     if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         pmcSetPowerParams(hHal, pwParams);
 =======
         pmcSetPowerParams(hHal, pwParams, forced);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pmcSetPowerParams(hHal, pwParams);
->>>>>>> 657b0e9... prima update
         sme_ReleaseGlobalLock( &pMac->sme );
     }
 
@@ -7854,25 +6949,18 @@ eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams)
     \brief  API to cancel MAC scan.
     \param  hHal - The handle returned by macOpen.
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     \param  sessionId - sessionId on which we need to abort scan.
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     \return VOS_STATUS
             VOS_STATUS_E_FAILURE - failure
             VOS_STATUS_SUCCESS  success
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus sme_AbortMacScan(tHalHandle hHal)
 =======
 eHalStatus sme_AbortMacScan(tHalHandle hHal, tANI_U8 sessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus sme_AbortMacScan(tHalHandle hHal)
->>>>>>> 657b0e9... prima update
 {
     eHalStatus status;
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
@@ -7881,14 +6969,10 @@ eHalStatus sme_AbortMacScan(tHalHandle hHal)
     if ( HAL_STATUS_SUCCESS( status ) )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        status = csrScanAbortMacScan(pMac);
 =======
        status = csrScanAbortMacScan(pMac, sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       status = csrScanAbortMacScan(pMac);
->>>>>>> 657b0e9... prima update
     
        sme_ReleaseGlobalLock( &pMac->sme );
     }
@@ -7916,18 +7000,12 @@ eHalStatus sme_GetOperationChannel(tHalHandle hHal, tANI_U32 *pChannel, tANI_U8 
        if(( pSession->connectedProfile.BSSType == eCSR_BSS_TYPE_INFRASTRUCTURE ) || 
           ( pSession->connectedProfile.BSSType == eCSR_BSS_TYPE_IBSS ) ||
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE	  
           ( pSession->connectedProfile.BSSType == eCSR_BSS_TYPE_INFRA_AP ) ||
 #endif
 =======
           ( pSession->connectedProfile.BSSType == eCSR_BSS_TYPE_INFRA_AP ) ||
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE	  
-          ( pSession->connectedProfile.BSSType == eCSR_BSS_TYPE_INFRA_AP ) ||
-#endif
->>>>>>> 657b0e9... prima update
           ( pSession->connectedProfile.BSSType == eCSR_BSS_TYPE_START_IBSS ))
        {
            *pChannel =pSession->connectedProfile.operationChannel;
@@ -7938,13 +7016,9 @@ eHalStatus sme_GetOperationChannel(tHalHandle hHal, tANI_U32 *pChannel, tANI_U8 
 }// sme_GetOperationChannel ends here
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
 
     \fn sme_RegisterMgtFrame
@@ -7972,12 +7046,9 @@ eHalStatus sme_RegisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId,
         {
             smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
             sme_ReleaseGlobalLock( &pMac->sme );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             return eHAL_STATUS_FAILURE;
         }
         
@@ -7985,14 +7056,10 @@ eHalStatus sme_RegisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId,
         {
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                         "%s Invalid Sessionid", __FUNCTION__);
 =======
                         "%s Invalid Sessionid", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        "%s Invalid Sessionid", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             sme_ReleaseGlobalLock( &pMac->sme );
             return eHAL_STATUS_FAILURE;
         }
@@ -8044,12 +7111,9 @@ eHalStatus sme_DeregisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId,
         {
             smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
             sme_ReleaseGlobalLock( &pMac->sme );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             return eHAL_STATUS_FAILURE;
         }
         
@@ -8057,14 +7121,10 @@ eHalStatus sme_DeregisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId,
         {
             VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                         "%s Invalid Sessionid", __FUNCTION__);
 =======
                         "%s Invalid Sessionid", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        "%s Invalid Sessionid", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             sme_ReleaseGlobalLock( &pMac->sme );
             return eHAL_STATUS_FAILURE;
         }
@@ -8099,7 +7159,6 @@ eHalStatus sme_DeregisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId,
     \return eHalStatus
   ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 eHalStatus sme_RemainOnChannel(tHalHandle hHal, tANI_U8 sessionId,
                                tANI_U8 channel, tANI_U32 duration,
@@ -8112,13 +7171,6 @@ eHalStatus sme_RemainOnChannel(tHalHandle hHal, tANI_U8 sessionId,
                                void *pContext,
                                tANI_U8 isP2PProbeReqAllowed)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-eHalStatus sme_RemainOnChannel(tHalHandle hHal, tANI_U8 sessionId,
-                               tANI_U8 channel, tANI_U32 duration,
-                               remainOnChanCallback callback, 
-                               void *pContext)
->>>>>>> 657b0e9... prima update
 {
   eHalStatus status = eHAL_STATUS_SUCCESS;
   tpAniSirGlobal pMac = PMAC_STRUCT(hHal);
@@ -8126,15 +7178,11 @@ eHalStatus sme_RemainOnChannel(tHalHandle hHal, tANI_U8 sessionId,
   if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme ) ) )
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
     status = p2pRemainOnChannel (hHal, sessionId, channel, duration, callback, pContext
 =======
     status = p2pRemainOnChannel (hHal, sessionId, channel, duration, callback, pContext,
                                  isP2PProbeReqAllowed
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    status = p2pRemainOnChannel (hHal, sessionId, channel, duration, callback, pContext
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P_INTERNAL
                                 , eP2PRemainOnChnReasonUnknown
 #endif
@@ -8172,14 +7220,10 @@ eHalStatus sme_ReportProbeReq(tHalHandle hHal, tANI_U8 flag)
     } while(0);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOGW, "exiting function %s\n", __FUNCTION__);
 =======
     smsLog(pMac, LOGW, "exiting function %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOGW, "exiting function %s\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return(status);
 }
@@ -8211,14 +7255,10 @@ eHalStatus sme_updateP2pIe(tHalHandle hHal, void *p2pIe, tANI_U32 p2pIeLength)
         if (NULL == pMac->p2pContext.probeRspIe)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGE, "%s: Unable to allocate P2P IE", __FUNCTION__);
 =======
             smsLog(pMac, LOGE, "%s: Unable to allocate P2P IE", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, "%s: Unable to allocate P2P IE", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             pMac->p2pContext.probeRspIeLength = 0;
             status = eHAL_STATUS_FAILURE;
         }
@@ -8238,14 +7278,10 @@ eHalStatus sme_updateP2pIe(tHalHandle hHal, void *p2pIe, tANI_U32 p2pIeLength)
     }
    
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOG2, "exiting function %s\n", __FUNCTION__);
 =======
     smsLog(pMac, LOG2, "exiting function %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOG2, "exiting function %s\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return(status);
 }
@@ -8275,14 +7311,10 @@ eHalStatus sme_sendAction(tHalHandle hHal, tANI_U8 sessionId,
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOGW, "exiting function %s\n", __FUNCTION__);
 =======
     smsLog(pMac, LOGW, "exiting function %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOGW, "exiting function %s\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return(status);
 }
@@ -8315,13 +7347,9 @@ eHalStatus sme_p2pSetPs(tHalHandle hHal, tP2pPsConfig * data)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
 
@@ -8372,13 +7400,9 @@ eHalStatus sme_ConfigureRxpFilter( tHalHandle hHal,
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
 
   \fn    sme_ConfigureSuspendInd
@@ -8464,13 +7488,9 @@ eHalStatus sme_ConfigureResumeReq( tHalHandle hHal,
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
 
     \fn sme_GetInfraSessionId
@@ -8545,14 +7565,10 @@ tANI_U8 sme_GetConcurrentOperationChannel( tHalHandle hHal )
       channel = csrGetConcurrentOperationChannel( pMac );
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO_HIGH, "%s: "
 <<<<<<< HEAD
-<<<<<<< HEAD
            " Other Concurrent Channel = %d", __FUNCTION__,channel);
 =======
            " Other Concurrent Channel = %d", __func__,channel);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           " Other Concurrent Channel = %d", __FUNCTION__,channel);
->>>>>>> 657b0e9... prima update
       sme_ReleaseGlobalLock( &pMac->sme );
    }
 
@@ -8580,7 +7596,6 @@ eHalStatus sme_PreferredNetworkFoundInd (tHalHandle hHal, void* pMsg)
    eHalStatus status = eHAL_STATUS_SUCCESS;
    tSirPrefNetworkFoundInd *pPrefNetworkFoundInd = (tSirPrefNetworkFoundInd *)pMsg;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
    if (NULL == pMsg)
    {
@@ -8593,19 +7608,12 @@ eHalStatus sme_PreferredNetworkFoundInd (tHalHandle hHal, void* pMsg)
    {
       smsLog(pMac, LOGE, "in %s msg ptr is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-   if (NULL == pMsg)
-   {
-      smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       status = eHAL_STATUS_FAILURE;
    }
    else
    {
       if (pPrefNetworkFoundInd->ssId.length > 0)
       {
-<<<<<<< HEAD
 <<<<<<< HEAD
           smsLog(pMac, LOG1, "Preferred Network Found Indication in %s(), SSID=%s", 
                  __FUNCTION__, pPrefNetworkFoundInd->ssId.ssId);
@@ -8645,27 +7653,19 @@ eHalStatus sme_PreferredNetworkFoundInd (tHalHandle hHal, void* pMsg)
             smsLog(pMac, LOGE, FL(" not enough data length %d needed %d"),
                pPrefNetworkFoundInd->mesgLen, sizeof(tSirPrefNetworkFoundInd));
          }
-=======
-          smsLog(pMac, LOG1, "Preferred Network Found Indication in %s(), SSID=%s", 
-                 __FUNCTION__, pPrefNetworkFoundInd->ssId.ssId);
-
->>>>>>> 657b0e9... prima update
 
          /* Call Preferred Netowrk Found Indication callback routine. */
-         if (pMac->pmc.prefNetwFoundCB != NULL)
-         {    
-               pMac->pmc.prefNetwFoundCB(pMac->pmc.preferredNetworkFoundIndCallbackContext, pPrefNetworkFoundInd);
+         if (HAL_STATUS_SUCCESS(status) && (pMac->pmc.prefNetwFoundCB != NULL))
+         {
+            pMac->pmc.prefNetwFoundCB(
+                pMac->pmc.preferredNetworkFoundIndCallbackContext,
+                pPrefNetworkFoundInd);
          }
-
       }
       else
       {
-<<<<<<< HEAD
          smsLog(pMac, LOGE, "%s: callback failed - SSID is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         smsLog(pMac, LOGE, "%s: callback failed - SSID is NULL\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
          status = eHAL_STATUS_FAILURE;
       }
    }
@@ -8726,14 +7726,10 @@ eHalStatus sme_SetTxPerTracking(tHalHandle hHal,
     if (NULL == pTxPerTrackingParamReq)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for tSirTxPerTrackingParam", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for tSirTxPerTrackingParam", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for tSirTxPerTrackingParam", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -8745,14 +7741,10 @@ eHalStatus sme_SetTxPerTracking(tHalHandle hHal,
     if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MODULE_ID_WDA, &msg))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_TX_PER_TRACKING_REQ message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_TX_PER_TRACKING_REQ message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_TX_PER_TRACKING_REQ message to WDA", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         vos_mem_free(pTxPerTrackingParamReq);
         return eHAL_STATUS_FAILURE;
     }
@@ -8817,15 +7809,11 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
    {
        /* if Supplicant country code has priority, disable 11d */
 <<<<<<< HEAD
-<<<<<<< HEAD
        if(pMac->roam.configParam.fSupplicantCountryCodeHasPriority)
 =======
        if(pMac->roam.configParam.fSupplicantCountryCodeHasPriority &&
          pMsg->countryFromUserSpace)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       if(pMac->roam.configParam.fSupplicantCountryCodeHasPriority)
->>>>>>> 657b0e9... prima update
        {
            pMac->roam.configParam.Is11dSupportEnabled = eANI_BOOLEAN_FALSE;
        }
@@ -8860,20 +7848,14 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
    /* purge current scan results
     if i don't do this than I still get old ap's (of different country code) as available (even if they are powered off). 
     Looks like a bug in current scan sequence. 
    */
    csrScanFlushResult(pMac);
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    /* overwrite the defualt country code */
    palCopyMemory(pMac->hHdd, pMac->scan.countryCodeDefault, pMac->scan.countryCodeCurrent, WNI_CFG_COUNTRY_CODE_LEN);
 
@@ -8882,14 +7864,10 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
    if ( status != eHAL_STATUS_SUCCESS )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
        smsLog( pMac, LOGE, FL("  fail to get regId %d\n"), domainIdIoctl );
 =======
        smsLog( pMac, LOGE, FL("  fail to get regId %d"), domainIdIoctl );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       smsLog( pMac, LOGE, FL("  fail to get regId %d\n"), domainIdIoctl );
->>>>>>> 657b0e9... prima update
        return status;
    }
 
@@ -8898,14 +7876,10 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
    if ( status != eHAL_STATUS_SUCCESS )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
        smsLog( pMac, LOGE, FL("  fail to set regId %d\n"), domainIdIoctl );
 =======
        smsLog( pMac, LOGE, FL("  fail to set regId %d"), domainIdIoctl );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       smsLog( pMac, LOGE, FL("  fail to set regId %d\n"), domainIdIoctl );
->>>>>>> 657b0e9... prima update
        return status;
    }
 
@@ -8918,27 +7892,19 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
    if ( status != eHAL_STATUS_SUCCESS )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
        smsLog( pMac, LOGE, FL("  fail to get Channels \n"));
 =======
        smsLog( pMac, LOGE, FL("  fail to get Channels "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       smsLog( pMac, LOGE, FL("  fail to get Channels \n"));
->>>>>>> 657b0e9... prima update
        return status;
    }
 
    /* reset info based on new cc, and we are done */
 <<<<<<< HEAD
-<<<<<<< HEAD
    csrResetCountryInformation(pMac, eANI_BOOLEAN_TRUE);
 =======
    csrResetCountryInformation(pMac, eANI_BOOLEAN_TRUE, eANI_BOOLEAN_TRUE);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   csrResetCountryInformation(pMac, eANI_BOOLEAN_TRUE);
->>>>>>> 657b0e9... prima update
    if( pMsg->changeCCCallback )
    {
       ((tSmeChangeCountryCallback)(pMsg->changeCCCallback))((void *)pMsg->pDevContext);
@@ -8949,19 +7915,14 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
 
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMulticastAddrs)
 =======
 eHalStatus sme_8023MulticastList (tHalHandle hHal, tANI_U8 sessionId, tpSirRcvFltMcAddrList pMulticastAddrs)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMulticastAddrs)
->>>>>>> 657b0e9... prima update
 {
     tpSirRcvFltMcAddrList   pRequestBuf;
     vos_msg_t               msg;
     tpAniSirGlobal          pMac = PMAC_STRUCT(hHal);
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U8                 sessionId = 0;
     tCsrRoamSession         *pSession = NULL;
@@ -8974,22 +7935,12 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMultic
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: "
                "ulMulticastAddrCnt=%d, multicastAddr[0]=%p", __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8                 sessionId = 0;
-    tCsrRoamSession         *pSession = NULL;
-
-    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: "
-               "ulMulticastAddrCnt=%d, multicastAddr[0]=%d", __FUNCTION__,
->>>>>>> 657b0e9... prima update
                pMulticastAddrs->ulMulticastAddrCnt,
                pMulticastAddrs->multicastAddr[0]);
 
     /*
      *Find the connected Infra / P2P_client connected session
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
      */
      for( sessionId = 0; sessionId < CSR_ROAM_SESSION_MAX; sessionId++ )
      {
@@ -8999,7 +7950,6 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMultic
             pSession = CSR_GET_SESSION( pMac, sessionId );
          }
      }
-<<<<<<< HEAD
 =======
     */
     if (CSR_IS_SESSION_VALID(pMac, sessionId) &&
@@ -9008,13 +7958,10 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMultic
         pSession = CSR_GET_SESSION( pMac, sessionId );
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     if(pSession == NULL )
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Unable to find "
-<<<<<<< HEAD
 <<<<<<< HEAD
             "the right session", __FUNCTION__);
         return eHAL_STATUS_FAILURE;
@@ -9026,17 +7973,10 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMultic
     }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "the right session", __FUNCTION__);
-        return eHAL_STATUS_FAILURE;
-    }
-    
->>>>>>> 657b0e9... prima update
     pRequestBuf = vos_mem_malloc(sizeof(tSirRcvFltMcAddrList));
     if (NULL == pRequestBuf)
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to "
-<<<<<<< HEAD
 <<<<<<< HEAD
             "allocate memory for 8023 Multicast List request", __FUNCTION__);
         return eHAL_STATUS_FAILED_ALLOC;
@@ -9055,11 +7995,6 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMultic
     }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "allocate memory for 8023 Multicast List request", __FUNCTION__);
-        return eHAL_STATUS_FAILED_ALLOC;
-    }
->>>>>>> 657b0e9... prima update
     vos_mem_copy(pRequestBuf, pMulticastAddrs, sizeof(tSirRcvFltMcAddrList));
 
     vos_mem_copy(pRequestBuf->selfMacAddr, pSession->selfMacAddr, sizeof(tSirMacAddr));
@@ -9073,14 +8008,10 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tpSirRcvFltMcAddrList pMultic
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to "
 <<<<<<< HEAD
-<<<<<<< HEAD
             "post WDA_8023_MULTICAST_LIST message to WDA", __FUNCTION__);
 =======
             "post WDA_8023_MULTICAST_LIST message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "post WDA_8023_MULTICAST_LIST message to WDA", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -9099,7 +8030,6 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
     v_U8_t   idx=0;
 
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: filterType=%d, "
-<<<<<<< HEAD
 <<<<<<< HEAD
                "filterId = %d", __FUNCTION__,
                pRcvPktFilterCfg->filterType, pRcvPktFilterCfg->filterId);
@@ -9122,33 +8052,33 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
 
 =======
                "filterId = %d", __func__,
-=======
-               "filterId = %d", __FUNCTION__,
->>>>>>> 657b0e9... prima update
                pRcvPktFilterCfg->filterType, pRcvPktFilterCfg->filterId);
   
-    allocSize = sizeof(tSirRcvPktFilterCfgType) + 
-                      ((pRcvPktFilterCfg->numFieldParams - 1) * 
-                      sizeof(tSirRcvPktFilterFieldParams));
+    allocSize = sizeof(tSirRcvPktFilterCfgType);
+    
     pRequestBuf = vos_mem_malloc(allocSize);
-    if ((NULL == pRequestBuf) || (NULL == pSession))
+
+    if (NULL == pRequestBuf)
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to "
-            "allocate memory for Receive Filter Set Filter request", __FUNCTION__);
+            "allocate memory for Receive Filter Set Filter request", __func__);
         return eHAL_STATUS_FAILED_ALLOC;
     }
-    vos_mem_copy(pRequestBuf, pRcvPktFilterCfg, allocSize);
 
-    vos_mem_copy( pRequestBuf->selfMacAddr, pSession->selfMacAddr, sizeof(tSirMacAddr));
-    vos_mem_copy( pRequestBuf->bssId, pSession->connectedProfile.bssid, 
+    if( NULL == pSession )
+    {
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Session Not found ", __func__);
+        vos_mem_free(pRequestBuf);
+        return eHAL_STATUS_FAILURE;
+    }
+    
+    vos_mem_copy( pRcvPktFilterCfg->selfMacAddr, pSession->selfMacAddr, sizeof(tSirMacAddr));
+    vos_mem_copy( pRcvPktFilterCfg->bssId, pSession->connectedProfile.bssid, 
                           sizeof(tSirMacAddr));
 
-<<<<<<< HEAD
     vos_mem_copy(pRequestBuf, pRcvPktFilterCfg, allocSize);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     msg.type = WDA_RECEIVE_FILTER_SET_FILTER_REQ;
     msg.reserved = 0;
     msg.bodyptr = pRequestBuf;
@@ -9166,40 +8096,28 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
 
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
            "Proto %d Comp Flag %d \n",
 =======
            "Proto %d Comp Flag %d ",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           "Proto %d Comp Flag %d \n",
->>>>>>> 657b0e9... prima update
            pRequestBuf->paramsData[idx].protocolLayer,
            pRequestBuf->paramsData[idx].cmpFlag);
 
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
            "Data Offset %d Data Len %d\n",
 =======
            "Data Offset %d Data Len %d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           "Data Offset %d Data Len %d\n",
->>>>>>> 657b0e9... prima update
            pRequestBuf->paramsData[idx].dataOffset,
            pRequestBuf->paramsData[idx].dataLength);
 
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
           "CData: %d:%d:%d:%d:%d:%d\n",
 =======
           "CData: %d:%d:%d:%d:%d:%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          "CData: %d:%d:%d:%d:%d:%d\n",
->>>>>>> 657b0e9... prima update
            pRequestBuf->paramsData[idx].compareData[0],
            pRequestBuf->paramsData[idx].compareData[1], 
            pRequestBuf->paramsData[idx].compareData[2],
@@ -9209,14 +8127,10 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
 
       VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, 
 <<<<<<< HEAD
-<<<<<<< HEAD
            "MData: %d:%d:%d:%d:%d:%d\n",
 =======
            "MData: %d:%d:%d:%d:%d:%d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           "MData: %d:%d:%d:%d:%d:%d\n",
->>>>>>> 657b0e9... prima update
            pRequestBuf->paramsData[idx].dataMask[0],
            pRequestBuf->paramsData[idx].dataMask[1], 
            pRequestBuf->paramsData[idx].dataMask[2],
@@ -9230,14 +8144,10 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post "
 <<<<<<< HEAD
-<<<<<<< HEAD
             "WDA_RECEIVE_FILTER_SET_FILTER message to WDA", __FUNCTION__);
 =======
             "WDA_RECEIVE_FILTER_SET_FILTER message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "WDA_RECEIVE_FILTER_SET_FILTER message to WDA", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -9248,20 +8158,15 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
 eHalStatus sme_GetFilterMatchCount(tHalHandle hHal, 
                                    FilterMatchCountCallback callbackRoutine,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                    void *callbackContext )
 =======
                                    void *callbackContext, 
                                    tANI_U8 sessionId)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                   void *callbackContext )
->>>>>>> 657b0e9... prima update
 {
     tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
     eHalStatus status;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "+%s", __FUNCTION__);
 
@@ -9274,22 +8179,15 @@ eHalStatus sme_GetFilterMatchCount(tHalHandle hHal,
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "-%s", __FUNCTION__);
 =======
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "+%s", __func__);
-=======
-    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "+%s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     if ( eHAL_STATUS_SUCCESS == ( status = sme_AcquireGlobalLock( &pMac->sme)))
     {
-        pmcGetFilterMatchCount(hHal, callbackRoutine, callbackContext);
+        pmcGetFilterMatchCount(hHal, callbackRoutine, callbackContext, sessionId);
         sme_ReleaseGlobalLock( &pMac->sme );
     }
 
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "-%s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "-%s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return (status);
 }
@@ -9302,7 +8200,6 @@ eHalStatus sme_ReceiveFilterClearFilter(tHalHandle hHal, tpSirRcvFltPktClearPara
     tpAniSirGlobal          pMac = PMAC_STRUCT(hHal);
     tCsrRoamSession         *pSession = CSR_GET_SESSION( pMac, sessionId );
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: filterId = %d", __FUNCTION__,
                pRcvFltPktClearParam->filterId);
@@ -9323,31 +8220,31 @@ eHalStatus sme_ReceiveFilterClearFilter(tHalHandle hHal, tpSirRcvFltPktClearPara
 
 =======
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: filterId = %d", __func__,
-=======
-    VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: filterId = %d", __FUNCTION__,
->>>>>>> 657b0e9... prima update
                pRcvFltPktClearParam->filterId);
   
     pRequestBuf = vos_mem_malloc(sizeof(tSirRcvFltPktClearParam));
-    if ((NULL == pRequestBuf) || (NULL == pSession))
+    if (NULL == pRequestBuf)
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
             "%s: Not able to allocate memory for Receive Filter "
-            "Clear Filter request", __FUNCTION__);
+            "Clear Filter request", __func__);
         return eHAL_STATUS_FAILED_ALLOC;
     }
-    vos_mem_copy(pRequestBuf, pRcvFltPktClearParam, sizeof(tSirRcvFltPktClearParam));
+    if( NULL == pSession )
+    {
+        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
+            "%s: Session Not find ", __func__);
+        vos_mem_free(pRequestBuf);
+        return eHAL_STATUS_FAILURE;
+    }
 
-    vos_mem_copy( pRequestBuf->selfMacAddr, pSession->selfMacAddr, sizeof(tSirMacAddr));
-    vos_mem_copy( pRequestBuf->bssId, pSession->connectedProfile.bssid, 
+    vos_mem_copy( pRcvFltPktClearParam->selfMacAddr, pSession->selfMacAddr, sizeof(tSirMacAddr));
+    vos_mem_copy( pRcvFltPktClearParam->bssId, pSession->connectedProfile.bssid, 
                           sizeof(tSirMacAddr));
 
-<<<<<<< HEAD
     vos_mem_copy(pRequestBuf, pRcvFltPktClearParam, sizeof(tSirRcvFltPktClearParam));
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     msg.type = WDA_RECEIVE_FILTER_CLEAR_FILTER_REQ;
     msg.reserved = 0;
     msg.bodyptr = pRequestBuf;
@@ -9355,14 +8252,10 @@ eHalStatus sme_ReceiveFilterClearFilter(tHalHandle hHal, tpSirRcvFltPktClearPara
     {
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post "
 <<<<<<< HEAD
-<<<<<<< HEAD
             "WDA_RECEIVE_FILTER_CLEAR_FILTER message to WDA", __FUNCTION__);
 =======
             "WDA_RECEIVE_FILTER_CLEAR_FILTER message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "WDA_RECEIVE_FILTER_CLEAR_FILTER message to WDA", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         vos_mem_free(pRequestBuf);
         return eHAL_STATUS_FAILURE;
     }
@@ -9534,27 +8427,19 @@ eHalStatus sme_WakeReasonIndCallback (tHalHandle hHal, void* pMsg)
    if (NULL == pMsg)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
 =======
       smsLog(pMac, LOGE, "in %s msg ptr is NULL", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       status = eHAL_STATUS_FAILURE;
    }
    else
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog(pMac, LOG2, "SME: entering sme_WakeReasonIndCallback\n");
 =======
       smsLog(pMac, LOG2, "SME: entering sme_WakeReasonIndCallback");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog(pMac, LOG2, "SME: entering sme_WakeReasonIndCallback\n");
->>>>>>> 657b0e9... prima update
 
       /* Call Wake Reason Indication callback routine. */
       if (pMac->pmc.wakeReasonIndCB != NULL)
@@ -9564,14 +8449,10 @@ eHalStatus sme_WakeReasonIndCallback (tHalHandle hHal, void* pMsg)
       pMac->pmc.wakeReasonIndCBContext = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
       smsLog(pMac, LOG1, "Wake Reason Indication in %s(), reason=%d", __FUNCTION__, pWakeReasonInd->ulReason);
 =======
       smsLog(pMac, LOG1, "Wake Reason Indication in %s(), reason=%d", __func__, pWakeReasonInd->ulReason);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      smsLog(pMac, LOG1, "Wake Reason Indication in %s(), reason=%d", __FUNCTION__, pWakeReasonInd->ulReason);
->>>>>>> 657b0e9... prima update
    }
 
    return(status);
@@ -9603,14 +8484,10 @@ eHalStatus sme_SetMaxTxPower(tHalHandle hHal, tSirMacAddr pBssid,
     if (NULL == pMaxTxParams)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for pMaxTxParams", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for pMaxTxParams", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to allocate memory for pMaxTxParams", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return eHAL_STATUS_FAILURE;
     }
 
@@ -9626,14 +8503,10 @@ eHalStatus sme_SetMaxTxPower(tHalHandle hHal, tSirMacAddr pBssid,
     if(VOS_STATUS_SUCCESS != vos_mq_post_message(VOS_MODULE_ID_WDA, &msg))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_MAX_TX_POWER_REQ message to WDA", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_MAX_TX_POWER_REQ message to WDA", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR, "%s: Not able to post WDA_SET_MAX_TX_POWER_REQ message to WDA", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         vos_mem_free(pMaxTxParams);
         return eHAL_STATUS_FAILURE;
     }
@@ -9641,7 +8514,6 @@ eHalStatus sme_SetMaxTxPower(tHalHandle hHal, tSirMacAddr pBssid,
     return eHAL_STATUS_SUCCESS;
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
@@ -9675,9 +8547,6 @@ eHalStatus sme_SetTxPower(tHalHandle hHal, v_U8_t sessionId, v_U8_t mW)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
 
     \fn sme_HideSSID
@@ -9706,12 +8575,9 @@ eHalStatus sme_HideSSID(tHalHandle hHal, v_U8_t sessionId, v_U8_t ssidHidden)
         {
             smsLog(pMac, LOGE, FL("  session %d not found "), sessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
             sme_ReleaseGlobalLock( &pMac->sme );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             return eHAL_STATUS_FAILURE;
         }
         
@@ -9736,13 +8602,9 @@ eHalStatus sme_HideSSID(tHalHandle hHal, v_U8_t sessionId, v_U8_t ssidHidden)
    return status;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
 
@@ -9768,15 +8630,11 @@ eHalStatus sme_SetTmLevel(tHalHandle hHal, v_U16_t newTMLevel, v_U16_t tmMode)
         {
            VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "%s: Not able to allocate memory for sme_SetTmLevel", __FUNCTION__);
 =======
                      "%s: Not able to allocate memory for sme_SetTmLevel", __func__);
            sme_ReleaseGlobalLock( &pMac->sme );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "%s: Not able to allocate memory for sme_SetTmLevel", __FUNCTION__);
->>>>>>> 657b0e9... prima update
            return eHAL_STATUS_FAILURE;
         }
 
@@ -9791,14 +8649,10 @@ eHalStatus sme_SetTmLevel(tHalHandle hHal, v_U16_t newTMLevel, v_U16_t tmMode)
         {
            VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "%s: Post Set TM Level MSG fail", __FUNCTION__);
 =======
                      "%s: Post Set TM Level MSG fail", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "%s: Post Set TM Level MSG fail", __FUNCTION__);
->>>>>>> 657b0e9... prima update
            vos_mem_free(setTmLevelReq);
            status = eHAL_STATUS_FAILURE;
         }
@@ -9824,7 +8678,6 @@ void sme_featureCapsExchange( tHalHandle hHal)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
 
@@ -9843,8 +8696,6 @@ void sme_disableFeatureCapablity(tANI_U8 feature_index)
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
 
@@ -9885,30 +8736,22 @@ eHalStatus sme_GetCurrentCountryCode(tHalHandle hHal, tANI_U8 *pCountry)
     \brief  Dynamically monitoring Transport channels
             Private IOCTL will querry transport channel status if driver loaded
 <<<<<<< HEAD
-<<<<<<< HEAD
     \param  displaySnapshot Dispaly transport cahnnel snapshot option
 =======
     \param  hHal Upper MAC context
     \param  displaySnapshot Display transport channel snapshot option
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \param  displaySnapshot Dispaly transport cahnnel snapshot option
->>>>>>> 657b0e9... prima update
     \param  toggleStallDetect Enable stall detect feature
                               This feature will take effect to data performance
                               Not integrate till fully verification
     \- return NONE
     -------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 void sme_transportDebug
 (
    v_BOOL_t  displaySnapshot,
    v_BOOL_t  toggleStallDetect
 )
-<<<<<<< HEAD
 {
    WDA_TransportChannelDebug(displaySnapshot, toggleStallDetect);
 }
@@ -10261,12 +9104,27 @@ eHalStatus sme_SetRoamScanControl(tHalHandle hHal, v_BOOL_t roamScanControl)
   --------------------------------------------------------------------------*/
 eHalStatus sme_UpdateIsFastRoamIniFeatureEnabled(tHalHandle hHal, 
         const v_BOOL_t isFastRoamIniFeatureEnabled)
-=======
->>>>>>> 657b0e9... prima update
 {
-   WDA_TransportChannelDebug(displaySnapshot, toggleStallDetect);
+  tpAniSirGlobal pMac = PMAC_STRUCT( hHal );
+
+  if (pMac->roam.configParam.isFastRoamIniFeatureEnabled == isFastRoamIniFeatureEnabled)
+  {
+      VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
+                     "%s: FastRoam is already enabled or disabled, nothing to do (returning) old(%d) new(%d)", __func__,
+                      pMac->roam.configParam.isFastRoamIniFeatureEnabled,
+                      isFastRoamIniFeatureEnabled);
+      return eHAL_STATUS_SUCCESS;
+  }
+
+  VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO,
+                     "%s: FastRoamEnabled is changed from %d to %d", __func__,
+                      pMac->roam.configParam.isFastRoamIniFeatureEnabled,
+                      isFastRoamIniFeatureEnabled);
+  pMac->roam.configParam.isFastRoamIniFeatureEnabled = isFastRoamIniFeatureEnabled;
+  csrNeighborRoamUpdateFastRoamingEnabled(pMac, isFastRoamIniFeatureEnabled);
+
+  return eHAL_STATUS_SUCCESS;
 }
-<<<<<<< HEAD
 
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 /*--------------------------------------------------------------------------
@@ -11564,5 +10422,3 @@ eHalStatus sme_DelPeriodicTxPtrn(tHalHandle hHal, tSirDelPeriodicTxPtrn
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

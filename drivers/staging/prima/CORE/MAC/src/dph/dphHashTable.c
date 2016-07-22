@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,9 +62,6 @@
 #include "limDebug.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halCommonApi.h"
 #endif
@@ -75,13 +69,10 @@
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "halMsgApi.h" 
 #endif
-<<<<<<< HEAD
 =======
 
 #include "halMsgApi.h" 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 // ---------------------------------------------------------------------
 /**
@@ -201,7 +192,6 @@ tpDphHashNode dphLookupHashEntry(tpAniSirGlobal pMac, tANI_U8 staAddr[], tANI_U1
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 tpDphHashNode dphGetHashEntry(tpAniSirGlobal pMac, tANI_U16 assocId, dphHashTableClass* pDphHashTable)
 {
     if (assocId < pDphHashTable->size)
@@ -210,20 +200,12 @@ tpDphHashNode dphGetHashEntry(tpAniSirGlobal pMac, tANI_U16 assocId, dphHashTabl
           return &pDphHashTable->pDphNodeArray[assocId];
 =======
 tpDphHashNode dphGetHashEntry(tpAniSirGlobal pMac, tANI_U16 peerIdx, dphHashTableClass* pDphHashTable)
-=======
-tpDphHashNode dphGetHashEntry(tpAniSirGlobal pMac, tANI_U16 assocId, dphHashTableClass* pDphHashTable)
->>>>>>> 657b0e9... prima update
 {
-    if (assocId < pDphHashTable->size)
+    if (peerIdx < pDphHashTable->size)
     {
-<<<<<<< HEAD
         if (pDphHashTable->pDphNodeArray[peerIdx].added)
           return &pDphHashTable->pDphNodeArray[peerIdx];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (pDphHashTable->pDphNodeArray[assocId].added)
-          return &pDphHashTable->pDphNodeArray[assocId];
->>>>>>> 657b0e9... prima update
         else
             return NULL;
     }
@@ -304,21 +286,16 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
     if (assocId >= pDphHashTable->size)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Invalid Assoc Id %d\n"), assocId);)
 =======
         PELOGE(limLog(pMac, LOGE, FL("Invalid Assoc Id %d"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Invalid Assoc Id %d\n"), assocId);)
->>>>>>> 657b0e9... prima update
         return NULL;
     }
 
     pStaDs = getNode(pMac, (tANI_U8) assocId, pDphHashTable);
     staIdx = pStaDs->staIndex;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Assoc Id %d, Addr %08X\n"), assocId, pStaDs);)
 
@@ -330,12 +307,6 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
     // Clear the STA node except for the next pointer (last 4 bytes)
     vos_mem_set( (tANI_U8 *) pStaDs, sizeof(tDphHashNode) - sizeof(tpDphHashNode), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOG1(limLog(pMac, LOG1, FL("Assoc Id %d, Addr %08X\n"), assocId, pStaDs);)
-
-    // Clear the STA node except for the next pointer (last 4 bytes)
-    palZeroMemory( pMac->hHdd, (tANI_U8 *) pStaDs, sizeof(tDphHashNode) - sizeof(tpDphHashNode));
->>>>>>> 657b0e9... prima update
 
     // Initialize the assocId
     pStaDs->assocId = assocId;
@@ -345,7 +316,6 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
       pStaDs->staIndex = HAL_STA_INVALID_IDX;
 
     // Initialize STA mac address
-<<<<<<< HEAD
 <<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pStaDs->staAddr, staAddr, sizeof(tSirMacAddr));
 
@@ -359,13 +329,6 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
     if (wlan_cfgGetInt(pMac, WNI_CFG_FRAGMENTATION_THRESHOLD, &val) != eSIR_SUCCESS)
         limLog(pMac, LOGP, FL("could not retrieve fragmentation threshold"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pStaDs->staAddr, staAddr, sizeof(tSirMacAddr));
-
-    // Initialize fragmentation threshold
-    if (wlan_cfgGetInt(pMac, WNI_CFG_FRAGMENTATION_THRESHOLD, &val) != eSIR_SUCCESS)
-        limLog(pMac, LOGP, FL("could not retrieve fragmentation threshold\n"));
->>>>>>> 657b0e9... prima update
     else
         pStaDs->fragSize = (tANI_U16) val;
 
@@ -373,18 +336,12 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
     pStaDs->encPolicy = HAL_ENC_POLICY_NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( PLM_WDS)&&defined(LX5280)
     pStaDs->wdsIndex=pStaDs->wdsPeerBeaconSeen=0;
 #endif
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WMM_APSD
     pStaDs->stopQueue = 0;
     pStaDs->spStatus = 0;
@@ -419,42 +376,30 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
     tANI_U16 index = hashFunction(pMac, staAddr, pDphHashTable->size);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr\n"),
 =======
     PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr\n"),
->>>>>>> 657b0e9... prima update
            assocId, index);
     dphPrintMacAddr(pMac, staAddr, LOG1);)
 
     if (assocId >= pDphHashTable->size)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d\n"), assocId);)
 =======
         PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d\n"), assocId);)
->>>>>>> 657b0e9... prima update
         return NULL;
     }
 
     if (pDphHashTable->pDphNodeArray[assocId].added)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("already added STA %d\n"), assocId);)
 =======
         PELOGE(limLog(pMac, LOGE, FL("already added STA %d"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("already added STA %d\n"), assocId);)
->>>>>>> 657b0e9... prima update
         return NULL;
     }
 
@@ -463,14 +408,10 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
         if (ptr == ptr->next)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("Infinite Loop\n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("Infinite Loop"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("Infinite Loop\n"));)
->>>>>>> 657b0e9... prima update
             return NULL;
         }
 
@@ -482,14 +423,10 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
     {
         // Duplicate entry
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGE, FL("assocId %d hashIndex %d entry exists\n"),
 =======
         limLog(pMac, LOGE, FL("assocId %d hashIndex %d entry exists"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGE, FL("assocId %d hashIndex %d entry exists\n"),
->>>>>>> 657b0e9... prima update
                      assocId, index);
         return NULL;
     }
@@ -498,14 +435,10 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
         if (dphInitStaState(pMac, staAddr, assocId, false, pDphHashTable) == NULL)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not Init STAid=%d\n"), assocId);)
 =======
             PELOGE(limLog(pMac, LOGE, FL("could not Init STAid=%d"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("could not Init STAid=%d\n"), assocId);)
->>>>>>> 657b0e9... prima update
                     return NULL;
         }
 
@@ -544,42 +477,30 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr\n"),
 =======
   PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr\n"),
->>>>>>> 657b0e9... prima update
                   assocId, index);
   dphPrintMacAddr(pMac, staAddr, LOG1);)
 
   if (assocId >= pDphHashTable->size)
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d\n"), assocId);)
 =======
       PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d\n"), assocId);)
->>>>>>> 657b0e9... prima update
       return eSIR_FAILURE;
   }
 
   if (pDphHashTable->pDphNodeArray[assocId].added == 0)
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("STA %d never added\n"), assocId);)
 =======
       PELOGE(limLog(pMac, LOGE, FL("STA %d never added"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      PELOGE(limLog(pMac, LOGE, FL("STA %d never added\n"), assocId);)
->>>>>>> 657b0e9... prima update
       return eSIR_FAILURE;
   }
 
@@ -593,14 +514,10 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
     if (prev == ptr)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Infinite Loop\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("Infinite Loop"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Infinite Loop\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
   }
@@ -610,12 +527,9 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
       /// Delete the entry after invalidating it
       ptr->valid = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
       memset(ptr->staAddr, 0, sizeof(ptr->staAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       if (prev == 0)
          pDphHashTable->pHashTable[index] = ptr->next;
       else
@@ -627,14 +541,10 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
     {
       /// Entry not present
 <<<<<<< HEAD
-<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("Entry not present STA addr\n"));
 =======
       PELOGE(limLog(pMac, LOGE, FL("Entry not present STA addr"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      PELOGE(limLog(pMac, LOGE, FL("Entry not present STA addr\n"));
->>>>>>> 657b0e9... prima update
       dphPrintMacAddr(pMac, staAddr, LOGE);)
       return eSIR_FAILURE;
     }
@@ -663,14 +573,10 @@ void
 dphPrintMacAddr(tpAniSirGlobal pMac, tANI_U8 addr[], tANI_U32 level)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, (tANI_U16) level, FL("MAC ADDR = %d:%d:%d:%d:%d:%d\n"),
 =======
     limLog(pMac, (tANI_U16) level, FL("MAC ADDR = %d:%d:%d:%d:%d:%d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, (tANI_U16) level, FL("MAC ADDR = %d:%d:%d:%d:%d:%d\n"),
->>>>>>> 657b0e9... prima update
            addr[0], addr[1], addr[2], addr[3], addr[4], addr[5]);
 }
 

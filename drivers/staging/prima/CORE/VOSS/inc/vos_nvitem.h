@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -114,7 +111,6 @@ ADD_VNV_ITEM( VNV_RX_SENSITIVITY, 1, MAC_RATE_COUNT, NV_WLAN_RX_SENSITIVITY_I)\
 ADD_VNV_ITEM( VNV_NETWORK_TYPE, 1, 1, NV_WLAN_NETWORK_TYPE_I ) \
 ADD_VNV_ITEM( VNV_CAL_MEMORY, 1, 3460, NV_WLAN_CAL_MEMORY_I ) \
 <<<<<<< HEAD
-<<<<<<< HEAD
 ADD_VNV_ITEM( VNV_CAL_STATUS, 1, 32, NV_WLAN_CAL_STATUS_I ) \
 ADD_VNV_ITEM( VNV_RSSI_CHANNEL_OFFSETS, 2, 56, NV_WLAN_RSSI_CHANNEL_OFFSETS_I ) \
 ADD_VNV_ITEM( VNV_RF_CAL_VALUES, 1, 48, NV_WLAN_RF_CAL_VALUES_I ) \
@@ -123,11 +119,6 @@ ADD_VNV_ITEM( VNV_FW_CONFIG, 1, 32, NV_WLAN_FW_CONFIG_I ) \
 ADD_VNV_ITEM( VNV_RSSI_CHANNEL_OFFSETS, 2, 56, NV_WLAN_RSSI_CHANNEL_OFFSETS_I ) \
 ADD_VNV_ITEM( VNV_HW_CAL_VALUES, 1, 48, NV_WLAN_HW_CAL_VALUES_I ) \
 >>>>>>> d97af3b... add prima wlan driver
-=======
-ADD_VNV_ITEM( VNV_CAL_STATUS, 1, 32, NV_WLAN_CAL_STATUS_I ) \
-ADD_VNV_ITEM( VNV_RSSI_CHANNEL_OFFSETS, 2, 56, NV_WLAN_RSSI_CHANNEL_OFFSETS_I ) \
-ADD_VNV_ITEM( VNV_RF_CAL_VALUES, 1, 48, NV_WLAN_RF_CAL_VALUES_I ) \
->>>>>>> 657b0e9... prima update
 ADD_VNV_ITEM( VNV_ANTENNA_PATH_LOSS, 14, 2, NV_WLAN_ANTENNA_PATH_LOSS_I ) \
 ADD_VNV_ITEM( VNV_PACKET_TYPE_POWER_LIMITS, 42, 2, NV_WLAN_PACKET_TYPE_POWER_LIMITS_I ) \
 ADD_VNV_ITEM( VNV_OFDM_CMD_PWR_OFFSET, 1, 2, NV_WLAN_OFDM_CMD_PWR_OFFSET_I ) \
@@ -143,14 +134,10 @@ ADD_VNV_ITEM( VNV_TABLE_VIRTUAL_RATE, 1, 4, VNV_TABLE_VIRTUAL_RATE_I ) \
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*! 
 =======
 /*!
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/*! 
->>>>>>> 657b0e9... prima update
  * The path (from the root of the DPP_FOLDER_PATH\QCOM) to the file containing
  * the CLPC provisioning data. This is being temporarily put here. This should go
  * to esp_dpp.h where the WLAN_PROVISION_DATA is present.
@@ -655,7 +642,6 @@ VOS_STATUS vos_nv_close(void);
 
 /**------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
   \brief vos_nv_getBuffer - 
   \param pBuffer  - to return the buffer address
             pNvBitmap - Nv Bit map
@@ -670,25 +656,62 @@ VOS_STATUS vos_nv_getNVBuffer(v_VOID_t **pNvBuffer ,v_SIZE_t *pSize);
   \brief vos_nv_setRegDomain - 
 =======
   \brief vos_nv_getNVBuffer -
-=======
-  \brief vos_nv_getBuffer - 
->>>>>>> 657b0e9... prima update
   \param pBuffer  - to return the buffer address
-            pNvBitmap - Nv Bit map
-            pSize     - buffer size.
+         pSize    - buffer size.
   \return status of the NV read operation
   \sa
   -------------------------------------------------------------------------*/
-VOS_STATUS vos_nv_getNVBuffer(v_VOID_t **pNvBuffer ,v_SIZE_t *pSize);
+VOS_STATUS vos_nv_getNVBuffer(v_VOID_t **pNvBuffer, v_SIZE_t *pSize);
 
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
 /**------------------------------------------------------------------------
-<<<<<<< HEAD
+  \brief vos_nv_getNVEncodedBuffer -
+  \param pBuffer  - to return the buffer address
+         pSize    - buffer size.
+  \return status of the NV read operation
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_getNVEncodedBuffer(v_VOID_t **pNvBuffer, v_SIZE_t *pSize);
+
+
+/**------------------------------------------------------------------------
+  \brief vos_nv_getNVDictionary -
+  \param pBuffer  - to return the buffer address
+         pSize    - buffer size.
+  \return status of the NV read operation
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_getNVDictionary(v_VOID_t **pNvBuffer, v_SIZE_t *pSize);
+
+/**------------------------------------------------------------------------
+  \brief vos_nv_isEmbeddedNV() - NV.bin is embedded or not
+
+  \return VOS_STATUS_SUCCESS - if NV is embedded
+          otherwise  - NOT embedded
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_isEmbeddedNV(void);
+
+/**------------------------------------------------------------------------
+  \brief vos_nv_setNVEncodedBuffer() - set Encode Buffer
+
+  \return VOS_STATUS_SUCCESS - if able to set encoded buffer successfully
+          otherwise  - NOT able to set encoded data
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_setNVEncodedBuffer(v_U8_t *pNvBuffer, v_SIZE_t size);
+
+/**------------------------------------------------------------------------
+  \brief vos_nv_get_dictionary_data() - read dictionary data
+
+  \return VOS_STATUS_SUCCESS - if dictionary data is read successfully
+          otherwise  - NOT able to read dictionary data
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_get_dictionary_data(void);
+
+/**------------------------------------------------------------------------
   \brief vos_nv_setRegDomain -
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  \brief vos_nv_setRegDomain - 
->>>>>>> 657b0e9... prima update
   \param clientCtxt  - Client Context, Not used for PRIMA
               regId  - Regulatory Domain ID
   \return status set REG domain operation
@@ -698,14 +721,10 @@ VOS_STATUS vos_nv_setRegDomain(void * clientCtxt, v_REGDOMAIN_t regId);
 
 /**------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
   \brief vos_nv_getChannelEnabledState - 
 =======
   \brief vos_nv_getChannelEnabledState -
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  \brief vos_nv_getChannelEnabledState - 
->>>>>>> 657b0e9... prima update
   \param rfChannel  - input channel number to know enabled state
   \return eNVChannelEnabledType enabled state for channel
              * enabled
@@ -719,12 +738,8 @@ eNVChannelEnabledType vos_nv_getChannelEnabledState
    v_U32_t    rfChannel
 );
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
 #endif // __VOS_NVITEM_H

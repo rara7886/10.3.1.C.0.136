@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -24,7 +21,6 @@
  */
 
 
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -46,8 +42,6 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*============================================================================
   FILE:         vos_diag.c
 
@@ -55,7 +49,6 @@
 
   DEPENDENCIES: 
  
-<<<<<<< HEAD
 <<<<<<< HEAD
                 Copyright (c) 2007 QUALCOMM Incorporated.
                 All Rights Reserved.
@@ -65,11 +58,6 @@
                 All Rights Reserved.
                 Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                Copyright (c) 2007 QUALCOMM Incorporated.
-                All Rights Reserved.
-                Qualcomm Confidential and Proprietary
->>>>>>> 657b0e9... prima update
 ============================================================================*/
 
 #include "vos_types.h"
@@ -162,14 +150,10 @@ void vos_log_submit(v_VOID_t *plog_hdr_ptr)
     tAniHdr *wmsg = NULL;
     v_U8_t *pBuf;
 <<<<<<< HEAD
-<<<<<<< HEAD
     hdd_adapter_t *pAdapter;
 =======
     struct hdd_context_s *pHddCtx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    hdd_adapter_t *pAdapter;
->>>>>>> 657b0e9... prima update
     v_CONTEXT_t pVosContext= NULL;
     v_U16_t data_len;
     v_U16_t total_len;
@@ -179,7 +163,6 @@ void vos_log_submit(v_VOID_t *plog_hdr_ptr)
     pVosContext = vos_get_global_context(VOS_MODULE_ID_SYS, NULL);
 
      /*Get the Hdd Context */
-<<<<<<< HEAD
 <<<<<<< HEAD
     pAdapter = ((VosContextType*)(pVosContext))->pHDDContext;
 
@@ -199,12 +182,6 @@ void vos_log_submit(v_VOID_t *plog_hdr_ptr)
    /* Send the log data to the ptt app only if it is registered with the wlan driver*/
     if(pHddCtx->ptt_pid)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pAdapter = ((VosContextType*)(pVosContext))->pHDDContext;
-
-   /* Send the log data to the ptt app only if it is registered with the wlan driver*/
-    if(pAdapter->ptt_pid) 
->>>>>>> 657b0e9... prima update
     {
         data_len = pHdr->len;
     
@@ -235,7 +212,6 @@ void vos_log_submit(v_VOID_t *plog_hdr_ptr)
         memcpy(pBuf, pHdr,data_len);
     
 <<<<<<< HEAD
-<<<<<<< HEAD
         if(pAdapter->ptt_pid) 
         {
             if( ptt_sock_send_msg_to_app(wmsg, 0, ANI_NL_MSG_PUMAC, pAdapter->ptt_pid) < 0) {
@@ -244,11 +220,6 @@ void vos_log_submit(v_VOID_t *plog_hdr_ptr)
         {
             if( ptt_sock_send_msg_to_app(wmsg, 0, ANI_NL_MSG_PUMAC, pHddCtx->ptt_pid) < 0) {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if(pAdapter->ptt_pid) 
-        {
-            if( ptt_sock_send_msg_to_app(wmsg, 0, ANI_NL_MSG_PUMAC, pAdapter->ptt_pid) < 0) {
->>>>>>> 657b0e9... prima update
         
                 VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, ("Ptt Socket error sending message to the app!!\n"));
                 return;
@@ -279,14 +250,10 @@ void vos_event_report_payload(v_U16_t event_Id, v_U16_t length, v_VOID_t *pPaylo
     tAniHdr *wmsg = NULL;
     v_U8_t *pBuf;
 <<<<<<< HEAD
-<<<<<<< HEAD
     hdd_adapter_t *pAdapter;
 =======
     struct hdd_context_s *pHddCtx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    hdd_adapter_t *pAdapter;
->>>>>>> 657b0e9... prima update
     v_CONTEXT_t pVosContext= NULL;
     event_report_t *pEvent_report;
     v_U16_t total_len;
@@ -296,7 +263,6 @@ void vos_event_report_payload(v_U16_t event_Id, v_U16_t length, v_VOID_t *pPaylo
 
      /*Get the Hdd Context */
 <<<<<<< HEAD
-<<<<<<< HEAD
     pAdapter = ((VosContextType*)(pVosContext))->pHDDContext;
 
     
@@ -304,18 +270,18 @@ void vos_event_report_payload(v_U16_t event_Id, v_U16_t length, v_VOID_t *pPaylo
     if(pAdapter->ptt_pid) 
 =======
     pHddCtx = ((VosContextType*)(pVosContext))->pHDDContext;
-=======
-    pAdapter = ((VosContextType*)(pVosContext))->pHDDContext;
->>>>>>> 657b0e9... prima update
 
+#ifdef WLAN_KD_READY_NOTIFIER
+    /* NL is not ready yet, WLAN KO started first */
+    if ((pHddCtx->kd_nl_init) && (!pHddCtx->ptt_pid))
+    {
+        nl_srv_nl_ready_indication();
+    }
+#endif /* WLAN_KD_READY_NOTIFIER */
     
     /* Send the log data to the ptt app only if it is registered with the wlan driver*/
-<<<<<<< HEAD
     if(pHddCtx->ptt_pid)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(pAdapter->ptt_pid) 
->>>>>>> 657b0e9... prima update
     {
         total_len = sizeof(tAniHdr)+sizeof(event_report_t)+length;
         
@@ -342,14 +308,10 @@ void vos_event_report_payload(v_U16_t event_Id, v_U16_t length, v_VOID_t *pPaylo
         memcpy(pBuf, pPayload,length);
       
 <<<<<<< HEAD
-<<<<<<< HEAD
         if( ptt_sock_send_msg_to_app(wmsg, 0, ANI_NL_MSG_PUMAC, pAdapter->ptt_pid) < 0) {
 =======
         if( ptt_sock_send_msg_to_app(wmsg, 0, ANI_NL_MSG_PUMAC, pHddCtx->ptt_pid) < 0) {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if( ptt_sock_send_msg_to_app(wmsg, 0, ANI_NL_MSG_PUMAC, pAdapter->ptt_pid) < 0) {
->>>>>>> 657b0e9... prima update
     
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, ("Ptt Socket error sending message to the app!!\n"));
             return;

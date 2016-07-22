@@ -1,13 +1,9 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
->>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -36,14 +32,10 @@
  *  @author:   Kumar Anand
  *
 <<<<<<< HEAD
-<<<<<<< HEAD
  *             Copyright (C) 2010, Qualcomm, Inc. 
 =======
  *             Copyright (C) 2010, Qualcomm Technologies, Inc. 
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *             Copyright (C) 2010, Qualcomm, Inc. 
->>>>>>> 657b0e9... prima update
  *             All rights reserved.
  *
  *=========================================================================*/
@@ -56,12 +48,9 @@
 #include "wlan_qct_dev_defs.h"
 #include "wlan_nv.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
   API VERSIONING INFORMATION
 
@@ -78,7 +67,6 @@
  ---------------------------------------------------------------------------*/
 #define WLAN_HAL_VER_MAJOR 1
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WLAN_HAL_VER_MINOR 3
 #define WLAN_HAL_VER_VERSION 1
 #define WLAN_HAL_VER_REVISION 0
@@ -87,11 +75,6 @@
 #define WLAN_HAL_VER_VERSION 1
 #define WLAN_HAL_VER_REVISION 2
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WLAN_HAL_VER_MINOR 3
-#define WLAN_HAL_VER_VERSION 1
-#define WLAN_HAL_VER_REVISION 0
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   Commom Type definitons
@@ -136,19 +119,14 @@ typedef tANI_U8 tHalIpv4Addr[4];
 
 /*Dump command response Buffer size*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define DUMPCMD_RSP_BUFFER 100
 =======
 #define DUMPCMD_RSP_BUFFER 500
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define DUMPCMD_RSP_BUFFER 100
->>>>>>> 657b0e9... prima update
 
 /*Version string max length (including NUL) */
 #define WLAN_HAL_VERSION_LENGTH  64
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -165,8 +143,6 @@ typedef tANI_U8 tHalIpv4Addr[4];
 #define HAL_MAXNUM_PERIODIC_TX_PTRNS 6
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /* Message types for messages exchanged between WDI and HAL */
 typedef enum 
 {
@@ -412,7 +388,6 @@ typedef enum
    WLAN_HAL_SET_THERMAL_MITIGATION_RSP      = 179,
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    WLAN_HAL_UPDATE_VHT_OP_MODE_REQ          = 182,
    WLAN_HAL_UPDATE_VHT_OP_MODE_RSP          = 183,
@@ -480,8 +455,6 @@ typedef enum
    WLAN_HAL_GET_IBSS_PEER_INFO_RSP          = 228,
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WLAN_HAL_MSG_MAX = WLAN_HAL_MSG_TYPE_MAX_ENUM_SIZE
 }tHalHostMsgType;
 
@@ -491,15 +464,11 @@ typedef enum
    WLAN_HAL_MSG_VERSION0 = 0,
    WLAN_HAL_MSG_VERSION1 = 1,
 <<<<<<< HEAD
-<<<<<<< HEAD
    WLAN_HAL_MSG_VERSION_MAX_FIELD = 0x7FFF /*define as 2 bytes data*/
 =======
    WLAN_HAL_MSG_WCNSS_CTRL_VERSION = 0x7FFF, /*define as 2 bytes data*/
    WLAN_HAL_MSG_VERSION_MAX_FIELD  = WLAN_HAL_MSG_WCNSS_CTRL_VERSION
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   WLAN_HAL_MSG_VERSION_MAX_FIELD = 0x7FFF /*define as 2 bytes data*/
->>>>>>> 657b0e9... prima update
 }tHalHostMsgVersion;
 
 /* Enumeration for Boolean - False/True, On/Off */
@@ -538,12 +507,9 @@ typedef enum
    eHAL_SYS_MODE_ROAM_SCAN,
    eHAL_SYS_MODE_ROAM_SUSPEND_LINK,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    eHAL_SYS_MODE_OEM_DATA,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    eHAL_SYS_MODE_MAX = WLAN_HAL_MAX_ENUM_SIZE
 } eHalSysMode;
 
@@ -691,12 +657,9 @@ typedef enum eSriLinkState {
 #ifdef WLAN_FEATURE_P2P
     eSIR_LINK_LISTEN_STATE      = 14,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     eSIR_LINK_SEND_ACTION_STATE = 15,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
     eSIR_LINK_MAX = WLAN_HAL_MAX_ENUM_SIZE
 } tSirLinkState;
@@ -1578,7 +1541,6 @@ typedef PACKED_PRE struct PACKED_POST
 
     /*Reserved to align next field on a dword boundary*/
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U8  reserved;
 =======
     tANI_U8 htLdpcEnabled:1;
@@ -1587,9 +1549,6 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_U8 reserved:5;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8  reserved;
->>>>>>> 657b0e9... prima update
         /*These rates are the intersection of peer and self capabilities.*/
     tSirSupportedRates_V1 supportedRates;
 
@@ -1768,7 +1727,6 @@ typedef enum
 } tHalConcurrencyMode;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 // IFACE PERSONA for different Operating modes
 typedef enum
@@ -1780,8 +1738,6 @@ typedef enum
 } tHalIfacePersona;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef PACKED_PRE struct PACKED_POST
 {
     /* BSSID */
@@ -2271,7 +2227,6 @@ typedef PACKED_PRE struct PACKED_POST
 } tSetBssKeyReqMsg, *tpSetBssKeyReqMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /* tagged version of set bss key */
 typedef PACKED_PRE struct PACKED_POST
@@ -2281,8 +2236,6 @@ typedef PACKED_PRE struct PACKED_POST
 } tSetBssKeyReqMsgTagged;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
   WLAN_HAL_SET_BSSKEY_RSP
 ---------------------------------------------------------------------------*/
@@ -2425,7 +2378,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 #ifndef OEM_DATA_REQ_SIZE
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define OEM_DATA_REQ_SIZE 70
 #endif
 
@@ -2438,13 +2390,6 @@ typedef PACKED_PRE struct PACKED_POST
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 1968
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define OEM_DATA_REQ_SIZE 70
-#endif
-
-#ifndef OEM_DATA_RSP_SIZE
-#define OEM_DATA_RSP_SIZE 968
->>>>>>> 657b0e9... prima update
 #endif
 
 /*-------------------------------------------------------------------------
@@ -2820,9 +2765,6 @@ typedef PACKED_PRE struct PACKED_POST
 typedef __ani_attr_pre_packed struct sSirMacTSInfoTfc
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef ANI_LITTLE_BIT_ENDIAN
     tANI_U16       ackPolicy : 2;
     tANI_U16       userPrio : 3;
@@ -2833,11 +2775,8 @@ typedef __ani_attr_pre_packed struct sSirMacTSInfoTfc
     tANI_U16       tsid : 4;
     tANI_U16       trafficType : 1;
 #else
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     tANI_U16       trafficType : 1;
     tANI_U16       tsid : 4;
     tANI_U16       direction : 2;
@@ -2847,27 +2786,19 @@ typedef __ani_attr_pre_packed struct sSirMacTSInfoTfc
     tANI_U16       userPrio : 3;
     tANI_U16       ackPolicy : 2;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 } __ani_attr_packed tSirMacTSInfoTfc;
 
 /* Flag to schedule the traffic type */
 typedef __ani_attr_pre_packed struct sSirMacTSInfoSch
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef ANI_LITTLE_BIT_ENDIAN
     tANI_U8        rsvd : 7;
     tANI_U8        schedule : 1;
 #else
-<<<<<<< HEAD
     tANI_U8        schedule : 1;
     tANI_U8        rsvd : 7;
 #endif
@@ -2875,11 +2806,6 @@ typedef __ani_attr_pre_packed struct sSirMacTSInfoSch
     tANI_U8        schedule : 1;
     tANI_U8        rsvd : 7;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8        schedule : 1;
-    tANI_U8        rsvd : 7;
-#endif
->>>>>>> 657b0e9... prima update
 } __ani_attr_packed tSirMacTSInfoSch;
 
 /* Traffic and scheduling info */
@@ -3430,7 +3356,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tMicFailureIndMsg, *tpMicFailureIndMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -3456,8 +3381,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tUpdateVhtOpModeParamsRspMsg,  *tpUpdateVhtOpModeParamsRspMsg;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
  * WLAN_HAL_UPDATE_BEACON_REQ
  *--------------------------------------------------------------------------*/
@@ -3727,7 +3650,6 @@ typedef PACKED_PRE struct PACKED_POST
 }tDeleteStaContextIndMsg, *tpDeleteStaContextIndMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -3739,8 +3661,6 @@ typedef PACKED_PRE struct PACKED_POST
    tANI_U32  uStatus;
 } tIndicateDelSta, *tpIndicateDelSta;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
  *WLAN_HAL_SIGNAL_BTAMP_EVENT_REQ
@@ -3883,7 +3803,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * WLAN_HAL_MISSED_BEACON_IND
  *--------------------------------------------------------------------------*/
@@ -3900,8 +3819,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * WLAN_HAL_ADD_BCN_FILTER_REQ
  *--------------------------------------------------------------------------*/
 /* Beacon Filtering data structures */
@@ -3920,13 +3837,10 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_U16    beaconInterval;
     tANI_U16    ieNum;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tANI_U8     bssIdx;
     tANI_U8     reserved;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tBeaconFilterMsg, *tpBeaconFilterMsg;
 
 /* The above structure would be followed by multiple of below mentioned structure */
@@ -3970,16 +3884,12 @@ typedef PACKED_PRE struct PACKED_POST
 #define HAL_OFFLOAD_ENABLE                          1
 #define HAL_OFFLOAD_BCAST_FILTER_ENABLE             0x2
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define HAL_OFFLOAD_ARP_AND_BCAST_FILTER_ENABLE     (HAL_OFFLOAD_ENABLE|HAL_OFFLOAD_BCAST_FILTER_ENABLE)
 =======
 #define HAL_OFFLOAD_MCAST_FILTER_ENABLE             0x4
 #define HAL_OFFLOAD_ARP_AND_BCAST_FILTER_ENABLE     (HAL_OFFLOAD_ENABLE|HAL_OFFLOAD_BCAST_FILTER_ENABLE)
 #define HAL_OFFLOAD_IPV6NS_AND_MCAST_FILTER_ENABLE  (HAL_OFFLOAD_ENABLE|HAL_OFFLOAD_MCAST_FILTER_ENABLE)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define HAL_OFFLOAD_ARP_AND_BCAST_FILTER_ENABLE     (HAL_OFFLOAD_ENABLE|HAL_OFFLOAD_BCAST_FILTER_ENABLE)
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST _tHalNSOffloadParams
 {
@@ -3996,12 +3906,9 @@ typedef PACKED_PRE struct PACKED_POST _tHalNSOffloadParams
    tANI_U8 reserved2;   //make it DWORD aligned
    tANI_U8 bssIdx;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    tANI_U32 slotIndex; // slot index for this offload
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tHalNSOffloadParams;
 
 typedef PACKED_PRE struct PACKED_POST
@@ -4022,7 +3929,6 @@ typedef PACKED_PRE struct PACKED_POST
    tHalNSOffloadParams nsOffloadParams;
 }  tHalHostOffloadReqMsg, *tpHalHostOffloadReqMsg;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -4254,8 +4160,6 @@ typedef PACKED_PRE struct PACKED_POST
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
  * WLAN_HAL_KEEP_ALIVE_REQ
  *--------------------------------------------------------------------------*/
@@ -4306,14 +4210,10 @@ typedef PACKED_PRE struct PACKED_POST
    tHalMsgHeader header;
    tHalRSSIThresholds rssiThreshParams;
 <<<<<<< HEAD
-<<<<<<< HEAD
 }  tHalRSSIThresholdsReqMsg, *tpHalRSSIThresholdReqMsg;
 =======
 }  tHalRSSIThresholdReqMsg, *tpHalRSSIThresholdReqMsg;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}  tHalRSSIThresholdsReqMsg, *tpHalRSSIThresholdReqMsg;
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
  * WLAN_HAL_ENTER_UAPSD_REQ
@@ -4347,7 +4247,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tHalExitUapsdReqMsg, *tpHalExitUapsdReqMsg;
 
 /*---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * WLAN_HAL_ADD_PERIODIC_TX_PTRN_IND
@@ -4405,8 +4304,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * WLAN_HAL_ADD_WOWL_BCAST_PTRN
  *--------------------------------------------------------------------------*/
 #define HAL_WOWL_BCAST_PATTERN_MAX_SIZE 128
@@ -4567,7 +4464,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tHalGetRssiReqMsg, *tpHalGetRssiReqMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -4588,8 +4484,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
  * WLAN_HAL_SET_UAPSD_AC_PARAMS_REQ
  *--------------------------------------------------------------------------*/
@@ -4728,16 +4622,12 @@ typedef PACKED_PRE struct PACKED_POST
     tANI_U32             bRssiThres3PosCross : 1;
     tANI_U32             bRssiThres3NegCross : 1;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U32             bReserved           : 26;
 =======
     tANI_U32             avgRssi             : 8;
     tANI_U32             uBssIdx             : 8;
     tANI_U32             bReserved           : 10;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32             bReserved           : 26;
->>>>>>> 657b0e9... prima update
 } tHalRSSINotification, *tpHalRSSINotification;
 
 typedef PACKED_PRE struct PACKED_POST
@@ -4764,7 +4654,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * WLAN_HAL_GET_ROAM_RSSI_RSP
  *--------------------------------------------------------------------------*/
@@ -4785,8 +4674,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * WLAN_HAL_ENTER_WOWL_RSP
  *--------------------------------------------------------------------------*/
 typedef PACKED_PRE struct PACKED_POST
@@ -4998,7 +4885,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  *WLAN_HAL_SET_MAX_TX_POWER_PER_BAND_REQ
  *--------------------------------------------------------------------------*/
@@ -5047,8 +4933,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  *WLAN_HAL_SET_TX_POWER_REQ
  *--------------------------------------------------------------------------*/
 
@@ -5167,7 +5051,6 @@ typedef PACKED_PRE struct PACKED_POST
 }tAddStaSelfParams, *tpAddStaSelfParams;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -5176,13 +5059,10 @@ typedef PACKED_PRE struct PACKED_POST
   tHalIfacePersona iface_persona;
 }tAddStaSelfParams_V1, *tpAddStaSelfParams_V1;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST
 {
     tHalMsgHeader header;
-<<<<<<< HEAD
 <<<<<<< HEAD
     tAddStaSelfParams addStaSelfParams;
 =======
@@ -5191,9 +5071,6 @@ typedef PACKED_PRE struct PACKED_POST
     tAddStaSelfParams_V1 addStaSelfParams_V1;
     }uAddStaSelfParams;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tAddStaSelfParams addStaSelfParams;
->>>>>>> 657b0e9... prima update
 }tAddStaSelfReq, *tpAddStaSelfReq;
 
 /*---------------------------------------------------------------------------
@@ -5392,15 +5269,12 @@ typedef PACKED_PRE struct PACKED_POST
 #define WLAN_COEX_IND_TYPE_DISABLE_HB_MONITOR (0)
 #define WLAN_COEX_IND_TYPE_ENABLE_HB_MONITOR (1)
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define WLAN_COEX_IND_TYPE_SCANS_ARE_COMPROMISED_BY_COEX (2)
 #define WLAN_COEX_IND_TYPE_SCANS_ARE_NOT_COMPROMISED_BY_COEX (3)
 #define WLAN_COEX_IND_TYPE_DISABLE_AGGREGATION_IN_2p4 (4)
 #define WLAN_COEX_IND_TYPE_ENABLE_AGGREGATION_IN_2p4 (5)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST
 {
@@ -5478,14 +5352,10 @@ typedef PACKED_PRE struct PACKED_POST
 
    tANI_U16      uNoa1IntervalCnt;
 <<<<<<< HEAD
-<<<<<<< HEAD
    tANI_U16      rsvd1 ;
 =======
    tANI_U16      bssIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   tANI_U16      rsvd1 ;
->>>>>>> 657b0e9... prima update
    tANI_U32      uNoa1Duration;
    tANI_U32      uNoa1Interval;
    tANI_U32      uNoa1StartTime;
@@ -5505,7 +5375,6 @@ typedef PACKED_PRE struct PACKED_POST
    tNoaAttrIndParams  noaAttrIndParams; 
 }tNoaAttrIndMsg, *tpNoaAttrIndMsg;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 /*---------------------------------------------------------------------------
@@ -5524,8 +5393,6 @@ typedef PACKED_PRE struct PACKED_POST
    tNoaStartIndParams noaStartIndParams;
 }tNoaStartIndMsg, tpNoaStartIndMsg;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 
 /*---------------------------------------------------------------------------
@@ -5559,7 +5426,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tHalHostResumeRspMsg, *tpHalHostResumeRspMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*---------------------------------------------------------------------------
  *PNO Messages
  *-------------------------------------------------------------------------*/
@@ -5587,18 +5453,18 @@ typedef PACKED_PRE struct PACKED_POST
 	tHalWlanDelBaIndMsg hostdelBaParam;
 } tHalDelBAIndMsg, *tpHalDelBAIndMsg;
 
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
  *PNO Messages
  *-------------------------------------------------------------------------*/
+/* Max number of channels that a network can be found on*/
+/* WLAN_HAL_PNO_MAX_NETW_CHANNELS and WLAN_HAL_PNO_MAX_NETW_CHANNELS_EX should
+ * be changed at same time
+ */
+#define WLAN_HAL_PNO_MAX_NETW_CHANNELS  60
+
 /*Max number of channels that a network can be found on*/
-<<<<<<< HEAD
 #define WLAN_HAL_PNO_MAX_NETW_CHANNELS_EX  60
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WLAN_HAL_PNO_MAX_NETW_CHANNELS  26
->>>>>>> 657b0e9... prima update
 
 /*Maximum numbers of networks supported by PNO*/
 #define WLAN_HAL_PNO_MAX_SUPP_NETWORKS  16
@@ -5614,29 +5480,22 @@ typedef PACKED_PRE struct PACKED_POST
   be repeated based on timer
   Suspend - scanning will start at suspend
 <<<<<<< HEAD
-<<<<<<< HEAD
   Resume - scanning will start on system resume*/
 =======
   Resume - scanning will start on system resume
   Delay - start the scan timer to trigger PNO scan
   */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  Resume - scanning will start on system resume*/
->>>>>>> 657b0e9... prima update
 typedef enum
 {
    ePNO_MODE_IMMEDIATE,
    ePNO_MODE_ON_SUSPEND,
    ePNO_MODE_ON_RESUME,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    ePNO_MODE_DELAY,
    ePNO_MODE_PROXIMITY,  // FEATURE_WIFI_PROXIMITY
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    ePNO_MODE_MAX = WLAN_HAL_MAX_ENUM_SIZE
 } ePNOMode;
 
@@ -5657,13 +5516,10 @@ typedef enum
     eAUTH_TYPE_WAPI_WAI_CERTIFICATE  = 8,
     eAUTH_TYPE_WAPI_WAI_PSK          = 9,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     eAUTH_TYPE_CCKM_WPA              = 10,
     eAUTH_TYPE_CCKM_RSN              = 11,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     
     eAUTH_TYPE_MAX = WLAN_HAL_MAX_ENUM_SIZE
 
@@ -5872,14 +5728,11 @@ typedef PACKED_PRE struct PACKED_POST {
   tANI_U8     rssi;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   //The MPDU frame length of a beacon or probe rsp. data is the start of the frame
   tANI_U16    frameLength;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tPrefNetwFoundParams, * tpPrefNetwFoundParams;
 
 /*
@@ -5898,7 +5751,6 @@ typedef PACKED_PRE struct PACKED_POST {
   tANI_U8          ucRssiThreshold;
 
 } tRssiFilterParams, * tpRssiFilterParams;
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -5964,9 +5816,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tSetRoamOffloadScanResp, *tpSetRoamOffloadScanResp;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 /*
   RSSI Filter request 
 */
@@ -6019,7 +5868,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   Update scan params 
 */
@@ -6055,8 +5903,6 @@ typedef PACKED_PRE struct PACKED_POST
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   Update scan params - sent from host to PNO
   to be used during PNO scanning 
 */
@@ -6074,7 +5920,6 @@ typedef PACKED_PRE struct PACKED_POST{
 
    tHalMsgHeader header;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    tUpdateScanParamsEx   scanParams;
 }  tUpdateScanParamsReqEx, *tpUpdateScanParamsReqEx;
@@ -6087,8 +5932,6 @@ typedef PACKED_PRE struct PACKED_POST{
 
    tHalMsgHeader header;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    /*status of the request */
    tANI_U32   status;
@@ -6303,7 +6146,6 @@ typedef PACKED_PRE struct PACKED_POST
  *--------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*
  * There are two versions of this message
@@ -6338,8 +6180,6 @@ typedef PACKED_PRE struct PACKED_POST
 } tSetPowerParamsVer1ReqMsg, *tpSetPowerParamsVer1ReqMsg;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef PACKED_PRE struct PACKED_POST
 {
    /*  Ignore DTIM */
@@ -6360,14 +6200,11 @@ typedef PACKED_PRE struct PACKED_POST
   /* Beacon Early Termination Interval */
   tANI_U32 uBETInterval; 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
   /* MAX LI for modulated DTIM */
   tANI_U32 uMaxLIModulatedDTIM;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }tSetPowerParamsType, *tpSetPowerParamsType;
 
 typedef PACKED_PRE struct PACKED_POST
@@ -6389,7 +6226,6 @@ typedef PACKED_PRE struct PACKED_POST{
  ****************Capability bitmap exchange definitions and macros starts*************
  *--------------------------------------------------------------------------*/
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 typedef PACKED_PRE struct PACKED_POST{
 
@@ -6433,12 +6269,6 @@ typedef PACKED_PRE struct PACKED_POST{
 
    tANI_U32 featCaps[4];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef PACKED_PRE struct PACKED_POST{
-
-   tANI_U32 featCaps[4];
-
->>>>>>> 657b0e9... prima update
 }  tWlanFeatCaps, *tpWlanFeatCaps;
 
 typedef PACKED_PRE struct PACKED_POST{
@@ -6449,9 +6279,6 @@ typedef PACKED_PRE struct PACKED_POST{
 }  tWlanFeatCapsMsg, *tpWlanFeatCapsMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
 typedef enum {
     MCC        = 0,
@@ -6462,7 +6289,6 @@ typedef enum {
 } placeHolderInCapBitmap;
 
 
-<<<<<<< HEAD
 #define IS_MCC_SUPPORTED_BY_HOST (!!(halMsg_GetHostWlanFeatCaps(MCC)))
 #define IS_SLM_SESSIONIZATION_SUPPORTED_BY_HOST (!!(halMsg_GetHostWlanFeatCaps(SLM_SESSIONIZATION)))
 
@@ -6476,16 +6302,10 @@ typedef enum {
 #endif
 #define IS_IBSS_HEARTBEAT_OFFLOAD_SUPPORTED_BY_HOST (!!(halMsg_GetHostWlanFeatCaps(IBSS_HEARTBEAT_OFFLOAD)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define IS_MCC_SUPPORTED_BY_HOST (!!(halMsg_GetHostWlanFeatCaps(MCC)))
-#define IS_SLM_SESSIONIZATION_SUPPORTED_BY_HOST (!!(halMsg_GetHostWlanFeatCaps(SLM_SESSIONIZATION)))
-
->>>>>>> 657b0e9... prima update
 
 tANI_U8 halMsg_GetHostWlanFeatCaps(tANI_U8 feat_enum_value);
 
 #define setFeatCaps(a,b)   {  tANI_U32 arr_index, bit_index; \
-<<<<<<< HEAD
 <<<<<<< HEAD
                               if ((b<=127)) { \
                                 arr_index = b/32; \
@@ -6496,24 +6316,15 @@ tANI_U8 halMsg_GetHostWlanFeatCaps(tANI_U8 feat_enum_value);
                                 bit_index = (b)%32; \
                                 if(arr_index < 4) \
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                              if ((b<=127)) { \
-                                arr_index = b/32; \
-                                bit_index = b % 32; \
->>>>>>> 657b0e9... prima update
                                 (a)->featCaps[arr_index] |= (1<<bit_index); \
                               } \
                            }
 #define getFeatCaps(a,b,c) {  tANI_U32 arr_index, bit_index; \
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
                               if ((b<=127)) { \
                                 arr_index = b/32; \
                                 bit_index = b % 32; \
                                 c = (a)->featCaps[arr_index] & (1<<bit_index); \
-<<<<<<< HEAD
                               } \
                            }
 #define clearFeatCaps(a,b) {  tANI_U32 arr_index, bit_index; \
@@ -6532,14 +6343,6 @@ tANI_U8 halMsg_GetHostWlanFeatCaps(tANI_U8 feat_enum_value);
                                 arr_index = (b)/32; \
                                 bit_index = (b)%32; \
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                              } \
-                           }
-#define clearFeatCaps(a,b) {  tANI_U32 arr_index, bit_index; \
-                              if ((b<=127)) { \
-                                arr_index = b/32; \
-                                bit_index = b % 32; \
->>>>>>> 657b0e9... prima update
                                 (a)->featCaps[arr_index] &= ~(1<<bit_index); \
                               } \
                            }
@@ -6628,13 +6431,10 @@ typedef PACKED_PRE struct PACKED_POST
 #define WLAN_HAL_GTK_OFFLOAD_FLAGS_DISABLE (1 << 0)
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define GTK_SET_BSS_KEY_TAG  0x1234AA55
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef PACKED_PRE struct PACKED_POST
 {
   tANI_U32     ulFlags;             /* optional flags */
@@ -6702,7 +6502,6 @@ typedef PACKED_PRE struct PACKED_POST
 }  tHalGtkOffloadGetInfoRspMsg, *tpHalGtkOffloadGetInfoRspMsg;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
 * WLAN_HAL_DHCP_IND
@@ -6721,8 +6520,6 @@ typedef PACKED_PRE struct PACKED_POST
 } tDHCPIndStatus, *tpDHCPIndstatus;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*
    Thermal Mitigation mode of operation.
    HAL_THERMAL_MITIGATION_MODE_0 - Based on AMPDU disabling aggregation
@@ -6790,7 +6587,6 @@ typedef PACKED_PRE struct PACKED_POST{
 
 }  tSetThermalMitigationResp, *tpSetThermalMitigationResp;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /* Per STA Class B Statistics. Class B statistics are STA TX/RX stats  
@@ -7189,8 +6985,6 @@ typedef PACKED_PRE struct PACKED_POST
  *-------------------------------------------------------------------------*/
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #if defined(__ANI_COMPILER_PRAGMA_PACK_STACK)
 #pragma pack(pop)
 #elif defined(__ANI_COMPILER_PRAGMA_PACK)

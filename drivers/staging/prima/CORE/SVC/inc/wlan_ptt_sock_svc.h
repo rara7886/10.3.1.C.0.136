@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -78,18 +75,12 @@
 #define PTT_MSG_WRITE_MEMORY        0x3045
 #define PTT_MSG_LOG_DUMP_DBG        0x32A1
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 #define PTT_MSG_FTM_CMDS_TYPE           0x4040
 #endif
 =======
 #define PTT_MSG_FTM_CMDS_TYPE           0x4040
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef ANI_MANF_DIAG
-#define PTT_MSG_FTM_CMDS_TYPE           0x4040
-#endif
->>>>>>> 657b0e9... prima update
 #define ANI_DRIVER_MSG_START         0x0001
 #define ANI_MSG_APP_REG_REQ         (ANI_DRIVER_MSG_START + 0)
 #define ANI_MSG_APP_REG_RSP         (ANI_DRIVER_MSG_START + 1)

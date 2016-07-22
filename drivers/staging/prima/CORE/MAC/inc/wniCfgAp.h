@@ -1,13 +1,9 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
->>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -27,7 +23,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 /*
  * Copyright (C) 2007-2009 QUALCOMM Incorporated. All rights reserved. Proprietary and Confidential.
@@ -36,20 +31,29 @@
 /*
  * DO NOT EDIT - This file is generated automaticlly
 =======
-=======
-
->>>>>>> 657b0e9... prima update
 /*
- * Copyright (C) 2007-2009 QUALCOMM Incorporated. All rights reserved. Proprietary and Confidential.
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
  */
-
 /*
-<<<<<<< HEAD
  * DO NOT EDIT - This file is generated automatically
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * DO NOT EDIT - This file is generated automaticlly
->>>>>>> 657b0e9... prima update
  */
 
 /*
@@ -271,9 +275,6 @@
 #define WNI_CFG_MAX_AMSDU_LENGTH    201
 #define WNI_CFG_MPDU_DENSITY    202
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_MAX_RX_AMPDU_FACTOR    203
 #define WNI_CFG_SHORT_GI_20MHZ    204
 #define WNI_CFG_SHORT_GI_40MHZ    205
@@ -282,7 +283,6 @@
 #define WNI_CFG_NUM_BEACON_PER_RSSI_AVERAGE    208
 #define WNI_CFG_RSSI_FILTER_PERIOD    209
 #define WNI_CFG_FT_RSSI_FILTER_PERIOD    210
-<<<<<<< HEAD
 =======
 #define WNI_CFG_NUM_BUFF_ADVERT    203
 #define WNI_CFG_MAX_RX_AMPDU_FACTOR    204
@@ -293,8 +293,6 @@
 #define WNI_CFG_NUM_BEACON_PER_RSSI_AVERAGE    209
 #define WNI_CFG_RSSI_FILTER_PERIOD    210
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_MIN_RSSI_THRESHOLD    211
 #define WNI_CFG_NTH_BEACON_FILTER    212
 #define WNI_CFG_BROADCAST_FRAME_FILTER_ENABLE    213
@@ -313,9 +311,6 @@
 #define WNI_CFG_BA_AUTO_SETUP    226
 #define WNI_CFG_ADDBA_REQ_DECLINE    227
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_BG_SCAN_CHANNEL_LIST    228
 #define WNI_CFG_MAX_MEDIUM_TIME    229
 #define WNI_CFG_MAX_MPDUS_IN_AMPDU    230
@@ -380,7 +375,6 @@
 #define WNI_CFG_AP_KEEP_ALIVE_TIMEOUT    289
 #define WNI_CFG_GO_KEEP_ALIVE_TIMEOUT    290
 #define WNI_CFG_ENABLE_MC_ADDR_LIST    291
-<<<<<<< HEAD
 =======
 #define WNI_CFG_DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC    228
 #define WNI_CFG_BG_SCAN_CHANNEL_LIST    229
@@ -461,8 +455,6 @@
 #define WNI_CFG_ANTENNA_DIVESITY    304
 #define WNI_CFG_GO_LINK_MONITOR_TIMEOUT    305
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*
  * String parameter lengths 
@@ -701,14 +693,10 @@
 #define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_STAMIN    0
 #define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_STAMAX    65535
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_STADEF    2000
 =======
 #define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_STADEF    1000
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_STADEF    2000
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_APMIN    0
 #define WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT_APMAX    65535
@@ -818,7 +806,6 @@
 
 #define WNI_CFG_FIXED_RATE_STAMIN    0
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_CFG_FIXED_RATE_STAMAX    31
 #define WNI_CFG_FIXED_RATE_STADEF    0
 
@@ -831,13 +818,6 @@
 #define WNI_CFG_FIXED_RATE_APMIN    0
 #define WNI_CFG_FIXED_RATE_APMAX    44
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_CFG_FIXED_RATE_STAMAX    31
-#define WNI_CFG_FIXED_RATE_STADEF    0
-
-#define WNI_CFG_FIXED_RATE_APMIN    0
-#define WNI_CFG_FIXED_RATE_APMAX    31
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_FIXED_RATE_APDEF    0
 
 #define WNI_CFG_FIXED_RATE_AUTO    0
@@ -873,7 +853,6 @@
 #define WNI_CFG_FIXED_RATE_0_5MBPS_SLR_20MHZ_SIMO    30
 #define WNI_CFG_FIXED_RATE_68_25MBPS_QC_PROP_20MHZ_SIMO    31
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define WNI_CFG_FIXED_RATE_54MBPS_MCS3_40MHZ_SIMO    32
 #define WNI_CFG_FIXED_RATE_81MBPS_MCS4_40MHZ_SIMO    33
@@ -889,8 +868,6 @@
 #define WNI_CFG_FIXED_RATE_135MBPS_MCS6_40MHZ_SIMO_SGI    43
 #define WNI_CFG_FIXED_RATE_150MBPS_MCS7_40MHZ_SIMO_SGI    44
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_FIXED_RATE_MULTICAST_24GHZ_STAMIN    0
 #define WNI_CFG_FIXED_RATE_MULTICAST_24GHZ_STAMAX    31
@@ -1772,7 +1749,6 @@
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_STAMIN    0
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_STAMAX    1
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_STADEF    1
 
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_APMIN    0
@@ -1796,35 +1772,27 @@
 #define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_APDEF    1
 =======
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_STADEF    0
-=======
-#define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_STADEF    1
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_APMIN    0
 #define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_APMAX    1
-#define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_APDEF    1
+#define WNI_CFG_VHT_SU_BEAMFORMEE_CAP_APDEF    0
 
 #define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_STAMIN    0
-#define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_STAMAX    1
+#define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_STAMAX    3
 #define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_STADEF    0
 
 #define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_APMIN    0
-#define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_APMAX    1
+#define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_APMAX    3
 #define WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED_APDEF    0
 
 #define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_STAMIN    0
-#define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_STAMAX    1
-#define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_STADEF    1
+#define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_STAMAX    3
+#define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_STADEF    0
 
 #define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_APMIN    0
-<<<<<<< HEAD
 #define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_APMAX    3
 #define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_APDEF    0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_APMAX    1
-#define WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS_APDEF    1
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_VHT_MU_BEAMFORMER_CAP_STAMIN    0
 #define WNI_CFG_VHT_MU_BEAMFORMER_CAP_STAMAX    1
@@ -1907,7 +1875,6 @@
 #define WNI_CFG_VHT_TX_MCS_MAP_APDEF    65534
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STAMIN    1
 #define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STAMAX    434
 #define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STADEF    434
@@ -1927,30 +1894,19 @@
 #define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STAMIN    0
 #define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STAMAX    390
 #define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STADEF    0
-=======
-#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STAMIN    1
-#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STAMAX    434
-#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_STADEF    434
->>>>>>> 657b0e9... prima update
 
-#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_APMIN    1
-#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_APMAX    434
-#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_APDEF    434
+#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_APMIN    0
+#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_APMAX    390
+#define WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE_APDEF    0
 
-#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_STAMIN    1
-#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_STAMAX    434
-#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_STADEF    434
+#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_STAMIN    0
+#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_STAMAX    390
+#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_STADEF    0
 
-<<<<<<< HEAD
 #define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_APMIN    0
 #define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_APMAX    390
 #define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_APDEF    0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_APMIN    1
-#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_APMAX    434
-#define WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE_APDEF    434
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_VHT_CHANNEL_WIDTH_STAMIN    0
 #define WNI_CFG_VHT_CHANNEL_WIDTH_STAMAX    3
@@ -1983,7 +1939,6 @@
 
 #define WNI_CFG_VHT_BASIC_MCS_SET_STAMIN    0
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_CFG_VHT_BASIC_MCS_SET_STAMAX    3
 #define WNI_CFG_VHT_BASIC_MCS_SET_STADEF    0
 
@@ -1998,14 +1953,6 @@
 #define WNI_CFG_VHT_BASIC_MCS_SET_APMAX    65535
 #define WNI_CFG_VHT_BASIC_MCS_SET_APDEF    65534
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_CFG_VHT_BASIC_MCS_SET_STAMAX    3
-#define WNI_CFG_VHT_BASIC_MCS_SET_STADEF    0
-
-#define WNI_CFG_VHT_BASIC_MCS_SET_APMIN    0
-#define WNI_CFG_VHT_BASIC_MCS_SET_APMAX    3
-#define WNI_CFG_VHT_BASIC_MCS_SET_APDEF    0
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_VHT_MU_MIMO_CAP_STA_COUNT_STAMIN    0
 #define WNI_CFG_VHT_MU_MIMO_CAP_STA_COUNT_STAMAX    4
@@ -2067,7 +2014,6 @@
 #define WNI_CFG_MPDU_DENSITY_APDEF    0
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define WNI_CFG_NUM_BUFF_ADVERT_STAMIN    0
 #define WNI_CFG_NUM_BUFF_ADVERT_STAMAX    128
@@ -2078,8 +2024,6 @@
 #define WNI_CFG_NUM_BUFF_ADVERT_APDEF    64
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_MAX_RX_AMPDU_FACTOR_STAMIN    0
 #define WNI_CFG_MAX_RX_AMPDU_FACTOR_STAMAX    3
 #define WNI_CFG_MAX_RX_AMPDU_FACTOR_STADEF    3
@@ -2132,20 +2076,14 @@
 #define WNI_CFG_RSSI_FILTER_PERIOD_STAMIN    0
 #define WNI_CFG_RSSI_FILTER_PERIOD_STAMAX    255
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_RSSI_FILTER_PERIOD_STADEF    20
 
 #define WNI_CFG_FT_RSSI_FILTER_PERIOD_STAMIN    0
 #define WNI_CFG_FT_RSSI_FILTER_PERIOD_STAMAX    255
 #define WNI_CFG_FT_RSSI_FILTER_PERIOD_STADEF    5
-<<<<<<< HEAD
 =======
 #define WNI_CFG_RSSI_FILTER_PERIOD_STADEF    5
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #define WNI_CFG_MIN_RSSI_THRESHOLD_STAMIN    0
 #define WNI_CFG_MIN_RSSI_THRESHOLD_STAMAX    10
@@ -2251,7 +2189,6 @@
 #define WNI_CFG_ADDBA_REQ_DECLINE_APDEF    0
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define WNI_CFG_DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC_STAMIN    0
 #define WNI_CFG_DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC_STAMAX    1
@@ -2262,8 +2199,6 @@
 #define WNI_CFG_DEL_ALL_RX_BA_SESSIONS_2_4_G_BTC_APDEF    0
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_MAX_MEDIUM_TIME_STAMIN    0
 #define WNI_CFG_MAX_MEDIUM_TIME_STAMAX    65535
 #define WNI_CFG_MAX_MEDIUM_TIME_STADEF    2048
@@ -2621,7 +2556,6 @@
 
 #define WNI_CFG_ASSOC_STA_LIMIT_STAMIN    1
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_CFG_ASSOC_STA_LIMIT_STAMAX    10
 #define WNI_CFG_ASSOC_STA_LIMIT_STADEF    10
 
@@ -2634,13 +2568,6 @@
 #define WNI_CFG_ASSOC_STA_LIMIT_APMIN    1
 #define WNI_CFG_ASSOC_STA_LIMIT_APMAX    32
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_CFG_ASSOC_STA_LIMIT_STAMAX    10
-#define WNI_CFG_ASSOC_STA_LIMIT_STADEF    10
-
-#define WNI_CFG_ASSOC_STA_LIMIT_APMIN    1
-#define WNI_CFG_ASSOC_STA_LIMIT_APMAX    10
->>>>>>> 657b0e9... prima update
 #define WNI_CFG_ASSOC_STA_LIMIT_APDEF    10
 
 #define WNI_CFG_SAP_CHANNEL_SELECT_START_CHANNEL_STAMIN    1
@@ -2715,7 +2642,6 @@
 #define WNI_CFG_ENABLE_MC_ADDR_LIST_APMAX    1
 #define WNI_CFG_ENABLE_MC_ADDR_LIST_APDEF    0
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #define CFG_PARAM_MAX_NUM         292
 #define CFG_AP_IBUF_MAX_SIZE      231
@@ -2827,12 +2753,6 @@
 #define CFG_AP_SBUF_MAX_SIZE      3422
 #define CFG_STA_IBUF_MAX_SIZE     240
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define CFG_PARAM_MAX_NUM         292
-#define CFG_AP_IBUF_MAX_SIZE      231
-#define CFG_AP_SBUF_MAX_SIZE      3422
-#define CFG_STA_IBUF_MAX_SIZE     226
->>>>>>> 657b0e9... prima update
 #define CFG_STA_SBUF_MAX_SIZE     3388
 #define CFG_SEM_MAX_NUM           19
 

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -60,7 +57,6 @@
   ========================================================================*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "pmmDebug.h"
 
 void pmmLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) 
@@ -83,32 +79,23 @@ void pmmLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...)
 }
 =======
 #include "vos_trace.h"
-=======
->>>>>>> 657b0e9... prima update
 #include "pmmDebug.h"
+#define LOG_SIZE 256
 
-void pmmLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) 
-{
-#ifdef WLAN_DEBUG
-    // Verify against current log level
-    if ( loglevel > pMac->utils.gLogDbgLevel[LOG_INDEX_FOR_MODULE( SIR_PMM_MODULE_ID )] )
-        return;
-    else
-    {
-        va_list marker;
+void pmmLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString, ...)
+ {
+       VOS_TRACE_LEVEL  vosDebugLevel;
+       char    logBuffer[LOG_SIZE];
+       va_list marker;
 
-        va_start( marker, pString );     /* Initialize variable arguments. */
+       /*  getting proper Debug level  */
+       vosDebugLevel = getVosDebugLevel(loglevel);
 
-<<<<<<< HEAD
+       /* extracting arguments from pstring */
+       va_start( marker, pString );
+       vsnprintf(logBuffer, LOG_SIZE, pString, marker);
+
        VOS_TRACE(VOS_MODULE_ID_PMC, vosDebugLevel, "%s", logBuffer);
        va_end( marker );
  }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        logDebug(pMac, SIR_PMM_MODULE_ID, loglevel, pString, marker);
-        
-        va_end( marker );              /* Reset variable arguments.      */
-    }
-#endif
-}
->>>>>>> 657b0e9... prima update

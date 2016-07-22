@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -49,7 +46,6 @@
 
                       s a p C h S e l e c t . C
 <<<<<<< HEAD
-<<<<<<< HEAD
                                                
   OVERVIEW:
   
@@ -65,27 +61,15 @@
   All Rights Reserved.
   Qualcomm Confidential and Proprietary
 =======
-=======
-                                               
->>>>>>> 657b0e9... prima update
   OVERVIEW:
-  
+
   This software unit holds the implementation of the WLAN SAP modules
-  functions for channel selection.  
+  functions for channel selection.
 
-  DEPENDENCIES: 
+  DEPENDENCIES:
 
-<<<<<<< HEAD
   Are listed for each API below.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  Are listed for each API below. 
-  
-  
-  Copyright (c) 2010 QUALCOMM Incorporated.
-  All Rights Reserved.
-  Qualcomm Confidential and Proprietary
->>>>>>> 657b0e9... prima update
 ===========================================================================*/
 
 /*===========================================================================
@@ -114,14 +98,11 @@
 #include "sapChSelect.h"
 #include "sapInternal.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef ANI_OS_TYPE_QNX
 #include "stdio.h"
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------------
   Function definitions
@@ -132,7 +113,6 @@
 --------------------------------------------------------------------------*/
 #define SAP_DEBUG
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #define IS_RSSI_VALID( extRssi, rssi ) \
@@ -393,8 +373,6 @@ v_U8_t sapSelectPreferredChannelFromChannelList(v_U8_t bestChNum,
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION    sapChanSelInit
 
@@ -423,14 +401,10 @@ v_BOOL_t sapChanSelInit(tHalHandle halHandle, tSapChSelSpectInfo *pSpectInfoPara
     tpAniSirGlobal pMac = PMAC_STRUCT(halHandle);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __FUNCTION__);
 =======
     VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     // Channels for that 2.4GHz band
     //Considered only for 2.4GHz need to change in future to support 5GHz support
@@ -441,14 +415,10 @@ v_BOOL_t sapChanSelInit(tHalHandle halHandle, tSapChSelSpectInfo *pSpectInfoPara
 
     if(pSpectCh == NULL) {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, VOS_MALLOC_ERR", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, VOS_MALLOC_ERR", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, VOS_MALLOC_ERR", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return eSAP_FALSE;
     }
 
@@ -468,12 +438,9 @@ v_BOOL_t sapChanSelInit(tHalHandle halHandle, tSapChSelSpectInfo *pSpectInfoPara
         pSpectCh->valid = eSAP_TRUE;
         pSpectCh->rssiAgr = SOFTAP_MIN_RSSI;// Initialise for all channels
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
         pSpectCh->channelWidth = SOFTAP_HT20_CHANNELWIDTH; // Initialise 20MHz for all the Channels 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         pSpectCh++;
         pChans++;
     }
@@ -511,14 +478,10 @@ v_U32_t sapweightRssiCount(v_S7_t rssi, v_U16_t count)
     rssiWeight = SOFTAP_RSSI_WEIGHT * (rssi - SOFTAP_MIN_RSSI)
                  /(SOFTAP_MAX_RSSI - SOFTAP_MIN_RSSI);
 <<<<<<< HEAD
-<<<<<<< HEAD
                  
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 
->>>>>>> 657b0e9... prima update
     if(rssiWeight > SOFTAP_RSSI_WEIGHT)
         rssiWeight = SOFTAP_RSSI_WEIGHT;
     else if (rssiWeight < 0)
@@ -528,19 +491,14 @@ v_U32_t sapweightRssiCount(v_S7_t rssi, v_U16_t count)
     countWeight = SOFTAP_COUNT_WEIGHT * (count - SOFTAP_MIN_COUNT)
                   /(SOFTAP_MAX_COUNT - SOFTAP_MIN_COUNT);
 <<<<<<< HEAD
-<<<<<<< HEAD
                       
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      
->>>>>>> 657b0e9... prima update
     if(countWeight > SOFTAP_COUNT_WEIGHT)
         countWeight = SOFTAP_COUNT_WEIGHT;
     else if (countWeight < 0)
         countWeight = 0;
-<<<<<<< HEAD
 <<<<<<< HEAD
         
     rssicountWeight =  rssiWeight + countWeight;      
@@ -554,18 +512,10 @@ v_U32_t sapweightRssiCount(v_S7_t rssi, v_U16_t count)
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, rssiWeight=%d, countWeight=%d, rssicountWeight=%d",
               __func__, rssiWeight, countWeight, rssicountWeight);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
-    rssicountWeight =  rssiWeight + countWeight;      
-
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, rssiWeight=%d, countWeight=%d, rssicountWeight=%d",
-              __FUNCTION__, rssiWeight, countWeight, rssicountWeight);
->>>>>>> 657b0e9... prima update
     
     return(rssicountWeight);
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -1307,8 +1257,6 @@ void sapInterferenceRssiCount(tSapSpectChInfo *pSpectCh)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION    sapComputeSpectWeight
 
@@ -1333,17 +1281,12 @@ void sapInterferenceRssiCount(tSapSpectChInfo *pSpectCh)
   SIDE EFFECTS 
 ============================================================================*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams, 
                                  tHalHandle halHandle, tScanResultHandle pResult)
 =======
 void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
                              tHalHandle halHandle, tScanResultHandle pResult)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams, 
-                                 tHalHandle halHandle, tScanResultHandle pResult)
->>>>>>> 657b0e9... prima update
 {
     v_S7_t rssi = 0;
     v_U8_t chn_num = 0;
@@ -1351,7 +1294,6 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
 
     tCsrScanResultInfo *pScanResult;
     tSapSpectChInfo *pSpectCh   = pSpectInfoParams->pSpectCh;
-<<<<<<< HEAD
 <<<<<<< HEAD
 
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Computing spectral weight", __FUNCTION__);
@@ -1374,15 +1316,10 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
     }
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Computing spectral weight", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Computing spectral weight", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     /**
     * Soft AP specific channel weight calculation using DFS formula
     */
-<<<<<<< HEAD
 <<<<<<< HEAD
 
     pScanResult = sme_ScanResultGetFirst(halHandle, pResult);    
@@ -1391,14 +1328,11 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
         pSpectCh = pSpectInfoParams->pSpectCh;
 =======
     ccmCfgGetInt( halHandle, WNI_CFG_SAP_CHANNEL_SELECT_OPERATING_BAND, &operatingBand);
-=======
->>>>>>> 657b0e9... prima update
 
-    pScanResult = sme_ScanResultGetFirst(halHandle, pResult);    
+    pScanResult = sme_ScanResultGetFirst(halHandle, pResult);
 
     while (pScanResult) {
         pSpectCh = pSpectInfoParams->pSpectCh;
-<<<<<<< HEAD
         // Defining the default values, so that any value will hold the default values
         channelWidth = eHT_CHANNEL_WIDTH_20MHZ;
         secondaryChannelOffset = PHY_SINGLE_CHANNEL_CENTERED;
@@ -1429,8 +1363,6 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
             }
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         // Processing for each tCsrScanResultInfo in the tCsrScanResult DLink list
         for (chn_num = 0; chn_num < pSpectInfoParams->numSpectChans; chn_num++) {
 
@@ -1444,20 +1376,15 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
                 channel_id = pScanResult->BssDescriptor.channelId;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
             if (channel_id == pSpectCh->chNum) {        
 =======
             if (channel_id == pSpectCh->chNum) {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if (channel_id == pSpectCh->chNum) {        
->>>>>>> 657b0e9... prima update
                 if (pSpectCh->rssiAgr < pScanResult->BssDescriptor.rssi)
                     pSpectCh->rssiAgr = pScanResult->BssDescriptor.rssi;
 
                 ++pSpectCh->bssCount; // Increment the count of BSS
 
-<<<<<<< HEAD
 <<<<<<< HEAD
                 VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                    "In %s, bssdes.ch_self=%d, bssdes.ch_ID=%d, bssdes.rssi=%d, SpectCh.bssCount=%d, pScanResult=0x%x",
@@ -1685,13 +1612,6 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
                    "In %s, bssdes.ch_self=%d, bssdes.ch_ID=%d, bssdes.rssi=%d, SpectCh.bssCount=%d, pScanResult=%p, ChannelWidth %d, secondaryChanOffset %d, center frequency %d \n",
                   __func__, pScanResult->BssDescriptor.channelIdSelf, pScanResult->BssDescriptor.channelId, pScanResult->BssDescriptor.rssi, pSpectCh->bssCount, pScanResult,pSpectCh->channelWidth,secondaryChannelOffset,centerFreq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
-                   "In %s, bssdes.ch_self=%d, bssdes.ch_ID=%d, bssdes.rssi=%d, SpectCh.bssCount=%d, pScanResult=0x%x",
-                  __FUNCTION__, pScanResult->BssDescriptor.channelIdSelf, pScanResult->BssDescriptor.channelId, 
-                  pScanResult->BssDescriptor.rssi, pSpectCh->bssCount, pScanResult);
-                         
->>>>>>> 657b0e9... prima update
                  pSpectCh++;
                  break;
            } else {
@@ -1706,7 +1626,6 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
     pSpectCh = pSpectInfoParams->pSpectCh;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Spectrum Channels Weight", __FUNCTION__);
 
     for (chn_num = 0; chn_num < (pSpectInfoParams->numSpectChans); chn_num++) {
@@ -1717,12 +1636,6 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
     for (chn_num = 0; chn_num < (pSpectInfoParams->numSpectChans); chn_num++) {
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Spectrum Channels Weight", __FUNCTION__);
-
-    for (chn_num = 0; chn_num < (pSpectInfoParams->numSpectChans); chn_num++) {
-    
->>>>>>> 657b0e9... prima update
         /*
           rssi : Maximum received signal strength among all BSS on that channel
           bssCount : Number of BSS on that channel
@@ -1733,14 +1646,10 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
         pSpectCh->weight = SAPDFS_NORMALISE_1000 * sapweightRssiCount(rssi, pSpectCh->bssCount);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
         //------ Debug Info ------ 
         VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Chan=%d Weight= %d rssiAgr=%d bssCount=%d", __FUNCTION__, pSpectCh->chNum,
             pSpectCh->weight, pSpectCh->rssiAgr, pSpectCh->bssCount);
         //------ Debug Info ------ 
-<<<<<<< HEAD
         pSpectCh++;
     }
 =======
@@ -1754,10 +1663,6 @@ void sapComputeSpectWeight( tSapChSelSpectInfo* pSpectInfoParams,
     }
     vos_mem_free(pBeaconStruct);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pSpectCh++;
-    }
->>>>>>> 657b0e9... prima update
 }
 
 /*==========================================================================
@@ -1847,7 +1752,6 @@ void sapSortChlWeight(tSapChSelSpectInfo *pSpectInfoParams)
 
     /* For testing */
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Sorted Spectrum Channels Weight", __FUNCTION__);
     pSpectCh = pSpectInfoParams->pSpectCh;
     for (j = 0; j < (pSpectInfoParams->numSpectChans); j++) {
@@ -1860,13 +1764,6 @@ void sapSortChlWeight(tSapChSelSpectInfo *pSpectInfoParams)
         VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Channel=%d Weight= %d rssi=%d bssCount=%d",
                     __func__, pSpectCh->chNum, pSpectCh->weight, pSpectCh->rssiAgr, pSpectCh->bssCount);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Sorted Spectrum Channels Weight", __FUNCTION__);
-    pSpectCh = pSpectInfoParams->pSpectCh;
-    for (j = 0; j < (pSpectInfoParams->numSpectChans); j++) {
-        VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Channel=%d Weight= %d rssi=%d bssCount=%d",
-                    __FUNCTION__, pSpectCh->chNum, pSpectCh->weight, pSpectCh->rssiAgr, pSpectCh->bssCount);
->>>>>>> 657b0e9... prima update
         pSpectCh++;
     }
 
@@ -1894,31 +1791,22 @@ void sapSortChlWeight(tSapChSelSpectInfo *pSpectInfoParams)
   SIDE EFFECTS 
 ============================================================================*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
 =======
 v_U8_t sapSelectChannel(tHalHandle halHandle, ptSapContext pSapCtx,  tScanResultHandle pScanResult)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
->>>>>>> 657b0e9... prima update
 {
     // DFS param object holding all the data req by the algo
     tSapChSelSpectInfo oSpectInfoParams = {NULL,0}; 
     tSapChSelSpectInfo *pSpectInfoParams = &oSpectInfoParams; // Memory? NB    
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     v_U8_t bestChNum = 0;
 #ifdef SOFTAP_CHANNEL_RANGE
     v_U32_t startChannelNum;
     v_U32_t endChannelNum;
-<<<<<<< HEAD
 <<<<<<< HEAD
     v_U32_t operatingBand;
     v_U8_t  count = 0;
@@ -1930,12 +1818,6 @@ v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
 #endif    
     VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Running SAP Ch Select", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    v_U32_t operatingBand;
-    v_U8_t  count = 0;
-#endif    
-    VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Running SAP Ch Select", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     // Set to zero tSapChSelParams
     //vos_mem_zero(&sapChSelParams, sizeof(sapChSelParams));
@@ -1943,14 +1825,10 @@ v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
     // Initialize the structure pointed by pSpectInfoParams
     if(sapChanSelInit( halHandle, pSpectInfoParams) != eSAP_TRUE ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, Ch Select initialization failed", __FUNCTION__);
 =======
         VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, Ch Select initialization failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, Ch Select initialization failed", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return SAP_CHANNEL_NOT_SELECTED;
     }
 
@@ -1972,15 +1850,11 @@ v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
           ( endChannelNum >= pSpectInfoParams->pSpectCh[count].chNum))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
             bestChNum = (v_U8_t)pSpectInfoParams->pSpectCh[count].chNum;
             break;
         }
     }
 
-<<<<<<< HEAD
 #else
     // Get the first channel in sorted array as best 20M Channel
     bestChNum = (v_U8_t)pSpectInfoParams->pSpectCh[0].chNum;
@@ -2009,13 +1883,13 @@ v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
             }
          }
       }
-=======
->>>>>>> 657b0e9... prima update
 #else
     // Get the first channel in sorted array as best 20M Channel
     bestChNum = (v_U8_t)pSpectInfoParams->pSpectCh[0].chNum;
-
 #endif
+
+    //Select Best Channel from Channel List if Configured
+    bestChNum = sapSelectPreferredChannelFromChannelList(bestChNum, pSapCtx, pSpectInfoParams);
 
 >>>>>>> d97af3b... add prima wlan driver
     // Free all the allocated memory
@@ -2023,16 +1897,11 @@ v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult)
 
     VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Running SAP Ch select Completed, Ch=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, bestChNum);
 
 =======
                         __func__, bestChNum);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, bestChNum);
-
->>>>>>> 657b0e9... prima update
     if (bestChNum > 0 && bestChNum <= 252)
         return bestChNum;
     else

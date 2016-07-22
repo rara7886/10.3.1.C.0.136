@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -108,14 +105,10 @@ limDeactivateMinChannelTimerDuringScan(tpAniSirGlobal pMac)
             /// Could not activate max channel timer.
             // Log error
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac,LOGP, FL("could not activate max channel timer\n"));
 =======
             limLog(pMac,LOGP, FL("could not activate max channel timer"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac,LOGP, FL("could not activate max channel timer\n"));
->>>>>>> 657b0e9... prima update
 
             limCompleteMlmScan(pMac, eSIR_SME_RESOURCES_UNAVAILABLE);
             return TX_TIMER_ERROR;
@@ -173,7 +166,6 @@ limCollectBssDescription(tpAniSirGlobal pMac,
     tANI_U8             channelNum;
     tANI_U8             rxChannel;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
     ieLen    = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo) - SIR_MAC_B_PR_SSID_OFFSET;
@@ -181,18 +173,14 @@ limCollectBssDescription(tpAniSirGlobal pMac,
     pBody = WDA_GET_RX_MPDU_DATA(pRxPacketInfo);
 =======
     tANI_U8             rfBand = 0;
-=======
->>>>>>> 657b0e9... prima update
 
     pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
+    VOS_ASSERT(WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo) >= SIR_MAC_B_PR_SSID_OFFSET);
     ieLen    = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo) - SIR_MAC_B_PR_SSID_OFFSET;
     rxChannel = WDA_GET_RX_CH(pRxPacketInfo);
     pBody = WDA_GET_RX_MPDU_DATA(pRxPacketInfo);
-<<<<<<< HEAD
     rfBand = WDA_GET_RX_RFBAND(pRxPacketInfo);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
     /**
@@ -206,17 +194,12 @@ limCollectBssDescription(tpAniSirGlobal pMac,
 
     // Copy BSS Id
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &pBssDescr->bssId,
                   (tANI_U8 *) pHdr->bssId,
 =======
     vos_mem_copy((tANI_U8 *) &pBssDescr->bssId,
                  (tANI_U8 *) pHdr->bssId,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &pBssDescr->bssId,
-                  (tANI_U8 *) pHdr->bssId,
->>>>>>> 657b0e9... prima update
                   sizeof(tSirMacAddr));
 
     // Copy Timestamp, Beacon Interval and Capability Info
@@ -244,7 +227,6 @@ limCollectBssDescription(tpAniSirGlobal pMac,
     pBssDescr->channelId = limGetChannelFromBeacon(pMac, pBPR);
 
     if (pBssDescr->channelId == 0)
-<<<<<<< HEAD
 <<<<<<< HEAD
    {
       /* If the channel Id is not retrieved from Beacon, extract the channel from BD */
@@ -276,20 +258,6 @@ limCollectBssDescription(tpAniSirGlobal pMac,
 
     pBssDescr->channelIdSelf = pBssDescr->channelId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   {
-      /* If the channel Id is not retrieved from Beacon, extract the channel from BD */
-      /* Unmapped the channel.This We have to do since we have done mapping in the hal to
-         overcome  the limitation of RXBD of not able to accomodate the bigger channel number.*/
-      if (!( rxChannel = limUnmapChannel(rxChannel)))
-      {
-         rxChannel = pMac->lim.gLimCurrentScanChannelId;
-      }
-      pBssDescr->channelId = rxChannel;
-   }
-
-    pBssDescr->channelIdSelf = rxChannel;
->>>>>>> 657b0e9... prima update
     //set the network type in bss description
     channelNum = pBssDescr->channelId;
     pBssDescr->nwType = limGetNwType(pMac, channelNum, SIR_MAC_MGMT_FRAME, pBPR);
@@ -345,28 +313,20 @@ limCollectBssDescription(tpAniSirGlobal pMac,
 #endif
     // Copy IE fields
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &pBssDescr->ieFields,
 =======
     vos_mem_copy((tANI_U8 *) &pBssDescr->ieFields,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &pBssDescr->ieFields,
->>>>>>> 657b0e9... prima update
                   pBody + SIR_MAC_B_PR_SSID_OFFSET,
                   ieLen);
 
     //sirDumpBuf( pMac, SIR_LIM_MODULE_ID, LOGW, (tANI_U8 *) pBssDescr, pBssDescr->length + 2 );
     limLog( pMac, LOG3,
 <<<<<<< HEAD
-<<<<<<< HEAD
         FL("Collected BSS Description for Channel(%1d), length(%u), aniIndicator(%d), IE Fields(%u)\n"),
 =======
         FL("Collected BSS Description for Channel(%1d), length(%u), aniIndicator(%d), IE Fields(%u)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        FL("Collected BSS Description for Channel(%1d), length(%u), aniIndicator(%d), IE Fields(%u)\n"),
->>>>>>> 657b0e9... prima update
         pBssDescr->channelId,
         pBssDescr->length,
         pBssDescr->aniIndicator,
@@ -406,14 +366,10 @@ tANI_BOOLEAN limIsScanRequestedSSID(tpAniSirGlobal pMac, tSirMacSSid *ssId)
     for (i = 0; i < pMac->lim.gpLimMlmScanReq->numSsid; i++)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         if ( eANI_BOOLEAN_TRUE == palEqualMemory( pMac->hHdd,(tANI_U8 *) ssId,
 =======
         if ( eANI_BOOLEAN_TRUE == vos_mem_compare((tANI_U8 *) ssId,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if ( eANI_BOOLEAN_TRUE == palEqualMemory( pMac->hHdd,(tANI_U8 *) ssId,
->>>>>>> 657b0e9... prima update
                    (tANI_U8 *) &pMac->lim.gpLimMlmScanReq->ssId[i],
                    (tANI_U8) (pMac->lim.gpLimMlmScanReq->ssId[i].length + 1)))
         {
@@ -462,13 +418,9 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
     tANI_U8               dontUpdateAll = 0;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     tSirMacAddr bssid = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
     tANI_BOOLEAN fFound = FALSE;
     tpSirMacDataHdr3a pHdr;
@@ -478,7 +430,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
     //Checking if scanning for a particular BSSID
     if ((fScanning) && (pMac->lim.gpLimMlmScanReq)) 
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
         fFound = palEqualMemory(pMac->hHdd, pHdr->addr3, &pMac->lim.gpLimMlmScanReq->bssId, 6);
         if (!fFound)
@@ -492,13 +443,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
             if ((pMac->lim.gpLimMlmScanReq->p2pSearch) &&
                (vos_mem_compare(pBPR->P2PProbeRes.P2PDeviceInfo.P2PDeviceAddress,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        fFound = palEqualMemory(pMac->hHdd, pHdr->addr3, &pMac->lim.gpLimMlmScanReq->bssId, 6);
-        if (!fFound)
-        {
-            if ((pMac->lim.gpLimMlmScanReq->p2pSearch) &&
-               (palEqualMemory(pMac->hHdd, pBPR->P2PProbeRes.P2PDeviceInfo.P2PDeviceAddress, 
->>>>>>> 657b0e9... prima update
                &pMac->lim.gpLimMlmScanReq->bssId, 6)))
             {
                 fFound = eANI_BOOLEAN_TRUE;
@@ -506,13 +450,9 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
         }
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
     /**
      * Compare SSID with the one sent in
@@ -526,16 +466,12 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
      */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     if (((fScanning) && ( pMac->lim.gLimReturnAfterFirstMatch & 0x01 ) 
         && (pMac->lim.gpLimMlmScanReq->numSsid) &&
                    !limIsScanRequestedSSID(pMac, &pBPR->ssId))
                    ||  (!fFound && (pMac->lim.gpLimMlmScanReq && pMac->lim.gpLimMlmScanReq->bssId) &&
                    !palEqualMemory(pMac->hHdd, bssid, &pMac->lim.gpLimMlmScanReq->bssId, 6))
                    )
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
     if (!(WDA_GET_OFFLOADSCANLEARN(pRxPacketInfo)))
@@ -551,8 +487,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
            !vos_mem_compare(bssid,
                            &pMac->lim.gpLimMlmScanReq->bssId, 6))))
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     {
         /**
          * Received SSID does not match with
@@ -563,14 +497,11 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
         return;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
     }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     /* There is no point in caching & reporting the scan results for APs
      * which are in the process of switching the channel. So, we are not
@@ -601,14 +532,10 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
              {
                 limLog(pMac, LOG3, FL("Beacon/Probe Rsp dropped. Channel in BD %d. "
 <<<<<<< HEAD
-<<<<<<< HEAD
                                       "Channel in beacon" " %d\n"), 
 =======
                                       "Channel in beacon" " %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                      "Channel in beacon" " %d\n"), 
->>>>>>> 657b0e9... prima update
                        WDA_GET_RX_CH(pRxPacketInfo),limGetChannelFromBeacon(pMac, pBPR));
                 return;
              }
@@ -616,7 +543,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
              else
              {
                 dontUpdateAll = 1;
-<<<<<<< HEAD
 <<<<<<< HEAD
                 limLog(pMac, LOG3, FL("SSID %s, CH in ProbeRsp %d, CH in BD %d, miss-match, Do Not Drop"), 
                                        pBPR->ssId.ssId,
@@ -629,12 +555,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
                                        WDA_GET_RX_CH(pRxPacketInfo));
                 WDA_GET_RX_CH(pRxPacketInfo) = rxChannelInBeacon;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                limLog(pMac, LOG3, FL("SSID %s, CH in ProbeRsp %d, CH in BD %d, miss-match, Do Not Drop"), 
-                                       pBPR->ssId.ssId,
-                                       rxChannelInBeacon,
-                                       limGetChannelFromBeacon(pMac, pBPR));
->>>>>>> 657b0e9... prima update
              }
           }
        }
@@ -646,7 +566,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
      * Include size of fixed fields and IEs length
      */
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     ieLen    = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo) - SIR_MAC_B_PR_SSID_OFFSET;
     frameLen = sizeof(tLimScanResultNode) + ieLen - sizeof(tANI_U32);   // Sizeof(tANI_U32) is for ieFields[1]
@@ -668,21 +587,14 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
     ieLen -= SIR_MAC_B_PR_SSID_OFFSET;
 
     frameLen = sizeof(tLimScanResultNode) + ieLen - sizeof(tANI_U32); //Sizeof(tANI_U32) is for ieFields[1]
-=======
-    ieLen    = WDA_GET_RX_PAYLOAD_LEN(pRxPacketInfo) - SIR_MAC_B_PR_SSID_OFFSET;
-    frameLen = sizeof(tLimScanResultNode) + ieLen - sizeof(tANI_U32);   // Sizeof(tANI_U32) is for ieFields[1]
->>>>>>> 657b0e9... prima update
 
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pBssDescr, frameLen))
+    pBssDescr = vos_mem_malloc(frameLen);
+    if ( NULL == pBssDescr )
     {
         // Log error
         limLog(pMac, LOGP,
-<<<<<<< HEAD
            FL("call for AllocateMemory failed for storing BSS description"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           FL("call for palAllocateMemory failed for storing BSS description\n"));
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -696,13 +608,9 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
                              pBPR, pRxPacketInfo);
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     pBssDescr->bssDescription.fProbeRsp = fProbeRsp;
 
     pBssDescr->next = NULL;
@@ -710,7 +618,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
     /**
      * Depending on whether to store unique or all
      * scan results, pass hash update/add parameter
-<<<<<<< HEAD
 <<<<<<< HEAD
      */
 
@@ -748,10 +655,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
     else
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     */
-
->>>>>>> 657b0e9... prima update
     //If it is not scanning, only save unique results
     if (pMac->lim.gLimReturnUniqueResults || (!fScanning))
     {
@@ -777,9 +680,6 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
         if ( ( pMac->lim.gLimReturnAfterFirstMatch & 0x01 ) ||
              ( pMac->lim.gLim24Band11dScanDone && ( pMac->lim.gLimReturnAfterFirstMatch & 0x40 ) ) ||
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
              ( pMac->lim.gLim50Band11dScanDone && ( pMac->lim.gLimReturnAfterFirstMatch & 0x80 ) ) 
 #ifdef WLAN_FEATURE_P2P
              || fFound
@@ -795,13 +695,10 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
              pMac->lim.gLim50Band11dScanDone &&
              pMac->lim.gLimReturnAfterFirstMatch & 0xC0))
 */
-<<<<<<< HEAD
 =======
              ( pMac->lim.gLim50Band11dScanDone && ( pMac->lim.gLimReturnAfterFirstMatch & 0x80 ) ) ||
               fFound )
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         {
             /**
              * Stop scanning and return the BSS description(s)
@@ -810,14 +707,10 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
             limLog(pMac,
                    LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("Completed scan: 24Band11dScan = %d, 50Band11dScan = %d BSS id\n"),
 =======
                    FL("Completed scan: 24Band11dScan = %d, 50Band11dScan = %d BSS id"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("Completed scan: 24Band11dScan = %d, 50Band11dScan = %d BSS id\n"),
->>>>>>> 657b0e9... prima update
                    pMac->lim.gLim24Band11dScanDone,
                    pMac->lim.gLim50Band11dScanDone);
 
@@ -836,14 +729,10 @@ limCheckAndAddBssDescription(tpAniSirGlobal pMac,
     if( eHAL_STATUS_SUCCESS != status )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, pBssDescr );
 =======
         vos_mem_free( pBssDescr );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, pBssDescr );
->>>>>>> 657b0e9... prima update
     }
 } /****** end limCheckAndAddBssDescription() ******/
 
@@ -962,30 +851,21 @@ limLookupNaddHashEntry(tpAniSirGlobal pMac,
         //For infrastructure, check BSSID and SSID. For IBSS, check more
         pSirCapTemp = (tSirMacCapabilityInfo *)&ptemp->bssDescription.capabilityInfo;
 <<<<<<< HEAD
-<<<<<<< HEAD
         if((pSirCapTemp->ess == pSirCap->ess) && //matching ESS type first
             (palEqualMemory( pMac->hHdd,(tANI_U8 *) pBssDescr->bssDescription.bssId,
 =======
         if ((pSirCapTemp->ess == pSirCap->ess) && //matching ESS type first
             (vos_mem_compare( (tANI_U8 *) pBssDescr->bssDescription.bssId,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if((pSirCapTemp->ess == pSirCap->ess) && //matching ESS type first
-            (palEqualMemory( pMac->hHdd,(tANI_U8 *) pBssDescr->bssDescription.bssId,
->>>>>>> 657b0e9... prima update
                       (tANI_U8 *) ptemp->bssDescription.bssId,
                       sizeof(tSirMacAddr))) &&   //matching BSSID
             (pBssDescr->bssDescription.channelId ==
                                       ptemp->bssDescription.channelId) &&
 <<<<<<< HEAD
-<<<<<<< HEAD
             palEqualMemory( pMac->hHdd,((tANI_U8 *) &pBssDescr->bssDescription.ieFields + 1),
 =======
             vos_mem_compare( ((tANI_U8 *) &pBssDescr->bssDescription.ieFields + 1),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palEqualMemory( pMac->hHdd,((tANI_U8 *) &pBssDescr->bssDescription.ieFields + 1),
->>>>>>> 657b0e9... prima update
                            ((tANI_U8 *) &ptemp->bssDescription.ieFields + 1),
                            (tANI_U8) (ssidLen + 1)) &&
             ((pSirCapTemp->ess) || //we are done for infrastructure
@@ -1022,14 +902,10 @@ limLookupNaddHashEntry(tpAniSirGlobal pMac,
                             if((DOT11F_IE_WSCPROBERES_MAX_LEN - 2) >= pbIe[1])
                             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                                 palCopyMemory(pMac->hHdd, pBssDescr->bssDescription.WscIeProbeRsp,
 =======
                                 vos_mem_copy(pBssDescr->bssDescription.WscIeProbeRsp,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                palCopyMemory(pMac->hHdd, pBssDescr->bssDescription.WscIeProbeRsp,
->>>>>>> 657b0e9... prima update
                                    pbIe, pbIe[1] + 2);
                                 pBssDescr->bssDescription.WscIeLen = pbIe[1] + 2;
                             }
@@ -1059,14 +935,10 @@ limLookupNaddHashEntry(tpAniSirGlobal pMac,
                     ptemp->bssDescription.length + sizeof(tANI_U16);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 palFreeMemory( pMac->hHdd, (tANI_U8 *) ptemp);
 =======
                 vos_mem_free(ptemp);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                palFreeMemory( pMac->hHdd, (tANI_U8 *) ptemp);
->>>>>>> 657b0e9... prima update
             }
             found = true;
             break;
@@ -1075,14 +947,10 @@ limLookupNaddHashEntry(tpAniSirGlobal pMac,
 
     //for now, only rssi, we can add more if needed
 <<<<<<< HEAD
-<<<<<<< HEAD
     if ((action == LIM_HASH_UPDATE) && dontUpdateAll)
 =======
     if ((action == LIM_HASH_UPDATE) && dontUpdateAll && rssi)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if ((action == LIM_HASH_UPDATE) && dontUpdateAll)
->>>>>>> 657b0e9... prima update
     {
         pBssDescr->bssDescription.rssi = rssi;
     }
@@ -1102,14 +970,10 @@ limLookupNaddHashEntry(tpAniSirGlobal pMac,
         pBssDescr->bssDescription.length + sizeof(tANI_U16);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOG2(limLog(pMac, LOG2, FL("Added new BSS description size %d TOT %d BSS id\n"),
 =======
     PELOG2(limLog(pMac, LOG2, FL("Added new BSS description size %d TOT %d BSS id"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOG2(limLog(pMac, LOG2, FL("Added new BSS description size %d TOT %d BSS id\n"),
->>>>>>> 657b0e9... prima update
            pBssDescr->bssDescription.length,
            pMac->lim.gLimMlmScanResultLength);
     limPrintMacAddr(pMac, pBssDescr->bssDescription.bssId, LOG2);)
@@ -1153,7 +1017,6 @@ void    limDeleteHashEntry(tLimScanResultNode *pBssDescr)
 } /****** end limDeleteHashEntry() ******/
 
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -1376,8 +1239,6 @@ void    limDeleteLfrHashEntry(tLimScanResultNode *pBssDescr)
 
 #endif //WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /**
  * limCopyScanResult()
@@ -1414,14 +1275,10 @@ limCopyScanResult(tpAniSirGlobal pMac, tANI_U8 *pDest)
             {
                 /// Copy entire BSS description including length
 <<<<<<< HEAD
-<<<<<<< HEAD
                 palCopyMemory( pMac->hHdd, pDest,
 =======
                 vos_mem_copy( pDest,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                palCopyMemory( pMac->hHdd, pDest,
->>>>>>> 657b0e9... prima update
                               (tANI_U8 *) &ptemp->bssDescription,
                               ptemp->bssDescription.length + 2);
                 pDest += ptemp->bssDescription.length + 2;
@@ -1469,14 +1326,10 @@ limDeleteCachedScanResults(tpAniSirGlobal pMac)
 
                 // Delete the current node
 <<<<<<< HEAD
-<<<<<<< HEAD
                 palFreeMemory( pMac->hHdd, (tANI_U8 *) pNode);
 =======
                 vos_mem_free(pNode);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                palFreeMemory( pMac->hHdd, (tANI_U8 *) pNode);
->>>>>>> 657b0e9... prima update
 
                 pNode = pNextNode;
             }
@@ -1518,7 +1371,6 @@ limReInitScanResults(tpAniSirGlobal pMac)
     pMac->lim.gLimMlmScanResultLength = 0;
 
 } /****** end limReInitScanResults() ******/
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -1601,5 +1453,3 @@ limReInitLfrScanResults(tpAniSirGlobal pMac)
 } /****** end limReInitLfrScanResults() ******/
 #endif //WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

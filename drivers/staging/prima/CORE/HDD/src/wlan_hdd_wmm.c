@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -87,18 +84,12 @@
 #include <linux/semaphore.h>
 #include <wlan_hdd_hostapd.h>
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include <wlan_hdd_softap_tx_rx.h>
 #endif
 =======
 #include <wlan_hdd_softap_tx_rx.h>
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-#include <wlan_hdd_softap_tx_rx.h>
-#endif
->>>>>>> 657b0e9... prima update
 
 // change logging behavior based upon debug flag
 #ifdef HDD_WMM_DEBUG
@@ -119,9 +110,6 @@
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 // UAPSD Mask bits
 // (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored)
 #define HDD_AC_VO 0x1
@@ -129,11 +117,8 @@
 #define HDD_AC_BK 0x4
 #define HDD_AC_BE 0x8
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define WLAN_HDD_MAX_DSCP 0x3f
 
 static sme_QosWmmUpType hddWmmDscpToUpMap[WLAN_HDD_MAX_DSCP+1];
@@ -181,12 +166,9 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
    v_U32_t suspension_interval;
    sme_QosWmmDirType direction;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    v_BOOL_t psb;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
    // The TSPEC must be valid
@@ -195,14 +177,10 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Invoked with invalid TSPEC",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -222,35 +200,26 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: No service interval supplied",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
       return;
 =======
                 __func__);
       service_interval = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
-      return;
->>>>>>> 657b0e9... prima update
    }
 
    // determine the suspension interval & direction
    suspension_interval = pAc->wmmAcTspecInfo.suspension_interval;
    direction = pAc->wmmAcTspecInfo.ts_info.direction;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    psb = pAc->wmmAcTspecInfo.ts_info.psb;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    // if we have previously enabled U-APSD, have any params changed?
    if ((pAc->wmmAcUapsdInfoValid) &&
        (pAc->wmmAcUapsdServiceInterval == service_interval) &&
        (pAc->wmmAcUapsdSuspensionInterval == suspension_interval) &&
-<<<<<<< HEAD
 <<<<<<< HEAD
        (pAc->wmmAcUapsdDirection == direction))
    {
@@ -265,13 +234,6 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
                 "%s: No change in U-APSD parameters",
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       (pAc->wmmAcUapsdDirection == direction))
-   {
-      VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
-                "%s: No change in U-APSD parameters",
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -281,14 +243,10 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: BMPS is not enabled",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -297,14 +255,10 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: U-APSD is not enabled",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -323,14 +277,10 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
       VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                  "%s: Failed to enable U-APSD for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, acType );
 =======
                  __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -340,25 +290,18 @@ static void hdd_wmm_enable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
    pAc->wmmAcUapsdSuspensionInterval = suspension_interval;
    pAc->wmmAcUapsdDirection = direction;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    pAc->wmmAcIsUapsdEnabled = psb;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: Enabled UAPSD in TL srv_int=%ld "
              "susp_int=%ld dir=%d AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__,
 =======
              __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__,
->>>>>>> 657b0e9... prima update
              service_interval,
              suspension_interval,
              direction,
@@ -395,14 +338,10 @@ static void hdd_wmm_disable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
          VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                     "%s: Failed to disable U-APSD for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                     __FUNCTION__, acType );
 =======
                     __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
       }
       else
       {
@@ -411,14 +350,10 @@ static void hdd_wmm_disable_tl_uapsd (hdd_wmm_qos_context_t* pQosContext)
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Disabled UAPSD in TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__,
 =======
                    __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__,
->>>>>>> 657b0e9... prima update
                    acType);
       }
    }
@@ -441,14 +376,10 @@ static void hdd_wmm_free_context (hdd_wmm_qos_context_t* pQosContext)
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: Entered, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pQosContext);
 =======
              __func__, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pQosContext);
->>>>>>> 657b0e9... prima update
 
    if (unlikely((NULL == pQosContext) ||
                 (HDD_WMM_CTX_MAGIC != pQosContext->magic)))
@@ -497,14 +428,10 @@ static void hdd_wmm_notify_app (hdd_wmm_qos_context_t* pQosContext)
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: Entered, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pQosContext);
 =======
              __func__, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pQosContext);
->>>>>>> 657b0e9... prima update
 
    if (unlikely((NULL == pQosContext) ||
                 (HDD_WMM_CTX_MAGIC != pQosContext->magic)))
@@ -512,14 +439,10 @@ static void hdd_wmm_notify_app (hdd_wmm_qos_context_t* pQosContext)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Invalid QoS Context",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -541,14 +464,10 @@ static void hdd_wmm_notify_app (hdd_wmm_qos_context_t* pQosContext)
    // send the event
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Sending [%s]", __FUNCTION__, buf);
 =======
              "%s: Sending [%s]", __func__, buf);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Sending [%s]", __FUNCTION__, buf);
->>>>>>> 657b0e9... prima update
    wireless_send_event(pAdapter->dev, IWEVCUSTOM, &wrqu, buf);
 }
 
@@ -778,14 +697,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: Entered, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pQosContext);
 =======
              __func__, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pQosContext);
->>>>>>> 657b0e9... prima update
 
    if (unlikely((NULL == pQosContext) ||
                 (HDD_WMM_CTX_MAGIC != pQosContext->magic)))
@@ -793,14 +708,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Invalid QoS Context",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return eHAL_STATUS_FAILURE;
    }
 
@@ -811,14 +722,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: status %d flowid %d info %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, smeStatus, qosFlowId, pCurrentQosInfo);
 =======
              __func__, smeStatus, qosFlowId, pCurrentQosInfo);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, smeStatus, qosFlowId, pCurrentQosInfo);
->>>>>>> 657b0e9... prima update
 
    switch (smeStatus)
    {
@@ -827,14 +734,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Setup is complete",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       // there will always be a TSPEC returned with this status, even if
       // a TSPEC is not exchanged OTA
@@ -852,14 +755,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Implicit Qos, notifying TL for TL AC %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, acType);
 =======
                    __func__, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, acType);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by implicit QoS so we know packets are pending
          // update state
@@ -877,14 +776,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                        "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, acType );
 =======
                        __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -892,14 +787,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_SUCCESS;
@@ -908,7 +799,6 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
 
 #ifdef FEATURE_WLAN_CCX
       // Check if the inactivity interval is specified
-<<<<<<< HEAD
 <<<<<<< HEAD
       if (pCurrentQosInfo->inactivity_interval) {
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
@@ -920,12 +810,6 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
                  "%s: Inactivity timer value = %d for AC=%d\n",
                  __func__, pCurrentQosInfo->inactivity_interval, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      if (pCurrentQosInfo->inactivity_interval) {
-         VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
-                 "%s: Inactivity timer value = %d for AC=%d\n",
-                 __FUNCTION__, pCurrentQosInfo->inactivity_interval, acType);
->>>>>>> 657b0e9... prima update
          hdd_wmm_enable_inactivity_timer(pQosContext, pCurrentQosInfo->inactivity_interval);
       }
 #endif // FEATURE_WLAN_CCX
@@ -939,14 +823,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: Setup is complete (U-APSD set previously)",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       if (HDD_WMM_HANDLE_IMPLICIT == pQosContext->handle)
       {
@@ -954,14 +834,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Implicit Qos, notifying TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by implicit QoS so we know packets are pending
          // update state
@@ -979,14 +855,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                        "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, acType );
 =======
                        __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -994,14 +866,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_SUCCESS_NO_ACM_UAPSD_EXISTING;
@@ -1014,14 +882,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Setup failed",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       // QoS setup failed
 
       if (HDD_WMM_HANDLE_IMPLICIT == pQosContext->handle)
@@ -1030,14 +894,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Implicit Qos, notifying TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // we note the failure, but we also mark access as allowed so that
          // the packets will flow.  Note that the MAC will "do the right thing"
@@ -1055,14 +915,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                        "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, acType );
 =======
                        __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -1070,14 +926,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_FAILED;
@@ -1097,14 +949,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Setup Invalid Params, notify TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       // QoS setup failed
 
       if (HDD_WMM_HANDLE_IMPLICIT == pQosContext->handle)
@@ -1113,14 +961,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Implicit Qos, notifying TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // we note the failure, but we also mark access as allowed so that
          // the packets will flow.  Note that the MAC will "do the right thing"
@@ -1138,14 +982,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                        "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, acType );
 =======
                        __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -1153,14 +993,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_FAILED_BAD_PARAM;
@@ -1172,27 +1008,19 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                  "%s: Setup failed, not a QoS AP\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__);
 =======
                  __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__);
->>>>>>> 657b0e9... prima update
       if (!HDD_WMM_HANDLE_IMPLICIT == pQosContext->handle)
       {
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_FAILED_NO_WMM;
@@ -1204,14 +1032,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: Setup pending",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       // not a callback status -- ignore if we get it
       break;
 
@@ -1219,14 +1043,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: Setup modified",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       if (pCurrentQosInfo)
       {
          // update the TSPEC
@@ -1240,14 +1060,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                       "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       __FUNCTION__);
 =======
                       __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
             // this was triggered by an application
             pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_MODIFIED;
@@ -1266,14 +1082,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Implicit Qos, notifying TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by implicit QoS so we know packets are pending
          pAc->wmmAcAccessPending = VOS_FALSE;
@@ -1290,14 +1102,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                        "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, acType );
 =======
                        __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -1305,14 +1113,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_SUCCESS_NO_ACM_NO_UAPSD;
@@ -1328,14 +1132,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Setup successful but U-APSD failed",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       if (HDD_WMM_HANDLE_IMPLICIT == pQosContext->handle)
       {
@@ -1343,14 +1143,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Implicit Qos, notifying TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // QoS setup was successful but setting U=APSD failed
          // Since the OTA part of the request was successful, we don't mark
@@ -1371,14 +1167,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
             VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                        "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, acType );
 =======
                        __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
          }
       }
       else
@@ -1386,14 +1178,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_SETUP_UAPSD_SET_FAILED;
@@ -1409,28 +1197,20 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: Release is complete",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       if (pCurrentQosInfo)
       {
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: flows still active",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // there is still at least one flow active for this AC
          // so update the AC state
@@ -1446,14 +1226,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: last flow",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this is the last flow active for this AC so update the AC state
          pAc->wmmAcTspecValid = VOS_FALSE;
@@ -1467,14 +1243,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_RELEASE_SUCCESS;
@@ -1489,14 +1261,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: Release failure",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       // we don't need to update our state or TL since nothing has changed
       if (HDD_WMM_HANDLE_IMPLICIT != pQosContext->handle)
@@ -1504,14 +1272,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_RELEASE_FAILED;
@@ -1524,14 +1288,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: QOS Lost indication received",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       // current TSPEC is no longer valid
       pAc->wmmAcTspecValid = VOS_FALSE;
@@ -1550,14 +1310,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                    "%s: Explicit Qos, notifying userspace",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__);
 =======
                    __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
          // this was triggered by an application
          pQosContext->lastStatus = HDD_WLAN_WMM_STATUS_LOST;
@@ -1572,14 +1328,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Release pending",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       // not a callback status -- ignore if we get it
       break;
 
@@ -1587,14 +1339,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Release Invalid Params",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       if (HDD_WMM_HANDLE_IMPLICIT != pQosContext->handle)
       {
          // this was triggered by an application
@@ -1607,14 +1355,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Modification is complete, notify TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       // there will always be a TSPEC returned with this status, even if
       // a TSPEC is not exchanged OTA
@@ -1663,14 +1407,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: modification pending",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       // not a callback status -- ignore if we get it
       break;
 
@@ -1703,14 +1443,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Modify successful but U-APSD failed",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       // QoS modification was successful but setting U=APSD failed.
       // This will always be an explicit QoS instance, so all we can
@@ -1745,14 +1481,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
       VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                  "%s: unexpected SME Status=%d\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, smeStatus );
 =======
                  __func__, smeStatus );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, smeStatus );
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
    }
 
@@ -1765,14 +1497,10 @@ static eHalStatus hdd_wmm_sme_callback (tHalHandle hHal,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: complete, access for TL AC %d is%sallowed",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__,
 =======
              __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__,
->>>>>>> 657b0e9... prima update
              acType,
              pAc->wmmAcAccessAllowed ? " " : " not ");
 
@@ -1804,28 +1532,20 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: Entered, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pQosContext);
 =======
              __func__, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pQosContext);
->>>>>>> 657b0e9... prima update
 
    if (unlikely(HDD_WMM_CTX_MAGIC != pQosContext->magic))
    {
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Invalid QoS Context",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return;
    }
 
@@ -1836,28 +1556,20 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: pAdapter %p acType %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pAdapter, acType);
 =======
              __func__, pAdapter, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pAdapter, acType);
->>>>>>> 657b0e9... prima update
 
    if (!pAc->wmmAcAccessNeeded)
    {
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: AC %d doesn't need service",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, acType);
 =======
                 __func__, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, acType);
->>>>>>> 657b0e9... prima update
       pQosContext->magic = 0;
       kfree(pQosContext);
       return;
@@ -1873,15 +1585,11 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    case WLANTL_AC_VO:
       qosInfo.ts_info.up = SME_QOS_WMM_UP_VO;
 <<<<<<< HEAD
-<<<<<<< HEAD
       qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x01;
 =======
       qosInfo.ts_info.psb = ((WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask &
                               SME_QOS_UAPSD_VO) ? 1 : 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x01;
->>>>>>> 657b0e9... prima update
       qosInfo.ts_info.direction = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraDirAcVo;
       qosInfo.ts_info.tid = 255;
       qosInfo.mean_data_rate = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraMeanDataRateAcVo;
@@ -1894,15 +1602,11 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    case WLANTL_AC_VI:
       qosInfo.ts_info.up = SME_QOS_WMM_UP_VI;
 <<<<<<< HEAD
-<<<<<<< HEAD
       qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x02;
 =======
       qosInfo.ts_info.psb = ((WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask &
                               SME_QOS_UAPSD_VI) ? 1 : 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x02;
->>>>>>> 657b0e9... prima update
       qosInfo.ts_info.direction = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraDirAcVi;
       qosInfo.ts_info.tid = 255;
       qosInfo.mean_data_rate = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraMeanDataRateAcVi;
@@ -1916,15 +1620,11 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    case WLANTL_AC_BE:
       qosInfo.ts_info.up = SME_QOS_WMM_UP_BE;
 <<<<<<< HEAD
-<<<<<<< HEAD
       qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x08;
 =======
       qosInfo.ts_info.psb = ((WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask &
                               SME_QOS_UAPSD_BE) ? 1 : 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x08;
->>>>>>> 657b0e9... prima update
       qosInfo.ts_info.direction = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraDirAcBe;
       qosInfo.ts_info.tid = 255;
       qosInfo.mean_data_rate = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraMeanDataRateAcBe;
@@ -1937,15 +1637,11 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    case WLANTL_AC_BK:
       qosInfo.ts_info.up = SME_QOS_WMM_UP_BK;
 <<<<<<< HEAD
-<<<<<<< HEAD
       qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x04;
 =======
       qosInfo.ts_info.psb = ((WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask &
                               SME_QOS_UAPSD_BK) ? 1 : 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      qosInfo.ts_info.psb = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->UapsdMask & 0x04;
->>>>>>> 657b0e9... prima update
       qosInfo.ts_info.direction = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraDirAcBk;
       qosInfo.ts_info.tid = 255;
       qosInfo.mean_data_rate = (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->InfraMeanDataRateAcBk;
@@ -2000,14 +1696,10 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: sme_QosSetupReq returned %d flowid %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, smeStatus, pQosContext->qosFlowId);
 =======
              __func__, smeStatus, pQosContext->qosFlowId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, smeStatus, pQosContext->qosFlowId);
->>>>>>> 657b0e9... prima update
 
    // need to check the return values and act appropriately
    switch (smeStatus)
@@ -2019,14 +1711,10 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Setup is pending, no further work",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       break;
 
@@ -2050,14 +1738,10 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Setup is complete, notify TL",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       pAc->wmmAcAccessAllowed = VOS_TRUE;
       pAc->wmmAcAccessGranted = VOS_TRUE;
@@ -2072,14 +1756,10 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
          VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                     "%s: Failed to signal TL for AC=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                     __FUNCTION__, acType );
 =======
                     __func__, acType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__, acType );
->>>>>>> 657b0e9... prima update
       }
 
       break;
@@ -2089,14 +1769,10 @@ static void hdd_wmm_do_implicit_qos(struct work_struct *work)
       VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                  "%s: unexpected SME Status=%d\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, smeStatus );
 =======
                  __func__, smeStatus );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, smeStatus );
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
    }
 #endif
@@ -2120,14 +1796,10 @@ VOS_STATUS hdd_wmm_init ( hdd_context_t* pHddCtx )
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
 =======
              "%s: Entered", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    // DSCP to User Priority Lookup Table
    for (dscp = 0; dscp <= WLAN_HDD_MAX_DSCP; dscp++)
@@ -2163,14 +1835,10 @@ VOS_STATUS hdd_wmm_adapter_init( hdd_adapter_t *pAdapter )
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
 =======
              "%s: Entered", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    pAdapter->hddWmmStatus.wmmQap = VOS_FALSE;
    INIT_LIST_HEAD(&pAdapter->hddWmmStatus.wmmContextList);
@@ -2191,7 +1859,6 @@ VOS_STATUS hdd_wmm_adapter_init( hdd_adapter_t *pAdapter )
 
    return VOS_STATUS_SUCCESS;
 }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -2227,8 +1894,6 @@ VOS_STATUS hdd_wmm_adapter_clear( hdd_adapter_t *pAdapter )
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**============================================================================
   @brief hdd_wmm_close() - Function which will perform any necessary work to
   to clean up the WMM functionality prior to the kernel module unload
@@ -2245,14 +1910,10 @@ VOS_STATUS hdd_wmm_adapter_close ( hdd_adapter_t* pAdapter )
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
 =======
              "%s: Entered", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    // free any context records that we still have linked
    while (!list_empty(&pAdapter->hddWmmStatus.wmmContextList))
@@ -2297,14 +1958,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
 #ifdef HDD_WMM_DEBUG
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
 =======
              "%s: Entered", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
 
    pPkt = skb->data;
@@ -2314,14 +1971,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: proto/length is 0x%04x",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pHdr->eth_II.h_proto);
 =======
              __func__, pHdr->eth_II.h_proto);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pHdr->eth_II.h_proto);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
 
    if (HDD_WMM_CLASSIFICATION_DSCP == (WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->PktClassificationBasis)
@@ -2335,14 +1988,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                    "%s: Ethernet II IP Packet, tos is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, tos);
 =======
                    __func__, tos);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, tos);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
 
       }
@@ -2359,14 +2008,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                    "%s: 802.3 LLC/SNAP IP Packet, tos is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, tos);
 =======
                    __func__, tos);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, tos);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
       }
       else if (pHdr->eth_II.h_proto == htons(ETH_P_8021Q))
@@ -2382,14 +2027,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
             VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                       "%s: Ethernet II VLAN tagged IP Packet, tos is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       __FUNCTION__, tos);
 =======
                       __func__, tos);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      __FUNCTION__, tos);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
          }
          else if ((ntohs(pHdr->eth_IIv.h_vlan_encapsulated_proto) < WLAN_MIN_PROTO) &&
@@ -2405,14 +2046,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
             VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                       "%s: 802.3 LLC/SNAP VLAN tagged IP Packet, tos is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       __FUNCTION__, tos);
 =======
                       __func__, tos);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      __FUNCTION__, tos);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
          }
          else
@@ -2422,14 +2059,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
             VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_WARN,
                       "%s: VLAN tagged Unhandled Protocol, using default tos",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       __FUNCTION__);
 =======
                       __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      __FUNCTION__);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
             tos = 0;
          }
@@ -2441,14 +2074,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
           VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_WARN,
                   "%s: Unhandled Protocol, using default tos",
 <<<<<<< HEAD
-<<<<<<< HEAD
                   __FUNCTION__);
 =======
                   __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  __FUNCTION__);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
           //Give the highest priority to 802.1x packet
           if (pHdr->eth_II.h_proto == htons(HDD_ETHERTYPE_802_1_X))
@@ -2464,14 +2093,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                 "%s: tos is %d, dscp is %d, up is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, tos, dscp, userPri);
 =======
                 __func__, tos, dscp, userPri);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, tos, dscp, userPri);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
 
    }
@@ -2485,14 +2110,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
                    "%s: Tagged frame, UP is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, userPri);
 =======
                    __func__, userPri);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, userPri);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
       }
       else
@@ -2502,14 +2123,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
           VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_WARN,
                   "%s: Untagged frame, using default UP",
 <<<<<<< HEAD
-<<<<<<< HEAD
                   __FUNCTION__);
 =======
                   __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  __FUNCTION__);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
           //Give the highest priority to 802.1x packet
           if (pHdr->eth_II.h_proto == htons(HDD_ETHERTYPE_802_1_X))
@@ -2525,14 +2142,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Unknown classification scheme, using default UP",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
       userPri = SME_QOS_WMM_UP_BE;
    }
@@ -2543,14 +2156,10 @@ v_VOID_t hdd_wmm_classify_pkt ( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: UP is %d, AC is %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, userPri, acType);
 =======
              __func__, userPri, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, userPri, acType);
->>>>>>> 657b0e9... prima update
 #endif // HDD_WMM_DEBUG
 
    *pUserPri = userPri;
@@ -2578,25 +2187,16 @@ v_U16_t hdd_hostapd_select_queue(struct net_device * dev, struct sk_buff *skb)
    hdd_adapter_t *pAdapter = (hdd_adapter_t *)netdev_priv(dev);
    hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
    tpAniSirGlobal  pMac = (tpAniSirGlobal) vos_get_context(VOS_MODULE_ID_HAL, pHddCtx->pvosContext);
 #endif //FEATURE_WLAN_NON_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-   tpAniSirGlobal  pMac = (tpAniSirGlobal) vos_get_context(VOS_MODULE_ID_HAL, pHddCtx->pvosContext);
-#endif //FEATURE_WLAN_NON_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    v_U8_t STAId;
    v_U8_t *pSTAId = (v_U8_t *)(((v_U8_t *)(skb->data)) - 1);
 
    /*Get the Station ID*/
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
    if (eHAL_STATUS_SUCCESS != halTable_FindStaidByAddr(pMac, (tANI_U8 *)pDestMacAddress, &STAId))
    {
@@ -2606,7 +2206,6 @@ v_U16_t hdd_hostapd_select_queue(struct net_device * dev, struct sk_buff *skb)
       goto done;
    }
 #else
-<<<<<<< HEAD
    if (VOS_STATUS_SUCCESS != hdd_softap_GetStaId(pAdapter, pDestMacAddress, &STAId))
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
@@ -2616,34 +2215,24 @@ v_U16_t hdd_hostapd_select_queue(struct net_device * dev, struct sk_buff *skb)
    }
 #endif //FEATURE_WLAN_NON_INTEGRATED_SOC
 =======
-=======
->>>>>>> 657b0e9... prima update
    if (VOS_STATUS_SUCCESS != hdd_softap_GetStaId(pAdapter, pDestMacAddress, &STAId))
    {
-      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
-            "%s: Failed to find right station", __FUNCTION__);
+      VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_INFO,
+            "%s: Failed to find right station", __func__);
       *pSTAId = HDD_WLAN_INVALID_STA_ID;
       goto done;
    }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif //FEATURE_WLAN_NON_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 
    spin_lock_bh( &pAdapter->staInfo_lock );
    if (FALSE == vos_is_macaddr_equal(&pAdapter->aStaInfo[STAId].macAddrSTA, pDestMacAddress))
    {
       VOS_TRACE( VOS_MODULE_ID_HDD_SOFTAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "%s: Station MAC address does not matching", __FUNCTION__);
 =======
                    "%s: Station MAC address does not matching", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "%s: Station MAC address does not matching", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       *pSTAId = HDD_WLAN_INVALID_STA_ID;
       goto release_lock;
@@ -2678,7 +2267,6 @@ v_U16_t hdd_wmm_select_queue(struct net_device * dev, struct sk_buff *skb)
 {
    WLANTL_ACEnumType ac;
 <<<<<<< HEAD
-<<<<<<< HEAD
    sme_QosWmmUpType up = 0;
    v_USHORT_t queueIndex;
 
@@ -2686,14 +2274,9 @@ v_U16_t hdd_wmm_select_queue(struct net_device * dev, struct sk_buff *skb)
 
 =======
    sme_QosWmmUpType up = SME_QOS_WMM_UP_BE;
-=======
-   sme_QosWmmUpType up = 0;
->>>>>>> 657b0e9... prima update
    v_USHORT_t queueIndex;
-
    hdd_adapter_t *pAdapter =  WLAN_HDD_GET_PRIV_PTR(dev);
 
-<<<<<<< HEAD
    /*Get the Station ID*/
    if (WLAN_HDD_IBSS == pAdapter->device_mode)
    {
@@ -2713,8 +2296,6 @@ v_U16_t hdd_wmm_select_queue(struct net_device * dev, struct sk_buff *skb)
        }
    }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    // if we don't want QoS or the AP doesn't support Qos
    // All traffic will get equal opportuniy to transmit data frames.
    if( hdd_wmm_is_active(pAdapter) ) {
@@ -2722,14 +2303,10 @@ v_U16_t hdd_wmm_select_queue(struct net_device * dev, struct sk_buff *skb)
       hdd_wmm_classify_pkt (pAdapter, skb, &ac, &up);
    }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 done:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
    skb->priority = up;
    queueIndex = hddLinuxUpToAcMap[skb->priority];
 
@@ -2756,14 +2333,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered for AC %d", __FUNCTION__, acType);
 =======
              "%s: Entered for AC %d", __func__, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered for AC %d", __FUNCTION__, acType);
->>>>>>> 657b0e9... prima update
 
    if (!hdd_wmm_is_active(pAdapter) || !(WLAN_HDD_GET_CTX(pAdapter))->cfg_ini->bImplicitQosEnabled)
    {
@@ -2771,14 +2344,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
       // or we don't want to do implicit QoS
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: QoS not configured on both ends ", __FUNCTION__);
 =======
                 "%s: QoS not configured on both ends ", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: QoS not configured on both ends ", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       pAdapter->hddWmmStatus.wmmAcStatus[acType].wmmAcAccessAllowed = VOS_TRUE;
       *pGranted = VOS_TRUE;
@@ -2793,14 +2362,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Implicit QoS for TL AC %d already scheduled",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, acType);
 =======
                 __func__, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, acType);
->>>>>>> 657b0e9... prima update
 
       *pGranted = VOS_FALSE;
       return VOS_STATUS_SUCCESS;
@@ -2815,14 +2380,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                 "%s: Implicit QoS for TL AC %d previously failed",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, acType);
 =======
                 __func__, acType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, acType);
->>>>>>> 657b0e9... prima update
 
       pAdapter->hddWmmStatus.wmmAcStatus[acType].wmmAcAccessAllowed = VOS_TRUE;
       *pGranted = VOS_TRUE;
@@ -2833,14 +2394,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: Need to schedule implicit QoS for TL AC %d, pAdapter is %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, acType, pAdapter);
 =======
              __func__, acType, pAdapter);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, acType, pAdapter);
->>>>>>> 657b0e9... prima update
 
    pAdapter->hddWmmStatus.wmmAcStatus[acType].wmmAcAccessNeeded = VOS_TRUE;
 
@@ -2850,14 +2407,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
       // no memory for QoS context.  Nothing we can do but let data flow
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Unable to allocate context", __FUNCTION__);
 =======
                 "%s: Unable to allocate context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Unable to allocate context", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       pAdapter->hddWmmStatus.wmmAcStatus[acType].wmmAcAccessAllowed = VOS_TRUE;
       *pGranted = VOS_TRUE;
       return VOS_STATUS_SUCCESS;
@@ -2874,14 +2427,10 @@ VOS_STATUS hdd_wmm_acquire_access( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: Scheduling work for AC %d, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, acType, pQosContext);
 =======
              __func__, acType, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, acType, pQosContext);
->>>>>>> 657b0e9... prima update
 
    schedule_work(&pQosContext->wmmAcSetupImplicitQos);
 
@@ -2914,14 +2463,10 @@ VOS_STATUS hdd_wmm_assoc( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
 =======
              "%s: Entered", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    if (pRoamInfo->fReassocReq)
    {
@@ -2934,14 +2479,10 @@ VOS_STATUS hdd_wmm_assoc( hdd_adapter_t* pAdapter,
 
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Reassoc so no work, Exiting", __FUNCTION__);
 =======
                 "%s: Reassoc so no work, Exiting", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Reassoc so no work, Exiting", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       return VOS_STATUS_SUCCESS;
    }
@@ -2951,14 +2492,10 @@ VOS_STATUS hdd_wmm_assoc( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: U-APSD mask is 0x%02x", __FUNCTION__, (int) uapsdMask);
 =======
              "%s: U-APSD mask is 0x%02x", __func__, (int) uapsdMask);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: U-APSD mask is 0x%02x", __FUNCTION__, (int) uapsdMask);
->>>>>>> 657b0e9... prima update
 
    if (uapsdMask & HDD_AC_VO)
    {
@@ -3018,14 +2555,10 @@ VOS_STATUS hdd_wmm_assoc( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Exiting", __FUNCTION__);
 =======
              "%s: Exiting", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Exiting", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    return VOS_STATUS_SUCCESS;
 }
@@ -3062,14 +2595,10 @@ VOS_STATUS hdd_wmm_connect( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered", __FUNCTION__);
 =======
              "%s: Entered", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    if ((eCSR_BSS_TYPE_INFRASTRUCTURE == eBssType) &&
        pRoamInfo &&
@@ -3089,14 +2618,10 @@ VOS_STATUS hdd_wmm_connect( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: qap is %d, qosConnection is %d, acmMask is 0x%x",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, qap, qosConnection, acmMask);
 =======
              __func__, qap, qosConnection, acmMask);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, qap, qosConnection, acmMask);
->>>>>>> 657b0e9... prima update
 
    pAdapter->hddWmmStatus.wmmQap = qap;
    pAdapter->hddWmmStatus.wmmQosConnection = qosConnection;
@@ -3110,14 +2635,10 @@ VOS_STATUS hdd_wmm_connect( hdd_adapter_t* pAdapter,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                    "%s: ac %d on",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, ac);
 =======
                    __func__, ac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, ac);
->>>>>>> 657b0e9... prima update
 
          // admission is required
          pAdapter->hddWmmStatus.wmmAcStatus[ac].wmmAcAccessRequired = VOS_TRUE;
@@ -3129,14 +2650,10 @@ VOS_STATUS hdd_wmm_connect( hdd_adapter_t* pAdapter,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                    "%s: ac %d off",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, ac);
 =======
                    __func__, ac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, ac);
->>>>>>> 657b0e9... prima update
          // admission is not required so access is allowed
          pAdapter->hddWmmStatus.wmmAcStatus[ac].wmmAcAccessRequired = VOS_FALSE;
          pAdapter->hddWmmStatus.wmmAcStatus[ac].wmmAcAccessAllowed = VOS_TRUE;
@@ -3146,14 +2663,10 @@ VOS_STATUS hdd_wmm_connect( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Exiting", __FUNCTION__);
 =======
              "%s: Exiting", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Exiting", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    return VOS_STATUS_SUCCESS;
 }
@@ -3256,14 +2769,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered with handle 0x%x", __FUNCTION__, handle);
 =======
              "%s: Entered with handle 0x%x", __func__, handle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered with handle 0x%x", __FUNCTION__, handle);
->>>>>>> 657b0e9... prima update
 
    // see if a context already exists with the given handle
    mutex_lock(&pAdapter->hddWmmStatus.wmmLock);
@@ -3284,14 +2793,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
                 "%s: Record already exists with handle 0x%x",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, handle);
 =======
                 __func__, handle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, handle);
->>>>>>> 657b0e9... prima update
 
       /* Application is trying to modify some of the Tspec params. Allow it */
       smeStatus = sme_QosModifyReq(WLAN_HDD_GET_HAL_CTX(pAdapter),
@@ -3323,14 +2828,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
           // we didn't get back one of the SME_QOS_STATUS_MODIFY_* status codes
           VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "%s: unexpected SME Status=%d\n", smeStatus );
 =======
                      "%s: unexpected SME Status=%d\n", __func__, smeStatus );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "%s: unexpected SME Status=%d\n", smeStatus );
->>>>>>> 657b0e9... prima update
           VOS_ASSERT(0);
           return HDD_WLAN_WMM_STATUS_MODIFY_FAILED;
       }
@@ -3346,14 +2847,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
       // no memory for QoS context.  Nothing we can do
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Unable to allocate QoS context", __FUNCTION__);
 =======
                 "%s: Unable to allocate QoS context", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Unable to allocate QoS context", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       return HDD_WLAN_WMM_STATUS_INTERNAL_FAILURE;
    }
 
@@ -3368,14 +2865,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: Setting up QoS, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, pQosContext);
 =======
              __func__, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, pQosContext);
->>>>>>> 657b0e9... prima update
 
    mutex_lock(&pAdapter->hddWmmStatus.wmmLock);
    list_add(&pQosContext->node, &pAdapter->hddWmmStatus.wmmContextList);
@@ -3393,14 +2886,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO,
              "%s: sme_QosSetupReq returned %d flowid %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, smeStatus, pQosContext->qosFlowId);
 =======
              __func__, smeStatus, pQosContext->qosFlowId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, smeStatus, pQosContext->qosFlowId);
->>>>>>> 657b0e9... prima update
 
    // need to check the return value and act appropriately
    switch (smeStatus)
@@ -3433,14 +2922,10 @@ hdd_wlan_wmm_status_e hdd_wmm_addts( hdd_adapter_t* pAdapter,
       hdd_wmm_free_context(pQosContext);
       VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: unexpected SME Status=%d\n", smeStatus );
 =======
                  "%s: unexpected SME Status=%d\n", __func__, smeStatus );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: unexpected SME Status=%d\n", smeStatus );
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return HDD_WLAN_WMM_STATUS_SETUP_FAILED;
    }
@@ -3475,14 +2960,10 @@ hdd_wlan_wmm_status_e hdd_wmm_delts( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered with handle 0x%x", __FUNCTION__, handle);
 =======
              "%s: Entered with handle 0x%x", __func__, handle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered with handle 0x%x", __FUNCTION__, handle);
->>>>>>> 657b0e9... prima update
 
    // locate the context with the given handle
    mutex_lock(&pAdapter->hddWmmStatus.wmmLock);
@@ -3505,14 +2986,10 @@ hdd_wlan_wmm_status_e hdd_wmm_delts( hdd_adapter_t* pAdapter,
       // we didn't find the handle
       VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: handle 0x%x not found", __FUNCTION__, handle);
 =======
                 "%s: handle 0x%x not found", __func__, handle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: handle 0x%x not found", __FUNCTION__, handle);
->>>>>>> 657b0e9... prima update
       return HDD_WLAN_WMM_STATUS_RELEASE_FAILED_BAD_PARAM;
    }
 
@@ -3520,14 +2997,10 @@ hdd_wlan_wmm_status_e hdd_wmm_delts( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: found handle 0x%x, flow %d, AC %d, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, handle, qosFlowId, acType, pQosContext);
 =======
              __func__, handle, qosFlowId, acType, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, handle, qosFlowId, acType, pQosContext);
->>>>>>> 657b0e9... prima update
 
 #ifndef WLAN_MDM_CODE_REDUCTION_OPT
    smeStatus = sme_QosReleaseReq( WLAN_HDD_GET_HAL_CTX(pAdapter), qosFlowId );
@@ -3535,14 +3008,10 @@ hdd_wlan_wmm_status_e hdd_wmm_delts( hdd_adapter_t* pAdapter,
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
              "%s: SME flow %d released, SME status %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
              __FUNCTION__, qosFlowId, smeStatus);
 =======
              __func__, qosFlowId, smeStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             __FUNCTION__, qosFlowId, smeStatus);
->>>>>>> 657b0e9... prima update
 
    switch(smeStatus)
    {
@@ -3584,14 +3053,10 @@ hdd_wlan_wmm_status_e hdd_wmm_delts( hdd_adapter_t* pAdapter,
       // we didn't get back one of the SME_QOS_STATUS_RELEASE_* status codes
       VOS_TRACE( VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: unexpected SME Status=%d\n", smeStatus );
 =======
                  "%s: unexpected SME Status=%d\n", __func__, smeStatus );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: unexpected SME Status=%d\n", smeStatus );
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       status = HDD_WLAN_WMM_STATUS_RELEASE_FAILED;
    }
@@ -3618,14 +3083,10 @@ hdd_wlan_wmm_status_e hdd_wmm_checkts( hdd_adapter_t* pAdapter,
 
    VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Entered with handle 0x%x", __FUNCTION__, handle);
 =======
              "%s: Entered with handle 0x%x", __func__, handle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Entered with handle 0x%x", __FUNCTION__, handle);
->>>>>>> 657b0e9... prima update
 
    // locate the context with the given handle
    mutex_lock(&pAdapter->hddWmmStatus.wmmLock);
@@ -3638,14 +3099,10 @@ hdd_wlan_wmm_status_e hdd_wmm_checkts( hdd_adapter_t* pAdapter,
          VOS_TRACE(VOS_MODULE_ID_HDD, WMM_TRACE_LEVEL_INFO_LOW,
                    "%s: found handle 0x%x, context %p",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, handle, pQosContext);
 =======
                    __func__, handle, pQosContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, handle, pQosContext);
->>>>>>> 657b0e9... prima update
 
          status = pQosContext->lastStatus;
          break;

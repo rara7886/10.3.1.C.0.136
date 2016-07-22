@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -95,27 +92,19 @@ static eHalStatus hdd_OemDataReqCallback(tHalHandle hHal,
     {
         snprintf(buffer, IW_CUSTOM_MAX, "QCOM: OEM-DATA-REQ-FAILED");
 <<<<<<< HEAD
-<<<<<<< HEAD
         hddLog(LOGW, "%s: oem data req %d failed\n", __FUNCTION__, oemDataReqID);
 =======
         hddLog(LOGW, "%s: oem data req %d failed\n", __func__, oemDataReqID);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        hddLog(LOGW, "%s: oem data req %d failed\n", __FUNCTION__, oemDataReqID);
->>>>>>> 657b0e9... prima update
     }
     else if(oemDataReqStatus == eOEM_DATA_REQ_INVALID_MODE)
     {
         snprintf(buffer, IW_CUSTOM_MAX, "QCOM: OEM-DATA-REQ-INVALID-MODE");
 <<<<<<< HEAD
-<<<<<<< HEAD
         hddLog(LOGW, "%s: oem data req %d failed because the driver is in invalid mode (IBSS|BTAMP|AP)\n", __FUNCTION__, oemDataReqID);
 =======
         hddLog(LOGW, "%s: oem data req %d failed because the driver is in invalid mode (IBSS|BTAMP|AP)\n", __func__, oemDataReqID);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        hddLog(LOGW, "%s: oem data req %d failed because the driver is in invalid mode (IBSS|BTAMP|AP)\n", __FUNCTION__, oemDataReqID);
->>>>>>> 657b0e9... prima update
     }
     else
     {
@@ -160,7 +149,6 @@ int iw_get_oem_data_rsp(
     hdd_adapter_t *pAdapter = (netdev_priv(dev));
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     if ((WLAN_HDD_GET_CTX(pAdapter))->isLogpInProgress)
     {
@@ -170,8 +158,6 @@ int iw_get_oem_data_rsp(
     }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     do
     {
         //get the oem data response from sme
@@ -179,14 +165,10 @@ int iw_get_oem_data_rsp(
         if(status != eHAL_STATUS_SUCCESS)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             hddLog(LOGE, "%s: failed in sme_getOemDataRsp\n", __FUNCTION__);
 =======
             hddLog(LOGE, "%s: failed in sme_getOemDataRsp\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            hddLog(LOGE, "%s: failed in sme_getOemDataRsp\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             break;
         }
         else
@@ -199,14 +181,10 @@ int iw_get_oem_data_rsp(
             else
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 hddLog(LOGE, "%s: pSmeOemDataRsp = NULL\n", __FUNCTION__);
 =======
                 hddLog(LOGE, "%s: pSmeOemDataRsp = NULL\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                hddLog(LOGE, "%s: pSmeOemDataRsp = NULL\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
                 status = eHAL_STATUS_FAILURE;
                 break;
             }
@@ -248,7 +226,6 @@ int iw_set_oem_data_req(
     hdd_wext_state_t *pwextBuf = WLAN_HDD_GET_WEXT_STATE_PTR(pAdapter);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     if ((WLAN_HDD_GET_CTX(pAdapter))->isLogpInProgress)
     {
@@ -257,8 +234,6 @@ int iw_set_oem_data_req(
        return -EBUSY;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     do
     {
@@ -270,14 +245,10 @@ int iw_set_oem_data_req(
         if(pOemDataReq == NULL)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             hddLog(LOGE, "in %s oemDataReq == NULL\n", __FUNCTION__);
 =======
             hddLog(LOGE, "in %s oemDataReq == NULL\n", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            hddLog(LOGE, "in %s oemDataReq == NULL\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_FAILURE;
             break;
         }

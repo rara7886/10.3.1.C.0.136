@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,13 +44,9 @@
 
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  *
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *
->>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file contains TSPEC and STA admit control related functions
  * NOTE: applies only to AP builds
@@ -164,14 +157,10 @@ limCalculateSvcInt(
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("MsduSize not specified\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("MsduSize not specified"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("MsduSize not specified\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -184,14 +173,10 @@ limCalculateSvcInt(
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("DataRate not specified\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("DataRate not specified"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("DataRate not specified\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -221,14 +206,10 @@ limValidateTspecHcca(
     if (pTspec->tsinfo.traffic.tsid < SIR_MAC_HCCA_TSID_MIN)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("tsid %d must be >%d)\n"),
 =======
         limLog(pMac, LOGW, FL("tsid %d must be >%d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("tsid %d must be >%d)\n"),
->>>>>>> 657b0e9... prima update
                pTspec->tsinfo.traffic.tsid, SIR_MAC_HCCA_TSID_MIN);
         retval =  eSIR_FAILURE;
     }
@@ -242,14 +223,10 @@ limValidateTspecHcca(
         (pTspec->tsinfo.traffic.tsid - SIR_MAC_HCCA_TSID_MIN))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGE, FL("TSid=0x%x, userPrio=%d: is not allowed\n"),
 =======
         limLog(pMac, LOGE, FL("TSid=0x%x, userPrio=%d: is not allowed"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGE, FL("TSid=0x%x, userPrio=%d: is not allowed\n"),
->>>>>>> 657b0e9... prima update
                pTspec->tsinfo.traffic.tsid, pTspec->tsinfo.traffic.userPrio);
         retval = eSIR_FAILURE;
     }
@@ -257,28 +234,20 @@ limValidateTspecHcca(
     if (pTspec->inactInterval == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("inactInterval unspecified!\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("inactInterval unspecified!"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("inactInterval unspecified!\n"));)
->>>>>>> 657b0e9... prima update
         retval =  eSIR_FAILURE;
     }
     // surplus BW must be specified if a delay Bound is specified
     if ((pTspec->delayBound != 0) && (pTspec->surplusBw == 0))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("delayBound %d, but surplusBw unspecified!\n"),
 =======
         limLog(pMac, LOGW, FL("delayBound %d, but surplusBw unspecified!"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("delayBound %d, but surplusBw unspecified!\n"),
->>>>>>> 657b0e9... prima update
                pTspec->delayBound);
         retval =  eSIR_FAILURE;
     }
@@ -293,14 +262,10 @@ limValidateTspecHcca(
         || (pTspec->minPhyRate < minPhyRate))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("minPhyRate (%d) invalid\n"),
 =======
         limLog(pMac, LOGW, FL("minPhyRate (%d) invalid"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("minPhyRate (%d) invalid\n"),
->>>>>>> 657b0e9... prima update
                pTspec->minPhyRate);
         retval =  eSIR_FAILURE;
     }
@@ -312,14 +277,10 @@ limValidateTspecHcca(
         (pTspec->peakDataRate == 0))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("DataRate must be specified (min %d, mean %d, peak %d)\n"),
 =======
         limLog(pMac, LOGW, FL("DataRate must be specified (min %d, mean %d, peak %d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("DataRate must be specified (min %d, mean %d, peak %d)\n"),
->>>>>>> 657b0e9... prima update
                pTspec->minDataRate, pTspec->meanDataRate, pTspec->peakDataRate);
         retval =  eSIR_FAILURE;
     }
@@ -328,14 +289,10 @@ limValidateTspecHcca(
     if (pTspec->meanDataRate > pTspec->minPhyRate)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("Data rate (%d) is more than Phyrate %d\n"),
 =======
         limLog(pMac, LOGW, FL("Data rate (%d) is more than Phyrate %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("Data rate (%d) is more than Phyrate %d\n"),
->>>>>>> 657b0e9... prima update
                pTspec->meanDataRate, pTspec->minPhyRate);
         return eSIR_FAILURE;
     }
@@ -351,28 +308,20 @@ limValidateTspecHcca(
         if (pTspec->maxSvcInterval < pTspec->minSvcInterval)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGW, FL("maxSvcInt %d  > minSvcInterval %d!!\n"),
 =======
             limLog(pMac, LOGW, FL("maxSvcInt %d  > minSvcInterval %d!!"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGW, FL("maxSvcInt %d  > minSvcInterval %d!!\n"),
->>>>>>> 657b0e9... prima update
                    pTspec->maxSvcInterval, pTspec->minSvcInterval);
             retval =  eSIR_FAILURE;
         }
         if (pTspec->maxSvcInterval < ADMIT_CONTROL_MIN_INTERVAL)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGW, FL("maxSvcInt %d must be >%d\n"),
 =======
             limLog(pMac, LOGW, FL("maxSvcInt %d must be >%d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGW, FL("maxSvcInt %d must be >%d\n"),
->>>>>>> 657b0e9... prima update
                    pTspec->maxSvcInterval, ADMIT_CONTROL_MIN_INTERVAL);
             retval =  eSIR_FAILURE;
         }
@@ -387,27 +336,19 @@ limValidateTspecHcca(
          if (pTspec->nomMsduSz == 0)
          {
 <<<<<<< HEAD
-<<<<<<< HEAD
              PELOGW(limLog(pMac, LOGW, FL("No svcInt and no MsduSize specified\n"));)
 =======
              PELOGW(limLog(pMac, LOGW, FL("No svcInt and no MsduSize specified"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             PELOGW(limLog(pMac, LOGW, FL("No svcInt and no MsduSize specified\n"));)
->>>>>>> 657b0e9... prima update
              retval = eSIR_FAILURE;
          }
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d\n"), retval);
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d"), retval);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d\n"), retval);
->>>>>>> 657b0e9... prima update
     return retval;
 }
 
@@ -445,27 +386,19 @@ limValidateTspecEdca(
         (pTspec->minPhyRate   > maxPhyRate))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("Invalid EDCA Tspec: NomMsdu %d, meanDataRate %d, surplusBw %d, minPhyRate %d\n"),
 =======
         limLog(pMac, LOGW, FL("Invalid EDCA Tspec: NomMsdu %d, meanDataRate %d, surplusBw %d, minPhyRate %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("Invalid EDCA Tspec: NomMsdu %d, meanDataRate %d, surplusBw %d, minPhyRate %d\n"),
->>>>>>> 657b0e9... prima update
                pTspec->nomMsduSz, pTspec->meanDataRate, pTspec->surplusBw, pTspec->minPhyRate);
         retval = eSIR_FAILURE;
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d\n"), retval);
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d"), retval);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d\n"), retval);
->>>>>>> 657b0e9... prima update
     return retval;
 }
 
@@ -489,42 +422,30 @@ limValidateTspec(
         case SIR_MAC_ACCESSPOLICY_EDCA:
             if ((retval = limValidateTspecEdca(pMac, pTspec, psessionEntry)) != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGW(limLog(pMac, LOGW, FL("EDCA tspec invalid\n"));)
 =======
                 PELOGW(limLog(pMac, LOGW, FL("EDCA tspec invalid"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGW(limLog(pMac, LOGW, FL("EDCA tspec invalid\n"));)
->>>>>>> 657b0e9... prima update
             break;
 
         case SIR_MAC_ACCESSPOLICY_HCCA:
 #if 0 //Not supported right now.    
             if ((retval = limValidateTspecHcca(pMac, pTspec)) != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGW(limLog(pMac, LOGW, FL("HCCA tspec invalid\n"));)
 =======
                 PELOGW(limLog(pMac, LOGW, FL("HCCA tspec invalid"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGW(limLog(pMac, LOGW, FL("HCCA tspec invalid\n"));)
->>>>>>> 657b0e9... prima update
             break;
 #endif
        case SIR_MAC_ACCESSPOLICY_BOTH:
          // TBD: should we support hybrid tspec as well?? for now, just fall through
         default:
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGW, FL("AccessType %d not supported\n"),
 =======
             limLog(pMac, LOGW, FL("AccessType %d not supported"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGW, FL("AccessType %d not supported\n"),
->>>>>>> 657b0e9... prima update
                    pTspec->tsinfo.traffic.accessPolicy);
             retval = eSIR_FAILURE;
             break;
@@ -565,14 +486,10 @@ limComputeMeanBwUsed(
             {
                 // maybe we should delete the tspec??
 <<<<<<< HEAD
-<<<<<<< HEAD
                 limLog(pMac, LOGE, FL("Tspec %d (assocId %d): dphNode not found\n"),
 =======
                 limLog(pMac, LOGE, FL("Tspec %d (assocId %d): dphNode not found"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                limLog(pMac, LOGE, FL("Tspec %d (assocId %d): dphNode not found\n"),
->>>>>>> 657b0e9... prima update
                        ctspec, pTspecInfo->assocId);
                 continue;
             }
@@ -671,14 +588,10 @@ limAdmitPolicyOversubscription(
     {
         limLog(pMac, ADMIT_CONTROL_POLICY_LOGLEVEL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("Total BW %d, Used %d, Tspec request %d not possible\n"),
 =======
                FL("Total BW %d, Used %d, Tspec request %d not possible"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("Total BW %d, Used %d, Tspec request %d not possible\n"),
->>>>>>> 657b0e9... prima update
                totalbw, usedbw, pTspec->meanDataRate);
         return eSIR_FAILURE;
     }
@@ -712,14 +625,10 @@ tSirRetStatus limAdmitPolicy(
                         &pMac->lim.admitPolicyInfo, &pMac->lim.tspecInfo[0], psessionEntry);
             if (retval != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGE(limLog(pMac, LOGE, FL("rejected by BWFactor policy\n"));)
 =======
                 PELOGE(limLog(pMac, LOGE, FL("rejected by BWFactor policy"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(limLog(pMac, LOGE, FL("rejected by BWFactor policy\n"));)
->>>>>>> 657b0e9... prima update
             break;
 
         case WNI_CFG_ADMIT_POLICY_REJECT_ALL:
@@ -729,14 +638,10 @@ tSirRetStatus limAdmitPolicy(
         default:
             retval = eSIR_SUCCESS;
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGE, FL("Admit Policy %d unknown, admitting all traffic\n"),
 =======
             limLog(pMac, LOGE, FL("Admit Policy %d unknown, admitting all traffic"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGE, FL("Admit Policy %d unknown, admitting all traffic\n"),
->>>>>>> 657b0e9... prima update
                    pAdmitPolicy->type);
             break;
     }
@@ -759,17 +664,12 @@ void limTspecDelete(tpAniSirGlobal pMac, tpLimTspecInfo pInfo)
         return;
         //pierre
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tspec entry = %d\n"), pInfo->idx);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("delete tspec %08X\n"),pInfo);
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tspec entry = %d"), pInfo->idx);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("delete tspec %08X"),pInfo);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tspec entry = %d\n"), pInfo->idx);
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("delete tspec %08X\n"),pInfo);
->>>>>>> 657b0e9... prima update
     pInfo->inuse = 0;
 
     // clear the hcca/parameterized queue indicator
@@ -810,7 +710,6 @@ limTspecFindByStaAddr(
     {
         if ((pTspecList->inuse)
 <<<<<<< HEAD
-<<<<<<< HEAD
             && (palEqualMemory( pMac->hHdd,pAddr, pTspecList->staAddr, sizeof(pTspecList->staAddr)))
             && (palEqualMemory( pMac->hHdd,(tANI_U8 *) pTspecIE, (tANI_U8 *) &pTspecList->tspec, sizeof(tSirMacTspecIE))))
 =======
@@ -818,10 +717,6 @@ limTspecFindByStaAddr(
             && (vos_mem_compare((tANI_U8 *) pTspecIE, (tANI_U8 *) &pTspecList->tspec,
                                             sizeof(tSirMacTspecIE))))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            && (palEqualMemory( pMac->hHdd,pAddr, pTspecList->staAddr, sizeof(pTspecList->staAddr)))
-            && (palEqualMemory( pMac->hHdd,(tANI_U8 *) pTspecIE, (tANI_U8 *) &pTspecList->tspec, sizeof(tSirMacTspecIE))))
->>>>>>> 657b0e9... prima update
         {
             *ppInfo = pTspecList;
             return eSIR_SUCCESS;
@@ -854,17 +749,12 @@ limTspecFindByAssocId(
     *ppInfo = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d\n"), assocId);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d\n"),
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d"), assocId);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d\n"), assocId);
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d\n"),
->>>>>>> 657b0e9... prima update
                 pTspecIE->tsinfo.traffic.direction, pTspecIE->tsinfo.traffic.tsid);
 
     for (ctspec = 0; ctspec < LIM_NUM_TSPEC_MAX; ctspec++, pTspecList++)
@@ -872,15 +762,11 @@ limTspecFindByAssocId(
         if ((pTspecList->inuse)
             && (assocId == pTspecList->assocId)
 <<<<<<< HEAD
-<<<<<<< HEAD
             && (palEqualMemory( pMac->hHdd,(tANI_U8 *) pTspecIE, (tANI_U8 *) &pTspecList->tspec, sizeof(tSirMacTspecIE))))
 =======
             && (vos_mem_compare((tANI_U8 *)pTspecIE, (tANI_U8 *)&pTspecList->tspec,
                 sizeof(tSirMacTspecIE))))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            && (palEqualMemory( pMac->hHdd,(tANI_U8 *) pTspecIE, (tANI_U8 *) &pTspecList->tspec, sizeof(tSirMacTspecIE))))
->>>>>>> 657b0e9... prima update
         {
             *ppInfo = pTspecList;
             return eSIR_SUCCESS;
@@ -913,17 +799,12 @@ limFindTspec(
     *ppInfo = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d\n"), assocId);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d\n"),
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d"), assocId);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d\n"), assocId);
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d\n"),
->>>>>>> 657b0e9... prima update
                 pTsInfo->traffic.direction, pTsInfo->traffic.tsid);
 
     for (ctspec = 0; ctspec < LIM_NUM_TSPEC_MAX; ctspec++, pTspecList++)
@@ -968,14 +849,10 @@ tSirRetStatus limTspecAdd(
     if (assocId >= pMac->lim.maxStation)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Invalid assocId 0x%x\n"), assocId);)
 =======
         PELOGE(limLog(pMac, LOGE, FL("Invalid assocId 0x%x"), assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Invalid assocId 0x%x\n"), assocId);)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1016,14 +893,10 @@ tSirRetStatus limTspecAdd(
     pTspecList->tspec = *pTspec;
     pTspecList->assocId = assocId;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pTspecList->staAddr, pAddr, sizeof(pTspecList->staAddr));
 =======
     vos_mem_copy(pTspecList->staAddr, pAddr, sizeof(pTspecList->staAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pTspecList->staAddr, pAddr, sizeof(pTspecList->staAddr));
->>>>>>> 657b0e9... prima update
 
     // for edca tspec's, we are all done
     if (pTspec->tsinfo.traffic.accessPolicy == SIR_MAC_ACCESSPOLICY_EDCA)
@@ -1031,14 +904,10 @@ tSirRetStatus limTspecAdd(
         pTspecList->inuse = 1;
         *ppInfo = pTspecList;
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for EDCA AccessPolicy\n"));
 =======
         limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for EDCA AccessPolicy"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for EDCA AccessPolicy\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_SUCCESS;
     }
 
@@ -1059,14 +928,10 @@ tSirRetStatus limTspecAdd(
     pTspecList->inuse = 1;
     *ppInfo = pTspecList;
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for HCCA AccessPolicy\n"));
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for HCCA AccessPolicy"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for HCCA AccessPolicy\n"));
->>>>>>> 657b0e9... prima update
     return eSIR_SUCCESS;
 }
 
@@ -1092,14 +957,10 @@ limValidateAccessPolicy(
     if ((pSta == NULL) || (! pSta->valid))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("invalid station address passed\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("invalid station address passed"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("invalid station address passed\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1120,27 +981,19 @@ limValidateAccessPolicy(
 #endif  //only EDCA supported for now.
         default:
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("Invalid accessPolicy %d\n"), accessPolicy);)
 =======
             PELOGE(limLog(pMac, LOGE, FL("Invalid accessPolicy %d"), accessPolicy);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("Invalid accessPolicy %d\n"), accessPolicy);)
->>>>>>> 657b0e9... prima update
             break;
     }
 
     if (retval != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("failed (accPol %d, staId %d, lle %d, wme %d, wsm %d)\n"),
 =======
         limLog(pMac, LOGW, FL("failed (accPol %d, staId %d, lle %d, wme %d, wsm %d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("failed (accPol %d, staId %d, lle %d, wme %d, wsm %d)\n"),
->>>>>>> 657b0e9... prima update
                accessPolicy, pSta->staIndex, pSta->lleEnabled, pSta->wmeEnabled, pSta->wsmEnabled);
 
     return retval;
@@ -1185,14 +1038,10 @@ tSirRetStatus limAdmitControlAddTS(
     // to be consistent with the desired traffic parameters.
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tsid %d, directn %d, start %d, intvl %d, accPolicy %d, up %d\n"),
 =======
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tsid %d, directn %d, start %d, intvl %d, accPolicy %d, up %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tsid %d, directn %d, start %d, intvl %d, accPolicy %d, up %d\n"),
->>>>>>> 657b0e9... prima update
            pAddts->tspec.tsinfo.traffic.tsid, pAddts->tspec.tsinfo.traffic.direction,
            pAddts->tspec.svcStartTime, pAddts->tspec.minSvcInterval,
            pAddts->tspec.tsinfo.traffic.accessPolicy, pAddts->tspec.tsinfo.traffic.userPrio);
@@ -1205,14 +1054,10 @@ tSirRetStatus limAdmitControlAddTS(
     if (retval == eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("duplicate tspec (index %d)!\n"), pTspecInfo->idx);
 =======
         limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("duplicate tspec (index %d)!"), pTspecInfo->idx);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("duplicate tspec (index %d)!\n"), pTspecInfo->idx);
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1220,14 +1065,10 @@ tSirRetStatus limAdmitControlAddTS(
     if (limValidateTspec(pMac, &pAddts->tspec, psessionEntry) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("tspec validation failed\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("tspec validation failed"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("tspec validation failed\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1235,14 +1076,10 @@ tSirRetStatus limAdmitControlAddTS(
     if (limCalculateSvcInt(pMac, &pAddts->tspec, &svcInterval) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("SvcInt calculate failed\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("SvcInt calculate failed"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("SvcInt calculate failed\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1250,14 +1087,10 @@ tSirRetStatus limAdmitControlAddTS(
     if (limAdmitPolicy(pMac, &pAddts->tspec, psessionEntry) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("tspec rejected by admit control policy\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("tspec rejected by admit control policy"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("tspec rejected by admit control policy\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1265,14 +1098,10 @@ tSirRetStatus limAdmitControlAddTS(
     if (pSch != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palZeroMemory( pMac->hHdd, (tANI_U8 *) pSch, sizeof(*pSch));
 =======
         vos_mem_set((tANI_U8 *) pSch, sizeof(*pSch), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palZeroMemory( pMac->hHdd, (tANI_U8 *) pSch, sizeof(*pSch));
->>>>>>> 657b0e9... prima update
         pSch->svcStartTime   = pAddts->tspec.svcStartTime;
         pSch->svcInterval    = svcInterval;
         pSch->maxSvcDuration = (tANI_U16) pSch->svcInterval; // use SP = SI
@@ -1291,14 +1120,10 @@ tSirRetStatus limAdmitControlAddTS(
     if (limValidateAccessPolicy(pMac, (tANI_U8) pAddts->tspec.tsinfo.traffic.accessPolicy, assocId, psessionEntry) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGW, FL("AccessPolicy %d is not valid in current mode\n"),
 =======
         limLog(pMac, LOGW, FL("AccessPolicy %d is not valid in current mode"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGW, FL("AccessPolicy %d is not valid in current mode\n"),
->>>>>>> 657b0e9... prima update
                pAddts->tspec.tsinfo.traffic.accessPolicy);
         return eSIR_FAILURE;
     }
@@ -1308,14 +1133,10 @@ tSirRetStatus limAdmitControlAddTS(
         != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("no space in tspec list\n"));)
 =======
         PELOGE(limLog(pMac, LOGE, FL("no space in tspec list"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("no space in tspec list\n"));)
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1354,14 +1175,10 @@ limAdmitControlDeleteTS(
         if(pTspecInfo != NULL)    
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
           limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Tspec entry %d found\n"), pTspecInfo->idx);
 =======
           limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Tspec entry %d found"), pTspecInfo->idx);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Tspec entry %d found\n"), pTspecInfo->idx);
->>>>>>> 657b0e9... prima update
         
           *ptspecIdx = pTspecInfo->idx;
           limTspecDelete(pMac, pTspecInfo);
@@ -1393,7 +1210,6 @@ limAdmitControlDeleteSta(
         {
             limTspecDelete(pMac, pTspecInfo);
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Deleting TSPEC %d for assocId %d\n"),
                    ctspec, assocId);
         }
@@ -1406,13 +1222,6 @@ limAdmitControlDeleteSta(
     }
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("assocId %d done"), assocId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Deleting TSPEC %d for assocId %d\n"),
-                   ctspec, assocId);
-        }
-    }
-    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("assocId %d done\n"), assocId);
->>>>>>> 657b0e9... prima update
 
     return eSIR_SUCCESS;
 }
@@ -1426,14 +1235,10 @@ limAdmitControlDeleteSta(
 tSirRetStatus limAdmitControlInit(tpAniSirGlobal pMac)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     palZeroMemory(pMac->hHdd, pMac->lim.tspecInfo , LIM_NUM_TSPEC_MAX * sizeof(tLimTspecInfo));
 =======
     vos_mem_set(pMac->lim.tspecInfo, LIM_NUM_TSPEC_MAX * sizeof(tLimTspecInfo), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory(pMac->hHdd, pMac->lim.tspecInfo , LIM_NUM_TSPEC_MAX * sizeof(tLimTspecInfo));
->>>>>>> 657b0e9... prima update
     return eSIR_SUCCESS;
 }
 
@@ -1450,41 +1255,29 @@ tSirRetStatus limUpdateAdmitPolicy(tpAniSirGlobal    pMac)
     if (wlan_cfgGetInt(pMac, WNI_CFG_ADMIT_POLICY, &val) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_POLICY\n"));
 =======
         limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_POLICY"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_POLICY\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     pMac->lim.admitPolicyInfo.type = (tANI_U8) val;
     if (wlan_cfgGetInt(pMac, WNI_CFG_ADMIT_BWFACTOR, &val) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_BWFACTOR\n"));
 =======
         limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_BWFACTOR"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_BWFACTOR\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     pMac->lim.admitPolicyInfo.bw_factor = (tANI_U8) val;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("LIM: AdmitPolicy %d, bw_factor %d\n"),
 =======
     PELOG1(limLog(pMac, LOG1, FL("LIM: AdmitPolicy %d, bw_factor %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOG1(limLog(pMac, LOG1, FL("LIM: AdmitPolicy %d, bw_factor %d\n"),
->>>>>>> 657b0e9... prima update
           pMac->lim.admitPolicyInfo.type, pMac->lim.admitPolicyInfo.bw_factor);)
 
     return eSIR_SUCCESS;
@@ -1515,7 +1308,6 @@ limSendHalMsgAddTs(
     tpAddTsParams pAddTsParam;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pAddTsParam, sizeof(tAddTsParams)))
     {
        PELOGW(limLog(pMac, LOGW, FL("palAllocateMemory() failed\n"));)
@@ -1529,23 +1321,16 @@ limSendHalMsgAddTs(
 =======
     pAddTsParam = vos_mem_malloc(sizeof(tAddTsParams));
     if (NULL == pAddTsParam)
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pAddTsParam, sizeof(tAddTsParams)))
->>>>>>> 657b0e9... prima update
     {
-       PELOGW(limLog(pMac, LOGW, FL("palAllocateMemory() failed\n"));)
+       PELOGW(limLog(pMac, LOGW, FL("AllocateMemory() failed"));)
        return eSIR_MEM_ALLOC_FAILED;          
     }
 
-    palZeroMemory( pMac->hHdd, (tANI_U8 *)pAddTsParam, sizeof(tAddTsParams));
+    vos_mem_set((tANI_U8 *)pAddTsParam, sizeof(tAddTsParams), 0);
     pAddTsParam->staIdx = staIdx;
     pAddTsParam->tspecIdx = tspecIdx;
-<<<<<<< HEAD
     vos_mem_copy(&pAddTsParam->tspec, &tspecIE, sizeof(tSirMacTspecIE));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory(pMac->hHdd, &pAddTsParam->tspec, &tspecIE, sizeof(tSirMacTspecIE));
->>>>>>> 657b0e9... prima update
     pAddTsParam->sessionId = sessionId;
  
     msg.type = WDA_ADD_TS_REQ;
@@ -1561,7 +1346,6 @@ limSendHalMsgAddTs(
     if(eSIR_SUCCESS != wdaPostCtrlMsg(pMac, &msg))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed\n"));)
        SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
        palFreeMemory(pMac->hHdd, (tANI_U8*)pAddTsParam);
@@ -1570,11 +1354,6 @@ limSendHalMsgAddTs(
        SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
        vos_mem_free(pAddTsParam);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed\n"));)
-       SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
-       palFreeMemory(pMac->hHdd, (tANI_U8*)pAddTsParam);
->>>>>>> 657b0e9... prima update
        return eSIR_FAILURE;
     }
   return eSIR_SUCCESS;
@@ -1602,7 +1381,6 @@ limSendHalMsgDelTs(
   tpDelTsParams pDelTsParam;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pDelTsParam, sizeof(tDelTsParams)))
   {
      limLog(pMac, LOGP, FL("palAllocateMemory() failed\n"));
@@ -1612,11 +1390,6 @@ limSendHalMsgDelTs(
   {
      limLog(pMac, LOGP, FL("AllocateMemory() failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pDelTsParam, sizeof(tDelTsParams)))
-  {
-     limLog(pMac, LOGP, FL("palAllocateMemory() failed\n"));
->>>>>>> 657b0e9... prima update
      return eSIR_MEM_ALLOC_FAILED;
   }
 
@@ -1624,33 +1397,24 @@ limSendHalMsgDelTs(
   msg.bodyptr = pDelTsParam;
   msg.bodyval = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
   palZeroMemory( pMac->hHdd, (tANI_U8 *)pDelTsParam, sizeof(tDelTsParams));
 =======
   vos_mem_set((tANI_U8 *)pDelTsParam, sizeof(tDelTsParams), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  palZeroMemory( pMac->hHdd, (tANI_U8 *)pDelTsParam, sizeof(tDelTsParams));
->>>>>>> 657b0e9... prima update
 
   //filling message parameters.
   pDelTsParam->staIdx = staIdx;
   pDelTsParam->tspecIdx = tspecIdx;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   PELOGW(limLog(pMac, LOGW, FL("calling wdaPostCtrlMsg()\n"));)
 =======
   PELOGW(limLog(pMac, LOGW, FL("calling wdaPostCtrlMsg()"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PELOGW(limLog(pMac, LOGW, FL("calling wdaPostCtrlMsg()\n"));)
->>>>>>> 657b0e9... prima update
   MTRACE(macTraceMsgTx(pMac, sessionId, msg.type));
 
   if(eSIR_SUCCESS != wdaPostCtrlMsg(pMac, &msg))
   {
-<<<<<<< HEAD
 <<<<<<< HEAD
      PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed\n"));)
      palFreeMemory(pMac->hHdd, (tANI_U8*)pDelTsParam);
@@ -1658,10 +1422,6 @@ limSendHalMsgDelTs(
      PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed"));)
      vos_mem_free(pDelTsParam);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed\n"));)
-     palFreeMemory(pMac->hHdd, (tANI_U8*)pDelTsParam);
->>>>>>> 657b0e9... prima update
      return eSIR_FAILURE;
   }
   return eSIR_SUCCESS;  
@@ -1707,14 +1467,10 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     if(psessionEntry == NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE,FL("Session does Not exist with given sessionId :%d \n"), pAddTsRspMsg->sessionId);)
 =======
         PELOGE(limLog(pMac, LOGE,FL("Session does Not exist with given sessionId :%d "), pAddTsRspMsg->sessionId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE,FL("Session does Not exist with given sessionId :%d \n"), pAddTsRspMsg->sessionId);)
->>>>>>> 657b0e9... prima update
         limSendSmeAddtsRsp(pMac, rspReqd, eSIR_SME_ADDTS_RSP_FAILED, psessionEntry, pAddTsRspMsg->tspec, 
               pMac->lim.gLimAddtsReq.sessionId, pMac->lim.gLimAddtsReq.transactionId);
         goto end;
@@ -1723,14 +1479,10 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     if(pAddTsRspMsg->status == eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Received successful ADDTS response from HAL \n"));)
 =======
         PELOG1(limLog(pMac, LOG1, FL("Received successful ADDTS response from HAL "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("Received successful ADDTS response from HAL \n"));)
->>>>>>> 657b0e9... prima update
         // Use the smesessionId and smetransactionId from the PE session context
         limSendSmeAddtsRsp(pMac, rspReqd, eSIR_SME_SUCCESS, psessionEntry, pAddTsRspMsg->tspec,
                 psessionEntry->smeSessionId, psessionEntry->transactionId);
@@ -1739,14 +1491,10 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Received failure ADDTS response from HAL \n"));)
 =======
         PELOG1(limLog(pMac, LOG1, FL("Received failure ADDTS response from HAL "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("Received failure ADDTS response from HAL \n"));)
->>>>>>> 657b0e9... prima update
 
         // Send DELTS action frame to AP        
         // 090803: Get peer MAC addr from session        
@@ -1755,14 +1503,10 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
         if (wlan_cfgGetStr(pMac, WNI_CFG_BSSID, peerMacAddr, &cfgLen) != eSIR_SUCCESS)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Fail to retrieve BSSID \n"));
 =======
             limLog(pMac, LOGP, FL("Fail to retrieve BSSID "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("Fail to retrieve BSSID \n"));
->>>>>>> 657b0e9... prima update
             goto end;
         }
 #endif //TO SUPPORT BT-AMP
@@ -1790,14 +1534,10 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
 end:
     if( pAddTsRspMsg != NULL )
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory( pMac->hHdd, (void *)pAddTsRspMsg );
 =======
         vos_mem_free(pAddTsRspMsg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory( pMac->hHdd, (void *)pAddTsRspMsg );
->>>>>>> 657b0e9... prima update
     return;
 }
 

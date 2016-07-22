@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -62,14 +59,10 @@
  *=========================================================================*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "wlan_defs.h"
 =======
 #include "qwlanfw_defs.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "wlan_defs.h"
->>>>>>> 657b0e9... prima update
 
 /* Common type definitions */
 typedef uint8     tANI_U8;

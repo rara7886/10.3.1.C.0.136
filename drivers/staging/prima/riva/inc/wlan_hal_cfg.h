@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -23,7 +20,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -45,8 +41,6 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*==========================================================================
  *
  *  @file:     wlan_hal_cfg.h
@@ -56,14 +50,10 @@
  *  @author:   Kumar Anand
  *
 <<<<<<< HEAD
-<<<<<<< HEAD
  *             Copyright (C) 2010, Qualcomm, Inc. 
 =======
  *             Copyright (C) 2010, Qualcomm Technologies, Inc. 
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *             Copyright (C) 2010, Qualcomm, Inc. 
->>>>>>> 657b0e9... prima update
  *             All rights reserved.
  *
  *=========================================================================*/
@@ -75,14 +65,10 @@
   Include Files
 -------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include <wlan_defs.h>
 =======
 #include "qwlanfw_defs.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include <wlan_defs.h>
->>>>>>> 657b0e9... prima update
 
 /*-------------------------------------------------------------------------
   Preprocessor definitions and constants
@@ -145,7 +131,6 @@
 #define QWLAN_HAL_CFG_NO_OF_ONCHIP_REORDER_SESSIONS      47
 #define QWLAN_HAL_CFG_PS_LISTEN_INTERVAL                 48
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_HAL_CFG_PS_HEART_BEAT_THRESHOLD            49 
 #define QWLAN_HAL_CFG_PS_NTH_BEACON_FILTER               50 
 #define QWLAN_HAL_CFG_PS_MAX_PS_POLL                     51 
@@ -158,33 +143,21 @@
 #define QWLAN_HAL_CFG_PS_MIN_RSSI_THRESHOLD              52
 #define QWLAN_HAL_CFG_PS_RSSI_FILTER_PERIOD              53
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_PS_HEART_BEAT_THRESHOLD            49 
-#define QWLAN_HAL_CFG_PS_NTH_BEACON_FILTER               50 
-#define QWLAN_HAL_CFG_PS_MAX_PS_POLL                     51 
-#define QWLAN_HAL_CFG_PS_MIN_RSSI_THRESHOLD              52
-#define QWLAN_HAL_CFG_PS_RSSI_FILTER_PERIOD              53 
->>>>>>> 657b0e9... prima update
 #define QWLAN_HAL_CFG_PS_BROADCAST_FRAME_FILTER_ENABLE   54
 #define QWLAN_HAL_CFG_PS_IGNORE_DTIM                     55
 #define QWLAN_HAL_CFG_PS_ENABLE_BCN_EARLY_TERM           56
 #define QWLAN_HAL_CFG_DYNAMIC_PS_POLL_VALUE              57
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_HAL_CFG_PS_NULLDATA_AP_RESP_TIMEOUT        58 
 =======
 #define QWLAN_HAL_CFG_PS_NULLDATA_AP_RESP_TIMEOUT        58
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_PS_NULLDATA_AP_RESP_TIMEOUT        58 
->>>>>>> 657b0e9... prima update
 #define QWLAN_HAL_CFG_TELE_BCN_WAKEUP_EN                 59
 #define QWLAN_HAL_CFG_TELE_BCN_TRANS_LI                  60
 #define QWLAN_HAL_CFG_TELE_BCN_TRANS_LI_IDLE_BCNS        61
 #define QWLAN_HAL_CFG_TELE_BCN_MAX_LI                    62
 #define QWLAN_HAL_CFG_TELE_BCN_MAX_LI_IDLE_BCNS          63
 #define QWLAN_HAL_CFG_TX_PWR_CTRL_ENABLE                 64
-<<<<<<< HEAD
 <<<<<<< HEAD
 #define QWLAN_HAL_CFG_VALID_RADAR_CHANNEL_LIST           65 
 #define QWLAN_HAL_CFG_TX_POWER_24_20                     66 
@@ -200,14 +173,6 @@
 #define QWLAN_HAL_CFG_TX_POWER_50_40                     69
 #define QWLAN_HAL_CFG_MCAST_BCAST_FILTER_SETTING         70
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_VALID_RADAR_CHANNEL_LIST           65 
-#define QWLAN_HAL_CFG_TX_POWER_24_20                     66 
-#define QWLAN_HAL_CFG_TX_POWER_24_40                     67
-#define QWLAN_HAL_CFG_TX_POWER_50_20                     68
-#define QWLAN_HAL_CFG_TX_POWER_50_40                     69
-#define QWLAN_HAL_CFG_MCAST_BCAST_FILTER_SETTING         70 
->>>>>>> 657b0e9... prima update
 #define QWLAN_HAL_CFG_BCN_EARLY_TERM_WAKEUP_INTERVAL     71
 #define QCOM_WLAN_CFG_MAX_TX_POWER_2_4                   72
 #define QCOM_WLAN_CFG_MAX_TX_POWER_5                     73
@@ -234,7 +199,6 @@
 #define QWLAN_HAL_CFG_BTC_MAX_SCO_BLOCK_PERC             94
 #define QWLAN_HAL_CFG_BTC_DHCP_PROT_ON_A2DP              95
 #define QWLAN_HAL_CFG_BTC_DHCP_PROT_ON_SCO               96
-<<<<<<< HEAD
 <<<<<<< HEAD
 #define QWLAN_HAL_CFG_MAX_PARAMS                         97
 
@@ -317,13 +281,6 @@
 /* Total number of Integer CFGs. This is used while allocating the memory for TLV */
 #define QWLAN_HAL_CFG_INTEGER_PARAM                      166
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_MAX_PARAMS                         97
-
-
-/* Total number of Integer CFGs. This is used while allocating the memory for TLV */
-#define QWLAN_HAL_CFG_INTEGER_PARAM                      93
->>>>>>> 657b0e9... prima update
 
 
 /*-------------------------------------------------------------------------
@@ -441,14 +398,10 @@
  */
 #define QWLAN_HAL_CFG_FIXED_RATE_STAMIN                        0
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_HAL_CFG_FIXED_RATE_STAMAX                        44
 =======
 #define QWLAN_HAL_CFG_FIXED_RATE_STAMAX                        226
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_FIXED_RATE_STAMAX                        44
->>>>>>> 657b0e9... prima update
 #define QWLAN_HAL_CFG_FIXED_RATE_STADEF                        0
 #define QWLAN_HAL_CFG_FIXED_RATE_AUTO                          0
 #define QWLAN_HAL_CFG_FIXED_RATE_1MBPS                         1
@@ -611,14 +564,10 @@
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /* ACM, AIFSN, [CWmin, CWmax, TxOp]-11A/11B/11G 
 =======
 /* ACM, AIFSN, [CWmin, CWmax, TxOp]-11A/11B/11G
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/* ACM, AIFSN, [CWmin, CWmax, TxOp]-11A/11B/11G 
->>>>>>> 657b0e9... prima update
  * Cwmin and Cwmax are two bytes each, MSB first. So Cwmax of [03 FF] is
  * equivalent to 0x03ff = 1023*/
 #define QWLAN_HAL_CFG_EDCA_PROFILE_ACM_IDX       0   /* byte[0] */
@@ -629,14 +578,10 @@
 #define QWLAN_HAL_CFG_EDCA_PROFILE_CWMINB_IDX    7   /* byte[7] & byte [8]   */
 #define QWLAN_HAL_CFG_EDCA_PROFILE_CWMAXB_IDX    9   /* byte[9] & byte [10]  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_HAL_CFG_EDCA_PROFILE_TXOPB_IDX     11  /* byte[11]*/  
 =======
 #define QWLAN_HAL_CFG_EDCA_PROFILE_TXOPB_IDX     11  /* byte[11]*/
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_EDCA_PROFILE_TXOPB_IDX     11  /* byte[11]*/  
->>>>>>> 657b0e9... prima update
 #define QWLAN_HAL_CFG_EDCA_PROFILE_CWMING_IDX    12  /* byte[12] & byte [13] */
 #define QWLAN_HAL_CFG_EDCA_PROFILE_CWMAXG_IDX    14  /* byte[14] & byte [15] */
 #define QWLAN_HAL_CFG_EDCA_PROFILE_TXOPG_IDX     16  /* byte[16]*/
@@ -769,7 +714,6 @@
 
 /* QWLAN_HAL_CFG_TX_POWER_24_20 */
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_WLAN_TX_POWER_24_20_DEFAULT    299 
 #define QWLAN_WLAN_TX_POWER_24_20_MIN        299 
 #define QWLAN_WLAN_TX_POWER_24_20_MAX        299 
@@ -792,32 +736,22 @@
 #define QWLAN_WLAN_TX_POWER_24_20_DEFAULT    299
 #define QWLAN_WLAN_TX_POWER_24_20_MIN        299
 #define QWLAN_WLAN_TX_POWER_24_20_MAX        299
-=======
-#define QWLAN_WLAN_TX_POWER_24_20_DEFAULT    299 
-#define QWLAN_WLAN_TX_POWER_24_20_MIN        299 
-#define QWLAN_WLAN_TX_POWER_24_20_MAX        299 
->>>>>>> 657b0e9... prima update
 
 /* QWLAN_HAL_CFG_TX_POWER_24_40 */
 #define QWLAN_WLAN_TX_POWER_24_40_DEFAULT    300
-#define QWLAN_WLAN_TX_POWER_24_40_MIN        299 
-#define QWLAN_WLAN_TX_POWER_24_40_MAX        299 
+#define QWLAN_WLAN_TX_POWER_24_40_MIN        299
+#define QWLAN_WLAN_TX_POWER_24_40_MAX        299
 
 /* QWLAN_HAL_CFG_TX_POWER_50_20 */
 #define QWLAN_WLAN_TX_POWER_50_20_DEFAULT    301
-#define QWLAN_WLAN_TX_POWER_50_20_MIN        299 
-#define QWLAN_WLAN_TX_POWER_50_20_MAX        299 
+#define QWLAN_WLAN_TX_POWER_50_20_MIN        299
+#define QWLAN_WLAN_TX_POWER_50_20_MAX        299
 
 /* QWLAN_HAL_CFG_TX_POWER_50_40 */
 #define QWLAN_WLAN_TX_POWER_50_40_DEFAULT    302
-<<<<<<< HEAD
 #define QWLAN_WLAN_TX_POWER_50_40_MIN        299
 #define QWLAN_WLAN_TX_POWER_50_40_MAX        299
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_WLAN_TX_POWER_50_40_MIN        299 
-#define QWLAN_WLAN_TX_POWER_50_40_MAX        299 
->>>>>>> 657b0e9... prima update
 
 /* QCOM_WLAN_CFG_MAX_TX_POWER_2_4 */
 #define QCOM_WLAN_CFG_MAX_TX_POWER_2_4_LEN      128
@@ -860,7 +794,6 @@
 
 /* QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT */
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT_MIN  1
 #define QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT_MAX  255
 #define QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT_DEF  20
@@ -879,16 +812,6 @@
 #define QWLAN_HAL_CFG_GO_KEEPALIVE_TIMEOUT_MAX  20
 #define QWLAN_HAL_CFG_GO_KEEPALIVE_TIMEOUT_DEF  5
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT_MIN  1
-#define QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT_MAX  255
-#define QWLAN_HAL_CFG_AP_KEEPALIVE_TIMEOUT_DEF  20
-
-/* QWLAN_HAL_CFG_GO_KEEPALIVE_TIMEOUT */
-#define QWLAN_HAL_CFG_GO_KEEPALIVE_TIMEOUT_MIN  1
-#define QWLAN_HAL_CFG_GO_KEEPALIVE_TIMEOUT_MAX  255
-#define QWLAN_HAL_CFG_GO_KEEPALIVE_TIMEOUT_DEF  20
->>>>>>> 657b0e9... prima update
 
 /* QWLAN_HAL_CFG_ENABLE_MC_ADDR_LIST */
 #define QWLAN_HAL_CFG_ENABLE_MC_ADDR_LIST_MIN  0
@@ -961,9 +884,6 @@
 #define QWLAN_HAL_CFG_BTC_DHCP_PROT_ON_SCO_DEF 0
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 typedef struct 
 {
    uint8    cfgStaId[QCOM_WLAN_CFG_STA_ID_LEN]; //QWLAN_HAL_CFG_STA_ID
@@ -1066,7 +986,6 @@ typedef struct
    uint32   cfgBtcDhcpProtOnSco;              //QWLAN_HAL_CFG_BTC_DHCP_PROT_ON_SCO
 }tAniHalCfg, *tpAniHalCfg;
 
-<<<<<<< HEAD
 =======
 /* QWLAN_HAL_CFG_ENABLE_UNICAST_FILTER */
 #define QWLAN_HAL_CFG_ENABLE_UNICAST_FILTER_MIN  0
@@ -1176,8 +1095,6 @@ typedef struct
 #define QWLAN_HAL_CFG_SAR_POWER_BACKOFF_MIN  1
 #define QWLAN_HAL_CFG_SAR_POWER_BACKOFF_MAX  21
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif //__WLAN_HAL_CFG_H__
 
 

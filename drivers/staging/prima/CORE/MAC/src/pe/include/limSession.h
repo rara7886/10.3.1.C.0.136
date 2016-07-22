@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -51,7 +48,6 @@
 
 /**=========================================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
   
   \file  limSession.h
   
@@ -64,22 +60,12 @@
   
 =======
 
-=======
-  
->>>>>>> 657b0e9... prima update
   \file  limSession.h
-  
+
   \brief prototype for lim Session related APIs
 
   \author Sunit Bhatia
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
-   Qualcomm Confidential and Proprietary.
-  
->>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 
@@ -93,18 +79,12 @@
   Preprocessor definitions and constants
   ------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #define NUM_WEP_KEYS 4
 #endif
 =======
 #define NUM_WEP_KEYS 4
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-#define NUM_WEP_KEYS 4
-#endif
->>>>>>> 657b0e9... prima update
 
 /*-------------------------------------------------------------------------- 
   Type declarations
@@ -149,7 +129,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     tpSirSmeStartBssReq     pLimStartBssReq;        //handle to smestart bss req
     tpSirSmeJoinReq         pLimJoinReq;            // handle to sme join req
 <<<<<<< HEAD
-<<<<<<< HEAD
     tpSirSmeReassocReq      pLimReAssocReq;         //handle to sme reassoc req
     tpLimMlmJoinReq         pLimMlmJoinReq;         //handle to MLM join Req
 =======
@@ -159,10 +138,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     void                    *pLimMlmReassocRetryReq; //keep reasoc req for retry
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tpSirSmeReassocReq      pLimReAssocReq;         //handle to sme reassoc req
-    tpLimMlmJoinReq         pLimMlmJoinReq;         //handle to MLM join Req
->>>>>>> 657b0e9... prima update
     void                    *pLimMlmReassocReq;      //handle to MLM reassoc Req
     tANI_U16                channelChangeReasonCode;
     tANI_U8                 dot11mode;
@@ -251,13 +226,9 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_U32                encryptType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     tANI_BOOLEAN            bTkipCntrMeasActive;    // Used to keep record of TKIP counter measures start/stop
 
     tANI_U8                 gLimProtectionControl;  //used for 11n protection
@@ -321,13 +292,9 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_BOOLEAN            fwdWPSPBCProbeReq;
     tANI_U8                 wps_state;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
     tANI_U8            limQosEnabled:1; //11E
     tANI_U8            limWmeEnabled:1; //WME
@@ -335,16 +302,12 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_U8            limHcfEnabled:1;
     tANI_U8            lim11dEnabled:1;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #ifdef WLAN_FEATURE_11W
     tANI_U8            limRmfEnabled:1; //11W
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     tANI_U32           lim11hEnable;
 
     tPowerdBm  maxTxPower;   //MIN (Regulatory and local power constraint)
@@ -368,7 +331,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     tAniBool            isFastRoamIniFeatureEnabled;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tSirNoAParam p2pNoA;
     tSirP2PNoaAttr p2pGoPsUpdate;
@@ -379,12 +341,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_U32 defaultAuthFailureTimeout;
     tSirP2PNoaStart p2pGoPsNoaStartInd;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-    tSirNoAParam p2pNoA;
-    tSirP2PNoaAttr p2pGoPsUpdate;
-#endif
->>>>>>> 657b0e9... prima update
 
     /* EDCA QoS parameters
      * gLimEdcaParams - These EDCA parameters are used locally on AP or STA.
@@ -410,7 +366,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_U8 vhtCapability;
     tANI_U8 vhtTxChannelWidthSet;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tLimOperatingModeInfo  gLimOperatingMode;
     tLimWiderBWChannelSwitchInfo  gLimWiderBWChannelSwitch;
@@ -419,8 +374,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_U8    apChanWidth;
     tANI_U8    txBFIniFeatureEnabled;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
     tANI_U8            spectrumMgtEnabled;
     /* *********************11H related*****************************/
@@ -433,7 +386,6 @@ typedef struct sPESession           // Added to Support BT-AMP
     /*Flag to Track Status/Indicate HBFailure on this session */
     tANI_BOOLEAN LimHBFailureStatus;
     tANI_U32           gLimPhyMode;
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -459,9 +411,6 @@ typedef struct sPESession           // Added to Support BT-AMP
 #endif
     tANI_U8 isAmsduSupportInAMPDU;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 }tPESession, *tpPESession;
 
 #define LIM_MAX_ACTIVE_SESSIONS 4
@@ -511,7 +460,6 @@ tpPESession peFindSessionByBssid(tpAniSirGlobal pMac,  tANI_U8*  bssid,    tANI_
 
 /*--------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   \brief peFindSessionByBssIdx() - looks up the PE session given the bssIdx.
 
@@ -529,8 +477,6 @@ tpPESession peFindSessionByBssIdx(tpAniSirGlobal pMac,  tANI_U8 bssIdx);
 
 /*--------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   \brief peFindSessionByPeerSta() - looks up the PE session given the Peer Station Address.
 
   This function returns the session context and the session ID if the session 

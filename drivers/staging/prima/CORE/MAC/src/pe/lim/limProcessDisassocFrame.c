@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -23,7 +20,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
 /*
  *
 =======
@@ -48,10 +44,6 @@
 */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/*
- *
->>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limProcessDisassocFrame.cc contains the code
  * for processing Disassocation Frame.
@@ -67,25 +59,17 @@
 #include "sirApi.h"
 #include "aniGlobal.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halDataStruct.h"
 #endif
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
-<<<<<<< HEAD
 #include "wniCfgSta.h"
 #endif
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "wniCfgSta.h"
-#endif
->>>>>>> 657b0e9... prima update
 
 #include "utilsApi.h"
 #include "limTypes.h"
@@ -124,16 +108,12 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
     tpDphHashNode      pStaDs;
     tLimMlmDisassocInd mlmDisassocInd;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #ifdef WLAN_FEATURE_11W
     tANI_U32            frameLen;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
     pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
     pBody = WDA_GET_RX_MPDU_DATA(pRxPacketInfo);
@@ -145,14 +125,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
         // Log error and ignore it
         PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("received Disassoc frame from a BC/MC address\n"));)
 =======
                FL("received Disassoc frame from a BC/MC address"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("received Disassoc frame from a BC/MC address\n"));)
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -163,19 +139,14 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
         // Log error and ignore it
         PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("received Disassoc frame for a MC address\n"));)
 =======
                FL("received Disassoc frame for a MC address"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("received Disassoc frame for a MC address\n"));)
->>>>>>> 657b0e9... prima update
 
         return;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
@@ -195,21 +166,15 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // Get reasonCode from Disassociation frame body
     reasonCode = sirReadU16(pBody);
 
     PELOG2(limLog(pMac, LOG2,
 <<<<<<< HEAD
-<<<<<<< HEAD
         FL("Received Disassoc frame (mlm state %d sme state %d), with reason code %d from "MAC_ADDRESS_STR), 
 =======
         FL("Received Disassoc frame (mlm state %d sme state %d), with reason code %d from "MAC_ADDRESS_STR),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        FL("Received Disassoc frame (mlm state %d sme state %d), with reason code %d from "MAC_ADDRESS_STR), 
->>>>>>> 657b0e9... prima update
         psessionEntry->limMlmState, psessionEntry->limSmeState, reasonCode, MAC_ADDR_ARRAY(pHdr->sa));)
 
     /**
@@ -233,7 +198,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     if (limCheckDisassocDeauthAckPending(pMac, (tANI_U8*)pHdr->sa))
     {
@@ -244,8 +208,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
     }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     /** If we are in the Wait for ReAssoc Rsp state */
     if (limIsReassocInProgress(pMac,psessionEntry)) {
         /** If we had received the DisAssoc from,
@@ -255,14 +217,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
         */
         if (!IS_REASSOC_BSSID(pMac,pHdr->sa,psessionEntry)) {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGW(limLog(pMac, LOGW, FL("Ignore the DisAssoc received, while Processing ReAssoc with different/unknown AP\n"));)
 =======
             PELOGW(limLog(pMac, LOGW, FL("Ignore the DisAssoc received, while Processing ReAssoc with different/unknown AP"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGW(limLog(pMac, LOGW, FL("Ignore the DisAssoc received, while Processing ReAssoc with different/unknown AP\n"));)
->>>>>>> 657b0e9... prima update
             return;
         }
         /** If the Disassoc is received from the new AP to which we tried to ReAssociate
@@ -270,14 +228,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
          */
         if (!IS_CURRENT_BSSID(pMac, pHdr->sa,psessionEntry)) {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGW(limLog(pMac, LOGW, FL("received Disassoc from the New AP to which ReAssoc is sent \n"));)
 =======
             PELOGW(limLog(pMac, LOGW, FL("received Disassoc from the New AP to which ReAssoc is sent "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGW(limLog(pMac, LOGW, FL("received Disassoc from the New AP to which ReAssoc is sent \n"));)
->>>>>>> 657b0e9... prima update
             limRestorePreReassocState(pMac,
                                   eSIR_SME_REASSOC_REFUSED, reasonCode,psessionEntry);
             return;
@@ -304,14 +258,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
                 // Invalid reasonCode in received Disassociation frame
                 PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        FL("received Disassoc frame with invalid reasonCode %d from \n"),
 =======
                        FL("received Disassoc frame with invalid reasonCode %d from "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       FL("received Disassoc frame with invalid reasonCode %d from \n"),
->>>>>>> 657b0e9... prima update
                        reasonCode);
                 limPrintMacAddr(pMac, pHdr->sa, LOG1);)
                 break;
@@ -337,7 +287,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
             case eSIR_MAC_RSN_IE_MISMATCH_REASON:
             case eSIR_MAC_1X_AUTH_FAILURE_REASON:
 <<<<<<< HEAD
-<<<<<<< HEAD
                 // Valid reasonCode in received Disassociation frame
                 break;
 
@@ -348,11 +297,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
 
             case eSIR_MAC_DEAUTH_LEAVING_BSS_REASON:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                // Valid reasonCode in received Disassociation frame
-                break;
-
->>>>>>> 657b0e9... prima update
             case eSIR_MAC_DISASSOC_LEAVING_BSS_REASON:
                 // Valid reasonCode in received Disassociation frame
                 // as long as we're not about to channel switch
@@ -361,14 +305,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
                     limLog(pMac, LOGW,
                         FL("Ignoring disassoc frame due to upcoming "
 <<<<<<< HEAD
-<<<<<<< HEAD
                            "channel switch, from\n"),
 =======
                            "channel switch, from"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           "channel switch, from\n"),
->>>>>>> 657b0e9... prima update
                         reasonCode);
                     limPrintMacAddr(pMac, pHdr->sa, LOGW);
                     return;
@@ -380,14 +320,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
                 // Log error and ignore the frame
                 PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        FL("received Disassoc frame with invalid reasonCode %d from \n"),
 =======
                        FL("received Disassoc frame with invalid reasonCode %d from "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       FL("received Disassoc frame with invalid reasonCode %d from \n"),
->>>>>>> 657b0e9... prima update
                        reasonCode);
                 limPrintMacAddr(pMac, pHdr->sa, LOG1);)
                 return;
@@ -396,7 +332,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
     else
     {
         // Received Disassociation frame in either IBSS
-<<<<<<< HEAD
 <<<<<<< HEAD
         // or un-known role. Log error and ignore it
         limLog(pMac, LOGE,
@@ -410,13 +345,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
                reasonCode, psessionEntry->limSystemRole, psessionEntry->limSmeState);
         limPrintMacAddr(pMac, pHdr->sa, LOG1);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        // or un-known role. Log error and ignore it
-        limLog(pMac, LOGE,
-               FL("received Disassoc frame with invalid reasonCode %d in role %d in sme state %d from \n"),
-               reasonCode, psessionEntry->limSystemRole, psessionEntry->limSmeState);
-        limPrintMacAddr(pMac, pHdr->sa, LOGE);
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -424,14 +352,10 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
     // Disassociation from peer MAC entity
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    PELOGE(limLog(pMac, LOGE,
 =======
    PELOG1(limLog(pMac, LOG1,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   PELOGE(limLog(pMac, LOGE,
->>>>>>> 657b0e9... prima update
            FL("Received Disassoc frame from sta with assocId=%d with reasonCode=%d. Peer MAC is "MAC_ADDRESS_STR),
            pStaDs->assocId, reasonCode, MAC_ADDR_ARRAY(pHdr->sa));)
 
@@ -467,7 +391,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
 
     // Issue Disassoc Indication to SME.
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDisassocInd.peerMacAddr,
                   (tANI_U8 *) pStaDs->staAddr,
                   sizeof(tSirMacAddr));
@@ -483,16 +406,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
     mlmDisassocInd.reasonCode =
         (tANI_U8) pStaDs->mlmStaContext.disassocReason;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDisassocInd.peerMacAddr,
-                  (tANI_U8 *) pStaDs->staAddr,
-                  sizeof(tSirMacAddr));
-    mlmDisassocInd.reasonCode =
-        (tANI_U8) pStaDs->mlmStaContext.disassocReason;
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    mlmDisassocInd.aid        = pStaDs->assocId;
-#endif
->>>>>>> 657b0e9... prima update
     mlmDisassocInd.disassocTrigger = eLIM_PEER_ENTITY_DISASSOC;
 
     /* Update PE session Id  */
@@ -506,7 +419,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
      * and cleanup will happen at that time. 
      */
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("received Disassoc from AP while waiting for Reassoc Rsp\n"));)
      
         if (psessionEntry->limAssocResponseData) {
@@ -517,12 +429,6 @@ limProcessDisassocFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession
         if (psessionEntry->limAssocResponseData) {
             vos_mem_free(psessionEntry->limAssocResponseData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("received Disassoc from AP while waiting for Reassoc Rsp\n"));)
-     
-        if (psessionEntry->limAssocResponseData) {
-            palFreeMemory(pMac->hHdd, psessionEntry->limAssocResponseData);
->>>>>>> 657b0e9... prima update
             psessionEntry->limAssocResponseData = NULL;                            
         }
 

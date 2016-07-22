@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -102,9 +99,6 @@
 #define MC_POST_EVENT_MASK               0x001
 #define MC_SUSPEND_EVENT_MASK            0x002
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #define RX_POST_EVENT_MASK               0x001
 #define RX_SUSPEND_EVENT_MASK            0x002
@@ -114,7 +108,6 @@
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #define RX_SHUTDOWN_EVENT_MASK           0x010
 #endif
-<<<<<<< HEAD
 =======
 #define RX_POST_EVENT_MASK               0x001
 #define RX_SUSPEND_EVENT_MASK            0x002
@@ -122,8 +115,6 @@
 #define MC_SHUTDOWN_EVENT_MASK           0x010
 #define RX_SHUTDOWN_EVENT_MASK           0x010
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define WD_POST_EVENT_MASK               0x001
 #define WD_SHUTDOWN_EVENT_MASK           0x002
 #define WD_CHIP_RESET_EVENT_MASK         0x004
@@ -170,14 +161,10 @@ typedef struct _VosSchedContext
   /* Place holder to the VOSS Context */ 
    v_PVOID_t           pVContext; 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   /* HAL Message queue on the Main thread*/
    VosMqType           halMcMq;
 #else
-<<<<<<< HEAD
   /* WDA Message queue on the Main thread*/
    VosMqType           wdaMcMq;
 #endif
@@ -185,11 +172,6 @@ typedef struct _VosSchedContext
   /* WDA Message queue on the Main thread*/
    VosMqType           wdaMcMq;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  /* WDA Message queue on the Main thread*/
-   VosMqType           wdaMcMq;
-#endif
->>>>>>> 657b0e9... prima update
 
 
 
@@ -206,18 +188,12 @@ typedef struct _VosSchedContext
    VosMqType           sysMcMq;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
    /* SSC Message queue on the Tx */
    VosMqType           sscTxMq;
 #else
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   /* WDI Message queue on the Main thread*/
    VosMqType           wdiMcMq;
 
@@ -227,13 +203,9 @@ typedef struct _VosSchedContext
    /* WDI Message queue on the Rx Thread*/
    VosMqType           wdiRxMq;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
    /* TL Message queue on the Tx thread */
    VosMqType           tlTxMq;
@@ -242,18 +214,12 @@ typedef struct _VosSchedContext
    VosMqType           sysTxMq;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    VosMqType           sysRxMq;
 #endif
 =======
    VosMqType           sysRxMq;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-   VosMqType           sysRxMq;
-#endif
->>>>>>> 657b0e9... prima update
 
    /* Handle of Event for MC thread to signal startup */
    struct completion   McStartEvent;
@@ -262,7 +228,6 @@ typedef struct _VosSchedContext
    struct completion   TxStartEvent;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    /* Handle of Event for Rx thread to signal startup */
    struct completion   RxStartEvent;
@@ -271,12 +236,6 @@ typedef struct _VosSchedContext
    /* Handle of Event for Rx thread to signal startup */
    struct completion   RxStartEvent;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-   /* Handle of Event for Rx thread to signal startup */
-   struct completion   RxStartEvent;
-#endif
->>>>>>> 657b0e9... prima update
 
    struct task_struct* McThread;
 
@@ -285,20 +244,14 @@ typedef struct _VosSchedContext
    struct task_struct*   TxThread;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    /* RX Thread handle */
    struct task_struct*   RxThread;
 #endif
-<<<<<<< HEAD
 =======
    /* RX Thread handle */
    struct task_struct*   RxThread;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
    /* completion object for MC thread shutdown */
@@ -308,7 +261,6 @@ typedef struct _VosSchedContext
    struct completion   TxShutdown; 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    /* completion object for Rx thread shutdown */
    struct completion   RxShutdown;
@@ -317,12 +269,6 @@ typedef struct _VosSchedContext
    /* completion object for Rx thread shutdown */
    struct completion   RxShutdown;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-   /* completion object for Rx thread shutdown */
-   struct completion   RxShutdown;
-#endif
->>>>>>> 657b0e9... prima update
 
    /* Wait queue for MC thread */
    wait_queue_head_t mcWaitQueue;
@@ -335,25 +281,17 @@ typedef struct _VosSchedContext
    unsigned long     txEventFlag;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    /* Wait queue for Rx thread */
    wait_queue_head_t rxWaitQueue;
 
    unsigned long     rxEventFlag;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
    
    /* Completion object to resume Mc thread */
    struct completion ResumeMcEvent;
@@ -362,20 +300,14 @@ typedef struct _VosSchedContext
    struct completion ResumeTxEvent;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    /* Completion object to resume Rx thread */
    struct completion ResumeRxEvent;
 #endif
-<<<<<<< HEAD
 =======
    /* Completion object to resume Rx thread */
    struct completion ResumeRxEvent;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    /* lock to make sure that McThread and TxThread Suspend/resume mechanism is in sync*/
    spinlock_t McThreadLock;
@@ -459,7 +391,6 @@ typedef struct _VosContextType
    v_VOID_t           *pHDDContext;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
    /* HDD SoftAP Module Context  */
    v_VOID_t           *pHDDSoftAPContext;
@@ -468,12 +399,6 @@ typedef struct _VosContextType
    /* HDD SoftAP Module Context  */
    v_VOID_t           *pHDDSoftAPContext;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-   /* HDD SoftAP Module Context  */
-   v_VOID_t           *pHDDSoftAPContext;
-#endif
->>>>>>> 657b0e9... prima update
 
    /* TL Module Context  */
    v_VOID_t           *pTLContext;
@@ -482,9 +407,6 @@ typedef struct _VosContextType
    v_VOID_t           *pMACContext;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC   /* BAL  Context  */
 
    v_VOID_t           *pBALContext;
@@ -502,7 +424,6 @@ typedef struct _VosContextType
    /* SAP Context */
    v_VOID_t           *pSAPContext;
 #endif
-<<<<<<< HEAD
 =======
    /* BAP Context */
    v_VOID_t           *pBAPContext;
@@ -510,8 +431,6 @@ typedef struct _VosContextType
    /* SAP Context */
    v_VOID_t           *pSAPContext;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    
    /* VOS Packet Context */
    vos_pkt_context_t   vosPacket; 
@@ -521,25 +440,17 @@ typedef struct _VosContextType
    volatile v_U8_t     isLogpInProgress;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    vos_event_t         wdaCompleteEvent;
 
    /* WDA Context */
    v_VOID_t            *pWDAContext;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
    volatile v_U8_t    isLoadUnloadInProgress;
 
@@ -553,18 +464,12 @@ typedef struct _VosContextType
  
 int vos_sched_is_tx_thread(int threadID);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 int vos_sched_is_rx_thread(int threadID);
 #endif
 =======
 int vos_sched_is_rx_thread(int threadID);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-int vos_sched_is_rx_thread(int threadID);
-#endif
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
   
   \brief vos_sched_open() - initialize the vOSS Scheduler  
@@ -712,18 +617,12 @@ void vos_sched_deinit_mqs (pVosSchedContext pSchedContext);
 void vos_sched_flush_mc_mqs  (pVosSchedContext pSchedContext);
 void vos_sched_flush_tx_mqs  (pVosSchedContext pSchedContext);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 void vos_sched_flush_rx_mqs  (pVosSchedContext pSchedContext);
 #endif
 =======
 void vos_sched_flush_rx_mqs  (pVosSchedContext pSchedContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-void vos_sched_flush_rx_mqs  (pVosSchedContext pSchedContext);
-#endif
->>>>>>> 657b0e9... prima update
 VOS_STATUS vos_watchdog_chip_reset ( vos_chip_reset_reason_type reason );
 void clearWlanResetReason(void);
 

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -153,7 +150,6 @@
 #define BTC_DHCP_ON_SCO_DEF                (0)  // OFF
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*
  * Number of victim tables and mws coex configurations
@@ -162,8 +158,6 @@
 #define MWS_COEX_MAX_CONFIG                   6
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /** Enumeration of all the different kinds of BT events
 */
 typedef enum eSmeBtEventType
@@ -310,7 +304,6 @@ typedef struct sSmeBtcConfig
    v_U32_t      btcDhcpProtOnA2dp;
    v_U32_t      btcDhcpProtOnSco;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
    v_U32_t      mwsCoexVictimWANFreq[MWS_COEX_MAX_VICTIM_TABLE];
@@ -321,8 +314,6 @@ typedef struct sSmeBtcConfig
    v_U32_t      mwsCoexConfig[MWS_COEX_MAX_CONFIG];
    v_U32_t      SARPowerBackoff;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tSmeBtcConfig, *tpSmeBtcConfig;
 
 
@@ -401,12 +392,9 @@ typedef struct sSmeBtcInfo
    v_U16_t       btcScoHandles[BT_MAX_SCO_SUPPORT];  /* Handles for SCO, if any*/
    v_BOOL_t      fA2DPUp;        /*remember whether A2DP is in session*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    v_BOOL_t      btcScanCompromise;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tSmeBtcInfo, *tpSmeBtcInfo;
 
 

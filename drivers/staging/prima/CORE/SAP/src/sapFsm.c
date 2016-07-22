@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -53,7 +50,6 @@
 
   This software unit holds the implementation of the WLAN SAP Finite
 <<<<<<< HEAD
-<<<<<<< HEAD
   State Machine modules  
 
   DEPENDENCIES: 
@@ -63,19 +59,13 @@
   
 =======
   State Machine modules
-=======
-  State Machine modules  
->>>>>>> 657b0e9... prima update
 
-  DEPENDENCIES: 
+  DEPENDENCIES:
 
-  Are listed for each API below. 
+  Are listed for each API below.
 
-<<<<<<< HEAD
+
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
->>>>>>> 657b0e9... prima update
   Copyright (c) 2010 QUALCOMM Incorporated.
   All Rights Reserved.
   Qualcomm Confidential and Proprietary
@@ -122,14 +112,10 @@
 
 /*----------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
  *  External declarations for global context 
 =======
  *  External declarations for global context
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *  External declarations for global context 
->>>>>>> 657b0e9... prima update
  * -------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------
@@ -141,14 +127,10 @@
  * -------------------------------------------------------------------------*/
 #ifdef SOFTAP_CHANNEL_RANGE
 <<<<<<< HEAD
-<<<<<<< HEAD
 static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelList, 
 =======
 static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelList,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelList, 
->>>>>>> 657b0e9... prima update
                                  v_U8_t  *numberOfChannels);
 #endif
 /*----------------------------------------------------------------------------
@@ -163,7 +145,6 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelLis
   FUNCTION    sapEventInit
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   DESCRIPTION 
     Function for initializing sWLAN_SAPEvent structure
 
@@ -182,30 +163,22 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelLis
   SIDE EFFECTS 
 =======
   DESCRIPTION
-=======
-  DESCRIPTION 
->>>>>>> 657b0e9... prima update
     Function for initializing sWLAN_SAPEvent structure
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-  PARAMETERS 
+  PARAMETERS
 
     IN
     sapEvent    : State machine event
-   
+
   RETURN VALUE
 
     None
-<<<<<<< HEAD
 
   SIDE EFFECTS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
->>>>>>> 657b0e9... prima update
 ============================================================================*/
 static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
 {
@@ -219,7 +192,6 @@ static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
   FUNCTION    sapGotoChannelSel
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   DESCRIPTION 
     Function for initiating scan request for SME 
 
@@ -230,38 +202,25 @@ static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
 =======
   DESCRIPTION
     Function for initiating scan request for SME
-=======
-  DESCRIPTION 
-    Function for initiating scan request for SME 
->>>>>>> 657b0e9... prima update
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-<<<<<<< HEAD
   PARAMETERS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PARAMETERS 
->>>>>>> 657b0e9... prima update
 
     IN
     sapContext  : Sap Context value
     sapEvent    : State machine event
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
-<<<<<<< HEAD
 <<<<<<< HEAD
   
   SIDE EFFECTS 
@@ -269,10 +228,6 @@ static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
 
   SIDE EFFECTS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
->>>>>>> 657b0e9... prima update
 ============================================================================*/
 VOS_STATUS
 sapGotoChannelSel
@@ -300,14 +255,10 @@ sapGotoChannelSel
         /* we have a serious problem */
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "In %s, invalid hHal", __FUNCTION__);
 =======
                    "In %s, invalid hHal", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "In %s, invalid hHal", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -318,19 +269,14 @@ sapGotoChannelSel
 
         if (channel)
 <<<<<<< HEAD
-<<<<<<< HEAD
         { /*if a valid channel is returned then use concurrent channel. 
 =======
         { /*if a valid channel is returned then use concurrent channel.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        { /*if a valid channel is returned then use concurrent channel. 
->>>>>>> 657b0e9... prima update
                   Else take whatever comes from configuartion*/
             sapContext->channel = channel;
         }
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
     
     if (sapContext->channel == AUTO_CHANNEL_SELECT) 
@@ -338,10 +284,6 @@ sapGotoChannelSel
 
     if (sapContext->channel == AUTO_CHANNEL_SELECT)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-    if (sapContext->channel == AUTO_CHANNEL_SELECT) 
->>>>>>> 657b0e9... prima update
     {
         vos_mem_zero(&scanRequest, sizeof(scanRequest));
 
@@ -355,17 +297,12 @@ sapGotoChannelSel
         /* Set BSSType to default type */
         scanRequest.BSSType = eCSR_BSS_TYPE_ANY;
 <<<<<<< HEAD
-<<<<<<< HEAD
         
 #ifndef SOFTAP_CHANNEL_RANGE        
 =======
 
 #ifndef SOFTAP_CHANNEL_RANGE
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
-#ifndef SOFTAP_CHANNEL_RANGE        
->>>>>>> 657b0e9... prima update
         /*Scan all the channels */
         scanRequest.ChannelInfo.numOfChannels = 0;
 
@@ -380,20 +317,15 @@ sapGotoChannelSel
         /*Scan the channels in the list*/
         scanRequest.ChannelInfo.numOfChannels = numOfChannels;
 <<<<<<< HEAD
-<<<<<<< HEAD
         
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
->>>>>>> 657b0e9... prima update
         scanRequest.ChannelInfo.ChannelList = channelList;
 
         scanRequest.requestType = eCSR_SCAN_SOFTAP_CHANNEL_RANGE;
 
         sapContext->channelList = channelList;
-<<<<<<< HEAD
 <<<<<<< HEAD
         
 #endif
@@ -407,13 +339,6 @@ sapGotoChannelSel
 
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, calling sme_ScanRequest", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
-#endif
-        /* Set requestType to Full scan */
-
-        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, calling sme_ScanRequest", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         halStatus = sme_ScanRequest(hHal,
                             0,//Not used in csrScanRequest
@@ -424,14 +349,10 @@ sapGotoChannelSel
         if (eHAL_STATUS_SUCCESS != halStatus)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "%s:sme_ScanRequest  fail %d!!!", __FUNCTION__, halStatus);
 =======
             VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "%s:sme_ScanRequest  fail %d!!!", __func__, halStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "%s:sme_ScanRequest  fail %d!!!", __FUNCTION__, halStatus);
->>>>>>> 657b0e9... prima update
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "SoftAP Configuring for default channel, Ch= %d", sapContext->channel);
             /* In case of error, switch to default channel */
             sapContext->channel = SAP_DEFAULT_CHANNEL;
@@ -453,7 +374,6 @@ sapGotoChannelSel
         {
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, return from sme_ScanRequest, scanRequestID=%d, Ch= %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, scanRequestID, sapContext->channel);
         }
 
@@ -463,20 +383,13 @@ sapGotoChannelSel
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, for configured channel, Ch= %d", __FUNCTION__, sapContext->channel);
 =======
                    __func__, scanRequestID, sapContext->channel);
-=======
-                   __FUNCTION__, scanRequestID, sapContext->channel);
->>>>>>> 657b0e9... prima update
         }
 
     }
-    else 
+    else
     {
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, for configured channel, Ch= %d", __func__, sapContext->channel);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, for configured channel, Ch= %d", __FUNCTION__, sapContext->channel);
->>>>>>> 657b0e9... prima update
         /* Fill in the event structure */
         // Eventhough scan was not done, means a user set channel was chosen
         sapEventInit(sapEvent);
@@ -487,14 +400,10 @@ sapGotoChannelSel
     /* If scan failed, get default channel and advance state machine as success with default channel */
     /* Have to wait for the call back to be called to get the channel cannot advance state machine here as said above */
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before exiting sapGotoChannelSel channel=%d", __FUNCTION__, sapContext->channel);
 =======
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before exiting sapGotoChannelSel channel=%d", __func__, sapContext->channel);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before exiting sapGotoChannelSel channel=%d", __FUNCTION__, sapContext->channel);
->>>>>>> 657b0e9... prima update
 
     return VOS_STATUS_SUCCESS;
 }// sapGotoChannelSel
@@ -502,7 +411,6 @@ sapGotoChannelSel
 /*==========================================================================
   FUNCTION    sapGotoStarting
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   DESCRIPTION 
     Function for initiating start bss request for SME
@@ -513,20 +421,13 @@ sapGotoChannelSel
   PARAMETERS 
 =======
   DESCRIPTION
-=======
-  DESCRIPTION 
->>>>>>> 657b0e9... prima update
     Function for initiating start bss request for SME
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-<<<<<<< HEAD
   PARAMETERS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PARAMETERS 
->>>>>>> 657b0e9... prima update
 
     IN
     sapContext  : Sap Context value
@@ -538,7 +439,6 @@ sapGotoChannelSel
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
-<<<<<<< HEAD
 <<<<<<< HEAD
   
   SIDE EFFECTS 
@@ -554,20 +454,11 @@ VOS_STATUS
 sapGotoStarting
 (
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
-============================================================================*/
-VOS_STATUS
-sapGotoStarting
-( 
->>>>>>> 657b0e9... prima update
     ptSapContext sapContext,
     ptWLAN_SAPEvent sapEvent,
     eCsrRoamBssType bssType
 )
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
     /* tHalHandle */    
     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
@@ -582,43 +473,30 @@ sapGotoStarting
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __FUNCTION__);
 =======
     /* tHalHandle */
-=======
-    /* tHalHandle */    
->>>>>>> 657b0e9... prima update
     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
     eHalStatus halStatus;
-    
+
     /*- - - - - - - - TODO:once configs from hdd available - - - - - - - - -*/
-    char key_material[32]={ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,}; 
+    char key_material[32]={ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,};
     sapContext->key_type = 0x05;
     sapContext->key_length = 32;
     vos_mem_copy(sapContext->key_material, key_material, sizeof(key_material));  /* Need a key size define */
-<<<<<<< HEAD
 
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
     if (NULL == hHal)
     {
         /* we have a serious problem */
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "In %s, invalid hHal", __FUNCTION__);
 =======
                    "In %s, invalid hHal", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "In %s, invalid hHal", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
     //TODO: What shall we do if failure????
-<<<<<<< HEAD
 <<<<<<< HEAD
     halStatus = pmcRequestFullPower( hHal, 
                             WLANSAP_pmcFullPwrReqCB, 
@@ -626,16 +504,11 @@ sapGotoStarting
     halStatus = pmcRequestFullPower( hHal,
                             WLANSAP_pmcFullPwrReqCB,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    halStatus = pmcRequestFullPower( hHal, 
-                            WLANSAP_pmcFullPwrReqCB, 
->>>>>>> 657b0e9... prima update
                             sapContext,
                             eSME_REASON_OTHER);
 
     /* Open SME Session for Softap */
     halStatus = sme_OpenSession(hHal,
-<<<<<<< HEAD
 <<<<<<< HEAD
                         &WLANSAP_RoamCallback, 
                         sapContext,
@@ -645,24 +518,15 @@ sapGotoStarting
                         sapContext,
                         sapContext->self_mac_addr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        &WLANSAP_RoamCallback, 
-                        sapContext,
-                        sapContext->self_mac_addr,  
->>>>>>> 657b0e9... prima update
                         &sapContext->sessionId);
 
     if(eHAL_STATUS_SUCCESS != halStatus )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamConnect status = %d", __FUNCTION__, halStatus);
 =======
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamConnect status = %d", __func__, halStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamConnect status = %d", __FUNCTION__, halStatus);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -673,7 +537,6 @@ sapGotoStarting
   FUNCTION    sapGotoDisconnecting
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   DESCRIPTION 
     Processing of SAP FSM Disconnecting state
 
@@ -683,38 +546,26 @@ sapGotoStarting
   PARAMETERS 
 =======
   DESCRIPTION
-=======
-  DESCRIPTION 
->>>>>>> 657b0e9... prima update
     Processing of SAP FSM Disconnecting state
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-<<<<<<< HEAD
   PARAMETERS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PARAMETERS 
->>>>>>> 657b0e9... prima update
 
     IN
     sapContext  : Sap Context value
     status      : Return the SAP status here
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
-<<<<<<< HEAD
 <<<<<<< HEAD
   
   SIDE EFFECTS 
@@ -722,10 +573,6 @@ sapGotoStarting
 
   SIDE EFFECTS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
->>>>>>> 657b0e9... prima update
 ============================================================================*/
 VOS_STATUS
 sapGotoDisconnecting
@@ -742,14 +589,10 @@ sapGotoDisconnecting
         /* we have a serious problem */
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "In %s, invalid hHal", __FUNCTION__);
 =======
                    "In %s, invalid hHal", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "In %s, invalid hHal", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -758,14 +601,10 @@ sapGotoDisconnecting
     if(eHAL_STATUS_SUCCESS != halStatus )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamStopBss status = %d", __FUNCTION__, halStatus);
 =======
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamStopBss status = %d", __func__, halStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamStopBss status = %d", __FUNCTION__, halStatus);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -776,21 +615,16 @@ static eHalStatus sapRoamSessionCloseCallback(void *pContext)
 {
     ptSapContext sapContext = (ptSapContext)pContext;
 <<<<<<< HEAD
-<<<<<<< HEAD
     return sapSignalHDDevent(sapContext, NULL, 
 =======
     return sapSignalHDDevent(sapContext, NULL,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    return sapSignalHDDevent(sapContext, NULL, 
->>>>>>> 657b0e9... prima update
                     eSAP_STOP_BSS_EVENT, (v_PVOID_t) eSAP_STATUS_SUCCESS);
 }
 
 /*==========================================================================
   FUNCTION    sapGotoDisconnected
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   DESCRIPTION 
     Function for setting the SAP FSM to Disconnection state
@@ -801,20 +635,13 @@ static eHalStatus sapRoamSessionCloseCallback(void *pContext)
   PARAMETERS 
 =======
   DESCRIPTION
-=======
-  DESCRIPTION 
->>>>>>> 657b0e9... prima update
     Function for setting the SAP FSM to Disconnection state
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-<<<<<<< HEAD
   PARAMETERS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PARAMETERS 
->>>>>>> 657b0e9... prima update
 
     IN
     sapContext  : Sap Context value
@@ -826,17 +653,12 @@ static eHalStatus sapRoamSessionCloseCallback(void *pContext)
 
     VOS_STATUS_SUCCESS: Success
 <<<<<<< HEAD
-<<<<<<< HEAD
   
   SIDE EFFECTS 
 =======
 
   SIDE EFFECTS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
->>>>>>> 657b0e9... prima update
 ============================================================================*/
 VOS_STATUS
 sapGotoDisconnected
@@ -855,21 +677,16 @@ sapGotoDisconnected
     /* Handle event */
     vosStatus = sapFsm(sapContext, &sapEvent);
 <<<<<<< HEAD
-<<<<<<< HEAD
             
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            
->>>>>>> 657b0e9... prima update
     return vosStatus;
 }
 
 /*==========================================================================
   FUNCTION    sapSignalHDDevent
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   DESCRIPTION 
     Function for HDD to send the event notification using callback
@@ -880,26 +697,18 @@ sapGotoDisconnected
   PARAMETERS 
 =======
   DESCRIPTION
-=======
-  DESCRIPTION 
->>>>>>> 657b0e9... prima update
     Function for HDD to send the event notification using callback
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-<<<<<<< HEAD
   PARAMETERS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PARAMETERS 
->>>>>>> 657b0e9... prima update
 
     IN
     sapContext  : Sap Context value
     pCsrRoamInfo : Pointer to CSR roam information
     sapHddevent      : SAP HDD event
-<<<<<<< HEAD
 <<<<<<< HEAD
     context          : to pass the element for future support 
    
@@ -907,15 +716,10 @@ sapGotoDisconnected
     context          : to pass the element for future support
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    context          : to pass the element for future support 
-   
->>>>>>> 657b0e9... prima update
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
-<<<<<<< HEAD
 <<<<<<< HEAD
   
   SIDE EFFECTS 
@@ -931,14 +735,6 @@ VOS_STATUS
 sapSignalHDDevent
 (
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
-============================================================================*/
-VOS_STATUS
-sapSignalHDDevent 
-( 
->>>>>>> 657b0e9... prima update
     ptSapContext sapContext, /* sapContext value */
     tCsrRoamInfo *pCsrRoamInfo,
     eSapHddEvent sapHddevent,
@@ -974,7 +770,6 @@ sapSignalHDDevent
                sapApAppEvent.sapevt.sapAssocIndication.negotiatedMCEncryptionType = pCsrRoamInfo->u.pConnectedProfile->mcEncryptionType;
                sapApAppEvent.sapevt.sapAssocIndication.fAuthRequired = pCsrRoamInfo->fAuthRequired;
 <<<<<<< HEAD
-<<<<<<< HEAD
             }  
             break;
        case eSAP_START_BSS_EVENT:
@@ -987,13 +782,6 @@ sapSignalHDDevent
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
                 __func__, "eSAP_START_BSS_EVENT");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            }  
-            break;
-       case eSAP_START_BSS_EVENT:
-            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
-                __FUNCTION__, "eSAP_START_BSS_EVENT");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_START_BSS_EVENT;
             sapApAppEvent.sapevt.sapStartBssCompleteEvent.status = (eSapStatus )context;
             if(pCsrRoamInfo != NULL ){
@@ -1001,28 +789,20 @@ sapSignalHDDevent
             }
             else
 <<<<<<< HEAD
-<<<<<<< HEAD
                 sapApAppEvent.sapevt.sapStartBssCompleteEvent.staId = 0;              
 =======
                 sapApAppEvent.sapevt.sapStartBssCompleteEvent.staId = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                sapApAppEvent.sapevt.sapStartBssCompleteEvent.staId = 0;              
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapevt.sapStartBssCompleteEvent.operatingChannel = (v_U8_t)sapContext->channel;
             break;
 
         case eSAP_STOP_BSS_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eSAP_STOP_BSS_EVENT");
 =======
                        __func__, "eSAP_STOP_BSS_EVENT");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eSAP_STOP_BSS_EVENT");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_STOP_BSS_EVENT;
             sapApAppEvent.sapevt.sapStopBssCompleteEvent.status = (eSapStatus )context;
             break;
@@ -1031,14 +811,10 @@ sapSignalHDDevent
         {
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, "eSAP_STA_ASSOC_EVENT");
 =======
                 __func__, "eSAP_STA_ASSOC_EVENT");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, "eSAP_STA_ASSOC_EVENT");
->>>>>>> 657b0e9... prima update
             if (pCsrRoamInfo->fReassocReq)
                 sapApAppEvent.sapHddEventCode = eSAP_STA_REASSOC_EVENT;
             else
@@ -1046,7 +822,6 @@ sapSignalHDDevent
 
             //TODO: Need to fill the SET KEY information and pass to HDD
             vos_mem_copy( &sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staMac,
-<<<<<<< HEAD
 <<<<<<< HEAD
                          pCsrRoamInfo->peerMac,sizeof(tSirMacAddr));  
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staId = pCsrRoamInfo->staId ; 
@@ -1064,26 +839,18 @@ sapSignalHDDevent
 =======
                          pCsrRoamInfo->peerMac,sizeof(tSirMacAddr));
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staId = pCsrRoamInfo->staId ;
-=======
-                         pCsrRoamInfo->peerMac,sizeof(tSirMacAddr));  
-            sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staId = pCsrRoamInfo->staId ; 
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.statusCode = pCsrRoamInfo->statusCode;
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen = pCsrRoamInfo->rsnIELen;
-            vos_mem_copy(sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies, pCsrRoamInfo->prsnIE, 
+            vos_mem_copy(sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies, pCsrRoamInfo->prsnIE,
                         pCsrRoamInfo->rsnIELen);
-           
-            if(pCsrRoamInfo->addIELen) 
+
+            if(pCsrRoamInfo->addIELen)
             {
                 v_U8_t  len = sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen;
-                sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen 
+                sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen
                                                         += pCsrRoamInfo->addIELen;
-<<<<<<< HEAD
                 vos_mem_copy(&sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies[len], pCsrRoamInfo->paddIE,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                vos_mem_copy(&sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies[len], pCsrRoamInfo->paddIE, 
->>>>>>> 657b0e9... prima update
                             pCsrRoamInfo->addIELen);
             }
 
@@ -1091,20 +858,15 @@ sapSignalHDDevent
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.status = (eSapStatus )context;
             //TODO: Need to fill sapAuthType
 <<<<<<< HEAD
-<<<<<<< HEAD
             //sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.SapAuthType = pCsrRoamInfo->pProfile->negotiatedAuthType; 
 =======
             //sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.SapAuthType = pCsrRoamInfo->pProfile->negotiatedAuthType;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            //sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.SapAuthType = pCsrRoamInfo->pProfile->negotiatedAuthType; 
->>>>>>> 657b0e9... prima update
             break;
         }
 
         case eSAP_STA_DISASSOC_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
-<<<<<<< HEAD
 <<<<<<< HEAD
                        __FUNCTION__, "eSAP_STA_DISASSOC_EVENT");
             sapApAppEvent.sapHddEventCode = eSAP_STA_DISASSOC_EVENT;
@@ -1113,18 +875,11 @@ sapSignalHDDevent
                           pCsrRoamInfo->peerMac, sizeof(tSirMacAddr));  
 =======
                        __func__, "eSAP_STA_DISASSOC_EVENT");
-=======
-                       __FUNCTION__, "eSAP_STA_DISASSOC_EVENT");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_STA_DISASSOC_EVENT;
-        
+
             vos_mem_copy( &sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.staMac,
-<<<<<<< HEAD
                           pCsrRoamInfo->peerMac, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          pCsrRoamInfo->peerMac, sizeof(tSirMacAddr));  
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.staId = pCsrRoamInfo->staId;
             if (pCsrRoamInfo->reasonCode == eCSR_ROAM_RESULT_FORCED)
                 sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.reason = eSAP_USR_INITATED_DISASSOC;
@@ -1138,14 +893,10 @@ sapSignalHDDevent
         case eSAP_STA_SET_KEY_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eSAP_STA_SET_KEY_EVENT");
 =======
                        __func__, "eSAP_STA_SET_KEY_EVENT");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eSAP_STA_SET_KEY_EVENT");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_STA_SET_KEY_EVENT;
             sapApAppEvent.sapevt.sapStationSetKeyCompleteEvent.status = (eSapStatus )context;
             vos_mem_copy(&sapApAppEvent.sapevt.sapStationSetKeyCompleteEvent.peerMacAddr,
@@ -1155,14 +906,10 @@ sapSignalHDDevent
         case eSAP_STA_DEL_KEY_EVENT :
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eSAP_STA_DEL_KEY_EVENT");
 =======
                        __func__, "eSAP_STA_DEL_KEY_EVENT");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eSAP_STA_DEL_KEY_EVENT");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_STA_DEL_KEY_EVENT;
             sapApAppEvent.sapevt.sapStationDeleteKeyCompleteEvent.status = (eSapStatus )context;
             //TODO: Should we need to send the key information
@@ -1172,14 +919,10 @@ sapSignalHDDevent
         case eSAP_STA_MIC_FAILURE_EVENT :
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                         __FUNCTION__, "eSAP_STA_MIC_FAILURE_EVENT");
 =======
                         __func__, "eSAP_STA_MIC_FAILURE_EVENT");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        __FUNCTION__, "eSAP_STA_MIC_FAILURE_EVENT");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_STA_MIC_FAILURE_EVENT;
             vos_mem_copy( &sapApAppEvent.sapevt.sapStationMICFailureEvent.srcMacAddr,
                           pCsrRoamInfo->u.pMICFailureInfo->srcMacAddr,
@@ -1197,7 +940,6 @@ sapSignalHDDevent
                           pCsrRoamInfo->u.pMICFailureInfo->TSC,
                           SIR_CIPHER_SEQ_CTR_SIZE);
 <<<<<<< HEAD
-<<<<<<< HEAD
             break;            
 
         case eSAP_ASSOC_STA_CALLBACK_EVENT:
@@ -1220,33 +962,25 @@ sapSignalHDDevent
                                 __FUNCTION__, "eSAP_INDICATE_MGMT_FRAME");
 =======
             break;
-=======
-            break;            
->>>>>>> 657b0e9... prima update
 
         case eSAP_ASSOC_STA_CALLBACK_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
-                       __FUNCTION__, "eSAP_ASSOC_STA_CALLBACK_EVENT");
-            break;
-            
-        case eSAP_WPS_PBC_PROBE_REQ_EVENT:
-            sapApAppEvent.sapHddEventCode = eSAP_WPS_PBC_PROBE_REQ_EVENT;
-                        
-            vos_mem_copy( &sapApAppEvent.sapevt.sapPBCProbeReqEvent.WPSPBCProbeReq,
-                          pCsrRoamInfo->u.pWPSPBCProbeReq,
-                          sizeof(tSirWPSPBCProbeReq));  
+                       __func__, "eSAP_ASSOC_STA_CALLBACK_EVENT");
             break;
 
-#ifdef WLAN_FEATURE_P2P
+        case eSAP_WPS_PBC_PROBE_REQ_EVENT:
+            sapApAppEvent.sapHddEventCode = eSAP_WPS_PBC_PROBE_REQ_EVENT;
+
+            vos_mem_copy( &sapApAppEvent.sapevt.sapPBCProbeReqEvent.WPSPBCProbeReq,
+                          pCsrRoamInfo->u.pWPSPBCProbeReq,
+                          sizeof(tSirWPSPBCProbeReq));
+            break;
+
        case eSAP_INDICATE_MGMT_FRAME:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                                  "In %s, SAP event callback event = %s",
-<<<<<<< HEAD
                                 __func__, "eSAP_INDICATE_MGMT_FRAME");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                __FUNCTION__, "eSAP_INDICATE_MGMT_FRAME");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_INDICATE_MGMT_FRAME;
             sapApAppEvent.sapevt.sapManagementFrameInfo.nFrameLength
                                            = pCsrRoamInfo->nFrameLength;
@@ -1262,20 +996,15 @@ sapSignalHDDevent
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                                  "In %s, SAP event callback event = %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                                 __FUNCTION__, "eSAP_REMAIN_CHAN_READY");
 =======
                                 __func__, "eSAP_REMAIN_CHAN_READY");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                __FUNCTION__, "eSAP_REMAIN_CHAN_READY");
->>>>>>> 657b0e9... prima update
            sapApAppEvent.sapHddEventCode = eSAP_REMAIN_CHAN_READY;
             break;
        case eSAP_SEND_ACTION_CNF:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                                  "In %s, SAP event callback event = %s",
-<<<<<<< HEAD
 <<<<<<< HEAD
                                 __FUNCTION__, "eSAP_SEND_ACTION_CNF");
             sapApAppEvent.sapHddEventCode = eSAP_SEND_ACTION_CNF;
@@ -1284,13 +1013,9 @@ sapSignalHDDevent
 #endif
 =======
                                 __func__, "eSAP_SEND_ACTION_CNF");
-=======
-                                __FUNCTION__, "eSAP_SEND_ACTION_CNF");
->>>>>>> 657b0e9... prima update
             sapApAppEvent.sapHddEventCode = eSAP_SEND_ACTION_CNF;
-            sapApAppEvent.sapevt.sapActionCnf.actionSendSuccess = (eSapStatus)context; 
+            sapApAppEvent.sapevt.sapActionCnf.actionSendSuccess = (eSapStatus)context;
             break;
-<<<<<<< HEAD
 
        case eSAP_DISCONNECT_ALL_P2P_CLIENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -1309,14 +1034,10 @@ sapSignalHDDevent
             break;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
         case eSAP_UNKNOWN_STA_JOIN:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                        "In %s, SAP event callback event = %s",
-<<<<<<< HEAD
 <<<<<<< HEAD
                        __FUNCTION__, "eSAP_UNKNOWN_STA_JOIN");
             sapApAppEvent.sapHddEventCode = eSAP_UNKNOWN_STA_JOIN;
@@ -1326,18 +1047,12 @@ sapSignalHDDevent
             sapApAppEvent.sapHddEventCode = eSAP_UNKNOWN_STA_JOIN;
             vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapUnknownSTAJoin.macaddr.bytes,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eSAP_UNKNOWN_STA_JOIN");
-            sapApAppEvent.sapHddEventCode = eSAP_UNKNOWN_STA_JOIN;
-            vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapUnknownSTAJoin.macaddr.bytes, 
->>>>>>> 657b0e9... prima update
                          (v_PVOID_t)context, sizeof(v_MACADDR_t));
             break;
 
         case eSAP_MAX_ASSOC_EXCEEDED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                     "In %s, SAP event callback event = %s",
-<<<<<<< HEAD
 <<<<<<< HEAD
                     __FUNCTION__, "eSAP_MAX_ASSOC_EXCEEDED");
             sapApAppEvent.sapHddEventCode = eSAP_MAX_ASSOC_EXCEEDED;
@@ -1347,25 +1062,16 @@ sapSignalHDDevent
             sapApAppEvent.sapHddEventCode = eSAP_MAX_ASSOC_EXCEEDED;
             vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapMaxAssocExceeded.macaddr.bytes,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__, "eSAP_MAX_ASSOC_EXCEEDED");
-            sapApAppEvent.sapHddEventCode = eSAP_MAX_ASSOC_EXCEEDED;
-            vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapMaxAssocExceeded.macaddr.bytes, 
->>>>>>> 657b0e9... prima update
                     (v_PVOID_t)pCsrRoamInfo->peerMac, sizeof(v_MACADDR_t));
             break;
 
         default:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, SAP Unknown callback event = %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__,sapHddevent);
 =======
                        __func__,sapHddevent);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__,sapHddevent);
->>>>>>> 657b0e9... prima update
             break;
     }
     vosStatus = (*sapContext->pfnSapEventCallback)
@@ -1374,14 +1080,10 @@ sapSignalHDDevent
                  sapContext->pUsrContext//userdataforcallback - hdd opaque handle
                  );
 <<<<<<< HEAD
-<<<<<<< HEAD
                  
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 
->>>>>>> 657b0e9... prima update
     return vosStatus;
 
 } /* sapSignalApAppStartBssEvent */
@@ -1389,7 +1091,6 @@ sapSignalHDDevent
 /*==========================================================================
   FUNCTION    sapFsm
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   DESCRIPTION 
     SAP State machine entry function
@@ -1400,39 +1101,27 @@ sapSignalHDDevent
   PARAMETERS 
 =======
   DESCRIPTION
-=======
-  DESCRIPTION 
->>>>>>> 657b0e9... prima update
     SAP State machine entry function
 
-  DEPENDENCIES 
-    NA. 
+  DEPENDENCIES
+    NA.
 
-<<<<<<< HEAD
   PARAMETERS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  PARAMETERS 
->>>>>>> 657b0e9... prima update
 
     IN
     sapContext  : Sap Context value
     sapEvent    : State machine event
     status      : Return the SAP status here
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
-<<<<<<< HEAD
 <<<<<<< HEAD
   
   SIDE EFFECTS 
@@ -1440,15 +1129,10 @@ sapSignalHDDevent
 
   SIDE EFFECTS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-  SIDE EFFECTS 
->>>>>>> 657b0e9... prima update
 ============================================================================*/
 VOS_STATUS
 sapFsm
 (
-<<<<<<< HEAD
 <<<<<<< HEAD
     ptSapContext sapContext,    /* sapContext value */    
     ptWLAN_SAPEvent sapEvent   /* State machine event */
@@ -1462,13 +1146,6 @@ sapFsm
 {
    /* Retrieve the phy link state machine structure
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    ptSapContext sapContext,    /* sapContext value */    
-    ptWLAN_SAPEvent sapEvent   /* State machine event */
-)
-{
-   /* Retrieve the phy link state machine structure 
->>>>>>> 657b0e9... prima update
      * from the sapContext value
      */
     eSapFsmStates_t stateVar = sapContext->sapsMachine; /*state var that keeps track of state machine*/
@@ -1484,7 +1161,6 @@ sapFsm
                 /* Transition from eSAP_DISCONNECTED to eSAP_CH_SELECT (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, new from state %s => %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                             __FUNCTION__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
 
                 /* There can be one SAP Session for softap */
@@ -1494,20 +1170,13 @@ sapFsm
                         "%s:SME Session is already opened\n",__FUNCTION__);
 =======
                             __func__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
-=======
-                            __FUNCTION__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
->>>>>>> 657b0e9... prima update
 
                 /* There can be one SAP Session for softap */
-                if (sapContext->isSapSessionOpen == eSAP_TRUE) 
+                if (sapContext->isSapSessionOpen == eSAP_TRUE)
                 {
                    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
-<<<<<<< HEAD
                         "%s:SME Session is already opened\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        "%s:SME Session is already opened\n",__FUNCTION__);
->>>>>>> 657b0e9... prima update
                    return VOS_STATUS_E_EXISTS;
                 }
 
@@ -1519,7 +1188,6 @@ sapFsm
                 /* Perform sme_ScanRequest */
                 vosStatus = sapGotoChannelSel(sapContext, sapEvent);
 <<<<<<< HEAD
-<<<<<<< HEAD
                 
                 /* Transition from eSAP_DISCONNECTED to eSAP_CH_SELECT (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
@@ -1531,27 +1199,19 @@ sapFsm
                              __FUNCTION__, "eSAP_DISCONNECTED", msg);
 =======
 
-=======
-                
->>>>>>> 657b0e9... prima update
                 /* Transition from eSAP_DISCONNECTED to eSAP_CH_SELECT (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
-                           __FUNCTION__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
-            } 
-            else 
+                           __func__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
+            }
+            else
             {
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, event msg %d",
-<<<<<<< HEAD
                              __func__, "eSAP_DISCONNECTED", msg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                             __FUNCTION__, "eSAP_DISCONNECTED", msg);
->>>>>>> 657b0e9... prima update
             }
             break;
 
         case eSAP_CH_SELECT:
-<<<<<<< HEAD
 <<<<<<< HEAD
             if (msg == eSAP_MAC_SCAN_COMPLETE) 
             {
@@ -1565,13 +1225,6 @@ sapFsm
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
                             __func__, "eSAP_CH_SELECT", "eSAP_STARTING");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if (msg == eSAP_MAC_SCAN_COMPLETE) 
-            {
-                 /* Transition from eSAP_CH_SELECT to eSAP_STARTING (both without substates) */
-                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
-                            __FUNCTION__, "eSAP_CH_SELECT", "eSAP_STARTING");
->>>>>>> 657b0e9... prima update
                  // Channel selected. Now can sapGotoStarting
                  sapContext->sapsMachine = eSAP_STARTING;
                  // Specify the channel
@@ -1582,32 +1235,23 @@ sapFsm
                  /* Transition from eSAP_CH_SELECT to eSAP_STARTING (both without substates) */
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                              __FUNCTION__, "eSAP_CH_SELECT", "eSAP_STARTING");
 =======
                              __func__, "eSAP_CH_SELECT", "eSAP_STARTING");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                             __FUNCTION__, "eSAP_CH_SELECT", "eSAP_STARTING");
->>>>>>> 657b0e9... prima update
             }
             else
             {
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, invalid event msg %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                             __FUNCTION__, "eSAP_CH_SELECT", msg);
 =======
                             __func__, "eSAP_CH_SELECT", msg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            __FUNCTION__, "eSAP_CH_SELECT", msg);
->>>>>>> 657b0e9... prima update
             }
             break;
 
         case eSAP_STARTING:
-<<<<<<< HEAD
 <<<<<<< HEAD
             if (msg == eSAP_MAC_START_BSS_SUCCESS ) 
             {
@@ -1621,13 +1265,6 @@ sapFsm
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state channel = %d %s => %s",
                             __func__,sapContext->channel, "eSAP_STARTING", "eSAP_STARTED");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if (msg == eSAP_MAC_START_BSS_SUCCESS ) 
-            {
-                /* Transition from eSAP_STARTING to eSAP_STARTED (both without substates) */
-                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state channel = %d %s => %s",
-                            __FUNCTION__,sapContext->channel, "eSAP_STARTING", "eSAP_STARTED");
->>>>>>> 657b0e9... prima update
 
                  sapContext->sapsMachine = eSAP_STARTED;
                  /*Action code for transition */
@@ -1635,7 +1272,6 @@ sapFsm
 
                  /* Transition from eSAP_STARTING to eSAP_STARTED (both without substates) */
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
-<<<<<<< HEAD
 <<<<<<< HEAD
                             __FUNCTION__, "eSAP_STARTING", "eSAP_STARTED");
              }
@@ -1647,22 +1283,14 @@ sapFsm
                 
 =======
                             __func__, "eSAP_STARTING", "eSAP_STARTED");
-=======
-                            __FUNCTION__, "eSAP_STARTING", "eSAP_STARTED");
->>>>>>> 657b0e9... prima update
              }
-             else if (msg == eSAP_MAC_START_FAILS) 
+             else if (msg == eSAP_MAC_START_FAILS)
              {
-                 /*Transition from STARTING to DISCONNECTED (both without substates)*/                         
+                 /*Transition from STARTING to DISCONNECTED (both without substates)*/
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
-<<<<<<< HEAD
                             __func__, "eSAP_STARTING", "eSAP_DISCONNECTED");
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            __FUNCTION__, "eSAP_STARTING", "eSAP_DISCONNECTED");
-                
->>>>>>> 657b0e9... prima update
                  /*Action code for transition */
                  vosStatus = sapSignalHDDevent( sapContext, NULL, eSAP_START_BSS_EVENT,(v_PVOID_t) eSAP_STATUS_FAILURE);
                  vosStatus =  sapGotoDisconnected(sapContext);
@@ -1673,7 +1301,6 @@ sapFsm
              else if (msg == eSAP_HDD_STOP_INFRA_BSS)
              {
 <<<<<<< HEAD
-<<<<<<< HEAD
                  /*Transition from eSAP_STARTING to eSAP_DISCONNECTING (both without substates)*/        
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
                              __FUNCTION__, "eSAP_STARTING", "eSAP_DISCONNECTING");
@@ -1682,11 +1309,6 @@ sapFsm
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
                              __func__, "eSAP_STARTING", "eSAP_DISCONNECTING");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 /*Transition from eSAP_STARTING to eSAP_DISCONNECTING (both without substates)*/        
-                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
-                             __FUNCTION__, "eSAP_STARTING", "eSAP_DISCONNECTING");
->>>>>>> 657b0e9... prima update
 
                  /*Advance outer statevar */
                  sapContext->sapsMachine = eSAP_DISCONNECTED;
@@ -1695,21 +1317,16 @@ sapFsm
                  /* Close the SME session*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                  if (eSAP_TRUE == sapContext->isSapSessionOpen) 
 =======
                  if (eSAP_TRUE == sapContext->isSapSessionOpen)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 if (eSAP_TRUE == sapContext->isSapSessionOpen) 
->>>>>>> 657b0e9... prima update
                  {
                     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
                     if (NULL == hHal)
                     {
                        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                                   "In %s, NULL hHal in state %s, msg %d",
-<<<<<<< HEAD
 <<<<<<< HEAD
                                   __FUNCTION__, "eSAP_STARTING", msg);
                     }
@@ -1719,11 +1336,6 @@ sapFsm
                     }
                     else if (eHAL_STATUS_SUCCESS ==
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                  __FUNCTION__, "eSAP_STARTING", msg);
-                    }
-                    else if (eHAL_STATUS_SUCCESS == 
->>>>>>> 657b0e9... prima update
                          sme_CloseSession(hHal,
                                          sapContext->sessionId, NULL, NULL))
                      {
@@ -1731,7 +1343,6 @@ sapFsm
                      }
                  }
              }
-<<<<<<< HEAD
 <<<<<<< HEAD
              else 
              {
@@ -1745,13 +1356,6 @@ sapFsm
                              "In %s, in state %s, invalid event msg %d",
                              __func__, "eSAP_STARTING", msg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             else 
-             {
-                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
-                             "In %s, in state %s, invalid event msg %d",
-                             __FUNCTION__, "eSAP_STARTING", msg);
->>>>>>> 657b0e9... prima update
                  /* Intentionally left blank */
              }
              break;
@@ -1762,14 +1366,10 @@ sapFsm
                 /* Transition from eSAP_STARTED to eSAP_DISCONNECTING (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                            __FUNCTION__, "eSAP_STARTED", "eSAP_DISCONNECTING");
 =======
                            __func__, "eSAP_STARTED", "eSAP_DISCONNECTING");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           __FUNCTION__, "eSAP_STARTED", "eSAP_DISCONNECTING");
->>>>>>> 657b0e9... prima update
                 sapContext->sapsMachine = eSAP_DISCONNECTING;
                 vosStatus = sapGotoDisconnecting(sapContext);
             }
@@ -1777,14 +1377,10 @@ sapFsm
             {
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, invalid event msg %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                            __FUNCTION__, "eSAP_STARTED", msg);
 =======
                            __func__, "eSAP_STARTED", msg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           __FUNCTION__, "eSAP_STARTED", msg);
->>>>>>> 657b0e9... prima update
             }
             break;
 
@@ -1793,7 +1389,6 @@ sapFsm
             {
                 /* Transition from eSAP_DISCONNECTING to eSAP_DISCONNECTED (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
-<<<<<<< HEAD
 <<<<<<< HEAD
                           __FUNCTION__, "eSAP_DISCONNECTING", "eSAP_DISCONNECTED");
 
@@ -1807,13 +1402,6 @@ sapFsm
                 /* Close the SME session*/
                 if (eSAP_TRUE == sapContext->isSapSessionOpen)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          __FUNCTION__, "eSAP_DISCONNECTING", "eSAP_DISCONNECTED");
-
-                sapContext->sapsMachine = eSAP_DISCONNECTED;
-                /* Close the SME session*/
-                if (eSAP_TRUE == sapContext->isSapSessionOpen) 
->>>>>>> 657b0e9... prima update
                 {
                     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
 
@@ -1822,14 +1410,10 @@ sapFsm
                         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                                    "In %s, NULL hHal in state %s, msg %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                                    __FUNCTION__, "eSAP_DISCONNECTING", msg);
 =======
                                    __func__, "eSAP_DISCONNECTING", msg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                   __FUNCTION__, "eSAP_DISCONNECTING", msg);
->>>>>>> 657b0e9... prima update
                     }
                     else
                     {
@@ -1841,20 +1425,15 @@ sapFsm
                         {
                             vosStatus = sapSignalHDDevent(sapContext, NULL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                               eSAP_STOP_BSS_EVENT, 
 =======
                                               eSAP_STOP_BSS_EVENT,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                              eSAP_STOP_BSS_EVENT, 
->>>>>>> 657b0e9... prima update
                                               (v_PVOID_t) eSAP_STATUS_SUCCESS);
                         }
                     }
                 }
             }
-<<<<<<< HEAD
 <<<<<<< HEAD
             else 
             {
@@ -1863,18 +1442,11 @@ sapFsm
                           __FUNCTION__, "eSAP_DISCONNECTING", msg);
 =======
             else
-=======
-            else 
->>>>>>> 657b0e9... prima update
             {
-                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, 
+                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                            "In %s, in state %s, invalid event msg %d",
-<<<<<<< HEAD
                           __func__, "eSAP_DISCONNECTING", msg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          __FUNCTION__, "eSAP_DISCONNECTING", msg);
->>>>>>> 657b0e9... prima update
             }
             break;
       }
@@ -1891,14 +1463,10 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
     profile->csrPersona = pconfig_params->persona;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_zero(profile->SSIDs.SSIDList[0].SSID.ssId, 
 =======
     vos_mem_zero(profile->SSIDs.SSIDList[0].SSID.ssId,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_zero(profile->SSIDs.SSIDList[0].SSID.ssId, 
->>>>>>> 657b0e9... prima update
                  sizeof(profile->SSIDs.SSIDList[0].SSID.ssId));
 
     //Flag to not broadcast the SSID information
@@ -1952,7 +1520,6 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         profile->csr80211AuthType = eSIR_AUTO_SWITCH; 
     }
 
@@ -1963,32 +1530,21 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
 
     //Initialize we are not going to use it
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        profile->csr80211AuthType = eSIR_AUTO_SWITCH; 
-    }
-
-    //Initialize we are not going to use it 
->>>>>>> 657b0e9... prima update
     profile->pWPAReqIE = NULL;
     profile->nWPAReqIELength = 0;
 
     //set the RSN/WPA IE
     profile->pRSNReqIE = NULL;
 <<<<<<< HEAD
-<<<<<<< HEAD
     profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength; 
 =======
     profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength; 
->>>>>>> 657b0e9... prima update
     if (pconfig_params->RSNWPAReqIELength)
     {
         profile->pRSNReqIE = vos_mem_malloc(pconfig_params->RSNWPAReqIELength);
         if( NULL == profile->pRSNReqIE )
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
            VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, " %s Fail to alloc memory", __FUNCTION__);
            return eSAP_STATUS_FAILURE;
@@ -2002,13 +1558,6 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
         vos_mem_copy(profile->pRSNReqIE, pconfig_params->pRSNWPAReqIE, pconfig_params->RSNWPAReqIELength);
         profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, " %s Fail to alloc memory", __FUNCTION__);
-           return eSAP_STATUS_FAILURE;
-        }
-        vos_mem_copy(profile->pRSNReqIE, pconfig_params->pRSNWPAReqIE, pconfig_params->RSNWPAReqIELength);
-        profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength; 
->>>>>>> 657b0e9... prima update
     }
 
     // Turn off CB mode
@@ -2035,7 +1584,6 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
     //country code
     if (pconfig_params->countryCode[0])
 <<<<<<< HEAD
-<<<<<<< HEAD
         vos_mem_copy(profile->countryCode, pconfig_params->countryCode, WNI_CFG_COUNTRY_CODE_LEN); 
 #ifdef WLAN_SOFTAP_FEATURE
     profile->ieee80211d = pconfig_params->ieee80211d;
@@ -2044,19 +1592,12 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
         vos_mem_copy(profile->countryCode, pconfig_params->countryCode, WNI_CFG_COUNTRY_CODE_LEN);
     profile->ieee80211d = pconfig_params->ieee80211d;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        vos_mem_copy(profile->countryCode, pconfig_params->countryCode, WNI_CFG_COUNTRY_CODE_LEN); 
-#ifdef WLAN_SOFTAP_FEATURE
-    profile->ieee80211d = pconfig_params->ieee80211d;
-#endif
->>>>>>> 657b0e9... prima update
     //wps config info
     profile->wps_state = pconfig_params->wps_state;
 
     return eSAP_STATUS_SUCCESS; /* Success.  */
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /**
@@ -2092,8 +1633,6 @@ eCsrPhyMode sapConvertSapPhyModeToCsrPhyMode( eSapPhyMode sapPhyMode )
     }
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 void sapFreeRoamProfile(tCsrRoamProfile *profile)
 {
@@ -2146,14 +1685,10 @@ sapSearchMacList(v_MACADDR_t *macList, v_U8_t num_mac, v_U8_t *peerMac, v_U8_t *
             // "index equals NULL" means the caller does not need the
             // index value of the peerMac being searched
 <<<<<<< HEAD
-<<<<<<< HEAD
             if (index != NULL) 
 =======
             if (index != NULL)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if (index != NULL) 
->>>>>>> 657b0e9... prima update
             {
                 *index = (v_U8_t) nMiddle;
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -2200,14 +1735,10 @@ sapAddMacToACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t *peerMac)
 
 void
 <<<<<<< HEAD
-<<<<<<< HEAD
 sapRemoveMacFromACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t index)    
 =======
 sapRemoveMacFromACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t index)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-sapRemoveMacFromACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t index)    
->>>>>>> 657b0e9... prima update
 {
     int i;
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"remove acl entered");
@@ -2231,27 +1762,19 @@ void sapPrintACL(v_MACADDR_t *macList, v_U8_t size)
 {
     int i;
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"print acl entered");    
 =======
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"print acl entered");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"print acl entered");    
->>>>>>> 657b0e9... prima update
     if (size==0) return;
     for (i=0; i<size; i++)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "** ACL entry %i - %02x:%02x:%02x:%02x:%02x:%02x", i, 
 =======
                 "** ACL entry %i - %02x:%02x:%02x:%02x:%02x:%02x", i,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "** ACL entry %i - %02x:%02x:%02x:%02x:%02x:%02x", i, 
->>>>>>> 657b0e9... prima update
                 (macList+i)->bytes[0], (macList+i)->bytes[1], (macList+i)->bytes[2],
                 (macList+i)->bytes[3], (macList+i)->bytes[4], (macList+i)->bytes[5]);
     }
@@ -2271,14 +1794,10 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x in deny list",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
 =======
                 __func__, *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -2291,14 +1810,10 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_DENY_UNLESS_ACCEPTED",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
 =======
                 __func__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -2308,7 +1823,6 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
     if (eSAP_SUPPORT_ACCEPT_AND_DENY == sapContext->eSapMacAddrAclMode)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         sapSignalHDDevent(sapContext, NULL, eSAP_UNKNOWN_STA_JOIN, (v_PVOID_t)peerMac);    
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_SUPPORT_ACCEPT_AND_DENY",
                 __FUNCTION__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
@@ -2317,11 +1831,6 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_SUPPORT_ACCEPT_AND_DENY",
                 __func__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        sapSignalHDDevent(sapContext, NULL, eSAP_UNKNOWN_STA_JOIN, (v_PVOID_t)peerMac);    
-        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_SUPPORT_ACCEPT_AND_DENY",
-                __FUNCTION__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAILURE;
     }
     return VOS_STATUS_SUCCESS;
@@ -2351,19 +1860,14 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
         return VOS_STATUS_E_FAULT;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
     ccmCfgGetInt(hHal, WNI_CFG_SAP_CHANNEL_SELECT_START_CHANNEL, &startChannelNum);
     ccmCfgGetInt(hHal, WNI_CFG_SAP_CHANNEL_SELECT_END_CHANNEL, &endChannelNum);
     ccmCfgGetInt(hHal, WNI_CFG_SAP_CHANNEL_SELECT_OPERATING_BAND, &operatingBand);
     ccmCfgGetInt(hHal, WNI_CFG_ENABLE_LTE_COEX, &enableLTECoex);
-<<<<<<< HEAD
 <<<<<<< HEAD
     
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO,
@@ -2377,13 +1881,6 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
              __func__,startChannelNum,endChannelNum,operatingBand);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO,
-             "%s:sapGetChannelList: startChannel %d,EndChannel %d,Operatingband:%d",
-             __FUNCTION__,startChannelNum,endChannelNum,operatingBand);
-    
->>>>>>> 657b0e9... prima update
     switch(operatingBand)
     {
         case RF_SUBBAND_2_4_GHZ:
@@ -2391,59 +1888,41 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
            bandEndChannel = RF_CHAN_14;
            break;
 <<<<<<< HEAD
-<<<<<<< HEAD
            
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           
->>>>>>> 657b0e9... prima update
         case RF_SUBBAND_5_LOW_GHZ:
            bandStartChannel = RF_CHAN_36;
            bandEndChannel = RF_CHAN_64;
            break;
 <<<<<<< HEAD
-<<<<<<< HEAD
            
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           
->>>>>>> 657b0e9... prima update
         case RF_SUBBAND_5_MID_GHZ:
            bandStartChannel = RF_CHAN_100;
            bandEndChannel = RF_CHAN_140;
            break;
 <<<<<<< HEAD
-<<<<<<< HEAD
            
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           
->>>>>>> 657b0e9... prima update
         case RF_SUBBAND_5_HIGH_GHZ:
            bandStartChannel = RF_CHAN_149;
            bandEndChannel = RF_CHAN_165;
            break;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
            
         case RF_SUBBAND_4_9_GHZ:
            bandStartChannel = RF_CHAN_240;
            bandEndChannel = RF_CHAN_216;
            break;
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         default:
            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
              "sapGetChannelList:OperatingBand not valid ");
@@ -2454,41 +1933,29 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
     }
     /*Check if LTE coex is enabled and 2.4GHz is selected*/
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (enableLTECoex && (bandStartChannel == RF_CHAN_1) 
 =======
     if (enableLTECoex && (bandStartChannel == RF_CHAN_1)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (enableLTECoex && (bandStartChannel == RF_CHAN_1) 
->>>>>>> 657b0e9... prima update
        && (bandEndChannel == RF_CHAN_14))
     {
         /*Set 2.4GHz upper limit to channel 9 for LTE COEX*/
         bandEndChannel = RF_CHAN_9;
 <<<<<<< HEAD
-<<<<<<< HEAD
     }      
 =======
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    }      
->>>>>>> 657b0e9... prima update
     /* Allocate the max number of channel supported */
     list = (v_U8_t *)vos_mem_malloc(NUM_5GHZ_CHANNELS);
     if (NULL == list)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "%s: Unable to allocate channel list", __FUNCTION__);
 =======
                    "%s: Unable to allocate channel list", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "%s: Unable to allocate channel list", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         *numberOfChannels = 0;
         *channelList = NULL;
         return VOS_STATUS_E_RESOURCES;
@@ -2504,28 +1971,20 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
             if( regChannels[loopCount].enabled )
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 list[channelCount] = rfChannels[loopCount].channelNum; 
 =======
                 list[channelCount] = rfChannels[loopCount].channelNum;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                list[channelCount] = rfChannels[loopCount].channelNum; 
->>>>>>> 657b0e9... prima update
                 channelCount++;
             }
         }
     }
     if (0 == channelCount)
 <<<<<<< HEAD
-<<<<<<< HEAD
     { 
 =======
     {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    { 
->>>>>>> 657b0e9... prima update
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
         "sapGetChannelList:No active channels present in the given range for the current region");
         /*LTE COEX: channel range outside the restricted 2.4GHz band limits*/
@@ -2535,7 +1994,6 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
             "sapGetChannelList:SAP cannot be started as LTE COEX restricted 2.4GHz limits");
         }
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
    
     /* return the channel list and number of channels to scan*/
@@ -2549,13 +2007,6 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
     if(channelCount != 0)
     {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
-    /* return the channel list and number of channels to scan*/
-    *numberOfChannels = channelCount;
-    if(channelCount != 0)
-    {         
->>>>>>> 657b0e9... prima update
        *channelList = list;
     }
     else

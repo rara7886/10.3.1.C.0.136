@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,7 +43,6 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
 =======
@@ -54,10 +50,6 @@
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/*
- * Airgo Networks, Inc proprietary. All rights reserved.
->>>>>>> 657b0e9... prima update
  * This file limLinkMonitoringAlgo.cc contains the code for
  * Link monitoring algorithm on AP and heart beat failure
  * handling on STA.
@@ -71,7 +63,6 @@
 
 #include "aniGlobal.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "wniCfgAp.h"
 #include "cfgApi.h"
 
@@ -84,15 +75,6 @@
 #include "cfgApi.h"
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "wniCfgAp.h"
-#include "cfgApi.h"
-
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halDataStruct.h"
-#include "halCommonApi.h"
-#endif
->>>>>>> 657b0e9... prima update
 
 #include "schApi.h"
 #include "pmmApi.h"
@@ -131,9 +113,6 @@ limSendKeepAliveToPeer(tpAniSirGlobal pMac)
 {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef ANI_PRODUCT_TYPE_AP   //oct 3rd review
 
     tpDphHashNode   pStaDs;
@@ -193,11 +172,8 @@ limSendKeepAliveToPeer(tpAniSirGlobal pMac)
         }
     }
     #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } /*** limSendKeepAliveToPeer() ***/
 
 
@@ -219,7 +195,6 @@ limDeleteStaContext(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     tpPESession psessionEntry ;
     tANI_U8     sessionId;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if((psessionEntry = peFindSessionByBssid(pMac,pMsg->bssId,&sessionId))== NULL)
     {
@@ -282,75 +257,72 @@ limDeleteStaContext(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
         PELOGE(limLog(pMac, LOGE,FL("Invalid body pointer in message"));)
         return;
     }
-=======
->>>>>>> 657b0e9... prima update
     if((psessionEntry = peFindSessionByBssid(pMac,pMsg->bssId,&sessionId))== NULL)
     {
-         PELOGE(limLog(pMac, LOGE,FL("session does not exist for given BSSId\n"));)
-         palFreeMemory(pMac->hHdd, pMsg);
-         return;
+        PELOGE(limLog(pMac, LOGE,FL("session does not exist for given BSSId"));)
+        vos_mem_free(pMsg);
+        return;
     }
 
-    if (NULL != pMsg)
+    switch(pMsg->reasonCode)
     {
-#ifdef WLAN_SOFTAP_FEATURE
-        switch(pMsg->reasonCode)
-        {
-            case HAL_DEL_STA_REASON_CODE_KEEP_ALIVE:
-            case HAL_DEL_STA_REASON_CODE_TIM_BASED:
-                PELOGE(limLog(pMac, LOGE, FL(" Deleting station: staId = %d, reasonCode = %d\n"), pMsg->staId, pMsg->reasonCode);)
+        case HAL_DEL_STA_REASON_CODE_KEEP_ALIVE:
+        case HAL_DEL_STA_REASON_CODE_TIM_BASED:
+             PELOGE(limLog(pMac, LOGE, FL(" Deleting station: staId = %d, reasonCode = %d"), pMsg->staId, pMsg->reasonCode);)
+             if (eLIM_STA_IN_IBSS_ROLE == psessionEntry->limSystemRole)
+                 return;
+
+             pStaDs = dphLookupAssocId(pMac, pMsg->staId, &pMsg->assocId, &psessionEntry->dph.dphHashTable);
+
+             if (!pStaDs)
+             {
+                 PELOGE(limLog(pMac, LOGE, FL("Skip STA deletion (invalid STA) limSystemRole=%d"),psessionEntry->limSystemRole);)
+                 vos_mem_free(pMsg);
+                 return;
+             }
+
+             /* check and see if same staId. This is to avoid the scenario
+              * where we're trying to delete a staId we just added.
+              */
+             if (pStaDs->staIndex != pMsg->staId)
+             {
+                 PELOGE(limLog(pMac, LOGE, FL("staid mismatch: %d vs %d "), pStaDs->staIndex, pMsg->staId);)
+                 vos_mem_free(pMsg);
+                 return;
+             }
+
+             if((eLIM_BT_AMP_AP_ROLE == psessionEntry->limSystemRole) ||
+                     (eLIM_AP_ROLE == psessionEntry->limSystemRole))
+             {
+                 PELOG1(limLog(pMac, LOG1, FL("SAP:lim Delete Station Context (staId: %d, assocId: %d) "),
+                             pMsg->staId, pMsg->assocId);)
+                 limTriggerSTAdeletion(pMac, pStaDs, psessionEntry);
+             }
+             else
+             {
+#ifdef FEATURE_WLAN_TDLS
+                if(eLIM_STA_ROLE == psessionEntry->limSystemRole &&
+                    STA_ENTRY_TDLS_PEER == pStaDs->staType)
+                {
+                    //TeardownLink with PEER
+                    //Reason code HAL_DEL_STA_REASON_CODE_KEEP_ALIVE means
+                    //eSIR_MAC_TDLS_TEARDOWN_PEER_UNREACHABLE
+                    limSendSmeTDLSDelStaInd(pMac, pStaDs, psessionEntry,
+                    /*pMsg->reasonCode*/ eSIR_MAC_TDLS_TEARDOWN_PEER_UNREACHABLE);
+                }
+                else
+                {
 #endif
-                if((eLIM_BT_AMP_AP_ROLE == psessionEntry->limSystemRole) ||
-                   (eLIM_AP_ROLE == psessionEntry->limSystemRole))
-                {
-                    pStaDs = dphGetHashEntry(pMac, pMsg->assocId, &psessionEntry->dph.dphHashTable);
-                }
-                else
-                {
-                    pStaDs = dphGetHashEntry(pMac, DPH_STA_HASH_INDEX_PEER, &psessionEntry->dph.dphHashTable);
-                }
-                if (! pStaDs)
-                {
-                   PELOGE(limLog(pMac, LOGE, FL("Skip STA deletion (invalid STA) limSystemRole=%d\n"),psessionEntry->limSystemRole);)
-                   palFreeMemory(pMac->hHdd, pMsg);
-                   return;
-                }
-
-                /* check and see if same staId. This is to avoid the scenario
-                * where we're trying to delete a staId we just added.
-                */
-                if (pStaDs->staIndex != pMsg->staId)
-                {
-                    PELOGE(limLog(pMac, LOGE, FL("staid mismatch: %d vs %d \n"), pStaDs->staIndex, pMsg->staId);)
-                    palFreeMemory(pMac->hHdd, pMsg);
-                    return;
-                }
-
-                if((eLIM_BT_AMP_AP_ROLE == psessionEntry->limSystemRole) ||
-                   (eLIM_AP_ROLE == psessionEntry->limSystemRole))
-                {
-                    PELOG1(limLog(pMac, LOG1, FL("SAP:lim Delete Station Context (staId: %d, assocId: %d) \n"),
-                                  pMsg->staId, pMsg->assocId);)
-                    limTriggerSTAdeletion(pMac, pStaDs, psessionEntry);
-                }
-                else
-                {
                     //TearDownLink with AP
                     tLimMlmDeauthInd  mlmDeauthInd;
-<<<<<<< HEAD
                     PELOGW(limLog(pMac, LOGW, FL("lim Delete Station Context (staId: %d, assocId: %d) "),
                                 pMsg->staId, pMsg->assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOGW(limLog(pMac, LOGW, FL("lim Delete Station Context (staId: %d, assocId: %d) \n"),
-                                  pMsg->staId, pMsg->assocId);)
->>>>>>> 657b0e9... prima update
 
                     pStaDs->mlmStaContext.disassocReason = eSIR_MAC_UNSPEC_FAILURE_REASON;
                     pStaDs->mlmStaContext.cleanupTrigger = eLIM_LINK_MONITORING_DEAUTH;
 
                     // Issue Deauth Indication to SME.
-<<<<<<< HEAD
 <<<<<<< HEAD
                     palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
                                    pStaDs->staAddr, sizeof(tSirMacAddr));
@@ -383,41 +355,35 @@ limDeleteStaContext(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
 =======
                     vos_mem_copy((tANI_U8 *) &mlmDeauthInd.peerMacAddr,
                                   pStaDs->staAddr, sizeof(tSirMacAddr));
-=======
-                    palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
-                                   pStaDs->staAddr, sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
                     mlmDeauthInd.reasonCode    = (tANI_U8) pStaDs->mlmStaContext.disassocReason;
                     mlmDeauthInd.deauthTrigger =  pStaDs->mlmStaContext.cleanupTrigger;
 
-                    limPostSmeMessage(pMac, LIM_MLM_DEAUTH_IND, (tANI_U32 *) &mlmDeauthInd);
- 
-                    limSendSmeDeauthInd(pMac, pStaDs, psessionEntry);
-                }
-#ifdef WLAN_SOFTAP_FEATURE
-                break;        
-            
-            case HAL_DEL_STA_REASON_CODE_UNKNOWN_A2:
-                PELOGE(limLog(pMac, LOGE, FL(" Deleting Unknown station \n"));)
-                limPrintMacAddr(pMac, pMsg->addr2, LOGE);
-               
-                limSendDeauthMgmtFrame( pMac, eSIR_MAC_CLASS3_FRAME_FROM_NON_ASSOC_STA_REASON, pMsg->addr2, psessionEntry);
-                break;
-
-            default:
-                PELOGE(limLog(pMac, LOGE, FL(" Unknown reason code \n"));)
-                break;
-
-        }
+#ifdef FEATURE_WLAN_TDLS
+                    /* Delete all TDLS peers connected before leaving BSS*/
+                    limDeleteTDLSPeers(pMac, psessionEntry);
 #endif
+                    limPostSmeMessage(pMac, LIM_MLM_DEAUTH_IND, (tANI_U32 *) &mlmDeauthInd);
+
+                    limSendSmeDeauthInd(pMac, pStaDs, psessionEntry);
+#ifdef FEATURE_WLAN_TDLS
+                 }
+#endif
+             }
+             break;        
+
+        case HAL_DEL_STA_REASON_CODE_UNKNOWN_A2:
+             PELOGE(limLog(pMac, LOGE, FL(" Deleting Unknown station "));)
+             limPrintMacAddr(pMac, pMsg->addr2, LOGE);
+             limSendDeauthMgmtFrame( pMac, eSIR_MAC_CLASS3_FRAME_FROM_NON_ASSOC_STA_REASON, pMsg->addr2, psessionEntry, FALSE);
+             break;
+
+        default:
+             PELOGE(limLog(pMac, LOGE, FL(" Unknown reason code "));)
+             break;
+
     }
-<<<<<<< HEAD
     vos_mem_free(pMsg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    palFreeMemory(pMac->hHdd, pMsg);
->>>>>>> 657b0e9... prima update
     return;
 }
 
@@ -450,14 +416,10 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
     if (! pStaDs)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("Skip STA deletion (invalid STA)\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("Skip STA deletion (invalid STA)"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("Skip STA deletion (invalid STA)\n"));)
->>>>>>> 657b0e9... prima update
         return;
     }
     /**
@@ -466,7 +428,6 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
      * take care of disassociation as well.
      */
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSmeDeauthReq, sizeof(tSirSmeDeauthReq)))
     {
@@ -477,11 +438,6 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
     {
         limLog(pMac, LOGP, FL("AllocateMemory failed for eWNI_SME_DEAUTH_REQ "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pSmeDeauthReq, sizeof(tSirSmeDeauthReq)))
-    {
-        limLog(pMac, LOGP, FL("palAllocateMemory failed for eWNI_SME_DEAUTH_REQ \n"));
->>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -489,20 +445,14 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
 
     //messageType
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
     limCopyU16((tANI_U8*)pBuf, eWNI_SME_DISASSOC_REQ);
 #else
     limCopyU16((tANI_U8*)pBuf, eWNI_SME_DEAUTH_REQ);
 #endif
-<<<<<<< HEAD
 =======
     limCopyU16((tANI_U8*)pBuf, eWNI_SME_DISASSOC_REQ);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     pBuf += sizeof(tANI_U16);
     msgLength += sizeof(tANI_U16);
 
@@ -523,33 +473,24 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
 
     //bssId
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pBuf, psessionEntry->bssId, sizeof(tSirMacAddr) );
 =======
     vos_mem_copy(pBuf, psessionEntry->bssId, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pBuf, psessionEntry->bssId, sizeof(tSirMacAddr) );
->>>>>>> 657b0e9... prima update
     pBuf += sizeof(tSirMacAddr);
     msgLength += sizeof(tSirMacAddr);
 
     //peerMacAddr
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pBuf, pStaDs->staAddr, sizeof(tSirMacAddr) );
 =======
     vos_mem_copy(pBuf, pStaDs->staAddr, sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pBuf, pStaDs->staAddr, sizeof(tSirMacAddr) );
->>>>>>> 657b0e9... prima update
     pBuf += sizeof(tSirMacAddr);
     msgLength += sizeof(tSirMacAddr);
 
     //reasonCode 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     limCopyU16((tANI_U8*)pBuf, (tANI_U16)eLIM_LINK_MONITORING_DISASSOC);
 #else
@@ -558,13 +499,6 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
 =======
     limCopyU16((tANI_U8*)pBuf, (tANI_U16)eLIM_LINK_MONITORING_DISASSOC);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-    limCopyU16((tANI_U8*)pBuf, (tANI_U16)eLIM_LINK_MONITORING_DISASSOC);
-#else
-    limCopyU16((tANI_U8*)pBuf, (tANI_U16)eLIM_LINK_MONITORING_DEAUTH);
-#endif
->>>>>>> 657b0e9... prima update
     pBuf += sizeof(tANI_U16);
     msgLength += sizeof(tANI_U16);
 
@@ -577,16 +511,12 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     //aid
     limCopyU16((tANI_U8*)pBuf, pStaDs->assocId);
     pBuf += sizeof(tANI_U16);
     msgLength += sizeof(tANI_U16);
 #endif
-<<<<<<< HEAD
   
     //Fill in length
     limCopyU16((tANI_U8*)pLen, msgLength);
@@ -598,23 +528,13 @@ limTriggerSTAdeletion(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpPESession pse
 #endif
     palFreeMemory( pMac->hHdd, pSmeDeauthReq );
 =======
-=======
->>>>>>> 657b0e9... prima update
   
     //Fill in length
-    limCopyU16((tANI_U8*)pLen, msgLength);
+    limCopyU16((tANI_U8*)pLen , msgLength);
 
-#ifdef WLAN_SOFTAP_FEATURE
     limPostSmeMessage(pMac, eWNI_SME_DISASSOC_REQ, (tANI_U32 *) pSmeDeauthReq);
-<<<<<<< HEAD
     vos_mem_free(pSmeDeauthReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#else
-    limPostSmeMessage(pMac, eWNI_SME_DEAUTH_REQ, (tANI_U32 *) pSmeDeauthReq);
-#endif
-    palFreeMemory( pMac->hHdd, pSmeDeauthReq );
->>>>>>> 657b0e9... prima update
 
 } /*** end limTriggerSTAdeletion() ***/
 
@@ -648,14 +568,10 @@ limTearDownLinkWithAp(tpAniSirGlobal pMac, tANI_U8 sessionId, tSirMacReasonCodes
     if((psessionEntry = peFindSessionBySessionId(pMac, sessionId))== NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
 =======
         limLog(pMac, LOGP,FL("Session Does not exist for given sessionID"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP,FL("Session Does not exist for given sessionID\n"));
->>>>>>> 657b0e9... prima update
         return;
     }
     /**
@@ -667,14 +583,10 @@ limTearDownLinkWithAp(tpAniSirGlobal pMac, tANI_U8 sessionId, tSirMacReasonCodes
     pMac->pmm.inMissedBeaconScenario = FALSE;
     limLog(pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
        FL("No ProbeRsp from AP after HB failure. Tearing down link\n"));
 =======
        FL("No ProbeRsp from AP after HB failure. Tearing down link"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       FL("No ProbeRsp from AP after HB failure. Tearing down link\n"));
->>>>>>> 657b0e9... prima update
 
     // Deactivate heartbeat timer
     limHeartBeatDeactivateAndChangeTimer(pMac, psessionEntry);
@@ -690,7 +602,6 @@ limTearDownLinkWithAp(tpAniSirGlobal pMac, tANI_U8 sessionId, tSirMacReasonCodes
         tLimMlmDeauthInd  mlmDeauthInd;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
         /* Delete all TDLS peers connected before leaving BSS*/
@@ -698,21 +609,15 @@ limTearDownLinkWithAp(tpAniSirGlobal pMac, tANI_U8 sessionId, tSirMacReasonCodes
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         pStaDs->mlmStaContext.disassocReason = reasonCode;
         pStaDs->mlmStaContext.cleanupTrigger = eLIM_LINK_MONITORING_DEAUTH;
 
         /// Issue Deauth Indication to SME.
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
 =======
         vos_mem_copy((tANI_U8 *) &mlmDeauthInd.peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
->>>>>>> 657b0e9... prima update
                       pStaDs->staAddr,
                       sizeof(tSirMacAddr));
         mlmDeauthInd.reasonCode    = (tANI_U8) pStaDs->mlmStaContext.disassocReason;
@@ -758,7 +663,6 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
      * So just return from heartbeatfailure handler
      */
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     if(!limIsSystemInActiveState(pMac))
         return;
@@ -766,11 +670,6 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
     if(!IS_ACTIVEMODE_OFFLOAD_FEATURE_ENABLE && (!limIsSystemInActiveState(pMac)))
        return;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    if(!limIsSystemInActiveState(pMac))
-        return;
->>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_DIAG_SUPPORT_LIM //FEATURE_WLAN_DIAG_SUPPORT
     WLAN_VOS_DIAG_LOG_ALLOC(log_ptr, vos_log_beacon_update_pkt_type, LOG_WLAN_BEACON_UPDATE_C);
@@ -816,14 +715,10 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
          * Beacon frame not received within heartbeat timeout.
          */
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("Heartbeat Failure\n"));)
 =======
         PELOGW(limLog(pMac, LOGW, FL("Heartbeat Failure"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(limLog(pMac, LOGW, FL("Heartbeat Failure\n"));)
->>>>>>> 657b0e9... prima update
         pMac->lim.gLimHBfailureCntInLinkEstState++;
 
         /**
@@ -840,14 +735,10 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
              * timeout for Probe Response from AP.
              */
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGW(limLog(pMac, LOGW, FL("Heart Beat missed from AP. Sending Probe Req\n"));)
 =======
             PELOGW(limLog(pMac, LOGW, FL("Heart Beat missed from AP. Sending Probe Req"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGW(limLog(pMac, LOGW, FL("Heart Beat missed from AP. Sending Probe Req\n"));)
->>>>>>> 657b0e9... prima update
             /* for searching AP, we don't include any additional IE */
             limSendProbeReqMgmtFrame(pMac, &psessionEntry->ssId, psessionEntry->bssId,
                                       psessionEntry->currentOperChannel,psessionEntry->selfMacAddr,
@@ -855,7 +746,6 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
         }
         else
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             PELOGW(limLog(pMac, LOGW,
@@ -865,8 +755,6 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
                pMac->lim.dfschannelList.timeStamp[psessionEntry->currentOperChannel] = 0;
             }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             /* Connected on DFS channel so should not send the probe request
             * tear down the link directly */
             limTearDownLinkWithAp(pMac, psessionEntry->peSessionId, eSIR_MAC_UNSPEC_FAILURE_REASON);
@@ -881,14 +769,10 @@ void limHandleHeartBeatFailure(tpAniSirGlobal pMac,tpPESession psessionEntry)
             * Log error.
             */
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("received heartbeat timeout in state %X\n"),
 =======
         PELOG1(limLog(pMac, LOG1, FL("received heartbeat timeout in state %X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("received heartbeat timeout in state %X\n"),
->>>>>>> 657b0e9... prima update
                psessionEntry->limMlmState);)
         limPrintMlmState(pMac, LOG1, psessionEntry->limMlmState);
         pMac->lim.gLimHBfailureCntInOtherStates++;

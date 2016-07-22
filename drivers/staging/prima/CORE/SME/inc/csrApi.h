@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,7 +43,6 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /** ------------------------------------------------------------------------- * 
     ------------------------------------------------------------------------- *  
     \file csrApi.h
@@ -57,28 +53,18 @@
 =======
 /** ------------------------------------------------------------------------- *
     ------------------------------------------------------------------------- *
-=======
-/** ------------------------------------------------------------------------- * 
-    ------------------------------------------------------------------------- *  
->>>>>>> 657b0e9... prima update
     \file csrApi.h
-  
+
     Exports and types for the Common Scan and Roaming Module interfaces.
-<<<<<<< HEAD
 
     Copyright (C) 2006 Airgo Networks, Incorporated
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-    Copyright (C) 2006 Airgo Networks, Incorporated 
->>>>>>> 657b0e9... prima update
    ========================================================================== */
 #ifndef CSRAPI_H__
 #define CSRAPI_H__
 
 #include "sirApi.h"
 #include "sirMacProtDef.h"
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halRfTypes.h"
@@ -91,14 +77,6 @@ typedef enum
 
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halRfTypes.h"
-#endif
-#include "csrLinkList.h"
-
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_AUTH_TYPE_NONE,    //never used
     // MAC layer authentication types
@@ -126,14 +104,11 @@ typedef enum
     eCSR_AUTH_TYPE_CCKM_RSN,
 #endif /* FEATURE_WLAN_CCX */
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
     eCSR_AUTH_TYPE_RSN_PSK_SHA256,
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     eCSR_NUM_OF_SUPPORT_AUTH_TYPE,
     eCSR_AUTH_TYPE_FAILED = 0xff,
     eCSR_AUTH_TYPE_UNKNOWN = eCSR_AUTH_TYPE_FAILED,
@@ -142,14 +117,10 @@ typedef enum
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_ENCRYPT_TYPE_NONE,
     eCSR_ENCRYPT_TYPE_WEP40_STATICKEY,
@@ -223,23 +194,15 @@ typedef tANI_U8 tCsrBssid[WNI_CFG_BSSID_LEN];
 typedef enum
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     eCSR_BSS_TYPE_INFRASTRUCTURE,
 #ifdef WLAN_SOFTAP_FEATURE
     eCSR_BSS_TYPE_INFRA_AP,       // SoftAP AP
 #endif
 =======
     eCSR_BSS_TYPE_NONE,
-=======
->>>>>>> 657b0e9... prima update
     eCSR_BSS_TYPE_INFRASTRUCTURE,
-#ifdef WLAN_SOFTAP_FEATURE
     eCSR_BSS_TYPE_INFRA_AP,       // SoftAP AP
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
     eCSR_BSS_TYPE_IBSS,           // an IBSS network we will NOT start
     eCSR_BSS_TYPE_START_IBSS,     // an IBSS network we will start if no partners detected.
     eCSR_BSS_TYPE_WDS_AP,         // BT-AMP AP
@@ -273,14 +236,10 @@ typedef enum
     eCSR_SCAN_FAILURE,
     eCSR_SCAN_ABORT,
 <<<<<<< HEAD
-<<<<<<< HEAD
    eCSR_SCAN_FOUND_PEER,    
 =======
    eCSR_SCAN_FOUND_PEER,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   eCSR_SCAN_FOUND_PEER,    
->>>>>>> 657b0e9... prima update
 }eCsrScanStatus;
 
 #define CSR_SCAN_TIME_DEFAULT       0
@@ -312,7 +271,6 @@ typedef struct tagCsrChannelInfo
     tANI_U8 numOfChannels;
     tANI_U8 *ChannelList;   //it will be an array of channels
 <<<<<<< HEAD
-<<<<<<< HEAD
 }tCsrChannelInfo;
 
 typedef struct tagCsrSSIDInfo
@@ -325,13 +283,6 @@ typedef struct tagCsrSSIDInfo
 {
    tSirMacSSid     SSID;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-}tCsrChannelInfo;
-
-typedef struct tagCsrSSIDInfo
-{
-   tSirMacSSid     SSID;   
->>>>>>> 657b0e9... prima update
    tANI_BOOLEAN    handoffPermitted;
    tANI_BOOLEAN    ssidHidden;
 }tCsrSSIDInfo;
@@ -348,7 +299,6 @@ typedef struct tagCsrBSSIDs
     tCsrBssid *bssid;
 }tCsrBSSIDs;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 typedef struct tagCsrScanRequest 
@@ -369,15 +319,10 @@ typedef struct tagCsrStaParams
 
 typedef struct tagCsrScanRequest
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-typedef struct tagCsrScanRequest 
->>>>>>> 657b0e9... prima update
 {
     tSirScanType scanType;
     tCsrBssid bssid;
     eCsrRoamBssType BSSType;
-<<<<<<< HEAD
 <<<<<<< HEAD
     tCsrSSIDs SSIDs;   
     tCsrChannelInfo ChannelInfo;
@@ -391,17 +336,10 @@ typedef struct tagCsrScanRequest
     tANI_U32 minChnTimeBtc;    //in units of milliseconds
     tANI_U32 maxChnTimeBtc;    //in units of milliseconds
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tCsrSSIDs SSIDs;   
-    tCsrChannelInfo ChannelInfo;
-    tANI_U32 minChnTime;    //in units of milliseconds
-    tANI_U32 maxChnTime;    //in units of milliseconds
->>>>>>> 657b0e9... prima update
     tANI_U32 restTime;      //in units of milliseconds  //ignored when not connected
     tANI_U32 uIEFieldLen;
     tANI_U8 *pIEField;
     eCsrRequestType requestType;    //11d scan or full scan
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tANI_BOOLEAN p2pSearch;
@@ -412,12 +350,6 @@ typedef struct tagCsrScanRequest
     tANI_BOOLEAN skipDfsChnlInP2pSearch;
     tANI_BOOLEAN bcnRptReqScan;     //is Scan issued by Beacon Report Request
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-    tANI_BOOLEAN p2pSearch;
-    tANI_BOOLEAN skipDfsChnlInP2pSearch;
-#endif
->>>>>>> 657b0e9... prima update
 }tCsrScanRequest;
 
 typedef struct tagCsrBGScanRequest
@@ -428,7 +360,6 @@ typedef struct tagCsrBGScanRequest
     tANI_U32 scanInterval;  //in units of milliseconds
     tANI_U32 minChnTime;    //in units of milliseconds
     tANI_U32 maxChnTime;    //in units of milliseconds
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U32 restTime;      //in units of milliseconds  //ignored when not connected
     tANI_U32 throughputImpact;      //specify whether BG scan cares about impacting throughput  //ignored when not connected
@@ -442,12 +373,6 @@ typedef struct tagCsrBGScanRequest
     tCsrBssid bssid;    //how to use it?? Apple
 }tCsrBGScanRequest, *tpCsrBGScanRequest;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32 restTime;      //in units of milliseconds  //ignored when not connected
-    tANI_U32 throughputImpact;      //specify whether BG scan cares about impacting throughput  //ignored when not connected
-    tCsrBssid bssid;    //how to use it?? Apple
-}tCsrBGScanRequest;
->>>>>>> 657b0e9... prima update
 
 
 typedef struct tagCsrScanResultInfo
@@ -497,7 +422,6 @@ typedef struct tagCsrScanResultFilter
 {
     tCsrBSSIDs BSSIDs;    //each bssid has a length of WNI_CFG_BSSID_LEN (6)
 <<<<<<< HEAD
-<<<<<<< HEAD
     tCsrSSIDs SSIDs;   
     tCsrChannelInfo ChannelInfo;
     tCsrAuthList authType;
@@ -513,27 +437,19 @@ typedef struct tagCsrScanResultFilter
     tANI_U8 uapsd_mask; 
 =======
     tCsrSSIDs SSIDs;
-=======
-    tCsrSSIDs SSIDs;   
->>>>>>> 657b0e9... prima update
     tCsrChannelInfo ChannelInfo;
     tCsrAuthList authType;
     tCsrEncryptionList EncryptionType;
-    //eCSR_ENCRYPT_TYPE_ANY cannot be set in multicast encryption type. If caller doesn't case, 
+    //eCSR_ENCRYPT_TYPE_ANY cannot be set in multicast encryption type. If caller doesn't case,
     //put all supported encryption types in here
     tCsrEncryptionList mcEncryptionType;
-    eCsrRoamBssType BSSType;   
+    eCsrRoamBssType BSSType;
     //this is a bit mask of all the needed phy mode defined in eCsrPhyMode
-    tANI_U32 phyMode;   
+    tANI_U32 phyMode;
     //If countryCode[0] is not 0, countryCode is checked independent of fCheckUnknownCountryCode
-<<<<<<< HEAD
     tANI_U8 countryCode[WNI_CFG_COUNTRY_CODE_LEN];
     tANI_U8 uapsd_mask;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8 countryCode[WNI_CFG_COUNTRY_CODE_LEN]; 
-    tANI_U8 uapsd_mask; 
->>>>>>> 657b0e9... prima update
     /*For WPS filtering if true => auth and ecryption should be ignored*/
     tANI_BOOLEAN bWPSAssociation;
 #if defined WLAN_FEATURE_VOWIFI
@@ -576,7 +492,6 @@ typedef enum
     eCSR_ROAM_CANCELLED = 1,
     //this mean error happens before association_start or roaming_start is called.
 <<<<<<< HEAD
-<<<<<<< HEAD
     eCSR_ROAM_FAILED,   
     //a CSR trigger roaming operation starts, callback may get a pointer to tCsrConnectedProfile
     eCSR_ROAM_ROAMING_START,    
@@ -596,36 +511,28 @@ typedef enum
     eCSR_ROAM_SHOULD_ROAM,  
 =======
     eCSR_ROAM_FAILED,
-=======
-    eCSR_ROAM_FAILED,   
->>>>>>> 657b0e9... prima update
     //a CSR trigger roaming operation starts, callback may get a pointer to tCsrConnectedProfile
-    eCSR_ROAM_ROAMING_START,    
+    eCSR_ROAM_ROAMING_START,
     //a CSR trigger roaming operation is completed
-    eCSR_ROAM_ROAMING_COMPLETION,   
+    eCSR_ROAM_ROAMING_COMPLETION,
     //Connection completed status.
-    eCSR_ROAM_CONNECT_COMPLETION, 
-    //an association or start_IBSS operation starts, 
-    //callback may get a pointer to tCsrRoamProfile and a pointer to tSirBssDescription 
-    eCSR_ROAM_ASSOCIATION_START,    
-    //a roaming operation is finish, see eCsrRoamResult for 
+    eCSR_ROAM_CONNECT_COMPLETION,
+    //an association or start_IBSS operation starts,
+    //callback may get a pointer to tCsrRoamProfile and a pointer to tSirBssDescription
+    eCSR_ROAM_ASSOCIATION_START,
+    //a roaming operation is finish, see eCsrRoamResult for
     //possible data passed back
-    eCSR_ROAM_ASSOCIATION_COMPLETION,   
+    eCSR_ROAM_ASSOCIATION_COMPLETION,
     eCSR_ROAM_DISASSOCIATED,
     eCSR_ROAM_ASSOCIATION_FAILURE,
     //when callback with this flag. callback gets a pointer to the BSS desc.
-<<<<<<< HEAD
     eCSR_ROAM_SHOULD_ROAM,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eCSR_ROAM_SHOULD_ROAM,  
->>>>>>> 657b0e9... prima update
     //A new candidate for PMKID is found
     eCSR_ROAM_SCAN_FOUND_NEW_BSS,
     //CSR is done lostlink roaming and still cannot reconnect
     eCSR_ROAM_LOSTLINK,
     //a link lost is detected. CSR starts roaming.
-<<<<<<< HEAD
 <<<<<<< HEAD
     eCSR_ROAM_LOSTLINK_DETECTED,   
     //TKIP MIC error detected, callback gets a pointer to tpSirSmeMicFailureInd
@@ -641,21 +548,12 @@ typedef enum
     //Update the connection status, useful for IBSS: new peer added, network is active etc.
     eCSR_ROAM_CONNECT_STATUS_UPDATE,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eCSR_ROAM_LOSTLINK_DETECTED,   
-    //TKIP MIC error detected, callback gets a pointer to tpSirSmeMicFailureInd
-    eCSR_ROAM_MIC_ERROR_IND,
-    eCSR_ROAM_IBSS_IND, //IBSS indications.
-    //Update the connection status, useful for IBSS: new peer added, network is active etc. 
-    eCSR_ROAM_CONNECT_STATUS_UPDATE,  
->>>>>>> 657b0e9... prima update
     eCSR_ROAM_GEN_INFO,
     eCSR_ROAM_SET_KEY_COMPLETE,
     eCSR_ROAM_REMOVE_KEY_COMPLETE,
     eCSR_ROAM_IBSS_LEAVE, //IBSS indications.
     //BSS in WDS mode status indication
     eCSR_ROAM_WDS_IND,
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     //BSS in SoftAP mode status indication
@@ -667,13 +565,6 @@ typedef enum
     eCSR_ROAM_INFRA_IND,
     eCSR_ROAM_WPS_PBC_PROBE_REQ_IND,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-    //BSS in SoftAP mode status indication
-    eCSR_ROAM_INFRA_IND,
-    eCSR_ROAM_WPS_PBC_PROBE_REQ_IND,
-#endif
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
     eCSR_ROAM_FT_RESPONSE,
 #endif
@@ -688,7 +579,6 @@ typedef enum
     eCSR_ROAM_PMK_NOTIFY,
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
     eCSR_ROAM_TDLS_STATUS_UPDATE,
@@ -702,8 +592,6 @@ typedef enum
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }eRoamCmdStatus;
 
 
@@ -714,7 +602,6 @@ typedef enum
     //this means no more action in CSR
     //If roamStatus is eCSR_ROAM_ASSOCIATION_COMPLETION, tCsrRoamInfo's pBssDesc may pass back
 <<<<<<< HEAD
-<<<<<<< HEAD
     eCSR_ROAM_RESULT_FAILURE,   
     //Pass back pointer to tCsrRoamInfo
     eCSR_ROAM_RESULT_ASSOCIATED,    
@@ -723,11 +610,6 @@ typedef enum
     //Pass back pointer to tCsrRoamInfo
     eCSR_ROAM_RESULT_ASSOCIATED,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eCSR_ROAM_RESULT_FAILURE,   
-    //Pass back pointer to tCsrRoamInfo
-    eCSR_ROAM_RESULT_ASSOCIATED,    
->>>>>>> 657b0e9... prima update
     eCSR_ROAM_RESULT_NOT_ASSOCIATED,
     eCSR_ROAM_RESULT_MIC_FAILURE,
     eCSR_ROAM_RESULT_FORCED,
@@ -736,7 +618,6 @@ typedef enum
     eCSR_ROAM_RESULT_CAP_CHANGED,
     //This means we starts an IBSS
     //tCsrRoamInfo's pBssDesc may pass back
-<<<<<<< HEAD
 <<<<<<< HEAD
     eCSR_ROAM_RESULT_IBSS_STARTED,  
     //START_BSS failed
@@ -761,35 +642,27 @@ typedef enum
     eCSR_ROAM_RESULT_LOSTLINK, 
 =======
     eCSR_ROAM_RESULT_IBSS_STARTED,
-=======
-    eCSR_ROAM_RESULT_IBSS_STARTED,  
->>>>>>> 657b0e9... prima update
     //START_BSS failed
     //tCsrRoamInfo's pBssDesc may pass back
-    eCSR_ROAM_RESULT_IBSS_START_FAILED, 
+    eCSR_ROAM_RESULT_IBSS_START_FAILED,
     eCSR_ROAM_RESULT_IBSS_JOIN_SUCCESS,
-    eCSR_ROAM_RESULT_IBSS_JOIN_FAILED, 
+    eCSR_ROAM_RESULT_IBSS_JOIN_FAILED,
     eCSR_ROAM_RESULT_IBSS_CONNECT,
     eCSR_ROAM_RESULT_IBSS_INACTIVE,
     //If roamStatus is eCSR_ROAM_ASSOCIATION_COMPLETION
-    //tCsrRoamInfo's pBssDesc may pass back. and the peer's MAC address in peerMacOrBssid 
-    //If roamStatus is eCSR_ROAM_IBSS_IND,  
+    //tCsrRoamInfo's pBssDesc may pass back. and the peer's MAC address in peerMacOrBssid
+    //If roamStatus is eCSR_ROAM_IBSS_IND,
     //the peer's MAC address in peerMacOrBssid and a beacon frame of the IBSS in pbFrames
-    eCSR_ROAM_RESULT_IBSS_NEW_PEER, 
+    eCSR_ROAM_RESULT_IBSS_NEW_PEER,
     //Peer departed from IBSS, Callback may get a pointer tSmeIbssPeerInd in pIbssPeerInd
-    eCSR_ROAM_RESULT_IBSS_PEER_DEPARTED, 
+    eCSR_ROAM_RESULT_IBSS_PEER_DEPARTED,
     //Coalescing in the IBSS network (joined an IBSS network)
     //Callback pass a BSSID in peerMacOrBssid
-    eCSR_ROAM_RESULT_IBSS_COALESCED,    
+    eCSR_ROAM_RESULT_IBSS_COALESCED,
     //If roamStatus is eCSR_ROAM_ROAMING_START, callback may get a pointer to tCsrConnectedProfile used to connect.
-<<<<<<< HEAD
     eCSR_ROAM_RESULT_IBSS_STOP,
     eCSR_ROAM_RESULT_LOSTLINK,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eCSR_ROAM_RESULT_IBSS_STOP,  
-    eCSR_ROAM_RESULT_LOSTLINK, 
->>>>>>> 657b0e9... prima update
     eCSR_ROAM_RESULT_MIC_ERROR_UNICAST,
     eCSR_ROAM_RESULT_MIC_ERROR_GROUP,
     eCSR_ROAM_RESULT_AUTHENTICATED,
@@ -806,27 +679,19 @@ typedef enum
     // WDS joined successfully in STA mode
     eCSR_ROAM_RESULT_WDS_ASSOCIATED,
 <<<<<<< HEAD
-<<<<<<< HEAD
     // A station joined WDS AP 
 =======
     // A station joined WDS AP
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    // A station joined WDS AP 
->>>>>>> 657b0e9... prima update
     eCSR_ROAM_RESULT_WDS_ASSOCIATION_IND,
     // WDS join failed in STA mode
     eCSR_ROAM_RESULT_WDS_NOT_ASSOCIATED,
     // WDS disassociated
     eCSR_ROAM_RESULT_WDS_DISASSOCIATED,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     // INFRA started successfully
     eCSR_ROAM_RESULT_INFRA_STARTED,
     // INFRA start failed
@@ -841,7 +706,6 @@ typedef enum
     eCSR_ROAM_RESULT_INFRA_DISASSOCIATED,
     eCSR_ROAM_RESULT_WPS_PBC_PROBE_REQ_IND,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 #ifdef WLAN_FEATURE_P2P
     eCSR_ROAM_RESULT_SEND_ACTION_FAIL,
@@ -849,17 +713,10 @@ typedef enum
 =======
     eCSR_ROAM_RESULT_SEND_ACTION_FAIL,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-#ifdef WLAN_FEATURE_P2P
-    eCSR_ROAM_RESULT_SEND_ACTION_FAIL,
-#endif
->>>>>>> 657b0e9... prima update
     // peer rejected assoc because max assoc limit reached. callback gets pointer to peer
     eCSR_ROAM_RESULT_MAX_ASSOC_EXCEEDED,
     //Assoc rejected due to concurrent session running on a different channel
     eCSR_ROAM_RESULT_ASSOC_FAIL_CON_CHANNEL,
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -872,8 +729,6 @@ typedef enum
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }eCsrRoamResult;
 
 
@@ -906,14 +761,10 @@ typedef enum
 }eCsrRoamDisconnectReason;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     // Not associated in Infra or participating in an IBSS / Ad-hoc network.
     eCSR_ASSOC_STATE_TYPE_NOT_CONNECTED,
@@ -929,25 +780,17 @@ typedef enum
     // Participating in a WDS network and connected peer to peer
     eCSR_ASSOC_STATE_TYPE_WDS_CONNECTED,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     // Participating in a Infra network in AP not yet in connected state
     eCSR_ASSOC_STATE_TYPE_INFRA_DISCONNECTED,
     // Participating in a Infra network and connected to a peer
     eCSR_ASSOC_STATE_TYPE_INFRA_CONNECTED,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 }eCsrConnectState;
 
@@ -955,14 +798,10 @@ typedef enum
 // This parameter is no longer supported in the Profile.  Need to set this in the global properties
 // for the adapter.
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum eCSR_MEDIUM_ACCESS 
 =======
 typedef enum eCSR_MEDIUM_ACCESS
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum eCSR_MEDIUM_ACCESS 
->>>>>>> 657b0e9... prima update
 {
     eCSR_MEDIUM_ACCESS_AUTO = 0,
     eCSR_MEDIUM_ACCESS_DCF,
@@ -977,14 +816,10 @@ typedef enum eCSR_MEDIUM_ACCESS
 }eCsrMediaAccessType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_TX_RATE_AUTO = 0,   // use rate adaption to determine Tx rate.
 
@@ -1015,14 +850,10 @@ typedef enum
 }eCsrExposedTxRate;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_OPERATING_CHANNEL_ALL  = 0,
     eCSR_OPERATING_CHANNEL_AUTO = eCSR_OPERATING_CHANNEL_ALL,
@@ -1030,14 +861,10 @@ typedef enum
 }eOperationChannel;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_DOT11_FRAG_THRESH_AUTO            = -1,
     eCSR_DOT11_FRAG_THRESH_MIN             = 256,
@@ -1048,14 +875,10 @@ typedef enum
 
 //for channel bonding for ibss
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_CB_OFF = 0,
     eCSR_CB_AUTO = 1,
@@ -1072,14 +895,10 @@ typedef enum
 
 // WEP keysize (in bits)...
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum  
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum  
->>>>>>> 657b0e9... prima update
 {
     eCSR_SECURITY_WEP_KEYSIZE_40  =  40,   // 40 bit key + 24bit IV = 64bit WEP
     eCSR_SECURITY_WEP_KEYSIZE_104 = 104,   // 104bit key + 24bit IV = 128bit WEP
@@ -1103,7 +922,6 @@ typedef enum
 }eCsrWEPStaticKeyID;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define CSR_MAX_NUM_KEY     (eCSR_SECURITY_WEP_STATIC_KEY_ID_MAX + 1)
 
 typedef enum 
@@ -1113,11 +931,6 @@ typedef enum
 
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define CSR_MAX_NUM_KEY     (eCSR_SECURITY_WEP_STATIC_KEY_ID_MAX + 1)
-
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
     eCSR_SECURITY_SET_KEY_ACTION_NO_CHANGE,
     eCSR_SECURITY_SET_KEY_ACTION_SET_KEY,
@@ -1134,7 +947,6 @@ typedef enum
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 {
    // Roaming because HDD requested for reassoc by changing one of the fields in 
@@ -1148,24 +960,17 @@ typedef enum
    // Roaming because SME requested it as the link is lost - placeholder, will 
 =======
 typedef enum
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
-   // Roaming because HDD requested for reassoc by changing one of the fields in 
+   // Roaming because HDD requested for reassoc by changing one of the fields in
    // tCsrRoamModifyProfileFields. OR
-   // Roaming because SME requested for reassoc by changing one of the fields in 
+   // Roaming because SME requested for reassoc by changing one of the fields in
    // tCsrRoamModifyProfileFields.
    eCsrRoamReasonStaCapabilityChanged,
-   // Roaming because SME requested for reassoc to a different AP, as part of 
+   // Roaming because SME requested for reassoc to a different AP, as part of
    // inter AP handoff.
    eCsrRoamReasonBetterAP,
-<<<<<<< HEAD
    // Roaming because SME requested it as the link is lost - placeholder, will
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   // Roaming because SME requested it as the link is lost - placeholder, will 
->>>>>>> 657b0e9... prima update
    // clean it up once handoff code gets in
    eCsrRoamReasonSmeIssuedForLostLink,
 
@@ -1221,19 +1026,14 @@ typedef struct tagCsrKeys
 }tCsrKeys;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /* Following are fields which are part of tCsrRoamConnectedProfile might need 
 =======
 /* Following are fields which are part of tCsrRoamConnectedProfile might need
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/* Following are fields which are part of tCsrRoamConnectedProfile might need 
->>>>>>> 657b0e9... prima update
    modification dynamically once STA is up & running and this could trigger
    reassoc */
 typedef struct tagCsrRoamModifyProfileFields
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
    // during connect this specifies ACs U-APSD is to be setup 
    //   for (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored).
@@ -1243,11 +1043,6 @@ typedef struct tagCsrRoamModifyProfileFields
    //   for (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored).
    //  During assoc response this COULD carry confirmation of what ACs U-APSD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   // during connect this specifies ACs U-APSD is to be setup 
-   //   for (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored).
-   //  During assoc response this COULD carry confirmation of what ACs U-APSD 
->>>>>>> 657b0e9... prima update
    // got setup for. Later if an APP looking for APSD, SME-QoS might need to
    // modify this field
    tANI_U8     uapsd_mask;
@@ -1273,7 +1068,6 @@ typedef struct tagCsrRoamProfile
     eCsrEncryptionType negotiatedUCEncryptionType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     //eCSR_ENCRYPT_TYPE_ANY cannot be set in multicast encryption type. If caller doesn't case, 
     //put all supported encryption types in here
     tCsrEncryptionList mcEncryptionType;
@@ -1293,18 +1087,10 @@ typedef struct tagCsrRoamProfile
     tANI_U8 MFPCapable;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    //eCSR_ENCRYPT_TYPE_ANY cannot be set in multicast encryption type. If caller doesn't case, 
-    //put all supported encryption types in here
-    tCsrEncryptionList mcEncryptionType;
-    //This field is for output only, not for input
-    eCsrEncryptionType negotiatedMCEncryptionType;  
->>>>>>> 657b0e9... prima update
 
     tCsrKeys Keys;
     eCsrCBChoice CBMode; //up, down or auto
     tCsrChannelInfo ChannelInfo;
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U8 operationChannel;   
     tANI_U16 beaconInterval;    //If this is 0, SME will fill in for caller.
@@ -1314,19 +1100,12 @@ typedef struct tagCsrRoamProfile
     tANI_U8 uapsd_mask; 
 =======
     tANI_U8 operationChannel;
-=======
-    tANI_U8 operationChannel;   
->>>>>>> 657b0e9... prima update
     tANI_U16 beaconInterval;    //If this is 0, SME will fill in for caller.
-    // during connect this specifies ACs U-APSD is to be setup 
+    // during connect this specifies ACs U-APSD is to be setup
     //   for (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored).
     //  During assoc response this COULD carry confirmation of what ACs U-APSD got setup for
-<<<<<<< HEAD
     tANI_U8 uapsd_mask;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8 uapsd_mask; 
->>>>>>> 657b0e9... prima update
     tANI_U32 nWPAReqIELength;   //The byte count in the pWPAReqIE
     tANI_U8 *pWPAReqIE;   //If not null, it has the IE byte stream for WPA
     tANI_U32 nRSNReqIELength;  //The byte count in the pRSNReqIE
@@ -1339,14 +1118,10 @@ typedef struct tagCsrRoamProfile
     tANI_U32 nAddIEScanLength;   //The byte count in the pAddIE for scan (at the time of join)
     tANI_U8 *pAddIEScan;       //If not null, it has the IE byte stream for additional IE, which can be WSC IE and/or P2P IE
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U32 nAddIEAssocLength;   //The byte count in the pAddIE for assoc 
 =======
     tANI_U32 nAddIEAssocLength;   //The byte count in the pAddIE for assoc
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32 nAddIEAssocLength;   //The byte count in the pAddIE for assoc 
->>>>>>> 657b0e9... prima update
     tANI_U8 *pAddIEAssoc;       //If not null, it has the IE byte stream for additional IE, which can be WSC IE and/or P2P IE
 
     tANI_U8 countryCode[WNI_CFG_COUNTRY_CODE_LEN];  //it is ignored if [0] is 0.
@@ -1356,13 +1131,9 @@ typedef struct tagCsrRoamProfile
     tANI_U8 *pWSCReqIE;   //If not null, it has the IE byte stream for WSC
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     tANI_U8 ieee80211d;
     tANI_U8 privacy;
     tANI_BOOLEAN fwdWPSPBCProbeReq;
@@ -1374,13 +1145,9 @@ typedef struct tagCsrRoamProfile
     tANI_U16 cfg_protection;
     tANI_U8 wps_state;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
     tCsrMobilityDomainInfo MDID;
@@ -1410,7 +1177,6 @@ typedef struct tagCsrRoamConnectedProfile
     // meaningless on connect. It's an OUT param from CSR's point of view
     // During assoc response carries the ACM bit-mask i.e. what
 <<<<<<< HEAD
-<<<<<<< HEAD
     // ACs have ACM=1 (if any), 
     // (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored)
     tANI_U8  acm_mask;
@@ -1426,19 +1192,11 @@ typedef struct tagCsrRoamConnectedProfile
 
     tSirBssDescription *pBssDesc;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    // ACs have ACM=1 (if any), 
-    // (Bit0:VO; Bit1:VI; Bit2:BK; Bit3:BE all other bits are ignored)
-    tANI_U8  acm_mask;
-    tCsrRoamModifyProfileFields modifyProfileFields;
-    tSirBssDescription *pBssDesc;   
->>>>>>> 657b0e9... prima update
     tANI_BOOLEAN   qap; //AP supports QoS
     tANI_BOOLEAN   qosConnection; //A connection is QoS enabled
 #ifdef WLAN_FEATURE_VOWIFI_11R
     tCsrMobilityDomainInfo MDID;
 #endif
-<<<<<<< HEAD
 <<<<<<< HEAD
     
 #ifdef FEATURE_WLAN_CCX
@@ -1447,18 +1205,12 @@ typedef struct tagCsrRoamConnectedProfile
 #endif
 =======
 
-=======
-    
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_CCX
     tCsrCcxCckmInfo ccxCckmInfo;
-    tANI_BOOLEAN    isCCXAssoc; 
+    tANI_BOOLEAN    isCCXAssoc;
 #endif
-<<<<<<< HEAD
     tANI_U32 dot11Mode;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }tCsrRoamConnectedProfile;
 
 
@@ -1482,12 +1234,9 @@ typedef struct tagCsrNeighborRoamConfigParams
     tANI_U8        nMaxNeighborRetries;
     tANI_U16       nNeighborResultsRefreshPeriod;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tANI_U16       nEmptyScanRefreshPeriod;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }tCsrNeighborRoamConfigParams;
 #endif
 
@@ -1528,7 +1277,6 @@ typedef struct tagCsrConfigParam
     tCsr11dinfo  Csr11dinfo;
     //Whether to limit the channels to the ones set in Csr11dInfo. If true, the opertaional
 <<<<<<< HEAD
-<<<<<<< HEAD
     //channels are limited to the default channel list. It is an "AND" operation between the 
     //default channels and the channels in the 802.11d IE.
     tANI_BOOLEAN fEnforce11dChannels;  
@@ -1546,28 +1294,21 @@ typedef struct tagCsrConfigParam
     tANI_BOOLEAN fEnforceDefaultDomain;     
 =======
     //channels are limited to the default channel list. It is an "AND" operation between the
-=======
-    //channels are limited to the default channel list. It is an "AND" operation between the 
->>>>>>> 657b0e9... prima update
     //default channels and the channels in the 802.11d IE.
-    tANI_BOOLEAN fEnforce11dChannels;  
+    tANI_BOOLEAN fEnforce11dChannels;
     //Country Code Priority
-    //0 = 802.11D > Country IOCTL > NV 
+    //0 = 802.11D > Country IOCTL > NV
     //1 = Country IOCTL > 802.11D > NV
     tANI_BOOLEAN fSupplicantCountryCodeHasPriority;
-    //When true, AP with unknown country code won't be see. 
-    //"Unknown country code" means either Ap doesn't have 11d IE or we cannot 
-    //find a domain for the country code in its 11d IE. 
-    tANI_BOOLEAN fEnforceCountryCodeMatch;  
+    //When true, AP with unknown country code won't be see.
+    //"Unknown country code" means either Ap doesn't have 11d IE or we cannot
+    //find a domain for the country code in its 11d IE.
+    tANI_BOOLEAN fEnforceCountryCodeMatch;
     //When true, only APs in the default domain can be seen. If the Ap has "unknown country
     //code", or the domain of the country code doesn't match the default domain, the Ap is
     //not acceptable.
-<<<<<<< HEAD
     tANI_BOOLEAN fEnforceDefaultDomain;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_BOOLEAN fEnforceDefaultDomain;     
->>>>>>> 657b0e9... prima update
 
     tANI_U16 vccRssiThreshold;
     tANI_U32 vccUlMacLossThreshold;
@@ -1577,7 +1318,6 @@ typedef struct tagCsrConfigParam
     tANI_U32  nActiveMinChnTime;     //in units of milliseconds
     tANI_U32  nActiveMaxChnTime;     //in units of milliseconds
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_BOOLEAN IsIdleScanEnabled;
     //in dBm, the maximum TX power
@@ -1600,18 +1340,12 @@ typedef struct tagCsrConfigParam
                                          //P2P in each split scan operation
 #endif
 
-=======
->>>>>>> 657b0e9... prima update
     tANI_BOOLEAN IsIdleScanEnabled;
     //in dBm, the maximum TX power
-    //The actual TX power is the lesser of this value and 11d. 
+    //The actual TX power is the lesser of this value and 11d.
     //If 11d is disable, the lesser of this and default setting.
-<<<<<<< HEAD
     tANI_U8 nTxPowerCap;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8 nTxPowerCap;     
->>>>>>> 657b0e9... prima update
     tANI_U32  statsReqPeriodicity;  //stats request frequency from PE while in full power
     tANI_U32  statsReqPeriodicityInPS;//stats request frequency from PE while in power save
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -1626,7 +1360,6 @@ typedef struct tagCsrConfigParam
 
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U8   isFastTransitionEnabled;
     tANI_U8   RoamRssiDiff;
 =======
@@ -1634,17 +1367,12 @@ typedef struct tagCsrConfigParam
     tANI_U8        RoamRssiDiff;
     tANI_U8        nImmediateRoamRssiDiff;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8   isFastTransitionEnabled;
-    tANI_U8   RoamRssiDiff;
->>>>>>> 657b0e9... prima update
 #endif
 
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
     tCsrNeighborRoamConfigParams    neighborRoamConfig;
 #endif
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     /* Instead of Reassoc, send ADDTS/DELTS even when ACM is off for that AC 
      * This is mandated by WMM-AC certification */
@@ -1660,14 +1388,6 @@ typedef struct tagCsrConfigParam
 
     /*channelPowerInfoList24 has been seen corrupted. Set this flag to true trying to
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    /* Instead of Reassoc, send ADDTS/DELTS even when ACM is off for that AC 
-     * This is mandated by WMM-AC certification */
-    tANI_BOOLEAN addTSWhenACMIsOff;
-
-    
-    /*channelPowerInfoList24 has been seen corrupted. Set this flag to true trying to 
->>>>>>> 657b0e9... prima update
     * detect when it happens. Adding this into code because we can't reproduce it easily.
     * We don't know when it happens. */
     tANI_BOOLEAN fValidateList;
@@ -1679,24 +1399,18 @@ typedef struct tagCsrConfigParam
     tANI_BOOLEAN fEnableBypass11d;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     /*Customer wants to optimize the scan time. Avoiding scans(passive) on DFS 
     * channels while swipping through both bands can save some time 
 =======
     /*Customer wants to optimize the scan time. Avoiding scans(passive) on DFS
     * channels while swipping through both bands can save some time
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    /*Customer wants to optimize the scan time. Avoiding scans(passive) on DFS 
-    * channels while swipping through both bands can save some time 
->>>>>>> 657b0e9... prima update
     * (apprx 1.3 sec) */
     tANI_BOOLEAN fEnableDFSChnlScan;
 
     //To enable/disable scanning 2.4Ghz channels twice on a single scan request from HDD
     tANI_BOOLEAN fScanTwice;
 #ifdef WLAN_FEATURE_11AC
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_U32  nVhtChannelWidth;
 =======
@@ -1705,9 +1419,6 @@ typedef struct tagCsrConfigParam
     tANI_U8         txBFCsnValue;
     tANI_BOOLEAN    enableVhtFor24GHz;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U32  nVhtChannelWidth;
->>>>>>> 657b0e9... prima update
 #endif
 
     /*
@@ -1715,7 +1426,6 @@ typedef struct tagCsrConfigParam
     */
     tANI_BOOLEAN fFirstScanOnly2GChnl;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     tANI_BOOLEAN fIgnore_chan165;
 
@@ -1742,11 +1452,6 @@ typedef struct tagCsrConfigParam
 
 }tCsrConfigParam;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_BOOLEAN fIgnore_chan165;
-
-}tCsrConfigParam;   
->>>>>>> 657b0e9... prima update
 
 //Tush
 typedef struct tagCsrUpdateConfigParam
@@ -1770,7 +1475,6 @@ typedef struct tagCsrRoamInfo
     tANI_BOOLEAN fReassocRsp;   //set to true if for re-association
     tCsrBssid bssid;
 <<<<<<< HEAD
-<<<<<<< HEAD
     //Only valid in IBSS 
     //this is the peers MAC address for eCSR_ROAM_RESULT_IBSS_NEW_PEER or PEER_DEPARTED
     tCsrBssid peerMac;  
@@ -1780,20 +1484,13 @@ typedef struct tagCsrRoamInfo
     /*The DPU signatures will be sent eventually to TL to help it determine the 
 =======
     //Only valid in IBSS
-=======
-    //Only valid in IBSS 
->>>>>>> 657b0e9... prima update
     //this is the peers MAC address for eCSR_ROAM_RESULT_IBSS_NEW_PEER or PEER_DEPARTED
-    tCsrBssid peerMac;  
+    tCsrBssid peerMac;
     tSirResultCodes statusCode;
     tANI_U32 reasonCode;    //this could be our own defined or sent from the other BSS(per 802.11 spec)
     tANI_U8  staId;         // Peer stationId when connected
-<<<<<<< HEAD
     /*The DPU signatures will be sent eventually to TL to help it determine the
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    /*The DPU signatures will be sent eventually to TL to help it determine the 
->>>>>>> 657b0e9... prima update
       association to which a packet belongs to*/
     /*Unicast DPU signature*/
     tANI_U8            ucastSig;
@@ -1809,22 +1506,15 @@ typedef struct tagCsrRoamInfo
     tANI_U8 addIELen;
     tANI_U8 *paddIE;
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
     union
     {
         tSirMicFailureInfo *pMICFailureInfo;
         tCsrRoamConnectedProfile *pConnectedProfile;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
         tSirWPSPBCProbeReq *pWPSPBCProbeReq;
 #endif
@@ -1834,7 +1524,6 @@ typedef struct tagCsrRoamInfo
     tANI_BOOLEAN wmmEnabledSta;   //set to true if WMM enabled STA
     tANI_U32 dtimPeriod;
 #endif
-<<<<<<< HEAD
 =======
         tSirWPSPBCProbeReq *pWPSPBCProbeReq;
     } u;
@@ -1842,13 +1531,10 @@ typedef struct tagCsrRoamInfo
     tANI_BOOLEAN wmmEnabledSta;   //set to true if WMM enabled STA
     tANI_U32 dtimPeriod;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_CCX
     tANI_BOOLEAN isCCXAssoc;
 #endif
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     void* pRemainCtx; 
@@ -1860,11 +1546,6 @@ typedef struct tagCsrRoamInfo
 #ifdef FEATURE_WLAN_TDLS
     tANI_U8 staType;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-    void* pRemainCtx; 
-    tANI_U32 rxChan;
->>>>>>> 657b0e9... prima update
 #endif
 
     // Required for indicating the frames to upper layer
@@ -1872,16 +1553,12 @@ typedef struct tagCsrRoamInfo
     tANI_U8* beaconPtr;
     tANI_U32 assocReqLength;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U8* assocReqPtr;    
 =======
     tANI_U8* assocReqPtr;
 
     tANI_S8 rxRssi;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8* assocReqPtr;    
->>>>>>> 657b0e9... prima update
 }tCsrRoamInfo;
 
 
@@ -1897,13 +1574,9 @@ typedef struct tagCsrFreqScanInfo
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 typedef struct sSirSmeAssocIndToUpperLayerCnf
 {
     tANI_U16             messageType; // eWNI_SME_ASSOC_CNF
@@ -1921,13 +1594,9 @@ typedef struct sSirSmeAssocIndToUpperLayerCnf
     tANI_U8              reassocReq;      //set to true if reassoc
 } tSirSmeAssocIndToUpperLayerCnf, *tpSirSmeAssocIndToUpperLayerCnf;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 typedef struct tagCsrSummaryStatsInfo
 {
@@ -2048,7 +1717,6 @@ typedef struct tagCsrRoamRemoveKey
 } tCsrRoamRemoveKey;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
 
@@ -2094,14 +1762,11 @@ typedef struct tagCsrTdlsTeardownRequest
 #endif
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef void * tScanResultHandle;
 
 #define CSR_INVALID_SCANRESULT_HANDLE       (NULL)
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -2112,8 +1777,6 @@ typedef struct tagCsrHandoffRequest
 }tCsrHandoffRequest;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
 ////////////////////////////////////////////Common SCAN starts
@@ -2121,14 +1784,10 @@ typedef struct tagCsrHandoffRequest
 //void *p2 -- the second context pass in for the caller
 //***what if callback is called before requester gets the scanId??
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef eHalStatus (*csrScanCompleteCallback)(tHalHandle, void *p2, tANI_U32 scanID, eCsrScanStatus status);   
 =======
 typedef eHalStatus (*csrScanCompleteCallback)(tHalHandle, void *p2, tANI_U32 scanID, eCsrScanStatus status);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef eHalStatus (*csrScanCompleteCallback)(tHalHandle, void *p2, tANI_U32 scanID, eCsrScanStatus status);   
->>>>>>> 657b0e9... prima update
 
 
 
@@ -2141,7 +1800,6 @@ typedef eHalStatus (*csrScanCompleteCallback)(tHalHandle, void *p2, tANI_U32 sca
 //roamStatus is a flag indicating the status of the callback
 //roamResult is the result
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef eHalStatus (*csrRoamCompleteCallback)(void *pContext, tCsrRoamInfo *pParam, tANI_U32 roamId, 
                                               eRoamCmdStatus roamStatus, eCsrRoamResult roamResult);
 
@@ -2152,12 +1810,6 @@ typedef eHalStatus (*csrRoamCompleteCallback)(void *pContext, tCsrRoamInfo *pPar
 
 typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef eHalStatus (*csrRoamCompleteCallback)(void *pContext, tCsrRoamInfo *pParam, tANI_U32 roamId, 
-                                              eRoamCmdStatus roamStatus, eCsrRoamResult roamResult);
-
-typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);   
->>>>>>> 657b0e9... prima update
 
 /* ---------------------------------------------------------------------------
     \fn csrRoamGetNumPMKIDCache
@@ -2170,14 +1822,10 @@ typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);
     \fn csrRoamGetPMKIDCache
     \brief return PMKID cache from CSR
 <<<<<<< HEAD
-<<<<<<< HEAD
     \param pNum - caller allocated memory that has the space of the number of pBuf tPmkidCacheInfo as input. Upon returned, *pNum has the 
 =======
     \param pNum - caller allocated memory that has the space of the number of pBuf tPmkidCacheInfo as input. Upon returned, *pNum has the
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \param pNum - caller allocated memory that has the space of the number of pBuf tPmkidCacheInfo as input. Upon returned, *pNum has the 
->>>>>>> 657b0e9... prima update
     needed or actually number in tPmkidCacheInfo.
     \param pPmkidCache - Caller allocated memory that contains PMKID cache, if any, upon return
     \return eHalStatus - when fail, it usually means the buffer allocated is not big enough
@@ -2194,7 +1842,6 @@ typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);
 #define CSR_IS_WDS_STA( pProfile ) ( eCSR_BSS_TYPE_WDS_STA == (pProfile)->BSSType )
 #define CSR_IS_WDS( pProfile )  ( CSR_IS_WDS_AP( pProfile ) || CSR_IS_WDS_STA( pProfile ) )
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 #define CSR_IS_INFRA_AP( pProfile )  ( eCSR_BSS_TYPE_INFRA_AP == (pProfile)->BSSType )
 #endif
@@ -2204,20 +1851,11 @@ typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);
 #define CSR_IS_CONN_INFRA_AP( pProfile )  ( eCSR_BSS_TYPE_INFRA_AP == (pProfile)->BSSType )
 #endif
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 #define CSR_IS_INFRA_AP( pProfile )  ( eCSR_BSS_TYPE_INFRA_AP == (pProfile)->BSSType )
-#endif
 
 //pProfile - pointer to tCsrRoamConnectedProfile
-#ifdef WLAN_SOFTAP_FEATURE
 #define CSR_IS_CONN_INFRA_AP( pProfile )  ( eCSR_BSS_TYPE_INFRA_AP == (pProfile)->BSSType )
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 #define CSR_IS_CONN_WDS_AP( pProfile )  ( eCSR_BSS_TYPE_WDS_AP == (pProfile)->BSSType )
 #define CSR_IS_CONN_WDS_STA( pProfile ) ( eCSR_BSS_TYPE_WDS_STA == (pProfile)->BSSType )
 #define CSR_IS_CONN_WDS( pProfile )  ( CSR_IS_WDS_AP( pProfile ) || CSR_IS_WDS_STA( pProfile ) )
@@ -2229,7 +1867,6 @@ typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 /* ---------------------------------------------------------------------------
     \fn csrSetChannels
@@ -2238,33 +1875,22 @@ typedef eHalStatus (*csrRoamSessionCloseCallback)(void *pContext);
     \param pParam - caller allocated memory
     \return eHalStatus     
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn csrSetChannels
-    \brief HDD calls this function to change some global settings. 
+    \brief HDD calls this function to change some global settings.
     caller must set the all fields or call csrGetConfigParam to prefill the fields.
     \param pParam - caller allocated memory
-<<<<<<< HEAD
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 
 eHalStatus csrSetChannels(tHalHandle hHal,  tCsrConfigParam *pParam  );
 
 eHalStatus csrSetRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 
 //enum to string conversion for debug output
@@ -2276,7 +1902,6 @@ const char * get_eCsrRoamResult_str(eCsrRoamResult val);
     This function must be called after CFG is downloaded and all the band/mode setting already passed into
     CSR.
 <<<<<<< HEAD
-<<<<<<< HEAD
     \param phyMode - indicate the phyMode needs to set to. The value has to be either 0, or some bits set. 
     See eCsrPhyMode for definition
     \param eBand - specify the operational band (2.4, 5 or both)
@@ -2285,19 +1910,12 @@ const char * get_eCsrRoamResult_str(eCsrRoamResult val);
     \return eHalStatus     
 =======
     \param phyMode - indicate the phyMode needs to set to. The value has to be either 0, or some bits set.
-=======
-    \param phyMode - indicate the phyMode needs to set to. The value has to be either 0, or some bits set. 
->>>>>>> 657b0e9... prima update
     See eCsrPhyMode for definition
     \param eBand - specify the operational band (2.4, 5 or both)
-    \param pfRestartNeeded - pointer to a caller allocated space. Upon successful return, it indicates whether 
+    \param pfRestartNeeded - pointer to a caller allocated space. Upon successful return, it indicates whether
     a restart is needed to apply the change
-<<<<<<< HEAD
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus csrSetPhyMode(tHalHandle hHal, tANI_U32 phyMode, eCsrBand eBand, tANI_BOOLEAN *pfRestartNeeded);
 
@@ -2308,14 +1926,10 @@ void csrDumpInit(tHalHandle hHal);
   This is the type for a link quality callback to be registered with SME
   for indications
 <<<<<<< HEAD
-<<<<<<< HEAD
   Once the link quality has been indicated, subsequently, link indications are 
 =======
   Once the link quality has been indicated, subsequently, link indications are
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  Once the link quality has been indicated, subsequently, link indications are 
->>>>>>> 657b0e9... prima update
   posted each time there is a CHANGE in link quality.
   *** If there is no change in link, there will be no indication ***
 
@@ -2323,7 +1937,6 @@ void csrDumpInit(tHalHandle hHal);
   such as RSSI and PER.
 
   \param ind - Indication being posted
-<<<<<<< HEAD
 <<<<<<< HEAD
   \param pContext - any user data given at callback registration.  
   \return None
@@ -2333,11 +1946,6 @@ void csrDumpInit(tHalHandle hHal);
   \return None
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  \param pContext - any user data given at callback registration.  
-  \return None
-  
->>>>>>> 657b0e9... prima update
 ---------------------------------------------------------------------------*/
 typedef void (* csrRoamLinkQualityIndCallback)
              (eCsrRoamLinkQualityInd  ind, void *pContext);
@@ -2347,7 +1955,6 @@ typedef void (* csrRoamLinkQualityIndCallback)
   This is the type for a statistics callback to be registered with SME
   for stats reporting
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   Since the client requesting for the stats already know which class/type of 
   stats it asked for, the callback will carry them in the rsp buffer 
@@ -2362,22 +1969,13 @@ typedef void (* csrRoamLinkQualityIndCallback)
   Since the client requesting for the stats already know which class/type of
   stats it asked for, the callback will carry them in the rsp buffer
   (void * stats) whose size will be same as the size of requested stats &
-=======
-  Since the client requesting for the stats already know which class/type of 
-  stats it asked for, the callback will carry them in the rsp buffer 
-  (void * stats) whose size will be same as the size of requested stats & 
->>>>>>> 657b0e9... prima update
   will be exactly in the same order requested in the stats mask from LSB to MSB
 
   \param stats - stats rsp buffer sent back with the report
-  \param pContext - any user data given at callback registration.  
+  \param pContext - any user data given at callback registration.
   \return None
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
->>>>>>> 657b0e9... prima update
 ---------------------------------------------------------------------------*/
 typedef void ( *tCsrStatsCallback) (void * stats, void *pContext);
 
@@ -2387,7 +1985,6 @@ typedef void ( *tCsrStatsCallback) (void * stats, void *pContext);
 
   \param rssi - rssi
 <<<<<<< HEAD
-<<<<<<< HEAD
   \param pContext - any user data given at callback registration.  
   \return None
   
@@ -2396,16 +1993,10 @@ typedef void ( *tCsrStatsCallback) (void * stats, void *pContext);
   \return None
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  \param pContext - any user data given at callback registration.  
-  \return None
-  
->>>>>>> 657b0e9... prima update
 ---------------------------------------------------------------------------*/
 
 typedef void ( *tCsrRssiCallback) (v_S7_t rssi, tANI_U32 staId, void *pContext);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
@@ -2420,14 +2011,11 @@ typedef void ( *tCsrRssiCallback) (v_S7_t rssi, tANI_U32 staId, void *pContext);
 typedef void (*tCsrSnrCallback) (v_S7_t snr, tANI_U32 staId, void *pContext);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_VOWIFI_11R
 eHalStatus csrRoamIssueFTPreauthReq(tHalHandle hHal, tANI_U32 sessionId, tpSirBssDescription pBssDescription);
 #endif
 
 /*---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
   This is the function to change the Band configuraiton (ALL/2.4 GHZ/5 GHZ) 
 
@@ -2437,19 +2025,12 @@ eHalStatus csrRoamIssueFTPreauthReq(tHalHandle hHal, tANI_U32 sessionId, tpSirBs
   
 =======
   This is the function to change the Band configuraiton (ALL/2.4 GHZ/5 GHZ)
-=======
-  This is the function to change the Band configuraiton (ALL/2.4 GHZ/5 GHZ) 
->>>>>>> 657b0e9... prima update
 
-  \param hHal - handle to Hal context 
+  \param hHal - handle to Hal context
   \param eBand - band value
   \return  eHalStatus
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
->>>>>>> 657b0e9... prima update
 ---------------------------------------------------------------------------*/
 eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand);
 
@@ -2458,14 +2039,10 @@ eHalStatus csrSetBand(tHalHandle hHal, eCsrBand eBand);
   \param hHal - handl to Hal context
   \return eCsrband - band value
 <<<<<<< HEAD
-<<<<<<< HEAD
   
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
->>>>>>> 657b0e9... prima update
 ---------------------------------------------------------------------------*/
 eCsrBand csrGetCurrentBand (tHalHandle hHal);
 

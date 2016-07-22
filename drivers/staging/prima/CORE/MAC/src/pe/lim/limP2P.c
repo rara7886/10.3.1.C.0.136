@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -45,13 +42,9 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 /*===========================================================================
                         L I M _ P 2 P . C
 
@@ -85,13 +78,9 @@
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 #include "limUtils.h"
 #include "limSessionUtils.h"
 #include "wlan_qct_wda.h"
@@ -101,7 +90,6 @@
 #define   ADDR2_OFFSET           10
 #define   ACTION_OFFSET          24
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define   LIM_MIN_REM_TIME_FOR_TX_ACTION_FRAME                     50
 #define   LIM_MIN_REM_TIME_EXT_FOR_TX_ACTION_FRAME                 60
 =======
@@ -110,10 +98,6 @@
    received Beacon/Prpbe Resp. */
 #define   MAX_TIME_TO_BE_ACTIVE_CHANNEL 9000
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define   LIM_MIN_REM_TIME_FOR_TX_ACTION_FRAME                     50
-#define   LIM_MIN_REM_TIME_EXT_FOR_TX_ACTION_FRAME                 60
->>>>>>> 657b0e9... prima update
 
 
 
@@ -164,7 +148,6 @@ void limSetLinkStateP2PCallback(tpAniSirGlobal pMac, void *callbackArg)
 int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U8 i;
     tpPESession psessionEntry;
 =======
@@ -180,10 +163,6 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
     tpPESession psessionEntry;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8 i;
-    tpPESession psessionEntry;
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P_INTERNAL
     tpPESession pP2pSession;
 #endif
@@ -192,12 +171,9 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
     pMac->lim.gpLimRemainOnChanReq = MsgBuff;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef CONC_OPER_AND_LISTEN_CHNL_SAME_OPTIMIZE
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     for (i =0; i < pMac->lim.maxBssId;i++)
     {
         psessionEntry = peFindSessionBySessionId(pMac,i);
@@ -222,14 +198,10 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
                 {
                     limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                           FL("Unable to change remain on channel Timer val\n"));
 =======
                           FL("Unable to change remain on channel Timer val"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          FL("Unable to change remain on channel Timer val\n"));
->>>>>>> 657b0e9... prima update
                     goto error;
                 }
                 else if(TX_SUCCESS != tx_timer_activate(
@@ -237,14 +209,10 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
                 {
                     limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     FL("Unable to activate remain on channel Timer\n"));
 =======
                     FL("Unable to activate remain on channel Timer"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    FL("Unable to activate remain on channel Timer\n"));
->>>>>>> 657b0e9... prima update
                     limDeactivateAndChangeTimer(pMac, eLIM_REMAIN_CHN_TIMER);
                     goto error;
                 }
@@ -259,7 +227,6 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 if ((limSetLinkState(pMac, eSIR_LINK_LISTEN_STATE,
                     nullBssid, pMac->lim.gSelfMacAddr, 
                     limSetLinkStateP2PCallback, NULL)) != eSIR_SUCCESS)
@@ -269,11 +236,6 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
                                      nullBssid, pMac->lim.gSelfMacAddr,
                                      limSetLinkStateP2PCallback, NULL)) != eSIR_SUCCESS)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if ((limSetLinkState(pMac, eSIR_LINK_LISTEN_STATE,
-                    nullBssid, pMac->lim.gSelfMacAddr, 
-                    limSetLinkStateP2PCallback, NULL)) != eSIR_SUCCESS)
->>>>>>> 657b0e9... prima update
                 {
                     limLog( pMac, LOGE, "Unable to change link state");
                     goto error;
@@ -283,14 +245,10 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
         }
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     pMac->lim.gLimPrevMlmState = pMac->lim.gLimMlmState;
     pMac->lim.gLimMlmState     = eLIM_MLM_P2P_LISTEN_STATE;
 
@@ -302,23 +260,17 @@ int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg)
     return FALSE;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef CONC_OPER_AND_LISTEN_CHNL_SAME_OPTIMIZE
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 error:
     limRemainOnChnRsp(pMac,eHAL_STATUS_FAILURE, NULL);
     /* pMsg is freed by the caller */
     return FALSE;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }
 
 
@@ -335,14 +287,10 @@ tSirRetStatus limCreateSessionForRemainOnChn(tpAniSirGlobal pMac, tPESession **p
            pMac->lim.gpLimRemainOnChanReq->selfMacAddr, &sessionId, 1)) == NULL)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGE, FL("Session Can not be created \n"));
 =======
             limLog(pMac, LOGE, FL("Session Can not be created "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGE, FL("Session Can not be created \n"));
->>>>>>> 657b0e9... prima update
             /* send remain on chn failure */
             return nSirStatus;
         }
@@ -411,14 +359,10 @@ tSirRetStatus limRemainOnChnlChangeChnReq(tpAniSirGlobal pMac,
         if(eSIR_SUCCESS != limCreateSessionForRemainOnChn(pMac, &psessionEntry))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGE, FL("Session Can not be created \n"));
 =======
             limLog(pMac, LOGE, FL("Session Can not be created "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGE, FL("Session Can not be created \n"));
->>>>>>> 657b0e9... prima update
             /* send remain on chn failure */
             goto error;
         }
@@ -458,14 +402,10 @@ void limRemainOnChnlSetLinkStat(tpAniSirGlobal pMac, eHalStatus status,
     if (status != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog( pMac, LOGE, "%s: Change channel not successful\n");
 =======
         limLog( pMac, LOGE, "%s: Change channel not successful");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog( pMac, LOGE, "%s: Change channel not successful\n");
->>>>>>> 657b0e9... prima update
         goto error1;
     }
 
@@ -487,14 +427,10 @@ void limRemainOnChnlSetLinkStat(tpAniSirGlobal pMac, eHalStatus status,
         */
         limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("Unable to change remain on channel Timer val\n"));
 =======
                FL("Unable to change remain on channel Timer val"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("Unable to change remain on channel Timer val\n"));
->>>>>>> 657b0e9... prima update
         goto error;
     }
 
@@ -502,7 +438,6 @@ void limRemainOnChnlSetLinkStat(tpAniSirGlobal pMac, eHalStatus status,
        tx_timer_activate(&pMac->lim.limTimers.gLimRemainOnChannelTimer))
     {
         limLog( pMac, LOGE,
-<<<<<<< HEAD
 <<<<<<< HEAD
                   "%s: remain on channel Timer Start Failed\n", __FUNCTION__);
         goto error;
@@ -517,13 +452,6 @@ void limRemainOnChnlSetLinkStat(tpAniSirGlobal pMac, eHalStatus status,
     if ((limSetLinkState(pMac, MsgRemainonChannel->isProbeRequestAllowed?
                          eSIR_LINK_LISTEN_STATE:eSIR_LINK_SEND_ACTION_STATE,nullBssid,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  "%s: remain on channel Timer Start Failed\n", __FUNCTION__);
-        goto error;
-    }
-
-    if ((limSetLinkState(pMac, eSIR_LINK_LISTEN_STATE,nullBssid,
->>>>>>> 657b0e9... prima update
                          pMac->lim.gSelfMacAddr, limSetLinkStateP2PCallback, 
                          NULL)) != eSIR_SUCCESS)
     {
@@ -541,7 +469,6 @@ error1:
 
 /*------------------------------------------------------------------
  *
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  * lim Insert NOA timer timeout callback - when timer fires, deactivate it and send
@@ -614,8 +541,6 @@ void limConvertActiveChannelToPassiveChannel(tpAniSirGlobal pMac )
 /*------------------------------------------------------------------
  *
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * limchannelchange callback, on success channel change, set the
  * link_state to LISTEN
  *
@@ -663,14 +588,10 @@ void limProcessRemainOnChnTimeout(tpAniSirGlobal pMac)
         {
             limLog(pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
                   FL("Session Does not exist for given sessionID\n"));
 =======
                   FL("Session Does not exist for given sessionID"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  FL("Session Does not exist for given sessionID\n"));
->>>>>>> 657b0e9... prima update
             goto error;
         }
 
@@ -697,14 +618,10 @@ void limExitRemainOnChannel(tpAniSirGlobal pMac, eHalStatus status,
     if (status != eHAL_STATUS_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog( pMac, LOGE, "Remain on Channel Failed\n");)
 =======
         PELOGE(limLog( pMac, LOGE, "Remain on Channel Failed");)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog( pMac, LOGE, "Remain on Channel Failed\n");)
->>>>>>> 657b0e9... prima update
         goto error;
     }
     //Set the resume channel to Any valid channel (invalid). 
@@ -733,14 +650,10 @@ void limRemainOnChnRsp(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data)
     {
         PELOGE(limLog( pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: No Pointer for Remain on Channel Req\n", __FUNCTION__);)
 =======
              "%s: No Pointer for Remain on Channel Req", __func__);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: No Pointer for Remain on Channel Req\n", __FUNCTION__);)
->>>>>>> 657b0e9... prima update
         return;
     }
 
@@ -778,14 +691,10 @@ void limRemainOnChnRsp(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data)
                   MsgRemainonChannel->sessionId, 0);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, pMac->lim.gpLimRemainOnChanReq );
 =======
     vos_mem_free(pMac->lim.gpLimRemainOnChanReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palFreeMemory( pMac->hHdd, pMac->lim.gpLimRemainOnChanReq );
->>>>>>> 657b0e9... prima update
     pMac->lim.gpLimRemainOnChanReq = NULL;
 
     pMac->lim.gLimMlmState = pMac->lim.gLimPrevMlmState;
@@ -793,14 +702,10 @@ void limRemainOnChnRsp(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data)
     /* If remain on channel timer expired and action frame is pending then 
      * indicaiton confirmation with status failure */
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (pMac->lim.actionFrameSessionId != 0xff)
 =======
     if (pMac->lim.mgmtFrameSessionId != 0xff)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (pMac->lim.actionFrameSessionId != 0xff)
->>>>>>> 657b0e9... prima update
     {
        limP2PActionCnf(pMac, 0);
     }
@@ -818,15 +723,11 @@ void limSendSmeMgmtFrameInd(
                     tpAniSirGlobal pMac, tANI_U8 frameType,
                     tANI_U8  *frame, tANI_U32 frameLen, tANI_U16 sessionId,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     tANI_U32 rxChannel, tpPESession psessionEntry)
 =======
                     tANI_U32 rxChannel, tpPESession psessionEntry,
                     tANI_S8 rxRssi)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    tANI_U32 rxChannel, tpPESession psessionEntry)
->>>>>>> 657b0e9... prima update
 {
     tSirMsgQ              mmhMsg;
     tpSirSmeMgmtFrameInd pSirSmeMgmtFrame = NULL;
@@ -834,7 +735,6 @@ void limSendSmeMgmtFrameInd(
 
     length = sizeof(tSirSmeMgmtFrameInd) + frameLen;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS !=
          palAllocateMemory( pMac->hHdd, (void **)&pSirSmeMgmtFrame, length ))
@@ -847,27 +747,18 @@ void limSendSmeMgmtFrameInd(
 =======
     pSirSmeMgmtFrame = vos_mem_malloc(length);
     if (NULL == pSirSmeMgmtFrame)
-=======
-    if( eHAL_STATUS_SUCCESS !=
-         palAllocateMemory( pMac->hHdd, (void **)&pSirSmeMgmtFrame, length ))
->>>>>>> 657b0e9... prima update
     {
         limLog(pMac, LOGP,
-               FL("palAllocateMemory failed for eWNI_SME_LISTEN_RSP\n"));
+               FL("AllocateMemory failed for eWNI_SME_LISTEN_RSP"));
         return;
     }
-<<<<<<< HEAD
     vos_mem_set((void*)pSirSmeMgmtFrame, length, 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory(pMac->hHdd, (void*)pSirSmeMgmtFrame, length);
->>>>>>> 657b0e9... prima update
 
     pSirSmeMgmtFrame->mesgType = eWNI_SME_MGMT_FRM_IND;
     pSirSmeMgmtFrame->mesgLen = length;
     pSirSmeMgmtFrame->sessionId = sessionId;
     pSirSmeMgmtFrame->frameType = frameType;
-<<<<<<< HEAD
 <<<<<<< HEAD
 
     /* work around for 5Ghz channel is not correct since rxhannel 
@@ -901,34 +792,24 @@ void limSendSmeMgmtFrameInd(
      *  p2p device address. So search for p2p go session and pass it's
      *  operating channel.
      *  Need to revisit this path in case of GO+CLIENT concurrency.
-=======
-
-    /* work around for 5Ghz channel is not correct since rxhannel 
-     * is 4 bits. So we don't indicate more than 16 channels 
->>>>>>> 657b0e9... prima update
      */
-    if( (VOS_FALSE == 
-        tx_timer_running(&pMac->lim.limTimers.gLimRemainOnChannelTimer)) &&
-        (psessionEntry != NULL) && 
-        (SIR_BAND_5_GHZ == limGetRFBand(psessionEntry->currentOperChannel)) ) 
+    if( VOS_FALSE ==
+        tx_timer_running(&pMac->lim.limTimers.gLimRemainOnChannelTimer) )
     {
-        pSirSmeMgmtFrame->rxChan = psessionEntry->currentOperChannel;
-    }
-    else
-    {
-        pSirSmeMgmtFrame->rxChan = rxChannel;
+        tpPESession pTempSessionEntry = psessionEntry;
+        if( ( (NULL != pTempSessionEntry) ||
+              (pTempSessionEntry = limIsApSessionActive(pMac)) ) &&
+            (SIR_BAND_5_GHZ == limGetRFBand(pTempSessionEntry->currentOperChannel)) )
+        {
+            rxChannel = pTempSessionEntry->currentOperChannel;
+        }
     }
 
-<<<<<<< HEAD
     pSirSmeMgmtFrame->rxChan = rxChannel;
 
     vos_mem_zero(pSirSmeMgmtFrame->frameBuf, frameLen);
     vos_mem_copy(pSirSmeMgmtFrame->frameBuf, frame, frameLen);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_zero(pSirSmeMgmtFrame->frameBuf,frameLen);
-    vos_mem_copy(pSirSmeMgmtFrame->frameBuf,frame,frameLen);
->>>>>>> 657b0e9... prima update
 
     mmhMsg.type = eWNI_SME_MGMT_FRM_IND;
     mmhMsg.bodyptr = pSirSmeMgmtFrame;
@@ -939,7 +820,6 @@ void limSendSmeMgmtFrameInd(
             (frameType == SIR_MAC_MGMT_ACTION))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         tANI_U32 curTime = vos_timer_get_system_time();
         if((curTime - pMac->lim.p2pRemOnChanTimeStamp) > (pMac->lim.gTotalScanDuration - LIM_MIN_REM_TIME_FOR_TX_ACTION_FRAME))
         {
@@ -952,24 +832,15 @@ void limSendSmeMgmtFrameInd(
 
             chanWaitTime = SYS_MS_TO_TICKS(LIM_MIN_REM_TIME_EXT_FOR_TX_ACTION_FRAME);
 =======
-=======
-        tANI_U32 curTime = vos_timer_get_system_time();
-        if((curTime - pMac->lim.p2pRemOnChanTimeStamp) > (pMac->lim.gTotalScanDuration - LIM_MIN_REM_TIME_FOR_TX_ACTION_FRAME))
-        {
->>>>>>> 657b0e9... prima update
             unsigned int chanWaitTime, vStatus ;
 
-            limLog( pMac, LOG1, FL("Rx: Extend the gLimRemainOnChannelTimer"));
+            limLog( pMac, LOG1, FL("Rx: Extend the gLimRemainOnChannelTimer = %d "),
+                                                              pMac->lim.gTotalScanDuration);
 
             pMac->lim.p2pRemOnChanTimeStamp = vos_timer_get_system_time();
-            pMac->lim.gTotalScanDuration = LIM_MIN_REM_TIME_EXT_FOR_TX_ACTION_FRAME;
 
-<<<<<<< HEAD
             chanWaitTime = SYS_MS_TO_TICKS(pMac->lim.gTotalScanDuration);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            chanWaitTime = SYS_MS_TO_TICKS(LIM_MIN_REM_TIME_EXT_FOR_TX_ACTION_FRAME);
->>>>>>> 657b0e9... prima update
             vStatus = tx_timer_deactivate(&pMac->lim.limTimers.gLimRemainOnChannelTimer);
 
             if (VOS_STATUS_SUCCESS != vStatus)
@@ -987,7 +858,6 @@ void limSendSmeMgmtFrameInd(
                 limLog( pMac, LOGE, FL("Unable to active the gLimRemainOnChannelTimer"));
             } 
 <<<<<<< HEAD
-<<<<<<< HEAD
         } 
 =======
     }
@@ -996,9 +866,6 @@ void limSendSmeMgmtFrameInd(
        if(frameType == SIR_MAC_MGMT_ACTION)
             limLog( pMac, LOGE, FL("Rx: NO REMAIN ON CHANNEL and recd action frame "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        } 
->>>>>>> 657b0e9... prima update
     }
 
     limSysProcessMmhMsgApi(pMac, &mmhMsg, ePROT);
@@ -1009,20 +876,15 @@ void limSendSmeMgmtFrameInd(
 eHalStatus limP2PActionCnf(tpAniSirGlobal pMac, tANI_U32 txCompleteSuccess)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (pMac->lim.actionFrameSessionId != 0xff)
 =======
     if (pMac->lim.mgmtFrameSessionId != 0xff)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (pMac->lim.actionFrameSessionId != 0xff)
->>>>>>> 657b0e9... prima update
     {
         /* The session entry might be invalid(0xff) action confirmation received after
          * remain on channel timer expired */
         limSendSmeRsp(pMac, eWNI_SME_ACTION_FRAME_SEND_CNF,
                 (txCompleteSuccess ? eSIR_SME_SUCCESS : eSIR_SME_SEND_ACTION_FAIL),
-<<<<<<< HEAD
 <<<<<<< HEAD
                 pMac->lim.actionFrameSessionId, 0);
         pMac->lim.actionFrameSessionId = 0xff;
@@ -1030,10 +892,6 @@ eHalStatus limP2PActionCnf(tpAniSirGlobal pMac, tANI_U32 txCompleteSuccess)
                 pMac->lim.mgmtFrameSessionId, 0);
         pMac->lim.mgmtFrameSessionId = 0xff;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                pMac->lim.actionFrameSessionId, 0);
-        pMac->lim.actionFrameSessionId = 0xff;
->>>>>>> 657b0e9... prima update
     }
 
     return eHAL_STATUS_SUCCESS;
@@ -1070,7 +928,6 @@ void limSetHtCaps(tpAniSirGlobal pMac, tpPESession psessionEntry, tANI_U8 *pIeSt
         pHtcap->maxRxAMPDUFactor = dot11HtCap.maxRxAMPDUFactor;
         pHtcap->mpduDensity = dot11HtCap.mpduDensity;
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, (void *)pHtcap->supportedMCSSet,
                        (void *)(dot11HtCap.supportedMCSSet),
                         sizeof(pHtcap->supportedMCSSet));
@@ -1079,11 +936,6 @@ void limSetHtCaps(tpAniSirGlobal pMac, tpPESession psessionEntry, tANI_U8 *pIeSt
                      (void *)(dot11HtCap.supportedMCSSet),
                       sizeof(pHtcap->supportedMCSSet));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd, (void *)pHtcap->supportedMCSSet,
-                       (void *)(dot11HtCap.supportedMCSSet),
-                        sizeof(pHtcap->supportedMCSSet));
->>>>>>> 657b0e9... prima update
         pHtcap->pco = dot11HtCap.pco;
         pHtcap->transitionTime = dot11HtCap.transitionTime;
         pHtcap->mcsFeedback = dot11HtCap.mcsFeedback;
@@ -1129,14 +981,10 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
     tpSirMacFrameCtl    pFc = (tpSirMacFrameCtl ) pMbMsg->data;
     tANI_U8             noaLen = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U8             noaStream[SIR_MAX_NOA_ATTR_LEN + SIR_P2P_IE_HEADER_LEN];
 =======
     tANI_U8             noaStream[SIR_MAX_NOA_ATTR_LEN + (2*SIR_P2P_IE_HEADER_LEN)];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U8             noaStream[SIR_MAX_NOA_ATTR_LEN + SIR_P2P_IE_HEADER_LEN];
->>>>>>> 657b0e9... prima update
     tANI_U8             origLen = 0;
     tANI_U8             sessionId = 0;
     v_U8_t              *pP2PIe = NULL;
@@ -1225,17 +1073,12 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
                     (tpSirMacP2PActionFrameHdr)((v_U8_t *)pMbMsg->data +
                                                         ACTION_OFFSET);
 <<<<<<< HEAD
-<<<<<<< HEAD
                 if ( palEqualMemory( pMac->hHdd, pActionHdr->Oui,
                      SIR_MAC_P2P_OUI, SIR_MAC_P2P_OUI_SIZE ) &&
 =======
                 if (vos_mem_compare( pActionHdr->Oui,
                     SIR_MAC_P2P_OUI, SIR_MAC_P2P_OUI_SIZE ) &&
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if ( palEqualMemory( pMac->hHdd, pActionHdr->Oui,
-                     SIR_MAC_P2P_OUI, SIR_MAC_P2P_OUI_SIZE ) &&
->>>>>>> 657b0e9... prima update
                     (SIR_MAC_ACTION_P2P_SUBTYPE_PRESENCE_RSP ==
                     pActionHdr->OuiSubType))
                 { //In case of Presence RSP response
@@ -1291,14 +1134,10 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
                 limLog( pMac, LOGE,
                         FL("noaLen=%d origLen=%d pP2PIe=0x%x"
 <<<<<<< HEAD
-<<<<<<< HEAD
                         " nBytes=%d nBytesToCopy=%d \n"),
 =======
                         " nBytes=%d nBytesToCopy=%d "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        " nBytes=%d nBytesToCopy=%d \n"),
->>>>>>> 657b0e9... prima update
                                    noaLen,origLen,pP2PIe,nBytes,
                    ((pP2PIe + origLen + 2) - (v_U8_t *)pMbMsg->data));
             }
@@ -1308,14 +1147,10 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
         {
             limSetHtCaps( pMac, psessionEntry, (tANI_U8*)pMbMsg->data + PROBE_RSP_IE_OFFSET,
 <<<<<<< HEAD
-<<<<<<< HEAD
                            nBytes);
 =======
                            nBytes - PROBE_RSP_IE_OFFSET);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           nBytes);
->>>>>>> 657b0e9... prima update
         }
         
         /* The minimum wait for any action frame should be atleast 100 ms.
@@ -1337,28 +1172,20 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
 
                 limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                         FL("Tx: Extending the gLimRemainOnChannelTimer\n"));
 =======
                         FL("Tx: Extending the gLimRemainOnChannelTimer"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        FL("Tx: Extending the gLimRemainOnChannelTimer\n"));
->>>>>>> 657b0e9... prima update
                 if (tx_timer_change(
                             &pMac->lim.limTimers.gLimRemainOnChannelTimer, val, 0)
                         != TX_SUCCESS)
                 {
                     limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                             FL("Unable to change remain on channel Timer val\n"));
 =======
                             FL("Unable to change remain on channel Timer val"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            FL("Unable to change remain on channel Timer val\n"));
->>>>>>> 657b0e9... prima update
                     return;
                 }
                 else if(TX_SUCCESS != tx_timer_activate(
@@ -1366,14 +1193,10 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
                 {
                     limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                             FL("Unable to activate remain on channel Timer\n"));
 =======
                             FL("Unable to activate remain on channel Timer"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            FL("Unable to activate remain on channel Timer\n"));
->>>>>>> 657b0e9... prima update
                     limDeactivateAndChangeTimer(pMac, eLIM_REMAIN_CHN_TIMER);
                     return;
                 }
@@ -1381,13 +1204,10 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
             else
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
                 limLog(pMac, LOGE,
                             FL("Failed to Send Action frame \n"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                 limSendSmeRsp(pMac, eWNI_SME_ACTION_FRAME_SEND_CNF, 
                         eHAL_STATUS_FAILURE, pMbMsg->sessionId, 0);
                 return;
@@ -1403,19 +1223,14 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
     {
         limLog( pMac, LOGE, FL("Failed to allocate %d bytes for a Probe"
 <<<<<<< HEAD
-<<<<<<< HEAD
           " Request.\n"), nBytes );
 =======
           " Request."), nBytes );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          " Request.\n"), nBytes );
->>>>>>> 657b0e9... prima update
         return;
     }
 
     // Paranoia:
-<<<<<<< HEAD
 <<<<<<< HEAD
     palZeroMemory( pMac->hHdd, pFrame, nBytes );
 
@@ -1425,45 +1240,30 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
 
     if ((noaLen > 0) && (noaLen<(SIR_MAX_NOA_ATTR_LEN + SIR_P2P_IE_HEADER_LEN)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd, pFrame, nBytes );
-
-    if (noaLen > 0)
->>>>>>> 657b0e9... prima update
     {
         // Add 2 bytes for length and Arribute field
         v_U32_t nBytesToCopy = ((pP2PIe + origLen + 2 ) -
                                 (v_U8_t *)pMbMsg->data);
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
         palCopyMemory( pMac->hHdd, pFrame, pMbMsg->data, nBytesToCopy);
         palCopyMemory( pMac->hHdd, (pFrame + nBytesToCopy), noaStream, noaLen);
         palCopyMemory( pMac->hHdd, (pFrame + nBytesToCopy + noaLen),
             pMbMsg->data + nBytesToCopy, nBytes - nBytesToCopy - noaLen);
-<<<<<<< HEAD
 =======
         vos_mem_copy(pFrame, pMbMsg->data, nBytesToCopy);
         vos_mem_copy((pFrame + nBytesToCopy), noaStream, noaLen);
         vos_mem_copy((pFrame + nBytesToCopy + noaLen),
         pMbMsg->data + nBytesToCopy, nBytes - nBytesToCopy - noaLen);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     }
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory(pMac->hHdd, pFrame, pMbMsg->data, nBytes);
 =======
         vos_mem_copy(pFrame, pMbMsg->data, nBytes);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory(pMac->hHdd, pFrame, pMbMsg->data, nBytes);
->>>>>>> 657b0e9... prima update
     }
 
     /* Use BD rate 2 for all P2P related frames. As these frames need to go
@@ -1486,7 +1286,6 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
                halstatus, pMbMsg->sessionId, 0);
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
         pMac->lim.actionFrameSessionId = 0xff;
     }
     else
@@ -1498,12 +1297,6 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
     {
         pMac->lim.mgmtFrameSessionId = 0xff;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        pMac->lim.actionFrameSessionId = 0xff;
-    }
-    else
-    {
->>>>>>> 657b0e9... prima update
         halstatus = halTxFrameWithTxComplete( pMac, pPacket, (tANI_U16)nBytes,
                         HAL_TXRX_FRM_802_11_MGMT, ANI_TXDIR_TODS,
                         7,/*SMAC_SWBD_TX_TID_MGMT_HIGH */ limTxComplete, pFrame,
@@ -1511,7 +1304,6 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
 
         if ( ! HAL_STATUS_SUCCESS ( halstatus ) )
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
              limLog( pMac, LOGE, FL("could not send action frame!\n" ));
              limSendSmeRsp(pMac, eWNI_SME_ACTION_FRAME_SEND_CNF, halstatus, 
@@ -1525,25 +1317,16 @@ void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg)
                      pMac->lim.actionFrameSessionId);
 =======
              limLog( pMac, LOGE, FL("could not send action frame!" ));
-=======
-             limLog( pMac, LOGE, FL("could not send action frame!\n" ));
->>>>>>> 657b0e9... prima update
              limSendSmeRsp(pMac, eWNI_SME_ACTION_FRAME_SEND_CNF, halstatus, 
                 pMbMsg->sessionId, 0);
-             pMac->lim.actionFrameSessionId = 0xff;
+             pMac->lim.mgmtFrameSessionId = 0xff;
         }
         else
         {
-<<<<<<< HEAD
              pMac->lim.mgmtFrameSessionId = pMbMsg->sessionId;
              limLog( pMac, LOG2, FL("lim.actionFrameSessionId = %lu" ),
                      pMac->lim.mgmtFrameSessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             pMac->lim.actionFrameSessionId = pMbMsg->sessionId;
-             limLog( pMac, LOG2, FL("lim.actionFrameSessionId = %lu\n" ), 
-                     pMac->lim.actionFrameSessionId);
->>>>>>> 657b0e9... prima update
 
         }
     }
@@ -1574,7 +1357,6 @@ tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf)
     pNoA = (tpP2pPsConfig) pMsgBuf;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory(
                   pMac->hHdd, (void **) &pMsgNoA, sizeof( tP2pPsConfig )))
     {
@@ -1587,22 +1369,14 @@ tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf)
 =======
     pMsgNoA = vos_mem_malloc(sizeof( tP2pPsConfig ));
     if (NULL == pMsgNoA)
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory(
-                  pMac->hHdd, (void **) &pMsgNoA, sizeof( tP2pPsConfig )))
->>>>>>> 657b0e9... prima update
     {
         limLog( pMac, LOGE,
-                     FL( "Unable to allocate memory during NoA Update\n" ));
+                     FL( "Unable to allocate memory during NoA Update" ));
         return eSIR_MEM_ALLOC_FAILED;
     }
 
-<<<<<<< HEAD
     vos_mem_set((tANI_U8 *)pMsgNoA, sizeof(tP2pPsConfig), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd, (tANI_U8 *)pMsgNoA, sizeof(tP2pPsConfig));
->>>>>>> 657b0e9... prima update
     pMsgNoA->opp_ps = pNoA->opp_ps;
     pMsgNoA->ctWindow = pNoA->ctWindow;
     pMsgNoA->duration = pNoA->duration;
@@ -1612,14 +1386,10 @@ tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf)
     pMsgNoA->psSelection = pNoA->psSelection;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     msg.type = SIR_HAL_SET_P2P_GO_NOA_REQ;
 =======
     msg.type = WDA_SET_P2P_GO_NOA_REQ;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    msg.type = SIR_HAL_SET_P2P_GO_NOA_REQ;
->>>>>>> 657b0e9... prima update
     msg.reserved = 0;
     msg.bodyptr = pMsgNoA;
     msg.bodyval = 0;
@@ -1627,14 +1397,10 @@ tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf)
     if(eSIR_SUCCESS != wdaPostCtrlMsg(pMac, &msg))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGE, FL("halPostMsgApi failed\n"));
 =======
         limLog(pMac, LOGE, FL("halPostMsgApi failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGE, FL("halPostMsgApi failed\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
 
@@ -1642,11 +1408,7 @@ tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf)
 } /*** end __limProcessSmeGoNegReq() ***/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 

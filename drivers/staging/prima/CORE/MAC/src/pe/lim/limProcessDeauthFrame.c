@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -35,7 +32,6 @@
  * --------------------------------------------------------------------
  *
  */
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -57,8 +53,6 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #include "palTypes.h"
 #include "aniGlobal.h"
 
@@ -101,7 +95,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
     tLimMlmDeauthInd  mlmDeauthInd;
     tpDphHashNode     pStaDs;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tpPESession       pRoamSessionEntry=NULL;
     tANI_U8           roamSessionId;
@@ -109,8 +102,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
     tANI_U32          frameLen;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
     pHdr = WDA_GET_RX_MAC_HEADER(pRxPacketInfo);
@@ -120,7 +111,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 
     if ((eLIM_STA_ROLE == psessionEntry->limSystemRole) && (eLIM_SME_WT_DEAUTH_STATE == psessionEntry->limSmeState))
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
        PELOGE(limLog(pMac, LOGE,
         FL("received Deauth frame in DEAUTH_WT_STATE(already processing previously received DEAUTH frame).. Dropping this..\n "));)
@@ -140,11 +130,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         }
         return;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       PELOGE(limLog(pMac, LOGE,
-        FL("received Deauth frame in DEAUTH_WT_STATE(already processing previously received DEAUTH frame).. Dropping this..\n "));)
-       return;
->>>>>>> 657b0e9... prima update
     }
 
     if (limIsGroupAddr(pHdr->sa))
@@ -153,14 +138,10 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         // Log error and ignore it
         PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("received Deauth frame from a BC/MC address\n"));)
 =======
                FL("received Deauth frame from a BC/MC address"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("received Deauth frame from a BC/MC address\n"));)
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -170,7 +151,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         // Received Deauth frame for a MC address
         // Log error and ignore it
         PELOG1(limLog(pMac, LOG1,
-<<<<<<< HEAD
 <<<<<<< HEAD
                FL("received Deauth frame for a MC address\n"));)
 
@@ -200,12 +180,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("received Deauth frame for a MC address\n"));)
-
-        return;
-    }
->>>>>>> 657b0e9... prima update
     // Get reasonCode from Deauthentication frame body
     reasonCode = sirReadU16(pBody);
 
@@ -214,7 +188,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         limMlmStateStr(psessionEntry->limMlmState), reasonCode);
     limPrintMacAddr(pMac, pHdr->sa, LOGE);)
       
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     if (limCheckDisassocDeauthAckPending(pMac, (tANI_U8*)pHdr->sa))
@@ -227,8 +200,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 
   
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     if ( (psessionEntry->limSystemRole == eLIM_AP_ROLE )||(psessionEntry->limSystemRole == eLIM_BT_AMP_AP_ROLE) )
     {
         switch (reasonCode)
@@ -243,14 +214,10 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                 // Log error and ignore the frame
                 PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("received Deauth frame with invalid reasonCode %d from \n"),
 =======
                    FL("received Deauth frame with invalid reasonCode %d from "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("received Deauth frame with invalid reasonCode %d from \n"),
->>>>>>> 657b0e9... prima update
                    reasonCode);
                 limPrintMacAddr(pMac, pHdr->sa, LOG1);)
 
@@ -275,14 +242,10 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                 // Log error and ignore the frame
                 PELOG1(limLog(pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("received Deauth frame with invalid reasonCode %d from \n"),
 =======
                    FL("received Deauth frame with invalid reasonCode %d from "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("received Deauth frame with invalid reasonCode %d from \n"),
->>>>>>> 657b0e9... prima update
                    reasonCode);
                 limPrintMacAddr(pMac, pHdr->sa, LOG1);)
 
@@ -292,7 +255,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
     else
     {
         // Received Deauth frame in either IBSS
-<<<<<<< HEAD
 <<<<<<< HEAD
         // or un-known role. Log error and ignore it
         limLog(pMac, LOGE,
@@ -306,13 +268,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
            reasonCode, psessionEntry->limSystemRole);
           limPrintMacAddr(pMac, pHdr->sa, LOG1);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        // or un-known role. Log error and ignore it
-        limLog(pMac, LOGE,
-           FL("received Deauth frame with reasonCode %d in role %d from \n"),
-           reasonCode, psessionEntry->limSystemRole);
-          limPrintMacAddr(pMac, pHdr->sa, LOGE);
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -336,7 +291,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
      *     with normal deauth processing. 
      */
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (limIsReassocInProgress(pMac,psessionEntry)) {
         if (!IS_REASSOC_BSSID(pMac,pHdr->sa,psessionEntry)) {
             PELOGE(limLog(pMac, LOGE, FL("Rcv Deauth from unknown/different AP while ReAssoc. Ignore \n"));)
@@ -349,11 +303,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         if (!IS_REASSOC_BSSID(pMac,pHdr->sa,psessionEntry)) {
             PELOGE(limLog(pMac, LOGE, FL("Rcv Deauth from unknown/different AP while ReAssoc. Ignore "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (limIsReassocInProgress(pMac,psessionEntry)) {
-        if (!IS_REASSOC_BSSID(pMac,pHdr->sa,psessionEntry)) {
-            PELOGE(limLog(pMac, LOGE, FL("Rcv Deauth from unknown/different AP while ReAssoc. Ignore \n"));)
->>>>>>> 657b0e9... prima update
             limPrintMacAddr(pMac, pHdr->sa, LOGE);
             limPrintMacAddr(pMac, psessionEntry->limReAssocbssId, LOGE);
             return;
@@ -364,14 +313,10 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
          */
         if (!IS_CURRENT_BSSID(pMac, pHdr->sa,psessionEntry)) {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("received DeAuth from the New AP to which ReAssoc is sent \n"));)
 =======
             PELOGE(limLog(pMac, LOGE, FL("received DeAuth from the New AP to which ReAssoc is sent "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("received DeAuth from the New AP to which ReAssoc is sent \n"));)
->>>>>>> 657b0e9... prima update
             limPrintMacAddr(pMac, pHdr->sa, LOGE);
             limPrintMacAddr(pMac, psessionEntry->bssId, LOGE);
             limRestorePreReassocState(pMac,
@@ -385,7 +330,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
      * nor associated with, then ignore deauth and delete Pre-auth entry.
      */
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     if(psessionEntry->limSystemRole != eLIM_AP_ROLE ){
 #endif
@@ -396,27 +340,18 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
             {
                 PELOGE(limLog(pMac, LOGE, FL("Preauth entry exist. Deleting... \n"));)
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     if(psessionEntry->limSystemRole != eLIM_AP_ROLE ){
-#endif
-        if (!IS_CURRENT_BSSID(pMac, pHdr->sa,psessionEntry)) 
+        if (!IS_CURRENT_BSSID(pMac, pHdr->bssId, psessionEntry))
         {
-            PELOGE(limLog(pMac, LOGE, FL("received DeAuth from an AP other than we're trying to join. Ignore. \n"));)
+            PELOGE(limLog(pMac, LOGE, FL("received DeAuth from an AP other than we're trying to join. Ignore. "));)
             if (limSearchPreAuthList(pMac, pHdr->sa))
             {
-<<<<<<< HEAD
                 PELOG1(limLog(pMac, LOG1, FL("Preauth entry exist. Deleting... "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(limLog(pMac, LOGE, FL("Preauth entry exist. Deleting... \n"));)
->>>>>>> 657b0e9... prima update
                 limDeletePreAuthNode(pMac, pHdr->sa);
             }
             return;
         }
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     }
@@ -426,11 +361,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 
         pStaDs = dphLookupHashEntry(pMac, pHdr->sa, &aid, &psessionEntry->dph.dphHashTable);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-    }
-#endif
->>>>>>> 657b0e9... prima update
 
         // Check for pre-assoc states
         switch (psessionEntry->limSystemRole)
@@ -460,21 +390,15 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                     case eLIM_MLM_AUTHENTICATED_STATE:
                         /// Issue Deauth Indication to SME.
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
                         palCopyMemory( pMac->hHdd,
                                (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
                                pHdr->sa,
                                sizeof(tSirMacAddr));
-<<<<<<< HEAD
 =======
                         vos_mem_copy((tANI_U8 *) &mlmDeauthInd.peerMacAddr,
                                      pHdr->sa,
                                      sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                         mlmDeauthInd.reasonCode = reasonCode;
 
                         psessionEntry->limMlmState = eLIM_MLM_IDLE_STATE;
@@ -498,14 +422,10 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                        if (psessionEntry->pLimMlmJoinReq)
                         {
 <<<<<<< HEAD
-<<<<<<< HEAD
                             palFreeMemory( pMac->hHdd, psessionEntry->pLimMlmJoinReq);
 =======
                             vos_mem_free(psessionEntry->pLimMlmJoinReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            palFreeMemory( pMac->hHdd, psessionEntry->pLimMlmJoinReq);
->>>>>>> 657b0e9... prima update
                             psessionEntry->pLimMlmJoinReq = NULL;
                         }
 
@@ -532,7 +452,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                         return;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                     case eLIM_MLM_IDLE_STATE:
                     case eLIM_MLM_LINK_ESTABLISHED_STATE:
                         /**
@@ -552,19 +471,22 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                          limPrintMacAddr(pMac, pHdr->sa, LOGW);)
                          return ;
 
-=======
->>>>>>> 657b0e9... prima update
                     case eLIM_MLM_IDLE_STATE:
                     case eLIM_MLM_LINK_ESTABLISHED_STATE:
-                        /**
-                         * This could be Deauthentication frame from
-                         * a BSS with which pre-authentication was
-                         * performed. Delete Pre-auth entry if found.
-                         */
-                        if (limSearchPreAuthList(pMac, pHdr->sa))
-                           limDeletePreAuthNode(pMac, pHdr->sa);
+#ifdef FEATURE_WLAN_TDLS
+                        if ((NULL != pStaDs) && (STA_ENTRY_TDLS_PEER == pStaDs->staType))
+                        {
+                           PELOGE(limLog(pMac, LOGE,
+                              FL("received Deauth frame with reason code %d from Tdls peer"),
+                                 reasonCode);
+                           limPrintMacAddr(pMac, pHdr->sa, LOGE);)
+                           limSendSmeTDLSDelStaInd(pMac, pStaDs, psessionEntry,
+                                                   reasonCode);
+                           return;
+                        }
+                        else
+                        {
 
-<<<<<<< HEAD
                             limDeleteTDLSPeers(pMac, psessionEntry);
 #endif
                            /**
@@ -578,8 +500,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                         }
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                         break;
 
                     case eLIM_MLM_WT_REASSOC_RSP_STATE:
@@ -605,9 +525,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                 break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
             case eLIM_AP_ROLE:
                 break;
@@ -646,7 +563,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                                       (tANI_U32 *) &mlmDeauthInd);
                 }
 #endif
-<<<<<<< HEAD
 =======
             case eLIM_AP_ROLE:
                 break;
@@ -654,8 +570,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
             default: // eLIM_AP_ROLE or eLIM_BT_AMP_AP_ROLE
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
                 return;
         } // end switch (pMac->lim.gLimSystemRole)
@@ -667,14 +581,10 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
      * This is maintained by DPH and created by LIM.
      */
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( (pStaDs = dphLookupHashEntry(pMac, pHdr->sa, &aid, &psessionEntry->dph.dphHashTable)) == NULL)
 =======
     if (NULL == pStaDs)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( (pStaDs = dphLookupHashEntry(pMac, pHdr->sa, &aid, &psessionEntry->dph.dphHashTable)) == NULL)
->>>>>>> 657b0e9... prima update
         return;
 
 
@@ -696,7 +606,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 
     /// Issue Deauth Indication to SME.
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
                   pStaDs->staAddr,
                   sizeof(tSirMacAddr));
@@ -708,14 +617,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
                   pStaDs->staAddr,
                   sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmDeauthInd.peerMacAddr,
-                  pStaDs->staAddr,
-                  sizeof(tSirMacAddr));
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    mlmDeauthInd.aid           = pStaDs->assocId;
-#endif
->>>>>>> 657b0e9... prima update
     mlmDeauthInd.reasonCode    = (tANI_U8) pStaDs->mlmStaContext.disassocReason;
     mlmDeauthInd.deauthTrigger = eLIM_PEER_ENTITY_DEAUTH;
 
@@ -737,7 +638,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 
         if (psessionEntry->limAssocResponseData) {
 <<<<<<< HEAD
-<<<<<<< HEAD
             palFreeMemory(pMac->hHdd, psessionEntry->limAssocResponseData);
             psessionEntry->limAssocResponseData = NULL;                            
         }
@@ -750,13 +650,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
 
         PELOGE(limLog(pMac, LOGE, FL("Rcv Deauth from ReAssoc AP. Issue REASSOC_CNF. "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palFreeMemory(pMac->hHdd, psessionEntry->limAssocResponseData);
-            psessionEntry->limAssocResponseData = NULL;                            
-        }
-
-        PELOGE(limLog(pMac, LOGE, FL("Rcv Deauth from ReAssoc AP. Issue REASSOC_CNF. \n"));)
->>>>>>> 657b0e9... prima update
        /*
         * TODO: Instead of overloading eSIR_SME_FT_REASSOC_TIMEOUT_FAILURE
         * it would have been good to define/use a different failure type.
@@ -768,7 +661,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         return;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
     /* reset the deauthMsgCnt here since we are able to Process
@@ -778,9 +670,6 @@ limProcessDeauthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession p
         pMac->lim.deauthMsgCnt = 0;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
     /// Deauthentication from peer MAC entity
     limPostSmeMessage(pMac, LIM_MLM_DEAUTH_IND, (tANI_U32 *) &mlmDeauthInd);
 

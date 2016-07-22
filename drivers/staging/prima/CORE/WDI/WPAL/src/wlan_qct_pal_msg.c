@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -81,14 +78,10 @@ wpt_status wpalPostCtrlMsg(void *pPalContext, wpt_msg *pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: NULL message pointer", __FUNCTION__);
 =======
                  "%s: NULL message pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: NULL message pointer", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       WPAL_ASSERT(0);
       return status;
    }
@@ -105,14 +98,10 @@ wpt_status wpalPostCtrlMsg(void *pPalContext, wpt_msg *pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s fail to post msg %d\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                   __FUNCTION__, pMsg->type);
 =======
                   __func__, pMsg->type);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  __FUNCTION__, pMsg->type);
->>>>>>> 657b0e9... prima update
    }
 
    return status;
@@ -135,14 +124,10 @@ wpt_status wpalPostTxMsg(void *pPalContext, wpt_msg *pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: NULL message pointer", __FUNCTION__);
 =======
                  "%s: NULL message pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: NULL message pointer", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       WPAL_ASSERT(0);
       return status;
    }
@@ -159,14 +144,10 @@ wpt_status wpalPostTxMsg(void *pPalContext, wpt_msg *pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s fail to post msg %d\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                   __FUNCTION__, pMsg->type);
 =======
                   __func__, pMsg->type);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  __FUNCTION__, pMsg->type);
->>>>>>> 657b0e9... prima update
    }
 
    return status;
@@ -188,14 +169,10 @@ wpt_status wpalPostRxMsg(void *pPalContext, wpt_msg *pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: NULL message pointer", __FUNCTION__);
 =======
                  "%s: NULL message pointer", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: NULL message pointer", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       WPAL_ASSERT(0);
       return status;
    }
@@ -212,14 +189,10 @@ wpt_status wpalPostRxMsg(void *pPalContext, wpt_msg *pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s fail to post msg %d\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                   __FUNCTION__, pMsg->type);
 =======
                   __func__, pMsg->type);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  __FUNCTION__, pMsg->type);
->>>>>>> 657b0e9... prima update
    }
 
    return status;

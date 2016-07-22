@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -94,22 +91,15 @@
 
 #ifdef WLAN_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define TIMER_NAME timer_ptr->timerName 
 =======
 #define TIMER_NAME (timer_ptr->timerName)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define TIMER_NAME timer_ptr->timerName 
->>>>>>> 657b0e9... prima update
 #else
 #define TIMER_NAME "N/A"
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 // Routine used to retrieve the Winwrapper context pointer from the pMac structure
 extern tpAniSirTxWrapper sysGetTxWrapperContext(v_PVOID_t pMac);
 
@@ -148,11 +138,8 @@ v_VOID_t tx_voss_wrapper_init(v_PVOID_t pMacGlobal, v_PVOID_t pAdapter)
 
 
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------
  * tx_time_get() 
  *
@@ -346,7 +333,6 @@ static v_VOID_t tx_main_timer_func( v_PVOID_t functionContext )
    TX_TIMER *timer_ptr = (TX_TIMER *)functionContext;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    VOS_ASSERT(NULL != timer_ptr);
 
    VOS_ASSERT(NULL != timer_ptr->pExpireFunc);
@@ -354,19 +340,23 @@ static v_VOID_t tx_main_timer_func( v_PVOID_t functionContext )
    VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_INFO, 
              "Timer %s triggered\n", TIMER_NAME);
 =======
-=======
-   VOS_ASSERT(NULL != timer_ptr);
->>>>>>> 657b0e9... prima update
 
-   VOS_ASSERT(NULL != timer_ptr->pExpireFunc);
+   if (NULL == timer_ptr)
+   {
+       VOS_ASSERT(0);
+       return;
+   }
+
+
+   if (NULL == timer_ptr->pExpireFunc)
+   {
+       VOS_ASSERT(0);
+       return;
+   }
 
    VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_INFO, 
-<<<<<<< HEAD
              "Timer %s triggered", TIMER_NAME);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "Timer %s triggered\n", TIMER_NAME);
->>>>>>> 657b0e9... prima update
 
    // Now call the actual timer function, taking the function pointer,
    // from the timer structure.
@@ -384,14 +374,10 @@ static v_VOID_t tx_main_timer_func( v_PVOID_t functionContext )
       {
          VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_WARN, 
 <<<<<<< HEAD
-<<<<<<< HEAD
              "Unable to reschedule timer %s; status=%d\n", TIMER_NAME, status);
 =======
              "Unable to reschedule timer %s; status=%d", TIMER_NAME, status);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "Unable to reschedule timer %s; status=%d\n", TIMER_NAME, status);
->>>>>>> 657b0e9... prima update
       }
    }
 } /*** tx_timer_change() ***/
@@ -489,14 +475,10 @@ v_UINT_t tx_timer_create_intern( v_PVOID_t pMacGlobal, TX_TIMER *timer_ptr,
 #ifdef WLAN_DEBUG
     // Store the timer name
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_copy(timer_ptr->timerName, name_ptr, sizeof(timer_ptr->timerName));
 =======
     strlcpy(timer_ptr->timerName, name_ptr, sizeof(timer_ptr->timerName));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_copy(timer_ptr->timerName, name_ptr, sizeof(timer_ptr->timerName));
->>>>>>> 657b0e9... prima update
 #endif // Store the timer name, for Debug build only
 
     status = vos_timer_init( &timer_ptr->vosTimer, VOS_TIMER_TYPE_SW, 

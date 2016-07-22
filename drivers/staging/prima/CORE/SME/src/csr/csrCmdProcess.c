@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -48,15 +45,11 @@
 /** ------------------------------------------------------------------------- * 
     ------------------------------------------------------------------------- *  
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     \file csrCmdProcess.c
   
     Implementation for processing various commands.
   
    Copyright (C) 2006 Airgo Networks, Incorporated
-<<<<<<< HEAD
  
    ========================================================================== */
 
@@ -69,23 +62,14 @@
 #include "aniGlobal.h"
 #endif
 =======
-=======
->>>>>>> 657b0e9... prima update
  
-   ========================================================================== */
+    Copyright (C) 2006 Airgo Networks, Incorporated
 
+   ---------------------------------------------------------------------------*
+*/
 
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halInternal.h" //Check if the below include of aniGobal.h is sufficient for Volans too.
-#endif
-
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include "aniGlobal.h"
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #include "palApi.h"
 #include "csrInsideApi.h"
@@ -101,14 +85,10 @@ eHalStatus csrMsgProcessor( tpAniSirGlobal pMac,  void *pMsgBuf )
     tSirSmeRsp *pSmeRsp = (tSirSmeRsp *)pMsgBuf;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog( pMac, LOG2, "  Message %d[0x%04X] received in curState %d and substate %d\n",
 =======
     smsLog( pMac, LOG2, "  Message %d[0x%04X] received in curState %d and substate %d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog( pMac, LOG2, "  Message %d[0x%04X] received in curState %d and substate %d\n",
->>>>>>> 657b0e9... prima update
                 pSmeRsp->messageType, pSmeRsp->messageType, 
                 pMac->roam.curState[pSmeRsp->sessionId],
                 pMac->roam.curSubState[pSmeRsp->sessionId] );
@@ -159,27 +139,19 @@ eHalStatus csrMsgProcessor( tpAniSirGlobal pMac,  void *pMsgBuf )
                 (eWNI_SME_REMOVEKEY_RSP == pSmeRsp->messageType) )
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog(pMac, LOGW, FL(" handling msg 0x%X CSR state is %d\n"), pSmeRsp->messageType, pMac->roam.curState[pSmeRsp->sessionId]);
 =======
                 smsLog(pMac, LOGW, FL(" handling msg 0x%X CSR state is %d"), pSmeRsp->messageType, pMac->roam.curState[pSmeRsp->sessionId]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGW, FL(" handling msg 0x%X CSR state is %d\n"), pSmeRsp->messageType, pMac->roam.curState[pSmeRsp->sessionId]);
->>>>>>> 657b0e9... prima update
                 csrRoamCheckForLinkStatusChange(pMac, pSmeRsp);
             }
             else
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 smsLog(pMac, LOGW, "  Message 0x%04X is not handled by CSR. CSR state is %d \n", pSmeRsp->messageType, pMac->roam.curState[pSmeRsp->sessionId]);
 =======
                 smsLog(pMac, LOGW, "  Message 0x%04X is not handled by CSR. CSR state is %d ", pSmeRsp->messageType, pMac->roam.curState[pSmeRsp->sessionId]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGW, "  Message 0x%04X is not handled by CSR. CSR state is %d \n", pSmeRsp->messageType, pMac->roam.curState[pSmeRsp->sessionId]);
->>>>>>> 657b0e9... prima update
             }
             break;
         }

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,13 +44,9 @@
 
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  *
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *
->>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limAIDmgmt.cc contains the functions related to
  * AID pool management like initialization, assignment etc.
@@ -73,7 +66,6 @@
 #include "limTimerUtils.h"
 #include "limSession.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 #define LIM_START_AID   1
 
@@ -82,19 +74,12 @@
  * limInitAIDpool()
 =======
 #include "limSessionUtils.h"
-=======
->>>>>>> 657b0e9... prima update
 
-#define LIM_START_AID   1
-
+#define LIM_START_PEER_IDX   1
 
 /**
-<<<<<<< HEAD
  * limInitPeerIdxpool()
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * limInitAIDpool()
->>>>>>> 657b0e9... prima update
  *
  *FUNCTION:
  * This function is called while starting a BSS at AP
@@ -116,19 +101,14 @@
 
 void
 <<<<<<< HEAD
-<<<<<<< HEAD
 limInitAIDpool(tpAniSirGlobal pMac,tpPESession sessionEntry)
 =======
 limInitPeerIdxpool(tpAniSirGlobal pMac,tpPESession pSessionEntry)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-limInitAIDpool(tpAniSirGlobal pMac,tpPESession sessionEntry)
->>>>>>> 657b0e9... prima update
 {
     tANI_U8 i;
     tANI_U8 maxAssocSta = pMac->lim.gLimAssocStaLimit;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     pMac->lim.gpLimAIDpool[0]=0;
     pMac->lim.freeAidHead=LIM_START_AID;
@@ -156,29 +136,20 @@ limInitAIDpool(tpAniSirGlobal pMac,tpPESession sessionEntry)
     {
         pSessionEntry->freePeerIdxHead=LIM_START_PEER_IDX;
     }
-=======
-    pMac->lim.gpLimAIDpool[0]=0;
-    pMac->lim.freeAidHead=LIM_START_AID;
->>>>>>> 657b0e9... prima update
 
-    for (i=pMac->lim.freeAidHead;i<maxAssocSta; i++)
+    for (i=pSessionEntry->freePeerIdxHead;i<maxAssocSta; i++)
     {
-        pMac->lim.gpLimAIDpool[i]         = i+1;
+        pSessionEntry->gpLimPeerIdxpool[i]         = i+1;
     }
-    pMac->lim.gpLimAIDpool[i]         =  0;
+    pSessionEntry->gpLimPeerIdxpool[i]         =  0;
 
-<<<<<<< HEAD
     pSessionEntry->freePeerIdxTail=i;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMac->lim.freeAidTail=i;
->>>>>>> 657b0e9... prima update
 
 }
 
 
 /**
-<<<<<<< HEAD
 <<<<<<< HEAD
  * limAssignAID()
  *
@@ -187,18 +158,13 @@ limInitAIDpool(tpAniSirGlobal pMac,tpPESession sessionEntry)
  * frame handling to assign association ID (aid) to a STA.
 =======
  * limAssignPeerIdx()
-=======
- * limAssignAID()
->>>>>>> 657b0e9... prima update
  *
  *FUNCTION:
- * This function is called during Association/Reassociation
+ * This function is called to get a peer station index. This index is
+ * used during Association/Reassociation
  * frame handling to assign association ID (aid) to a STA.
-<<<<<<< HEAD
  * In case of TDLS, this is used to assign a index into the Dph hash entry.
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  *
  *LOGIC:
  *
@@ -208,7 +174,6 @@ limInitAIDpool(tpAniSirGlobal pMac,tpPESession sessionEntry)
  *NOTE:
  *
  * @param  pMac - Pointer to Global MAC structure
-<<<<<<< HEAD
 <<<<<<< HEAD
  * @return aid  - assigned Association ID for STA
  */
@@ -222,24 +187,17 @@ limAssignAID(tpAniSirGlobal pMac)
     if (pMac->lim.gLimNumOfCurrentSTAs >= pMac->lim.gLimAssocStaLimit)
 =======
  * @return peerIdx  - assigned peer Station IDx for STA
-=======
- * @return aid  - assigned Association ID for STA
->>>>>>> 657b0e9... prima update
  */
 
 tANI_U16
-limAssignAID(tpAniSirGlobal pMac)
+limAssignPeerIdx(tpAniSirGlobal pMac, tpPESession pSessionEntry)
 {
-    tANI_U16 aid;
+    tANI_U16 peerId;
 
     // make sure we haven't exceeded the configurable limit on associations
-<<<<<<< HEAD
     // This count is global to ensure that it doesnt exceed the hardware limits.
     if (peGetCurrentSTAsCount(pMac) >= pMac->lim.gLimAssocStaLimit)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (pMac->lim.gLimNumOfCurrentSTAs >= pMac->lim.gLimAssocStaLimit)
->>>>>>> 657b0e9... prima update
     {
         // too many associations already active
         return 0;
@@ -247,7 +205,6 @@ limAssignAID(tpAniSirGlobal pMac)
 
     /* return head of free list */
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if (pMac->lim.freeAidHead)
     {
@@ -263,30 +220,22 @@ limAssignAID(tpAniSirGlobal pMac)
     return 0; /* no more free aids */
 =======
     if (pSessionEntry->freePeerIdxHead)
-=======
-    if (pMac->lim.freeAidHead)
->>>>>>> 657b0e9... prima update
     {
-        aid=pMac->lim.freeAidHead;
-        pMac->lim.freeAidHead=pMac->lim.gpLimAIDpool[pMac->lim.freeAidHead];
-        if (pMac->lim.freeAidHead==0)
-            pMac->lim.freeAidTail=0;
-        pMac->lim.gLimNumOfCurrentSTAs++;
-        //PELOG2(limLog(pMac, LOG2,FL("Assign aid %d, numSta %d, head %d tail %d \n"),aid,pMac->lim.gLimNumOfCurrentSTAs,pMac->lim.freeAidHead,pMac->lim.freeAidTail);)
-        return aid;
+        peerId=pSessionEntry->freePeerIdxHead;
+        pSessionEntry->freePeerIdxHead = pSessionEntry->gpLimPeerIdxpool[pSessionEntry->freePeerIdxHead];
+        if (pSessionEntry->freePeerIdxHead==0)
+            pSessionEntry->freePeerIdxTail=0;
+        pSessionEntry->gLimNumOfCurrentSTAs++;
+        //PELOG2(limLog(pMac, LOG2,FL("Assign aid %d, numSta %d, head %d tail %d "),aid,pSessionEntry->gLimNumOfCurrentSTAs,pSessionEntry->freeAidHead,pSessionEntry->freeAidTail);)
+        return peerId;
     }
 
-<<<<<<< HEAD
     return 0; /* no more free peer index */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    return 0; /* no more free aids */
->>>>>>> 657b0e9... prima update
 }
 
 
 /**
-<<<<<<< HEAD
 <<<<<<< HEAD
  * limReleaseAID()
  *
@@ -300,13 +249,6 @@ limAssignAID(tpAniSirGlobal pMac)
  * This function is called when a STA context is removed
  * at AP (or at a STA in IBSS mode or TDLS) to return peer Index
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * limReleaseAID()
- *
- *FUNCTION:
- * This function is called when a STA context is removed
- * at AP (or at a STA in IBSS mode) to return association ID (aid)
->>>>>>> 657b0e9... prima update
  * to free pool.
  *
  *LOGIC:
@@ -318,20 +260,15 @@ limAssignAID(tpAniSirGlobal pMac)
  *
  * @param  pMac - Pointer to Global MAC structure
 <<<<<<< HEAD
-<<<<<<< HEAD
  * @param  aid - Association ID that need to return to free pool
 =======
  * @param  peerIdx - peer station index that need to return to free pool
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * @param  aid - Association ID that need to return to free pool
->>>>>>> 657b0e9... prima update
  *
  * @return None
  */
 
 void
-<<<<<<< HEAD
 <<<<<<< HEAD
 limReleaseAID(tpAniSirGlobal pMac, tANI_U16 aid)
 {
@@ -351,29 +288,21 @@ limReleaseAID(tpAniSirGlobal pMac, tANI_U16 aid)
     //PELOG2(limLog(pMac, LOG2,FL("Release aid %d, numSta %d, head %d tail %d \n"),aid,pMac->lim.gLimNumOfCurrentSTAs,pMac->lim.freeAidHead,pMac->lim.freeAidTail);)
 =======
 limReleasePeerIdx(tpAniSirGlobal pMac, tANI_U16 peerIdx, tpPESession pSessionEntry)
-=======
-limReleaseAID(tpAniSirGlobal pMac, tANI_U16 aid)
->>>>>>> 657b0e9... prima update
 {
-    pMac->lim.gLimNumOfCurrentSTAs--;
+    pSessionEntry->gLimNumOfCurrentSTAs--;
 
     /* insert at tail of free list */
-    if (pMac->lim.freeAidTail)
+    if (pSessionEntry->freePeerIdxTail)
     {
-        pMac->lim.gpLimAIDpool[pMac->lim.freeAidTail]=(tANI_U8)aid;
-        pMac->lim.freeAidTail=(tANI_U8)aid;
+        pSessionEntry->gpLimPeerIdxpool[pSessionEntry->freePeerIdxTail]=(tANI_U8)peerIdx;
+        pSessionEntry->freePeerIdxTail=(tANI_U8)peerIdx;
     }
     else
     {
-        pMac->lim.freeAidTail=pMac->lim.freeAidHead=(tANI_U8)aid;
+        pSessionEntry->freePeerIdxTail=pSessionEntry->freePeerIdxHead=(tANI_U8)peerIdx;
     }
-<<<<<<< HEAD
     pSessionEntry->gpLimPeerIdxpool[(tANI_U8)peerIdx]=0;
     //PELOG2(limLog(pMac, LOG2,FL("Release aid %d, numSta %d, head %d tail %d "),aid,pMac->lim.gLimNumOfCurrentSTAs,pMac->lim.freeAidHead,pMac->lim.freeAidTail);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMac->lim.gpLimAIDpool[(tANI_U8)aid]=0;
-    //PELOG2(limLog(pMac, LOG2,FL("Release aid %d, numSta %d, head %d tail %d \n"),aid,pMac->lim.gLimNumOfCurrentSTAs,pMac->lim.freeAidHead,pMac->lim.freeAidTail);)
->>>>>>> 657b0e9... prima update
 
 }

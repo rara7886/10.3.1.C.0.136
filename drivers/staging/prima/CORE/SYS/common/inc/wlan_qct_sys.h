@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -23,7 +20,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -45,8 +41,6 @@
   * PERFORMANCE OF THIS SOFTWARE.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #if !defined( WLAN_QCT_SYS_H__ )
 #define WLAN_QCT_SYS_H__
 
@@ -57,7 +51,6 @@
   \brief System module API
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                Copyright 2008 (c) Qualcomm, Incorporated.
                All Rights Reserved.
                Qualcomm Confidential and Proprietary.
@@ -66,11 +59,6 @@
                All Rights Reserved.
                Qualcomm Technologies Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               Copyright 2008 (c) Qualcomm, Incorporated.
-               All Rights Reserved.
-               Qualcomm Confidential and Proprietary.
->>>>>>> 657b0e9... prima update
 
   ==========================================================================*/
 
@@ -124,12 +112,9 @@ typedef enum
 
    SYS_MSG_ID_MC_STOP,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    SYS_MSG_ID_FTM_RSP,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 } SYS_MSG_ID;
 
@@ -382,13 +367,9 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t* pMsg );
 VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
 
   \brief sysTxProcessMsg() - process SYS messages on the Rx thread
@@ -421,13 +402,9 @@ VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
   --------------------------------------------------------------------------*/
 VOS_STATUS sysRxProcessMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 /*----------------------------------------------------------------------------
 
@@ -480,12 +457,9 @@ v_VOID_t sysTxFreeMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
 
 void wlan_sys_ftm(void *pMsgPtr);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 void wlan_sys_probe(void);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
 #endif  // WLAN_QCT_SYS_H__

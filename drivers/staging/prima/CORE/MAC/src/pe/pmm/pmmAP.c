@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -66,22 +63,15 @@
 #include "limApi.h"
 #include "cfgApi.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "wniCfgAp.h"
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "wniCfgAp.h"
->>>>>>> 657b0e9... prima update
 
 #include "pmmApi.h"
 #include "pmmDebug.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define PMM_TIM_BITS_LIMIT        10
 #define PMM_CF_POLLABLE_SCH_LIMIT 100
 
@@ -246,11 +236,8 @@ void pmmHandleTimBasedDisassociation (tpAniSirGlobal pMac, tpPESession psessionE
 #endif
 
 #ifdef WLAN_SOFTAP_FEATURE
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**
  * pmmGenerateTIM
  *
@@ -297,23 +284,16 @@ void pmmGenerateTIM(tpAniSirGlobal pMac, tANI_U8 **pPtr, tANI_U16 *timLength, tA
     *ptr++ = (tANI_U8)val;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     *ptr++ = 0xFF; // location for bitmap contorl. will be filled in by FW.
 =======
     *ptr++ = 0xFF; // location for bitmap control. will be filled in by FW.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    *ptr++ = 0xFF; // location for bitmap contorl. will be filled in by FW.
->>>>>>> 657b0e9... prima update
     ptr += (N2 - N1 + 1);
 
     PELOG2(sirDumpBuf(pMac, SIR_PMM_MODULE_ID, LOG2, *pPtr, (*timLength)+2);)
     *pPtr = ptr;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
 #endif
 #ifdef ANI_PRODUCT_TYPE_AP
@@ -732,8 +712,5 @@ void pmmUpdatePollablePMMode(tpAniSirGlobal pMac, tANI_U16 staId, tANI_U8 pmMode
 
 // --------------------------------------------------------------------
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

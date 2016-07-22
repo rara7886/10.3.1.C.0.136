@@ -1,13 +1,9 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
->>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -34,17 +30,12 @@
 * Description: Packet Filter Definitions.
 *
 <<<<<<< HEAD
-<<<<<<< HEAD
 * Copyright (c) 2011 QUALCOMM Incorporated. All Rights Reserved.
 * QUALCOMM Proprietary and Confidential.
 =======
 * Copyright (c) 2011 Qualcomm Technologies, Inc. All Rights Reserved.
 * Qualcomm Technologies Proprietary and Confidential.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-* Copyright (c) 2011 QUALCOMM Incorporated. All Rights Reserved.
-* QUALCOMM Proprietary and Confidential.
->>>>>>> 657b0e9... prima update
 *
 ******************************************************************************/
 
@@ -52,14 +43,10 @@
 #define __WLAN_HDD_PACKET_FILTERING_H__
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 typedef struct
 {
     v_U8_t       mcastBcastFilterSetting;
 }tMcBcFilterCfg, *tpMcBcFilterCfg;
-<<<<<<< HEAD
 
 
 #ifdef WLAN_FEATURE_PACKET_FILTERING
@@ -83,12 +70,6 @@ typedef struct
 #define HDD_WLAN_MAC_ADDR_LEN             6
 #define HDD_MAX_NUM_MULTICAST_ADDRESS     10
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-
-#ifdef WLAN_FEATURE_PACKET_FILTERING
-#define HDD_MAX_CMP_PER_PACKET_FILTER     5     
->>>>>>> 657b0e9... prima update
 
 typedef enum
 {
@@ -110,14 +91,10 @@ typedef enum
 }eFilterAction;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef enum 
 =======
 typedef enum
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef enum 
->>>>>>> 657b0e9... prima update
 {
   HDD_FILTER_CMP_TYPE_INVALID = 0,
   HDD_FILTER_CMP_TYPE_EQUAL = 1,
@@ -131,14 +108,10 @@ struct PacketFilterParamsCfg
 {
     v_U8_t              protocolLayer;
 <<<<<<< HEAD
-<<<<<<< HEAD
     v_U8_t              cmpFlag;   
 =======
     v_U8_t              cmpFlag;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    v_U8_t              cmpFlag;   
->>>>>>> 657b0e9... prima update
     v_U8_t              dataOffset;
     v_U8_t              dataLength;
     v_U8_t              compareData[8];
@@ -147,7 +120,6 @@ struct PacketFilterParamsCfg
 
 typedef struct
 {
-<<<<<<< HEAD
 <<<<<<< HEAD
     v_U8_t            filterAction;    
     v_U8_t            filterId;
@@ -158,16 +130,11 @@ typedef struct
 
 =======
     v_U8_t            filterAction;
-=======
-    v_U8_t            filterAction;    
->>>>>>> 657b0e9... prima update
     v_U8_t            filterId;
     v_U8_t            numParams;
     struct PacketFilterParamsCfg paramsData [HDD_MAX_CMP_PER_PACKET_FILTER];
-    v_U8_t            bssIdx;
 }tPacketFilterCfg, *tpPacketFilterCfg;
 
-<<<<<<< HEAD
 typedef v_U8_t tHddMacAddr[HDD_WLAN_MAC_ADDR_LEN];
 
 typedef struct
@@ -178,7 +145,5 @@ typedef struct
 } tRcvFltMcAddrList, *tpRcvFltMcAddrList;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 #endif // __WLAN_HDD_PACKET_FILTERING_H__

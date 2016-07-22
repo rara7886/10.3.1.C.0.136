@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -68,13 +65,10 @@
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef VOS_TIMER_STATE WPAL_TIMER_STATE;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef void (*wpal_timer_callback)(void *pUserData);
 
 typedef struct
@@ -126,7 +120,6 @@ wpt_status wpalTimerStop(wpt_timer * pTimer);
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     wpalTimerGetCurStatus - Get the current status of timer
 
@@ -147,8 +140,6 @@ wpt_uint32 wpalGetSystemTime(void);
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     wpalSleep - sleep for a specified interval
     Param:
         timeout - amount of time to sleep. In unit of milli-seconds.
@@ -157,7 +148,6 @@ wpt_uint32 wpalGetSystemTime(void);
 ---------------------------------------------------------------------------*/
 wpt_status wpalSleep(wpt_uint32 timeout);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -170,8 +160,5 @@ wpt_status wpalSleep(wpt_uint32 timeout);
 ---------------------------------------------------------------------------*/
 void wpalBusyWait(wpt_uint32 usecDelay);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
 #endif // __WLAN_QCT_PAL_TIMER_H

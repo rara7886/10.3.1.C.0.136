@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -86,18 +83,12 @@
 #include "sme_Api.h"
 #include "macInitApi.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 #include "wlan_qct_sal.h"
 #include "wlan_qct_bal.h"
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #include "wlan_qct_sys.h"
 #include "wlan_qct_tl.h"
 #include "wlan_hdd_misc.h"
@@ -106,9 +97,6 @@
 #include "wlan_hdd_main.h"
 #include "vos_power.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 #include "ani_assert.h"
 #include "sys_api.h"
@@ -117,31 +105,22 @@
 #include "qwlan_version.h"
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
-<<<<<<< HEAD
 =======
 #include "qwlan_version.h"
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #include "wlan_nv.h"
 #include "wlan_qct_wda.h"
 #include "cfgApi.h"
 #include "pttMsgApi.h"
 #include "wlan_qct_pal_device.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
 #ifdef ANI_MANF_DIAG
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
-
-#ifdef ANI_MANF_DIAG
->>>>>>> 657b0e9... prima update
 #define RXMODE_DISABLE_ALL 0
 #define RXMODE_ENABLE_ALL  1
 #define RXMODE_ENABLE_11GN 2
@@ -154,27 +133,19 @@
 #define FTM_CHAIN_SEL_MAX           3
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 #ifndef QWLAN_PHYDBG_BASE
 #define QWLAN_PHYDBG_BASE                   0x03004000
 #endif /* QWLAN_PHYDBG_BASE */
 
 #ifndef QWLAN_PHYDBG_TXPKT_CNT_REG
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_PHYDBG_TXPKT_CNT_REG          QWLAN_PHYDBG_BASE + 0x6C
 =======
 #define QWLAN_PHYDBG_TXPKT_CNT_REG          (QWLAN_PHYDBG_BASE + 0x6C)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_PHYDBG_TXPKT_CNT_REG          QWLAN_PHYDBG_BASE + 0x6C
->>>>>>> 657b0e9... prima update
 #define QWLAN_PHYDBG_TXPKT_CNT_CNT_MASK     0xFFFF
 #endif
 
@@ -184,27 +155,19 @@
 
 #ifndef QWLAN_AGC_CHANNEL_FREQ_REG
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_AGC_CHANNEL_FREQ_REG          QWLAN_AGC_BASE + 0x34
 =======
 #define QWLAN_AGC_CHANNEL_FREQ_REG          (QWLAN_AGC_BASE + 0x34)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_AGC_CHANNEL_FREQ_REG          QWLAN_AGC_BASE + 0x34
->>>>>>> 657b0e9... prima update
 #define QWLAN_AGC_CHANNEL_FREQ_FREQ_MASK    0x1FFF
 #endif /* QWLAN_AGC_CHANNEL_FREQ_REG */
 
 #ifndef QWLAN_AGC_SUBBAND_CONFIG_REG
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_AGC_SUBBAND_CONFIG_REG        QWLAN_AGC_BASE + 0x30
 =======
 #define QWLAN_AGC_SUBBAND_CONFIG_REG        (QWLAN_AGC_BASE + 0x30)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_AGC_SUBBAND_CONFIG_REG        QWLAN_AGC_BASE + 0x30
->>>>>>> 657b0e9... prima update
 #define QWLAN_AGC_SUBBAND_CONFIG_STG2_SUBBAND_MASK  0x03
 #endif /* QWLAN_AGC_SUBBAND_CONFIG_REG */
 
@@ -214,14 +177,10 @@
 
 #ifndef QWLAN_RFAPB_REV_ID_REG
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_RFAPB_REV_ID_REG              QWLAN_RFAPB_BASE + 0x00
 =======
 #define QWLAN_RFAPB_REV_ID_REG              (QWLAN_RFAPB_BASE + 0x00)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_RFAPB_REV_ID_REG              QWLAN_RFAPB_BASE + 0x00
->>>>>>> 657b0e9... prima update
 #endif /* QWLAN_RFAPB_REV_ID_REG */
 
 #ifndef QWLAN_TXCTL_BASE
@@ -230,14 +189,10 @@
 
 #ifndef QWLAN_TXCTL_FSHIFT_REG
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define QWLAN_TXCTL_FSHIFT_REG              QWLAN_TXCTL_BASE + 0x20
 =======
 #define QWLAN_TXCTL_FSHIFT_REG              (QWLAN_TXCTL_BASE + 0x20)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define QWLAN_TXCTL_FSHIFT_REG              QWLAN_TXCTL_BASE + 0x20
->>>>>>> 657b0e9... prima update
 #define QWLAN_TXCTL_FSHIFT_BW14_OFFSET      0x02
 #define QWLAN_TXCTL_FSHIFT_BW14_MASK        0x1C
 #define QWLAN_TXCTL_FSHIFT_BW12_OFFSET      0x00
@@ -248,14 +203,11 @@
  * Last byte value within given MAC address must less than 0xFF - 3 */
 #define QWLAN_MAX_MAC_LAST_BYTE_VALUE       0xFC
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define NV_EMBEDDED_VERSION                 0x80
 
 #define QWLAN_TXFIR_CFG_DPD_BYPASS_MASK     0x8
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef struct {
    tANI_U32 tableSize;                      /* Whole NV Table Size */
@@ -268,7 +220,6 @@ typedef struct {
    tANI_U32 tableSize;                      /* Whole NV Table Size */
    tANI_U32 chunkSize;                      /* Current Chunk Size < 2K */
    eNvTable nvTable;
-<<<<<<< HEAD
 <<<<<<< HEAD
    tANI_U8  tableData; 
 } pttSetNvTable;
@@ -284,25 +235,16 @@ static v_VOID_t ftm_vos_sys_probe_thread_cback( v_VOID_t *pUserData );
 /* for PRIMA: all the available frequency, channal pair i the table are defined for channel frequency @ RF center frequency 
 =======
    tANI_U8  tableData;
-=======
-   tANI_U8  tableData; 
->>>>>>> 657b0e9... prima update
 } pttSetNvTable;
 
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
 
 extern const sHalNv nvDefaults;
 static int wlan_ftm_register_wext(hdd_adapter_t *pAdapter);
-#ifndef FEATURE_WLAN_INTEGRATED_SOC
-static v_VOID_t ftm_vos_sys_probe_thread_cback( v_VOID_t *pUserData );
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+static int wlan_ftm_stop(hdd_context_t *pHddCtx);
+VOS_STATUS wlan_write_to_efs (v_U8_t *pData, v_U16_t data_len);
 
-<<<<<<< HEAD
 /* for PRIMA: all the available frequency, channal pair i the table are defined for channel frequency @ RF center frequency
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/* for PRIMA: all the available frequency, channal pair i the table are defined for channel frequency @ RF center frequency 
->>>>>>> 657b0e9... prima update
    Since it is associated to agc.channel_freq register for mapping.
    For channel bonding, the channel number is +2 or -2 for CB with primary high, or with primary low respectively.
 */
@@ -340,7 +282,6 @@ static rateStr2rateIndex_t rateName_rateIndex_tbl[] =
    { HAL_PHY_RATE_MCS_1NSS_58_5_MBPS,  "MCS_58_5_MBPS"},
    { HAL_PHY_RATE_MCS_1NSS_65_MBPS,    "MCS_65_MBPS"},
 <<<<<<< HEAD
-<<<<<<< HEAD
    { HAL_PHY_RATE_MCS_1NSS_MM_SG_72_2_MBPS, "MCS_72_2_MBPS"}
 =======
    { HAL_PHY_RATE_MCS_1NSS_MM_SG_72_2_MBPS, "MCS_72_2_MBPS"},
@@ -365,9 +306,6 @@ static rateStr2rateIndex_t rateName_rateIndex_tbl[] =
    { HAL_PHY_RATE_MCS_1NSS_MM_SG_CB_150_MBPS, "MCS_CB_150_MBPS"}
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   { HAL_PHY_RATE_MCS_1NSS_MM_SG_72_2_MBPS, "MCS_72_2_MBPS"}
->>>>>>> 657b0e9... prima update
 };
 
 static rateIndex2Preamble_t rate_index_2_preamble_table[] =
@@ -382,19 +320,13 @@ static rateIndex2Preamble_t rate_index_2_preamble_table[] =
    { HAL_PHY_RATE_11B_SHORT_11_MBPS,     PHYDBG_PREAMBLE_SHORTB},
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     //SLR Rates
    { HAL_PHY_RATE_SLR_0_25_MBPS,        PHYDBG_PREAMBLE_NOT_SUPPORTED},
    { HAL_PHY_RATE_SLR_0_5_MBPS,         PHYDBG_PREAMBLE_NOT_SUPPORTED},
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    //Spica_Virgo 11A 20MHz Rates
    { HAL_PHY_RATE_11A_6_MBPS,           PHYDBG_PREAMBLE_OFDM},
@@ -406,7 +338,6 @@ static rateIndex2Preamble_t rate_index_2_preamble_table[] =
    { HAL_PHY_RATE_11A_48_MBPS,          PHYDBG_PREAMBLE_OFDM},
    { HAL_PHY_RATE_11A_54_MBPS,          PHYDBG_PREAMBLE_OFDM},
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    // 11A 20MHz Rates
@@ -420,8 +351,6 @@ static rateIndex2Preamble_t rate_index_2_preamble_table[] =
    { HAL_PHY_RATE_11A_DUP_54_MBPS,      PHYDBG_PREAMBLE_OFDM},
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    //MCS Index #0-15 (20MHz)
    { HAL_PHY_RATE_MCS_1NSS_6_5_MBPS,   PHYDBG_PREAMBLE_MIXED},
    { HAL_PHY_RATE_MCS_1NSS_13_MBPS,    PHYDBG_PREAMBLE_MIXED},
@@ -439,7 +368,6 @@ static rateIndex2Preamble_t rate_index_2_preamble_table[] =
    { HAL_PHY_RATE_MCS_1NSS_MM_SG_57_8_MBPS,PHYDBG_PREAMBLE_NOT_SUPPORTED},
    { HAL_PHY_RATE_MCS_1NSS_MM_SG_65_MBPS, PHYDBG_PREAMBLE_NOT_SUPPORTED},
    { HAL_PHY_RATE_MCS_1NSS_MM_SG_72_2_MBPS, PHYDBG_PREAMBLE_MIXED},
-<<<<<<< HEAD
 <<<<<<< HEAD
 };
 
@@ -482,10 +410,6 @@ static unsigned int valid_channel_cb80[] = { 7, 42, 46, 50, 54, 58, 106, 110,
                                              159, 246, 0 };
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-};
-
->>>>>>> 657b0e9... prima update
 typedef struct
 {
     tANI_BOOLEAN frameGenEnabled;
@@ -495,24 +419,18 @@ typedef struct
     v_U16_t rxmode;
     v_U16_t chainSelect;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     ePhyChanBondState cbmode;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 } FTM_STATUS ;
 static FTM_STATUS ftm_status;
 
 //tpAniSirGlobal pMac;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 static tPttMsgbuffer *pMsgBuf;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 static void _ftm_status_init(void)
 {
@@ -539,12 +457,9 @@ static void _ftm_status_init(void)
     ftm_status.rxmode = RXMODE_ENABLE_ALL; /* macStart() enables all receive pkt types */
     ftm_status.chainSelect = FTM_CHAIN_SEL_R0_T0_ON;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     ftm_status.cbmode = 0 ; //none channel bonding
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     return;
 }
@@ -572,7 +487,6 @@ static v_U32_t wlan_ftm_postmsg(v_U8_t *cmd_ptr, v_U16_t cmd_len)
     ftmReqMsg = (vos_msg_t *) cmd_ptr;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
     ftmMsg.type = WDA_FTM_CMD_REQ;
 #else
@@ -581,27 +495,16 @@ static v_U32_t wlan_ftm_postmsg(v_U8_t *cmd_ptr, v_U16_t cmd_len)
 =======
     ftmMsg.type = WDA_FTM_CMD_REQ;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-    ftmMsg.type = WDA_FTM_CMD_REQ;
-#else
-    ftmMsg.type = ftmReqMsg->type;
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
     ftmMsg.reserved = 0;
     ftmMsg.bodyptr = (v_U8_t*)cmd_ptr;
     ftmMsg.bodyval = 0;
 
     /* Use Vos messaging mechanism to send the command to halPhy */
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     /*
        Note that VOS_MODULE_ID_HAL corresponds to VOS_MODULE_ID_WDA
        for INTEGRATED_SOC. SO this code is left as it is.
     */
-<<<<<<< HEAD
     if (VOS_STATUS_SUCCESS != vos_mq_post_message(
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
         VOS_MODULE_ID_HAL,
@@ -609,18 +512,9 @@ static v_U32_t wlan_ftm_postmsg(v_U8_t *cmd_ptr, v_U16_t cmd_len)
         VOS_MODULE_ID_WDA,
 #endif
 =======
-=======
->>>>>>> 657b0e9... prima update
     if (VOS_STATUS_SUCCESS != vos_mq_post_message(
-#ifndef FEATURE_WLAN_INTEGRATED_SOC
-        VOS_MODULE_ID_HAL,
-#else
         VOS_MODULE_ID_WDA,
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
                                     (vos_msg_t *)&ftmMsg)) {
         hddLog(VOS_TRACE_LEVEL_ERROR,"%s: : Failed to post Msg to HAL\n",__func__);
 
@@ -690,19 +584,14 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    if(vos_event_init(&(gpVosContext->wdaCompleteEvent)) != VOS_STATUS_SUCCESS )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                 "%s: Unable to init wdaCompleteEvent",__func__);
       VOS_ASSERT(0);
-<<<<<<< HEAD
 <<<<<<< HEAD
     
       goto err_probe_event;
@@ -713,12 +602,6 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
       goto err_probe_event;
    }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-      goto err_probe_event;
-   }
-#endif /*FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
    /* Initialize the free message queue */
    vStatus = vos_mq_init(&gpVosContext->freeVosMq);
@@ -730,7 +613,6 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
                 "%s: Failed to initialize VOS free message queue",__func__);
       VOS_ASSERT(0);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
       goto err_wda_complete_event;
 #else
@@ -739,13 +621,6 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
 =======
       goto err_wda_complete_event;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-      goto err_wda_complete_event;
-#else
-      goto err_probe_event;
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
    }
 
    for (iter = 0; iter < VOS_CORE_MAX_MESSAGES; iter++)
@@ -782,13 +657,9 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
  #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
- #ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    /*Open the WDA module */
    vos_mem_set(&macOpenParms, sizeof(macOpenParms), 0);
    macOpenParms.driverType = eDRIVER_TYPE_MFG;
@@ -802,13 +673,9 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
       goto err_sys_close;
    }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
    /* initialize the NV module */
    vStatus = vos_nv_open();
@@ -822,15 +689,11 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
    /* Probe the MC thread */
    sysMcThreadProbe(gpVosContext,
                     &ftm_vos_sys_probe_thread_cback,
                     gpVosContext);
-<<<<<<< HEAD
 
 
    if (vos_wait_single_event(&gpVosContext->ProbeEvent, 0)!= VOS_STATUS_SUCCESS)
@@ -843,23 +706,15 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
 #endif
 =======
    vStatus = vos_nv_get_dictionary_data();
-=======
->>>>>>> 657b0e9... prima update
 
-
-   if (vos_wait_single_event(&gpVosContext->ProbeEvent, 0)!= VOS_STATUS_SUCCESS)
+   if (!VOS_IS_STATUS_SUCCESS(vStatus))
    {
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                "%s: Failed to probe MC Thread", __func__);
-      VOS_ASSERT(0);
-      goto err_nv_close;
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                "%s : failed to get dictionary data for NV", __func__);
+      goto err_wda_close;
    }
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
    /* If we arrive here, both threads dispacthing messages correctly */
 
    /* Now proceed to open the MAC */
@@ -880,9 +735,6 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
    vStatus = WLANBAL_Open(gpVosContext);
    if(!VOS_IS_STATUS_SUCCESS(vStatus))
@@ -892,11 +744,8 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
      goto err_mac_close;
    }
 #else
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    /* Now proceed to open the SME */
    vStatus = sme_Open(gpVosContext->pMACContext);
    if (!VOS_IS_STATUS_SUCCESS(vStatus))
@@ -909,13 +758,9 @@ static VOS_STATUS wlan_ftm_vos_open( v_CONTEXT_t pVosContext, v_SIZE_t hddContex
    return VOS_STATUS_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
    VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
                "%s: VOSS successfully Opened",__func__);
@@ -929,7 +774,6 @@ err_nv_close:
 
 err_wda_close:
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
    WDA_close(gpVosContext);
 
@@ -940,13 +784,6 @@ err_sys_close:
 
 err_sys_close:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-   WDA_close(gpVosContext);
-
-err_sys_close:
-#endif
->>>>>>> 657b0e9... prima update
    sysClose(gpVosContext);
 
 err_sched_close:
@@ -955,7 +792,6 @@ err_msg_queue:
    vos_mq_deinit(&gpVosContext->freeVosMq);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 err_wda_complete_event:
    vos_event_destroy(&gpVosContext->wdaCompleteEvent);
@@ -964,12 +800,6 @@ err_wda_complete_event:
 err_wda_complete_event:
    vos_event_destroy(&gpVosContext->wdaCompleteEvent);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-err_wda_complete_event:
-   vos_event_destroy(&gpVosContext->wdaCompleteEvent);
-#endif
->>>>>>> 657b0e9... prima update
 
 err_probe_event:
    vos_event_destroy(&gpVosContext->ProbeEvent);
@@ -998,9 +828,6 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
   pVosContextType gpVosContext = (pVosContextType)vosContext;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   vosStatus = WLANBAL_Close(vosContext);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -1010,11 +837,8 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 #else
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   vosStatus = sme_Close(((pVosContextType)vosContext)->pMACContext);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
   {
@@ -1023,13 +847,9 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
   vosStatus = macClose( ((pVosContextType)vosContext)->pMACContext);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -1059,13 +879,9 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
   }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
   vosStatus = WDA_close( vosContext );
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
   {
@@ -1074,13 +890,9 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
   vos_mq_deinit(&((pVosContextType)vosContext)->freeVosMq);
 
@@ -1093,13 +905,9 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
   }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
   vosStatus = vos_event_destroy(&gpVosContext->wdaCompleteEvent);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
   {
@@ -1108,13 +916,9 @@ static VOS_STATUS wlan_ftm_vos_close( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 }
@@ -1229,7 +1033,6 @@ static VOS_STATUS wlan_ftm_priv_set_txpktlen(hdd_adapter_t *pAdapter,v_U32_t len
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /**---------------------------------------------------------------------------
   --------------------------------------------------------------------------*/
 
@@ -1241,14 +1044,6 @@ static VOS_STATUS wlan_ftm_priv_enable_chain(hdd_adapter_t *pAdapter,v_U16_t cha
 static VOS_STATUS wlan_ftm_priv_enable_chain(hdd_adapter_t *pAdapter,v_U16_t chainSelect)
 {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/**---------------------------------------------------------------------------
-  --------------------------------------------------------------------------*/
-
-static VOS_STATUS wlan_ftm_priv_enable_chain(hdd_adapter_t *pAdapter,v_U16_t chainSelect)
-{
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     v_U16_t chainSelect_save = chainSelect;
@@ -1289,21 +1084,15 @@ static VOS_STATUS wlan_ftm_priv_enable_chain(hdd_adapter_t *pAdapter,v_U16_t cha
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
     if(pMsgBuf == NULL)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
         return VOS_STATUS_E_NOMEM;
     }
-<<<<<<< HEAD
 =======
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_ENABLE_CHAINS;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttEnableChains) + PTT_HEADER_LENGTH;
@@ -1313,7 +1102,6 @@ static VOS_STATUS wlan_ftm_priv_enable_chain(hdd_adapter_t *pAdapter,v_U16_t cha
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -1328,38 +1116,29 @@ static VOS_STATUS wlan_ftm_priv_enable_chain(hdd_adapter_t *pAdapter,v_U16_t cha
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
     ftm_status.chainSelect = chainSelect_save;
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
@@ -1400,17 +1179,12 @@ static VOS_STATUS wlan_ftm_priv_get_status(hdd_adapter_t *pAdapter,char *buf)
     lenRes = snprintf(buf, lenBuf, "\n chainSelect: %s\n rxmode: %s\n "
                                    "txpktgen: %s\n  txifs: %ld\n  txrate: ",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       chain[ftm_status.chainSelect], rx[ftm_status.rxmode], 
                       tx[ftm_status.frameGenEnabled], 
 =======
                       chain[ftm_status.chainSelect], rx[ftm_status.rxmode],
                       tx[ftm_status.frameGenEnabled],
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      chain[ftm_status.chainSelect], rx[ftm_status.rxmode], 
-                      tx[ftm_status.frameGenEnabled], 
->>>>>>> 657b0e9... prima update
                       ftm_status.frameParams.interFrameSpace);
     if ((lenRes < 0) || (lenRes >= lenBuf))
     {
@@ -1444,17 +1218,12 @@ static VOS_STATUS wlan_ftm_priv_get_status(hdd_adapter_t *pAdapter,char *buf)
 
     lenRes = snprintf(buf, lenBuf, "\n  txpower: %d\n  txpktcnt: %ld\n  "
 <<<<<<< HEAD
-<<<<<<< HEAD
                                    "txpktlen: %d\n", ftm_status.txpower, 
                       ftm_status.frameParams.numTestPackets, 
 =======
                                    "txpktlen: %d\n", ftm_status.txpower,
                       ftm_status.frameParams.numTestPackets,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                   "txpktlen: %d\n", ftm_status.txpower, 
-                      ftm_status.frameParams.numTestPackets, 
->>>>>>> 657b0e9... prima update
                       ftm_status.frameParams.payloadLength);
 
     if ((lenRes < 0) || (lenRes >= lenBuf))
@@ -1466,9 +1235,6 @@ static VOS_STATUS wlan_ftm_priv_get_status(hdd_adapter_t *pAdapter,char *buf)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 v_VOID_t
 static ftm_vos_sys_probe_thread_cback
@@ -1485,7 +1251,6 @@ static ftm_vos_sys_probe_thread_cback
     }
 } /* vos_sys_probe_thread_cback() */
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 
 void HEXDUMP(char *s0, char *s1, int len)
 {
@@ -1495,15 +1260,12 @@ void HEXDUMP(char *s0, char *s1, int len)
     for (tmp = 0; tmp< len; tmp++) {
         printk(KERN_EMERG "%02x ", *s1++);
 =======
-=======
->>>>>>> 657b0e9... prima update
 
 void HEXDUMP(char *s0, char *s1, int len)
 {
-    int tmp;
+    int i = 0, j = 0;
     printk(KERN_EMERG "%s\n :", s0);
 
-<<<<<<< HEAD
     if (len > 8)
     {
         for (j = 0; j < len/8; j++)
@@ -1517,22 +1279,14 @@ void HEXDUMP(char *s0, char *s1, int len)
     for (i = 0; i< len; i++) {
         printk(KERN_EMERG "%02x ", s1[j*8+i]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    for (tmp = 0; tmp< len; tmp++) {
-        printk(KERN_EMERG "%02x ", *s1++);
->>>>>>> 657b0e9... prima update
     }
     printk("\n");
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
 
   \brief vos_ftm_preStart() -
@@ -1564,14 +1318,10 @@ VOS_STATUS vos_ftm_preStart( v_CONTEXT_t vosContext )
    VOS_STATUS vStatus          = VOS_STATUS_SUCCESS;
    pVosContextType pVosContext = (pVosContextType)vosContext;
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
    VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_INFO,
              "vos prestart");
 
@@ -1592,17 +1342,12 @@ VOS_STATUS vos_ftm_preStart( v_CONTEXT_t vosContext )
 
    /* Reset wda wait event */
 <<<<<<< HEAD
-<<<<<<< HEAD
    vos_event_reset(&pVosContext->wdaCompleteEvent);   
     
 =======
    vos_event_reset(&pVosContext->wdaCompleteEvent);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   vos_event_reset(&pVosContext->wdaCompleteEvent);   
-    
->>>>>>> 657b0e9... prima update
 
    /*call WDA pre start*/
    vStatus = WDA_preStart(pVosContext);
@@ -1637,13 +1382,9 @@ VOS_STATUS vos_ftm_preStart( v_CONTEXT_t vosContext )
    return VOS_STATUS_SUCCESS;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 /**---------------------------------------------------------------------------
 
@@ -1663,14 +1404,10 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
     pVosContextType pVosContext= NULL;
     hdd_adapter_t *pAdapter;
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH,
                "%s: Opening VOSS", __func__);
 
@@ -1680,14 +1417,10 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
     {
         VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     "%s: Trying to open VOSS without a PreOpen",__func__);
 =======
                     "%s: Trying to open VOSS without a PreOpen", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    "%s: Trying to open VOSS without a PreOpen",__func__);
->>>>>>> 657b0e9... prima update
         VOS_ASSERT(0);
         goto err_vos_status_failure;
     }
@@ -1697,7 +1430,6 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
 
    if ( !VOS_IS_STATUS_SUCCESS( vStatus ))
    {
-<<<<<<< HEAD
 <<<<<<< HEAD
       hddLog(VOS_TRACE_LEVEL_FATAL,"%s: vos_open failed",__func__);
       goto err_vos_status_failure;
@@ -1722,31 +1454,11 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
    }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      hddLog(VOS_TRACE_LEVEL_FATAL,"%s: vos_open failed",__func__);
-      goto err_vos_status_failure;
-   }
-
-#ifndef FEATURE_WLAN_INTEGRATED_SOC
-    /* Start SAL now */
-    vStatus = WLANSAL_Start(pVosContext);
-    if (!VOS_IS_STATUS_SUCCESS(vStatus))
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-              "%s: Failed to start SAL",__func__);
-        goto err_vos_open_failure;
-    }
-
-       /* Save the hal context in Adapter */
-    pHddCtx->hHal = (tHalHandle)vos_get_context( VOS_MODULE_ID_HAL, pVosContext );
-#else
->>>>>>> 657b0e9... prima update
     /*
      For Integrated SOC, only needed to start WDA, whihc happens in wlan_hdd_ftm_start()
     */
     /* Save the hal context in Adapter */
     pHddCtx->hHal = (tHalHandle)vos_get_context(VOS_MODULE_ID_SME, pVosContext );
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -1759,13 +1471,6 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
     {
        hddLog(VOS_TRACE_LEVEL_ERROR,"%s: HAL context is null", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
-    if ( NULL == pHddCtx->hHal )
-    {
-       hddLog(VOS_TRACE_LEVEL_ERROR,"%s: HAL context is null",__func__);
->>>>>>> 657b0e9... prima update
        goto err_sal_close;
     }
 
@@ -1774,35 +1479,26 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
     if( NULL == pAdapter )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        hddLog(VOS_TRACE_LEVEL_ERROR,"%s: hdd_open_adapter failed",__func__);
 =======
        hddLog(VOS_TRACE_LEVEL_ERROR,"%s: hdd_open_adapter failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       hddLog(VOS_TRACE_LEVEL_ERROR,"%s: hdd_open_adapter failed",__func__);
->>>>>>> 657b0e9... prima update
                goto err_adapter_open_failure;
     }
 
     if( wlan_ftm_register_wext(pAdapter)!= 0 )
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        hddLog(VOS_TRACE_LEVEL_ERROR,"%S: hdd_register_wext failed",__func__);
 =======
        hddLog(VOS_TRACE_LEVEL_ERROR,"%s: hdd_register_wext failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       hddLog(VOS_TRACE_LEVEL_ERROR,"%S: hdd_register_wext failed",__func__);
->>>>>>> 657b0e9... prima update
        goto err_sal_close;
     }
 
        //Initialize the nlink service
     if(nl_srv_init() != 0)
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
        hddLog(VOS_TRACE_LEVEL_ERROR,"%S: nl_srv_init failed",__func__);
        goto err_ftm_register_wext_close;
@@ -1818,25 +1514,15 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
 #endif /* WLAN_KD_READY_NOTIFIER */
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       hddLog(VOS_TRACE_LEVEL_ERROR,"%S: nl_srv_init failed",__func__);
-       goto err_ftm_register_wext_close;
-    }
-
->>>>>>> 657b0e9... prima update
 #ifdef PTT_SOCK_SVC_ENABLE
     //Initialize the PTT service
     if(ptt_sock_activate_svc(pHddCtx) != 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        hddLog(VOS_TRACE_LEVEL_ERROR,"%s: ptt_sock_activate_svc failed",__func__);
 =======
        hddLog(VOS_TRACE_LEVEL_ERROR,"%s: ptt_sock_activate_svc failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       hddLog(VOS_TRACE_LEVEL_ERROR,"%s: ptt_sock_activate_svc failed",__func__);
->>>>>>> 657b0e9... prima update
        goto err_nl_srv_init;
     }
 #endif
@@ -1854,13 +1540,9 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
    pHddCtx->ftm.targetNVTableSize    = 0;
    pHddCtx->ftm.targetNVTablePointer = NULL;
@@ -1870,7 +1552,6 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
    {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: NV Table Buffer Alloc Fail",__func__);
       VOS_ASSERT(0);
       goto err_nl_srv_init; 
@@ -1879,18 +1560,11 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
                  "%s: NV Table Buffer Alloc Fail", __func__);
-=======
-                 "%s: NV Table Buffer Alloc Fail",__func__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
-      goto err_nl_srv_init; 
+      goto err_nl_srv_init;
    }
    vos_mem_zero((v_VOID_t *)pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
     _ftm_status_init();
     /* Initialize the ftm vos event */
@@ -1898,14 +1572,10 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
     {
         VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     "%s: Unable to init probeEvent",__func__);
 =======
                     "%s: Unable to init probeEvent", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    "%s: Unable to init probeEvent",__func__);
->>>>>>> 657b0e9... prima update
         VOS_ASSERT(0);
         vos_mem_free(pHddCtx->ftm.tempNVTableBuffer);
         goto err_nl_srv_init;
@@ -1917,7 +1587,6 @@ int wlan_hdd_ftm_open(hdd_context_t *pHddCtx)
 
 err_nl_srv_init:
 <<<<<<< HEAD
-<<<<<<< HEAD
 nl_srv_exit();
 
 =======
@@ -1927,10 +1596,6 @@ nl_srv_exit(pHddCtx->ptt_pid);
 nl_srv_exit();
 #endif /* WLAN_KD_READY_NOTIFIER */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-nl_srv_exit();
-
->>>>>>> 657b0e9... prima update
 err_ftm_register_wext_close:
 hdd_UnregisterWext(pAdapter->dev);
 
@@ -1939,20 +1604,14 @@ hdd_close_all_adapters( pHddCtx );
 
 err_sal_close:
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 WLANSAL_Stop(pVosContext);
 
 err_vos_open_failure:
 wlan_ftm_vos_close(pVosContext);
 #endif 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 err_vos_status_failure:
 
@@ -1975,9 +1634,6 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     vosStatus = WLANBAL_SuspendChip( pHddCtx->pvosContext );
        VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
@@ -1985,7 +1641,6 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
     vosStatus = WLANSAL_Stop(pHddCtx->pvosContext);
        VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
     if(WLAN_FTM_STARTED == pHddCtx->ftm.ftm_state)
     {
@@ -1994,8 +1649,6 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
         wlan_ftm_stop(pHddCtx);
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     //Assert Deep sleep signal now to put Libra HW in lowest power state
     vosStatus = vos_chipAssertDeepSleep( NULL, NULL, NULL );
@@ -2007,7 +1660,6 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
     vos_chipVoteOffXOBuffer(NULL, NULL, NULL);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     nl_srv_exit();
 
 =======
@@ -2017,10 +1669,6 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
     nl_srv_exit();
 #endif /* WLAN_KD_READY_NOTIFIER */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    nl_srv_exit();
-
->>>>>>> 657b0e9... prima update
     //TODO----------
     //Deregister the device with the kernel
     hdd_UnregisterWext(pAdapter->dev);
@@ -2028,14 +1676,10 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
     hdd_close_all_adapters( pHddCtx );
 #if 0
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(test_bit(NET_DEVICE_REGISTERED, &pAdapter->event_flags)) 
 =======
     if(test_bit(NET_DEVICE_REGISTERED, &pAdapter->event_flags))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(test_bit(NET_DEVICE_REGISTERED, &pAdapter->event_flags)) 
->>>>>>> 657b0e9... prima update
     {
         unregister_netdev(pAdapter->dev);
         clear_bit(NET_DEVICE_REGISTERED, &pAdapter->event_flags);
@@ -2062,18 +1706,12 @@ int wlan_hdd_ftm_close(hdd_context_t *pHddCtx)
         VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
     vos_mem_free(pHddCtx->ftm.tempNVTableBuffer);
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
     vos_mem_free(pHddCtx->ftm.tempNVTableBuffer);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-    vos_mem_free(pHddCtx->ftm.tempNVTableBuffer);
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
     //Free up dynamically allocated members inside HDD Adapter
     kfree(pHddCtx->cfg_ini);
@@ -2142,7 +1780,6 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
            "%s: mismatch in context",__FUNCTION__);
         goto err_status_failure;
     }
@@ -2179,46 +1816,18 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
 #else
 =======
            "%s: mismatch in context",__func__);
-=======
-           "%s: mismatch in context",__FUNCTION__);
->>>>>>> 657b0e9... prima update
         goto err_status_failure;
     }
 
- #ifndef FEATURE_WLAN_INTEGRATED_SOC
-    if (pVosContext->pBALContext == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: BAL NULL context",__FUNCTION__);
-        goto err_status_failure;
-    }
-#endif
-   
+
     if (pVosContext->pMACContext == NULL)
-    {    
+    {
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-               "%s: MAC NULL context",__FUNCTION__);
+               "%s: MAC NULL context",__func__);
         goto err_status_failure;
     }
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
- #ifndef FEATURE_WLAN_INTEGRATED_SOC
-    /* Start BAL */
-    vStatus = WLANBAL_Start(pVosContext);
-
-    if (!VOS_IS_STATUS_SUCCESS(vStatus))
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
-              "%s: Failed to start BAL",__func__);
-        goto err_sal_stop;
-    }
-
-    VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
-             "%s: BAL correctly started",__func__);
-#else
->>>>>>> 657b0e9... prima update
     /*
       Prima needs to start the WDA correctly instead of BAL and SAL
     */
@@ -2256,14 +1865,10 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
        }
        VOS_ASSERT(0);
 <<<<<<< HEAD
-<<<<<<< HEAD
        goto err_wda_stop;   
 =======
        goto err_wda_stop;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       goto err_wda_stop;   
->>>>>>> 657b0e9... prima update
     }
 
     vStatus = WDA_start(pVosContext);
@@ -2274,24 +1879,16 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
        goto err_status_failure;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-    
->>>>>>> 657b0e9... prima update
 
     /* Start the MAC */
     vos_mem_zero((v_PVOID_t)&halStartParams, sizeof(tHalMacStartParameters));
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     /* Attempt to get the firmware binary through VOS.  We need to pass this
            to the MAC when starting. */
@@ -2309,11 +1906,8 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
              "%s: Firmware binary file found",__func__);
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     halStartParams.driverType = eDRIVER_TYPE_MFG;
 
@@ -2321,9 +1915,6 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
     sirStatus = macStart(pVosContext->pMACContext,(v_PVOID_t)&halStartParams);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     /* Free uo the FW image no matter what */
     if( NULL != halStartParams.FW.pImage )
@@ -2333,11 +1924,8 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
         halStartParams.FW.cbImage = 0;
     }
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     if (eSIR_SUCCESS != sirStatus)
     {
@@ -2345,29 +1933,20 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
               "%s: Failed to start MAC", __func__);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
         goto err_bal_stop;
 #else
         goto err_wda_stop;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
         goto err_wda_stop;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     }
 
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO,
             "%s: MAC correctly started",__func__);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 
    /**
@@ -2397,20 +1976,14 @@ static int wlan_hdd_ftm_start(hdd_context_t *pHddCtx)
     /* START SYS. This will trigger the CFG download */
     sysMcStart(pVosContext, ftm_vos_sys_probe_thread_cback, pVosContext);
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     pHddCtx->ftm.ftm_state = WLAN_FTM_STARTED;
 
     return VOS_STATUS_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 err_bal_stop:
 WLANBAL_Stop(pVosContext);
@@ -2420,12 +1993,9 @@ WLANSAL_Stop(pVosContext);
 
 #else
 err_wda_stop:   
-<<<<<<< HEAD
 =======
 err_wda_stop:
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    vos_event_reset(&(pVosContext->wdaCompleteEvent));
    WDA_stop(pVosContext, HAL_STOP_TYPE_RF_KILL);
    vStatus = vos_wait_single_event(&(pVosContext->wdaCompleteEvent), 1000);
@@ -2445,13 +2015,9 @@ err_wda_stop:
       VOS_ASSERT(0);
    }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 err_status_failure:
 
@@ -2492,9 +2058,6 @@ static int wlan_ftm_stop(hdd_context_t *pHddCtx)
        }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
        vosStatus = WLANBAL_Stop( pHddCtx->pvosContext );
        if (!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -2516,35 +2079,23 @@ static int wlan_ftm_stop(hdd_context_t *pHddCtx)
                    "%s: Failed to set the freq to 1.6Mhz for 1.3V Supply",__func__ );
 
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
        WDA_stop(pHddCtx->pvosContext, HAL_STOP_TYPE_RF_KILL);
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
-=======
->>>>>>> 657b0e9... prima update
 
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
        WDA_stop(pHddCtx->pvosContext, HAL_STOP_TYPE_RF_KILL);
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
     }
    return WLAN_FTM_SUCCESS;
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
   \brief wlan_hdd_ftm_get_nv_table() -
@@ -2569,25 +2120,18 @@ int wlan_hdd_ftm_get_nv_table
    sHalNv             *nvContents = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    if (NULL == pHddCtx)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "Not valid driver context");
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EINVAL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    /* Test first chunk of NV table */
@@ -2600,14 +2144,10 @@ int wlan_hdd_ftm_get_nv_table
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                     "Fail to get cached NV value Status %d", nvStatus);
 <<<<<<< HEAD
-<<<<<<< HEAD
          return -1;
 =======
          return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         return -1;
->>>>>>> 657b0e9... prima update
       }
 
       switch (nvTable->nvTable)
@@ -2648,7 +2188,6 @@ int wlan_hdd_ftm_get_nv_table
             break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
          case NV_TABLE_RF_CAL_VALUES:
             pHddCtx->ftm.targetNVTableSize = sizeof(nvContents->tables.rFCalValues);
             pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)&nvContents->tables.rFCalValues;
@@ -2662,11 +2201,6 @@ int wlan_hdd_ftm_get_nv_table
             pHddCtx->ftm.targetNVTableSize = sizeof(nvContents->tables.fwConfig);
             pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)&nvContents->tables.fwConfig;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         case NV_TABLE_RF_CAL_VALUES:
-            pHddCtx->ftm.targetNVTableSize = sizeof(nvContents->tables.rFCalValues);
-            pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)&nvContents->tables.rFCalValues;
->>>>>>> 657b0e9... prima update
             break;
 
          case NV_TABLE_ANTENNA_PATH_LOSS:
@@ -2683,14 +2217,10 @@ int wlan_hdd_ftm_get_nv_table
             VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                        "Not Valid NV Table %d", nvTable->nvTable);
 <<<<<<< HEAD
-<<<<<<< HEAD
             return -1;
 =======
             return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            return -1;
->>>>>>> 657b0e9... prima update
             break;
       }
 
@@ -2699,29 +2229,21 @@ int wlan_hdd_ftm_get_nv_table
          /* Invalid table size, discard and initialize data */
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     "Invalid Table Size %d", nvTable->tableSize);
 =======
                     "Invalid Table Size %d for Table %d"
                     " expected size %d\n", nvTable->tableSize, nvTable->nvTable,
                     pHddCtx->ftm.targetNVTableSize);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    "Invalid Table Size %d", nvTable->tableSize);
->>>>>>> 657b0e9... prima update
          pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
          pHddCtx->ftm.targetNVTableSize    = 0;
          pHddCtx->ftm.processedNVTableSize = 0;
          vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
 <<<<<<< HEAD
-<<<<<<< HEAD
          return -1;
 =======
          return -EINVAL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         return -1;
->>>>>>> 657b0e9... prima update
       }
 
       /* Set Current Processing NV table type */
@@ -2744,7 +2266,6 @@ int wlan_hdd_ftm_get_nv_table
       pHddCtx->ftm.processedNVTableSize = 0;
       vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
 <<<<<<< HEAD
-<<<<<<< HEAD
  
       return -1;
    }
@@ -2759,14 +2280,6 @@ int wlan_hdd_ftm_get_nv_table
    /* Copy next chunk of NV table value into response buffer */
    vos_mem_copy(&nvTable->tableData,
 >>>>>>> d97af3b... add prima wlan driver
-=======
- 
-      return -1;
-   }
-
-   /* Copy next chunk of NV table value into response buffer */
-   vos_mem_copy(&nvTable->tableData, 
->>>>>>> 657b0e9... prima update
                 pHddCtx->ftm.tempNVTableBuffer + pHddCtx->ftm.processedNVTableSize,
                 nvTable->chunkSize);
    /* Update processed pointer to prepare next chunk copy */
@@ -2812,14 +2325,10 @@ int wlan_hdd_ftm_set_nv_table
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "Not valid driver context");
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EINVAL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    /* Test first chunk of NV table */
@@ -2832,14 +2341,10 @@ int wlan_hdd_ftm_set_nv_table
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                     "Fail to get cached NV value Status %d", nvStatus);
 <<<<<<< HEAD
-<<<<<<< HEAD
          return -1;
 =======
          return -EINVAL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         return -1;
->>>>>>> 657b0e9... prima update
       }
 
       switch (nvTable->nvTable)
@@ -2880,7 +2385,6 @@ int wlan_hdd_ftm_set_nv_table
             break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
          case NV_TABLE_RF_CAL_VALUES:
             pHddCtx->ftm.targetNVTableSize    = sizeof(nvContents->tables.rFCalValues);
             pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)&nvContents->tables.rFCalValues;
@@ -2894,11 +2398,6 @@ int wlan_hdd_ftm_set_nv_table
             pHddCtx->ftm.targetNVTableSize    = sizeof(nvContents->tables.fwConfig);
             pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)&nvContents->tables.fwConfig;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         case NV_TABLE_RF_CAL_VALUES:
-            pHddCtx->ftm.targetNVTableSize    = sizeof(nvContents->tables.rFCalValues);
-            pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)&nvContents->tables.rFCalValues;
->>>>>>> 657b0e9... prima update
             break;
 
          case NV_TABLE_ANTENNA_PATH_LOSS:
@@ -2915,14 +2414,10 @@ int wlan_hdd_ftm_set_nv_table
             VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                        "Not Valid NV Table %d", nvTable->nvTable);
 <<<<<<< HEAD
-<<<<<<< HEAD
             return -1;
 =======
             return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            return -1;
->>>>>>> 657b0e9... prima update
             break;
       }
 
@@ -2937,14 +2432,10 @@ int wlan_hdd_ftm_set_nv_table
          pHddCtx->ftm.processedNVTableSize = 0;
          vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
 <<<<<<< HEAD
-<<<<<<< HEAD
          return -1;
 =======
          return -EINVAL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         return -1;
->>>>>>> 657b0e9... prima update
       }
    }
 
@@ -2958,7 +2449,6 @@ int wlan_hdd_ftm_set_nv_table
       pHddCtx->ftm.processedNVTableSize = 0;
       vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
    }
    vos_mem_copy(pHddCtx->ftm.tempNVTableBuffer + pHddCtx->ftm.processedNVTableSize,
@@ -2969,12 +2459,6 @@ int wlan_hdd_ftm_set_nv_table
    vos_mem_copy(pHddCtx->ftm.tempNVTableBuffer + pHddCtx->ftm.processedNVTableSize,
                 &nvTable->tableData,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
-   }
-   vos_mem_copy(pHddCtx->ftm.tempNVTableBuffer + pHddCtx->ftm.processedNVTableSize,
-                &nvTable->tableData, 
->>>>>>> 657b0e9... prima update
                 nvTable->chunkSize);
 
    pHddCtx->ftm.processedNVTableSize += nvTable->chunkSize;
@@ -3020,14 +2504,10 @@ int wlan_hdd_ftm_blank_nv_table
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                  "Fail to get cached NV value Status %d", nvStatus);
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    itemSize = sizeof(nvContents->tables.pwrOptimum);
@@ -3066,7 +2546,6 @@ int wlan_hdd_ftm_blank_nv_table
           itemSize);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    itemSize = sizeof(nvContents->tables.rFCalValues);
    memcpy(&nvContents->tables.rFCalValues,
           &nvDefaults.tables.rFCalValues,
@@ -3075,11 +2554,6 @@ int wlan_hdd_ftm_blank_nv_table
    memcpy(&nvContents->tables.hwCalValues,
           &nvDefaults.tables.hwCalValues,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   itemSize = sizeof(nvContents->tables.rFCalValues);
-   memcpy(&nvContents->tables.rFCalValues,
-          &nvDefaults.tables.rFCalValues,
->>>>>>> 657b0e9... prima update
           itemSize);
 
    itemSize = sizeof(nvContents->tables.antennaPathLoss);
@@ -3124,14 +2598,10 @@ int wlan_hdd_ftm_delete_nv_table
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                  "Fail to get cached NV value Status %d", nvStatus);
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    switch (nvTable->nvTable)
@@ -3186,14 +2656,10 @@ int wlan_hdd_ftm_delete_nv_table
          break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
       case NV_TABLE_RF_CAL_VALUES:
          itemSize = sizeof(nvContents->tables.rFCalValues);
          memcpy(&nvContents->tables.rFCalValues,
                 &nvDefaults.tables.rFCalValues,
-<<<<<<< HEAD
 =======
       case NV_TABLE_HW_CAL_VALUES:
          itemSize = sizeof(nvContents->tables.hwCalValues);
@@ -3207,8 +2673,6 @@ int wlan_hdd_ftm_delete_nv_table
          memcpy(&nvContents->tables.fwConfig,
                 &nvDefaults.tables.fwConfig,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                 itemSize);
          break;
 
@@ -3230,14 +2694,10 @@ int wlan_hdd_ftm_delete_nv_table
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                     "Not Valid NV Table %d", nvTable->nvTable);
 <<<<<<< HEAD
-<<<<<<< HEAD
          return -1;
 =======
          return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         return -1;
->>>>>>> 657b0e9... prima update
          break;
    }
 
@@ -3273,14 +2733,10 @@ int wlan_hdd_ftm_get_nv_field
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                  "Fail to get cached NV value Status %d", nvStatus);
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
    memcpy(&nvFieldDataBuffer, &nvContents->fields, sizeof(sNvFields));
 
@@ -3323,7 +2779,6 @@ int wlan_hdd_ftm_get_nv_field
          break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
       case NV_COMMON_WLAN_NV_REV_ID:
          memcpy((void *)&nvField->fieldData,
@@ -3332,15 +2787,12 @@ int wlan_hdd_ftm_get_nv_field
          break;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       case NV_COMMON_COUPLER_TYPE:
          memcpy((void *)&nvField->fieldData,
                 &nvFieldDataBuffer.couplerType,
                 sizeof(nvFieldDataBuffer.couplerType));
          break;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
       default:
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
@@ -3371,12 +2823,6 @@ int wlan_hdd_ftm_get_nv_field
                     "Not Valid NV field %d", nvField->nvField);
          return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      default:
-         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                    "Not Valid NV field %d", nvField->nvField);
-         return -1;
->>>>>>> 657b0e9... prima update
          break;
    }
 
@@ -3409,26 +2855,19 @@ int wlan_hdd_ftm_set_nv_field
    v_U8_t             lastByteMAC;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    nvStatus = vos_nv_getNVBuffer((void **)&nvContents, &nvSize);
    if((VOS_STATUS_SUCCESS != nvStatus) || (NULL == nvContents))
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
                  "Fail to get cached NV value Status %d", nvStatus);
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    switch (nvField->nvField)
@@ -3462,7 +2901,6 @@ int wlan_hdd_ftm_set_nv_field
           * Since 3MACs should be derived from first MAC */
          if(QWLAN_MAX_MAC_LAST_BYTE_VALUE <
 <<<<<<< HEAD
-<<<<<<< HEAD
             nvField->fieldData.macAddr[VOS_MAC_ADDRESS_LEN - 1])
          {
             VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
@@ -3481,29 +2919,22 @@ int wlan_hdd_ftm_set_nv_field
                          &nvField->fieldData.macAddr[0],
 =======
             nvField->fieldData.macAddr.macAddr1[VOS_MAC_ADDRESS_LEN - 1])
-=======
-            nvField->fieldData.macAddr[VOS_MAC_ADDRESS_LEN - 1])
->>>>>>> 657b0e9... prima update
          {
             VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                        "Last Byte of the seed MAC is too large 0x%x",
-                        nvField->fieldData.macAddr[VOS_MAC_ADDRESS_LEN - 1]);
-            return -1;
+                        nvField->fieldData.macAddr.macAddr1[VOS_MAC_ADDRESS_LEN - 1]);
+            return -EILSEQ;
          }
 
          pNVMac = (v_U8_t *)nvContents->fields.macAddr;
-         lastByteMAC = nvField->fieldData.macAddr[VOS_MAC_ADDRESS_LEN - 1];
+         lastByteMAC = nvField->fieldData.macAddr.macAddr1[VOS_MAC_ADDRESS_LEN - 1];
          for(macLoop = 0; macLoop < VOS_MAX_CONCURRENCY_PERSONA; macLoop++)
          {
-            nvField->fieldData.macAddr[VOS_MAC_ADDRESS_LEN - 1] =
+            nvField->fieldData.macAddr.macAddr1[VOS_MAC_ADDRESS_LEN - 1] =
                                                lastByteMAC + macLoop;
             vos_mem_copy(pNVMac + (macLoop * NV_FIELD_MAC_ADDR_SIZE),
-<<<<<<< HEAD
                          &nvField->fieldData.macAddr.macAddr1[0],
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                         &nvField->fieldData.macAddr[0],
->>>>>>> 657b0e9... prima update
                          NV_FIELD_MAC_ADDR_SIZE);
          }
          break;
@@ -3515,7 +2946,6 @@ int wlan_hdd_ftm_set_nv_field
          break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
      case NV_COMMON_WLAN_NV_REV_ID:
         memcpy(&nvContents->fields.wlanNvRevId,
@@ -3524,15 +2954,12 @@ int wlan_hdd_ftm_set_nv_field
         break;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       case NV_COMMON_COUPLER_TYPE:
          memcpy(&nvContents->fields.couplerType,
                 &nvField->fieldData,
                 sizeof(nvContents->fields.couplerType));
          break;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
       default:
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
@@ -3550,12 +2977,6 @@ int wlan_hdd_ftm_set_nv_field
                     "Not Valid NV field %d", nvField->nvField);
          return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      default:
-         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                    "Not Valid NV field %d", nvField->nvField);
-         return -1;
->>>>>>> 657b0e9... prima update
          break;
    }
 
@@ -3591,14 +3012,10 @@ int wlan_hdd_ftm_store_nv_table
    if((VOS_STATUS_SUCCESS != nvStatus) || (NULL == nvContents))
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    /* Set Platform type as PRIMA */
@@ -3655,14 +3072,10 @@ int wlan_hdd_ftm_store_nv_table
          break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
       case NV_TABLE_RF_CAL_VALUES:
          tablePtr     = (void *)&nvContents->tables.rFCalValues;
          tableSize    = sizeof(nvContents->tables.rFCalValues);
          tableVNVType = VNV_RF_CAL_VALUES;
-<<<<<<< HEAD
 =======
       case NV_TABLE_HW_CAL_VALUES:
          tablePtr     = (void *)&nvContents->tables.hwCalValues;
@@ -3675,8 +3088,6 @@ int wlan_hdd_ftm_store_nv_table
          tableSize    = sizeof(nvContents->tables.fwConfig);
          tableVNVType = VNV_FW_CONFIG;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
          break;
 
       case NV_TABLE_ANTENNA_PATH_LOSS:
@@ -3695,7 +3106,6 @@ int wlan_hdd_ftm_store_nv_table
          VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                     "Not Supported Table Type %d", nvTable->nvTable);
 <<<<<<< HEAD
-<<<<<<< HEAD
          return -1;
          break;
          
@@ -3704,11 +3114,6 @@ int wlan_hdd_ftm_store_nv_table
          break;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         return -1;
-         break;
-         
->>>>>>> 657b0e9... prima update
    }
 
    nvStatus = vos_nv_write(tableVNVType,
@@ -3717,42 +3122,31 @@ int wlan_hdd_ftm_store_nv_table
    if(VOS_STATUS_SUCCESS != nvStatus)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       return -1;
 =======
       return -EIO;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    return 1;
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
   \brief wlan_hdd_ftm_temp_get_rel_num() -
             Get internal release number
-<<<<<<< HEAD
 =======
 /* --------------------------------------------------------------------------
   \brief wlan_hdd_ftm_get_nv_bin() -
             Get NV bin read from Flash Memory, file
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
   \param  - ftmCmd - Pointer FTM Commad Buffer
 
   \return - int
             -1, Process Host command fail, vail out
              0, Process Host command success
-<<<<<<< HEAD
 <<<<<<< HEAD
 
   --------------------------------------------------------------------------*/
@@ -3809,8 +3203,241 @@ int wlan_hdd_process_ftm_host_cmd
          /* Temp NV Operation will be isolated to host
 =======
 --------------------------------------------------------------------------*/
-=======
->>>>>>> 657b0e9... prima update
+
+static int wlan_hdd_ftm_get_nv_bin
+(
+   v_U16_t msgId,
+   hdd_context_t  *pHddCtx,
+   tPttMsgbuffer  *ftmCmd
+)
+{
+   VOS_STATUS          nvStatus = VOS_STATUS_SUCCESS;
+   pttGetNvTable      *nvTable = (pttGetNvTable *)&ftmCmd->msgBody.GetNvBin;
+   v_SIZE_t            nvSize;
+   v_U8_t             *nvContents;
+   v_U16_t offset = 0;
+
+
+   if ((NV_MAX_TABLE == pHddCtx->ftm.processingNVTable) ||
+      (0 == pHddCtx->ftm.processedNVTableSize))
+   {
+      if ( msgId == PTT_MSG_GET_NV_BIN )
+      {
+         nvStatus = vos_nv_getNVEncodedBuffer((void **)&nvContents, &nvSize);
+      }
+      else
+      {
+         nvStatus = vos_nv_getNVDictionary((void **)&nvContents, &nvSize);
+      }
+
+      if ((VOS_STATUS_SUCCESS != nvStatus) || (NULL == nvContents))
+      {
+         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                    "Fail to get cached NV value Status %d", nvStatus);
+         return -EIO;
+      }
+
+      switch (nvTable->nvTable)
+      {
+         case NV_BINARY_IMAGE:
+            pHddCtx->ftm.targetNVTablePointer = (v_U8_t *)nvContents;
+            break;
+         default:
+            VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                       "Not Valid NV Table %d", nvTable->nvTable);
+            return -EIO;
+            break;
+      }
+
+      /* Set Current Processing NV table type */
+      pHddCtx->ftm.processingNVTable = nvTable->nvTable;
+      if ( msgId == PTT_MSG_GET_NV_BIN )
+      {
+         pHddCtx->ftm.targetNVTableSize = nvSize + sizeof(v_U32_t);
+         /* Validity Period */
+         pHddCtx->ftm.tempNVTableBuffer[0] = 0xFF;
+         pHddCtx->ftm.tempNVTableBuffer[1] = 0xFF;
+         pHddCtx->ftm.tempNVTableBuffer[2] = 0xFF;
+         pHddCtx->ftm.tempNVTableBuffer[3] = 0xFF;
+         offset = sizeof(v_U32_t);
+      }
+      else
+      {
+         pHddCtx->ftm.targetNVTableSize = nvSize;
+         offset = 0;
+      }
+
+      /* Copy target NV table value into temp context buffer */
+      vos_mem_copy(&pHddCtx->ftm.tempNVTableBuffer[offset],
+                   pHddCtx->ftm.targetNVTablePointer,
+                   pHddCtx->ftm.targetNVTableSize);
+   }
+
+
+   if (pHddCtx->ftm.processingNVTable != nvTable->nvTable)
+   {
+      /* Invalid table type */
+      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                 "Invalid NV Table, now Processing %d, not %d",
+                  pHddCtx->ftm.processingNVTable, nvTable->nvTable);
+
+      pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
+      pHddCtx->ftm.targetNVTableSize    = 0;
+      pHddCtx->ftm.processedNVTableSize = 0;
+      vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
+
+      return -EINVAL;
+   }
+
+   nvTable->tableSize = pHddCtx->ftm.targetNVTableSize;
+
+   /* Update processed pointer to prepare next chunk copy */
+   if ( (nvTable->chunkSize + pHddCtx->ftm.processedNVTableSize) >
+          pHddCtx->ftm.targetNVTableSize )
+   {
+      nvTable->chunkSize =
+          (pHddCtx->ftm.targetNVTableSize - pHddCtx->ftm.processedNVTableSize);
+   }
+
+   /* Copy next chunk of NV table value into response buffer */
+   vos_mem_copy(
+        &nvTable->tableData,
+        pHddCtx->ftm.tempNVTableBuffer + pHddCtx->ftm.processedNVTableSize,
+        nvTable->chunkSize);
+
+   pHddCtx->ftm.processedNVTableSize += nvTable->chunkSize;
+
+   if (pHddCtx->ftm.targetNVTableSize == pHddCtx->ftm.processedNVTableSize)
+   {
+      /* Finished to process last chunk of data, initialize buffer */
+      pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
+      pHddCtx->ftm.targetNVTableSize    = 0;
+      pHddCtx->ftm.processedNVTableSize = 0;
+      vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
+   }
+
+   return 1;
+}
+
+/**---------------------------------------------------------------------------
+
+  \brief wlan_hdd_ftm_set_nv_bin() -
+            Set NV bin to Flash Memory, file
+
+  \param  - ftmCmd - Pointer FTM Commad Buffer
+
+  \return - int
+            -1, Process Host command fail, vail out
+             0, Process Host command success
+
++----------------------------------------------------------------------------*/
+
+static int wlan_hdd_ftm_set_nv_bin
+(
+   hdd_context_t  *pHddCtx,
+   tPttMsgbuffer  *ftmCmd
+)
+{
+   VOS_STATUS          nvStatus = VOS_STATUS_SUCCESS;
+   pttSetNvTable      *nvTable = (pttSetNvTable *)&ftmCmd->msgBody.SetNvBin;
+
+   /* Test first chunk of NV table */
+   if ((NV_MAX_TABLE == pHddCtx->ftm.processingNVTable) ||
+       (0 == pHddCtx->ftm.processedNVTableSize))
+   {
+      switch (nvTable->nvTable)
+      {
+         case NV_BINARY_IMAGE:
+            pHddCtx->ftm.targetNVTableSize = nvTable->tableSize;
+            break;
+         default:
+            VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                       "Not Valid NV Table %d", nvTable->nvTable);
+            return -EIO;
+            break;
+      }
+
+      /* Set Current Processing NV table type */
+      pHddCtx->ftm.processingNVTable = nvTable->nvTable;
+      pHddCtx->ftm.processedNVTableSize = 0;
+
+      if (pHddCtx->ftm.targetNVTableSize != nvTable->tableSize)
+      {
+         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                    "Invalid Table Size %d", nvTable->tableSize);
+         pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
+         pHddCtx->ftm.targetNVTableSize    = 0;
+         pHddCtx->ftm.processedNVTableSize = 0;
+         vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
+         return -EINVAL;
+      }
+   }
+
+   if (pHddCtx->ftm.processingNVTable != nvTable->nvTable)
+   {
+      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                 "Invalid NV Table, now Processing %d, not %d",
+                  pHddCtx->ftm.processingNVTable, nvTable->nvTable);
+      pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
+      pHddCtx->ftm.targetNVTableSize    = 0;
+      pHddCtx->ftm.processedNVTableSize = 0;
+      vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
+      return -EINVAL;
+   }
+
+   vos_mem_copy(
+       pHddCtx->ftm.tempNVTableBuffer + pHddCtx->ftm.processedNVTableSize,
+       &nvTable->tableData,
+       nvTable->chunkSize);
+
+   pHddCtx->ftm.processedNVTableSize += nvTable->chunkSize;
+
+   if (pHddCtx->ftm.targetNVTableSize == pHddCtx->ftm.processedNVTableSize)
+   {
+      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+         "Processing Done!! write encoded Buffer %d",
+          pHddCtx->ftm.targetNVTableSize);
+
+      nvStatus = wlan_write_to_efs ((v_U8_t*)pHddCtx->ftm.tempNVTableBuffer,
+                   (v_U16_t)pHddCtx->ftm.targetNVTableSize);
+
+      if ((VOS_STATUS_SUCCESS != nvStatus))
+      {
+         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                    "Fail to set NV Binary %d", nvStatus);
+         return -EIO;
+      }
+
+      nvStatus = vos_nv_setNVEncodedBuffer(
+            (v_U8_t*)pHddCtx->ftm.tempNVTableBuffer,
+            (v_SIZE_t)pHddCtx->ftm.targetNVTableSize);
+
+      if ((VOS_STATUS_SUCCESS != nvStatus))
+      {
+         VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                    "Fail to set NV Binary %d", nvStatus);
+         return -EIO;
+      }
+
+      pHddCtx->ftm.processingNVTable    = NV_MAX_TABLE;
+      pHddCtx->ftm.targetNVTableSize    = 0;
+      pHddCtx->ftm.processedNVTableSize = 0;
+      vos_mem_zero(pHddCtx->ftm.tempNVTableBuffer, MAX_NV_TABLE_SIZE);
+   }
+
+   return 1;
+}
+
+/**---------------------------------------------------------------------------
+
+  \brief wlan_hdd_ftm_temp_get_rel_num() -
+            Get internal release number
+
+  \param  - ftmCmd - Pointer FTM Commad Buffer
+
+  \return - int
+            -1, Process Host command fail, vail out
+             0, Process Host command success
 
   --------------------------------------------------------------------------*/
 int wlan_hdd_ftm_temp_get_rel_num
@@ -3839,7 +3466,7 @@ int wlan_hdd_ftm_temp_get_rel_num
   \param  - ftmCmd - Pointer FTM Commad Buffer
 
   \return - int
-            -1, Process Host command fail, vail out
+            < 0, Process Host command fail, bail out
              0, Process Host command success, not need to send CMD to HAL
              1, Process Host command success, need to send CMD to HAL
 
@@ -3895,7 +3522,6 @@ int wlan_hdd_process_ftm_host_cmd
          break;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
       case PTT_MSG_GET_NV_BIN:
       case PTT_MSG_GET_DICTIONARY:
@@ -3909,8 +3535,6 @@ int wlan_hdd_process_ftm_host_cmd
          break;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       case PTT_MSG_DBG_READ_REGISTER:
          wpalReadRegister(pFTMCmd->msgBody.DbgReadRegister.regAddr,
                           &pFTMCmd->msgBody.DbgReadRegister.regValue);
@@ -3948,7 +3572,6 @@ int wlan_hdd_process_ftm_host_cmd
    }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    if(-1 == hostState)
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
@@ -3961,25 +3584,14 @@ int wlan_hdd_process_ftm_host_cmd
                  "Host Command Handle Fail, Bailout");
       return hostState;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   if(-1 == hostState)
-   {
-      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
-                 "Host Command Handle Fail, Bailout");
-      return -1;
->>>>>>> 657b0e9... prima update
    }
 
    return needToRouteHal;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
 /**---------------------------------------------------------------------------
 
@@ -4006,7 +3618,6 @@ void wlan_hdd_process_ftm_cmd
     v_U8_t *pftm_data;
     pVosContextType pVosContext = (pVosContextType)(pHddCtx->pvosContext);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
     int hostState;
     tPttMsgbuffer *tempRspBuffer = NULL;
@@ -4015,12 +3626,6 @@ void wlan_hdd_process_ftm_cmd
     int hostState;
     tPttMsgbuffer *tempRspBuffer = NULL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-    int hostState;
-    tPttMsgbuffer *tempRspBuffer = NULL;
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */        
->>>>>>> 657b0e9... prima update
 
     ENTER();
 
@@ -4121,13 +3726,9 @@ void wlan_hdd_process_ftm_cmd
         pftm_data = pRequestBuf->ftmpkt.pFtmCmd;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
         hostState = wlan_hdd_process_ftm_host_cmd(pHddCtx, pftm_data);
         if (0 == hostState)
         {
@@ -4151,14 +3752,10 @@ void wlan_hdd_process_ftm_cmd
            return;
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
         else if (-1 == hostState)
 =======
         else if (0 > hostState)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        else if (-1 == hostState)
->>>>>>> 657b0e9... prima update
         {
            hddLog(VOS_TRACE_LEVEL_ERROR, "*** Host Command Handle Fail ***");
            pHddCtx->ftm.pResponseBuf->ftm_err_code = WLAN_FTM_FAILURE;
@@ -4166,13 +3763,9 @@ void wlan_hdd_process_ftm_cmd
            return;
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
         //HEXDUMP("Request:",(char*)pftm_data,cmd_len);
 
@@ -4231,14 +3824,10 @@ static VOS_STATUS wlan_ftm_priv_start_stop_ftm(hdd_adapter_t *pAdapter,
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (start) 
 =======
     if (start)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (start) 
->>>>>>> 657b0e9... prima update
     {
         pHddCtx->ftm.cmd_iwpriv = TRUE;
         status = wlan_hdd_ftm_start(pHddCtx);
@@ -4249,7 +3838,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_ftm(hdd_adapter_t *pAdapter,
                       "FTM Start Failed");
             return VOS_STATUS_E_FAILURE;
         }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         if (NULL == pMsgBuf)
@@ -4263,8 +3851,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_ftm(hdd_adapter_t *pAdapter,
             }
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     }
     else
     {
@@ -4277,7 +3863,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_ftm(hdd_adapter_t *pAdapter,
             return VOS_STATUS_E_FAILURE;
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
         pHddCtx->ftm.ftm_state = WLAN_FTM_STOPPED;
         if (pMsgBuf)
@@ -4286,13 +3871,10 @@ static VOS_STATUS wlan_ftm_priv_start_stop_ftm(hdd_adapter_t *pAdapter,
             pMsgBuf = NULL;
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     }
     return VOS_STATUS_SUCCESS;
 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -4326,8 +3908,6 @@ static VOS_STATUS validate_channel(unsigned int channel,unsigned int cb)
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
   \brief wlan_ftm_priv_set_channel() -
@@ -4344,21 +3924,14 @@ static VOS_STATUS validate_channel(unsigned int channel,unsigned int cb)
 static VOS_STATUS wlan_ftm_priv_set_channel(hdd_adapter_t *pAdapter,v_U16_t channel)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
@@ -4368,7 +3941,6 @@ static VOS_STATUS wlan_ftm_priv_set_channel(hdd_adapter_t *pAdapter,v_U16_t chan
     if(!(channel >= 1 && channel <= 14))
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Invalid Channel Number. ",__func__);
-<<<<<<< HEAD
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -4395,17 +3967,6 @@ static VOS_STATUS wlan_ftm_priv_set_channel(hdd_adapter_t *pAdapter,v_U16_t chan
 
     vos_mem_set(pMsgBuf, sizeof(*pMsgBuf), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        return VOS_STATUS_E_FAILURE;
-    }
-
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_SET_CHANNEL;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttSetChannel) + PTT_HEADER_LENGTH;
@@ -4416,7 +3977,6 @@ static VOS_STATUS wlan_ftm_priv_set_channel(hdd_adapter_t *pAdapter,v_U16_t chan
 
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "Channel =%d\n",pMsgBody->SetChannel.chId);
 <<<<<<< HEAD
-<<<<<<< HEAD
     pMsgBody->SetChannel.cbState = PHY_SINGLE_CHANNEL_CENTERED;
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
@@ -4426,26 +3986,18 @@ static VOS_STATUS wlan_ftm_priv_set_channel(hdd_adapter_t *pAdapter,v_U16_t chan
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
 =======
     pMsgBody->SetChannel.cbState = ftm_status.cbmode ;
-=======
-    pMsgBody->SetChannel.cbState = PHY_SINGLE_CHANNEL_CENTERED;
->>>>>>> 657b0e9... prima update
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-    if(status != VOS_STATUS_SUCCESS)
+    if (status != VOS_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:wlan_ftm_postmsg failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
 
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
@@ -4455,38 +4007,26 @@ static VOS_STATUS wlan_ftm_priv_set_channel(hdd_adapter_t *pAdapter,v_U16_t chan
 =======
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-=======
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
->>>>>>> 657b0e9... prima update
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
 
     }
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /**---------------------------------------------------------------------------
 
   \brief wlan_ftm_priv_set_txpower() -
@@ -4497,27 +4037,20 @@ done:
               - txpower   -  txpower Number 1-18.
 =======
 
-=======
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
-  \brief wlan_ftm_priv_set_txpower() -
+  \brief wlan_ftm_priv_set_pwr_cntl_mode() -
 
-   This function is used for setting the txpower to the halphy ptt module.
+   This function is used for setting the power control mode for tx.
 
   \param  - pAdapter - Pointer HDD Context.
-<<<<<<< HEAD
           - pwr_mode   -  power control mode 0-2.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              - txpower   -  txpower Number 1-18.
->>>>>>> 657b0e9... prima update
 
   \return - 0 for success, non zero for failure
 
   --------------------------------------------------------------------------*/
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,v_U16_t txpower)
 {
@@ -4527,16 +4060,10 @@ static VOS_STATUS wlan_ftm_priv_set_pwr_cntl_mode(hdd_adapter_t *pAdapter,
                                                       v_U16_t pwr_mode)
 {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,v_U16_t txpower)
-{
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -4586,65 +4113,47 @@ static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,v_U16_t txpo
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-    /* do not allow to change setting when tx pktgen is enabled, although halphy does allow changing tx power
-     * when tx pktgen is enabled
-     */
-    if (ftm_status.frameGenEnabled)
+    if (pwr_mode > 2)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:cannot set txpower when pktgen is enabled.",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:invalid control mode.valid mode is 0 , 1, 2.", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-    if(!(txpower >= 9 && txpower <= 24))
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Invalid tx power. ",__func__);
-        return VOS_STATUS_E_FAILURE;
-    }
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
+    vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
     init_completion(&pHddCtx->ftm.ftm_comp_var);
-    pMsgBuf->msgId = PTT_MSG_CLOSE_TPC_LOOP;
+    pMsgBody = &pMsgBuf->msgBody;
+    pMsgBuf->msgId = PTT_MSG_CLOSE_TPC_LOOP_PRIMA_V1;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttCloseTpcLoop) + PTT_HEADER_LENGTH;
 
-    pMsgBody = &pMsgBuf->msgBody;
-    pMsgBody->CloseTpcLoop.tpcClose = TRUE;
+    pMsgBody->CloseTpcLoop.tpcClose = pwr_mode;
+    status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf, pMsgBuf->msgBodyLength);
 
-    status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
-
-    if(status != VOS_STATUS_SUCCESS)
+    if (status != VOS_STATUS_SUCCESS)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     init_completion(&pHddCtx->ftm.ftm_comp_var);
 =======
@@ -4701,9 +4210,6 @@ static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBody = &pMsgBuf->msgBody;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    init_completion(&pHddCtx->ftm.ftm_comp_var);
->>>>>>> 657b0e9... prima update
     pMsgBuf->msgId = PTT_MSG_SET_TX_POWER;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttSetTxPower) + PTT_HEADER_LENGTH;
 
@@ -4711,7 +4217,6 @@ static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -4726,25 +4231,20 @@ static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                              msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
@@ -4752,18 +4252,13 @@ static VOS_STATUS wlan_ftm_priv_set_txpower(hdd_adapter_t *pAdapter,
     ftm_status.txpower = txpower ;
  done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 
 }
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -4803,8 +4298,6 @@ static VOS_STATUS wlan_ftm_priv_enable_dpd(hdd_adapter_t *pAdapter,
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
   \brief wlan_ftm_priv_set_txrate() -
@@ -4869,18 +4362,13 @@ static VOS_STATUS wlan_ftm_priv_set_txrate(hdd_adapter_t *pAdapter,char *txrate)
 static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U16_t startStop)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -4893,23 +4381,17 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Tx value is invalid ",__func__);
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-    if(startStop != 1 && startStop != 0)
+    if (startStop != 1 && startStop != 0)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Tx value is invalid ", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Tx value is invalid ",__func__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -4918,7 +4400,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
     {
         return VOS_STATUS_SUCCESS ;
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 
     pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
@@ -4931,15 +4412,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     if (startStop == 1)
     {
         init_completion(&pHddCtx->ftm.ftm_comp_var);
@@ -4950,7 +4422,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
 
         status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 <<<<<<< HEAD
-<<<<<<< HEAD
         if(status != VOS_STATUS_SUCCESS)
         {
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:posting PTT_MSG_CONFIG_TX_PACKET_GEN failed",__func__);
@@ -4960,16 +4431,10 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                   "%s:posting PTT_MSG_CONFIG_TX_PACKET_GEN failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if(status != VOS_STATUS_SUCCESS)
-        {
-            VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:posting PTT_MSG_CONFIG_TX_PACKET_GEN failed",__func__);
->>>>>>> 657b0e9... prima update
             status = VOS_STATUS_E_FAILURE;
             goto done;
         }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
         wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
         if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
@@ -4983,12 +4448,6 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                        "%s: PTT_MSG_CONFIG_TX_PACKET_GEN failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-        if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
-        {
-            VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s: PTT_MSG_CONFIG_TX_PACKET_GEN failed",__func__);
->>>>>>> 657b0e9... prima update
             status = VOS_STATUS_E_FAILURE;
             goto done;
         }
@@ -5018,19 +4477,14 @@ static VOS_STATUS wlan_ftm_priv_start_stop_tx_pktgen(hdd_adapter_t *pAdapter,v_U
 
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     if (status == VOS_STATUS_SUCCESS)
     {
         if (startStop == 1)
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
             ftm_status.frameGenEnabled = eANI_BOOLEAN_TRUE ;
         }
@@ -5044,13 +4498,6 @@ done:
         {
             ftm_status.frameGenEnabled = eANI_BOOLEAN_FALSE;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            ftm_status.frameGenEnabled = eANI_BOOLEAN_TRUE ;
-        }
-        else
-        {
-            ftm_status.frameGenEnabled = eANI_BOOLEAN_FALSE ;
->>>>>>> 657b0e9... prima update
         }
     }
 
@@ -5058,7 +4505,6 @@ done:
 }
 
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 static VOS_STATUS wlan_ftm_priv_set_rssi_offset(hdd_adapter_t *pAdapter,v_S15_t *phyRxChains)
 {
@@ -5137,86 +4583,30 @@ done:
 =======
 
 static VOS_STATUS wlan_ftm_priv_set_cb(hdd_adapter_t *pAdapter, v_U16_t cbmode)
-=======
-static VOS_STATUS wlan_ftm_priv_set_rssi_offset(hdd_adapter_t *pAdapter,v_S15_t *phyRxChains)
->>>>>>> 657b0e9... prima update
 {
-#ifndef ANI_CHIPSET_VOLANS
-    tPttMsgbuffer *pMsgBuf;
-    uPttMsgs *pMsgBody;
-    VOS_STATUS status;
-    hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
+    hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
+    if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-
-    init_completion(&pHddCtx->ftm.ftm_comp_var);
-    pMsgBuf->msgId = PTT_MSG_SET_NV_TABLE;
-    pMsgBuf->msgBodyLength = sizeof(tMsgPttSetNvTable) + PTT_HEADER_LENGTH;
-    pMsgBody = &pMsgBuf->msgBody;
-    pMsgBody->SetNvTable.nvTable= NV_TABLE_RSSI_OFFSETS;
-    memcpy(&pMsgBody->SetNvTable.tableData.rssiOffset[0], phyRxChains,sizeof(tANI_S16) * PHY_MAX_RX_CHAINS);
-
-    VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "rssiOffset[0]= %d rssiOffset[1]= %d\n",
-                                                            pMsgBody->SetNvTable.tableData.rssiOffset[0],
-                                                            pMsgBody->SetNvTable.tableData.rssiOffset[1]);
-
-    status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
-    if(status != VOS_STATUS_SUCCESS)
+    if (cbmode > PHY_QUADRUPLE_CHANNEL_20MHZ_HIGH_40MHZ_HIGH)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
-        status = VOS_STATUS_E_FAILURE;
-        goto done;
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:cb mode value is invalid ", __func__);
+        return VOS_STATUS_E_FAILURE;
     }
 
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
-        status = VOS_STATUS_E_FAILURE;
-        goto done;
-    }
+    ftm_status.cbmode = cbmode;
 
-    init_completion(&pHddCtx->ftm.ftm_comp_var);
-    pMsgBuf->msgId = PTT_MSG_STORE_NV_TABLE;
-    pMsgBuf->msgBodyLength = sizeof(tMsgPttStoreNvTable) + PTT_HEADER_LENGTH;
-    pMsgBody = &pMsgBuf->msgBody;
-    pMsgBody->StoreNvTable.nvTable= NV_TABLE_RSSI_OFFSETS;
+    return VOS_STATUS_SUCCESS;
 
-    status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
-    if(status != VOS_STATUS_SUCCESS)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
-        status = VOS_STATUS_E_FAILURE;
-        goto done;
-    }
-
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
-        status = VOS_STATUS_E_FAILURE;
-        goto done;
-    }
-done:
-    vos_mem_free((v_VOID_t * )pMsgBuf);
-
-    return status;
-#else
-    return VOS_STATUS_E_FAILURE;
-#endif
 }
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
   \brief wlan_ftm_rx_mode() -
@@ -5236,18 +4626,13 @@ done:
 static VOS_STATUS wlan_ftm_priv_rx_mode(hdd_adapter_t *pAdapter,v_U16_t rxmode)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
 
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -5269,31 +4654,21 @@ static VOS_STATUS wlan_ftm_priv_rx_mode(hdd_adapter_t *pAdapter,v_U16_t rxmode)
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-    if(rxmode > 3)
+    if (rxmode > 3)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Rx mode value is invalid ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Rx mode value is invalid ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
 
     pMsgBuf->msgId = PTT_MSG_SET_RX_DISABLE_MODE;
@@ -5332,7 +4707,6 @@ static VOS_STATUS wlan_ftm_priv_rx_mode(hdd_adapter_t *pAdapter,v_U16_t rxmode)
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
@@ -5346,38 +4720,29 @@ static VOS_STATUS wlan_ftm_priv_rx_mode(hdd_adapter_t *pAdapter,v_U16_t rxmode)
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
     ftm_status.rxmode = rxmode ;
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
@@ -5398,7 +4763,6 @@ done:
 static VOS_STATUS wlan_ftm_priv_rx_pkt_clear(hdd_adapter_t *pAdapter,v_U16_t rx_pkt_clear)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
@@ -5423,42 +4787,30 @@ static VOS_STATUS wlan_ftm_priv_rx_pkt_clear(hdd_adapter_t *pAdapter,v_U16_t rx_
         return VOS_STATUS_E_NOMEM;
     }
 =======
-=======
-    tPttMsgbuffer *pMsgBuf;
-    uPttMsgs *pMsgBody;
->>>>>>> 657b0e9... prima update
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
+    if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-    if(rx_pkt_clear != 1)
+    if (rx_pkt_clear != 1)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Invalid rx_pkt_clear value ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Invalid rx_pkt_clear value ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_RESET_RX_PACKET_STATISTICS;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttResetRxPacketStatistics) + PTT_HEADER_LENGTH;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     pMsgBody = &pMsgBuf->msgBody;
     pMsgBody->ResetRxPacketStatistics.notUsed= rx_pkt_clear;
 
@@ -5476,42 +4828,31 @@ static VOS_STATUS wlan_ftm_priv_rx_pkt_clear(hdd_adapter_t *pAdapter,v_U16_t rx_
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
-=======
-    pMsgBody = &pMsgBuf->msgBody;
-    pMsgBody->ResetRxPacketStatistics.notUsed= rx_pkt_clear;
-
->>>>>>> 657b0e9... prima update
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-    if(status != VOS_STATUS_SUCCESS)
+    if (status != VOS_STATUS_SUCCESS)
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
@@ -5533,13 +4874,9 @@ done:
 static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pChannel)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     v_U16_t  freq;
@@ -5547,7 +4884,6 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
 
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -5562,24 +4898,13 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_DBG_READ_REGISTER;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttDbgReadRegister) + PTT_HEADER_LENGTH;
@@ -5590,7 +4915,6 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
@@ -5600,16 +4924,10 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:wlan_ftm_postmsg failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(status != VOS_STATUS_SUCCESS)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
 
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
@@ -5619,19 +4937,12 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
 =======
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
                                  msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-=======
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
->>>>>>> 657b0e9... prima update
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
@@ -5648,7 +4959,6 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     *pChannel = freq_chan_tbl[indx].chan; 
 
      VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "Channel = %d  freq = %d\n",*pChannel, freq);
@@ -5660,13 +4970,6 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
      VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "Channel = %d  freq = %d\n",*pChannel, freq);
  done:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    *pChannel = freq_chan_tbl[indx].chan; 
-
-     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "Channel = %d  freq = %d\n",*pChannel, freq);
- done:
-     vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
      return status;
 }
@@ -5688,18 +4991,13 @@ static VOS_STATUS wlan_ftm_priv_get_channel(hdd_adapter_t *pAdapter,v_U16_t *pCh
 static VOS_STATUS wlan_ftm_priv_get_txpower(hdd_adapter_t *pAdapter,v_U16_t *pTxPwr)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -5714,24 +5012,13 @@ static VOS_STATUS wlan_ftm_priv_get_txpower(hdd_adapter_t *pAdapter,v_U16_t *pTx
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_GET_TX_POWER_REPORT;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttGetTxPowerReport) + PTT_HEADER_LENGTH;
@@ -5740,7 +5027,6 @@ static VOS_STATUS wlan_ftm_priv_get_txpower(hdd_adapter_t *pAdapter,v_U16_t *pTx
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -5755,25 +5041,20 @@ static VOS_STATUS wlan_ftm_priv_get_txpower(hdd_adapter_t *pAdapter,v_U16_t *pTx
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s: PTT_MSG_GET_TX_POWER_REPORT failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s: PTT_MSG_GET_TX_POWER_REPORT failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s: PTT_MSG_GET_TX_POWER_REPORT failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
@@ -5781,13 +5062,9 @@ static VOS_STATUS wlan_ftm_priv_get_txpower(hdd_adapter_t *pAdapter,v_U16_t *pTx
 
  done:
 <<<<<<< HEAD
-<<<<<<< HEAD
      vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
      return status;
 }
@@ -5808,34 +5085,23 @@ static VOS_STATUS wlan_ftm_priv_get_txpower(hdd_adapter_t *pAdapter,v_U16_t *pTx
 VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     v_U32_t reg_val;
     char *buf = pftmVer;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     FwVersionInfo *pFwVersion;
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifndef FEATURE_WLAN_INTEGRATED_SOC
-    FwVersionInfo *pFwVersion;
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
     int lenRes = 0;
     int lenBuf = WE_FTM_MAX_STR_LEN;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -5851,25 +5117,14 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_DBG_READ_REGISTER;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttDbgReadRegister) + PTT_HEADER_LENGTH;
@@ -5880,7 +5135,6 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
@@ -5890,16 +5144,10 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:wlan_ftm_postmsg failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(status != VOS_STATUS_SUCCESS)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
 
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
@@ -5909,19 +5157,12 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
 =======
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
                                  msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-=======
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
->>>>>>> 657b0e9... prima update
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
@@ -5938,7 +5179,6 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
@@ -5948,21 +5188,15 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-<<<<<<< HEAD
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
->>>>>>> 657b0e9... prima update
 
 
     lenRes = snprintf(buf, lenBuf, "%s_",WLAN_CHIP_VERSION);
@@ -5977,14 +5211,10 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
 
     /*Read the RevID*/
 <<<<<<< HEAD
-<<<<<<< HEAD
     lenRes = snprintf(buf, lenBuf, "%x.%x-",(v_U8_t)(reg_val >> 8), (v_U8_t)(reg_val &0x000000FF)); 
 =======
     lenRes = snprintf(buf, lenBuf, "%x.%x-",(v_U8_t)(reg_val >> 8), (v_U8_t)(reg_val &0x000000FF));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    lenRes = snprintf(buf, lenBuf, "%x.%x-",(v_U8_t)(reg_val >> 8), (v_U8_t)(reg_val &0x000000FF)); 
->>>>>>> 657b0e9... prima update
     if(lenRes < 0 || lenRes >= lenBuf)
     {
         status = VOS_STATUS_E_FAILURE;
@@ -6005,9 +5235,6 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
     lenBuf -= lenRes;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
     pFwVersion = &pMsgBody->GetBuildReleaseNumber.relParams.fwVer;
     lenRes = snprintf(buf, lenBuf, "%ld.%ld.%ld.%ld", pFwVersion->uMj,pFwVersion->uMn,pFwVersion->uPatch,pFwVersion->uBuild ) ;
@@ -6021,7 +5248,6 @@ VOS_STATUS wlan_ftm_priv_get_ftm_version(hdd_adapter_t *pAdapter,char *pftmVer)
     lenBuf -= lenRes;
 
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
-<<<<<<< HEAD
 
 done:
     vos_mem_free((v_VOID_t * )pMsgBuf);
@@ -6029,11 +5255,6 @@ done:
 
 done:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-done:
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 
@@ -6056,19 +5277,14 @@ done:
 static VOS_STATUS wlan_ftm_priv_get_txrate(hdd_adapter_t *pAdapter,char *pTxRate)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     v_U16_t rate_index,ii;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -6084,25 +5300,14 @@ static VOS_STATUS wlan_ftm_priv_get_txrate(hdd_adapter_t *pAdapter,char *pTxRate
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
 
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_GET_TX_POWER_REPORT;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttGetTxPowerReport) + PTT_HEADER_LENGTH;
@@ -6111,7 +5316,6 @@ static VOS_STATUS wlan_ftm_priv_get_txrate(hdd_adapter_t *pAdapter,char *pTxRate
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -6124,22 +5328,17 @@ static VOS_STATUS wlan_ftm_priv_get_txrate(hdd_adapter_t *pAdapter,char *pTxRate
     if(pMsgBuf->msgResponse == PTT_STATUS_SUCCESS) {
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-<<<<<<< HEAD
     if (pMsgBuf->msgResponse == PTT_STATUS_SUCCESS) {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(pMsgBuf->msgResponse == PTT_STATUS_SUCCESS) {
->>>>>>> 657b0e9... prima update
 
        rate_index = pMsgBody->GetTxPowerReport.rate;
     }
@@ -6147,15 +5346,11 @@ static VOS_STATUS wlan_ftm_priv_get_txrate(hdd_adapter_t *pAdapter,char *pTxRate
        /*Return the default rate*/
        //rate_index = HAL_PHY_RATE_11A_6_MBPS;
 <<<<<<< HEAD
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s: PTT_MSG_GET_TX_POWER_REPORT failed",__func__);
 =======
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s: PTT_MSG_GET_TX_POWER_REPORT failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s: PTT_MSG_GET_TX_POWER_REPORT failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
@@ -6173,13 +5368,9 @@ static VOS_STATUS wlan_ftm_priv_get_txrate(hdd_adapter_t *pAdapter,char *pTxRate
     strlcpy(pTxRate,rateName_rateIndex_tbl[ii].rate_str, WE_FTM_MAX_STR_LEN);
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 
@@ -6202,18 +5393,13 @@ done:
 static VOS_STATUS wlan_ftm_priv_get_rx_pkt_count(hdd_adapter_t *pAdapter,v_U16_t *pRxPktCnt)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -6228,24 +5414,13 @@ static VOS_STATUS wlan_ftm_priv_get_rx_pkt_count(hdd_adapter_t *pAdapter,v_U16_t
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_GET_RX_PKT_COUNTS;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttGetRxPktCounts) + PTT_HEADER_LENGTH;
@@ -6254,7 +5429,6 @@ static VOS_STATUS wlan_ftm_priv_get_rx_pkt_count(hdd_adapter_t *pAdapter,v_U16_t
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -6269,38 +5443,29 @@ static VOS_STATUS wlan_ftm_priv_get_rx_pkt_count(hdd_adapter_t *pAdapter,v_U16_t
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
     *pRxPktCnt = pMsgBody->GetRxPktCounts.counters.totalRxPackets;
 done:
 <<<<<<< HEAD
-<<<<<<< HEAD
     vos_mem_free((v_VOID_t * )pMsgBuf);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
@@ -6322,18 +5487,13 @@ done:
 static VOS_STATUS wlan_ftm_priv_get_rx_rssi(hdd_adapter_t *pAdapter,char *buf)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
    int ret;
-<<<<<<< HEAD
 <<<<<<< HEAD
    
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
@@ -6350,25 +5510,13 @@ static VOS_STATUS wlan_ftm_priv_get_rx_rssi(hdd_adapter_t *pAdapter,char *buf)
 =======
 
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-   
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_GET_RX_RSSI;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttGetRxRssi) + PTT_HEADER_LENGTH;
@@ -6377,7 +5525,6 @@ static VOS_STATUS wlan_ftm_priv_get_rx_rssi(hdd_adapter_t *pAdapter,char *buf)
 
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -6392,30 +5539,24 @@ static VOS_STATUS wlan_ftm_priv_get_rx_rssi(hdd_adapter_t *pAdapter,char *buf)
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                     "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
    ret = snprintf(buf, WE_FTM_MAX_STR_LEN, " R0:%d, R1:%d", 
                       pMsgBody->GetRxRssi.rssi.rx[0], 
@@ -6423,17 +5564,12 @@ static VOS_STATUS wlan_ftm_priv_get_rx_rssi(hdd_adapter_t *pAdapter,char *buf)
    ret = snprintf(buf, WE_FTM_MAX_STR_LEN, " R0:%d, R1:%d",
                       pMsgBody->GetRxRssi.rssi.rx[0],
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   ret = snprintf(buf, WE_FTM_MAX_STR_LEN, " R0:%d, R1:%d", 
-                      pMsgBody->GetRxRssi.rssi.rx[0], 
->>>>>>> 657b0e9... prima update
                   pMsgBody->GetRxRssi.rssi.rx[1]);
 
    if( ret < 0 || ret >= WE_FTM_MAX_STR_LEN )
    {
       status = VOS_STATUS_E_FAILURE;
    }
-<<<<<<< HEAD
 <<<<<<< HEAD
    
 done:
@@ -6442,11 +5578,6 @@ done:
 
 done:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
-done:
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
@@ -6471,14 +5602,10 @@ static VOS_STATUS wlan_ftm_priv_get_mac_address(hdd_adapter_t *pAdapter,char *bu
     v_U8_t macAddr[VOS_MAC_ADDRESS_LEN] = {0, 0x0a, 0xf5, 4,5, 6};
     int ret;
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
@@ -6489,7 +5616,6 @@ static VOS_STATUS wlan_ftm_priv_get_mac_address(hdd_adapter_t *pAdapter,char *bu
     /*Check the NV FIELD is valid or not*/
     if (vos_nv_getValidity(VNV_FIELD_IMAGE, &itemIsValid) == VOS_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
        if (itemIsValid == VOS_TRUE) 
        {
@@ -6505,14 +5631,6 @@ static VOS_STATUS wlan_ftm_priv_get_mac_address(hdd_adapter_t *pAdapter,char *bu
          ret = snprintf(buf, WE_FTM_MAX_STR_LEN,
                              "%02x:%02x:%02x:%02x:%02x:%02x",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       if (itemIsValid == VOS_TRUE) 
-       {
-            vos_nv_readMacAddress(macAddr);
-
-         ret = snprintf(buf, WE_FTM_MAX_STR_LEN, 
-                             "%02x:%02x:%02x:%02x:%02x:%02x", 
->>>>>>> 657b0e9... prima update
                         MAC_ADDR_ARRAY(macAddr));
          if( ret < 0 || ret >= WE_FTM_MAX_STR_LEN )
          {
@@ -6520,7 +5638,6 @@ static VOS_STATUS wlan_ftm_priv_get_mac_address(hdd_adapter_t *pAdapter,char *bu
          }
        }
    }
-<<<<<<< HEAD
 <<<<<<< HEAD
    else 
    {
@@ -6534,13 +5651,6 @@ static VOS_STATUS wlan_ftm_priv_get_mac_address(hdd_adapter_t *pAdapter,char *bu
       ret = snprintf(buf, WE_FTM_MAX_STR_LEN,
                             "%02x:%02x:%02x:%02x:%02x:%02x",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   else 
-   {
-         /*Return Hard coded mac address*/
-      ret = snprintf(buf, WE_FTM_MAX_STR_LEN, 
-                            "%02x:%02x:%02x:%02x:%02x:%02x", 
->>>>>>> 657b0e9... prima update
                      MAC_ADDR_ARRAY(macAddr));
 
       if( ret < 0 || ret >= WE_FTM_MAX_STR_LEN )
@@ -6569,13 +5679,9 @@ static VOS_STATUS wlan_ftm_priv_get_mac_address(hdd_adapter_t *pAdapter,char *bu
 static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *buf)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     tPttMsgbuffer *pMsgBuf;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tPttMsgbuffer *pMsgBuf;
->>>>>>> 657b0e9... prima update
     uPttMsgs *pMsgBody;
     VOS_STATUS status;
     int macAddr[VOS_MAC_ADDRESS_LEN];
@@ -6583,7 +5689,6 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
     v_U8_t  ii;
     hdd_context_t *pHddCtx = (hdd_context_t *)pAdapter->pHddCtx;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
     {
@@ -6598,24 +5703,13 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
     }
 =======
     if (pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
-=======
-    if(pHddCtx->ftm.ftm_state != WLAN_FTM_STARTED)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ftm has not started. Please start the ftm. ",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:Ftm has not started. Please start the ftm. ", __func__);
         return VOS_STATUS_E_FAILURE;
     }
-<<<<<<< HEAD
     vos_mem_set(pMsgBuf, sizeof(tPttMsgbuffer), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMsgBuf = (tPttMsgbuffer *)vos_mem_malloc(sizeof(tPttMsgbuffer));
-    if(pMsgBuf == NULL)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:pMsgBuf is NULL",__func__);
-        return VOS_STATUS_E_NOMEM;
-    }
->>>>>>> 657b0e9... prima update
     init_completion(&pHddCtx->ftm.ftm_comp_var);
     pMsgBuf->msgId = PTT_MSG_SET_NV_FIELD;
     pMsgBuf->msgBodyLength = sizeof(tMsgPttSetNvField) + PTT_HEADER_LENGTH;
@@ -6630,14 +5724,10 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     pMacAddress = &pMsgBody->SetNvField.fieldData.macAddr[0];
 =======
     pMacAddress = &pMsgBody->SetNvField.fieldData.macAddr.macAddr1[0];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pMacAddress = &pMsgBody->SetNvField.fieldData.macAddr[0];
->>>>>>> 657b0e9... prima update
 
     for(ii = 0; ii < VOS_MAC_ADDRESS_LEN; ii++)
        pMacAddress[ii] = (v_U8_t)macAddr[ii];
@@ -6646,7 +5736,6 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "pMacAddress = %02x:%02x:%02x:%02x:%02x:%02x",MAC_ADDR_ARRAY(pMacAddress));
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
@@ -6661,25 +5750,20 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
 =======
     if (status != VOS_STATUS_SUCCESS)
-=======
-    if(status != VOS_STATUS_SUCCESS)
->>>>>>> 657b0e9... prima update
     {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed!!",__func__);
+        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
+                   "%s:wlan_ftm_postmsg failed!!", __func__);
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
+    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var,
+                                msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 
-    if(pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
+    if (pMsgBuf->msgResponse != PTT_STATUS_SUCCESS)
     {
-<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:Ptt response status failed", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:Ptt response status failed",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
@@ -6699,7 +5783,6 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
     status = wlan_ftm_postmsg((v_U8_t*)pMsgBuf,pMsgBuf->msgBodyLength);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(status != VOS_STATUS_SUCCESS)
     {
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed!!!!",__func__);
@@ -6709,16 +5792,10 @@ static VOS_STATUS wlan_ftm_priv_set_mac_address(hdd_adapter_t *pAdapter,char *bu
         VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                    "%s:wlan_ftm_postmsg failed!!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(status != VOS_STATUS_SUCCESS)
-    {
-        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:wlan_ftm_postmsg failed!!!!",__func__);
->>>>>>> 657b0e9... prima update
         status = VOS_STATUS_E_FAILURE;
         goto done;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 done:
@@ -6728,11 +5805,6 @@ done:
                                 msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
 done:
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    wait_for_completion_interruptible_timeout(&pHddCtx->ftm.ftm_comp_var, msecs_to_jiffies(WLAN_FTM_COMMAND_TIME_OUT));
-done:
-    vos_mem_free((v_VOID_t * )pMsgBuf);
->>>>>>> 657b0e9... prima update
 
     return VOS_STATUS_SUCCESS;
 }
@@ -6742,7 +5814,6 @@ static int iw_ftm_setchar_getnone(struct net_device *dev, struct iw_request_info
                        union iwreq_data *wrqu, char *extra)
 {
     int sub_cmd = wrqu->data.flags;
-<<<<<<< HEAD
 <<<<<<< HEAD
     int ret = 0; /* sucess */
     VOS_STATUS status;
@@ -6758,14 +5829,6 @@ static int iw_ftm_setchar_getnone(struct net_device *dev, struct iw_request_info
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "%s: Received length %d", __func__, wrqu->data.length);
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "%s: Received data %s", __func__, (char*)wrqu->data.pointer);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    int ret = 0; /* sucess */
-    VOS_STATUS status;
-    hdd_adapter_t *pAdapter = (netdev_priv(dev));
-
-    VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "%s: Received length %d", __FUNCTION__, wrqu->data.length);
-    VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, "%s: Received data %s", __FUNCTION__, (char*)wrqu->data.pointer);
->>>>>>> 657b0e9... prima update
 
     switch(sub_cmd)
     {
@@ -6799,14 +5862,10 @@ static int iw_ftm_setchar_getnone(struct net_device *dev, struct iw_request_info
        default:
        {
 <<<<<<< HEAD
-<<<<<<< HEAD
            hddLog(LOGE, "%s: Invalid sub command %d\n",__FUNCTION__, sub_cmd);
 =======
            hddLog(LOGE, "%s: Invalid sub command %d\n",__func__, sub_cmd);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           hddLog(LOGE, "%s: Invalid sub command %d\n",__FUNCTION__, sub_cmd);
->>>>>>> 657b0e9... prima update
            ret = -EINVAL;
            break;
        }
@@ -6833,14 +5892,10 @@ static int iw_ftm_setint_getnone(struct net_device *dev, struct iw_request_info 
             if(status != VOS_STATUS_SUCCESS)
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                hddLog(VOS_TRACE_LEVEL_FATAL,"%s Failed =%d\n",__FUNCTION__, status);
 =======
                hddLog(VOS_TRACE_LEVEL_FATAL,"%s Failed =%d\n",__func__, status);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               hddLog(VOS_TRACE_LEVEL_FATAL,"%s Failed =%d\n",__FUNCTION__, status);
->>>>>>> 657b0e9... prima update
                ret = -EINVAL;
             }
 
@@ -6944,7 +5999,6 @@ static int iw_ftm_setint_getnone(struct net_device *dev, struct iw_request_info 
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
         case WE_SET_PWR_CNTL_MODE:
         {
@@ -6981,8 +6035,6 @@ static int iw_ftm_setint_getnone(struct net_device *dev, struct iw_request_info 
         }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         default:
         {
             hddLog(LOGE, "Invalid IOCTL setvalue command %d value %d \n",
@@ -7001,14 +6053,10 @@ static int iw_ftm_setnone_getint(struct net_device *dev, struct iw_request_info 
     hdd_adapter_t *pAdapter = (netdev_priv(dev));
     int *value = (int *)extra;
 <<<<<<< HEAD
-<<<<<<< HEAD
     int ret = 0; /* sucess */
 =======
     int ret = 0; /* success */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    int ret = 0; /* sucess */
->>>>>>> 657b0e9... prima update
     VOS_STATUS status;
 
     switch (value[0])
@@ -7138,7 +6186,6 @@ static int iw_ftm_get_char_setnone(struct net_device *dev, struct iw_request_inf
     return 0;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif//ANI_MANF_DIAG
 
 VOS_STATUS wlan_write_to_efs (v_U8_t *pData, v_U16_t data_len)
@@ -7150,13 +6197,6 @@ VOS_STATUS wlan_write_to_efs (v_U8_t *pData, v_U16_t data_len)
 {
 #if defined(MSM_PLATFORM)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif//ANI_MANF_DIAG
-
-VOS_STATUS wlan_write_to_efs (v_U8_t *pData, v_U16_t data_len)
-{
-#if defined(ANI_MANF_DIAG) && defined(MSM_PLATFORM)
->>>>>>> 657b0e9... prima update
     tAniHdr *wmsg = NULL;
     v_U8_t *pBuf;
     hdd_context_t *pHddCtx = NULL;
@@ -7212,27 +6252,19 @@ VOS_STATUS wlan_write_to_efs (v_U8_t *pData, v_U16_t data_len)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef ANI_MANF_DIAG
->>>>>>> 657b0e9... prima update
 /*  action sub-ioctls */
 static int iw_ftm_setnone_getnone(struct net_device *dev, struct iw_request_info *info,
                        union iwreq_data *wrqu, char *extra)
 {
     int sub_cmd = wrqu->data.flags;
 <<<<<<< HEAD
-<<<<<<< HEAD
     int ret = 0; /* sucess */
 =======
     int ret = 0; /* success */
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    int ret = 0; /* sucess */
->>>>>>> 657b0e9... prima update
 
     switch (sub_cmd)
     {
@@ -7260,14 +6292,10 @@ static int iw_ftm_setnone_getnone(struct net_device *dev, struct iw_request_info
         default:
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: unknown ioctl %d", __FUNCTION__, sub_cmd);
 =======
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: unknown ioctl %d", __func__, sub_cmd);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: unknown ioctl %d", __FUNCTION__, sub_cmd);
->>>>>>> 657b0e9... prima update
             hddLog(LOGE, "Invalid IOCTL action command %d ", sub_cmd);
             break;
         }
@@ -7277,9 +6305,6 @@ static int iw_ftm_setnone_getnone(struct net_device *dev, struct iw_request_info
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 static int iw_ftm_set_var_ints_getnone(struct net_device *dev, struct iw_request_info *info,
         union iwreq_data *wrqu, char *extra)
 {
@@ -7315,11 +6340,8 @@ static int iw_ftm_set_var_ints_getnone(struct net_device *dev, struct iw_request
     return 0;
 }
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 static const iw_handler we_ftm_private[] = {
 
    [WLAN_FTM_PRIV_SET_INT_GET_NONE      - SIOCIWFIRSTPRIV]   = iw_ftm_setint_getnone,  //set priv ioctl
@@ -7328,13 +6350,9 @@ static const iw_handler we_ftm_private[] = {
    [WLAN_FTM_PRIV_GET_CHAR_SET_NONE     - SIOCIWFIRSTPRIV]   = iw_ftm_get_char_setnone,
    [WLAN_FTM_PRIV_SET_NONE_GET_NONE     - SIOCIWFIRSTPRIV]   = iw_ftm_setnone_getnone, //action priv ioctl
 <<<<<<< HEAD
-<<<<<<< HEAD
    [WLAN_FTM_PRIV_SET_VAR_INT_GET_NONE  - SIOCIWFIRSTPRIV]   = iw_ftm_set_var_ints_getnone,
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   [WLAN_FTM_PRIV_SET_VAR_INT_GET_NONE  - SIOCIWFIRSTPRIV]   = iw_ftm_set_var_ints_getnone,
->>>>>>> 657b0e9... prima update
 };
 
 /*Maximum command length can be only 15 */
@@ -7397,7 +6415,6 @@ static const struct iw_priv_args we_ftm_private_args[] = {
         "ena_chain" },
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     {   WE_SET_PWR_CNTL_MODE,
         IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1,
@@ -7415,8 +6432,6 @@ static const struct iw_priv_args we_ftm_private_args[] = {
         "set_cb" },
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     /* handlers for main ioctl */
     {   WLAN_FTM_PRIV_SET_NONE_GET_INT,
         0,
@@ -7486,9 +6501,6 @@ static const struct iw_priv_args we_ftm_private_args[] = {
         "get_rx_rssi" },
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     {   WLAN_FTM_PRIV_SET_VAR_INT_GET_NONE,
         IW_PRIV_TYPE_INT | MAX_FTM_VAR_ARGS,
         0,
@@ -7499,11 +6511,8 @@ static const struct iw_priv_args we_ftm_private_args[] = {
         0,
         "set_rssi_offset" },
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     /* handlers for main ioctl */
     {   WLAN_FTM_PRIV_SET_NONE_GET_NONE,
         0,
@@ -7537,21 +6546,16 @@ static int wlan_ftm_register_wext(hdd_adapter_t *pAdapter)
     // Zero the memory.  This zeros the profile structure.
     //memset(pwextBuf, 0,sizeof(hdd_wext_state_t));
 <<<<<<< HEAD
-<<<<<<< HEAD
    
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   
->>>>>>> 657b0e9... prima update
     pAdapter->dev->wireless_handlers = (struct iw_handler_def *)&we_ftm_handler_def;
 
     return 0;
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif //ANI_MANF_DIAG
 
 VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
@@ -7562,13 +6566,6 @@ VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
 VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
 {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif //ANI_MANF_DIAG
-
-VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
-{
-#ifdef ANI_MANF_DIAG
->>>>>>> 657b0e9... prima update
     ftm_rsp_msg_t   *pFtmMsgRsp;
 
     VOS_STATUS vos_status = VOS_STATUS_SUCCESS;
@@ -7594,12 +6591,9 @@ VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
     if (pHddCtx->ftm.cmd_iwpriv == TRUE) {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
         memcpy((char*)pMsgBuf, (char*)message, pFtmMsgRsp->msgBodyLength);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         complete(&pHddCtx->ftm.ftm_comp_var);
     }
     else {
@@ -7611,14 +6605,10 @@ VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
 
     /*Response expects the length to be in */
 <<<<<<< HEAD
-<<<<<<< HEAD
     pHddCtx->ftm.pResponseBuf->ftm_hdr.data_len = pHddCtx->ftm.pRequestBuf->ftm_hdr.data_len - 
 =======
     pHddCtx->ftm.pResponseBuf->ftm_hdr.data_len = pHddCtx->ftm.pRequestBuf->ftm_hdr.data_len -
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    pHddCtx->ftm.pResponseBuf->ftm_hdr.data_len = pHddCtx->ftm.pRequestBuf->ftm_hdr.data_len - 
->>>>>>> 657b0e9... prima update
                                            sizeof(pHddCtx->ftm.pRequestBuf->ftm_hdr.data_len);
 
     /*Copy the message*/
@@ -7637,13 +6627,9 @@ VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message)
     }
     EXIT();
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
     return VOS_STATUS_SUCCESS;
 
 }

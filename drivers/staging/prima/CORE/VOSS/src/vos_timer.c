@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,7 +44,6 @@
 
 /**=========================================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
   
   \file  vos_timer.c
   
@@ -56,25 +52,18 @@
    Definitions for vOSS Timer services
 =======
 
-=======
-  
->>>>>>> 657b0e9... prima update
   \file  vos_timer.c
-  
+
   \brief virtual Operating System Servies (vOS)
-               
+
    Definitions for vOSS Timer services
-<<<<<<< HEAD
 <<<<<<< HEAD:CORE/VOSS/src/vos_timer.c
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
   
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -85,8 +74,6 @@
 
 >>>>>>> f7413b6... wlan: voss: remove obsolete "INTEGRATED_SOC" featurization:prima/CORE/VOSS/src/vos_timer.c
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 /* $Header$ */
@@ -116,14 +103,10 @@
  * Static Variable Definitions
  * -------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 static unsigned int        persistentTimerCount = 0;
 =======
 static unsigned int        persistentTimerCount;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-static unsigned int        persistentTimerCount = 0;
->>>>>>> 657b0e9... prima update
 static vos_lock_t          persistentTimerCountLock;
 // static sleep_okts_handle   sleepClientHandle;
 
@@ -192,14 +175,10 @@ static void vos_linux_timer_callback ( v_U32_t data )
    if (timer == NULL)
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s Null pointer passed in!",__FUNCTION__);
 =======
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s Null pointer passed in!",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s Null pointer passed in!",__FUNCTION__);
->>>>>>> 657b0e9... prima update
      return;
    }
 
@@ -268,13 +247,9 @@ static void vos_linux_timer_callback ( v_U32_t data )
          return;
    }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    else if ( vos_sched_is_rx_thread( threadId ) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO, 
@@ -289,13 +264,9 @@ static void vos_linux_timer_callback ( v_U32_t data )
          return;
    }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
    else 
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
@@ -395,14 +366,10 @@ static void vos_timer_clean()
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
                  "%s: List is not Empty. listSize %d ",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, (int)listSize);
 =======
                  __func__, (int)listSize);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, (int)listSize);
->>>>>>> 657b0e9... prima update
 
        do
        {
@@ -499,14 +466,10 @@ VOS_STATUS vos_timer_init_debug( vos_timer_t *timer, VOS_TIMER_TYPE timerType,
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Null params being passed",__FUNCTION__);
 =======
                 "%s: Null params being passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Null params being passed",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -517,14 +480,10 @@ VOS_STATUS vos_timer_init_debug( vos_timer_t *timer, VOS_TIMER_TYPE timerType,
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Not able to allocate memory for timeNode",__FUNCTION__);
 =======
                 "%s: Not able to allocate memory for timeNode",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Not able to allocate memory for timeNode",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -542,14 +501,10 @@ VOS_STATUS vos_timer_init_debug( vos_timer_t *timer, VOS_TIMER_TYPE timerType,
     {
          VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
              "%s: Unable to insert node into List vosStatus %d\n", __FUNCTION__, vosStatus);
 =======
              "%s: Unable to insert node into List vosStatus %d\n", __func__, vosStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-             "%s: Unable to insert node into List vosStatus %d\n", __FUNCTION__, vosStatus);
->>>>>>> 657b0e9... prima update
     }
    
    // set the various members of the timer structure 
@@ -576,14 +531,10 @@ VOS_STATUS vos_timer_init( vos_timer_t *timer, VOS_TIMER_TYPE timerType,
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Null params being passed",__FUNCTION__);
 =======
                 "%s: Null params being passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Null params being passed",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -649,14 +600,10 @@ VOS_STATUS vos_timer_destroy ( vos_timer_t *timer )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Null timer pointer being passed",__FUNCTION__);
 =======
                 "%s: Null timer pointer being passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Null timer pointer being passed",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -666,14 +613,10 @@ VOS_STATUS vos_timer_destroy ( vos_timer_t *timer )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Cannot destroy uninitialized timer",__FUNCTION__);
 =======
                 "%s: Cannot destroy uninitialized timer",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Cannot destroy uninitialized timer",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
    
@@ -740,14 +683,10 @@ VOS_STATUS vos_timer_destroy ( vos_timer_t *timer )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Null timer pointer being passed",__FUNCTION__);
 =======
                 "%s: Null timer pointer being passed",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Null timer pointer being passed",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -757,14 +696,10 @@ VOS_STATUS vos_timer_destroy ( vos_timer_t *timer )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Cannot destroy uninitialized timer",__FUNCTION__);
 =======
                 "%s: Cannot destroy uninitialized timer",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Cannot destroy uninitialized timer",__FUNCTION__);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
    spin_lock_irqsave( &timer->platformInfo.spinlock,flags );
@@ -856,7 +791,6 @@ VOS_STATUS vos_timer_start( vos_timer_t *timer, v_U32_t expirationTime )
    if ( LINUX_TIMER_COOKIE != timer->platformInfo.cookie )
    {
 <<<<<<< HEAD
-<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
                 "%s: Cannot start uninitialized timer",__FUNCTION__);
       VOS_ASSERT(0);
@@ -868,11 +802,6 @@ VOS_STATUS vos_timer_start( vos_timer_t *timer, v_U32_t expirationTime )
          VOS_ASSERT(0);
       }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
-                "%s: Cannot start uninitialized timer",__FUNCTION__);
-      VOS_ASSERT(0);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
 
@@ -938,18 +867,12 @@ VOS_STATUS vos_timer_start( vos_timer_t *timer, v_U32_t expirationTime )
   \return VOS_STATUS_SUCCESS - timer was successfully stopped.
   
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
           VOS_STATUS_E_EMPTY - The implementation has detected an attempt 
           to stop a timer that has not been started or has already 
           expired.
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
           VOS_STATUS_E_INVAL - The value specified by timer is invalid.
           
           VOS_STATUS_E_FAULT  - timer is an invalid pointer.     
@@ -977,7 +900,6 @@ VOS_STATUS vos_timer_stop ( vos_timer_t *timer )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s: Cannot stop uninitialized timer",__FUNCTION__);
       VOS_ASSERT(0);
 =======
@@ -987,10 +909,6 @@ VOS_STATUS vos_timer_stop ( vos_timer_t *timer )
          VOS_ASSERT(0);
       }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s: Cannot stop uninitialized timer",__FUNCTION__);
-      VOS_ASSERT(0);
->>>>>>> 657b0e9... prima update
       return VOS_STATUS_E_INVAL;
    }
       
@@ -1004,14 +922,10 @@ VOS_STATUS vos_timer_stop ( vos_timer_t *timer )
                 "%s: Cannot stop timer in state = %d",
                 __func__, timer->state);
 <<<<<<< HEAD
-<<<<<<< HEAD
       return VOS_STATUS_E_FAULT;
 =======
       return VOS_STATUS_SUCCESS;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return VOS_STATUS_E_FAULT;
->>>>>>> 657b0e9... prima update
    }
    
    timer->state = VOS_TIMER_STATE_STOPPED;

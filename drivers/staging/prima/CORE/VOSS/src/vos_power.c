@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -100,18 +97,12 @@ when       who     what, where, why
 #include <vos_power.h>
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef ANI_BUS_TYPE_SDIO
 #include <libra_sdioif.h>
 #endif
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef MSM_PLATFORM
 #include <mach/mpp.h>
 #include <mach/vreg.h>
@@ -639,9 +630,6 @@ VOS_STATUS vos_chipPowerDown
 {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef ANI_BUS_TYPE_SDIO
 #ifdef MSM_PLATFORM
    struct sdio_func *sdio_func_dev = NULL;
@@ -665,11 +653,8 @@ VOS_STATUS vos_chipPowerDown
 #endif
 #endif
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef MSM_PLATFORM_8660
    if(vos_chip_power_qrf8615(CHIP_POWER_OFF))
       return VOS_STATUS_E_FAILURE;
@@ -1415,9 +1400,6 @@ VOS_STATUS vos_chipVoteXOCore
 )
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     static v_BOOL_t is_vote_on;
 
@@ -1462,11 +1444,8 @@ success:
                 force_enable ? "enable" : "disable");
 
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    return VOS_STATUS_SUCCESS;
 }

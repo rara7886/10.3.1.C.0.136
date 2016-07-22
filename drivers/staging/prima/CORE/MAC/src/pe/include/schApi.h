@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -68,20 +65,14 @@
 extern void schSendStartScanRsp(tpAniSirGlobal pMac);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 /// Set init time params
 extern void schSetInitParams(tpAniSirGlobal pMac);
 
 /// Set qos default params
 extern void schUpdateQosInfo(tpAniSirGlobal pMac);
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 // update only the broadcast qos params
 extern void schQosUpdateBroadcast(tpAniSirGlobal pMac, tpPESession psessionEntry);
 
@@ -95,17 +86,11 @@ extern void schQosUpdateLocal(tpAniSirGlobal pMac, tpPESession psessionEntry);
 extern void schEdcaProfileUpdate(tpAniSirGlobal pMac, tpPESession psessionEntry);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /// Check for RR timer expiry
 extern void schCheckRRTimerExpiry(tpAniSirGlobal pMac);
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/// Check for RR timer expiry
-extern void schCheckRRTimerExpiry(tpAniSirGlobal pMac);
-
->>>>>>> 657b0e9... prima update
 /// Set the fixed fields in a beacon frame
 extern tSirRetStatus schSetFixedBeaconFields(tpAniSirGlobal pMac,tpPESession psessionEntry);
 
@@ -122,9 +107,6 @@ extern void schInitializeCfPollTemplate(tpAniSirGlobal pMac);
 extern void schInitializeCfEndTemplate(tpAniSirGlobal pMac);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 /// Process the transmit activity queue
 extern void schProcessTxActivityQueue(tpAniSirGlobal pMac);
 
@@ -143,14 +125,11 @@ extern void schProcessMessage(tpAniSirGlobal pMac,tpSirMsgQ pSchMsg);
 /// Process the DPH activity queue
 extern void schProcessDphActivityQueue(tpAniSirGlobal pMac);
 
-<<<<<<< HEAD
 =======
 /// Process the scheduler messages
 extern void schProcessMessage(tpAniSirGlobal pMac,tpSirMsgQ pSchMsg);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /// The beacon Indication handler function
 extern void schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 
@@ -158,9 +137,6 @@ extern void schProcessPreBeaconInd(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 extern tSirRetStatus schPostMessage(tpAniSirGlobal pMac, tpSirMsgQ pMsg);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 /// The scheduling interrupt handler
 extern void schSchedulingInterruptHandler(tpAniSirGlobal pMac);
@@ -175,11 +151,8 @@ extern tANI_U8 schGetCFPCount(tpAniSirGlobal pMac);
 extern tANI_U16 schGetCFPDurRemaining(tpAniSirGlobal pMac);
 
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 extern void schBeaconProcess(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession psessionEntry);
 extern tSirRetStatus schBeaconEdcaProcess(tpAniSirGlobal pMac, tSirMacEdcaParamSetIE *edca, tpPESession psessionEntry);
@@ -192,26 +165,18 @@ void schSetBeaconInterval(tpAniSirGlobal pMac,tpPESession psessionEntry);
 tSirRetStatus schSendBeaconReq( tpAniSirGlobal, tANI_U8 *, tANI_U16, tpPESession psessionEntry );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 void limUpdateProbeRspTemplateIeBitmapBeacon1(tpAniSirGlobal,tDot11fBeacon1*,tANI_U32*,tDot11fProbeResponse*);
 void limUpdateProbeRspTemplateIeBitmapBeacon2(tpAniSirGlobal,tDot11fBeacon2*,tANI_U32*,tDot11fProbeResponse*);
 void SetProbeRspIeBitmap(tANI_U32*,tANI_U32);
 tANI_U32 limSendProbeRspTemplateToHal(tpAniSirGlobal,tpPESession,
                                     tANI_U32*);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 
 #endif

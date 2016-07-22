@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -49,7 +46,6 @@
 
                       b a p M o d u l e . C
 <<<<<<< HEAD
-<<<<<<< HEAD
                                                
   OVERVIEW:
   
@@ -59,26 +55,17 @@
   
 =======
 
-=======
-                                               
->>>>>>> 657b0e9... prima update
   OVERVIEW:
-  
+
   This software unit holds the implementation of the WLAN BAP modules
   Module support functions. It is also where the global BAP module
-<<<<<<< HEAD
   context, and per-instance (returned in BAP_Open device open) contexts.
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  context, and per-instance (returned in BAP_Open device open) contexts. 
-  
->>>>>>> 657b0e9... prima update
   The functions externalized by this module are to be called by the device
   specific BAP Shim Layer (BSL) (in HDD) which implements a stream device on a
   particular platform.
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   DEPENDENCIES: 
 
@@ -94,16 +81,6 @@
   Are listed for each API below.
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  DEPENDENCIES: 
-
-  Are listed for each API below. 
-  
-  
-  Copyright (c) 2008 QUALCOMM Incorporated.
-  All Rights Reserved.
-  Qualcomm Confidential and Proprietary
->>>>>>> 657b0e9... prima update
 ===========================================================================*/
 
 /*===========================================================================
@@ -147,14 +124,10 @@
 #include "bapApiTimer.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_ANDROID)
 =======
 #if defined(ANI_OS_TYPE_ANDROID)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_ANDROID)
->>>>>>> 657b0e9... prima update
 #include "bap_hdd_main.h"
 #endif
 
@@ -183,14 +156,10 @@ static tWLAN_BAPbapPhysLinkMachine bapPhysLinkMachineInitial
 //  The main per-Physical Link (per WLAN association) context.
 //tBtampContext btampCtx;
 <<<<<<< HEAD
-<<<<<<< HEAD
 ptBtampContext  gpBtampCtx = NULL; 
 =======
 ptBtampContext  gpBtampCtx; 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-ptBtampContext  gpBtampCtx = NULL; 
->>>>>>> 657b0e9... prima update
 
 //  Include the Local AMP Info structure.
 tBtampHCI_AMP_Info        btampHCI_AMP_Info;
@@ -505,14 +474,10 @@ WLANBAP_Close
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "WLANBAP_Close");
   WLANBAP_CleanCB(pBtampCtx, 1 /* empty queues/lists/pkts if any*/);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_ANDROID))&& defined(WLAN_BTAMP_FEATURE)
 =======
 #if  defined(ANI_OS_TYPE_ANDROID) && defined(WLAN_BTAMP_FEATURE)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if (defined(ANI_OS_TYPE_LINUX) || defined(ANI_OS_TYPE_ANDROID))&& defined(WLAN_BTAMP_FEATURE)
->>>>>>> 657b0e9... prima update
   BSL_Deinit(pvosGCtx);
 #endif
   /*------------------------------------------------------------------------
@@ -659,14 +624,10 @@ WLANBAP_ReleaseHndl
   {
      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                   "halHandle is NULL in %s", __FUNCTION__);
 =======
                   "halHandle is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                  "halHandle is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
      return VOS_STATUS_E_FAULT;
   }
 
@@ -755,7 +716,6 @@ WLANBAP_CleanCB
           sizeof( pBtampCtx->bapPhysLinkMachine));
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Initializing State: %d", __FUNCTION__, bapPhysLinkMachineInitial.stateVar);   
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Initialized State: %d", __FUNCTION__,  pBtampCtx->bapPhysLinkMachine.stateVar); 
 
@@ -767,21 +727,13 @@ WLANBAP_CleanCB
 =======
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Initializing State: %d", __func__, bapPhysLinkMachineInitial.stateVar);   
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Initialized State: %d", __func__,  pBtampCtx->bapPhysLinkMachine.stateVar); 
-=======
-  VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Initializing State: %d", __FUNCTION__, bapPhysLinkMachineInitial.stateVar);   
-  VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Initialized State: %d", __FUNCTION__,  pBtampCtx->bapPhysLinkMachine.stateVar); 
->>>>>>> 657b0e9... prima update
 
-  //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %x", __FUNCTION__,  pBtampCtx); 
+  //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampContext value: %x", __func__,  pBtampCtx); 
 #ifdef BAP_DEBUG
   /* Trace the tBtampCtx being passed in. */
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
-<<<<<<< HEAD
             "WLAN BAP Context Monitor: pBtampCtx value = %x in %s:%d", pBtampCtx, __func__, __LINE__ );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "WLAN BAP Context Monitor: pBtampCtx value = %x in %s:%d", pBtampCtx, __FUNCTION__, __LINE__ );
->>>>>>> 657b0e9... prima update
 #endif //BAP_DEBUG
 
 
@@ -968,14 +920,10 @@ WLANBAP_GetStaIdFromLinkCtx
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
 =======
                      "Invalid BAP handle value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1085,14 +1033,10 @@ WLANBAP_CreateNewPhyLinkCtx
   *hBtampContext = pBtampCtx;
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "Btamp Ctxt = %x", pBtampCtx);
 =======
                  "Btamp Ctxt = %p", pBtampCtx);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "Btamp Ctxt = %x", pBtampCtx);
->>>>>>> 657b0e9... prima update
 
   return VOS_STATUS_SUCCESS;
 #else // defined(BTAMP_MULTIPLE_PHY_LINKS)
@@ -1142,14 +1086,10 @@ WLANBAP_UpdatePhyLinkCtxStaId
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
 =======
                      "Invalid BAP handle value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1226,14 +1166,10 @@ WLANBAP_CreateNewLogLinkCtx
   *pLog_link_handle = (i << 8) + ( v_U16_t ) phy_link_handle ; /*  Return the logical link index here */
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     " %s:*pLog_link_handle=%x", __FUNCTION__,*pLog_link_handle);
 =======
                     " %s:*pLog_link_handle=%x", __func__,*pLog_link_handle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    " %s:*pLog_link_handle=%x", __FUNCTION__,*pLog_link_handle);
->>>>>>> 657b0e9... prima update
 
   /*------------------------------------------------------------------------
     Evaluate the Tx and Rx Flow specification for this logical link.
@@ -1244,14 +1180,10 @@ WLANBAP_CreateNewLogLinkCtx
   /* Trace the tBtampCtx being passed in. */
   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
-<<<<<<< HEAD
             "WLAN BAP Context Monitor: pBtampContext value = %x in %s:%d", pBtampContext, __FUNCTION__, __LINE__ );
 =======
             "WLAN BAP Context Monitor: pBtampContext value = %p in %s:%d", pBtampContext, __func__, __LINE__ );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "WLAN BAP Context Monitor: pBtampContext value = %x in %s:%d", pBtampContext, __FUNCTION__, __LINE__ );
->>>>>>> 657b0e9... prima update
 #endif //BAP_DEBUG
 
   /*------------------------------------------------------------------------
@@ -1362,14 +1294,10 @@ WLANBAP_ReadMacConfig
   {
       VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "pBtampCtx is NULL in %s", __FUNCTION__);
 =======
                    "pBtampCtx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "pBtampCtx is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       return;
   }
@@ -1379,14 +1307,10 @@ WLANBAP_ReadMacConfig
   {
       VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "pMac is NULL in %s", __FUNCTION__);
 =======
                    "pMac is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "pMac is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       return;
   }
@@ -1442,14 +1366,10 @@ WLANBAP_ReadMacConfig
 ============================================================================*/
 // Global
 <<<<<<< HEAD
-<<<<<<< HEAD
 static int gBapCoexPriority = 0;
 =======
 static int gBapCoexPriority;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-static int gBapCoexPriority = 0;
->>>>>>> 657b0e9... prima update
 
 void
 WLANBAP_NeedBTCoexPriority
@@ -1471,14 +1391,10 @@ WLANBAP_NeedBTCoexPriority
   if (needCoexPriority != gBapCoexPriority) {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, 
 <<<<<<< HEAD
-<<<<<<< HEAD
             "Calling %s with needCoexPriority=%d.", __FUNCTION__, needCoexPriority);
 =======
             "Calling %s with needCoexPriority=%d.", __func__, needCoexPriority);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "Calling %s with needCoexPriority=%d.", __FUNCTION__, needCoexPriority);
->>>>>>> 657b0e9... prima update
  
     gBapCoexPriority = needCoexPriority;
     switch ( needCoexPriority)
@@ -1507,14 +1423,10 @@ WLANBAP_NeedBTCoexPriority
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
                    "%s: Invalid Coexistence priority request: %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, needCoexPriority);
 =======
                    __func__, needCoexPriority);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, needCoexPriority);
->>>>>>> 657b0e9... prima update
     }
 
   }
@@ -1569,14 +1481,10 @@ VOS_STATUS WLANBAP_RxCallback
           VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                      "%s: link Supervision packet received over TL: %d, => BAP",
 <<<<<<< HEAD
-<<<<<<< HEAD
                      __FUNCTION__, frameType);
 =======
                      __func__, frameType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     __FUNCTION__, frameType);
->>>>>>> 657b0e9... prima update
           WLANBAP_RxProcLsPkt((ptBtampHandle)pBtampCtx,
                                pBtampCtx->phy_link_handle,
                                frameType,
@@ -1596,14 +1504,10 @@ VOS_STATUS WLANBAP_RxCallback
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
                    "%s: Invalid frametype from TL: %d, => BAP",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, frameType);
 =======
                    __func__, frameType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, frameType);
->>>>>>> 657b0e9... prima update
     }
 
     return ( VOS_STATUS_SUCCESS );

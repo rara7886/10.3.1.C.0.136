@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -73,20 +70,14 @@
 #include <linux/list.h>
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include <wlan_qct_pal_packet.h>
 #include <wlan_qct_wdi_ds.h>
 #endif
-<<<<<<< HEAD
 =======
 #include <wlan_qct_pal_packet.h>
 #include <wlan_qct_wdi_ds.h>
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*--------------------------------------------------------------------------
   Preprocessor definitions and constants
@@ -139,7 +130,6 @@
 struct vos_pkt_t
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 
    //palPacket MUST be the first member of vos_pkt_t
@@ -150,13 +140,6 @@ struct vos_pkt_t
    //palPacket MUST be the first member of vos_pkt_t
    wpt_packet palPacket;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-
-   //palPacket MUST be the first member of vos_pkt_t
-   wpt_packet palPacket;
-#endif
->>>>>>> 657b0e9... prima update
 
    // Node for linking vos packets into a free list
    struct list_head node;
@@ -223,27 +206,20 @@ typedef struct vos_pkt_context_s
    struct list_head txMgmtFreeList;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
    //Existing list_size opearation traverse the list. Too slow for data path.
    //Add the field to enable faster flow control on tx path
    v_U32_t uctxDataFreeListCount;
 #endif
-<<<<<<< HEAD
 =======
    //Existing list_size opearation traverse the list. Too slow for data path.
    //Add the field to enable faster flow control on tx path
    v_U32_t uctxDataFreeListCount;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    // We keep a separate count of the number of RX_RAW packets
    // waiting to be replenished
    v_SIZE_t rxReplenishListCount;
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    //Existing list_size opearation traverse the list. Too slow for data path.
@@ -254,15 +230,12 @@ typedef struct vos_pkt_context_s
    // value to the driver to save the memory usage.
    v_SIZE_t numOfRxRawPackets;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
    // These are the structs to keep low-resource callback information.
    // There are separate low-resource callback information blocks for
    // RX_RAW, TX_DATA, and TX_MGMT.
    vos_pkt_low_resource_info rxRawLowResourceInfo;
    vos_pkt_low_resource_info txDataLowResourceInfo;
-<<<<<<< HEAD
 <<<<<<< HEAD
    vos_pkt_low_resource_info txMgmtLowResourceInfo;   
 
@@ -273,24 +246,14 @@ typedef struct vos_pkt_context_s
 
    struct mutex mlock;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   vos_pkt_low_resource_info txMgmtLowResourceInfo;   
-
-   struct mutex mlock;
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
    /*Meta Information to be transported with the packet*/
    WDI_DS_TxMetaInfoType txMgmtMetaInfo[VPKT_NUM_TX_MGMT_PACKETS];
    WDI_DS_TxMetaInfoType txDataMetaInfo[VPKT_NUM_TX_DATA_PACKETS];
    WDI_DS_RxMetaInfoType rxMetaInfo[VPKT_NUM_RX_RAW_PACKETS];
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 } vos_pkt_context_t;
 

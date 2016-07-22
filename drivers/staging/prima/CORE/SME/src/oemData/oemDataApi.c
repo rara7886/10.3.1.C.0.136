@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,7 +44,6 @@
 
 #ifdef FEATURE_OEM_DATA_SUPPORT
 <<<<<<< HEAD
-<<<<<<< HEAD
 /** ------------------------------------------------------------------------- * 
     ------------------------------------------------------------------------- *  
 
@@ -63,23 +59,11 @@
 /** ------------------------------------------------------------------------- *
     ------------------------------------------------------------------------- *
 
-=======
-/** ------------------------------------------------------------------------- * 
-    ------------------------------------------------------------------------- *  
->>>>>>> 657b0e9... prima update
 
-  
     \file oemDataApi.c
-  
+
     Implementation for the OEM DATA REQ/RSP interfaces.
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-    Copyright (C) 2010 Qualcomm Incorporated.
-  
- 
->>>>>>> 657b0e9... prima update
    ========================================================================== */
 #include "aniGlobal.h"
 #include "oemDataApi.h"
@@ -97,14 +81,10 @@
     \fn oemData_OemDataReqOpen
     \brief This function must be called before any API call to (OEM DATA REQ/RSP module)
 <<<<<<< HEAD
-<<<<<<< HEAD
     \return eHalStatus     
 =======
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 
 eHalStatus oemData_OemDataReqOpen(tHalHandle hHal)
@@ -119,14 +99,10 @@ eHalStatus oemData_OemDataReqOpen(tHalHandle hHal)
         if(!HAL_STATUS_SUCCESS(status))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGE, "oemData_OemDataReqOpen: Cannot allocate memory for the timer function\n");
 =======
             smsLog(pMac, LOGE, "oemData_OemDataReqOpen: Cannot allocate memory for the timer function");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, "oemData_OemDataReqOpen: Cannot allocate memory for the timer function\n");
->>>>>>> 657b0e9... prima update
             break;
         }
     } while(0);
@@ -138,14 +114,10 @@ eHalStatus oemData_OemDataReqOpen(tHalHandle hHal)
     \fn oemData_OemDataReqClose
     \brief This function must be called before closing the csr module
 <<<<<<< HEAD
-<<<<<<< HEAD
     \return eHalStatus     
 =======
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 
 eHalStatus oemData_OemDataReqClose(tHalHandle hHal)
@@ -158,14 +130,10 @@ eHalStatus oemData_OemDataReqClose(tHalHandle hHal)
         if(!HAL_STATUS_SUCCESS(status))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGE, "oemData_OemDataReqClose: Failed in oemData_OemDataReqClose at StopTimers\n");
 =======
             smsLog(pMac, LOGE, "oemData_OemDataReqClose: Failed in oemData_OemDataReqClose at StopTimers");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, "oemData_OemDataReqClose: Failed in oemData_OemDataReqClose at StopTimers\n");
->>>>>>> 657b0e9... prima update
             break;
         }
 
@@ -174,14 +142,10 @@ eHalStatus oemData_OemDataReqClose(tHalHandle hHal)
             vos_mem_free(pMac->oemData.pOemDataRsp);
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
         
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
->>>>>>> 657b0e9... prima update
         //initialize all the variables to null
         vos_mem_set(&(pMac->oemData), sizeof(tOemDataStruct), 0);
     } while(0);
@@ -192,7 +156,6 @@ eHalStatus oemData_OemDataReqClose(tHalHandle hHal)
 /* ---------------------------------------------------------------------------
     \fn oemData_ReleaseOemDataReqCommand
 <<<<<<< HEAD
-<<<<<<< HEAD
     \brief This function removes the oemDataCommand from the active list and 
            and frees up any memory occupied by this
     \return eHalStatus     
@@ -201,11 +164,6 @@ eHalStatus oemData_OemDataReqClose(tHalHandle hHal)
            and frees up any memory occupied by this
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \brief This function removes the oemDataCommand from the active list and 
-           and frees up any memory occupied by this
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 void oemData_ReleaseOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDataCmd, eOemDataReqStatus oemDataReqStatus)
 {
@@ -223,14 +181,10 @@ void oemData_ReleaseOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDataCmd,
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOGE, "OEM_DATA: **************** oemData_ReleaseOemDataReqCommand cannot release the command\n");
 =======
         smsLog(pMac, LOGE, "OEM_DATA: **************** oemData_ReleaseOemDataReqCommand cannot release the command");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOGE, "OEM_DATA: **************** oemData_ReleaseOemDataReqCommand cannot release the command\n");
->>>>>>> 657b0e9... prima update
     }
 }
 
@@ -242,7 +196,6 @@ void oemData_ReleaseOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDataCmd,
     \param callback - a callback function that is called upon finish
     \param pContext - a pointer passed in for the callback
 <<<<<<< HEAD
-<<<<<<< HEAD
     \return eHalStatus     
   -------------------------------------------------------------------------------*/
 eHalStatus oemData_OemDataReq(tHalHandle hHal, 
@@ -252,22 +205,13 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
                                 oemData_OemDataReqCompleteCallback callback, 
 =======
     \return eHalStatus
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
-eHalStatus oemData_OemDataReq(tHalHandle hHal, 
+eHalStatus oemData_OemDataReq(tHalHandle hHal,
                                 tANI_U8 sessionId,
-<<<<<<< HEAD
                                 tOemDataReqConfig *oemDataReqConfig,
                                 tANI_U32 *pOemDataReqID,
                                 oemData_OemDataReqCompleteCallback callback,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                tOemDataReqConfig *oemDataReqConfig, 
-                                tANI_U32 *pOemDataReqID, 
-                                oemData_OemDataReqCompleteCallback callback, 
->>>>>>> 657b0e9... prima update
                                 void *pContext)
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -275,14 +219,10 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
     tSmeCmd *pOemDataCmd = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     do 
 =======
     do
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    do 
->>>>>>> 657b0e9... prima update
     {
         if( !CSR_IS_SESSION_VALID( pMac, sessionId ) )
         {
@@ -295,7 +235,6 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
         pMac->oemData.pContext = pContext;
         pMac->oemData.oemDataReqID = *(pOemDataReqID);
 <<<<<<< HEAD
-<<<<<<< HEAD
     
         vos_mem_copy((v_VOID_t*)(pMac->oemData.oemDataReqConfig.oemDataReq), (v_VOID_t*)(oemDataReqConfig->oemDataReq), OEM_DATA_REQ_SIZE);
     
@@ -305,20 +244,13 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
     
 =======
 
-=======
-    
->>>>>>> 657b0e9... prima update
         vos_mem_copy((v_VOID_t*)(pMac->oemData.oemDataReqConfig.oemDataReq), (v_VOID_t*)(oemDataReqConfig->oemDataReq), OEM_DATA_REQ_SIZE);
-    
+
         pMac->oemData.oemDataReqActive = eANI_BOOLEAN_FALSE;
-    
+
         pOemDataCmd = smeGetCommandBuffer(pMac);
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
         //fill up the command before posting it.
         if(pOemDataCmd)
         {
@@ -326,7 +258,6 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
             pOemDataCmd->u.oemDataCmd.callback = callback;
             pOemDataCmd->u.oemDataCmd.pContext = pContext;
             pOemDataCmd->u.oemDataCmd.oemDataReqID = pMac->oemData.oemDataReqID;
-<<<<<<< HEAD
 <<<<<<< HEAD
     
             //set the oem data request
@@ -338,12 +269,6 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
             pOemDataCmd->u.oemDataCmd.oemDataReq.sessionId = pMac->oemData.oemDataReqConfig.sessionId;
             vos_mem_copy((v_VOID_t*)(pOemDataCmd->u.oemDataCmd.oemDataReq.oemDataReq),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-            //set the oem data request
-            pOemDataCmd->u.oemDataCmd.oemDataReq.sessionId = pMac->oemData.oemDataReqConfig.sessionId;
-            vos_mem_copy((v_VOID_t*)(pOemDataCmd->u.oemDataCmd.oemDataReq.oemDataReq), 
->>>>>>> 657b0e9... prima update
                                     (v_VOID_t*)(pMac->oemData.oemDataReqConfig.oemDataReq), OEM_DATA_REQ_SIZE);
         }
         else
@@ -352,14 +277,10 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
             break;
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
->>>>>>> 657b0e9... prima update
         //now queue this command in the sme command queue
         //Here since this is not interacting with the csr just push the command
         //into the sme queue. Also push this command with the normal priority
@@ -382,14 +303,10 @@ eHalStatus oemData_OemDataReq(tHalHandle hHal,
     \param pMac:
     \param pOemDataReq: Pointer to the oem data request
 <<<<<<< HEAD
-<<<<<<< HEAD
     \return eHalStatus     
 =======
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus oemData_SendMBOemDataReq(tpAniSirGlobal pMac, tOemDataReq *pOemDataReq)
 {
@@ -399,17 +316,12 @@ eHalStatus oemData_SendMBOemDataReq(tpAniSirGlobal pMac, tOemDataReq *pOemDataRe
     tCsrRoamSession *pSession = CSR_GET_SESSION( pMac, pOemDataReq->sessionId );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOGW, "OEM_DATA: entering Function %s\n", __FUNCTION__);
     
 =======
     smsLog(pMac, LOGW, "OEM_DATA: entering Function %s", __func__);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOGW, "OEM_DATA: entering Function %s\n", __FUNCTION__);
-    
->>>>>>> 657b0e9... prima update
     msgLen = (tANI_U16)(sizeof(tSirOemDataReq));
 
     status = palAllocateMemory(pMac->hHdd, (void**)&pMsg, msgLen);
@@ -422,14 +334,10 @@ eHalStatus oemData_SendMBOemDataReq(tpAniSirGlobal pMac, tOemDataReq *pOemDataRe
         if(HAL_STATUS_SUCCESS(status))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGW, "OEM_DATA: sending message to pe%s\n", __FUNCTION__);
 =======
             smsLog(pMac, LOGW, "OEM_DATA: sending message to pe%s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGW, "OEM_DATA: sending message to pe%s\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             status = palSendMBMessage(pMac->hHdd, pMsg);
         }
         else
@@ -439,14 +347,10 @@ eHalStatus oemData_SendMBOemDataReq(tpAniSirGlobal pMac, tOemDataReq *pOemDataRe
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOGW, "OEM_DATA: exiting Function %s\n", __FUNCTION__);
 =======
     smsLog(pMac, LOGW, "OEM_DATA: exiting Function %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOGW, "OEM_DATA: exiting Function %s\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     return status;
 }
@@ -456,20 +360,15 @@ eHalStatus oemData_SendMBOemDataReq(tpAniSirGlobal pMac, tOemDataReq *pOemDataRe
     \brief This function is called by the smeProcessCommand when the case hits
            eSmeCommandOemDataReq
 <<<<<<< HEAD
-<<<<<<< HEAD
     \return eHalStatus     
 =======
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus oemData_ProcessOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDataReqCmd)
 {
     eHalStatus status = eHAL_STATUS_SUCCESS;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     //check if the system is in proper mode of operation for 
     //oem data req/rsp to be functional. Currently, concurrency is not
@@ -481,12 +380,6 @@ eHalStatus oemData_ProcessOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDa
     //supported and the driver must be operational only as
     //STA for oem data req/rsp to be functional. We return an invalid
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    //check if the system is in proper mode of operation for 
-    //oem data req/rsp to be functional. Currently, concurrency is not
-    //supported and the driver must be operational only as 
-    //STA for oem data req/rsp to be functional. We return an invalid 
->>>>>>> 657b0e9... prima update
     //mode flag if it is operational as any one of the following
     //in any of the active sessions
     //1. AP Mode
@@ -496,28 +389,20 @@ eHalStatus oemData_ProcessOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDa
     if(eHAL_STATUS_SUCCESS == oemData_IsOemDataReqAllowed(pMac))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOG1, "%s: OEM_DATA REQ allowed in the current mode\n", __FUNCTION__);
 =======
         smsLog(pMac, LOG1, "%s: OEM_DATA REQ allowed in the current mode", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOG1, "%s: OEM_DATA REQ allowed in the current mode\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         pMac->oemData.oemDataReqActive = eANI_BOOLEAN_TRUE;
         status = oemData_SendMBOemDataReq(pMac, &(pOemDataReqCmd->u.oemDataCmd.oemDataReq));
     }
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         smsLog(pMac, LOG1, "%s: OEM_DATA REQ not allowed in the current mode\n", __FUNCTION__);
 =======
         smsLog(pMac, LOG1, "%s: OEM_DATA REQ not allowed in the current mode", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        smsLog(pMac, LOG1, "%s: OEM_DATA REQ not allowed in the current mode\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         oemData_ReleaseOemDataReqCommand(pMac, pOemDataReqCmd, eOEM_DATA_REQ_INVALID_MODE);
         pMac->oemData.oemDataReqActive = eANI_BOOLEAN_FALSE;
     }
@@ -530,14 +415,10 @@ eHalStatus oemData_ProcessOemDataReqCommand(tpAniSirGlobal pMac, tSmeCmd *pOemDa
     \brief This function processes the oem data response obtained from the PE
     \param pMsg - Pointer to the pSirOemDataRsp
 <<<<<<< HEAD
-<<<<<<< HEAD
     \return eHalStatus     
 =======
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
 {
@@ -549,20 +430,15 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
     pMac = PMAC_STRUCT(hHal);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOG1, "%s: OEM_DATA Entering\n", __FUNCTION__);
 =======
     smsLog(pMac, LOG1, "%s: OEM_DATA Entering", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOG1, "%s: OEM_DATA Entering\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
     do
     {
         if(pMsg == NULL)
         {
-<<<<<<< HEAD
 <<<<<<< HEAD
             smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
             status = eHAL_STATUS_FAILURE;
@@ -576,13 +452,6 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
         }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, "in %s msg ptr is NULL\n", __FUNCTION__);
-            status = eHAL_STATUS_FAILURE;
-            break;
-        }
-    
->>>>>>> 657b0e9... prima update
         pEntry = csrLLPeekHead( &pMac->sme.smeCmdActiveList, LL_ACCESS_LOCK );
         if(pEntry)
         {
@@ -608,19 +477,14 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
                 {
                     sme_ReleaseGlobalLock(&pMac->sme);
 <<<<<<< HEAD
-<<<<<<< HEAD
                     smsLog(pMac, LOGE, "in %s vos_mem_malloc failed for pMac->oemData.pOemDataRsp\n", __FUNCTION__);
 =======
                     smsLog(pMac, LOGE, "in %s vos_mem_malloc failed for pMac->oemData.pOemDataRsp", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    smsLog(pMac, LOGE, "in %s vos_mem_malloc failed for pMac->oemData.pOemDataRsp\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
                     status = eHAL_STATUS_FAILURE;
                     break;
                 }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
                 smsLog(pMac, LOGE, "Before memory copy\n"); 
                 vos_mem_copy((v_VOID_t*)(pMac->oemData.pOemDataRsp), (v_VOID_t*)(&pOemDataRsp->oemDataRsp), sizeof(tOemDataRsp));
@@ -630,16 +494,10 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
                 vos_mem_copy((v_VOID_t*)(pMac->oemData.pOemDataRsp), (v_VOID_t*)(&pOemDataRsp->oemDataRsp), sizeof(tOemDataRsp));
                 smsLog(pMac, LOGE, "after memory copy");
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGE, "Before memory copy\n"); 
-                vos_mem_copy((v_VOID_t*)(pMac->oemData.pOemDataRsp), (v_VOID_t*)(&pOemDataRsp->oemDataRsp), sizeof(tOemDataRsp));
-                smsLog(pMac, LOGE, "after memory copy\n");
->>>>>>> 657b0e9... prima update
                 sme_ReleaseGlobalLock(&pMac->sme);
             }
             else
             {
-<<<<<<< HEAD
 <<<<<<< HEAD
                 smsLog(pMac, LOGE, "in %s eWNI_SME_OEM_DATA_RSP Received but NO REQs are ACTIVE ...\n",
                     __FUNCTION__);
@@ -647,10 +505,6 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
                 smsLog(pMac, LOGE, "in %s eWNI_SME_OEM_DATA_RSP Received but NO REQs are ACTIVE ...",
                     __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                smsLog(pMac, LOGE, "in %s eWNI_SME_OEM_DATA_RSP Received but NO REQs are ACTIVE ...\n",
-                    __FUNCTION__);
->>>>>>> 657b0e9... prima update
                 status = eHAL_STATUS_FAILURE;
                 break;
             }
@@ -658,14 +512,10 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
         else
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             smsLog(pMac, LOGE, "in %s eWNI_SME_OEM_DATA_RSP Received but NO commands are ACTIVE ...\n", __FUNCTION__);
 =======
             smsLog(pMac, LOGE, "in %s eWNI_SME_OEM_DATA_RSP Received but NO commands are ACTIVE ...", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            smsLog(pMac, LOGE, "in %s eWNI_SME_OEM_DATA_RSP Received but NO commands are ACTIVE ...\n", __FUNCTION__);
->>>>>>> 657b0e9... prima update
             status = eHAL_STATUS_FAILURE;
             break;
         }
@@ -681,7 +531,6 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
 /* ---------------------------------------------------------------------------
     \fn oemData_IsOemDataReqAllowed
 <<<<<<< HEAD
-<<<<<<< HEAD
     \brief This function checks if OEM DATA REQs can be performed in the 
            current driver state
     \return eHalStatus     
@@ -690,11 +539,6 @@ eHalStatus sme_HandleOemDataRsp(tHalHandle hHal, tANI_U8* pMsg)
            current driver state
     \return eHalStatus
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    \brief This function checks if OEM DATA REQs can be performed in the 
-           current driver state
-    \return eHalStatus     
->>>>>>> 657b0e9... prima update
   -------------------------------------------------------------------------------*/
 eHalStatus oemData_IsOemDataReqAllowed(tHalHandle hHal)
 {
@@ -708,15 +552,11 @@ eHalStatus oemData_IsOemDataReqAllowed(tHalHandle hHal)
         if(CSR_IS_SESSION_VALID(pMac, sessionId))
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
             if(csrIsConnStateIbss(pMac, sessionId) || csrIsBTAMP(pMac, sessionId) 
 #ifdef WLAN_SOFTAP_FEATURE
                || csrIsConnStateConnectedInfraAp(pMac, sessionId)
 #endif
                )
-<<<<<<< HEAD
             {
                 //co-exist with IBSS or BT-AMP or Soft-AP mode is not supported
                 smsLog(pMac, LOGW, "OEM DATA REQ is not allowed due to IBSS|BTAMP|SAP exist in session %d\n", sessionId);
@@ -727,11 +567,6 @@ eHalStatus oemData_IsOemDataReqAllowed(tHalHandle hHal)
                 //co-exist with IBSS or BT-AMP mode is not supported
                 smsLog(pMac, LOGW, "OEM DATA REQ is not allowed due to IBSS|BTAMP exist in session %d", sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            {
-                //co-exist with IBSS or BT-AMP or Soft-AP mode is not supported
-                smsLog(pMac, LOGW, "OEM DATA REQ is not allowed due to IBSS|BTAMP|SAP exist in session %d\n", sessionId);
->>>>>>> 657b0e9... prima update
                 status = eHAL_STATUS_CSR_WRONG_STATE;
                 break;
             }
@@ -739,14 +574,10 @@ eHalStatus oemData_IsOemDataReqAllowed(tHalHandle hHal)
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     smsLog(pMac, LOG1, "Exiting oemData_IsOemDataReqAllowed with status %d\n", status);
 =======
     smsLog(pMac, LOG1, "Exiting oemData_IsOemDataReqAllowed with status %d", status);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    smsLog(pMac, LOG1, "Exiting oemData_IsOemDataReqAllowed with status %d\n", status);
->>>>>>> 657b0e9... prima update
 
     return (status);
 }

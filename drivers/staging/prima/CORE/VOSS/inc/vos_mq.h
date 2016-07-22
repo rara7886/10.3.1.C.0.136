@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -50,7 +47,6 @@
 
 /**=========================================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
   
   \file  vos_mq.h
   
@@ -59,25 +55,18 @@
    Message Queue Definitions and API
 =======
 
-=======
-  
->>>>>>> 657b0e9... prima update
   \file  vos_mq.h
-  
+
   \brief virtual Operating System Services (vOSS) message queue APIs
-               
+
    Message Queue Definitions and API
-<<<<<<< HEAD
 <<<<<<< HEAD:CORE/VOSS/inc/vos_mq.h
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
   
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -88,8 +77,6 @@
 
 >>>>>>> f7413b6... wlan: voss: remove obsolete "INTEGRATED_SOC" featurization:prima/CORE/VOSS/inc/vos_mq.h
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 /* $Header$ */
@@ -139,7 +126,6 @@ typedef struct vos_msg_s
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*------------------------------------------------------------------------- 
   Function declarations and documenation
   ------------------------------------------------------------------------*/
@@ -152,19 +138,11 @@ typedef struct vos_msg_s
 
 /// Message Queue IDs
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/*------------------------------------------------------------------------- 
-  Function declarations and documenation
-  ------------------------------------------------------------------------*/
-  
-/// Message Queue IDs  
->>>>>>> 657b0e9... prima update
 typedef enum
 {
   /// Message Queue ID for messages bound for SME
   VOS_MQ_ID_SME = VOS_MODULE_ID_SME,
 <<<<<<< HEAD
-<<<<<<< HEAD
   
   /// Message Queue ID for messages bound for PE
   VOS_MQ_ID_PE = VOS_MODULE_ID_PE, 
@@ -178,37 +156,22 @@ typedef enum
 #endif
 =======
 
-=======
-  
->>>>>>> 657b0e9... prima update
   /// Message Queue ID for messages bound for PE
-  VOS_MQ_ID_PE = VOS_MODULE_ID_PE, 
-  
-#ifndef FEATURE_WLAN_INTEGRATED_SOC
-  /// Message Queue ID for messages bound for HAL
-  VOS_MQ_ID_HAL = VOS_MODULE_ID_HAL,
-#else
+  VOS_MQ_ID_PE = VOS_MODULE_ID_PE,
+
   /// Message Queue ID for messages bound for WDA
   VOS_MQ_ID_WDA = VOS_MODULE_ID_WDA,
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
   /// Message Queue ID for messages bound for TL
   VOS_MQ_ID_TL = VOS_MODULE_ID_TL,
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
   /// Message Queue ID for messages bound for SSC
   VOS_MQ_ID_SSC = VOS_MODULE_ID_SSC,
 #endif
   
-<<<<<<< HEAD
   /// Message Queue ID for messages bound for the SYS module
   VOS_MQ_ID_SYS = VOS_MODULE_ID_SYS,
 
@@ -221,24 +184,13 @@ typedef enum
 #endif
   
 =======
-=======
->>>>>>> 657b0e9... prima update
   /// Message Queue ID for messages bound for the SYS module
   VOS_MQ_ID_SYS = VOS_MODULE_ID_SYS,
 
-#ifndef FEATURE_WLAN_INTEGRATED_SOC
-  /// Message Queue ID for SDIO Interrupt Handle in SAL
-  VOS_MQ_ID_SAL = VOS_MODULE_ID_SAL
-#else
-  /// Message Queue ID for messages bound for WDA
+  /// Message Queue ID for messages bound for WDI
   VOS_MQ_ID_WDI = VOS_MODULE_ID_WDI,
-<<<<<<< HEAD
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-  
->>>>>>> 657b0e9... prima update
 } VOS_MQ_ID;
 
 
@@ -321,13 +273,9 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *message );
 VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *message );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 /**---------------------------------------------------------------------------
 
   \brief vos_rx_mq_serialize() - serialize a message to the Rx execution flow
@@ -366,12 +314,8 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *message );
 VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *message );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #endif // if !defined __VOS_MQ_H

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -138,14 +135,10 @@ VOS_STATUS vos_event_init ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "NULL event passed into %s", __FUNCTION__);
 =======
                 "NULL event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "NULL event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -155,14 +148,10 @@ VOS_STATUS vos_event_init ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Initialized event passed into %s", __FUNCTION__);
 =======
                 "Initialized event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Initialized event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_BUSY;
    }
@@ -209,14 +198,10 @@ VOS_STATUS vos_event_set ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "NULL event passed into %s", __FUNCTION__);
 =======
                 "NULL event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "NULL event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -226,14 +211,10 @@ VOS_STATUS vos_event_set ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Uninitialized event passed into %s", __FUNCTION__);
 =======
                 "Uninitialized event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Uninitialized event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -280,14 +261,10 @@ VOS_STATUS vos_event_reset ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "NULL event passed into %s", __FUNCTION__);
 =======
                 "NULL event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "NULL event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -297,14 +274,10 @@ VOS_STATUS vos_event_reset ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Uninitialized event passed into %s", __FUNCTION__);
 =======
                 "Uninitialized event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Uninitialized event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -415,14 +388,10 @@ VOS_STATUS vos_event_destroy ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "NULL event passed into %s", __FUNCTION__);
 =======
                 "NULL event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "NULL event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -432,14 +401,10 @@ VOS_STATUS vos_event_destroy ( vos_event_t* event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Uninitialized event passed into %s", __FUNCTION__);
 =======
                 "Uninitialized event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Uninitialized event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -486,14 +451,10 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "%s cannot be called from interrupt context!!!", __FUNCTION__);
 =======
                 "%s cannot be called from interrupt context!!!", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "%s cannot be called from interrupt context!!!", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -503,14 +464,10 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "NULL event passed into %s", __FUNCTION__);
 =======
                 "NULL event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "NULL event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -520,14 +477,10 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Uninitialized event passed into %s", __FUNCTION__);
 =======
                 "Uninitialized event passed into %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Uninitialized event passed into %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -550,17 +503,12 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
       if ( 0 != ret )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
        	// negative means interrupted
         return VOS_STATUS_E_TIMEOUT;
 =======
          // negative means interrupted
          return VOS_STATUS_E_TIMEOUT;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       	// negative means interrupted
-        return VOS_STATUS_E_TIMEOUT;
->>>>>>> 657b0e9... prima update
       }
    }
 

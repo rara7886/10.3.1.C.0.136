@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -22,7 +19,6 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -49,8 +45,6 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*===========================================================================
  *
@@ -61,14 +55,10 @@
  *
  *  @author:   Kumar Anand
 <<<<<<< HEAD
-<<<<<<< HEAD
  *             Copyright (C) 2010, Qualcomm, Inc.
 =======
  *             Copyright (C) 2010, Qualcomm Technologies, Inc.
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *             Copyright (C) 2010, Qualcomm, Inc.
->>>>>>> 657b0e9... prima update
  *             All rights reserved.
  *
  *=========================================================================*/
@@ -196,7 +186,6 @@ typedef enum
    eHAL_STATUS_BSS_DISCONN_DISASSOC,
    
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    /* Data abort happened in PHY sw */
    eHAL_STATUS_PHY_DATA_ABORT,
@@ -208,8 +197,6 @@ typedef enum
    eHAL_STATUS_WLAN_BOOT_TEST_FAILURE,
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    /* Max status value */
    eHAL_STATUS_MAX_VALUE = WLAN_STATUS_MAX_ENUM_SIZE
 

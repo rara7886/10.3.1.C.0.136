@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -70,7 +67,6 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
                                   tpPESession  psessionEntry );
 //tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac, tpUpdateBeaconParams pUpdatedBcnParams);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
 tSirRetStatus limSendModeUpdate(tpAniSirGlobal pMac, 
@@ -83,8 +79,6 @@ tANI_U32 limGetCenterChannel(tpAniSirGlobal pMac,
                              tANI_U8 chanWidth);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #if defined WLAN_FEATURE_VOWIFI  
 tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac, tANI_U8 chnlNumber, 
                                       ePhyChanBondState secondaryChnlOffset, 
@@ -103,14 +97,10 @@ extern tSirRetStatus limSetLinkStateFT(tpAniSirGlobal pMac, tSirLinkState
 state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEntry);
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac, tpSirSetTxPowerReq pTxPowerReq);
 =======
 tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac, tANI_U32 *pTxPowerReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac, tpSirSetTxPowerReq pTxPowerReq);
->>>>>>> 657b0e9... prima update
 tSirRetStatus limSendGetTxPowerReq(tpAniSirGlobal pMac, tpSirGetTxPowerReq pTxPowerReq);
 void limSetActiveEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *plocalEdcaParams, tpPESession psessionEntry);
 #define CAPABILITY_FILTER_MASK  0x73CF
@@ -122,18 +112,14 @@ void limSetActiveEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *plocalE
 #define HT_BYTE5_FILTER_MASK    0xFD
 #define DS_PARAM_CHANNEL_MASK   0x0
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac);
 
 =======
 #define VHTOP_CHWIDTH_MASK      0xFC
-=======
->>>>>>> 657b0e9... prima update
 
-tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac);
+tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac, tpPESession psessionEntry);
 
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
 tSirRetStatus limSendTdlsLinkEstablish(tpAniSirGlobal pMac, tANI_U8 bIsPeerResponder, tANI_U8 linkIdenOffset, \
                 tANI_U8 ptiBufStatusOffset, tANI_U8 ptiFrameLen, tANI_U8 *ptiFrame, tANI_U8 *extCapability);
@@ -145,6 +131,4 @@ tSirRetStatus limSendExcludeUnencryptInd(tpAniSirGlobal pMac,
                                          tpPESession  psessionEntry );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif

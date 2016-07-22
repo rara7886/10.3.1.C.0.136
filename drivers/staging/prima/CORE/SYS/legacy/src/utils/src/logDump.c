@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -23,7 +20,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
 /*============================================================================
 Copyright (c) 2007 QUALCOMM Incorporated.
 All Rights Reserved.
@@ -48,17 +44,11 @@ Qualcomm Confidential and Proprietary
   * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   * PERFORMANCE OF THIS SOFTWARE.
 */
-=======
->>>>>>> 657b0e9... prima update
 /*============================================================================
-Copyright (c) 2007 QUALCOMM Incorporated.
+Copyright (c) 2007 Qualcomm Technologies, Inc.
 All Rights Reserved.
-<<<<<<< HEAD
 Qualcomm Technologies Confidential and Proprietary
 >>>>>>> d97af3b... add prima wlan driver
-=======
-Qualcomm Confidential and Proprietary
->>>>>>> 657b0e9... prima update
 
 logDump.c
 */
@@ -86,7 +76,6 @@ logDump.c
 
 #define MAX_OVERFLOW_MSG    400
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_WINDOWS)
 #define MAX_LOGDUMP_SIZE    ((4*1024) - MAX_OVERFLOW_MSG)
 #else
@@ -137,62 +126,10 @@ logDump.c
 
 #elif defined(ANI_OS_TYPE_ANDROID)
 =======
-=======
-#if defined(ANI_OS_TYPE_WINDOWS)
 #define MAX_LOGDUMP_SIZE    ((4*1024) - MAX_OVERFLOW_MSG)
-#else
->>>>>>> 657b0e9... prima update
-#define MAX_LOGDUMP_SIZE    ((4*1024) - MAX_OVERFLOW_MSG)
-#endif
 
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halDebug.h"
-#include "halInterrupts.h"
-#endif
-#if defined (ANI_OS_TYPE_LINUX)
-
-#include <sysDebug.h>
-
-#elif defined(ANI_OS_TYPE_WINDOWS)
-
-#include "stdarg.h"
-#include "sirTypes.h"
-
-
-#ifdef ANI_DVT_DEBUG
-#include "dvtModuleApi.h"
-#endif
-
-#include "pmmApi.h"
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halInternal.h"
-#endif
-#include "csrApi.h"
-
-#elif defined(ANI_OS_TYPE_OSX)
-
-#include "stdarg.h"
-
-<<<<<<< HEAD
 #if   defined(ANI_OS_TYPE_ANDROID)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#elif defined(ANI_OS_TYPE_AMSS)
-
-#include "comdef.h"
-#include "string.h"
-
-#include "AEEstd.h"
-
-#include "sirTypes.h"
-#include "halInterrupts.h"
-
-#include "pmmApi.h"
-#include "halInternal.h"
-#include "csrApi.h"
-
-#elif defined(ANI_OS_TYPE_ANDROID)
->>>>>>> 657b0e9... prima update
 
 #include <linux/kernel.h>
 
@@ -207,17 +144,11 @@ logDump.c
 
 #include <limApi.h>
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include <halCommonApi.h>
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include <halCommonApi.h>
-#endif
->>>>>>> 657b0e9... prima update
 #include <cfgApi.h>
 #include <utilsGlobal.h>
 #include <dphGlobal.h>
@@ -228,9 +159,6 @@ logDump.c
 #include "pmmApi.h"
 #include "limSerDesUtils.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halLogDump.h"
 //#include "testHalMsgApi.h"
@@ -239,7 +167,6 @@ logDump.c
 #include "halMTU.h"
 #include "halPhyApi.h"
 #endif
-<<<<<<< HEAD
 #include "limAssocUtils.h"
 #include "limSendMessages.h"
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
@@ -249,13 +176,6 @@ logDump.c
 #include "limAssocUtils.h"
 #include "limSendMessages.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "limAssocUtils.h"
-#include "limSendMessages.h"
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halUtils.h"
-#endif
->>>>>>> 657b0e9... prima update
 #include "limSecurityUtils.h"
 //#include "halRadar.h"
 #include "logDump.h"
@@ -263,7 +183,6 @@ logDump.c
 #include "wlan_qct_wda.h"
 
 #define HAL_LOG_DUMP_CMD_START 0
-<<<<<<< HEAD
 <<<<<<< HEAD
 #define HAL_LOG_DUMP_CMD_END 299
 
@@ -277,11 +196,6 @@ static int debug = 0;
 
 static int debug;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define HAL_LOG_DUMP_CMD_END 299
-
-static int debug = 0;
->>>>>>> 657b0e9... prima update
 
     void
 logPrintf(tpAniSirGlobal pMac, tANI_U32 cmd, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI_U32 arg4)
@@ -314,14 +228,10 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ...)
 #ifdef WLAN_DEBUG
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(ANI_OS_TYPE_AMSS)
     AEEVaList args;
     AEEVA_START(args, fmt);
 #else
-<<<<<<< HEAD
     va_list args;
     va_start(args, fmt);
 #endif
@@ -329,25 +239,16 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ...)
     va_list args;
     va_start(args, fmt);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    va_list args;
-    va_start(args, fmt);
-#endif
->>>>>>> 657b0e9... prima update
 
     if (pMac->gCurrentLogSize >= MAX_LOGDUMP_SIZE)
         return 0;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined (ANI_OS_TYPE_WINDOWS)
     ret = _vsnprintf(pBuf, (MAX_LOGDUMP_SIZE - pMac->gCurrentLogSize), fmt, args);
 #elif (defined (ANI_OS_TYPE_LINUX) || defined (ANI_OS_TYPE_ANDROID))
     ret = vsnprintf(pBuf, (MAX_LOGDUMP_SIZE - pMac->gCurrentLogSize), fmt, args);
 #elif defined (ANI_OS_TYPE_OSX)
-<<<<<<< HEAD
     ret = vsnprintf(pBuf, (MAX_LOGDUMP_SIZE - pMac->gCurrentLogSize), fmt, args);
     /* BSD kernel has a bug that vsnprintf() always return 0.
      * See bsd/kern/subr_prf.c 
@@ -366,28 +267,11 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ...)
 #endif
 =======
 #if    defined (ANI_OS_TYPE_ANDROID)
-=======
->>>>>>> 657b0e9... prima update
     ret = vsnprintf(pBuf, (MAX_LOGDUMP_SIZE - pMac->gCurrentLogSize), fmt, args);
-    /* BSD kernel has a bug that vsnprintf() always return 0.
-     * See bsd/kern/subr_prf.c 
-     * Need to verify ...
-     */
-    if (ret >= 0)
-        ret = strlen(pBuf);
-#elif defined (ANI_OS_TYPE_AMSS)
-    ret = std_vstrlprintf(pBuf, (MAX_LOGDUMP_SIZE - pMac->gCurrentLogSize), fmt, args);
 #endif
 
-#if defined(ANI_OS_TYPE_AMSS)
-    AEEVA_END(args);
-#else
     va_end(args);
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
     /* If an output error is encountered, a negative value is returned by vsnprintf */
     if (ret < 0)
@@ -399,9 +283,6 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ...)
         pMac->gCurrentLogSize = MAX_LOGDUMP_SIZE;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined (ANI_OS_TYPE_WINDOWS)
         ret = _snprintf(pBuf, MAX_OVERFLOW_MSG, "\n-> ***********"
                 "\nOutput Exceeded the Buffer Size, message truncated!!\n<- ***********\n");
@@ -418,12 +299,9 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ...)
         if (ret >= 0)
             ret = strlen(pBuf);
 #elif defined (ANI_OS_TYPE_AMSS)
-<<<<<<< HEAD
 =======
 #if    defined (ANI_OS_TYPE_ANDROID)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         ret = snprintf(pBuf, MAX_OVERFLOW_MSG, "\n-> ***********"
                 "\nOutput Exceeded the Buffer Size, message truncated!!\n<- ***********\n");
 #endif
@@ -439,18 +317,12 @@ int log_sprintf(tpAniSirGlobal pMac, char *pBuf, char *fmt, ...)
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined (ANI_OS_TYPE_WINDOWS)
     //DbgPrint("%s", pBuf);
     sysLog(pMac, LOGE, FL("%s"), pBuf);
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif //for #ifdef WLAN_DEBUG
     return ret;
 }
@@ -621,9 +493,6 @@ char * dump_log_level_set( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tA
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_DEBUG    
 static tLogdRegList dataType[] =
 {
@@ -808,11 +677,8 @@ char * dump_thread_info( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI
     return p;
 }
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /* Initialize the index */
 void logDumpInit(tpAniSirGlobal pMac)

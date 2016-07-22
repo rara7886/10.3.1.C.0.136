@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -61,13 +58,10 @@
 #include "limUtils.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define IBSS_STATIONS_USED_DURING_INIT 4  //(broadcast + self + p2p + softap)
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 void limIbssInit(tpAniSirGlobal);
 void limIbssDelete(tpAniSirGlobal,tpPESession psessionEntry);
 tSirRetStatus limIbssCoalesce(tpAniSirGlobal, tpSirMacMgmtHdr, tpSchBeaconStruct, tANI_U8*,tANI_U32, tANI_U16,tpPESession);
@@ -79,11 +73,7 @@ void limIbssAddBssRspWhenCoalescing(tpAniSirGlobal  pMac, void * msg, tpPESessio
 void limIbssDecideProtectionOnDelete(tpAniSirGlobal pMac, tpDphHashNode pStaDs, tpUpdateBeaconParams pBeaconParams,tpPESession pSessionEntry);
 void limIbssHeartBeatHandle(tpAniSirGlobal pMac,tpPESession psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 void limProcessIbssPeerInactivity(tpAniSirGlobal pMac, void *buf);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update

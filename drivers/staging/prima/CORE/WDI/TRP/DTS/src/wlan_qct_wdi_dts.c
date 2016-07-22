@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -84,7 +81,6 @@ static WDTS_TransportDriverTrype gTransportDriver = {
 
 static WDTS_SetPowerStateCbInfoType gSetPowerStateCbInfo;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 typedef struct 
@@ -415,8 +411,6 @@ void WDTS_ClearTrafficStats(void)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /* DTS Tx packet complete function. 
  * This function should be invoked by the transport device to indicate 
  * transmit complete for a frame.
@@ -450,7 +444,6 @@ wpt_status WDTS_TxPacketComplete(void *pContext, wpt_packet *pFrame, wpt_status 
   {
     case WDI_MAC_DATA_FRAME:
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     /* note that EAPOL frame hasn't incremented ReserveCount. see
        WDI_DS_TxPacket() in wlan_qct_wdi_ds.c
@@ -468,8 +461,6 @@ wpt_status WDTS_TxPacketComplete(void *pContext, wpt_packet *pFrame, wpt_status 
 #endif
     {
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       /* SWAP BD header to get STA index for completed frame */
       WDI_SwapTxBd(pvBDHeader);
       staIndex = (wpt_uint8)WDI_TX_BD_GET_STA_ID(pvBDHeader);
@@ -477,13 +468,10 @@ wpt_status WDTS_TxPacketComplete(void *pContext, wpt_packet *pFrame, wpt_status 
       WDI_DS_MemPoolDecreaseReserveCount(&(pClientData->dataMemPool), staIndex);
       break;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     }
     // intentional fall-through to handle eapol packet as mgmt
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     case WDI_MAC_MGMT_FRAME:
       WDI_DS_MemPoolFree(&(pClientData->mgmtMemPool), pvBDHeader, physBDHeader);
       break;
@@ -593,7 +581,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
   ucTid         = (wpt_uint8)WDI_RX_BD_GET_TID(pBDHeader);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   /* If RX thread drain small size of frame from HW too fast
    * Sometimes HW cannot handle interrupt fast enough
@@ -608,8 +595,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
   }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   /*------------------------------------------------------------------------
     Gather AMSDU information 
     ------------------------------------------------------------------------*/
@@ -653,7 +638,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
         DTI_TRACE( DTI_TRACE_LEVEL_FATAL,
                    "Invalid Frame size, might memory corrupted");
 <<<<<<< HEAD
-<<<<<<< HEAD
         wpalPacketFree(pFrame);
         return eWLAN_PAL_STATUS_SUCCESS;
       }
@@ -683,14 +667,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
           return eWLAN_PAL_STATUS_SUCCESS;
       }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        wpalPacketFree(pFrame);
-        return eWLAN_PAL_STATUS_SUCCESS;
-      }
-      wpalPacketSetRxLength(pFrame, usMPDULen+ucMPDUHOffset);
-      wpalPacketRawTrimHead(pFrame, ucMPDUHOffset);
-
->>>>>>> 657b0e9... prima update
      
 
       pRxMetadata = WDI_DS_ExtractRxMetaData(pFrame);
@@ -700,12 +676,9 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
       pRxMetadata->addr3Idx = WDI_RX_BD_GET_ADDR3_IDX(pBDHeader);
       pRxMetadata->rxChannel = WDI_RX_BD_GET_RX_CHANNEL(pBDHeader);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
       pRxMetadata->rfBand = WDI_RX_BD_GET_RFBAND(pBDHeader);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       pRxMetadata->rtsf = WDI_RX_BD_GET_RTSF(pBDHeader);
       pRxMetadata->bsf = WDI_RX_BD_GET_BSF(pBDHeader);
       pRxMetadata->scan = WDI_RX_BD_GET_SCAN(pBDHeader);
@@ -720,7 +693,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
       pRxMetadata->rxpFlags = WDI_RX_BD_GET_RXPFLAGS(pBDHeader);
       pRxMetadata->mclkRxTimestamp = WDI_RX_BD_GET_TIMESTAMP(pBDHeader);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11W
       pRxMetadata->rmf = WDI_RX_BD_GET_RMF(pBDHeader);
@@ -730,8 +702,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
       pRxMetadata->roamCandidateInd = WDI_RX_BD_GET_ROAMCANDIDATEIND(pBDHeader);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
       /* typeSubtype in BD doesn't look like correct. Fill from frame ctrl
          TL does it for Volans but TL does not know BD for Prima. WDI should do it */
@@ -762,14 +732,10 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
       pRxMetadata->ampdu_reorderSlotIdx = (wpt_uint8)WDI_RX_BD_GET_BA_SI(pBDHeader);
       pRxMetadata->ampdu_reorderFwdIdx  = (wpt_uint8)WDI_RX_BD_GET_BA_FI(pBDHeader);
 <<<<<<< HEAD
-<<<<<<< HEAD
       pRxMetadata->currentPktSeqNo       = (wpt_uint8)WDI_RX_BD_GET_BA_CSN(pBDHeader);
 =======
       pRxMetadata->currentPktSeqNo       = (wpt_uint16)WDI_RX_BD_GET_BA_CSN(pBDHeader);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      pRxMetadata->currentPktSeqNo       = (wpt_uint8)WDI_RX_BD_GET_BA_CSN(pBDHeader);
->>>>>>> 657b0e9... prima update
 
 
       /*------------------------------------------------------------------------
@@ -817,18 +783,14 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
       //flow control related
       pRxMetadata->fc = isFcBd;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
       pRxMetadata->mclkRxTimestamp = WDI_RX_BD_GET_TIMESTAMP(pBDHeader);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
       pRxMetadata->fcStaTxDisabledBitmap = WDI_RX_FC_BD_GET_STA_TX_DISABLED_BITMAP(pBDHeader);
       pRxMetadata->fcSTAValidMask = WDI_RX_FC_BD_GET_STA_VALID_MASK(pBDHeader);
       // Invoke Rx complete callback
       pClientData->receiveFrameCB(pClientData->pCallbackContext, pFrame);  
   }
-<<<<<<< HEAD
 <<<<<<< HEAD
   return eWLAN_PAL_STATUS_SUCCESS;
 
@@ -849,10 +811,6 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
   }
   return eWLAN_PAL_STATUS_SUCCESS;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  return eWLAN_PAL_STATUS_SUCCESS;
-
->>>>>>> 657b0e9... prima update
 }
 
 
@@ -918,14 +876,10 @@ wpt_status WDTS_openTransport( void *pContext)
   if( NULL == pDTDriverContext )
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
      DTI_TRACE( DTI_TRACE_LEVEL_ERROR, " %s fail from transport open", __FUNCTION__);
 =======
      DTI_TRACE( DTI_TRACE_LEVEL_ERROR, " %s fail from transport open", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     DTI_TRACE( DTI_TRACE_LEVEL_ERROR, " %s fail from transport open", __FUNCTION__);
->>>>>>> 657b0e9... prima update
      return eWLAN_PAL_STATUS_E_FAILURE;
   }
   WDT_AssignTransportDriverContext(pContext, pDTDriverContext);
@@ -947,13 +901,10 @@ wpt_status WDTS_openTransport( void *pContext)
   }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   wpalMemoryZero(&gDsTrafficStats, sizeof(gDsTrafficStats));
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   return eWLAN_PAL_STATUS_SUCCESS;
 
 }
@@ -999,7 +950,6 @@ wpt_status WDTS_TxPacket(void *pContext, wpt_packet *pFrame)
   pTxMetadata = WDI_DS_ExtractTxMetaData(pFrame);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   // assign MDPU to correct channel??
   channel =  (pTxMetadata->frmType & WDI_MAC_DATA_FRAME)? 
       WDTS_CHANNEL_TX_LOW_PRI : WDTS_CHANNEL_TX_HIGH_PRI;
@@ -1034,12 +984,6 @@ wpt_status WDTS_TxPacket(void *pContext, wpt_packet *pFrame)
       ((pTxMetadata->isEapol) ? WDTS_CHANNEL_TX_HIGH_PRI : WDTS_CHANNEL_TX_LOW_PRI) : WDTS_CHANNEL_TX_HIGH_PRI;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  // assign MDPU to correct channel??
-  channel =  (pTxMetadata->frmType & WDI_MAC_DATA_FRAME)? 
-      WDTS_CHANNEL_TX_LOW_PRI : WDTS_CHANNEL_TX_HIGH_PRI;
-  
->>>>>>> 657b0e9... prima update
   // Send packet to  Transport Driver. 
   status =  gTransportDriver.xmit(pDTDriverContext, pFrame, channel);
   return status;
@@ -1118,21 +1062,16 @@ wpt_status WDTS_SetPowerState(void *pContext, WDTS_PowerStateType  powerState,
  * Or if host driver detects any abnormal stcuk may display
  * Parameters:
 <<<<<<< HEAD
-<<<<<<< HEAD
  *  displaySnapshot : Dispaly DXE snapshot option
 =======
  *  displaySnapshot : Display DXE snapshot option
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *  displaySnapshot : Dispaly DXE snapshot option
->>>>>>> 657b0e9... prima update
  *  enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification
  * Return Value: NONE
  *
  */
-<<<<<<< HEAD
 <<<<<<< HEAD
 void WDTS_ChannelDebug(wpt_boolean dispalySnapshot, wpt_boolean toggleStallDetect)
 {
@@ -1142,11 +1081,6 @@ void WDTS_ChannelDebug(wpt_boolean displaySnapshot, wpt_boolean toggleStallDetec
 {
    gTransportDriver.channelDebug(displaySnapshot, toggleStallDetect);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void WDTS_ChannelDebug(wpt_boolean dispalySnapshot, wpt_boolean toggleStallDetect)
-{
-   gTransportDriver.channelDebug(dispalySnapshot, toggleStallDetect);
->>>>>>> 657b0e9... prima update
    return;
 }
 
@@ -1166,13 +1100,10 @@ wpt_status WDTS_Stop(void *pContext)
   status =  gTransportDriver.stop(pDTDriverContext);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   wpalMemoryZero(&gDsTrafficStats, sizeof(gDsTrafficStats));
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   return status;
 }
 

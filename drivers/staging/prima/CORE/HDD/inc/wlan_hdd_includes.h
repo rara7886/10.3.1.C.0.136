@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -87,13 +84,9 @@
 #include "wlan_hdd_wext.h"
 #include "wlan_hdd_main.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "wlan_hdd_version.h"
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "wlan_hdd_version.h"
->>>>>>> 657b0e9... prima update
 #include "wlan_hdd_tx_rx.h"
 
 #ifdef FEATURE_OEM_DATA_SUPPORT

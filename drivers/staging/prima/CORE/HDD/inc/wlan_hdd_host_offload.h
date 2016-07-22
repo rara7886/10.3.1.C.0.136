@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -80,12 +77,9 @@ typedef struct
         v_U8_t hostIpv6Addr [16];
     } params;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     v_MACADDR_t bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tHostOffloadRequest, *tpHostOffloadRequest;
 
 #endif // __WLAN_HDD_HOST_OFFLOAD_H__

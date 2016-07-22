@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -92,7 +89,6 @@ when        who         what, where, why
 #include "aniGlobal.h"
 #include "wlan_qct_wda.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include <halCommonApi.h>  // needed for halMmhPostMsgApi()
 #endif
@@ -104,41 +100,25 @@ VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message);
 
 #endif
 =======
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include <halCommonApi.h>  // needed for halMmhPostMsgApi()
-#endif
->>>>>>> 657b0e9... prima update
 #include "sme_Api.h"
 #include "macInitApi.h"
 
-#ifndef WLAN_FTM_STUB
 VOS_STATUS WLANFTM_McProcessMsg (v_VOID_t *message);
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 
 // Cookie for SYS messages.  Note that anyone posting a SYS Message has to
 // write the COOKIE in the reserved field of the message.  The SYS Module
 // relies on this COOKIE
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef WLAN_FTM_STUB
 #define SYS_MSG_ID_FTM_RSP      11
 #define FTM_SYS_MSG_COOKIE      0xFACE
 #endif
-<<<<<<< HEAD
 =======
 #define FTM_SYS_MSG_COOKIE      0xFACE
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #define SYS_MSG_COOKIE ( 0xFACE )
 
@@ -158,20 +138,14 @@ typedef struct
 } sysContextData;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
 // keep some static global sys context for the time being... Should we move this
 // into 'context' data?  Probably not, it doesn't need to be persistent except
 // during this messaging sequence.
 static sysContextData gSysContext;
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 static vos_event_t gStopEvt;
 
@@ -191,9 +165,6 @@ VOS_STATUS sysOpen( v_CONTEXT_t pVosContext )
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
 VOS_STATUS sysMcStart( v_CONTEXT_t pVosContext, sysResponseCback userCallback, v_VOID_t *pUserData )
 {
@@ -218,11 +189,8 @@ VOS_STATUS sysMcStart( v_CONTEXT_t pVosContext, sysResponseCback userCallback, v
    return( vosStatus );
 }
 #endif  /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 v_VOID_t sysStopCompleteCb
 (
@@ -285,9 +253,6 @@ VOS_STATUS sysClose( v_CONTEXT_t pVosContext )
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
 static VOS_STATUS sys_PostMcThreadProbeMsg( v_CONTEXT_t pVosContext, sysResponseCback userCallback,
                                           v_VOID_t *pUserData, SYS_MSG_ID sysMsgId )
@@ -420,14 +385,11 @@ static VOS_STATUS sys_SendHalInitStartReqMsg( v_CONTEXT_t pVosContext )
    return( vosStatus );
 }
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #if defined(__ANI_COMPILER_PRAGMA_PACK_STACK)
 #pragma pack( push )
@@ -497,14 +459,10 @@ static unsigned short polFileChkSum( unsigned short *FileData, unsigned long Num
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 static v_BOOL_t sys_validateStaConfig( void *pImage, unsigned long cbFile,
    void **ppStaConfig, v_SIZE_t *pcbStaConfig )
 #else
-<<<<<<< HEAD
 v_BOOL_t sys_validateStaConfig( void *pImage, unsigned long cbFile,
    void **ppStaConfig, v_SIZE_t *pcbStaConfig )
 #endif
@@ -512,11 +470,6 @@ v_BOOL_t sys_validateStaConfig( void *pImage, unsigned long cbFile,
 v_BOOL_t sys_validateStaConfig( void *pImage, unsigned long cbFile,
    void **ppStaConfig, v_SIZE_t *pcbStaConfig )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-v_BOOL_t sys_validateStaConfig( void *pImage, unsigned long cbFile,
-   void **ppStaConfig, v_SIZE_t *pcbStaConfig )
-#endif
->>>>>>> 657b0e9... prima update
 {
    v_BOOL_t fFound = VOS_FALSE;
    tPolFileHeader   *pFileHeader = NULL;
@@ -574,7 +527,6 @@ v_BOOL_t sys_validateStaConfig( void *pImage, unsigned long cbFile,
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
 static v_U8_t _vImageArray[15000];
 
@@ -610,198 +562,6 @@ static VOS_STATUS sys_getCfgBinaryMsgBuffer( tSirMbMsg **ppMsg, v_SIZE_t *pcbCfg
          VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
                     "Unable to allocate memory for the CFG binary [size= %d bytes]",
                     cbFileImage );
-
-         vosStatus = VOS_STATUS_E_NOMEM;
-         break;
-      }
-
-      // Get the entire CFG file image...
-      vosStatus = vos_get_binary_blob( VOS_BINARY_ID_CONFIG, pFileImage, &cbFileImage );
-      if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) )
-      {
-         VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
-                    "Error: Cannot retrieve CFG fine image from vOSS. [size= %d bytes]",
-                    cbFileImage );
-         break;
-      }
-
-      // Validate the binary image.  This function will return a pointer and length
-      // where the CFG binary is located within the binary image file.
-      bStatus = sys_validateStaConfig( pFileImage, cbFileImage,
-                                      &pCfgBinary, &cbCfgBinary );
-      if ( VOS_FALSE == bStatus )
-      {
-         VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
-                    "Error: Cannot find STA CFG in binary image fileze" );
-         vosStatus = VOS_STATUS_E_FAILURE;
-         break;
-      }
-
-      // caller wants to know the size of the cfg Binary.  Return it.
-      *pcbCfgBinary = cbCfgBinary;
-
-      // To build the CFG download message, we need build a buffer that includes the
-      // tSirMbMsg header followed by the CFG data.  So allocate enough space for the
-      // CFG binary plus the message header.
-      //
-      // This buffer (the tSir message) is returned to the caller...
-      *ppMsg = vos_mem_malloc( cbCfgBinary + FIELD_OFFSET( tSirMbMsg, data ) );
-      if ( NULL == *ppMsg )
-      {
-         VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
-                    "Unable to allocate memory for the CFG download message "
-                    "buffer [size= %d bytes]",
-                    cbCfgBinary + FIELD_OFFSET( tSirMbMsg, data ) );
-
-         vosStatus = VOS_STATUS_E_NOMEM;
-         break;
-      }
-
-      // copy the CFG binary data into the CFG download message buffer...
-      vos_mem_copy( (v_VOID_t *)( ( *ppMsg )->data ), pCfgBinary , cbCfgBinary );
-
-      // if we get here, we have succeeded!
-      vosStatus = VOS_STATUS_SUCCESS;
-
-   } while( 0 );
-
-   // Always need to free the buffer where the binary image file was
-   // temporarily read...
-   if ( NULL == pFileImage )
-   {
-     // vos_mem_free( pFileImage );
-   }
-
-   // If failed and we have already allocated the memory for the CFG
-   // binary download message, need to free that memory.  If succeeded,
-   // the caller is going to free this memory when it is done sending
-   // the message.
-   if ( ( !VOS_IS_STATUS_SUCCESS( vosStatus ) ) && ( NULL != *ppMsg ) )
-   {
-      vos_mem_free( *ppMsg );
-      *ppMsg = NULL;
-      *pcbCfgBinary = 0;
-   }
-
-   return( vosStatus );
-}
-#endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-
-
-=======
-#if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
-static v_U8_t _vImageArray[15000];
->>>>>>> 657b0e9... prima update
-
-static VOS_STATUS sys_getCfgBinaryMsgBuffer( tSirMbMsg **ppMsg, v_SIZE_t *pcbCfgBinary )
-{
-   VOS_STATUS vosStatus = VOS_STATUS_E_FAILURE;
-
-   v_VOID_t *pFileImage = NULL;
-   v_SIZE_t cbFileImage = 0;
-
-   v_VOID_t *pCfgBinary = NULL;
-   v_SIZE_t cbCfgBinary = 0;
-
-<<<<<<< HEAD
-#if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
-static VOS_STATUS sys_SendWniCfgDnldMsg( v_CONTEXT_t pVosContext )
-{
-   VOS_STATUS vosStatus = VOS_STATUS_E_FAILURE;
-
-   tSirRetStatus sirStatus = eSIR_SUCCESS;
-   tSirMbMsg *pMsg = NULL;
-   v_VOID_t *hHal  = NULL;
-
-   v_SIZE_t cbCfgBinary = 0;
-
-   do
-   {
-      hHal = vos_get_context( VOS_MODULE_ID_HAL, pVosContext );
-      if ( NULL == hHal ) break;
-
-      vosStatus = sys_getCfgBinaryMsgBuffer( &pMsg, &cbCfgBinary );
-      if ( !VOS_IS_STATUS_SUCCESS( vosStatus ) ) break;
-
-      pMsg->type = WNI_CFG_DNLD_RSP;
-
-      // message length is 4 greater than the config data size
-      // need to add in an extra 4 for the message header.
-      pMsg->msgLen = (tANI_U16)( cbCfgBinary + FIELD_OFFSET( tSirMbMsg, data ) );
-
-      sirStatus = halMmhForwardMBmsg( hHal, pMsg );
-      if ( eSIR_SUCCESS != sirStatus )
-      {
-         vosStatus = VOS_STATUS_E_FAILURE;
-      }
-      vos_mem_free(pMsg);
-   } while( 0 );
-
-   return( vosStatus );
-}
-#endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-
-
-#if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
-VOS_STATUS sys_SendSmeStartReq( v_CONTEXT_t pVosContext )
-{
-   VOS_STATUS vosStatus = VOS_STATUS_SUCCESS;
-   tSirSmeStartReq msg;
-
-   tSirRetStatus sirStatus = eSIR_SUCCESS;
-   tSirSmeStartReq *pMsg = &msg;
-   v_VOID_t *hHal;
-
-   do
-   {
-      // get the HAL context...
-      hHal = vos_get_context( VOS_MODULE_ID_HAL, pVosContext );
-      if ( NULL == hHal ) break;
-
-      // format the Sme Start Request message.  This message has
-      // the hal handle in the 'data' portion of the message.
-      pMsg->messageType      = eWNI_SME_START_REQ;
-      pMsg->length           = sizeof( msg );
-      pMsg->roamingAtPolaris = 0;
-      pMsg->sendNewBssInd    = 0;
-
-     // Send the HAL Init Start Request message...
-     sirStatus = halMmhForwardMBmsg( hHal, (tSirMbMsg *)pMsg );
-     if ( eSIR_SUCCESS != sirStatus )
-     {
-        vosStatus = VOS_STATUS_E_FAILURE;
-     }
-
-  } while( 0 );
-
-   return( vosStatus );
-}
-#endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-=======
-=======
-   v_BOOL_t bStatus = VOS_FALSE;
-
-   do
-   {
-      // get the number of bytes in the CFG Binary...
-      vosStatus = vos_get_binary_blob( VOS_BINARY_ID_CONFIG, NULL, &cbFileImage );
-      if ( VOS_STATUS_E_NOMEM != vosStatus )
-      {
-         VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
-                    "Error obtaining binary size" );
-         break;
-      }
-
-      // malloc a buffer to read in the Configuration binary file.
-      //pFileImage = vos_mem_malloc( cbFileImage );
-      pFileImage = (v_VOID_t*)_vImageArray;
-
-      if ( NULL == pFileImage )
-      {
-         VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
-                    "Unable to allocate memory for the CFG binary [size= %d bytes]",
-                    cbFileImage );
->>>>>>> 657b0e9... prima update
 
          vosStatus = VOS_STATUS_E_NOMEM;
          break;
@@ -957,6 +717,8 @@ VOS_STATUS sys_SendSmeStartReq( v_CONTEXT_t pVosContext )
    return( vosStatus );
 }
 #endif /* FEATURE_WLAN_NON_INTEGRATED_SOC */
+=======
+
 
 
 
@@ -986,9 +748,6 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          case SYS_MSG_ID_MC_START:
          {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
             // save the callback pointer and user data in the context
             // data
@@ -999,11 +758,8 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
             // SIR_HAL_INIT_START_REQ message to the mac module.
             vosStatus = sys_SendHalInitStartReqMsg( pVosContext );
 #else
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             /* Handling for this message is not needed now so adding 
              *debug print and VOS_ASSERT*/
             VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
@@ -1011,13 +767,9 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
                        pMsg->type, pMsg->type );
             VOS_ASSERT(0);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
             break;
          }
 
@@ -1032,14 +784,10 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
             {
                VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                           "%s: Invalid hHal", __FUNCTION__ );
 =======
                           "%s: Invalid hHal", __func__ );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          "%s: Invalid hHal", __FUNCTION__ );
->>>>>>> 657b0e9... prima update
             }
             else
             {
@@ -1061,9 +809,6 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          case SYS_MSG_ID_MC_THR_PROBE:
          {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
             sysResponseCback callback;
 
@@ -1081,14 +826,11 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
                        pMsg->type, pMsg->type );
             VOS_ASSERT(0);
 #endif
-<<<<<<< HEAD
 =======
             VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
                        " Received SYS_MSG_ID_MC_THR_PROBE message msgType = %d [0x%08lx]",
                        pMsg->type, pMsg->type);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             break;
          }
 
@@ -1107,26 +849,18 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
             break;
          }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifndef WLAN_FTM_STUB
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifndef WLAN_FTM_STUB
->>>>>>> 657b0e9... prima update
          case SYS_MSG_ID_FTM_RSP:
          {
              WLANFTM_McProcessMsg((v_VOID_t *)pMsg->bodyptr);
              break;
          }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
          default:
          {
@@ -1145,9 +879,6 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
       switch( pMsg->type )
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
          /* Handling for these messages are not needed now. If a request comes for 
             these messages they will goto default and give VOS_ASSERT*/
@@ -1241,11 +972,8 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
             break;
          }
 #endif  /* FEATURE_WLAN_NON_INTEGRATED_SOC */
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
          default:
          {
@@ -1290,9 +1018,6 @@ VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
          case SYS_MSG_ID_TX_THR_PROBE:
          {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined( FEATURE_WLAN_NON_INTEGRATED_SOC )
             sysResponseCback callback;
 
@@ -1303,11 +1028,8 @@ VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
 
             callback( (v_VOID_t *)pMsg->bodyval );
 #else
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
            /* Handling for this message is not needed now so adding 
             * debug print and VOS_ASSERT*/
             VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
@@ -1316,13 +1038,9 @@ VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
             VOS_ASSERT(0);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
             break;
          }
 
@@ -1368,13 +1086,9 @@ VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 VOS_STATUS sysRxProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
 {
    VOS_STATUS vosStatus = VOS_STATUS_SUCCESS;
@@ -1432,13 +1146,9 @@ VOS_STATUS sysRxProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t *pMsg )
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 v_VOID_t sysMcFreeMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg )
 {
@@ -1468,7 +1178,6 @@ SysProcessMmhMsg
   */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   VOS_ASSERT(NULL != pMsg);
 =======
 
@@ -1480,9 +1189,6 @@ SysProcessMmhMsg
       return;
   }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  VOS_ASSERT(NULL != pMsg);
->>>>>>> 657b0e9... prima update
 
 
   switch (pMsg->type)
@@ -1501,26 +1207,18 @@ SysProcessMmhMsg
       targetMQ = VOS_MQ_ID_SYS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
       VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
                  "Handling for the Message ID %d is removed in SYS\r\n",
                  pMsg->type);
 
       VOS_ASSERT(0);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
       break;
     }
 
@@ -1535,26 +1233,18 @@ SysProcessMmhMsg
       targetMQ = VOS_MQ_ID_WDA;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined ( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined ( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
       VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR,
                  "Handling for the Message ID %d is removed as there is no HAL \r\n",
                  pMsg->type);
 
       VOS_ASSERT(0);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
       break;
     }
 
@@ -1622,27 +1312,19 @@ SysProcessMmhMsg
     if(pMsg->bodyptr)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
       palFreeMemory( pMac->hHdd, pMsg->bodyptr);
 =======
       vos_mem_free( pMsg->bodyptr);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      palFreeMemory( pMac->hHdd, pMsg->bodyptr);
->>>>>>> 657b0e9... prima update
     }
   }
 
 } /* SysProcessMmhMsg() */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifndef WLAN_FTM_STUB
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifndef WLAN_FTM_STUB
->>>>>>> 657b0e9... prima update
 /*==========================================================================
   FUNCTION    WLAN_FTM_SYS_FTM
 
@@ -1686,7 +1368,6 @@ void wlan_sys_ftm(void *pMsgPtr)
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 
 
@@ -1707,8 +1388,3 @@ void wlan_sys_probe(void)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* ANI_MANF_DIAG */
-
-
->>>>>>> 657b0e9... prima update

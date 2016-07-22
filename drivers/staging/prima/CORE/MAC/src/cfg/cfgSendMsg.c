@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -116,15 +113,11 @@ cfgSendHostMsg(tpAniSirGlobal pMac, tANI_U16 msgType, tANI_U32 msgLen, tANI_U32 
 
     // Allocate message buffer
 <<<<<<< HEAD
-<<<<<<< HEAD
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pMsg, msgLen))
 =======
     pMsg = vos_mem_malloc(msgLen);
     if ( NULL == pMsg )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pMsg, msgLen))
->>>>>>> 657b0e9... prima update
     {
         PELOGE(cfgLog(pMac, LOGE,
                       FL("Memory allocation failure!"));)
@@ -170,14 +163,10 @@ cfgSendHostMsg(tpAniSirGlobal pMac, tANI_U16 msgType, tANI_U32 msgLen, tANI_U32 
            PELOGE(cfgLog(pMac, LOGE,
                          FL("Unknown msg %d!"), (int) msgType);)
 <<<<<<< HEAD
-<<<<<<< HEAD
             palFreeMemory( pMac->hHdd, pMsg);
 =======
             vos_mem_free( pMsg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            palFreeMemory( pMac->hHdd, pMsg);
->>>>>>> 657b0e9... prima update
             return;
     }
 

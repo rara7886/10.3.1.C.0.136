@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -151,14 +148,10 @@
 
 #define FL(x)    "%s: %d: "\
 <<<<<<< HEAD
-<<<<<<< HEAD
                  x, __FUNCTION__, __LINE__
 =======
                  x, __func__, __LINE__
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 x, __FUNCTION__, __LINE__
->>>>>>> 657b0e9... prima update
 
 #define MAC_ADDR_ARRAY(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 #define MAC_ADDRESS_STR "%02x:%02x:%02x:%02x:%02x:%02x"

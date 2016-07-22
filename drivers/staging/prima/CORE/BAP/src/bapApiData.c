@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -122,14 +119,10 @@
 
 /*Offset of the protocol type field inside the LLC/SNAP header*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WLANBAP_LLC_PROTO_TYPE_OFFSET  WLANBAP_LLC_OUI_OFFSET +  WLANBAP_LLC_OUI_SIZE
 =======
 #define WLANBAP_LLC_PROTO_TYPE_OFFSET  (WLANBAP_LLC_OUI_OFFSET +  WLANBAP_LLC_OUI_SIZE)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WLANBAP_LLC_PROTO_TYPE_OFFSET  WLANBAP_LLC_OUI_OFFSET +  WLANBAP_LLC_OUI_SIZE
->>>>>>> 657b0e9... prima update
 
 /*Size of the protocol type field inside the LLC/SNAP header*/
 #define WLANBAP_LLC_PROTO_TYPE_SIZE            2
@@ -167,9 +160,6 @@ static v_U8_t WLANBAP_LLC_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x00, 0x00 };
 #define DUMPLOG_ON
 #ifdef DUMPLOG_ON
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define DUMPLOG(n, name1, name2, aStr, size) \
     if (1) \
 {\
@@ -179,7 +169,6 @@ static v_U8_t WLANBAP_LLC_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x00, 0x00 };
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,"%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,"\n"); \
 }
-<<<<<<< HEAD
 =======
 #define DUMPLOG(n, name1, name2, aStr, size) do {                       \
         int i;                                                          \
@@ -189,8 +178,6 @@ static v_U8_t WLANBAP_LLC_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x00, 0x00 };
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,"\n");      \
     } while (0)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #else
 #define DUMPLOG(n, name1, name2, aStr, size)
 #endif
@@ -201,9 +188,6 @@ static v_U8_t WLANBAP_LLC_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x00, 0x00 };
 #define DUMPLOG
 #if defined DUMPLOG
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define DUMPLOG(n, name1, name2, aStr, size) \
     if (1) \
 {\
@@ -213,7 +197,6 @@ static v_U8_t WLANBAP_LLC_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x00, 0x00 };
         DBGLOG("%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
     DBGLOG("\n"); \
 }
-<<<<<<< HEAD
 =======
 #define DUMPLOG(n, name1, name2, aStr, size) do {                       \
         int i;                                                          \
@@ -223,8 +206,6 @@ static v_U8_t WLANBAP_LLC_HEADER[] =  {0xAA, 0xAA, 0x03, 0x00, 0x00, 0x00 };
         DBGLOG("\n");                                                   \
     } while (0)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #else
 #define DUMPLOG(n, name1, name2, aStr, size)
 #endif
@@ -390,14 +371,10 @@ WLANBAP_XlateTxDataPkt
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
 =======
                      "Invalid BAP handle value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -422,14 +399,10 @@ WLANBAP_XlateTxDataPkt
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
                 "WLAN BAP: phy_link_handle mismatch in %s phy_link_handle=%d hciACLHeader.phyLinkHandle=%d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, phy_link_handle, hciACLHeader.phyLinkHandle);
 =======
                 __func__, phy_link_handle, hciACLHeader.phyLinkHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, phy_link_handle, hciACLHeader.phyLinkHandle);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_INVAL;
     }
 
@@ -445,14 +418,10 @@ WLANBAP_XlateTxDataPkt
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __FUNCTION__);
 =======
                      "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Unable to retrieve STA Id from BAP context and phy_link_handle in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -464,14 +433,10 @@ WLANBAP_XlateTxDataPkt
                 "WLAN BAP: Invalid logical link handle (%d) in %s. Corrected.", 
                 hciACLHeader.logLinkHandle,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         // JEZ090123: Insure that the logical link value is good
         hciACLHeader.logLinkHandle = 1;
@@ -490,14 +455,10 @@ WLANBAP_XlateTxDataPkt
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, 
                 "WLAN BAP: Invalid logical link entry in %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_INVAL;
     }
@@ -608,14 +569,10 @@ WLANBAP_GetAcFromTxDataPkt
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid params in %s", __FUNCTION__);
 =======
                      "Invalid params in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid params in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
     pBtampCtx = (ptBtampContext) btampHandle;
@@ -628,14 +585,10 @@ WLANBAP_GetAcFromTxDataPkt
                 "WLAN BAP: Invalid logical link handle (%d) in %s", 
                 hciACLHeader.logLinkHandle,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_INVAL;
     }
@@ -651,14 +604,10 @@ WLANBAP_GetAcFromTxDataPkt
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, 
                 "WLAN BAP: Invalid logical link entry in %s",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__);
 =======
                 __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return VOS_STATUS_E_INVAL;
     }
@@ -726,14 +675,10 @@ WLANBAP_XlateRxDataPkt
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
 =======
                      "Invalid BAP handle value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -779,14 +724,10 @@ WLANBAP_XlateRxDataPkt
 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid LLC header for BT-AMP packet in %s", __FUNCTION__);
 =======
                      "Invalid LLC header for BT-AMP packet in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid LLC header for BT-AMP packet in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 #endif //BAP_DEBUG
@@ -804,14 +745,10 @@ WLANBAP_XlateRxDataPkt
 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid (non-data) frame type in %s", __FUNCTION__);
 =======
                      "Invalid (non-data) frame type in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid (non-data) frame type in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -827,14 +764,10 @@ WLANBAP_XlateRxDataPkt
 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "MAC address mismatch in %s", __FUNCTION__);
 =======
                      "MAC address mismatch in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "MAC address mismatch in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 #endif //BAP_DEBUG
@@ -1037,14 +970,10 @@ WLANBAP_STARxCB
     
     VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
             "%s: received : %d, => BAP",__FUNCTION__,
 =======
             "%s: received : %d, => BAP",__func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "%s: received : %d, => BAP",__FUNCTION__,
->>>>>>> 657b0e9... prima update
                  protoType);
     
     if(WLANBAP_BT_AMP_TYPE_DATA == protoType)
@@ -1074,14 +1003,10 @@ WLANBAP_STARxCB
           VOS_TRACE( VOS_MODULE_ID_TL, VOS_TRACE_LEVEL_ERROR,
                 "%s: link Supervision packet received over TL: %d, => BAP",
 <<<<<<< HEAD
-<<<<<<< HEAD
                      __FUNCTION__,protoType);
 =======
                      __func__,protoType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     __FUNCTION__,protoType);
->>>>>>> 657b0e9... prima update
           btampHandle = (ptBtampHandle)bapContext; 
           vosStatus = WLANBAP_RxProcLsPkt(
                         btampHandle,
@@ -1160,14 +1085,10 @@ WLANBAP_TxCompCB
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Invalid vosDataBuff value in %s", __FUNCTION__);
 =======
                 "Invalid vosDataBuff value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Invalid vosDataBuff value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -1175,14 +1096,10 @@ WLANBAP_TxCompCB
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                 "Invalid bapContext value in %s", __FUNCTION__);
 =======
                 "Invalid bapContext value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                "Invalid bapContext value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         vos_pkt_return_packet( vosDataBuff ); 
         return VOS_STATUS_E_FAULT;
     }
@@ -1208,14 +1125,10 @@ WLANBAP_TxCompCB
     /* Trace the bapContext referenced. */
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "WLAN BAP Context Monitor: bapContext value = %p in %s:%d. vosDataBuff=%p", bapContext, __FUNCTION__, __LINE__, vosDataBuff );
 =======
               "WLAN BAP Context Monitor: bapContext value = %p in %s:%d. vosDataBuff=%p", bapContext, __func__, __LINE__, vosDataBuff );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "WLAN BAP Context Monitor: bapContext value = %p in %s:%d. vosDataBuff=%p", bapContext, __FUNCTION__, __LINE__, vosDataBuff );
->>>>>>> 657b0e9... prima update
 #endif //BAP_DEBUG
 
     // Sanity check the log_link_handle value 
@@ -1231,14 +1144,10 @@ WLANBAP_TxCompCB
     {
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    "In %s:%d: Invalid logical link handle: %d", __FUNCTION__, __LINE__, hciACLHeader.logLinkHandle);
 =======
                    "In %s:%d: Invalid logical link handle: %d", __func__, __LINE__, hciACLHeader.logLinkHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   "In %s:%d: Invalid logical link handle: %d", __FUNCTION__, __LINE__, hciACLHeader.logLinkHandle);
->>>>>>> 657b0e9... prima update
     }
 
     /* Invoke the callback that BSL registered with me */ 
@@ -1375,14 +1284,10 @@ WLANBAP_STAPktPending
     /* Trace the tBtampCtx being passed in. */
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
-<<<<<<< HEAD
               "WLAN BAP Context Monitor: pBtampCtx value = %p in %s:%d", pBtampCtx, __FUNCTION__, __LINE__ );
 =======
               "WLAN BAP Context Monitor: pBtampCtx value = %p in %s:%d", pBtampCtx, __func__, __LINE__ );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              "WLAN BAP Context Monitor: pBtampCtx value = %p in %s:%d", pBtampCtx, __FUNCTION__, __LINE__ );
->>>>>>> 657b0e9... prima update
 #endif //BAP_DEBUG
 
     /*------------------------------------------------------------------------

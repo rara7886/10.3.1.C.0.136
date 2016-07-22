@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
@@ -22,8 +21,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 *
 * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -502,14 +499,10 @@ WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT    I    4    7
 V    RW    NP
 NONE
 <<<<<<< HEAD
-<<<<<<< HEAD
 0    65535    2000
 =======
 0    65535    1000
 >>>>>>> d97af3b... add prima wlan driver
-=======
-0    65535    2000
->>>>>>> 657b0e9... prima update
 V    RW    NP
 NONE
 0    65535    3000
@@ -706,7 +699,6 @@ NONE
 
 WNI_CFG_BSSID    S    6    7
 <<<<<<< HEAD
-<<<<<<< HEAD
 V    RO    NP RESTART
 NONE
 6    0x22 0x22 0x11 0x11 0x33 0x33
@@ -717,12 +709,6 @@ NONE
 6    0x22 0x22 0x11 0x11 0x33 0x33
 V    RW    NP RESTART
 >>>>>>> d97af3b... add prima wlan driver
-=======
-V    RO    NP RESTART
-NONE
-6    0x22 0x22 0x11 0x11 0x33 0x33
-V    RO    NP RESTART
->>>>>>> 657b0e9... prima update
 NONE
 6    0x22 0x22 0x11 0x11 0x33 0x33
 
@@ -818,7 +804,6 @@ WNI_CFG_FIXED_RATE  I   4   0
 V    RW    NP
 HAL
 <<<<<<< HEAD
-<<<<<<< HEAD
 0    31     0
 V    RW    NP
 HAL
@@ -829,12 +814,6 @@ V    RW    NP
 HAL
 0    44     0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-0    31     0
-V    RW    NP
-HAL
-0    31     0
->>>>>>> 657b0e9... prima update
 
 #ENUM AUTO 	                                0
 
@@ -875,7 +854,6 @@ HAL
 
 #ENUM 68_25MBPS_QC_PROP_20MHZ_SIMO          31
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ENUM 54MBPS_MCS3_40MHZ_SIMO                32
 #ENUM 81MBPS_MCS4_40MHZ_SIMO                33
@@ -891,8 +869,6 @@ HAL
 #ENUM 135MBPS_MCS6_40MHZ_SIMO_SGI           43
 #ENUM 150MBPS_MCS7_40MHZ_SIMO_SGI           44
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 * *********************************************************
 *
@@ -1304,7 +1280,6 @@ WNI_CFG_MAX_TX_POWER_5    S    128    8
 V    RW    NP
 NONE
 <<<<<<< HEAD
-<<<<<<< HEAD
 3 36 126 14
 V    RW    NP
 NONE
@@ -1315,12 +1290,6 @@ V    RW    NP
 NONE
 3 36 126 20
 >>>>>>> d97af3b... add prima wlan driver
-=======
-3 36 126 14
-V    RW    NP
-NONE
-3 36 126 14
->>>>>>> 657b0e9... prima update
 
 *
 * Cell size configurations. These are canned configurations for a specified
@@ -2909,7 +2878,6 @@ WNI_CFG_VHT_SU_BEAMFORMEE_CAP  I    4    19
 V    RW    NP    
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 0    1    1
 V    RW    NP    
 LIM
@@ -2920,27 +2888,19 @@ LIM
 * Riva/Pronto does not support, default set to 0
 =======
 0    1    0
-=======
-0    1    1
->>>>>>> 657b0e9... prima update
 V    RW    NP    
 LIM
-0    1    1
+0    1    0
 
 *
 * Compressed Steering Number of Beamformer Antennas Supported
-<<<<<<< HEAD
 * Riva does not support,Pronto supports, default set to 0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-* Riva/Pronto does not support, default set to 0
->>>>>>> 657b0e9... prima update
 *
 WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED  I    4    19
 V    RW    NP    
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 0    1    0
 V    RW    NP    
 LIM
@@ -2951,12 +2911,6 @@ V    RW    NP
 LIM
 0    3    0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-0    1    0
-V    RW    NP    
-LIM
-0    1    0
->>>>>>> 657b0e9... prima update
 
 *
 * Number of Sounding Dimensions indicates Number
@@ -2967,7 +2921,6 @@ WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS  I    4    19
 V    RW    NP    
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 0    1    1
 V    RW    NP    
 LIM
@@ -2978,12 +2931,6 @@ V    RW    NP
 LIM
 0    3    0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-0    1    1
-V    RW    NP    
-LIM
-0    1    1
->>>>>>> 657b0e9... prima update
 
 *
 * MU Beamformer Capable
@@ -3111,7 +3058,6 @@ WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE  I    4    19
 V    RW    NP    
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 1    434   434
 V    RW    NP    
 LIM
@@ -3122,12 +3068,6 @@ V    RW    NP
 LIM
 0    390   0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-1    434   434
-V    RW    NP    
-LIM
-1    434   434
->>>>>>> 657b0e9... prima update
 
 *
 * Tx Highest supported data rate.
@@ -3136,7 +3076,6 @@ WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE  I    4    19
 V    RW    NP    
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 1    434    434
 V    RW    NP    
 LIM
@@ -3147,12 +3086,6 @@ V    RW    NP
 LIM
 0    390    0
 >>>>>>> d97af3b... add prima wlan driver
-=======
-1    434    434
-V    RW    NP    
-LIM
-1    434    434
->>>>>>> 657b0e9... prima update
 
 *
 * VHT Operation Information
@@ -3200,7 +3133,6 @@ WNI_CFG_VHT_BASIC_MCS_SET  I    4    19
 V    RW    NP    
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 0    3     0 
 V    RW    NP    
 LIM
@@ -3211,12 +3143,6 @@ V    RW    NP
 LIM
 0    0xFFFF    0xFFFE
 >>>>>>> d97af3b... add prima wlan driver
-=======
-0    3     0 
-V    RW    NP    
-LIM
-0    3     0
->>>>>>> 657b0e9... prima update
 
 *
 * MU-MIMO Capable STA Count
@@ -3310,7 +3236,6 @@ LIM
 0    7    0
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 *
 * NUM BUFFERS ADVERTISED
@@ -3324,8 +3249,6 @@ V    RW    NP
 LIM
 0    128    64
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 *
 * Maximum Rx AMPDU Factor
@@ -3426,9 +3349,6 @@ WNI_CFG_RSSI_FILTER_PERIOD    I    4    5
 V    RW    NP
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 0    255    20
 NV    RW    NP
 LIM
@@ -3444,11 +3364,8 @@ LIM
 WNI_CFG_FT_RSSI_FILTER_PERIOD    I    4    5
 V    RW    NP
 LIM
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 0    255    5
 NV    RW    NP
 LIM
@@ -3655,7 +3572,6 @@ LIM
 
 *
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 * Delete all Rx BA sessions in 2.4 GHz
 * when BTC requests to disable agg.
@@ -3671,8 +3587,6 @@ LIM
 
 *
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 * Valid Channel List
 *
 
@@ -4524,7 +4438,6 @@ WNI_CFG_ASSOC_STA_LIMIT    I   4   8
 V    RW    NP
 LIM
 <<<<<<< HEAD
-<<<<<<< HEAD
 1    10    10
 V    RW    NP
 LIM
@@ -4535,12 +4448,6 @@ V    RW    NP
 LIM
 1    32    10
 >>>>>>> d97af3b... add prima wlan driver
-=======
-1    10    10
-V    RW    NP
-LIM
-1    10    10
->>>>>>> 657b0e9... prima update
 
 *
 *  SAP channel select start channel number
@@ -4650,7 +4557,6 @@ HAL
 V    RW    NP
 HAL
 0    1     0
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -4815,5 +4721,3 @@ HAL
 *
 *
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

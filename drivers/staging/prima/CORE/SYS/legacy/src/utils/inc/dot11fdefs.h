@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -67,7 +64,6 @@
 // This controls how the "dot11f" code copies memory
 #define DOT11F_MEMCPY(ctx, dst, src, len) \
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( ( ctx )->hHdd, ( tANI_U8* )( dst ), ( tANI_U8* )( src ), ( len ) )
 
 // This controls how the "dot11f" code compares memory
@@ -80,13 +76,6 @@
 #define DOT11F_MEMCMP(ctx, lhs, rhs, len) \
     ( ! vos_mem_compare( ( tANI_U8* )( lhs ), ( tANI_U8* )( rhs ), ( len ) ) )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( ( ctx )->hHdd, ( tANI_U8* )( dst ), ( tANI_U8* )( src ), ( len ) )
-
-// This controls how the "dot11f" code compares memory
-#define DOT11F_MEMCMP(ctx, lhs, rhs, len) \
-    ( ! palEqualMemory( ( ctx )->hHdd, ( tANI_U8* )( lhs ), ( tANI_U8* )( rhs ), ( len ) ) )
->>>>>>> 657b0e9... prima update
 
 #   if defined ( DBG ) && ( DBG != 0 )
 

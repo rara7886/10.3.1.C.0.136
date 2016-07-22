@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -158,14 +155,10 @@ WLANBAP_AcquireLSPacket( ptBtampContext pBtampCtx, vos_pkt_t **ppPacket, v_U16_t
        {
                 VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: failed to reserve size = %d\n",__FUNCTION__, size );
 =======
                  "%s: failed to reserve size = %d\n",__func__, size );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: failed to reserve size = %d\n",__FUNCTION__, size );
->>>>>>> 657b0e9... prima update
                  vos_pkt_return_packet( pPacket );
        }
    }
@@ -252,14 +245,10 @@ WLANBAP_InitLinkSupervision
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
 =======
                      "Invalid BAP handle value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -286,14 +275,10 @@ WLANBAP_InitLinkSupervision
     {
          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s:AcquireLSPacket failed\n",__FUNCTION__);
 =======
                        "%s:AcquireLSPacket failed\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s:AcquireLSPacket failed\n",__FUNCTION__);
->>>>>>> 657b0e9... prima update
          pBtampCtx->lsReqPacket = NULL;
          return vosStatus;   
     }
@@ -307,14 +292,10 @@ WLANBAP_InitLinkSupervision
     {
          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s:AcquireLSPacket failed\n",__FUNCTION__);
 =======
                        "%s:AcquireLSPacket failed\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s:AcquireLSPacket failed\n",__FUNCTION__);
->>>>>>> 657b0e9... prima update
          pBtampCtx->lsRepPacket = NULL;
          return vosStatus;   
     }        
@@ -325,14 +306,10 @@ WLANBAP_InitLinkSupervision
     {
          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s:vos_pkt_get_length error",__FUNCTION__);
 =======
                        "%s:vos_pkt_get_length error",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s:vos_pkt_get_length error",__FUNCTION__);
->>>>>>> 657b0e9... prima update
          return VOS_STATUS_E_FAULT;
     }
     pBtampCtx->lsPktln = lsPktln;
@@ -347,14 +324,10 @@ WLANBAP_InitLinkSupervision
     {
          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s:No LS configured for infinite",__FUNCTION__);
 =======
                        "%s:No LS configured for infinite",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s:No LS configured for infinite",__FUNCTION__);
->>>>>>> 657b0e9... prima update
     }
    
     return vosStatus;
@@ -396,7 +369,6 @@ WLANBAP_DeInitLinkSupervision
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
         return VOS_STATUS_E_FAULT;
     }
@@ -409,13 +381,6 @@ WLANBAP_DeInitLinkSupervision
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
                      "In: %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
-        return VOS_STATUS_E_FAULT;
-    }
-   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
-                     "In: %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
    vosStatus = WLANBAP_StopLinkSupervisionTimer(pBtampCtx);
 
@@ -485,27 +450,19 @@ WLANBAP_RxProcLsPkt
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Invalid BAP handle value in %s", __FUNCTION__);
 =======
                      "Invalid BAP handle value in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Invalid BAP handle value in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                "In %s Received RxProtoType=%x", __FUNCTION__,RxProtoType);
 =======
                "In %s Received RxProtoType=%x", __func__,RxProtoType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               "In %s Received RxProtoType=%x", __FUNCTION__,RxProtoType);
->>>>>>> 657b0e9... prima update
     
     vos_pkt_extract_data(vosRxLsBuff,0,(v_VOID_t*)&w8023Header,&HeaderLen);
     if ( !(vos_mem_compare( w8023Header.vDA, pBtampCtx->self_mac_addr, VOS_MAC_ADDR_SIZE)
@@ -514,14 +471,10 @@ WLANBAP_RxProcLsPkt
 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "MAC address mismatch in %s", __FUNCTION__);
 =======
                      "MAC address mismatch in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "MAC address mismatch in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -531,14 +484,10 @@ WLANBAP_RxProcLsPkt
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "Failed to free VOS packet in %s", __FUNCTION__);
 =======
                      "Failed to free VOS packet in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "Failed to free VOS packet in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
         return VOS_STATUS_E_FAULT;
     }
 
@@ -619,14 +568,10 @@ static VOS_STATUS WLANBAP_TxLinkSupervisionCB
     {
          VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        "%s:AcquireLSPacket failed\n",__FUNCTION__);
 =======
                        "%s:AcquireLSPacket failed\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       "%s:AcquireLSPacket failed\n",__FUNCTION__);
->>>>>>> 657b0e9... prima update
          bapContext->lsReqPacket = NULL;
          return vosStatus;   
     }
@@ -642,28 +587,20 @@ static VOS_STATUS WLANBAP_TxLinkSupervisionCB
         {
              VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                            "%s:AcquireLSPacket failed\n",__FUNCTION__);
 =======
                            "%s:AcquireLSPacket failed\n",__func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           "%s:AcquireLSPacket failed\n",__FUNCTION__);
->>>>>>> 657b0e9... prima update
              bapContext->lsRepPacket = NULL;
              return vosStatus;   
         }
     }
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                "%s:Returned Vos Packet:%x\n",__FUNCTION__, pPacket );
 =======
                "%s:Returned Vos Packet:%p\n", __func__, pPacket );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               "%s:Returned Vos Packet:%x\n",__FUNCTION__, pPacket );
->>>>>>> 657b0e9... prima update
 
     vos_pkt_return_packet( pPacket );
 
@@ -715,14 +652,10 @@ WLANBAP_TxLinkSupervision
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                          "In  : %s protoType=%x", __FUNCTION__,protoType);
 =======
                          "In  : %s protoType=%x", __func__,protoType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                         "In  : %s protoType=%x", __FUNCTION__,protoType);
->>>>>>> 657b0e9... prima update
 
         // Retrieve the VOSS context
     pvosGCtx = pBtampCtx->pvosGCtx;

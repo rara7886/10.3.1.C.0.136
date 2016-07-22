@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -23,7 +20,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-<<<<<<< HEAD
 #if !defined( __WLAN_QCT_OS_TRACE_H )
 #define __WLAN_QCT_OS_TRACE_H
 
@@ -52,11 +48,6 @@
 
 #include <vos_trace.h>
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if !defined( __WLAN_QCT_OS_TRACE_H )
-#define __WLAN_QCT_OS_TRACE_H
-
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_DEBUG
 
@@ -112,9 +103,6 @@ void wpalDump( wpt_moduleid module, wpt_tracelevel level,
                wpt_uint8 *memory, wpt_uint32 length);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define WPAL_TRACE wpalTrace
 #define WPAL_DUMP wpalDump
 
@@ -125,7 +113,6 @@ if ( ! ( _condition ) )                                   \
    WARN_ON(1); \
 }
 
-<<<<<<< HEAD
 #else //WLAN_DEBUG
 
 #define WPAL_TRACE
@@ -142,21 +129,21 @@ if ( ! ( _condition ) )                                   \
             WARN_ON(1);                                                 \
         }                                                               \
     } while (0)
-=======
->>>>>>> 657b0e9... prima update
 #else //WLAN_DEBUG
 
-#define WPAL_TRACE
-#define WPAL_DUMP
-#define WPAL_ASSERT
+static inline void wpalTrace( wpt_moduleid module, wpt_tracelevel level,
+                              char *strFormat, ... ){};
+static inline void wpalDump( wpt_moduleid module, wpt_tracelevel level,
+                             wpt_uint8 *memory, wpt_uint32 length) {};
+static inline void wpalTraceSetLevel( wpt_moduleid module,
+                         wpt_tracelevel level, wpt_boolean on ) {};
+static inline void wpalTraceDisplay(void) {};
+#define WPAL_ASSERT(x) do {} while (0);
 
 #endif //WLAN_DEBUG
 
-<<<<<<< HEAD
 #define WPAL_TRACE wpalTrace
 #define WPAL_DUMP wpalDump
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif // __WLAN_QCT_OS_TRACE_H

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -150,14 +147,10 @@ typedef enum
 
   @  Parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
          pVoid         pAdaptor : Driver global control block pointer
 =======
          pVoid         pAdapter : Driver global control block pointer
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         pVoid         pAdaptor : Driver global control block pointer
->>>>>>> 657b0e9... prima update
          palPacket     pRXFramePtr : Received Frame Pointer
          pVoid         userCtxt : DTS user contect pointer
 
@@ -175,14 +168,10 @@ typedef WDTS_RxFrameReadyCbType WLANDXE_RxFrameReadyCbType;
 
   @  Parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
          pVoid      pAdaptor : Driver global control block pointer
 =======
          pVoid      pAdapter : Driver global control block pointer
 >>>>>>> d97af3b... add prima wlan driver
-=======
-         pVoid      pAdaptor : Driver global control block pointer
->>>>>>> 657b0e9... prima update
          void       pTXFramePtr : Completed TX Frame Pointer
          pVoid      userCtxt : DTS user contect pointer
 
@@ -200,14 +189,10 @@ typedef WDTS_TxCompleteCbType WLANDXE_TxCompleteCbType;
 
   @  Parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
       pVoid      pAdaptor : Driver global control block pointer
 =======
       pVoid      pAdapter : Driver global control block pointer
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      pVoid      pAdaptor : Driver global control block pointer
->>>>>>> 657b0e9... prima update
       BOOL      lowResourceCondition : DXE low resource or not
       pVoid      userCtxt : DTS user contect pointer
 
@@ -247,14 +232,10 @@ typedef WDTS_SetPSCbType  WLANDXE_SetPowerStateCbType;
 
   @  Parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
       pVoid      pAdaptor : Driver global control block pointer
 =======
       pVoid      pAdapter : Driver global control block pointer
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      pVoid      pAdaptor : Driver global control block pointer
->>>>>>> 657b0e9... prima update
 
   @  Return
       pVoid DXE local module control block pointer
@@ -452,7 +433,6 @@ wpt_uint32 WLANDXE_GetFreeTxDataResNumber
 
 /*==========================================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
   @  Function Name 
     WLANDXE_ChannelDebug
 
@@ -463,26 +443,16 @@ wpt_uint32 WLANDXE_GetFreeTxDataResNumber
 
   @  Description
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  @  Function Name 
-    WLANDXE_ChannelDebug
-
-  @  Description 
->>>>>>> 657b0e9... prima update
     Display DXE Channel debugging information
     User may request to display DXE channel snapshot
     Or if host driver detects any abnormal stcuk may display
 
   @  Parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
     displaySnapshot : Dispaly DXE snapshot option
 =======
     displaySnapshot : Display DXE snapshot option
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    displaySnapshot : Dispaly DXE snapshot option
->>>>>>> 657b0e9... prima update
     enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification

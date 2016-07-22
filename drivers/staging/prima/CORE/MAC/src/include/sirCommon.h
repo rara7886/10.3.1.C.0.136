@@ -1,13 +1,9 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
->>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -29,13 +25,9 @@
 
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  *
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
- *
->>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file sirCommon.h contains the common definitions used by all
  * Firmware modules.
@@ -53,20 +45,14 @@
 #include "sirApi.h"
 #include "sirParams.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #include "sirWrapper.h"
 
 #ifndef NULL
 #define NULL TX_NULL
 #endif
-<<<<<<< HEAD
 =======
 #include "VossWrapper.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /* ********************************************* *
  *                                               *

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -64,9 +61,6 @@
 #include "utilsApi.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined (ANI_OS_TYPE_WINDOWS)
 
 /**---------------------------------------------------------------------
@@ -89,17 +83,6 @@
  * @param  duration    Duration to be busy slept
  * @return None
  */
-<<<<<<< HEAD
-=======
-
-void
-sirBusyWaitIntern(void *pMacGlobal, tANI_U32 duration)
-{
-        NdisStallExecution((duration+999)/1000); // This routine takes the duration in uSecs.
-} // sirBusyWaitIntern()
-
-#endif // (WNI_POLARIS_FW_OS == SIR_WINDOWS)
->>>>>>> 657b0e9... prima update
 
 void
 sirBusyWaitIntern(void *pMacGlobal, tANI_U32 duration)
@@ -116,14 +99,9 @@ sirBusyWaitIntern(void *pMacGlobal, tANI_U32 duration)
 =======
 
 
-<<<<<<< HEAD
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if !defined ANI_OS_TYPE_OSX
-
->>>>>>> 657b0e9... prima update
 // -------------------------------------------------------------------
 /**
  * sirDumpBuf()
@@ -176,9 +154,6 @@ sirDumpBuf(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 level, tANI_U8 *buf, tAN
 
 }/*** end sirDumpBuf() ***/
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #else
 void
 sirDumpBuf(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 level, tANI_U8 *buf, tANI_U32 size)
@@ -186,8 +161,5 @@ sirDumpBuf(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 level, tANI_U8 *buf, tAN
     (void)pMac; (void)modId; (void)level; (void)buf; (void)size;
 }
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

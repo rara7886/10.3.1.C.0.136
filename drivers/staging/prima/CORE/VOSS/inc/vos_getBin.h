@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -50,7 +47,6 @@
 
 /**=========================================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
   
   \file  vos_getBin.h
   
@@ -67,26 +63,15 @@
   
 =======
 
-=======
-  
->>>>>>> 657b0e9... prima update
   \file  vos_getBin.h
-  
+
   \brief virtual Operating System Services (vOSS) binary APIs
-               
+
    Binary retrieval definitions and APIs.  
-   
+
    These APIs allow components to retrieve binary contents (firmware, 
    configuration data, etc.) from a storage medium on the platform.
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
-   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
-   
-   Qualcomm Confidential and Proprietary.
-  
->>>>>>> 657b0e9... prima update
   ========================================================================*/
 
 /* $Header$ */
@@ -118,7 +103,6 @@ typedef enum
 
   /// Binary ID for Handoff Configuration data
 <<<<<<< HEAD
-<<<<<<< HEAD
   VOS_BINARY_ID_HO_CONFIG
 =======
   VOS_BINARY_ID_HO_CONFIG,
@@ -126,9 +110,6 @@ typedef enum
   /// Binary ID for Dictionary Configuration data
   VOS_BINARY_ID_DICT_CONFIG
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  VOS_BINARY_ID_HO_CONFIG
->>>>>>> 657b0e9... prima update
 
   
 } VOS_BINARY_ID;
@@ -190,25 +171,17 @@ VOS_STATUS vos_get_binary_blob( VOS_BINARY_ID binaryId,
                                 v_VOID_t *pBuffer, v_SIZE_t *pBufferSize );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /**----------------------------------------------------------------------------
    \brief vos_get_conparam()- function to read the insmod parameters
 -----------------------------------------------------------------------------*/
 tVOS_CON_MODE vos_get_conparam( void );
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 tVOS_CONCURRENCY_MODE vos_get_concurrency_mode( void );
 v_BOOL_t vos_concurrent_sessions_running(void);
 

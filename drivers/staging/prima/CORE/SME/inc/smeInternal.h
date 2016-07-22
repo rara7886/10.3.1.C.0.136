@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -92,7 +89,6 @@ typedef enum eSmeCommandType
     eSmeCommandAddStaSession,
     eSmeCommandDelStaSession,
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
     //eSmeTdlsCommandMask = 0x80000,  //To identify TDLS commands <TODO>
@@ -110,8 +106,6 @@ typedef enum eSmeCommandType
 #endif
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     //PMC
     eSmePmcCommandMask = 0x20000, //To identify PMC commands
     eSmeCommandEnterImps,
@@ -131,20 +125,14 @@ typedef enum eSmeCommandType
     eSmeCommandOemDataReq = 0x80000, //To identify the oem data commands
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P
     eSmeCommandRemainOnChannel,
     eSmeCommandNoAUpdate,
 #endif
-<<<<<<< HEAD
 =======
     eSmeCommandRemainOnChannel,
     eSmeCommandNoAUpdate,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } eSmeCommandType;
 
 
@@ -156,13 +144,9 @@ typedef enum eSmeState
 } eSmeState;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 #define SME_IS_START(pMac)  (SME_STATE_STOP != (pMac)->sme.state)
 #define SME_IS_READY(pMac)  (SME_STATE_READY == (pMac)->sme.state)
 
@@ -179,7 +163,6 @@ typedef struct tagSmeStruct
     void (*pTxPerHitCallback) (void *pCallbackContext); /* callback for Tx PER hit to HDD */ 
     void *pTxPerHitCbContext;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     tVOS_CON_MODE currDeviceMode;
 #ifdef FEATURE_WLAN_LPHB
@@ -190,8 +173,6 @@ typedef struct tagSmeStruct
     //active scan command list
     tDblLinkList smeScanCmdActiveList;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } tSmeStruct, *tpSmeStruct;
 
 

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,9 +44,6 @@
 
 /** 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
   
     \file palTimer.c
   
@@ -58,7 +52,6 @@
     $Id$ 
   
   
-<<<<<<< HEAD
     Copyright (C) 2006 Airgo Networks, Incorporated
   
     This file contains function implementations for the Platform Abstration Layer.    
@@ -70,35 +63,21 @@
     Abstration Layer.
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    Copyright (C) 2006 Airgo Networks, Incorporated
-  
-    This file contains function implementations for the Platform Abstration Layer.    
-  
->>>>>>> 657b0e9... prima update
  */
 
 #include <halTypes.h>
 #include <palTimer.h>
 #include <vos_timer.h>
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 #include <vos_memory.h>
 #endif
 
 =======
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 #include <vos_memory.h>
-#endif
 
-<<<<<<< HEAD
 #ifndef FEATURE_WLAN_PAL_TIMER_DISABLE
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 typedef struct sPalTimer
 {   
     palTimerCallback timerCallback;
@@ -293,14 +272,10 @@ eHalStatus palTimerStop(tHddHandle hHdd, tPalTimerHandle hPalTimer)
 }   
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
 
 

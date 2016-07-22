@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -68,13 +65,9 @@
 ===========================================================================*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
 
 #include "palTypes.h"
 #include "wlan_qct_wda_debug.h"
@@ -93,10 +86,6 @@ void wdaLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) {
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update

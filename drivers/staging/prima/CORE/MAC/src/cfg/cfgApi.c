@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -81,7 +78,6 @@ static void Notify(tpAniSirGlobal, tANI_U16, tANI_U32);
 tANI_U32 cfgNeedRestart(tpAniSirGlobal pMac, tANI_U16 cfgId)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     if (!pMac->cfg.gCfgEntry)
     {
@@ -89,8 +85,6 @@ tANI_U32 cfgNeedRestart(tpAniSirGlobal pMac, tANI_U16 cfgId)
         return 0;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     return !!(pMac->cfg.gCfgEntry[cfgId].control & CFG_CTL_RESTART) ;
 }
 
@@ -98,7 +92,6 @@ tANI_U32 cfgNeedRestart(tpAniSirGlobal pMac, tANI_U16 cfgId)
 tANI_U32 cfgNeedReload(tpAniSirGlobal pMac, tANI_U16 cfgId)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     if (!pMac->cfg.gCfgEntry)
     {
@@ -106,8 +99,6 @@ tANI_U32 cfgNeedReload(tpAniSirGlobal pMac, tANI_U16 cfgId)
         return 0;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     return !!(pMac->cfg.gCfgEntry[cfgId].control & CFG_CTL_RELOAD) ;
 }
 
@@ -140,14 +131,10 @@ wlan_cfgInit(tpAniSirGlobal pMac)
   
      // Send CFG_DNLD_REQ to host
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOGW(cfgLog(pMac, LOGW, FL("Sending CFG_DNLD_REQ\n"));)
 =======
     PELOGW(cfgLog(pMac, LOGW, FL("Sending CFG_DNLD_REQ"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOGW(cfgLog(pMac, LOGW, FL("Sending CFG_DNLD_REQ\n"));)
->>>>>>> 657b0e9... prima update
     cfgSendHostMsg(pMac, WNI_CFG_DNLD_REQ, WNI_CFG_DNLD_REQ_LEN,
                    WNI_CFG_DNLD_REQ_NUM, 0, 0, 0);
 
@@ -156,13 +143,9 @@ wlan_cfgInit(tpAniSirGlobal pMac)
 
 //---------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT != AP)
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if (WNI_POLARIS_FW_PRODUCT != AP)
->>>>>>> 657b0e9... prima update
 tSirRetStatus cfgInit(tpAniSirGlobal pMac)
 {
    pMac->cfg.gCfgIBufMin  = __gCfgIBufMin;
@@ -188,13 +171,9 @@ void cfgDeInit(tpAniSirGlobal pMac)
    pMac->cfg.gParamList   = NULL;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 // ---------------------------------------------------------------------
 /**
@@ -233,7 +212,6 @@ cfgSetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d"), cfgId);)
@@ -243,9 +221,6 @@ cfgSetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     {
         PELOGE(cfgLog(pMac, LOGE, FL("gCfgEntry is NULL"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         return eSIR_CFG_INVALID_ID;
     }
 
@@ -254,7 +229,6 @@ cfgSetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     retVal   = eSIR_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     if (index >= CFG_AP_IBUF_MAX_SIZE)
 #else
@@ -263,20 +237,10 @@ cfgSetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     {
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
 =======
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    if (index >= CFG_AP_IBUF_MAX_SIZE)
-#else
->>>>>>> 657b0e9... prima update
     if (index >= CFG_STA_IBUF_MAX_SIZE)
-#endif
     {
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d"), index);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
     }
@@ -285,28 +249,20 @@ cfgSetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else if ((pMac->cfg.gCfgIBufMin[index] > value) ||
              (pMac->cfg.gCfgIBufMax[index] < value))
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Value %d out of range [%d,%d] cfg id %d\n"),
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Value %d out of range [%d,%d] cfg id %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Value %d out of range [%d,%d] cfg id %d\n"),
->>>>>>> 657b0e9... prima update
                value, pMac->cfg.gCfgIBufMin[index],
                pMac->cfg.gCfgIBufMax[index], cfgId);)
         retVal = eSIR_CFG_INVALID_ID;
@@ -320,14 +276,10 @@ cfgSetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
             mask = control & CFG_CTL_NTF_MASK;
             if ((mask & CFG_CTL_NTF_HW) != 0)
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGE(cfgLog(pMac, LOGE, FL("CFG Notify HW not supported!!!\n"));)
 =======
                 PELOGE(cfgLog(pMac, LOGE, FL("CFG Notify HW not supported!!!"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(cfgLog(pMac, LOGE, FL("CFG Notify HW not supported!!!\n"));)
->>>>>>> 657b0e9... prima update
 
             // Notify other modules if necessary
             if ((mask & CFG_CTL_NTF_MASK) != 0)
@@ -366,7 +318,6 @@ cfgCheckValid(tpAniSirGlobal pMac, tANI_U16 cfgId)
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG3(cfgLog(pMac, LOG3, FL("Invalid cfg id %d\n"), cfgId);)
         return(eSIR_CFG_INVALID_ID);
     }
@@ -380,11 +331,6 @@ cfgCheckValid(tpAniSirGlobal pMac, tANI_U16 cfgId)
         return eSIR_CFG_INVALID_ID;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG3(cfgLog(pMac, LOG3, FL("Invalid cfg id %d\n"), cfgId);)
-        return(eSIR_CFG_INVALID_ID);
-    }
->>>>>>> 657b0e9... prima update
 
     control = pMac->cfg.gCfgEntry[cfgId].control;
 
@@ -392,14 +338,10 @@ cfgCheckValid(tpAniSirGlobal pMac, tANI_U16 cfgId)
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG3(cfgLog(pMac, LOG3, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOG3(cfgLog(pMac, LOG3, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG3(cfgLog(pMac, LOG3, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         return(eSIR_CFG_INVALID_ID);
     }
     else
@@ -437,7 +379,6 @@ wlan_cfgGetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pValue)
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
@@ -453,19 +394,12 @@ wlan_cfgGetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pValue)
         return eSIR_CFG_INVALID_ID;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
-        retVal = eSIR_CFG_INVALID_ID;
-        return retVal;
-    }
->>>>>>> 657b0e9... prima update
 
     control = pMac->cfg.gCfgEntry[cfgId].control;
     index   = control & CFG_BUF_INDX_MASK;
     retVal  = eSIR_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     if (index >= CFG_AP_IBUF_MAX_SIZE)
 #else
@@ -474,20 +408,10 @@ wlan_cfgGetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pValue)
     {
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
 =======
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    if (index >= CFG_AP_IBUF_MAX_SIZE)
-#else
->>>>>>> 657b0e9... prima update
     if (index >= CFG_STA_IBUF_MAX_SIZE)
-#endif
     {
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d"), index);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
     }
@@ -496,27 +420,19 @@ wlan_cfgGetInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pValue)
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else {
         // Get integer value
 <<<<<<< HEAD
-<<<<<<< HEAD
         if(index < CFG_AP_IBUF_MAX_SIZE)
 =======
         if (index < CFG_STA_IBUF_MAX_SIZE)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if(index < CFG_AP_IBUF_MAX_SIZE)
->>>>>>> 657b0e9... prima update
             *pValue = pMac->cfg.gCfgIBuf[index];
     }
 
@@ -558,7 +474,6 @@ cfgIncrementInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
         retVal = eSIR_CFG_INVALID_ID;
     }
@@ -572,11 +487,6 @@ cfgIncrementInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
         return eSIR_CFG_INVALID_ID;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
-        retVal = eSIR_CFG_INVALID_ID;
-    }
->>>>>>> 657b0e9... prima update
 
     control  = pMac->cfg.gCfgEntry[cfgId].control;
     index    = control & CFG_BUF_INDX_MASK;
@@ -586,14 +496,10 @@ cfgIncrementInt(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 value)
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else
@@ -681,7 +587,6 @@ cfgSetStrNotify(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pStr,
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d"), cfgId);)
@@ -691,9 +596,6 @@ cfgSetStrNotify(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pStr,
     {
         PELOGE(cfgLog(pMac, LOGE, FL("gCfgEntry is NULL"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         return eSIR_CFG_INVALID_ID;
     }
 
@@ -705,27 +607,19 @@ cfgSetStrNotify(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pStr,
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else if (index >= CFG_STA_SBUF_MAX_SIZE)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid Sbuf index %d (max size %d)\n"),
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid Sbuf index %d (max size %d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid Sbuf index %d (max size %d)\n"),
->>>>>>> 657b0e9... prima update
                index, CFG_STA_SBUF_MAX_SIZE);)
         retVal = eSIR_CFG_INVALID_ID;
     }
@@ -736,14 +630,10 @@ cfgSetStrNotify(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pStr,
             if (length > paramLen)
             {
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGE(cfgLog(pMac, LOGE, FL("Invalid length %d (>%d) cfg id %d\n"),
 =======
                 PELOGE(cfgLog(pMac, LOGE, FL("Invalid length %d (>%d) cfg id %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(cfgLog(pMac, LOGE, FL("Invalid length %d (>%d) cfg id %d\n"),
->>>>>>> 657b0e9... prima update
                        length, paramLen, cfgId);)
                 retVal = eSIR_CFG_INVALID_LEN;
             }
@@ -763,14 +653,10 @@ cfgSetStrNotify(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pStr,
                     if ((mask & CFG_CTL_NTF_HW) != 0)
                     {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         PELOGE(cfgLog(pMac, LOGE, FL("CFG Notify HW not supported!!!\n"));)
 =======
                         PELOGE(cfgLog(pMac, LOGE, FL("CFG Notify HW not supported!!!"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        PELOGE(cfgLog(pMac, LOGE, FL("CFG Notify HW not supported!!!\n"));)
->>>>>>> 657b0e9... prima update
                     }
 
                     // Notify other modules if necessary
@@ -823,7 +709,6 @@ wlan_cfgGetStr(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pBuf, tANI_U32 *pLe
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
@@ -839,19 +724,12 @@ wlan_cfgGetStr(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pBuf, tANI_U32 *pLe
         return eSIR_CFG_INVALID_ID;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
-        retVal = eSIR_CFG_INVALID_ID;
-        return retVal;
-    }
->>>>>>> 657b0e9... prima update
 
     control  = pMac->cfg.gCfgEntry[cfgId].control;
     index    = control & CFG_BUF_INDX_MASK;
     retVal   = eSIR_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     if (index >= CFG_AP_SBUF_MAX_SIZE)
 #else
@@ -860,20 +738,10 @@ wlan_cfgGetStr(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pBuf, tANI_U32 *pLe
     {
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
 =======
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    if (index >= CFG_AP_SBUF_MAX_SIZE)
-#else
->>>>>>> 657b0e9... prima update
     if (index >= CFG_STA_SBUF_MAX_SIZE)
-#endif
     {
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d"), index);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
     }
@@ -882,14 +750,10 @@ wlan_cfgGetStr(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pBuf, tANI_U32 *pLe
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else
@@ -900,14 +764,10 @@ wlan_cfgGetStr(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U8 *pBuf, tANI_U32 *pLe
         if (*pLength < *pSrc)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(cfgLog(pMac, LOGE, FL("Invalid length %d (<%d) cfg id %d\n"),
 =======
             PELOGE(cfgLog(pMac, LOGE, FL("Invalid length %d (<%d) cfg id %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(cfgLog(pMac, LOGE, FL("Invalid length %d (<%d) cfg id %d\n"),
->>>>>>> 657b0e9... prima update
                    *pLength, *pSrc, cfgId);)
             retVal = eSIR_CFG_INVALID_LEN;
         }
@@ -956,7 +816,6 @@ wlan_cfgGetStrMaxLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
         retVal = eSIR_CFG_INVALID_ID;
     }
@@ -970,18 +829,12 @@ wlan_cfgGetStrMaxLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
         return eSIR_CFG_INVALID_ID;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
-        retVal = eSIR_CFG_INVALID_ID;
-    }
->>>>>>> 657b0e9... prima update
 
     control  = pMac->cfg.gCfgEntry[cfgId].control;
     index    = control & CFG_BUF_INDX_MASK;
     retVal   = eSIR_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     if (index >= CFG_AP_SBUF_MAX_SIZE)
 #else
@@ -990,20 +843,10 @@ wlan_cfgGetStrMaxLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
     {
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
 =======
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    if (index >= CFG_AP_SBUF_MAX_SIZE)
-#else
->>>>>>> 657b0e9... prima update
     if (index >= CFG_STA_SBUF_MAX_SIZE)
-#endif
     {
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d"), index);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
     }
@@ -1012,14 +855,10 @@ wlan_cfgGetStrMaxLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else
@@ -1063,7 +902,6 @@ wlan_cfgGetStrLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
     if (cfgId >= CFG_PARAM_MAX_NUM)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
         retVal = eSIR_CFG_INVALID_ID;
     }
@@ -1077,18 +915,12 @@ wlan_cfgGetStrLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
         return eSIR_CFG_INVALID_ID;
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Invalid cfg id %d\n"), cfgId);)
-        retVal = eSIR_CFG_INVALID_ID;
-    }
->>>>>>> 657b0e9... prima update
 
     control  = pMac->cfg.gCfgEntry[cfgId].control;
     index    = control & CFG_BUF_INDX_MASK;
     retVal   = eSIR_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     if (index >= CFG_AP_SBUF_MAX_SIZE-1)
 #else
@@ -1097,20 +929,10 @@ wlan_cfgGetStrLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
     {
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
 =======
-=======
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    if (index >= CFG_AP_SBUF_MAX_SIZE-1)
-#else
->>>>>>> 657b0e9... prima update
     if (index >= CFG_STA_SBUF_MAX_SIZE-1)
-#endif
     {
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d"), index);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("cfg index out of bounds %d\n"), index);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
         return retVal;
     }
@@ -1119,14 +941,10 @@ wlan_cfgGetStrLen(tpAniSirGlobal pMac, tANI_U16 cfgId, tANI_U32 *pLength)
     if ((control & CFG_CTL_VALID) == 0)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
 =======
         PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d"), cfgId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(cfgLog(pMac, LOGE, FL("Not valid cfg id %d\n"), cfgId);)
->>>>>>> 657b0e9... prima update
         retVal = eSIR_CFG_INVALID_ID;
     }
     else
@@ -1154,13 +972,9 @@ cfgGetDot11dTransmitPower(tpAniSirGlobal pMac, tANI_U16   cfgId,
     tANI_U8    count = 0;
     tPowerdBm  maxTxPwr = WDA_MAX_TXPOWER_INVALID;
 <<<<<<< HEAD
-<<<<<<< HEAD
     eHalStatus    status;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eHalStatus    status;
->>>>>>> 657b0e9... prima update
     
     /* At least one element is present */
     if(cfgLength < sizeof(tSirMacChanInfo))
@@ -1169,7 +983,6 @@ cfgGetDot11dTransmitPower(tpAniSirGlobal pMac, tANI_U16   cfgId,
         goto error;
     }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     status = palAllocateMemory(pMac->hHdd, (void **)&pCountryInfo, cfgLength);
     if (status != eHAL_STATUS_SUCCESS)
@@ -1181,12 +994,6 @@ cfgGetDot11dTransmitPower(tpAniSirGlobal pMac, tANI_U16   cfgId,
     {
         cfgLog(pMac, LOGP, FL(" failed to allocate memory"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    status = palAllocateMemory(pMac->hHdd, (void **)&pCountryInfo, cfgLength);
-    if (status != eHAL_STATUS_SUCCESS)
-    {
-        cfgLog(pMac, LOGP, FL(" palAllocateMemory() failed, status = %d"), status);
->>>>>>> 657b0e9... prima update
         goto error;
     }
     /* The CSR will always update this CFG. The contents will be from country IE if regulatory domain
@@ -1195,14 +1002,10 @@ cfgGetDot11dTransmitPower(tpAniSirGlobal pMac, tANI_U16   cfgId,
     if (wlan_cfgGetStr(pMac, cfgId, pCountryInfo, &cfgLength) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         palFreeMemory(pMac->hHdd, pCountryInfo);
 =======
         vos_mem_free(pCountryInfo);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palFreeMemory(pMac->hHdd, pCountryInfo);
->>>>>>> 657b0e9... prima update
         pCountryInfo = NULL;
             
         cfgLog(pMac, LOGP, FL("Failed to retrieve 11d configuration parameters while retrieving 11d tuples"));
@@ -1226,17 +1029,12 @@ cfgGetDot11dTransmitPower(tpAniSirGlobal pMac, tANI_U16   cfgId,
 
 error:
 <<<<<<< HEAD
-<<<<<<< HEAD
     if(NULL != pCountryInfo)
         palFreeMemory(pMac->hHdd, pCountryInfo);
 =======
     if (NULL != pCountryInfo)
         vos_mem_free(pCountryInfo);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if(NULL != pCountryInfo)
-        palFreeMemory(pMac->hHdd, pCountryInfo);
->>>>>>> 657b0e9... prima update
        
     return maxTxPwr;
 }
@@ -1323,20 +1121,15 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
              (systemRole == eLIM_STA_ROLE) )
         pCapInfo->ess = 1; // ESS bit
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     else if (limGetSystemRole(sessionEntry) == eLIM_P2P_DEVICE_ROLE )
     {
         pCapInfo->ess = 0;
         pCapInfo->ibss = 0;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
     else
         cfgLog(pMac, LOGP, FL("can't get capability, role is UNKNOWN!!\n"));
@@ -1366,40 +1159,11 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
 
 #ifdef WLAN_SOFTAP_FEATURE
 =======
-=======
-#endif
->>>>>>> 657b0e9... prima update
     else
-        cfgLog(pMac, LOGP, FL("can't get capability, role is UNKNOWN!!\n"));
+        cfgLog(pMac, LOGP, FL("can't get capability, role is UNKNOWN!!"));
 
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-    if( (systemRole == eLIM_AP_ROLE) )
-    {
-        // CF-pollable bit
-        if (wlan_cfgGetInt(pMac, WNI_CFG_CF_POLLABLE, &val) != eSIR_SUCCESS)
-        {
-            cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_CF_POLLABLE failed\n"));
-            return eSIR_FAILURE;
-        }
-        if (val)
-            pCapInfo->cfPollable = 1;
 
-        // CF-poll request bit
-        if (wlan_cfgGetInt(pMac, WNI_CFG_CF_POLL_REQUEST, &val) != eSIR_SUCCESS)
-        {
-            cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_CF_POLL_REQUEST failed\n"));
-            return eSIR_FAILURE;
-        }
-        if (val)
-            pCapInfo->cfPollReq = 1;
-    }
-#endif
-
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     if(systemRole == eLIM_AP_ROLE)
     {
         val = sessionEntry->privacy;
@@ -1407,9 +1171,6 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
     else
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #endif
     // PRIVACY bit
     if (wlan_cfgGetInt(pMac, WNI_CFG_PRIVACY_ENABLED, &val) != eSIR_SUCCESS)
@@ -1418,7 +1179,6 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
         return eSIR_FAILURE;
     }
 #ifdef WLAN_SOFTAP_FEATURE
-<<<<<<< HEAD
     }
 #endif
 =======
@@ -1430,10 +1190,6 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
         }
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    }
-#endif
->>>>>>> 657b0e9... prima update
     if (val)
         pCapInfo->privacy = 1;
 
@@ -1441,14 +1197,10 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
     if (wlan_cfgGetInt(pMac, WNI_CFG_SHORT_PREAMBLE, &val) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_SHORT_PREAMBLE failed\n"));
 =======
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_SHORT_PREAMBLE failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_SHORT_PREAMBLE failed\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     if (val)
@@ -1476,14 +1228,10 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
         {
             cfgLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("cfg get WNI_CFG_11G_SHORT_SLOT_TIME failed\n"));
 =======
                    FL("cfg get WNI_CFG_11G_SHORT_SLOT_TIME failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("cfg get WNI_CFG_11G_SHORT_SLOT_TIME failed\n"));
->>>>>>> 657b0e9... prima update
             return eSIR_FAILURE;
         }
         /* When in STA mode, we need to check if short slot is enabled as well as check if the current operating
@@ -1505,14 +1253,10 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
       if (wlan_cfgGetInt(pMac, WNI_CFG_11H_ENABLED, &val) != eSIR_SUCCESS)
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
           cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_11H_ENABLED failed\n"));
 =======
           cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_11H_ENABLED failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_11H_ENABLED failed\n"));
->>>>>>> 657b0e9... prima update
           return eSIR_FAILURE;
       }
       if (val)
@@ -1523,14 +1267,10 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
     if (wlan_cfgGetInt(pMac, WNI_CFG_QOS_ENABLED, &val) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_QOS_ENABLED failed\n"));
 =======
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_QOS_ENABLED failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_QOS_ENABLED failed\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     if (val)
@@ -1540,14 +1280,10 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
     if (wlan_cfgGetInt(pMac, WNI_CFG_APSD_ENABLED, &val) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_APSD_ENABLED failed\n"));
 =======
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_APSD_ENABLED failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_APSD_ENABLED failed\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     if (val)
@@ -1558,7 +1294,6 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
     {
       if (wlan_cfgGetInt(pMac, WNI_CFG_RRM_ENABLED, &val) != eSIR_SUCCESS)
       {
-<<<<<<< HEAD
 <<<<<<< HEAD
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_RRM_ENABLED failed\n"));
         return eSIR_FAILURE;
@@ -1572,13 +1307,6 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
 #if defined WLAN_VOWIFI_DEBUG
       PELOGE(cfgLog( pMac, LOGE, "RRM = %d",val );)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_RRM_ENABLED failed\n"));
-        return eSIR_FAILURE;
-      }
-#if defined WLAN_VOWIFI_DEBUG
-      PELOGE(cfgLog( pMac, LOGE, "RRM = %d\n",val );)
->>>>>>> 657b0e9... prima update
 #endif
       if (val)
         pCapInfo->rrm = 1;
@@ -1591,14 +1319,10 @@ cfgGetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 *pCap,tpPESession sessionEntr
     if (wlan_cfgGetInt(pMac, WNI_CFG_BLOCK_ACK_ENABLED, &val) != eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_BLOCK_ACK_ENABLED failed\n"));
 =======
         cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_BLOCK_ACK_ENABLED failed"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        cfgLog(pMac, LOGP, FL("cfg get WNI_CFG_BLOCK_ACK_ENABLED failed\n"));
->>>>>>> 657b0e9... prima update
         return eSIR_FAILURE;
     }
     pCapInfo->delayedBA = (tANI_U16)((val >> WNI_CFG_BLOCK_ACK_ENABLED_DELAYED) & 1);
@@ -1632,9 +1356,6 @@ void
 cfgSetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 caps)
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (defined(ANI_PRODUCT_TYPE_AP))
 
     if (cfgSetInt(pMac, WNI_CFG_PRIVACY_ENABLED,
@@ -1661,11 +1382,8 @@ cfgSetCapabilityInfo(tpAniSirGlobal pMac, tANI_U16 caps)
                   SIR_MAC_GET_BLOCK_ACK(caps)) != eSIR_SUCCESS)
         cfgLog(pMac, LOGP, FL("could not set BlockAck at CFG\n"));
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }
 
 

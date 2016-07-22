@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -77,23 +74,16 @@ extern void pmmResetStats(void *pvMac);
 extern void pmmProcessMessage(tpAniSirGlobal, tpSirMsgQ);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /// Process the PM message queue
 extern void pmmProcessMessageQueue(tpAniSirGlobal pMac);
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/// Process the PM message queue
-extern void pmmProcessMessageQueue(tpAniSirGlobal pMac);
-
->>>>>>> 657b0e9... prima update
 extern void pmmProcessPSPoll(tpAniSirGlobal, tANI_U8 *);
 extern void pmmUpdatePSPollState(tpAniSirGlobal);
 extern void pmmProcessRxActivity(tpAniSirGlobal, tANI_U16, tANI_U8);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *, tANI_U8);
 #else
@@ -102,13 +92,6 @@ extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *);
 =======
 extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *, tANI_U8);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *, tANI_U8);
-#else
-extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *);
-#endif
->>>>>>> 657b0e9... prima update
 
 
 void pmmUpdateTIM(tpAniSirGlobal pMac, tpBeaconGenParams pBeaconGenParams);
@@ -127,14 +110,10 @@ void pmmHandleTimBasedDisassociation(tpAniSirGlobal pMac, tpPESession psessionEn
 void pmmInitBmpsPwrSave(tpAniSirGlobal pMac);
 tSirRetStatus  pmmSendInitPowerSaveMsg(tpAniSirGlobal pMac,tpPESession);
 <<<<<<< HEAD
-<<<<<<< HEAD
 void pmmInitBmpsResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
 =======
 void pmmInitBmpsResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void pmmInitBmpsResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
->>>>>>> 657b0e9... prima update
 tSirRetStatus  pmmSendChangePowerSaveMsg(tpAniSirGlobal pMac);
 tSirRetStatus pmmSendSleepIndicationToHal(tpAniSirGlobal pMac);
 
@@ -148,14 +127,10 @@ void pmmEnterUapsdRequestHandler (tpAniSirGlobal pMac);
 void pmmEnterUapsdResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 void pmmExitUapsdRequestHandler (tpAniSirGlobal pMac);
 <<<<<<< HEAD
-<<<<<<< HEAD
 void pmmExitUapsdResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
 =======
 void pmmExitUapsdResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void pmmExitUapsdResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
->>>>>>> 657b0e9... prima update
 tSirRetStatus pmmUapsdSendChangePwrSaveMsg (tpAniSirGlobal pMac, tANI_U8 mode);
 
 // handling of all idle mode power save messages
@@ -171,7 +146,6 @@ void pmmEnterWowlRequestHandler(tpAniSirGlobal pMac, tpSirMsgQ pMsg);
 tSirRetStatus pmmSendWowlEnterRequest(tpAniSirGlobal pMac, tpSirHalWowlEnterParams pHalWowlParams);
 void pmmEnterWowlanResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 <<<<<<< HEAD
-<<<<<<< HEAD
 tSirRetStatus  pmmSendExitWowlReq(tpAniSirGlobal pMac);
 void pmmExitWowlanRequestHandler(tpAniSirGlobal pMac);
 void pmmExitWowlanResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
@@ -180,11 +154,6 @@ tSirRetStatus  pmmSendExitWowlReq(tpAniSirGlobal pMac, tpSirHalWowlExitParams pH
 void pmmExitWowlanRequestHandler(tpAniSirGlobal pMac);
 void pmmExitWowlanResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-tSirRetStatus  pmmSendExitWowlReq(tpAniSirGlobal pMac);
-void pmmExitWowlanRequestHandler(tpAniSirGlobal pMac);
-void pmmExitWowlanResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
->>>>>>> 657b0e9... prima update
 
 // update idle mode statistics
 void pmmImpsUpdatePwrSaveStats(tpAniSirGlobal pMac);

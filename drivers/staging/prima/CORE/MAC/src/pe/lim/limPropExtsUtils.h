@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -56,14 +53,10 @@
  * Date           Modified by    Modification Information
  * --------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
  * 
 =======
  *
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * 
->>>>>>> 657b0e9... prima update
  */
 
 #ifndef __LIM_PROP_EXTS_UTILS_H
@@ -84,14 +77,10 @@ void limDeleteCurrentBssWdsNode(tpAniSirGlobal);
 tANI_U32  limComputeAvg(tpAniSirGlobal, tANI_U32, tANI_U32);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED) && defined(ANI_PRODUCT_TYPE_AP)
 // Timer Handlers
 void limMeasurementTimerHandler(VOID*, tANI_U32);
 #endif
-<<<<<<< HEAD
 
 /// Function to extract AP's HCF capability from IE fields
 void limExtractApCapability(tpAniSirGlobal, tANI_U8 *, tANI_U16, tANI_U8 *, tANI_U16 *, tANI_U8 *, tPowerdBm*);
@@ -103,22 +92,11 @@ tANI_U8 limGetCurrentLearnChannel(tpAniSirGlobal);
 void handleNonTitanBss( tpAniSirGlobal, tSirNeighborBssWdsInfo );
 #endif
 =======
-=======
->>>>>>> 657b0e9... prima update
 
 /// Function to extract AP's HCF capability from IE fields
-void limExtractApCapability(tpAniSirGlobal, tANI_U8 *, tANI_U16, tANI_U8 *, tANI_U16 *, tANI_U8 *, tPowerdBm*);
+void limExtractApCapability(tpAniSirGlobal, tANI_U8 *, tANI_U16, tANI_U8 *, tANI_U16 *, tANI_U8 *, tPowerdBm*, tpPESession);
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if (WNI_POLARIS_FW_PACKAGE == ADVANCED) && defined(ANI_PRODUCT_TYPE_AP)
-/// Function to extract current Learn channel
-tANI_U8 limGetCurrentLearnChannel(tpAniSirGlobal);
-// Determine if a newly discovered BSS is TITAN-compatible
-void handleNonTitanBss( tpAniSirGlobal, tSirNeighborBssWdsInfo );
-#endif
->>>>>>> 657b0e9... prima update
 tStaRateMode limGetStaPeerType( tpAniSirGlobal, tpDphHashNode ,tpPESession);
 #ifdef WLAN_FEATURE_11AC
 ePhyChanBondState  limGetHTCBState(ePhyChanBondState aniCBMode) ;

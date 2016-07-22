@@ -162,7 +162,6 @@ fi
     
 
     mkdir -p $tmpcwm/system/lib/modules/prima
-<<<<<<< HEAD
     find $OBJ_DIR -name "*.ko" | xargs -i cp {} $tmpcwm/system/lib/modules/
     find $tmpcwm/system/lib/modules -name "*.ko" | xargs -i $CROSS_COMPILE"strip" --strip-unneeded {}
     mv $tmpcwm/system/lib/modules/wlan.ko $tmpcwm/system/lib/modules/prima/prima_wlan.ko
@@ -170,23 +169,15 @@ fi
     #rm $tmpcwm/system/lib/modules/texfat.ko
     
 orginal(){
-=======
-
->>>>>>> 657b0e9... prima update
     cp $OBJ_DIR/drivers/staging/prima/wlan.ko $tmpcwm/system/lib/modules/prima/prima_wlan.ko
     $CROSS_COMPILE"strip" --strip-unneeded $tmpcwm/system/lib/modules/prima/prima_wlan.ko
 
     cp $OBJ_DIR/net/wireless/cfg80211.ko $tmpcwm/system/lib/modules/
     $CROSS_COMPILE"strip" --strip-unneeded $tmpcwm/system/lib/modules/cfg80211.ko
 
-<<<<<<< HEAD
     cp $OBJ_DIR/fs/exfat/exfat.ko $tmpcwm/system/lib/modules/texfat.ko
     $CROSS_COMPILE"strip" --strip-unneeded $tmpcwm/system/lib/modules/texfat.ko
 }
-=======
-    #cp $OBJ_DIR/drivers/exfat/texfat.ko $tmpcwm/system/lib/modules/
-
->>>>>>> 657b0e9... prima update
 
     mkdir -p $tmpcwm/system/etc/firmware/wlan/prima/
     cp $KERNEL_DIR/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat $tmpcwm/system/etc/firmware/wlan/prima/

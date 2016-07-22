@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -84,14 +81,10 @@ struct wlan_snap_hdr {
    unsigned char ctrl;
    unsigned char oui[WLAN_SNAP_OUI_LEN];
 <<<<<<< HEAD
-<<<<<<< HEAD
 } __attribute__((packed));
 =======
 } __packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} __attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 struct wlan_8023 {
    unsigned char        h_dest[ETH_ALEN];
@@ -100,14 +93,10 @@ struct wlan_8023 {
    struct wlan_snap_hdr h_snap;
    __be16               h_proto;
 <<<<<<< HEAD
-<<<<<<< HEAD
 } __attribute__((packed));
 =======
 } __packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} __attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 struct wlan_8023_vlan {
    unsigned char        h_dest[ETH_ALEN];
@@ -118,14 +107,10 @@ struct wlan_8023_vlan {
    struct wlan_snap_hdr h_snap;
    __be16               h_proto;
 <<<<<<< HEAD
-<<<<<<< HEAD
 } __attribute__((packed));
 =======
 } __packed;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-} __attribute__((packed));
->>>>>>> 657b0e9... prima update
 
 union generic_ethhdr {
    struct ethhdr eth_II;

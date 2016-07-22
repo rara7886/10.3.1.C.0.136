@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -24,8 +23,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,7 +44,6 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*
  *
  * Airgo Networks, Inc proprietary. All rights reserved.
@@ -55,11 +51,6 @@
 
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
-/*
- *
- * Airgo Networks, Inc proprietary. All rights reserved.
->>>>>>> 657b0e9... prima update
  * This file limProcessAuthFrame.cc contains the code
  * for processing received Authentication Frame.
  * Author:        Chandra Modumudi
@@ -73,9 +64,6 @@
 
 #include "wniApi.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halDataStruct.h"
 #endif
@@ -84,12 +72,9 @@
 #else
 #include "wniCfgSta.h"
 #endif
-<<<<<<< HEAD
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #include "aniGlobal.h"
 #include "cfgApi.h"
 
@@ -206,20 +191,14 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
     tANI_U32                key_length=8;
     tANI_U8                 challengeTextArray[SIR_MAC_AUTH_CHALLENGE_LENGTH];
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
     tpDphHashNode           pStaDs = NULL;
     tANI_U16                assocId = 0;
 #endif
-<<<<<<< HEAD
 =======
     tpDphHashNode           pStaDs = NULL;
     tANI_U16                assocId = 0;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     /* Added For BT -AMP support */
     // Get pointer to Authentication frame header and body
  
@@ -250,7 +229,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_DEBUG,
               FL("Auth Frame Received: BSSID " MAC_ADDRESS_STR " (RSSI %d)"),
@@ -258,13 +236,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
               (uint)abs((tANI_S8)WDA_GET_RX_RSSI_DB(pRxPacketInfo)));
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     pBody = WDA_GET_RX_MPDU_DATA(pRxPacketInfo);
 
     //PELOG3(sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG3, (tANI_U8*)pBd, ((tpHalBufDesc) pBd)->mpduDataOffset + frameLen);)
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -275,9 +250,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                           psessionEntry->defaultAuthFailureTimeout, NULL, eANI_BOOLEAN_FALSE);
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
    
     /// Determine if WEP bit is set in the FC or received MAC header
     if (pHdr->fc.wep)
@@ -287,13 +259,9 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
          */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
         // If TKIP counter measures enabled issue Deauth frame to station
         if ((psessionEntry->bTkipCntrMeasActive) && (psessionEntry->limSystemRole == eLIM_AP_ROLE))
         {
@@ -302,7 +270,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
             limPrintMacAddr(pMac, pHdr->sa, LOGE);
 
             limSendDeauthMgmtFrame( pMac, eSIR_MAC_MIC_FAILURE_REASON,
-<<<<<<< HEAD
 <<<<<<< HEAD
                                     pHdr->sa, psessionEntry );
             return;
@@ -313,12 +280,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
             return;
         }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                    pHdr->sa, psessionEntry );
-            return;
-        }
-#endif
->>>>>>> 657b0e9... prima update
 
         // Extract key ID from IV (most 2 bits of 4th byte of IV)
 
@@ -361,26 +322,18 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
             return;
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
         if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
         {
             val = psessionEntry->privacy; 
         } 
         else 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
         // Accept Authentication frame only if Privacy is implemented
         if (wlan_cfgGetInt(pMac, WNI_CFG_PRIVACY_ENABLED,
                       &val) != eSIR_SUCCESS)
@@ -390,14 +343,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
              * from CFG. Log error.
              */
 <<<<<<< HEAD
-<<<<<<< HEAD
             limLog(pMac, LOGP, FL("could not retrieve Privacy option\n"));
 =======
             limLog(pMac, LOGP, FL("could not retrieve Privacy option"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            limLog(pMac, LOGP, FL("could not retrieve Privacy option\n"));
->>>>>>> 657b0e9... prima update
         }
 
         cfgPrivacyOptImp = (tANI_U8)val;
@@ -551,18 +500,13 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                 val = SIR_MAC_KEY_LENGTH;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE  
->>>>>>> 657b0e9... prima update
                 if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
                 {   
                     tpSirKeys pKey;
                     pKey =  &psessionEntry->WEPKeyMaterial[keyId].key[0];              
-<<<<<<< HEAD
 <<<<<<< HEAD
                     palCopyMemory( pMac->hHdd, defaultKey, pKey->key, pKey->keyLength);
                     val = pKey->keyLength;
@@ -575,13 +519,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                 }                   
                 else                              
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    palCopyMemory( pMac->hHdd, defaultKey, pKey->key, pKey->keyLength);
-                    val = pKey->keyLength;
-                }                   
-                else                              
-#endif                                    
->>>>>>> 657b0e9... prima update
                 if (wlan_cfgGetStr(pMac, (tANI_U16) (WNI_CFG_WEP_DEFAULT_KEY_1 + keyId),
                               defaultKey, &val) != eSIR_SUCCESS)
                 {
@@ -589,14 +526,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     //Log error.
                     limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                            FL("could not retrieve Default key\n"));
 =======
                            FL("could not retrieve Default key"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                           FL("could not retrieve Default key\n"));
->>>>>>> 657b0e9... prima update
 
                     /**
                      * Send Authentication frame
@@ -626,14 +559,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     if (decryptResult == LIM_DECRYPT_ICV_FAIL)
                     {
 <<<<<<< HEAD
-<<<<<<< HEAD
                         PELOGW(limLog(pMac, LOGW, FL("=====> decryptResult == LIM_DECRYPT_ICV_FAIL ...\n"));)
 =======
                         PELOGW(limLog(pMac, LOGW, FL("=====> decryptResult == LIM_DECRYPT_ICV_FAIL ..."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        PELOGW(limLog(pMac, LOGW, FL("=====> decryptResult == LIM_DECRYPT_ICV_FAIL ...\n"));)
->>>>>>> 657b0e9... prima update
                         /// ICV failure
                         limDeletePreAuthNode(pMac,
                                              pHdr->sa);
@@ -702,14 +631,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 
    PELOGW(limLog(pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
            FL("Received Auth frame with type=%d seqnum=%d, status=%d (%d)\n"),
 =======
            FL("Received Auth frame with type=%d seqnum=%d, status=%d (%d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           FL("Received Auth frame with type=%d seqnum=%d, status=%d (%d)\n"),
->>>>>>> 657b0e9... prima update
            (tANI_U32) pRxAuthFrameBody->authAlgoNumber,
            (tANI_U32) pRxAuthFrameBody->authTransactionSeqNumber,
            (tANI_U32) pRxAuthFrameBody->authStatusCode,(tANI_U32)pMac->lim.gLimNumPreAuthContexts);)
@@ -718,7 +643,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
     {
         case SIR_MAC_AUTH_FRAME_1:
             // AuthFrame 1
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             
@@ -765,8 +689,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                 }
             }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
             /// Check if there exists pre-auth context for this STA
             pAuthNode = limSearchPreAuthList(pMac, pHdr->sa);
@@ -788,7 +710,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                                     pAuthNode->authNodeIdx);
                     }
 <<<<<<< HEAD
-<<<<<<< HEAD
                     PELOGE(limLog(pMac, LOGE, FL("STA is initiating brand-new Authentication ...\n"));)
                     limDeletePreAuthNode(pMac,
                                          pHdr->sa);
@@ -798,12 +719,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     limDeletePreAuthNode(pMac,
                                          pHdr->sa);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOGE(limLog(pMac, LOGE, FL("STA is initiating brand-new Authentication ...\n"));)
-                    limDeletePreAuthNode(pMac,
-                                         pHdr->sa);
-#ifdef WLAN_SOFTAP_FEATURE                    
->>>>>>> 657b0e9... prima update
                     /**
                      *  SAP Mode:Disassociate the station and 
                      *  delete its entry if we have its entry 
@@ -821,14 +736,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                         if (pStaDs->valid)
                         {
 <<<<<<< HEAD
-<<<<<<< HEAD
                              if (palEqualMemory( pMac->hHdd,(tANI_U8 *) &pStaDs->staAddr,
 =======
                              if (vos_mem_compare((tANI_U8 *) &pStaDs->staAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                             if (palEqualMemory( pMac->hHdd,(tANI_U8 *) &pStaDs->staAddr,
->>>>>>> 657b0e9... prima update
                                       (tANI_U8 *) &(pHdr->sa), (tANI_U8) (sizeof(tSirMacAddr))) )
                                   break;
                         }
@@ -836,7 +747,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 
                     if (NULL != pStaDs)
                     {
-<<<<<<< HEAD
 <<<<<<< HEAD
                         PELOGE(limLog(pMac, LOGE, FL("lim Delete Station Context (staId: %d, assocId: %d) \n"),pStaDs->staIndex, assocId);)
                         limSendDeauthMgmtFrame(pMac,
@@ -847,19 +757,12 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 #endif
 =======
                         PELOGE(limLog(pMac, LOGE, FL("lim Delete Station Context (staId: %d, assocId: %d) "),pStaDs->staIndex, assocId);)
-=======
-                        PELOGE(limLog(pMac, LOGE, FL("lim Delete Station Context (staId: %d, assocId: %d) \n"),pStaDs->staIndex, assocId);)
->>>>>>> 657b0e9... prima update
                         limSendDeauthMgmtFrame(pMac,
-                               eSIR_MAC_UNSPEC_FAILURE_REASON, (tANI_U8 *) pAuthNode->peerMacAddr,psessionEntry);
+                               eSIR_MAC_UNSPEC_FAILURE_REASON, (tANI_U8 *) pAuthNode->peerMacAddr, psessionEntry, FALSE);
                         limTriggerSTAdeletion(pMac, pStaDs, psessionEntry);
                         return;
                     }
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
                 }
                 else
                 {
@@ -869,14 +772,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                      * in transmission queue
                      * */
 <<<<<<< HEAD
-<<<<<<< HEAD
                     PELOGE(limLog(pMac, LOGE, FL("STA is initiating Authentication after ACK lost...\n"));)
 =======
                     PELOGE(limLog(pMac, LOGE, FL("STA is initiating Authentication after ACK lost..."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOGE(limLog(pMac, LOGE, FL("STA is initiating Authentication after ACK lost...\n"));)
->>>>>>> 657b0e9... prima update
                     return;
                 }
             }
@@ -889,7 +788,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                  */
                 limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                        FL("could not retrieve MaxNumPreAuth\n"));
             }
 #ifdef ANI_AP_SDK_OPT
@@ -900,14 +798,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                        FL("could not retrieve MaxNumPreAuth"));
             }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       FL("could not retrieve MaxNumPreAuth\n"));
-            }
-#ifdef ANI_AP_SDK_OPT
-            if(maxNumPreAuth > SIR_SDK_OPT_MAX_NUM_PRE_AUTH)
-                maxNumPreAuth = SIR_SDK_OPT_MAX_NUM_PRE_AUTH;
-#endif // ANI_AP_SDK_OPT
->>>>>>> 657b0e9... prima update
             if (pMac->lim.gLimNumPreAuthContexts == maxNumPreAuth)
             {
                 /**
@@ -930,21 +820,14 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
             }
             /// No Pre-auth context exists for the STA.
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
             if (limIsAuthAlgoSupported(
                                       pMac,
                                       (tAniAuthType)
                                       pRxAuthFrameBody->authAlgoNumber, psessionEntry))
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #else
             if (limIsAuthAlgoSupported(
                                       pMac,
@@ -952,24 +835,17 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                       pRxAuthFrameBody->authAlgoNumber))
 
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
             {
                 switch (pRxAuthFrameBody->authAlgoNumber)
                 {
                     case eSIR_OPEN_SYSTEM:
 <<<<<<< HEAD
-<<<<<<< HEAD
                         PELOGW(limLog(pMac, LOGW, FL("=======> eSIR_OPEN_SYSTEM  ...\n"));)
 =======
                         PELOGW(limLog(pMac, LOGW, FL("=======> eSIR_OPEN_SYSTEM  ..."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        PELOGW(limLog(pMac, LOGW, FL("=======> eSIR_OPEN_SYSTEM  ...\n"));)
->>>>>>> 657b0e9... prima update
                         /// Create entry for this STA in pre-auth list
                         pAuthNode = limAcquireFreePreAuthNode(pMac, &pMac->lim.gLimPreAuthTimerTable);
                         if (pAuthNode == NULL)
@@ -982,7 +858,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             return;
                         }
 
-<<<<<<< HEAD
 <<<<<<< HEAD
                         PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x peer \n"), pAuthNode);
                         limPrintMacAddr(pMac, pHdr->sa, LOG1);)
@@ -999,15 +874,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                       pHdr->sa,
                                       sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x peer \n"), pAuthNode);
-                        limPrintMacAddr(pMac, pHdr->sa, LOG1);)
-
-                        palCopyMemory( pMac->hHdd,
-                                     (tANI_U8 *) pAuthNode->peerMacAddr,
-                                     pHdr->sa,
-                                     sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
 
                         pAuthNode->mlmState =
                         eLIM_MLM_AUTHENTICATED_STATE;
@@ -1035,16 +901,11 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                         /// Send Auth indication to SME
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                         palCopyMemory( pMac->hHdd,
                                      (tANI_U8 *) mlmAuthInd.peerMacAddr,
 =======
                         vos_mem_copy((tANI_U8 *) mlmAuthInd.peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        palCopyMemory( pMac->hHdd,
-                                     (tANI_U8 *) mlmAuthInd.peerMacAddr,
->>>>>>> 657b0e9... prima update
                                      (tANI_U8 *) pHdr->sa,
                                      sizeof(tSirMacAddr));
                         mlmAuthInd.authType = (tAniAuthType)
@@ -1058,29 +919,20 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 
                     case eSIR_SHARED_KEY:
 <<<<<<< HEAD
-<<<<<<< HEAD
                         PELOGW(limLog(pMac, LOGW, FL("=======> eSIR_SHARED_KEY  ...\n"));)
 #ifdef WLAN_SOFTAP_FEATURE
 =======
                         PELOGW(limLog(pMac, LOGW, FL("=======> eSIR_SHARED_KEY  ..."));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        PELOGW(limLog(pMac, LOGW, FL("=======> eSIR_SHARED_KEY  ...\n"));)
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
                         if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
                         {
                             val = psessionEntry->privacy;
                         }
                         else   
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
                         if (wlan_cfgGetInt(pMac, WNI_CFG_PRIVACY_ENABLED,
                                       &val) != eSIR_SUCCESS)
                         {
@@ -1090,14 +942,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                              */
                             limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                    FL("could not retrieve Privacy option\n"));
 =======
                                    FL("could not retrieve Privacy option"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                   FL("could not retrieve Privacy option\n"));
->>>>>>> 657b0e9... prima update
                         }
                         cfgPrivacyOptImp = (tANI_U8)val;
                         if (!cfgPrivacyOptImp)
@@ -1146,21 +994,15 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
                             palCopyMemory( pMac->hHdd,
                                          (tANI_U8 *) pAuthNode->peerMacAddr,
                                          pHdr->sa,
                                          sizeof(tSirMacAddr));
-<<<<<<< HEAD
 =======
                             vos_mem_copy((tANI_U8 *) pAuthNode->peerMacAddr,
                                           pHdr->sa,
                                           sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
                             pAuthNode->mlmState =
                             eLIM_MLM_WT_AUTH_FRAME3_STATE;
@@ -1172,14 +1014,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             limAddPreAuthNode(pMac, pAuthNode);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                             PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x id %d peer \n"),
 =======
                             PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x id %d peer "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x id %d peer \n"),
->>>>>>> 657b0e9... prima update
                                           pAuthNode, pAuthNode->authNodeIdx);)
                             PELOG1(limPrintMacAddr(pMac, pHdr->sa, LOG1);)
 
@@ -1227,21 +1065,15 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             pChallenge = pAuthNode->challengeText;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
                             palCopyMemory( pMac->hHdd,
                                            pChallenge,
                                           (tANI_U8 *) challengeTextArray,
                                           sizeof(challengeTextArray));
-<<<<<<< HEAD
 =======
                             vos_mem_copy(pChallenge,
                                         (tANI_U8 *) challengeTextArray,
                                          sizeof(challengeTextArray));
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
                             /**
                              * Sending Authenticaton frame with challenge.
@@ -1256,16 +1088,11 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             authFrame.type   = SIR_MAC_CHALLENGE_TEXT_EID;
                             authFrame.length = SIR_MAC_AUTH_CHALLENGE_LENGTH;
 <<<<<<< HEAD
-<<<<<<< HEAD
                             palCopyMemory( pMac->hHdd,
                                          authFrame.challengeText,
 =======
                             vos_mem_copy(authFrame.challengeText,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            palCopyMemory( pMac->hHdd,
-                                         authFrame.challengeText,
->>>>>>> 657b0e9... prima update
                                          pAuthNode->challengeText,
                                          SIR_MAC_AUTH_CHALLENGE_LENGTH);
 
@@ -1354,7 +1181,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
             }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
             if ( !palEqualMemory( pMac->hHdd,(tANI_U8 *) pHdr->sa,
                           (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                           sizeof(tSirMacAddr)) )
@@ -1363,11 +1189,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                   (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                                   sizeof(tSirMacAddr)) )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if ( !palEqualMemory( pMac->hHdd,(tANI_U8 *) pHdr->sa,
-                          (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
-                          sizeof(tSirMacAddr)) )
->>>>>>> 657b0e9... prima update
             {
                 /**
                  * Received Authentication frame from an entity
@@ -1440,7 +1261,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                     PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x peer \n"), pAuthNode);)
                     PELOG1(limPrintMacAddr(pMac, pHdr->sa, LOG1);)
 
@@ -1452,13 +1272,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 
                     vos_mem_copy((tANI_U8 *) pAuthNode->peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x peer \n"), pAuthNode);)
-                    PELOG1(limPrintMacAddr(pMac, pHdr->sa, LOG1);)
-
-                    palCopyMemory( pMac->hHdd,
-                                 (tANI_U8 *) pAuthNode->peerMacAddr,
->>>>>>> 657b0e9... prima update
                                  pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                                  sizeof(tSirMacAddr));
                     pAuthNode->fTimerStarted = 0;
@@ -1473,26 +1286,18 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     // Shared key authentication
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
                     if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
                     {
                         val = psessionEntry->privacy;
                     }
                     else   
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
                     if (wlan_cfgGetInt(pMac, WNI_CFG_PRIVACY_ENABLED,
                                   &val) != eSIR_SUCCESS)
                     {
@@ -1502,14 +1307,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                          */
                         limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                FL("could not retrieve Privacy option\n"));
 =======
                                FL("could not retrieve Privacy option"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                               FL("could not retrieve Privacy option\n"));
->>>>>>> 657b0e9... prima update
                     }
                     cfgPrivacyOptImp = (tANI_U8)val;
                     if (!cfgPrivacyOptImp)
@@ -1547,14 +1348,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             // Log error
                             PELOGE(limLog(pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                    FL("received Auth frame with invalid challenge text IE\n"));)
 =======
                                    FL("received Auth frame with invalid challenge text IE"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                   FL("received Auth frame with invalid challenge text IE\n"));)
->>>>>>> 657b0e9... prima update
 
                             return;
                         }
@@ -1606,14 +1403,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                 ((tpSirMacAuthFrameBody) plainBody)->type   = SIR_MAC_CHALLENGE_TEXT_EID;
                                 ((tpSirMacAuthFrameBody) plainBody)->length = SIR_MAC_AUTH_CHALLENGE_LENGTH;
 <<<<<<< HEAD
-<<<<<<< HEAD
                                 palCopyMemory( pMac->hHdd, (tANI_U8 *) ((tpSirMacAuthFrameBody) plainBody)->challengeText,
 =======
                                 vos_mem_copy((tANI_U8 *) ((tpSirMacAuthFrameBody) plainBody)->challengeText,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                palCopyMemory( pMac->hHdd, (tANI_U8 *) ((tpSirMacAuthFrameBody) plainBody)->challengeText,
->>>>>>> 657b0e9... prima update
                                               pRxAuthFrameBody->challengeText,
                                               SIR_MAC_AUTH_CHALLENGE_LENGTH);
 
@@ -1644,32 +1437,23 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                  */
                                 limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                        FL("could not retrieve Default keyId\n"));
 =======
                                        FL("could not retrieve Default keyId"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                       FL("could not retrieve Default keyId\n"));
->>>>>>> 657b0e9... prima update
                             }
                             keyId = (tANI_U8)val;
 
                             val = SIR_MAC_KEY_LENGTH;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE  
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE  
->>>>>>> 657b0e9... prima update
                             if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
                             {
                                 tpSirKeys pKey;
                                 pKey =  &psessionEntry->WEPKeyMaterial[keyId].key[0];
-<<<<<<< HEAD
 <<<<<<< HEAD
                                 palCopyMemory( pMac->hHdd, defaultKey, pKey->key, pKey->keyLength);
                             }
@@ -1680,12 +1464,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                             }
                             else
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                palCopyMemory( pMac->hHdd, defaultKey, pKey->key, pKey->keyLength);
-                            }
-                            else
-#endif
->>>>>>> 657b0e9... prima update
                             if (wlan_cfgGetStr(pMac, (tANI_U16) (WNI_CFG_WEP_DEFAULT_KEY_1 + keyId),
                                           defaultKey,
                                           &val)
@@ -1695,14 +1473,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                 //Log error.
                                 limLog(pMac, LOGP,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                        FL("could not retrieve Default key\n"));
 =======
                                        FL("could not retrieve Default key"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                       FL("could not retrieve Default key\n"));
->>>>>>> 657b0e9... prima update
 
                                 authFrame.authAlgoNumber =
                                 pRxAuthFrameBody->authAlgoNumber;
@@ -1730,14 +1504,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                 ((tpSirMacAuthFrameBody) plainBody)->type   = SIR_MAC_CHALLENGE_TEXT_EID;
                                 ((tpSirMacAuthFrameBody) plainBody)->length = SIR_MAC_AUTH_CHALLENGE_LENGTH;
 <<<<<<< HEAD
-<<<<<<< HEAD
                                 palCopyMemory( pMac->hHdd, (tANI_U8 *) ((tpSirMacAuthFrameBody) plainBody)->challengeText,
 =======
                                 vos_mem_copy((tANI_U8 *) ((tpSirMacAuthFrameBody) plainBody)->challengeText,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                palCopyMemory( pMac->hHdd, (tANI_U8 *) ((tpSirMacAuthFrameBody) plainBody)->challengeText,
->>>>>>> 657b0e9... prima update
                                               pRxAuthFrameBody->challengeText,
                                               SIR_MAC_AUTH_CHALLENGE_LENGTH);
 
@@ -1919,7 +1689,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
                 if (palEqualMemory( pMac->hHdd,pRxAuthFrameBody->challengeText,
                               pAuthNode->challengeText,
                               SIR_MAC_AUTH_CHALLENGE_LENGTH))
@@ -1928,11 +1697,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                     pAuthNode->challengeText,
                                     SIR_MAC_AUTH_CHALLENGE_LENGTH))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                if (palEqualMemory( pMac->hHdd,pRxAuthFrameBody->challengeText,
-                              pAuthNode->challengeText,
-                              SIR_MAC_AUTH_CHALLENGE_LENGTH))
->>>>>>> 657b0e9... prima update
                 {
                     /// Challenge match. STA is autheticated !
 
@@ -1950,14 +1714,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     authFrame.authAlgoNumber = eSIR_SHARED_KEY;
                     authFrame.authTransactionSeqNumber =
 <<<<<<< HEAD
-<<<<<<< HEAD
                     SIR_MAC_AUTH_FRAME_4;
 =======
                         SIR_MAC_AUTH_FRAME_4;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    SIR_MAC_AUTH_FRAME_4;
->>>>>>> 657b0e9... prima update
                     authFrame.authStatusCode = eSIR_MAC_SUCCESS_STATUS;
 
                     limSendAuthMgmtFrame(pMac, &authFrame,
@@ -1965,7 +1725,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                          LIM_NO_WEP_IN_FC,psessionEntry);
 
                     /// Send Auth indication to SME
-<<<<<<< HEAD
 <<<<<<< HEAD
                     palCopyMemory( pMac->hHdd,
                                  (tANI_U8 *) mlmAuthInd.peerMacAddr,
@@ -1976,12 +1735,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                  (tANI_U8 *) pHdr->sa,
                                   sizeof(tSirMacAddr));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    palCopyMemory( pMac->hHdd,
-                                 (tANI_U8 *) mlmAuthInd.peerMacAddr,
-                                 (tANI_U8 *) pHdr->sa,
-                                 sizeof(tSirMacAddr));
->>>>>>> 657b0e9... prima update
                     mlmAuthInd.authType = (tAniAuthType)
                                           pRxAuthFrameBody->authAlgoNumber;
                     mlmAuthInd.sessionId = psessionEntry->smeSessionId;
@@ -2003,7 +1756,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 
                     authFrame.authAlgoNumber =
 <<<<<<< HEAD
-<<<<<<< HEAD
                     pRxAuthFrameBody->authAlgoNumber;
                     authFrame.authTransactionSeqNumber =
                     SIR_MAC_AUTH_FRAME_4;
@@ -2011,25 +1763,17 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     eSIR_MAC_CHALLENGE_FAILURE_STATUS;
 =======
                         pRxAuthFrameBody->authAlgoNumber;
-=======
-                    pRxAuthFrameBody->authAlgoNumber;
->>>>>>> 657b0e9... prima update
                     authFrame.authTransactionSeqNumber =
-                    SIR_MAC_AUTH_FRAME_4;
+                        SIR_MAC_AUTH_FRAME_4;
                     authFrame.authStatusCode =
-<<<<<<< HEAD
                         eSIR_MAC_CHALLENGE_FAILURE_STATUS;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    eSIR_MAC_CHALLENGE_FAILURE_STATUS;
->>>>>>> 657b0e9... prima update
 
                     limSendAuthMgmtFrame(pMac, &authFrame,
                                          pHdr->sa,
                                          LIM_NO_WEP_IN_FC,psessionEntry);
 
                     // Log error
-<<<<<<< HEAD
 <<<<<<< HEAD
                    PELOGE( limLog(pMac, LOGW,
                            FL("Challenge failure for peer "MAC_ADDRESS_STR), 
@@ -2039,11 +1783,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                    FL("Challenge failure for peer "MAC_ADDRESS_STR),
                                    MAC_ADDR_ARRAY(pHdr->sa));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   PELOGE( limLog(pMac, LOGW,
-                           FL("Challenge failure for peer "MAC_ADDRESS_STR), 
-						   MAC_ADDR_ARRAY(pHdr->sa));)
->>>>>>> 657b0e9... prima update
                     return;
                 }
             } // if (pMac->lim.gLimSystemRole == eLIM_AP_ROLE || ...
@@ -2087,7 +1826,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
             }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
             if ( !palEqualMemory( pMac->hHdd,(tANI_U8 *) pHdr->sa,
                           (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                           sizeof(tSirMacAddr)) )
@@ -2096,11 +1834,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                                   (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                                   sizeof(tSirMacAddr)) )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            if ( !palEqualMemory( pMac->hHdd,(tANI_U8 *) pHdr->sa,
-                          (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
-                          sizeof(tSirMacAddr)) )
->>>>>>> 657b0e9... prima update
             {
                 /**
                  * Received Authentication frame from an entity
@@ -2153,7 +1886,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
                     return;
                 }
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x peer \n"), pAuthNode);
                 limPrintMacAddr(pMac, pHdr->sa, LOG1);)
 
@@ -2165,13 +1897,6 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
 
                 vos_mem_copy((tANI_U8 *) pAuthNode->peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOG1(limLog(pMac, LOG1, FL("Alloc new data: %x peer \n"), pAuthNode);
-                limPrintMacAddr(pMac, pHdr->sa, LOG1);)
-
-                palCopyMemory( pMac->hHdd,
-                             (tANI_U8 *) pAuthNode->peerMacAddr,
->>>>>>> 657b0e9... prima update
                              pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                              sizeof(tSirMacAddr));
                 pAuthNode->fTimerStarted = 0;
@@ -2230,14 +1955,10 @@ limProcessAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pRxPacketInfo, tpPESession pse
  *----------------------------------------------------------------------
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
 =======
 tSirRetStatus limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
->>>>>>> 657b0e9... prima update
 {
     tpSirMacMgmtHdr pHdr;
     tpPESession psessionEntry = NULL;
@@ -2246,20 +1967,15 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
     tSirMacAuthFrameBody rxAuthFrame;
     tSirMacAuthFrameBody *pRxAuthFrameBody = NULL;
 <<<<<<< HEAD
-<<<<<<< HEAD
     int ret_status = eSIR_FAILURE;
 =======
     tSirRetStatus ret_status = eSIR_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    int ret_status = eSIR_FAILURE;
->>>>>>> 657b0e9... prima update
 
     pHdr = WDA_GET_RX_MAC_HEADER(pBd);
     pBody = WDA_GET_RX_MPDU_DATA(pBd);
     frameLen = WDA_GET_RX_PAYLOAD_LEN(pBd);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_DEBUG,
@@ -2268,8 +1984,6 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
               (uint)abs((tANI_S8)WDA_GET_RX_RSSI_DB(pBd)));
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // Check for the operating channel and see what needs to be done next.
     psessionEntry = pMac->ft.ftPEContext.psavedsessionEntry;
     if (psessionEntry == NULL) 
@@ -2290,7 +2004,6 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
     }
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
     limPrintMacAddr(pMac, pHdr->bssId, LOGE);
     limPrintMacAddr(pMac, pMac->ft.ftPEContext.pFTPreAuthReq->preAuthbssId, LOGE);
     limLog(pMac,LOG2,FL("seqControl 0x%X\n"), 
@@ -2299,11 +2012,6 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
     limPrintMacAddr(pMac, pMac->ft.ftPEContext.pFTPreAuthReq->preAuthbssId, LOG2);
     limLog(pMac,LOG2,FL("seqControl 0x%X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limPrintMacAddr(pMac, pHdr->bssId, LOGE);
-    limPrintMacAddr(pMac, pMac->ft.ftPEContext.pFTPreAuthReq->preAuthbssId, LOGE);
-    limLog(pMac,LOG2,FL("seqControl 0x%X\n"), 
->>>>>>> 657b0e9... prima update
             ((pHdr->seqControl.seqNumHi << 8) | 
             (pHdr->seqControl.seqNumLo << 4) |
             (pHdr->seqControl.fragNum)));
@@ -2311,17 +2019,12 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
 
     // Check that its the same bssId we have for preAuth
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (!palEqualMemory( pMac->hHdd, pMac->ft.ftPEContext.pFTPreAuthReq->preAuthbssId,
         pHdr->bssId, sizeof( tSirMacAddr )))
 =======
     if (!vos_mem_compare(pMac->ft.ftPEContext.pFTPreAuthReq->preAuthbssId,
                          pHdr->bssId, sizeof( tSirMacAddr )))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (!palEqualMemory( pMac->hHdd, pMac->ft.ftPEContext.pFTPreAuthReq->preAuthbssId,
-        pHdr->bssId, sizeof( tSirMacAddr )))
->>>>>>> 657b0e9... prima update
     {
         // In this case SME if indeed has triggered a 
         // pre auth it will time out.
@@ -2349,23 +2052,17 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
          * pre-auth.
          */
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac,LOGE,"Auth rsp already posted to SME"
                " (session %p, FT session %p)\n", psessionEntry,
 =======
         PELOGE(limLog(pMac,LOG1,"Auth rsp already posted to SME"
                " (session %p, FT session %p)", psessionEntry,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac,LOGE,"Auth rsp already posted to SME"
-               " (session %p, FT session %p)\n", psessionEntry,
->>>>>>> 657b0e9... prima update
                pMac->ft.ftPEContext.pftSessionEntry););
         return eSIR_SUCCESS;
     }
     else
     {
-<<<<<<< HEAD
 <<<<<<< HEAD
         PELOGE(limLog(pMac,LOGE,"Auth rsp not yet posted to SME"
                " (session %p, FT session %p)\n", psessionEntry,
@@ -2373,10 +2070,6 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
         PELOGE(limLog(pMac,LOGW,"Auth rsp not yet posted to SME"
                " (session %p, FT session %p)", psessionEntry,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac,LOGE,"Auth rsp not yet posted to SME"
-               " (session %p, FT session %p)\n", psessionEntry,
->>>>>>> 657b0e9... prima update
                pMac->ft.ftPEContext.pftSessionEntry););
         pMac->ft.ftPEContext.pFTPreAuthReq->bPreAuthRspProcessed =
             eANI_BOOLEAN_TRUE;
@@ -2384,17 +2077,12 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
 
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
     limLog(pMac, LOGE, FL("Pre-Auth response received from neighbor"));
     limLog(pMac, LOGE, FL("Pre-Auth done state"));
 =======
     limLog(pMac, LOG1, FL("Pre-Auth response received from neighbor"));
     limLog(pMac, LOG1, FL("Pre-Auth done state"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    limLog(pMac, LOGE, FL("Pre-Auth response received from neighbor"));
-    limLog(pMac, LOGE, FL("Pre-Auth done state"));
->>>>>>> 657b0e9... prima update
 #endif
     // Stopping timer now, that we have our unicast from the AP
     // of our choice.
@@ -2411,17 +2099,12 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
 
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOGE(limLog(pMac, LOGE,
            FL("Received Auth frame with type=%d seqnum=%d, status=%d (%d)\n"),
 =======
     PELOGE(limLog(pMac, LOG1,
            FL("Received Auth frame with type=%d seqnum=%d, status=%d (%d)"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOGE(limLog(pMac, LOGE,
-           FL("Received Auth frame with type=%d seqnum=%d, status=%d (%d)\n"),
->>>>>>> 657b0e9... prima update
            (tANI_U32) pRxAuthFrameBody->authAlgoNumber,
            (tANI_U32) pRxAuthFrameBody->authTransactionSeqNumber,
            (tANI_U32) pRxAuthFrameBody->authStatusCode,(tANI_U32)pMac->lim.gLimNumPreAuthContexts);)
@@ -2434,7 +2117,6 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
             {
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
                 PELOGE(limLog( pMac, LOGE, "Auth status code received is  %d\n", 
                     (tANI_U32) pRxAuthFrameBody->authStatusCode);)
 #endif
@@ -2445,11 +2127,6 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
                 if (eSIR_MAC_MAX_ASSOC_STA_REACHED_STATUS == pRxAuthFrameBody->authStatusCode)
                     ret_status = eSIR_LIM_MAX_STA_REACHED_ERROR;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                PELOGE(limLog( pMac, LOGE, "Auth status code received is  %d\n", 
-                    (tANI_U32) pRxAuthFrameBody->authStatusCode);)
-#endif
->>>>>>> 657b0e9... prima update
             }
             else 
             {
@@ -2460,14 +2137,10 @@ int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pBd, void *body)
         default:
 #ifdef WLAN_FEATURE_VOWIFI_11R_DEBUG
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog( pMac, LOGE, "Seq. no incorrect expected 2 received %d\n", 
 =======
             PELOGE(limLog( pMac, LOGE, "Seq. no incorrect expected 2 received %d",
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog( pMac, LOGE, "Seq. no incorrect expected 2 received %d\n", 
->>>>>>> 657b0e9... prima update
                 (tANI_U32) pRxAuthFrameBody->authTransactionSeqNumber);)
 #endif
             break;

@@ -1,13 +1,9 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
->>>>>>> 657b0e9... prima update
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -27,18 +23,12 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 /*
  *
 =======
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-/*
- *
->>>>>>> 657b0e9... prima update
  * Airgo Networks, Inc proprietary. All rights reserved.
  * limStaHashApi.c: Provides access functions to get/set values of station hash entry fields.
  * Author:    Sunit Bhatia
@@ -81,14 +71,10 @@ tSirRetStatus limGetStaHashBssidx(tpAniSirGlobal pMac, tANI_U16 assocId, tANI_U8
     if (pSta == NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("invalid STA %d\n"),  assocId);)
 =======
         PELOGE(limLog(pMac, LOGE, FL("invalid STA %d"),  assocId);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("invalid STA %d\n"),  assocId);)
->>>>>>> 657b0e9... prima update
         return eSIR_LIM_INVALID_STA;
     }
 

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -64,13 +61,9 @@
 /* $HEADER$ */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef CONFIG_CFG80211
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef CONFIG_CFG80211
->>>>>>> 657b0e9... prima update
 
 //value for initial part of frames and number of bytes to be compared
 #define GAS_INITIAL_REQ "\x04\x0a"  
@@ -92,7 +85,6 @@
 #define P2P_ACTION_FRAME_SIZE 5
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define HDD_P2P_WILDCARD_SSID "DIRECT-" //TODO Put it in proper place;
 #define HDD_P2P_WILDCARD_SSID_LEN 7
 
@@ -110,11 +102,6 @@
 #define WNM_BSS_ACTION_FRAME_SIZE 2
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define HDD_P2P_WILDCARD_SSID "DIRECT-" //TODO Put it in proper place;
-#define HDD_P2P_WILDCARD_SSID_LEN 7
-
->>>>>>> 657b0e9... prima update
 #define WPA_OUI_TYPE   "\x00\x50\xf2\x01"
 #define BLACKLIST_OUI_TYPE   "\x00\x50\x00\x00"
 #define WHITELIST_OUI_TYPE   "\x00\x50\x00\x01"
@@ -124,7 +111,6 @@
 #define BASIC_RATE_MASK   0x80
 #define RATE_MASK         0x7f
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_ENABLE_AGEIE_ON_SCAN_RESULTS
@@ -153,8 +139,6 @@ typedef struct {
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 struct cfg80211_bss* wlan_hdd_cfg80211_update_bss_db( hdd_adapter_t *pAdapter,
                                       tCsrRoamInfo *pRoamInfo
                                       );
@@ -170,7 +154,6 @@ void wlan_hdd_cfg80211_set_key_wapi(hdd_adapter_t* pAdapter,
               u8 key_index, const u8 *mac_addr, u8 *key , int key_Len);
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 struct wiphy *wlan_hdd_cfg80211_init(int priv_size);
 
 int wlan_hdd_cfg80211_register(struct device *dev,
@@ -185,27 +168,18 @@ int wlan_hdd_cfg80211_scan( struct wiphy *wiphy,
 
 int wlan_hdd_cfg80211_init(struct device *dev,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-struct wiphy *wlan_hdd_cfg80211_init(int priv_size);
-
-int wlan_hdd_cfg80211_register(struct device *dev,
->>>>>>> 657b0e9... prima update
                                struct wiphy *wiphy,
                                hdd_config_t *pCfg
                                          );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 int wlan_hdd_cfg80211_register( struct wiphy *wiphy);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 void wlan_hdd_cfg80211_post_voss_start(hdd_adapter_t* pAdapter);
 
 void wlan_hdd_cfg80211_pre_voss_stop(hdd_adapter_t* pAdapter);
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 #endif // CONFIG_CFG80211
@@ -233,9 +207,5 @@ extern void wlan_hdd_cfg80211_update_replayCounterCallback(void *callbackContext
 void hdd_select_cbmode( hdd_adapter_t *pAdapter,v_U8_t operationChannel);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#endif // CONFIG_CFG80211
->>>>>>> 657b0e9... prima update
 
 #endif

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -192,14 +189,10 @@ static WCTS_ControlBlockType  *ctsCB;
 
 /* If port open once, not try to actual open next time */
 <<<<<<< HEAD
-<<<<<<< HEAD
 static int                     port_open = 0;
 =======
 static int                     port_open;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-static int                     port_open = 0;
->>>>>>> 657b0e9... prima update
 #endif /* FEATURE_R33D */
 /*----------------------------------------------------------------------------
  * Static Function Declarations and Definitions
@@ -538,14 +531,10 @@ WCTS_NotifyCallback
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Received unexpected SMD event %u",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, event);
 =======
                  __func__, event);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, event);
->>>>>>> 657b0e9... prima update
 
       /* TODO_PRIMA what error recovery options do we have? */
       return;
@@ -556,14 +545,10 @@ WCTS_NotifyCallback
    case SMD_EVENT_OPEN:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: received SMD_EVENT_OPEN from SMD", __FUNCTION__);
 =======
                  "%s: received SMD_EVENT_OPEN from SMD", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: received SMD_EVENT_OPEN from SMD", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       /* If the prev state was 'remote closed' then it is a Riva 'restart',
        * subsystem restart re-init
        */
@@ -572,14 +557,10 @@ WCTS_NotifyCallback
            WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
                  "%s: received SMD_EVENT_OPEN in WCTS_STATE_REM_CLOSED state",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__);
 =======
                  __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__);
->>>>>>> 657b0e9... prima update
            /* call subsystem restart re-init function */
            wpalDriverReInit();
            return;
@@ -593,41 +574,29 @@ WCTS_NotifyCallback
            WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: received SMD data when the state is remote closed ",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__);
 =======
                  __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__);
->>>>>>> 657b0e9... prima update
            /* we should not be getting any data now */
            return;
       }
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: received SMD_EVENT_DATA from SMD", __FUNCTION__);
 =======
                  "%s: received SMD_EVENT_DATA from SMD", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: received SMD_EVENT_DATA from SMD", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       palMsg = &pWCTSCb->wctsDataMsg;
       break;
 
    case SMD_EVENT_CLOSE:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
 <<<<<<< HEAD
-<<<<<<< HEAD
                  "%s: received SMD_EVENT_CLOSE from SMD", __FUNCTION__);
 =======
                  "%s: received SMD_EVENT_CLOSE from SMD", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: received SMD_EVENT_CLOSE from SMD", __FUNCTION__);
->>>>>>> 657b0e9... prima update
       /* SMD channel was closed from the remote side,
        * this would happen only when Riva crashed and SMD is
        * closing the channel on behalf of Riva */
@@ -635,21 +604,16 @@ WCTS_NotifyCallback
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
                  "%s: received SMD_EVENT_CLOSE WLAN driver going down now",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__);
 =======
                  __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__);
->>>>>>> 657b0e9... prima update
       /* subsystem restart: shutdown */
       wpalDriverShutdown();
       return;
 
    case SMD_EVENT_STATUS:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-<<<<<<< HEAD
 <<<<<<< HEAD
                  "%s: received SMD_EVENT_STATUS from SMD", __FUNCTION__);
       return;
@@ -665,14 +629,6 @@ WCTS_NotifyCallback
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: received SMD_EVENT_REOPEN_READY from SMD", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 "%s: received SMD_EVENT_STATUS from SMD", __FUNCTION__);
-      return;
-
-   case SMD_EVENT_REOPEN_READY:
-      WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
-                 "%s: received SMD_EVENT_REOPEN_READY from SMD", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       /* unlike other events which occur when our kernel threads are
          running, this one is received when the threads are closed and
@@ -684,14 +640,10 @@ WCTS_NotifyCallback
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Unexpected event %u received from SMD",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, event);
 =======
                  __func__, event);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, event);
->>>>>>> 657b0e9... prima update
 
       return;
    }
@@ -848,14 +800,10 @@ WCTS_OpenTransport
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: smd_named_open_on_edge failed with status %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, smdstatus);
 =======
                  __func__, smdstatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, smdstatus);
->>>>>>> 657b0e9... prima update
       goto fail;
    }
 
@@ -865,28 +813,20 @@ WCTS_OpenTransport
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: failed to receive SMD_EVENT_OPEN",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__);
 =======
                  __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__);
->>>>>>> 657b0e9... prima update
       /* since we opened one end of the channel, close it */
       smdstatus = smd_close(pWCTSCb->wctsChannel);
       if (0 != smdstatus) {
          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                     "%s: smd_close failed with status %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                     __FUNCTION__, smdstatus);
 =======
                     __func__, smdstatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__, smdstatus);
->>>>>>> 657b0e9... prima update
       }
       goto fail;
    }
@@ -973,14 +913,10 @@ WCTS_CloseTransport
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: smd_close failed with status %d",
 <<<<<<< HEAD
-<<<<<<< HEAD
                  __FUNCTION__, smdstatus);
 =======
                  __func__, smdstatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                 __FUNCTION__, smdstatus);
->>>>>>> 657b0e9... prima update
       /* SMD did not successfully close the channel, therefore we
          won't receive an asynchronous close notification so don't
          bother to wait for an event that won't come */
@@ -992,14 +928,10 @@ WCTS_CloseTransport
          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                     "%s: failed to receive SMD_EVENT_REOPEN_READY",
 <<<<<<< HEAD
-<<<<<<< HEAD
                     __FUNCTION__);
 =======
                     __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__);
->>>>>>> 657b0e9... prima update
       }
 
       /* During the close sequence we deregistered from SMD.  As part
@@ -1136,14 +1068,11 @@ WCTS_SendMessage
          smd_enable_read_intr(pWCTSCb->wctsChannel);
       }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
       /*indicate to client that message was placed in deferred queue*/
       return eWLAN_PAL_STATUS_E_RESOURCES;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    }
 
    return eWLAN_PAL_STATUS_SUCCESS;

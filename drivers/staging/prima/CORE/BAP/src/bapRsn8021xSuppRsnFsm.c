@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -82,14 +79,10 @@
 static tSuppRsnFsmConsts suppConsts = { 2000, 3 };    //timeout, retry limit
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 int gReadToSetKey = 0;
 =======
 int gReadToSetKey;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-int gReadToSetKey = 0;
->>>>>>> 657b0e9... prima update
 
 /**************************************
  * Static functions in this module
@@ -667,14 +660,10 @@ gotoStateGroupKeySet(tSuppRsnFsm *fsm,
             retVal = ANI_ERROR;
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "Supp could not send eapol. Disconnect\n" );
 <<<<<<< HEAD
-<<<<<<< HEAD
             break;;    
 =======
             break;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            break;;    
->>>>>>> 657b0e9... prima update
         }
 
         //FIX_RSN there is no need to set GTK retVal = setGtk(fsm->suppCtx, rxDesc->keyRecvSeqCounter);
@@ -820,14 +809,10 @@ int checkPeerReplayCounter(tSuppRsnFsm *fsm,
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
             "BP radio %d got old EAPOL replay counter from AP\n" );
 =======
             "BP got old EAPOL replay counter from AP" );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            "BP radio %d got old EAPOL replay counter from AP\n" );
->>>>>>> 657b0e9... prima update
         retVal = ANI_E_REPLAY_CHECK_FAILED;
 
     } 
@@ -906,14 +891,10 @@ int checkTransition(tSuppRsnFsm *fsm, void *arg)
                     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
                                     "Resending EAPOL-Key Msg2 from "
 <<<<<<< HEAD
-<<<<<<< HEAD
                                   "supplicant radio %d to AP\n" );
 =======
                                   "supplicant to AP" );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                  "supplicant radio %d to AP\n" );
->>>>>>> 657b0e9... prima update
                     retVal = gotoStateStaKeyStart(fsm, data, eANI_BOOLEAN_TRUE);
 
                 } 
@@ -1080,14 +1061,10 @@ static int suppRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "param is NULL in %s", __FUNCTION__);
 =======
                      "param is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "param is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return retVal;
     }
@@ -1096,14 +1073,10 @@ static int suppRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "ctx is NULL in %s", __FUNCTION__);
 =======
                      "ctx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "ctx is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return retVal;
     }
@@ -1113,14 +1086,10 @@ static int suppRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "fsm is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return retVal;
     }
@@ -1159,14 +1128,10 @@ static int suppRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "param is NULL in %s", __FUNCTION__);
 =======
                      "param is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "param is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return ANI_ERROR;
     }
@@ -1175,14 +1140,10 @@ static int suppRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "ctx is NULL in %s", __FUNCTION__);
 =======
                      "ctx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "ctx is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return ANI_ERROR;
     }
@@ -1192,14 +1153,10 @@ static int suppRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "fsm is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return ANI_ERROR;
     }

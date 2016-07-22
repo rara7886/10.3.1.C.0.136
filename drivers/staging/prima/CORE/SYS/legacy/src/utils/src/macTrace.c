@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,16 +44,12 @@
 
 /**=========================================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 * Copyright (c) 2013 Qualcomm Atheros, Inc.
 * All Rights Reserved.
 * Qualcomm Atheros Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
   \file  macTrace.c
 
   \brief implementation for trace related APIs
@@ -76,7 +69,6 @@
 
 #include "macTrace.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #include "wlan_qct_wda.h"
@@ -91,16 +83,12 @@
 #include "limGlobal.h"
 #include "wlan_qct_tl.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
 #ifdef TRACE_RECORD
 static tTraceRecord gTraceTbl[MAX_TRACE_RECORDS];
 static tTraceData gTraceData;
 static tpTraceCb traceCBTable[VOS_MODULE_ID_MAX];
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -332,12 +320,18 @@ tANI_U8* macTraceGetLimMlmState(tANI_U16 mlmState)
         CASE_RETURN_STRING(eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE);
         CASE_RETURN_STRING(eLIM_MLM_WT_ADD_STA_RSP_STATE);
         CASE_RETURN_STRING(eLIM_MLM_WT_DEL_STA_RSP_STATE);
-=======
->>>>>>> 657b0e9... prima update
 
+        default:
+            return( (tANI_U8*)"UNKNOWN" );
+            break;
+    }
+}
 
+/* ---------------------------------------------------------------------------
+    \fn macTraceGetTLState
+    \function to get string equivalent of a value
+	 from the enum WLANTL_STAStateType.
 
-<<<<<<< HEAD
     \param tlState - the value from the enum
     \return the string equivalent of tlState
   ---------------------------------------------------------------------------*/
@@ -357,8 +351,6 @@ tANI_U8* macTraceGetTLState(tANI_U16 tlState)
    }
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
 {
@@ -371,15 +363,12 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_SCAN_ABORT_IND);
         CASE_RETURN_STRING(eWNI_SME_SCAN_RSP);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_OEM_DATA_SUPPORT
         CASE_RETURN_STRING(eWNI_SME_OEM_DATA_REQ);
         CASE_RETURN_STRING(eWNI_SME_OEM_DATA_RSP);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(eWNI_SME_JOIN_REQ);
         CASE_RETURN_STRING(eWNI_SME_JOIN_RSP);
         CASE_RETURN_STRING(eWNI_SME_SETCONTEXT_REQ);
@@ -411,7 +400,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_STOP_BSS_RSP);
         CASE_RETURN_STRING(eWNI_SME_DEL_BA_PEER_IND);
 <<<<<<< HEAD
-<<<<<<< HEAD
         CASE_RETURN_STRING(eWNI_SME_PROMISCUOUS_MODE_REQ);
         CASE_RETURN_STRING(eWNI_SME_PROMISCUOUS_MODE_RSP);
 =======
@@ -427,10 +415,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_LINK_TEST_STOP_RSP);
         CASE_RETURN_STRING(eWNI_SME_LINK_TEST_REPORT_IND);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        CASE_RETURN_STRING(eWNI_SME_PROMISCUOUS_MODE_REQ);
-        CASE_RETURN_STRING(eWNI_SME_PROMISCUOUS_MODE_RSP);
->>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(eWNI_SME_NEIGHBOR_BSS_IND);
         CASE_RETURN_STRING(eWNI_SME_MEASUREMENT_REQ);
         CASE_RETURN_STRING(eWNI_SME_MEASUREMENT_RSP);
@@ -438,7 +422,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_SET_WDS_INFO_REQ);
         CASE_RETURN_STRING(eWNI_SME_SET_WDS_INFO_RSP);
         CASE_RETURN_STRING(eWNI_SME_WDS_INFO_IND);
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         CASE_RETURN_STRING(eWNI_SME_SET_POWER_REQ);
@@ -451,8 +434,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_SET_PROPRIETARY_IE_RSP); // #endif
         CASE_RETURN_STRING(eWNI_SME_DISCARD_SKB_NTF);  // Used to cleanup SKBs by HDD
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(eWNI_SME_DEAUTH_CNF);
         CASE_RETURN_STRING(eWNI_SME_MIC_FAILURE_IND);
         CASE_RETURN_STRING(eWNI_SME_ADDTS_REQ);
@@ -489,7 +470,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_LOW_RSSI_IND);
         CASE_RETURN_STRING(eWNI_SME_GET_STATISTICS_REQ);
 <<<<<<< HEAD
-<<<<<<< HEAD
         CASE_RETURN_STRING(eWNI_SME_GET_STATISTICS_RSP);        
 
         CASE_RETURN_STRING(eWNI_SME_MSG_TYPES_END);
@@ -518,11 +498,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_GET_SNR_REQ);
         CASE_RETURN_STRING(eWNI_PMC_MSG_TYPES_BEGIN);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        CASE_RETURN_STRING(eWNI_SME_GET_STATISTICS_RSP);        
-
-        CASE_RETURN_STRING(eWNI_SME_MSG_TYPES_END);
->>>>>>> 657b0e9... prima update
 
         //General Power Save Messages
         CASE_RETURN_STRING(eWNI_PMC_PWR_SAVE_CFG);
@@ -547,7 +522,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_PMC_EXIT_UAPSD_RSP);
 
         CASE_RETURN_STRING(eWNI_PMC_SMPS_STATE_IND);
-<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -605,9 +579,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
         CASE_RETURN_STRING(eWNI_SME_GET_ROAM_RSSI_REQ);
         CASE_RETURN_STRING(eWNI_SME_GET_ROAM_RSSI_RSP);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
         default:
             return( (tANI_U8*)"UNKNOWN" );
             break;
@@ -615,7 +586,6 @@ tANI_U8* macTraceGetSmeMsgString( tANI_U16 smeMsg )
 }
 
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 tANI_U8* macTraceGetHalMsgString( tANI_U16 halMsg )
 {
@@ -762,152 +732,193 @@ tANI_U8* macTraceGetHalMsgString( tANI_U16 halMsg )
 #endif //SUPPORT_BEACON_FILTER
 =======
 tANI_U8* macTraceGetWdaMsgString( tANI_U16 wdaMsg )
-=======
-tANI_U8* macTraceGetHalMsgString( tANI_U16 halMsg )
->>>>>>> 657b0e9... prima update
 {
-    switch( halMsg )
+    switch( wdaMsg )
     {
+        CASE_RETURN_STRING(WDA_APP_SETUP_NTF);
+        CASE_RETURN_STRING(WDA_NIC_OPER_NTF);
+        CASE_RETURN_STRING(WDA_INIT_START_REQ);
+        CASE_RETURN_STRING(WDA_RESET_REQ);
+        CASE_RETURN_STRING(WDA_HDD_ADDBA_REQ);
+        CASE_RETURN_STRING(WDA_HDD_ADDBA_RSP);
+        CASE_RETURN_STRING(WDA_DELETEBA_IND);
+        CASE_RETURN_STRING(WDA_BA_FAIL_IND);
+        CASE_RETURN_STRING(WDA_TL_FLUSH_AC_REQ);
+        CASE_RETURN_STRING(WDA_TL_FLUSH_AC_RSP);
 
-        CASE_RETURN_STRING(SIR_HAL_RADAR_DETECTED_IND);
-        CASE_RETURN_STRING(SIR_HAL_WDT_KAM_RSP                );
-        CASE_RETURN_STRING(SIR_HAL_TIMER_TEMP_MEAS_REQ        );
-        CASE_RETURN_STRING(SIR_HAL_TIMER_PERIODIC_STATS_COLLECT_REQ   );
-        CASE_RETURN_STRING(SIR_HAL_CAL_REQ_NTF                );
-        CASE_RETURN_STRING(SIR_HAL_MNT_OPEN_TPC_TEMP_MEAS_REQ );
-        CASE_RETURN_STRING(SIR_HAL_CCA_MONITOR_INTERVAL_TO    );
-        CASE_RETURN_STRING(SIR_HAL_CCA_MONITOR_DURATION_TO    );
-        CASE_RETURN_STRING(SIR_HAL_CCA_MONITOR_START          );
-        CASE_RETURN_STRING(SIR_HAL_CCA_MONITOR_STOP           );
-        CASE_RETURN_STRING(SIR_HAL_CCA_CHANGE_MODE            );
+        CASE_RETURN_STRING(WDA_ITC_MSG_TYPES_BEGIN);
+        CASE_RETURN_STRING(WDA_WDT_KAM_RSP);
+        CASE_RETURN_STRING(WDA_TIMER_TEMP_MEAS_REQ);
+        CASE_RETURN_STRING(WDA_TIMER_PERIODIC_STATS_COLLECT_REQ);
+        CASE_RETURN_STRING(WDA_CAL_REQ_NTF);
+        CASE_RETURN_STRING(WDA_MNT_OPEN_TPC_TEMP_MEAS_REQ);
+        CASE_RETURN_STRING(WDA_CCA_MONITOR_INTERVAL_TO);
+        CASE_RETURN_STRING(WDA_CCA_MONITOR_DURATION_TO);
+        CASE_RETURN_STRING(WDA_CCA_MONITOR_START);
+        CASE_RETURN_STRING(WDA_CCA_MONITOR_STOP);
+        CASE_RETURN_STRING(WDA_CCA_CHANGE_MODE);
+        CASE_RETURN_STRING(WDA_TIMER_WRAP_AROUND_STATS_COLLECT_REQ);
 
-        CASE_RETURN_STRING(SIR_HAL_ADD_STA_REQ                );
-        CASE_RETURN_STRING(SIR_HAL_ADD_STA_RSP                );
-        CASE_RETURN_STRING(SIR_HAL_DELETE_STA_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_DELETE_STA_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_ADD_BSS_REQ                );
-        CASE_RETURN_STRING(SIR_HAL_ADD_BSS_RSP                );
-        CASE_RETURN_STRING(SIR_HAL_DELETE_BSS_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_DELETE_BSS_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_INIT_SCAN_REQ              );
-        CASE_RETURN_STRING(SIR_HAL_INIT_SCAN_RSP              );
-        CASE_RETURN_STRING(SIR_HAL_START_SCAN_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_START_SCAN_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_END_SCAN_REQ               );
-        CASE_RETURN_STRING(SIR_HAL_END_SCAN_RSP               );
-        CASE_RETURN_STRING(SIR_HAL_FINISH_SCAN_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_FINISH_SCAN_RSP            );
-        CASE_RETURN_STRING(SIR_HAL_SEND_BEACON_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_SEND_BEACON_RSP            );
+        CASE_RETURN_STRING(WDA_ADD_STA_REQ);
+        CASE_RETURN_STRING(WDA_ADD_STA_RSP);
+        CASE_RETURN_STRING(WDA_ADD_STA_SELF_RSP);
+        CASE_RETURN_STRING(WDA_DEL_STA_SELF_RSP);
+        CASE_RETURN_STRING(WDA_DELETE_STA_REQ);
+        CASE_RETURN_STRING(WDA_DELETE_STA_RSP);
+        CASE_RETURN_STRING(WDA_ADD_BSS_REQ);
+        CASE_RETURN_STRING(WDA_ADD_BSS_RSP);
+        CASE_RETURN_STRING(WDA_DELETE_BSS_REQ);
+        CASE_RETURN_STRING(WDA_DELETE_BSS_RSP);
+        CASE_RETURN_STRING(WDA_INIT_SCAN_REQ);
+        CASE_RETURN_STRING(WDA_INIT_SCAN_RSP);
+        CASE_RETURN_STRING(WDA_START_SCAN_REQ);
+        CASE_RETURN_STRING(WDA_START_SCAN_RSP);
+        CASE_RETURN_STRING(WDA_END_SCAN_REQ);
+        CASE_RETURN_STRING(WDA_END_SCAN_RSP);
+        CASE_RETURN_STRING(WDA_FINISH_SCAN_REQ);
+        CASE_RETURN_STRING(WDA_FINISH_SCAN_RSP);
+        CASE_RETURN_STRING(WDA_SEND_BEACON_REQ);
+        CASE_RETURN_STRING(WDA_SEND_BEACON_RSP);
 
-        CASE_RETURN_STRING(SIR_HAL_INIT_CFG_REQ               );
-        CASE_RETURN_STRING(SIR_HAL_INIT_CFG_RSP               );
+        CASE_RETURN_STRING(WDA_INIT_CFG_REQ);
+        CASE_RETURN_STRING(WDA_INIT_CFG_RSP);
 
-        CASE_RETURN_STRING(SIR_HAL_INIT_WM_CFG_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_INIT_WM_CFG_RSP            );
+        CASE_RETURN_STRING(WDA_INIT_WM_CFG_REQ);
+        CASE_RETURN_STRING(WDA_INIT_WM_CFG_RSP);
 
-        CASE_RETURN_STRING(SIR_HAL_SET_BSSKEY_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_SET_BSSKEY_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_SET_STAKEY_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_SET_STAKEY_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_DPU_STATS_REQ              );
-        CASE_RETURN_STRING(SIR_HAL_DPU_STATS_RSP              );
-        CASE_RETURN_STRING(SIR_HAL_GET_DPUINFO_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_GET_DPUINFO_RSP            );
+        CASE_RETURN_STRING(WDA_SET_BSSKEY_REQ);
+        CASE_RETURN_STRING(WDA_SET_BSSKEY_RSP);
+        CASE_RETURN_STRING(WDA_SET_STAKEY_REQ);
+        CASE_RETURN_STRING(WDA_SET_STAKEY_RSP);
+        CASE_RETURN_STRING(WDA_DPU_STATS_REQ);
+        CASE_RETURN_STRING(WDA_DPU_STATS_RSP);
+        CASE_RETURN_STRING(WDA_GET_DPUINFO_REQ);
+        CASE_RETURN_STRING(WDA_GET_DPUINFO_RSP);
 
-        CASE_RETURN_STRING(SIR_HAL_UPDATE_EDCA_PROFILE_IND    );
+        CASE_RETURN_STRING(WDA_UPDATE_EDCA_PROFILE_IND);
 
-        CASE_RETURN_STRING(SIR_HAL_UPDATE_STARATEINFO_REQ     );
-        CASE_RETURN_STRING(SIR_HAL_UPDATE_STARATEINFO_RSP     );
+        CASE_RETURN_STRING(WDA_UPDATE_STARATEINFO_REQ);
+        CASE_RETURN_STRING(WDA_UPDATE_STARATEINFO_RSP);
 
-        CASE_RETURN_STRING(SIR_HAL_UPDATE_BEACON_IND          );
-        CASE_RETURN_STRING(SIR_HAL_UPDATE_CF_IND              );
-        CASE_RETURN_STRING(SIR_HAL_CHNL_SWITCH_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_SWITCH_CHANNEL_RSP         );
-        CASE_RETURN_STRING(SIR_HAL_ADD_TS_REQ                 );
-        CASE_RETURN_STRING(SIR_HAL_DEL_TS_REQ                 );
-        CASE_RETURN_STRING(SIR_HAL_ADD_TS_RSP);
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_TXSTAT_REPORT      );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_BMPS_REQ              );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_BMPS_RSP              );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_BMPS_IND              );
-        CASE_RETURN_STRING(SIR_HAL_ENTER_BMPS_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_ENTER_BMPS_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_BMPS_STATUS_IND            );
-        CASE_RETURN_STRING(SIR_HAL_MISSED_BEACON_IND          );
+        CASE_RETURN_STRING(WDA_UPDATE_BEACON_IND);
+        CASE_RETURN_STRING(WDA_UPDATE_CF_IND);
+        CASE_RETURN_STRING(WDA_CHNL_SWITCH_REQ);
+        CASE_RETURN_STRING(WDA_ADD_TS_REQ);
+        CASE_RETURN_STRING(WDA_DEL_TS_REQ);
+        CASE_RETURN_STRING(WDA_SOFTMAC_TXSTAT_REPORT);
+        CASE_RETURN_STRING(WDA_MBOX_SENDMSG_COMPLETE_IND);
+        CASE_RETURN_STRING(WDA_EXIT_BMPS_REQ);
+        CASE_RETURN_STRING(WDA_EXIT_BMPS_RSP);
+        CASE_RETURN_STRING(WDA_EXIT_BMPS_IND);
+        CASE_RETURN_STRING(WDA_ENTER_BMPS_REQ);
+        CASE_RETURN_STRING(WDA_ENTER_BMPS_RSP);
+        CASE_RETURN_STRING(WDA_BMPS_STATUS_IND);
+        CASE_RETURN_STRING(WDA_MISSED_BEACON_IND);
 
-        CASE_RETURN_STRING(SIR_HAL_PWR_SAVE_CFG               );
+        CASE_RETURN_STRING(WDA_CFG_RXP_FILTER_REQ);
+        CASE_RETURN_STRING(WDA_CFG_RXP_FILTER_RSP);
+        CASE_RETURN_STRING(WDA_SWITCH_CHANNEL_RSP);
+        CASE_RETURN_STRING(WDA_P2P_NOA_ATTR_IND);
+        CASE_RETURN_STRING(WDA_P2P_NOA_START_IND);
+        CASE_RETURN_STRING(WDA_PWR_SAVE_CFG);
 
-        CASE_RETURN_STRING(SIR_HAL_REGISTER_PE_CALLBACK       );
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_MEM_READREQUEST    );
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_MEM_WRITEREQUEST   );
+        CASE_RETURN_STRING(WDA_REGISTER_PE_CALLBACK);
+        CASE_RETURN_STRING(WDA_SOFTMAC_MEM_READREQUEST);
+        CASE_RETURN_STRING(WDA_SOFTMAC_MEM_WRITEREQUEST);
 
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_MEM_READRESPONSE   );
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_BULKREGWRITE_CONFIRM      );
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_BULKREGREAD_RESPONSE      );
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_HOSTMESG_MSGPROCESSRESULT );
+        CASE_RETURN_STRING(WDA_SOFTMAC_MEM_READRESPONSE);
+        CASE_RETURN_STRING(WDA_SOFTMAC_BULKREGWRITE_CONFIRM);
+        CASE_RETURN_STRING(WDA_SOFTMAC_BULKREGREAD_RESPONSE);
+        CASE_RETURN_STRING(WDA_SOFTMAC_HOSTMESG_MSGPROCESSRESULT);
 
-        CASE_RETURN_STRING(SIR_HAL_ADDBA_REQ                  );
-        CASE_RETURN_STRING(SIR_HAL_ADDBA_RSP                  );
-        CASE_RETURN_STRING(SIR_HAL_DELBA_IND                  );
+        CASE_RETURN_STRING(WDA_ADDBA_REQ);
+        CASE_RETURN_STRING(WDA_ADDBA_RSP);
+        CASE_RETURN_STRING(WDA_DELBA_IND);
+        CASE_RETURN_STRING(WDA_DEL_BA_IND);
+        CASE_RETURN_STRING(WDA_MIC_FAILURE_IND);
 
-        CASE_RETURN_STRING(SIR_HAL_DELBA_REQ                  );
-        CASE_RETURN_STRING(SIR_HAL_IBSS_STA_ADD               );
-        CASE_RETURN_STRING(SIR_HAL_TIMER_ADJUST_ADAPTIVE_THRESHOLD_IND   );
-        CASE_RETURN_STRING(SIR_HAL_SET_LINK_STATE             );
-        CASE_RETURN_STRING(SIR_HAL_ENTER_IMPS_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_ENTER_IMPS_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_IMPS_RSP              );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_IMPS_REQ              );
-        CASE_RETURN_STRING(SIR_HAL_SOFTMAC_HOSTMESG_PS_STATUS_IND  );
-        CASE_RETURN_STRING(SIR_HAL_POSTPONE_ENTER_IMPS_RSP    );
-        CASE_RETURN_STRING(SIR_HAL_STA_STAT_REQ               );
-        CASE_RETURN_STRING(SIR_HAL_GLOBAL_STAT_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_AGGR_STAT_REQ              );
-        CASE_RETURN_STRING(SIR_HAL_STA_STAT_RSP               );
-        CASE_RETURN_STRING(SIR_HAL_GLOBAL_STAT_RSP            );
-        CASE_RETURN_STRING(SIR_HAL_AGGR_STAT_RSP              );
-        CASE_RETURN_STRING(SIR_HAL_STAT_SUMM_REQ              );
-        CASE_RETURN_STRING(SIR_HAL_STAT_SUMM_RSP              );
-        CASE_RETURN_STRING(SIR_HAL_REMOVE_BSSKEY_REQ          );
-        CASE_RETURN_STRING(SIR_HAL_REMOVE_BSSKEY_RSP          );
-        CASE_RETURN_STRING(SIR_HAL_REMOVE_STAKEY_REQ          );
-        CASE_RETURN_STRING(SIR_HAL_REMOVE_STAKEY_RSP          );
-        CASE_RETURN_STRING(SIR_HAL_SET_STA_BCASTKEY_REQ       );
-        CASE_RETURN_STRING(SIR_HAL_SET_STA_BCASTKEY_RSP       );
-        CASE_RETURN_STRING(SIR_HAL_REMOVE_STA_BCASTKEY_REQ    );
-        CASE_RETURN_STRING(SIR_HAL_REMOVE_STA_BCASTKEY_RSP    );
+        CASE_RETURN_STRING(WDA_DELBA_REQ);
+        CASE_RETURN_STRING(WDA_IBSS_STA_ADD);
+        CASE_RETURN_STRING(WDA_TIMER_ADJUST_ADAPTIVE_THRESHOLD_IND);
+        CASE_RETURN_STRING(WDA_SET_LINK_STATE);
+        CASE_RETURN_STRING(WDA_SET_LINK_STATE_RSP);
+        CASE_RETURN_STRING(WDA_ENTER_IMPS_REQ);
+        CASE_RETURN_STRING(WDA_ENTER_IMPS_RSP);
+        CASE_RETURN_STRING(WDA_EXIT_IMPS_RSP);
+        CASE_RETURN_STRING(WDA_EXIT_IMPS_REQ);
+        CASE_RETURN_STRING(WDA_SOFTMAC_HOSTMESG_PS_STATUS_IND);
+        CASE_RETURN_STRING(WDA_POSTPONE_ENTER_IMPS_RSP);
+        CASE_RETURN_STRING(WDA_STA_STAT_REQ);
+        CASE_RETURN_STRING(WDA_GLOBAL_STAT_REQ);
+        CASE_RETURN_STRING(WDA_AGGR_STAT_REQ);
+        CASE_RETURN_STRING(WDA_STA_STAT_RSP);
+        CASE_RETURN_STRING(WDA_GLOBAL_STAT_RSP);
+        CASE_RETURN_STRING(WDA_AGGR_STAT_RSP);
+        CASE_RETURN_STRING(WDA_STAT_SUMM_REQ);
+        CASE_RETURN_STRING(WDA_STAT_SUMM_RSP);
+        CASE_RETURN_STRING(WDA_REMOVE_BSSKEY_REQ);
+        CASE_RETURN_STRING(WDA_REMOVE_BSSKEY_RSP);
+        CASE_RETURN_STRING(WDA_REMOVE_STAKEY_REQ);
+        CASE_RETURN_STRING(WDA_REMOVE_STAKEY_RSP);
+        CASE_RETURN_STRING(WDA_SET_STA_BCASTKEY_REQ);
+        CASE_RETURN_STRING(WDA_SET_STA_BCASTKEY_RSP);
+        CASE_RETURN_STRING(WDA_REMOVE_STA_BCASTKEY_REQ);
+        CASE_RETURN_STRING(WDA_REMOVE_STA_BCASTKEY_RSP);
+        CASE_RETURN_STRING(WDA_ADD_TS_RSP);
+        CASE_RETURN_STRING(WDA_DPU_MIC_ERROR);
 
-        CASE_RETURN_STRING(SIR_HAL_DPU_MIC_ERROR              );
+        CASE_RETURN_STRING(WDA_TIMER_BA_ACTIVITY_REQ);
+        CASE_RETURN_STRING(WDA_TIMER_CHIP_MONITOR_TIMEOUT);
+        CASE_RETURN_STRING(WDA_TIMER_TRAFFIC_ACTIVITY_REQ);
+        CASE_RETURN_STRING(WDA_TIMER_ADC_RSSI_STATS);
+#ifdef FEATURE_WLAN_CCX
+        CASE_RETURN_STRING(WDA_TSM_STATS_REQ);
+        CASE_RETURN_STRING(WDA_TSM_STATS_RSP);
+#endif
+        CASE_RETURN_STRING(WDA_UPDATE_UAPSD_IND);
+        CASE_RETURN_STRING(WDA_SET_MIMOPS_REQ);
+        CASE_RETURN_STRING(WDA_SET_MIMOPS_RSP);
+        CASE_RETURN_STRING(WDA_SYS_READY_IND );
+        CASE_RETURN_STRING(WDA_SET_TX_POWER_REQ);
+        CASE_RETURN_STRING(WDA_SET_TX_POWER_RSP);
+        CASE_RETURN_STRING(WDA_GET_TX_POWER_REQ);
+        CASE_RETURN_STRING(WDA_GET_TX_POWER_RSP);
+        CASE_RETURN_STRING(WDA_GET_NOISE_REQ );
+        CASE_RETURN_STRING(WDA_GET_NOISE_RSP);
+        CASE_RETURN_STRING(WDA_SET_TX_PER_TRACKING_REQ);
 
-        CASE_RETURN_STRING(SIR_HAL_TIMER_BA_ACTIVITY_REQ      );
-        CASE_RETURN_STRING(SIR_HAL_TIMER_CHIP_MONITOR_TIMEOUT );
-        CASE_RETURN_STRING(SIR_HAL_TIMER_TRAFFIC_ACTIVITY_REQ );
-        CASE_RETURN_STRING(SIR_HAL_SET_MIMOPS_REQ                      );
-        CASE_RETURN_STRING(SIR_HAL_SET_MIMOPS_RSP                      );
-        CASE_RETURN_STRING(SIR_HAL_SYS_READY_IND                       );
-        CASE_RETURN_STRING(SIR_HAL_SET_TX_POWER_REQ                    );
-        CASE_RETURN_STRING(SIR_HAL_SET_TX_POWER_RSP                    );
-        CASE_RETURN_STRING(SIR_HAL_GET_TX_POWER_REQ                    );
-        CASE_RETURN_STRING(SIR_HAL_GET_TX_POWER_RSP                    );
-        CASE_RETURN_STRING(SIR_HAL_GET_NOISE_REQ                       );
-        CASE_RETURN_STRING(SIR_HAL_GET_NOISE_RSP                       );
+        CASE_RETURN_STRING(WDA_TRANSMISSION_CONTROL_IND);
+        CASE_RETURN_STRING(WDA_INIT_RADAR_IND);
 
-        CASE_RETURN_STRING(SIR_HAL_TRANSMISSION_CONTROL_IND            );
-        CASE_RETURN_STRING(SIR_HAL_INIT_RADAR_IND                      );
+        CASE_RETURN_STRING(WDA_BEACON_PRE_IND );
+        CASE_RETURN_STRING(WDA_ENTER_UAPSD_REQ);
+        CASE_RETURN_STRING(WDA_ENTER_UAPSD_RSP);
+        CASE_RETURN_STRING(WDA_EXIT_UAPSD_REQ  );
+        CASE_RETURN_STRING(WDA_EXIT_UAPSD_RSP );
+        CASE_RETURN_STRING(WDA_LOW_RSSI_IND   );
+        CASE_RETURN_STRING(WDA_BEACON_FILTER_IND);
+        CASE_RETURN_STRING(WDA_WOWL_ADD_BCAST_PTRN);
+        CASE_RETURN_STRING(WDA_WOWL_DEL_BCAST_PTRN);
+        CASE_RETURN_STRING(WDA_WOWL_ENTER_REQ);
+        CASE_RETURN_STRING(WDA_WOWL_ENTER_RSP);
+        CASE_RETURN_STRING(WDA_WOWL_EXIT_REQ );
+        CASE_RETURN_STRING(WDA_WOWL_EXIT_RSP );
+        CASE_RETURN_STRING(WDA_TX_COMPLETE_IND);
+        CASE_RETURN_STRING(WDA_TIMER_RA_COLLECT_AND_ADAPT);
+        CASE_RETURN_STRING(WDA_GET_STATISTICS_REQ);
+        CASE_RETURN_STRING(WDA_GET_STATISTICS_RSP);
+        CASE_RETURN_STRING(WDA_SET_KEY_DONE);
 
-        CASE_RETURN_STRING(SIR_HAL_BEACON_PRE_IND             );
-        CASE_RETURN_STRING(SIR_HAL_ENTER_UAPSD_REQ            );
-        CASE_RETURN_STRING(SIR_HAL_ENTER_UAPSD_RSP            );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_UAPSD_REQ             );
-        CASE_RETURN_STRING(SIR_HAL_EXIT_UAPSD_RSP             );
-        CASE_RETURN_STRING(SIR_HAL_LOW_RSSI_IND               );
-        CASE_RETURN_STRING(SIR_HAL_GET_STATISTICS_RSP         );
-
-#ifdef SUPPORT_BEACON_FILTER
-        CASE_RETURN_STRING(SIR_HAL_BEACON_FILTER_IND   );
+        CASE_RETURN_STRING(WDA_BTC_SET_CFG);
+        CASE_RETURN_STRING(WDA_SIGNAL_BT_EVENT);
+        CASE_RETURN_STRING(WDA_HANDLE_FW_MBOX_RSP);
+        CASE_RETURN_STRING(WDA_UPDATE_PROBE_RSP_TEMPLATE_IND);
+        CASE_RETURN_STRING(WDA_SIGNAL_BTAMP_EVENT);
+#ifdef FEATURE_OEM_DATA_SUPPORT
+        CASE_RETURN_STRING(WDA_START_OEM_DATA_REQ );
+        CASE_RETURN_STRING(WDA_START_OEM_DATA_RSP);
+        CASE_RETURN_STRING(WDA_FINISH_OEM_DATA_REQ);
 #endif //SUPPORT_BEACON_FILTER
-<<<<<<< HEAD
         CASE_RETURN_STRING(WDA_SET_MAX_TX_POWER_REQ);
         CASE_RETURN_STRING(WDA_SET_MAX_TX_POWER_RSP);
         CASE_RETURN_STRING(WDA_SEND_MSG_COMPLETE);
@@ -962,8 +973,6 @@ tANI_U8* macTraceGetHalMsgString( tANI_U16 halMsg )
         CASE_RETURN_STRING(WDA_UPDATE_OP_MODE);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         default:
             return((tANI_U8*) "UNKNOWN" );
             break;
@@ -990,12 +999,9 @@ tANI_U8* macTraceGetLimMsgString( tANI_U16 limMsg )
         CASE_RETURN_STRING(SIR_LIM_DELETE_STA_CONTEXT_IND);
         CASE_RETURN_STRING(SIR_LIM_DEL_BA_IND );
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
         CASE_RETURN_STRING(SIR_LIM_UPDATE_BEACON);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(SIR_LIM_MIN_CHANNEL_TIMEOUT);
         CASE_RETURN_STRING(SIR_LIM_MAX_CHANNEL_TIMEOUT);
         CASE_RETURN_STRING(SIR_LIM_JOIN_FAIL_TIMEOUT );
@@ -1005,9 +1011,6 @@ tANI_U8* macTraceGetLimMsgString( tANI_U16 limMsg )
         CASE_RETURN_STRING(SIR_LIM_REASSOC_FAIL_TIMEOUT);
         CASE_RETURN_STRING(SIR_LIM_HEART_BEAT_TIMEOUT);
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
         CASE_RETURN_STRING(SIR_LIM_PREAUTH_CLNUP_TIMEOUT);
 #endif
@@ -1019,14 +1022,11 @@ tANI_U8* macTraceGetLimMsgString( tANI_U16 limMsg )
         CASE_RETURN_STRING(SIR_LIM_LEARN_INTERVAL_TIMEOUT   );
         CASE_RETURN_STRING(SIR_LIM_LEARN_DURATION_TIMEOUT   );
 #endif
-<<<<<<< HEAD
 =======
         CASE_RETURN_STRING(SIR_LIM_CHANNEL_SCAN_TIMEOUT );
         CASE_RETURN_STRING(SIR_LIM_PROBE_HB_FAILURE_TIMEOUT);
         CASE_RETURN_STRING(SIR_LIM_ADDTS_RSP_TIMEOUT );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(SIR_LIM_LINK_TEST_DURATION_TIMEOUT );
         CASE_RETURN_STRING(SIR_LIM_HASH_MISS_THRES_TIMEOUT  );
         CASE_RETURN_STRING(SIR_LIM_CNF_WAIT_TIMEOUT         );
@@ -1035,7 +1035,6 @@ tANI_U8* macTraceGetLimMsgString( tANI_U16 limMsg )
         CASE_RETURN_STRING(SIR_LIM_CHANNEL_SWITCH_TIMEOUT   );
         CASE_RETURN_STRING(SIR_LIM_QUIET_TIMEOUT            );
         CASE_RETURN_STRING(SIR_LIM_QUIET_BSS_TIMEOUT      );
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         CASE_RETURN_STRING(SIR_LIM_WPS_OVERLAP_TIMEOUT);
@@ -1046,14 +1045,11 @@ tANI_U8* macTraceGetLimMsgString( tANI_U16 limMsg )
         CASE_RETURN_STRING(SIR_LIM_INSERT_SINGLESHOT_NOA_TIMEOUT);
         CASE_RETURN_STRING(SIR_LIM_CONVERT_ACTIVE_CHANNEL_TO_PASSIVE);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WMM_APSD
         CASE_RETURN_STRING(SIR_LIM_WMM_APSD_SP_START_MSG_TYPE );
         CASE_RETURN_STRING(SIR_LIM_WMM_APSD_SP_END_MSG_TYPE );
 #endif
         CASE_RETURN_STRING(SIR_LIM_BEACON_GEN_IND );
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         CASE_RETURN_STRING(SIR_LIM_PERIODIC_PROBE_REQ_TIMEOUT);
@@ -1064,8 +1060,6 @@ tANI_U8* macTraceGetLimMsgString( tANI_U16 limMsg )
         CASE_RETURN_STRING(SIR_LIM_DEAUTH_ACK_TIMEOUT);
         CASE_RETURN_STRING(SIR_LIM_PERIODIC_JOIN_PROBE_REQ_TIMEOUT);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
         CASE_RETURN_STRING(SIR_LIM_MSG_TYPES_END);
 
         default:
@@ -1097,7 +1091,6 @@ tANI_U8* macTraceGetCfgMsgString( tANI_U16 cfgMsg )
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 tANI_U8* macTraceGetInfoLogString( tANI_U16 infoLog )
 {
@@ -1111,8 +1104,6 @@ tANI_U8* macTraceGetInfoLogString( tANI_U16 infoLog )
     }
 }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 tANI_U8* macTraceGetModuleString( tANI_U8 moduleId  )
 {
@@ -1223,17 +1214,12 @@ void macTraceNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 code, tANI_U8 sess
     if(traceCBTable[module] == NULL)
         return;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     
 =======
     pe_AcquireGlobalLock( &pMac->lim );
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-    
->>>>>>> 657b0e9... prima update
     gTraceData.num++;
 
     if (gTraceData.head == INVALID_TRACE_ADDR)
@@ -1265,7 +1251,6 @@ void macTraceNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 code, tANI_U8 sess
     rec->session = session;
     rec->data = data;
 <<<<<<< HEAD
-<<<<<<< HEAD
     rec->time = (tANI_U16)vos_timer_get_system_time();
     rec->module =  module;
     gTraceData.numSinceLastDump ++;
@@ -1282,18 +1267,6 @@ void macTraceNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 code, tANI_U8 sess
     gTraceData.numSinceLastDump ++;
     pe_ReleaseGlobalLock( &pMac->lim );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    rec->time = (tANI_U16)vos_timer_get_system_time();
-    rec->module =  module;
-    gTraceData.numSinceLastDump ++;
-
-    if(gTraceData.numSinceLastDump == gTraceData.dumpCount)
-        {
-             VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR, "Trace Dump last %d traces\n",  gTraceData.dumpCount);
-              macTraceDumpAll(pMac, 0, 0, gTraceData.dumpCount);
-              gTraceData.numSinceLastDump = 0;
-        }
->>>>>>> 657b0e9... prima update
 
 }
 
@@ -1317,17 +1290,12 @@ tANI_U8* macTraceMsgString(tpAniSirGlobal pMac, tANI_U32 msgType)
                 return macTraceGetSmeMsgString((tANI_U16)msgType);
             break;
 <<<<<<< HEAD
-<<<<<<< HEAD
         case SIR_HAL_MODULE_ID:
                 return macTraceGetHalMsgString((tANI_U16)msgType);
 =======
         case SIR_WDA_MODULE_ID:
                 return macTraceGetWdaMsgString((tANI_U16)msgType);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        case SIR_HAL_MODULE_ID:
-                return macTraceGetHalMsgString((tANI_U16)msgType);
->>>>>>> 657b0e9... prima update
         case SIR_CFG_MODULE_ID:
                 return macTraceGetCfgMsgString((tANI_U16)msgType);
         default:
@@ -1353,7 +1321,6 @@ void macTraceDumpAll(tpAniSirGlobal pMac, tANI_U8 code, tANI_U8 session, tANI_U3
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR, 
                             "Total Records: %d, Head: %d, Tail: %d\n", gTraceData.num, gTraceData.head, gTraceData.tail);
 
@@ -1363,11 +1330,6 @@ void macTraceDumpAll(tpAniSirGlobal pMac, tANI_U8 code, tANI_U8 session, tANI_U3
 
     pe_AcquireGlobalLock( &pMac->lim );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_ERROR, 
-                            "Total Records: %d, Head: %d, Tail: %d\n", gTraceData.num, gTraceData.head, gTraceData.tail);
-
->>>>>>> 657b0e9... prima update
     if (gTraceData.head != INVALID_TRACE_ADDR)
     {
 
@@ -1412,7 +1374,6 @@ void macTraceDumpAll(tpAniSirGlobal pMac, tANI_U8 code, tANI_U8 session, tANI_U3
         }
         gTraceData.numSinceLastDump = 0;
 <<<<<<< HEAD
-<<<<<<< HEAD
  
     }
 =======
@@ -1420,10 +1381,6 @@ void macTraceDumpAll(tpAniSirGlobal pMac, tANI_U8 code, tANI_U8 session, tANI_U3
     }
     pe_ReleaseGlobalLock( &pMac->lim );
 >>>>>>> d97af3b... add prima wlan driver
-=======
- 
-    }
->>>>>>> 657b0e9... prima update
 
 }
 

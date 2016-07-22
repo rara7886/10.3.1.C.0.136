@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -67,12 +64,9 @@
 #include "wlan_qct_pal_status.h"
 #include "wlan_qct_pal_packet.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #include "wlan_qct_pal_trace.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #include "wlan_qct_wdi_ds.h"
 #include "wlan_qct_dxe.h"
 
@@ -132,7 +126,6 @@ WPT_STATIC WPT_INLINE void DTI_TRACE ( DTI_TRACE_LEVEL level, ...) { };
    but need to get from correct common def
    This should be identified ASAP */
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WDI_DS_MAX_STA_ID 16
 
 =======
@@ -142,10 +135,6 @@ WPT_STATIC WPT_INLINE void DTI_TRACE ( DTI_TRACE_LEVEL level, ...) { };
 #define WDI_DS_MAX_STA_ID 16
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WDI_DS_MAX_STA_ID 16
-
->>>>>>> 657b0e9... prima update
 /* !!! MAX NUM SUPPORTED BSS is not identified yet, 2 is correct value,
     but need to get from correct common def
    This should be identified ASAP */

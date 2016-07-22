@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -151,12 +148,9 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   wpt_uint8      alignment;
   wpt_uint8      ucTxFlag;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   wpt_uint8      ucProtMgmtFrame;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   wpt_uint8*     pSTAMACAddress;
   wpt_uint8*     pAddr2MACAddress;
   WDI_DS_TxMetaInfoType     *pTxMetadata;
@@ -166,12 +160,9 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   wpt_uint8      ucBdPoolType;
   wpt_uint8      staId;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_Status wdiStatus;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
   // Do Sanity checks
   if (NULL == pContext)
@@ -192,12 +183,9 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   ucUP = pTxMetadata->fUP;
   ucTxFlag = pTxMetadata->txFlags;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   ucProtMgmtFrame = pTxMetadata->fProtMgmtFrame;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   pSTAMACAddress = &(pTxMetadata->fSTAMACAddress[0]);
   pAddr2MACAddress = &(pTxMetadata->addr2MACAddress[0]);
 
@@ -208,7 +196,6 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   switch(ucType)
   {
     case WDI_MAC_DATA_FRAME:
-<<<<<<< HEAD
 <<<<<<< HEAD
        pMemPool = &(pClientData->dataMemPool);
        ucBdPoolType = WDI_DATA_POOL_ID;
@@ -232,25 +219,16 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
        }
     // intentional fall-through to handle eapol packet as mgmt
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       pMemPool = &(pClientData->dataMemPool);
-       ucBdPoolType = WDI_DATA_POOL_ID;
-    break;
->>>>>>> 657b0e9... prima update
     case WDI_MAC_MGMT_FRAME:
        pMemPool = &(pClientData->mgmtMemPool);
        ucBdPoolType = WDI_MGMT_POOL_ID;
     break;
     default:
 <<<<<<< HEAD
-<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;;
 =======
       return WDI_STATUS_E_FAILURE;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      return WDI_STATUS_E_FAILURE;;
->>>>>>> 657b0e9... prima update
   }
 
   // Allocate BD header from pool
@@ -264,7 +242,6 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   WDI_DS_PrepareBDHeader(pFrame, ucSwFrameTXXlation, alignment);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   if(WDI_STATUS_SUCCESS != 
       WDI_FillTxBd( pContext, ucTypeSubtype, pSTAMACAddress, pAddr2MACAddress, 
         &ucUP, 1, pvBDHeader, ucTxFlag /* No ACK */, 0, &staId)){
@@ -277,21 +254,13 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
 
   if(WDI_STATUS_SUCCESS != wdiStatus)
   {
-=======
-  if(WDI_STATUS_SUCCESS != 
-      WDI_FillTxBd( pContext, ucTypeSubtype, pSTAMACAddress, pAddr2MACAddress, 
-        &ucUP, 1, pvBDHeader, ucTxFlag /* No ACK */, 0, &staId)){
->>>>>>> 657b0e9... prima update
     WDI_DS_MemPoolFree(pMemPool, pvBDHeader, physBDHeader);
-    return WDI_STATUS_E_FAILURE;
+    return wdiStatus;
   }
-<<<<<<< HEAD
 
   pTxMetadata->staIdx = staId;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   // Send packet to transport layer.
   if(eWLAN_PAL_STATUS_SUCCESS !=WDTS_TxPacket(pContext, pFrame)){
     WDI_DS_MemPoolFree(pMemPool, pvBDHeader, physBDHeader);
@@ -299,7 +268,6 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   }  
 
   /* resource count only for data packet */
-<<<<<<< HEAD
 <<<<<<< HEAD
   if(WDI_MAC_DATA_FRAME == ucType)
 =======
@@ -315,9 +283,6 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   if(WDI_MAC_DATA_FRAME == ucType && (!pTxMetadata->isEapol))
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  if(WDI_MAC_DATA_FRAME == ucType)
->>>>>>> 657b0e9... prima update
   {
     WDI_DS_MemPoolIncreaseReserveCount(pMemPool, staId);
   }
@@ -590,7 +555,6 @@ WDI_Status WDI_DS_ClearStaIdxPerBssIdx(void *pContext, wpt_uint8 bssIdx, wpt_uin
   return WDI_STATUS_E_FAILURE;
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 /* @brief: WDI_DS_GetTrafficStats
@@ -636,5 +600,3 @@ void WDI_DS_ClearTrafficStats(void)
 }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update

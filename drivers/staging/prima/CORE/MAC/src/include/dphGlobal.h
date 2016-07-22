@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -269,13 +266,9 @@ typedef struct sDphQueueAttr
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
 
 typedef struct sCfgTrafficClass {
 
@@ -339,13 +332,9 @@ typedef struct sCfgTrafficClass {
 } tCfgTrafficClass;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* EATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* EATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
 
 /// STA state node
@@ -410,9 +399,6 @@ typedef struct sDphHashNode
     tANI_U8  fAniCount:1;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 
     tANI_U8   hcfEnabled : 1;
@@ -422,12 +408,9 @@ typedef struct sDphHashNode
     tANI_U8   rsvd:1;
 
 #endif
-<<<<<<< HEAD
 =======
     tANI_U8   rmfEnabled:1;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
     /// Fragmentation size
@@ -656,7 +639,6 @@ typedef struct sDphHashNode
 #ifdef WLAN_FEATURE_11AC
     tANI_U8  vhtSupportedChannelWidthSet;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 
 =======
@@ -667,10 +649,6 @@ typedef struct sDphHashNode
     tANI_U8 vhtLdpcCapable;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
->>>>>>> 657b0e9... prima update
     /* When a station with already an existing dph entry tries to 
 
      * associate again, the old dph entry will be zeroed out except 

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -383,14 +380,10 @@ authRsnFsmProcessEvent(tAuthRsnFsm *fsm, tRsnFsmEvent eventId, void *arg)
     checkTransition(fsm, arg);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     return ANI_OK;;
 =======
     return ANI_OK;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    return ANI_OK;;
->>>>>>> 657b0e9... prima update
 }
 
 
@@ -734,14 +727,10 @@ gotoStatePtkInitNegoTx(tAuthRsnFsm *fsm)
     v_U8_t *rsnWpaIe = NULL;
     int rsnWpaIeLen;
 <<<<<<< HEAD
-<<<<<<< HEAD
     static tAniPacket *keyData = NULL;
 =======
     static tAniPacket *keyData;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    static tAniPacket *keyData = NULL;
->>>>>>> 657b0e9... prima update
     // The longest length...the extra 8 bytes account for RSN key data
     // encapsulation
     v_U8_t paddedGroupKeyEncaps[1024];
@@ -1440,14 +1429,10 @@ static void msg2TimerCallback( void *pv )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "fsm is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -1468,14 +1453,10 @@ static void msg4TimerCallback( void *pv )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "fsm is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return;
     }
@@ -1504,14 +1485,10 @@ static int authRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "param is NULL in %s", __FUNCTION__);
 =======
                      "param is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "param is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return retVal;
     }
@@ -1521,14 +1498,10 @@ static int authRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "ctx is NULL in %s", __FUNCTION__);
 =======
                      "ctx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "ctx is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return retVal;
     }
@@ -1538,14 +1511,10 @@ static int authRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "fsm is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return retVal;
     }
@@ -1584,14 +1553,10 @@ static int authRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "ctx is NULL in %s", __FUNCTION__);
 =======
                      "ctx is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "ctx is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return ANI_ERROR;
     }
@@ -1601,14 +1566,10 @@ static int authRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "fsm is NULL in %s", __FUNCTION__);
 =======
                      "fsm is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "fsm is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
         return ANI_ERROR;
     }

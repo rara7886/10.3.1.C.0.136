@@ -1,8 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -22,7 +19,6 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-<<<<<<< HEAD
 =======
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
@@ -49,8 +45,6 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
@@ -67,14 +61,10 @@
 
 #include "palTypes.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "wniCfgAp.h"
 =======
 #include "wniCfgSta.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "wniCfgAp.h"
->>>>>>> 657b0e9... prima update
 
 #include "cfgApi.h"
 #include "pmmApi.h"
@@ -84,17 +74,11 @@
 #include "schApi.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halCommonApi.h"
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
-#include "halCommonApi.h"
-#endif
->>>>>>> 657b0e9... prima update
 
 #include "limUtils.h"
 #include "limSendMessages.h"
@@ -188,14 +172,10 @@ ap_beacon_process(
                     {
                         VOS_TRACE (VOS_MODULE_ID_PE, VOS_TRACE_LEVEL_INFO, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                             "%s: [INFOLOG]CCX 11g erpPresent=%d useProtection=%d nonErpPresent=%d\n", __func__,
 =======
                             "%s: [INFOLOG]CCX 11g erpPresent=%d useProtection=%d nonErpPresent=%d", __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            "%s: [INFOLOG]CCX 11g erpPresent=%d useProtection=%d nonErpPresent=%d\n", __func__,
->>>>>>> 657b0e9... prima update
                             pBcnStruct->erpPresent,
                             pBcnStruct->erpIEInfo.useProtection,
                             pBcnStruct->erpIEInfo.nonErpPresent);
@@ -223,14 +203,10 @@ ap_beacon_process(
                   {
                       VOS_TRACE (VOS_MODULE_ID_PE, VOS_TRACE_LEVEL_INFO, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                           "%s: [INFOLOG]CCX 11g erpPresent=%d useProtection=%d nonErpPresent=%d\n", __func__,
 =======
                           "%s: [INFOLOG]CCX 11g erpPresent=%d useProtection=%d nonErpPresent=%d", __func__,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          "%s: [INFOLOG]CCX 11g erpPresent=%d useProtection=%d nonErpPresent=%d\n", __func__,
->>>>>>> 657b0e9... prima update
                           pBcnStruct->erpPresent,
                           pBcnStruct->erpIEInfo.useProtection,
                           pBcnStruct->erpIEInfo.nonErpPresent);
@@ -245,32 +221,22 @@ ap_beacon_process(
                     pBcnStruct->erpIEInfo.nonErpPresent) && !(pBcnStruct->HTInfo.present))
               {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
                     limUpdateOverlapStaParam(pMac, pMh->bssId, &(psessionEntry->gLimOverlap11gParams));
 
                   if (psessionEntry->gLimOverlap11gParams.numSta && 
                       !psessionEntry->gLimOverlap11gParams.protectionEnabled)
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #else
                    limUpdateOverlapStaParam(pMac, pMh->bssId, &(pMac->lim.gLimOverlap11gParams));
 
                   if (pMac->lim.gLimOverlap11gParams.numSta &&
                       !pMac->lim.gLimOverlap11gParams.protectionEnabled)
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                   {
                       limEnableHtProtectionFrom11g(pMac, true, true, pBeaconParams,psessionEntry);
                   }
@@ -293,9 +259,6 @@ ap_beacon_process(
                           (eSIR_HT_OP_MODE_OVERLAP_LEGACY != pMac->lim.gHTOperMode))
                       {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
                           limUpdateOverlapStaParam(pMac, pMh->bssId, &(psessionEntry->gLimOverlap11gParams));
                           if (psessionEntry->gLimOverlap11gParams.numSta &&
@@ -306,14 +269,11 @@ ap_beacon_process(
                           if (pMac->lim.gLimOverlap11gParams.numSta &&
                               !pMac->lim.gLimOverlap11gParams.protectionEnabled)
 #endif
-<<<<<<< HEAD
 =======
                           limUpdateOverlapStaParam(pMac, pMh->bssId, &(psessionEntry->gLimOverlap11gParams));
                           if (psessionEntry->gLimOverlap11gParams.numSta &&
                               !psessionEntry->gLimOverlap11gParams.protectionEnabled)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                           {
                               limEnableHtProtectionFrom11g(pMac, true, true, pBeaconParams,psessionEntry);
                           }
@@ -322,9 +282,6 @@ ap_beacon_process(
                   else if(eSIR_HT_OP_MODE_NO_LEGACY_20MHZ_HT == pBcnStruct->HTInfo.opMode)
                   {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
                       limUpdateOverlapStaParam(pMac, pMh->bssId, &(psessionEntry->gLimOverlapHt20Params));
                       if (psessionEntry->gLimOverlapHt20Params.numSta &&
@@ -335,14 +292,11 @@ ap_beacon_process(
                       if (pMac->lim.gLimOverlapHt20Params.numSta &&
                           !pMac->lim.gLimOverlapHt20Params.protectionEnabled)
 #endif
-<<<<<<< HEAD
 =======
                       limUpdateOverlapStaParam(pMac, pMh->bssId, &(psessionEntry->gLimOverlapHt20Params));
                       if (psessionEntry->gLimOverlapHt20Params.numSta &&
                           !psessionEntry->gLimOverlapHt20Params.protectionEnabled)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                       {
                           limEnableHT20Protection(pMac, true, true, pBeaconParams,psessionEntry);
                       }
@@ -460,7 +414,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
     tANI_U8 sendProbeReq = FALSE;
     tpDphHashNode pStaDs = NULL;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #ifdef WLAN_FEATURE_11AC
@@ -473,9 +426,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
      tPowerdBm regMax = 0,maxTxPower = 0;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
     beaconParams.paramChangeBitmap = 0;
 
@@ -492,7 +442,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         *  -- BTAMP_STA receving beacons from BTAMP_AP
         */
 <<<<<<< HEAD
-<<<<<<< HEAD
         
     
         //Always save the beacon into LIM's cached scan results
@@ -503,13 +452,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         limCheckAndAddBssDescription(pMac, pBeacon, pRxPacketInfo, eANI_BOOLEAN_FALSE, eANI_BOOLEAN_FALSE);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
-    
-        //Always save the beacon into LIM's cached scan results
-        limCheckAndAddBssDescription(pMac, pBeacon, pRxPacketInfo, eANI_BOOLEAN_FALSE, eANI_BOOLEAN_FALSE);
-        
->>>>>>> 657b0e9... prima update
         /**
                * This is the Beacon received from the AP  we're currently associated with. Check
                * if there are any changes in AP's capabilities 
@@ -517,17 +459,12 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         if((tANI_U8) pBeacon->channelNumber != psessionEntry->currentOperChannel)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("Channel Change from %d --> %d  - "
                                          "Ignoring beacon!\n"), 
 =======
             PELOGE(schLog(pMac, LOGE, FL("Channel Change from %d --> %d  - "
                                          "Ignoring beacon!"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOGE(limLog(pMac, LOGE, FL("Channel Change from %d --> %d  - "
-                                         "Ignoring beacon!\n"), 
->>>>>>> 657b0e9... prima update
                           psessionEntry->currentOperChannel, pBeacon->channelNumber);)
            goto fail;
         }
@@ -536,15 +473,11 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
             goto fail;
         beaconParams.bssIdx = bssIdx;
 <<<<<<< HEAD
-<<<<<<< HEAD
         palCopyMemory( pMac->hHdd, ( tANI_U8* )&psessionEntry->lastBeaconTimeStamp, ( tANI_U8* )pBeacon->timeStamp, sizeof(tANI_U64) );
 =======
         vos_mem_copy(( tANI_U8* )&psessionEntry->lastBeaconTimeStamp,
                      ( tANI_U8* )pBeacon->timeStamp, sizeof(tANI_U64));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        palCopyMemory( pMac->hHdd, ( tANI_U8* )&psessionEntry->lastBeaconTimeStamp, ( tANI_U8* )pBeacon->timeStamp, sizeof(tANI_U64) );
->>>>>>> 657b0e9... prima update
         psessionEntry->lastBeaconDtimCount = pBeacon->tim.dtimCount;
         psessionEntry->lastBeaconDtimPeriod= pBeacon->tim.dtimPeriod;
         psessionEntry->currentBssBeaconCnt++;
@@ -559,14 +492,10 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         if (bi != pBeacon->beaconInterval)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
            PELOG1(schLog(pMac, LOG1, FL("Beacon interval changed from %d to %d\n"),
 =======
            PELOG1(schLog(pMac, LOG1, FL("Beacon interval changed from %d to %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-           PELOG1(schLog(pMac, LOG1, FL("Beacon interval changed from %d to %d\n"),
->>>>>>> 657b0e9... prima update
                    pBeacon->beaconInterval, bi);)
 
             bi = pBeacon->beaconInterval;
@@ -589,45 +518,31 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
->>>>>>> 657b0e9... prima update
         if(pMac->lim.gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE)
 
         limDecideStaProtection(pMac, pBeacon, &beaconParams, psessionEntry);
         if (pBeacon->erpPresent)
         {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
             if (pBeacon->erpIEInfo.barkerPreambleMode)
                 limEnableShortPreamble(pMac, false, &beaconParams, psessionEntry);
             else
                 limEnableShortPreamble(pMac, true, &beaconParams, psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #else
             if (pBeacon->erpIEInfo.barkerPreambleMode)
                 limEnableShortPreamble(pMac, false, &beaconParams);
             else
                 limEnableShortPreamble(pMac, true, &beaconParams);
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
           }
         limUpdateShortSlot(pMac, pBeacon, &beaconParams,psessionEntry);
 
@@ -639,14 +554,10 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
             {
                 if (schBeaconEdcaProcess(pMac, &pBeacon->edcaParams, psessionEntry) != eSIR_SUCCESS)
 <<<<<<< HEAD
-<<<<<<< HEAD
                     PELOGE(schLog(pMac, LOGE, FL("EDCA parameter processing error\n"));)
 =======
                     PELOGE(schLog(pMac, LOGE, FL("EDCA parameter processing error"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOGE(schLog(pMac, LOGE, FL("EDCA parameter processing error\n"));)
->>>>>>> 657b0e9... prima update
                 else if(pStaDs != NULL)
                 {
                     // If needed, downgrade the EDCA parameters
@@ -659,14 +570,10 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
                 }
                 else
 <<<<<<< HEAD
-<<<<<<< HEAD
                     PELOGE(limLog(pMac, LOGE, FL("Self Entry missing in Hash Table\n"));)
 =======
                     PELOGE(schLog(pMac, LOGE, FL("Self Entry missing in Hash Table"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    PELOGE(limLog(pMac, LOGE, FL("Self Entry missing in Hash Table\n"));)
->>>>>>> 657b0e9... prima update
             }
         }
         else if( (pBeacon->qosCapabilityPresent && psessionEntry->limQosEnabled) &&
@@ -680,7 +587,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
     }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
     if ( (psessionEntry->limSystemRole == eLIM_STA_ROLE) ||(psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE) ||
           (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE) )
@@ -701,23 +607,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
           (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE) )
     {
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
-    if ( (psessionEntry->limSystemRole == eLIM_STA_ROLE) ||(psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE) ||
-          (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE) )
-    {
-        if(pBeacon->quietIEPresent)
-        {
-            limUpdateQuietIEFromBeacon(pMac, &(pBeacon->quietIE), psessionEntry);
-        }
-        else if ((psessionEntry->gLimSpecMgmt.quietState == eLIM_QUIET_BEGIN) ||
-             (psessionEntry->gLimSpecMgmt.quietState == eLIM_QUIET_RUNNING))
-        {
-            PELOG1(limLog(pMac, LOG1, FL("Received a beacon without Quiet IE\n"));)
-            limCancelDot11hQuiet(pMac, psessionEntry);
-        }
-
->>>>>>> 657b0e9... prima update
         /* Channel Switch information element updated */
         if(pBeacon->channelSwitchPresent || 
             pBeacon->propIEinfo.propChannelSwitchPresent)
@@ -728,7 +617,6 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         {
             limCancelDot11hChannelSwitch(pMac, psessionEntry);
 <<<<<<< HEAD
-<<<<<<< HEAD
         }   
     }
 #endif
@@ -784,66 +672,171 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
         }
 =======
         }
-=======
-        }   
->>>>>>> 657b0e9... prima update
+    }
+
+#ifdef WLAN_FEATURE_11AC
+    if ((psessionEntry->limSystemRole == eLIM_STA_ROLE) ||
+        (psessionEntry->limSystemRole == eLIM_BT_AMP_STA_ROLE) ||
+        (psessionEntry->limSystemRole == eLIM_STA_IN_IBSS_ROLE))
+    {
+       // check for VHT capability
+       pStaDs = dphLookupHashEntry(pMac, pMh->sa, &aid,
+             &psessionEntry->dph.dphHashTable);
+       if (NULL != pStaDs)
+       {
+          if (psessionEntry->vhtCapability && pBeacon->OperatingMode.present )
+          {
+             operMode = pStaDs->vhtSupportedChannelWidthSet ?
+                eHT_CHANNEL_WIDTH_80MHZ :
+                pStaDs->htSupportedChannelWidthSet ?
+                eHT_CHANNEL_WIDTH_40MHZ: eHT_CHANNEL_WIDTH_20MHZ;
+             if (operMode != pBeacon->OperatingMode.chanWidth)
+             {
+                PELOG1(schLog(pMac, LOG1,
+                         FL(" received OpMode Chanwidth %d, staIdx = %d"),
+                         pBeacon->OperatingMode.chanWidth,
+                         pStaDs->staIndex);)
+                   PELOG1(schLog(pMac, LOG1, FL(" MAC - %0x:%0x:%0x:%0x:%0x:%0x"),
+                            pMh->sa[0],
+                            pMh->sa[1],
+                            pMh->sa[2],
+                            pMh->sa[3],
+                            pMh->sa[4],
+                            pMh->sa[5]);)
+
+                   if (pBeacon->OperatingMode.chanWidth == eHT_CHANNEL_WIDTH_80MHZ)
+                   {
+                      PELOG1(schLog(pMac, LOG1,
+                               FL("Updating the CH Width to 80MHz"));)
+                         pStaDs->vhtSupportedChannelWidthSet =
+                         WNI_CFG_VHT_CHANNEL_WIDTH_80MHZ;
+                      pStaDs->htSupportedChannelWidthSet = eHT_CHANNEL_WIDTH_40MHZ;
+                   }
+                   else if (pBeacon->OperatingMode.chanWidth == eHT_CHANNEL_WIDTH_40MHZ)
+                   {
+                      PELOG1(schLog(pMac, LOG1,
+                               FL("Updating the CH Width to 40MHz"));)
+                         pStaDs->vhtSupportedChannelWidthSet =
+                         WNI_CFG_VHT_CHANNEL_WIDTH_20_40MHZ;
+                      pStaDs->htSupportedChannelWidthSet = eHT_CHANNEL_WIDTH_40MHZ;
+                   }
+                   else if (pBeacon->OperatingMode.chanWidth ==
+                         eHT_CHANNEL_WIDTH_20MHZ)
+                   {
+                      PELOG1(schLog(pMac, LOG1,
+                               FL("Updating the CH Width to 20MHz"));)
+                         pStaDs->vhtSupportedChannelWidthSet =
+                         WNI_CFG_VHT_CHANNEL_WIDTH_20_40MHZ;
+                      pStaDs->htSupportedChannelWidthSet = eHT_CHANNEL_WIDTH_20MHZ;
+                   }
+                limCheckVHTOpModeChange(pMac, psessionEntry,
+                      pBeacon->OperatingMode.chanWidth,
+                      pStaDs->staIndex);
+             }
+          }
+          else if (psessionEntry->vhtCapability && pBeacon->VHTOperation.present)
+          {
+             operMode = pStaDs->vhtSupportedChannelWidthSet;
+             if (operMode != pBeacon->VHTOperation.chanWidth)
+             {
+                PELOG1(schLog(pMac, LOG1,
+                         FL(" received VHTOP CHWidth %d staIdx = %d"),
+                         pBeacon->VHTOperation.chanWidth,
+                         pStaDs->staIndex);)
+                   PELOG1(schLog(pMac, LOG1, FL(" MAC - %0x:%0x:%0x:%0x:%0x:%0x"),
+                            pMh->sa[0],
+                            pMh->sa[1],
+                            pMh->sa[2],
+                            pMh->sa[3],
+                            pMh->sa[4],
+                            pMh->sa[5]);)
+
+                   if (pBeacon->VHTOperation.chanWidth ==
+                         WNI_CFG_VHT_CHANNEL_WIDTH_80MHZ)
+                   {
+                      PELOG1(schLog(pMac, LOG1,
+                               FL("Updating the CH Width to 80MHz"));)
+                         pStaDs->vhtSupportedChannelWidthSet =
+                         WNI_CFG_VHT_CHANNEL_WIDTH_80MHZ;
+                      pStaDs->htSupportedChannelWidthSet = eHT_CHANNEL_WIDTH_40MHZ;
+                      chWidth = eHT_CHANNEL_WIDTH_80MHZ;
+                   }
+                   else if (pBeacon->VHTOperation.chanWidth ==
+                         WNI_CFG_VHT_CHANNEL_WIDTH_20_40MHZ)
+                   {
+                      pStaDs->vhtSupportedChannelWidthSet =
+                         WNI_CFG_VHT_CHANNEL_WIDTH_20_40MHZ;
+                      if (pBeacon->HTCaps.supportedChannelWidthSet)
+                      {
+                         PELOG1(schLog(pMac, LOG1,
+                                  FL("Updating the CH Width to 40MHz"));)
+                            pStaDs->htSupportedChannelWidthSet =
+                            eHT_CHANNEL_WIDTH_40MHZ;
+                         chWidth = eHT_CHANNEL_WIDTH_40MHZ;
+                      }
+                      else
+                      {
+                         PELOG1(schLog(pMac, LOG1,
+                                  FL("Updating the CH Width to 20MHz"));)
+                            pStaDs->htSupportedChannelWidthSet =
+                            eHT_CHANNEL_WIDTH_20MHZ;
+                         chWidth = eHT_CHANNEL_WIDTH_20MHZ;
+                      }
+                   }
+                limCheckVHTOpModeChange(pMac, psessionEntry,
+                      chWidth, pStaDs->staIndex);
+             }
+          }
+       }
     }
 #endif
 
+#if defined (FEATURE_WLAN_CCX) || defined (FEATURE_WLAN_VOWIFI)
+    /* Obtain the Max Tx power for the current regulatory  */
+    regMax = cfgGetRegulatoryMaxTransmitPower( pMac, psessionEntry->currentOperChannel );
+#endif
+
+#if defined FEATURE_WLAN_VOWIFI
+    {
+        tPowerdBm  localRRMConstraint = 0;
+        if ( pMac->rrm.rrmPEContext.rrmEnable && pBeacon->powerConstraintPresent )
+        {
+            localRRMConstraint = pBeacon->localPowerConstraint.localPowerConstraints;
+        }
+        else
+        {
+            localRRMConstraint = 0;
+        }
+        maxTxPower = VOS_MIN(regMax,(regMax - localRRMConstraint));
+    }
+#elif defined FEATURE_WLAN_CCX
+    maxTxPower = regMax;
+#endif
+
 #if defined FEATURE_WLAN_CCX
-        if( psessionEntry->isCCXconnection )
+    if( psessionEntry->isCCXconnection )
+    {
+        tPowerdBm  localCCXConstraint = 0;
+        if (pBeacon->ccxTxPwr.present)
         {
-           tPowerdBm  localConstraint = 0, regMax = 0, maxTxPower = 0;
-           if (pBeacon->ccxTxPwr.present)
-           {
-              localConstraint = pBeacon->ccxTxPwr.power_limit;
-              regMax = cfgGetRegulatoryMaxTransmitPower( pMac, psessionEntry->currentOperChannel ); 
-              maxTxPower = limGetMaxTxPower(regMax, localConstraint, pMac->roam.configParam.nTxPowerCap);
+            localCCXConstraint = pBeacon->ccxTxPwr.power_limit;
+            maxTxPower = limGetMaxTxPower(maxTxPower, localCCXConstraint, pMac->roam.configParam.nTxPowerCap);
+        }
+        schLog( pMac, LOG1, "RegMax = %d, localCcxCons = %d, MaxTx = %d", regMax, localCCXConstraint, maxTxPower );
+    }
+#endif
 
-              //If maxTxPower is increased or decreased
-             if( maxTxPower != psessionEntry->maxTxPower )
-             {
-                limLog( pMac, LOG1, "RegMax = %d, lpc = %d, MaxTx = %d", regMax, localConstraint, maxTxPower );
-                limLog( pMac, LOG1, "Local power constraint change..updating new maxTx power to HAL");
-                if( limSendSetMaxTxPowerReq ( pMac, maxTxPower, psessionEntry ) == eSIR_SUCCESS )
+#if defined (FEATURE_WLAN_CCX) || defined (FEATURE_WLAN_VOWIFI)
+    {
+        //If maxTxPower is increased or decreased
+        if( maxTxPower != psessionEntry->maxTxPower )
+        {
+             schLog( pMac, LOG1, "Local power constraint change..updating new maxTx power %d to HAL",maxTxPower);
+             if( limSendSetMaxTxPowerReq ( pMac, maxTxPower, psessionEntry ) == eSIR_SUCCESS )
                    psessionEntry->maxTxPower = maxTxPower;
-             }
-           }
         }
-#endif
-
-
-#if defined WLAN_FEATURE_VOWIFI
-        if( pMac->rrm.rrmPEContext.rrmEnable )
-        {
-           tPowerdBm  localConstraint = 0, regMax = 0, maxTxPower = 0;
-           if (pBeacon->powerConstraintPresent && pMac->rrm.rrmPEContext.rrmEnable)
-           {
-              localConstraint = pBeacon->localPowerConstraint.localPowerConstraints;
-           }
-           else
-           {
-              localConstraint = 0;
-           }
-           regMax = cfgGetRegulatoryMaxTransmitPower( pMac, psessionEntry->currentOperChannel ); 
-           maxTxPower = VOS_MIN( regMax , (regMax - localConstraint) );
-           //If maxTxPower is increased or decreased
-           if( maxTxPower != psessionEntry->maxTxPower )
-           {
-#if defined WLAN_VOWIFI_DEBUG
-              limLog( pMac, LOGE, "Regulatory max = %d, local power constraint = %d, max tx = %d", regMax, localConstraint, maxTxPower );
-              limLog( pMac, LOGE, "Local power constraint change..updating mew maxTx power to HAL");
-#endif
-              if( rrmSendSetMaxTxPowerReq ( pMac, maxTxPower, psessionEntry ) == eSIR_SUCCESS )
-                 psessionEntry->maxTxPower = maxTxPower;
-
-           }
-        }
-<<<<<<< HEAD
     }
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 
     // Indicate to LIM that Beacon is received
@@ -862,17 +855,12 @@ static void __schBeaconProcessForSession( tpAniSirGlobal      pMac,
     if(beaconParams.paramChangeBitmap)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGW(schLog(pMac, LOGW, FL("Beacon for session[%d] got changed. \n"), psessionEntry->peSessionId);)
         PELOGW(schLog(pMac, LOGW, FL("sending beacon param change bitmap: 0x%x \n"), beaconParams.paramChangeBitmap);)
 =======
         PELOGW(schLog(pMac, LOGW, FL("Beacon for session[%d] got changed. "), psessionEntry->peSessionId);)
         PELOGW(schLog(pMac, LOGW, FL("sending beacon param change bitmap: 0x%x "), beaconParams.paramChangeBitmap);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGW(schLog(pMac, LOGW, FL("Beacon for session[%d] got changed. \n"), psessionEntry->peSessionId);)
-        PELOGW(schLog(pMac, LOGW, FL("sending beacon param change bitmap: 0x%x \n"), beaconParams.paramChangeBitmap);)
->>>>>>> 657b0e9... prima update
         limSendBeaconParams(pMac, &beaconParams, psessionEntry);
     }
 
@@ -912,14 +900,10 @@ void schBeaconProcess(tpAniSirGlobal pMac, tANI_U8* pRxPacketInfo, tpPESession p
     if (sirConvertBeaconFrame2Struct(pMac, (tANI_U8 *) pRxPacketInfo, &beaconStruct)!= eSIR_SUCCESS)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOGE(schLog(pMac, LOGE, FL("beacon parsing failed\n"));)
 =======
         PELOGE(schLog(pMac, LOGE, FL("beacon parsing failed"));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(schLog(pMac, LOGE, FL("beacon parsing failed\n"));)
->>>>>>> 657b0e9... prima update
         pMac->sch.gSchBcnParseErrorCnt++;
         return;
     }
@@ -942,7 +926,6 @@ void schBeaconProcess(tpAniSirGlobal pMac, tANI_U8* pRxPacketInfo, tpPESession p
     */
     
 <<<<<<< HEAD
-<<<<<<< HEAD
     if((pAPSession = limIsApSessionActive(pMac)) != NULL)
     {
         beaconParams.bssIdx = pAPSession->bssIdx;
@@ -957,20 +940,10 @@ void schBeaconProcess(tpAniSirGlobal pMac, tANI_U8* pRxPacketInfo, tpPESession p
           && (!(WDA_GET_OFFLOADSCANLEARN(pRxPacketInfo)))
 #endif
     )
-=======
-    if((pAPSession = limIsApSessionActive(pMac)) != NULL)
->>>>>>> 657b0e9... prima update
     {
         beaconParams.bssIdx = pAPSession->bssIdx;
-#ifdef WLAN_SOFTAP_FEATURE
         if (pAPSession->gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE)
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#else
-        if (pMac->lim.gLimProtectionControl != WNI_CFG_FORCE_POLICY_PROTECTION_DISABLE)
-#endif
->>>>>>> 657b0e9... prima update
             ap_beacon_process(pMac,  pRxPacketInfo, &beaconStruct, &beaconParams, pAPSession);
 
         if (beaconParams.paramChangeBitmap)
@@ -978,17 +951,12 @@ void schBeaconProcess(tpAniSirGlobal pMac, tANI_U8* pRxPacketInfo, tpPESession p
             //Update the beacons and apply the new settings to HAL
             schSetFixedBeaconFields(pMac, pAPSession);
 <<<<<<< HEAD
-<<<<<<< HEAD
             PELOG1(schLog(pMac, LOG1, FL("Beacon for PE session[%d] got changed.  \n"), pAPSession->peSessionId);)
             PELOG1(schLog(pMac, LOG1, FL("sending beacon param change bitmap: 0x%x \n"), beaconParams.paramChangeBitmap);)
 =======
             PELOG1(schLog(pMac, LOG1, FL("Beacon for PE session[%d] got changed.  "), pAPSession->peSessionId);)
             PELOG1(schLog(pMac, LOG1, FL("sending beacon param change bitmap: 0x%x "), beaconParams.paramChangeBitmap);)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            PELOG1(schLog(pMac, LOG1, FL("Beacon for PE session[%d] got changed.  \n"), pAPSession->peSessionId);)
-            PELOG1(schLog(pMac, LOG1, FL("sending beacon param change bitmap: 0x%x \n"), beaconParams.paramChangeBitmap);)
->>>>>>> 657b0e9... prima update
             limSendBeaconParams(pMac, &beaconParams, pAPSession);
         }
     }
@@ -1036,14 +1004,10 @@ tSirRetStatus schBeaconEdcaProcess(tpAniSirGlobal pMac, tSirMacEdcaParamSetIE *e
 #endif //FEATURE_WLAN_DIAG_SUPPORT 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOG1(schLog(pMac, LOG1, FL("Updating parameter set count: Old %d ---> new %d\n"),
 =======
     PELOG1(schLog(pMac, LOG1, FL("Updating parameter set count: Old %d ---> new %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOG1(schLog(pMac, LOG1, FL("Updating parameter set count: Old %d ---> new %d\n"),
->>>>>>> 657b0e9... prima update
            psessionEntry->gLimEdcaParamSetCount, edca->qosInfo.count);)
 
     psessionEntry->gLimEdcaParamSetCount = edca->qosInfo.count;
@@ -1079,14 +1043,10 @@ tSirRetStatus schBeaconEdcaProcess(tpAniSirGlobal pMac, tSirMacEdcaParamSetIE *e
     for(i=0; i<MAX_NUM_AC; i++)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(schLog(pMac, LOG1, FL("AC[%d]:  AIFSN: %d, ACM %d, CWmin %d, CWmax %d, TxOp %d\n"),
 =======
         PELOG1(schLog(pMac, LOG1, FL("AC[%d]:  AIFSN: %d, ACM %d, CWmin %d, CWmax %d, TxOp %d"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(schLog(pMac, LOG1, FL("AC[%d]:  AIFSN: %d, ACM %d, CWmin %d, CWmax %d, TxOp %d\n"),
->>>>>>> 657b0e9... prima update
             i,
             psessionEntry->gLimEdcaParams[i].aci.aifsn, 
             psessionEntry->gLimEdcaParams[i].aci.acm,

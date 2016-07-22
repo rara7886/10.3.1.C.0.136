@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -56,14 +53,10 @@
  * Date           Modified by    Modification Information
  * --------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
  * 
 =======
  *
 >>>>>>> d97af3b... add prima wlan driver
-=======
- * 
->>>>>>> 657b0e9... prima update
  */
 #ifndef __MAC_PROP_EXTS_H
 #define __MAC_PROP_EXTS_H
@@ -80,20 +73,14 @@
 #define SIR_MAC_PROP_EXT_RATES_TYPE     0
 #define SIR_MAC_PROP_AP_NAME_TYPE       1
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
 #define SIR_MAC_PROP_HCF_TYPE           2
 #define SIR_MAC_PROP_WDS_TYPE           3
 #define SIR_MAC_PROP_BP_IND_TYPE        4
 #define SIR_MAC_PROP_NEIGHBOR_BSS_TYPE  5
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define SIR_MAC_PROP_LOAD_INFO_TYPE     6
 #define SIR_MAC_PROP_ASSOC_TYPE         7
 #define SIR_MAC_PROP_LOAD_BALANCE_TYPE  8
@@ -143,7 +130,6 @@
 // macro to set/get a capability bit, bitname is one of HCF/11EQOS/etc...
 #define PROP_CAPABILITY_SET(bitname, value) \
 <<<<<<< HEAD
-<<<<<<< HEAD
         (value) = (value) | ((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname))
 
 #define PROP_CAPABILITY_RESET(bitname, value) \
@@ -154,12 +140,6 @@
 #define PROP_CAPABILITY_RESET(bitname, value) \
   ((value) = (value) & ~((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        (value) = (value) | ((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname))
-
-#define PROP_CAPABILITY_RESET(bitname, value) \
-        (value) = (value) & ~((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname))
->>>>>>> 657b0e9... prima update
         
 #define PROP_CAPABILITY_GET(bitname, value) \
         (((value) >> SIR_MAC_PROP_CAPABILITY_ ## bitname) & 1)
@@ -172,13 +152,9 @@
           (dot11Mode == WNI_CFG_DOT11_MODE_ALL)) ? TRUE: FALSE)
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 #define IS_DOT11_MODE_HT(dot11Mode) \
         (((dot11Mode == WNI_CFG_DOT11_MODE_11N) || \
           (dot11Mode ==  WNI_CFG_DOT11_MODE_11N_ONLY) || \
@@ -187,9 +163,6 @@
           (dot11Mode ==  WNI_CFG_DOT11_MODE_TAURUS) || \
           (dot11Mode ==  WNI_CFG_DOT11_MODE_ALL)) ? TRUE: FALSE)
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #else
 #define IS_DOT11_MODE_HT(dot11Mode) \
         (((dot11Mode == WNI_CFG_DOT11_MODE_11N) || \
@@ -197,11 +170,8 @@
           (dot11Mode ==  WNI_CFG_DOT11_MODE_11AC) || \
           (dot11Mode ==  WNI_CFG_DOT11_MODE_ALL)) ? TRUE: FALSE)
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_11AC
 #define IS_DOT11_MODE_VHT(dot11Mode) \
@@ -387,9 +357,6 @@ typedef struct sSirPropIEStruct
     tANI_U8                    rsvd:5;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
     tANI_U8                    hcfPresent:1;
     tANI_U8                    wdsPresent:1;
@@ -400,11 +367,8 @@ typedef struct sSirPropIEStruct
     tANI_U8                    assocTypePresent:1;
     tANI_U8                    rsvd1:1;
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     tSirMacPropRateSet    propRates;
     tAniApName            apName;           // used in beacon/probe only
@@ -417,9 +381,6 @@ typedef struct sSirPropIEStruct
     tANI_U8               triggerStaScanEnable;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
     tANI_U8                    hcfEnabled;
     // used in beacon/probe response only
@@ -434,11 +395,8 @@ typedef struct sSirPropIEStruct
     tANI_U8                    assocType;
     tpSirNeighborBssInfo  pBssList;
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 } tSirPropIEStruct, *tpSirPropIEStruct;
 

@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -142,14 +139,10 @@ of NV fragment is nt possbile.The next multiple of 1Kb is 3K */
 
 /* Macro to find the total number fragments of the NV Image*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define TOTALFRAGMENTS(x) ((x%FRAGMENT_SIZE)== 0) ? (x/FRAGMENT_SIZE):((x/FRAGMENT_SIZE)+1)
 =======
 #define TOTALFRAGMENTS(x) (((x % FRAGMENT_SIZE) == 0) ? (x / FRAGMENT_SIZE):((x / FRAGMENT_SIZE) + 1))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define TOTALFRAGMENTS(x) ((x%FRAGMENT_SIZE)== 0) ? (x/FRAGMENT_SIZE):((x/FRAGMENT_SIZE)+1)
->>>>>>> 657b0e9... prima update
 
 /* Beacon Filter Length*/
 #define WDI_BEACON_FILTER_LEN 70
@@ -171,7 +164,6 @@ of NV fragment is nt possbile.The next multiple of 1Kb is 3K */
 #define WDI_RESPONSE_TIMEOUT   10000
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WDI_SET_POWER_STATE_TIMEOUT  10000 /* in msec a very high upper limit */
 
 =======
@@ -186,10 +178,6 @@ of NV fragment is nt possbile.The next multiple of 1Kb is 3K */
 #define MAXNUM_PERIODIC_TX_PTRNS 6
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WDI_SET_POWER_STATE_TIMEOUT  10000 /* in msec a very high upper limit */
-
->>>>>>> 657b0e9... prima update
 /*============================================================================
  *     GENERIC STRUCTURES 
   
@@ -415,7 +403,6 @@ typedef enum
   /* Tx PER Tracking Indication */
   WDI_TX_PER_HIT_IND,
 <<<<<<< HEAD
-<<<<<<< HEAD
   
 =======
 
@@ -435,9 +422,6 @@ typedef enum
   WDI_PERIODIC_TX_PTRN_FW_IND,
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
->>>>>>> 657b0e9... prima update
   WDI_MAX_IND
 }WDI_LowLevelIndEnumType;
 
@@ -461,15 +445,11 @@ typedef struct
    wpt_uint32             bRssiThres3NegCross : 1;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    wpt_uint32             bReserved           : 26;
 =======
    wpt_uint32             avgRssi             : 8;
    wpt_uint32             bReserved           : 18;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   wpt_uint32             bReserved           : 26;
->>>>>>> 657b0e9... prima update
 
 }WDI_LowRSSIThIndType;
 
@@ -552,7 +532,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_DHCPInd
 ---------------------------------------------------------------------------*/
@@ -566,8 +545,6 @@ typedef struct
 /*---------------------------------------------------------------------------
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_MacSSid
 ---------------------------------------------------------------------------*/
 typedef struct 
@@ -584,7 +561,6 @@ typedef struct
 {  
   /* Network that was found with the highest RSSI*/
 <<<<<<< HEAD
-<<<<<<< HEAD
   WDI_MacSSid ssId;
   /* Indicates the RSSI */
   wpt_uint8  rssi;
@@ -598,23 +574,17 @@ typedef struct
 
 =======
   WDI_MacSSid   ssId;
-=======
-  WDI_MacSSid ssId;
->>>>>>> 657b0e9... prima update
   /* Indicates the RSSI */
-  wpt_uint8  rssi;
+  wpt_uint8     rssi;
+  wpt_uint16    frameLength;
+  wpt_uint8     *pData;
 } WDI_PrefNetworkFoundInd;
 #endif // FEATURE_WLAN_SCAN_PNO
 
-#ifdef WLAN_FEATURE_P2P
 /*---------------------------------------------------------------------------
  *WDI_P2pNoaAttrIndType
  *-------------------------------------------------------------------------*/
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 typedef struct
 {
   wpt_uint8       ucIndex ;
@@ -635,7 +605,6 @@ typedef struct
 
   wpt_uint32      status;
 }WDI_P2pNoaAttrIndType;
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 =======
@@ -660,9 +629,6 @@ typedef struct
   wpt_uint16      reasonCode;
 }WDI_TdlsIndType;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_WAKEUP_EVENTS
 /*---------------------------------------------------------------------------
@@ -682,7 +648,6 @@ typedef struct
 #endif // WLAN_WAKEUP_EVENTS
 
 /*---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
  WDI_MissedBeaconIndType
@@ -728,8 +693,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_LowLevelIndType
     Inidcation type and information about the indication being carried
     over
@@ -764,7 +727,6 @@ typedef struct
     wpt_uint32                  tx_complete_status;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     /* P2P NOA ATTR Indication */
     WDI_P2pNoaAttrIndType        wdiP2pNoaAttrInfo;
@@ -776,12 +738,6 @@ typedef struct
     /* TDLS Indications */
     WDI_TdlsIndType              wdiTdlsIndInfo;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-    /* P2P NOA ATTR Indication */
-    WDI_P2pNoaAttrIndType        wdiP2pNoaAttrInfo;
-#endif
->>>>>>> 657b0e9... prima update
 
 
 #ifdef FEATURE_WLAN_SCAN_PNO
@@ -791,7 +747,6 @@ typedef struct
 #ifdef WLAN_WAKEUP_EVENTS
     WDI_WakeReasonIndType        wdiWakeReasonInd;
 #endif // WLAN_WAKEUP_EVENTS
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     WDI_MissedBeaconIndType      wdiMissedBeaconInd;
@@ -806,8 +761,6 @@ typedef struct
     /* Periodic TX Pattern FW Indication */
     WDI_PeriodicTxPtrnFwIndType  wdiPeriodicTxPtrnFwInd;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   }  wdiIndicationData;
 }WDI_LowLevelIndType;
 
@@ -1335,7 +1288,6 @@ typedef enum
   WDI_STA_ENTRY_PEER,
   WDI_STA_ENTRY_BSSID,
 <<<<<<< HEAD
-<<<<<<< HEAD
   WDI_STA_ENTRY_BCAST
 =======
   WDI_STA_ENTRY_BCAST,
@@ -1343,9 +1295,6 @@ typedef enum
   WDI_STA_ENTRY_TDLS_PEER,
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  WDI_STA_ENTRY_BCAST
->>>>>>> 657b0e9... prima update
 }WDI_STAEntryType;
 
 /*---------------------------------------------------------------------------
@@ -1457,14 +1406,11 @@ typedef struct
   WDI_STAEntryType          wdiSTAType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   /*STA Index */
   wpt_uint8                 staIdx;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   /*Short Preamble Supported.*/
   wpt_uint8                 ucShortPreambleSupported;
 
@@ -1553,7 +1499,6 @@ typedef struct
   wpt_uint8                 ucVhtCapableSta;
   wpt_uint8                 ucVhtTxChannelWidthSet;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
   wpt_uint8                 ucVhtTxBFEnabled;
@@ -1562,9 +1507,6 @@ typedef struct
   wpt_uint8                 ucHtLdpcEnabled;
   wpt_uint8                 ucVhtLdpcEnabled;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 }WDI_ConfigStaReqInfoType;
 
 
@@ -1822,18 +1764,12 @@ typedef enum
     WDI_RX_ONLY,
     WDI_TX_RX,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
     WDI_TX_DEFAULT,
 #endif
 =======
     WDI_TX_DEFAULT,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-    WDI_TX_DEFAULT,
-#endif
->>>>>>> 657b0e9... prima update
     WDI_DONOT_USE_KEY_DIRECTION
 } WDI_KeyDirectionType;
 
@@ -2357,9 +2293,6 @@ typedef struct
 typedef struct
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
    /*BSS Index of the BSS*/
    wpt_uint8      ucBssIdx;
 
@@ -2367,13 +2300,10 @@ typedef struct
     EDCA params or might not desire to apply EDCA params during config BSS. 
     0 implies Not Valid ; Non-Zero implies valid*/
   wpt_uint8   ucEDCAParamsValid;
-<<<<<<< HEAD
 =======
   /*BSS Index of the BSS*/
   wpt_uint16      ucBssIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
   /*EDCA params for BE*/
   WDI_EdcaParamRecord wdiEdcaBEInfo;
@@ -2736,7 +2666,6 @@ typedef struct
 }WDI_UpdateBeaconParamsInfoType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #ifdef WLAN_FEATURE_11AC
@@ -2747,9 +2676,6 @@ typedef struct
 }WDI_UpdateVHTOpMode;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   WDI_UpdateBeaconParamsType
@@ -2785,9 +2711,6 @@ typedef struct {
    wpt_uint32   beaconLength;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
    /* TIM IE offset from the beginning of the template.*/
    wpt_uint32   timIeOffset; 
@@ -2797,7 +2720,6 @@ typedef struct {
    /* P2P IE offset from the beginning of the template */
    wpt_uint16   usP2PIeOffset;
 #endif
-<<<<<<< HEAD
 =======
    /* TIM IE offset from the beginning of the template.*/
    wpt_uint32   timIeOffset; 
@@ -2805,8 +2727,6 @@ typedef struct {
    /* P2P IE offset from the beginning of the template */
    wpt_uint16   usP2PIeOffset;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_SendBeaconParamsInfoType;
 
 /*---------------------------------------------------------------------------
@@ -2851,7 +2771,6 @@ typedef enum
     WDI_LINK_INIT_CAL_STATE          = 12,
     WDI_LINK_FINISH_CAL_STATE        = 13,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     WDI_LINK_LISTEN_STATE            = 14,
 #endif
@@ -2859,11 +2778,6 @@ typedef enum
     WDI_LINK_LISTEN_STATE            = 14,
     WDI_LINK_SEND_ACTION_STATE       = 15,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-    WDI_LINK_LISTEN_STATE            = 14,
-#endif
->>>>>>> 657b0e9... prima update
     WDI_LINK_MAX                     = 0x7FFFFFFF
 } WDI_LinkStateType;
 
@@ -2955,7 +2869,6 @@ typedef struct
 }WDI_GetStatsRspParamsType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 /*---------------------------------------------------------------------------
@@ -3008,8 +2921,6 @@ typedef struct
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_CCX
 /*---------------------------------------------------------------------------
   WDI_TSMStatsParamsInfoType
@@ -3222,7 +3133,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_SetTxPowerInfoType
 ---------------------------------------------------------------------------*/
@@ -3237,8 +3147,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_SetMaxTxPowerParamsType
 ---------------------------------------------------------------------------*/
 typedef struct
@@ -3256,7 +3164,6 @@ typedef struct
   void*             pUserData;
 }WDI_SetMaxTxPowerParamsType;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /*---------------------------------------------------------------------------
@@ -3277,8 +3184,6 @@ typedef struct
   void*             pUserData;
 }WDI_SetTxPowerParamsType;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   WDI_SetMaxTxPowerRspMsg
@@ -3294,7 +3199,6 @@ typedef struct
  
 }WDI_SetMaxTxPowerRspMsg;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
@@ -3313,9 +3217,6 @@ typedef struct
 }WDI_SetTxPowerRspMsg;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 typedef struct
 {
   wpt_uint8   ucOpp_ps;
@@ -3344,7 +3245,6 @@ typedef struct
     function pointer will be called */
   void*             pUserData;
 }WDI_SetP2PGONOAReqParamsType;
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -3386,10 +3286,6 @@ typedef struct
   wpt_uint16 uStaIdx;
 }WDI_SetTdlsLinkEstablishReqResp;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   WDI_SetAddSTASelfParamsType
@@ -3400,14 +3296,11 @@ typedef struct
   wpt_macAddr selfMacAddr;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   /*Self STA device mode*/
   wpt_uint32 currDeviceMode;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   /*Status of the operation*/
   wpt_uint32  uStatus;
 }WDI_AddSTASelfInfoType;
@@ -3565,7 +3458,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_EnterBmpsReqParamsType
   Enter BMPS parameters passed from WDI to WDA
@@ -3581,8 +3473,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_ExitBmpsReqinfoType
   Exit BMPS parameters passed to WDA from UMAC
 ---------------------------------------------------------------------------*/
@@ -3611,7 +3501,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_ExitBmpsReqParamsType
   Exit BMPS parameters passed from WDI to WDA
@@ -3627,8 +3516,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_EnterUapsdReqinfoType
   Enter UAPSD parameters passed to WDA from UMAC
 ---------------------------------------------------------------------------*/
@@ -3647,7 +3534,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_EnterUapsdRspParamsType
   Enter UAPSD parameters passed from WDI to WDA
@@ -3663,8 +3549,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_EnterUapsdReqinfoType
   Enter UAPSD parameters passed to WDI from WDA
 ---------------------------------------------------------------------------*/
@@ -3693,7 +3577,6 @@ typedef struct
 }WDI_UpdateUapsdReqinfoType;
 
 /*---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   WDI_ExitUapsdReqinfoType
@@ -3736,8 +3619,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_UpdateUapsdReqParamsType
   Update UAPSD parameters passed to WDI form WDA
 ---------------------------------------------------------------------------*/
@@ -3792,13 +3673,10 @@ typedef struct
    wpt_uint16    usBeaconInterval;
    wpt_uint16    usIeNum;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    wpt_uint8     bssIdx;
    wpt_uint8     reserved;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 }WDI_BeaconFilterInfoType;
 
 /*---------------------------------------------------------------------------
@@ -3900,14 +3778,10 @@ typedef struct
    wpt_uint8 targetIPv6Addr1Valid : 1;
    wpt_uint8 targetIPv6Addr2Valid : 1;
 <<<<<<< HEAD
-<<<<<<< HEAD
    wpt_uint8 bssIdx;
 =======
    wpt_uint8 slotIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   wpt_uint8 bssIdx;
->>>>>>> 657b0e9... prima update
 } WDI_NSOffloadParams;
 #endif //WLAN_NS_OFFLOAD
 
@@ -3916,14 +3790,10 @@ typedef struct
    wpt_uint8 ucOffloadType;
    wpt_uint8 ucEnableOrDisable;
 <<<<<<< HEAD
-<<<<<<< HEAD
    wpt_uint8 bssIdx;
 =======
    wpt_macAddr bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   wpt_uint8 bssIdx;
->>>>>>> 657b0e9... prima update
    union
    {
        wpt_uint8 aHostIpv4Addr [4];
@@ -3963,14 +3833,10 @@ typedef struct
     wpt_uint8  aDestIpv4Addr[4];
     wpt_uint8  aDestMacAddr[6];
 <<<<<<< HEAD
-<<<<<<< HEAD
     wpt_uint8  bssIdx;
 =======
     wpt_macAddr bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    wpt_uint8  bssIdx;
->>>>>>> 657b0e9... prima update
 } WDI_KeepAliveReqType;
 
 /*---------------------------------------------------------------------------
@@ -4007,14 +3873,10 @@ typedef struct
    wpt_uint8  ucPatternExt[WDI_WOWL_BCAST_PATTERN_MAX_SIZE]; // Extra pattern
    wpt_uint8  ucPatternMaskExt[WDI_WOWL_BCAST_PATTERN_MAX_SIZE]; // Extra pattern mask
 <<<<<<< HEAD
-<<<<<<< HEAD
    wpt_uint8  bssIdx;
 =======
    wpt_macAddr bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   wpt_uint8  bssIdx;
->>>>>>> 657b0e9... prima update
 } WDI_WowlAddBcPtrnInfoType;
 
 /*---------------------------------------------------------------------------
@@ -4036,7 +3898,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_WowlAddBcPtrnRspParamsType
   Wowl add ptrn info passed from WDI to WDA
@@ -4051,8 +3912,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_WowlDelBcPtrnInfoType
   Wowl add ptrn info passed to WDA form UMAC
 ---------------------------------------------------------------------------*/
@@ -4060,15 +3919,11 @@ typedef struct
 {
    /* Pattern ID of the wakeup pattern to be deleted */
 <<<<<<< HEAD
-<<<<<<< HEAD
    wpt_uint8  ucPatternId;
 =======
    wpt_uint8   ucPatternId;
    wpt_macAddr bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   wpt_uint8  ucPatternId;
->>>>>>> 657b0e9... prima update
 } WDI_WowlDelBcPtrnInfoType;
 
 /*---------------------------------------------------------------------------
@@ -4090,7 +3945,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_WowlDelBcPtrnRspParamsType
   Wowl Del ptrn info passed from WDI to WDA
@@ -4105,8 +3959,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_WowlEnterInfoType
   Wowl enter info passed to WDA form UMAC
 ---------------------------------------------------------------------------*/
@@ -4190,15 +4042,12 @@ typedef struct
     wpt_uint8   ucWoWBSSConnLoss;
 #endif // WLAN_WAKEUP_EVENTS
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
     /* BSSIDX used to find the current session
        */
     wpt_uint8  bssIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_WowlEnterInfoType;
 
 /*---------------------------------------------------------------------------
@@ -4219,7 +4068,6 @@ typedef struct
 }WDI_WowlEnterReqParamsType;
 
 /*---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   WDI_WowlEnterRsqParamsType
@@ -4279,8 +4127,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_ConfigureAppsCpuWakeupStateReqParamsType
   Apps Cpu Wakeup State parameters passed to WDI form WDA
 ---------------------------------------------------------------------------*/
@@ -4365,7 +4211,6 @@ typedef struct
 
 #ifndef OEM_DATA_REQ_SIZE
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define OEM_DATA_REQ_SIZE 70
 #endif
 #ifndef OEM_DATA_RSP_SIZE
@@ -4376,12 +4221,6 @@ typedef struct
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 1968
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define OEM_DATA_REQ_SIZE 70
-#endif
-#ifndef OEM_DATA_RSP_SIZE
-#define OEM_DATA_RSP_SIZE 968
->>>>>>> 657b0e9... prima update
 #endif
 
 /*----------------------------------------------------------------------------
@@ -4473,13 +4312,9 @@ typedef struct
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef ANI_MANF_DIAG
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
   WDI_FTMCommandReqType
 ---------------------------------------------------------------------------*/
@@ -4491,13 +4326,9 @@ typedef struct
    void        *FTMCommandBody;
 }WDI_FTMCommandReqType;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* ANI_MANF_DIAG */
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   WDI_WlanSuspendInfoType
@@ -4527,7 +4358,6 @@ typedef struct
 }WDI_SuspendParamsType;
 
 /*---------------------------------------------------------------------------
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   WDI_TrafficStatsType - This is collected for each STA
@@ -4580,8 +4410,6 @@ typedef struct
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_WlanResumeInfoType
 ---------------------------------------------------------------------------*/
 typedef struct 
@@ -4620,12 +4448,9 @@ typedef struct
   wpt_uint8      aKEK[16];            /* key encryption key */
   wpt_uint64     ullKeyReplayCounter; /* replay counter */
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   wpt_macAddr    bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_GtkOffloadReqParams;
 
 typedef struct
@@ -4650,13 +4475,10 @@ typedef struct
     /* success or failure */
     wpt_uint32   ulStatus;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     /*BssIdx of the response */
     wpt_uint8   bssIdx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_GtkOffloadRspParams;
 
 typedef struct
@@ -4678,7 +4500,6 @@ typedef struct
 * WDI_GTK_OFFLOAD_GETINFO_REQ
 *--------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 typedef struct
 {
@@ -4694,11 +4515,6 @@ typedef struct
 
    WDI_GtkOffloadGetInfoReqParams WDI_GtkOffloadGetInfoReqParams;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-typedef struct
-{
->>>>>>> 657b0e9... prima update
    /*Request status callback offered by UMAC - it is called if the current
     req has returned PENDING as status; it delivers the status of sending
     the message over the BUS */
@@ -4720,12 +4536,9 @@ typedef struct
    wpt_uint32   ulGTKRekeyCount;      /* successful GTK rekeys */
    wpt_uint32   ulIGTKRekeyCount;     /* successful iGTK rekeys */
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    wpt_macAddr    bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_GtkOffloadGetInfoRspParams;
 
 typedef struct
@@ -4752,7 +4565,6 @@ typedef struct
   WDI_Status   wdiStatus; 
 }WDI_SuspendResumeRspParamsType;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_LPHB
@@ -4835,8 +4647,6 @@ typedef struct
 } WDI_LPHBReq;
 #endif /* FEATURE_WLAN_LPHB */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef FEATURE_WLAN_SCAN_PNO
 
@@ -4844,14 +4654,11 @@ typedef struct
 #define WDI_PNO_MAX_NETW_CHANNELS  26
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*Max number of channels for a given network supported by PNO*/
 #define WDI_PNO_MAX_NETW_CHANNELS_EX  60
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*The max number of programable networks for PNO*/
 #define WDI_PNO_MAX_SUPP_NETWORKS  16
 
@@ -4861,7 +4668,6 @@ typedef struct
 #define WDI_PNO_MAX_PROBE_SIZE    450
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 #define WDI_ROAM_SCAN_MAX_CHANNELS       80 /* NUM_RF_CHANNELS */
@@ -4869,8 +4675,6 @@ typedef struct
 #define WDI_ROAM_SCAN_RESERVED_BYTES     61
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
   WDI_AuthType
@@ -4962,14 +4766,10 @@ typedef struct
 
   /*the actual channels*/
 <<<<<<< HEAD
-<<<<<<< HEAD
   wpt_uint8    aChannels[WDI_PNO_MAX_NETW_CHANNELS];
 =======
   wpt_uint8    aChannels[WDI_PNO_MAX_NETW_CHANNELS_EX];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  wpt_uint8    aChannels[WDI_PNO_MAX_NETW_CHANNELS];
->>>>>>> 657b0e9... prima update
 
   /*rssi threshold that a network must meet to be considered, 0 - for any*/
   wpt_uint8    rssiThreshold;
@@ -5046,7 +4846,6 @@ typedef struct
    void*                      pUserData; 
 } WDI_PNOScanReqParamsType;
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
@@ -5132,8 +4931,6 @@ typedef struct
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
   WDI_SetRssiFilterReqParamsType
   PNO info passed to WDI form WDA
@@ -5167,14 +4964,10 @@ typedef struct
 
   /*The actual channels allowed in the regulatory domain*/
 <<<<<<< HEAD
-<<<<<<< HEAD
   wpt_uint8    aChannels[WDI_PNO_MAX_NETW_CHANNELS]; 
 =======
   wpt_uint8    aChannels[WDI_PNO_MAX_NETW_CHANNELS_EX]; 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  wpt_uint8    aChannels[WDI_PNO_MAX_NETW_CHANNELS]; 
->>>>>>> 657b0e9... prima update
 
   /*Passive min channel time*/
   wpt_uint16   usPassiveMinChTime; 
@@ -5234,14 +5027,11 @@ typedef struct
   wpt_uint32 uBETInterval; 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   /* MAX LI for modulated DTIM */
   wpt_uint32 uMaxLIModulatedDTIM;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_SetPowerParamsInfo;
 
 /*---------------------------------------------------------------------------
@@ -5356,7 +5146,6 @@ typedef struct
   wpt_uint32                      numFieldParams;
   wpt_uint32                      coalesceTime;
 <<<<<<< HEAD
-<<<<<<< HEAD
   WDI_RcvPktFilterFieldParams     paramsData[1];
   wpt_macAddr                     selfMacAddr;
   wpt_macAddr                     bssId;
@@ -5366,11 +5155,6 @@ typedef struct
   WDI_RcvPktFilterFieldParams     paramsData[1];
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  WDI_RcvPktFilterFieldParams     paramsData[1];
-  wpt_macAddr                     selfMacAddr;
-  wpt_macAddr                     bssId;
->>>>>>> 657b0e9... prima update
 }WDI_RcvPktFilterCfgType;
 
 typedef struct 
@@ -5389,7 +5173,6 @@ typedef struct
 } WDI_SetRcvPktFilterReqParamsType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef struct 
 {
@@ -5401,8 +5184,6 @@ typedef struct
 } WDI_SetRcvPktFilterRspParamsType;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 //
 // Filter Packet Match Count Parameters
 //
@@ -5417,15 +5198,12 @@ typedef struct
     function pointer will be called */
   void*             pUserData;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
   /* BSSID of the Match count 
     */
   wpt_macAddr      bssId;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } WDI_RcvFltPktMatchCntReqParamsType;
 
 typedef struct
@@ -5437,9 +5215,6 @@ typedef struct
 typedef struct
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
   /* Success or Failure */
   wpt_uint32                 status;
   WDI_RcvFltPktMatchCnt    filterMatchCnt[WDI_MAX_NUM_FILTERS];
@@ -5453,7 +5228,6 @@ typedef struct
     function pointer will be called */
   void*             pUserData;
 } WDI_RcvFltPktMatchRspParams;
-<<<<<<< HEAD
 
 typedef struct
 {
@@ -5475,23 +5249,9 @@ typedef struct
     /* BSSIDX of the Match count response 
         */
     wpt_uint8   bssIdx;
-=======
->>>>>>> 657b0e9... prima update
 
-typedef struct
-{
-  WDI_RcvFltPktMatchRspParams fltPktMatchRspParams;
-  /*Request status callback offered by UMAC - it is called if the current
-    req has returned PENDING as status; it delivers the status of sending
-    the message over the BUS */
-  WDI_ReqStatusCb   wdiReqStatusCB; 
-    
-  /*The user data passed in by UMAC, it will be sent back when the above
-    function pointer will be called */
-  void*             pUserData;
 } WDI_RcvFltPktMatchCntRspParamsType;
 >>>>>>> d97af3b... add prima wlan driver
-
 
 //
 // Receive Filter Clear Parameters
@@ -5518,7 +5278,6 @@ typedef struct
 } WDI_RcvFltPktClearReqParamsType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef struct
 {
@@ -5531,8 +5290,6 @@ typedef struct
 } WDI_RcvFltPktClearRspParamsType;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 //
 // Multicast Address List Parameters
 //
@@ -5557,7 +5314,6 @@ typedef struct
   void*             pUserData;
 } WDI_RcvFltPktSetMcListReqParamsType;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 typedef struct
@@ -5570,8 +5326,6 @@ typedef struct
 } WDI_RcvFltPktSetMcListRspParamsType;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 /*---------------------------------------------------------------------------
@@ -5646,7 +5400,6 @@ typedef struct
 }WDI_SetTmLevelRspType;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_LPHB
 /*---------------------------------------------------------------------------
@@ -5719,8 +5472,6 @@ typedef struct
 } WDI_DelPeriodicTxPtrnParamsType;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*----------------------------------------------------------------------------
  *   WDI callback types
  *--------------------------------------------------------------------------*/
@@ -6276,7 +6027,6 @@ typedef void  (*WDI_SetLinkStateRspCb)( WDI_Status   wdiStatus,
    from the underlying device.
  
    PARAMETERS 
-<<<<<<< HEAD
 
     IN
     wdiRspParams:  response parameters received from HAL
@@ -6309,26 +6059,19 @@ typedef void  (*WDI_GetStatsRspCb)(WDI_GetStatsRspParamsType*  pwdiGetStatsRsp,
    from the underlying device.
 
    PARAMETERS
-=======
->>>>>>> 657b0e9... prima update
 
     IN
     wdiRspParams:  response parameters received from HAL
-    pUserData:      user data  
-    
-  
-  RETURN VALUE 
+    pUserData:      user data
+
+
+  RETURN VALUE
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
-<<<<<<< HEAD
 typedef void  (*WDI_GetRoamRssiRspCb)(WDI_GetRoamRssiRspParamsType* pwdiGetRoamRssiRsp,
                                       void*                         pUserData);
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_GetStatsRspCb)(WDI_GetStatsRspParamsType*  pwdiGetStatsRsp,
-                                   void*                       pUserData);
->>>>>>> 657b0e9... prima update
 
  
 /*---------------------------------------------------------------------------
@@ -6463,7 +6206,6 @@ typedef void (*WDA_SetMaxTxPowerRspCb)(WDI_SetMaxTxPowerRspMsg *wdiSetMaxTxPower
 
 /*---------------------------------------------------------------------------
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    WDA_SetTxPowerRspCb
 
@@ -6486,8 +6228,6 @@ typedef void (*WDA_SetTxPowerRspCb)(WDI_SetTxPowerRspMsg *wdiSetTxPowerRsp,
 
 /*---------------------------------------------------------------------------
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    WDI_UpdateProbeRspTemplateRspCb
  
    DESCRIPTION   
@@ -6510,13 +6250,9 @@ typedef void  (*WDI_UpdateProbeRspTemplateRspCb)(WDI_Status   wdiStatus,
                                                void*        pUserData);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
    WDI_SetP2PGONOAReqParamsRspCb
  
@@ -6538,7 +6274,6 @@ typedef void  (*WDI_UpdateProbeRspTemplateRspCb)(WDI_Status   wdiStatus,
 ---------------------------------------------------------------------------*/
 typedef void  (*WDI_SetP2PGONOAReqParamsRspCb)(WDI_Status   wdiStatus,
                                 void*        pUserData);
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -6567,10 +6302,6 @@ typedef void  (*WDI_SetTDLSLinkEstablishReqParamsRspCb)(WDI_SetTdlsLinkEstablish
                                 wdiSetTdlsLinkEstablishReqRsp,
                                 void*        pUserData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
    WDI_SetPwrSaveCfgCb
@@ -6680,14 +6411,10 @@ typedef void  (*WDI_ExitImpsRspCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_EnterBmpsRspCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_EnterBmpsRspCb)(WDI_EnterBmpsRspParamsType *pwdiEnterBmpsRsp,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_EnterBmpsRspCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                     void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -6710,14 +6437,10 @@ typedef void  (*WDI_EnterBmpsRspCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_ExitBmpsRspCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_ExitBmpsRspCb)( WDI_ExitBmpsRspParamsType  *pwdiExitBmpsRspParams,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_ExitBmpsRspCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                     void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -6740,14 +6463,10 @@ typedef void  (*WDI_ExitBmpsRspCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_EnterUapsdRspCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_EnterUapsdRspCb)(  WDI_EnterUapsdRspParamsType *pwdiEnterUapsdRspParam,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_EnterUapsdRspCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                     void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -6770,14 +6489,10 @@ typedef void  (*WDI_EnterUapsdRspCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_ExitUapsdRspCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_ExitUapsdRspCb)(WDI_ExitUapsdRspParamsType *pwidExitUapsdRsp,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_ExitUapsdRspCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                     void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -6954,14 +6669,10 @@ typedef void  (*WDI_KeepAliveCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_WowlAddBcPtrnCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_WowlAddBcPtrnCb)(  WDI_WowlAddBcPtrnRspParamsType *pwdiWowlAddBcPtrnParams,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_WowlAddBcPtrnCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                      void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -6984,14 +6695,10 @@ typedef void  (*WDI_WowlAddBcPtrnCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_WowlDelBcPtrnCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_WowlDelBcPtrnCb)( WDI_WowlDelBcPtrnRspParamsType *pwdiWowlDelBcstPtrRsp,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_WowlDelBcPtrnCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                      void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -7014,17 +6721,12 @@ typedef void  (*WDI_WowlDelBcPtrnCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_WowlEnterReqCb)(WDI_Status   wdiStatus,
                                     void*        pUserData);
 =======
 typedef void  (*WDI_WowlEnterReqCb)( WDI_WowlEnterRspParamsType *pwdiwowlEnterRsp,
                                         void*        pUserData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_WowlEnterReqCb)(WDI_Status   wdiStatus,
-                                    void*        pUserData);
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
    WDI_WowlExitReqCb
@@ -7046,14 +6748,10 @@ typedef void  (*WDI_WowlEnterReqCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_WowlExitReqCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_WowlExitReqCb)(   WDI_WowlExitRspParamsType *pwdiWowlExitRsp,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_WowlExitReqCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                    void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -7214,13 +6912,9 @@ typedef void  (*WDI_AggrAddTsRspCb)(WDI_Status   wdiStatus,
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef ANI_MANF_DIAG
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
    WDI_FTMCommandRspCb
  
@@ -7241,13 +6935,9 @@ typedef void  (*WDI_AggrAddTsRspCb)(WDI_Status   wdiStatus,
 typedef void (*WDI_FTMCommandRspCb)(void *ftmCMDRspdata,
                                     void *pUserData);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* ANI_MANF_DIAG */
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
    WDI_AddSTASelfParamsRspCb 
@@ -7367,7 +7057,6 @@ typedef void  (*WDI_UpdateScanParamsCb)(WDI_Status  wdiStatus,
 #endif // FEATURE_WLAN_SCAN_PNO
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 /*---------------------------------------------------------------------------
@@ -7394,8 +7083,6 @@ typedef void  (*WDI_RoamOffloadScanCb)(WDI_Status  wdiStatus,
 
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*---------------------------------------------------------------------------
    WDI_SetTxPerTrackingRspCb
  
@@ -7439,7 +7126,6 @@ typedef void  (*WDI_SetTxPerTrackingRspCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_8023MulticastListCb)(WDI_Status   wdiStatus,
                                          void*        pUserData);
 =======
@@ -7447,10 +7133,6 @@ typedef void  (*WDI_8023MulticastListCb)(
                 WDI_RcvFltPktSetMcListRspParamsType  *pwdiRcvFltPktSetMcListRspInfo,
                 void*        pUserData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_8023MulticastListCb)(WDI_Status   wdiStatus,
-                                         void*        pUserData);
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
    WDI_ReceiveFilterSetFilterCb
@@ -7472,7 +7154,6 @@ typedef void  (*WDI_8023MulticastListCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_ReceiveFilterSetFilterCb)(WDI_Status   wdiStatus,
                                               void*        pUserData);
 =======
@@ -7480,10 +7161,6 @@ typedef void  (*WDI_ReceiveFilterSetFilterCb)(
                             WDI_SetRcvPktFilterRspParamsType *pwdiSetRcvPktFilterRspInfo,
                             void*        pUserData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_ReceiveFilterSetFilterCb)(WDI_Status   wdiStatus,
-                                              void*        pUserData);
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
    WDI_FilterMatchCountCb
@@ -7505,7 +7182,6 @@ typedef void  (*WDI_ReceiveFilterSetFilterCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_FilterMatchCountCb)(WDI_Status   wdiStatus,
                                         void*        pUserData);
 =======
@@ -7513,10 +7189,6 @@ typedef void  (*WDI_FilterMatchCountCb)(
             WDI_RcvFltPktMatchCntRspParamsType *pwdiRcvFltPktMatchRspParams,
             void*        pUserData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_FilterMatchCountCb)(WDI_Status   wdiStatus,
-                                        void*        pUserData);
->>>>>>> 657b0e9... prima update
 
 /*---------------------------------------------------------------------------
    WDI_ReceiveFilterClearFilterCb
@@ -7538,7 +7210,6 @@ typedef void  (*WDI_FilterMatchCountCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_ReceiveFilterClearFilterCb)(WDI_Status   wdiStatus,
                                                 void*        pUserData);
 =======
@@ -7546,10 +7217,6 @@ typedef void  (*WDI_ReceiveFilterClearFilterCb)(
                             WDI_RcvFltPktClearRspParamsType *pwdiRcvFltPktClearRspParamsType,
                             void*        pUserData);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_ReceiveFilterClearFilterCb)(WDI_Status   wdiStatus,
-                                                void*        pUserData);
->>>>>>> 657b0e9... prima update
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 /*---------------------------------------------------------------------------
@@ -7618,14 +7285,10 @@ typedef void  (*WDI_SetPowerParamsCb)(WDI_Status  wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_GtkOffloadCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_GtkOffloadCb)( WDI_GtkOffloadRspParams  *pwdiGtkOffloadRsparams,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_GtkOffloadCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                   void*        pUserData);
 
 /*---------------------------------------------------------------------------
@@ -7648,14 +7311,10 @@ typedef void  (*WDI_GtkOffloadCb)(WDI_Status   wdiStatus,
     The result code associated with performing the operation
 ---------------------------------------------------------------------------*/
 <<<<<<< HEAD
-<<<<<<< HEAD
 typedef void  (*WDI_GtkOffloadGetInfoCb)(WDI_Status   wdiStatus,
 =======
 typedef void  (*WDI_GtkOffloadGetInfoCb)( WDI_GtkOffloadGetInfoRspParams *pwdiGtkOffloadGetInfoRsparams,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-typedef void  (*WDI_GtkOffloadGetInfoCb)(WDI_Status   wdiStatus,
->>>>>>> 657b0e9... prima update
                                          void*        pUserData);
 #endif // WLAN_FEATURE_GTK_OFFLOAD
 
@@ -7703,7 +7362,6 @@ typedef void  (*WDI_featureCapsExchangeCb)(void* wdiFeatCapRspParams,
                                                 void*        pUserData);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_11AC
 typedef void  (*WDI_UpdateVHTOpModeCb)(WDI_Status   wdiStatus,
@@ -7716,8 +7374,6 @@ typedef void  (*WDI_LphbCfgCb)(WDI_Status   wdiStatus,
 #endif /* FEATURE_WLAN_LPHB */
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /*========================================================================
  *     Function Declarations and Documentation
  ==========================================================================*/
@@ -8382,7 +8038,6 @@ WDI_RemoveSTABcastKeyReq
 );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 /**
@@ -8411,8 +8066,6 @@ WDI_SetTxPowerReq
 );
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**
  @brief WDI_SetMaxTxPowerReq will be called when the upper 
         MAC wants to set Max Tx Power to HW. Upon the
@@ -8758,13 +8411,9 @@ WDI_UpdateProbeRspTemplateReq
 );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 /**
  @brief WDI_SetP2PGONOAReq will be called when the 
         upper MAC wants to send Notice of Absence
@@ -8796,7 +8445,6 @@ WDI_SetP2PGONOAReq
   WDI_SetP2PGONOAReqParamsRspCb    wdiP2PGONOAReqParamsRspCb,
   void*                            pUserData
 );
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -8834,10 +8482,6 @@ WDI_SetTDLSLinkEstablishReq
   void*                            pUserData
 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
->>>>>>> 657b0e9... prima update
 
 /*======================================================================== 
  
@@ -9059,12 +8703,9 @@ WDI_Status
 WDI_ExitUapsdReq
 (
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
    WDI_ExitUapsdReqParamsType *pwdiExitUapsdReqParams,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
    WDI_ExitUapsdRspCb  wdiExitUapsdRspCb,
    void*                   pUserData
 );
@@ -9464,12 +9105,9 @@ WDI_Status
 WDI_WowlExitReq
 (
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
   WDI_WowlExitReqParamsType*    pwdiWowlExitParams,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   WDI_WowlExitReqCb              wdiWowlExitCb,
   void*                          pUserData
 );
@@ -9740,7 +9378,6 @@ WDI_GetStatsReq
 );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 /**
@@ -9776,8 +9413,6 @@ WDI_GetRoamRssiReq
 );
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /**
  @brief WDI_UpdateCfgReq will be called when the upper MAC when 
@@ -9970,13 +9605,9 @@ WDI_Status WDI_StubRunTest
 );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef ANI_MANF_DIAG
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef ANI_MANF_DIAG
->>>>>>> 657b0e9... prima update
 /**
  @brief WDI_FTMCommandReq -  
         Route FTMRequest Command to HAL
@@ -9994,13 +9625,9 @@ WDI_Status WDI_FTMCommandReq
   void                  *pUserData
 );
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* ANI_MANF_DIAG */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* ANI_MANF_DIAG */
->>>>>>> 657b0e9... prima update
 
 /**
  @brief WDI_HostResumeReq will be called 
@@ -10112,7 +9739,6 @@ WDI_HostSuspendInd
 );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /**
  @brief WDI_TrafficStatsInd
@@ -10181,8 +9807,6 @@ WDI_DelPeriodicTxPtrnInd
 );
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_SCAN_PNO
 /**
  @brief WDI_SetPreferredNetworkList
@@ -10258,7 +9882,6 @@ WDI_UpdateScanParamsReq
 #endif // FEATURE_WLAN_SCAN_PNO
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 /**
@@ -10286,8 +9909,6 @@ WDI_RoamScanOffloadReq
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /**
  @brief WDI_SetTxPerTrackingReq will be called when the upper MAC 
         wants to set the Tx Per Tracking configurations. 
@@ -10480,7 +10101,6 @@ WDI_SetPowerParamsReq
   void*                            pUserData
 );
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /**
  @brief WDI_dhcpStartInd
@@ -10517,8 +10137,6 @@ WDI_dhcpStopInd
   WDI_DHCPInd *wdiDHCPInd
 );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
 /**
@@ -10615,7 +10233,6 @@ WDI_featureCapsExchangeReq
 
 /**
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  @brief Disable Active mode offload in Host
  
@@ -10629,8 +10246,6 @@ WDI_disableCapablityFeature(wpt_uint8 feature_index);
 
 /**
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  @brief WDI_getHostWlanFeatCaps
         WDI API that returns whether the feature passed to it as enum value in
         "placeHolderInCapBitmap" is supported by Host or not. It uses WDI global
@@ -10684,7 +10299,6 @@ void WDI_GetWcnssCompiledApiVersion
 );
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 
 =======
@@ -10699,10 +10313,6 @@ WDI_UpdateVHTOpModeReq
 
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-
->>>>>>> 657b0e9... prima update
 
 /**
  @brief WDI_TransportChannelDebug -
@@ -10710,17 +10320,12 @@ WDI_UpdateVHTOpModeReq
     User may request to display DXE channel snapshot
     Or if host driver detects any abnormal stcuk may display
 <<<<<<< HEAD
-<<<<<<< HEAD
         
  @param  displaySnapshot : Dispaly DXE snapshot option
 =======
 
  @param  displaySnapshot : Display DXE snapshot option
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        
- @param  displaySnapshot : Dispaly DXE snapshot option
->>>>>>> 657b0e9... prima update
  @param  enableStallDetect : Enable stall detect feature
                         This feature will take effect to data performance
                         Not integrate till fully verification
@@ -10733,7 +10338,6 @@ void WDI_TransportChannelDebug
    wpt_boolean  toggleStallDetect
 );
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /**
@@ -10782,8 +10386,6 @@ WDI_Status WDI_LPHBConfReq
 );
 #endif /* FEATURE_WLAN_LPHB */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifdef __cplusplus
  }
 #endif 

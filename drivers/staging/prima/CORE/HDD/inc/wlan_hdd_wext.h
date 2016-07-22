@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -63,9 +60,6 @@
 #define HDD_WLAN_WMM_PARAM_TID                          1
 #define HDD_WLAN_WMM_PARAM_DIRECTION                    2
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define HDD_WLAN_WMM_PARAM_USER_PRIORITY                3
 #define HDD_WLAN_WMM_PARAM_NOMINAL_MSDU_SIZE            4
 #define HDD_WLAN_WMM_PARAM_MAXIMUM_MSDU_SIZE            5
@@ -82,7 +76,6 @@
 #define HDD_WLAN_WMM_PARAM_INACTIVITY_INTERVAL         16
 #define HDD_WLAN_WMM_PARAM_MAX_SERVICE_INTERVAL        17
 #define HDD_WLAN_WMM_PARAM_COUNT                       18
-<<<<<<< HEAD
 
 #define MHZ 6
 
@@ -114,11 +107,6 @@
 #define WLAN_HDD_UI_SET_BAND_VALUE_OFFSET              8
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#define MHZ 6
-
->>>>>>> 657b0e9... prima update
 typedef enum
 {
    HDD_WLAN_WMM_DIRECTION_UPSTREAM      = 0,
@@ -240,13 +228,9 @@ typedef enum
 #define HDD_WPA_ELEM_VENDOR_EXTENSION       0x1049
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 #define HDD_WPS_MANUFACTURER_LEN            64
 #define HDD_WPS_MODEL_NAME_LEN              32
 #define HDD_WPS_MODEL_NUM_LEN               32
@@ -265,7 +249,6 @@ typedef enum
 #define HDD_WPS_ELEM_DEVICE_NAME            0x1011
 #define HDD_WPS_ELEM_REGISTRA_CONF_METHODS  0x1053
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 
 
@@ -279,26 +262,21 @@ typedef enum
 #endif
 
 =======
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 
- 
+
 #define WPS_OUI_TYPE   "\x00\x50\xf2\x04"
 #define WPS_OUI_TYPE_SIZE  4
- 
-#ifdef WLAN_FEATURE_P2P
+
+#define SS_OUI_TYPE    "\x00\x16\x32"
+#define SS_OUI_TYPE_SIZE   3
+
 #define P2P_OUI_TYPE   "\x50\x6f\x9a\x09"
 #define P2P_OUI_TYPE_SIZE  4
-#endif
 
-<<<<<<< HEAD
 #define HS20_OUI_TYPE   "\x50\x6f\x9a\x10"
 #define HS20_OUI_TYPE_SIZE  4
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_WFD
 #define WFD_OUI_TYPE   "\x50\x6f\x9a\x0a"
@@ -391,20 +369,14 @@ typedef struct ccp_freq_chan_map_s{
     wlan_hdd_get_vendor_oui_ie_ptr(WPS_OUI_TYPE, WPS_OUI_TYPE_SIZE, ie, ie_len)
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_P2P
 #define wlan_hdd_get_p2p_ie_ptr(ie, ie_len) \
     wlan_hdd_get_vendor_oui_ie_ptr(P2P_OUI_TYPE, P2P_OUI_TYPE_SIZE, ie, ie_len)
 #endif
-<<<<<<< HEAD
 =======
 #define wlan_hdd_get_p2p_ie_ptr(ie, ie_len) \
     wlan_hdd_get_vendor_oui_ie_ptr(P2P_OUI_TYPE, P2P_OUI_TYPE_SIZE, ie, ie_len)
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_FEATURE_WFD
 #define wlan_hdd_get_wfd_ie_ptr(ie, ie_len) \
@@ -419,20 +391,14 @@ extern int hdd_wlan_get_rts_threshold(hdd_adapter_t *pAdapter,
 extern int hdd_wlan_get_frag_threshold(hdd_adapter_t *pAdapter,
                                       union iwreq_data *wrqu);
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifndef FEATURE_WLAN_INTEGRATED_SOC
 extern int hdd_wlan_get_version(hdd_adapter_t *pAdapter,
                                 union iwreq_data *wrqu, char *extra);
 #endif
-<<<<<<< HEAD
 =======
 extern void hdd_wlan_get_version(hdd_adapter_t *pAdapter,
                                  union iwreq_data *wrqu, char *extra);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 extern int iw_get_scan(struct net_device *dev, 
                        struct iw_request_info *info,
@@ -507,7 +473,6 @@ VOS_STATUS wlan_hdd_get_station_stats(hdd_adapter_t *pAdapter);
 VOS_STATUS wlan_hdd_get_rssi(hdd_adapter_t *pAdapter, v_S7_t *rssi_value);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 VOS_STATUS wlan_hdd_get_snr(hdd_adapter_t *pAdapter, v_S7_t *snr);
 
@@ -526,7 +491,5 @@ void wlan_hdd_set_mc_addr_list(hdd_adapter_t *pAdapter, v_U8_t set);
 void* wlan_hdd_change_country_code_callback(void *pAdapter);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif // __WEXT_IW_H__
 

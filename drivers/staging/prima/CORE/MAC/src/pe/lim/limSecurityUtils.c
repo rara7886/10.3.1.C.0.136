@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -61,9 +58,6 @@
 
 #include "sirCommon.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 #include "wniCfgAp.h"
 #else
@@ -75,14 +69,11 @@
 #include "halDataStruct.h"
 #include "halCommonApi.h"
 #endif
-<<<<<<< HEAD
 =======
 #include "wniCfgSta.h"
 #include "cfgApi.h"
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #include "utilsApi.h"
 #include "limUtils.h"
@@ -117,7 +108,6 @@
  * @return true if passed authType is enabled else false
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 tANI_U8
 limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType, tpPESession psessionEntry)
@@ -129,15 +119,6 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
 tANI_U8
 limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType, tpPESession psessionEntry)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
-tANI_U8
-limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType, tpPESession psessionEntry)
-#else
-tANI_U8
-limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
-#endif
->>>>>>> 657b0e9... prima update
 {
     tANI_U32 algoEnable, privacyOptImp;
 
@@ -145,13 +126,9 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
     {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
         if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
         {
            if((psessionEntry->authType == eSIR_OPEN_SYSTEM) || (psessionEntry->authType == eSIR_AUTO_SWITCH))
@@ -160,13 +137,9 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
               return false; 
         }
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_OPEN_SYSTEM_AUTH_ENABLE,
                       &algoEnable) != eSIR_SUCCESS)
@@ -177,14 +150,10 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
                */
             limLog(pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("could not retrieve AuthAlgo1 Enable value\n"));
 =======
                    FL("could not retrieve AuthAlgo1 Enable value"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("could not retrieve AuthAlgo1 Enable value\n"));
->>>>>>> 657b0e9... prima update
 
             return false;
         }
@@ -195,13 +164,9 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
     {
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
         if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
         {
             if((psessionEntry->authType == eSIR_SHARED_KEY) || (psessionEntry->authType == eSIR_AUTO_SWITCH))
@@ -212,13 +177,9 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
         }
         else
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_SHARED_KEY_AUTH_ENABLE,
                       &algoEnable) != eSIR_SUCCESS)
@@ -229,39 +190,27 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
              */
             limLog(pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
                    FL("could not retrieve AuthAlgo2 Enable value\n"));
 =======
                    FL("could not retrieve AuthAlgo2 Enable value"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   FL("could not retrieve AuthAlgo2 Enable value\n"));
->>>>>>> 657b0e9... prima update
 
             return false;
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
         if(psessionEntry->limSystemRole == eLIM_AP_ROLE)
         {
             privacyOptImp = psessionEntry->privacy;
         }
         else
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
         if (wlan_cfgGetInt(pMac, WNI_CFG_PRIVACY_ENABLED,
                       &privacyOptImp) != eSIR_SUCCESS)
@@ -272,14 +221,10 @@ limIsAuthAlgoSupported(tpAniSirGlobal pMac, tAniAuthType authType)
              */
             limLog(pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
                FL("could not retrieve PrivacyOptImplemented value\n"));
 =======
                FL("could not retrieve PrivacyOptImplemented value"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               FL("could not retrieve PrivacyOptImplemented value\n"));
->>>>>>> 657b0e9... prima update
 
             return false;
         }
@@ -314,9 +259,6 @@ limInitPreAuthList(tpAniSirGlobal pMac)
     pMac->lim.pLimPreAuthList = NULL;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
     if (pMac->lim.gLimSystemRole == eLIM_AP_ROLE )
     {
@@ -361,11 +303,8 @@ limInitPreAuthList(tpAniSirGlobal pMac)
 
     }
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 } /*** end limInitPreAuthList() ***/
 
 
@@ -398,14 +337,10 @@ limDeletePreAuthList(tpAniSirGlobal pMac)
         pTempNode = pCurrNode->next;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthList \n"));)
 =======
         PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthList "));)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthList \n"));)
->>>>>>> 657b0e9... prima update
         limReleasePreAuthNode(pMac, pCurrNode);
 
         pCurrNode = pTempNode;
@@ -444,7 +379,6 @@ limSearchPreAuthList(tpAniSirGlobal pMac, tSirMacAddr macAddr)
     while (pTempNode != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
                       (tANI_U8 *) &pTempNode->peerMacAddr,
                       sizeof(tSirMacAddr)) )
@@ -453,11 +387,6 @@ limSearchPreAuthList(tpAniSirGlobal pMac, tSirMacAddr macAddr)
                              (tANI_U8 *) &pTempNode->peerMacAddr,
                               sizeof(tSirMacAddr)) )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
-                      (tANI_U8 *) &pTempNode->peerMacAddr,
-                      sizeof(tSirMacAddr)) )
->>>>>>> 657b0e9... prima update
             break;
 
         pTempNode = pTempNode->next;
@@ -563,7 +492,6 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
         return;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
                   (tANI_U8 *) &pTempNode->peerMacAddr,
                   sizeof(tSirMacAddr)) )
@@ -572,27 +500,18 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
                          (tANI_U8 *) &pTempNode->peerMacAddr,
                          sizeof(tSirMacAddr)) )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
-                  (tANI_U8 *) &pTempNode->peerMacAddr,
-                  sizeof(tSirMacAddr)) )
->>>>>>> 657b0e9... prima update
     {
         // First node to be deleted
 
         pMac->lim.pLimPreAuthList = pTempNode->next;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
         // Delete the auth response timer if running
         if (pTempNode->fTimerStarted)
             limDeactivateAndChangePerStaIdTimer(pMac,
                                                 eLIM_AUTH_RSP_TIMER,
                                                 pTempNode->authNodeIdx);
-<<<<<<< HEAD
 
 #endif
 
@@ -603,13 +522,6 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
         PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthNode : first node to delete"));)
         PELOG1(limLog(pMac, LOG1, FL("Release data entry: %x id %d peer "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#endif
-
-        PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthNode : first node to delete\n"));)
-        PELOG1(limLog(pMac, LOG1, FL("Release data entry: %x id %d peer \n"),
->>>>>>> 657b0e9... prima update
                         pTempNode, pTempNode->authNodeIdx);
         limPrintMacAddr(pMac, macAddr, LOG1);)
         limReleasePreAuthNode(pMac, pTempNode);
@@ -622,17 +534,12 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
     while (pTempNode != NULL)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
         if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
                       (tANI_U8 *) &pTempNode->peerMacAddr,
 =======
         if (vos_mem_compare( (tANI_U8 *) macAddr,
                              (tANI_U8 *) &pTempNode->peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        if (palEqualMemory( pMac->hHdd,(tANI_U8 *) macAddr,
-                      (tANI_U8 *) &pTempNode->peerMacAddr,
->>>>>>> 657b0e9... prima update
                       sizeof(tSirMacAddr)) )
         {
             // Found node to be deleted
@@ -640,9 +547,6 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
             pPrevNode->next = pTempNode->next;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
             // Delete the auth response timer if running
             if (pTempNode->fTimerStarted)
@@ -652,13 +556,10 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
 #endif
             PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthNode : subsequent node to delete\n"));
             limLog(pMac, LOG1, FL("Release data entry: %x id %d peer \n"),
-<<<<<<< HEAD
 =======
             PELOG1(limLog(pMac, LOG1, FL("=====> limDeletePreAuthNode : subsequent node to delete"));
             limLog(pMac, LOG1, FL("Release data entry: %x id %d peer "),
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
                          pTempNode, pTempNode->authNodeIdx);
             limPrintMacAddr(pMac, macAddr, LOG1);)
             limReleasePreAuthNode(pMac, pTempNode);
@@ -679,9 +580,6 @@ limDeletePreAuthNode(tpAniSirGlobal pMac, tSirMacAddr macAddr)
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PRODUCT == AP)
 /**
  * limPreAuthClnupHandler
@@ -795,11 +693,8 @@ limPreAuthClnupHandler(tpAniSirGlobal pMac)
     }
 } /*** end limPreAuthClnupHandler() ***/
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
 
@@ -833,14 +728,10 @@ limRestoreFromAuthState(tpAniSirGlobal pMac, tSirResultCodes resultCode, tANI_U1
     tLimMlmAuthCnf  mlmAuthCnf;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmAuthCnf.peerMacAddr,
 =======
     vos_mem_copy( (tANI_U8 *) &mlmAuthCnf.peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmAuthCnf.peerMacAddr,
->>>>>>> 657b0e9... prima update
                   (tANI_U8 *) &pMac->lim.gpLimMlmAuthReq->peerMacAddr,
                   sizeof(tSirMacAddr));
     mlmAuthCnf.authType   = pMac->lim.gpLimMlmAuthReq->authType;
@@ -853,14 +744,10 @@ limRestoreFromAuthState(tpAniSirGlobal pMac, tSirResultCodes resultCode, tANI_U1
     /// Free up buffer allocated
     /// for pMac->lim.gLimMlmAuthReq
 <<<<<<< HEAD
-<<<<<<< HEAD
     palFreeMemory( pMac->hHdd, pMac->lim.gpLimMlmAuthReq);
 =======
     vos_mem_free(pMac->lim.gpLimMlmAuthReq);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palFreeMemory( pMac->hHdd, pMac->lim.gpLimMlmAuthReq);
->>>>>>> 657b0e9... prima update
     pMac->lim.gpLimMlmAuthReq = NULL;
 
     sessionEntry->limMlmState = sessionEntry->limPrevMlmState;
@@ -876,14 +763,10 @@ limRestoreFromAuthState(tpAniSirGlobal pMac, tSirResultCodes resultCode, tANI_U1
     {
         /// Could not get BSSID from CFG. Log error.
 <<<<<<< HEAD
-<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve BSSID\n"));
 =======
         limLog(pMac, LOGP, FL("could not retrieve BSSID"));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        limLog(pMac, LOGP, FL("could not retrieve BSSID\n"));
->>>>>>> 657b0e9... prima update
     }
     #endif //TO SUPPORT BT-AMP
     sirCopyMacAddr(currentBssId,sessionEntry->bssId);
@@ -968,27 +851,19 @@ limEncryptAuthFrame(tpAniSirGlobal pMac, tANI_U8 keyId, tANI_U8 *pKey, tANI_U8 *
 
     // Bytes 3-7 of seed is key
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) &seed[3], pKey, keyLength - 3);
 =======
     vos_mem_copy((tANI_U8 *) &seed[3], pKey, keyLength - 3);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &seed[3], pKey, keyLength - 3);
->>>>>>> 657b0e9... prima update
 
     // Compute CRC-32 and place them in last 4 bytes of plain text
     limComputeCrc32(icv, pPlainText, sizeof(tSirMacAuthFrameBody));
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, pPlainText + sizeof(tSirMacAuthFrameBody),
 =======
     vos_mem_copy( pPlainText + sizeof(tSirMacAuthFrameBody),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, pPlainText + sizeof(tSirMacAuthFrameBody),
->>>>>>> 657b0e9... prima update
                   icv, SIR_MAC_WEP_ICV_LENGTH);
 
     // Run RC4 on plain text with the seed
@@ -1101,17 +976,12 @@ limRC4(tANI_U8 *pDest, tANI_U8 *pSrc, tANI_U8 *seed, tANI_U32 keyLength, tANI_U1
         {
             tANI_U8 temp;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
             j = (tANI_U8)(j + ctx.sbox[i] + seed[k]);
 =======
             if ( k < LIM_SEED_LENGTH )
                 j = (tANI_U8)(j + ctx.sbox[i] + seed[k]);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-            j = (tANI_U8)(j + ctx.sbox[i] + seed[k]);
->>>>>>> 657b0e9... prima update
             temp = ctx.sbox[i];
             ctx.sbox[i] = ctx.sbox[j];
             ctx.sbox[j] = temp;
@@ -1189,7 +1059,6 @@ limDecryptAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pKey, tANI_U8 *pEncrBody,
 
     // Bytes 0-2 of seed is received IV
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd, (tANI_U8 *) seed, pEncrBody, SIR_MAC_WEP_IV_LENGTH - 1);
 
     // Bytes 3-7 of seed is key
@@ -1200,12 +1069,6 @@ limDecryptAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pKey, tANI_U8 *pEncrBody,
     // Bytes 3-7 of seed is key
     vos_mem_copy((tANI_U8 *) &seed[3], pKey, keyLength - 3);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) seed, pEncrBody, SIR_MAC_WEP_IV_LENGTH - 1);
-
-    // Bytes 3-7 of seed is key
-    palCopyMemory( pMac->hHdd, (tANI_U8 *) &seed[3], pKey, keyLength - 3);
->>>>>>> 657b0e9... prima update
 
     // Run RC4 on encrypted text with the seed
     limRC4(pPlainBody,
@@ -1215,14 +1078,10 @@ limDecryptAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pKey, tANI_U8 *pEncrBody,
            frameLen);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     PELOG4(limLog(pMac, LOG4, FL("plainbody is \n"));
 =======
     PELOG4(limLog(pMac, LOG4, FL("plainbody is "));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    PELOG4(limLog(pMac, LOG4, FL("plainbody is \n"));
->>>>>>> 657b0e9... prima update
     sirDumpBuf(pMac, SIR_LIM_MODULE_ID, LOG4, pPlainBody, frameLen);)
 
     // Compute CRC-32 and place them in last 4 bytes of encrypted body
@@ -1234,14 +1093,10 @@ limDecryptAuthFrame(tpAniSirGlobal pMac, tANI_U8 *pKey, tANI_U8 *pEncrBody,
     for (i = 0; i < SIR_MAC_WEP_ICV_LENGTH; i++)
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        PELOG4(limLog(pMac, LOG4, FL(" computed ICV%d[%x], rxed ICV%d[%x]\n"),
 =======
        PELOG4(limLog(pMac, LOG4, FL(" computed ICV%d[%x], rxed ICV%d[%x]"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-       PELOG4(limLog(pMac, LOG4, FL(" computed ICV%d[%x], rxed ICV%d[%x]\n"),
->>>>>>> 657b0e9... prima update
                i, icv[i], i, pPlainBody[frameLen - SIR_MAC_WEP_ICV_LENGTH + i]);)
         if (icv[i] != pPlainBody[frameLen - SIR_MAC_WEP_ICV_LENGTH + i])
             return LIM_DECRYPT_ICV_FAIL;
@@ -1261,7 +1116,6 @@ void limPostSmeSetKeysCnf( tpAniSirGlobal pMac,
 {
   // Prepare and Send LIM_MLM_SETKEYS_CNF
 <<<<<<< HEAD
-<<<<<<< HEAD
   palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmSetKeysCnf->peerMacAddr,
                 (tANI_U8 *) pMlmSetKeysReq->peerMacAddr,
                 sizeof(tSirMacAddr));
@@ -1278,27 +1132,17 @@ void limPostSmeSetKeysCnf( tpAniSirGlobal pMac,
   palFreeMemory( pMac->hHdd, (tANI_U8 *) pMlmSetKeysReq );
 =======
   vos_mem_copy( (tANI_U8 *) &mlmSetKeysCnf->peerMacAddr,
-=======
-  palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmSetKeysCnf->peerMacAddr,
->>>>>>> 657b0e9... prima update
                 (tANI_U8 *) pMlmSetKeysReq->peerMacAddr,
                 sizeof(tSirMacAddr));
 
-  palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmSetKeysCnf->peerMacAddr,
+  vos_mem_copy( (tANI_U8 *) &mlmSetKeysCnf->peerMacAddr,
                 (tANI_U8 *) pMlmSetKeysReq->peerMacAddr,
                 sizeof(tSirMacAddr));
 
-#if (WNI_POLARIS_FW_PRODUCT == AP)
-  mlmSetKeysCnf->aid = pMlmSetKeysReq->aid;
-#endif
 
   /// Free up buffer allocated for mlmSetKeysReq
-<<<<<<< HEAD
   vos_mem_free( pMlmSetKeysReq );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  palFreeMemory( pMac->hHdd, (tANI_U8 *) pMlmSetKeysReq );
->>>>>>> 657b0e9... prima update
   pMac->lim.gpLimMlmSetKeysReq = NULL;
 
   limPostSmeMessage( pMac,
@@ -1318,27 +1162,19 @@ void limPostSmeRemoveKeyCnf( tpAniSirGlobal pMac,
 {
   // Prepare and Send LIM_MLM_REMOVEKEYS_CNF
 <<<<<<< HEAD
-<<<<<<< HEAD
   palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmRemoveKeyCnf->peerMacAddr,
 =======
   vos_mem_copy( (tANI_U8 *) &mlmRemoveKeyCnf->peerMacAddr,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  palCopyMemory( pMac->hHdd, (tANI_U8 *) &mlmRemoveKeyCnf->peerMacAddr,
->>>>>>> 657b0e9... prima update
                 (tANI_U8 *) pMlmRemoveKeyReq->peerMacAddr,
                 sizeof(tSirMacAddr));
 
   /// Free up buffer allocated for mlmRemoveKeysReq
 <<<<<<< HEAD
-<<<<<<< HEAD
   palFreeMemory( pMac->hHdd, (tANI_U8 *) pMlmRemoveKeyReq );
 =======
   vos_mem_free( pMlmRemoveKeyReq );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  palFreeMemory( pMac->hHdd, (tANI_U8 *) pMlmRemoveKeyReq );
->>>>>>> 657b0e9... prima update
   pMac->lim.gpLimMlmRemoveKeyReq = NULL;
 
   psessionEntry->limMlmState = psessionEntry->limPrevMlmState; //Restore the state.
@@ -1383,14 +1219,10 @@ tANI_U32 val = 0;
   {
       limLog( pMac, LOG1,
 <<<<<<< HEAD
-<<<<<<< HEAD
           FL( "numKeys = %d is more than SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS\n" ), pMlmSetKeysReq->numKeys);
 =======
           FL( "numKeys = %d is more than SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS" ), pMlmSetKeysReq->numKeys);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          FL( "numKeys = %d is more than SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS\n" ), pMlmSetKeysReq->numKeys);
->>>>>>> 657b0e9... prima update
       
       // Respond to SME with error code
       mlmSetKeysCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
@@ -1399,7 +1231,6 @@ tANI_U32 val = 0;
 
   // Package WDA_SET_BSSKEY_REQ message parameters
 
-<<<<<<< HEAD
 <<<<<<< HEAD
   if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pSetBssKeyParams,
@@ -1414,21 +1245,12 @@ tANI_U32 val = 0;
     limLog( pMac, LOGE,
         FL( "Unable to allocate memory during SET_BSSKEY" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
-          (void **) &pSetBssKeyParams,
-         sizeof( tSetBssKeyParams )))     
-  {
-    limLog( pMac, LOGE,
-        FL( "Unable to PAL allocate memory during SET_BSSKEY\n" ));
->>>>>>> 657b0e9... prima update
 
     // Respond to SME with error code
     mlmSetKeysCnf.resultCode = eSIR_SME_RESOURCES_UNAVAILABLE;
     goto end;
   }
   else
-<<<<<<< HEAD
 <<<<<<< HEAD
     palZeroMemory( pMac->hHdd,
         (void *) pSetBssKeyParams,
@@ -1437,11 +1259,6 @@ tANI_U32 val = 0;
     vos_mem_set( (void *) pSetBssKeyParams,
          sizeof( tSetBssKeyParams ), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd,
-        (void *) pSetBssKeyParams,
-         sizeof( tSetBssKeyParams ));     
->>>>>>> 657b0e9... prima update
 
   // Update the WDA_SET_BSSKEY_REQ parameters
   pSetBssKeyParams->bssIdx = psessionEntry->bssIdx;
@@ -1451,14 +1268,10 @@ tANI_U32 val = 0;
   if(eSIR_SUCCESS != wlan_cfgGetInt(pMac, WNI_CFG_SINGLE_TID_RC, &val))
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
      limLog( pMac, LOGP, FL( "Unable to read WNI_CFG_SINGLE_TID_RC\n" ));
 =======
      limLog( pMac, LOGP, FL( "Unable to read WNI_CFG_SINGLE_TID_RC" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     limLog( pMac, LOGP, FL( "Unable to read WNI_CFG_SINGLE_TID_RC\n" ));
->>>>>>> 657b0e9... prima update
   }
 
   pSetBssKeyParams->singleTidRc = (tANI_U8)val;
@@ -1475,7 +1288,6 @@ tANI_U32 val = 0;
      * keys to HAL with filling the key at right index in pSetBssKeyParams->key. */
     pSetBssKeyParams->numKeys = SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS;
 <<<<<<< HEAD
-<<<<<<< HEAD
     palCopyMemory( pMac->hHdd,
       (tANI_U8 *) &pSetBssKeyParams->key[pMlmSetKeysReq->key[0].keyId],
       (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof(pMlmSetKeysReq->key[0]));
@@ -1483,32 +1295,21 @@ tANI_U32 val = 0;
     vos_mem_copy( (tANI_U8 *) &pSetBssKeyParams->key[pMlmSetKeysReq->key[0].keyId],
                   (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof(pMlmSetKeysReq->key[0]));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palCopyMemory( pMac->hHdd,
-      (tANI_U8 *) &pSetBssKeyParams->key[pMlmSetKeysReq->key[0].keyId],
-      (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof(pMlmSetKeysReq->key[0]));
->>>>>>> 657b0e9... prima update
 
   }
   else
   {
     pSetBssKeyParams->numKeys = pMlmSetKeysReq->numKeys;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     palCopyMemory( pMac->hHdd,
       (tANI_U8 *) &pSetBssKeyParams->key,
       (tANI_U8 *) &pMlmSetKeysReq->key,
       sizeof( tSirKeys ) * pMlmSetKeysReq->numKeys );
-<<<<<<< HEAD
 =======
     vos_mem_copy( (tANI_U8 *) &pSetBssKeyParams->key,
                   (tANI_U8 *) &pMlmSetKeysReq->key,
                   sizeof( tSirKeys ) * pMlmSetKeysReq->numKeys );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   }
 
   SET_LIM_PROCESS_DEFD_MESGS(pMac, false);
@@ -1524,27 +1325,19 @@ tANI_U32 val = 0;
 
   limLog( pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
       FL( "Sending WDA_SET_BSSKEY_REQ...\n" ));
 =======
       FL( "Sending WDA_SET_BSSKEY_REQ..." ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      FL( "Sending WDA_SET_BSSKEY_REQ...\n" ));
->>>>>>> 657b0e9... prima update
   MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
   if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
   {
     limLog( pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
         FL("Posting SET_BSSKEY to HAL failed, reason=%X\n"),
 =======
         FL("Posting SET_BSSKEY to HAL failed, reason=%X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        FL("Posting SET_BSSKEY to HAL failed, reason=%X\n"),
->>>>>>> 657b0e9... prima update
         retCode );
 
     // Respond to SME with LIM_MLM_SETKEYS_CNF
@@ -1595,16 +1388,12 @@ tANI_U32 val = 0;
 
   // Package WDA_SET_STAKEY_REQ message parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **) &pSetStaKeyParams,
                                                                                                  sizeof( tSetStaKeyParams ))) {
         limLog( pMac, LOGP, FL( "Unable to PAL allocate memory during SET_BSSKEY\n" ));
         return;
     }else
         palZeroMemory( pMac->hHdd, (void *) pSetStaKeyParams, sizeof( tSetStaKeyParams ));
-<<<<<<< HEAD
 =======
   pSetStaKeyParams = vos_mem_malloc(sizeof( tSetStaKeyParams ));
   if ( NULL == pSetStaKeyParams )
@@ -1615,8 +1404,6 @@ tANI_U32 val = 0;
   else
       vos_mem_set( (void *) pSetStaKeyParams, sizeof( tSetStaKeyParams ), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
   // Update the WDA_SET_STAKEY_REQ parameters
   pSetStaKeyParams->staIdx = staIdx;
@@ -1626,14 +1413,10 @@ tANI_U32 val = 0;
   if(eSIR_SUCCESS != wlan_cfgGetInt(pMac, WNI_CFG_SINGLE_TID_RC, &val))
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
      limLog( pMac, LOGP, FL( "Unable to read WNI_CFG_SINGLE_TID_RC\n" ));
 =======
      limLog( pMac, LOGP, FL( "Unable to read WNI_CFG_SINGLE_TID_RC" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-     limLog( pMac, LOGP, FL( "Unable to read WNI_CFG_SINGLE_TID_RC\n" ));
->>>>>>> 657b0e9... prima update
   }
 
   pSetStaKeyParams->singleTidRc = (tANI_U8)val;
@@ -1675,18 +1458,13 @@ tANI_U32 val = 0;
       // FIXME! Is this OK?
       if( 0 == pMlmSetKeysReq->numKeys ) {
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
           tANI_U32 i;
 
           for(i=0; i < SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS ;i++)
           { 
-<<<<<<< HEAD
 <<<<<<< HEAD
               palCopyMemory( pMac->hHdd,
                              (tANI_U8 *) &pSetStaKeyParams->key[i],
@@ -1698,13 +1476,6 @@ tANI_U32 val = 0;
                             (tANI_U8 *) &pMlmSetKeysReq->key[i], sizeof( tSirKeys ));
           }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-              palCopyMemory( pMac->hHdd,
-                             (tANI_U8 *) &pSetStaKeyParams->key[i],
-                             (tANI_U8 *) &pMlmSetKeysReq->key[i], sizeof( tSirKeys ));
-          }
-#endif
->>>>>>> 657b0e9... prima update
           pSetStaKeyParams->wepType = eSIR_WEP_STATIC;
           sessionEntry->limMlmState = eLIM_MLM_WT_SET_STA_KEY_STATE;
           MTRACE(macTrace(pMac, TRACE_CODE_MLM_STATE, sessionEntry->peSessionId, sessionEntry->limMlmState));
@@ -1712,16 +1483,11 @@ tANI_U32 val = 0;
           /*This case the keys are coming from upper layer so need to fill the 
           * key at the default wep key index and send to the HAL */
 <<<<<<< HEAD
-<<<<<<< HEAD
           palCopyMemory( pMac->hHdd,
                              (tANI_U8 *) &pSetStaKeyParams->key[defWEPIdx],
 =======
           vos_mem_copy((tANI_U8 *) &pSetStaKeyParams->key[defWEPIdx],
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          palCopyMemory( pMac->hHdd,
-                             (tANI_U8 *) &pSetStaKeyParams->key[defWEPIdx],
->>>>>>> 657b0e9... prima update
                              (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof( pMlmSetKeysReq->key[0] ));
           pMlmSetKeysReq->numKeys = SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS;
       }
@@ -1733,17 +1499,12 @@ tANI_U32 val = 0;
 #endif
       {
 <<<<<<< HEAD
-<<<<<<< HEAD
           palCopyMemory( pMac->hHdd, (tANI_U8 *) &pSetStaKeyParams->key,
                          (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof( tSirKeys ));
 =======
           vos_mem_copy( (tANI_U8 *) &pSetStaKeyParams->key,
                         (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof( tSirKeys ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-          palCopyMemory( pMac->hHdd, (tANI_U8 *) &pSetStaKeyParams->key,
-                         (tANI_U8 *) &pMlmSetKeysReq->key[0], sizeof( tSirKeys ));
->>>>>>> 657b0e9... prima update
       }
       break;
   default:
@@ -1761,7 +1522,6 @@ tANI_U32 val = 0;
   msgQ.bodyval = 0;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   limLog( pMac, LOG1, FL( "Sending WDA_SET_STAKEY_REQ...\n" ));
   MTRACE(macTraceMsgTx(pMac, sessionEntry->peSessionId, msgQ.type));
   if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ ))) {
@@ -1772,12 +1532,6 @@ tANI_U32 val = 0;
   if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ ))) {
       limLog( pMac, LOGE, FL("Posting SET_STAKEY to HAL failed, reason=%X"), retCode );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  limLog( pMac, LOG1, FL( "Sending WDA_SET_STAKEY_REQ...\n" ));
-  MTRACE(macTraceMsgTx(pMac, sessionEntry->peSessionId, msgQ.type));
-  if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ ))) {
-      limLog( pMac, LOGE, FL("Posting SET_STAKEY to HAL failed, reason=%X\n"), retCode );
->>>>>>> 657b0e9... prima update
       // Respond to SME with LIM_MLM_SETKEYS_CNF
       mlmSetKeysCnf.resultCode = eSIR_SME_HAL_SEND_MESSAGE_FAIL;
   }else
@@ -1817,14 +1571,10 @@ tSirRetStatus      retCode;
 
   // Package WDA_REMOVE_BSSKEY_REQ message parameters
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
   if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pRemoveBssKeyParams,
          sizeof( tRemoveBssKeyParams )))     
-<<<<<<< HEAD
   {
     limLog( pMac, LOGE,
         FL( "Unable to PAL allocate memory during REMOVE_BSSKEY\n" ));
@@ -1835,18 +1585,12 @@ tSirRetStatus      retCode;
     limLog( pMac, LOGE,
         FL( "Unable to allocate memory during REMOVE_BSSKEY" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  {
-    limLog( pMac, LOGE,
-        FL( "Unable to PAL allocate memory during REMOVE_BSSKEY\n" ));
->>>>>>> 657b0e9... prima update
 
     // Respond to SME with error code
     mlmRemoveKeysCnf.resultCode = eSIR_SME_RESOURCES_UNAVAILABLE;
     goto end;
   }
   else
-<<<<<<< HEAD
 <<<<<<< HEAD
     palZeroMemory( pMac->hHdd,
         (void *) pRemoveBssKeyParams,
@@ -1855,11 +1599,6 @@ tSirRetStatus      retCode;
     vos_mem_set( (void *) pRemoveBssKeyParams,
                   sizeof( tRemoveBssKeyParams ), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd,
-        (void *) pRemoveBssKeyParams,
-         sizeof( tRemoveBssKeyParams ));     
->>>>>>> 657b0e9... prima update
 
   // Update the WDA_REMOVE_BSSKEY_REQ parameters
   pRemoveBssKeyParams->bssIdx = psessionEntry->bssIdx;
@@ -1883,28 +1622,20 @@ tSirRetStatus      retCode;
 
   limLog( pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
       FL( "Sending WDA_REMOVE_BSSKEY_REQ...\n" ));
 =======
       FL( "Sending WDA_REMOVE_BSSKEY_REQ..." ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-      FL( "Sending WDA_REMOVE_BSSKEY_REQ...\n" ));
->>>>>>> 657b0e9... prima update
   MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
 
   if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
   {
     limLog( pMac, LOGE,
 <<<<<<< HEAD
-<<<<<<< HEAD
         FL("Posting REMOVE_BSSKEY to HAL failed, reason=%X\n"),
 =======
         FL("Posting REMOVE_BSSKEY to HAL failed, reason=%X"),
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        FL("Posting REMOVE_BSSKEY to HAL failed, reason=%X\n"),
->>>>>>> 657b0e9... prima update
         retCode );
 
     // Respond to SME with LIM_MLM_REMOVEKEYS_CNF
@@ -1945,14 +1676,10 @@ end:
 void limSendRemoveStaKeyReq( tpAniSirGlobal pMac,
     tLimMlmRemoveKeyReq *pMlmRemoveKeyReq,
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16 staIdx ,
 =======
     tANI_U16 staIdx,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16 staIdx ,
->>>>>>> 657b0e9... prima update
     tpPESession psessionEntry)
 {
 tSirMsgQ           msgQ;
@@ -1961,15 +1688,11 @@ tLimMlmRemoveKeyCnf  mlmRemoveKeyCnf;
 tSirRetStatus      retCode;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 
 
   if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pRemoveStaKeyParams,
           sizeof( tRemoveStaKeyParams )))
-<<<<<<< HEAD
   {
     limLog( pMac, LOGE,
         FL( "Unable to PAL allocate memory during REMOVE_STAKEY\n" ));
@@ -1980,18 +1703,12 @@ tSirRetStatus      retCode;
     limLog( pMac, LOGE,
         FL( "Unable to allocate memory during REMOVE_STAKEY" ));
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  {
-    limLog( pMac, LOGE,
-        FL( "Unable to PAL allocate memory during REMOVE_STAKEY\n" ));
->>>>>>> 657b0e9... prima update
 
     // Respond to SME with error code
     mlmRemoveKeyCnf.resultCode = eSIR_SME_RESOURCES_UNAVAILABLE;
     goto end;
   }
   else
-<<<<<<< HEAD
 <<<<<<< HEAD
     palZeroMemory( pMac->hHdd,
         (void *) pRemoveStaKeyParams,
@@ -2000,16 +1717,10 @@ tSirRetStatus      retCode;
     vos_mem_set( (void *) pRemoveStaKeyParams,
                   sizeof( tRemoveStaKeyParams ), 0);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    palZeroMemory( pMac->hHdd,
-        (void *) pRemoveStaKeyParams,
-        sizeof( tRemoveStaKeyParams ));
->>>>>>> 657b0e9... prima update
 
   if( (pMlmRemoveKeyReq->edType == eSIR_ED_WEP104 || pMlmRemoveKeyReq->edType == eSIR_ED_WEP40) &&
         pMlmRemoveKeyReq->wepType == eSIR_WEP_STATIC )
   {
-<<<<<<< HEAD
 <<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Request to remove static WEP keys through station interface\n Should use BSS interface\n"));)
         mlmRemoveKeyCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
@@ -2023,13 +1734,6 @@ tSirRetStatus      retCode;
   }
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-        PELOGE(limLog(pMac, LOGE, FL("Request to remove static WEP keys through station interface\n Should use BSS interface\n"));)
-        mlmRemoveKeyCnf.resultCode = eSIR_SME_INVALID_PARAMETERS;
-        goto end;
-  }
- 
->>>>>>> 657b0e9... prima update
   // Update the WDA_REMOVEKEY_REQ parameters
   pRemoveStaKeyParams->staIdx = staIdx;
   pRemoveStaKeyParams->encType = pMlmRemoveKeyReq->edType;
@@ -2041,14 +1745,10 @@ tSirRetStatus      retCode;
 
   SET_LIM_PROCESS_DEFD_MESGS(pMac, false);
 <<<<<<< HEAD
-<<<<<<< HEAD
   
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-  
->>>>>>> 657b0e9... prima update
   msgQ.type = WDA_REMOVE_STAKEY_REQ;
   //
   // FIXME_GEN4
@@ -2061,7 +1761,6 @@ tSirRetStatus      retCode;
 
   limLog( pMac, LOGW,
 <<<<<<< HEAD
-<<<<<<< HEAD
       FL( "Sending WDA_REMOVE_STAKEY_REQ...\n" ));
   MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
   if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
@@ -2071,27 +1770,21 @@ tSirRetStatus      retCode;
         retCode );
 =======
       FL( "Sending WDA_REMOVE_STAKEY_REQ..." ));
-=======
-      FL( "Sending WDA_REMOVE_STAKEY_REQ...\n" ));
->>>>>>> 657b0e9... prima update
   MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
-  if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
+  retCode = wdaPostCtrlMsg( pMac, &msgQ );
+  if (eSIR_SUCCESS != retCode)
   {
     limLog( pMac, LOGE,
-        FL("Posting REMOVE_STAKEY to HAL failed, reason=%X\n"),
+        FL("Posting REMOVE_STAKEY to HAL failed, reason=%X"),
         retCode );
-<<<<<<< HEAD
     vos_mem_free(pRemoveStaKeyParams);
     pRemoveStaKeyParams = NULL;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     // Respond to SME with LIM_MLM_REMOVEKEY_CNF
     mlmRemoveKeyCnf.resultCode = eSIR_SME_HAL_SEND_MESSAGE_FAIL;
   }
   else
-<<<<<<< HEAD
 <<<<<<< HEAD
     return; 
 
@@ -2105,11 +1798,6 @@ end:
     palFreeMemory(pMac->hHdd, pRemoveStaKeyParams);
   }
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    return; 
-
-end:
->>>>>>> 657b0e9... prima update
   limPostSmeRemoveKeyCnf( pMac,
       psessionEntry,
       pMlmRemoveKeyReq,

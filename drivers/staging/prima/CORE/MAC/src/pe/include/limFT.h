@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -51,17 +48,12 @@
    Macros and Function prototypes FT and 802.11R purposes 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    Copyright 2010 (c) Qualcomm, Incorporated.  All Rights Reserved.
    Qualcomm Confidential and Proprietary.
 =======
    Copyright 2010 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
    Qualcomm Technologies Confidential and Proprietary.
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   Copyright 2010 (c) Qualcomm, Incorporated.  All Rights Reserved.
-   Qualcomm Confidential and Proprietary.
->>>>>>> 657b0e9... prima update
   
   ========================================================================*/
 
@@ -89,7 +81,6 @@ void        limPerformPostFTPreAuth(tpAniSirGlobal pMac, eHalStatus status, tANI
                 tpPESession psessionEntry);
 void        limFTResumeLinkCb(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data);
 <<<<<<< HEAD
-<<<<<<< HEAD
 void        limPostFTPreAuthRsp(tpAniSirGlobal pMac, eHalStatus status,
                 tANI_U8 *auth_rsp, tANI_U16  auth_rsp_length,
                 tpPESession psessionEntry);
@@ -100,12 +91,6 @@ void        limPostFTPreAuthRsp(tpAniSirGlobal pMac, tSirRetStatus status,
                 tpPESession psessionEntry);
 void        limHandleFTPreAuthRsp(tpAniSirGlobal pMac, tSirRetStatus status,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void        limPostFTPreAuthRsp(tpAniSirGlobal pMac, eHalStatus status,
-                tANI_U8 *auth_rsp, tANI_U16  auth_rsp_length,
-                tpPESession psessionEntry);
-void        limHandleFTPreAuthRsp(tpAniSirGlobal pMac, eHalStatus status,
->>>>>>> 657b0e9... prima update
                 tANI_U8 *auth_rsp, tANI_U16  auth_rsp_len,
                 tpPESession psessionEntry);
 void        limProcessMlmFTReassocReq(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf,
@@ -113,13 +98,9 @@ void        limProcessMlmFTReassocReq(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf,
 void        limProcessFTPreauthRspTimeout(tpAniSirGlobal pMac);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 int         limisFastTransitionRequired(tpAniSirGlobal pMac, int SessionId);
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-int         limisFastTransitionRequired(tpAniSirGlobal pMac, int SessionId);
->>>>>>> 657b0e9... prima update
 tANI_BOOLEAN   limProcessFTUpdateKey(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf );
 tSirRetStatus  limProcessFTAggrQosReq(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf );
 void        limProcessFTAggrQoSRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg);

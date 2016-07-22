@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,12 +43,9 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 /** ------------------------------------------------------------------------- *
     ------------------------------------------------------------------------- *
 
@@ -72,9 +66,6 @@
 #define HALTYPES_H
 #ifndef WINXP_APPS_BUILD    //TODO: this header dependency does not belong in this file
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "wlan_qct_bal.h"
 
@@ -84,11 +75,8 @@
 #include "libraDefs.h"
 #endif
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #endif /* WINXP_APPS_BUILD */
 
@@ -261,7 +249,6 @@ typedef enum
     eHAL_STATUS_SET_CHAN_ALREADY_ON_REQUESTED_CHAN,
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WLAN_FEATURE_VOWIFI_11R
     eHAL_STATUS_FT_PREAUTH_KEY_SUCCESS,
@@ -269,8 +256,6 @@ typedef enum
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // not a real status.  Just a way to mark the maximum in the enum.
     eHAL_STATUS_MAX
 
@@ -393,13 +378,9 @@ typedef enum
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 #define HAL_MAX_TXPOWER_INVALID       127
 
 #define MIN_STA_PWR_CAP_DBM         13
@@ -428,14 +409,10 @@ typedef enum
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define HAL_INVALID_BSSIDX          HAL_NUM_BSSID+1
 =======
 #define HAL_INVALID_BSSIDX          (HAL_NUM_BSSID + 1)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define HAL_INVALID_BSSIDX          HAL_NUM_BSSID+1
->>>>>>> 657b0e9... prima update
 #define HAL_NUM_UMA_DESC_ENTRIES    8
 #define MAX_NUM_OF_BACKOFFS         8
 
@@ -444,15 +421,11 @@ typedef enum
 
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define HAL_NUM_ASSOC_STA           10
 #define HAL_NUM_STA                 14
 #define HAL_NUM_HW_STA              8
 #define HAL_NUM_GPSTA               2
 #define HAL_NUM_VSTA                HAL_NUM_STA - HAL_NUM_HW_STA
-<<<<<<< HEAD
 
 #define QWLANFW_MAX_NUM_VSTA        HAL_NUM_VSTA
 #define QWLANFW_VSTA_INVALID_IDX    HAL_NUM_STA+1
@@ -466,11 +439,6 @@ typedef enum
 #define QWLANFW_MAX_NUM_VSTA        HAL_NUM_VSTA
 #define QWLANFW_VSTA_INVALID_IDX    (HAL_NUM_STA + 1)
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#define QWLANFW_MAX_NUM_VSTA        HAL_NUM_VSTA
-#define QWLANFW_VSTA_INVALID_IDX    HAL_NUM_STA+1
->>>>>>> 657b0e9... prima update
 #define QWLAN_VSTA_MIN_IDX          HAL_NUM_HW_STA
 #define QWLANFW_NUM_GPSTA           HAL_NUM_GPSTA
 
@@ -520,13 +488,9 @@ typedef enum
 #define STACFG_MAX_TC   8
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #endif
 

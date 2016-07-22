@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -177,14 +174,10 @@ WLAN_BAPReadLocalVersionInfo
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
->>>>>>> 657b0e9... prima update
 
 
     /* Format the command complete event to return... */ 
@@ -261,14 +254,10 @@ WLAN_BAPReadLocalSupportedCmds
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
->>>>>>> 657b0e9... prima update
 
 
     /* Format the command complete event to return... */ 
@@ -335,14 +324,10 @@ WLAN_BAPReadBufferSize
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
->>>>>>> 657b0e9... prima update
 
 
     /* Format the command complete event to return... */ 
@@ -413,14 +398,10 @@ WLAN_BAPReadDataBlockSize
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
->>>>>>> 657b0e9... prima update
 
 
    /* Format the command complete event to return... */ 
@@ -582,28 +563,20 @@ WLAN_BAPDisconnect
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
->>>>>>> 657b0e9... prima update
 
     /* Validate params */ 
     if (btampHandle == NULL) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL,
 <<<<<<< HEAD
-<<<<<<< HEAD
                      "btampHandle is NULL in %s", __FUNCTION__);
 =======
                      "btampHandle is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                     "btampHandle is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
       return VOS_STATUS_E_FAULT;
     }
@@ -664,28 +637,20 @@ v_BOOL_t WLAN_BAPSessionOn
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
 =======
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
->>>>>>> 657b0e9... prima update
 
    /* Validate params */ 
    if (btampHandle == NULL) 
    {
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                     "btampHandle is NULL in %s", __FUNCTION__);
 =======
                     "btampHandle is NULL in %s", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    "btampHandle is NULL in %s", __FUNCTION__);
->>>>>>> 657b0e9... prima update
 
        //?? shall we say true or false
        return VOS_FALSE;

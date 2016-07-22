@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,14 +62,10 @@ BRIEF DESCRIPTION:
 #define QWLAN_VERSION_MAJOR            3
 #define QWLAN_VERSION_MINOR            2
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #define QWLAN_VERSION_PATCH            1
 #define QWLAN_VERSION_EXTRA            "h"
 #define QWLAN_VERSION_BUILD            11
 #define QWLAN_VERSIONSTR               "3.2.1.11h"
-<<<<<<< HEAD
 
 #endif /* QWLAN_VERSION_H */
 =======
@@ -85,7 +78,3 @@ BRIEF DESCRIPTION:
 #endif /* QWLAN_VERSION_H */
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#endif /* QWLAN_VERSION_H */
->>>>>>> 657b0e9... prima update

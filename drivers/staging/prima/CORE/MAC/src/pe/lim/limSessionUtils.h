@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -50,7 +47,6 @@
 #define __LIM_SESSION_UTILS_H
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*
 * Copyright (c) 2012-2013 Qualcomm Atheros, Inc.
@@ -58,8 +54,6 @@
 * Qualcomm Atheros Confidential and Proprietary.
 */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 /**=========================================================================
   
@@ -98,7 +92,6 @@
 /*--------------------------------------------------------------------------
   
 <<<<<<< HEAD
-<<<<<<< HEAD
           \brief peGetVhtCapable() - Returns the Vht capable from a valid session.
  
           This function itrates the session Table and returns the VHT capable from first valid session
@@ -113,25 +106,18 @@
    tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
 =======
   \brief peGetVhtCapable() - Returns the Vht capable from a valid session.
-=======
-          \brief peGetVhtCapable() - Returns the Vht capable from a valid session.
->>>>>>> 657b0e9... prima update
  
-          This function itrates the session Table and returns the VHT capable from first valid session
-          if no sessions are valid/present  it returns FALSE
+  This function iterates the session Table and returns the VHT capable from first valid session
+  if no sessions are valid/present  it returns FALSE
 
-         \param pMac	                - pointer to global adapter context
-          \return                        - channel to scan from valid session else zero.
-          
-          \sa
-           
+  \param pMac - pointer to global adapter context
+  \return     - channel to scan from valid session else zero.
+
+  \sa
+
  --------------------------------------------------------------------------*/
-<<<<<<< HEAD
 tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
->>>>>>> 657b0e9... prima update
 
 
 /*--------------------------------------------------------------------------
@@ -140,22 +126,16 @@ tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
   This function is called to validate the Join Request for a BT-AMP station. If start BSS session is present
   this function returns TRUE else returns FALSE.
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     
   \param pMac                   - pointer to global adapter context
   \return                           - return TRUE if start BSS session is present else return FALSE.
   
-<<<<<<< HEAD
 =======
 
   \param pMac  - pointer to global adapter context
   \return      - return TRUE if start BSS session is present else return FALSE.
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
   \sa
   --------------------------------------------------------------------------*/
 tANI_U8 peValidateBtJoinRequest(tpAniSirGlobal pMac);
@@ -281,7 +261,6 @@ limIsQuietBegin (tpAniSirGlobal pMac);
 tANI_U8
 limIsInMCC (tpAniSirGlobal pMac);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 /*--------------------------------------------------------------------------
   \brief peGetCurrentSTAsCount() - Returns total stations associated on 
@@ -311,7 +290,5 @@ limIsFastRoamEnabled(tpAniSirGlobal pMac, tANI_U8 sessionId);
 
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif //#if !defined( __LIM_SESSION_UTILS_H )
 

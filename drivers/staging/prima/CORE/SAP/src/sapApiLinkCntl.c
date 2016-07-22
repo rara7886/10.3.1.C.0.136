@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -94,14 +91,10 @@
 #include "sme_Api.h"
 // SAP Internal API header file
 <<<<<<< HEAD
-<<<<<<< HEAD
 #include "sapInternal.h" 
 =======
 #include "sapInternal.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#include "sapInternal.h" 
->>>>>>> 657b0e9... prima update
 
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
@@ -127,14 +120,10 @@
 /*----------------------------------------------------------------------------
  * Externalized Function Definitions
 <<<<<<< HEAD
-<<<<<<< HEAD
 * -------------------------------------------------------------------------*/
 =======
  * -------------------------------------------------------------------------*/
 >>>>>>> d97af3b... add prima wlan driver
-=======
-* -------------------------------------------------------------------------*/
->>>>>>> 657b0e9... prima update
 
 /*----------------------------------------------------------------------------
  * Function Declarations and Documentation
@@ -177,12 +166,9 @@ WLANSAP_ScanCallback
     eHalStatus scanGetResultStatus = eHAL_STATUS_FAILURE;
     ptSapContext psapContext = (ptSapContext)pContext;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     void *pTempHddCtx;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     tWLAN_SAPEvent sapEvent; /* State machine event */
     v_U8_t operChannel = 0;
     VOS_STATUS sapstatus;
@@ -192,7 +178,6 @@ WLANSAP_ScanCallback
 
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
-<<<<<<< HEAD
 <<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on scanStatus = %d", __FUNCTION__, scanStatus);
 =======
@@ -207,23 +192,16 @@ WLANSAP_ScanCallback
 
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on scanStatus = %d", __func__, scanStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on scanStatus = %d", __FUNCTION__, scanStatus);
->>>>>>> 657b0e9... prima update
 
     switch (scanStatus) 
     {
         case eCSR_SCAN_SUCCESS:
             // sapScanCompleteCallback with eCSR_SCAN_SUCCESS
 <<<<<<< HEAD
-<<<<<<< HEAD
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR scanStatus = %s (%d)", __FUNCTION__, "eCSR_SCAN_SUCCESS", scanStatus);
 =======
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR scanStatus = %s (%d)", __func__, "eCSR_SCAN_SUCCESS", scanStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR scanStatus = %s (%d)", __FUNCTION__, "eCSR_SCAN_SUCCESS", scanStatus);
->>>>>>> 657b0e9... prima update
 
             // Get scan results, Run channel selection algorithm, select channel and keep in pSapContext->Channel
             scanGetResultStatus = sme_ScanGetResult(halHandle, 0, NULL, &pResult);
@@ -231,7 +209,6 @@ WLANSAP_ScanCallback
             if ((NULL == pResult) || (scanGetResultStatus != eHAL_STATUS_SUCCESS))
             {
                 // No scan results
-<<<<<<< HEAD
 <<<<<<< HEAD
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, sme_ScanGetResult = NULL", __FUNCTION__);
                 break;
@@ -246,26 +223,15 @@ WLANSAP_ScanCallback
             operChannel = sapSelectChannel(halHandle, psapContext, pResult);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, sme_ScanGetResult = NULL", __FUNCTION__);
-                break;
-            }
-
-            operChannel = sapSelectChannel(halHandle, pResult);
->>>>>>> 657b0e9... prima update
             sme_ScanResultPurge(halHandle, pResult);
             break;
 
         default:
 <<<<<<< HEAD
-<<<<<<< HEAD
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR scanStatus = %s (%d)", __FUNCTION__, "eCSR_SCAN_ABORT/FAILURE", scanStatus);
 =======
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR scanStatus = %s (%d)", __func__, "eCSR_SCAN_ABORT/FAILURE", scanStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR scanStatus = %s (%d)", __FUNCTION__, "eCSR_SCAN_ABORT/FAILURE", scanStatus);
->>>>>>> 657b0e9... prima update
     }
     
     if (operChannel == SAP_CHANNEL_NOT_SELECTED)
@@ -296,7 +262,6 @@ WLANSAP_ScanCallback
       psapContext->channel = operChannel;
     }
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 #ifdef SOFTAP_CHANNEL_RANGE
     if(psapContext->channelList != NULL)
@@ -312,13 +277,6 @@ WLANSAP_ScanCallback
     {
         /* Always free up the memory for channel selection whatever
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    
-#ifdef SOFTAP_CHANNEL_RANGE
-    if(psapContext->channelList != NULL)
-    {
-        /* Always free up the memory for channel selection whatever 
->>>>>>> 657b0e9... prima update
          * the result */
         vos_mem_free(psapContext->channelList);
         psapContext->channelList = NULL;
@@ -326,14 +284,10 @@ WLANSAP_ScanCallback
 #endif    
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Channel selected = %d", __FUNCTION__, psapContext->channel);
 =======
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Channel selected = %d", __func__, psapContext->channel);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Channel selected = %d", __FUNCTION__, psapContext->channel);
->>>>>>> 657b0e9... prima update
 
     /* Fill in the event structure */
     sapEvent.event = eSAP_MAC_SCAN_COMPLETE;
@@ -390,14 +344,10 @@ WLANSAP_RoamCallback
     eHalStatus halStatus = eHAL_STATUS_SUCCESS;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on roamStatus = %d\n", __FUNCTION__, roamStatus);
 =======
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on roamStatus = %d\n", __func__, roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on roamStatus = %d\n", __FUNCTION__, roamStatus);
->>>>>>> 657b0e9... prima update
     switch(roamStatus)
     {
         case eCSR_ROAM_SESSION_OPENED:
@@ -409,28 +359,20 @@ WLANSAP_RoamCallback
             {
                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
 <<<<<<< HEAD
-<<<<<<< HEAD
                           "In %s invalid hHal", __FUNCTION__);
 =======
                           "In %s invalid hHal", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          "In %s invalid hHal", __FUNCTION__);
->>>>>>> 657b0e9... prima update
                halStatus = eHAL_STATUS_FAILED_ALLOC;
             }
             else
             {
                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
 <<<<<<< HEAD
-<<<<<<< HEAD
                           "In %s calling sme_RoamConnect with eCSR_BSS_TYPE_INFRA_AP", __FUNCTION__);
 =======
                           "In %s calling sme_RoamConnect with eCSR_BSS_TYPE_INFRA_AP", __func__);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                          "In %s calling sme_RoamConnect with eCSR_BSS_TYPE_INFRA_AP", __FUNCTION__);
->>>>>>> 657b0e9... prima update
                sapContext->isSapSessionOpen = eSAP_TRUE;
                halStatus = sme_RoamConnect(hHal, sapContext->sessionId,
                                            &sapContext->csrRoamProfile,
@@ -442,14 +384,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_INFRA_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       __FUNCTION__, "eCSR_ROAM_INFRA_IND", roamStatus);
 =======
                       __func__, "eCSR_ROAM_INFRA_IND", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      __FUNCTION__, "eCSR_ROAM_INFRA_IND", roamStatus);
->>>>>>> 657b0e9... prima update
             if(roamResult == eCSR_ROAM_RESULT_INFRA_START_FAILED)
             {
                 /* Fill in the event structure */ 
@@ -470,40 +408,28 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_LOSTLINK:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_LOSTLINK", roamStatus);
 =======
                        __func__, "eCSR_ROAM_LOSTLINK", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_LOSTLINK", roamStatus);
->>>>>>> 657b0e9... prima update
             break;
 
         case eCSR_ROAM_MIC_ERROR_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, "eCSR_ROAM_MIC_ERROR_IND", roamStatus);
 =======
                 __func__, "eCSR_ROAM_MIC_ERROR_IND", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, "eCSR_ROAM_MIC_ERROR_IND", roamStatus);
->>>>>>> 657b0e9... prima update
             break;
 
         case eCSR_ROAM_SET_KEY_COMPLETE:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                 __FUNCTION__, "eCSR_ROAM_SET_KEY_COMPLETE", roamStatus);
 =======
                 __func__, "eCSR_ROAM_SET_KEY_COMPLETE", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                __FUNCTION__, "eCSR_ROAM_SET_KEY_COMPLETE", roamStatus);
->>>>>>> 657b0e9... prima update
             if (roamResult == eCSR_ROAM_RESULT_FAILURE )
             {
                 /* Format the SET KEY complete information pass to HDD... */
@@ -514,14 +440,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_REMOVE_KEY_COMPLETE:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                         __FUNCTION__, "eCSR_ROAM_REMOVE_KEY_COMPLETE", roamStatus);
 =======
                         __func__, "eCSR_ROAM_REMOVE_KEY_COMPLETE", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        __FUNCTION__, "eCSR_ROAM_REMOVE_KEY_COMPLETE", roamStatus);
->>>>>>> 657b0e9... prima update
             if (roamResult == eCSR_ROAM_RESULT_FAILURE )
             {
                 /* Format the SET KEY complete information pass to HDD... */
@@ -532,14 +454,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_ASSOCIATION_COMPLETION:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_ASSOCIATION_COMPLETION", roamStatus);
 =======
                        __func__, "eCSR_ROAM_ASSOCIATION_COMPLETION", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_ASSOCIATION_COMPLETION", roamStatus);
->>>>>>> 657b0e9... prima update
             if (roamResult == eCSR_ROAM_RESULT_FAILURE )
             {
                 /* Format the SET KEY complete information pass to HDD... */
@@ -550,14 +468,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_DISASSOCIATED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_DISASSOCIATED", roamStatus);
 =======
                        __func__, "eCSR_ROAM_DISASSOCIATED", roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_DISASSOCIATED", roamStatus);
->>>>>>> 657b0e9... prima update
             if (roamResult == eCSR_ROAM_RESULT_MIC_FAILURE)
             {
                 /* Format the MIC failure event to return... */
@@ -568,7 +482,6 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_WPS_PBC_PROBE_REQ_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamStatus = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_WPS_PBC_PROBE_REQ_IND", roamStatus);
             break;        
 
@@ -578,12 +491,6 @@ WLANSAP_RoamCallback
             break;        
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_WPS_PBC_PROBE_REQ_IND", roamStatus);
-            break;        
-
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
         case eCSR_ROAM_INDICATE_MGMT_FRAME:
             sapSignalHDDevent(sapContext, pCsrRoamInfo, 
                               eSAP_INDICATE_MGMT_FRAME, 
@@ -600,7 +507,6 @@ WLANSAP_RoamCallback
                             (v_PVOID_t)(( roamResult == eCSR_ROAM_RESULT_NONE) ?
                             eSAP_STATUS_SUCCESS : eSAP_STATUS_FAILURE));
             break;
-<<<<<<< HEAD
 <<<<<<< HEAD
 #endif
 
@@ -626,41 +532,26 @@ WLANSAP_RoamCallback
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, CSR roamStatus not handled roamStatus = %s (%d)\n",
                        __func__, get_eRoamCmdStatus_str(roamStatus), roamStatus);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-
-        default:
-            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, CSR roamStatus not handled roamStatus = %s (%d)\n",
-                       __FUNCTION__, get_eRoamCmdStatus_str(roamStatus), roamStatus);
->>>>>>> 657b0e9... prima update
             break;
 
     }
 
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before switch on roamResult = %d\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                __FUNCTION__, roamResult);
 =======
                __func__, roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-               __FUNCTION__, roamResult);
->>>>>>> 657b0e9... prima update
 
     switch (roamResult)
     {
         case eCSR_ROAM_RESULT_INFRA_ASSOCIATION_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_ASSOCIATION_IND", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_INFRA_ASSOCIATION_IND", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_ASSOCIATION_IND", roamResult);
->>>>>>> 657b0e9... prima update
             sapContext->nStaWPARSnReqIeLength = pCsrRoamInfo->rsnIELen;
              
             if(sapContext->nStaWPARSnReqIeLength)
@@ -686,14 +577,10 @@ WLANSAP_RoamCallback
                       "In %s, CSR roamResult = (%d) MAC"
                       "(%02X-%02X-%02X-%02X-%02X-%02X) fail",
 <<<<<<< HEAD
-<<<<<<< HEAD
                       __FUNCTION__, roamResult, pCsrRoamInfo->peerMac[0],
 =======
                       __func__, roamResult, pCsrRoamInfo->peerMac[0],
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                      __FUNCTION__, roamResult, pCsrRoamInfo->peerMac[0],
->>>>>>> 657b0e9... prima update
                       pCsrRoamInfo->peerMac[1], pCsrRoamInfo->peerMac[2],
                       pCsrRoamInfo->peerMac[3], pCsrRoamInfo->peerMac[4],
                       pCsrRoamInfo->peerMac[5]);
@@ -706,14 +593,10 @@ WLANSAP_RoamCallback
                    "In %s, CSR roamResult = (%d) MAC"
                    "(%02X-%02X-%02X-%02X-%02X-%02X) not allowed",
 <<<<<<< HEAD
-<<<<<<< HEAD
                    __FUNCTION__, roamResult, pCsrRoamInfo->peerMac[0],
 =======
                    __func__, roamResult, pCsrRoamInfo->peerMac[0],
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                   __FUNCTION__, roamResult, pCsrRoamInfo->peerMac[0],
->>>>>>> 657b0e9... prima update
                    pCsrRoamInfo->peerMac[1], pCsrRoamInfo->peerMac[2],
                    pCsrRoamInfo->peerMac[3], pCsrRoamInfo->peerMac[4], pCsrRoamInfo->peerMac[5]);
                 halStatus = eHAL_STATUS_FAILURE;
@@ -724,14 +607,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_INFRA_ASSOCIATION_CNF:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                         __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_ASSOCIATION_CNF", roamResult);
 =======
                         __func__, "eCSR_ROAM_RESULT_INFRA_ASSOCIATION_CNF", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_ASSOCIATION_CNF", roamResult);
->>>>>>> 657b0e9... prima update
 
             sapContext->nStaWPARSnReqIeLength = pCsrRoamInfo->rsnIELen;
             if (sapContext->nStaWPARSnReqIeLength)
@@ -755,14 +634,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_DISASSOC_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                         __FUNCTION__, "eCSR_ROAM_RESULT_DISASSOC_IND", roamResult);
 =======
                         __func__, "eCSR_ROAM_RESULT_DISASSOC_IND", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        __FUNCTION__, "eCSR_ROAM_RESULT_DISASSOC_IND", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             vosStatus = sapSignalHDDevent( sapContext, pCsrRoamInfo, eSAP_STA_DISASSOC_EVENT, (v_PVOID_t)eSAP_STATUS_SUCCESS);
             if(!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -774,14 +649,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_DEAUTH_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_DEAUTH_IND", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_DEAUTH_IND", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_DEAUTH_IND", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             //TODO: we will use the same event inorder to inform HDD to disassociate the station
             vosStatus = sapSignalHDDevent( sapContext, pCsrRoamInfo, eSAP_STA_DISASSOC_EVENT, (v_PVOID_t)eSAP_STATUS_SUCCESS);
@@ -794,14 +665,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_MIC_ERROR_GROUP:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                         __FUNCTION__, "eCSR_ROAM_RESULT_MIC_ERROR_GROUP", roamResult);
 =======
                         __func__, "eCSR_ROAM_RESULT_MIC_ERROR_GROUP", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        __FUNCTION__, "eCSR_ROAM_RESULT_MIC_ERROR_GROUP", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             //TODO: support for group key MIC failure event to be handled
             vosStatus = sapSignalHDDevent( sapContext, pCsrRoamInfo, eSAP_STA_MIC_FAILURE_EVENT,(v_PVOID_t) NULL);
@@ -814,14 +681,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_MIC_ERROR_UNICAST: 
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_MIC_ERROR_UNICAST", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_MIC_ERROR_UNICAST", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_MIC_ERROR_UNICAST", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             //TODO: support for unicast key MIC failure event to be handled
             vosStatus = sapSignalHDDevent( sapContext, pCsrRoamInfo, eSAP_STA_MIC_FAILURE_EVENT,(v_PVOID_t) NULL);
@@ -834,14 +697,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_AUTHENTICATED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_AUTHENTICATED", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_AUTHENTICATED", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_AUTHENTICATED", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             sapSignalHDDevent( sapContext, pCsrRoamInfo,eSAP_STA_SET_KEY_EVENT, (v_PVOID_t)eSAP_STATUS_SUCCESS);
             if(!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -853,14 +712,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_ASSOCIATED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_ASSOCIATED", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_ASSOCIATED", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_ASSOCIATED", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             sapSignalHDDevent( sapContext, pCsrRoamInfo,eSAP_STA_REASSOC_EVENT, (v_PVOID_t)eSAP_STATUS_SUCCESS);
             break;
@@ -868,14 +723,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_INFRA_STARTED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_STARTED", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_INFRA_STARTED", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_STARTED", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */ 
             sapEvent.event = eSAP_MAC_START_BSS_SUCCESS;
             sapEvent.params = pCsrRoamInfo;
@@ -893,14 +744,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_INFRA_STOPPED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_STOPPED", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_INFRA_STOPPED", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_INFRA_STOPPED", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */ 
             sapEvent.event = eSAP_MAC_READY_FOR_CONNECTIONS;
             sapEvent.params = pCsrRoamInfo;
@@ -918,14 +765,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_WPS_PBC_PROBE_REQ_IND:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                         __FUNCTION__, "eCSR_ROAM_RESULT_WPS_PBC_PROBE_REQ_IND", roamResult);
 =======
                         __func__, "eCSR_ROAM_RESULT_WPS_PBC_PROBE_REQ_IND", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                        __FUNCTION__, "eCSR_ROAM_RESULT_WPS_PBC_PROBE_REQ_IND", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             //TODO: support for group key MIC failure event to be handled
             vosStatus = sapSignalHDDevent( sapContext, pCsrRoamInfo, eSAP_WPS_PBC_PROBE_REQ_EVENT,(v_PVOID_t) NULL);
@@ -938,14 +781,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_FORCED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__, "eCSR_ROAM_RESULT_FORCED", roamResult);
 =======
                        __func__, "eCSR_ROAM_RESULT_FORCED", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__, "eCSR_ROAM_RESULT_FORCED", roamResult);
->>>>>>> 657b0e9... prima update
             //This event can be used to inform hdd about user triggered disassoc event
             /* Fill in the event structure */
             sapSignalHDDevent( sapContext, pCsrRoamInfo, eSAP_STA_DISASSOC_EVENT, (v_PVOID_t)eSAP_STATUS_SUCCESS);
@@ -954,14 +793,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_NONE:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                     __FUNCTION__, "eCSR_ROAM_RESULT_NONE", roamResult);
 =======
                     __func__, "eCSR_ROAM_RESULT_NONE", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__, "eCSR_ROAM_RESULT_NONE", roamResult);
->>>>>>> 657b0e9... prima update
             //This event can be used to inform hdd about user triggered disassoc event
             /* Fill in the event structure */
             if ( roamStatus == eCSR_ROAM_SET_KEY_COMPLETE)
@@ -977,14 +812,10 @@ WLANSAP_RoamCallback
         case eCSR_ROAM_RESULT_MAX_ASSOC_EXCEEDED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, CSR roamResult = %s (%d)\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                     __FUNCTION__, "eCSR_ROAM_RESULT_MAX_ASSOC_EXCEEDED", roamResult);
 =======
                     __func__, "eCSR_ROAM_RESULT_MAX_ASSOC_EXCEEDED", roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                    __FUNCTION__, "eCSR_ROAM_RESULT_MAX_ASSOC_EXCEEDED", roamResult);
->>>>>>> 657b0e9... prima update
             /* Fill in the event structure */
             vosStatus = sapSignalHDDevent(sapContext, pCsrRoamInfo, eSAP_MAX_ASSOC_EXCEEDED, (v_PVOID_t)NULL);
             if(!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -996,14 +827,10 @@ WLANSAP_RoamCallback
         default:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, CSR roamResult = %s (%d) not handled\n",
 <<<<<<< HEAD
-<<<<<<< HEAD
                        __FUNCTION__,get_eCsrRoamResult_str(roamResult),roamResult);
 =======
                        __func__,get_eCsrRoamResult_str(roamResult),roamResult);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                       __FUNCTION__,get_eCsrRoamResult_str(roamResult),roamResult);
->>>>>>> 657b0e9... prima update
             break;
     }
 

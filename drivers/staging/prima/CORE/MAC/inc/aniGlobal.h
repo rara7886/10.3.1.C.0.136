@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -45,13 +42,9 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 /*
  * Airgo Networks, Inc proprietary. All rights reserved
  * aniGlobal.h: MAC Modules Adapter Definitions.
@@ -79,18 +72,12 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #include "sirCommon.h"
 #include "aniSystemDefs.h"
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifndef ANI_OS_TYPE_OSX
 #include "sysDef.h"
 #endif
 =======
 #include "sysDef.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifndef ANI_OS_TYPE_OSX
-#include "sysDef.h"
-#endif
->>>>>>> 657b0e9... prima update
 #include "dphGlobal.h"
 #include "limGlobal.h"
 #include "pmmGlobal.h"
@@ -101,9 +88,6 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #include "sirApi.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
 #include "halGlobal.h"
 #include "halDataStruct.h"
@@ -118,15 +102,12 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #ifdef ANI_PRODUCT_TYPE_CLIENT
 #include "pmc.h"
 #endif
-<<<<<<< HEAD
 =======
 
 #include "wlan_qct_hal.h"
 
 #include "pmc.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #include "csrApi.h"
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -151,18 +132,12 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #include "ccxGlobal.h"
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 #include "p2p_Api.h"
 #endif
 =======
 #include "p2p_Api.h"
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-#include "p2p_Api.h"
-#endif
->>>>>>> 657b0e9... prima update
 
 #if defined WLAN_FEATURE_VOWIFI_11R
 #include <limFTDefs.h>
@@ -177,7 +152,6 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #include "logDump.h"
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 //Check if this definition can actually move here from halInternal.h even for Volans. In that case
 //this featurization can be removed.
@@ -188,13 +162,6 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 //this featurization can be removed.
 #define PMAC_STRUCT( _hHal )  (  (tpAniSirGlobal)_hHal )
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
-//Check if this definition can actually move here from halInternal.h even for Volans. In that case
-//this featurization can be removed.
-#define PMAC_STRUCT( _hHal )  (  (tpAniSirGlobal)_hHal )
-#endif
->>>>>>> 657b0e9... prima update
 
 #define ANI_DRIVER_TYPE(pMac)     (((tpAniSirGlobal)(pMac))->gDriverType)
 // -------------------------------------------------------------------
@@ -210,17 +177,12 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 // cap should be one of HCF/WME/WSM
 #define LIM_BSS_CAPS_GET(cap, val) (((val) & (LIM_BSS_CAPS_ ## cap)) >> LIM_BSS_CAPS_OFFSET_ ## cap)
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define LIM_BSS_CAPS_SET(cap, val) (val) |= (LIM_BSS_CAPS_ ## cap )
 #define LIM_BSS_CAPS_CLR(cap, val) (val) &= (~ (LIM_BSS_CAPS_ ## cap))
 =======
 #define LIM_BSS_CAPS_SET(cap, val) ((val) |= (LIM_BSS_CAPS_ ## cap ))
 #define LIM_BSS_CAPS_CLR(cap, val) ((val) &= (~ (LIM_BSS_CAPS_ ## cap)))
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define LIM_BSS_CAPS_SET(cap, val) (val) |= (LIM_BSS_CAPS_ ## cap )
-#define LIM_BSS_CAPS_CLR(cap, val) (val) &= (~ (LIM_BSS_CAPS_ ## cap))
->>>>>>> 657b0e9... prima update
 
 // 40 beacons per heart beat interval is the default + 1 to count the rest
 #define MAX_NO_BEACONS_PER_HEART_BEAT_INTERVAL 41
@@ -229,13 +191,9 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #define MAX_NUM_LEGACY_BSSID_PER_CHANNEL    10
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 #define P2P_WILDCARD_SSID "DIRECT-" //TODO Put it in proper place;
 #define P2P_WILDCARD_SSID_LEN 7
 
@@ -243,15 +201,11 @@ typedef struct sAniSirGlobal *tpAniSirGlobal;
 #define MAX_NO_OF_P2P_SESSIONS  5
 #endif //WLAN_FEATURE_CONCURRENT_P2P
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif //WLAN_FEATURE_P2P
 =======
 
 #define SPACE_ASCII_VALUE  32
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif //WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 
 // -------------------------------------------------------------------
 // Change channel generic scheme
@@ -285,20 +239,14 @@ typedef struct sLimTimers
 
 //STA SPECIFIC TIMERS
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
     // Periodic background scan timer
     TX_TIMER   gLimBackgroundScanTimer;
 #endif
-<<<<<<< HEAD
 =======
     // Periodic background scan timer
     TX_TIMER   gLimBackgroundScanTimer;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     TX_TIMER    gLimPreAuthClnupTimer;
     //TX_TIMER    gLimAuthResponseTimer[HAL_NUM_STA];
@@ -358,19 +306,18 @@ typedef struct sLimTimers
     TX_TIMER           gLimCcxTsmTimer;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     TX_TIMER           gLimRemainOnChannelTimer;
 #endif
 
 =======
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     TX_TIMER           gLimRemainOnChannelTimer;
+#ifdef FEATURE_WLAN_TDLS_INTERNAL
+    TX_TIMER           gLimTdlsDisRspWaitTimer;
+    TX_TIMER           gLimTdlsLinkSetupRspTimeouTimer;
+    TX_TIMER           gLimTdlsLinkSetupCnfTimeoutTimer;
 #endif
 
-<<<<<<< HEAD
     TX_TIMER           gLimPeriodicJoinProbeReqTimer;
     TX_TIMER           gLimDisassocAckTimer;
     TX_TIMER           gLimDeauthAckTimer;
@@ -382,8 +329,6 @@ typedef struct sLimTimers
      */
     TX_TIMER           gLimActiveToPassiveChannelTimer;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 //********************TIMER SECTION ENDS**************************************************
 // ALL THE FIELDS BELOW THIS CAN BE ZEROED OUT in limInitialize
 //****************************************************************************************
@@ -391,15 +336,12 @@ typedef struct sLimTimers
 }tLimTimers;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 typedef struct {
     void *pMlmDisassocReq;
     void *pMlmDeauthReq;
 }tLimDisassocDeauthCnfReq;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef struct sAniSirLim
 {
@@ -448,7 +390,6 @@ typedef struct sAniSirLim
 
     // Hold onto SCAN criteria
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     /* The below is used in P2P GO case when we need to defer processing SME Req
      * to LIM and insert NOA first and process SME req once SNOA is started
@@ -457,8 +398,6 @@ typedef struct sAniSirLim
     tANI_U32 *gpDefdSmeMsgForNOA;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     tLimMlmScanReq *gpLimMlmScanReq;
 
     /// This indicates total length of 'matched' scan results
@@ -474,7 +413,6 @@ typedef struct sAniSirLim
     tLimScanResultNode
            *gLimCachedScanHashTable[LIM_MAX_NUM_OF_SCAN_RESULTS];
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 #if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
 =======
@@ -493,9 +431,6 @@ typedef struct sAniSirLim
         *gLimCachedLfrScanHashTable[LIM_MAX_NUM_OF_SCAN_RESULTS];
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(ANI_PRODUCT_TYPE_CLIENT) || defined(ANI_AP_CLIENT_SDK)
->>>>>>> 657b0e9... prima update
     /// Place holder for current channel ID
     /// being scanned during background scanning
     tANI_U32   gLimBackgroundScanChannelId;
@@ -507,13 +442,9 @@ typedef struct sAniSirLim
     tANI_U16    gLimRestoreCBCount;
     tSirMacAddr gLimLegacyBssidList[MAX_NUM_LEGACY_BSSID_PER_CHANNEL];
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
     //
     // If this flag is 1,
@@ -529,9 +460,6 @@ typedef struct sAniSirLim
     tANI_U32 gLimTriggerBackgroundScanDuringQuietBss;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef ANI_AP_SDK
     tLimScanDurationConvert gLimScanDurationConvert; /* Used to store converted scan duration values in TU and TICKS */
 #endif /* ANI_AP_SDK */
@@ -541,15 +469,12 @@ typedef struct sAniSirLim
     tANI_U32 gTotalScanDuration;
     tANI_U32 p2pRemOnChanTimeStamp;
 #endif    
-<<<<<<< HEAD
 =======
 
     // This variable store the total duration to do scan
     tANI_U32 gTotalScanDuration;
     tANI_U32 p2pRemOnChanTimeStamp;
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     // abort scan is used to abort an on-going scan
     tANI_U8 abortScan;
@@ -563,16 +488,12 @@ typedef struct sAniSirLim
     // received by SME state machine
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if defined(ANI_PRODUCT_TYPE_AP)
     // Place holder for Neighbor BSS list received in
     // SME_JOIN/REASSOC_REQ messages
     tSirMultipleNeighborBssInfo gLimNeighborBssList;
 #endif
   tANI_U8             gLimCurrentBssUapsd;
-<<<<<<< HEAD
 
 
 /* These global varibales are now moved to session Table in order to support BT-AMP oct 9th review  */
@@ -610,39 +531,6 @@ typedef struct sAniSirLim
     /* This is used for testing sta legacy bss detect feature */
     tANI_U8     gLimForceNoPropIE;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-
-/* These global varibales are now moved to session Table in order to support BT-AMP oct 9th review  */
-#if 0
-    // Place holder for BSS description that we're
-    // currently joined with
-    tSirMacAddr         gLimCurrentBssId;
-    tSirMacChanNum      gLimCurrentChannelId;
-    tSirMacSSid         gLimCurrentSSID;
-    tANI_U16            gLimCurrentBssCaps;
-    
-    // QosCaps is a bit map of various qos capabilities - see defn above
-    tANI_U8             gLimCurrentBssQosCaps;
-    tANI_U16            gLimCurrentBssPropCap;
-    tANI_U8             gLimSentCapsChangeNtf;
-    tANI_U32            gLimCurrentTitanHtCaps;
-
-    // Place holder for BSS description that
-    // we're currently Reassociating
-    tSirMacAddr           gLimReassocBssId;
-    tSirMacChanNum        gLimReassocChannelId;
-    tSirMacSSid           gLimReassocSSID;
-    tANI_U16              gLimReassocBssCaps;
-    tANI_U8               gLimReassocBssQosCaps;
-    tANI_U16              gLimReassocBssPropCap;
-    tANI_U32              gLimReassocTitanHtCaps;
-
-    tANI_U8                 gLimBssIdx;  // BSSIdx is made session speicific 
-#endif
-
-    tANI_U8     gLimForceNoPropIE; /* This is used for testing sta legacy bss detect feature */
->>>>>>> 657b0e9... prima update
 
     //
     // Store the BSS Index returned by HAL during
@@ -701,13 +589,9 @@ typedef struct sAniSirLim
 
     /// Variable to keep track of number of currently associated STAs
 <<<<<<< HEAD
-<<<<<<< HEAD
     tANI_U16  gLimNumOfCurrentSTAs;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    tANI_U16  gLimNumOfCurrentSTAs;
->>>>>>> 657b0e9... prima update
     tANI_U16  gLimNumOfAniSTAs;      // count of ANI peers
     tANI_U16  gLimAssocStaLimit;
 
@@ -853,9 +737,6 @@ typedef struct sAniSirLim
 
     //////////////////////////////////////////     MISC RELATED START ///////////////////////////////////////////
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
     // Place holder for alternate radio list
     tSirMultipleAlternateRadioInfo gLimAlternateRadioList;
@@ -867,11 +748,8 @@ typedef struct sAniSirLim
     tLimMeasParams            gLimMeasParams;
     tpLimMeasData             gpLimMeasData;
 #endif
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     // WDS info
     tANI_U32            gLimNumWdsInfoInd;
@@ -940,7 +818,6 @@ typedef struct sAniSirLim
     // admission control policy information
     tLimAdmitPolicyInfo admitPolicyInfo;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
     vos_lock_t lkPeGlobalLock;
     tANI_U8 disableLDPCWithTxbfAP;
@@ -949,8 +826,6 @@ typedef struct sAniSirLim
     tANI_U8 gLimTDLSUapsdMask;
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 
 
@@ -966,9 +841,6 @@ typedef struct sAniSirLim
     //tpSirSmeReassocReq    gpLimReassocReq;  sep23 review
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
     /**
      * Following is the place holder for free AID pool.
      * A non-zero value indicates that AID is available
@@ -978,11 +850,8 @@ typedef struct sAniSirLim
     tANI_U8    freeAidHead;
     tANI_U8    freeAidTail;
 
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // Current Authentication type used at STA
     //tAniAuthType        gLimCurrentAuthType;
 
@@ -1172,7 +1041,6 @@ typedef struct sAniSirLim
     ////////////////////////////////  HT RELATED           //////////////////////////////////////////
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
     ////////////////////////////////  TDLS RELATED         //////////////////////////////////////////
@@ -1196,8 +1064,6 @@ typedef struct sAniSirLim
     ////////////////////////////////  TDLS RELATED         //////////////////////////////////////////
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
     // wsc info required to form the wsc IE
     tLimWscIeInfo wscIeInfo;
@@ -1215,7 +1081,6 @@ tLimMlmOemDataRsp       *gpLimMlmOemDataRsp;
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     tSirRemainOnChnReq  *gpLimRemainOnChanReq; //hold remain on chan request in this buf
     vos_list_t  gLimMgmtFrameRegistratinQueue;
@@ -1231,26 +1096,23 @@ tLimMlmOemDataRsp       *gpLimMlmOemDataRsp;
 
 #ifdef WLAN_FEATURE_P2P
 =======
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     tSirRemainOnChnReq  *gpLimRemainOnChanReq; //hold remain on chan request in this buf
     vos_list_t  gLimMgmtFrameRegistratinQueue;
-    tANI_U32    actionFrameSessionId;
-#endif
+    tANI_U32    mgmtFrameSessionId;
     tSirBackgroundScanMode gLimBackgroundScanMode;
-#ifdef WLAN_FEATURE_11AC
-    tANI_U8    vhtCapabilityPresentInBeacon;
-    tANI_U8    apCenterChan;
-    tANI_U8    apChanWidth;
+
+#if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
+    tpPESession  pSessionEntry;
+    tANI_U8 reAssocRetryAttempt;
 #endif
+    tLimDisassocDeauthCnfReq limDisassocDeauthCnfReq;
+    tANI_U8 deferredMsgCnt;
+    tSirDFSChannelList    dfschannelList;
+    tANI_U8 deauthMsgCnt;
+    tANI_U8 gLimIbssStaLimit;
 } tAniSirLim, *tpAniSirLim;
 
-<<<<<<< HEAD
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 typedef struct sLimMgmtFrameRegistration
 {
     vos_list_node_t node;     // MUST be first element
@@ -1260,13 +1122,9 @@ typedef struct sLimMgmtFrameRegistration
     tANI_U8         matchData[1];
 } tLimMgmtFrameRegistration, *tpLimMgmtFrameRegistration;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #if defined WLAN_FEATURE_VOWIFI
 typedef struct sRrmContext
@@ -1285,13 +1143,9 @@ typedef struct sFTContext
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef FEATURE_WLAN_INTEGRATED_SOC
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef FEATURE_WLAN_INTEGRATED_SOC
->>>>>>> 657b0e9... prima update
 //Check if this definition can actually move here even for Volans. In that case
 //this featurization can be removed.
 /** ------------------------------------------------------------------------- * 
@@ -1342,13 +1196,9 @@ typedef struct sHalMacStartParameters
 
 } tHalMacStartParameters;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif 
->>>>>>> 657b0e9... prima update
 
 // -------------------------------------------------------------------
 /// MAC Sirius parameter structure
@@ -1357,17 +1207,11 @@ typedef struct sAniSirGlobal
 {
     tDriverType  gDriverType;
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined(ANI_OS_TYPE_RTAI_LINUX)
     struct rtLibApp * rt;
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined(ANI_OS_TYPE_RTAI_LINUX)
-    struct rtLibApp * rt;
-#endif
->>>>>>> 657b0e9... prima update
 
     // we should be able to save this hddHandle in here and deprecate
     // the pAdapter.  For now, compiles are a problem because there
@@ -1382,21 +1226,14 @@ typedef struct sAniSirGlobal
     tAniSirCfg   cfg;
     tAniSirLim   lim;
 <<<<<<< HEAD
-<<<<<<< HEAD
     //tAniSirDph   dph;
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    //tAniSirDph   dph;
->>>>>>> 657b0e9... prima update
     tAniSirPmm   pmm;
     tAniSirSch   sch;
     tAniSirSys   sys;
     tAniSirUtils utils;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
     tAniSirHal   hal;
     tAniSirPhy   hphy;
@@ -1409,11 +1246,8 @@ typedef struct sAniSirGlobal
 #endif
 
     tAniSirTxWrapper txWrapper;
-<<<<<<< HEAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     // PAL/HDD handle
     tHddHandle hHdd;
 
@@ -1429,7 +1263,6 @@ typedef struct sAniSirGlobal
     tOemDataStruct oemData;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 #ifdef ANI_PRODUCT_TYPE_CLIENT
     tPmcInfo     pmc;
@@ -1442,13 +1275,6 @@ typedef struct sAniSirGlobal
     tPmcInfo     pmc;
     tSmeBtcInfo  btc;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
-#ifdef ANI_PRODUCT_TYPE_CLIENT
-    tPmcInfo     pmc;
-    tSmeBtcInfo  btc;
-#endif
->>>>>>> 657b0e9... prima update
 
     tCcm ccm;
 
@@ -1456,26 +1282,18 @@ typedef struct sAniSirGlobal
     tRrmContext rrm;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_FEATURE_CONCURRENT_P2P
     tp2pContext p2pContext[MAX_NO_OF_P2P_SESSIONS];
 #else
     tp2pContext p2pContext;
 #endif
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
->>>>>>> 657b0e9... prima update
 
 #if defined WLAN_FEATURE_VOWIFI_11R
     tftContext   ft;
@@ -1489,7 +1307,6 @@ typedef struct sAniSirGlobal
         Thinking of using linkedlist  */ 
     tDumpModuleEntry *dumpTableEntry[MAX_DUMP_TABLE_ENTRY];
 <<<<<<< HEAD
-<<<<<<< HEAD
     
 } tAniSirGlobal;
 
@@ -1499,13 +1316,10 @@ typedef struct sAniSirGlobal
     v_BOOL_t isTdlsPowerSaveProhibited;
 #endif
     tANI_U8 fScanOffload;
-=======
-    
->>>>>>> 657b0e9... prima update
 } tAniSirGlobal;
 
+#ifdef FEATURE_WLAN_TDLS
 
-<<<<<<< HEAD
 #define RFC1042_HDR_LENGTH      (6)
 #define GET_BE16(x)             ((tANI_U16) (((x)[0] << 8) | (x)[1]))
 #define ETH_TYPE_89_0d          (0x890d)
@@ -1515,8 +1329,6 @@ typedef struct sAniSirGlobal
 
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 #endif /* _ANIGLOBAL_H */
 

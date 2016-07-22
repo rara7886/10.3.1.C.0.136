@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,12 +43,9 @@
  */
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #ifndef BTAMPHCI_H
 #define BTAMPHCI_H
 
@@ -211,14 +205,10 @@ typedef struct sBtampTLVAMP_Assoc_Connected_Channel {
     v_U8_t       country[3];
     v_U8_t       num_triplets;
 <<<<<<< HEAD
-<<<<<<< HEAD
     v_U8_t       triplets[2][3];
 =======
     v_U8_t       triplets[5][3];
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    v_U8_t       triplets[2][3];
->>>>>>> 657b0e9... prima update
 } tBtampTLVAMP_Assoc_Connected_Channel;
 
 #define BTAMP_TLV_AMP_ASSOC_CONNECTED_CHANNEL ( 3 )

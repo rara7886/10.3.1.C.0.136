@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -71,7 +68,6 @@
 #define CSR_ACTIVE_MIN_CHANNEL_TIME    20
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_AP_STA_CONCURRENCY
 #define CSR_ACTIVE_MAX_CHANNEL_TIME_CONC    27
 #define CSR_ACTIVE_MIN_CHANNEL_TIME_CONC    20
@@ -79,20 +75,18 @@
 #define CSR_ACTIVE_MAX_CHANNEL_TIME_BTC    120
 #define CSR_ACTIVE_MIN_CHANNEL_TIME_BTC    60
 
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_AP_STA_CONCURRENCY
+#define CSR_PASSIVE_MAX_CHANNEL_TIME_CONC   110
+#define CSR_PASSIVE_MIN_CHANNEL_TIME_CONC   60 
+
 #define CSR_ACTIVE_MAX_CHANNEL_TIME_CONC    27
 #define CSR_ACTIVE_MIN_CHANNEL_TIME_CONC    20
-<<<<<<< HEAD
 
 #define CSR_REST_TIME_CONC                  100
 
 #define CSR_NUM_STA_CHAN_COMBINED_CONC      3
 #define CSR_NUM_P2P_CHAN_COMBINED_CONC      1
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif
 
 #define CSR_MAX_NUM_SUPPORTED_CHANNELS 55
@@ -100,14 +94,10 @@
 #define CSR_MAX_2_4_GHZ_SUPPORTED_CHANNELS 14
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define CSR_MAX_BSS_SUPPORT            150
 =======
 #define CSR_MAX_BSS_SUPPORT            250
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define CSR_MAX_BSS_SUPPORT            150
->>>>>>> 657b0e9... prima update
 
 //This number minus 1 means the number of times a channel is scanned before a BSS is remvoed from
 //cache scan result
@@ -121,7 +111,6 @@
 #define CSR_IDLE_SCAN_NO_PS_INTERVAL_MIN (5 * PAL_TIMER_TO_SEC_UNIT)
 #define CSR_SCAN_GET_RESULT_INTERVAL    (5 * PAL_TIMER_TO_SEC_UNIT)     //5 seconds
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_AP_STA_CONCURRENCY
 #define CSR_SCAN_STAAP_CONC_INTERVAL    (20 * PAL_TIMER_TO_MS_UNIT)     //20 milliseconds
 #endif
@@ -134,14 +123,6 @@
 #define CSR_SCAN_RESULT_AGING_INTERVAL    (5 * PAL_TIMER_TO_SEC_UNIT)     //5 seconds
 #define CSR_SCAN_RESULT_CFG_AGING_INTERVAL    (PAL_TIMER_TO_SEC_UNIT)     // 1  second
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_AP_STA_CONCURRENCY
-#define CSR_SCAN_STAAP_CONC_INTERVAL    (20 * PAL_TIMER_TO_MS_UNIT)     //20 milliseconds
-#endif
-#define CSR_MIC_ERROR_TIMEOUT  (60 * PAL_TIMER_TO_SEC_UNIT)     //60 seconds
-#define CSR_TKIP_COUNTER_MEASURE_TIMEOUT  (60 * PAL_TIMER_TO_SEC_UNIT)     //60 seconds
-#define CSR_SCAN_RESULT_AGING_INTERVAL    (5 * PAL_TIMER_TO_SEC_UNIT)     //5 seconds
->>>>>>> 657b0e9... prima update
 //the following defines are NOT used by palTimer
 #define CSR_SCAN_AGING_TIME_NOT_CONNECT_NO_PS 50     //50 seconds
 #define CSR_SCAN_AGING_TIME_NOT_CONNECT_W_PS 300     //300 seconds
@@ -157,14 +138,11 @@
 #define CSR_BSS_CAP_VALUE_WMM   1
 #define CSR_BSS_CAP_VALUE_UAPSD 1
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
 #define CSR_BSS_CAP_VALUE_5GHZ  1
 #endif
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #define CSR_DEFAULT_ROAMING_TIME 10   //10 seconds
 #define CSR_ROAM_MIN(X, Y)  ((X) < (Y) ? (X) : (Y))
 #define CSR_ROAM_MAX(X, Y)  ((X) > (Y) ? (X) : (Y))
@@ -273,14 +251,10 @@ void csrReleaseCommandWmStatusChange(tpAniSirGlobal pMac, tSmeCmd *pCommand);
 //pIes2 can be NULL
 tANI_BOOLEAN csrIsDuplicateBssDescription( tpAniSirGlobal pMac, tSirBssDescription *pSirBssDesc1, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                                            tSirBssDescription *pSirBssDesc2, tDot11fBeaconIEs *pIes2 );
 =======
                                            tSirBssDescription *pSirBssDesc2, tDot11fBeaconIEs *pIes2, tANI_BOOLEAN fForced );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                           tSirBssDescription *pSirBssDesc2, tDot11fBeaconIEs *pIes2 );
->>>>>>> 657b0e9... prima update
 eHalStatus csrRoamSaveConnectedBssDesc( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDescription *pBssDesc );
 tANI_BOOLEAN csrIsNetworkTypeEqual( tSirBssDescription *pSirBssDesc1, tSirBssDescription *pSirBssDesc2 );
 eHalStatus csrScanSmeScanResponse( tpAniSirGlobal pMac, void *pMsgBuf );
@@ -309,41 +283,30 @@ eHalStatus csrScanHandleFailedLostlink3(tpAniSirGlobal pMac, tANI_U32 sessionId)
 tCsrScanResult *csrScanAppendBssDescription( tpAniSirGlobal pMac, 
                                              tSirBssDescription *pSirBssDescription,
 <<<<<<< HEAD
-<<<<<<< HEAD
                                              tDot11fBeaconIEs *pIes);
 =======
                                              tDot11fBeaconIEs *pIes, tANI_BOOLEAN fForced);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                                             tDot11fBeaconIEs *pIes);
->>>>>>> 657b0e9... prima update
 void csrScanCallCallback(tpAniSirGlobal pMac, tSmeCmd *pCommand, eCsrScanStatus scanStatus);
 eHalStatus csrScanCopyRequest(tpAniSirGlobal pMac, tCsrScanRequest *pDstReq, tCsrScanRequest *pSrcReq);
 eHalStatus csrScanFreeRequest(tpAniSirGlobal pMac, tCsrScanRequest *pReq);
 eHalStatus csrScanCopyResultList(tpAniSirGlobal pMac, tScanResultHandle hIn, tScanResultHandle *phResult);
 void csrInitBGScanChannelList(tpAniSirGlobal pMac);
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus csrScanForSSID(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfile *pProfile, tANI_U32 roamId);
 =======
 eHalStatus csrScanForSSID(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfile *pProfile, tANI_U32 roamId, tANI_BOOLEAN notify);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus csrScanForSSID(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamProfile *pProfile, tANI_U32 roamId);
->>>>>>> 657b0e9... prima update
 eHalStatus csrScanForCapabilityChange(tpAniSirGlobal pMac, tSirSmeApNewCaps *pNewCaps);
 eHalStatus csrScanStartGetResultTimer(tpAniSirGlobal pMac);
 eHalStatus csrScanStopGetResultTimer(tpAniSirGlobal pMac);
 eHalStatus csrScanStartResultAgingTimer(tpAniSirGlobal pMac);
 eHalStatus csrScanStopResultAgingTimer(tpAniSirGlobal pMac);
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 eHalStatus csrScanStartResultCfgAgingTimer(tpAniSirGlobal pMac);
 eHalStatus csrScanStopResultCfgAgingTimer(tpAniSirGlobal pMac);
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 eHalStatus csrScanBGScanEnable(tpAniSirGlobal pMac);
 eHalStatus csrScanStartIdleScanTimer(tpAniSirGlobal pMac, tANI_U32 interval);
 eHalStatus csrScanStopIdleScanTimer(tpAniSirGlobal pMac);
@@ -358,7 +321,6 @@ void csrScanStopTimers(tpAniSirGlobal pMac);
 tANI_BOOLEAN csrScanRemoveNotRoamingScanCommand(tpAniSirGlobal pMac);
 //To remove fresh scan commands from the pending queue
 tANI_BOOLEAN csrScanRemoveFreshScanCommand(tpAniSirGlobal pMac, tANI_U8 sessionId);
-<<<<<<< HEAD
 <<<<<<< HEAD
 eHalStatus csrScanAbortMacScan(tpAniSirGlobal pMac);
 void csrRemoveCmdFromPendingList(tpAniSirGlobal pMac, tDblLinkList *pList, 
@@ -377,13 +339,6 @@ eHalStatus csrScanAbortMacScanNotForConnect(tpAniSirGlobal pMac,
                                             tANI_U8 sessionId);
 eHalStatus csrScanGetScanChannelInfo(tpAniSirGlobal pMac, tANI_U8 sessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus csrScanAbortMacScan(tpAniSirGlobal pMac);
-void csrRemoveCmdFromPendingList(tpAniSirGlobal pMac, tDblLinkList *pList, 
-                                              eSmeCommandType commandType );
-eHalStatus csrScanAbortMacScanNotForConnect(tpAniSirGlobal pMac);
-eHalStatus csrScanGetScanChannelInfo(tpAniSirGlobal pMac);
->>>>>>> 657b0e9... prima update
 //To age out scan results base. tSmeGetScanChnRsp is a pointer returned by LIM that
 //has the information regarding scanned channels.
 //The logic is that whenever CSR add a BSS to scan result, it set the age count to
@@ -439,23 +394,16 @@ void csrRoamRemoveDuplicateCommand(tpAniSirGlobal pMac, tANI_U32 sessionId, tSme
                                  
 eHalStatus csrSendJoinReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDescription *pBssDescription, 
 <<<<<<< HEAD
-<<<<<<< HEAD
                               tCsrRoamProfile *pProfile, tDot11fBeaconIEs *pIes );
 =======
                               tCsrRoamProfile *pProfile, tDot11fBeaconIEs *pIes, tANI_U16 messageType );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                              tCsrRoamProfile *pProfile, tDot11fBeaconIEs *pIes );
->>>>>>> 657b0e9... prima update
 eHalStatus csrSendMBDisassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirMacAddr bssId, tANI_U16 reasonCode );
 eHalStatus csrSendMBDeauthReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirMacAddr bssId, tANI_U16 reasonCode );
 eHalStatus csrSendMBDisassocCnfMsg( tpAniSirGlobal pMac, tpSirSmeDisassocInd pDisassocInd );
 eHalStatus csrSendMBDeauthCnfMsg( tpAniSirGlobal pMac, tpSirSmeDeauthInd pDeauthInd );
 eHalStatus csrSendAssocCnfMsg( tpAniSirGlobal pMac, tpSirSmeAssocInd pAssocInd, eHalStatus status );
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #ifdef WLAN_SOFTAP_FEATURE
 eHalStatus csrSendAssocIndToUpperLayerCnfMsg( tpAniSirGlobal pMac, tpSirSmeAssocInd pAssocInd, eHalStatus Halstatus, tANI_U8 sessionId );
 #endif
@@ -464,15 +412,12 @@ eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCs
 eHalStatus csrSendMBStopBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId );
 eHalStatus csrSendSmeReassocReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, tSirBssDescription *pBssDescription, 
                                     tDot11fBeaconIEs *pIes, tCsrRoamProfile *pProfile );
-<<<<<<< HEAD
 =======
 eHalStatus csrSendAssocIndToUpperLayerCnfMsg( tpAniSirGlobal pMac, tpSirSmeAssocInd pAssocInd, eHalStatus Halstatus, tANI_U8 sessionId );
 eHalStatus csrSendMBStartBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId, eCsrRoamBssType bssType, 
                                     tCsrRoamStartBssParams *pParam, tSirBssDescription *pBssDesc );
 eHalStatus csrSendMBStopBssReqMsg( tpAniSirGlobal pMac, tANI_U32 sessionId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 tANI_BOOLEAN csrIsMacAddressEqual( tpAniSirGlobal pMac, tCsrBssid *pMacAddr1, tCsrBssid *pMacAddr2 );
 //Caller should put the BSS' ssid to fiedl bssSsid when comparing SSID for a BSS.
@@ -490,13 +435,10 @@ void csrRoamCcmCfgSetCallback(tHalHandle hHal, tANI_S32 result);
 void csrScanCcmCfgSetCallback(tHalHandle hHal, tANI_S32 result);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 tPowerdBm csrGetCfgMaxTxPower (tpAniSirGlobal pMac, tANI_U8 channel);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 //To free the last roaming profile
 void csrFreeRoamProfile(tpAniSirGlobal pMac, tANI_U32 sessionId);
 void csrFreeConnectBssDesc(tpAniSirGlobal pMac, tANI_U32 sessionId);
@@ -508,7 +450,6 @@ void csrReleaseProfile(tpAniSirGlobal pMac, tCsrRoamProfile *pProfile);
 //To free memory allocated inside scanFilter
 void csrFreeScanFilter(tpAniSirGlobal pMac, tCsrScanResultFilter *pScanFilter);
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(tCsrRoamProfile *pProfile, eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary);
 #else
@@ -518,21 +459,11 @@ tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csr
 void csrSaveChannelPowerForBand( tpAniSirGlobal pMac, tANI_BOOLEAN fPopulate5GBand );
 void csrApplyChannelPowerCountryInfo( tpAniSirGlobal pMac, tCsrChannel *pChannelList, tANI_U8 *countryCode);
 =======
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(tCsrRoamProfile *pProfile, eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary);
-#else
-eCsrCfgDot11Mode csrGetCfgDot11ModeFromCsrPhyMode(eCsrPhyMode phyMode, tANI_BOOLEAN fProprietary);
-#endif
 tANI_U32 csrTranslateToWNICfgDot11Mode(tpAniSirGlobal pMac, eCsrCfgDot11Mode csrDot11Mode);
 void csrSaveChannelPowerForBand( tpAniSirGlobal pMac, tANI_BOOLEAN fPopulate5GBand );
-<<<<<<< HEAD
 void csrApplyChannelPowerCountryInfo( tpAniSirGlobal pMac, tCsrChannel *pChannelList, tANI_U8 *countryCode, tANI_BOOLEAN updateRiva);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void csrApplyChannelPowerCountryInfo( tpAniSirGlobal pMac, tCsrChannel *pChannelList, tANI_U8 *countryCode);
->>>>>>> 657b0e9... prima update
 void csrApplyPower2Current( tpAniSirGlobal pMac );
 void csrAssignRssiForCategory(tpAniSirGlobal pMac, tANI_U8 catOffset);
 tANI_BOOLEAN csrIsMacAddressZero( tpAniSirGlobal pMac, tCsrBssid *pMacAddr );
@@ -545,14 +476,10 @@ tANI_BOOLEAN csrRoamCompleteRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId,
 void csrRoamCompletion(tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamInfo *pRoamInfo, tSmeCmd *pCommand, eCsrRoamResult roamResult, tANI_BOOLEAN fSuccess);
 void csrRoamCancelRoaming(tpAniSirGlobal pMac, tANI_U32 sessionId);
 <<<<<<< HEAD
-<<<<<<< HEAD
 void csrResetCountryInformation( tpAniSirGlobal pMac, tANI_BOOLEAN fForce );
 =======
 void csrResetCountryInformation( tpAniSirGlobal pMac, tANI_BOOLEAN fForce, tANI_BOOLEAN updateRiva );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-void csrResetCountryInformation( tpAniSirGlobal pMac, tANI_BOOLEAN fForce );
->>>>>>> 657b0e9... prima update
 void csrResetPMKIDCandidateList( tpAniSirGlobal pMac, tANI_U32 sessionId );
 #ifdef FEATURE_WLAN_WAPI
 void csrResetBKIDCandidateList( tpAniSirGlobal pMac, tANI_U32 sessionId );
@@ -570,7 +497,6 @@ eHalStatus csrScanGetSupportedChannels( tpAniSirGlobal pMac );
 tANI_BOOLEAN csrMatchCountryCode( tpAniSirGlobal pMac, tANI_U8 *pCountry, tDot11fBeaconIEs *pIes );
 eHalStatus csrRoamSetKey( tpAniSirGlobal pMac, tANI_U32 sessionId, tCsrRoamSetKey *pSetKey, tANI_U32 roamId );
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus csrRoamOpenSession( tpAniSirGlobal pMac, csrRoamCompleteCallback callback, void *pContext,
                           tANI_U8 *pSelfMacAddr, tANI_U8 *pbSessionId );
 =======
@@ -579,10 +505,6 @@ eHalStatus csrRoamOpenSession(tpAniSirGlobal pMac,
                               void *pContext, tANI_U8 *pSelfMacAddr,
                               tANI_U8 *pbSessionId);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus csrRoamOpenSession( tpAniSirGlobal pMac, csrRoamCompleteCallback callback, void *pContext,
-                          tANI_U8 *pSelfMacAddr, tANI_U8 *pbSessionId );
->>>>>>> 657b0e9... prima update
 //fSync: TRUE means cleanupneeds to handle synchronously.
 eHalStatus csrRoamCloseSession( tpAniSirGlobal pMac, tANI_U32 sessionId,
                                 tANI_BOOLEAN fSync, 
@@ -647,14 +569,10 @@ eHalStatus csrScanGetResult(tpAniSirGlobal, tCsrScanResultFilter *pFilter, tScan
   -------------------------------------------------------------------------------*/
 eHalStatus csrScanFlushResult(tpAniSirGlobal);
 <<<<<<< HEAD
-<<<<<<< HEAD
 eHalStatus csrScanFlushP2PResult(tpAniSirGlobal);
 =======
 eHalStatus csrScanFlushSelectiveResult(tpAniSirGlobal, v_BOOL_t flushP2P);
 >>>>>>> d97af3b... add prima wlan driver
-=======
-eHalStatus csrScanFlushP2PResult(tpAniSirGlobal);
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn csrScanBGScanGetParam
     \brief Returns the current background scan settings.
@@ -1041,13 +959,9 @@ void csrCallRoamingCompletionCallback(tpAniSirGlobal pMac, tCsrRoamSession *pSes
                                       tCsrRoamInfo *pRoamInfo, tANI_U32 roamId, eCsrRoamResult roamResult);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
 /* ---------------------------------------------------------------------------
     \fn csrRoamIssueDisassociateStaCmd
     \brief csr function that HDD calls to disassociate a associated station
@@ -1116,7 +1030,6 @@ eHalStatus csrRoamGetWpsSessionOverlap( tpAniSirGlobal pMac, tANI_U32 sessionId,
 eHalStatus csrSendMBGetWPSPBCSessions( tpAniSirGlobal pMac, tANI_U32 sessionId,
                             tSirMacAddr bssId, void *pUsrContext, void *pfnSapEventCallback,v_MACADDR_t pRemoveMac);
 <<<<<<< HEAD
-<<<<<<< HEAD
                             
 #endif
 =======
@@ -1131,10 +1044,6 @@ eHalStatus
 csrSendChngMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U32 sessionId);
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
-                            
-#endif
->>>>>>> 657b0e9... prima update
 #ifdef FEATURE_WLAN_BTAMP_UT_RF
 eHalStatus csrRoamStartJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId, tANI_U32 interval);
 eHalStatus csrRoamStopJoinRetryTimer(tpAniSirGlobal pMac, tANI_U32 sessionId);
@@ -1159,7 +1068,6 @@ eHalStatus csrRoamEnqueuePreauth(tpAniSirGlobal pMac, tANI_U32 sessionId, tpSirB
                                 eCsrRoamReason reason, tANI_BOOLEAN fImmediate);
 eHalStatus csrRoamDequeuePreauth(tpAniSirGlobal pMac);
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 =======
 #ifdef FEATURE_WLAN_LFR
@@ -1177,8 +1085,5 @@ eHalStatus csrUpdateChannelList(tCsrScanStruct *pScan);
 eHalStatus csrRoamDelPMKIDfromCache( tpAniSirGlobal pMac, tANI_U32 sessionId,
                                  tANI_U8 *pBSSId );
 >>>>>>> d97af3b... add prima wlan driver
-=======
-
->>>>>>> 657b0e9... prima update
 #endif
 

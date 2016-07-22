@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -73,14 +70,11 @@
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 // Max NV fragment size
 #define MAX_NV_BIN_SIZE 2000
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 enum
 {
    PTT_STATUS_SUCCESS = 0,
@@ -154,7 +148,6 @@ typedef PACKED_PRE struct PACKED_POST {
 } tTxPowerReport;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #define RXP_MAX_FILTER_IDX                64
 
@@ -171,8 +164,6 @@ typedef PACKED_PRE struct PACKED_POST
 } sMACConfig;
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 
 typedef PACKED_PRE struct PACKED_POST {
    /*
@@ -201,14 +192,10 @@ typedef PACKED_PRE struct PACKED_POST {
    tANI_U8 tx_mode;
    
 <<<<<<< HEAD
-<<<<<<< HEAD
    tANI_U8 reserved[1];
 =======
    tANI_BOOLEAN ftm_per_settings_saved;
 >>>>>>> d97af3b... add prima wlan driver
-=======
-   tANI_U8 reserved[1];
->>>>>>> 657b0e9... prima update
 
    //Rx Gain Service
    sRxChainsAgcEnable agcEnables;
@@ -221,13 +208,10 @@ typedef PACKED_PRE struct PACKED_POST {
 } tPttModuleVariables;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 #ifdef WCN_PRONTO
 extern sMACConfig macConfig;
 #endif
 
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
 #endif /* PTTMODULE_H */

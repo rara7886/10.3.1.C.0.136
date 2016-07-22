@@ -1,6 +1,5 @@
 /*
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -23,8 +22,6 @@
  */
 /*
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -117,14 +114,10 @@
 
 /// Start of Sirius/Host message types
 <<<<<<< HEAD
-<<<<<<< HEAD
 #define WNI_HOST_MSG_START             0x1100
 =======
 #define WNI_HOST_MSG_START             0x1400
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#define WNI_HOST_MSG_START             0x1100
->>>>>>> 657b0e9... prima update
 
 enum eWniMsgTypes
 {
@@ -175,45 +168,31 @@ enum eWniMsgTypes
     eWNI_SME_STOP_BSS_RSP,
     eWNI_SME_DEL_BA_PEER_IND,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
     eWNI_SME_DEFINE_QOS_REQ,
     eWNI_SME_DEFINE_QOS_RSP,
     eWNI_SME_DELETE_QOS_REQ,
     eWNI_SME_DELETE_QOS_RSP,
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 657b0e9... prima update
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
     eWNI_SME_PROMISCUOUS_MODE_REQ,
     eWNI_SME_PROMISCUOUS_MODE_RSP,
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
-<<<<<<< HEAD
 =======
     eWNI_SME_PROMISCUOUS_MODE_REQ,
     eWNI_SME_PROMISCUOUS_MODE_RSP,
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     eWNI_SME_LINK_TEST_START_REQ,
     eWNI_SME_LINK_TEST_START_RSP,
     eWNI_SME_LINK_TEST_STOP_REQ,
     eWNI_SME_LINK_TEST_STOP_RSP,
     eWNI_SME_LINK_TEST_REPORT_IND,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
     eWNI_SME_NEIGHBOR_BSS_IND,
     eWNI_SME_MEASUREMENT_REQ,
     eWNI_SME_MEASUREMENT_RSP,
@@ -222,13 +201,9 @@ enum eWniMsgTypes
     eWNI_SME_SET_WDS_INFO_RSP,
     eWNI_SME_WDS_INFO_IND,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
     eWNI_SME_SET_POWER_REQ,
     eWNI_SME_SET_POWER_RSP,
     eWNI_SME_CLIENT_SIDE_LOAD_BALANCE_REQ,
@@ -239,13 +214,9 @@ enum eWniMsgTypes
     eWNI_SME_SET_PROPRIETARY_IE_RSP, // #endif
     eWNI_SME_DISCARD_SKB_NTF,  // Used to cleanup SKBs by HDD
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
     eWNI_SME_DEAUTH_CNF,
     eWNI_SME_MIC_FAILURE_IND,
     eWNI_SME_ADDTS_REQ,
@@ -284,15 +255,11 @@ enum eWniMsgTypes
     eWNI_SME_GET_STATISTICS_RSP,
     eWNI_SME_GET_RSSI_REQ,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_FEATURE
 =======
     eWNI_SME_GET_ROAM_RSSI_REQ,
     eWNI_SME_GET_ROAM_RSSI_RSP,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_SOFTAP_FEATURE
->>>>>>> 657b0e9... prima update
     eWNI_SME_GET_ASSOC_STAS_REQ,
     eWNI_SME_TKIP_CNTR_MEAS_REQ,
     eWNI_SME_UPDATE_APWPSIE_REQ,
@@ -302,16 +269,11 @@ enum eWniMsgTypes
     eWNI_SME_UPPER_LAYER_ASSOC_CNF,
     eWNI_SME_HIDE_SSID_REQ,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
 #ifdef WLAN_FEATURE_P2P
 =======
     eWNI_SME_CHNG_MCC_BEACON_INTERVAL,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-#ifdef WLAN_FEATURE_P2P
->>>>>>> 657b0e9... prima update
     eWNI_SME_REMAIN_ON_CHANNEL_REQ,
     eWNI_SME_REMAIN_ON_CHN_IND,
     eWNI_SME_REMAIN_ON_CHN_RSP,
@@ -322,7 +284,6 @@ enum eWniMsgTypes
     eWNI_SME_ABORT_REMAIN_ON_CHAN_IND,
     eWNI_SME_UPDATE_NOA,
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif
     eWNI_SME_PRE_CHANNEL_SWITCH_FULL_POWER,
 =======
@@ -330,10 +291,6 @@ enum eWniMsgTypes
     eWNI_SME_PRE_CHANNEL_SWITCH_FULL_POWER,
     eWNI_SME_GET_SNR_REQ,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif
-    eWNI_SME_PRE_CHANNEL_SWITCH_FULL_POWER,
->>>>>>> 657b0e9... prima update
     //General Power Save Messages
     eWNI_PMC_MSG_TYPES_BEGIN,
     eWNI_PMC_PWR_SAVE_CFG,
@@ -373,15 +330,10 @@ enum eWniMsgTypes
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     eWNI_PMC_MSG_TYPES_END,
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eWNI_PMC_MSG_TYPES_END,
-
->>>>>>> 657b0e9... prima update
 #if defined WLAN_FEATURE_VOWIFI
     eWNI_SME_RRM_MSG_TYPE_BEGIN,
 
@@ -391,15 +343,10 @@ enum eWniMsgTypes
     eWNI_SME_BEACON_REPORT_RESP_XMIT_IND,
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     eWNI_SME_RRM_MSG_TYPE_END,
 
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-    eWNI_SME_RRM_MSG_TYPE_END,
-
->>>>>>> 657b0e9... prima update
 #endif
     eWNI_SME_ADD_STA_SELF_REQ,
     eWNI_SME_ADD_STA_SELF_RSP,
@@ -419,18 +366,12 @@ enum eWniMsgTypes
 #endif
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_P2P
     eWNI_SME_REGISTER_MGMT_FRAME_REQ,
 #endif
 =======
     eWNI_SME_REGISTER_MGMT_FRAME_REQ,
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_P2P
-    eWNI_SME_REGISTER_MGMT_FRAME_REQ,
-#endif
->>>>>>> 657b0e9... prima update
 
     eWNI_SME_COEX_IND,
 
@@ -449,24 +390,17 @@ enum eWniMsgTypes
     eWNI_SME_BTAMP_LOG_LINK_IND,//to serialize the create/accpet LL req from HCI
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
     eWNI_PMC_GTK_OFFLOAD_GETINFO_RSP,
 #endif // WLAN_FEATURE_GTK_OFFLOAD
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#ifdef WLAN_FEATURE_GTK_OFFLOAD
-    eWNI_PMC_GTK_OFFLOAD_GETINFO_RSP,
-#endif // WLAN_FEATURE_GTK_OFFLOAD
->>>>>>> 657b0e9... prima update
 
 #ifdef WLAN_WAKEUP_EVENTS
     eWNI_SME_WAKE_REASON_IND,
 #endif // WLAN_WAKEUP_EVENTS
     eWNI_SME_EXCLUDE_UNENCRYPTED,
     eWNI_SME_RSSI_IND, //RSSI indication from TL to be serialized on MC thread
-<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 #ifdef FEATURE_WLAN_TDLS
@@ -516,8 +450,6 @@ enum eWniMsgTypes
     eWNI_SME_LPHB_IND,
 #endif /* FEATURE_WLAN_LPHB */
 >>>>>>> d97af3b... add prima wlan driver
-=======
->>>>>>> 657b0e9... prima update
     eWNI_SME_MSG_TYPES_END
 };
 
@@ -573,13 +505,9 @@ enum eWniMsgTypes
 /*---------------------------------------------------------------------*/
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 #if defined( FEATURE_WLAN_INTEGRATED_SOC )
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#if defined( FEATURE_WLAN_INTEGRATED_SOC )
->>>>>>> 657b0e9... prima update
 // Parameter update indication
 #define WNI_CFG_PARAM_UPDATE_IND_PID   0
 
@@ -587,13 +515,9 @@ enum eWniMsgTypes
 #define WNI_CFG_PARAM_UPDATE_IND_LEN   (WNI_CFG_MB_HDR_LEN + \
                                        (WNI_CFG_PARAM_UPDATE_IND_NUM << 2))
 <<<<<<< HEAD
-<<<<<<< HEAD
 #endif /* FEATURE_WLAN_INTEGRATED_SOC */
 =======
 >>>>>>> d97af3b... add prima wlan driver
-=======
-#endif /* FEATURE_WLAN_INTEGRATED_SOC */
->>>>>>> 657b0e9... prima update
 
 // Configuration download request
 #define WNI_CFG_DNLD_REQ_NUM           0
