@@ -33,7 +33,7 @@ if [ ! -d /usr/lib/jvm ]; then
   zlib1g-dev libncurses5-dev x11proto-core-dev \
   libx11-dev libreadline6-dev libgl1-mesa-dev tofrodos \
   python-markdown libxml2-utils xsltproc \
-  libsdl-dev libesd0-dev libwxgtk2.8-dev \
+  libsdl-dev libesd0-dev libwxgtk3.0-dev \
   openjdk-8-jre-headless lzop
     echo "Installed Building Tools"
 else
