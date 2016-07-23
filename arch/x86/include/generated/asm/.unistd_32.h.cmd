@@ -1,1 +1,0 @@
-cmd_arch/x86/syscalls/../include/generated/asm/unistd_32.h := /bin/bash '/home/masaki/kernel/10-136/arch/x86/syscalls/syscallhdr.sh' '/home/masaki/kernel/10-136/arch/x86/syscalls/syscall_32.tbl' 'arch/x86/syscalls/../include/generated/asm/unistd_32.h' 'i386' '' ''
